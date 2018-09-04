@@ -1,0 +1,41 @@
+<mat-sidenav-container>
+
+    <!-- LEFT SIDENAV -->
+    <mat-sidenav *ngIf="!asmConfig.layout.navigation.hidden && this.isScreenSmall" class="mat-elevation-z8"
+                 mode="over" position="start" fixedInViewport asmMatSidenav="leftSidenav">
+
+        <!-- NAVIGATION -->
+        <navigation></navigation>
+        <!-- / NAVIGATION -->
+
+    </mat-sidenav>
+    <!-- / LEFT SIDENAV -->
+
+    <!-- RIGHT SIDENAV -->
+    <mat-sidenav class="mat-elevation-z8"
+                 mode="over" position="end" fixedInViewport asmMatSidenav="rightSidenav">
+
+        <!-- THEME CONFIGURATOR -->
+        <asm-theme-configurator></asm-theme-configurator>
+        <!-- / THEME CONFIGURATOR -->
+
+    </mat-sidenav>
+    <!-- / RIGHT SIDENAV -->
+
+    <mat-sidenav-content asmScrollbar>
+
+        <!-- HEADER -->
+        <header *ngIf="!asmConfig.layout.header.hidden"></header>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <content></content>
+        <!-- / CONTENT -->
+
+        <!-- FOOTER -->
+        <footer *ngIf="!asmConfig.layout.footer.hidden"></footer>
+        <!-- / FOOTER -->
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

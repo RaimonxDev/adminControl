@@ -1,0 +1,24 @@
+<!-- Vertical Menu -->
+<ng-container *ngIf="type === 'vertical'">
+
+    <ng-container *ngFor="let item of data">
+
+        <asm-menu-vertical-collapsable-item *ngIf="item.type === 'collapsable'"
+                                            [autoCollapse]="autoCollapse"
+                                            [item]="item">
+        </asm-menu-vertical-collapsable-item>
+
+        <asm-menu-vertical-group-item *ngIf="item.type === 'group'"
+                                      [autoCollapse]="autoCollapse"
+                                      [item]="item">
+        </asm-menu-vertical-group-item>
+
+        <asm-menu-vertical-basic-item *ngIf="item.type !== 'collapsable' && item.type !== 'group'"
+                                      [item]="item">
+        </asm-menu-vertical-basic-item>
+
+
+    </ng-container>
+
+</ng-container>
+<!-- / Vertical Menu -->

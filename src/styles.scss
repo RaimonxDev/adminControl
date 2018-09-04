@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+// Import Assembly core library
+@import "@assembly/styles/core";
+
+// Import app.theme.scss
+@import "app/app.theme";

@@ -1,0 +1,78 @@
+/*
+@mixin assembly-menu-theme($theme) {
+
+    $primary: map-get($theme, primary);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    asm-menu {
+
+        .asm-menu-item {
+
+            .asm-menu-item-title {
+                color: assembly-color($foreground, primary);
+            }
+
+            .asm-menu-item-icon {
+                color: assembly-color($foreground, active-icon);
+            }
+
+            &.asm-menu-item-active {
+                box-shadow: inset 3px 0 0 0 assembly-color($primary, default);
+
+                @if ($is-dark) {
+                    background: rgba(0, 0, 0, 0.12);
+                } @else {
+                    background: rgba(assembly-color($primary, default), 0.12);
+                }
+            }
+        }
+
+        // Basic & Collapsable
+        asm-menu-vertical-basic-item,
+        asm-menu-vertical-collapsable-item {
+
+            > .asm-menu-item {
+
+                &:hover:not(.asm-menu-item-active) {
+                    background: rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+
+        // Collapsable
+        asm-menu-vertical-collapsable-item {
+
+            > .asm-menu-item {
+
+                .asm-menu-item-arrow {
+                    color: assembly-color($foreground, active-icon);
+                }
+            }
+
+            &.asm-menu-item-expanded {
+                @if ($is-dark) {
+                    background: rgba(0, 0, 0, 0.12);
+                } @else {
+                    background: rgba(0, 0, 0, 0.06);
+                }
+
+                asm-menu-vertical-collapsable-item {
+                    background: transparent;
+                }
+            }
+        }
+
+        // Group
+        asm-menu-vertical-group-item {
+
+            > .asm-menu-item {
+
+                .asm-menu-item-title {
+                    color: assembly-color($foreground, secondary);
+                }
+            }
+        }
+    }
+}*/

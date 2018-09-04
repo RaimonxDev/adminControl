@@ -1,0 +1,42 @@
+<ng-container *ngIf="!item.hidden">
+
+    <div class="asm-menu-item" (click)="toggleCollapsable()">
+
+        <i *ngIf="item.icon" class="asm-menu-item-icon" [ngClass]="item.icon"></i>
+
+        <div class="asm-menu-item-title">
+            {{item.title}}
+        </div>
+
+        <div *ngIf="item.badge" class="asm-menu-item-badge"
+             [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+            {{item.badge.title}}
+        </div>
+
+        <i class="asm-menu-item-arrow icon-chevron-down"></i>
+
+    </div>
+
+    <div class="asm-menu-item-children" [@slideDown]="!isCollapsed">
+
+        <ng-container *ngFor="let item of item.children">
+
+            <asm-menu-vertical-collapsable-item *ngIf="item.type === 'collapsable'"
+                                                [autoCollapse]="autoCollapse"
+                                                [item]="item">
+            </asm-menu-vertical-collapsable-item>
+
+            <asm-menu-vertical-group-item *ngIf="item.type === 'group'"
+                                          [autoCollapse]="autoCollapse"
+                                          [item]="item">
+            </asm-menu-vertical-group-item>
+
+            <asm-menu-vertical-basic-item *ngIf="item.type !== 'collapsable' && item.type !== 'group'"
+                                          [item]="item">
+            </asm-menu-vertical-basic-item>
+
+        </ng-container>
+
+    </div>
+
+</ng-container>
