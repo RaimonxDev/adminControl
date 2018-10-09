@@ -120,9 +120,6 @@ asm-navigation {
         overflow: hidden;
         z-index: 5;
         transition: left 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-
-        &.asm-navigation-aside-wrapper-visible {
-        }
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -267,22 +264,18 @@ asm-navigation {
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.6);
 
-    &.asm-navigation-overlay-transparent {
-        background-color: transparent;
-    }
-
-    + .asm-navigation-aside-item-overlay {
+    + .asm-navigation-aside-overlay {
         background-color: transparent;
     }
 }
 
-// Secondary item overlay
-.asm-navigation-aside-item-overlay {
+// Aside overlay
+.asm-navigation-aside-overlay {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 48;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
 }

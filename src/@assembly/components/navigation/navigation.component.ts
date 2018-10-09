@@ -36,7 +36,8 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _backdrop: HTMLElement | null = null;
+    private _overlay: HTMLElement | null = null;
+    private _asideOverlay: HTMLElement | null = null;
     private _mode: 'over' | 'side';
     private _opened: boolean;
     private _player: AnimationPlayer;
@@ -108,6 +109,9 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         // If the mode changes to the 'side' from the 'over'...
         if ( this.mode === 'side' && value === 'over' )
         {
+            // Close the aside
+            this.closeAside();
+
             // Trigger the observable
             this._asmNavigationService.onModeChanged.next(value);
         }
@@ -338,51 +342,57 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Show the backdrop
+     * Show the overlay
      *
      * @private
      */
     private _showOverlay(): void
     {
-        // Create the backdrop element
-        this._backdrop = this._renderer.createElement('div');
+        // If there is already an overlay, return...
+        if ( this._asideOverlay )
+        {
+            return;
+        }
 
-        // Add a class to the backdrop element
-        this._backdrop.classList.add('asm-navigation-overlay');
+        // Create the overlay element
+        this._overlay = this._renderer.createElement('div');
+
+        // Add a class to the overlay element
+        this._overlay.classList.add('asm-navigation-overlay');
 
         // Add a class depending on the transparentOverlay option
         if ( this.transparentOverlay )
         {
-            this._backdrop.classList.add('asm-navigation-overlay-transparent');
+            this._overlay.classList.add('asm-navigation-overlay-transparent');
         }
 
-        // Append the backdrop to the parent of the navigation
-        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);
+        // Append the overlay to the parent of the navigation
+        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
 
         // Create the enter animation and attach it to the player
         this._player =
             this._animationBuilder
                 .build([
                     animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 1}))
-                ]).create(this._backdrop);
+                ]).create(this._overlay);
 
         // Play the animation
         this._player.play();
 
         // Add an event listener to the overlay
-        this._backdrop.addEventListener('click', () => {
+        this._overlay.addEventListener('click', () => {
             this.close();
         });
     }
 
     /**
-     * Hide the backdrop
+     * Hide the overlay
      *
      * @private
      */
     private _hideOverlay(): void
     {
-        if ( !this._backdrop )
+        if ( !this._overlay )
         {
             return;
         }
@@ -392,7 +402,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
             this._animationBuilder
                 .build([
                     animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 0}))
-                ]).create(this._backdrop);
+                ]).create(this._overlay);
 
         // Play the animation
         this._player.play();
@@ -400,12 +410,85 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         // Once the animation is done...
         this._player.onDone(() => {
 
-            // If the backdrop still exists...
-            if ( this._backdrop )
+            // If the overlay still exists...
+            if ( this._overlay )
             {
-                // Remove the backdrop
-                this._backdrop.parentNode.removeChild(this._backdrop);
-                this._backdrop = null;
+                // Remove the overlay
+                this._overlay.parentNode.removeChild(this._overlay);
+                this._overlay = null;
+            }
+        });
+    }
+
+    /**
+     * Show the aside overlay
+     *
+     * @private
+     */
+    private _showAsideOverlay(): void
+    {
+        // If there is already an overlay, return...
+        if ( this._asideOverlay )
+        {
+            return;
+        }
+
+        // Create the aside overlay element
+        this._asideOverlay = this._renderer.createElement('div');
+
+        // Add a class to the aside overlay element
+        this._asideOverlay.classList.add('asm-navigation-aside-overlay');
+
+        // Append the aside overlay to the parent of the navigation
+        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._asideOverlay);
+
+        // Create the enter animation and attach it to the player
+        this._player =
+            this._animationBuilder
+                .build([
+                    animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 1}))
+                ]).create(this._asideOverlay);
+
+        // Play the animation
+        this._player.play();
+
+        // Add an event listener to the aside overlay
+        this._asideOverlay.addEventListener('click', () => {
+            this.closeAside();
+        });
+    }
+
+    /**
+     * Hide the aside overlay
+     *
+     * @private
+     */
+    private _hideAsideOverlay(): void
+    {
+        if ( !this._asideOverlay )
+        {
+            return;
+        }
+
+        // Create the leave animation and attach it to the player
+        this._player =
+            this._animationBuilder
+                .build([
+                    animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 0}))
+                ]).create(this._asideOverlay);
+
+        // Play the animation
+        this._player.play();
+
+        // Once the animation is done...
+        this._player.onDone(() => {
+
+            // If the aside overlay still exists...
+            if ( this._asideOverlay )
+            {
+                // Remove the aside overlay
+                this._asideOverlay.parentNode.removeChild(this._asideOverlay);
+                this._asideOverlay = null;
             }
         });
     }
@@ -464,6 +547,9 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         // Enable the animations
         this._enableAnimations();
 
+        // Close the aside
+        this.closeAside();
+
         // Close
         this.opened = false;
     }
@@ -491,6 +577,9 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     {
         // Open
         this.asideNavigationId = navigationId;
+
+        // Show the aside overlay
+        this._showAsideOverlay();
     }
 
     /**
@@ -500,6 +589,9 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     {
         // Close
         this.asideNavigationId = null;
+
+        // Hide the aside overlay
+        this._hideAsideOverlay();
     }
 
     /**
