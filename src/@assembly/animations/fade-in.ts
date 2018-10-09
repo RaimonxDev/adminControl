@@ -5,7 +5,6 @@ export const fadeIn = trigger('fadeIn', [
     // In
     transition('void => in, false => in', [
         style({
-            display: '*',
             opacity: 0
         }),
         animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
