@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Custom color maps for Fuse
+// @ Custom color maps for Assembly
 // -----------------------------------------------------------------------------------------------------
 $asm-white: (
     500: white,
@@ -16,20 +16,20 @@ $asm-black: (
 );
 
 $asm-navy: (
-    50: #ECECEE,
-    100: #C5C6CB,
-    200: #9EA1A9,
-    300: #7D818C,
-    400: #5C616F,
-    500: #3C4252,
-    600: #353A48,
-    700: #2D323E,
-    800: #262933,
-    900: #1E2129,
-    A100: #C5C6CB,
-    A200: #9EA1A9,
-    A400: #5C616F,
-    A700: #2D323E,
+    50: #E6E6E9,
+    100: #BFC2C8,
+    200: #9599A3,
+    300: #6B707E,
+    400: #4B5162,
+    500: #2B3246,
+    600: #262D3F,
+    700: #202637,
+    800: #1A1F2F,
+    900: #101320,
+    A100: #637DFF,
+    A200: #3052FF,
+    A400: #002AFC,
+    A700: #0026E2,
     contrast: (
         50: $dark-primary-text,
         100: $dark-primary-text,
@@ -55,7 +55,7 @@ $custom_palettes: (
     asm-navy: $asm-navy
 );
 
-//@include fuse-color-classes($custom_palettes);
+@include asm-color-classes($custom_palettes);
 
 // -----------------------------------------------------------------------------------------------------
 // @ Typography
@@ -63,7 +63,11 @@ $custom_palettes: (
 
 // Force the input field font sizes to 16px
 $typography: mat-typography-config(
-    $input: mat-typography-level(16px, 1.125, 400)
+    $font-family: 'Nunito, Helvetica Neue, Arial, sans-serif',
+    $title: mat-typography-level(20px, 32px, 600),
+    $body-2: mat-typography-level(14px, 24px, 600),
+    $button: mat-typography-level(14px, 14px, 600),
+    $input: mat-typography-level(16px, 1.125, 400) // line-height must be unitless !!!
 );
 
 // Setup the typography
@@ -99,18 +103,18 @@ body.theme-default {
     // Create an Angular Material theme from the $theme map
     @include angular-material-theme($theme);
 
-    // Apply the theme to the Fuse Core
-    //@include fuse-core-theme($theme);
+    // Apply the theme to the Assembly Core
+    @include asm-core-theme($theme);
 
     // Apply the theme to the user components
     @include components-theme($theme);
 
-    // Generate Fuse color classes for primary, accent and warn colors
+    // Generate Assembly color classes for primary, accent and warn colors
     $palettes: (
         primary: $default-primary-palette,
         accent: $default-accent-palette,
         warn: $default-warn-palette
     );
 
-    //@include fuse-color-classes($palettes);
+    @include asm-color-classes($palettes);
 }

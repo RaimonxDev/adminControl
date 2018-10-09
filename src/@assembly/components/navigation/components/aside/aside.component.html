@@ -1,0 +1,56 @@
+<ng-container *ngIf="!item.hidden">
+
+    <ng-container *ngIf="skipChildren">
+
+        <div class="asm-navigation-item"
+             [ngClass]="{'asm-navigation-item-active': opened}"
+             >
+
+            <mat-icon *ngIf="item.icon"
+                      class="asm-navigation-item-icon s-16">
+                {{item.icon}}
+            </mat-icon>
+
+            <div class="asm-navigation-item-title">
+                {{item.title}}
+            </div>
+
+            <div *ngIf="item.badge"
+                 class="asm-navigation-item-badge"
+                 [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+                {{item.badge.title}}
+            </div>
+
+        </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="!skipChildren">
+
+        <div class="asm-navigation-item-children">
+
+            <div class="asm-navigation-item-title">
+                {{item.title}}
+            </div>
+
+            <ng-container *ngFor="let item of item.children">
+
+                <!-- Group -->
+                <asm-navigation-group-item *ngIf="item.type === 'group'"
+                                           [item]="item"></asm-navigation-group-item>
+
+                <!-- Collapsable -->
+                <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
+                                                 [item]="item"></asm-navigation-collapsable-item>
+
+                <!-- Basic -->
+                <asm-navigation-basic-item *ngIf="item.type === 'item'"
+                                           [item]="item"></asm-navigation-basic-item>
+
+            </ng-container>
+
+        </div>
+
+    </ng-container>
+
+</ng-container>

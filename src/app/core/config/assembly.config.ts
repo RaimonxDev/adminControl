@@ -9,29 +9,29 @@ import { AssemblyConfig } from '@assembly/types';
  */
 
 export const assemblyConfig: AssemblyConfig = {
-    colorTheme      : 'theme-default', // Color themes can be defined in src/app/app.theme.scss
-    customScrollbars: true,
-    layout          : { // Each layout style has its own set of options and they can be seen in ...
-        style     : 'vertical-layout-1',
+
+    // Color themes can be defined in 'src/app/app.theme.scss'
+    colorTheme: 'theme-default',
+
+    // Each layout style has its own set of options. After changing the
+    // layout, make sure to have correct set of layout options otherwise
+    // Assembly will throw errors and won't run correctly.
+    layout: {
+        style     : 'classic',
         width     : 'fullwidth',
         navigation: {
-            primaryBackground  : 'asm-navy-700',
-            secondaryBackground: 'asm-navy-900',
-            folded             : false,
-            hidden             : false,
-            variant            : 'vertical-style-1'
+            background: 'asm-navy',
+            hidden    : false
         },
         header    : {
-            customBackgroundColor: false,
-            background           : 'asm-white-500',
-            hidden               : false,
-            fixed                : false
+            background: 'asm-white',
+            hidden    : false,
+            fixed     : false
         },
         footer    : {
-            customBackgroundColor: true,
-            background           : 'asm-navy-900',
-            hidden               : false,
-            fixed                : false
+            background: 'asm-navy-900',
+            hidden    : false,
+            fixed     : false
         }
     }
 };

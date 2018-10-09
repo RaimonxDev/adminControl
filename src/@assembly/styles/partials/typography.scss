@@ -1,0 +1,137 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@mixin typography-theme($theme) {
+
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Typography
+// -----------------------------------------------------------------------------------------------------
+html {
+    font-size: 62.5%;
+    font-family: 'Nunito', 'Helvetica Neue', 'Arial', sans-serif;
+    line-height: 1.4 !important;
+    letter-spacing: -0.1px !important;
+}
+
+body {
+    font-size: 14px;
+}
+
+html, body {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: normal;
+}
+
+h1, .h1 {
+    font-size: 24px;
+}
+
+h2, .h2 {
+    font-size: 20px;
+}
+
+h3, .h3 {
+    font-size: 16px;
+}
+
+h4, .h4 {
+    font-size: 15px;
+}
+
+h5, .h5 {
+    font-size: 13px;
+}
+
+h6, .h6 {
+    font-size: 12px;
+}
+
+// Links
+a {
+
+}
+
+// Abbr
+abbr {
+    cursor: help;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.54);
+}
+
+// Blockquote
+blockquote {
+    border-left: 3px solid rgba(0, 0, 0, 0.12);
+    font-style: italic;
+    margin: 1em 0;
+    padding-left: 16px;
+
+    footer {
+        font-style: normal;
+
+        &:before {
+            content: '\2014 \00A0';
+        }
+    }
+
+    &.reverse {
+        border-left: none;
+        border-right: 3px solid rgba(0, 0, 0, 0.12);
+        text-align: right;
+        padding-left: 0;
+        padding-right: 16px;
+
+        footer {
+
+            &:before {
+                content: '';
+            }
+
+            &:after {
+                content: '\2014 \00A0';
+            }
+        }
+    }
+}
+
+// Code
+code {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Ubuntu Mono', monospace;;
+
+    &:not(.highlight) {
+        color: #106CC8;
+        padding: 2px 3px;
+        border-radius: 2px;
+        line-height: 1.7;
+    }
+}
+
+// Definition lists
+dl {
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin: 4px 0 16px 0;
+    }
+}
+
+// Mark
+mark {
+    background: #F7F49A;
+}
+
+// Pre
+pre {
+    line-height: 1.6;
+    margin: 8px 16px;
+    white-space: pre-wrap;
+}

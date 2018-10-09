@@ -1,0 +1,288 @@
+@import "src/@assembly/styles/assembly";
+
+asm-navigation {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    z-index: 50;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Navigation Drawer
+    // -----------------------------------------------------------------------------------------------------
+
+    // Animations
+    &.asm-navigation-animations-enabled {
+        transition-duration: 400ms;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-property: visibility, margin-left, margin-right, transform, width, max-width, min-width;
+
+        // Wrapper
+        .asm-navigation-wrapper {
+            transition-duration: 400ms;
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-property: width, max-width, min-width;
+        }
+    }
+
+    // Over mode
+    &.asm-navigation-mode-over {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+    }
+
+    // Left position
+    &.asm-navigation-position-left {
+
+        // Side mode
+        &.asm-navigation-mode-side {
+            margin-left: -280px;
+
+            &.asm-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        // Over mode
+        &.asm-navigation-mode-over {
+            left: 0;
+            transform: translate3d(-100%, 0, 0);
+
+            &.asm-navigation-opened {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        // Content wrapper
+        .asm-navigation-wrapper {
+            left: 0;
+        }
+    }
+
+    // Right position
+    &.asm-navigation-position-right {
+
+        // Side mode
+        &.asm-navigation-mode-side {
+            margin-right: -280px;
+
+            &.asm-navigation-opened {
+                margin-right: 0;
+            }
+        }
+
+        // Over mode
+        &.asm-navigation-mode-over {
+            right: 0;
+            transform: translate3d(100%, 0, 0);
+
+            &.asm-navigation-opened {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        // Content wrapper
+        .asm-navigation-wrapper {
+            right: 0;
+        }
+    }
+
+    // Content wrapper
+    .asm-navigation-wrapper {
+        position: absolute;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 10;
+    }
+
+    // Aside wrapper
+    .asm-navigation-aside-wrapper {
+        position: absolute;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        top: 0;
+        bottom: 0;
+        left: 280px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 5;
+        transition: left 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        &.asm-navigation-aside-wrapper-visible {
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Navigation Items
+    // -----------------------------------------------------------------------------------------------------
+    asm-navigation-basic-item,
+    asm-navigation-collapsable-item,
+    asm-navigation-group-item,
+    asm-navigation-aside-item {
+        display: flex;
+        flex-direction: column;
+
+        .asm-navigation-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 32px;
+            height: 48px;
+            text-decoration: none;
+
+            .asm-navigation-item-icon {
+                margin-right: 16px;
+            }
+
+            .asm-navigation-item-badge {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: bold;
+                letter-spacing: -0.025em;
+                min-width: 16px;
+                height: 16px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                margin-left: auto;
+            }
+        }
+    }
+
+    asm-navigation-basic-item,
+    asm-navigation-collapsable-item {
+
+        .asm-navigation-item {
+            cursor: pointer;
+        }
+    }
+
+    // Basic
+    asm-navigation-basic-item {
+
+    }
+
+    // Collapsable
+    asm-navigation-collapsable-item {
+
+        .asm-navigation-item {
+
+            .asm-navigation-item-badge {
+
+                + .asm-navigation-item-arrow {
+                    margin-left: 8px;
+                }
+            }
+
+            .asm-navigation-item-arrow {
+                transition: transform 300ms ease-in-out;
+                margin-left: auto;
+            }
+        }
+
+        &.asm-navigation-item-expanded {
+
+            > .asm-navigation-item {
+
+                .asm-navigation-item-arrow {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+
+        // 1st level
+        .asm-navigation-item-children {
+            overflow: hidden;
+
+            .asm-navigation-item {
+                padding-left: 64px;
+            }
+
+            // 2nd level
+            .asm-navigation-item-children {
+
+                .asm-navigation-item {
+                    padding-left: 80px;
+                }
+
+                // 3rd level
+                .asm-navigation-item-children {
+
+                    .asm-navigation-item {
+                        padding-left: 96px;
+                    }
+
+                    // 4th level
+                    .asm-navigation-item-children {
+
+                        .asm-navigation-item {
+                            padding-left: 112px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Group
+    asm-navigation-group-item {
+
+        > .asm-navigation-item {
+            font-weight: bold;
+        }
+
+        + asm-navigation-group-item {
+            margin-top: 24px;
+        }
+    }
+
+    // Secondary
+    asm-navigation-aside-item {
+        cursor: pointer;
+    }
+}
+
+// Overlay
+.asm-navigation-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 49;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &.asm-navigation-overlay-transparent {
+        background-color: transparent;
+    }
+
+    + .asm-navigation-aside-item-overlay {
+        background-color: transparent;
+    }
+}
+
+// Secondary item overlay
+.asm-navigation-aside-item-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 48;
+    background-color: rgba(0, 0, 0, 0.6);
+}

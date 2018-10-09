@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
 
 import { AsmSharedModule } from '@assembly/shared.module';
-import { AsmThemeConfiguratorModule } from '@assembly/components/theme-configurator/theme-configurator.module';
+import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly/components';
 
 import { ContentModule } from 'app/core/layout/classic/components/content/content.module';
 import { HeaderModule } from 'app/core/layout/classic/components/header/header.module';
@@ -19,6 +19,8 @@ import { ClassicLayoutComponent } from 'app/core/layout/classic/classic.componen
         MatSidenavModule,
 
         AsmSharedModule,
+        AsmDrawerModule,
+        AsmNavigationModule,
         AsmThemeConfiguratorModule,
 
         ContentModule,

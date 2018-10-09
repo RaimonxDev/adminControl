@@ -1,6 +1,8 @@
 @import "src/@assembly/styles/assembly";
 
 asm-menu {
+    display: flex;
+    flex-direction: column;
     padding: 8px 0;
 
     asm-menu-vertical-basic-item,

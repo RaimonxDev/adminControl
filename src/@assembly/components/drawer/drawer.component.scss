@@ -1,0 +1,117 @@
+@import "src/@assembly/styles/assembly";
+
+asm-drawer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    z-index: 50;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
+
+    // Animations
+    &.asm-drawer-animations-enabled {
+        transition-duration: 400ms;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-property: visibility, margin-left, margin-right, transform, width, max-width, min-width;
+
+        .asm-drawer-content {
+            transition-duration: 400ms;
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-property: width, max-width, min-width;
+        }
+    }
+
+    // Over mode
+    &.asm-drawer-mode-over {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+    }
+
+    // Left position
+    &.asm-drawer-position-left {
+
+        // Side mode
+        &.asm-drawer-mode-side {
+            margin-left: -280px;
+
+            &.asm-drawer-opened {
+                margin-left: 0;
+            }
+        }
+
+        // Over mode
+        &.asm-drawer-mode-over {
+            left: 0;
+            transform: translate3d(-100%, 0, 0);
+
+            &.asm-drawer-opened {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        // Content
+        .asm-drawer-content {
+            left: 0;
+        }
+    }
+
+    // Right position
+    &.asm-drawer-position-right {
+
+        // Side mode
+        &.asm-drawer-mode-side {
+            margin-right: -280px;
+
+            &.asm-drawer-opened {
+                margin-right: 0;
+            }
+        }
+
+        // Over mode
+        &.asm-drawer-mode-over {
+            right: 0;
+            transform: translate3d(100%, 0, 0);
+
+            &.asm-drawer-opened {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        // Content
+        .asm-drawer-content {
+            right: 0;
+        }
+    }
+
+    // Content
+    .asm-drawer-content {
+        position: absolute;
+        display: flex;
+        flex: 1 1 auto;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+// Overlay
+.asm-drawer-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 49;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &.asm-drawer-overlay-transparent {
+        background-color: transparent;
+    }
+}

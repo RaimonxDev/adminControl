@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { AsmSharedModule } from '@assembly/shared.module';
-import { AsmMenuModule } from '@assembly/components/menu/menu.module';
 
 import { NavigationComponent } from 'app/core/layout/classic/components/navigation/navigation.component';
 
@@ -10,9 +9,7 @@ import { NavigationComponent } from 'app/core/layout/classic/components/navigati
         NavigationComponent
     ],
     imports     : [
-        AsmSharedModule,
-
-        AsmMenuModule
+        AsmSharedModule
     ],
     exports     : [
         NavigationComponent

@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Info
-// This directive is a wrapper for the Perfect Scrollbar library
+// This directive is a wrapper for the Perfect Scrollbar plugin
 // https://github.com/utatti/perfect-scrollbar
 // -----------------------------------------------------------------------------------------------------
 import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
@@ -10,8 +10,6 @@ import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as _ from 'lodash';
-
-import { AsmConfigService } from '@assembly/services/config.service';
 
 @Directive({
     selector: '[asmScrollbar]'
@@ -32,13 +30,11 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      * Constructor
      *
      * @param {ElementRef} elementRef
-     * @param {AsmConfigService} _asmConfigService
      * @param {Platform} _platform
      * @param {Router} _router
      */
     constructor(
         public elementRef: ElementRef,
-        private _asmConfigService: AsmConfigService,
         private _platform: Platform,
         private _router: Router
     )
@@ -130,15 +126,6 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      */
     ngAfterViewInit(): void
     {
-        // Check if scrollbars enabled or not from the main config
-        this._asmConfigService.config
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(
-                (settings) => {
-                    this.enabled = settings.customScrollbars;
-                }
-            );
-
         // Scroll to the top on every route change
         if ( this.asmScrollbarOptions.updateOnRouteChange )
         {

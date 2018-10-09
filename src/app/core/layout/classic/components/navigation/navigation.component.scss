@@ -1,12 +1,9 @@
 :host {
     display: flex;
     flex: 1 1 auto;
+    flex-direction: column;
 
-    .navigation-drawer-content {
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 auto;
-        width: 100%;
+    .navigation-content {
         overflow-y: auto;
     }
 }

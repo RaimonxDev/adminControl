@@ -1,41 +1,40 @@
-<mat-sidenav-container>
+<!-- LEFT NAVIGATION -->
+<asm-navigation *ngIf="!asmConfig.layout.navigation.hidden"
+                name="leftNavigation"
+                [color]="asmConfig.layout.navigation.background"
+                [mode]="isScreenSmall ? 'over' : 'side'"
+                [opened]="!isScreenSmall">
 
-    <!-- LEFT SIDENAV -->
-    <mat-sidenav *ngIf="!asmConfig.layout.navigation.hidden && this.isScreenSmall" class="mat-elevation-z8"
-                 mode="over" position="start" fixedInViewport asmMatSidenav="leftSidenav">
+    <navigation asmNavigationHeader></navigation>
 
-        <!-- NAVIGATION -->
-        <navigation></navigation>
-        <!-- / NAVIGATION -->
+</asm-navigation>
+<!-- / LEFT NAVIGATION -->
 
-    </mat-sidenav>
-    <!-- / LEFT SIDENAV -->
+<!-- CONTAINER -->
+<div class="container"
+     asmScrollbar>
 
-    <!-- RIGHT SIDENAV -->
-    <mat-sidenav class="mat-elevation-z8"
-                 mode="over" position="end" fixedInViewport asmMatSidenav="rightSidenav">
+    <!-- HEADER -->
+    <header [ngClass]="asmConfig.layout.header.background"
+            *ngIf="!asmConfig.layout.header.hidden"></header>
+    <!-- / HEADER -->
 
-        <!-- THEME CONFIGURATOR -->
-        <asm-theme-configurator></asm-theme-configurator>
-        <!-- / THEME CONFIGURATOR -->
+    <!-- CONTENT -->
+    <content></content>
+    <!-- / CONTENT -->
 
-    </mat-sidenav>
-    <!-- / RIGHT SIDENAV -->
+    <!-- FOOTER -->
+    <footer [ngClass]="asmConfig.layout.footer.background"
+            *ngIf="!asmConfig.layout.footer.hidden"></footer>
+    <!-- / FOOTER -->
 
-    <mat-sidenav-content asmScrollbar>
+</div>
+<!-- / CONTAINER -->
 
-        <!-- HEADER -->
-        <header *ngIf="!asmConfig.layout.header.hidden"></header>
-        <!-- / HEADER -->
-
-        <!-- CONTENT -->
-        <content></content>
-        <!-- / CONTENT -->
-
-        <!-- FOOTER -->
-        <footer *ngIf="!asmConfig.layout.footer.hidden"></footer>
-        <!-- / FOOTER -->
-
-    </mat-sidenav-content>
-
-</mat-sidenav-container>
+<!-- RIGHT DRAWER -->
+<asm-drawer name="rightDrawer"
+            [position]="'right'"
+            [mode]="'over'">
+    <asm-theme-configurator></asm-theme-configurator>
+</asm-drawer>
+<!-- / RIGHT DRAWER -->

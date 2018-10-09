@@ -1,17 +1,22 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { AsmMenuService } from '@assembly/components/menu/menu.service';
 
 @Component({
-    selector     : 'asm-menu',
-    templateUrl  : './menu.component.html',
-    styleUrls    : ['./menu.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'asm-menu',
+    templateUrl    : './menu.component.html',
+    styleUrls      : ['./menu.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmMenuComponent implements OnInit
+export class AsmMenuComponent implements OnInit, OnDestroy
 {
+    // Auto collapse
+    @Input()
+    autoCollapse: boolean;
+
     // Data
     @Input()
     data: any[];
@@ -20,23 +25,23 @@ export class AsmMenuComponent implements OnInit
     @Input()
     type: 'horizontal' | 'vertical';
 
-    // Auto collapse
-    @Input()
-    autoCollapse: boolean;
-
     // Private
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
+     *
+     * @param {AsmMenuComponent} _asmMenuService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      */
     constructor(
-        private _asmMenuService: AsmMenuService
+        private _asmMenuService: AsmMenuService,
+        private _changeDetectorRef: ChangeDetectorRef
     )
     {
         // Set the defaults
-        this.type = 'vertical';
         this.autoCollapse = true;
+        this.type = 'vertical';
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -58,7 +63,31 @@ export class AsmMenuComponent implements OnInit
         this._asmMenuService.onMenuChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
+
+                // Load the menu
                 this.data = this._asmMenuService.getCurrentMenu();
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
+
+        // Subscribe to menu item updates
+        this._asmMenuService.onMenuItemUpdated
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }

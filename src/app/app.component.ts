@@ -2,9 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 
-import { AsmMenuService } from '@assembly/components/menu/menu.service';
-
-import { mainMenu } from 'app/core/menu/menu';
+import { navigation } from 'app/core/navigation/navigation';
+import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
     selector   : 'app-root',
@@ -13,18 +12,18 @@ import { mainMenu } from 'app/core/menu/menu';
 })
 export class AppComponent
 {
-    mainMenu: any;
+    navigation: any;
 
     /**
      * Constructor
      *
      * @param {DOCUMENT} document
-     * @param {AsmMenuService} _asmMenuService
+     * @param {AsmNavigationService} _asmNavigationService
      * @param {Platform} _platform
      */
     constructor(
         @Inject(DOCUMENT) private document: any,
-        private _asmMenuService: AsmMenuService,
+        private _asmNavigationService: AsmNavigationService,
         private _platform: Platform
     )
     {
@@ -34,13 +33,13 @@ export class AppComponent
             this.document.body.classList.add('is-mobile');
         }
 
-        // Get default navigation
-        this.mainMenu = mainMenu;
+        // Get the default navigation
+        this.navigation = navigation;
 
-        // Register the main menu to the service
-        this._asmMenuService.register('mainMenu', this.mainMenu);
+        // Register the navigation to the service
+        this._asmNavigationService.register('navigation', this.navigation);
 
-        // Set the main menu as our current menu
-        this._asmMenuService.setCurrentMenu('mainMenu');
+        // Set the navigation as our current navigation
+        this._asmNavigationService.setCurrentNavigation('navigation');
     }
 }

@@ -1,22 +1,19 @@
-@import '../../../../@assembly/styles/assembly';
+@import 'src/@assembly/styles/assembly';
 
 classic-layout {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
 
-    .mat-sidenav-container {
-        flex: 1;
-
-        .mat-sidenav {
-            display: flex;
-            overflow: hidden;
-            width: 260px;
-        }
+    .container {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     // Fixed header
@@ -34,47 +31,6 @@ classic-layout {
         footer {
             position: sticky;
             bottom: 0;
-        }
-    }
-
-    // Mobile specific
-    body.is-mobile & {
-
-        // Change the flex value so that the body scroll can be used on mobile devices
-        .mat-sidenav-container {
-            flex: 1 0 auto;
-        }
-
-        // Fixed header
-        &.fixed-header {
-
-            header {
-                position: fixed;
-            }
-
-            content {
-                margin-top: 64px;
-
-                @include media-breakpoint('xs') {
-                    margin-top: 56px;
-                }
-            }
-        }
-
-        // Fixed footer
-        &.fixed-footer {
-
-            content {
-                margin-bottom: 64px;
-
-                @include media-breakpoint('xs') {
-                    margin-bottom: 56px;
-                }
-            }
-
-            footer {
-                position: fixed;
-            }
         }
     }
 }

@@ -1,4 +1,6 @@
-import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import {
+    ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -7,12 +9,13 @@ import { AsmAnimations } from '@assembly/animations/index';
 import { AsmMenuService } from '@assembly/components/menu/menu.service';
 
 @Component({
-    selector   : 'asm-menu-vertical-collapsable-item',
-    templateUrl: './collapsable.component.html',
-    styles     : [],
-    animations : AsmAnimations
+    selector       : 'asm-menu-vertical-collapsable-item',
+    templateUrl    : './collapsable.component.html',
+    styles         : [],
+    animations     : AsmAnimations,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestroy
+export class AsmMenuVerticalCollapsableItemComponent implements OnInit, OnDestroy
 {
     // Item
     @Input()
@@ -36,16 +39,18 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
     /**
      * Constructor
      *
+     * @param {AsmMenuService} _asmMenuService
+     * @param {ChangeDetectorRef} _changeDetectorRef
+     * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer
      * @param {Router} _router
-     * @param {ElementRef} _elementRef
-     * @param {AsmMenuService} _asmMenuService
      */
     constructor(
-        private _renderer: Renderer2,
-        private _router: Router,
+        private _asmMenuService: AsmMenuService,
+        private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
-        private _asmMenuService: AsmMenuService
+        private _renderer: Renderer2,
+        private _router: Router
     )
     {
         // Set the defaults
@@ -65,8 +70,22 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
      */
     ngOnInit(): void
     {
+        // If the item has a children that has a matching url with the current url, expand...
+        if ( this._hasCurrentUrlInChildren(this.item, this._router.url) )
+        {
+            this.expand();
+        }
+        // Otherwise...
+        else
+        {
+            // If the autoCollapse is on, collapse...
+            if ( this.autoCollapse )
+            {
+                this.collapse();
+            }
+        }
 
-        // Listen for the onItemCollapsed from the service
+        // Listen for the onCollapsableItemCollapsed from the service
         this._asmMenuService.onItemCollapsed
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((collapsedItem) => {
@@ -78,7 +97,7 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
                 }
             });
 
-        // Listen for the onItemExpanded from the service if the autoCollapse is on
+        // Listen for the onCollapsableItemExpanded from the service if the autoCollapse is on
         if ( this.autoCollapse )
         {
             this._asmMenuService.onItemExpanded
@@ -130,6 +149,15 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
                     }
                 }
             });
+
+        // Subscribe to menu item updates
+        this._asmMenuService.onMenuItemUpdated
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
     }
 
     /**
@@ -145,6 +173,39 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Check if the current active item
+     * is the children of the given item
+     *
+     * @param item
+     * @param url
+     * @private
+     */
+    private _hasCurrentUrlInChildren(item, url): boolean
+    {
+        const children = item.children;
+
+        if ( !children )
+        {
+            return false;
+        }
+
+        for ( const child of children )
+        {
+            if ( child.children )
+            {
+                return this._hasCurrentUrlInChildren(child, url);
+            }
+
+            if ( child.url === url || url.includes(child.url) )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     /**
      * Check if this is a children
@@ -180,39 +241,6 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
         return false;
     }
 
-    /**
-     * Check if the current active item
-     * is the children of the given item
-     *
-     * @param item
-     * @param url
-     * @private
-     */
-    private _hasCurrentUrlInChildren(item, url): boolean
-    {
-        const children = item.children;
-
-        if ( !children )
-        {
-            return false;
-        }
-
-        for ( const child of children )
-        {
-            if ( child.children )
-            {
-                return this._hasCurrentUrlInChildren(child, url);
-            }
-
-            if ( child.url === url || url.includes(child.url) )
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -232,6 +260,9 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
         this.isCollapsed = true;
         this.isExpanded = false;
 
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+
         // Trigger the observable
         this._asmMenuService.onItemCollapsed.next(this.item);
     }
@@ -250,6 +281,9 @@ export class AsmMenuVerticalCollapsableItemComponents implements OnInit, OnDestr
         // Expand it
         this.isCollapsed = false;
         this.isExpanded = true;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
 
         // Trigger the observable
         this._asmMenuService.onItemExpanded.next(this.item);

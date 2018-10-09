@@ -1,0 +1,37 @@
+<ng-container *ngIf="!item.hidden">
+
+    <!-- Item with a URL -->
+    <a class="asm-navigation-item"
+       *ngIf="item.url"
+       [routerLink]="[item.url]"
+       routerLinkActive="asm-navigation-item-active">
+        <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+    </a>
+
+    <!-- Item without a URL -->
+    <div class="asm-navigation-item"
+         *ngIf="!item.url">
+        <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+    </div>
+
+    <!-- Item template -->
+    <ng-template #itemTemplate>
+
+        <mat-icon *ngIf="item.icon"
+                  class="asm-navigation-item-icon s-16">
+            {{item.icon}}
+        </mat-icon>
+
+        <div class="asm-navigation-item-title">
+            {{item.title}}
+        </div>
+
+        <div *ngIf="item.badge"
+             class="asm-navigation-item-badge"
+             [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+            {{item.badge.title}}
+        </div>
+
+    </ng-template>
+
+</ng-container>

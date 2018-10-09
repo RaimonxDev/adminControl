@@ -12,7 +12,12 @@ import { CoreModule } from 'app/core/core.module';
 import { AppComponent } from 'app/app.component';
 import { RouterModule } from '@angular/router';
 
-const routes = [];
+const routes = [
+    {
+        path        : 'apps',
+        loadChildren: './modules/apps/apps.module#AppsModule'
+    }
+];
 
 @NgModule({
     declarations: [
@@ -31,7 +36,7 @@ const routes = [];
         AsmSharedModule,
 
         // App core module
-        CoreModule,
+        CoreModule
     ],
     bootstrap   : [
         AppComponent

@@ -1,5 +1,5 @@
 // This file meant to be imported only once! Use assembly.scss to access
-// to the core Assebly and Angular Material mixins
+// to the core Assembly and Angular Material mixins
 
 // Perfect scrollbar
 @import '~perfect-scrollbar/css/perfect-scrollbar';
@@ -14,8 +14,11 @@
 @include mat-core();
 
 // Partials
-@import "partials/reset";
+@import "partials/general";
 @import "partials/normalize";
+@import "partials/colors";
+@import "partials/icons";
+@import "partials/typography";
 
 // Plugins
 @import "plugins/perfect-scrollbar";

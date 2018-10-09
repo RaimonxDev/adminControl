@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import * as _ from 'lodash';
 
-import { AsmMenuItem } from '@assembly/types';
+// import { AsmMenuItem } from '@assembly/types';
 
 @Injectable({
     providedIn: 'root'
@@ -15,6 +16,7 @@ export class AsmMenuService
     private _onMenuChanged: BehaviorSubject<any>;
     private _onMenuRegistered: BehaviorSubject<any>;
     private _onMenuUnregistered: BehaviorSubject<any>;
+    private _onMenuItemUpdated: BehaviorSubject<any>;
 
     private _currentMenuKey: string;
     private _registry: { [key: string]: any };
@@ -33,6 +35,7 @@ export class AsmMenuService
         this._onMenuChanged = new BehaviorSubject(null);
         this._onMenuRegistered = new BehaviorSubject(null);
         this._onMenuUnregistered = new BehaviorSubject(null);
+        this._onMenuItemUpdated = new BehaviorSubject(null);
         this._registry = {};
     }
 
@@ -41,7 +44,7 @@ export class AsmMenuService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Get onMenuChanged
+     * Getter for onMenuChanged
      *
      * @returns {Observable<any>}
      */
@@ -51,7 +54,15 @@ export class AsmMenuService
     }
 
     /**
-     * Get onMenuRegistered
+     * Getter for onMenuUpdated
+     */
+    get onMenuItemUpdated(): Observable<any>
+    {
+        return this._onMenuItemUpdated.asObservable();
+    }
+
+    /**
+     * Getter for onMenuRegistered
      *
      * @returns {Observable<any>}
      */
@@ -61,7 +72,7 @@ export class AsmMenuService
     }
 
     /**
-     * Get onMenuUnregistered
+     * Getter for onMenuUnregistered
      *
      * @returns {Observable<any>}
      */
@@ -144,7 +155,7 @@ export class AsmMenuService
      * @param flatMenu
      * @returns {any[]}
      */
-    getFlatMenu(menu, flatMenu: AsmMenuItem[] = []): any
+    getFlatMenu(menu, flatMenu: any[] = []): any
     {
         for ( const item of menu )
         {
@@ -191,7 +202,7 @@ export class AsmMenuService
      */
     setCurrentMenu(key): void
     {
-        // Check if the sidebar exists
+        // Check if the menu exists
         if ( !this._registry[key] )
         {
             console.warn(`The menu with the key '${key}' doesn't exist in the registry.`);
@@ -319,6 +330,30 @@ export class AsmMenuService
             // Add the item
             parent.children.push(item);
         }
+    }
+
+    /**
+     * Update menu item with the given id
+     *
+     * @param id
+     * @param properties
+     */
+    updateMenuItem(id, properties): void
+    {
+        // Get the menu item
+        const menuItem = this.getMenuItem(id);
+
+        // If there is no menu with the give id, return
+        if ( !menuItem )
+        {
+            return;
+        }
+
+        // Merge the menu properties
+        _.merge(menuItem, properties);
+
+        // Trigger the observable
+        this._onMenuItemUpdated.next(true);
     }
 
     /**

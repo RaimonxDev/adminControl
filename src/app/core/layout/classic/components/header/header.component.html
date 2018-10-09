@@ -1,16 +1,16 @@
-<mat-toolbar color="primary">
+<div class="header-content mat-elevation-z1"
+     [ngClass]="asmConfig.layout.header.background">
 
-    <mat-toolbar-row>
+    <button mat-icon-button
+            (click)="toggleNavigation('leftNavigation')">
+        <mat-icon class="mat-18">menu</mat-icon>
+    </button>
 
-        <button mat-icon-button (click)="toggleSidenav('leftSidenav')">
-            <mat-icon class="mat-18">menu</mat-icon>
-        </button>
-        Header
+    Header
 
-        <button mat-icon-button (click)="toggleSidenav('rightSidenav')">
-            <mat-icon class="mat-18">settings</mat-icon>
-        </button>
+    <button mat-icon-button
+            (click)="toggleDrawer('rightDrawer')">
+        <mat-icon class="mat-18">settings</mat-icon>
+    </button>
 
-    </mat-toolbar-row>
-
-</mat-toolbar>
+</div>
