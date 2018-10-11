@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
-import { MatSidenavModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { AsmSharedModule } from '@assembly/shared.module';
 import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly/components';
-
-import { ContentModule } from 'app/core/layout/classic/components/content/content.module';
-import { HeaderModule } from 'app/core/layout/classic/components/header/header.module';
-import { FooterModule } from 'app/core/layout/classic/components/footer/footer.module';
-import { NavigationModule } from 'app/core/layout/classic/components/navigation/navigation.module';
 
 import { ClassicLayoutComponent } from 'app/core/layout/classic/classic.component';
 
@@ -16,17 +12,14 @@ import { ClassicLayoutComponent } from 'app/core/layout/classic/classic.componen
         ClassicLayoutComponent
     ],
     imports     : [
-        MatSidenavModule,
+        RouterModule,
+        MatButtonModule,
+        MatIconModule,
 
         AsmSharedModule,
         AsmDrawerModule,
         AsmNavigationModule,
-        AsmThemeConfiguratorModule,
-
-        ContentModule,
-        HeaderModule,
-        FooterModule,
-        NavigationModule
+        AsmThemeConfiguratorModule
     ],
     exports     : [
         ClassicLayoutComponent

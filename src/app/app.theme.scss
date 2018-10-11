@@ -78,10 +78,13 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Import app and page component themes here to enable theming for them
+@import 'src/app/core/layout/classic/classic.theme';
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
 
+    // Layouts
+    @include classic-layout-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -89,8 +92,8 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
-$default-primary-palette: mat-palette($mat-indigo);
-$default-accent-palette: mat-palette($mat-light-blue, 600, 400, 700);
+$default-primary-palette: mat-palette($mat-pink);
+$default-accent-palette: mat-palette($asm-navy);
 $default-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object

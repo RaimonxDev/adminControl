@@ -20,12 +20,7 @@
 
             &.asm-navigation-item-active {
                 box-shadow: inset 3px 0 0 0 map-get($primary, default);
-
-                @if ($is-dark) {
-                    background: rgba(0, 0, 0, 0.12);
-                } @else {
-                    background: rgba(map-get($primary, default), 0.12);
-                }
+                background: rgba(0, 0, 0, 0.12);
             }
         }
 
@@ -53,11 +48,7 @@
             }
 
             &.asm-navigation-item-expanded {
-                @if ($is-dark) {
-                    background: rgba(0, 0, 0, 0.12);
-                } @else {
-                    background: rgba(0, 0, 0, 0.06);
-                }
+                background: rgba(0, 0, 0, 0.06);
 
                 asm-navigation-collapsable-item {
                     background: transparent;

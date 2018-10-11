@@ -3,7 +3,9 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { AsmConfigService } from '@assembly/services/config.service';
+import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 import { AsmMediaWatcherService } from '@assembly/services/media-watcher.service';
+import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
     selector     : 'classic-layout',
@@ -29,11 +31,15 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {AsmConfigService} _asmConfigService
+     * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {AsmNavigationService} _asmNavigationService
      */
     constructor(
         private _asmConfigService: AsmConfigService,
-        private _asmMediaWatcherService: AsmMediaWatcherService
+        private _asmDrawerService: AsmDrawerService,
+        private _asmMediaWatcherService: AsmMediaWatcherService,
+        private _asmNavigationService: AsmNavigationService
     )
     {
         // Set the private defaults
@@ -81,5 +87,43 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle drawer
+     *
+     * @param key
+     */
+    toggleDrawer(key): void
+    {
+        // Get the drawer
+        const drawer = this._asmDrawerService.get(key);
+
+        if ( drawer )
+        {
+            // Toggle the opened status
+            drawer.toggle();
+        }
+    }
+
+    /**
+     * Toggle navigation
+     *
+     * @param key
+     */
+    toggleNavigation(key): void
+    {
+        // Get the navigation
+        const navigation = this._asmNavigationService.getComponent(key);
+
+        if ( navigation )
+        {
+            // Toggle the opened status
+            navigation.toggle();
+        }
     }
 }

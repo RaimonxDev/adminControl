@@ -1,0 +1,17 @@
+@mixin classic-layout-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    classic-layout {
+
+        .navigation {
+
+            .navigation-header {
+
+                .logo {
+                    background-color: rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+    }
+}

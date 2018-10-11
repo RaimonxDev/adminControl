@@ -12,6 +12,10 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 })
 export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
 {
+    // Active
+    @Input()
+    active: boolean;
+
     // Item
     @Input()
     item: any;

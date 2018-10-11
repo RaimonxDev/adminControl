@@ -7,7 +7,7 @@
             {{item.icon}}
         </mat-icon>
 
-        <div class="asm-navigation-item-title">
+        <div class="asm-navigation-item-title hint-text">
             {{item.title}}
         </div>
 
@@ -23,17 +23,17 @@
 
         <ng-container *ngFor="let item of item.children">
 
-            <!-- Group -->
-            <asm-navigation-group-item *ngIf="item.type === 'group'"
-                                       [item]="item"></asm-navigation-group-item>
+            <!-- Basic -->
+            <asm-navigation-basic-item *ngIf="item.type === 'item'"
+                                       [item]="item"></asm-navigation-basic-item>
 
             <!-- Collapsable -->
             <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
                                              [item]="item"></asm-navigation-collapsable-item>
 
-            <!-- Basic -->
-            <asm-navigation-basic-item *ngIf="item.type === 'item'"
-                                       [item]="item"></asm-navigation-basic-item>
+            <!-- Group -->
+            <asm-navigation-group-item *ngIf="item.type === 'group'"
+                                       [item]="item"></asm-navigation-group-item>
 
         </ng-container>
 

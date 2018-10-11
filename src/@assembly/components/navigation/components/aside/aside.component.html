@@ -1,10 +1,9 @@
 <ng-container *ngIf="!item.hidden">
 
-    <ng-container *ngIf="skipChildren">
+    <ng-container>
 
         <div class="asm-navigation-item"
-             [ngClass]="{'asm-navigation-item-active': opened}"
-             >
+             [ngClass]="{'asm-navigation-item-active': active}">
 
             <mat-icon *ngIf="item.icon"
                       class="asm-navigation-item-icon s-16">
@@ -29,23 +28,19 @@
 
         <div class="asm-navigation-item-children">
 
-            <div class="asm-navigation-item-title">
-                {{item.title}}
-            </div>
-
             <ng-container *ngFor="let item of item.children">
 
-                <!-- Group -->
-                <asm-navigation-group-item *ngIf="item.type === 'group'"
-                                           [item]="item"></asm-navigation-group-item>
+                <!-- Basic -->
+                <asm-navigation-basic-item *ngIf="item.type === 'item'"
+                                           [item]="item"></asm-navigation-basic-item>
 
                 <!-- Collapsable -->
                 <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
                                                  [item]="item"></asm-navigation-collapsable-item>
 
-                <!-- Basic -->
-                <asm-navigation-basic-item *ngIf="item.type === 'item'"
-                                           [item]="item"></asm-navigation-basic-item>
+                <!-- Group -->
+                <asm-navigation-group-item *ngIf="item.type === 'group'"
+                                           [item]="item"></asm-navigation-group-item>
 
             </ng-container>
 

@@ -5,9 +5,9 @@ asm-navigation {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
+    width: 264px;
+    min-width: 264px;
+    max-width: 264px;
     z-index: 50;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
 
@@ -41,7 +41,7 @@ asm-navigation {
 
         // Side mode
         &.asm-navigation-mode-side {
-            margin-left: -280px;
+            margin-left: -264px;
 
             &.asm-navigation-opened {
                 margin-left: 0;
@@ -58,7 +58,7 @@ asm-navigation {
             }
         }
 
-        // Content wrapper
+        // Wrapper
         .asm-navigation-wrapper {
             left: 0;
         }
@@ -69,7 +69,7 @@ asm-navigation {
 
         // Side mode
         &.asm-navigation-mode-side {
-            margin-right: -280px;
+            margin-right: -264px;
 
             &.asm-navigation-opened {
                 margin-right: 0;
@@ -86,13 +86,13 @@ asm-navigation {
             }
         }
 
-        // Content wrapper
+        // Wrapper
         .asm-navigation-wrapper {
             right: 0;
         }
     }
 
-    // Content wrapper
+    // Wrapper
     .asm-navigation-wrapper {
         position: absolute;
         display: flex;
@@ -104,6 +104,24 @@ asm-navigation {
         height: 100%;
         overflow: hidden;
         z-index: 10;
+
+        // Header
+        .asm-navigation-header {
+
+        }
+
+        // Content
+        .asm-navigation-content {
+            margin: 8px 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        // Footer
+        .asm-navigation-footer {
+
+        }
     }
 
     // Aside wrapper
@@ -114,17 +132,37 @@ asm-navigation {
         flex-direction: column;
         top: 0;
         bottom: 0;
-        left: 280px;
+        left: 264px;
         width: 100%;
         height: 100%;
-        overflow: hidden;
         z-index: 5;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         transition: left 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        > asm-navigation-aside-item {
+
+            > .asm-navigation-item {
+                margin-top: 16px;
+
+                .asm-navigation-item-badge,
+                .asm-navigation-item-icon {
+                    display: none;
+                }
+
+                .asm-navigation-item-title {
+                    font-size: 16px;
+                }
+            }
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Navigation Items
     // -----------------------------------------------------------------------------------------------------
+
+    // Navigation items common
     asm-navigation-basic-item,
     asm-navigation-collapsable-item,
     asm-navigation-group-item,
@@ -139,6 +177,7 @@ asm-navigation {
             padding: 0 32px;
             height: 48px;
             text-decoration: none;
+            transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
 
             .asm-navigation-item-icon {
                 margin-right: 16px;
@@ -160,12 +199,18 @@ asm-navigation {
         }
     }
 
+    asm-navigation-aside-item,
     asm-navigation-basic-item,
     asm-navigation-collapsable-item {
 
         .asm-navigation-item {
             cursor: pointer;
         }
+    }
+
+    // Aside
+    asm-navigation-aside-item {
+        flex: 1 0 auto;
     }
 
     // Basic
@@ -176,7 +221,7 @@ asm-navigation {
     // Collapsable
     asm-navigation-collapsable-item {
 
-        .asm-navigation-item {
+        > .asm-navigation-item {
 
             .asm-navigation-item-badge {
 
@@ -186,7 +231,7 @@ asm-navigation {
             }
 
             .asm-navigation-item-arrow {
-                transition: transform 300ms ease-in-out;
+                transition: transform 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
                 margin-left: auto;
             }
         }
@@ -237,19 +282,19 @@ asm-navigation {
 
     // Group
     asm-navigation-group-item {
+        margin-top: 8px;
 
         > .asm-navigation-item {
-            font-weight: bold;
-        }
 
-        + asm-navigation-group-item {
-            margin-top: 24px;
-        }
-    }
+            .asm-navigation-item-badge,
+            .asm-navigation-item-icon {
+                display: none;
+            }
 
-    // Secondary
-    asm-navigation-aside-item {
-        cursor: pointer;
+            .asm-navigation-item-title {
+                text-transform: uppercase;
+            }
+        }
     }
 }
 

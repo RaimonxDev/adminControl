@@ -17,14 +17,14 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _backdrop: HTMLElement | null = null;
+    private _overlay: HTMLElement | null;
     private _mode: 'over' | 'side';
     private _opened: boolean;
     private _player: AnimationPlayer;
     private _position: 'left' | 'right';
-    private _onModeChanged: Subject<'over' | 'side' | null> = new BehaviorSubject(null);
-    private _onOpenedChanged: Subject<boolean | '' | null> = new BehaviorSubject(null);
-    private _onPositionChanged: Subject<'left' | 'right' | null> = new BehaviorSubject(null);
+    private _onModeChanged: Subject<'over' | 'side' | null>;
+    private _onOpenedChanged: Subject<boolean | '' | null>;
+    private _onPositionChanged: Subject<'left' | 'right' | null>;
     private _transparentOverlay: boolean | '';
 
     @HostBinding('class.asm-drawer-animations-enabled')
@@ -45,14 +45,18 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         private _renderer: Renderer2
     )
     {
+        // Set the private defaults
+        this._animationsEnabled = false;
+        this._onModeChanged = new BehaviorSubject(null);
+        this._onOpenedChanged = new BehaviorSubject(null);
+        this._onPositionChanged = new BehaviorSubject(null);
+        this._overlay = null;
+
         // Set the defaults
         this.mode = 'side';
         this.opened = false;
         this.position = 'left';
         this.transparentOverlay = false;
-
-        // Set the private defaults
-        this._animationsEnabled = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -305,32 +309,32 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     private _showOverlay(): void
     {
         // Create the backdrop element
-        this._backdrop = this._renderer.createElement('div');
+        this._overlay = this._renderer.createElement('div');
 
         // Add a class to the backdrop element
-        this._backdrop.classList.add('asm-drawer-overlay');
+        this._overlay.classList.add('asm-drawer-overlay');
 
         // Add a class depending on the transparentOverlay option
         if ( this.transparentOverlay )
         {
-            this._backdrop.classList.add('asm-drawer-overlay-transparent');
+            this._overlay.classList.add('asm-drawer-overlay-transparent');
         }
 
         // Append the backdrop to the parent of the drawer
-        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);
+        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
 
         // Create the enter animation and attach it to the player
         this._player =
             this._animationBuilder
                 .build([
                     animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 1}))
-                ]).create(this._backdrop);
+                ]).create(this._overlay);
 
         // Play the animation
         this._player.play();
 
         // Add an event listener to the overlay
-        this._backdrop.addEventListener('click', () => {
+        this._overlay.addEventListener('click', () => {
             this.close();
         });
     }
@@ -342,7 +346,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
      */
     private _hideOverlay(): void
     {
-        if ( !this._backdrop )
+        if ( !this._overlay )
         {
             return;
         }
@@ -352,7 +356,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
             this._animationBuilder
                 .build([
                     animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 0}))
-                ]).create(this._backdrop);
+                ]).create(this._overlay);
 
         // Play the animation
         this._player.play();
@@ -361,11 +365,11 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this._player.onDone(() => {
 
             // If the backdrop still exists...
-            if ( this._backdrop )
+            if ( this._overlay )
             {
                 // Remove the backdrop
-                this._backdrop.parentNode.removeChild(this._backdrop);
-                this._backdrop = null;
+                this._overlay.parentNode.removeChild(this._overlay);
+                this._overlay = null;
             }
         });
     }

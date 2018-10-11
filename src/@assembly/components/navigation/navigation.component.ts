@@ -1,10 +1,12 @@
 import {
-    ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation
+    ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren,
+    ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { merge, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { delay, takeUntil } from 'rxjs/operators';
 
+import { AsmScrollbarDirective } from '@assembly/directives';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmAnimations } from '@assembly/animations';
 
@@ -17,7 +19,7 @@ import { AsmAnimations } from '@assembly/animations';
 })
 export class AsmNavigationComponent implements OnInit, OnDestroy
 {
-    asideNavigationId: null | string;
+    activeAsideItemId: null | string;
 
     // Auto collapse
     @Input()
@@ -36,10 +38,10 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _overlay: HTMLElement | null = null;
-    private _asideOverlay: HTMLElement | null = null;
+    private _asideOverlay: HTMLElement | null;
     private _mode: 'over' | 'side';
     private _opened: boolean;
+    private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
     private _position: 'left' | 'right';
     private _transparentOverlay: boolean | '';
@@ -65,22 +67,53 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         private _renderer: Renderer2
     )
     {
+        // Set the private defaults
+        this._animationsEnabled = false;
+        this._asideOverlay = null;
+        this._overlay = null;
+        this._unsubscribeAll = new Subject();
+
         // Set the defaults
-        this.asideNavigationId = null;
+        this.activeAsideItemId = null;
         this.autoCollapse = true;
         this.mode = 'side';
         this.opened = false;
         this.position = 'left';
         this.transparentOverlay = false;
-
-        // Set the private defaults
-        this._animationsEnabled = false;
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Setter for asmScrollbarDirectives
+     */
+    @ViewChildren(AsmScrollbarDirective)
+    set asmScrollbarDirectives(asmScrollbarDirectives: QueryList<AsmScrollbarDirective>)
+    {
+        // Return, if there are no directives
+        if ( asmScrollbarDirectives.length === 0 )
+        {
+            return;
+        }
+
+        // Update the scrollbars on collapsable items' collapse/expand
+        merge(
+            this._asmNavigationService.onCollapsableItemCollapsed,
+            this._asmNavigationService.onCollapsableItemExpanded
+        ).pipe(
+            takeUntil(this._unsubscribeAll),
+            delay(250)
+        )
+         .subscribe(() => {
+
+             // Loop through the scrollbars and update them
+             asmScrollbarDirectives.forEach((asmScrollbarDirective) => {
+                 asmScrollbarDirective.update();
+             });
+         });
+    }
 
     /**
      * Setter & getter for mode
@@ -308,6 +341,17 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
 
              // Mark for check
              this._changeDetectorRef.markForCheck();
+         });
+
+        // Subscribe to collapsable item
+        merge(
+            this._asmNavigationService.onCollapsableItemCollapsed,
+            this._asmNavigationService.onCollapsableItemExpanded
+        ).pipe(takeUntil(this._unsubscribeAll))
+         .subscribe(() => {
+
+             // Update the scrollbars
+
          });
     }
 
@@ -576,7 +620,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     openAside(navigationId): void
     {
         // Open
-        this.asideNavigationId = navigationId;
+        this.activeAsideItemId = navigationId;
 
         // Show the aside overlay
         this._showAsideOverlay();
@@ -588,7 +632,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     closeAside(): void
     {
         // Close
-        this.asideNavigationId = null;
+        this.activeAsideItemId = null;
 
         // Hide the aside overlay
         this._hideAsideOverlay();
@@ -600,7 +644,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     toggleAside(navigationId): void
     {
         // Toggle
-        if ( this.asideNavigationId === navigationId )
+        if ( this.activeAsideItemId === navigationId )
         {
             this.closeAside();
         }

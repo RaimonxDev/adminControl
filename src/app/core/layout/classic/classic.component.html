@@ -1,11 +1,27 @@
 <!-- LEFT NAVIGATION -->
-<asm-navigation *ngIf="!asmConfig.layout.navigation.hidden"
+<asm-navigation class="navigation"
+                *ngIf="!asmConfig.layout.navigation.hidden"
                 name="leftNavigation"
                 [color]="asmConfig.layout.navigation.background"
                 [mode]="isScreenSmall ? 'over' : 'side'"
                 [opened]="!isScreenSmall">
 
-    <navigation asmNavigationHeader></navigation>
+    <div class="navigation-header"
+         asmNavigationHeader>
+
+        <div class="logo">
+
+            <div class="logo-image">
+                <img src="assets/images/logo.svg">
+            </div>
+
+            <div class="logo-text">
+                Assembly
+            </div>
+
+        </div>
+
+    </div>
 
 </asm-navigation>
 <!-- / LEFT NAVIGATION -->
@@ -15,17 +31,45 @@
      asmScrollbar>
 
     <!-- HEADER -->
-    <header [ngClass]="asmConfig.layout.header.background"
-            *ngIf="!asmConfig.layout.header.hidden"></header>
+    <div class="header mat-elevation-z1"
+         [ngClass]="asmConfig.layout.header.background"
+         *ngIf="!asmConfig.layout.header.hidden">
+
+        <button mat-icon-button
+                (click)="toggleNavigation('leftNavigation')">
+            <mat-icon class="mat-18">menu</mat-icon>
+        </button>
+
+        Header
+
+        <button mat-icon-button
+                (click)="toggleDrawer('rightDrawer')">
+            <mat-icon class="mat-18">settings</mat-icon>
+        </button>
+
+    </div>
     <!-- / HEADER -->
 
     <!-- CONTENT -->
-    <content></content>
+    <div class="content">
+
+        <!--
+            *ngIf="true" hack is required here for router-outlet to work correctly. Otherwise,
+            it won't register the changes on the layout and won't update the view.
+        -->
+        <router-outlet *ngIf="true"></router-outlet>
+
+    </div>
     <!-- / CONTENT -->
 
     <!-- FOOTER -->
-    <footer [ngClass]="asmConfig.layout.footer.background"
-            *ngIf="!asmConfig.layout.footer.hidden"></footer>
+    <div class="footer"
+         [ngClass]="asmConfig.layout.footer.background"
+         *ngIf="!asmConfig.layout.footer.hidden">
+
+        Footer
+
+    </div>
     <!-- / FOOTER -->
 
 </div>
