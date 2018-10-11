@@ -1,11 +1,60 @@
 .ps {
     position: relative;
 
-    > .ps__rail-x {
+    &:hover,
+    &.ps--focus,
+    &.ps--scrolling-x,
+    &.ps--scrolling-y {
 
+        > .ps__rail-x,
+        > .ps__rail-y {
+            opacity: 1;
+        }
+    }
+
+    > .ps__rail-x {
+        height: 14px;
+
+        &:hover,
+        &:focus,
+        &.ps--clicking {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 -1px 0 1px rgba(191, 191, 191, 0.4);
+            transition: none;
+
+            .ps__thumb-x {
+                height: 10px;
+            }
+        }
+
+        .ps__thumb-x {
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+            height: 7px;
+        }
     }
 
     > .ps__rail-y {
+        width: 14px;
 
+        &:hover,
+        &:focus,
+        &.ps--clicking {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 -1px 0 1px rgba(191, 191, 191, 0.4);
+            transition: none;
+
+            .ps__thumb-y {
+                width: 10px;
+            }
+        }
+
+        .ps__thumb-y {
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+            width: 7px;
+        }
     }
 }
