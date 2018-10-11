@@ -12,7 +12,7 @@ export interface AsmNavigationItem
     function?: any;
     badge?: {
         title?: string;
-        shape: 'rectangle' | 'rounded' | 'simple',
+        style?: 'rectangle' | 'rounded' | 'simple',
         background?: string;
         color?: string;
     };
