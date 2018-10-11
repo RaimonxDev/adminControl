@@ -15,7 +15,7 @@
             }
 
             .asm-menu-item-icon {
-                color: map-get($foreground, active-icon);
+                color: map-get($foreground, icon);
             }
 
             &.asm-menu-item-active {
@@ -47,7 +47,7 @@
             > .asm-menu-item {
 
                 .asm-menu-item-arrow {
-                    color: map-get($foreground, active-icon);
+                    color: map-get($foreground, icon);
                 }
             }
 

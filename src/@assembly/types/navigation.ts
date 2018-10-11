@@ -2,7 +2,7 @@ export interface AsmNavigationItem
 {
     id: string;
     title: string;
-    type: 'item' | 'group' | 'collapsable' | 'aside';
+    type: 'aside' | 'collapsable' | 'group' | 'item';
     icon?: string;
     hidden?: boolean;
     url?: string;
@@ -12,9 +12,9 @@ export interface AsmNavigationItem
     function?: any;
     badge?: {
         title?: string;
-        translate?: string;
+        shape: 'rectangle' | 'rounded' | 'simple',
         background?: string;
-        foreground?: string;
+        color?: string;
     };
     children?: AsmNavigationItem[];
 }

@@ -39,12 +39,12 @@ export class AsmMenuComponent implements OnInit, OnDestroy
         private _changeDetectorRef: ChangeDetectorRef
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+
         // Set the defaults
         this.autoCollapse = true;
         this.type = 'vertical';
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
