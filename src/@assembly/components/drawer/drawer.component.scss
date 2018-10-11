@@ -5,9 +5,9 @@ asm-drawer {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    width: 264px;
-    min-width: 264px;
-    max-width: 264px;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
     z-index: 50;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
 
@@ -36,7 +36,7 @@ asm-drawer {
 
         // Side mode
         &.asm-drawer-mode-side {
-            margin-left: -264px;
+            margin-left: -280px;
 
             &.asm-drawer-opened {
                 margin-left: 0;
@@ -64,7 +64,7 @@ asm-drawer {
 
         // Side mode
         &.asm-drawer-mode-side {
-            margin-right: -264px;
+            margin-right: -280px;
 
             &.asm-drawer-opened {
                 margin-right: 0;

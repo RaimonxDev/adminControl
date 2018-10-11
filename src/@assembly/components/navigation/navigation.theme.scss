@@ -14,10 +14,6 @@
                 color: map-get($foreground, primary);
             }
 
-            .asm-navigation-item-icon {
-                color: map-get($foreground, active-icon);
-            }
-
             &.asm-navigation-item-active {
                 box-shadow: inset 3px 0 0 0 map-get($primary, default);
                 background: rgba(0, 0, 0, 0.12);
@@ -39,13 +35,6 @@
 
         // Collapsable
         asm-navigation-collapsable-item {
-
-            > .asm-navigation-item {
-
-                .asm-navigation-item-arrow {
-                    color: map-get($foreground, active-icon);
-                }
-            }
 
             &.asm-navigation-item-expanded {
                 background: rgba(0, 0, 0, 0.06);

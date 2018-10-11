@@ -18,7 +18,7 @@
     <ng-template #itemTemplate>
 
         <mat-icon *ngIf="item.icon"
-                  class="asm-navigation-item-icon s-16">
+                  class="asm-navigation-item-icon secondary-text s-18">
             {{item.icon}}
         </mat-icon>
 
@@ -28,6 +28,7 @@
 
         <div *ngIf="item.badge"
              class="asm-navigation-item-badge"
+             [ngClass]="'asm-navigation-item-badge-style-' + item.badge.style"
              [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
             {{item.badge.title}}
         </div>
