@@ -1,13 +1,17 @@
 @import "src/@assembly/styles/assembly";
 
 asm-navigation {
-    position: relative;
+    position: sticky;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    top: 0;
     width: 280px;
     min-width: 280px;
     max-width: 280px;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
     z-index: 50;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
     0 2px 12px 0 rgba(0, 0, 0, 0.05);
@@ -118,6 +122,14 @@ asm-navigation {
             overflow-x: hidden;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+
+            // Group
+            > asm-navigation-group-item {
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
         }
 
         // Footer
@@ -141,8 +153,6 @@ asm-navigation {
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
-        0 2px 12px 0 rgba(0, 0, 0, 0.05);
         transition-duration: 400ms;
         transition-property: left, right;
         transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -322,7 +332,7 @@ asm-navigation {
 
     // Group
     asm-navigation-group-item {
-        margin-top: 8px;
+        margin-top: 16px;
 
         > .asm-navigation-item {
 
@@ -332,6 +342,7 @@ asm-navigation {
             }
 
             .asm-navigation-item-title {
+                font-weight: bold;
                 text-transform: uppercase;
             }
         }
