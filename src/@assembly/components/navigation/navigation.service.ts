@@ -166,7 +166,7 @@ export class AsmNavigationService
         // Add to the registry
         this._navigationRegistry.set(key, navigation);
 
-        // Trigger the observable
+        // Execute the observable
         this._onRegistered.next([key, navigation]);
     }
 
@@ -186,7 +186,7 @@ export class AsmNavigationService
         // Delete from the registry
         this._navigationRegistry.delete(key);
 
-        // Trigger the observable
+        // Execute the observable
         this._onUnregistered.next(key);
     }
 
@@ -275,7 +275,7 @@ export class AsmNavigationService
         // Set the current navigation key
         this._currentNavigationKey = key;
 
-        // Trigger the observable
+        // Execute the observable
         this._onChanged.next(key);
     }
 
@@ -393,7 +393,7 @@ export class AsmNavigationService
             parent.children.push(item);
         }
 
-        // Trigger the observable
+        // Execute the observable
         this._onItemAdded.next(true);
     }
 
@@ -417,7 +417,7 @@ export class AsmNavigationService
         // Merge the navigation properties
         _.merge(item, properties);
 
-        // Trigger the observable
+        // Execute the observable
         this._onItemUpdated.next(true);
     }
 
@@ -447,7 +447,7 @@ export class AsmNavigationService
         // Delete the item
         parent.splice(parent.indexOf(item), 1);
 
-        // Trigger the observable
+        // Execute the observable
         this._onItemDeleted.next(true);
     }
 }

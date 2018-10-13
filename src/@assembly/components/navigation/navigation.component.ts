@@ -135,7 +135,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
             // Hide the overlay
             this._hideOverlay();
 
-            // Trigger the observable
+            // Execute the observable
             this._asmNavigationService.onModeChanged.next(value);
         }
 
@@ -145,7 +145,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
             // Close the aside
             this.closeAside();
 
-            // Trigger the observable
+            // Execute the observable
             this._asmNavigationService.onModeChanged.next(value);
         }
 
@@ -162,7 +162,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         modeClassName = 'asm-navigation-mode-' + this.mode;
         this._renderer.addClass(this._elementRef.nativeElement, modeClassName);
 
-        // Trigger the observable
+        // Execute the observable
         this._asmNavigationService.onModeChanged.next(this.mode);
     }
 
@@ -223,7 +223,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
             this._renderer.removeClass(this._elementRef.nativeElement, 'asm-navigation-opened');
         }
 
-        // Trigger the observable
+        // Execute the observable
         this._asmNavigationService.onOpenedChanged.next(this.opened);
     }
 
@@ -259,7 +259,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         positionClassName = 'asm-navigation-position-' + this.position;
         this._renderer.addClass(this._elementRef.nativeElement, positionClassName);
 
-        // Trigger the observable
+        // Execute the observable
         this._asmNavigationService.onPositionChanged.next(this.position);
     }
 

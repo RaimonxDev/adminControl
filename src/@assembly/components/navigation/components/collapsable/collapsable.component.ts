@@ -274,7 +274,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         // Mark for check
         this._changeDetectorRef.markForCheck();
 
-        // Trigger the observable
+        // Execute the observable
         this._asmNavigationService.onCollapsableItemCollapsed.next(this.item);
     }
 
@@ -296,7 +296,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         // Mark for check
         this._changeDetectorRef.markForCheck();
 
-        // Trigger the observable
+        // Execute the observable
         this._asmNavigationService.onCollapsableItemExpanded.next(this.item);
     }
 

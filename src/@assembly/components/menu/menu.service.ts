@@ -352,7 +352,7 @@ export class AsmMenuService
         // Merge the menu properties
         _.merge(menuItem, properties);
 
-        // Trigger the observable
+        // Execute the observable
         this._onMenuItemUpdated.next(true);
     }
 

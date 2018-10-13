@@ -97,7 +97,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         modeClassName = 'asm-drawer-mode-' + this.mode;
         this._renderer.addClass(this._elementRef.nativeElement, modeClassName);
 
-        // Trigger the observable
+        // Execute the observable
         this._onModeChanged.next(this.mode);
     }
 
@@ -156,7 +156,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
             this._renderer.removeClass(this._elementRef.nativeElement, 'asm-drawer-opened');
         }
 
-        // Trigger the observable
+        // Execute the observable
         this._onOpenedChanged.next(this.opened);
     }
 
@@ -192,7 +192,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         positionClassName = 'asm-drawer-position-' + this.position;
         this._renderer.addClass(this._elementRef.nativeElement, positionClassName);
 
-        // Trigger the observable
+        // Execute the observable
         this._onPositionChanged.next(this.position);
     }
 

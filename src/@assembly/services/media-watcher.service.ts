@@ -143,7 +143,7 @@ export class AsmMediaWatcherService
             // Add a listener to that MediaQueryList
             mql.addListener((event) => {
 
-                // If it's a base rule and matches, trigger the observable
+                // If it's a base rule and matches, execute the observable
                 if ( event.matches && rule.base )
                 {
                     this._ngZone.run(() => {
@@ -156,7 +156,7 @@ export class AsmMediaWatcherService
             // the observable for the first time
             if ( mql.matches && rule.base )
             {
-                // Trigger the observable
+                // Execute the observable
                 this._ngZone.run(() => {
                     this._onMediaChangeSubject.next(rule.alias);
                 });

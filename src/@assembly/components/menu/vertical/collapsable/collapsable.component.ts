@@ -263,7 +263,7 @@ export class AsmMenuVerticalCollapsableItemComponent implements OnInit, OnDestro
         // Mark for check
         this._changeDetectorRef.markForCheck();
 
-        // Trigger the observable
+        // Execute the observable
         this._asmMenuService.onItemCollapsed.next(this.item);
     }
 
@@ -285,7 +285,7 @@ export class AsmMenuVerticalCollapsableItemComponent implements OnInit, OnDestro
         // Mark for check
         this._changeDetectorRef.markForCheck();
 
-        // Trigger the observable
+        // Execute the observable
         this._asmMenuService.onItemExpanded.next(this.item);
     }
 
