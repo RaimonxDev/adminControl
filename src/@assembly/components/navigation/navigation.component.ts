@@ -6,9 +6,11 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { merge, Subject } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
 
+import { AsmAnimations } from '@assembly/animations';
+import { AsmConfig } from '@assembly/types';
+import { AsmConfigService } from '@assembly/services/config.service';
 import { AsmScrollbarDirective } from '@assembly/directives';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
-import { AsmAnimations } from '@assembly/animations';
 
 @Component({
     selector     : 'asm-navigation',
@@ -20,14 +22,11 @@ import { AsmAnimations } from '@assembly/animations';
 export class AsmNavigationComponent implements OnInit, OnDestroy
 {
     activeAsideItemId: null | string;
+    asmConfig: AsmConfig;
 
     // Auto collapse
     @Input()
     autoCollapse: boolean;
-
-    // Color
-    @Input()
-    color: string;
 
     // Data
     @Input()
@@ -54,6 +53,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {AnimationBuilder} _animationBuilder
+     * @param {AsmConfigService} _asmConfigService
      * @param {AsmNavigationService} _asmNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
@@ -61,6 +61,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
+        private _asmConfigService: AsmConfigService,
         private _asmNavigationService: AsmNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
@@ -343,16 +344,14 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
              this._changeDetectorRef.markForCheck();
          });
 
-        // Subscribe to collapsable item
-        merge(
-            this._asmNavigationService.onCollapsableItemCollapsed,
-            this._asmNavigationService.onCollapsableItemExpanded
-        ).pipe(takeUntil(this._unsubscribeAll))
-         .subscribe(() => {
+        // Subscribe to config changes
+        this._asmConfigService.config
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((config: AsmConfig) => {
 
-             // Update the scrollbars
-
-         });
+                // Update the asmConfig from the config
+                this.asmConfig = config;
+            });
     }
 
     /**

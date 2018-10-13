@@ -16,11 +16,11 @@
 
             &.asm-navigation-item-active {
                 box-shadow: inset 3px 0 0 0 map-get($primary, default);
-                background: rgba(0, 0, 0, 0.12);
+                background: rgba(0, 0, 0, 0.03);
             }
         }
 
-        // Basic, Collapsable & Side
+        // Basic, Collapsable & Aside
         asm-navigation-basic-item,
         asm-navigation-collapsable-item,
         asm-navigation-aside-item {
@@ -28,7 +28,7 @@
             > .asm-navigation-item {
 
                 &:hover:not(.asm-navigation-item-active) {
-                    background: rgba(0, 0, 0, 0.12);
+                    background: rgba(0, 0, 0, 0.03);
                 }
             }
         }
@@ -37,7 +37,7 @@
         asm-navigation-collapsable-item {
 
             &.asm-navigation-item-expanded {
-                background: rgba(0, 0, 0, 0.06);
+                background: rgba(0, 0, 0, 0.03);
 
                 asm-navigation-collapsable-item {
                     background: transparent;
@@ -56,11 +56,35 @@
             }
         }
 
-        // Side
-        asm-navigation-group-item {
+        // Dark background
+        .asm-navigation-dark-background {
 
-            > .asm-navigation-item-children {
+            .asm-navigation-item {
 
+                &.asm-navigation-item-active {
+                    background: rgba(0, 0, 0, 0.12);
+                }
+            }
+
+            // Basic, Collapsable & Aside
+            asm-navigation-basic-item,
+            asm-navigation-collapsable-item,
+            asm-navigation-aside-item {
+
+                > .asm-navigation-item {
+
+                    &:hover:not(.asm-navigation-item-active) {
+                        background: rgba(0, 0, 0, 0.12);
+                    }
+                }
+            }
+
+            // Collapsable
+            asm-navigation-collapsable-item {
+
+                &.asm-navigation-item-expanded {
+                    background: rgba(0, 0, 0, 0.06);
+                }
             }
         }
     }
