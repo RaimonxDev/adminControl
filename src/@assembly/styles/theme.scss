@@ -5,6 +5,7 @@
 @mixin asm-core-theme($theme) {
 
     // Theming for Assembly core styles
+    @include general-theme($theme);
     @include colors-theme($theme);
 
     // Theming for Assembly components
