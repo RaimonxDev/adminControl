@@ -1,12 +1,15 @@
-export interface AssemblyConfig
+export interface AsmConfig
 {
     colorTheme: string;
     layout: {
         style: string,
         width: 'fullwidth' | 'boxed',
         navigation: {
-            background: string,
-            hidden: boolean
+            hidden: boolean,
+            theme: {
+                background: string,
+                isDark: boolean
+            }
         },
         header: {
             background: string,

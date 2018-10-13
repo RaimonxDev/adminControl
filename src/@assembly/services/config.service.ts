@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import * as _ from 'lodash';
 
 // Create the injection token for the custom settings
-export const ASM_CONFIG = new InjectionToken('assemblyConfig');
+export const ASM_CONFIG = new InjectionToken('asmConfig');
 
 @Injectable({
     providedIn: 'root'

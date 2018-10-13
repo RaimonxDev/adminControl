@@ -1,4 +1,4 @@
-import { AssemblyConfig } from '@assembly/types';
+import { AsmConfig } from '@assembly/types';
 
 /**
  * Default Assembly Configuration
@@ -8,7 +8,7 @@ import { AssemblyConfig } from '@assembly/types';
  * constructor method to learn more about changing them per component basis.
  */
 
-export const assemblyConfig: AssemblyConfig = {
+export const asmConfig: AsmConfig = {
 
     // Color themes can be defined in 'src/app/app.theme.scss'
     colorTheme: 'theme-default',
@@ -20,8 +20,11 @@ export const assemblyConfig: AssemblyConfig = {
         style     : 'classic',
         width     : 'fullwidth',
         navigation: {
-            background: 'asm-navy',
-            hidden    : false
+            hidden: false,
+            theme : {
+                background: 'asm-navy',
+                isDark    : true
+            }
         },
         header    : {
             background: 'asm-white',
