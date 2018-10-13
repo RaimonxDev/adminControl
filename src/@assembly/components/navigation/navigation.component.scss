@@ -9,7 +9,8 @@ asm-navigation {
     min-width: 280px;
     max-width: 280px;
     z-index: 50;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
+    0 2px 12px 0 rgba(0, 0, 0, 0.05);
 
     // -----------------------------------------------------------------------------------------------------
     // @ Navigation Drawer
@@ -140,7 +141,8 @@ asm-navigation {
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
+        0 2px 12px 0 rgba(0, 0, 0, 0.05);
         transition-duration: 400ms;
         transition-property: left, right;
         transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
