@@ -13,8 +13,10 @@ export const ASM_CONFIG = new InjectionToken('assemblyConfig');
 })
 export class AsmConfigService
 {
+    configHasChanged: boolean;
+
     // Private
-    private _configSubject: BehaviorSubject<any>;
+    private _config: BehaviorSubject<any>;
     private readonly _defaultConfig: any;
 
     /**
@@ -22,16 +24,19 @@ export class AsmConfigService
      *
      * @param {Platform} _platform
      * @param {Router} _router
-     * @param _config
+     * @param {ASM_CONFIG} _asmConfig
      */
     constructor(
         private _platform: Platform,
         private _router: Router,
-        @Inject(ASM_CONFIG) private _config
+        @Inject(ASM_CONFIG) private _asmConfig
     )
     {
+        // Set the defaults
+        this.configHasChanged = false;
+
         // Set the default config from the user provided config (from forRoot)
-        this._defaultConfig = _config;
+        this._defaultConfig = _asmConfig;
 
         // Initialize the service
         this._init();
@@ -47,18 +52,21 @@ export class AsmConfigService
     set config(value)
     {
         // Get the value from the behavior subject
-        let config = this._configSubject.getValue();
+        let config = this._config.getValue();
 
         // Merge the new config
         config = _.merge({}, config, value);
 
-        // Notify the observers
-        this._configSubject.next(config);
+        // Set the configHasChanged flag
+        this.configHasChanged = true;
+
+        // Execute the observable
+        this._config.next(config);
     }
 
     get config(): any | Observable<any>
     {
-        return this._configSubject.asObservable();
+        return this._config.asObservable();
     }
 
     /**
@@ -91,24 +99,30 @@ export class AsmConfigService
         }
 
         // Set the config from the default config
-        this._configSubject = new BehaviorSubject(_.cloneDeep(this._defaultConfig));
+        this._config = new BehaviorSubject(_.cloneDeep(this._defaultConfig));
 
         // Reload the default layout config on every RoutesRecognized event
         // if the current layout config is different from the default one
         this._router.events
             .pipe(filter(event => event instanceof RoutesRecognized))
             .subscribe(() => {
-                if ( !_.isEqual(this._configSubject.getValue().layout, this._defaultConfig.layout) )
+
+                // If the current configuration does not equal to the default one
+                // and if it hasn't been changed before the event...
+                if ( !_.isEqual(this._config.getValue().layout, this._defaultConfig.layout) && !this.configHasChanged )
                 {
                     // Clone the current config
-                    const config = _.cloneDeep(this._configSubject.getValue());
+                    const config = _.cloneDeep(this._config.getValue());
 
                     // Reset the layout from the default config
                     config.layout = _.cloneDeep(this._defaultConfig.layout);
 
                     // Set the config
-                    this._configSubject.next(config);
+                    this._config.next(config);
                 }
+
+                // Reset the configHasChanged flag
+                this.configHasChanged = false;
             });
     }
 
@@ -117,44 +131,12 @@ export class AsmConfigService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Set config
-     *
-     * @param value
-     * @param {{emitEvent: boolean}} opts
-     */
-    setConfig(value, opts = {emitEvent: true}): void
-    {
-        // Get the value from the behavior subject
-        let config = this._configSubject.getValue();
-
-        // Merge the new config
-        config = _.merge({}, config, value);
-
-        // If emitEvent option is true...
-        if ( opts.emitEvent === true )
-        {
-            // Notify the observers
-            this._configSubject.next(config);
-        }
-    }
-
-    /**
-     * Get config
-     *
-     * @returns {Observable<any>}
-     */
-    getConfig(): Observable<any>
-    {
-        return this._configSubject.asObservable();
-    }
-
-    /**
      * Reset to the default config
      */
-    resetToDefaults(): void
+    reset(): void
     {
         // Set the config from the default config
-        this._configSubject.next(_.cloneDeep(this._defaultConfig));
+        this._config.next(_.cloneDeep(this._defaultConfig));
     }
 }
 
