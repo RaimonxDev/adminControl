@@ -48,6 +48,7 @@ compact-layout {
             min-width: 120px;
             max-width: 120px;
 
+            // Left positioned
             &.asm-navigation-position-left {
 
                 &.asm-navigation-mode-side {
@@ -59,6 +60,7 @@ compact-layout {
                 }
             }
 
+            // Right positioned
             &.asm-navigation-position-right {
 
                 &.asm-navigation-mode-side {
@@ -68,9 +70,6 @@ compact-layout {
                 &.asm-navigation-opened {
                     margin-right: 0;
                 }
-            }
-
-            &.asm-navigation-position-right {
 
                 .asm-navigation-aside-wrapper {
                     left: auto;
