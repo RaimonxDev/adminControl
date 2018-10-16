@@ -160,7 +160,11 @@ asm-navigation {
         > asm-navigation-aside-item {
 
             > .asm-navigation-item {
-                margin-top: 16px;
+                margin-top: 24px !important;
+                margin-right: 0 !important;
+                padding-right: 32px !important;
+                cursor: default;
+                font-weight: 600;
 
                 .asm-navigation-item-badge,
                 .asm-navigation-item-icon {
@@ -199,26 +203,27 @@ asm-navigation {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: 0 32px;
-            height: 56px;
-            max-height: 56px;
-            min-height: 56px;
+            padding: 0 28px 0 32px;
+            height: 52px;
+            max-height: 52px;
+            min-height: 52px;
             font-size: 13px;
             text-decoration: none;
             transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
 
             .asm-navigation-item-icon {
                 margin-right: 16px;
+                user-select: none;
             }
 
             .asm-navigation-item-badge {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 10px;
+                font-size: 11px;
                 font-weight: 600;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 line-height: 1;
                 border-radius: 50%;
                 margin-left: auto;
@@ -226,7 +231,8 @@ asm-navigation {
                 // Rectangle
                 &.asm-navigation-item-badge-style-rectangle {
                     width: auto;
-                    min-width: 22px;
+                    min-width: 24px;
+                    height: 22px;
                     padding: 0 6px;
                     border-radius: 4px;
                 }
@@ -234,9 +240,9 @@ asm-navigation {
                 // Rounded
                 &.asm-navigation-item-badge-style-rounded {
                     width: auto;
-                    min-width: 22px;
+                    min-width: 24px;
                     padding: 0 6px;
-                    border-radius: 11px;
+                    border-radius: 12px;
                 }
 
                 // Simple

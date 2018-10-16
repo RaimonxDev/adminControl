@@ -3,13 +3,14 @@ export interface AsmNavigationItem
     id: string;
     title: string;
     type: 'aside' | 'collapsable' | 'group' | 'item';
-    icon?: string;
     hidden?: boolean;
     url?: string;
     externalUrl?: boolean;
     exactMatch?: boolean;
-    classes?: string;
     function?: any;
+    classNames?: string;
+    icon?: string;
+    iconFontSet?: string;
     badge?: {
         title?: string;
         style?: 'rectangle' | 'rounded' | 'simple',

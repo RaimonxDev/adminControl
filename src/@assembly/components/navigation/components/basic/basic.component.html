@@ -18,6 +18,7 @@
     <ng-template #itemTemplate>
 
         <mat-icon *ngIf="item.icon"
+                  [fontSet]="item.iconFontSet"
                   class="asm-navigation-item-icon secondary-text s-18">
             {{item.icon}}
         </mat-icon>
