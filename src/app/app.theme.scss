@@ -81,6 +81,7 @@ $typography: mat-typography-config(
 @import 'src/app/core/layout/classic/classic.theme';
 @import 'src/app/core/layout/compact/compact.theme';
 @import 'src/app/core/layout/dense/dense.theme';
+@import 'src/app/core/layout/thin/thin.theme';
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -89,6 +90,7 @@ $typography: mat-typography-config(
     @include classic-layout-theme($theme);
     @include compact-layout-theme($theme);
     @include dense-layout-theme($theme);
+    @include thin-layout-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
