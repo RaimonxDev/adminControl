@@ -78,28 +78,6 @@ compact-layout {
                 }
             }
 
-            .asm-navigation-header {
-
-                .logo {
-                    display: flex;
-                    align-items: center;
-                    height: 80px;
-                    min-height: 80px;
-                    max-height: 80px;
-                    padding: 0 32px;
-
-                    .logo-image {
-                        margin-right: 16px;
-                    }
-
-                    .logo-text {
-                        font-size: 18px;
-                        font-weight: 300;
-                        letter-spacing: 0.06em;
-                    }
-                }
-            }
-
             .asm-navigation-content {
                 margin: 16px 0;
 
