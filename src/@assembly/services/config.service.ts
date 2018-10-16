@@ -35,6 +35,10 @@ export class AsmConfigService
         this._onConfigChanged = new BehaviorSubject(null);
         this._onDefaultConfigChanged = new BehaviorSubject(null);
 
+        this._defaultConfig = {
+            customScrollbars: true
+        };
+
         // Initialize the service
         this._init();
     }

@@ -1,10 +1,10 @@
 export interface AsmConfig
 {
-    colorTheme: string;
+    colorTheme?: string;
     customScrollbars?: boolean;
-    layout: {
-        style: string,
-        options: {
+    layout?: {
+        style?: string,
+        options?: {
             width?: 'fullwidth' | 'boxed',
             navigation?: {
                 hidden?: boolean,
