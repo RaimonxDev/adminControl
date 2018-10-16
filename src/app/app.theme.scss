@@ -79,12 +79,14 @@ $typography: mat-typography-config(
 
 // Import app and page component themes here to enable theming for them
 @import 'src/app/core/layout/classic/classic.theme';
+@import 'src/app/core/layout/compact/compact.theme';
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
 
     // Layouts
     @include classic-layout-theme($theme);
+    @include compact-layout-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

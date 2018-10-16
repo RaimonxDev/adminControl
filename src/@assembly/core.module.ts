@@ -1,6 +1,4 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-
-import { ASM_CONFIG } from '@assembly/services/config.service';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 @NgModule()
 export class AsmCoreModule
@@ -11,18 +9,5 @@ export class AsmCoreModule
         {
             throw new Error('AsmCoreModule is already loaded. Import it in the AppModule only!');
         }
-    }
-
-    static forRoot(config): ModuleWithProviders
-    {
-        return {
-            ngModule : AsmCoreModule,
-            providers: [
-                {
-                    provide : ASM_CONFIG,
-                    useValue: config
-                }
-            ]
-        };
     }
 }

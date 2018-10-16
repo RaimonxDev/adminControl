@@ -1,7 +1,7 @@
 <!-- WRAPPER -->
 <div class="asm-navigation-wrapper"
-     [ngClass]="asmConfig.layout.navigation.theme.background"
-     [class.asm-navigation-dark-background]="asmConfig.layout.navigation.theme.isDark">
+     [ngClass]="asmConfig.layout.options.navigation.theme.background"
+     [class.asm-navigation-dark-background]="asmConfig.layout.options.navigation.theme.isDark">
 
     <!-- NAVIGATION HEADER -->
     <div class="asm-navigation-header">
@@ -53,8 +53,8 @@
 
 <!-- ASIDE -->
 <div class="asm-navigation-aside-wrapper"
-     [ngClass]="asmConfig.layout.navigation.theme.background"
-     [class.asm-navigation-dark-background]="asmConfig.layout.navigation.theme.isDark"
+     [ngClass]="asmConfig.layout.options.navigation.theme.background"
+     [class.asm-navigation-dark-background]="asmConfig.layout.options.navigation.theme.isDark"
      *ngIf="activeAsideItemId"
      [@fadeIn]="position"
      [@fadeOut]="position"

@@ -345,7 +345,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
          });
 
         // Subscribe to config changes
-        this._asmConfigService.config
+        this._asmConfigService.onConfigChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config: AsmConfig) => {
 

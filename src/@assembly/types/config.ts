@@ -1,25 +1,28 @@
 export interface AsmConfig
 {
     colorTheme: string;
+    customScrollbars?: boolean;
     layout: {
         style: string,
-        width: 'fullwidth' | 'boxed',
-        navigation: {
-            hidden: boolean,
-            theme: {
-                background: string,
-                isDark: boolean
+        options: {
+            width?: 'fullwidth' | 'boxed',
+            navigation?: {
+                hidden?: boolean,
+                theme?: {
+                    background?: string,
+                    isDark?: boolean
+                }
+            },
+            header?: {
+                background?: string,
+                hidden?: boolean,
+                fixed?: boolean
             }
-        },
-        header: {
-            background: string,
-            hidden: boolean,
-            fixed: boolean
-        }
-        footer: {
-            background: string,
-            hidden: boolean,
-            fixed: boolean
+            footer?: {
+                background?: string,
+                hidden?: boolean,
+                fixed?: boolean
+            }
         }
     };
 }

@@ -1,13 +1,11 @@
 <!-- LEFT NAVIGATION -->
 <asm-navigation class="navigation"
-                *ngIf="!asmConfig.layout.navigation.hidden"
+                *ngIf="!asmConfig.layout.options.navigation.hidden"
                 name="leftNavigation"
-                [color]="asmConfig.layout.navigation.background"
                 [mode]="isScreenSmall ? 'over' : 'side'"
                 [opened]="!isScreenSmall">
 
-    <div class="navigation-header"
-         asmNavigationHeader>
+    <div asmNavigationHeader>
 
         <div class="logo">
 
@@ -27,24 +25,23 @@
 <!-- / LEFT NAVIGATION -->
 
 <!-- CONTAINER -->
-<div class="container"
-     asmScrollbar>
+<div class="container">
 
     <!-- HEADER -->
-    <div class="header mat-elevation-z1"
-         [ngClass]="asmConfig.layout.header.background"
-         *ngIf="!asmConfig.layout.header.hidden">
+    <div class="header"
+         [ngClass]="asmConfig.layout.options.header.background"
+         *ngIf="!asmConfig.layout.options.header.hidden">
 
         <button mat-icon-button
                 (click)="toggleNavigation('leftNavigation')">
-            <mat-icon class="mat-18">menu</mat-icon>
+            <mat-icon>menu</mat-icon>
         </button>
 
         Header
 
         <button mat-icon-button
                 (click)="toggleDrawer('rightDrawer')">
-            <mat-icon class="mat-18">settings</mat-icon>
+            <mat-icon>settings</mat-icon>
         </button>
 
     </div>
@@ -64,8 +61,8 @@
 
     <!-- FOOTER -->
     <div class="footer"
-         [ngClass]="asmConfig.layout.footer.background"
-         *ngIf="!asmConfig.layout.footer.hidden">
+         [ngClass]="asmConfig.layout.options.footer.background"
+         *ngIf="!asmConfig.layout.options.footer.hidden">
 
         Footer
 

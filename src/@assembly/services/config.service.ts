@@ -1,42 +1,39 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import * as _ from 'lodash';
 
-// Create the injection token for the custom settings
-export const ASM_CONFIG = new InjectionToken('asmConfig');
+import { AsmConfig } from '@assembly/types';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AsmConfigService
 {
-    configHasChanged: boolean;
-
     // Private
-    private _config: BehaviorSubject<any>;
-    private readonly _defaultConfig: any;
+    private _config: AsmConfig;
+    private _configHasChanged: boolean;
+    private _defaultConfig: AsmConfig;
+    private _onConfigChanged: BehaviorSubject<any>;
+    private _onDefaultConfigChanged: BehaviorSubject<any>;
 
     /**
      * Constructor
      *
      * @param {Platform} _platform
      * @param {Router} _router
-     * @param {ASM_CONFIG} _asmConfig
      */
     constructor(
         private _platform: Platform,
-        private _router: Router,
-        @Inject(ASM_CONFIG) private _asmConfig
+        private _router: Router
     )
     {
-        // Set the defaults
-        this.configHasChanged = false;
-
-        // Set the default config from the user provided config (from forRoot)
-        this._defaultConfig = _asmConfig;
+        // Set the private defaults
+        this._configHasChanged = false;
+        this._onConfigChanged = new BehaviorSubject(null);
+        this._onDefaultConfigChanged = new BehaviorSubject(null);
 
         // Initialize the service
         this._init();
@@ -47,36 +44,59 @@ export class AsmConfigService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Set and get the config
+     * Setter and getter for config
      */
     set config(value)
     {
-        // Get the value from the behavior subject
-        let config = this._config.getValue();
-
-        // Merge the new config
-        config = _.merge({}, config, value);
+        // Merge the new config over to the current config
+        this._config = _.merge({}, this._config, value);
 
         // Set the configHasChanged flag
-        this.configHasChanged = true;
+        this._configHasChanged = true;
 
         // Execute the observable
-        this._config.next(config);
+        this._onConfigChanged.next(this._config);
     }
 
     get config(): any | Observable<any>
     {
-        return this._config.asObservable();
+        return this._config;
     }
 
     /**
-     * Get default config
-     *
-     * @returns {any}
+     * Setter and getter for default config
      */
+    set defaultConfig(value)
+    {
+        // Merge the new config over to the default config
+        this._defaultConfig = _.merge({}, this._defaultConfig, value);
+
+        // Set the config
+        this.config = this._defaultConfig;
+
+        // Execute the observable
+        this._onDefaultConfigChanged.next(this._defaultConfig);
+    }
+
     get defaultConfig(): any
     {
         return this._defaultConfig;
+    }
+
+    /**
+     * Getter for onConfigChanged
+     */
+    get onConfigChanged(): Observable<AsmConfig>
+    {
+        return this._onConfigChanged.asObservable();
+    }
+
+    /**
+     * Getter for onDefaultConfigChanged
+     */
+    get onDefaultConfigChanged(): Observable<AsmConfig>
+    {
+        return this._onDefaultConfigChanged.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -99,30 +119,24 @@ export class AsmConfigService
         }
 
         // Set the config from the default config
-        this._config = new BehaviorSubject(_.cloneDeep(this._defaultConfig));
+        this._config = _.cloneDeep(this._defaultConfig);
 
-        // Reload the default layout config on every RoutesRecognized event
-        // if the current layout config is different from the default one
+        // Reload the default config on every RoutesRecognized event if
+        // the current layout config is different from the default one
         this._router.events
             .pipe(filter(event => event instanceof RoutesRecognized))
             .subscribe(() => {
 
                 // If the current configuration does not equal to the default one
                 // and if it hasn't been changed before the event...
-                if ( !_.isEqual(this._config.getValue().layout, this._defaultConfig.layout) && !this.configHasChanged )
+                if ( !_.isEqual(this._config.layout.options, this._defaultConfig.layout.options) && !this._configHasChanged )
                 {
-                    // Clone the current config
-                    const config = _.cloneDeep(this._config.getValue());
-
-                    // Reset the layout from the default config
-                    config.layout = _.cloneDeep(this._defaultConfig.layout);
-
-                    // Set the config
-                    this._config.next(config);
+                    // Reset the layout options from the default config
+                    this.config = _.cloneDeep(this._defaultConfig.layout);
                 }
 
                 // Reset the configHasChanged flag
-                this.configHasChanged = false;
+                this._configHasChanged = false;
             });
     }
 
@@ -136,7 +150,7 @@ export class AsmConfigService
     reset(): void
     {
         // Set the config from the default config
-        this._config.next(_.cloneDeep(this._defaultConfig));
+        this.config = _.cloneDeep(this.defaultConfig);
     }
 }
 

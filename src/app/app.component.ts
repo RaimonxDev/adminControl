@@ -2,8 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 
-import { navigation } from 'app/core/navigation/navigation';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
+
+import { defaultNavigation } from 'app/core/navigation/default';
+import { compactNavigation } from 'app/core/navigation/compact';
 
 @Component({
     selector   : 'app-root',
@@ -12,8 +14,6 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 })
 export class AppComponent
 {
-    navigation: any;
-
     /**
      * Constructor
      *
@@ -33,13 +33,8 @@ export class AppComponent
             this.document.body.classList.add('is-mobile');
         }
 
-        // Get the default navigation
-        this.navigation = navigation;
-
         // Register the navigation to the service
-        this._asmNavigationService.register('navigation', this.navigation);
-
-        // Set the navigation as our current navigation
-        this._asmNavigationService.setCurrentNavigation('navigation');
+        this._asmNavigationService.register('defaultNavigation', defaultNavigation);
+        this._asmNavigationService.register('compactNavigation', compactNavigation);
     }
 }

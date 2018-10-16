@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AsmCoreModule } from '@assembly/core.module';
 import { AsmSharedModule } from '@assembly/shared.module';
 
-import { asmConfig } from 'app/core/config';
-
 import { CoreModule } from 'app/core/core.module';
 import { AppComponent } from 'app/app.component';
 import { RouterModule } from '@angular/router';
@@ -30,7 +28,7 @@ const routes = [
         RouterModule.forRoot(routes),
 
         // Assembly core module
-        AsmCoreModule.forRoot(asmConfig),
+        AsmCoreModule,
 
         // Assembly shared module
         AsmSharedModule,

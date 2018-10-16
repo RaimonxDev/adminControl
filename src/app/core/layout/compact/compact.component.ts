@@ -2,26 +2,22 @@ import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@a
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AsmConfig, AsmNavigation } from '@assembly/types';
+import { AsmConfig } from '@assembly/types';
 import { AsmConfigService } from '@assembly/services/config.service';
 import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 import { AsmMediaWatcherService } from '@assembly/services/media-watcher.service';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
-    selector     : 'classic-layout',
-    templateUrl  : './classic.component.html',
-    styleUrls    : ['./classic.component.scss'],
+    selector     : 'compact-layout',
+    templateUrl  : './compact.component.html',
+    styleUrls    : ['./compact.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ClassicLayoutComponent implements OnInit, OnDestroy
+export class CompactLayoutComponent implements OnInit, OnDestroy
 {
     asmConfig: AsmConfig;
-    navigation: AsmNavigation[];
     isScreenSmall: boolean;
-
-    @HostBinding('class.fixed-header')
-    fixedHeader: boolean;
 
     @HostBinding('class.fixed-footer')
     fixedFooter: boolean;
@@ -51,14 +47,13 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-navy',
-                            isDark    : true
+                            background: 'asm-white',
+                            isDark    : false
                         }
                     },
                     header    : {
                         background: 'asm-white',
-                        hidden    : false,
-                        fixed     : false
+                        hidden    : false
                     },
                     footer    : {
                         background: 'asm-navy-900',
@@ -70,7 +65,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         };
 
         // Set the current navigation
-        this._asmNavigationService.setCurrentNavigation('defaultNavigation');
+        this._asmNavigationService.setCurrentNavigation('compactNavigation');
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -92,9 +87,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
 
                 // Update the asmConfig from the config
                 this.asmConfig = config;
-
-                // Update the fixedHeader property
-                this.fixedHeader = this.asmConfig.layout.options.header.fixed;
 
                 // Update the fixedFooter property
                 this.fixedFooter = this.asmConfig.layout.options.footer.fixed;
