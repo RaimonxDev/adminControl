@@ -1,0 +1,68 @@
+@mixin dense-layout-theme($theme) {
+
+    $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
+
+    dense-layout {
+
+        .navigation {
+
+            .asm-navigation-header {
+
+                .logo {
+                    background-color: map-get($primary, default);
+                }
+            }
+
+            .asm-navigation-content {
+
+                .asm-navigation-item {
+
+                    &.asm-navigation-item-active {
+
+                        .asm-navigation-item-title,
+                        .asm-navigation-item-icon {
+                            color: map-get($primary, default) !important;
+                        }
+                    }
+                }
+            }
+
+            &:not(.asm-navigation-hover) {
+
+                .asm-navigation-content {
+
+                    asm-navigation-group-item {
+
+                        > .asm-navigation-item {
+
+                            &:before {
+                                border-top-color: rgba(0, 0, 0, 0.12);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // DARK BACKGROUND
+            .asm-navigation-dark-background {
+
+                &:not(.asm-navigation-hover) {
+
+                    .asm-navigation-content {
+
+                        asm-navigation-group-item {
+
+                            > .asm-navigation-item {
+
+                                &:before {
+                                    border-top-color: rgba(255, 255, 255, 0.12);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

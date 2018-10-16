@@ -2,6 +2,280 @@ import { AsmNavigation } from '@assembly/types';
 
 export const defaultNavigation: AsmNavigation[] = [
     {
+        id      : 'applications-aside-1',
+        title   : 'Applications Aside 1',
+        type    : 'aside',
+        icon    : 'apps',
+        children: [
+            {
+                id   : 'dashboard',
+                title: 'Dashboard',
+                type : 'item',
+                icon : 'dashboards',
+                url  : 'apps/dashboard'
+            },
+            {
+                id   : 'calendar',
+                title: 'Calendar',
+                type : 'item',
+                icon : 'today',
+                url  : '/apps/calendar'
+            },
+            {
+                id      : 'e-commerce',
+                title   : 'E-Commerce',
+                type    : 'collapsable',
+                icon    : 'shopping_cart',
+                children: [
+                    {
+                        id        : 'products',
+                        title     : 'Products',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/products',
+                        exactMatch: true
+                    },
+                    {
+                        id        : 'productDetail',
+                        title     : 'Product Detail',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/products/1/printed-dress',
+                        exactMatch: true
+                    },
+                    {
+                        id        : 'orders',
+                        title     : 'Orders',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/orders',
+                        exactMatch: true
+                    },
+                    {
+                        id        : 'orderDetail',
+                        title     : 'Order Detail',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/orders/1',
+                        exactMatch: true
+                    }
+                ]
+            },
+            {
+                id   : 'academy',
+                title: 'Academy',
+                type : 'item',
+                icon : 'school',
+                url  : '/apps/academy'
+            },
+            {
+                id   : 'mail',
+                title: 'Mail',
+                type : 'item',
+                icon : 'email',
+                url  : '/apps/mail',
+                badge: {
+                    title     : '25',
+                    background: '#F44336',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id   : 'mail-ngrx',
+                title: 'Mail Ngrx',
+                type : 'item',
+                icon : 'email',
+                url  : '/apps/mail-ngrx',
+                badge: {
+                    title     : 'NEW',
+                    style     : 'rectangle',
+                    background: '#EC0C8E',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id   : 'chat',
+                title: 'Chat',
+                type : 'item',
+                icon : 'chat',
+                url  : '/apps/chat',
+                badge: {
+                    title     : '13',
+                    style     : 'simple',
+                    background: '#09d261',
+                    color     : '#09d261'
+                }
+            },
+            {
+                id   : 'file-manager',
+                title: 'File Manager',
+                type : 'item',
+                icon : 'folder',
+                url  : '/apps/file-manager'
+            },
+            {
+                id   : 'contacts',
+                title: 'Contacts',
+                type : 'item',
+                icon : 'account_box',
+                url  : '/apps/contacts'
+            },
+            {
+                id   : 'to-do',
+                title: 'To-Do',
+                type : 'item',
+                icon : 'check_box',
+                url  : '/apps/todo',
+                badge: {
+                    title     : 'HOT!',
+                    style     : 'rounded',
+                    background: '#FF6F00',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id   : 'scrumboard',
+                title: 'Scrumboard',
+                type : 'item',
+                icon : 'assessment',
+                url  : '/apps/scrumboard'
+            }
+        ]
+    },
+    {
+        id      : 'applications-aside-2',
+        title   : 'Applications Aside 2',
+        type    : 'aside',
+        icon    : 'apps',
+        children: [
+            {
+                id   : 'dashboard',
+                title: 'Dashboard',
+                type : 'item',
+                icon : 'dashboards',
+                url  : 'apps/dashboard'
+            },
+            {
+                id   : 'calendar',
+                title: 'Calendar',
+                type : 'item',
+                icon : 'today',
+                url  : '/apps/calendar'
+            },
+            {
+                id      : 'e-commerce',
+                title   : 'E-Commerce',
+                type    : 'collapsable',
+                icon    : 'shopping_cart',
+                children: [
+                    {
+                        id        : 'products',
+                        title     : 'Products',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/products',
+                        exactMatch: true
+                    },
+                    {
+                        id        : 'productDetail',
+                        title     : 'Product Detail',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/products/1/printed-dress',
+                        exactMatch: true
+                    },
+                    {
+                        id        : 'orders',
+                        title     : 'Orders',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/orders',
+                        exactMatch: true
+                    },
+                    {
+                        id        : 'orderDetail',
+                        title     : 'Order Detail',
+                        type      : 'item',
+                        url       : '/apps/e-commerce/orders/1',
+                        exactMatch: true
+                    }
+                ]
+            },
+            {
+                id   : 'academy',
+                title: 'Academy',
+                type : 'item',
+                icon : 'school',
+                url  : '/apps/academy'
+            },
+            {
+                id   : 'mail',
+                title: 'Mail',
+                type : 'item',
+                icon : 'email',
+                url  : '/apps/mail',
+                badge: {
+                    title     : '25',
+                    background: '#F44336',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id   : 'mail-ngrx',
+                title: 'Mail Ngrx',
+                type : 'item',
+                icon : 'email',
+                url  : '/apps/mail-ngrx',
+                badge: {
+                    title     : 'NEW',
+                    style     : 'rectangle',
+                    background: '#EC0C8E',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id   : 'chat',
+                title: 'Chat',
+                type : 'item',
+                icon : 'chat',
+                url  : '/apps/chat',
+                badge: {
+                    title     : '13',
+                    style     : 'simple',
+                    background: '#09d261',
+                    color     : '#09d261'
+                }
+            },
+            {
+                id   : 'file-manager',
+                title: 'File Manager',
+                type : 'item',
+                icon : 'folder',
+                url  : '/apps/file-manager'
+            },
+            {
+                id   : 'contacts',
+                title: 'Contacts',
+                type : 'item',
+                icon : 'account_box',
+                url  : '/apps/contacts'
+            },
+            {
+                id   : 'to-do',
+                title: 'To-Do',
+                type : 'item',
+                icon : 'check_box',
+                url  : '/apps/todo',
+                badge: {
+                    title     : 'HOT!',
+                    style     : 'rounded',
+                    background: '#FF6F00',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id   : 'scrumboard',
+                title: 'Scrumboard',
+                type : 'item',
+                icon : 'assessment',
+                url  : '/apps/scrumboard'
+            }
+        ]
+    },
+    {
         id      : 'applications',
         title   : 'Applications',
         type    : 'group',
