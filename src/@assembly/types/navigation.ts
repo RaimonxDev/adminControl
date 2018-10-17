@@ -4,11 +4,11 @@ export interface AsmNavigationItem
     title: string;
     type: 'aside' | 'basic' | 'collapsable' | 'subheader';
     hidden?: boolean;
-    url?: string;
-    externalUrl?: boolean;
+    link?: string;
+    externalLink?: boolean;
     exactMatch?: boolean;
     function?: any;
-    classNames?: string;
+    classes?: string;
     icon?: string;
     iconFontSet?: string;
     badge?: {

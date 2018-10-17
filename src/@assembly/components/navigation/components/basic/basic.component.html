@@ -1,43 +1,94 @@
 <ng-container *ngIf="!item.hidden">
 
-    <!-- Item with a URL -->
-    <a class="asm-navigation-item"
-       *ngIf="item.url"
-       [routerLink]="[item.url]"
-       routerLinkActive="asm-navigation-item-active"
-       [matTooltip]="item.title"
-       matTooltipPosition="right"
-       [matTooltipDisabled]="!showTooltips">
-        <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-    </a>
-
-    <!-- Item without a URL -->
-    <div class="asm-navigation-item"
-         *ngIf="!item.url"
+    <!-- Item wrapper -->
+    <div class="asm-navigation-item-wrapper"
+         [ngClass]="item.classes"
          [matTooltip]="item.title"
-         matTooltipPosition="right"
+         [matTooltipPosition]="'right'"
          [matTooltipDisabled]="!showTooltips">
-        <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+
+        <!-- Item with an internal link -->
+        <a *ngIf="item.link && !item.externalLink && !item.function"
+           class="asm-navigation-item"
+           [routerLink]="[item.link]"
+           [routerLinkActive]="'asm-navigation-item-active'"
+           [routerLinkActiveOptions]="{exact: item.exactMatch || false}">
+
+            <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+
+        </a>
+
+        <!-- Item with an external link -->
+        <a *ngIf="item.link && item.externalLink && !item.function"
+           class="asm-navigation-item"
+           [href]="item.link">
+
+            <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+
+        </a>
+
+        <!-- Item with a function -->
+        <div *ngIf="!item.link && item.function"
+             class="asm-navigation-item"
+             (click)="item.function()">
+
+            <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+
+        </div>
+
+        <!-- Item with an internal link and function -->
+        <a *ngIf="item.link && !item.externalLink && item.function"
+           class="asm-navigation-item"
+           [routerLink]="[item.link]"
+           [routerLinkActive]="'asm-navigation-item-active'"
+           [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
+           (click)="item.function()">
+
+            <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+
+        </a>
+
+        <!-- Item with an external link and function -->
+        <a *ngIf="item.link && item.externalLink && item.function"
+           class="asm-navigation-item"
+           [href]="item.link"
+           (click)="item.function()">
+
+            <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+
+        </a>
+
     </div>
 
     <!-- Item template -->
     <ng-template #itemTemplate>
 
+        <!-- Icon -->
         <mat-icon *ngIf="item.icon"
                   [fontSet]="item.iconFontSet"
                   class="asm-navigation-item-icon secondary-text s-18">
             {{item.icon}}
         </mat-icon>
 
+        <!-- Title -->
         <div class="asm-navigation-item-title">
             {{item.title}}
         </div>
 
+        <!-- Badge -->
         <div *ngIf="item.badge"
-             class="asm-navigation-item-badge"
-             [ngClass]="'asm-navigation-item-badge-style-' + item.badge.style"
-             [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
-            {{item.badge.title}}
+             class="asm-navigation-item-badge">
+
+            <div class="asm-navigation-item-badge-content"
+                 [ngClass]="'asm-navigation-item-badge-style-' + item.badge.style"
+                 [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+                {{item.badge.title}}
+            </div>
+
+            <div class="asm-navigation-item-badge-indicator"
+                 [ngStyle]="{'background-color': item.badge.style === 'simple' ? item.badge.color : item.badge.background}">
+            </div>
+
         </div>
 
     </ng-template>

@@ -1,21 +1,38 @@
 <ng-container *ngIf="!item.hidden">
 
-    <div class="asm-navigation-item">
+    <div class="asm-navigation-item-wrapper"
+         [ngClass]="item.classes">
 
-        <mat-icon *ngIf="item.icon"
-                  [fontSet]="item.iconFontSet"
-                  class="asm-navigation-item-icon hint-text s-18">
-            {{item.icon}}
-        </mat-icon>
+        <div class="asm-navigation-item">
 
-        <div class="asm-navigation-item-title">
-            {{item.title}}
-        </div>
+            <!-- Icon -->
+            <mat-icon *ngIf="item.icon"
+                      [fontSet]="item.iconFontSet"
+                      class="asm-navigation-item-icon hint-text s-18">
+                {{item.icon}}
+            </mat-icon>
 
-        <div *ngIf="item.badge"
-             class="asm-navigation-item-badge"
-             [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
-            {{item.badge.title}}
+            <!-- Title -->
+            <div class="asm-navigation-item-title">
+                {{item.title}}
+            </div>
+
+            <!-- Badge -->
+            <div *ngIf="item.badge"
+                 class="asm-navigation-item-badge">
+
+                <div class="asm-navigation-item-badge-content"
+                     [ngClass]="'asm-navigation-item-badge-style-' + item.badge.style"
+                     [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+                    {{item.badge.title}}
+                </div>
+
+                <div class="asm-navigation-item-badge-indicator"
+                     [ngStyle]="{'background-color': item.badge.style === 'simple' ? item.badge.color : item.badge.background}">
+                </div>
+
+            </div>
+
         </div>
 
     </div>

@@ -13,12 +13,16 @@
             0 2px 12px 0 rgba(0, 0, 0, 0.05),
             inset 1px 0 0 0 rgba(0, 0, 0, 0.12);
 
+            // First item of the aside (header)
             > asm-navigation-aside-item {
 
-                > .asm-navigation-item {
+                > .asm-navigation-item-wrapper {
 
-                    &:hover {
-                        background: transparent !important;
+                    .asm-navigation-item {
+
+                        &:hover {
+                            background: transparent !important;
+                        }
                     }
                 }
             }
@@ -43,10 +47,13 @@
         asm-navigation-collapsable-item,
         asm-navigation-aside-item {
 
-            > .asm-navigation-item {
+            > .asm-navigation-item-wrapper {
 
-                &:hover:not(.asm-navigation-item-active) {
-                    background: rgba(0, 0, 0, 0.03);
+                .asm-navigation-item {
+
+                    &:hover:not(.asm-navigation-item-active) {
+                        background: rgba(0, 0, 0, 0.03);
+                    }
                 }
             }
         }
@@ -97,10 +104,13 @@
             asm-navigation-collapsable-item,
             asm-navigation-aside-item {
 
-                > .asm-navigation-item {
+                > .asm-navigation-item-wrapper {
 
-                    &:hover:not(.asm-navigation-item-active) {
-                        background: rgba(0, 0, 0, 0.12);
+                    .asm-navigation-item {
+
+                        &:hover:not(.asm-navigation-item-active) {
+                            background: rgba(0, 0, 0, 0.12);
+                        }
                     }
                 }
             }
@@ -110,6 +120,10 @@
 
                 &.asm-navigation-item-expanded {
                     background: rgba(0, 0, 0, 0.06);
+
+                    asm-navigation-collapsable-item {
+                        background: transparent;
+                    }
                 }
             }
         }
@@ -141,10 +155,13 @@
                     asm-navigation-collapsable-item,
                     asm-navigation-aside-item {
 
-                        > .asm-navigation-item {
+                        > .asm-navigation-item-wrapper {
 
-                            &:hover:not(.asm-navigation-item-active) {
-                                background: transparent;
+                            .asm-navigation-item {
+
+                                &:hover:not(.asm-navigation-item-active) {
+                                    background: transparent;
+                                }
                             }
                         }
                     }

@@ -157,21 +157,25 @@ asm-navigation {
         transition-property: left, right;
         transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
 
+        // First item of the aside (header)
         > asm-navigation-aside-item {
 
-            > .asm-navigation-item {
-                margin: 24px 0 12px 0 !important;
-                padding-right: 32px !important;
-                cursor: default;
-                font-weight: 600;
+            > .asm-navigation-item-wrapper {
 
-                .asm-navigation-item-badge,
-                .asm-navigation-item-icon {
-                    display: none;
-                }
+                .asm-navigation-item {
+                    margin: 24px 0 12px 0 !important;
+                    padding-right: 32px !important;
+                    cursor: default;
+                    font-weight: 600;
 
-                .asm-navigation-item-title {
-                    font-size: 16px;
+                    .asm-navigation-item-badge,
+                    .asm-navigation-item-icon {
+                        display: none;
+                    }
+
+                    .asm-navigation-item-title {
+                        font-size: 16px;
+                    }
                 }
             }
         }
@@ -199,6 +203,7 @@ asm-navigation {
         flex: 1 0 auto;
 
         .asm-navigation-item {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -216,39 +221,50 @@ asm-navigation {
             }
 
             .asm-navigation-item-badge {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 11px;
-                font-weight: 600;
-                width: 24px;
-                height: 24px;
-                line-height: 1;
-                border-radius: 50%;
                 margin-left: auto;
 
-                // Rectangle
-                &.asm-navigation-item-badge-style-rectangle {
-                    width: auto;
-                    min-width: 24px;
-                    height: 22px;
-                    padding: 0 6px;
-                    border-radius: 4px;
-                }
-
-                // Rounded
-                &.asm-navigation-item-badge-style-rounded {
-                    width: auto;
-                    min-width: 24px;
-                    padding: 0 6px;
-                    border-radius: 12px;
-                }
-
-                // Simple
-                &.asm-navigation-item-badge-style-simple {
-                    width: auto;
+                .asm-navigation-item-badge-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     font-size: 11px;
-                    background-color: transparent !important;
+                    font-weight: 600;
+                    width: 24px;
+                    height: 24px;
+                    line-height: 1;
+                    border-radius: 50%;
+
+                    // Rectangle
+                    &.asm-navigation-item-badge-style-rectangle {
+                        width: auto;
+                        min-width: 24px;
+                        height: 22px;
+                        padding: 0 6px;
+                        border-radius: 4px;
+                    }
+
+                    // Rounded
+                    &.asm-navigation-item-badge-style-rounded {
+                        width: auto;
+                        min-width: 24px;
+                        padding: 0 6px;
+                        border-radius: 12px;
+                    }
+
+                    // Simple
+                    &.asm-navigation-item-badge-style-simple {
+                        width: auto;
+                        font-size: 11px;
+                        background-color: transparent !important;
+                    }
+                }
+
+                .asm-navigation-item-badge-indicator {
+                    position: absolute;
+                    display: none;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
                 }
             }
         }
@@ -276,27 +292,33 @@ asm-navigation {
     // Collapsable
     asm-navigation-collapsable-item {
 
-        > .asm-navigation-item {
+        > .asm-navigation-item-wrapper {
 
-            .asm-navigation-item-badge {
+            .asm-navigation-item {
 
-                + .asm-navigation-item-arrow {
-                    margin-left: 8px;
+                .asm-navigation-item-badge {
+
+                    + .asm-navigation-item-arrow {
+                        margin-left: 8px;
+                    }
                 }
-            }
 
-            .asm-navigation-item-arrow {
-                transition: transform 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
-                margin-left: auto;
+                .asm-navigation-item-arrow {
+                    transition: transform 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                    margin-left: auto;
+                }
             }
         }
 
         &.asm-navigation-item-expanded {
 
-            > .asm-navigation-item {
+            > .asm-navigation-item-wrapper {
 
-                .asm-navigation-item-arrow {
-                    transform: rotate(-180deg);
+                .asm-navigation-item {
+
+                    .asm-navigation-item-arrow {
+                        transform: rotate(-180deg);
+                    }
                 }
             }
         }
@@ -424,6 +446,12 @@ asm-navigation {
                             margin-bottom: 12px;
                             @include icon-size(32);
                         }
+
+                        .asm-navigation-item-badge {
+                            position: absolute;
+                            top: 12px;
+                            left: 64px;
+                        }
                     }
                 }
             }
@@ -440,10 +468,14 @@ asm-navigation {
                 border-radius: 0 26px 26px 0;
             }
 
+            // First item of the aside (header)
             > asm-navigation-aside-item {
 
-                > .asm-navigation-item {
-                    margin-top: 16px !important;
+                > .asm-navigation-item-wrapper {
+
+                    .asm-navigation-item {
+                        margin-top: 16px !important;
+                    }
                 }
             }
         }
@@ -543,9 +575,19 @@ asm-navigation {
                         .asm-navigation-item {
 
                             .asm-navigation-item-arrow,
-                            .asm-navigation-item-badge,
+                            .asm-navigation-item-badge-content,
                             .asm-navigation-item-title {
                                 opacity: 0;
+                            }
+
+                            .asm-navigation-item-badge {
+
+                                .asm-navigation-item-badge-indicator {
+                                    position: absolute;
+                                    display: block;
+                                    top: 16px;
+                                    left: 44px;
+                                }
                             }
                         }
                     }
@@ -560,7 +602,6 @@ asm-navigation {
                     asm-navigation-subheader-item {
 
                         .asm-navigation-item {
-                            position: relative;
                             padding: 0 32px;
 
                             &:before {
@@ -635,44 +676,59 @@ asm-navigation {
             }
         }
 
-        .asm-navigation-content {
+        // Wrapper
+        .asm-navigation-wrapper {
 
-            asm-navigation-collapsable-item {
-                display: none;
-            }
+            // Content
+            .asm-navigation-content {
 
-            asm-navigation-aside-item,
-            asm-navigation-basic-item,
-            asm-navigation-subheader-item {
+                asm-navigation-collapsable-item {
+                    display: none;
+                }
 
-                .asm-navigation-item {
-                    justify-content: center;
-                    padding: 0;
+                asm-navigation-aside-item,
+                asm-navigation-basic-item,
+                asm-navigation-subheader-item {
 
-                    .asm-navigation-item-icon {
-                        margin: 0;
-                    }
+                    .asm-navigation-item {
+                        justify-content: center;
+                        padding: 0;
 
-                    .asm-navigation-item-arrow,
-                    .asm-navigation-item-badge,
-                    .asm-navigation-item-title {
-                        display: none;
+                        .asm-navigation-item-icon {
+                            margin: 0;
+                        }
+
+                        .asm-navigation-item-arrow,
+                        .asm-navigation-item-badge-content,
+                        .asm-navigation-item-title {
+                            display: none;
+                        }
+
+                        .asm-navigation-item-badge {
+                            margin-left: 0;
+
+                            .asm-navigation-item-badge-indicator {
+                                position: absolute;
+                                display: block;
+                                top: 16px;
+                                left: 44px;
+                            }
+                        }
                     }
                 }
-            }
 
-            asm-navigation-subheader-item {
+                asm-navigation-subheader-item {
 
-                .asm-navigation-item {
-                    position: relative;
+                    .asm-navigation-item {
 
-                    &:before {
-                        content: " ";
-                        position: absolute;
-                        top: 12px;
-                        width: 16px;
-                        height: 2px;
-                        border-top: 2px solid;
+                        &:before {
+                            content: " ";
+                            position: absolute;
+                            top: 12px;
+                            width: 16px;
+                            height: 2px;
+                            border-top: 2px solid;
+                        }
                     }
                 }
             }
@@ -683,7 +739,6 @@ asm-navigation {
         asm-navigation-collapsable-item {
 
             .asm-navigation-item {
-                position: relative;
                 box-shadow: none;
 
                 &:before {

@@ -1,28 +1,46 @@
 <ng-container *ngIf="!item.hidden">
 
-    <div class="asm-navigation-item"
-         (click)="toggleCollapsable()"
+    <div class="asm-navigation-item-wrapper"
+         [ngClass]="item.classes"
          [matTooltip]="item.title"
          matTooltipPosition="right"
          [matTooltipDisabled]="!showTooltips">
 
-        <mat-icon *ngIf="item.icon"
-                  [fontSet]="item.iconFontSet"
-                  class="asm-navigation-item-icon secondary-text s-18">
-            {{item.icon}}
-        </mat-icon>
+        <div class="asm-navigation-item"
+             (click)="toggleCollapsable()">
 
-        <div class="asm-navigation-item-title">
-            {{item.title}}
+            <!-- Icon -->
+            <mat-icon *ngIf="item.icon"
+                      [fontSet]="item.iconFontSet"
+                      class="asm-navigation-item-icon secondary-text s-18">
+                {{item.icon}}
+            </mat-icon>
+
+            <!-- Title -->
+            <div class="asm-navigation-item-title">
+                {{item.title}}
+            </div>
+
+            <!-- Badge -->
+            <div *ngIf="item.badge"
+                 class="asm-navigation-item-badge">
+
+                <div class="asm-navigation-item-badge-content"
+                     [ngClass]="'asm-navigation-item-badge-style-' + item.badge.style"
+                     [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+                    {{item.badge.title}}
+                </div>
+
+                <div class="asm-navigation-item-badge-indicator"
+                     [ngStyle]="{'background-color': item.badge.style === 'simple' ? item.badge.color : item.badge.background}">
+                </div>
+
+            </div>
+
+            <!-- Arrow -->
+            <mat-icon class="asm-navigation-item-arrow secondary-text s-16">keyboard_arrow_down</mat-icon>
+
         </div>
-
-        <div *ngIf="item.badge"
-             class="asm-navigation-item-badge"
-             [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
-            {{item.badge.title}}
-        </div>
-
-        <mat-icon class="asm-navigation-item-arrow secondary-text s-16">keyboard_arrow_down</mat-icon>
 
     </div>
 
