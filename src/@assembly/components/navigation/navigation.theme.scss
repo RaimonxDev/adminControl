@@ -167,22 +167,6 @@
                     }
                 }
             }
-
-            // Aside wrapper
-            .asm-navigation-aside-wrapper {
-
-                .asm-navigation-item {
-
-                    &.asm-navigation-item-active {
-                        background: map-get($primary, 50);
-                        color: map-get($primary, '50-contrast');
-
-                        .asm-navigation-item-icon {
-                            color: map-get($primary, '50-contrast') !important;
-                        }
-                    }
-                }
-            }
         }
 
         // -----------------------------------------------------------------------------------------------------

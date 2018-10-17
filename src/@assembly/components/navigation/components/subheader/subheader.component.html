@@ -12,9 +12,16 @@
                 {{item.icon}}
             </mat-icon>
 
-            <!-- Title -->
-            <div class="asm-navigation-item-title">
-                {{item.title}}
+            <!-- Title & Subtitle -->
+            <div class="asm-navigation-item-title-wrapper">
+
+                <div class="asm-navigation-item-title">{{item.title}}</div>
+
+                <div *ngIf="item.subtitle"
+                     class="asm-navigation-item-subtitle hint-text">
+                    {{item.subtitle}}
+                </div>
+
             </div>
 
             <!-- Badge -->

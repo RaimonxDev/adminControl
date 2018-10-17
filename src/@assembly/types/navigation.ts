@@ -2,6 +2,7 @@ export interface AsmNavigationItem
 {
     id: string;
     title: string;
+    subtitle?: string;
     type: 'aside' | 'basic' | 'collapsable' | 'subheader';
     hidden?: boolean;
     link?: string;

@@ -4,26 +4,30 @@ export const defaultNavigation: AsmNavigation[] = [
     {
         id      : 'applications-aside-1',
         title   : 'Applications Aside 1',
+        subtitle: 'Aside is good!',
         type    : 'aside',
         icon    : 'apps',
         children: [
             {
-                id   : 'dashboard',
-                title: 'Dashboard',
-                type : 'basic',
-                icon : 'dashboards',
-                link : 'apps/dashboard'
+                id      : 'dashboard',
+                title   : 'Dashboard',
+                subtitle: 'Health tracking',
+                type    : 'basic',
+                icon    : 'dashboards',
+                link    : 'apps/dashboard'
             },
             {
-                id   : 'calendar',
-                title: 'Calendar',
-                type : 'basic',
-                icon : 'today',
-                link : '/apps/calendar'
+                id      : 'calendar',
+                title   : 'Calendar',
+                subtitle: '3 upcoming events',
+                type    : 'basic',
+                icon    : 'today',
+                link    : '/apps/calendar'
             },
             {
                 id      : 'e-commerce',
                 title   : 'E-Commerce',
+                subtitle: '4 new orders',
                 type    : 'collapsable',
                 icon    : 'shopping_cart',
                 children: [
@@ -58,11 +62,12 @@ export const defaultNavigation: AsmNavigation[] = [
                 ]
             },
             {
-                id   : 'academy',
-                title: 'Academy',
-                type : 'basic',
-                icon : 'school',
-                link : '/apps/academy'
+                id      : 'academy',
+                title   : 'Academy',
+                subtitle: 'New lessons available!',
+                type    : 'basic',
+                icon    : 'school',
+                link    : '/apps/academy'
             },
             {
                 id   : 'mail',
@@ -103,11 +108,12 @@ export const defaultNavigation: AsmNavigation[] = [
                 }
             },
             {
-                id   : 'file-manager',
-                title: 'File Manager',
-                type : 'basic',
-                icon : 'folder',
-                link : '/apps/file-manager'
+                id      : 'file-manager',
+                title   : 'File Manager',
+                subtitle: '1.4GB of 5GB used',
+                type    : 'basic',
+                icon    : 'folder',
+                link    : '/apps/file-manager'
             },
             {
                 id   : 'contacts',
@@ -117,12 +123,13 @@ export const defaultNavigation: AsmNavigation[] = [
                 link : '/apps/contacts'
             },
             {
-                id   : 'to-do',
-                title: 'To-Do',
-                type : 'basic',
-                icon : 'check_box',
-                link : '/apps/todo',
-                badge: {
+                id      : 'to-do',
+                title   : 'To-Do',
+                subtitle: '7 overdue tasks',
+                type    : 'basic',
+                icon    : 'check_box',
+                link    : '/apps/todo',
+                badge   : {
                     title     : 'HOT!',
                     style     : 'rounded',
                     background: '#FF6F00',
@@ -276,28 +283,31 @@ export const defaultNavigation: AsmNavigation[] = [
         ]
     },
     {
-        id   : 'applications',
-        title: 'Applications',
-        type : 'subheader',
-        icon : 'apps'
+        id      : 'applications',
+        title   : 'Applications',
+        type    : 'subheader',
+        icon    : 'apps'
     },
     {
-        id   : 'dashboard',
-        title: 'Dashboard',
-        type : 'basic',
-        icon : 'dashboards',
-        link : 'apps/dashboard'
+        id      : 'dashboard',
+        title   : 'Dashboard',
+        subtitle: 'Health tracking',
+        type    : 'basic',
+        icon    : 'dashboards',
+        link    : 'apps/dashboard'
     },
     {
-        id   : 'calendar',
-        title: 'Calendar',
-        type : 'basic',
-        icon : 'today',
-        link : '/apps/calendar'
+        id      : 'calendar',
+        title   : 'Calendar',
+        subtitle: '3 upcoming events',
+        type    : 'basic',
+        icon    : 'today',
+        link    : '/apps/calendar'
     },
     {
         id      : 'e-commerce',
         title   : 'E-Commerce',
+        subtitle: '4 new orders',
         type    : 'collapsable',
         icon    : 'shopping_cart',
         children: [
@@ -332,11 +342,12 @@ export const defaultNavigation: AsmNavigation[] = [
         ]
     },
     {
-        id   : 'academy',
-        title: 'Academy',
-        type : 'basic',
-        icon : 'school',
-        link : '/apps/academy'
+        id      : 'academy',
+        title   : 'Academy',
+        subtitle: 'New lessons available!',
+        type    : 'basic',
+        icon    : 'school',
+        link    : '/apps/academy'
     },
     {
         id   : 'mail',
@@ -377,11 +388,12 @@ export const defaultNavigation: AsmNavigation[] = [
         }
     },
     {
-        id   : 'file-manager',
-        title: 'File Manager',
-        type : 'basic',
-        icon : 'folder',
-        link : '/apps/file-manager'
+        id      : 'file-manager',
+        title   : 'File Manager',
+        subtitle: '1.4GB of 5GB used',
+        type    : 'basic',
+        icon    : 'folder',
+        link    : '/apps/file-manager'
     },
     {
         id   : 'contacts',
@@ -391,12 +403,13 @@ export const defaultNavigation: AsmNavigation[] = [
         link : '/apps/contacts'
     },
     {
-        id   : 'to-do',
-        title: 'To-Do',
-        type : 'basic',
-        icon : 'check_box',
-        link : '/apps/todo',
-        badge: {
+        id      : 'to-do',
+        title   : 'To-Do',
+        subtitle: '7 overdue tasks',
+        type    : 'basic',
+        icon    : 'check_box',
+        link    : '/apps/todo',
+        badge   : {
             title     : 'HOT!',
             style     : 'rounded',
             background: '#FF6F00',
