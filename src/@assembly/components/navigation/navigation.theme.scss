@@ -63,10 +63,10 @@
             }
         }
 
-        // Group
-        asm-navigation-group-item {
+        // Subheader
+        asm-navigation-subheader-item {
 
-            > .asm-navigation-item {
+            .asm-navigation-item {
 
                 .asm-navigation-item-title {
                     color: map-get($foreground, default);
@@ -110,6 +110,189 @@
 
                 &.asm-navigation-item-expanded {
                     background: rgba(0, 0, 0, 0.06);
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Compact
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-navigation-appearance-compact {
+
+            // Wrapper
+            .asm-navigation-wrapper {
+
+                .asm-navigation-content {
+
+                    .asm-navigation-item {
+
+                        &.asm-navigation-item-active {
+                            background: transparent;
+
+                            .asm-navigation-item-title,
+                            .asm-navigation-item-icon {
+                                color: map-get($primary, default) !important;
+                            }
+                        }
+                    }
+
+                    asm-navigation-basic-item,
+                    asm-navigation-collapsable-item,
+                    asm-navigation-aside-item {
+
+                        > .asm-navigation-item {
+
+                            &:hover:not(.asm-navigation-item-active) {
+                                background: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Aside wrapper
+            .asm-navigation-aside-wrapper {
+
+                .asm-navigation-item {
+
+                    &.asm-navigation-item-active {
+                        background: map-get($primary, 50);
+                        color: map-get($primary, '50-contrast');
+
+                        .asm-navigation-item-icon {
+                            color: map-get($primary, '50-contrast') !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Dense
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-navigation-appearance-dense {
+
+            // Wrapper
+            .asm-navigation-wrapper {
+
+                .asm-navigation-content {
+
+                    .asm-navigation-item {
+
+                        &.asm-navigation-item-active {
+
+                            .asm-navigation-item-title,
+                            .asm-navigation-item-icon {
+                                color: map-get($primary, default) !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:not(.asm-navigation-hover):not(.asm-navigation-mode-over) {
+
+                // Wrapper
+                .asm-navigation-wrapper {
+
+                    .asm-navigation-content {
+
+                        asm-navigation-subheader-item {
+
+                            .asm-navigation-item {
+
+                                &:before {
+                                    border-top-color: rgba(0, 0, 0, 0.12);
+                                }
+                            }
+                        }
+                    }
+
+                    // Dark background
+                    &.asm-navigation-dark-background {
+
+                        .asm-navigation-content {
+
+                            asm-navigation-subheader-item {
+
+                                .asm-navigation-item {
+
+                                    &:before {
+                                        border-top-color: rgba(255, 255, 255, 0.12);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Thin
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-navigation-appearance-thin {
+
+            // Wrapper
+            .asm-navigation-wrapper {
+
+                .asm-navigation-content {
+
+                    asm-navigation-subheader-item {
+
+                        .asm-navigation-item {
+
+                            &:before {
+                                border-top-color: rgba(0, 0, 0, 0.12);
+                            }
+                        }
+                    }
+                }
+
+                // Dark background
+                &.asm-navigation-dark-background {
+
+                    .asm-navigation-content {
+
+                        asm-navigation-subheader-item {
+
+                            .asm-navigation-item {
+
+                                &:before {
+                                    border-top-color: rgba(255, 255, 255, 0.12);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            asm-navigation-aside-item,
+            asm-navigation-basic-item,
+            asm-navigation-collapsable-item {
+
+                .asm-navigation-item {
+
+                    &:before {
+                        background-color: map-get($primary, default);
+                    }
+
+                    &.asm-navigation-item-active {
+                        background: transparent;
+
+                        &:before {
+                            box-shadow: 2px 0 18px 0 map-get($primary, default);
+                        }
+
+                        .asm-navigation-item-title,
+                        .asm-navigation-item-icon {
+                            color: map-get($primary, default) !important;
+                        }
+                    }
                 }
             }
         }

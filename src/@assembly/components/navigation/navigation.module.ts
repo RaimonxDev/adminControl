@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatTooltipModule } from '@angular/material';
 
 import { AsmSharedModule } from '@assembly/shared.module';
 
 import { AsmNavigationBasicItemComponent } from '@assembly/components/navigation/components/basic/basic.component';
 import { AsmNavigationCollapsableItemComponent } from '@assembly/components/navigation/components/collapsable/collapsable.component';
-import { AsmNavigationGroupItemComponent } from '@assembly/components/navigation/components/group/group.component';
+import { AsmNavigationSubheaderItemComponent } from '@assembly/components/navigation/components/subheader/subheader.component';
 import { AsmNavigationAsideItemComponent } from '@assembly/components/navigation/components/aside/aside.component';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
@@ -15,7 +15,7 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
     declarations: [
         AsmNavigationBasicItemComponent,
         AsmNavigationCollapsableItemComponent,
-        AsmNavigationGroupItemComponent,
+        AsmNavigationSubheaderItemComponent,
         AsmNavigationAsideItemComponent,
         AsmNavigationComponent
     ],
@@ -24,7 +24,8 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 
         AsmSharedModule,
 
-        MatIconModule
+        MatIconModule,
+        MatTooltipModule
     ],
     exports     : [
         AsmNavigationComponent

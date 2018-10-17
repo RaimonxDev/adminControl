@@ -37,6 +37,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
+    private _appearance: 'classic' | 'compact' | 'dense' | 'thin';
     private _asideOverlay: HTMLElement | null;
     private _mode: 'over' | 'side';
     private _opened: boolean;
@@ -75,6 +76,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
+        this.appearance = 'classic';
         this.activeAsideItemId = null;
         this.autoCollapse = true;
         this.mode = 'side';
@@ -86,6 +88,42 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Setter & getter for appearance
+     *
+     * @param value
+     */
+    @Input()
+    set appearance(value: 'classic' | 'compact' | 'dense' | 'thin')
+    {
+        // If the value is the same, return...
+        if ( this._appearance === value )
+        {
+            return;
+        }
+
+        let appearanceClassName;
+
+        // Remove the previous appearance class
+        appearanceClassName = 'asm-navigation-appearance-' + this.appearance;
+        this._renderer.removeClass(this._elementRef.nativeElement, appearanceClassName);
+
+        // Store the appearance
+        this._appearance = value;
+
+        // Add the new appearance class
+        appearanceClassName = 'asm-navigation-appearance-' + this.appearance;
+        this._renderer.addClass(this._elementRef.nativeElement, appearanceClassName);
+
+        // Execute the observable
+        this._asmNavigationService.onAppearanceChanged.next(this.appearance);
+    }
+
+    get appearance(): 'classic' | 'compact' | 'dense' | 'thin'
+    {
+        return this._appearance;
+    }
 
     /**
      * Setter for asmScrollbarDirectives

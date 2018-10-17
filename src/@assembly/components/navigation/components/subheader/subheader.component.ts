@@ -5,12 +5,12 @@ import { takeUntil } from 'rxjs/operators';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
-    selector       : 'asm-navigation-group-item',
-    templateUrl    : './group.component.html',
+    selector       : 'asm-navigation-subheader-item',
+    templateUrl    : './subheader.component.html',
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationGroupItemComponent implements OnInit, OnDestroy
+export class AsmNavigationSubheaderItemComponent implements OnInit, OnDestroy
 {
     // Item
     @Input()

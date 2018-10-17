@@ -1,0 +1,23 @@
+<ng-container *ngIf="!item.hidden">
+
+    <div class="asm-navigation-item">
+
+        <mat-icon *ngIf="item.icon"
+                  [fontSet]="item.iconFontSet"
+                  class="asm-navigation-item-icon hint-text s-18">
+            {{item.icon}}
+        </mat-icon>
+
+        <div class="asm-navigation-item-title">
+            {{item.title}}
+        </div>
+
+        <div *ngIf="item.badge"
+             class="asm-navigation-item-badge"
+             [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+            {{item.badge.title}}
+        </div>
+
+    </div>
+
+</ng-container>

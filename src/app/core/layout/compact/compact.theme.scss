@@ -1,8 +1,5 @@
 @mixin compact-layout-theme($theme) {
 
-    $background: map-get($theme, background);
-    $primary: map-get($theme, primary);
-
     compact-layout {
 
         .navigation {
@@ -11,48 +8,6 @@
 
                 .logo {
                     background-color: rgba(0, 0, 0, 0.12);
-                }
-            }
-
-            .asm-navigation-content {
-
-                .asm-navigation-item {
-
-                    &.asm-navigation-item-active {
-                        background: transparent;
-
-                        .asm-navigation-item-title,
-                        .asm-navigation-item-icon {
-                            color: map-get($primary, default) !important;
-                        }
-                    }
-                }
-
-                asm-navigation-basic-item,
-                asm-navigation-collapsable-item,
-                asm-navigation-aside-item {
-
-                    > .asm-navigation-item {
-
-                        &:hover:not(.asm-navigation-item-active) {
-                            background: transparent;
-                        }
-                    }
-                }
-            }
-
-            .asm-navigation-aside-wrapper {
-
-                .asm-navigation-item {
-
-                    &.asm-navigation-item-active {
-                        background: map-get($primary, 50);
-                        color: map-get($primary, '50-contrast');
-
-                        .asm-navigation-item-icon {
-                            color: map-get($primary, '50-contrast') !important;
-                        }
-                    }
                 }
             }
         }

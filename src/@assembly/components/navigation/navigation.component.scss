@@ -123,8 +123,8 @@ asm-navigation {
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
 
-            // Group
-            > asm-navigation-group-item {
+            // Subheader
+            > asm-navigation-subheader-item {
 
                 &:first-child {
                     margin-top: 0;
@@ -160,8 +160,7 @@ asm-navigation {
         > asm-navigation-aside-item {
 
             > .asm-navigation-item {
-                margin-top: 24px !important;
-                margin-right: 0 !important;
+                margin: 24px 0 12px 0 !important;
                 padding-right: 32px !important;
                 cursor: default;
                 font-weight: 600;
@@ -191,10 +190,10 @@ asm-navigation {
     // -----------------------------------------------------------------------------------------------------
 
     // Navigation items common
+    asm-navigation-aside-item,
     asm-navigation-basic-item,
     asm-navigation-collapsable-item,
-    asm-navigation-group-item,
-    asm-navigation-aside-item {
+    asm-navigation-subheader-item {
         display: flex;
         flex-direction: column;
         flex: 1 0 auto;
@@ -336,11 +335,11 @@ asm-navigation {
         }
     }
 
-    // Group
-    asm-navigation-group-item {
+    // Subheader
+    asm-navigation-subheader-item {
         margin-top: 24px;
 
-        > .asm-navigation-item {
+        .asm-navigation-item {
             font-size: 12px;
 
             .asm-navigation-item-badge,
@@ -352,6 +351,364 @@ asm-navigation {
                 font-weight: bold;
                 text-transform: uppercase;
             }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [appearance] Compact
+    // -----------------------------------------------------------------------------------------------------
+
+    &.asm-navigation-appearance-compact {
+        width: 120px;
+        min-width: 120px;
+        max-width: 120px;
+
+        // Left positioned
+        &.asm-navigation-position-left {
+
+            // Side mode
+            &.asm-navigation-mode-side {
+                margin-left: -120px;
+            }
+
+            // Opened
+            &.asm-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        // Right positioned
+        &.asm-navigation-position-right {
+
+            // Side mode
+            &.asm-navigation-mode-side {
+                margin-right: -120px;
+            }
+
+            // Opened
+            &.asm-navigation-opened {
+                margin-right: 0;
+            }
+
+            // Aside wrapper
+            .asm-navigation-aside-wrapper {
+                left: auto;
+                right: 120px;
+            }
+        }
+
+        // Wrapper
+        .asm-navigation-wrapper {
+
+            // Content
+            .asm-navigation-content {
+
+                > asm-navigation-collapsable-item,
+                > asm-navigation-subheader-item {
+                    display: none
+                }
+
+                > asm-navigation-aside-item,
+                > asm-navigation-basic-item {
+
+                    .asm-navigation-item {
+                        flex-direction: column;
+                        justify-content: center;
+                        height: 110px;
+                        min-height: 110px;
+                        max-height: 110px;
+                        padding: 0 16px;
+
+                        .asm-navigation-item-icon {
+                            margin-right: 0;
+                            margin-bottom: 12px;
+                            @include icon-size(32);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Aside wrapper
+        .asm-navigation-aside-wrapper {
+            left: 120px;
+
+            .asm-navigation-item {
+                box-shadow: none;
+                margin-right: 16px;
+                padding-right: 16px;
+                border-radius: 0 26px 26px 0;
+            }
+
+            > asm-navigation-aside-item {
+
+                > .asm-navigation-item {
+                    margin-top: 16px !important;
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [appearance] Dense
+    // -----------------------------------------------------------------------------------------------------
+
+    &.asm-navigation-appearance-dense {
+
+        &:not(.asm-navigation-mode-over) {
+            width: 80px;
+            min-width: 80px;
+            max-width: 80px;
+
+            // Left positioned
+            &.asm-navigation-position-left {
+
+                // Side mode
+                &.asm-navigation-mode-side {
+                    margin-left: -80px;
+                }
+
+                // Opened
+                &.asm-navigation-opened {
+                    margin-left: 0;
+                }
+            }
+
+            // Right positioned
+            &.asm-navigation-position-right {
+
+                // Side mode
+                &.asm-navigation-mode-side {
+                    margin-right: -80px;
+                }
+
+                // Opened
+                &.asm-navigation-opened {
+                    margin-right: 0;
+                }
+
+                // Aside wrapper
+                .asm-navigation-aside-wrapper {
+                    left: auto;
+                    right: 80px;
+                }
+
+                &.asm-navigation-hover {
+
+                    .asm-navigation-aside-wrapper {
+                        left: auto;
+                        right: 280px;
+                    }
+                }
+            }
+        }
+
+        // Wrapper
+        .asm-navigation-wrapper {
+
+            // Content
+            .asm-navigation-content {
+
+                asm-navigation-aside-item,
+                asm-navigation-basic-item,
+                asm-navigation-collapsable-item,
+                asm-navigation-subheader-item {
+
+                    .asm-navigation-item {
+
+                        .asm-navigation-item-arrow,
+                        .asm-navigation-item-badge,
+                        .asm-navigation-item-title {
+                            white-space: nowrap;
+                            transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:not(.asm-navigation-hover):not(.asm-navigation-mode-over) {
+
+            // Wrapper
+            .asm-navigation-wrapper {
+
+                // Content
+                .asm-navigation-content {
+
+                    asm-navigation-aside-item,
+                    asm-navigation-basic-item,
+                    asm-navigation-collapsable-item,
+                    asm-navigation-subheader-item {
+
+                        .asm-navigation-item {
+
+                            .asm-navigation-item-arrow,
+                            .asm-navigation-item-badge,
+                            .asm-navigation-item-title {
+                                opacity: 0;
+                            }
+                        }
+                    }
+
+                    > asm-navigation-collapsable-item {
+
+                        .asm-navigation-item-children {
+                            display: none;
+                        }
+                    }
+
+                    asm-navigation-subheader-item {
+
+                        .asm-navigation-item {
+                            position: relative;
+                            padding: 0 32px;
+
+                            &:before {
+                                content: " ";
+                                position: absolute;
+                                top: 12px;
+                                width: 16px;
+                                height: 2px;
+                                border-top: 2px solid;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Aside wrapper
+        .asm-navigation-aside-wrapper {
+            left: 80px;
+        }
+
+        // Hover
+        &.asm-navigation-hover {
+
+            .asm-navigation-wrapper {
+                width: 280px;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
+                0 2px 12px 0 rgba(0, 0, 0, 0.05);
+            }
+
+            .asm-navigation-aside-wrapper {
+                left: 280px;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [appearance] Thin
+    // -----------------------------------------------------------------------------------------------------
+
+    &.asm-navigation-appearance-thin {
+        width: 80px;
+        min-width: 80px;
+        max-width: 80px;
+
+        // Left positioned
+        &.asm-navigation-position-left {
+
+            &.asm-navigation-mode-side {
+                margin-left: -80px;
+            }
+
+            &.asm-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        // Right positioned
+        &.asm-navigation-position-right {
+
+            &.asm-navigation-mode-side {
+                margin-right: -80px;
+            }
+
+            &.asm-navigation-opened {
+                margin-right: 0;
+            }
+
+            .asm-navigation-aside-wrapper {
+                left: auto;
+                right: 80px;
+            }
+        }
+
+        .asm-navigation-content {
+
+            asm-navigation-collapsable-item {
+                display: none;
+            }
+
+            asm-navigation-aside-item,
+            asm-navigation-basic-item,
+            asm-navigation-subheader-item {
+
+                .asm-navigation-item {
+                    justify-content: center;
+                    padding: 0;
+
+                    .asm-navigation-item-icon {
+                        margin: 0;
+                    }
+
+                    .asm-navigation-item-arrow,
+                    .asm-navigation-item-badge,
+                    .asm-navigation-item-title {
+                        display: none;
+                    }
+                }
+            }
+
+            asm-navigation-subheader-item {
+
+                .asm-navigation-item {
+                    position: relative;
+
+                    &:before {
+                        content: " ";
+                        position: absolute;
+                        top: 12px;
+                        width: 16px;
+                        height: 2px;
+                        border-top: 2px solid;
+                    }
+                }
+            }
+        }
+
+        asm-navigation-aside-item,
+        asm-navigation-basic-item,
+        asm-navigation-collapsable-item {
+
+            .asm-navigation-item {
+                position: relative;
+                box-shadow: none;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -10px;
+                    width: 3px;
+                    transition-duration: 400ms;
+                    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+                    transition-property: box-shadow, left;
+                }
+
+                &.asm-navigation-item-active {
+
+                    &:before {
+                        left: 0;
+                    }
+                }
+            }
+        }
+
+        .asm-navigation-aside-wrapper {
+            left: 80px;
         }
     }
 }

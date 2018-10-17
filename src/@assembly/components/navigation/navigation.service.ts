@@ -11,6 +11,7 @@ import { AsmNavigationComponent } from '@assembly/components/navigation/navigati
 export class AsmNavigationService
 {
     autoCollapse: boolean;
+    onAppearanceChanged: BehaviorSubject<any>;
     onModeChanged: BehaviorSubject<any>;
     onOpenedChanged: BehaviorSubject<any>;
     onPositionChanged: BehaviorSubject<any>;
@@ -35,6 +36,7 @@ export class AsmNavigationService
     constructor()
     {
         // Set the defaults
+        this.onAppearanceChanged = new BehaviorSubject(null);
         this.onModeChanged = new BehaviorSubject(null);
         this.onOpenedChanged = new BehaviorSubject(null);
         this.onPositionChanged = new BehaviorSubject(null);

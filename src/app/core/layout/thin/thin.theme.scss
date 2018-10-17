@@ -1,6 +1,5 @@
 @mixin thin-layout-theme($theme) {
 
-    $background: map-get($theme, background);
     $primary: map-get($theme, primary);
 
     thin-layout {
@@ -11,61 +10,6 @@
 
                 .logo {
                     background-color: map-get($primary, default);
-                }
-            }
-
-            .asm-navigation-content {
-
-                asm-navigation-group-item {
-
-                    > .asm-navigation-item {
-
-                        &:before {
-                            border-top-color: rgba(0, 0, 0, 0.12);
-                        }
-                    }
-                }
-            }
-
-            asm-navigation-aside-item,
-            asm-navigation-basic-item,
-            asm-navigation-collapsable-item {
-
-                .asm-navigation-item {
-
-                    &:before {
-                        background-color: map-get($primary, default);
-                    }
-
-                    &.asm-navigation-item-active {
-                        background: transparent;
-
-                        &:before {
-                            box-shadow: 2px 0 18px 0 map-get($primary, default);
-                        }
-
-                        .asm-navigation-item-title,
-                        .asm-navigation-item-icon {
-                            color: map-get($primary, default) !important;
-                        }
-                    }
-                }
-            }
-
-            // DARK BACKGROUND
-            .asm-navigation-dark-background {
-
-                .asm-navigation-content {
-
-                    asm-navigation-group-item {
-
-                        > .asm-navigation-item {
-
-                            &:before {
-                                border-top-color: rgba(255, 255, 255, 0.12);
-                            }
-                        }
-                    }
                 }
             }
         }

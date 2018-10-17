@@ -4,7 +4,8 @@
     <a class="asm-navigation-item"
        *ngIf="item.url"
        [routerLink]="[item.url]"
-       routerLinkActive="asm-navigation-item-active">
+       routerLinkActive="asm-navigation-item-active"
+       [matTooltip]="item.title" matTooltipPosition="right">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </a>
 
