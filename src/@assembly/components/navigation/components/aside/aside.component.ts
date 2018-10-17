@@ -12,6 +12,8 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 })
 export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
 {
+    showTooltips: boolean;
+
     // Active
     @Input()
     active: boolean;
@@ -65,6 +67,9 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
              // Mark for check
              this._changeDetectorRef.markForCheck();
          });
+
+        // Get the showTooltips option
+        this.showTooltips = this._asmNavigationService.showTooltips;
     }
 
     /**

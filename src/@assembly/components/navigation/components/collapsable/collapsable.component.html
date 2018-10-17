@@ -1,7 +1,10 @@
 <ng-container *ngIf="!item.hidden">
 
     <div class="asm-navigation-item"
-         (click)="toggleCollapsable()">
+         (click)="toggleCollapsable()"
+         [matTooltip]="item.title"
+         matTooltipPosition="right"
+         [matTooltipDisabled]="!showTooltips">
 
         <mat-icon *ngIf="item.icon"
                   [fontSet]="item.iconFontSet"

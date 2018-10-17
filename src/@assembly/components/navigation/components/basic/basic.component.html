@@ -5,13 +5,18 @@
        *ngIf="item.url"
        [routerLink]="[item.url]"
        routerLinkActive="asm-navigation-item-active"
-       [matTooltip]="item.title" matTooltipPosition="right">
+       [matTooltip]="item.title"
+       matTooltipPosition="right"
+       [matTooltipDisabled]="!showTooltips">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </a>
 
     <!-- Item without a URL -->
     <div class="asm-navigation-item"
-         *ngIf="!item.url">
+         *ngIf="!item.url"
+         [matTooltip]="item.title"
+         matTooltipPosition="right"
+         [matTooltipDisabled]="!showTooltips">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </div>
 

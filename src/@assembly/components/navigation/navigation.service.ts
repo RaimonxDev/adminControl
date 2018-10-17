@@ -11,6 +11,7 @@ import { AsmNavigationComponent } from '@assembly/components/navigation/navigati
 export class AsmNavigationService
 {
     autoCollapse: boolean;
+    showTooltips: boolean;
     onAppearanceChanged: BehaviorSubject<any>;
     onModeChanged: BehaviorSubject<any>;
     onOpenedChanged: BehaviorSubject<any>;

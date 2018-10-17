@@ -36,6 +36,10 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     @Input()
     name: string;
 
+    // Show tooltips
+    @Input()
+    showTooltips: boolean;
+
     // Private
     private _appearance: 'classic' | 'compact' | 'dense' | 'thin';
     private _asideOverlay: HTMLElement | null;
@@ -352,8 +356,9 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         // Register the navigation component
         this._asmNavigationService.registerComponent(this.name, this);
 
-        // Store the autoCollapse on the service
+        // Store options on the service
         this._asmNavigationService.autoCollapse = this.autoCollapse;
+        this._asmNavigationService.showTooltips = this.showTooltips;
 
         // Load the navigation either from the input or from the service
         this.data = this.data || this._asmNavigationService.getCurrentNavigation();

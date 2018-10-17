@@ -3,7 +3,10 @@
     <ng-container>
 
         <div class="asm-navigation-item"
-             [ngClass]="{'asm-navigation-item-active': active}">
+             [ngClass]="{'asm-navigation-item-active': active}"
+             [matTooltip]="item.title"
+             matTooltipPosition="right"
+             [matTooltipDisabled]="!showTooltips">
 
             <mat-icon *ngIf="item.icon"
                       [fontSet]="item.iconFontSet"
