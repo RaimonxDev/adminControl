@@ -39,10 +39,6 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
         private _router: Router
     )
     {
-        // Set the defaults
-        this.isInitialized = false;
-        this.isMobile = false;
-
         // Set the private defaults
         this._enabled = false;
         this._debouncedUpdate = _.debounce(this.update, 150);
@@ -50,6 +46,10 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
             updateOnRouteChange: false
         };
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.isInitialized = false;
+        this.isMobile = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

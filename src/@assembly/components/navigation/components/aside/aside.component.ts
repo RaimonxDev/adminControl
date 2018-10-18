@@ -40,11 +40,11 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
         private _changeDetectorRef: ChangeDetectorRef
     )
     {
-        // Set the defaults
-        this.skipChildren = false;
-
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.skipChildren = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

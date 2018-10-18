@@ -26,10 +26,6 @@ export class AsmMenuService
      */
     constructor()
     {
-        // Set the defaults
-        this.onItemCollapsed = new Subject();
-        this.onItemExpanded = new Subject();
-
         // Set the private defaults
         this._currentMenuKey = null;
         this._onMenuChanged = new BehaviorSubject(null);
@@ -37,6 +33,11 @@ export class AsmMenuService
         this._onMenuUnregistered = new BehaviorSubject(null);
         this._onMenuItemUpdated = new BehaviorSubject(null);
         this._registry = {};
+
+        // Set the defaults
+        this.onItemCollapsed = new Subject();
+        this.onItemExpanded = new Subject();
+
     }
 
     // -----------------------------------------------------------------------------------------------------

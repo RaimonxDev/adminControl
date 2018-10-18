@@ -63,12 +63,11 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
                 }
             }
         };
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
 
         // Set the current navigation
         this._asmNavigationService.setCurrentNavigation('compactNavigation');
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -96,7 +96,7 @@ $typography: mat-typography-config(
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Define the default theme
+// @ Default theme
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
@@ -105,20 +105,20 @@ $default-accent-palette: mat-palette($asm-navy);
 $default-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object
-$theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
+$default-theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
 
 // Add ".theme-default" class to the body to activate this theme.
 // Class name must start with "theme-" !!!
 body.theme-default {
 
     // Create an Angular Material theme from the $theme map
-    @include angular-material-theme($theme);
+    @include angular-material-theme($default-theme);
 
     // Apply the theme to the Assembly Core
-    @include asm-core-theme($theme);
+    @include asm-core-theme($default-theme);
 
     // Apply the theme to the user components
-    @include components-theme($theme);
+    @include components-theme($default-theme);
 
     // Generate Assembly color classes for primary, accent and warn colors
     $palettes: (
@@ -128,4 +128,27 @@ body.theme-default {
     );
 
     @include asm-color-classes($palettes);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Blue theme
+// -----------------------------------------------------------------------------------------------------
+
+$blue-primary-palette: mat-palette($mat-blue);
+$blue-accent-palette: mat-palette($asm-navy);
+$blue-warn-palette: mat-palette($mat-red);
+$blue-theme: mat-light-theme($blue-primary-palette, $blue-accent-palette, $blue-warn-palette);
+
+body.theme-blue {
+
+    @include angular-material-theme($blue-theme);
+    @include asm-core-theme($blue-theme);
+    @include components-theme($blue-theme);
+
+    $blue-palettes: (
+        primary: $blue-primary-palette,
+        accent: $blue-accent-palette,
+        warn: $blue-warn-palette
+    );
+    @include asm-color-classes($blue-palettes);
 }

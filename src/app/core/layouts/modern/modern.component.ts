@@ -9,19 +9,16 @@ import { AsmMediaWatcherService } from '@assembly/services/media-watcher.service
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
-    selector     : 'classy-layout',
-    templateUrl  : './classy.component.html',
-    styleUrls    : ['./classy.component.scss'],
+    selector     : 'modern-layout',
+    templateUrl  : './modern.component.html',
+    styleUrls    : ['./modern.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ClassyLayoutComponent implements OnInit, OnDestroy
+export class ModernLayoutComponent implements OnInit, OnDestroy
 {
     asmConfig: AsmConfig;
     navigation: AsmNavigation[];
     isScreenSmall: boolean;
-
-    @HostBinding('class.fixed-header')
-    fixedHeader: boolean;
 
     @HostBinding('class.fixed-footer')
     fixedFooter: boolean;
@@ -46,19 +43,19 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     {
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
-            layout: {
+            colorTheme: 'theme-blue',
+            layout    : {
                 options: {
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-black',
-                            isDark    : true
+                            background: 'asm-white',
+                            isDark    : false
                         }
                     },
                     header    : {
-                        background: 'asm-white',
-                        hidden    : false,
-                        fixed     : false
+                        background: 'asm-navy-600',
+                        hidden    : false
                     },
                     footer    : {
                         background: 'asm-navy-900',
@@ -91,9 +88,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
 
                 // Update the asmConfig from the config
                 this.asmConfig = config;
-
-                // Update the fixedHeader property
-                this.fixedHeader = this.asmConfig.layout.options.header.fixed;
 
                 // Update the fixedFooter property
                 this.fixedFooter = this.asmConfig.layout.options.footer.fixed;

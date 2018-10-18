@@ -53,12 +53,12 @@ export class AsmMenuVerticalCollapsableItemComponent implements OnInit, OnDestro
         private _router: Router
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+
         // Set the defaults
         this.isCollapsed = true;
         this.isExpanded = false;
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

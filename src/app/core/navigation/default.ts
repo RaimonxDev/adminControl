@@ -294,7 +294,7 @@ export const defaultNavigation: AsmNavigation[] = [
         subtitle: 'Health tracking',
         type    : 'basic',
         icon    : 'dashboards',
-        link    : 'apps/dashboard'
+        link    : 'apps/dashboard/'
     },
     {
         id      : 'calendar',

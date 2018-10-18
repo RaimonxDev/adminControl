@@ -44,6 +44,9 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         private _asmNavigationService: AsmNavigationService
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
             layout: {
@@ -71,9 +74,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
 
         // Set the current navigation
         this._asmNavigationService.setCurrentNavigation('defaultNavigation');
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

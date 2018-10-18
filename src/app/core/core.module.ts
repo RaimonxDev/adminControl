@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { LayoutsModule } from 'app/core/layouts/layouts.module';
 
 @NgModule({
-    imports     : [
+    imports  : [
         LayoutsModule
     ],
-    exports     : [
+    exports  : [
         LayoutsModule
     ]
 })

@@ -36,14 +36,6 @@ export class AsmNavigationService
      */
     constructor()
     {
-        // Set the defaults
-        this.onAppearanceChanged = new BehaviorSubject(null);
-        this.onModeChanged = new BehaviorSubject(null);
-        this.onOpenedChanged = new BehaviorSubject(null);
-        this.onPositionChanged = new BehaviorSubject(null);
-        this.onCollapsableItemCollapsed = new BehaviorSubject(null);
-        this.onCollapsableItemExpanded = new BehaviorSubject(null);
-
         // Set the private defaults
         this._componentRegistry = new Map<string, AsmNavigationComponent>();
         this._navigationRegistry = new Map<string, any>();
@@ -55,6 +47,15 @@ export class AsmNavigationService
         this._onItemAdded = new BehaviorSubject(null);
         this._onItemUpdated = new BehaviorSubject(null);
         this._onItemDeleted = new BehaviorSubject(null);
+
+        // Set the defaults
+        this.onAppearanceChanged = new BehaviorSubject(null);
+        this.onModeChanged = new BehaviorSubject(null);
+        this.onOpenedChanged = new BehaviorSubject(null);
+        this.onPositionChanged = new BehaviorSubject(null);
+        this.onCollapsableItemCollapsed = new BehaviorSubject(null);
+        this.onCollapsableItemExpanded = new BehaviorSubject(null);
+
     }
 
     // -----------------------------------------------------------------------------------------------------
