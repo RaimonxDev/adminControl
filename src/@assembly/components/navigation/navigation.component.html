@@ -14,6 +14,11 @@
          asmScrollbar
          [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
 
+        <!-- Content Top -->
+        <div class="asm-navigation-content-top">
+            <ng-content select="[asmNavigationContentTop]"></ng-content>
+        </div>
+
         <!-- NAVIGATION ITEMS -->
         <ng-container *ngFor="let item of data">
 
@@ -38,6 +43,11 @@
 
         </ng-container>
         <!-- / NAVIGATION ITEMS -->
+
+        <!-- Content Bottom -->
+        <div class="asm-navigation-content-bottom">
+            <ng-content select="[asmNavigationContentBottom]"></ng-content>
+        </div>
 
     </div>
     <!-- / NAVIGATION CONTENT -->

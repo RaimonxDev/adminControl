@@ -5,7 +5,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AsmSharedModule } from '@assembly/shared.module';
 import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly/components';
 
-import { CompactLayoutComponent } from 'app/core/layout/compact/compact.component';
+import { CompactLayoutComponent } from 'app/core/layouts/compact/compact.component';
 
 @NgModule({
     declarations: [

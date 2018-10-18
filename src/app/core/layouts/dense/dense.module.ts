@@ -5,11 +5,11 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AsmSharedModule } from '@assembly/shared.module';
 import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly/components';
 
-import { ThinLayoutComponent } from 'app/core/layout/thin/thin.component';
+import { DenseLayoutComponent } from 'app/core/layouts/dense/dense.component';
 
 @NgModule({
     declarations: [
-        ThinLayoutComponent
+        DenseLayoutComponent
     ],
     imports     : [
         RouterModule,
@@ -22,9 +22,9 @@ import { ThinLayoutComponent } from 'app/core/layout/thin/thin.component';
         AsmThemeConfiguratorModule
     ],
     exports     : [
-        ThinLayoutComponent
+        DenseLayoutComponent
     ]
 })
-export class ThinLayoutModule
+export class DenseLayoutModule
 {
 }
