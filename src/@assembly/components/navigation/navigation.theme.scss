@@ -293,6 +293,10 @@
                         .asm-navigation-item-icon {
                             color: map-get($primary, default) !important;
                         }
+
+                        .asm-navigation-item-subtitle {
+                            color: map-get($primary, 800) !important;
+                        }
                     }
                 }
             }

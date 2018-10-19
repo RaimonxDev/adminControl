@@ -1,0 +1,43 @@
+@mixin thin-light-layout-theme($theme) {
+
+    $primary: map-get($theme, primary);
+
+    thin-light-layout {
+
+        .navigation {
+
+            .asm-navigation-header {
+
+                .logo {
+                    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.12);
+                }
+            }
+
+            &.asm-navigation-appearance-thin {
+
+                asm-navigation-aside-item,
+                asm-navigation-basic-item,
+                asm-navigation-collapsable-item {
+
+                    .asm-navigation-item {
+
+                        &.asm-navigation-item-active {
+                            box-shadow: none !important;
+                            background: map-get($primary, default);
+
+                            .asm-navigation-item-title,
+                            .asm-navigation-item-subtitle,
+                            .asm-navigation-item-icon {
+                                color: map-get($primary, default-contrast) !important;
+                            }
+
+                            .asm-navigation-item-subtitle {
+                                opacity: 0.7;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
