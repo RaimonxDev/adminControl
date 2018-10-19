@@ -78,6 +78,7 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Import app and page component themes here to enable theming for them
+@import 'core/layouts/basic/basic.theme';
 @import 'core/layouts/classic/classic.theme';
 @import 'core/layouts/classy/classy.theme';
 @import 'core/layouts/compact/compact.theme';
@@ -88,6 +89,7 @@ $typography: mat-typography-config(
 @mixin components-theme($theme) {
 
     // Layouts
+    @include basic-layout-theme($theme);
     @include classic-layout-theme($theme);
     @include classy-layout-theme($theme);
     @include compact-layout-theme($theme);
@@ -151,4 +153,27 @@ body.theme-blue {
         warn: $blue-warn-palette
     );
     @include asm-color-classes($blue-palettes);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Blue-Grey theme
+// -----------------------------------------------------------------------------------------------------
+
+$blue-grey-primary-palette: mat-palette($mat-blue-grey);
+$blue-grey-accent-palette: mat-palette($asm-navy);
+$blue-grey-warn-palette: mat-palette($mat-red);
+$blue-grey-theme: mat-light-theme($blue-grey-primary-palette, $blue-grey-accent-palette, $blue-grey-warn-palette);
+
+body.theme-blue-grey {
+
+    @include angular-material-theme($blue-grey-theme);
+    @include asm-core-theme($blue-grey-theme);
+    @include components-theme($blue-grey-theme);
+
+    $blue-grey-palettes: (
+        primary: $blue-grey-primary-palette,
+        accent: $blue-grey-accent-palette,
+        warn: $blue-grey-warn-palette
+    );
+    @include asm-color-classes($blue-grey-palettes);
 }

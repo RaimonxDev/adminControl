@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { BasicLayoutModule } from 'app/core/layouts/basic/basic.module';
 import { ClassicLayoutModule } from 'app/core/layouts/classic/classic.module';
 import { ClassyLayoutModule } from 'app/core/layouts/classy/classy.module';
 import { CompactLayoutModule } from 'app/core/layouts/compact/compact.module';
@@ -9,6 +10,7 @@ import { ThinLayoutModule } from 'app/core/layouts/thin/thin.module';
 
 @NgModule({
     imports: [
+        BasicLayoutModule,
         ClassicLayoutModule,
         ClassyLayoutModule,
         CompactLayoutModule,
@@ -17,6 +19,7 @@ import { ThinLayoutModule } from 'app/core/layouts/thin/thin.module';
         ThinLayoutModule
     ],
     exports: [
+        BasicLayoutModule,
         ClassicLayoutModule,
         ClassyLayoutModule,
         CompactLayoutModule,

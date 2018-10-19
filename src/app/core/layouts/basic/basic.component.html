@@ -1,0 +1,82 @@
+<!-- LEFT NAVIGATION -->
+<asm-navigation class="navigation"
+                *ngIf="!asmConfig.layout.options.navigation.hidden"
+                name="leftNavigation"
+                [appearance]="'classic'"
+                [mode]="isScreenSmall ? 'over' : 'side'"
+                [opened]="!isScreenSmall">
+
+    <div asmNavigationHeader>
+
+        <div class="logo">
+
+            <div class="logo-image">
+                <img src="assets/images/logo/logo-blue-grey.svg">
+            </div>
+
+            <div class="logo-text">
+                Assembly
+            </div>
+
+        </div>
+
+    </div>
+
+</asm-navigation>
+<!-- / LEFT NAVIGATION -->
+
+<!-- CONTAINER -->
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header"
+         [ngClass]="asmConfig.layout.options.header.background"
+         *ngIf="!asmConfig.layout.options.header.hidden">
+
+        <button mat-icon-button
+                (click)="toggleNavigation('leftNavigation')">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        Header
+
+        <button mat-icon-button
+                (click)="toggleDrawer('rightDrawer')">
+            <mat-icon>settings</mat-icon>
+        </button>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!--
+            *ngIf="true" hack is required here for router-outlet to work correctly. Otherwise,
+            it won't register the changes on the layout and won't update the view.
+        -->
+        <router-outlet *ngIf="true"></router-outlet>
+
+    </div>
+    <!-- / CONTENT -->
+
+    <!-- FOOTER -->
+    <div class="footer"
+         [ngClass]="asmConfig.layout.options.footer.background"
+         *ngIf="!asmConfig.layout.options.footer.hidden">
+
+        Footer
+
+    </div>
+    <!-- / FOOTER -->
+
+</div>
+<!-- / CONTAINER -->
+
+<!-- RIGHT DRAWER -->
+<asm-drawer name="rightDrawer"
+            [position]="'right'"
+            [mode]="'over'">
+    <asm-theme-configurator></asm-theme-configurator>
+</asm-drawer>
+<!-- / RIGHT DRAWER -->

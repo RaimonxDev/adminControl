@@ -1,0 +1,57 @@
+@mixin basic-layout-theme($theme) {
+
+    $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
+    $isDark: map-get($theme, is-dark);
+
+    basic-layout {
+
+        .navigation {
+            box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.12);
+
+            .asm-navigation-header {
+
+                .logo {
+                    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.12);
+                }
+            }
+
+            asm-navigation-subheader-item {
+
+                .asm-navigation-item {
+
+                    .asm-navigation-item-title {
+                        color: map-get($primary, default);
+                    }
+                }
+            }
+        }
+
+        .container {
+
+            @if ($isDark) {
+                background: map-get($background, background);
+            } @else {
+                background: white;
+            }
+
+            .header {
+
+                @if ($isDark) {
+                    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.12);
+                } @else {
+                    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.12);
+                }
+            }
+
+            .footer {
+
+                @if ($isDark) {
+                    box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.12);
+                } @else {
+                    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+    }
+}
