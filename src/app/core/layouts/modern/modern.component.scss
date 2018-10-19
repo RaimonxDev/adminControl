@@ -31,6 +31,13 @@ modern-layout {
                 height: calc(100vh - 176px);
                 min-height: calc(100vh - 176px);
                 max-height: calc(100vh - 176px);
+
+                @include media-breakpoint('lt-md') {
+                    top: 80px;
+                    height: calc(100vh - 80px);
+                    min-height: calc(100vh - 80px);
+                    max-height: calc(100vh - 80px);
+                }
             }
         }
     }
@@ -49,6 +56,37 @@ modern-layout {
             height: calc(100vh - 96px);
             min-height: calc(100vh - 96px);
             max-height: calc(100vh - 96px);
+
+            @include media-breakpoint('lt-md') {
+                top: 0;
+                height: 100vh;
+                min-height: 100vh;
+                max-height: 100vh;
+            }
+
+            // Side mode
+            &.asm-navigation-mode-side {
+
+                // Left positioned
+                &.asm-navigation-position-left {
+                    margin-left: -328px;
+
+                    // Opened
+                    &.asm-navigation-opened {
+                        margin-left: 0;
+                    }
+                }
+
+                // Right positioned
+                &.asm-navigation-position-right {
+                    margin-right: -328px;
+
+                    // Opened
+                    &.asm-navigation-opened {
+                        margin-left: 0;
+                    }
+                }
+            }
         }
 
         > .container {
@@ -56,6 +94,10 @@ modern-layout {
             flex-direction: column;
             flex: 1 1 auto;
             padding-left: 48px;
+
+            @include media-breakpoint('lt-md') {
+                padding-left: 0;
+            }
 
             // Content
             .content {
@@ -77,21 +119,6 @@ modern-layout {
                 box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
                 0 2px 12px 0 rgba(0, 0, 0, 0.05);
                 z-index: 10;
-            }
-        }
-    }
-
-    // Fixed footer
-    &.fixed-footer {
-
-        > .container {
-
-            > .container {
-
-                .footer {
-                    position: sticky;
-                    bottom: 0;
-                }
             }
         }
     }

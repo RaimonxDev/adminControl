@@ -59,8 +59,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
                     },
                     footer    : {
                         background: 'asm-navy-900',
-                        hidden    : false,
-                        fixed     : false
+                        hidden    : false
                     }
                 }
             }
@@ -88,9 +87,6 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
 
                 // Update the asmConfig from the config
                 this.asmConfig = config;
-
-                // Update the fixedFooter property
-                this.fixedFooter = this.asmConfig.layout.options.footer.fixed;
             });
 
         // Subscribe to media changes
