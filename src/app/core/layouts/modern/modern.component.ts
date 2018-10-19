@@ -20,9 +20,6 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
     navigation: AsmNavigation[];
     isScreenSmall: boolean;
 
-    @HostBinding('class.fixed-footer')
-    fixedFooter: boolean;
-
     // Private
     private _unsubscribeAll: Subject<any>;
 
