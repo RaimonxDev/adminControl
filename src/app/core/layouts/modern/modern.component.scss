@@ -103,6 +103,13 @@ modern-layout {
             .content {
                 display: flex;
                 flex: 1 1 auto;
+
+                router-outlet {
+
+                    + * {
+                       padding: 0;
+                    }
+                }
             }
 
             // Footer
