@@ -19,7 +19,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     // Private
     private _overlay: HTMLElement | null;
     private _mode: 'over' | 'side';
-    private _opened: boolean;
+    private _opened: boolean | '';
     private _player: AnimationPlayer;
     private _position: 'left' | 'right';
     private _onModeChanged: Subject<'over' | 'side' | null>;
