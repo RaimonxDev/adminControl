@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 
 import { AsmNavigationItem } from '@assembly/types';
@@ -12,24 +12,24 @@ export class AsmNavigationService
 {
     autoCollapse: boolean;
     showTooltips: boolean;
-    onAppearanceChanged: BehaviorSubject<any>;
-    onModeChanged: BehaviorSubject<any>;
-    onOpenedChanged: BehaviorSubject<any>;
-    onPositionChanged: BehaviorSubject<any>;
-    onCollapsableItemCollapsed: BehaviorSubject<any>;
-    onCollapsableItemExpanded: BehaviorSubject<any>;
+    onAppearanceChanged: Subject<any>;
+    onModeChanged: Subject<any>;
+    onOpenedChanged: Subject<any>;
+    onPositionChanged: Subject<any>;
+    onCollapsableItemCollapsed: Subject<any>;
+    onCollapsableItemExpanded: Subject<any>;
 
     // Private
     private _componentRegistry: Map<string, AsmNavigationComponent>;
     private _navigationRegistry: Map<string, any>;
 
     private _currentNavigationKey: string;
-    private _onChanged: BehaviorSubject<any>;
-    private _onRegistered: BehaviorSubject<any>;
-    private _onUnregistered: BehaviorSubject<any>;
-    private _onItemAdded: BehaviorSubject<any>;
-    private _onItemUpdated: BehaviorSubject<any>;
-    private _onItemDeleted: BehaviorSubject<any>;
+    private _onChanged: Subject<any>;
+    private _onRegistered: Subject<any>;
+    private _onUnregistered: Subject<any>;
+    private _onItemAdded: Subject<any>;
+    private _onItemUpdated: Subject<any>;
+    private _onItemDeleted: Subject<any>;
 
     /**
      * Constructor
@@ -41,20 +41,20 @@ export class AsmNavigationService
         this._navigationRegistry = new Map<string, any>();
 
         this._currentNavigationKey = null;
-        this._onChanged = new BehaviorSubject(null);
-        this._onRegistered = new BehaviorSubject(null);
-        this._onUnregistered = new BehaviorSubject(null);
-        this._onItemAdded = new BehaviorSubject(null);
-        this._onItemUpdated = new BehaviorSubject(null);
-        this._onItemDeleted = new BehaviorSubject(null);
+        this._onChanged = new Subject();
+        this._onRegistered = new Subject();
+        this._onUnregistered = new Subject();
+        this._onItemAdded = new Subject();
+        this._onItemUpdated = new Subject();
+        this._onItemDeleted = new Subject();
 
         // Set the defaults
-        this.onAppearanceChanged = new BehaviorSubject(null);
-        this.onModeChanged = new BehaviorSubject(null);
-        this.onOpenedChanged = new BehaviorSubject(null);
-        this.onPositionChanged = new BehaviorSubject(null);
-        this.onCollapsableItemCollapsed = new BehaviorSubject(null);
-        this.onCollapsableItemExpanded = new BehaviorSubject(null);
+        this.onAppearanceChanged = new Subject();
+        this.onModeChanged = new Subject();
+        this.onOpenedChanged = new Subject();
+        this.onPositionChanged = new Subject();
+        this.onCollapsableItemCollapsed = new Subject();
+        this.onCollapsableItemExpanded = new Subject();
 
     }
 

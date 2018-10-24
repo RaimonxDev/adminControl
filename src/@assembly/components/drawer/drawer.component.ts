@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 
@@ -47,9 +47,9 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._animationsEnabled = false;
-        this._onModeChanged = new BehaviorSubject(null);
-        this._onOpenedChanged = new BehaviorSubject(null);
-        this._onPositionChanged = new BehaviorSubject(null);
+        this._onModeChanged = new Subject();
+        this._onOpenedChanged = new Subject();
+        this._onPositionChanged = new Subject();
         this._overlay = null;
 
         // Set the defaults

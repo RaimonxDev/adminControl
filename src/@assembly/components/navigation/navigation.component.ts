@@ -44,7 +44,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     private _appearance: 'classic' | 'compact' | 'dense' | 'thin';
     private _asideOverlay: HTMLElement | null;
     private _mode: 'over' | 'side';
-    private _opened: boolean;
+    private _opened: boolean | '';
     private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
     private _position: 'left' | 'right';
