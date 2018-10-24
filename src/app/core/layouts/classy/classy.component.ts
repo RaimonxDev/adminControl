@@ -68,6 +68,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                 }
             }
         };
+
         // Set the private defaults
         this._unsubscribeAll = new Subject();
 

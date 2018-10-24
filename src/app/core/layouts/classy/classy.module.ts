@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { AsmSharedModule } from '@assembly/shared.module';
-import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly/components';
+import { AsmDrawerModule, AsmNavigationModule, AsmNotificationsModule, AsmThemeConfiguratorModule } from '@assembly/components';
 
 import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component';
 
@@ -18,6 +18,7 @@ import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component'
 
         AsmSharedModule,
         AsmDrawerModule,
+        AsmNotificationsModule,
         AsmNavigationModule,
         AsmThemeConfiguratorModule
     ],
