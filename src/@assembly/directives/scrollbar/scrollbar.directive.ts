@@ -164,7 +164,7 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      *
      * @private
      */
-    _init(): void
+    private _init(): void
     {
         // Return, if already initialized
         if ( this.isInitialized )
@@ -210,7 +210,7 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      *
      * @private
      */
-    _destroy(): void
+    private _destroy(): void
     {
         if ( !this.isInitialized || !this.ps )
         {
@@ -231,7 +231,7 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      * @private
      */
     @HostListener('window:resize')
-    _updateOnResize(): void
+    private _updateOnResize(): void
     {
         this._debouncedUpdate();
     }
