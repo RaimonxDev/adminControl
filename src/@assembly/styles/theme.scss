@@ -1,5 +1,4 @@
 @import "src/@assembly/components/drawer/drawer.theme";
-@import "src/@assembly/components/menu/menu.theme";
 @import "src/@assembly/components/navigation/navigation.theme";
 
 @mixin asm-core-theme($theme) {
@@ -10,7 +9,6 @@
 
     // Theming for Assembly components
     @include asm-drawer-theme($theme);
-    @include asm-menu-theme($theme);
     @include asm-navigation-theme($theme);
 
     // Theming for 3rd party components
