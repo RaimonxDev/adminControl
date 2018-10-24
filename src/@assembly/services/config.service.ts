@@ -14,7 +14,6 @@ export class AsmConfigService
 {
     // Private
     private _config: AsmConfig;
-    private _configHasChanged: boolean;
     private _defaultConfig: AsmConfig;
     private _onConfigChanged: BehaviorSubject<any>;
     private _onDefaultConfigChanged: BehaviorSubject<any>;
@@ -31,7 +30,6 @@ export class AsmConfigService
     )
     {
         // Set the private defaults
-        this._configHasChanged = false;
         this._onConfigChanged = new BehaviorSubject(null);
         this._onDefaultConfigChanged = new BehaviorSubject(null);
 
@@ -55,9 +53,6 @@ export class AsmConfigService
     {
         // Merge the new config over to the current config
         this._config = _.merge({}, this._config, value);
-
-        // Set the configHasChanged flag
-        this._configHasChanged = true;
 
         // Execute the observable
         this._onConfigChanged.next(this._config);
@@ -132,16 +127,12 @@ export class AsmConfigService
             .pipe(filter(event => event instanceof RoutesRecognized))
             .subscribe(() => {
 
-                // If the current configuration does not equal to the default one
-                // and if it hasn't been changed before the event...
-                if ( !_.isEqual(this._config.layout.options, this._defaultConfig.layout.options) && !this._configHasChanged )
+                // If the current configuration does not equal to the default one...
+                if ( !_.isEqual(this._config.layout.options, this._defaultConfig.layout.options) )
                 {
                     // Reset the layout options from the default config
-                    this.config = _.cloneDeep(this._defaultConfig.layout);
+                    this.config.layout = _.cloneDeep(this._defaultConfig.layout);
                 }
-
-                // Reset the configHasChanged flag
-                this._configHasChanged = false;
             });
     }
 
