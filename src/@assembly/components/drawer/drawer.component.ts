@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 
@@ -22,9 +22,9 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     private _opened: boolean | '';
     private _player: AnimationPlayer;
     private _position: 'left' | 'right';
-    private _onModeChanged: Subject<'over' | 'side' | null>;
-    private _onOpenedChanged: Subject<boolean | '' | null>;
-    private _onPositionChanged: Subject<'left' | 'right' | null>;
+    private _onModeChanged: BehaviorSubject<'over' | 'side' | null>;
+    private _onOpenedChanged: BehaviorSubject<boolean | '' | null>;
+    private _onPositionChanged: BehaviorSubject<'left' | 'right' | null>;
     private _transparentOverlay: boolean | '';
 
     @HostBinding('class.asm-drawer-animations-enabled')
@@ -47,9 +47,9 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._animationsEnabled = false;
-        this._onModeChanged = new Subject();
-        this._onOpenedChanged = new Subject();
-        this._onPositionChanged = new Subject();
+        this._onModeChanged = new BehaviorSubject(null);
+        this._onOpenedChanged = new BehaviorSubject(null);
+        this._onPositionChanged = new BehaviorSubject(null);
         this._overlay = null;
 
         // Set the defaults
