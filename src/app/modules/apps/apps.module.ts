@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 
-const routes = [
+import { AuthGuard } from 'app/core/auth/guards/auth.guard';
+
+// Routes
+const routes: Route[] = [
     {
-        path        : 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
+        // Redirect /apps to /apps/dashboard
+        path      : 'apps',
+        redirectTo: 'apps/dashboard',
+        pathMatch : 'full'
+    },
+    {
+        path    : 'apps',
+        children: [
+            {
+                path        : 'dashboard',
+                loadChildren: './dashboard/dashboard.module#DashboardModule',
+                canActivate : [AuthGuard]
+            }
+        ]
     }
 ];
 
