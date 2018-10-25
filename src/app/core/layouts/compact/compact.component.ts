@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { AsmConfig } from '@assembly/types';
 import { AsmConfigService } from '@assembly/services/config.service';
@@ -40,6 +40,22 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
         private _asmNavigationService: AsmNavigationService
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Set the current navigation
+        this._asmNavigationService.setCurrentNavigation('compactNavigation');
+
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
             layout: {
@@ -63,25 +79,15 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
                 }
             }
         };
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
 
-        // Set the current navigation
-        this._asmNavigationService.setCurrentNavigation('compactNavigation');
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
-            .pipe(takeUntil(this._unsubscribeAll))
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                filter((config) => {
+                    return config !== null;
+                })
+            )
             .subscribe((config: AsmConfig) => {
 
                 // Update the asmConfig from the config

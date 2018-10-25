@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { AsmConfig, AsmNavigation } from '@assembly/types';
 import { AsmConfigService } from '@assembly/services/config.service';
@@ -38,6 +38,22 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
         private _asmNavigationService: AsmNavigationService
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Set the current navigation
+        this._asmNavigationService.setCurrentNavigation('defaultNavigation');
+
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
             colorTheme: 'theme-blue',
@@ -61,25 +77,15 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
                 }
             }
         };
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
 
-        // Set the current navigation
-        this._asmNavigationService.setCurrentNavigation('defaultNavigation');
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
-            .pipe(takeUntil(this._unsubscribeAll))
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                filter((config) => {
+                    return config !== null;
+                })
+            )
             .subscribe((config: AsmConfig) => {
 
                 // Update the asmConfig from the config

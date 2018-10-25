@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { merge, Subject } from 'rxjs';
-import { delay, takeUntil } from 'rxjs/operators';
+import { delay, filter, takeUntil } from 'rxjs/operators';
 
 import { AsmAnimations } from '@assembly/animations';
 import { AsmConfig } from '@assembly/types';
@@ -389,7 +389,12 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
 
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
-            .pipe(takeUntil(this._unsubscribeAll))
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                filter((config) => {
+                    return config !== null;
+                })
+            )
             .subscribe((config: AsmConfig) => {
 
                 // Update the asmConfig from the config

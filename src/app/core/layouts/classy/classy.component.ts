@@ -1,12 +1,13 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { AsmConfig, AsmNavigation } from '@assembly/types';
 import { AsmConfigService } from '@assembly/services/config.service';
 import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 import { AsmMediaWatcherService } from '@assembly/services/media-watcher.service';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'classy-layout',
@@ -36,14 +37,32 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
+     * @param {AuthService} _authService
      */
     constructor(
         private _asmConfigService: AsmConfigService,
         private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
-        private _asmNavigationService: AsmNavigationService
+        private _asmNavigationService: AsmNavigationService,
+        private _authService: AuthService
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Set the current navigation
+        this._asmNavigationService.setCurrentNavigation('defaultNavigation');
+
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
             layout: {
@@ -69,25 +88,14 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
             }
         };
 
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the current navigation
-        this._asmNavigationService.setCurrentNavigation('defaultNavigation');
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
-            .pipe(takeUntil(this._unsubscribeAll))
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                filter((config) => {
+                    return config !== null;
+                })
+            )
             .subscribe((config: AsmConfig) => {
 
                 // Update the asmConfig from the config
@@ -122,6 +130,14 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Logout
+     */
+    logout(): void
+    {
+        this._authService.logout();
+    }
 
     /**
      * Toggle drawer
