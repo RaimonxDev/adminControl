@@ -53,19 +53,4 @@ export class LoginComponent
     {
         this._authService.logout();
     }
-
-    isTokenExpired()
-    {
-        console.log(this._authService.isTokenExpired(this._authService.user.token));
-    }
-
-    decode()
-    {
-        console.log(this._authService.decodeToken(this._authService.user.token));
-    }
-
-    getTokenExpirationDate()
-    {
-        console.log(this._authService.getTokenExpirationDate(this._authService.user.token));
-    }
 }
