@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 
 import { AuthService } from 'app/core/auth/auth.service';
-import { AuthInterceptors } from 'app/core/auth/auth.interceptors';
+import { JWTAuthService } from 'app/core/auth/jwt/jwt.service';
 
-@NgModule()
+@NgModule({
+    providers: [
+        {
+            provide : AuthService,
+            useClass: JWTAuthService
+        }
+    ]
+})
 export class AuthModule
 {
     /**
      * Constructor
      *
      * @param _authService
-     * @param _authInterceptors
      */
     constructor(
-        private _authService: AuthService,
-        private _authInterceptors: AuthInterceptors
+        private _authService: AuthService
     )
     {
 
