@@ -27,28 +27,29 @@ export class AuthGuard implements CanActivate
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Check if there is a user logged in
+     * Allow authenticated users
      *
-     * @param url
+     * @param redirectURL
      * @private
      */
-    private _checkLogin(url): boolean
+    private _checkAuthentication(redirectURL): boolean
     {
-        // Allow, if there is a user logged in
-        if ( this._authService.isLoggedIn() )
+        // Allow, if the user is authenticated
+        if ( this._authService.isAuthenticated() )
         {
             return true;
         }
 
-        // Store the attempted url
-        this._authService.redirectUrl = url;
-
-        // Navigate to the login page
-        this._router.navigate(['pages', 'auth', 'login']);
+        // Navigate to the login page with the redirectURL parameter
+        this._router.navigate(['pages', 'auth', 'login'], {queryParams: {redirectURL: redirectURL}});
 
         // Prevent the access
         return false;
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
 
     /**
      * Can activate
@@ -58,6 +59,6 @@ export class AuthGuard implements CanActivate
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean
     {
-        return this._checkLogin(state.url);
+        return this._checkAuthentication(state.url);
     }
 }

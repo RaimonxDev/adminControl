@@ -27,15 +27,14 @@ export class GuestGuard implements CanActivate
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Check if the user is a guest
+     * Allow guest users
      *
-     * @param url
      * @private
      */
-    private _checkGuest(url): boolean
+    private _checkAuthentication(): boolean
     {
         // Allow, if the user is a guest
-        if ( !this._authService.isLoggedIn() )
+        if ( !this._authService.isAuthenticated() )
         {
             return true;
         }
@@ -47,6 +46,10 @@ export class GuestGuard implements CanActivate
         return false;
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
     /**
      * Can activate
      *
@@ -55,6 +58,6 @@ export class GuestGuard implements CanActivate
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean
     {
-        return this._checkGuest(state.url);
+        return this._checkAuthentication();
     }
 }

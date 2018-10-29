@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject, forkJoin, from, Observable, throwError } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
 
 import { AuthService } from 'app/core/auth/auth.service';
+import { AsmSplashScreenService } from '@assembly/services/splash-screen.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class JWTAuthService implements AuthService
 {
-    redirectUrl: string;
-
     // Private
+    private _authenticated: boolean;
     private _axios: AxiosInstance;
-    private _loggedIn: boolean;
     private _onLoggedIn: BehaviorSubject<any>;
     private _onLoggedOut: BehaviorSubject<any>;
     private _user: any;
@@ -23,9 +22,11 @@ export class JWTAuthService implements AuthService
     /**
      * Constructor
      *
+     * @param {AsmSplashScreenService} _asmSplashScreenService
      * @param {Router} _router
      */
     constructor(
+        private _asmSplashScreenService: AsmSplashScreenService,
         private _router: Router
     )
     {
@@ -34,14 +35,11 @@ export class JWTAuthService implements AuthService
         this._onLoggedIn = new BehaviorSubject(null);
         this._onLoggedOut = new BehaviorSubject(null);
 
-        // Set the defaults
-        this.redirectUrl = '';
-
         // Setup the interceptors
         this._setupInterceptors();
 
         // Initialize
-        this._init();
+        this._checkAuthenticationStatus();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -77,20 +75,26 @@ export class JWTAuthService implements AuthService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Check the authentication status of the current
+     * user and login if the token exits and valid
      *
      * @private
      */
-    private _init(): void
+    private _checkAuthenticationStatus(): void
     {
+        // Set the authenticated flag to false by default
+        this._authenticated = false;
+
         // Check the local storage for the user data
         const user = JSON.parse(localStorage.getItem('user'));
 
-        // If there is a user data and the token didn't expire...
-        if ( user && user.token && this.isTokenExpired(user.token) === false )
+        // If there is a user data and the access token didn't expire...
+        if ( user && user.accessToken && this.isTokenExpired(user.accessToken) === false )
         {
-            // Set the logged in flag to true
-            this._loggedIn = true;
+            // this._asmSplashScreenService.disableAutoHide();
+
+            // Set the authenticated flag to true
+            this._authenticated = true;
 
             // Store the user
             this._user = user;
@@ -101,12 +105,6 @@ export class JWTAuthService implements AuthService
             // Finish the initialization
             return;
         }
-
-        // Set the logged in flag to false
-        this._loggedIn = false;
-
-        // Execute the observable
-        this._onLoggedOut.next(true);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -122,36 +120,51 @@ export class JWTAuthService implements AuthService
     login(username: string, password: string): Observable<any>
     {
         // Return if the user is already logged in
-        if ( this.isLoggedIn() )
+        if ( this.isAuthenticated() )
         {
             return;
         }
 
-        // Try to login
         return from(this._axios.post('api/auth', {
             username,
             password
         })).pipe(
-            map((response) => {
+            switchMap((response) => {
 
-                const user = response.data.user;
+                    // Get the user data
+                    const user = response.data.user;
 
-                // Add the user data to the local storage
-                localStorage.setItem('user', JSON.stringify(user));
+                    // Add the user data to the local storage
+                    localStorage.setItem('user', JSON.stringify(user));
 
-                // Set the logged in flag to true
-                this._loggedIn = true;
+                    // Set the authenticated flag to true
+                    this._authenticated = true;
 
-                // Store the user
-                this._user = user;
+                    // Store the user
+                    this._user = user;
 
-                // Execute the observable
-                this._onLoggedIn.next(user);
+                    // Execute the observable
+                    this._onLoggedIn.next(user);
 
-                // Navigate to the redirect url if there is one
-                this._router.navigateByUrl(this.redirectUrl);
-            }),
-            catchError((error) => throwError(error.response))
+                    // Get initial data from the server
+                    return forkJoin(
+                        this._axios.get('api/navigation/default')
+                    ).pipe(
+                        map((values) => {
+
+                            // Only grab the data from each value
+                            values = values.map((value) => {
+                                return value.data;
+                            });
+
+                            // Return the data
+                            return [user, ...values];
+                        }),
+                        catchError((error) => throwError(error))
+                    );
+                }
+            ),
+            catchError((error) => throwError(error))
         );
     }
 
@@ -161,7 +174,7 @@ export class JWTAuthService implements AuthService
     logout(): void
     {
         // Return if the user is already logged out
-        if ( !this.isLoggedIn() )
+        if ( !this.isAuthenticated() )
         {
             return;
         }
@@ -169,8 +182,8 @@ export class JWTAuthService implements AuthService
         // Remove the user data from the local storage
         localStorage.removeItem('user');
 
-        // Set the logged in flag to false
-        this._loggedIn = false;
+        // Set the authenticated flag to false
+        this._authenticated = false;
 
         // Clear the user
         this._user = null;
@@ -185,15 +198,13 @@ export class JWTAuthService implements AuthService
     /**
      * Check whether the user is logged in or not
      */
-    isLoggedIn(): boolean
+    isAuthenticated(): boolean
     {
-        return this._loggedIn;
+        return this._authenticated;
     }
 
     // -----------------------------------------------------------------------------------------------------
-    //
     // @ JWT Interceptors
-    //
     // -----------------------------------------------------------------------------------------------------
 
     /**
@@ -227,22 +238,22 @@ export class JWTAuthService implements AuthService
         this._axios.interceptors.request.use(
             (config) => {
 
-                // If the user logged in and has a token...
-                if ( this.user && this.user.token )
+                // If the user logged in and has an access token...
+                if ( this.user && this.user.accessToken )
                 {
-                    // Get the token
-                    const token = this._user.token;
+                    // Get the access token
+                    const accessToken = this._user.accessToken;
 
-                    // If the token didn't expire, add the Authorization header.
+                    // If the access token didn't expire, add the Authorization header.
                     //
-                    // We won't add the Authorization header if the token expired.
-                    // This will force server to return "401 Unauthorized" response
-                    // for the protected API routes which our response interceptor
-                    // will catch and remove the token from the local storage while
-                    // logging the user out from the app.
-                    if ( !this.isTokenExpired(token) )
+                    // We won't add the Authorization header if the access token expired.
+                    // This will force server to return "401 Unauthorized" response for
+                    // the protected API routes which our response interceptor will catch
+                    // and remove the access token from the local storage while logging
+                    // the user out from the app.
+                    if ( !this.isTokenExpired(accessToken) )
                     {
-                        config.headers.Authorization = 'Bearer ' + token;
+                        config.headers.Authorization = 'Bearer ' + accessToken;
                     }
                 }
 
@@ -257,11 +268,10 @@ export class JWTAuthService implements AuthService
     }
 
     // -----------------------------------------------------------------------------------------------------
-    //
     // @ JWT HELPERS
-    // JWT methods here are derivations of the Auth0 Angular-JWT helper service methods
-    // https://github.com/auth0/angular2-jwt
     //
+    // Helper methods are derivations of the Auth0 Angular-JWT helper service methods
+    // https://github.com/auth0/angular2-jwt
     // -----------------------------------------------------------------------------------------------------
 
     // -----------------------------------------------------------------------------------------------------

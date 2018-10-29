@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 
 import { AuthService } from 'app/core/auth/auth.service';
-import { JWTAuthService } from 'app/core/auth/jwt/jwt.service';
+import { JWTAuthService } from 'app/core/auth/jwt/jwt-auth.service';
 
 @NgModule({
     providers: [
         {
             provide : AuthService,
-            useClass: JWTAuthService
+            useClass: JWTAuthService // You can easily switch the implementation by changing this
         }
     ]
 })
