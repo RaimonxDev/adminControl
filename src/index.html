@@ -12,16 +12,41 @@
               type="image/x-icon"
               href="favicon.ico">
 
+        <!-- Icons -->
         <link href="assets/icons/material-icons/outline/style.css"
               rel="stylesheet">
         <link href="assets/icons/iconsmind/style.css"
               rel="stylesheet">
 
+        <!-- Font -->
         <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700"
               rel="stylesheet">
+
+        <!-- Splash screen styles -->
+        <style type="text/css">
+            #asm-splash-screen {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #2F3841;
+                z-index: 999999;
+                pointer-events: none;
+            }
+        </style>
+
     </head>
 
     <body class="mat-typography theme-default">
+
+        <!-- Splash screen -->
+        <asm-splash-screen id="asm-splash-screen"></asm-splash-screen>
+
+        <!-- App root -->
         <app-root></app-root>
+
     </body>
+
 </html>
