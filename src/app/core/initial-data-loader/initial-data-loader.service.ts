@@ -75,8 +75,8 @@ export class InitialDataLoaderService
                       notifications     = data[2].data.notifications;
 
                 // Register the navigation data
-                this._asmNavigationService.register('compact', compactNavigation);
-                this._asmNavigationService.register('default', defaultNavigation);
+                this._asmNavigationService.store('compact', compactNavigation);
+                this._asmNavigationService.store('default', defaultNavigation);
 
                 // Return the data
                 return {

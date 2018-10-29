@@ -58,7 +58,7 @@ export class BasicLayoutComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Set the current navigation
-        this._asmNavigationService.setCurrentNavigation('default');
+        this._asmNavigationService.setCurrent('default');
 
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {

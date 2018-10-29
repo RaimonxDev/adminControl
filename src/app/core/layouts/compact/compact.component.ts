@@ -54,7 +54,7 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Set the current navigation
-        this._asmNavigationService.setCurrentNavigation('compactNavigation');
+        this._asmNavigationService.setCurrent('compactNavigation');
 
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {

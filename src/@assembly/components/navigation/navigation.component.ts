@@ -361,15 +361,15 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         this._asmNavigationService.showTooltips = this.showTooltips;
 
         // Load the navigation either from the input or from the service
-        this.data = this.data || this._asmNavigationService.getCurrentNavigation();
+        this.data = this.data || this._asmNavigationService.getCurrent();
 
         // Subscribe to the current navigation changes
-        this._asmNavigationService.onChanged
+        this._asmNavigationService.onCurrentNavigationChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
 
                 // Load the navigation
-                this.data = this._asmNavigationService.getCurrentNavigation();
+                this.data = this._asmNavigationService.getCurrent();
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();

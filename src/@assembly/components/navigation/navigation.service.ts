@@ -21,12 +21,12 @@ export class AsmNavigationService
 
     // Private
     private _componentRegistry: Map<string, AsmNavigationComponent>;
-    private _navigationRegistry: Map<string, any>;
+    private _navigationStore: Map<string, any>;
 
     private _currentNavigationKey: string;
-    private _onChanged: BehaviorSubject<any>;
-    private _onRegistered: BehaviorSubject<any>;
-    private _onUnregistered: BehaviorSubject<any>;
+    private _onCurrentNavigationChanged: BehaviorSubject<any>;
+    private _onStored: BehaviorSubject<any>;
+    private _onRemoved: BehaviorSubject<any>;
     private _onItemAdded: BehaviorSubject<any>;
     private _onItemUpdated: BehaviorSubject<any>;
     private _onItemDeleted: BehaviorSubject<any>;
@@ -38,12 +38,12 @@ export class AsmNavigationService
     {
         // Set the private defaults
         this._componentRegistry = new Map<string, AsmNavigationComponent>();
-        this._navigationRegistry = new Map<string, any>();
+        this._navigationStore = new Map<string, any>();
 
         this._currentNavigationKey = null;
-        this._onChanged = new BehaviorSubject(null);
-        this._onRegistered = new BehaviorSubject(null);
-        this._onUnregistered = new BehaviorSubject(null);
+        this._onCurrentNavigationChanged = new BehaviorSubject(null);
+        this._onStored = new BehaviorSubject(null);
+        this._onRemoved = new BehaviorSubject(null);
         this._onItemAdded = new BehaviorSubject(null);
         this._onItemUpdated = new BehaviorSubject(null);
         this._onItemDeleted = new BehaviorSubject(null);
@@ -63,33 +63,33 @@ export class AsmNavigationService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for onRegistered
+     * Getter for onStored
      *
      * @returns {Observable<any>}
      */
-    get onRegistered(): Observable<any>
+    get onStored(): Observable<any>
     {
-        return this._onRegistered.asObservable();
+        return this._onStored.asObservable();
     }
 
     /**
-     * Getter for onUnregistered
+     * Getter for onRemoved
      *
      * @returns {Observable<any>}
      */
-    get onUnregistered(): Observable<any>
+    get onRemoved(): Observable<any>
     {
-        return this._onUnregistered.asObservable();
+        return this._onRemoved.asObservable();
     }
 
     /**
-     * Getter for onChanged
+     * Getter for onCurrentNavigationChanged
      *
      * @returns {Observable<any>}
      */
-    get onChanged(): Observable<any>
+    get onCurrentNavigationChanged(): Observable<any>
     {
-        return this._onChanged.asObservable();
+        return this._onCurrentNavigationChanged.asObservable();
     }
 
     /**
@@ -152,50 +152,50 @@ export class AsmNavigationService
     }
 
     /**
-     * Register the given navigation with the given key
+     * Store the given navigation with the given key
      *
      * @param key
      * @param navigation
      */
-    register(key, navigation): void
+    store(key, navigation): void
     {
         // Check if the key is already being used
-        if ( this._navigationRegistry[key] )
+        if ( this._navigationStore[key] )
         {
-            console.error(`Navigation with the key '${key}' already exists. Either unregister it first or use a unique key.`);
+            console.error(`Navigation with the key '${key}' already exists. Either remove it first or use a unique key.`);
 
             return;
         }
 
-        // Add to the registry
-        this._navigationRegistry.set(key, navigation);
+        // Add to the store
+        this._navigationStore.set(key, navigation);
 
         // Execute the observable
-        this._onRegistered.next([key, navigation]);
+        this._onStored.next([key, navigation]);
     }
 
     /**
-     * Unregister the navigation from the registry
+     * Remove the navigation from the storage
      *
      * @param key
      */
-    unregister(key): void
+    remove(key): void
     {
         // Check if the navigation exists
-        if ( !this._navigationRegistry.has(key) )
+        if ( !this._navigationStore.has(key) )
         {
-            console.warn(`Navigation with the key '${key}' does not exist in the registry.`);
+            console.warn(`Navigation with the key '${key}' does not exist in the store.`);
         }
 
-        // Delete from the registry
-        this._navigationRegistry.delete(key);
+        // Remove from the storage
+        this._navigationStore.delete(key);
 
         // Execute the observable
-        this._onUnregistered.next(key);
+        this._onRemoved.next(key);
     }
 
     /**
-     * Get navigation from registry by key
+     * Get navigation from storage by key
      *
      * @param key
      * @returns {any}
@@ -203,15 +203,15 @@ export class AsmNavigationService
     getNavigation(key): any
     {
         // Check if the navigation exists
-        if ( !this._navigationRegistry.has(key) )
+        if ( !this._navigationStore.has(key) )
         {
-            console.warn(`Navigation with the key '${key}' does not exist in the registry.`);
+            console.warn(`Navigation with the key '${key}' does not exist in the store.`);
 
             return;
         }
 
         // Return the navigation
-        return this._navigationRegistry.get(key);
+        return this._navigationStore.get(key);
     }
 
     /**
@@ -221,7 +221,7 @@ export class AsmNavigationService
      * @param flatNavigation
      * @returns {any[]}
      */
-    getFlatNavigation(navigation, flatNavigation: AsmNavigationItem[] = []): any
+    getFlat(navigation, flatNavigation: AsmNavigationItem[] = []): any
     {
         for ( const item of navigation )
         {
@@ -236,7 +236,7 @@ export class AsmNavigationService
             {
                 if ( item.children )
                 {
-                    this.getFlatNavigation(item.children, flatNavigation);
+                    this.getFlat(item.children, flatNavigation);
                 }
             }
         }
@@ -249,7 +249,7 @@ export class AsmNavigationService
      *
      * @returns {any}
      */
-    getCurrentNavigation(): any
+    getCurrent(): any
     {
         if ( !this._currentNavigationKey )
         {
@@ -266,12 +266,12 @@ export class AsmNavigationService
      *
      * @param key
      */
-    setCurrentNavigation(key): void
+    setCurrent(key): void
     {
         // Check if the navigation exists
-        if ( !this._navigationRegistry.has(key) )
+        if ( !this._navigationStore.has(key) )
         {
-            console.warn(`The navigation with the key '${key}' does not exist in the registry.`);
+            console.warn(`The navigation with the key '${key}' does not exist in the store.`);
 
             return;
         }
@@ -280,7 +280,7 @@ export class AsmNavigationService
         this._currentNavigationKey = key;
 
         // Execute the observable
-        this._onChanged.next(key);
+        this._onCurrentNavigationChanged.next(key);
     }
 
     /**
@@ -294,7 +294,7 @@ export class AsmNavigationService
     {
         if ( !navigation )
         {
-            navigation = this.getCurrentNavigation();
+            navigation = this.getCurrent();
         }
 
         for ( const item of navigation )
@@ -329,7 +329,7 @@ export class AsmNavigationService
     {
         if ( !navigation )
         {
-            navigation = this.getCurrentNavigation();
+            navigation = this.getCurrent();
             parent = navigation;
         }
 
@@ -363,7 +363,7 @@ export class AsmNavigationService
     addItem(item, id): void
     {
         // Get the current navigation
-        const navigation: any[] = this.getCurrentNavigation();
+        const navigation: any[] = this.getCurrent();
 
         // Add to the end of the navigation
         if ( id === 'end' )
