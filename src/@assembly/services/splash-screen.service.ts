@@ -49,27 +49,23 @@ export class AsmSplashScreenService
         // Get the splash screen element
         this._splashScreen = this._document.body.querySelector('#asm-splash-screen');
 
-        // If the splash screen element exists...
-        if ( this._splashScreen )
-        {
-            // Hide it on the first NavigationEnd event
-            this._router.events
-                .pipe(
-                    filter((event => event instanceof NavigationEnd)),
-                    take(1)
-                )
-                .subscribe(() => {
+        // Hide it on the first NavigationEnd event
+        this._router.events
+            .pipe(
+                filter((event => event instanceof NavigationEnd)),
+                take(1)
+            )
+            .subscribe(() => {
 
-                    // Return, if the auto hide is disabled
-                    if ( this._disableAutoHide )
-                    {
-                        return;
-                    }
+                // Return, if the auto hide is disabled
+                if ( this._disableAutoHide )
+                {
+                    return;
+                }
 
-                    // Hide the splash screen
-                    this.hide();
-                });
-        }
+                // Hide the splash screen
+                this.hide();
+            });
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -91,6 +87,13 @@ export class AsmSplashScreenService
      */
     show(): void
     {
+        // Return, if there is no splash screen element
+        if ( !this._splashScreen )
+        {
+            return;
+        }
+        
+        // Create the animation using animation builder
         this._player =
             this._animationBuilder
                 .build([
@@ -110,6 +113,13 @@ export class AsmSplashScreenService
      */
     hide(): void
     {
+        // Return, if there is no splash screen element
+        if ( !this._splashScreen )
+        {
+            return;
+        }
+
+        // Create the animation using animation builder
         this._player =
             this._animationBuilder
                 .build([
