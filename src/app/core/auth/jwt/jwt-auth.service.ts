@@ -6,7 +6,7 @@ import axios, { AxiosInstance } from 'axios';
 
 import { AsmSplashScreenService } from '@assembly/services/splash-screen.service';
 import { AuthService } from 'app/core/auth/auth.service';
-import { InitialDataLoaderService } from 'app/core/initial-data-loader/initial-data-loader.service';
+import { PopulateService } from 'app/core/populate/populate.service';
 
 @Injectable({
     providedIn: 'root'
@@ -24,12 +24,12 @@ export class JWTAuthService implements AuthService
      * Constructor
      *
      * @param {AsmSplashScreenService} _asmSplashScreenService
-     * @param {InitialDataLoaderService} _initialDataLoader
+     * @param {PopulateService} _populateService
      * @param {Router} _router
      */
     constructor(
         private _asmSplashScreenService: AsmSplashScreenService,
-        private _initialDataLoader: InitialDataLoaderService,
+        private _populateService: PopulateService,
         private _router: Router
     )
     {
@@ -106,8 +106,8 @@ export class JWTAuthService implements AuthService
             // Execute the observable
             this._onLoggedIn.next(user);
 
-            // Load the initial data from the server
-            this._initialDataLoader.load().subscribe(() => {
+            // Populate the initial data
+            this._populateService.load().subscribe(() => {
 
                 // Hide the splash screen
                 this._asmSplashScreenService.hide();
@@ -157,8 +157,8 @@ export class JWTAuthService implements AuthService
                 // Execute the observable
                 this._onLoggedIn.next(user);
 
-                // Load the initial data from the server
-                return this._initialDataLoader.load();
+                // Populate the initial data
+                return this._populateService.load();
             }),
             catchError((error) => throwError(error))
         );

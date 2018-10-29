@@ -9,7 +9,7 @@ import { AsmNotificationsService } from '@assembly/components/notifications/noti
 @Injectable({
     providedIn: 'root'
 })
-export class InitialDataLoaderService
+export class PopulateService
 {
     private _axios: AxiosInstance;
 
@@ -68,7 +68,6 @@ export class InitialDataLoaderService
             this._loadDefaultNavigationData(),
             this._loadNotificationData()
         ).pipe(
-            delay(2000),
             map((data) => {
                 const compactNavigation = data[0].data.navigation,
                       defaultNavigation = data[1].data.navigation,
