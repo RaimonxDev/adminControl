@@ -159,19 +159,19 @@ export class AsmNavigationService
      */
     store(key, navigation): void
     {
-        // Check if the key is already being used
-        if ( this._navigationStore[key] )
-        {
-            console.error(`Navigation with the key '${key}' already exists. Either remove it first or use a unique key.`);
-
-            return;
-        }
-
         // Add to the store
         this._navigationStore.set(key, navigation);
 
         // Execute the observable
         this._onStored.next([key, navigation]);
+
+        // Trigger the onCurrentChanged in case the current navigation
+        // was set before storing the actual navigation data
+        if ( this._currentNavigationKey === key )
+        {
+            // Execute the observable
+            this._onCurrentChanged.next(key);
+        }
     }
 
     /**
@@ -202,15 +202,6 @@ export class AsmNavigationService
      */
     getNavigation(key): any
     {
-        // Check if the navigation exists
-        if ( !this._navigationStore.has(key) )
-        {
-            console.warn(`Navigation with the key '${key}' does not exist in the store.`);
-
-            return;
-        }
-
-        // Return the navigation
         return this._navigationStore.get(key);
     }
 
@@ -251,13 +242,6 @@ export class AsmNavigationService
      */
     getCurrent(): any
     {
-        if ( !this._currentNavigationKey )
-        {
-            console.warn(`Current navigation does not exits! Did you set the current navigation via 'setCurrentNavigation'?`);
-
-            return;
-        }
-
         return this.getNavigation(this._currentNavigationKey);
     }
 
@@ -268,14 +252,6 @@ export class AsmNavigationService
      */
     setCurrent(key): void
     {
-        // Check if the navigation exists
-        if ( !this._navigationStore.has(key) )
-        {
-            console.warn(`The navigation with the key '${key}' does not exist in the store.`);
-
-            return;
-        }
-
         // Set the current navigation key
         this._currentNavigationKey = key;
 
