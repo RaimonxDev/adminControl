@@ -7,13 +7,7 @@ import MockAdapter from 'axios-mock-adapter';
 export class MockAuthData
 {
     // Data
-    private _user: {
-        id: string;
-        username: string;
-        name: string;
-        email: string;
-        accessToken: string
-    } = {
+    private _user = {
         id         : '1',
         username   : 'watkins',
         name       : 'Andrew Watkins',

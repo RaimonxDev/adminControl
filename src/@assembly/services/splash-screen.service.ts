@@ -46,8 +46,6 @@ export class AsmSplashScreenService
      */
     private _init(): void
     {
-        console.log('...splash screen service init...');
-
         // Get the splash screen element
         this._splashScreen = this._document.body.querySelector('#asm-splash-screen');
 
@@ -62,17 +60,11 @@ export class AsmSplashScreenService
                 )
                 .subscribe(() => {
 
-                    console.log('...splash screen navigation end...');
-
                     // Return, if the auto hide is disabled
                     if ( this._disableAutoHide )
                     {
-                        console.log('...splash screen auto hide disabled...');
-
                         return;
                     }
-
-                    console.log('...hide splash screen...');
 
                     // Hide the splash screen
                     this.hide();

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, forkJoin, from, Observable, throwError } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
 
-import { AuthService } from 'app/core/auth/auth.service';
 import { AsmSplashScreenService } from '@assembly/services/splash-screen.service';
+import { AuthService } from 'app/core/auth/auth.service';
+import { InitialDataLoaderService } from 'app/core/initial-data-loader/initial-data-loader.service';
 
 @Injectable({
     providedIn: 'root'
@@ -23,10 +24,12 @@ export class JWTAuthService implements AuthService
      * Constructor
      *
      * @param {AsmSplashScreenService} _asmSplashScreenService
+     * @param {InitialDataLoaderService} _initialDataLoader
      * @param {Router} _router
      */
     constructor(
         private _asmSplashScreenService: AsmSplashScreenService,
+        private _initialDataLoader: InitialDataLoaderService,
         private _router: Router
     )
     {
@@ -91,7 +94,8 @@ export class JWTAuthService implements AuthService
         // If there is a user data and the access token didn't expire...
         if ( user && user.accessToken && this.isTokenExpired(user.accessToken) === false )
         {
-            // this._asmSplashScreenService.disableAutoHide();
+            // Disable the splash screen's auto hide
+            this._asmSplashScreenService.disableAutoHide();
 
             // Set the authenticated flag to true
             this._authenticated = true;
@@ -101,6 +105,13 @@ export class JWTAuthService implements AuthService
 
             // Execute the observable
             this._onLoggedIn.next(user);
+
+            // Load the initial data from the server
+            this._initialDataLoader.load().subscribe(() => {
+
+                // Hide the splash screen
+                this._asmSplashScreenService.hide();
+            });
 
             // Finish the initialization
             return;
@@ -131,39 +142,24 @@ export class JWTAuthService implements AuthService
         })).pipe(
             switchMap((response) => {
 
-                    // Get the user data
-                    const user = response.data.user;
+                // Get the user data
+                const user = response.data.user;
 
-                    // Add the user data to the local storage
-                    localStorage.setItem('user', JSON.stringify(user));
+                // Add the user data to the local storage
+                localStorage.setItem('user', JSON.stringify(user));
 
-                    // Set the authenticated flag to true
-                    this._authenticated = true;
+                // Set the authenticated flag to true
+                this._authenticated = true;
 
-                    // Store the user
-                    this._user = user;
+                // Store the user
+                this._user = user;
 
-                    // Execute the observable
-                    this._onLoggedIn.next(user);
+                // Execute the observable
+                this._onLoggedIn.next(user);
 
-                    // Get initial data from the server
-                    return forkJoin(
-                        this._axios.get('api/navigation/default')
-                    ).pipe(
-                        map((values) => {
-
-                            // Only grab the data from each value
-                            values = values.map((value) => {
-                                return value.data;
-                            });
-
-                            // Return the data
-                            return [user, ...values];
-                        }),
-                        catchError((error) => throwError(error))
-                    );
-                }
-            ),
+                // Load the initial data from the server
+                return this._initialDataLoader.load();
+            }),
             catchError((error) => throwError(error))
         );
     }

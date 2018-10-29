@@ -2160,8 +2160,6 @@ export class MockNavigationData
         // GET - Default navigation
         mock.onGet('/api/navigation/default')
             .reply(mockWithAuth((config) => {
-                console.log(this._defaultNavigation);
-
                 return [
                     200,
                     {
