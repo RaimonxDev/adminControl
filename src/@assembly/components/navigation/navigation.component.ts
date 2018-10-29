@@ -364,7 +364,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         this.data = this.data || this._asmNavigationService.getCurrent();
 
         // Subscribe to the current navigation changes
-        this._asmNavigationService.onCurrentNavigationChanged
+        this._asmNavigationService.onCurrentChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
 

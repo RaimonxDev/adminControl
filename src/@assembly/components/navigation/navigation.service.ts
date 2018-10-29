@@ -24,7 +24,7 @@ export class AsmNavigationService
     private _navigationStore: Map<string, any>;
 
     private _currentNavigationKey: string;
-    private _onCurrentNavigationChanged: BehaviorSubject<any>;
+    private _onCurrentChanged: BehaviorSubject<any>;
     private _onStored: BehaviorSubject<any>;
     private _onRemoved: BehaviorSubject<any>;
     private _onItemAdded: BehaviorSubject<any>;
@@ -41,7 +41,7 @@ export class AsmNavigationService
         this._navigationStore = new Map<string, any>();
 
         this._currentNavigationKey = null;
-        this._onCurrentNavigationChanged = new BehaviorSubject(null);
+        this._onCurrentChanged = new BehaviorSubject(null);
         this._onStored = new BehaviorSubject(null);
         this._onRemoved = new BehaviorSubject(null);
         this._onItemAdded = new BehaviorSubject(null);
@@ -83,13 +83,13 @@ export class AsmNavigationService
     }
 
     /**
-     * Getter for onCurrentNavigationChanged
+     * Getter for onCurrentChanged
      *
      * @returns {Observable<any>}
      */
-    get onCurrentNavigationChanged(): Observable<any>
+    get onCurrentChanged(): Observable<any>
     {
-        return this._onCurrentNavigationChanged.asObservable();
+        return this._onCurrentChanged.asObservable();
     }
 
     /**
@@ -280,7 +280,7 @@ export class AsmNavigationService
         this._currentNavigationKey = key;
 
         // Execute the observable
-        this._onCurrentNavigationChanged.next(key);
+        this._onCurrentChanged.next(key);
     }
 
     /**
