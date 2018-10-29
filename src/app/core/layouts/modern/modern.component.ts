@@ -52,7 +52,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Set the current navigation
-        this._asmNavigationService.setCurrentNavigation('defaultNavigation');
+        this._asmNavigationService.setCurrentNavigation('default');
 
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
