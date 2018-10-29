@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { AsmCoreModule } from '@assembly/core.module';
 import { AsmSharedModule } from '@assembly/shared.module';
 
 import { CoreModule } from 'app/core/core.module';
@@ -20,9 +19,6 @@ import { PagesModule } from 'app/modules/pages/pages.module';
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot([]),
-
-        // Assembly core module
-        AsmCoreModule,
 
         // Assembly shared module
         AsmSharedModule,
