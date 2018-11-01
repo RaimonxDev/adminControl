@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { forkJoin, from, Observable } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
 
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
