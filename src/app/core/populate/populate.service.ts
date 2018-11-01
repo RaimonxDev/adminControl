@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
 
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
-import { AsmNotificationsService } from '@assembly/components/notifications/notifications.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,10 +14,11 @@ export class PopulateService
 
     /**
      * Constructor
+     *
+     * @param {AsmNavigationService} _asmNavigationService
      */
     constructor(
-        private _asmNavigationService: AsmNavigationService,
-        private _asmNotificationsService: AsmNotificationsService
+        private _asmNavigationService: AsmNavigationService
     )
     {
         // Set the private defaults
