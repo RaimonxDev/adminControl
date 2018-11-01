@@ -3,8 +3,6 @@ import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material';
 
 import { DashboardComponent } from 'app/modules/apps/dashboard/dashboard.component';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 const routes: Route[] = [
     {
@@ -18,8 +16,6 @@ const routes: Route[] = [
         DashboardComponent
     ],
     imports     : [
-        FormsModule,
-        CommonModule,
         RouterModule.forChild(routes),
 
         MatButtonModule
