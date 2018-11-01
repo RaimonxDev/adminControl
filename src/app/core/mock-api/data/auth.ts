@@ -34,7 +34,7 @@ export class MockAuthData
     init(mock: MockAdapter): void
     {
         // Login
-        mock.onPost('/api/auth')
+        mock.onPost('api/auth')
             .reply((config) => {
 
                 // Parse the data

@@ -2158,7 +2158,7 @@ export class MockNavigationData
     init(mock: MockAdapter): void
     {
         // GET - Default navigation
-        mock.onGet('/api/navigation/default')
+        mock.onGet('api/navigation/default')
             .reply(mockWithAuth((config) => {
                 return [
                     200,
@@ -2169,7 +2169,7 @@ export class MockNavigationData
             }));
 
         // GET - Compact navigation
-        mock.onGet('/api/navigation/compact')
+        mock.onGet('api/navigation/compact')
             .reply(mockWithAuth((config) => {
                 return [
                     200,
