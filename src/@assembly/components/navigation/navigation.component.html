@@ -20,7 +20,7 @@
         </div>
 
         <!-- NAVIGATION ITEMS -->
-        <ng-container *ngFor="let item of data">
+        <ng-container *ngFor="let item of data; trackBy: trackById">
 
             <!-- Aside -->
             <asm-navigation-aside-item *ngIf="item.type === 'aside'"
@@ -72,7 +72,7 @@
      [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
 
     <!-- NAVIGATION ITEMS -->
-    <ng-container *ngFor="let item of data">
+    <ng-container *ngFor="let item of data; trackBy: trackById">
 
         <!-- Aside -->
         <asm-navigation-aside-item *ngIf="item.type === 'aside' && item.id === activeAsideItemId"

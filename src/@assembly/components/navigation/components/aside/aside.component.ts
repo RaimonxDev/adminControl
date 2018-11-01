@@ -81,4 +81,19 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param item
+     * @param index
+     */
+    trackById(item, index): number
+    {
+        return index;
+    }
 }

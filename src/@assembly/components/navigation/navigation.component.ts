@@ -700,4 +700,15 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
             this.openAside(navigationId);
         }
     }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param item
+     * @param index
+     */
+    trackById(item, index): number
+    {
+        return index;
+    }
 }

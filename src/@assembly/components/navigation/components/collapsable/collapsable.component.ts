@@ -320,4 +320,15 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
             this.collapse();
         }
     }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param item
+     * @param index
+     */
+    trackById(item, index): number
+    {
+        return index;
+    }
 }
