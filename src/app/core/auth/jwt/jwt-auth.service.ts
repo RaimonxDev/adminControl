@@ -245,7 +245,7 @@ export class JWTAuthService implements AuthService
                     // We won't add the Authorization header if the access token expired.
                     // This will force server to return "401 Unauthorized" response for
                     // the protected API routes which our response interceptor will catch
-                    // and remove the access token from the local storage while logging
+                    // and delete the access token from the local storage while logging
                     // the user out from the app.
                     if ( !this.isTokenExpired(accessToken) )
                     {

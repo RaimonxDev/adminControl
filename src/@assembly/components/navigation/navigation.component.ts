@@ -407,8 +407,8 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
      */
     ngOnDestroy(): void
     {
-        // Unregister the navigation component from the registry
-        this._asmNavigationService.unregisterComponent(this.name);
+        // Deregister the navigation component from the registry
+        this._asmNavigationService.deregisterComponent(this.name);
     }
 
     // -----------------------------------------------------------------------------------------------------

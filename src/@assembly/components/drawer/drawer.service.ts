@@ -35,11 +35,11 @@ export class AsmDrawerService
     }
 
     /**
-     * Unregister drawer
+     * Deregister drawer
      *
      * @param key
      */
-    unregister(key): void
+    deregister(key): void
     {
         this._registry.delete(key);
     }

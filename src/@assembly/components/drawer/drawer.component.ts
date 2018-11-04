@@ -276,8 +276,8 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
      */
     ngOnDestroy(): void
     {
-        // Unregister the drawer from the registry
-        this._asmDrawerService.unregister(this.name);
+        // Deregister the drawer from the registry
+        this._asmDrawerService.deregister(this.name);
     }
 
     // -----------------------------------------------------------------------------------------------------

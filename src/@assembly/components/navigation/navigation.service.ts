@@ -26,7 +26,7 @@ export class AsmNavigationService
     private _currentNavigationKey: string;
     private _onCurrentChanged: BehaviorSubject<any>;
     private _onStored: BehaviorSubject<any>;
-    private _onRemoved: BehaviorSubject<any>;
+    private _onDeleted: BehaviorSubject<any>;
     private _onItemAdded: BehaviorSubject<any>;
     private _onItemUpdated: BehaviorSubject<any>;
     private _onItemDeleted: BehaviorSubject<any>;
@@ -43,7 +43,7 @@ export class AsmNavigationService
         this._currentNavigationKey = null;
         this._onCurrentChanged = new BehaviorSubject(null);
         this._onStored = new BehaviorSubject(null);
-        this._onRemoved = new BehaviorSubject(null);
+        this._onDeleted = new BehaviorSubject(null);
         this._onItemAdded = new BehaviorSubject(null);
         this._onItemUpdated = new BehaviorSubject(null);
         this._onItemDeleted = new BehaviorSubject(null);
@@ -73,13 +73,13 @@ export class AsmNavigationService
     }
 
     /**
-     * Getter for onRemoved
+     * Getter for onDeleted
      *
      * @returns {Observable<any>}
      */
-    get onRemoved(): Observable<any>
+    get onDeleted(): Observable<any>
     {
-        return this._onRemoved.asObservable();
+        return this._onDeleted.asObservable();
     }
 
     /**
@@ -132,11 +132,11 @@ export class AsmNavigationService
     }
 
     /**
-     * Unregister navigation component
+     * Deregister navigation component
      *
      * @param key
      */
-    unregisterComponent(key): void
+    deregisterComponent(key): void
     {
         this._componentRegistry.delete(key);
     }
@@ -175,11 +175,11 @@ export class AsmNavigationService
     }
 
     /**
-     * Remove the navigation from the storage
+     * Delete the navigation from the storage
      *
      * @param key
      */
-    remove(key): void
+    delete(key): void
     {
         // Check if the navigation exists
         if ( !this._navigationStore.has(key) )
@@ -187,11 +187,11 @@ export class AsmNavigationService
             console.warn(`Navigation with the key '${key}' does not exist in the store.`);
         }
 
-        // Remove from the storage
+        // Delete from the storage
         this._navigationStore.delete(key);
 
         // Execute the observable
-        this._onRemoved.next(key);
+        this._onDeleted.next(key);
     }
 
     /**

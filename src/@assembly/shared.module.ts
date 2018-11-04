@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AsmMatSidenavDirective, AsmScrollbarDirective } from '@assembly/directives';
+import { AsmTimeAgoPipe } from '@assembly/pipes/time-ago.pipe';
 
 @NgModule({
     declarations: [
         AsmScrollbarDirective,
-        AsmMatSidenavDirective
+        AsmMatSidenavDirective,
+        AsmTimeAgoPipe
     ],
     imports     : [
         CommonModule,
@@ -18,7 +20,8 @@ import { AsmMatSidenavDirective, AsmScrollbarDirective } from '@assembly/directi
         FormsModule,
 
         AsmScrollbarDirective,
-        AsmMatSidenavDirective
+        AsmMatSidenavDirective,
+        AsmTimeAgoPipe
     ]
 })
 export class AsmSharedModule
