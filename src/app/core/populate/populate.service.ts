@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
 
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
-import { NotificationsService } from 'app/core/components/notifications/notifications.service';
 
 @Injectable({
     providedIn: 'root'
@@ -17,11 +16,9 @@ export class PopulateService
      * Constructor
      *
      * @param {AsmNavigationService} _asmNavigationService
-     * @param {NotificationsService} _notificationsService
      */
     constructor(
-        private _asmNavigationService: AsmNavigationService,
-        private _notificationsService: NotificationsService
+        private _asmNavigationService: AsmNavigationService
     )
     {
         // Set the private defaults
@@ -48,14 +45,6 @@ export class PopulateService
         return from(this._axios.get('api/navigation/default'));
     }
 
-    /**
-     * Load notifications count
-     */
-    private _loadNotificationsCount(): Observable<any>
-    {
-        return from(this._axios.get('api/notifications/count'));
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -68,26 +57,20 @@ export class PopulateService
     {
         return forkJoin(
             this._loadCompactNavigation(),
-            this._loadDefaultNavigation(),
-            this._loadNotificationsCount()
+            this._loadDefaultNavigation()
         ).pipe(
             map((data) => {
-                const compactNavigation  = data[0].data.navigation,
-                      defaultNavigation  = data[1].data.navigation,
-                      notificationsCount = data[2].data.notificationsCount;
+                const compactNavigation = data[0].data.navigation,
+                      defaultNavigation = data[1].data.navigation;
 
                 // Register the navigation data
                 this._asmNavigationService.store('compact', compactNavigation);
                 this._asmNavigationService.store('default', defaultNavigation);
 
-                // Store the notifications count
-                this._notificationsService.count = notificationsCount;
-
                 // Return the data
                 return {
-                    compactNavigation : compactNavigation,
-                    defaultNavigation : defaultNavigation,
-                    notificationsCount: notificationsCount
+                    compactNavigation,
+                    defaultNavigation
                 };
             })
         );
