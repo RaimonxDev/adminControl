@@ -8,14 +8,14 @@ import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
     declarations: [
         AsmDrawerComponent
     ],
+    providers   : [
+        AsmDrawerService
+    ],
     imports     : [
         CommonModule
     ],
     exports     : [
         AsmDrawerComponent
-    ],
-    providers   : [
-        AsmDrawerService
     ]
 })
 export class AsmDrawerModule

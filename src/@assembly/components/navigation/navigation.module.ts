@@ -19,6 +19,9 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
         AsmNavigationAsideItemComponent,
         AsmNavigationComponent
     ],
+    providers   : [
+        AsmNavigationService
+    ],
     imports     : [
         RouterModule,
 
@@ -29,9 +32,6 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
     ],
     exports     : [
         AsmNavigationComponent
-    ],
-    providers   : [
-        AsmNavigationService
     ]
 })
 export class AsmNavigationModule
