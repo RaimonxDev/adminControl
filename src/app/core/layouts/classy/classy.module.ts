@@ -5,7 +5,6 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AsmSharedModule } from '@assembly/shared.module';
 import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly/components';
 
-import { NotificationsModule } from 'app/core/components';
 import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component';
 
 @NgModule({
@@ -20,9 +19,7 @@ import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component'
         AsmSharedModule,
         AsmDrawerModule,
         AsmNavigationModule,
-        AsmThemeConfiguratorModule,
-
-        NotificationsModule
+        AsmThemeConfiguratorModule
     ],
     exports     : [
         ClassyLayoutComponent

@@ -51,22 +51,9 @@
          *ngIf="!asmConfig.layout.options.header.hidden">
 
         <button mat-icon-button
+                class="navigation-toggle-button"
                 (click)="toggleNavigation('leftNavigation')">
             <mat-icon>menu</mat-icon>
-        </button>
-
-        Header
-
-        <button mat-icon-button
-                (click)="toggleDrawer('rightDrawer')">
-            <mat-icon>settings</mat-icon>
-        </button>
-
-        <notifications></notifications>
-
-        <button mat-icon-button
-                (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
         </button>
 
     </div>
