@@ -219,6 +219,9 @@ export class JWTAuthService implements AuthService
             },
             (error) => {
 
+                // Print out the error for easier debugging
+                console.error(error);
+
                 // Catch all "401 Unauthorized" responses
                 if ( error.response.status === 401 )
                 {

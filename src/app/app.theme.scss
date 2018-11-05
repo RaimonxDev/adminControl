@@ -97,6 +97,8 @@ $typography: mat-typography-config(
     @include dense-layout-theme($theme);
     @include thin-layout-theme($theme);
     @include thin-light-layout-theme($theme);
+
+    // Components
 }
 
 // -----------------------------------------------------------------------------------------------------
