@@ -54,8 +54,8 @@ export class AppComponent implements OnInit, OnDestroy
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
             .pipe(
-                takeUntil(this._unsubscribeAll),
-                filter((config) => config !== null)
+                filter((config) => config !== null),
+                takeUntil(this._unsubscribeAll)
             )
             .subscribe((config: AsmConfig) => {
 
