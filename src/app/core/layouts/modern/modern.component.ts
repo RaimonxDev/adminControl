@@ -52,7 +52,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Set the current navigation
-        this._asmNavigationService.setCurrent('default');
+        this._asmNavigationService.setCurrentNavigation('default');
 
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
@@ -81,8 +81,8 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
             .pipe(
-                takeUntil(this._unsubscribeAll),
-                filter((config) => config !== null)
+                filter((config) => config !== null),
+                takeUntil(this._unsubscribeAll)
             )
             .subscribe((config: AsmConfig) => {
 
