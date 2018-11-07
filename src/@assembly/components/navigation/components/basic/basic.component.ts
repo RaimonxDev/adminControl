@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { merge, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
@@ -10,16 +8,13 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
+export class AsmNavigationBasicItemComponent implements OnInit
 {
     showTooltips: boolean;
 
     // Item
     @Input()
     item: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -32,8 +27,6 @@ export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
         private _changeDetectorRef: ChangeDetectorRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -45,29 +38,7 @@ export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to navigation item
-        merge(
-            this._asmNavigationService.onItemAdded,
-            this._asmNavigationService.onItemUpdated,
-            this._asmNavigationService.onItemDeleted
-        ).pipe(takeUntil(this._unsubscribeAll))
-         .subscribe(() => {
-
-             // Mark for check
-             this._changeDetectorRef.markForCheck();
-         });
-
         // Get the showTooltips option
         this.showTooltips = this._asmNavigationService.showTooltips;
-    }
-
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
     }
 }

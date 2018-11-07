@@ -27,9 +27,6 @@ export class AsmNavigationService
     private _onCurrentChanged: BehaviorSubject<any>;
     private _onStored: BehaviorSubject<any>;
     private _onDeleted: BehaviorSubject<any>;
-    private _onItemAdded: BehaviorSubject<any>;
-    private _onItemUpdated: BehaviorSubject<any>;
-    private _onItemDeleted: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -44,9 +41,6 @@ export class AsmNavigationService
         this._onCurrentChanged = new BehaviorSubject(null);
         this._onStored = new BehaviorSubject(null);
         this._onDeleted = new BehaviorSubject(null);
-        this._onItemAdded = new BehaviorSubject(null);
-        this._onItemUpdated = new BehaviorSubject(null);
-        this._onItemDeleted = new BehaviorSubject(null);
 
         // Set the defaults
         this.onAppearanceChanged = new BehaviorSubject(null);
@@ -92,30 +86,6 @@ export class AsmNavigationService
         return this._onCurrentChanged.asObservable();
     }
 
-    /**
-     * Getter for onItemAdded
-     */
-    get onItemAdded(): Observable<any>
-    {
-        return this._onItemAdded.asObservable();
-    }
-
-    /**
-     * Getter for onItemUpdated
-     */
-    get onItemUpdated(): Observable<any>
-    {
-        return this._onItemUpdated.asObservable();
-    }
-
-    /**
-     * Getter for onItemDeleted
-     */
-    get onItemDeleted(): Observable<any>
-    {
-        return this._onItemDeleted.asObservable();
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -157,7 +127,7 @@ export class AsmNavigationService
      * @param key
      * @param navigation
      */
-    store(key, navigation): void
+    storeNavigation(key, navigation): void
     {
         // Add to the store
         this._navigationStore.set(key, navigation);
@@ -165,7 +135,7 @@ export class AsmNavigationService
         // Execute the observable
         this._onStored.next([key, navigation]);
 
-        // Trigger the onCurrentChanged in case the current navigation
+        // Execute the 'onCurrentChanged' in case the current navigation
         // was set before storing the actual navigation data
         if ( this._currentNavigationKey === key )
         {
@@ -179,7 +149,7 @@ export class AsmNavigationService
      *
      * @param key
      */
-    delete(key): void
+    deleteNavigation(key): void
     {
         // Check if the navigation exists
         if ( !this._navigationStore.has(key) )
@@ -212,8 +182,15 @@ export class AsmNavigationService
      * @param flatNavigation
      * @returns {any[]}
      */
-    getFlat(navigation, flatNavigation: AsmNavigationItem[] = []): any
+    getFlatNavigation(navigation = null, flatNavigation: AsmNavigationItem[] = []): any
     {
+        // If the navigation is not given...
+        if ( !navigation )
+        {
+            // use the current navigation
+            navigation = this.getCurrentNavigation();
+        }
+
         for ( const item of navigation )
         {
             if ( item.type === 'item' )
@@ -227,7 +204,7 @@ export class AsmNavigationService
             {
                 if ( item.children )
                 {
-                    this.getFlat(item.children, flatNavigation);
+                    this.getFlatNavigation(item.children, flatNavigation);
                 }
             }
         }
@@ -240,7 +217,7 @@ export class AsmNavigationService
      *
      * @returns {any}
      */
-    getCurrent(): any
+    getCurrentNavigation(): any
     {
         return this.getNavigation(this._currentNavigationKey);
     }
@@ -250,7 +227,7 @@ export class AsmNavigationService
      *
      * @param key
      */
-    setCurrent(key): void
+    setCurrentNavigation(key): void
     {
         // Set the current navigation key
         this._currentNavigationKey = key;
@@ -260,17 +237,17 @@ export class AsmNavigationService
     }
 
     /**
-     * Get navigation item by id from the current navigation
+     * Get navigation item by id
+     * from the current navigation
      *
      * @param id
-     * @param {any} navigation
-     * @returns {any | boolean}
+     * @param navigation
      */
     getItem(id, navigation = null): any | boolean
     {
         if ( !navigation )
         {
-            navigation = this.getCurrent();
+            navigation = this.getCurrentNavigation();
         }
 
         for ( const item of navigation )
@@ -295,17 +272,20 @@ export class AsmNavigationService
     }
 
     /**
-     * Get the parent of the navigation item with the id
+     * Get the parent of the navigation item
+     * with the id from the current navigation
      *
      * @param id
-     * @param {any} navigation
+     * @param navigation
      * @param parent
      */
-    getItemParent(id, navigation = null, parent = null): any
+    getItemParent(id, navigation: any = null, parent = null): any
     {
+        // Use the current navigation,
+        // if the navigation is not given
         if ( !navigation )
         {
-            navigation = this.getCurrent();
+            navigation = this.getCurrentNavigation();
             parent = navigation;
         }
 
@@ -331,34 +311,37 @@ export class AsmNavigationService
     }
 
     /**
-     * Add a navigation item to the specified location
+     * Add an item to the current navigation
+     * at the specified location
      *
      * @param item
-     * @param id
+     * @param idOrLocation
      */
-    addItem(item, id): void
+    addItem(item, idOrLocation): void
     {
         // Get the current navigation
-        const navigation: any[] = this.getCurrent();
+        const navigation = this.getCurrentNavigation();
 
         // Add to the end of the navigation
-        if ( id === 'end' )
+        if ( idOrLocation === 'end' )
         {
+            // Add the item at the end
             navigation.push(item);
 
             return;
         }
 
         // Add to the start of the navigation
-        if ( id === 'start' )
+        if ( idOrLocation === 'start' )
         {
+            // Add the item at the beginning
             navigation.unshift(item);
 
             return;
         }
 
         // Add it to a specific location
-        const parent: any = this.getItem(id);
+        const parent: any = this.getItem(idOrLocation);
 
         if ( parent )
         {
@@ -372,13 +355,11 @@ export class AsmNavigationService
             // Add the item
             parent.children.push(item);
         }
-
-        // Execute the observable
-        this._onItemAdded.next(true);
     }
 
     /**
-     * Update navigation item with the given id
+     * Update the item with the given id
+     * from the current navigation
      *
      * @param id
      * @param properties
@@ -396,18 +377,17 @@ export class AsmNavigationService
 
         // Merge the navigation properties
         _.merge(item, properties);
-
-        // Execute the observable
-        this._onItemUpdated.next(true);
     }
 
     /**
-     * Delete navigation item with the given id
+     * Delete the item with the given id
+     * from the current navigation
      *
      * @param id
      */
     deleteItem(id): void
     {
+        // Get the navigation item
         const item = this.getItem(id);
 
         // Return, if there is no item
@@ -426,8 +406,5 @@ export class AsmNavigationService
 
         // Delete the item
         parent.splice(parent.indexOf(item), 1);
-
-        // Execute the observable
-        this._onItemDeleted.next(true);
     }
 }

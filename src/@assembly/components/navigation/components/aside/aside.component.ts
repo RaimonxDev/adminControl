@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { merge, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
@@ -10,7 +8,7 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
+export class AsmNavigationAsideItemComponent implements OnInit
 {
     showTooltips: boolean;
 
@@ -26,9 +24,6 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
     @Input()
     skipChildren: boolean;
 
-    // Private
-    private _unsubscribeAll: Subject<any>;
-
     /**
      * Constructor
      *
@@ -40,9 +35,6 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
         private _changeDetectorRef: ChangeDetectorRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
         // Set the defaults
         this.skipChildren = false;
     }
@@ -56,30 +48,8 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to navigation item
-        merge(
-            this._asmNavigationService.onItemAdded,
-            this._asmNavigationService.onItemUpdated,
-            this._asmNavigationService.onItemDeleted
-        ).pipe(takeUntil(this._unsubscribeAll))
-         .subscribe(() => {
-
-             // Mark for check
-             this._changeDetectorRef.markForCheck();
-         });
-
         // Get the showTooltips option
         this.showTooltips = this._asmNavigationService.showTooltips;
-    }
-
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
     }
 
     // -----------------------------------------------------------------------------------------------------

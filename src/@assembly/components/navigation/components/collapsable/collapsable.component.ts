@@ -2,10 +2,10 @@ import {
     ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { merge, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { AsmAnimations } from '@assembly/animations/index';
+import { AsmAnimations } from '@assembly/animations';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
@@ -159,18 +159,6 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
                     }
                 }
             });
-
-        // Subscribe to navigation item
-        merge(
-            this._asmNavigationService.onItemAdded,
-            this._asmNavigationService.onItemUpdated,
-            this._asmNavigationService.onItemDeleted
-        ).pipe(takeUntil(this._unsubscribeAll))
-         .subscribe(() => {
-
-             // Mark for check
-             this._changeDetectorRef.markForCheck();
-         });
 
         // Get the showTooltips option
         this.showTooltips = this._asmNavigationService.showTooltips;

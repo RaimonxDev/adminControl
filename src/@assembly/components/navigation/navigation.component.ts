@@ -1,6 +1,6 @@
 import {
-    ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren,
-    ViewEncapsulation
+    ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList,
+    Renderer2, ViewChildren, ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { merge, Subject } from 'rxjs';
@@ -13,11 +13,12 @@ import { AsmScrollbarDirective } from '@assembly/directives';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
-    selector     : 'asm-navigation',
-    templateUrl  : './navigation.component.html',
-    styleUrls    : ['./navigation.component.scss'],
-    animations   : AsmAnimations,
-    encapsulation: ViewEncapsulation.None
+    selector       : 'asm-navigation',
+    templateUrl    : './navigation.component.html',
+    styleUrls      : ['./navigation.component.scss'],
+    animations     : AsmAnimations,
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AsmNavigationComponent implements OnInit, OnDestroy
 {
@@ -361,7 +362,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         this._asmNavigationService.showTooltips = this.showTooltips;
 
         // Load the navigation either from the input or from the service
-        this.data = this.data || this._asmNavigationService.getCurrent();
+        this.data = this.data || this._asmNavigationService.getCurrentNavigation();
 
         // Subscribe to the current navigation changes
         this._asmNavigationService.onCurrentChanged
@@ -369,29 +370,17 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
             .subscribe(() => {
 
                 // Load the navigation
-                this.data = this._asmNavigationService.getCurrent();
+                this.data = this._asmNavigationService.getCurrentNavigation();
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
             });
 
-        // Subscribe to navigation item
-        merge(
-            this._asmNavigationService.onItemAdded,
-            this._asmNavigationService.onItemUpdated,
-            this._asmNavigationService.onItemDeleted
-        ).pipe(takeUntil(this._unsubscribeAll))
-         .subscribe(() => {
-
-             // Mark for check
-             this._changeDetectorRef.markForCheck();
-         });
-
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
             .pipe(
-                takeUntil(this._unsubscribeAll),
-                filter((config) => config !== null)
+                filter((config) => config !== null),
+                takeUntil(this._unsubscribeAll)
             )
             .subscribe((config: AsmConfig) => {
 
