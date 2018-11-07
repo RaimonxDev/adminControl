@@ -64,8 +64,8 @@ export class PopulateService
                       defaultNavigation = data[1].data.navigation;
 
                 // Register the navigation data
-                this._asmNavigationService.store('compact', compactNavigation);
-                this._asmNavigationService.store('default', defaultNavigation);
+                this._asmNavigationService.storeNavigation('compact', compactNavigation);
+                this._asmNavigationService.storeNavigation('default', defaultNavigation);
 
                 // Return the data
                 return {
