@@ -131,8 +131,8 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
         {
             this._router.events
                 .pipe(
-                    takeUntil(this._unsubscribeAll),
-                    filter(event => event instanceof NavigationEnd)
+                    filter(event => event instanceof NavigationEnd),
+                    takeUntil(this._unsubscribeAll)
                 )
                 .subscribe(() => {
                     setTimeout(() => {

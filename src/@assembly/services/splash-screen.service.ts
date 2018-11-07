@@ -52,7 +52,7 @@ export class AsmSplashScreenService
         // Hide it on the first NavigationEnd event
         this._router.events
             .pipe(
-                filter((event => event instanceof NavigationEnd)),
+                filter(event => event instanceof NavigationEnd),
                 take(1)
             )
             .subscribe(() => {
@@ -92,7 +92,7 @@ export class AsmSplashScreenService
         {
             return;
         }
-        
+
         // Create the animation using animation builder
         this._player =
             this._animationBuilder
