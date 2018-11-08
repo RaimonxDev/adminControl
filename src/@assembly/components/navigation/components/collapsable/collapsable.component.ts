@@ -69,7 +69,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // If the item has a children that has a matching url with the current url, expand...
-        if ( this._hasCurrentUrlInChildren(this.item, this._router.url) )
+        if ( this._hasCurrentLinkInChildren(this.item, this._router.url) )
         {
             this.expand();
         }
@@ -121,7 +121,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
                     }
 
                     // Check if this has a children with a matching url with the current active url
-                    if ( this._hasCurrentUrlInChildren(this.item, this._router.url) )
+                    if ( this._hasCurrentLinkInChildren(this.item, this._router.url) )
                     {
                         return;
                     }
@@ -145,7 +145,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
             .subscribe((event: NavigationEnd) => {
 
                 // If the item has a children that has a matching url with the current url, expand...
-                if ( this._hasCurrentUrlInChildren(this.item, event.urlAfterRedirects) )
+                if ( this._hasCurrentLinkInChildren(this.item, event.urlAfterRedirects) )
                 {
                     this.expand();
                 }
@@ -183,10 +183,10 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
      * is the children of the given item
      *
      * @param item
-     * @param url
+     * @param link
      * @private
      */
-    private _hasCurrentUrlInChildren(item, url): boolean
+    private _hasCurrentLinkInChildren(item, link): boolean
     {
         const children = item.children;
 
@@ -199,10 +199,10 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         {
             if ( child.children )
             {
-                return this._hasCurrentUrlInChildren(child, url);
+                return this._hasCurrentLinkInChildren(child, link);
             }
 
-            if ( child.url === url || url.includes(child.url) )
+            if ( child.link === link || link.includes(child.link) )
             {
                 return true;
             }
