@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatSidenav } from '@angular/material';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AsmMatSidenavService
+export class AsmRegistryService
 {
     // Private
-    private _registry: Map<string, MatSidenav>;
+    private _registry: Map<string, any>;
 
     /**
      * Constructor
@@ -15,7 +14,7 @@ export class AsmMatSidenavService
     constructor()
     {
         // Set the defaults
-        this._registry = new Map<string, MatSidenav>();
+        this._registry = new Map<string, any>();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -23,34 +22,34 @@ export class AsmMatSidenavService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register sidenav
+     * Register a component
      *
      * @param key
-     * @param sidenav
+     * @param component
      */
-    registerSidenav(key, sidenav): void
+    register(key, component): void
     {
-        this._registry.set(key, sidenav);
+        this._registry.set(key, component);
     }
 
     /**
-     * Get sidenav
+     * Deregister a component
      *
      * @param key
      */
-    getSidenav(key): MatSidenav
-    {
-        return this._registry.get(key);
-    }
-
-    /**
-     * Delete sidenav
-     *
-     * @param key
-     */
-    deleteSidenav(key): void
+    deregister(key): void
     {
         this._registry.delete(key);
+    }
+
+    /**
+     * Get component from the registry
+     *
+     * @param key
+     */
+    get(key): any
+    {
+        this._registry.get(key);
     }
 }
 

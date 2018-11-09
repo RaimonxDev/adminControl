@@ -5,7 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { AsmAnimations } from '@assembly/animations';
+import { AsmAnimations } from '@assembly/animations/public';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({

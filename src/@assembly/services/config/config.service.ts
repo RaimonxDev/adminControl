@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import * as _ from 'lodash';
 
-import { AsmConfig } from '@assembly/types';
+import { AsmConfig } from '@assembly/types/config';
 
 @Injectable({
     providedIn: 'root'
@@ -34,7 +34,7 @@ export class AsmConfigService
         this._onDefaultConfigChanged = new BehaviorSubject(null);
 
         this._defaultConfig = {
-            colorTheme      : 'theme-default',
+            colorTheme      : 'asm-theme-default',
             customScrollbars: true
         };
 

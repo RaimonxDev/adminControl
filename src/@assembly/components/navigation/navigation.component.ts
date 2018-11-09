@@ -6,11 +6,11 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { merge, Subject } from 'rxjs';
 import { delay, filter, takeUntil } from 'rxjs/operators';
 
-import { AsmAnimations } from '@assembly/animations';
-import { AsmConfig } from '@assembly/types';
-import { AsmConfigService } from '@assembly/services/config.service';
-import { AsmScrollbarDirective } from '@assembly/directives';
+import { AsmAnimations } from '@assembly/animations/public';
+import { AsmConfig } from '@assembly/types/config';
+import { AsmConfigService } from '@assembly/services/config/config.service';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
+import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.directive';
 
 @Component({
     selector       : 'asm-navigation',

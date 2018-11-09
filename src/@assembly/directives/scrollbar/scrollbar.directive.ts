@@ -191,9 +191,9 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
         // Initialize the perfect-scrollbar
         this.ps = new PerfectScrollbar(this.elementRef.nativeElement, {...this.asmScrollbarOptions});
 
-        // Unbind 'keydown' events of PerfectScrollbar since it causes an extremely
-        // high CPU usage on Angular Material inputs.
-        // Loop through all the event elements of this PerfectScrollbar instance
+        // Unbind 'keydown' events of PerfectScrollbar since it causes an
+        // extremely high CPU usage on Angular Material inputs. Loop through
+        // all the event elements of this PerfectScrollbar instance
         this.ps.event.eventElements.forEach((eventElement) => {
 
             // If we hit to the element with a 'keydown' event...

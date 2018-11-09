@@ -1,8 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
-
 import { filter, take } from 'rxjs/operators';
 
 @Injectable({
@@ -12,18 +10,13 @@ export class AsmSplashScreenService
 {
     _disableAutoHide: boolean;
 
-    private _player: AnimationPlayer;
-    private _splashScreen: any;
-
     /**
      * Constructor
      *
-     * @param {AnimationBuilder} _animationBuilder
      * @param {DOCUMENT} _document
      * @param {Router} _router
      */
     constructor(
-        private _animationBuilder: AnimationBuilder,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router
     )
@@ -46,9 +39,6 @@ export class AsmSplashScreenService
      */
     private _init(): void
     {
-        // Get the splash screen element
-        this._splashScreen = this._document.body.querySelector('#asm-splash-screen');
-
         // Hide it on the first NavigationEnd event
         this._router.events
             .pipe(
@@ -87,25 +77,8 @@ export class AsmSplashScreenService
      */
     show(): void
     {
-        // Return, if there is no splash screen element
-        if ( !this._splashScreen )
-        {
-            return;
-        }
-
-        // Create the animation using animation builder
-        this._player =
-            this._animationBuilder
-                .build([
-                    style({
-                        opacity: '0',
-                        zIndex : '99999'
-                    }),
-                    animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({opacity: '1'}))
-                ]).create(this._splashScreen);
-
-        // Play the animation
-        this._player.play();
+        this._document.body.classList.remove('asm-splash-screen-hidden');
+        this._document.body.classList.add('asm-splash-screen-visible');
     }
 
     /**
@@ -113,24 +86,7 @@ export class AsmSplashScreenService
      */
     hide(): void
     {
-        // Return, if there is no splash screen element
-        if ( !this._splashScreen )
-        {
-            return;
-        }
-
-        // Create the animation using animation builder
-        this._player =
-            this._animationBuilder
-                .build([
-                    style({opacity: '1'}),
-                    animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-                        opacity: '0',
-                        zIndex : '-10'
-                    }))
-                ]).create(this._splashScreen);
-
-        // Play the animation
-        this._player.play();
+        this._document.body.classList.remove('asm-splash-screen-visible');
+        this._document.body.classList.add('asm-splash-screen-hidden');
     }
 }
