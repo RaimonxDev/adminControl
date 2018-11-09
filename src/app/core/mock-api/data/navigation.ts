@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import MockAdapter from 'axios-mock-adapter';
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 
-import { AsmNavigationItem } from '@assembly/types';
+import { AsmNavigationItem } from '@assembly/types/navigation';
 
 @Injectable({
     providedIn: 'root'

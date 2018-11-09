@@ -113,9 +113,9 @@ $default-warn-palette: mat-palette($mat-red);
 // Create the Material theme object
 $default-theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
 
-// Add ".theme-default" class to the body to activate this theme.
-// Class name must start with "theme-" !!!
-body.theme-default {
+// Add ".asm-theme-default" class to the body to activate this theme.
+// Class name must start with "asm-theme-" !!!
+body.asm-theme-default {
 
     // Create an Angular Material theme from the $theme map
     @include angular-material-theme($default-theme);
@@ -145,7 +145,7 @@ $blue-accent-palette: mat-palette($asm-navy);
 $blue-warn-palette: mat-palette($mat-red);
 $blue-theme: mat-light-theme($blue-primary-palette, $blue-accent-palette, $blue-warn-palette);
 
-body.theme-blue {
+body.asm-theme-blue {
 
     @include angular-material-theme($blue-theme);
     @include asm-core-theme($blue-theme);
@@ -168,7 +168,7 @@ $blue-grey-accent-palette: mat-palette($asm-navy);
 $blue-grey-warn-palette: mat-palette($mat-red);
 $blue-grey-theme: mat-light-theme($blue-grey-primary-palette, $blue-grey-accent-palette, $blue-grey-warn-palette);
 
-body.theme-blue-grey {
+body.asm-theme-blue-grey {
 
     @include angular-material-theme($blue-grey-theme);
     @include asm-core-theme($blue-grey-theme);

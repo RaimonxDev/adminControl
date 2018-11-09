@@ -4,7 +4,7 @@ import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
 
-import { AsmSplashScreenService } from '@assembly/services/splash-screen.service';
+import { AsmSplashScreenService } from '@assembly/services/splash-screen/splash-screen.service';
 import { AuthService } from 'app/core/auth/auth.service';
 import { PopulateService } from 'app/core/populate/populate.service';
 

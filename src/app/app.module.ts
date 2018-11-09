@@ -5,14 +5,14 @@ import { RouterModule } from '@angular/router';
 
 // 3rd party modules
 
-// Assembly modules
-import { AsmSharedModule } from '@assembly/shared.module';
+// Assembly modules and components
 
 // App components & modules
 import { AppComponent } from 'app/app.component';
 import { CoreModule } from 'app/core/core.module';
 import { AppsModule } from 'app/modules/apps/apps.module';
 import { PagesModule } from 'app/modules/pages/pages.module';
+import { DocsModule } from 'app/modules/docs/docs.module';
 
 @NgModule({
     declarations: [
@@ -25,9 +25,6 @@ import { PagesModule } from 'app/modules/pages/pages.module';
 
         // 3rd party modules
 
-        // Assembly shared module
-        AsmSharedModule,
-
         // App core module
         CoreModule,
 
@@ -35,7 +32,10 @@ import { PagesModule } from 'app/modules/pages/pages.module';
         AppsModule,
 
         // Pages module
-        PagesModule
+        PagesModule,
+
+        // Docs module
+        DocsModule
     ],
     bootstrap   : [
         AppComponent

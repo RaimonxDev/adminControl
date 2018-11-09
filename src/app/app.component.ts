@@ -4,10 +4,8 @@ import { Platform } from '@angular/cdk/platform';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { AsmConfig } from '@assembly/types';
-import { AsmConfigService } from '@assembly/services/config.service';
-import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
-import { AsmSplashScreenService } from '@assembly/services/splash-screen.service';
+import { AsmConfig, AsmConfigService, AsmNavigationService } from '@assembly';
+
 
 @Component({
     selector   : 'app-root',
@@ -27,14 +25,12 @@ export class AppComponent implements OnInit, OnDestroy
      * @param {DOCUMENT} document
      * @param {AsmNavigationService} _asmNavigationService
      * @param {AsmConfigService} _asmConfigService
-     * @param {AsmSplashScreenService} _asmSplashScreenService
      * @param {Platform} _platform
      */
     constructor(
         @Inject(DOCUMENT) private document: any,
         private _asmNavigationService: AsmNavigationService,
         private _asmConfigService: AsmConfigService,
-        private _asmSplashScreenService: AsmSplashScreenService,
         private _platform: Platform
     )
     {
@@ -65,9 +61,9 @@ export class AppComponent implements OnInit, OnDestroy
                 // Loop through body class names
                 this.document.body.classList.forEach((className) => {
 
-                    // Find the one that starts with 'theme-'
+                    // Find the one that starts with 'asm-theme-'
                     // and update it if it's changed
-                    if ( className.startsWith('theme-') && className !== this.asmConfig.colorTheme )
+                    if ( className.startsWith('asm-theme-') && className !== this.asmConfig.colorTheme )
                     {
                         // Remove the old class name
                         this.document.body.classList.remove(className);

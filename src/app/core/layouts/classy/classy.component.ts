@@ -1,12 +1,8 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigation, AsmNavigationService } from '@assembly';
 
-import { AsmConfig, AsmNavigation } from '@assembly/types';
-import { AsmConfigService } from '@assembly/services/config.service';
-import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher.service';
-import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({

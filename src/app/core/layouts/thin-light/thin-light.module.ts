@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule } from '@angular/material';
+import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly';
 
-import { AsmSharedModule } from '@assembly/shared.module';
-import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly/components';
-
+import { SharedModule } from 'app/core/shared.module';
 import { ThinLightLayoutComponent } from 'app/core/layouts/thin-light/thin-light.component';
 
 @NgModule({
@@ -15,11 +14,11 @@ import { ThinLightLayoutComponent } from 'app/core/layouts/thin-light/thin-light
         RouterModule,
         MatButtonModule,
         MatIconModule,
-
-        AsmSharedModule,
         AsmDrawerModule,
         AsmNavigationModule,
-        AsmThemeConfiguratorModule
+        AsmThemeConfiguratorModule,
+
+        SharedModule
     ],
     exports     : [
         ThinLightLayoutComponent
