@@ -202,83 +202,95 @@ asm-navigation {
         flex-direction: column;
         flex: 1 0 auto;
 
-        .asm-navigation-item {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 0 28px 0 32px;
-            height: 56px;
-            max-height: 56px;
-            min-height: 56px;
-            font-size: 13px;
-            text-decoration: none;
-            transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
+        .asm-navigation-item-wrapper {
 
-            .asm-navigation-item-icon {
-                margin-right: 16px;
-                user-select: none;
-            }
+            &.asm-navigation-item-has-subtitle {
 
-            .asm-navigation-item-title-wrapper {
-
-                .asm-navigation-item-title {
-                    line-height: 1;
-                }
-
-                .asm-navigation-item-subtitle {
-                    line-height: 1;
-                    font-size: 12px;
-                    margin-top: 6px;
+                .asm-navigation-item {
+                    height: 56px;
+                    max-height: 56px;
+                    min-height: 56px;
                 }
             }
 
-            .asm-navigation-item-badge {
-                margin-left: auto;
+            .asm-navigation-item {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 0 28px 0 32px;
+                height: 48px;
+                max-height: 48px;
+                min-height: 48px;
+                font-size: 13px;
+                text-decoration: none;
+                transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
 
-                .asm-navigation-item-badge-content {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 10px;
-                    font-weight: 600;
-                    width: 22px;
-                    height: 22px;
-                    line-height: 1;
-                    border-radius: 50%;
+                .asm-navigation-item-icon {
+                    margin-right: 16px;
+                    user-select: none;
+                }
 
-                    // Rectangle
-                    &.asm-navigation-item-badge-style-rectangle {
-                        width: auto;
-                        min-width: 24px;
-                        height: 20px;
-                        padding: 0 6px;
-                        border-radius: 4px;
+                .asm-navigation-item-title-wrapper {
+
+                    .asm-navigation-item-title {
+                        line-height: 1;
                     }
 
-                    // Rounded
-                    &.asm-navigation-item-badge-style-rounded {
-                        width: auto;
-                        min-width: 24px;
-                        height: 20px;
-                        padding: 0 6px;
-                        border-radius: 12px;
-                    }
-
-                    // Simple
-                    &.asm-navigation-item-badge-style-simple {
-                        width: auto;
-                        font-size: 11px;
-                        background-color: transparent !important;
+                    .asm-navigation-item-subtitle {
+                        line-height: 1;
+                        font-size: 12px;
+                        margin-top: 6px;
                     }
                 }
 
-                .asm-navigation-item-badge-indicator {
-                    position: absolute;
-                    display: none;
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 50%;
+                .asm-navigation-item-badge {
+                    margin-left: auto;
+
+                    .asm-navigation-item-badge-content {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 10px;
+                        font-weight: 600;
+                        width: 22px;
+                        height: 22px;
+                        line-height: 1;
+                        border-radius: 50%;
+
+                        // Rectangle
+                        &.asm-navigation-item-badge-style-rectangle {
+                            width: auto;
+                            min-width: 24px;
+                            height: 20px;
+                            padding: 0 6px;
+                            border-radius: 4px;
+                        }
+
+                        // Rounded
+                        &.asm-navigation-item-badge-style-rounded {
+                            width: auto;
+                            min-width: 24px;
+                            height: 20px;
+                            padding: 0 6px;
+                            border-radius: 12px;
+                        }
+
+                        // Simple
+                        &.asm-navigation-item-badge-style-simple {
+                            width: auto;
+                            font-size: 11px;
+                            background-color: transparent !important;
+                        }
+                    }
+
+                    .asm-navigation-item-badge-indicator {
+                        position: absolute;
+                        display: none;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                    }
                 }
             }
         }

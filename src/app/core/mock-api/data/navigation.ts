@@ -434,10 +434,11 @@ export class MockNavigationData
             link : '/apps/scrumboard'
         },
         {
-            id   : 'pages',
-            title: 'Pages',
-            type : 'subheader',
-            icon : 'pages'
+            id      : 'pages',
+            title   : 'Pages',
+            subtitle: 'Lots of pages',
+            type    : 'subheader',
+            icon    : 'pages'
         },
         {
             id      : 'authentication',
@@ -922,64 +923,10 @@ export class MockNavigationData
             icon    : 'import_contacts',
             children: [
                 {
-                    id   : 'cards',
-                    title: 'Cards',
-                    type : 'link',
-                    link : '/documentation/components/cards'
-                },
-                {
-                    id   : 'countdown',
-                    title: 'Countdown',
-                    type : 'link',
-                    link : '/documentation/components/countdown'
-                },
-                {
-                    id   : 'highlight',
-                    title: 'Highlight',
-                    type : 'link',
-                    link : '/documentation/components/highlight'
-                },
-                {
-                    id   : 'material-color-picker',
-                    title: 'Material Color Picker',
-                    type : 'link',
-                    link : '/documentation/components/material-color-picker'
-                },
-                {
                     id   : 'navigation',
                     title: 'Navigation',
                     type : 'link',
                     link : '/documentation/components/navigation'
-                },
-                {
-                    id   : 'progress-bar',
-                    title: 'Progress Bar',
-                    type : 'link',
-                    link : '/documentation/components/progress-bar'
-                },
-                {
-                    id   : 'search-bar',
-                    title: 'Search Bar',
-                    type : 'link',
-                    link : '/documentation/components/search-bar'
-                },
-                {
-                    id   : 'sidebar',
-                    title: 'Sidebar',
-                    type : 'link',
-                    link : '/documentation/components/sidebar'
-                },
-                {
-                    id   : 'shortcuts',
-                    title: 'Shortcuts',
-                    type : 'link',
-                    link : '/documentation/components/shortcuts'
-                },
-                {
-                    id   : 'widget',
-                    title: 'Widget',
-                    type : 'link',
-                    link : '/documentation/components/widget'
                 }
             ]
         },

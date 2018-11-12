@@ -1,6 +1,7 @@
 <ng-container *ngIf="!item.hidden">
 
     <div class="asm-navigation-item-wrapper"
+         [class.asm-navigation-item-has-subtitle]="!!item.subtitle"
          [ngClass]="item.classes">
 
         <div class="asm-navigation-item">
