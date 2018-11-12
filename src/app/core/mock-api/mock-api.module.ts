@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-import { MockAuthData } from 'app/core/mock-api/data/auth';
-import { MockNavigationData } from 'app/core/mock-api/data/navigation';
+import { MockAuthData } from 'app/core/mock-api/auth';
+import { MockNavigationData } from 'app/core/mock-api/navigation';
 
 const mockAdapter = new MockAdapter(axios, {delayResponse: 2000});
 
@@ -18,7 +18,7 @@ export class MockApiModule
      */
     constructor(
         private _mockAuthData: MockAuthData,
-        private _mockNavigationData: MockNavigationData,
+        private _mockNavigationData: MockNavigationData
     )
     {
         this._mockAuthData.init(mockAdapter);
