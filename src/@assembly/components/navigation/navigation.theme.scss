@@ -42,8 +42,8 @@
             }
         }
 
-        // Basic, Collapsable & Aside
-        asm-navigation-basic-item,
+        // Link, Collapsable & Aside
+        asm-navigation-link-item,
         asm-navigation-collapsable-item,
         asm-navigation-aside-item {
 
@@ -99,8 +99,8 @@
                 }
             }
 
-            // Basic, Collapsable & Aside
-            asm-navigation-basic-item,
+            // Link, Collapsable & Aside
+            asm-navigation-link-item,
             asm-navigation-collapsable-item,
             asm-navigation-aside-item {
 
@@ -151,7 +151,7 @@
                         }
                     }
 
-                    asm-navigation-basic-item,
+                    asm-navigation-link-item,
                     asm-navigation-collapsable-item,
                     asm-navigation-aside-item {
 
@@ -273,7 +273,7 @@
             }
 
             asm-navigation-aside-item,
-            asm-navigation-basic-item,
+            asm-navigation-link-item,
             asm-navigation-collapsable-item {
 
                 .asm-navigation-item {

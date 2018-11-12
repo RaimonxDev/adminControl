@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule, MatTooltipModule } from '@angular/material';
 import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public';
 
-import { AsmNavigationBasicItemComponent } from '@assembly/components/navigation/components/basic/basic.component';
+import { AsmNavigationLinkItemComponent } from '@assembly/components/navigation/components/link/link.component';
 import { AsmNavigationCollapsableItemComponent } from '@assembly/components/navigation/components/collapsable/collapsable.component';
 import { AsmNavigationSubheaderItemComponent } from '@assembly/components/navigation/components/subheader/subheader.component';
 import { AsmNavigationAsideItemComponent } from '@assembly/components/navigation/components/aside/aside.component';
@@ -13,7 +13,7 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 
 @NgModule({
     declarations: [
-        AsmNavigationBasicItemComponent,
+        AsmNavigationLinkItemComponent,
         AsmNavigationCollapsableItemComponent,
         AsmNavigationSubheaderItemComponent,
         AsmNavigationAsideItemComponent,

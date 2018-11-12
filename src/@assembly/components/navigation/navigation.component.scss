@@ -195,7 +195,7 @@ asm-navigation {
 
     // Navigation items common
     asm-navigation-aside-item,
-    asm-navigation-basic-item,
+    asm-navigation-link-item,
     asm-navigation-collapsable-item,
     asm-navigation-subheader-item {
         display: flex;
@@ -285,7 +285,7 @@ asm-navigation {
     }
 
     asm-navigation-aside-item,
-    asm-navigation-basic-item,
+    asm-navigation-link-item,
     asm-navigation-collapsable-item {
 
         .asm-navigation-item {
@@ -298,8 +298,8 @@ asm-navigation {
 
     }
 
-    // Basic
-    asm-navigation-basic-item {
+    // Link
+    asm-navigation-link-item {
 
     }
 
@@ -445,7 +445,7 @@ asm-navigation {
                 }
 
                 > asm-navigation-aside-item,
-                > asm-navigation-basic-item {
+                > asm-navigation-link-item {
 
                     .asm-navigation-item {
                         flex-direction: column;
@@ -564,7 +564,7 @@ asm-navigation {
             .asm-navigation-content {
 
                 asm-navigation-aside-item,
-                asm-navigation-basic-item,
+                asm-navigation-link-item,
                 asm-navigation-collapsable-item,
                 asm-navigation-subheader-item {
 
@@ -591,7 +591,7 @@ asm-navigation {
                 .asm-navigation-content {
 
                     asm-navigation-aside-item,
-                    asm-navigation-basic-item,
+                    asm-navigation-link-item,
                     asm-navigation-collapsable-item,
                     asm-navigation-subheader-item {
 
@@ -711,7 +711,7 @@ asm-navigation {
                 }
 
                 asm-navigation-aside-item,
-                asm-navigation-basic-item,
+                asm-navigation-link-item,
                 asm-navigation-subheader-item {
 
                     .asm-navigation-item {
@@ -759,7 +759,7 @@ asm-navigation {
         }
 
         asm-navigation-aside-item,
-        asm-navigation-basic-item,
+        asm-navigation-link-item,
         asm-navigation-collapsable-item {
 
             .asm-navigation-item {

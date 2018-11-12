@@ -3,12 +3,12 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } 
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
-    selector       : 'asm-navigation-basic-item',
-    templateUrl    : './basic.component.html',
+    selector       : 'asm-navigation-link-item',
+    templateUrl    : './link.component.html',
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationBasicItemComponent implements OnInit
+export class AsmNavigationLinkItemComponent implements OnInit
 {
     showTooltips: boolean;
 
