@@ -396,6 +396,10 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     {
         // Deregister the navigation component from the registry
         this._asmNavigationService.deregisterComponent(this.name);
+
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
     // -----------------------------------------------------------------------------------------------------
