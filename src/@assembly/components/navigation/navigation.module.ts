@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule, MatTooltipModule } from '@angular/material';
-import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public';
+import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public-api';
 
 import { AsmNavigationLinkItemComponent } from '@assembly/components/navigation/components/link/link.component';
 import { AsmNavigationCollapsableItemComponent } from '@assembly/components/navigation/components/collapsable/collapsable.component';

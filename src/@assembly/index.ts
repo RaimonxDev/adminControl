@@ -5,25 +5,26 @@
  */
 
 // Components
-export * from './components/drawer/public';
-export * from './components/navigation/public';
-export * from './components/search/public';
-export * from './components/theme-configurator/public';
+export * from './components/drawer/public-api';
+export * from './components/highlight/public-api';
+export * from './components/navigation/public-api';
+export * from './components/search/public-api';
+export * from './components/theme-configurator/public-api';
 
 // Directives
-export * from './directives/registry/public';
-export * from './directives/scrollbar/public';
+export * from './directives/registry/public-api';
+export * from './directives/scrollbar/public-api';
 
 // Services
-export * from './services/config/public';
-export * from './services/media-watcher/public';
-export * from './services/splash-screen/public';
+export * from './services/config/public-api';
+export * from './services/media-watcher/public-api';
+export * from './services/splash-screen/public-api';
 
 // Pipes
-export * from './pipes/time-ago/public';
+export * from './pipes/time-ago/public-api';
 
 // Animations
-export * from './animations/public';
+export * from './animations/public-api';
 
 // Types
-export * from './types/public';
+export * from './types/public-api';

@@ -6,7 +6,7 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { merge, Subject } from 'rxjs';
 import { delay, filter, takeUntil } from 'rxjs/operators';
 
-import { AsmAnimations } from '@assembly/animations/public';
+import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmConfig } from '@assembly/types/config';
 import { AsmConfigService } from '@assembly/services/config/config.service';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
