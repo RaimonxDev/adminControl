@@ -6,6 +6,7 @@
     // Theming for Assembly core styles
     @include general-theme($theme);
     @include colors-theme($theme);
+    @include typography-theme($theme);
 
     // Theming for Assembly components
     @include asm-drawer-theme($theme);

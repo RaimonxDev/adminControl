@@ -1,13 +1,14 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { DocsService } from 'app/modules/docs/docs.service';
 
 @Component({
-    selector   : 'docs',
-    templateUrl: './docs.component.html',
-    styleUrls  : ['./docs.component.scss']
+    selector     : 'docs',
+    templateUrl  : './docs.component.html',
+    styleUrls    : ['./docs.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class DocsComponent implements OnInit, OnDestroy
 {

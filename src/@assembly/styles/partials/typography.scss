@@ -3,10 +3,39 @@
 // -----------------------------------------------------------------------------------------------------
 @mixin typography-theme($theme) {
 
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Message
+    // -----------------------------------------------------------------------------------------------------
+    .message {
+        border-top-color: map-get($foreground, divider);
+        border-right-color: map-get($foreground, divider);
+        border-bottom-color: map-get($foreground, divider);
+        background: map-get($background, card);
+        color: map-get($foreground, text);
+
+        // Material theming
+        &.primary {
+            border-left-color: map-get($primary, default);
+        }
+
+        &.accent {
+            border-left-color: map-get($accent, default);
+        }
+
+        &.warn {
+            border-left-color: map-get($warn, default);
+        }
+    }
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Typography
+// @ General
 // -----------------------------------------------------------------------------------------------------
 html {
     font-size: 62.5%;
@@ -102,12 +131,13 @@ blockquote {
 
 // Code
 code {
-    font-family: 'Monaco', 'Menlo', 'Consolas', 'Ubuntu Mono', monospace;;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
 
     &:not(.highlight) {
-        color: #106CC8;
-        padding: 2px 3px;
-        border-radius: 2px;
+        background: #DEE2E4;
+        padding: 3px 5px;
+        border-radius: 3px;
+        font-size: 85%;
         line-height: 1.7;
     }
 }
@@ -134,4 +164,42 @@ pre {
     line-height: 1.6;
     margin: 8px 16px;
     white-space: pre-wrap;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Message
+// -----------------------------------------------------------------------------------------------------
+
+.message {
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    border-left: 4px solid;
+    border-radius: 4px;
+    min-height: 64px;
+    padding: 16px 24px;
+    margin: 16px 0 !important;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.06);
+
+    &.info {
+        background: #B3E5FC;
+        border-left-color: #03A9F4;
+        color: rgba(0, 0, 0, 0.87);
+    }
+
+    &.success {
+        background: #4CAF50;
+        border-left-color: #2E7D32;
+    }
+
+    &.warning {
+        background: #FFECB3;
+        border-left-color: #FFC107;
+        color: rgba(0, 0, 0, 0.87);
+    }
+
+    &.error {
+        background: #EF5350;
+        border-left-color: #B71C1C;
+    }
 }

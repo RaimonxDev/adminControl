@@ -1,5 +1,27 @@
-:host {
+docs {
     max-width: 800px;
     margin: 0 auto;
     padding: 24px;
+    font-size: 16px;
+    line-height: 1.7;
+
+    p {
+        margin: 0 0 16px 0;
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 16px 0 24px 0;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 16px 0 24px 0;
+    }
+
+    .message {
+        margin: 0 0 16px 0 !important;
+    }
 }
