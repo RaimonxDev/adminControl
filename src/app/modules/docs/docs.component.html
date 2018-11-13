@@ -1,0 +1,25 @@
+<div class="docs">
+
+    <ng-container *ngFor="let partial of data">
+
+        <div *ngIf="partial.type === 'text'"
+             class="content"
+             [innerHTML]="partial.content">
+        </div>
+
+        <asm-highlight *ngIf="partial.type === 'code'"
+                       [lang]="partial.language"
+                       [code]="partial.content">
+        </asm-highlight>
+
+    </ng-container>
+
+    <hr>
+
+    <asm-highlight lang="markup">
+        <textarea>
+            <div>asd</div>
+        </textarea>
+    </asm-highlight>
+
+</div>

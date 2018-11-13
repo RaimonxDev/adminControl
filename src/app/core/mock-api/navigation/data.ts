@@ -840,7 +840,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title: 'Changelog',
         type : 'link',
         icon : 'update',
-        link : '/documentation/changelog',
+        link : '/docs/changelog',
         badge: {
             title     : '1.0.0',
             style     : 'rounded',
@@ -853,14 +853,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title: 'Getting Started',
         type : 'link',
         icon : 'import_contacts',
-        link : '/documentation/getting-started'
+        link : '/docs/getting-started'
     },
     {
         id   : 'building-and-serving',
         title: 'Building and Serving',
         type : 'link',
         icon : 'import_contacts',
-        link : '/documentation/building-and-serving'
+        link : '/docs/building-and-serving'
     },
     {
         id      : 'fundamentals',
@@ -872,37 +872,37 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'directory-structure',
                 title: 'Directory Structure',
                 type : 'link',
-                link : '/documentation/fundamentals/directory-structure'
+                link : '/docs/fundamentals/directory-structure'
             },
             {
                 id   : 'updating-assembly',
                 title: 'Updating Assembly',
                 type : 'link',
-                link : '/documentation/fundamentals/updating-assmebly'
+                link : '/docs/fundamentals/updating-assmebly'
             },
             {
                 id   : 'multi-language',
                 title: 'Multi Language',
                 type : 'link',
-                link : '/documentation/fundamentals/multi-language'
+                link : '/docs/fundamentals/multi-language'
             },
             {
                 id   : 'material-theming',
                 title: 'Material Theming',
                 type : 'link',
-                link : '/documentation/fundamentals/material-theming'
+                link : '/docs/fundamentals/material-theming'
             },
             {
                 id   : 'theme-layouts',
                 title: 'Theme Layouts',
                 type : 'link',
-                link : '/documentation/fundamentals/theme-layouts'
+                link : '/docs/fundamentals/theme-layouts'
             },
             {
                 id   : 'page-layouts',
                 title: 'Page Layouts',
                 type : 'link',
-                link : '/documentation/fundamentals/page-layouts'
+                link : '/docs/fundamentals/page-layouts'
             }
         ]
     },
@@ -916,7 +916,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'navigation',
                 title: 'Navigation',
                 type : 'link',
-                link : '/documentation/components/navigation'
+                link : '/docs/components/navigation'
             }
         ]
     },
@@ -935,7 +935,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         id   : 'ngxdatatable',
                         title: 'ngx-datatable',
                         type : 'link',
-                        link : '/documentation/components-third-party/datatables/ngx-datatable'
+                        link : '/docs/components-third-party/datatables/ngx-datatable'
                     }
                 ]
             },
@@ -943,7 +943,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'google-maps',
                 title: 'Google Maps',
                 type : 'link',
-                link : '/documentation/components-third-party/google-maps'
+                link : '/docs/components-third-party/google-maps'
             }
         ]
     },
@@ -957,25 +957,25 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'fuse-if-on-dom',
                 title: 'fuseIfOnDom',
                 type : 'link',
-                link : '/documentation/directives/fuse-if-on-dom'
+                link : '/docs/directives/fuse-if-on-dom'
             },
             {
                 id   : 'fuse-inner-scroll',
                 title: 'fuseInnerScroll',
                 type : 'link',
-                link : '/documentation/directives/fuse-inner-scroll'
+                link : '/docs/directives/fuse-inner-scroll'
             },
             {
                 id   : 'fuse-mat-sidenav',
                 title: 'fuseMatSidenav',
                 type : 'link',
-                link : '/documentation/directives/fuse-mat-sidenav'
+                link : '/docs/directives/fuse-mat-sidenav'
             },
             {
                 id   : 'fuse-perfect-scrollbar',
                 title: 'fusePerfectScrollbar',
                 type : 'link',
-                link : '/documentation/directives/fuse-perfect-scrollbar'
+                link : '/docs/directives/fuse-perfect-scrollbar'
             }
         ]
     },
@@ -989,13 +989,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'fuse-config',
                 title: 'Fuse Config',
                 type : 'link',
-                link : '/documentation/services/fuse-config'
+                link : '/docs/services/fuse-config'
             },
             {
                 id   : 'fuse-splash-screen',
                 title: 'Fuse Splash Screen',
                 type : 'link',
-                link : '/documentation/services/fuse-splash-screen'
+                link : '/docs/services/fuse-splash-screen'
             }
         ]
     },
@@ -1580,7 +1580,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                 title: 'Changelog',
                 type : 'link',
                 icon : 'update',
-                link : '/documentation/changelog',
+                link : '/docs/changelog',
                 badge: {
                     title     : '6.3.1',
                     style     : 'rounded',
@@ -1598,13 +1598,13 @@ export const compactNavigation: AsmNavigationItem[] = [
                         id   : 'introduction',
                         title: 'Introduction',
                         type : 'link',
-                        link : '/documentation/getting-started/introduction'
+                        link : '/docs/getting-started/introduction'
                     },
                     {
                         id   : 'installation',
                         title: 'Installation',
                         type : 'link',
-                        link : '/documentation/getting-started/installation'
+                        link : '/docs/getting-started/installation'
                     }
                 ]
             },
@@ -1618,49 +1618,49 @@ export const compactNavigation: AsmNavigationItem[] = [
                         id   : 'server',
                         title: 'Server',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/server'
+                        link : '/docs/working-with-fuse/server'
                     },
                     {
                         id   : 'production',
                         title: 'Production',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/production'
+                        link : '/docs/working-with-fuse/production'
                     },
                     {
                         id   : 'directory-structure',
                         title: 'Directory Structure',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/directory-structure'
+                        link : '/docs/working-with-fuse/directory-structure'
                     },
                     {
                         id   : 'updating-fuse',
                         title: 'Updating Fuse',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/updating-fuse'
+                        link : '/docs/working-with-fuse/updating-fuse'
                     },
                     {
                         id   : 'multi-language',
                         title: 'Multi Language',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/multi-language'
+                        link : '/docs/working-with-fuse/multi-language'
                     },
                     {
                         id   : 'material-theming',
                         title: 'Material Theming',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/material-theming'
+                        link : '/docs/working-with-fuse/material-theming'
                     },
                     {
                         id   : 'theme-layouts',
                         title: 'Theme Layouts',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/theme-layouts'
+                        link : '/docs/working-with-fuse/theme-layouts'
                     },
                     {
                         id   : 'page-layouts',
                         title: 'Page Layouts',
                         type : 'link',
-                        link : '/documentation/working-with-fuse/page-layouts'
+                        link : '/docs/working-with-fuse/page-layouts'
                     }
                 ]
             },
@@ -1674,61 +1674,61 @@ export const compactNavigation: AsmNavigationItem[] = [
                         id   : 'cards',
                         title: 'Cards',
                         type : 'link',
-                        link : '/documentation/components/cards'
+                        link : '/docs/components/cards'
                     },
                     {
                         id   : 'countdown',
                         title: 'Countdown',
                         type : 'link',
-                        link : '/documentation/components/countdown'
+                        link : '/docs/components/countdown'
                     },
                     {
                         id   : 'highlight',
                         title: 'Highlight',
                         type : 'link',
-                        link : '/documentation/components/highlight'
+                        link : '/docs/components/highlight'
                     },
                     {
                         id   : 'material-color-picker',
                         title: 'Material Color Picker',
                         type : 'link',
-                        link : '/documentation/components/material-color-picker'
+                        link : '/docs/components/material-color-picker'
                     },
                     {
                         id   : 'navigation',
                         title: 'Navigation',
                         type : 'link',
-                        link : '/documentation/components/navigation'
+                        link : '/docs/components/navigation'
                     },
                     {
                         id   : 'progress-bar',
                         title: 'Progress Bar',
                         type : 'link',
-                        link : '/documentation/components/progress-bar'
+                        link : '/docs/components/progress-bar'
                     },
                     {
                         id   : 'search-bar',
                         title: 'Search Bar',
                         type : 'link',
-                        link : '/documentation/components/search-bar'
+                        link : '/docs/components/search-bar'
                     },
                     {
                         id   : 'sidebar',
                         title: 'Sidebar',
                         type : 'link',
-                        link : '/documentation/components/sidebar'
+                        link : '/docs/components/sidebar'
                     },
                     {
                         id   : 'shortcuts',
                         title: 'Shortcuts',
                         type : 'link',
-                        link : '/documentation/components/shortcuts'
+                        link : '/docs/components/shortcuts'
                     },
                     {
                         id   : 'widget',
                         title: 'Widget',
                         type : 'link',
-                        link : '/documentation/components/widget'
+                        link : '/docs/components/widget'
                     }
                 ]
             },
@@ -1747,7 +1747,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                                 id   : 'ngxdatatable',
                                 title: 'ngx-datatable',
                                 type : 'link',
-                                link : '/documentation/components-third-party/datatables/ngx-datatable'
+                                link : '/docs/components-third-party/datatables/ngx-datatable'
                             }
                         ]
                     },
@@ -1755,7 +1755,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                         id   : 'google-maps',
                         title: 'Google Maps',
                         type : 'link',
-                        link : '/documentation/components-third-party/google-maps'
+                        link : '/docs/components-third-party/google-maps'
                     }
                 ]
             },
@@ -1769,25 +1769,25 @@ export const compactNavigation: AsmNavigationItem[] = [
                         id   : 'fuse-if-on-dom',
                         title: 'fuseIfOnDom',
                         type : 'link',
-                        link : '/documentation/directives/fuse-if-on-dom'
+                        link : '/docs/directives/fuse-if-on-dom'
                     },
                     {
                         id   : 'fuse-inner-scroll',
                         title: 'fuseInnerScroll',
                         type : 'link',
-                        link : '/documentation/directives/fuse-inner-scroll'
+                        link : '/docs/directives/fuse-inner-scroll'
                     },
                     {
                         id   : 'fuse-mat-sidenav',
                         title: 'fuseMatSidenav',
                         type : 'link',
-                        link : '/documentation/directives/fuse-mat-sidenav'
+                        link : '/docs/directives/fuse-mat-sidenav'
                     },
                     {
                         id   : 'fuse-perfect-scrollbar',
                         title: 'fusePerfectScrollbar',
                         type : 'link',
-                        link : '/documentation/directives/fuse-perfect-scrollbar'
+                        link : '/docs/directives/fuse-perfect-scrollbar'
                     }
                 ]
             },
@@ -1801,13 +1801,13 @@ export const compactNavigation: AsmNavigationItem[] = [
                         id   : 'fuse-config',
                         title: 'Fuse Config',
                         type : 'link',
-                        link : '/documentation/services/fuse-config'
+                        link : '/docs/services/fuse-config'
                     },
                     {
                         id   : 'fuse-splash-screen',
                         title: 'Fuse Splash Screen',
                         type : 'link',
-                        link : '/documentation/services/fuse-splash-screen'
+                        link : '/docs/services/fuse-splash-screen'
                     }
                 ]
             }
