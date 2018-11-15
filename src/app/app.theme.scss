@@ -166,7 +166,7 @@ body.asm-theme-blue {
 $blue-grey-primary-palette: mat-palette($mat-blue-grey);
 $blue-grey-accent-palette: mat-palette($asm-navy);
 $blue-grey-warn-palette: mat-palette($mat-red);
-$blue-grey-theme: mat-light-theme($blue-grey-primary-palette, $blue-grey-accent-palette, $blue-grey-warn-palette);
+$blue-grey-theme: mat-dark-theme($blue-grey-primary-palette, $blue-grey-accent-palette, $blue-grey-warn-palette);
 
 body.asm-theme-blue-grey {
 
