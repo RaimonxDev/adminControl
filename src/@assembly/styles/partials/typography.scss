@@ -8,6 +8,21 @@
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     $warn: map-get($theme, warn);
+    $is-dark: map-get($theme, is-dark);
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ General
+    // -----------------------------------------------------------------------------------------------------
+    code {
+
+        @if ($is-dark) {
+            color: #CDD3DE;
+            background: #424242;
+        } @else {
+            color: #728FCB;
+            background: #DEE2E4;
+        }
+    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Message
@@ -131,15 +146,11 @@ blockquote {
 
 // Code
 code {
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-
-    &:not(.highlight) {
-        background: #DEE2E4;
-        padding: 3px 5px;
-        border-radius: 3px;
-        font-size: 85%;
-        line-height: 1.7;
-    }
+    font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+    font-size: 85%;
+    line-height: 1.6;
+    padding: 3px 5px;
+    border-radius: 3px;
 }
 
 // Definition lists
