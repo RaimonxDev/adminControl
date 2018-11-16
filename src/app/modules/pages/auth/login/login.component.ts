@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { AsmConfigService } from '@assembly';
 
 import { AuthService } from 'app/core/auth/auth.service';

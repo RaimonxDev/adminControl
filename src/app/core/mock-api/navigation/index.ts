@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import MockAdapter from 'axios-mock-adapter';
-import { mockWithAuth } from 'app/core/mock-api/with-auth';
+import { AsmNavigationItem } from '@assembly';
 
-import { AsmNavigationItem } from '@assembly/types/navigation';
+import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import { compactNavigation, defaultNavigation } from 'app/core/mock-api/navigation/data';
 
 @Injectable({

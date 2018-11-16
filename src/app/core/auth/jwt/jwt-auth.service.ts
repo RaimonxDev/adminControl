@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
+import { AsmSplashScreenService } from '@assembly';
 
-import { AsmSplashScreenService } from '@assembly/services/splash-screen/splash-screen.service';
 import { AuthService } from 'app/core/auth/auth.service';
 import { PopulateService } from 'app/core/populate/populate.service';
 

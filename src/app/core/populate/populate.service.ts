@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { forkJoin, from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
-
-import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
+import { AsmNavigationService } from '@assembly';
 
 @Injectable({
     providedIn: 'root'

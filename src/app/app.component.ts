@@ -3,9 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-
 import { AsmConfig, AsmConfigService, AsmNavigationService } from '@assembly';
-
 
 @Component({
     selector   : 'app-root',

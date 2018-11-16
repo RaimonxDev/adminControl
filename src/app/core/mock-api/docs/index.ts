@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import MockAdapter from 'axios-mock-adapter';
 
-import { docs } from './data';
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
+import { docs } from './data';
 
 @Injectable({
     providedIn: 'root'
