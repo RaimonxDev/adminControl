@@ -8,7 +8,7 @@ compact-layout {
     width: 100%;
 
     // Header
-    .header {
+    > .header {
         position: sticky;
         display: flex;
         flex: 1 1 auto;
@@ -26,7 +26,7 @@ compact-layout {
 
         + .container {
 
-            .navigation {
+            > .navigation {
                 top: 80px;
                 height: calc(100vh - 80px);
                 min-height: calc(100vh - 80px);
@@ -48,13 +48,13 @@ compact-layout {
             flex: 1 1 auto;
 
             // Content
-            .content {
+            > .content {
                 display: flex;
                 flex: 1 1 auto;
             }
 
             // Footer
-            .footer {
+            > .footer {
                 display: flex;
                 flex: 1 1 auto;
                 align-items: center;
@@ -78,7 +78,7 @@ compact-layout {
 
             > .container {
 
-                .footer {
+                > .footer {
                     position: sticky;
                     bottom: 0;
                 }

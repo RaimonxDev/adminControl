@@ -7,7 +7,7 @@ thin-layout {
     width: 100%;
 
     // Navigation
-    .navigation {
+    > .navigation {
 
         .asm-navigation-header {
 
@@ -29,13 +29,13 @@ thin-layout {
     }
 
     // Container
-    .container {
+    > .container {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
 
         // Header
-        .header {
+        > .header {
             display: flex;
             flex: 1 1 auto;
             align-items: center;
@@ -50,13 +50,13 @@ thin-layout {
         }
 
         // Content
-        .content {
+        > .content {
             display: flex;
             flex: 1 1 auto;
         }
 
         // Footer
-        .footer {
+        > .footer {
             display: flex;
             flex: 1 1 auto;
             align-items: center;
@@ -74,18 +74,24 @@ thin-layout {
     // Fixed header
     &.fixed-header {
 
-        .header {
-            position: sticky;
-            bottom: 0;
+        > .container {
+
+            > .header {
+                position: sticky;
+                bottom: 0;
+            }
         }
     }
 
     // Fixed footer
     &.fixed-footer {
 
-        .footer {
-            position: sticky;
-            bottom: 0;
+        > .container {
+
+            > .footer {
+                position: sticky;
+                bottom: 0;
+            }
         }
     }
 }

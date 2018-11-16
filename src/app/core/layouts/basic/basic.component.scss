@@ -7,7 +7,7 @@ basic-layout {
     width: 100%;
 
     // Navigation
-    .navigation {
+    > .navigation {
 
         .asm-navigation-header {
 
@@ -33,13 +33,13 @@ basic-layout {
     }
 
     // Container
-    .container {
+    > .container {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
 
         // Header
-        .header {
+        > .header {
             display: flex;
             flex: 1 1 auto;
             align-items: center;
@@ -52,14 +52,14 @@ basic-layout {
         }
 
         // Content
-        .content {
+        > .content {
             display: flex;
             flex-direction: column;
             flex: 1 0 auto;
         }
 
         // Footer
-        .footer {
+        > .footer {
             display: flex;
             flex: 1 1 auto;
             align-items: center;
@@ -77,18 +77,24 @@ basic-layout {
     // Fixed header
     &.fixed-header {
 
-        .header {
-            position: sticky;
-            top: 0;
+        > .container {
+
+            > .header {
+                position: sticky;
+                top: 0;
+            }
         }
     }
 
     // Fixed footer
     &.fixed-footer {
 
-        .footer {
-            position: sticky;
-            bottom: 0;
+        > .container {
+
+            > .footer {
+                position: sticky;
+                bottom: 0;
+            }
         }
     }
 }

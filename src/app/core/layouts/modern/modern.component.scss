@@ -8,7 +8,7 @@ modern-layout {
     width: 100%;
 
     // Header
-    .header {
+    > .header {
         position: sticky;
         display: flex;
         flex: 1 1 auto;
@@ -26,7 +26,7 @@ modern-layout {
 
         + .container {
 
-            .navigation {
+            > .navigation {
                 top: 128px;
                 height: calc(100vh - 176px);
                 min-height: calc(100vh - 176px);
@@ -50,7 +50,7 @@ modern-layout {
         padding: 48px;
         z-index: 5;
 
-        .navigation {
+        > .navigation {
             top: 48px;
             height: calc(100vh - 96px);
             min-height: calc(100vh - 96px);
@@ -99,11 +99,11 @@ modern-layout {
             }
 
             // Content
-            .content {
+            > .content {
                 display: flex;
                 flex: 1 1 auto;
 
-                router-outlet {
+                > router-outlet {
 
                     + * {
                         padding: 0;
@@ -112,7 +112,7 @@ modern-layout {
             }
 
             // Footer
-            .footer {
+            > .footer {
                 display: flex;
                 flex: 1 1 auto;
                 align-items: center;
