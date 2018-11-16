@@ -29,13 +29,13 @@
                                        [active]="item.id === activeAsideItemId"
                                        (click)="toggleAside(item.id)"></asm-navigation-aside-item>
 
-            <!-- Link -->
-            <asm-navigation-link-item *ngIf="item.type === 'link'"
-                                      [item]="item"></asm-navigation-link-item>
-
             <!-- Collapsable -->
             <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
                                              [item]="item"></asm-navigation-collapsable-item>
+
+            <!-- Link -->
+            <asm-navigation-link-item *ngIf="item.type === 'link'"
+                                      [item]="item"></asm-navigation-link-item>
 
             <!-- Subheader -->
             <asm-navigation-subheader-item *ngIf="item.type === 'subheader'"
