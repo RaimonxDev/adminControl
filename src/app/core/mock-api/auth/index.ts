@@ -147,7 +147,7 @@ export class MockAuthData
             });
 
         // Login with using JWT token
-        mock.onPost('api/auth/login-jwt')
+        mock.onPost('api/auth/login-with-jwt')
             .reply((config) => {
 
                 // Parse the data

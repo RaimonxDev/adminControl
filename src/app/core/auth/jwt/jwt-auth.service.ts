@@ -110,7 +110,7 @@ export class JWTAuthService implements AuthService
             this._asmSplashScreenService.disableAutoHide();
 
             // Login using access token
-            from(this._axios.post('api/auth/login-jwt', {accessToken}))
+            from(this._axios.post('api/auth/login-with-jwt', {accessToken}))
                 .pipe(
                     map((response) => {
 
