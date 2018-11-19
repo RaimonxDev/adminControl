@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import axios, { AxiosInstance } from 'axios';
 import { AsmSplashScreenService } from '@assembly';
 
@@ -14,6 +14,7 @@ import { PopulateService } from 'app/core/populate/populate.service';
 export class JWTAuthService implements AuthService
 {
     // Private
+    private _accessToken: string;
     private _authenticated: boolean;
     private _axios: AxiosInstance;
     private _onLoggedIn: BehaviorSubject<any>;
@@ -50,6 +51,14 @@ export class JWTAuthService implements AuthService
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Getter for access token
+     */
+    get accessToken(): any
+    {
+        return this._accessToken;
+    }
+
+    /**
      * Getter for user
      */
     get user(): any
@@ -79,7 +88,10 @@ export class JWTAuthService implements AuthService
 
     /**
      * Check the authentication status of the current
-     * user and login if the token exits and valid
+     * user and login if the token exists and valid.
+     *
+     * Also update the local storage with the new
+     * access token and user data.
      *
      * @private
      */
@@ -88,33 +100,54 @@ export class JWTAuthService implements AuthService
         // Set the authenticated flag to false by default
         this._authenticated = false;
 
-        // Check the local storage for the user data
-        const user = JSON.parse(localStorage.getItem('user'));
+        // Check the local storage for the access token
+        const accessToken = localStorage.getItem('access_token');
 
-        // If there is a user data and the access token didn't expire...
-        if ( user && user.accessToken && this.isTokenExpired(user.accessToken) === false )
+        // If there is a access token and it didn't expire...
+        if ( accessToken && !this.isTokenExpired(accessToken) )
         {
             // Disable the splash screen's auto hide
             this._asmSplashScreenService.disableAutoHide();
 
-            // Set the authenticated flag to true
-            this._authenticated = true;
+            // Login using access token
+            from(this._axios.post('api/auth/login-jwt', {accessToken}))
+                .pipe(
+                    map((response) => {
 
-            // Store the user
-            this._user = user;
+                        // Get the data
+                        const user           = response.data.user,
+                              newAccessToken = response.data.accessToken;
 
-            // Execute the observable
-            this._onLoggedIn.next(user);
+                        // Store the data in the local storage
+                        localStorage.setItem('access_token', newAccessToken);
+                        localStorage.setItem('user', JSON.stringify(user));
 
-            // Populate the initial data
-            this._populateService.load().subscribe(() => {
+                        // Set the authenticated flag to true
+                        this._authenticated = true;
 
-                // Hide the splash screen
-                this._asmSplashScreenService.hide();
-            });
+                        // Store the data in the service
+                        this._user = user;
+                        this._accessToken = accessToken;
 
-            // Finish the initialization
-            return;
+                        // Execute the observable
+                        this._onLoggedIn.next(user);
+
+                        // Populate the initial data
+                        this._populateService.load().subscribe(() => {
+
+                            // Hide the splash screen
+                            this._asmSplashScreenService.hide();
+                        });
+                    }),
+                    catchError(error => {
+
+                        // Hide the splash screen
+                        this._asmSplashScreenService.hide();
+
+                        // Return the error observable
+                        return throwError(error);
+                    })
+                ).subscribe();
         }
     }
 
@@ -136,31 +169,33 @@ export class JWTAuthService implements AuthService
             return;
         }
 
-        return from(this._axios.post('api/auth', {
+        return from(this._axios.post('api/auth/login', {
             username,
             password
         })).pipe(
             switchMap((response) => {
 
-                // Get the user data
-                const user = response.data.user;
+                // Get the data
+                const user        = response.data.user,
+                      accessToken = response.data.accessToken;
 
-                // Add the user data to the local storage
+                // Store the data in the local storage
+                localStorage.setItem('access_token', accessToken);
                 localStorage.setItem('user', JSON.stringify(user));
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
 
-                // Store the user
+                // Store the data in the service
                 this._user = user;
+                this._accessToken = accessToken;
 
                 // Execute the observable
                 this._onLoggedIn.next(user);
 
                 // Populate the initial data
                 return this._populateService.load();
-            }),
-            catchError((error) => throwError(error))
+            })
         );
     }
 
@@ -169,19 +204,15 @@ export class JWTAuthService implements AuthService
      */
     logout(): void
     {
-        // Return if the user is already logged out
-        if ( !this.isAuthenticated() )
-        {
-            return;
-        }
-
-        // Remove the user data from the local storage
+        // Remove the data from the local storage
+        localStorage.removeItem('access_token');
         localStorage.removeItem('user');
 
         // Set the authenticated flag to false
         this._authenticated = false;
 
-        // Clear the user
+        // Clear the service data
+        this._accessToken = null;
         this._user = null;
 
         // Execute the observable
@@ -238,11 +269,8 @@ export class JWTAuthService implements AuthService
             (config) => {
 
                 // If the user logged in and has an access token...
-                if ( this.user && this.user.accessToken )
+                if ( this.user && this.accessToken )
                 {
-                    // Get the access token
-                    const accessToken = this._user.accessToken;
-
                     // If the access token didn't expire, add the Authorization header.
                     //
                     // We won't add the Authorization header if the access token expired.
@@ -250,9 +278,9 @@ export class JWTAuthService implements AuthService
                     // the protected API routes which our response interceptor will catch
                     // and delete the access token from the local storage while logging
                     // the user out from the app.
-                    if ( !this.isTokenExpired(accessToken) )
+                    if ( !this.isTokenExpired(this.accessToken) )
                     {
-                        config.headers.Authorization = 'Bearer ' + accessToken;
+                        config.headers.Authorization = 'Bearer ' + this.accessToken;
                     }
                 }
 
