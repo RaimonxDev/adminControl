@@ -1,6 +1,6 @@
 @import "src/@assembly/components/drawer/drawer.theme";
 @import "src/@assembly/components/navigation/navigation.theme";
-@import "src/@assembly/styles/plugins/prismjs";
+@import "plugins/highlightjs";
 
 @mixin asm-core-theme($theme) {
 
@@ -14,5 +14,5 @@
     @include asm-navigation-theme($theme);
 
     // Theming for 3rd party plugins and components
-    @include prismjs-theme($theme);
+    @include highlightjs-theme($theme);
 }

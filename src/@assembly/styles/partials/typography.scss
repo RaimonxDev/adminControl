@@ -13,7 +13,7 @@
     // -----------------------------------------------------------------------------------------------------
     // @ General
     // -----------------------------------------------------------------------------------------------------
-    code {
+    code:not([class*="language-"]) {
 
         @if ($is-dark) {
             color: #CDD3DE;
@@ -145,7 +145,7 @@ blockquote {
 }
 
 // Code
-code {
+code:not([class*="language-"]) {
     font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
     font-size: 85%;
     line-height: 1.6;
@@ -190,7 +190,7 @@ pre {
     min-height: 64px;
     padding: 16px 24px;
     margin: 16px 0 !important;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.08);
 
     &.info {
         background: #B3E5FC;

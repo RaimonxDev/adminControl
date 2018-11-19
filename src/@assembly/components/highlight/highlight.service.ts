@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import * as Prism from 'prismjs';
-import './prismjs';
+import hljs from 'highlight.js';
 
 @Injectable({
     providedIn: 'root'
@@ -85,6 +83,6 @@ export class AsmHighlightService
         code = this._format(code);
 
         // Highlight and return the code
-        return Prism.highlight(code, Prism.languages[language]);
+        return hljs.highlight(language, code).value;
     }
 }
