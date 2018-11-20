@@ -24,14 +24,11 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
 {
     activeAsideItemId: null | string;
     asmConfig: AsmConfig;
+    data: any[];
 
     // Auto collapse
     @Input()
     autoCollapse: boolean;
-
-    // Data
-    @Input()
-    data: any[];
 
     // Name
     @Input()
@@ -362,7 +359,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         this._asmNavigationService.showTooltips = this.showTooltips;
 
         // Load the navigation either from the input or from the service
-        this.data = this.data || this._asmNavigationService.getCurrentNavigation();
+        this.data = this._asmNavigationService.getCurrentNavigation();
 
         // Subscribe to the current navigation changes
         this._asmNavigationService.onCurrentChanged
