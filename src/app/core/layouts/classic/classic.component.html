@@ -1,7 +1,7 @@
 <!-- LEFT NAVIGATION -->
 <asm-navigation class="navigation"
                 *ngIf="!asmConfig.layout.options.navigation.hidden"
-                name="leftNavigation"
+                [name]="'leftNavigation'"
                 [appearance]="'classic'"
                 [mode]="isScreenSmall ? 'over' : 'side'"
                 [opened]="!isScreenSmall">
