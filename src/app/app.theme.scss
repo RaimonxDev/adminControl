@@ -86,6 +86,8 @@ $typography: mat-typography-config(
 @import 'core/layouts/thin/thin.theme';
 @import 'core/layouts/thin-light/thin-light.theme';
 
+@import 'src/app/modules/docs/docs.theme';
+
 // Define a mixin for easier access
 @mixin components-theme($theme) {
 
@@ -99,6 +101,7 @@ $typography: mat-typography-config(
     @include thin-light-layout-theme($theme);
 
     // Components
+    @include docs-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

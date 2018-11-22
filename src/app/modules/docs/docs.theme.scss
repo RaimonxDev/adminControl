@@ -1,0 +1,75 @@
+@mixin docs-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    // Light
+    $td-bottom-border-color: rgba(0, 0, 0, 0.06);
+    $td-odd-background-color: map-get($background, card);
+    $td-even-background-color: rgba(255, 255, 255, 0.02);
+
+    // Dark
+    @if ($is-dark) {
+        $td-bottom-border-color: rgba(255, 255, 255, 0.06);
+        $td-odd-background-color: rgba(255, 255, 255, 0.04);
+        $td-even-background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    docs {
+
+        > div {
+
+            .docs-simple-table {
+
+                table {
+
+                    border: 1px solid map-get($foreground, divider);
+
+                    thead {
+
+                        tr {
+
+                            th {
+                                border-right: 1px solid map-get($foreground, divider);
+
+                                &:last-child {
+                                    border-right: none;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+
+                        tr {
+
+                            td {
+                                background-color: $td-odd-background-color;
+                                border-right: 1px solid map-get($foreground, divider);
+                                //border-bottom: 1px solid $td-bottom-border-color;
+
+                                &:last-child {
+                                    border-right: none;
+                                }
+
+                                .required {
+                                    background-color: #8CC592;
+                                    color: #FFFFFF;
+                                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+                                }
+                            }
+
+                            &:nth-child(2n) {
+
+                                td {
+                                    background-color: $td-even-background-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
