@@ -213,16 +213,6 @@ export class AsmNavigationService
     }
 
     /**
-     * Get the current navigation
-     *
-     * @returns {any}
-     */
-    getCurrentNavigation(): any
-    {
-        return this.getNavigation(this._currentNavigationName);
-    }
-
-    /**
      * Set the navigation with the name as the current
      *
      * @param name
@@ -234,6 +224,16 @@ export class AsmNavigationService
 
         // Execute the observable
         this._onCurrentChanged.next(name);
+    }
+
+    /**
+     * Get the current navigation
+     *
+     * @returns {any}
+     */
+    getCurrentNavigation(): any
+    {
+        return this.getNavigation(this._currentNavigationName);
     }
 
     /**
