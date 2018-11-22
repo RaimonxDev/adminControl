@@ -6,14 +6,12 @@
 
     // Light
     $td-bottom-border-color: rgba(0, 0, 0, 0.06);
-    $td-odd-background-color: map-get($background, card);
-    $td-even-background-color: rgba(255, 255, 255, 0.02);
+    $td-odd-background-color: #F5F8FB;
 
     // Dark
     @if ($is-dark) {
         $td-bottom-border-color: rgba(255, 255, 255, 0.06);
         $td-odd-background-color: rgba(255, 255, 255, 0.04);
-        $td-even-background-color: rgba(255, 255, 255, 0.02);
     }
 
     docs {
@@ -23,7 +21,7 @@
             .docs-simple-table {
 
                 table {
-
+                    background-color: map-get($background, card);
                     border: 1px solid map-get($foreground, divider);
 
                     thead {
@@ -45,9 +43,7 @@
                         tr {
 
                             td {
-                                background-color: $td-odd-background-color;
                                 border-right: 1px solid map-get($foreground, divider);
-                                //border-bottom: 1px solid $td-bottom-border-color;
 
                                 &:last-child {
                                     border-right: none;
@@ -60,10 +56,10 @@
                                 }
                             }
 
-                            &:nth-child(2n) {
+                            &:nth-child(2n-1) {
 
                                 td {
-                                    background-color: $td-even-background-color;
+                                    background-color: $td-odd-background-color;
                                 }
                             }
                         }
