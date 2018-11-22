@@ -18,7 +18,8 @@ import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.
     styleUrls      : ['./navigation.component.scss'],
     animations     : AsmAnimations,
     encapsulation  : ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs       : 'asmNavigation'
 })
 export class AsmNavigationComponent implements OnInit, OnDestroy
 {

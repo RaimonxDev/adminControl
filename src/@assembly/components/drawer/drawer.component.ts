@@ -8,7 +8,8 @@ import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
     selector     : 'asm-drawer',
     templateUrl  : './drawer.component.html',
     styleUrls    : ['./drawer.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    exportAs     : 'asmDrawer'
 })
 export class AsmDrawerComponent implements OnInit, OnDestroy
 {

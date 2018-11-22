@@ -6,7 +6,8 @@ import { AsmHighlightService } from '@assembly/components/highlight/highlight.se
     selector     : 'asm-highlight',
     templateUrl  : './highlight.component.html',
     styles       : [],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    exportAs     : 'asmHighlight'
 })
 export class AsmHighlightComponent implements OnInit
 {

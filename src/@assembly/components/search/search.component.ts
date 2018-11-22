@@ -3,7 +3,8 @@ import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
 @Component({
     selector   : 'asm-search',
     templateUrl: './search.component.html',
-    styleUrls  : ['./search.component.scss']
+    styleUrls  : ['./search.component.scss'],
+    exportAs   : 'asmSearch'
 })
 export class AsmSearchComponent
 {
