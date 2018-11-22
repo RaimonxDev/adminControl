@@ -20,7 +20,7 @@
             background: #424242;
         } @else {
             color: #728FCB;
-            background: #DEE2E4;
+            background: #e3e7f1;
         }
     }
 
@@ -148,8 +148,7 @@ blockquote {
 code:not([class*="language-"]) {
     font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
     font-size: 85%;
-    line-height: 1.6;
-    padding: 3px 5px;
+    padding: 3px 7px;
     border-radius: 3px;
 }
 

@@ -23,7 +23,7 @@ export class AsmNavigationService
     private _componentRegistry: Map<string, AsmNavigationComponent>;
     private _navigationStore: Map<string, any>;
 
-    private _currentNavigationKey: string;
+    private _currentNavigationName: string;
     private _onCurrentChanged: BehaviorSubject<any>;
     private _onStored: BehaviorSubject<any>;
     private _onDeleted: BehaviorSubject<any>;
@@ -37,7 +37,7 @@ export class AsmNavigationService
         this._componentRegistry = new Map<string, AsmNavigationComponent>();
         this._navigationStore = new Map<string, any>();
 
-        this._currentNavigationKey = null;
+        this._currentNavigationName = null;
         this._onCurrentChanged = new BehaviorSubject(null);
         this._onStored = new BehaviorSubject(null);
         this._onDeleted = new BehaviorSubject(null);
@@ -93,86 +93,86 @@ export class AsmNavigationService
     /**
      * Register navigation component
      *
-     * @param key
-     * @param drawer
+     * @param name
+     * @param component
      */
-    registerComponent(key, drawer): void
+    registerComponent(name, component): void
     {
-        this._componentRegistry.set(key, drawer);
+        this._componentRegistry.set(name, component);
     }
 
     /**
      * Deregister navigation component
      *
-     * @param key
+     * @param name
      */
-    deregisterComponent(key): void
+    deregisterComponent(name): void
     {
-        this._componentRegistry.delete(key);
+        this._componentRegistry.delete(name);
     }
 
     /**
      * Get navigation component from the registry
      *
-     * @param key
+     * @param name
      */
-    getComponent(key): AsmNavigationComponent
+    getComponent(name): AsmNavigationComponent
     {
-        return this._componentRegistry.get(key);
+        return this._componentRegistry.get(name);
     }
 
     /**
-     * Store the given navigation with the given key
+     * Store the given navigation with the given name
      *
-     * @param key
+     * @param name
      * @param navigation
      */
-    storeNavigation(key, navigation): void
+    storeNavigation(name, navigation): void
     {
         // Add to the store
-        this._navigationStore.set(key, navigation);
+        this._navigationStore.set(name, navigation);
 
         // Execute the observable
-        this._onStored.next([key, navigation]);
+        this._onStored.next([name, navigation]);
 
         // Execute the 'onCurrentChanged' in case the current navigation
         // was set before storing the actual navigation data
-        if ( this._currentNavigationKey === key )
+        if ( this._currentNavigationName === name )
         {
             // Execute the observable
-            this._onCurrentChanged.next(key);
+            this._onCurrentChanged.next(name);
         }
     }
 
     /**
      * Delete the navigation from the storage
      *
-     * @param key
+     * @param name
      */
-    deleteNavigation(key): void
+    deleteNavigation(name): void
     {
         // Check if the navigation exists
-        if ( !this._navigationStore.has(key) )
+        if ( !this._navigationStore.has(name) )
         {
-            console.warn(`Navigation with the key '${key}' does not exist in the store.`);
+            console.warn(`Navigation with the name '${name}' does not exist in the store.`);
         }
 
         // Delete from the storage
-        this._navigationStore.delete(key);
+        this._navigationStore.delete(name);
 
         // Execute the observable
-        this._onDeleted.next(key);
+        this._onDeleted.next(name);
     }
 
     /**
-     * Get navigation from storage by key
+     * Get navigation from storage by name
      *
-     * @param key
+     * @param name
      * @returns {any}
      */
-    getNavigation(key): any
+    getNavigation(name): any
     {
-        return this._navigationStore.get(key);
+        return this._navigationStore.get(name);
     }
 
     /**
@@ -219,21 +219,21 @@ export class AsmNavigationService
      */
     getCurrentNavigation(): any
     {
-        return this.getNavigation(this._currentNavigationKey);
+        return this.getNavigation(this._currentNavigationName);
     }
 
     /**
-     * Set the navigation with the key as the current
+     * Set the navigation with the name as the current
      *
-     * @param key
+     * @param name
      */
-    setCurrentNavigation(key): void
+    setCurrentNavigation(name): void
     {
-        // Set the current navigation key
-        this._currentNavigationKey = key;
+        // Set the current navigation name
+        this._currentNavigationName = name;
 
         // Execute the observable
-        this._onCurrentChanged.next(key);
+        this._onCurrentChanged.next(name);
     }
 
     /**
