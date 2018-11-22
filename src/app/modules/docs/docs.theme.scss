@@ -19,10 +19,10 @@
         > div {
 
             .docs-simple-table {
+                background-color: map-get($background, card);
+                border: 1px solid map-get($foreground, divider);
 
                 table {
-                    background-color: map-get($background, card);
-                    border: 1px solid map-get($foreground, divider);
 
                     thead {
 

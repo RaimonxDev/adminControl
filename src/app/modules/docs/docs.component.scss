@@ -29,6 +29,20 @@ docs {
             margin: 32px 0 0 0;
         }
 
+        .method {
+            margin: 24px 0 0 0;
+
+            code {
+                display: block;
+                font-weight: normal;
+                font-size: 16px;
+            }
+
+            & ~ p:not(.method) {
+                margin-left: 20px;
+            }
+        }
+
         p {
             margin: 16px 0;
         }
@@ -42,6 +56,7 @@ docs {
             overflow-x: auto;
             overflow-y: hidden;
             margin: 16px 0;
+            border-radius: 4px;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.06);
 
             table {
@@ -76,7 +91,6 @@ docs {
 
                             p {
                                 margin: 0;
-                                line-height: 1.7;
 
                                 & + p {
                                     margin: 16px 0 0 0;
