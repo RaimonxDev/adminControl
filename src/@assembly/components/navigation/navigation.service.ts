@@ -182,7 +182,7 @@ export class AsmNavigationService
      * @param flatNavigation
      * @returns {any[]}
      */
-    getFlatNavigation(navigation = null, flatNavigation: AsmNavigationItem[] = []): any
+    getFlatNavigation(navigation = null, flatNavigation: AsmNavigationItem[] = []): any[]
     {
         // If the navigation is not given...
         if ( !navigation )
@@ -193,14 +193,14 @@ export class AsmNavigationService
 
         for ( const item of navigation )
         {
-            if ( item.type === 'item' )
+            if ( item.type === 'link' )
             {
                 flatNavigation.push(item);
 
                 continue;
             }
 
-            if ( item.type === 'collapsable' || item.type === 'group' )
+            if ( item.type === 'aside' || item.type === 'collapsable' )
             {
                 if ( item.children )
                 {
