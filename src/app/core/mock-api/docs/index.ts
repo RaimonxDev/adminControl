@@ -7,7 +7,7 @@ import { docs } from './data';
 @Injectable({
     providedIn: 'root'
 })
-export class MockDocsData
+export class MockDocsApi
 {
     // Data
     private _docs = docs;

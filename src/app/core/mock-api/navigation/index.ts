@@ -8,7 +8,7 @@ import { compactNavigation, defaultNavigation } from 'app/core/mock-api/navigati
 @Injectable({
     providedIn: 'root'
 })
-export class MockNavigationData
+export class MockNavigationApi
 {
     // Data
     private _defaultNavigation: AsmNavigationItem[] = defaultNavigation;

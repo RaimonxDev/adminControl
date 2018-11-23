@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-import { MockAuthData } from 'app/core/mock-api/auth';
-import { MockDocsData } from 'app/core/mock-api/docs';
-import { MockNavigationData } from 'app/core/mock-api/navigation';
+import { MockAuthApi } from 'app/core/mock-api/auth';
+import { MockDocsApi } from 'app/core/mock-api/docs';
+import { MockNavigationApi } from 'app/core/mock-api/navigation';
+import { MockSearchResultsApi } from 'app/core/mock-api/search';
 
 const mockAdapter = new MockAdapter(axios, {delayResponse: 0});
 
@@ -14,18 +15,21 @@ export class MockApiModule
     /**
      * Constructor
      *
-     * @param {MockAuthData} _mockAuthData
-     * @param {MockDocsData} _mockDocsData
-     * @param {MockNavigationData} _mockNavigationData
+     * @param {MockAuthApi} _mockAuthApi
+     * @param {MockDocsApi} _mockDocsApi
+     * @param {MockNavigationApi} _mockNavigationApi
+     * @param {MockSearchResultsApi} _mockSearchResultsApi
      */
     constructor(
-        private _mockAuthData: MockAuthData,
-        private _mockDocsData: MockDocsData,
-        private _mockNavigationData: MockNavigationData
+        private _mockAuthApi: MockAuthApi,
+        private _mockDocsApi: MockDocsApi,
+        private _mockNavigationApi: MockNavigationApi,
+        private _mockSearchResultsApi: MockSearchResultsApi
     )
     {
-        this._mockAuthData.init(mockAdapter);
-        this._mockDocsData.init(mockAdapter);
-        this._mockNavigationData.init(mockAdapter);
+        this._mockAuthApi.init(mockAdapter);
+        this._mockDocsApi.init(mockAdapter);
+        this._mockNavigationApi.init(mockAdapter);
+        this._mockSearchResultsApi.init(mockAdapter);
     }
 }

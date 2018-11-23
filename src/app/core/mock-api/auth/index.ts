@@ -7,7 +7,7 @@ import { user } from './data';
 @Injectable({
     providedIn: 'root'
 })
-export class MockAuthData
+export class MockAuthApi
 {
     // Data
     private _user = user;
@@ -92,6 +92,12 @@ export class MockAuthData
         return encodedHeader + '.' + encodedPayload + '.' + signature;
     }
 
+    /**
+     * Verify the given token
+     *
+     * @param token
+     * @private
+     */
     private _verifyJWTToken(token): boolean
     {
         // Split the token into parts

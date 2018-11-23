@@ -338,7 +338,7 @@ export const docs = {
                     </div>
                     <div class="method">
                         <p>
-                            <code>getFlatNavigation(): any</code>
+                            <code>getFlatNavigation(): any[]</code>
                         </p>
                         <p>
                             Get flattened navigation data. Useful for searching within the navigation.
