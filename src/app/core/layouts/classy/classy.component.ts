@@ -1,6 +1,7 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
+import { from, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import axios, { AxiosInstance } from 'axios';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigation, AsmNavigationService } from '@assembly';
 
 import { AuthService } from 'app/core/auth/auth.service';
@@ -14,8 +15,9 @@ import { AuthService } from 'app/core/auth/auth.service';
 export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
     asmConfig: AsmConfig;
-    navigation: AsmNavigation[];
     isScreenSmall: boolean;
+    navigation: AsmNavigation[];
+    searchResults: any;
 
     @HostBinding('class.fixed-header')
     fixedHeader: boolean;
@@ -24,6 +26,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     fixedFooter: boolean;
 
     // Private
+    private _axios: AxiosInstance;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -44,7 +47,11 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     )
     {
         // Set the private defaults
+        this._axios = axios;
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.searchResults = [];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -131,6 +138,19 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     logout(): void
     {
         this._authService.logout();
+    }
+
+    /**
+     * On search
+     *
+     * @param value
+     */
+    onSearch(value): void
+    {
+        from(this._axios.post('api/search', {query: value}))
+            .subscribe((response) => {
+                this.searchResults = response.data.results;
+            });
     }
 
     /**

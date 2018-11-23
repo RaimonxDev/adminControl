@@ -5,7 +5,23 @@
 
 <div class="search-container">
 
-    <input type="text">
+    <mat-form-field appearance="outline">
+        <input type="text"
+               matInput
+               [formControl]="searchControl"
+               [matAutocomplete]="matAutocomplete">
+    </mat-form-field>
+
+    <mat-autocomplete #matAutocomplete="matAutocomplete">
+        <mat-option *ngFor="let result of searchResults"
+                    [value]="result.title">
+            {{result.title}}
+            <br>
+            <span *ngIf="result.subtitle">
+                <small>{{result.subtitle}}</small>
+            </span>
+        </mat-option>
+    </mat-autocomplete>
 
 </div>
 

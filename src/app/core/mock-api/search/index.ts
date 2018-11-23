@@ -33,8 +33,6 @@ export class MockSearchResultsApi
      */
     init(mock: MockAdapter): void
     {
-        console.log(this._defaultNavigation);
-
         // Get the flat navigation and store it
         const flatNavigation = this._asmNavigationService.getFlatNavigation(this._defaultNavigation);
 
@@ -45,11 +43,19 @@ export class MockSearchResultsApi
                 // Get the search query
                 const query = JSON.parse(config.data).query.toLowerCase();
 
+                // If the search query is an empty string,
+                // return an empty array
+                if ( query === '' )
+                {
+                    return [200, {results: []}];
+                }
+
                 // Filter the results
                 const results = flatNavigation.filter((item) => {
                     return (item.title.toLowerCase().includes(query) || (item.subtitle && item.subtitle.includes(query)));
                 });
 
+                // Return the results
                 return [200, {results}];
             }));
     }

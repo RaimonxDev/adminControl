@@ -56,7 +56,8 @@
             <mat-icon>menu</mat-icon>
         </button>
 
-        <asm-search></asm-search>
+        <asm-search (search)="onSearch($event)"
+                    [results]="searchResults"></asm-search>
 
     </div>
     <!-- / HEADER -->

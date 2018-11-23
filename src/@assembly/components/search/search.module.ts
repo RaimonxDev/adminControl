@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 
 import { AsmSearchComponent } from '@assembly/components/search/search.component';
 import { AsmSearchService } from '@assembly/components/search/search.service';
@@ -12,8 +14,13 @@ import { AsmSearchService } from '@assembly/components/search/search.service';
         AsmSearchService
     ],
     imports     : [
+        CommonModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
         MatButtonModule,
-        MatIconModule
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule
     ],
     exports     : [
         AsmSearchComponent
