@@ -13,6 +13,19 @@
     // -----------------------------------------------------------------------------------------------------
     // @ General
     // -----------------------------------------------------------------------------------------------------
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        color: map-get($foreground, text) !important;
+    }
+
+    input,
+    textarea {
+        caret-color: map-get($foreground, base) !important;
+    }
+
     code:not([class*="language-"]) {
 
         @if ($is-dark) {
@@ -66,6 +79,16 @@ body {
 html, body {
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
+}
+
+// Font family on native elements
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
+    line-height: 1.4;
 }
 
 // Headings
