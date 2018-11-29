@@ -1,7 +1,11 @@
 @import "src/@assembly/components/drawer/drawer.theme";
 @import "src/@assembly/components/navigation/navigation.theme";
+@import "src/@assembly/components/search/search.theme";
 @import "plugins/highlightjs";
 
+// -----------------------------------------------------------------------------------------------------
+// @ Assembly core theming
+// -----------------------------------------------------------------------------------------------------
 @mixin asm-core-theme($theme) {
 
     // Theming for Assembly core styles
@@ -12,6 +16,7 @@
     // Theming for Assembly components
     @include asm-drawer-theme($theme);
     @include asm-navigation-theme($theme);
+    @include asm-search-theme($theme);
 
     // Theming for 3rd party plugins and components
     @include highlightjs-theme($theme);

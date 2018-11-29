@@ -1,3 +1,6 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Icons and 'icon-size-xx' helper classes
+// -----------------------------------------------------------------------------------------------------
 i,
 mat-icon {
     font-size: 24px;
@@ -9,7 +12,7 @@ mat-icon {
 
     @for $size from 2 through 128 {
 
-        &.s-#{$size * 2} {
+        &.icon-size-#{$size * 2} {
             @include icon-size($size * 2);
         }
     }
@@ -22,7 +25,7 @@ mat-icon {
 
             @for $size from 2 through 128 {
 
-                &.s-#{$size * 2}#{$alias} {
+                &.icon-size-#{$size * 2}#{$alias} {
                     @include icon-size($size * 2);
                 }
             }
