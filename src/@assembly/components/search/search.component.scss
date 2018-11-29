@@ -34,6 +34,7 @@ asm-search {
     overflow: visible !important;
     max-height: 512px !important;
     margin-top: 12px;
+    border-radius: 4px;
 
     &:before,
     &:after {
@@ -113,6 +114,7 @@ asm-search {
                     flex-direction: column;
                     justify-content: center;
                     overflow: hidden;
+                    line-height: normal;
                 }
 
                 .asm-search-result-title {
