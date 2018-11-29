@@ -57,7 +57,33 @@
         </button>
 
         <asm-search (search)="onSearch($event)"
-                    [results]="searchResults"></asm-search>
+                    [results]="searchResults"
+                    [minLength]="2"
+                    [noResultsText]="'No results found!'"
+                    [placeholder]="'Search for a page or a contact'">
+
+            <ng-template let-result>
+
+                <div class="asm-search-result-image">
+                    <mat-icon class="icon-size-16"
+                              *ngIf="result.resultType === 'page'">insert_drive_file
+                    </mat-icon>
+                    <img *ngIf="result.resultType ==='contact'"
+                         [src]="result.image">
+                </div>
+
+                <div class="asm-search-result-title"
+                     [innerHTML]="result.title">
+                </div>
+
+            </ng-template>
+
+        </asm-search>
+
+        <div>
+            <mat-icon>apps</mat-icon>
+            <mat-icon>notifications</mat-icon>
+        </div>
 
     </div>
     <!-- / HEADER -->

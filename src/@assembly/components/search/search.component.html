@@ -1,26 +1,42 @@
-<button mat-icon-button
-        class="search-button">
-    <mat-icon>search</mat-icon>
-</button>
+<div class="asm-search-container"
+     matAutocompleteOrigin
+     #matAutocompleteOrigin="matAutocompleteOrigin">
 
-<div class="search-container">
+    <mat-icon class="asm-search-icon">search</mat-icon>
 
-    <mat-form-field appearance="outline">
-        <input type="text"
-               matInput
-               [formControl]="searchControl"
-               [matAutocomplete]="matAutocomplete">
-    </mat-form-field>
+    <input matInput
+           class="asm-search-input"
+           [formControl]="searchControl"
+           [placeholder]="placeholder"
+           [matAutocomplete]="matAutocomplete"
+           [matAutocompleteConnectedTo]="matAutocompleteOrigin">
 
-    <mat-autocomplete #matAutocomplete="matAutocomplete">
-        <mat-option *ngFor="let result of searchResults"
-                    [value]="result.title">
-            {{result.title}}
-            <br>
-            <span *ngIf="result.subtitle">
-                <small>{{result.subtitle}}</small>
-            </span>
-        </mat-option>
+    <mat-autocomplete #matAutocomplete="matAutocomplete"
+                      [class]="'asm-search-results'">
+
+        <div class="asm-search-results-scroll-container"
+             asmScrollbar
+             [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+
+            <mat-optgroup class="asm-search-no-results"
+                          *ngIf="results && results.length === 0">
+                <mat-option>{{noResultsText}}</mat-option>
+            </mat-optgroup>
+
+            <mat-optgroup *ngFor="let group of results"
+                          [label]="group.label">
+
+                <mat-option *ngFor="let result of group.results">
+
+                    <ng-template [ngTemplateOutlet]="resultTemplate"
+                                 [ngTemplateOutletContext]="{$implicit: result}"></ng-template>
+
+                </mat-option>
+
+            </mat-optgroup>
+
+        </div>
+
     </mat-autocomplete>
 
 </div>

@@ -1,6 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import {
+    Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewEncapsulation
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -12,40 +14,53 @@ import { Subject } from 'rxjs';
 })
 export class AsmSearchComponent implements OnInit, OnDestroy
 {
+    opened: boolean;
     searchControl: FormControl;
-    searchResults: any[];
+
+    @ContentChild(TemplateRef)
+    resultTemplate: TemplateRef<any>;
 
     @Input()
     debounce: number;
+
+    @Input()
+    minLength: number;
+
+    @Input()
+    noResultsText: string;
+
+    @Input()
+    placeholder: string;
 
     @Output()
     search: EventEmitter<any>;
 
     // Private
     private _appearance: 'basic' | 'bar' | 'fullscreen';
+    private _results: any[] | null;
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
      * @param {ElementRef} _elementRef
-     * @param {FormBuilder} _formBuilder
      * @param {Renderer2} _renderer
      */
     constructor(
         private _elementRef: ElementRef,
-        private _formBuilder: FormBuilder,
         private _renderer: Renderer2
     )
     {
         // Set the private defaults
+        this._results = null;
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
         this.appearance = 'basic';
         this.debounce = this.debounce || 300;
+        this.minLength = this.minLength || 3;
+        this.opened = false;
         this.search = new EventEmitter();
-        this.searchResults = [];
         this.searchControl = new FormControl();
     }
 
@@ -72,7 +87,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         this._appearance = value;
 
         // Add the new appearance class
-        appearanceClassName = 'asm-navigation-appearance-' + this.appearance;
+        appearanceClassName = 'asm-search-appearance-' + this.appearance;
         this._renderer.addClass(this._elementRef.nativeElement, appearanceClassName);
     }
 
@@ -82,16 +97,21 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     }
 
     @Input()
-    set results(value: any[])
+    set results(value: any[] | null)
     {
         // If the value is the same, return...
-        if ( this.searchResults === value )
+        if ( this._results === value )
         {
             return;
         }
 
         // Store the results
-        this.searchResults = [...value];
+        this._results = value;
+    }
+
+    get results(): any[] | null
+    {
+        return this._results;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -107,7 +127,26 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         this.searchControl.valueChanges
             .pipe(
                 debounceTime(this.debounce),
-                takeUntil(this._unsubscribeAll)
+                takeUntil(this._unsubscribeAll),
+                map((value) => {
+
+                    // Set the search results to null if there is no value or
+                    // the length of the value is smaller than the minLength
+                    // so the autocomplete panel can be closed
+                    if ( !value || value.length < this.minLength )
+                    {
+                        this.results = null;
+                    }
+
+                    // Continue
+                    return value;
+                }),
+                filter((value) => {
+
+                    // Filter out undefined/null/false statements and also
+                    // filter out the values that are smaller than minLength
+                    return value && value.length >= this.minLength;
+                })
             )
             .subscribe((value) => {
                 this.search.emit(value);
@@ -123,5 +162,4 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
-
 }

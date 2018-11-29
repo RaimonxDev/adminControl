@@ -1,3 +1,132 @@
 asm-search {
+    display: flex;
+    width: 448px;
+    height: 48px;
 
+    // Basic appearance
+    &.asm-search-appearance-basic {
+
+        .asm-search-container {
+            display: flex;
+            align-items: center;
+            flex: 1 0 auto;
+            border: 2px solid;
+            border-radius: 24px;
+            overflow: hidden;
+
+            .asm-search-icon {
+                margin-left: 16px;
+            }
+
+            .asm-search-input {
+                padding: 0 24px 0 16px;
+                height: 48px;
+                border: none;
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+// Search results panel
+.asm-search-results {
+    overflow: visible !important;
+    max-height: 512px !important;
+    margin-top: 12px;
+
+    &:before,
+    &:after {
+        content: " ";
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 100%;
+        left: 28px;
+        border: solid transparent;
+        pointer-events: none;
+    }
+
+    &:before {
+        border-width: 9px;
+        margin-left: -9px;
+    }
+
+    &:after {
+        border-width: 8px;
+        margin-left: -8px;
+    }
+
+    .asm-search-results-scroll-container {
+        max-height: 512px;
+        overflow: auto;
+    }
+
+    .mat-optgroup {
+
+        &.asm-search-no-results {
+
+            label {
+                visibility: hidden;
+                opacity: 0;
+                height: 0;
+                pointer-events: none;
+            }
+
+            .mat-option {
+                pointer-events: none;
+            }
+        }
+
+        .mat-option {
+            padding: 0 16px !important;
+            font-size: 14px;
+
+            .mat-option-text {
+                display: flex;
+                align-items: center;
+
+                .asm-search-result-image {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 32px;
+                    min-width: 32px;
+                    max-width: 32px;
+                    height: 32px;
+                    min-height: 32px;
+                    max-height: 32px;
+                    margin-right: 12px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    img {
+                    }
+
+                    .mat-icon {
+                        margin: 0;
+                    }
+                }
+
+                .asm-search-result-multiline {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    overflow: hidden;
+                }
+
+                .asm-search-result-title {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .asm-search-result-hint {
+                    font-size: 13px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
 }

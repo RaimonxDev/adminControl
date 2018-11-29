@@ -17,7 +17,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     asmConfig: AsmConfig;
     isScreenSmall: boolean;
     navigation: AsmNavigation[];
-    searchResults: any;
+    searchResults: any[] | null;
 
     @HostBinding('class.fixed-header')
     fixedHeader: boolean;
@@ -51,7 +51,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.searchResults = [];
+        this.searchResults = null;
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public-api';
 
 import { AsmSearchComponent } from '@assembly/components/search/search.component';
 import { AsmSearchService } from '@assembly/components/search/search.service';
@@ -20,7 +21,8 @@ import { AsmSearchService } from '@assembly/components/search/search.service';
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
-        MatInputModule
+        MatInputModule,
+        AsmScrollbarModule
     ],
     exports     : [
         AsmSearchComponent
