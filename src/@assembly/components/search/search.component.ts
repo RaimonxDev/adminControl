@@ -14,29 +14,35 @@ import { Subject } from 'rxjs';
 })
 export class AsmSearchComponent implements OnInit, OnDestroy
 {
-    opened: boolean;
     searchControl: FormControl;
 
+    // Result template
     @ContentChild(TemplateRef)
     resultTemplate: TemplateRef<any>;
 
+    // Debounce
     @Input()
     debounce: number;
 
+    // Min. length
     @Input()
     minLength: number;
 
+    // No results text
     @Input()
     noResultsText: string;
 
+    // Placeholder
     @Input()
     placeholder: string;
 
+    // Search
     @Output()
     search: EventEmitter<any>;
 
     // Private
     private _appearance: 'basic' | 'bar' | 'fullscreen';
+    private _opened: boolean;
     private _results: any[] | null;
     private _unsubscribeAll: Subject<any>;
 
@@ -68,6 +74,11 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * Setter and getter for appearance
+     *
+     * @param value
+     */
     @Input()
     set appearance(value: 'basic' | 'bar' | 'fullscreen')
     {
@@ -76,6 +87,10 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         {
             return;
         }
+
+        // Make sure the search is closed, before
+        // changing the appearance to prevent issues
+        this.close();
 
         let appearanceClassName;
 
@@ -96,6 +111,11 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         return this._appearance;
     }
 
+    /**
+     * Setter and getter for results
+     *
+     * @param value
+     */
     @Input()
     set results(value: any[] | null)
     {
@@ -112,6 +132,40 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     get results(): any[] | null
     {
         return this._results;
+    }
+
+    /**
+     * Setter and getter for opened
+     *
+     * @param value
+     */
+    set opened(value: boolean)
+    {
+        // If the value is the same, return...
+        if ( this._opened === value )
+        {
+            return;
+        }
+
+        // Store the opened status
+        this._opened = value;
+
+        // If opened...
+        if ( value )
+        {
+            // Add opened class
+            this._renderer.addClass(this._elementRef.nativeElement, 'asm-search-opened');
+        }
+        else
+        {
+            // Remove opened class
+            this._renderer.removeClass(this._elementRef.nativeElement, 'asm-search-opened');
+        }
+    }
+
+    get opened(): boolean
+    {
+        return this._opened;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -161,5 +215,41 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the search
+     * Used in 'bar' and 'fullscreen'
+     */
+    open(): void
+    {
+        // Return, if it's already opened
+        if ( this.opened )
+        {
+            return;
+        }
+
+        // Open the search
+        this.opened = true;
+    }
+
+    /**
+     * Close the search
+     * * Used in 'bar' and 'fullscreen'
+     */
+    close(): void
+    {
+        // Return, if it's already closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Close the search
+        this.opened = false;
     }
 }

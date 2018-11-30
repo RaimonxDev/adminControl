@@ -1,44 +1,117 @@
-<div class="asm-search-container"
-     matAutocompleteOrigin
-     #matAutocompleteOrigin="matAutocompleteOrigin">
+<ng-container [ngSwitch]="appearance">
 
-    <mat-form-field appearance="outline"
-                    class="asm-search-input asm-mat-rounded asm-mat-no-subscript">
-        <mat-icon matPrefix>search</mat-icon>
-        <input matInput
-               [formControl]="searchControl"
-               [placeholder]="placeholder"
-               [matAutocomplete]="matAutocomplete"
-               [matAutocompleteConnectedTo]="matAutocompleteOrigin">
-    </mat-form-field>
+    <!-- Basic appearance -->
+    <ng-container *ngSwitchCase="'basic'">
 
-    <mat-autocomplete #matAutocomplete="matAutocomplete"
-                      [class]="'asm-search-results'">
+        <div class="asm-search-container"
+             matAutocompleteOrigin
+             #matAutocompleteOrigin="matAutocompleteOrigin">
 
-        <div class="asm-search-results-scroll-container"
-             asmScrollbar
-             [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+            <mat-form-field appearance="outline"
+                            class="asm-search-input asm-mat-rounded asm-mat-no-subscript">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput
+                       [formControl]="searchControl"
+                       [placeholder]="placeholder"
+                       [matAutocomplete]="matAutocomplete"
+                       [matAutocompleteConnectedTo]="matAutocompleteOrigin">
+            </mat-form-field>
 
-            <mat-optgroup class="asm-search-no-results"
-                          *ngIf="results && results.length === 0">
-                <mat-option>{{noResultsText}}</mat-option>
-            </mat-optgroup>
+            <mat-autocomplete #matAutocomplete="matAutocomplete"
+                              [class]="'asm-search-results'">
 
-            <mat-optgroup *ngFor="let group of results"
-                          [label]="group.label">
+                <div class="asm-search-results-scroll-container"
+                     asmScrollbar
+                     [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
 
-                <mat-option *ngFor="let result of group.results">
+                    <mat-optgroup class="asm-search-no-results"
+                                  *ngIf="results && results.length === 0">
+                        <mat-option>{{noResultsText}}</mat-option>
+                    </mat-optgroup>
 
-                    <ng-template [ngTemplateOutlet]="resultTemplate"
-                                 [ngTemplateOutletContext]="{$implicit: result}"></ng-template>
+                    <mat-optgroup *ngFor="let group of results"
+                                  [label]="group.label">
 
-                </mat-option>
+                        <mat-option *ngFor="let result of group.results">
 
-            </mat-optgroup>
+                            <ng-template [ngTemplateOutlet]="resultTemplate"
+                                         [ngTemplateOutletContext]="{$implicit: result}"></ng-template>
+
+                        </mat-option>
+
+                    </mat-optgroup>
+
+                </div>
+
+            </mat-autocomplete>
 
         </div>
 
-    </mat-autocomplete>
+    </ng-container>
 
-</div>
+    <!-- Bar appearance -->
+    <ng-container *ngSwitchCase="'bar'">
 
+        <button mat-icon-button
+                class="asm-search-toggle-open"
+                *ngIf="!opened"
+                (click)="open()">
+            <mat-icon>search</mat-icon>
+        </button>
+
+        <div class="asm-search-container"
+             *ngIf="opened"
+             matAutocompleteOrigin
+             #matAutocompleteOrigin="matAutocompleteOrigin">
+
+            <mat-form-field appearance="outline"
+                            class="asm-search-input asm-mat-rounded asm-mat-no-subscript">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput
+                       [formControl]="searchControl"
+                       [placeholder]="placeholder"
+                       [matAutocomplete]="matAutocomplete"
+                       [matAutocompleteConnectedTo]="matAutocompleteOrigin">
+            </mat-form-field>
+
+            <mat-autocomplete #matAutocomplete="matAutocomplete"
+                              [class]="'asm-search-results'">
+
+                <div class="asm-search-results-scroll-container"
+                     asmScrollbar
+                     [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+
+                    <mat-optgroup class="asm-search-no-results"
+                                  *ngIf="results && results.length === 0">
+                        <mat-option>{{noResultsText}}</mat-option>
+                    </mat-optgroup>
+
+                    <mat-optgroup *ngFor="let group of results"
+                                  [label]="group.label">
+
+                        <mat-option *ngFor="let result of group.results">
+
+                            <ng-template [ngTemplateOutlet]="resultTemplate"
+                                         [ngTemplateOutletContext]="{$implicit: result}"></ng-template>
+
+                        </mat-option>
+
+                    </mat-optgroup>
+
+                </div>
+
+            </mat-autocomplete>
+
+            <button mat-icon-button
+                    class="asm-search-toggle-close"
+                    (click)="close()">
+                <mat-icon>close</mat-icon>
+            </button>
+
+        </div>
+
+    </ng-container>
+
+    <!-- Fullscreen appearance -->
+
+</ng-container>

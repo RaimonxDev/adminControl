@@ -1,10 +1,10 @@
 asm-search {
     display: flex;
-    width: 448px;
-    height: 48px;
 
     // Basic appearance
     &.asm-search-appearance-basic {
+        width: 448px;
+        height: 48px;
 
         .asm-search-container {
             display: flex;
@@ -22,6 +22,48 @@ asm-search {
         }
     }
 
+    // Bar appearance
+    &.asm-search-appearance-bar {
+
+        &.asm-search-opened {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0 24px;
+            background: inherit;
+        }
+
+        .asm-search-container {
+            display: flex;
+            align-items: center;
+            flex: 1 0 auto;
+
+            .asm-search-input {
+                flex: 1 0 auto;
+                height: 100%;
+
+                .mat-form-field-wrapper {
+                    height: 100%;
+
+                    .mat-form-field-flex {
+                        height: 100%;
+
+                        // Remove the border
+                        .mat-form-field-outline {
+                            border: none !important;
+                        }
+                    }
+                }
+            }
+
+            .asm-search-toggle-close {
+                min-width: 40px;
+                max-width: 40px;
+            }
+        }
+    }
 }
 
 // Search results panel
