@@ -68,14 +68,6 @@ html, body {
     -moz-osx-font-smoothing: auto;
 }
 
-// Elements without a form-field wrapper
-input,
-textarea {
-    font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
-    line-height: 1.4;
-    color: currentColor;
-}
-
 // Headings
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
