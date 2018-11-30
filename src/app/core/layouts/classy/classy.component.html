@@ -57,6 +57,7 @@
         </button>
 
         <asm-search (search)="onSearch($event)"
+                    [appearance]="'bar'"
                     [results]="searchResults"
                     [minLength]="2"
                     [noResultsText]="'No results found!'"
