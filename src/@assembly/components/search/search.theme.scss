@@ -4,17 +4,6 @@
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    asm-search {
-
-        // Basic appearance
-        &.asm-search-appearance-basic {
-
-            .asm-search-container {
-                border-color: map-get($foreground, divider);
-            }
-        }
-    }
-
     // Search results panel
     .asm-search-results {
 

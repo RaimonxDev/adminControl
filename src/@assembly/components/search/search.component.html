@@ -2,14 +2,15 @@
      matAutocompleteOrigin
      #matAutocompleteOrigin="matAutocompleteOrigin">
 
-    <mat-icon class="asm-search-icon">search</mat-icon>
-
-    <input matInput
-           class="asm-search-input"
-           [formControl]="searchControl"
-           [placeholder]="placeholder"
-           [matAutocomplete]="matAutocomplete"
-           [matAutocompleteConnectedTo]="matAutocompleteOrigin">
+    <mat-form-field appearance="outline"
+                    class="asm-search-input asm-mat-rounded asm-mat-no-subscript">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput
+               [formControl]="searchControl"
+               [placeholder]="placeholder"
+               [matAutocomplete]="matAutocomplete"
+               [matAutocompleteConnectedTo]="matAutocompleteOrigin">
+    </mat-form-field>
 
     <mat-autocomplete #matAutocomplete="matAutocomplete"
                       [class]="'asm-search-results'">
