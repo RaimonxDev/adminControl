@@ -1,3 +1,47 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Angular Material style overrides and helpers
+// @ Angular Material library theming overrides and fixes
 // -----------------------------------------------------------------------------------------------------
+@mixin material-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    // Correct the icon colors
+    .mat-icon {
+        color: map-get($foreground, icon);
+    }
+
+    // Do not override the color if the icon is
+    // in a button and has a color property
+    .mat-icon-button {
+
+        &.mat-primary,
+        &.mat-accent,
+        &.mat-warn {
+
+            .mat-icon {
+                color: currentColor;
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Angular Material library overrides and fixes
+// -----------------------------------------------------------------------------------------------------
+
+.asm-mat-rounded {
+
+    &.mat-form-field-appearance-outline {
+
+        .mat-form-field-wrapper {
+            margin: 0;
+
+            .mat-form-field-flex {
+
+                .mat-form-field-outline {
+
+                }
+            }
+        }
+    }
+}

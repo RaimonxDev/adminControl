@@ -9,9 +9,6 @@
 // Assembly
 @import "assembly";
 
-// Theme
-@import "theme";
-
 // Include core Angular Material styles
 @include mat-core();
 
@@ -26,3 +23,29 @@
 @import "plugins/angular-material";
 @import "plugins/perfect-scrollbar";
 @import "plugins/highlightjs";
+
+// -----------------------------------------------------------------------------------------------------
+// @ Assembly core theming mixin
+// -----------------------------------------------------------------------------------------------------
+
+// Assembly component themes
+@import "src/@assembly/components/drawer/drawer.theme";
+@import "src/@assembly/components/navigation/navigation.theme";
+@import "src/@assembly/components/search/search.theme";
+
+@mixin asm-core-theme($theme) {
+
+    // Theming for Assembly core styles
+    @include asm-general-theme($theme);
+    @include asm-colors-theme($theme);
+    @include asm-typography-theme($theme);
+
+    // Theming for Assembly components
+    @include asm-drawer-theme($theme);
+    @include asm-navigation-theme($theme);
+    @include asm-search-theme($theme);
+
+    // Theming for 3rd party plugins and components
+    @include material-theme($theme);
+    @include highlightjs-theme($theme);
+}

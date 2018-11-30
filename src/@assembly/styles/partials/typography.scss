@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@mixin typography-theme($theme) {
+@mixin asm-typography-theme($theme) {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -13,19 +13,6 @@
     // -----------------------------------------------------------------------------------------------------
     // @ General
     // -----------------------------------------------------------------------------------------------------
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        color: map-get($foreground, text) !important;
-    }
-
-    input,
-    textarea {
-        caret-color: map-get($foreground, base) !important;
-    }
-
     code:not([class*="language-"]) {
 
         @if ($is-dark) {
@@ -81,14 +68,12 @@ html, body {
     -moz-osx-font-smoothing: auto;
 }
 
-// Font family on native elements
-button,
+// Elements without a form-field wrapper
 input,
-optgroup,
-select,
 textarea {
     font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
     line-height: 1.4;
+    color: currentColor;
 }
 
 // Headings
