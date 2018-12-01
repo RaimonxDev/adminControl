@@ -3,7 +3,7 @@ import { trigger, animate, style, transition } from '@angular/animations';
 export const fadeOut = trigger('fadeOut', [
 
     // Out
-    transition('out => void, out => false', [
+    transition('* => void, true => false', [
         style({
             opacity: 1
         }),

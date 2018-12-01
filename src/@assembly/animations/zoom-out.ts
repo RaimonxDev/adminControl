@@ -3,7 +3,7 @@ import { trigger, animate, style, transition } from '@angular/animations';
 export const zoomOut = trigger('zoomOut', [
 
     // Out
-    transition('out => void, out => false', [
+    transition('* => void, true => false', [
         style({
             opacity  : 1,
             transform: 'scale(1)'

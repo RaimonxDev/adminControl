@@ -3,7 +3,7 @@ import { trigger, animate, style, transition } from '@angular/animations';
 export const zoomIn = trigger('zoomIn', [
 
     // In
-    transition('void => in, false => in', [
+    transition('void => *, false => true', [
         style({
             opacity  : 0,
             transform: 'scale(0.5)'
