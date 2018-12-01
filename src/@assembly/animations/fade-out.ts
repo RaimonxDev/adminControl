@@ -7,7 +7,7 @@ export const fadeOut = trigger('fadeOut', [
         style({
             opacity: 1
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             opacity: 0
         }))
     ]),
@@ -18,7 +18,7 @@ export const fadeOut = trigger('fadeOut', [
             opacity: 1,
             transform: 'translateY(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             opacity: 0,
             transform: 'translateY(-100%)'
         }))
@@ -30,7 +30,7 @@ export const fadeOut = trigger('fadeOut', [
             opacity: 1,
             transform: 'translateX(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             opacity: 0,
             transform: 'translateX(100%)'
         }))
@@ -42,7 +42,7 @@ export const fadeOut = trigger('fadeOut', [
             opacity: 1,
             transform: 'translateY(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             opacity: 0,
             transform: 'translateY(100%)'
         }))
@@ -54,7 +54,7 @@ export const fadeOut = trigger('fadeOut', [
             opacity: 1,
             transform: 'translateX(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             opacity: 0,
             transform: 'translateX(-100%)'
         }))

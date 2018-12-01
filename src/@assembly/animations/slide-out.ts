@@ -7,7 +7,7 @@ export const slideOut = trigger('slideOut', [
         style({
             transform: 'translateY(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             transform: 'translateY(-100%)'
         }))
     ]),
@@ -17,7 +17,7 @@ export const slideOut = trigger('slideOut', [
         style({
             transform: 'translateX(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             transform: 'translateX(100%)'
         }))
     ]),
@@ -27,7 +27,7 @@ export const slideOut = trigger('slideOut', [
         style({
             transform: 'translateY(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             transform: 'translateY(100%)'
         }))
     ]),
@@ -37,7 +37,7 @@ export const slideOut = trigger('slideOut', [
         style({
             transform: 'translateX(0)'
         }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
             transform: 'translateX(-100%)'
         }))
     ])
