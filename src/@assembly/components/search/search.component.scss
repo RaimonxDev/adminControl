@@ -1,15 +1,18 @@
+@import "src/@assembly/styles/assembly";
+
 asm-search {
     display: flex;
+    background: inherit;
 
     // Basic appearance
     &.asm-search-appearance-basic {
-        width: 448px;
-        height: 48px;
 
         .asm-search-container {
             display: flex;
             align-items: center;
             flex: 1 0 auto;
+            width: 448px;
+            height: 48px;
             overflow: hidden;
 
             .asm-search-icon {
@@ -22,23 +25,20 @@ asm-search {
         }
     }
 
-    // Bar appearance
+    // Bar & Fullscreen appearance
     &.asm-search-appearance-bar {
 
-        &.asm-search-opened {
+        .asm-search-container {
             position: absolute;
+            display: flex;
+            align-items: center;
+            flex: 1 0 auto;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
-            padding: 0 24px;
+            margin: 0 24px;
             background: inherit;
-        }
-
-        .asm-search-container {
-            display: flex;
-            align-items: center;
-            flex: 1 0 auto;
 
             .asm-search-input {
                 flex: 1 0 auto;
@@ -49,6 +49,7 @@ asm-search {
 
                     .mat-form-field-flex {
                         height: 100%;
+                        padding-right: 40px;
 
                         // Remove the border
                         .mat-form-field-outline {
@@ -59,8 +60,82 @@ asm-search {
             }
 
             .asm-search-toggle-close {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                margin-top: -20px;
                 min-width: 40px;
-                max-width: 40px;
+                width: 40px;
+                min-height: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    // Fullscreen appearance
+    &.asm-search-appearance-fullscreen {
+
+        .asm-search-container {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1 0 auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 120px 72px 72px 72px;
+            z-index: 999;
+
+            .asm-search-input {
+                flex: 1 0 auto;
+                font-size: 48px;
+                font-weight: 300;
+                width: 100%;
+
+                .mat-form-field-wrapper {
+                    padding: 0 24px 24px 24px;
+                    border-bottom: 1px solid;
+
+                    .mat-form-field-flex {
+                        padding: 0;
+
+                        .mat-form-field-infix {
+                            padding: 0;
+
+                            .mat-input-element {
+                                letter-spacing: -0.035em;
+                            }
+                        }
+
+                        // Remove the border
+                        .mat-form-field-outline {
+                            border: none !important;
+                        }
+
+                        .mat-form-field-prefix {
+
+                            .mat-icon {
+                                @include icon-size(40);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .asm-search-toggle-close {
+                position: absolute;
+                top: 40px;
+                right: 40px;
+                min-width: 40px;
+                width: 40px;
+                min-height: 40px;
+                height: 40px;
+
+                .mat-icon {
+                    @include icon-size(40);
+                }
             }
         }
     }
@@ -68,10 +143,38 @@ asm-search {
 
 // Search results panel
 .asm-search-results {
-    overflow: visible !important;
     max-height: 512px !important;
     margin-top: 12px;
     border-radius: 4px;
+
+    // Fullscreen appearance
+    &.asm-search-results-appearance-fullscreen {
+        background: none !important;
+        box-shadow: none !important;
+        margin-top: 40px;
+        letter-spacing: -0.035em;
+
+        &:before,
+        &:after {
+            display: none
+        }
+
+        .mat-optgroup {
+
+            .mat-optgroup-label {
+                font-size: 15px;
+                padding: 0 8px !important;
+            }
+
+            .mat-option {
+                padding: 0 8px !important;
+
+                .mat-option-text {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
 
     &:before,
     &:after {
@@ -93,11 +196,6 @@ asm-search {
     &:after {
         border-width: 8px;
         margin-left: -8px;
-    }
-
-    .asm-search-results-scroll-container {
-        max-height: 512px;
-        overflow: auto;
     }
 
     .mat-optgroup {

@@ -1,16 +1,20 @@
 import {
-    Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewEncapsulation
+    Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild,
+    ViewEncapsulation
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatFormField } from '@angular/material';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AsmAnimations } from '@assembly/animations/public-api';
 
 @Component({
     selector     : 'asm-search',
     templateUrl  : './search.component.html',
     styleUrls    : ['./search.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    exportAs     : 'asmSearch'
+    exportAs     : 'asmSearch',
+    animations   : AsmAnimations
 })
 export class AsmSearchComponent implements OnInit, OnDestroy
 {
@@ -23,6 +27,10 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     // Debounce
     @Input()
     debounce: number;
+
+    // Fullscreen title
+    @Input()
+    fullscreenTitle: string;
 
     // Min. length
     @Input()
@@ -112,29 +120,6 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Setter and getter for results
-     *
-     * @param value
-     */
-    @Input()
-    set results(value: any[] | null)
-    {
-        // If the value is the same, return...
-        if ( this._results === value )
-        {
-            return;
-        }
-
-        // Store the results
-        this._results = value;
-    }
-
-    get results(): any[] | null
-    {
-        return this._results;
-    }
-
-    /**
      * Setter and getter for opened
      *
      * @param value
@@ -166,6 +151,57 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     get opened(): boolean
     {
         return this._opened;
+    }
+
+    /**
+     * Setter and getter for results
+     *
+     * @param value
+     */
+    @Input()
+    set results(value: any[] | null)
+    {
+        // If the value is the same, return...
+        if ( this._results === value )
+        {
+            return;
+        }
+
+        // Store the results
+        this._results = value;
+    }
+
+    get results(): any[] | null
+    {
+        return this._results;
+    }
+
+    /**
+     * Setter and getter for search input
+     *
+     * @param value
+     */
+    @ViewChild('searchInput')
+    set searchInput(value: MatFormField)
+    {
+        // Return if the appearance is basic, since we don't want
+        // basic search to be focused as soon as the page loads
+        if ( this.appearance === 'basic' )
+        {
+            return;
+        }
+
+        // If the value exists, it means that the search input
+        // is now in the DOM and we can focus on the input..
+        if ( value )
+        {
+            // Give Angular time to complete the change detection cycle
+            setTimeout(() => {
+
+                // Focus to the input element
+                value._inputContainerRef.nativeElement.children[0].focus();
+            });
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -222,6 +258,26 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * On keydown of the search input
+     *
+     * @param event
+     */
+    onKeydown(event): void
+    {
+        // Listen for escape to close the search
+        // if the appearance is 'bar' or 'fullscreen'
+        if ( this.appearance === 'bar' || this.appearance === 'fullscreen' )
+        {
+            // Escape
+            if ( event.keyCode === 27 )
+            {
+                // Close the search
+                this.close();
+            }
+        }
+    }
+
+    /**
      * Open the search
      * Used in 'bar' and 'fullscreen'
      */
@@ -248,6 +304,9 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         {
             return;
         }
+
+        // Clear the search input
+        this.searchControl.setValue('');
 
         // Close the search
         this.opened = false;

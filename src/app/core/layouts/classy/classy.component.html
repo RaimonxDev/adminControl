@@ -57,7 +57,8 @@
         </button>
 
         <asm-search (search)="onSearch($event)"
-                    [appearance]="'bar'"
+                    [appearance]="'basic'"
+                    [fullscreenTitle]="'Search...'"
                     [results]="searchResults"
                     [minLength]="2"
                     [noResultsText]="'No results found!'"
@@ -67,7 +68,8 @@
 
                 <div class="asm-search-result-image">
                     <mat-icon class="icon-size-16"
-                              *ngIf="result.resultType === 'page'">insert_drive_file
+                              *ngIf="result.resultType === 'page'">
+                        insert_drive_file
                     </mat-icon>
                     <img *ngIf="result.resultType ==='contact'"
                          [src]="result.image">

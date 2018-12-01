@@ -4,6 +4,25 @@
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
+    asm-search {
+
+        // Fullscreen appearance
+        &.asm-search-appearance-fullscreen {
+            color: map-get($foreground, text);
+
+            .asm-search-container {
+                background: transparentize(map-get($background, card), 0.05);
+
+                .asm-search-input {
+
+                    .mat-form-field-wrapper {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+
     // Search results panel
     .asm-search-results {
 
