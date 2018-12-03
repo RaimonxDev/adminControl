@@ -30,8 +30,8 @@
 
     <!-- HEADER -->
     <div class="header"
-         [ngClass]="asmConfig.layout.options.header.background"
-         *ngIf="!asmConfig.layout.options.header.hidden">
+         *ngIf="!asmConfig.layout.options.header.hidden"
+         [ngClass]="asmConfig.layout.options.header.background">
 
         <button mat-icon-button
                 (click)="toggleNavigation('leftNavigation')">
@@ -74,7 +74,7 @@
 <!-- / CONTAINER -->
 
 <!-- RIGHT DRAWER -->
-<asm-drawer name="rightDrawer"
+<asm-drawer [name]="'rightDrawer'"
             [position]="'right'"
             [mode]="'over'">
     <asm-theme-configurator></asm-theme-configurator>

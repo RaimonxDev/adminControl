@@ -27,8 +27,8 @@
 
     <!-- HEADER -->
     <div class="header"
-         [ngClass]="asmConfig.layout.options.header.background"
-         *ngIf="!asmConfig.layout.options.header.hidden">
+         *ngIf="!asmConfig.layout.options.header.hidden"
+         [ngClass]="asmConfig.layout.options.header.background">
 
         <button mat-icon-button
                 (click)="toggleNavigation('leftNavigation')">
@@ -59,8 +59,8 @@
 
     <!-- FOOTER -->
     <div class="footer"
-         [ngClass]="asmConfig.layout.options.footer.background"
-         *ngIf="!asmConfig.layout.options.footer.hidden">
+         *ngIf="!asmConfig.layout.options.footer.hidden"
+         [ngClass]="asmConfig.layout.options.footer.background">
 
         Footer
 
@@ -71,7 +71,7 @@
 <!-- / CONTAINER -->
 
 <!-- RIGHT DRAWER -->
-<asm-drawer name="rightDrawer"
+<asm-drawer [name]="'rightDrawer'"
             [position]="'right'"
             [mode]="'over'">
     <asm-theme-configurator></asm-theme-configurator>

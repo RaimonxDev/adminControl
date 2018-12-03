@@ -47,22 +47,22 @@
 
     <!-- HEADER -->
     <div class="header"
-         [ngClass]="asmConfig.layout.options.header.background"
-         *ngIf="!asmConfig.layout.options.header.hidden">
+         *ngIf="!asmConfig.layout.options.header.hidden"
+         [ngClass]="asmConfig.layout.options.header.background">
 
-        <button mat-icon-button
-                class="navigation-toggle-button"
+        <button class="navigation-toggle-button"
+                mat-icon-button
                 (click)="toggleNavigation('leftNavigation')">
             <mat-icon>menu</mat-icon>
         </button>
 
-        <asm-search (search)="onSearch($event)"
-                    [appearance]="'basic'"
+        <asm-search [appearance]="'basic'"
                     [fullscreenTitle]="'Search...'"
                     [results]="searchResults"
                     [minLength]="2"
                     [noResultsText]="'No results found!'"
-                    [placeholder]="'Search for a page or a contact'">
+                    [placeholder]="'Search for a page or a contact'"
+                    (search)="onSearch($event)">
 
             <ng-template let-result>
 
@@ -84,7 +84,7 @@
         </asm-search>
 
         <div>
-            <mat-icon>apps</mat-icon>
+            <asm-shortcuts></asm-shortcuts>
             <mat-icon>notifications</mat-icon>
         </div>
 
@@ -105,8 +105,8 @@
 
     <!-- FOOTER -->
     <div class="footer"
-         [ngClass]="asmConfig.layout.options.footer.background"
-         *ngIf="!asmConfig.layout.options.footer.hidden">
+         *ngIf="!asmConfig.layout.options.footer.hidden"
+         [ngClass]="asmConfig.layout.options.footer.background">
 
         Footer
 
@@ -117,7 +117,7 @@
 <!-- / CONTAINER -->
 
 <!-- RIGHT DRAWER -->
-<asm-drawer name="rightDrawer"
+<asm-drawer [name]="'rightDrawer'"
             [position]="'right'"
             [mode]="'over'">
     <asm-theme-configurator></asm-theme-configurator>

@@ -4,16 +4,16 @@
          [class.asm-navigation-item-has-subtitle]="!!item.subtitle"
          [ngClass]="item.classes"
          [matTooltip]="item.title"
-         matTooltipPosition="right"
+         [matTooltipPosition]="'right'"
          [matTooltipDisabled]="!showTooltips">
 
         <div class="asm-navigation-item"
              (click)="toggleCollapsable()">
 
             <!-- Icon -->
-            <mat-icon *ngIf="item.icon"
-                      [fontSet]="item.iconFontSet"
-                      class="asm-navigation-item-icon secondary-text icon-size-18">
+            <mat-icon class="asm-navigation-item-icon secondary-text icon-size-18"
+                      *ngIf="item.icon"
+                      [fontSet]="item.iconFontSet">
                 {{item.icon}}
             </mat-icon>
 
@@ -22,16 +22,16 @@
 
                 <div class="asm-navigation-item-title">{{item.title}}</div>
 
-                <div *ngIf="item.subtitle"
-                     class="asm-navigation-item-subtitle hint-text">
+                <div class="asm-navigation-item-subtitle hint-text"
+                     *ngIf="item.subtitle">
                     {{item.subtitle}}
                 </div>
 
             </div>
 
             <!-- Badge -->
-            <div *ngIf="item.badge"
-                 class="asm-navigation-item-badge">
+            <div class="asm-navigation-item-badge"
+                 *ngIf="item.badge">
 
                 <div class="asm-navigation-item-badge-content"
                      [ngClass]="'asm-navigation-item-badge-style-' + item.badge.style"

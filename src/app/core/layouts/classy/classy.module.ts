@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule } from '@angular/material';
-import { AsmDrawerModule, AsmNavigationModule, AsmSearchModule, AsmThemeConfiguratorModule } from '@assembly';
+import { AsmDrawerModule, AsmNavigationModule, AsmSearchModule, AsmShortcutsModule, AsmThemeConfiguratorModule } from '@assembly';
 
 import { SharedModule } from 'app/core/shared.module';
 import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component';
@@ -17,6 +17,7 @@ import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component'
         AsmDrawerModule,
         AsmNavigationModule,
         AsmSearchModule,
+        AsmShortcutsModule,
         AsmThemeConfiguratorModule,
 
         SharedModule

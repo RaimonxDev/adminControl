@@ -13,21 +13,21 @@
      [@slideOut]="'top'">
 
     <mat-form-field class="asm-search-input asm-mat-rounded asm-mat-no-subscript"
-                    appearance="outline"
+                    [appearance]="'outline'"
                     #searchInput>
         <mat-icon matPrefix
                   *ngIf="appearance !== 'fullscreen'">
             search
         </mat-icon>
         <input matInput
-               (keydown)="onKeydown($event)"
                [formControl]="searchControl"
                [placeholder]="placeholder"
+               (keydown)="onKeydown($event)"
                [matAutocomplete]="matAutocomplete">
     </mat-form-field>
 
-    <mat-autocomplete #matAutocomplete="matAutocomplete"
-                      [class]="'asm-search-results asm-search-results-appearance-' + appearance">
+    <mat-autocomplete [class]="'asm-search-results asm-search-results-appearance-' + appearance"
+                      #matAutocomplete="matAutocomplete">
 
         <mat-optgroup class="asm-search-no-results"
                       *ngIf="results && results.length === 0">

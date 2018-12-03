@@ -63,13 +63,13 @@
 
 <!-- ASIDE -->
 <div class="asm-navigation-aside-wrapper"
+     *ngIf="activeAsideItemId"
      [ngClass]="asmConfig.layout.options.navigation.theme.background"
      [class.asm-navigation-dark-background]="asmConfig.layout.options.navigation.theme.isDark"
-     *ngIf="activeAsideItemId"
-     [@fadeIn]="position"
-     [@fadeOut]="position"
      asmScrollbar
-     [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+     [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}"
+     [@fadeIn]="position"
+     [@fadeOut]="position">
 
     <!-- NAVIGATION ITEMS -->
     <ng-container *ngFor="let item of data; trackBy: trackById">
