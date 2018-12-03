@@ -4,6 +4,7 @@
 @mixin material-theme($theme) {
 
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
 
     // Fix the icon colors
     .mat-icon {
@@ -24,9 +25,9 @@
         }
     }
 
-    // Add rounded style to the outline form fields
     .asm-mat-rounded {
 
+        // Add rounded style to the 'outline' form fields - no label support
         &.mat-form-field-appearance-outline {
 
             .mat-form-field-wrapper {
@@ -44,15 +45,34 @@
             }
         }
     }
+
+    .asm-mat-clear {
+
+        // Add clear style to the 'fill' form fields
+        .mat-form-field-wrapper {
+
+            .mat-form-field-flex {
+
+                @if ($is-dark) {
+                    background: #303030;
+                } @else {
+                    background: white;
+                }
+
+                border-color: map-get($foreground, divider);
+            }
+        }
+    }
 }
 
 // -----------------------------------------------------------------------------------------------------
 // @ Angular Material library overrides and fixes
 // -----------------------------------------------------------------------------------------------------
 
-// Add rounded style to the outline form fields - no label support
+// Add rounded styles
 .asm-mat-rounded {
 
+    // Add rounded style to the 'outline' form fields - no label support
     &.mat-form-field {
 
         &.mat-form-field-appearance-outline {
@@ -107,6 +127,24 @@
                     padding: 0 16px;
                 }
             }
+        }
+    }
+}
+
+// Clear styles
+.asm-mat-clear {
+
+    // Add clear style to the 'fill' form fields
+    .mat-form-field-wrapper {
+
+        .mat-form-field-flex {
+            border: 1px solid;
+            border-radius: 4px;
+            padding: 0.75em 1.25em 0 1.25em;
+        }
+
+        .mat-form-field-underline {
+            display: none !important;
         }
     }
 }
