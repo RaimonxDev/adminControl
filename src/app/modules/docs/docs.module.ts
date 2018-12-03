@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { AsmHighlightModule } from '@assembly';
-
+import { SharedModule } from 'app/core/shared.module';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
+
 import { DocsService } from 'app/modules/docs/docs.service';
 import { DocsComponent } from 'app/modules/docs/docs.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 // Routes
 const routes: Route[] = [
@@ -30,10 +29,9 @@ const routes: Route[] = [
         DocsComponent
     ],
     imports     : [
-        CommonModule,
-        FormsModule,
         RouterModule.forChild(routes),
-        AsmHighlightModule
+        AsmHighlightModule,
+        SharedModule
     ]
 })
 export class DocsModule
