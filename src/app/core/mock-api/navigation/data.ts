@@ -634,9 +634,22 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'icons',
         title: 'Icons',
-        type : 'link',
+        type : 'collapsable',
         icon : 'photo',
-        link : '/ui/icons'
+        children: [
+            {
+                id   : 'material-outline',
+                title: 'Material Outline',
+                type : 'link',
+                link : '/ui/icons/material-outline'
+            },
+            {
+                id   : 'iconsmind',
+                title: 'Iconsmind',
+                type : 'link',
+                link : '/ui/icons/iconsmind'
+            }
+        ]
     },
     {
         id   : 'typography',

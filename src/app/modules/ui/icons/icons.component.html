@@ -1,0 +1,26 @@
+<mat-form-field class="icons-filter-input"
+                [appearance]="'fill'">
+    <mat-label>Search an icon</mat-label>
+    <input matInput
+           [attr.autocomplete]="'off'"
+           (input)="filterIcons($event)">
+</mat-form-field>
+
+<div class="icon-tiles">
+
+    <ng-container *ngFor="let icon of filteredIcons">
+
+        <div class="icon-tile">
+
+            <div class="icon-preview">
+                <mat-icon class="icon-size-32"
+                          [fontSet]="data.fontSet">{{icon.ligature}}</mat-icon>
+            </div>
+
+            <div class="icon-name hint-text">{{icon.name}}</div>
+
+        </div>
+
+    </ng-container>
+
+</div>

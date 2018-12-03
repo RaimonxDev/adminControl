@@ -12,6 +12,7 @@ import { AppComponent } from 'app/app.component';
 import { CoreModule } from 'app/core/core.module';
 import { AppsModule } from 'app/modules/apps/apps.module';
 import { PagesModule } from 'app/modules/pages/pages.module';
+import { UIModule } from 'app/modules/ui/ui.module';
 import { DocsModule } from 'app/modules/docs/docs.module';
 
 @NgModule({
@@ -33,6 +34,9 @@ import { DocsModule } from 'app/modules/docs/docs.module';
 
         // Pages module
         PagesModule,
+
+        // UI module
+        UIModule,
 
         // Docs module
         DocsModule
