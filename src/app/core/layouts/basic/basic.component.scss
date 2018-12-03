@@ -57,6 +57,14 @@ basic-layout {
             display: flex;
             flex-direction: column;
             flex: 1 0 auto;
+
+            > *:not(router-outlet) {
+                display: flex;
+                flex: 1 0 auto;
+                flex-wrap: wrap;
+                width: 100%;
+                min-width: 100%;
+            }
         }
 
         // Footer
