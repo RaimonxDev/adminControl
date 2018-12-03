@@ -5,14 +5,10 @@ import { MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatIconModu
 import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public-api';
 
 import { AsmSearchComponent } from '@assembly/components/search/search.component';
-import { AsmSearchService } from '@assembly/components/search/search.service';
 
 @NgModule({
     declarations: [
         AsmSearchComponent
-    ],
-    providers   : [
-        AsmSearchService
     ],
     imports     : [
         CommonModule,
