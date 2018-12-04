@@ -3,6 +3,7 @@
 asm-search {
     display: flex;
     background: inherit;
+    z-index: 99;
 
     // Basic appearance
     &.asm-search-appearance-basic {

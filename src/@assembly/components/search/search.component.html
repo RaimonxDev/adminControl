@@ -9,6 +9,7 @@
 <!-- Search container -->
 <div class="asm-search-container"
      *ngIf="appearance === 'basic' || (appearance !== 'basic' && opened)"
+     [@.disabled]="appearance === 'basic'"
      [@slideIn]="'top'"
      [@slideOut]="'top'">
 
