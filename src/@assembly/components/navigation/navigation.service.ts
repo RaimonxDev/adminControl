@@ -49,7 +49,6 @@ export class AsmNavigationService
         this.onPositionChanged = new BehaviorSubject(null);
         this.onCollapsableItemCollapsed = new BehaviorSubject(null);
         this.onCollapsableItemExpanded = new BehaviorSubject(null);
-
     }
 
     // -----------------------------------------------------------------------------------------------------
