@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import { MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { SharedModule } from 'app/core/shared.module';
@@ -28,6 +29,7 @@ const routes: Route[] = [
         IconsComponent
     ],
     imports     : [
+        ReactiveFormsModule,
         RouterModule.forChild(routes),
         MatFormFieldModule,
         MatIconModule,

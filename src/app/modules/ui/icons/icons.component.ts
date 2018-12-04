@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { IconsService } from 'app/modules/ui/icons/icons.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector     : 'icons',
@@ -14,6 +15,7 @@ export class IconsComponent implements OnInit, OnDestroy
 {
     data: any;
     filteredIcons: any[];
+    searchInput: FormControl;
 
     // Private
     @ViewChild('content')
@@ -32,6 +34,9 @@ export class IconsComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.searchInput = new FormControl('');
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -51,8 +56,13 @@ export class IconsComponent implements OnInit, OnDestroy
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe((data) => {
+
+                // Store the data
                 this.data = data;
                 this.filteredIcons = data.icons;
+
+                // Clear the search input
+                this.searchInput.setValue('');
             });
     }
 

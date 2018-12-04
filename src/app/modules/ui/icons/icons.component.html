@@ -3,6 +3,7 @@
     <mat-label>Search an icon</mat-label>
     <input matInput
            [attr.autocomplete]="'off'"
+           [formControl]="searchInput"
            (input)="filterIcons($event)">
 </mat-form-field>
 
