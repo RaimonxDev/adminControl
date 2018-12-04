@@ -72,13 +72,43 @@
 // Add rounded styles
 .asm-mat-rounded {
 
-    // Add rounded style to the 'outline' form fields - no label support
+    // No label
+    &.asm-mat-no-label {
+
+        &.mat-form-field {
+
+            &.mat-form-field-appearance-outline {
+
+                .mat-form-field-wrapper {
+                    padding-top: 0;
+
+                    .mat-form-field-flex {
+
+                        .mat-form-field-infix {
+
+                            .mat-form-field-label-wrapper {
+                                display: none !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Add rounded style to the 'outline' form fields
     &.mat-form-field {
 
         &.mat-form-field-appearance-outline {
 
+            &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+            &.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+                transform: translateY(-2.39373em) scale(0.8);
+            }
+
             .mat-form-field-wrapper {
                 margin: 0;
+                padding-top: 1.34375em;
 
                 .mat-form-field-flex {
                     align-items: center;
@@ -96,7 +126,16 @@
                         }
 
                         .mat-form-field-label-wrapper {
-                            display: none !important;
+                            top: 0;
+                            padding: 0 8px;
+                            overflow: visible;
+
+                            .mat-form-field-label {
+                                top: 0;
+                                margin-top: 0;
+                                padding: 0 8px;
+                                line-height: normal;
+                            }
                         }
                     }
 
