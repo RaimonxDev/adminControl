@@ -5546,8 +5546,8 @@ export const iconsmind = [
         'ligature': 'clothing_store'
     },
     {
-        'name'    : 'cloud_-',
-        'ligature': 'cloud_-'
+        'name'    : 'cloud_minus',
+        'ligature': 'cloud_minus'
     },
     {
         'name'    : 'cloud_',
@@ -7142,8 +7142,8 @@ export const iconsmind = [
         'ligature': 'folder_refresh'
     },
     {
-        'name'    : 'folder_remove-',
-        'ligature': 'folder_remove-'
+        'name'    : 'folder_remove',
+        'ligature': 'folder_remove'
     },
     {
         'name'    : 'folder_search',
@@ -7434,8 +7434,8 @@ export const iconsmind = [
         'ligature': 'gentleman'
     },
     {
-        'name'    : 'geo_-',
-        'ligature': 'geo_-'
+        'name'    : 'geo_minus',
+        'ligature': 'geo_minus'
     },
     {
         'name'    : 'geo_',
@@ -7462,8 +7462,8 @@ export const iconsmind = [
         'ligature': 'geo'
     },
     {
-        'name'    : 'geo2_-',
-        'ligature': 'geo2_-'
+        'name'    : 'geo2_minus',
+        'ligature': 'geo2_minus'
     },
     {
         'name'    : 'geo2_',
@@ -7490,8 +7490,8 @@ export const iconsmind = [
         'ligature': 'geo2'
     },
     {
-        'name'    : 'geo3_-',
-        'ligature': 'geo3_-'
+        'name'    : 'geo3_minus',
+        'ligature': 'geo3_minus'
     },
     {
         'name'    : 'geo3_',
@@ -8290,12 +8290,12 @@ export const iconsmind = [
         'ligature': 'leaning_tower'
     },
     {
-        'name'    : 'left_-right',
-        'ligature': 'left_-right'
+        'name'    : 'left__right',
+        'ligature': 'left__right'
     },
     {
-        'name'    : 'left_-right3',
-        'ligature': 'left_-right3'
+        'name'    : 'left__right3',
+        'ligature': 'left__right3'
     },
     {
         'name'    : 'left_2',
@@ -8586,8 +8586,8 @@ export const iconsmind = [
         'ligature': 'magnet'
     },
     {
-        'name'    : 'magnifi_glass-',
-        'ligature': 'magnifi_glass-'
+        'name'    : 'magnifi_glass_minus',
+        'ligature': 'magnifi_glass_minus'
     },
     {
         'name'    : 'magnifi_glass',
@@ -8918,8 +8918,8 @@ export const iconsmind = [
         'ligature': 'mine'
     },
     {
-        'name'    : 'minimize_maximize-close-window',
-        'ligature': 'minimize_maximize-close-window'
+        'name'    : 'minimize_maximize_close_window',
+        'ligature': 'minimize_maximize_close_window'
     },
     {
         'name'    : 'minimize_window',
@@ -9290,12 +9290,12 @@ export const iconsmind = [
         'ligature': 'on_air'
     },
     {
-        'name'    : 'on_off-2',
-        'ligature': 'on_off-2'
+        'name'    : 'on_off_2',
+        'ligature': 'on_off_2'
     },
     {
-        'name'    : 'on_off-3',
-        'ligature': 'on_off-3'
+        'name'    : 'on_off_3',
+        'ligature': 'on_off_3'
     },
     {
         'name'    : 'on_off',
@@ -11054,8 +11054,8 @@ export const iconsmind = [
         'ligature': 'stethoscope'
     },
     {
-        'name'    : 'stop_-2',
-        'ligature': 'stop_-2'
+        'name'    : 'stop__2',
+        'ligature': 'stop__2'
     },
     {
         'name'    : 'stop_music',
@@ -11902,12 +11902,12 @@ export const iconsmind = [
         'ligature': 'unlock'
     },
     {
-        'name'    : 'up_-down',
-        'ligature': 'up_-down'
+        'name'    : 'up__down',
+        'ligature': 'up__down'
     },
     {
-        'name'    : 'up_-down3',
-        'ligature': 'up_-down3'
+        'name'    : 'up__down3',
+        'ligature': 'up__down3'
     },
     {
         'name'    : 'up_2',
