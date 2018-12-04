@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'iconsmind';
-    src: url('fonts/iconsmind.ttf?39xtrp') format('truetype'),
-    url('fonts/iconsmind.woff?39xtrp') format('woff'),
-    url('fonts/iconsmind.svg?39xtrp#iconsmind') format('svg');
+    src: url('fonts/iconsmind.ttf?jppxpg') format('truetype'),
+    url('fonts/iconsmind.woff?jppxpg') format('woff'),
+    url('fonts/iconsmind.svg?jppxpg#iconsmind') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -1524,7 +1524,7 @@ i.iconsmind, .iconsmind {
     content: "\e774";
 }
 
-.iconsmind-cloud_-:before {
+.iconsmind-cloud_minus:before {
     content: "\e775";
 }
 
@@ -3120,7 +3120,7 @@ i.iconsmind, .iconsmind {
     content: "\e903";
 }
 
-.iconsmind-folder_remove-:before {
+.iconsmind-folder_remove:before {
     content: "\e904";
 }
 
@@ -3412,7 +3412,7 @@ i.iconsmind, .iconsmind {
     content: "\e94c";
 }
 
-.iconsmind-geo_-:before {
+.iconsmind-geo_minus:before {
     content: "\e94d";
 }
 
@@ -3440,7 +3440,7 @@ i.iconsmind, .iconsmind {
     content: "\e953";
 }
 
-.iconsmind-geo2_-:before {
+.iconsmind-geo2_minus:before {
     content: "\e954";
 }
 
@@ -3468,7 +3468,7 @@ i.iconsmind, .iconsmind {
     content: "\e95a";
 }
 
-.iconsmind-geo3_-:before {
+.iconsmind-geo3_minus:before {
     content: "\e95b";
 }
 
@@ -4268,11 +4268,11 @@ i.iconsmind, .iconsmind {
     content: "\ea22";
 }
 
-.iconsmind-left_-right:before {
+.iconsmind-left__right:before {
     content: "\ea23";
 }
 
-.iconsmind-left_-right3:before {
+.iconsmind-left__right3:before {
     content: "\ea24";
 }
 
@@ -4564,7 +4564,7 @@ i.iconsmind, .iconsmind {
     content: "\ea6c";
 }
 
-.iconsmind-magnifi_glass-:before {
+.iconsmind-magnifi_glass_minus:before {
     content: "\ea6d";
 }
 
@@ -4896,7 +4896,7 @@ i.iconsmind, .iconsmind {
     content: "\eabf";
 }
 
-.iconsmind-minimize_maximize-close-window:before {
+.iconsmind-minimize_maximize_close_window:before {
     content: "\eac0";
 }
 
@@ -5268,11 +5268,11 @@ i.iconsmind, .iconsmind {
     content: "\eb1c";
 }
 
-.iconsmind-on_off-2:before {
+.iconsmind-on_off_2:before {
     content: "\eb1d";
 }
 
-.iconsmind-on_off-3:before {
+.iconsmind-on_off_3:before {
     content: "\eb1e";
 }
 
@@ -7032,7 +7032,7 @@ i.iconsmind, .iconsmind {
     content: "\ecd5";
 }
 
-.iconsmind-stop_-2:before {
+.iconsmind-stop__2:before {
     content: "\ecd6";
 }
 
@@ -7880,11 +7880,11 @@ i.iconsmind, .iconsmind {
     content: "\eda9";
 }
 
-.iconsmind-up_-down:before {
+.iconsmind-up__down:before {
     content: "\edaa";
 }
 
-.iconsmind-up_-down3:before {
+.iconsmind-up__down3:before {
     content: "\edab";
 }
 
