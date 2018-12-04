@@ -7,12 +7,13 @@ asm-search {
 
     // Basic appearance
     &.asm-search-appearance-basic {
+        width: 100%;
+        max-width: 448px;
 
         .asm-search-container {
             display: flex;
             align-items: center;
             flex: 1 0 auto;
-            width: 448px;
             height: 48px;
             overflow: hidden;
 
@@ -91,12 +92,12 @@ asm-search {
 
             .asm-search-input {
                 flex: 1 0 auto;
-                font-size: 48px;
+                font-size: 32px;
                 font-weight: 300;
                 width: 100%;
 
                 .mat-form-field-wrapper {
-                    padding: 0 24px 24px 24px;
+                    padding: 0 16px 16px 16px;
                     border-bottom: 1px solid;
 
                     .mat-form-field-flex {
@@ -118,7 +119,7 @@ asm-search {
                         .mat-form-field-prefix {
 
                             .mat-icon {
-                                @include icon-size(40);
+                                @include icon-size(32);
                             }
                         }
                     }
@@ -152,7 +153,7 @@ asm-search {
     &.asm-search-results-appearance-fullscreen {
         background: none !important;
         box-shadow: none !important;
-        margin-top: 40px;
+        margin-top: 32px;
         letter-spacing: -0.035em;
 
         &:before,
@@ -164,11 +165,11 @@ asm-search {
 
             .mat-optgroup-label {
                 font-size: 15px;
-                padding: 0 8px !important;
+                padding: 0 4px !important;
             }
 
             .mat-option {
-                padding: 0 8px !important;
+                padding: 0 4px !important;
 
                 .mat-option-text {
                     font-size: 16px;
