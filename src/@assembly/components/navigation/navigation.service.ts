@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as _ from 'lodash';
 
-import { AsmNavigationItem } from '@assembly/types/navigation';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 
 @Injectable({
