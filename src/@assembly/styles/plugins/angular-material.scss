@@ -137,6 +137,31 @@
                                 line-height: normal;
                             }
                         }
+
+                        // Select
+                        .mat-select {
+
+                            .mat-select-trigger {
+                                display: flex;
+                                flex: 1;
+                                width: 100%;
+                                align-items: center;
+                                justify-content: space-between;
+
+                                .mat-select-value {
+                                    display: flex;
+                                    flex: 1;
+                                    max-width: none;
+                                    line-height: normal;
+                                }
+
+                                .mat-select-arrow-wrapper {
+                                    display: flex;
+                                    transform: translateY(0);
+                                }
+                            }
+
+                        }
                     }
 
                     .mat-form-field-outline {
