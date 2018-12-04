@@ -1,11 +1,28 @@
-<mat-form-field class="icons-filter-input asm-mat-rounded"
-                [appearance]="'outline'">
-    <mat-label>Search an icon</mat-label>
-    <input matInput
-           [attr.autocomplete]="'off'"
-           [formControl]="searchInput"
-           (input)="filterIcons($event)">
-</mat-form-field>
+<div class="icons-header">
+
+    <mat-form-field class="icons-filter-input asm-mat-rounded"
+                    [appearance]="'outline'">
+        <mat-label>Search an icon</mat-label>
+        <input matInput
+               [attr.autocomplete]="'off'"
+               [formControl]="searchInput"
+               (input)="filterIcons($event)">
+    </mat-form-field>
+
+    <mat-form-field class="icons-size-input asm-mat-rounded"
+                    [appearance]="'outline'">
+        <mat-label>Icon size</mat-label>
+        <mat-select [formControl]="iconSizeInput">
+            <mat-option [value]="'16'">16</mat-option>
+            <mat-option [value]="'24'">24</mat-option>
+            <mat-option [value]="'32'">32</mat-option>
+            <mat-option [value]="'40'">40</mat-option>
+            <mat-option [value]="'48'">48</mat-option>
+            <mat-option [value]="'64'">64</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>
 
 <div class="icon-tiles">
 
@@ -14,7 +31,7 @@
         <div class="icon-tile">
 
             <div class="icon-preview">
-                <mat-icon class="icon-size-32"
+                <mat-icon [ngClass]="'icon-size-' + iconSizeInput.value"
                           [fontSet]="data.fontSet">{{icon.ligature}}</mat-icon>
             </div>
 

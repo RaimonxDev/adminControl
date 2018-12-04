@@ -16,6 +16,7 @@ export class IconsComponent implements OnInit, OnDestroy
     data: any;
     filteredIcons: any[];
     searchInput: FormControl;
+    iconSizeInput: FormControl;
 
     // Private
     @ViewChild('content')
@@ -37,6 +38,7 @@ export class IconsComponent implements OnInit, OnDestroy
 
         // Set the defaults
         this.searchInput = new FormControl('');
+        this.iconSizeInput = new FormControl('32');
     }
 
     // -----------------------------------------------------------------------------------------------------

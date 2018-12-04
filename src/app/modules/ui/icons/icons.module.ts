@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
-import { MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { SharedModule } from 'app/core/shared.module';
 
 import { IconsComponent } from 'app/modules/ui/icons/icons.component';
@@ -34,6 +34,7 @@ const routes: Route[] = [
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatSelectModule,
         SharedModule
     ]
 })
