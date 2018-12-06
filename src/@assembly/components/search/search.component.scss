@@ -3,7 +3,6 @@
 asm-search {
     display: flex;
     background: inherit;
-    z-index: 99;
 
     // Basic appearance
     &.asm-search-appearance-basic {
@@ -76,6 +75,7 @@ asm-search {
 
     // Fullscreen appearance
     &.asm-search-appearance-fullscreen {
+        z-index: 99;
 
         .asm-search-container {
             position: fixed;
