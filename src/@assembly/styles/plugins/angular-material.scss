@@ -13,6 +13,8 @@
 
     // Do not override the color if the icon is
     // in a button and has a color property
+    .mat-fab,
+    .mat-mini-fab,
     .mat-icon-button {
 
         &.mat-primary,
