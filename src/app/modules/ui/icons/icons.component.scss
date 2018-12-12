@@ -29,23 +29,27 @@ icons {
             align-items: center;
             justify-content: center;
             margin: 16px;
+            padding: 16px;
             min-width: 160px;
             max-width: 160px;
             width: 160px;
             min-height: 160px;
             max-height: 160px;
             height: 160px;
+            border-radius: 8px;
+            border: 1px solid;
 
             .icon-preview {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin-bottom: 16px;
+                margin-bottom: 24px;
             }
 
             .icon-name {
                 text-align: center;
                 word-break: break-all;
+                font-weight: 600;
             }
         }
     }

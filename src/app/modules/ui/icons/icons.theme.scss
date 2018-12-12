@@ -2,6 +2,26 @@
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    $is-dark: map-get($theme, is-dark);
 
+    icons {
+
+        .icon-tiles {
+
+            .icon-tile {
+                background: map-get($background, card);
+                border-color: transparentize(map-get($foreground, divider), 0.06);
+
+                .icon-preview {
+
+                    .mat-icon {
+                        color: map-get($foreground, hint-text) !important;
+                    }
+                }
+
+                .icon-name {
+                    color: map-get($foreground, secondary-text) !important;
+                }
+            }
+        }
+    }
 }
