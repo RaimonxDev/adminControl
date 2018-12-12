@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import MockAdapter from 'axios-mock-adapter';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
-import { iconsmind, materialOutline } from 'app/core/mock-api/icons/data';
+import { dripicons, iconsmind, materialOutline } from 'app/core/mock-api/icons/data';
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +10,7 @@ import { iconsmind, materialOutline } from 'app/core/mock-api/icons/data';
 export class MockIconsApi
 {
     // Data
+    private _dripicons = dripicons;
     private _materialOutline = materialOutline;
     private _iconsmind = iconsmind;
 
@@ -31,6 +32,18 @@ export class MockIconsApi
      */
     init(mock: MockAdapter): void
     {
+        // GET - Dripicons icons
+        mock.onGet('api/ui/icons/dripicons')
+            .reply(mockWithAuth((config) => {
+                return [
+                    200,
+                    {
+                        icons  : this._dripicons,
+                        fontSet: 'dripicons'
+                    }
+                ];
+            }));
+
         // GET - Material Outline icons
         mock.onGet('api/ui/icons/material-outline')
             .reply(mockWithAuth((config) => {

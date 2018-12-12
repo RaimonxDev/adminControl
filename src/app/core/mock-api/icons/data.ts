@@ -12398,3 +12398,805 @@ export const iconsmind = [
         'ligature': 'zootool'
     }
 ];
+export const dripicons = [
+    {
+        'name'    : 'alarm',
+        'ligature': 'alarm'
+    },
+    {
+        'name'    : 'align_center',
+        'ligature': 'align_center'
+    },
+    {
+        'name'    : 'align_justify',
+        'ligature': 'align_justify'
+    },
+    {
+        'name'    : 'align_left',
+        'ligature': 'align_left'
+    },
+    {
+        'name'    : 'align_right',
+        'ligature': 'align_right'
+    },
+    {
+        'name'    : 'anchor',
+        'ligature': 'anchor'
+    },
+    {
+        'name'    : 'archive',
+        'ligature': 'archive'
+    },
+    {
+        'name'    : 'arrow_down',
+        'ligature': 'arrow_down'
+    },
+    {
+        'name'    : 'arrow_left',
+        'ligature': 'arrow_left'
+    },
+    {
+        'name'    : 'arrow_right',
+        'ligature': 'arrow_right'
+    },
+    {
+        'name'    : 'arrow_thin_down',
+        'ligature': 'arrow_thin_down'
+    },
+    {
+        'name'    : 'arrow_thin_left',
+        'ligature': 'arrow_thin_left'
+    },
+    {
+        'name'    : 'arrow_thin_right',
+        'ligature': 'arrow_thin_right'
+    },
+    {
+        'name'    : 'arrow_thin_up',
+        'ligature': 'arrow_thin_up'
+    },
+    {
+        'name'    : 'arrow_up',
+        'ligature': 'arrow_up'
+    },
+    {
+        'name'    : 'article',
+        'ligature': 'article'
+    },
+    {
+        'name'    : 'backspace',
+        'ligature': 'backspace'
+    },
+    {
+        'name'    : 'basket',
+        'ligature': 'basket'
+    },
+    {
+        'name'    : 'basketball',
+        'ligature': 'basketball'
+    },
+    {
+        'name'    : 'battery_empty',
+        'ligature': 'battery_empty'
+    },
+    {
+        'name'    : 'battery_full',
+        'ligature': 'battery_full'
+    },
+    {
+        'name'    : 'battery_low',
+        'ligature': 'battery_low'
+    },
+    {
+        'name'    : 'battery_medium',
+        'ligature': 'battery_medium'
+    },
+    {
+        'name'    : 'bell',
+        'ligature': 'bell'
+    },
+    {
+        'name'    : 'blog',
+        'ligature': 'blog'
+    },
+    {
+        'name'    : 'bluetooth',
+        'ligature': 'bluetooth'
+    },
+    {
+        'name'    : 'bold',
+        'ligature': 'bold'
+    },
+    {
+        'name'    : 'bookmark',
+        'ligature': 'bookmark'
+    },
+    {
+        'name'    : 'bookmarks',
+        'ligature': 'bookmarks'
+    },
+    {
+        'name'    : 'box',
+        'ligature': 'box'
+    },
+    {
+        'name'    : 'briefcase',
+        'ligature': 'briefcase'
+    },
+    {
+        'name'    : 'brightness_low',
+        'ligature': 'brightness_low'
+    },
+    {
+        'name'    : 'brightness_max',
+        'ligature': 'brightness_max'
+    },
+    {
+        'name'    : 'brightness_medium',
+        'ligature': 'brightness_medium'
+    },
+    {
+        'name'    : 'broadcast',
+        'ligature': 'broadcast'
+    },
+    {
+        'name'    : 'browser_upload',
+        'ligature': 'browser_upload'
+    },
+    {
+        'name'    : 'browser',
+        'ligature': 'browser'
+    },
+    {
+        'name'    : 'brush',
+        'ligature': 'brush'
+    },
+    {
+        'name'    : 'calendar',
+        'ligature': 'calendar'
+    },
+    {
+        'name'    : 'camcorder',
+        'ligature': 'camcorder'
+    },
+    {
+        'name'    : 'camera',
+        'ligature': 'camera'
+    },
+    {
+        'name'    : 'card',
+        'ligature': 'card'
+    },
+    {
+        'name'    : 'cart',
+        'ligature': 'cart'
+    },
+    {
+        'name'    : 'checklist',
+        'ligature': 'checklist'
+    },
+    {
+        'name'    : 'checkmark',
+        'ligature': 'checkmark'
+    },
+    {
+        'name'    : 'chevron_down',
+        'ligature': 'chevron_down'
+    },
+    {
+        'name'    : 'chevron_left',
+        'ligature': 'chevron_left'
+    },
+    {
+        'name'    : 'chevron_right',
+        'ligature': 'chevron_right'
+    },
+    {
+        'name'    : 'chevron_up',
+        'ligature': 'chevron_up'
+    },
+    {
+        'name'    : 'clipboard',
+        'ligature': 'clipboard'
+    },
+    {
+        'name'    : 'clock',
+        'ligature': 'clock'
+    },
+    {
+        'name'    : 'clockwise',
+        'ligature': 'clockwise'
+    },
+    {
+        'name'    : 'cloud_download',
+        'ligature': 'cloud_download'
+    },
+    {
+        'name'    : 'cloud_upload',
+        'ligature': 'cloud_upload'
+    },
+    {
+        'name'    : 'cloud',
+        'ligature': 'cloud'
+    },
+    {
+        'name'    : 'code',
+        'ligature': 'code'
+    },
+    {
+        'name'    : 'contract_2',
+        'ligature': 'contract_2'
+    },
+    {
+        'name'    : 'contract',
+        'ligature': 'contract'
+    },
+    {
+        'name'    : 'conversation',
+        'ligature': 'conversation'
+    },
+    {
+        'name'    : 'copy',
+        'ligature': 'copy'
+    },
+    {
+        'name'    : 'crop',
+        'ligature': 'crop'
+    },
+    {
+        'name'    : 'cross',
+        'ligature': 'cross'
+    },
+    {
+        'name'    : 'crosshair',
+        'ligature': 'crosshair'
+    },
+    {
+        'name'    : 'cutlery',
+        'ligature': 'cutlery'
+    },
+    {
+        'name'    : 'device_desktop',
+        'ligature': 'device_desktop'
+    },
+    {
+        'name'    : 'device_mobile',
+        'ligature': 'device_mobile'
+    },
+    {
+        'name'    : 'device_tablet',
+        'ligature': 'device_tablet'
+    },
+    {
+        'name'    : 'direction',
+        'ligature': 'direction'
+    },
+    {
+        'name'    : 'disc',
+        'ligature': 'disc'
+    },
+    {
+        'name'    : 'document_delete',
+        'ligature': 'document_delete'
+    },
+    {
+        'name'    : 'document_edit',
+        'ligature': 'document_edit'
+    },
+    {
+        'name'    : 'document_new',
+        'ligature': 'document_new'
+    },
+    {
+        'name'    : 'document_remove',
+        'ligature': 'document_remove'
+    },
+    {
+        'name'    : 'document',
+        'ligature': 'document'
+    },
+    {
+        'name'    : 'dot',
+        'ligature': 'dot'
+    },
+    {
+        'name'    : 'dots_2',
+        'ligature': 'dots_2'
+    },
+    {
+        'name'    : 'dots_3',
+        'ligature': 'dots_3'
+    },
+    {
+        'name'    : 'download',
+        'ligature': 'download'
+    },
+    {
+        'name'    : 'duplicate',
+        'ligature': 'duplicate'
+    },
+    {
+        'name'    : 'enter',
+        'ligature': 'enter'
+    },
+    {
+        'name'    : 'exit',
+        'ligature': 'exit'
+    },
+    {
+        'name'    : 'expand_2',
+        'ligature': 'expand_2'
+    },
+    {
+        'name'    : 'expand',
+        'ligature': 'expand'
+    },
+    {
+        'name'    : 'experiment',
+        'ligature': 'experiment'
+    },
+    {
+        'name'    : 'export',
+        'ligature': 'export'
+    },
+    {
+        'name'    : 'feed',
+        'ligature': 'feed'
+    },
+    {
+        'name'    : 'flag',
+        'ligature': 'flag'
+    },
+    {
+        'name'    : 'flashlight',
+        'ligature': 'flashlight'
+    },
+    {
+        'name'    : 'folder_open',
+        'ligature': 'folder_open'
+    },
+    {
+        'name'    : 'folder',
+        'ligature': 'folder'
+    },
+    {
+        'name'    : 'forward',
+        'ligature': 'forward'
+    },
+    {
+        'name'    : 'gaming',
+        'ligature': 'gaming'
+    },
+    {
+        'name'    : 'gear',
+        'ligature': 'gear'
+    },
+    {
+        'name'    : 'graduation',
+        'ligature': 'graduation'
+    },
+    {
+        'name'    : 'graph_bar',
+        'ligature': 'graph_bar'
+    },
+    {
+        'name'    : 'graph_line',
+        'ligature': 'graph_line'
+    },
+    {
+        'name'    : 'graph_pie',
+        'ligature': 'graph_pie'
+    },
+    {
+        'name'    : 'headset',
+        'ligature': 'headset'
+    },
+    {
+        'name'    : 'heart',
+        'ligature': 'heart'
+    },
+    {
+        'name'    : 'help',
+        'ligature': 'help'
+    },
+    {
+        'name'    : 'home',
+        'ligature': 'home'
+    },
+    {
+        'name'    : 'hourglass',
+        'ligature': 'hourglass'
+    },
+    {
+        'name'    : 'inbox',
+        'ligature': 'inbox'
+    },
+    {
+        'name'    : 'information',
+        'ligature': 'information'
+    },
+    {
+        'name'    : 'italic',
+        'ligature': 'italic'
+    },
+    {
+        'name'    : 'jewel',
+        'ligature': 'jewel'
+    },
+    {
+        'name'    : 'lifting',
+        'ligature': 'lifting'
+    },
+    {
+        'name'    : 'lightbulb',
+        'ligature': 'lightbulb'
+    },
+    {
+        'name'    : 'link_broken',
+        'ligature': 'link_broken'
+    },
+    {
+        'name'    : 'link',
+        'ligature': 'link'
+    },
+    {
+        'name'    : 'list',
+        'ligature': 'list'
+    },
+    {
+        'name'    : 'loading',
+        'ligature': 'loading'
+    },
+    {
+        'name'    : 'location',
+        'ligature': 'location'
+    },
+    {
+        'name'    : 'lock_open',
+        'ligature': 'lock_open'
+    },
+    {
+        'name'    : 'lock',
+        'ligature': 'lock'
+    },
+    {
+        'name'    : 'mail',
+        'ligature': 'mail'
+    },
+    {
+        'name'    : 'map',
+        'ligature': 'map'
+    },
+    {
+        'name'    : 'media_loop',
+        'ligature': 'media_loop'
+    },
+    {
+        'name'    : 'media_next',
+        'ligature': 'media_next'
+    },
+    {
+        'name'    : 'media_pause',
+        'ligature': 'media_pause'
+    },
+    {
+        'name'    : 'media_play',
+        'ligature': 'media_play'
+    },
+    {
+        'name'    : 'media_previous',
+        'ligature': 'media_previous'
+    },
+    {
+        'name'    : 'media_record',
+        'ligature': 'media_record'
+    },
+    {
+        'name'    : 'media_shuffle',
+        'ligature': 'media_shuffle'
+    },
+    {
+        'name'    : 'media_stop',
+        'ligature': 'media_stop'
+    },
+    {
+        'name'    : 'medical',
+        'ligature': 'medical'
+    },
+    {
+        'name'    : 'menu',
+        'ligature': 'menu'
+    },
+    {
+        'name'    : 'message',
+        'ligature': 'message'
+    },
+    {
+        'name'    : 'meter',
+        'ligature': 'meter'
+    },
+    {
+        'name'    : 'microphone',
+        'ligature': 'microphone'
+    },
+    {
+        'name'    : 'minus',
+        'ligature': 'minus'
+    },
+    {
+        'name'    : 'monitor',
+        'ligature': 'monitor'
+    },
+    {
+        'name'    : 'move',
+        'ligature': 'move'
+    },
+    {
+        'name'    : 'music',
+        'ligature': 'music'
+    },
+    {
+        'name'    : 'network_1',
+        'ligature': 'network_1'
+    },
+    {
+        'name'    : 'network_2',
+        'ligature': 'network_2'
+    },
+    {
+        'name'    : 'network_3',
+        'ligature': 'network_3'
+    },
+    {
+        'name'    : 'network_4',
+        'ligature': 'network_4'
+    },
+    {
+        'name'    : 'network_5',
+        'ligature': 'network_5'
+    },
+    {
+        'name'    : 'pamphlet',
+        'ligature': 'pamphlet'
+    },
+    {
+        'name'    : 'paperclip',
+        'ligature': 'paperclip'
+    },
+    {
+        'name'    : 'pencil',
+        'ligature': 'pencil'
+    },
+    {
+        'name'    : 'phone',
+        'ligature': 'phone'
+    },
+    {
+        'name'    : 'photo_group',
+        'ligature': 'photo_group'
+    },
+    {
+        'name'    : 'photo',
+        'ligature': 'photo'
+    },
+    {
+        'name'    : 'pill',
+        'ligature': 'pill'
+    },
+    {
+        'name'    : 'pin',
+        'ligature': 'pin'
+    },
+    {
+        'name'    : 'plus',
+        'ligature': 'plus'
+    },
+    {
+        'name'    : 'power',
+        'ligature': 'power'
+    },
+    {
+        'name'    : 'preview',
+        'ligature': 'preview'
+    },
+    {
+        'name'    : 'print',
+        'ligature': 'print'
+    },
+    {
+        'name'    : 'pulse',
+        'ligature': 'pulse'
+    },
+    {
+        'name'    : 'question',
+        'ligature': 'question'
+    },
+    {
+        'name'    : 'reply_all',
+        'ligature': 'reply_all'
+    },
+    {
+        'name'    : 'reply',
+        'ligature': 'reply'
+    },
+    {
+        'name'    : 'return',
+        'ligature': 'return'
+    },
+    {
+        'name'    : 'retweet',
+        'ligature': 'retweet'
+    },
+    {
+        'name'    : 'rocket',
+        'ligature': 'rocket'
+    },
+    {
+        'name'    : 'scale',
+        'ligature': 'scale'
+    },
+    {
+        'name'    : 'search',
+        'ligature': 'search'
+    },
+    {
+        'name'    : 'shopping_bag',
+        'ligature': 'shopping_bag'
+    },
+    {
+        'name'    : 'skip',
+        'ligature': 'skip'
+    },
+    {
+        'name'    : 'stack',
+        'ligature': 'stack'
+    },
+    {
+        'name'    : 'star',
+        'ligature': 'star'
+    },
+    {
+        'name'    : 'stopwatch',
+        'ligature': 'stopwatch'
+    },
+    {
+        'name'    : 'store',
+        'ligature': 'store'
+    },
+    {
+        'name'    : 'suitcase',
+        'ligature': 'suitcase'
+    },
+    {
+        'name'    : 'swap',
+        'ligature': 'swap'
+    },
+    {
+        'name'    : 'tag_delete',
+        'ligature': 'tag_delete'
+    },
+    {
+        'name'    : 'tag',
+        'ligature': 'tag'
+    },
+    {
+        'name'    : 'tags',
+        'ligature': 'tags'
+    },
+    {
+        'name'    : 'thumbs_down',
+        'ligature': 'thumbs_down'
+    },
+    {
+        'name'    : 'thumbs_up',
+        'ligature': 'thumbs_up'
+    },
+    {
+        'name'    : 'ticket',
+        'ligature': 'ticket'
+    },
+    {
+        'name'    : 'time_reverse',
+        'ligature': 'time_reverse'
+    },
+    {
+        'name'    : 'to_do',
+        'ligature': 'to_do'
+    },
+    {
+        'name'    : 'toggles',
+        'ligature': 'toggles'
+    },
+    {
+        'name'    : 'trash',
+        'ligature': 'trash'
+    },
+    {
+        'name'    : 'trophy',
+        'ligature': 'trophy'
+    },
+    {
+        'name'    : 'upload',
+        'ligature': 'upload'
+    },
+    {
+        'name'    : 'user_group',
+        'ligature': 'user_group'
+    },
+    {
+        'name'    : 'user_id',
+        'ligature': 'user_id'
+    },
+    {
+        'name'    : 'user',
+        'ligature': 'user'
+    },
+    {
+        'name'    : 'vibrate',
+        'ligature': 'vibrate'
+    },
+    {
+        'name'    : 'view_apps',
+        'ligature': 'view_apps'
+    },
+    {
+        'name'    : 'view_list-large',
+        'ligature': 'view_list-large'
+    },
+    {
+        'name'    : 'view_list',
+        'ligature': 'view_list'
+    },
+    {
+        'name'    : 'view_thumb',
+        'ligature': 'view_thumb'
+    },
+    {
+        'name'    : 'volume_full',
+        'ligature': 'volume_full'
+    },
+    {
+        'name'    : 'volume_low',
+        'ligature': 'volume_low'
+    },
+    {
+        'name'    : 'volume_medium',
+        'ligature': 'volume_medium'
+    },
+    {
+        'name'    : 'volume_off',
+        'ligature': 'volume_off'
+    },
+    {
+        'name'    : 'wallet',
+        'ligature': 'wallet'
+    },
+    {
+        'name'    : 'warning',
+        'ligature': 'warning'
+    },
+    {
+        'name'    : 'web',
+        'ligature': 'web'
+    },
+    {
+        'name'    : 'weight',
+        'ligature': 'weight'
+    },
+    {
+        'name'    : 'wifi',
+        'ligature': 'wifi'
+    },
+    {
+        'name'    : 'wrong',
+        'ligature': 'wrong'
+    },
+    {
+        'name'    : 'zoom_in',
+        'ligature': 'zoom_in'
+    },
+    {
+        'name'    : 'zoom_out',
+        'ligature': 'zoom_out'
+    }
+];
