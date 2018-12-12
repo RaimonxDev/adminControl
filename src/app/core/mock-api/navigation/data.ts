@@ -644,6 +644,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/ui/icons/material-outline'
             },
             {
+                id   : 'dripicons',
+                title: 'Dripicons',
+                type : 'link',
+                link : '/ui/icons/dripicons'
+            },
+            {
                 id   : 'iconsmind',
                 title: 'Iconsmind',
                 type : 'link',
