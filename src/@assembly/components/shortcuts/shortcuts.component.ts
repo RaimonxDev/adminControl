@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { AsmAnimations } from '@assembly/animations/public-api';
 
+import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmShortcut } from '@assembly/components/shortcuts/shortcut.type';
 import { AsmShortcutsService } from '@assembly/components/shortcuts/shortcuts.service';
 
