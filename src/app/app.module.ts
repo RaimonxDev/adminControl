@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-// 3rd party modules
-
-// Assembly modules and components
-
-// App components & modules
+// App component & app modules
 import { AppComponent } from 'app/app.component';
-import { CoreModule } from 'app/core/core.module';
+
+import { MockApiModule } from 'app/core/mock-api/mock-api.module';
+import { LayoutsModule } from 'app/core/layouts/layouts.module';
+import { AuthModule } from 'app/core/auth/auth.module';
+
 import { AppsModule } from 'app/modules/apps/apps.module';
+import { DocsModule } from 'app/modules/docs/docs.module';
 import { PagesModule } from 'app/modules/pages/pages.module';
 import { UIModule } from 'app/modules/ui/ui.module';
-import { DocsModule } from 'app/modules/docs/docs.module';
 
 @NgModule({
     declarations: [
@@ -24,22 +24,16 @@ import { DocsModule } from 'app/modules/docs/docs.module';
         BrowserAnimationsModule,
         RouterModule.forRoot([]),
 
-        // 3rd party modules
+        // App core modules
+        AuthModule,
+        MockApiModule,
+        LayoutsModule,
 
-        // App core module
-        CoreModule,
-
-        // Apps module
+        // App modules
         AppsModule,
-
-        // Pages module
+        DocsModule,
         PagesModule,
-
-        // UI module
-        UIModule,
-
-        // Docs module
-        DocsModule
+        UIModule
     ],
     bootstrap   : [
         AppComponent

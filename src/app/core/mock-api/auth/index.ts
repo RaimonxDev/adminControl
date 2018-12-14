@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import MockAdapter from 'axios-mock-adapter';
+import { AsmMockApiService } from '@assembly';
 
 import { user } from './data';
 
@@ -15,8 +15,12 @@ export class MockAuthApi
 
     /**
      * Constructor
+     *
+     * @param {AsmMockApiService} _asmMockApiService
      */
-    constructor()
+    constructor(
+        private _asmMockApiService: AsmMockApiService
+    )
     {
     }
 
@@ -119,20 +123,16 @@ export class MockAuthApi
 
     /**
      * Initialize
-     *
-     * @param mock
      */
-    init(mock: MockAdapter): void
+    init(): void
     {
         // Login
-        mock.onPost('api/auth/login')
-            .reply((config) => {
-
-                // Parse the data
-                const data = JSON.parse(config.data);
+        this._asmMockApiService
+            .onPost('api/auth/login')
+            .reply((request) => {
 
                 // Login successful
-                if ( data.username === 'watkins' && data.password === 'admin' )
+                if ( request.body.username === 'watkins' && request.body.password === 'admin' )
                 {
                     return [
                         200,
@@ -152,15 +152,13 @@ export class MockAuthApi
                 ];
             });
 
-        // Login with using JWT token
-        mock.onPost('api/auth/login-with-jwt')
-            .reply((config) => {
-
-                // Parse the data
-                const data = JSON.parse(config.data);
+        // Verify and Refresh the token
+        this._asmMockApiService
+            .onPost('api/auth/refresh-access-token')
+            .reply((request) => {
 
                 // Get the access token
-                const accessToken = data.accessToken;
+                const accessToken = request.body.accessToken;
 
                 // Verify the token
                 if ( this._verifyJWTToken(accessToken) )
@@ -179,18 +177,6 @@ export class MockAuthApi
                     401,
                     {
                         message: 'Invalid token'
-                    }
-                ];
-            });
-
-        // Refresh the access token
-        mock.onPost('api/auth/refresh-access-token')
-            .reply((config) => {
-
-                return [
-                    200,
-                    {
-                        accessToken: this._generateJWTToken()
                     }
                 ];
             });

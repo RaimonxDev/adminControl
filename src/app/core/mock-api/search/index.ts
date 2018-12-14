@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import MockAdapter from 'axios-mock-adapter';
 import * as _ from 'lodash';
-import { AsmNavigationItem, AsmNavigationService } from '@assembly';
+import { AsmMockApiService, AsmNavigationItem, AsmNavigationService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
-import { contacts } from 'app/core/mock-api/contacts/data';
 import { defaultNavigation } from 'app/core/mock-api/navigation/data';
+import { contacts } from 'app/core/mock-api/contacts/data';
 
 @Injectable({
     providedIn: 'root'
@@ -13,14 +12,18 @@ import { defaultNavigation } from 'app/core/mock-api/navigation/data';
 export class MockSearchResultsApi
 {
     // Data
-    private _contacts: any[] = contacts;
     private _defaultNavigation: AsmNavigationItem[] = defaultNavigation;
+    private _contacts: any[] = contacts;
 
     /**
-     * constructor
+     * Constructor
+     *
+     * @param _asmNavigationService
+     * @param _asmMockApiService
      */
     constructor(
-        private _asmNavigationService: AsmNavigationService
+        private _asmNavigationService: AsmNavigationService,
+        private _asmMockApiService: AsmMockApiService
     )
     {
     }
@@ -31,20 +34,19 @@ export class MockSearchResultsApi
 
     /**
      * Initialize
-     *
-     * @param mock
      */
-    init(mock: MockAdapter): void
+    init(): void
     {
         // Get the flat navigation and store it
         const flatNavigation = this._asmNavigationService.getFlatNavigation(this._defaultNavigation);
 
         // GET - Search results
-        mock.onPost('api/search')
-            .reply(mockWithAuth((config) => {
+        this._asmMockApiService
+            .onPost('api/search')
+            .reply((request) => {
 
                 // Get the search query
-                const query = JSON.parse(config.data).query.toLowerCase();
+                const query = request.body.query.toLowerCase();
 
                 // If the search query is an empty string,
                 // return an empty array
@@ -112,6 +114,6 @@ export class MockSearchResultsApi
 
                 // Return the results
                 return [200, {results}];
-            }));
+            });
     }
 }

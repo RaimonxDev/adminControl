@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { from, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import axios, { AxiosInstance } from 'axios';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigation, AsmNavigationService } from '@assembly';
 
 import { AuthService } from 'app/core/auth/auth.service';
@@ -26,7 +26,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     fixedFooter: boolean;
 
     // Private
-    private _axios: AxiosInstance;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -37,17 +36,18 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
      * @param {AuthService} _authService
+     * @param {HttpClient} _httpClient
      */
     constructor(
         private _asmConfigService: AsmConfigService,
         private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
-        private _authService: AuthService
+        private _authService: AuthService,
+        private _httpClient: HttpClient
     )
     {
         // Set the private defaults
-        this._axios = axios;
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
@@ -147,9 +147,9 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      */
     onSearch(value): void
     {
-        from(this._axios.post('api/search', {query: value}))
-            .subscribe((response) => {
-                this.searchResults = response.data.results;
+        this._httpClient.post('api/search', {query: value})
+            .subscribe((response: any) => {
+                this.searchResults = response.results;
             });
     }
 

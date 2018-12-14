@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import MockAdapter from 'axios-mock-adapter';
+import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import { shortcuts } from 'app/core/mock-api/shortcuts/data';
@@ -13,9 +13,13 @@ export class MockShortcutsApi
     private _shortcuts = shortcuts;
 
     /**
-     * constructor
+     * Constructor
+     *
+     * @param {AsmMockApiService} _asmMockApiService
      */
-    constructor()
+    constructor(
+        private _asmMockApiService: AsmMockApiService
+    )
     {
     }
 
@@ -25,20 +29,19 @@ export class MockShortcutsApi
 
     /**
      * Initialize
-     *
-     * @param mock
      */
-    init(mock: MockAdapter): void
+    init(): void
     {
         // GET - Shortcuts
-        mock.onGet('api/shortcuts')
-            .reply(mockWithAuth((config) => {
+        this._asmMockApiService
+            .onGet('api/shortcuts')
+            .reply(() => {
                 return [
                     200,
                     {
                         shortcuts: this._shortcuts
                     }
                 ];
-            }));
+            });
     }
 }

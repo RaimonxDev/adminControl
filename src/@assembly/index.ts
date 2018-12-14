@@ -19,6 +19,7 @@ export * from './directives/scrollbar/public-api';
 // Services
 export * from './services/config/public-api';
 export * from './services/media-watcher/public-api';
+export * from './services/mock-api/public-api';
 export * from './services/splash-screen/public-api';
 
 // Pipes

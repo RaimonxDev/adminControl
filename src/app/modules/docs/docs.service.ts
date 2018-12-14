@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import axios, { AxiosInstance } from 'axios';
 
 @Injectable({
     providedIn: 'root'
@@ -10,16 +10,18 @@ import axios, { AxiosInstance } from 'axios';
 export class DocsService implements Resolve<any>
 {
     // Private
-    private _axios: AxiosInstance;
     private _onDocsUpdated: BehaviorSubject<any>;
 
     /**
      * Constructor
+     *
+     * @param _httpClient
      */
-    constructor()
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
         // Set the private defaults
-        this._axios = axios;
         this._onDocsUpdated = new BehaviorSubject(null);
     }
 
@@ -52,9 +54,10 @@ export class DocsService implements Resolve<any>
 
         // Return an observable which executes the
         // onDocsUpdated on success
-        return from(this._axios.get(apiUrl))
-            .pipe(map((data) => {
-                this._onDocsUpdated.next(data.data);
-            }));
+
+        return this._httpClient.get(apiUrl)
+                   .pipe(map((response) => {
+                       this._onDocsUpdated.next(response);
+                   }));
     }
 }

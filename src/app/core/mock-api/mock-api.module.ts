@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import { AsmMockApiModule } from '@assembly';
 
 import { MockAuthApi } from 'app/core/mock-api/auth';
 import { MockContactsApi } from 'app/core/mock-api/contacts';
@@ -10,9 +9,20 @@ import { MockNavigationApi } from 'app/core/mock-api/navigation';
 import { MockSearchResultsApi } from 'app/core/mock-api/search';
 import { MockShortcutsApi } from 'app/core/mock-api/shortcuts';
 
-const mockAdapter = new MockAdapter(axios, {delayResponse: 0});
-
-@NgModule()
+@NgModule({
+    providers: [
+        MockAuthApi,
+        MockContactsApi,
+        MockDocsApi,
+        MockIconsApi,
+        MockNavigationApi,
+        MockSearchResultsApi,
+        MockShortcutsApi
+    ],
+    imports  : [
+        AsmMockApiModule
+    ]
+})
 export class MockApiModule
 {
     /**
@@ -36,12 +46,12 @@ export class MockApiModule
         private _mockShortcutsApi: MockShortcutsApi
     )
     {
-        this._mockAuthApi.init(mockAdapter);
-        this._mockContactsApi.init(mockAdapter);
-        this._mockDocsApi.init(mockAdapter);
-        this._mockIconsApi.init(mockAdapter);
-        this._mockNavigationApi.init(mockAdapter);
-        this._mockSearchResultsApi.init(mockAdapter);
-        this._mockShortcutsApi.init(mockAdapter);
+        this._mockAuthApi.init();
+        this._mockContactsApi.init();
+        this._mockDocsApi.init();
+        this._mockIconsApi.init();
+        this._mockNavigationApi.init();
+        this._mockSearchResultsApi.init();
+        this._mockShortcutsApi.init();
     }
 }

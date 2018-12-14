@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { IconsService } from 'app/modules/ui/icons/icons.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
     selector     : 'icons',

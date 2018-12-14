@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, from, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import axios, { AxiosInstance } from 'axios';
 import { AsmNavigationService, AsmShortcutsService } from '@assembly';
 
 @Injectable({
@@ -9,21 +9,19 @@ import { AsmNavigationService, AsmShortcutsService } from '@assembly';
 })
 export class PopulateService
 {
-    private _axios: AxiosInstance;
-
     /**
      * Constructor
      *
      * @param {AsmNavigationService} _asmNavigationService
      * @param {AsmShortcutsService} _asmShortcutsService
+     * @param {HttpClient} _httpClient
      */
     constructor(
         private _asmNavigationService: AsmNavigationService,
-        private _asmShortcutsService: AsmShortcutsService
+        private _asmShortcutsService: AsmShortcutsService,
+        private _httpClient: HttpClient
     )
     {
-        // Set the private defaults
-        this._axios = axios;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -37,7 +35,7 @@ export class PopulateService
      */
     private _loadCompactNavigation(): Observable<any>
     {
-        return from(this._axios.get('api/navigation/compact'));
+        return this._httpClient.get('api/navigation/compact');
     }
 
     /**
@@ -47,7 +45,7 @@ export class PopulateService
      */
     private _loadDefaultNavigation(): Observable<any>
     {
-        return from(this._axios.get('api/navigation/default'));
+        return this._httpClient.get('api/navigation/default');
     }
 
     /**
@@ -57,7 +55,7 @@ export class PopulateService
      */
     private _loadShortcuts(): Observable<any>
     {
-        return from(this._axios.get('api/shortcuts'));
+        return this._httpClient.get('api/shortcuts');
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -81,14 +79,11 @@ export class PopulateService
             map((data) => {
 
                 // Register the navigation data
-                this._asmNavigationService.storeNavigation('compact', data[0].data.navigation);
-                this._asmNavigationService.storeNavigation('default', data[1].data.navigation);
+                this._asmNavigationService.storeNavigation('compact', data[0].navigation);
+                this._asmNavigationService.storeNavigation('default', data[1].navigation);
 
                 // Store the shortcuts
-                this._asmShortcutsService.storeShortcuts(data[2].data.shortcuts);
-
-                // Finish
-                return true;
+                this._asmShortcutsService.storeShortcuts(data[2].shortcuts);
             })
         );
     }

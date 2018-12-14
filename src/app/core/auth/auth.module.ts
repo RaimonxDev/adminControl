@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from 'app/core/auth/auth.service';
-import { JWTAuthService } from 'app/core/auth/jwt/jwt-auth.service';
+import { AuthInterceptor } from 'app/core/auth/auth.interceptor';
+import { JWTUtilityService } from 'app/core/auth/jwt/jwt-utility.service';
+import { PopulateModule } from 'app/core/populate/populate.module';
 
 @NgModule({
     providers: [
+        AuthService,
+        JWTUtilityService,
         {
-            provide : AuthService,
-            useClass: JWTAuthService // You can easily switch the implementation by changing this
+            provide : HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi   : true
         }
+    ],
+    imports  : [
+        HttpClientModule,
+        PopulateModule
     ]
 })
 export class AuthModule
 {
-    /**
-     * Constructor
-     *
-     * @param _authService
-     */
-    constructor(
-        private _authService: AuthService
-    )
-    {
-
-    }
 }

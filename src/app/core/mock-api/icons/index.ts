@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import MockAdapter from 'axios-mock-adapter';
+import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import { dripicons, iconsmind, materialOutline } from 'app/core/mock-api/icons/data';
@@ -15,9 +15,13 @@ export class MockIconsApi
     private _iconsmind = iconsmind;
 
     /**
-     * constructor
+     * Constructor
+     *
+     * @param {AsmMockApiService} _asmMockApiService
      */
-    constructor()
+    constructor(
+        private _asmMockApiService: AsmMockApiService
+    )
     {
     }
 
@@ -27,14 +31,13 @@ export class MockIconsApi
 
     /**
      * Initialize
-     *
-     * @param mock
      */
-    init(mock: MockAdapter): void
+    init(): void
     {
         // GET - Dripicons icons
-        mock.onGet('api/ui/icons/dripicons')
-            .reply(mockWithAuth((config) => {
+        this._asmMockApiService
+            .onGet('api/ui/icons/dripicons')
+            .reply(() => {
                 return [
                     200,
                     {
@@ -42,11 +45,12 @@ export class MockIconsApi
                         fontSet: 'dripicons'
                     }
                 ];
-            }));
+            });
 
         // GET - Material Outline icons
-        mock.onGet('api/ui/icons/material-outline')
-            .reply(mockWithAuth((config) => {
+        this._asmMockApiService
+            .onGet('api/ui/icons/material-outline')
+            .reply(() => {
                 return [
                     200,
                     {
@@ -54,11 +58,12 @@ export class MockIconsApi
                         fontSet: 'material-icons'
                     }
                 ];
-            }));
+            });
 
         // GET - Iconsmind icons
-        mock.onGet('api/ui/icons/iconsmind')
-            .reply(mockWithAuth((config) => {
+        this._asmMockApiService
+            .onGet('api/ui/icons/iconsmind')
+            .reply(() => {
                 return [
                     200,
                     {
@@ -66,6 +71,6 @@ export class MockIconsApi
                         fontSet: 'iconsmind'
                     }
                 ];
-            }));
+            });
     }
 }

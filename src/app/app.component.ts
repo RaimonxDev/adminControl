@@ -4,6 +4,7 @@ import { Platform } from '@angular/cdk/platform';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmNavigationService } from '@assembly';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector   : 'app-root',
@@ -23,12 +24,14 @@ export class AppComponent implements OnInit, OnDestroy
      * @param {DOCUMENT} document
      * @param {AsmNavigationService} _asmNavigationService
      * @param {AsmConfigService} _asmConfigService
+     * @param {AuthService} _authService
      * @param {Platform} _platform
      */
     constructor(
         @Inject(DOCUMENT) private document: any,
         private _asmNavigationService: AsmNavigationService,
         private _asmConfigService: AsmConfigService,
+        private _authService: AuthService,
         private _platform: Platform
     )
     {
@@ -45,6 +48,9 @@ export class AppComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Check current session and renew the JWT if possible
+        this._authService.checkSession();
+
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
             .pipe(

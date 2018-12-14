@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import MockAdapter from 'axios-mock-adapter';
-import { AsmNavigationItem } from '@assembly';
+import { AsmMockApiService, AsmNavigationItem } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import { compactNavigation, defaultNavigation } from 'app/core/mock-api/navigation/data';
@@ -15,9 +14,13 @@ export class MockNavigationApi
     private _compactNavigation: AsmNavigationItem[] = compactNavigation;
 
     /**
-     * constructor
+     * Constructor
+     *
+     * @param _asmMockApiService
      */
-    constructor()
+    constructor(
+        private _asmMockApiService: AsmMockApiService
+    )
     {
     }
 
@@ -27,31 +30,31 @@ export class MockNavigationApi
 
     /**
      * Initialize
-     *
-     * @param mock
      */
-    init(mock: MockAdapter): void
+    init(): void
     {
         // GET - Default navigation
-        mock.onGet('api/navigation/default')
-            .reply(mockWithAuth((config) => {
+        this._asmMockApiService
+            .onGet('api/navigation/default')
+            .reply(() => {
                 return [
                     200,
                     {
                         navigation: this._defaultNavigation
                     }
                 ];
-            }));
+            });
 
         // GET - Compact navigation
-        mock.onGet('api/navigation/compact')
-            .reply(mockWithAuth((config) => {
+        this._asmMockApiService
+            .onGet('api/navigation/compact')
+            .reply(() => {
                 return [
                     200,
                     {
                         navigation: this._compactNavigation
                     }
                 ];
-            }));
+            });
     }
 }

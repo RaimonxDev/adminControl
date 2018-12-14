@@ -26,6 +26,8 @@ export class LoginComponent
         private _router: Router
     )
     {
+        console.log('login component constructor');
+
         // Set the layout options
         this._asmConfigService.config = {
             layout: {

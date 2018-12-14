@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import MockAdapter from 'axios-mock-adapter';
+import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import { contacts } from 'app/core/mock-api/contacts/data';
@@ -13,9 +13,13 @@ export class MockContactsApi
     private _contacts = contacts;
 
     /**
-     * constructor
+     * Constructor
+     *
+     * @param {AsmMockApiService} _asmMockApiService
      */
-    constructor()
+    constructor(
+        private _asmMockApiService: AsmMockApiService
+    )
     {
     }
 
@@ -25,12 +29,9 @@ export class MockContactsApi
 
     /**
      * Initialize
-     *
-     * @param mock
      */
-    init(mock: MockAdapter): void
+    init(): void
     {
         // GET
-
     }
 }
