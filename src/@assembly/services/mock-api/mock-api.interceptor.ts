@@ -34,17 +34,28 @@ export class AsmMockApiInterceptor implements HttpInterceptor
         // If the request handler exists..
         if ( requestHandler )
         {
+            // Prepare the response
+            let response;
+
             // Run the callback function to get the response data
-            const responseData = requestHandler.replyCallback(req);
+            const responseData = requestHandler.executeReply(req);
+
+            // Throw a not found response, if there is no response data
+            if ( !responseData )
+            {
+                response = new HttpErrorResponse({
+                    status: 404,
+                    error : 'NOT FOUND'
+                });
+
+                return throwError(response);
+            }
 
             // Parse the response data
             const data = {
                 status: responseData[0],
                 body  : responseData[1]
             };
-
-            // Prepare the response
-            let response;
 
             // If the status is in between 200 and 300,
             // it's a success response
