@@ -27,41 +27,27 @@
         }
     }
 
-    .asm-mat-rounded {
+    // ----------------------------------------------------
+    // Fill
+    // ----------------------------------------------------
 
-        // Add rounded style to the 'outline' form fields - no label support
-        &.mat-form-field-appearance-outline {
+    // Simplify
+    .asm-mat-simplify {
+
+        &.mat-form-field.mat-form-field-appearance-fill {
 
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
 
-                    .mat-form-field-outline {
-                        border-color: map-get($foreground, divider);
-
-                        &.mat-form-field-outline-thick {
-                            border-color: currentColor
-                        }
+                    @if ($is-dark) {
+                        background: #303030;
+                    } @else {
+                        background: white;
                     }
+
+                    border-color: map-get($foreground, divider);
                 }
-            }
-        }
-    }
-
-    .asm-mat-clear {
-
-        // Add clear style to the 'fill' form fields
-        .mat-form-field-wrapper {
-
-            .mat-form-field-flex {
-
-                @if ($is-dark) {
-                    background: #303030;
-                } @else {
-                    background: white;
-                }
-
-                border-color: map-get($foreground, divider);
             }
         }
     }
@@ -71,37 +57,124 @@
 // @ Angular Material library overrides and fixes
 // -----------------------------------------------------------------------------------------------------
 
-// Add rounded styles
-.asm-mat-rounded {
+// ----------------------------------------------------
+// Outline
+// ----------------------------------------------------
 
-    // No label
-    &.asm-mat-no-label {
+// Increase the padding and border radius
+// of the default 'outline' form fields
+.mat-form-field.mat-form-field-appearance-outline {
 
-        &.mat-form-field {
+    .mat-form-field-flex {
+        padding: 0 1.25em;
 
-            &.mat-form-field-appearance-outline {
+        .mat-form-field-outline-start {
+            border-radius: 6px 0 0 6px;
+        }
 
-                .mat-form-field-wrapper {
-                    padding-top: 0;
+        .mat-form-field-outline-end {
+            border-radius: 0 6px 6px 0;
+        }
+    }
+}
 
-                    .mat-form-field-flex {
+// Simplifies the form field to make it suitable
+// for smaller spaces and non-form usages
+.asm-mat-simplify {
 
-                        .mat-form-field-infix {
+    &.mat-form-field.mat-form-field-appearance-outline {
 
-                            .mat-form-field-label-wrapper {
-                                display: none !important;
+        .mat-form-field-wrapper {
+            margin: 0;
+            padding-top: 1.34375em;
+
+            .mat-form-field-flex {
+                align-items: center;
+                min-height: 48px;
+                margin-top: 0;
+                padding: 0 12px;
+
+                // Prefix & Suffix
+                .mat-form-field-prefix,
+                .mat-form-field-suffix {
+                    top: 0;
+
+                    .mat-icon {
+                        font-size: 24px;
+                        line-height: normal;
+                    }
+                }
+
+                // Outline
+                .mat-form-field-outline {
+                    top: 0;
+                    overflow: visible;
+
+                    .mat-form-field-outline-start,
+                    .mat-form-field-outline-gap,
+                    .mat-form-field-outline-end {
+                        border-width: 2px
+                    }
+                }
+
+                .mat-form-field-infix {
+                    border-top: none;
+                    padding: 0 8px;
+
+                    .mat-input-element {
+                        line-height: normal;
+                        margin-top: 0;
+                    }
+
+                    .mat-form-field-label-wrapper {
+                        top: 0;
+                        padding: 0 8px;
+                        overflow: visible;
+
+                        .mat-form-field-label {
+                            top: 0;
+                            margin-top: 0;
+                            padding: 0 8px;
+                            line-height: normal;
+                        }
+                    }
+
+                    // Select
+                    .mat-select {
+
+                        .mat-select-trigger {
+                            display: flex;
+                            flex: 1;
+                            width: 100%;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .mat-select-value {
+                                display: flex;
+                                flex: 1;
+                                max-width: none;
+                                line-height: normal;
+                            }
+
+                            .mat-select-arrow-wrapper {
+                                display: flex;
+                                transform: translateY(25%);
                             }
                         }
                     }
                 }
             }
+
+            .mat-form-field-subscript-wrapper {
+                padding: 0 16px;
+            }
         }
     }
 
-    // Add rounded style to the 'outline' form fields
-    &.mat-form-field {
+    // Rounded
+    &.asm-mat-rounded {
 
-        &.mat-form-field-appearance-outline {
+        &.mat-form-field.mat-form-field-appearance-outline {
 
             &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
             &.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
@@ -109,65 +182,11 @@
             }
 
             .mat-form-field-wrapper {
-                margin: 0;
-                padding-top: 1.34375em;
 
                 .mat-form-field-flex {
-                    align-items: center;
-                    min-height: 48px;
-                    margin-top: 0;
                     padding: 0 16px;
 
-                    .mat-form-field-infix {
-                        border-top: none;
-                        padding: 0 8px;
-
-                        .mat-input-element {
-                            line-height: normal;
-                            margin-top: 0;
-                        }
-
-                        .mat-form-field-label-wrapper {
-                            top: 0;
-                            padding: 0 8px;
-                            overflow: visible;
-
-                            .mat-form-field-label {
-                                top: 0;
-                                margin-top: 0;
-                                padding: 0 8px;
-                                line-height: normal;
-                            }
-                        }
-
-                        // Select
-                        .mat-select {
-
-                            .mat-select-trigger {
-                                display: flex;
-                                flex: 1;
-                                width: 100%;
-                                align-items: center;
-                                justify-content: space-between;
-
-                                .mat-select-value {
-                                    display: flex;
-                                    flex: 1;
-                                    max-width: none;
-                                    line-height: normal;
-                                }
-
-                                .mat-select-arrow-wrapper {
-                                    display: flex;
-                                    transform: translateY(0);
-                                }
-                            }
-
-                        }
-                    }
-
                     .mat-form-field-outline {
-                        top: 0;
                         border: 2px solid;
                         border-radius: 50px;
 
@@ -177,45 +196,73 @@
                             display: none !important
                         }
                     }
+                }
+            }
+        }
+    }
 
-                    .mat-form-field-prefix,
-                    .mat-form-field-suffix {
-                        top: 0;
+    // Disables the floating label
+    &.asm-mat-no-label {
 
-                        .mat-icon {
-                            font-size: 24px;
-                            line-height: normal;
+        &.mat-form-field.mat-form-field-appearance-outline {
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-flex {
+
+                    .mat-form-field-infix {
+
+                        .mat-form-field-label-wrapper {
+                            display: none !important;
                         }
                     }
                 }
+            }
+        }
+    }
 
-                .mat-form-field-subscript-wrapper {
-                    padding: 0 16px;
-                }
+    // Makes the form field denser by removing
+    // the extra padding around
+    &.asm-mat-dense {
+
+        &.mat-form-field.mat-form-field-appearance-outline {
+
+            .mat-form-field-wrapper {
+                padding-top: 0;
             }
         }
     }
 }
 
-// Clear styles
-.asm-mat-clear {
+// ----------------------------------------------------
+// Fill
+// ----------------------------------------------------
 
-    // Add clear style to the 'fill' form fields
-    .mat-form-field-wrapper {
+// Simplify
+.asm-mat-simplify {
 
-        .mat-form-field-flex {
-            border: 1px solid;
-            border-radius: 4px;
-            padding: 0.75em 1.25em 0 1.25em;
-        }
+    &.mat-form-field.mat-form-field-appearance-fill {
 
-        .mat-form-field-underline {
-            display: none !important;
+        .mat-form-field-wrapper {
+
+            .mat-form-field-flex {
+                border: 1px solid;
+                border-radius: 6px;
+                padding: 0.75em 1.25em 0 1.25em;
+            }
+
+            .mat-form-field-underline {
+                display: none !important;
+            }
         }
     }
 }
 
-// Remove subscript space from the form fields
+// ----------------------------------------------------
+// Global
+// ----------------------------------------------------
+
+// Removes subscript space from the form fields
 .asm-mat-no-subscript,
 .asm-mat-no-hint,
 .asm-mat-no-error {
