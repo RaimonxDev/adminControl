@@ -12,7 +12,7 @@
         @if ($is-dark) {
             background: map-get($background, background)
         } @else {
-            background: #F1F5F8 !important;
+            background: #F1F3F7 !important;
         }
     }
 }
