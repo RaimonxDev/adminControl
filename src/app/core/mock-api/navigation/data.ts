@@ -1031,7 +1031,7 @@ export const compactNavigation: AsmNavigationItem[] = [
         id         : 'dashboards-aside',
         title      : 'Dashboards',
         type       : 'aside',
-        icon       : 'Line-Optimization',
+        icon       : 'line_optimization',
         iconFontSet: 'iconsmind',
         children   : [
             {
@@ -1047,7 +1047,7 @@ export const compactNavigation: AsmNavigationItem[] = [
         id         : 'applications-aside',
         title      : 'Applications',
         type       : 'aside',
-        icon       : 'Windows-2',
+        icon       : 'windows_2',
         iconFontSet: 'iconsmind',
         badge      : {
             title     : '10',
@@ -1180,7 +1180,7 @@ export const compactNavigation: AsmNavigationItem[] = [
         id         : 'pages-aside',
         title      : 'Pages',
         type       : 'aside',
-        icon       : 'Files',
+        icon       : 'files',
         iconFontSet: 'iconsmind',
         children   : [
             {
@@ -1370,7 +1370,7 @@ export const compactNavigation: AsmNavigationItem[] = [
         id         : 'user-interface-aside',
         title      : 'User Interface',
         type       : 'aside',
-        icon       : 'Check',
+        icon       : 'check',
         iconFontSet: 'iconsmind',
         children   : [
             {
@@ -1591,7 +1591,7 @@ export const compactNavigation: AsmNavigationItem[] = [
         id         : 'documentation-aside',
         title      : 'Documentation',
         type       : 'aside',
-        icon       : 'Book',
+        icon       : 'book',
         iconFontSet: 'iconsmind',
         children   : [
             {
