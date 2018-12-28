@@ -37,7 +37,6 @@
 @mixin asm-core-theme($theme) {
 
     // Theming for Assembly core styles
-    @include asm-general-theme($theme);
     @include asm-colors-theme($theme);
     @include asm-typography-theme($theme);
 
