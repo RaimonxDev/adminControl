@@ -114,14 +114,17 @@ $default-primary-palette: mat-palette($mat-pink);
 $default-accent-palette: mat-palette($asm-navy);
 $default-warn-palette: mat-palette($mat-red);
 
-// Create the Material theme object
+// Create the Angular Material theme object
 $default-theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
+
+// Adjust the Angular Material theme object to have smoother blacks
+$default-theme: asm-adjust-angular-material-theme($default-theme);
 
 // Add ".asm-theme-default" class to the body to activate this theme.
 // Class name must start with "asm-theme-" !!!
 body.asm-theme-default {
 
-    // Create an Angular Material theme from the $theme map
+    // Create an Angular Material theme from the theme map
     @include angular-material-theme($default-theme);
 
     // Apply the theme to the Assembly Core
@@ -148,6 +151,7 @@ $blue-primary-palette: mat-palette($mat-blue);
 $blue-accent-palette: mat-palette($asm-navy);
 $blue-warn-palette: mat-palette($mat-red);
 $blue-theme: mat-light-theme($blue-primary-palette, $blue-accent-palette, $blue-warn-palette);
+$blue-theme: asm-adjust-angular-material-theme($blue-theme);
 
 body.asm-theme-blue {
 
@@ -160,6 +164,7 @@ body.asm-theme-blue {
         accent: $blue-accent-palette,
         warn: $blue-warn-palette
     );
+
     @include asm-color-classes($blue-palettes);
 }
 
@@ -171,6 +176,7 @@ $blue-grey-primary-palette: mat-palette($mat-blue-grey);
 $blue-grey-accent-palette: mat-palette($asm-navy);
 $blue-grey-warn-palette: mat-palette($mat-red);
 $blue-grey-theme: mat-dark-theme($blue-grey-primary-palette, $blue-grey-accent-palette, $blue-grey-warn-palette);
+$blue-grey-theme: asm-adjust-angular-material-theme($blue-grey-theme);
 
 body.asm-theme-blue-grey {
 
@@ -183,5 +189,6 @@ body.asm-theme-blue-grey {
         accent: $blue-grey-accent-palette,
         warn: $blue-grey-warn-palette
     );
+
     @include asm-color-classes($blue-grey-palettes);
 }

@@ -1,4 +1,10 @@
 // -----------------------------------------------------------------------------------------------------
+// @ Variables
+// -----------------------------------------------------------------------------------------------------
+$dark-primary-text: rgba(37, 41, 52, 0.87);
+$light-primary-text: rgba(255, 255, 255, 1);
+
+// -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
 @mixin asm-colors-theme($theme) {
@@ -47,25 +53,614 @@
 // @ Material colors map
 // -----------------------------------------------------------------------------------------------------
 $matPalettes: (
-    red: $mat-red,
-    pink: $mat-pink,
-    purple: $mat-purple,
-    deep-purple: $mat-deep-purple,
-    indigo: $mat-indigo,
-    blue: $mat-blue,
-    light-blue: $mat-light-blue,
-    cyan: $mat-cyan,
-    teal: $mat-teal,
-    green: $mat-green,
-    light-green: $mat-light-green,
-    lime: $mat-lime,
-    yellow: $mat-yellow,
-    amber: $mat-amber,
-    orange: $mat-orange,
-    deep-orange: $mat-deep-orange,
-    brown: $mat-brown,
-    grey: $mat-grey,
-    blue-grey: $mat-blue-grey
+    red: (
+        50: #FFEBEE,
+        100: #FFCDD2,
+        200: #EF9A9A,
+        300: #E57373,
+        400: #EF5350,
+        500: #F44336,
+        600: #E53935,
+        700: #D32F2F,
+        800: #C62828,
+        900: #B71C1C,
+        A100: #FF8A80,
+        A200: #FF5252,
+        A400: #FF1744,
+        A700: #D50000,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $light-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    pink: (
+        50: #FCE4EC,
+        100: #F8BBD0,
+        200: #F48FB1,
+        300: #F06292,
+        400: #EC407A,
+        500: #E91E63,
+        600: #D81B60,
+        700: #C2185B,
+        800: #AD1457,
+        900: #880E4F,
+        A100: #FF80AB,
+        A200: #FF4081,
+        A400: #F50057,
+        A700: #C51162,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $light-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    purple: (
+        50: #F3E5F5,
+        100: #E1BEE7,
+        200: #CE93D8,
+        300: #BA68C8,
+        400: #AB47BC,
+        500: #9C27B0,
+        600: #8E24AA,
+        700: #7B1FA2,
+        800: #6A1B9A,
+        900: #4A148C,
+        A100: #EA80FC,
+        A200: #E040FB,
+        A400: #D500F9,
+        A700: #AA00FF,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $light-primary-text,
+            400: $light-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $light-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    deep-purple: (
+        50: #EDE7F6,
+        100: #D1C4E9,
+        200: #B39DDB,
+        300: #9575CD,
+        400: #7E57C2,
+        500: #673AB7,
+        600: #5E35B1,
+        700: #512DA8,
+        800: #4527A0,
+        900: #311B92,
+        A100: #B388FF,
+        A200: #7C4DFF,
+        A400: #651FFF,
+        A700: #6200EA,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $light-primary-text,
+            400: $light-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $light-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    indigo: (
+        50: #E8EAF6,
+        100: #C5CAE9,
+        200: #9FA8DA,
+        300: #7986CB,
+        400: #5C6BC0,
+        500: #3F51B5,
+        600: #3949AB,
+        700: #303F9F,
+        800: #283593,
+        900: #1A237E,
+        A100: #8C9EFF,
+        A200: #536DFE,
+        A400: #3D5AFE,
+        A700: #304FFE,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $light-primary-text,
+            400: $light-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $light-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    blue: (
+        50: #E3F2FD,
+        100: #BBDEFB,
+        200: #90CAF9,
+        300: #64B5F6,
+        400: #42A5F5,
+        500: #2196F3,
+        600: #1E88E5,
+        700: #1976D2,
+        800: #1565C0,
+        900: #0D47A1,
+        A100: #82B1FF,
+        A200: #448AFF,
+        A400: #2979FF,
+        A700: #2962FF,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $light-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    light-blue: (
+        50: #E1F5FE,
+        100: #B3E5FC,
+        200: #81D4FA,
+        300: #4FC3F7,
+        400: #29B6F6,
+        500: #03A9F4,
+        600: #039BE5,
+        700: #0288D1,
+        800: #0277BD,
+        900: #01579B,
+        A100: #80D8FF,
+        A200: #40C4FF,
+        A400: #00B0FF,
+        A700: #0091EA,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    cyan: (
+        50: #E0F7FA,
+        100: #B2EBF2,
+        200: #80DEEA,
+        300: #4DD0E1,
+        400: #26C6DA,
+        500: #00BCD4,
+        600: #00ACC1,
+        700: #0097A7,
+        800: #00838F,
+        900: #006064,
+        A100: #84FFFF,
+        A200: #18FFFF,
+        A400: #00E5FF,
+        A700: #00B8D4,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    teal: (
+        50: #E0F2F1,
+        100: #B2DFDB,
+        200: #80CBC4,
+        300: #4DB6AC,
+        400: #26A69A,
+        500: #009688,
+        600: #00897B,
+        700: #00796B,
+        800: #00695C,
+        900: #004D40,
+        A100: #A7FFEB,
+        A200: #64FFDA,
+        A400: #1DE9B6,
+        A700: #00BFA5,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    green: (
+        50: #E8F5E9,
+        100: #C8E6C9,
+        200: #A5D6A7,
+        300: #81C784,
+        400: #66BB6A,
+        500: #4CAF50,
+        600: #43A047,
+        700: #388E3C,
+        800: #2E7D32,
+        900: #1B5E20,
+        A100: #B9F6CA,
+        A200: #69F0AE,
+        A400: #00E676,
+        A700: #00C853,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $dark-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    light-green: (
+        50: #F1F8E9,
+        100: #DCEDC8,
+        200: #C5E1A5,
+        300: #AED581,
+        400: #9CCC65,
+        500: #8BC34A,
+        600: #7CB342,
+        700: #689F38,
+        800: #558B2F,
+        900: #33691E,
+        A100: #CCFF90,
+        A200: #B2FF59,
+        A400: #76FF03,
+        A700: #64DD17,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $dark-primary-text,
+            600: $dark-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    lime: (
+        50: #F9FBE7,
+        100: #F0F4C3,
+        200: #E6EE9C,
+        300: #DCE775,
+        400: #D4E157,
+        500: #CDDC39,
+        600: #C0CA33,
+        700: #AFB42B,
+        800: #9E9D24,
+        900: #827717,
+        A100: #F4FF81,
+        A200: #EEFF41,
+        A400: #C6FF00,
+        A700: #AEEA00,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $dark-primary-text,
+            600: $dark-primary-text,
+            700: $dark-primary-text,
+            800: $dark-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    yellow: (
+        50: #FFFDE7,
+        100: #FFF9C4,
+        200: #FFF59D,
+        300: #FFF176,
+        400: #FFEE58,
+        500: #FFEB3B,
+        600: #FDD835,
+        700: #FBC02D,
+        800: #F9A825,
+        900: #F57F17,
+        A100: #FFFF8D,
+        A200: #FFFF00,
+        A400: #FFEA00,
+        A700: #FFD600,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $dark-primary-text,
+            600: $dark-primary-text,
+            700: $dark-primary-text,
+            800: $dark-primary-text,
+            900: $dark-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    amber: (
+        50: #FFF8E1,
+        100: #FFECB3,
+        200: #FFE082,
+        300: #FFD54F,
+        400: #FFCA28,
+        500: #FFC107,
+        600: #FFB300,
+        700: #FFA000,
+        800: #FF8F00,
+        900: #FF6F00,
+        A100: #FFE57F,
+        A200: #FFD740,
+        A400: #FFC400,
+        A700: #FFAB00,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $dark-primary-text,
+            600: $dark-primary-text,
+            700: $dark-primary-text,
+            800: $dark-primary-text,
+            900: $dark-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    orange: (
+        50: #FFF3E0,
+        100: #FFE0B2,
+        200: #FFCC80,
+        300: #FFB74D,
+        400: #FFA726,
+        500: #FF9800,
+        600: #FB8C00,
+        700: #F57C00,
+        800: #EF6C00,
+        900: #E65100,
+        A100: #FFD180,
+        A200: #FFAB40,
+        A400: #FF9100,
+        A700: #FF6D00,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $dark-primary-text,
+            600: $dark-primary-text,
+            700: $dark-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $dark-primary-text,
+        )
+    ),
+    deep-orange: (
+        50: #FBE9E7,
+        100: #FFCCBC,
+        200: #FFAB91,
+        300: #FF8A65,
+        400: #FF7043,
+        500: #FF5722,
+        600: #F4511E,
+        700: #E64A19,
+        800: #D84315,
+        900: #BF360C,
+        A100: #FF9E80,
+        A200: #FF6E40,
+        A400: #FF3D00,
+        A700: #DD2C00,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    brown: (
+        50: #EFEBE9,
+        100: #D7CCC8,
+        200: #BCAAA4,
+        300: #A1887F,
+        400: #8D6E63,
+        500: #795548,
+        600: #6D4C41,
+        700: #5D4037,
+        800: #4E342E,
+        900: #3E2723,
+        A100: #D7CCC8,
+        A200: #BCAAA4,
+        A400: #8D6E63,
+        A700: #5D4037,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $light-primary-text,
+            400: $light-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    grey: (
+        50: #FAFAFA,
+        100: #F5F5F5,
+        200: #EEEEEE,
+        300: #E0E0E0,
+        400: #BDBDBD,
+        500: #9E9E9E,
+        600: #757575,
+        700: #616161,
+        800: #424242,
+        900: #212121,
+        A100: #FFFFFF,
+        A200: #EEEEEE,
+        A400: #BDBDBD,
+        A700: #616161,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $dark-primary-text,
+            500: $dark-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $dark-primary-text,
+            A700: $light-primary-text,
+        )
+    ),
+    blue-grey: (
+        50: #ECEFF1,
+        100: #CFD8DC,
+        200: #B0BEC5,
+        300: #90A4AE,
+        400: #78909C,
+        500: #607D8B,
+        600: #546E7A,
+        700: #455A64,
+        800: #37474F,
+        900: #263238,
+        A100: #CFD8DC,
+        A200: #B0BEC5,
+        A400: #78909C,
+        A700: #455A64,
+        contrast: (
+            50: $dark-primary-text,
+            100: $dark-primary-text,
+            200: $dark-primary-text,
+            300: $dark-primary-text,
+            400: $light-primary-text,
+            500: $light-primary-text,
+            600: $light-primary-text,
+            700: $light-primary-text,
+            800: $light-primary-text,
+            900: $light-primary-text,
+            A100: $dark-primary-text,
+            A200: $dark-primary-text,
+            A400: $light-primary-text,
+            A700: $light-primary-text,
+        )
+    )
 );
 
 // Material color hues list
@@ -74,9 +669,8 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 // -----------------------------------------------------------------------------------------------------
 // @ Generate contrasting text colors
 // -----------------------------------------------------------------------------------------------------
-@mixin generate-contrasting-text-colors($classes, $contrast) {
+@mixin _generate-contrasting-text-colors($classes, $contrast) {
 
-    // If the contrast color is light...
     $background: $mat-dark-theme-background;
     $foreground: $mat-dark-theme-foreground;
 
@@ -85,6 +679,35 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
         $background: $mat-light-theme-background;
         $foreground: $mat-light-theme-foreground;
     }
+
+    // Start - Adjust the contrast colors to soften the blacks
+    $palettes: (
+        background: $background,
+        foreground: $foreground
+    );
+
+    $adjusted-palettes: ();
+
+    @each $palette-name, $palette in $palettes {
+
+        $adjusted-palette: ();
+
+        @each $key, $value in $palette {
+
+            @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
+
+                $value: rgba($dark-primary-text, alpha($value));
+            }
+
+            $adjusted-palette: map-merge($adjusted-palette, ($key: $value));
+        }
+
+        $adjusted-palettes: map-merge($adjusted-palettes, ($palette-name: $adjusted-palette));
+    }
+
+    $background: map-get($adjusted-palettes, background);
+    $foreground: map-get($adjusted-palettes, foreground);
+    // End - Adjust the contrast colors to soften the blacks
 
     // Put down the color classes
     #{$classes} {
@@ -122,7 +745,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 // -----------------------------------------------------------------------------------------------------
 // @ Generate contrasting material elements colors
 // -----------------------------------------------------------------------------------------------------
-@mixin generate-contrasting-material-elements-colors($classes, $contrast) {
+@mixin _generate-contrasting-material-elements-colors($classes, $contrast) {
 
     // If the contrast color is light...
     $background: $mat-dark-theme-background;
@@ -133,6 +756,35 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
         $background: $mat-light-theme-background;
         $foreground: $mat-light-theme-foreground;
     }
+
+    // Start - Adjust the contrast colors to soften the blacks
+    $palettes: (
+        background: $background,
+        foreground: $foreground
+    );
+
+    $adjusted-palettes: ();
+
+    @each $palette-name, $palette in $palettes {
+
+        $adjusted-palette: ();
+
+        @each $key, $value in $palette {
+
+            @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
+
+                $value: rgba($dark-primary-text, alpha($value));
+            }
+
+            $adjusted-palette: map-merge($adjusted-palette, ($key: $value));
+        }
+
+        $adjusted-palettes: map-merge($adjusted-palettes, ($palette-name: $adjusted-palette));
+    }
+
+    $background: map-get($adjusted-palettes, background);
+    $foreground: map-get($adjusted-palettes, foreground);
+    // End - Adjust the contrast colors to soften the blacks
 
     // Put down the color classes
     #{$classes} {
@@ -176,7 +828,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 // -----------------------------------------------------------------------------------------------------
 // @ Generate color classes
 // -----------------------------------------------------------------------------------------------------
-@mixin generate-color-classes($colorName, $color, $contrastColor, $hue) {
+@mixin _generate-color-classes($colorName, $color, $contrastColor, $hue) {
 
     .#{$colorName}#{$hue}-bg {
         background: $color !important;
@@ -236,10 +888,10 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
             @if ($color != null and $contrast != null) {
 
                 // Generate color classes
-                @include generate-color-classes($paletteName, $color, $contrast, '-#{$hue}');
+                @include _generate-color-classes($paletteName, $color, $contrast, '-#{$hue}');
 
                 // If the contrast color is dark
-                @if (rgba(black, 1) == rgba($contrast, 1)) {
+                @if (rgba($dark-primary-text, 1) == rgba($contrast, 1)) {
                     $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}-#{$hue}'), 'comma');
                 }
                     // if the contrast color is light
@@ -252,12 +904,12 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
                 @if ($hue == 500 and $paletteName != 'primary' and $paletteName != 'accent' and $paletteName != 'warn') {
 
                     // Generate color classes
-                    @include generate-color-classes($paletteName, $color, $contrast, '');
+                    @include _generate-color-classes($paletteName, $color, $contrast, '');
 
                     // Add color to the correct list depending on the contrasting color
 
                     // If the contrast color is dark
-                    @if (rgba(black, 1) == rgba($contrast, 1)) {
+                    @if (rgba($dark-primary-text, 1) == rgba($contrast, 1)) {
                         $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
                     }
                         // if the contrast color is light
@@ -281,12 +933,12 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
             $contrast: map-get($palette, 'default-contrast');
 
             // Generate color classes
-            @include generate-color-classes($paletteName, $color, $contrast, '');
+            @include _generate-color-classes($paletteName, $color, $contrast, '');
 
             // Add color to the correct list depending on the contrasting color
 
             // If the contrast color is dark
-            @if (rgba(black, 1) == rgba($contrast, 1)) {
+            @if (rgba($dark-primary-text, 1) == rgba($contrast, 1)) {
                 $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
             }
                 // if the contrast color is light
@@ -297,13 +949,129 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
     }
 
     // Generate contrasting colors
-    @include generate-contrasting-text-colors($dark-contrasting-classes, 'dark');
-    @include generate-contrasting-text-colors($light-contrasting-classes, 'light');
-    @include generate-contrasting-material-elements-colors($dark-contrasting-classes, 'dark');
-    @include generate-contrasting-material-elements-colors($light-contrasting-classes, 'light');
+    @include _generate-contrasting-text-colors($dark-contrasting-classes, 'dark');
+    @include _generate-contrasting-text-colors($light-contrasting-classes, 'light');
+    @include _generate-contrasting-material-elements-colors($dark-contrasting-classes, 'dark');
+    @include _generate-contrasting-material-elements-colors($light-contrasting-classes, 'light');
 }
 
 // -----------------------------------------------------------------------------------------------------
 // @ Generate Assembly color classes for default Material palettes
 // -----------------------------------------------------------------------------------------------------
 @include asm-color-classes($matPalettes);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Adjust the Angular Material theme object
+// -----------------------------------------------------------------------------------------------------
+@function asm-adjust-angular-material-theme($theme) {
+
+    // Create a for the adjusted theme
+    $adjusted-theme: (
+        is-dark: map-get($theme, is-dark)
+    );
+
+    // Group the palettes together
+    $color-palettes: (
+        primary: map-get($theme, primary),
+        accent: map-get($theme, accent),
+        warn: map-get($theme, warn)
+    );
+
+    // Group background and foreground together
+    $bgfg-palettes: (
+        background: map-get($theme, background),
+        foreground: map-get($theme, foreground)
+    );
+
+    // Create an empty lists for the adjusted stuff
+    $adjusted-color-palettes: ();
+    $adjusted-bgfg-palettes: ();
+
+    // Handle the palettes
+    @each $palette-name, $palette in $color-palettes {
+
+        // Create an empty list for the adjusted palette
+        $adjusted-palette: ();
+
+        // Go through each palette
+        @each $key, $value in $palette {
+
+            // If the value is a color...
+            @if (type-of($value) == 'color') {
+
+                // If the value is a black or a shade of black...
+                @if (rgba($value, 1) == rgba(0,0,0,1)) {
+
+                    // Replace the color
+                    $value: rgba($dark-primary-text, alpha($value));
+                }
+
+                // Add the value to the map
+                $adjusted-palette: map-merge($adjusted-palette, ($key: $value))
+            }
+                // If we hit the contrast map, loop through it
+            @else if ($key == 'contrast') {
+
+                // Create an empty list for the adjusted contrasts
+                $adjusted-palette-contrasts: ();
+
+                // Gp through all the contrast values
+                @each $contrast-name, $contrast-value in $value {
+
+                    // If the contrast value is a black or a shade of black...
+                    @if (rgba($contrast-value, 1) == rgba(0,0,0,1)) {
+
+                        // Replace the color
+                        $contrast-value: rgba($dark-primary-text, alpha($contrast-value));
+                    }
+
+                    // Add the value to the map
+                    $adjusted-palette-contrasts: map-merge($adjusted-palette-contrasts, (#{$contrast-name}: $contrast-value));
+                }
+
+                // Add the adjusted contrasts map to the adjusted palette map
+                $adjusted-palette: map-merge($adjusted-palette, (contrast: $adjusted-palette-contrasts))
+            }
+                // Otherwise just add the value to the map
+            @else {
+                $adjusted-palette: map-merge($adjusted-palette, ($key: $value))
+            }
+        }
+
+        // Add the palette to the adjusted color palettes map
+        $adjusted-color-palettes: map-merge($adjusted-color-palettes, (#{$palette-name}: $adjusted-palette));
+    }
+
+    // Handle the background and foreground
+    @each $palette-name, $palette in $bgfg-palettes {
+
+        // Create an empty list for the map
+        $adjusted-palette: ();
+
+        // Go through each map
+        @each $key, $value in $palette {
+
+            // If the value is a color and it is a black or a shade of black...
+            @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
+
+                // Replace the color
+                $value: rgba($dark-primary-text, alpha($value));
+            }
+
+            // Add the value to the map
+            $adjusted-palette: map-merge($adjusted-palette, ($key: $value))
+        }
+
+        // Add the adjusted palette to the adjusted bgfg palette
+        $adjusted-bgfg-palettes: map-merge($adjusted-bgfg-palettes, ($palette-name: $adjusted-palette));
+    }
+
+    // Add the adjusted palettes to the adjusted theme
+    $adjusted-theme: map-merge($adjusted-theme, $adjusted-color-palettes);
+
+    // Add the adjusted maps to the adjusted theme
+    $adjusted-theme: map-merge($adjusted-theme, $adjusted-bgfg-palettes);
+
+    // Return the adjusted theme
+    @return $adjusted-theme;
+}
