@@ -9,7 +9,7 @@
 
             .icon-tile {
                 background: map-get($background, card);
-                border-color: transparentize(map-get($foreground, divider), 0.06);
+                border-color: map-get($foreground, divider);
 
                 .icon-preview {
 
