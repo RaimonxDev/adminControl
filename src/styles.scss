@@ -1,5 +1,8 @@
+// Import tailwind
+@import './tailwind';
+
 // Import Assembly core library
-@import "@assembly/styles/core";
+@import '@assembly/styles/core';
 
 // Import app.theme.scss
-@import "app/app.theme";
+@import 'app/app.theme';
