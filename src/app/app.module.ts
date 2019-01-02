@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 // App component & app modules
 import { AppComponent } from 'app/app.component';
 
+import { AuthModule } from 'app/core/auth/auth.module';
 import { MockApiModule } from 'app/core/mock-api/mock-api.module';
 import { LayoutsModule } from 'app/core/layouts/layouts.module';
-import { AuthModule } from 'app/core/auth/auth.module';
 
 import { AppsModule } from 'app/modules/apps/apps.module';
 import { DocsModule } from 'app/modules/docs/docs.module';
