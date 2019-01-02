@@ -89,6 +89,7 @@ classy-layout {
             padding: 0 24px;
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
             0 2px 12px 0 rgba(0, 0, 0, 0.05);
+            z-index: 49;
         }
 
         // Content
@@ -98,6 +99,7 @@ classy-layout {
             flex: 1 0 auto;
 
             > *:not(router-outlet) {
+                position: relative;
                 display: flex;
                 flex: 1 0 auto;
                 flex-wrap: wrap;

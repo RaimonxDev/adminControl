@@ -56,6 +56,7 @@ thin-layout {
             flex: 1 1 auto;
 
             > *:not(router-outlet) {
+                position: relative;
                 display: flex;
                 flex: 1 0 auto;
                 flex-wrap: wrap;

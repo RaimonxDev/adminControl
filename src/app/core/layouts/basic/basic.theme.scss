@@ -6,7 +6,8 @@
 
     basic-layout {
 
-        .navigation {
+        // Navigation
+        > .navigation {
             box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.12);
 
             .asm-navigation-header {
@@ -27,7 +28,8 @@
             }
         }
 
-        .container {
+        // Container
+        > .container {
 
             @if ($isDark) {
                 background: map-get($background, background);
@@ -35,7 +37,8 @@
                 background: white;
             }
 
-            .header {
+            // Header
+            > .header {
 
                 @if ($isDark) {
                     box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.12);
@@ -44,7 +47,8 @@
                 }
             }
 
-            .footer {
+            // Footer
+            > .footer {
 
                 @if ($isDark) {
                     box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.12);

@@ -50,6 +50,7 @@ basic-layout {
             max-height: 80px;
             min-height: 80px;
             padding: 0 24px;
+            z-index: 49;
         }
 
         // Content
@@ -59,6 +60,7 @@ basic-layout {
             flex: 1 0 auto;
 
             > *:not(router-outlet) {
+                position: relative;
                 display: flex;
                 flex: 1 0 auto;
                 flex-wrap: wrap;
