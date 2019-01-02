@@ -87,9 +87,7 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
-            .pipe(
-                takeUntil(this._unsubscribeAll)
-            )
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
 
                 // Check if the breakpoint is 'lt-md'
