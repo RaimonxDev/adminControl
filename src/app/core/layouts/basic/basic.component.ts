@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigation, AsmNavigationService } from '@assembly';
 
 @Component({
-    selector     : 'basic-layout',
+    selector     : 'layout[type="basic"]',
     templateUrl  : './basic.component.html',
     styleUrls    : ['./basic.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -101,6 +101,9 @@ export class BasicLayoutComponent implements OnInit, OnDestroy
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
+            .pipe(
+                takeUntil(this._unsubscribeAll)
+            )
             .subscribe(() => {
 
                 // Check if the breakpoint is 'lt-md'

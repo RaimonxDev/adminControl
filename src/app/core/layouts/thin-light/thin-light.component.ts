@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 
 @Component({
-    selector     : 'thin-light-layout',
+    selector     : 'layout[type="thin-light"]',
     templateUrl  : './thin-light.component.html',
     styleUrls    : ['./thin-light.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -99,6 +99,9 @@ export class ThinLightLayoutComponent implements OnInit, OnDestroy
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
+            .pipe(
+                takeUntil(this._unsubscribeAll)
+            )
             .subscribe(() => {
 
                 // Check if the breakpoint is 'lt-md'

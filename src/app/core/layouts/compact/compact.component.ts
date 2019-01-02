@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 
 @Component({
-    selector     : 'compact-layout',
+    selector     : 'layout[type="compact"]',
     templateUrl  : './compact.component.html',
     styleUrls    : ['./compact.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -92,6 +92,9 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
+            .pipe(
+                takeUntil(this._unsubscribeAll)
+            )
             .subscribe(() => {
 
                 // Check if the breakpoint is 'lt-md'

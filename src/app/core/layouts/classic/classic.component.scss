@@ -1,6 +1,6 @@
 @import 'src/@assembly/styles/assembly';
 
-classic-layout {
+layout[type="classic"] {
     position: relative;
     display: flex;
     flex: 1 1 auto;

@@ -2,7 +2,7 @@
 
     $background: map-get($theme, background);
 
-    classy-layout {
+    layout[type="classy"] {
 
         .navigation {
 

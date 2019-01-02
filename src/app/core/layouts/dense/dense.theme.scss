@@ -2,7 +2,7 @@
 
     $primary: map-get($theme, primary);
 
-    dense-layout {
+    layout[type="dense"] {
 
         // Navigation
         > .navigation {

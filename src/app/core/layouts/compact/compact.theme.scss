@@ -1,6 +1,6 @@
 @mixin compact-layout-theme($theme) {
 
-    compact-layout {
+    layout[type="compact"] {
 
         // Header
         > .container {

@@ -2,7 +2,7 @@
 
     $primary: map-get($theme, primary);
 
-    thin-layout {
+    layout[type="thin"] {
 
         // Navigation
         > .navigation {

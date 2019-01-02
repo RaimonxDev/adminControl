@@ -7,7 +7,7 @@ import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, 
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'classy-layout',
+    selector     : 'layout[type="classy"]',
     templateUrl  : './classy.component.html',
     styleUrls    : ['./classy.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -111,6 +111,9 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
+            .pipe(
+                takeUntil(this._unsubscribeAll)
+            )
             .subscribe(() => {
 
                 // Check if the breakpoint is 'lt-md'

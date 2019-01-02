@@ -1,6 +1,6 @@
 @import 'src/@assembly/styles/assembly';
 
-compact-layout {
+layout[type="compact"] {
     position: relative;
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 @import 'src/@assembly/styles/assembly';
 
-modern-layout {
+layout[type="modern"] {
     position: relative;
     display: flex;
     flex-direction: column;

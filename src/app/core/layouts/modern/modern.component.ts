@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigation, AsmNavigationService } from '@assembly';
 
 @Component({
-    selector     : 'modern-layout',
+    selector     : 'layout[type="modern"]',
     templateUrl  : './modern.component.html',
     styleUrls    : ['./modern.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -87,6 +87,9 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
+            .pipe(
+                takeUntil(this._unsubscribeAll)
+            )
             .subscribe(() => {
 
                 // Check if the breakpoint is 'lt-md'

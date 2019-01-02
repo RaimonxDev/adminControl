@@ -4,7 +4,7 @@
     $primary: map-get($theme, primary);
     $isDark: map-get($theme, is-dark);
 
-    basic-layout {
+    layout[type="basic"] {
 
         // Navigation
         > .navigation {

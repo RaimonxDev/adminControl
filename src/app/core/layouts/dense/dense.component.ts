@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 
 @Component({
-    selector     : 'dense-layout',
+    selector     : 'layout[type="dense"]',
     templateUrl  : './dense.component.html',
     styleUrls    : ['./dense.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -98,6 +98,9 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
+            .pipe(
+                takeUntil(this._unsubscribeAll)
+            )
             .subscribe(() => {
 
                 // Check if the breakpoint is 'lt-md'
