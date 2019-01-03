@@ -1,80 +1,8 @@
 Sidebar
 
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
-Mail sidebar
-
-<br><br><br>
-
+<ul>
+    <li *ngFor="let systemLabel of systemLabels">
+        <mat-icon class="pr-8">{{systemLabel.icon}}</mat-icon>
+        <span>{{systemLabel.title}}</span>
+    </li>
+</ul>
