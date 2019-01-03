@@ -85,6 +85,8 @@ $typography: mat-typography-config(
 @import 'core/layouts/thin/thin.theme';
 @import 'core/layouts/thin-light/thin-light.theme';
 
+@import 'src/app/modules/apps/mail/mail.theme';
+
 @import 'src/app/modules/docs/docs.theme';
 @import 'src/app/modules/ui/icons/icons.theme';
 
@@ -99,6 +101,9 @@ $typography: mat-typography-config(
     @include dense-layout-theme($theme);
     @include thin-layout-theme($theme);
     @include thin-light-layout-theme($theme);
+
+    // Apps
+    @include mail-theme($theme);
 
     // Components
     @include docs-theme($theme);

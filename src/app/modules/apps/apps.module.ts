@@ -18,6 +18,11 @@ const routes: Route[] = [
                 path        : 'dashboard',
                 loadChildren: './dashboard/dashboard.module#DashboardModule',
                 canActivate : [AuthGuard]
+            },
+            {
+                path        : 'mail',
+                loadChildren: './mail/mail.module#MailModule',
+                canActivate : [AuthGuard]
             }
         ]
     }

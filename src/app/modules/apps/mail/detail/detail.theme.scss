@@ -1,0 +1,8 @@
+@mixin mail-detail-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    mail-detail {
+        background: map-get($background, card);
+    }
+}

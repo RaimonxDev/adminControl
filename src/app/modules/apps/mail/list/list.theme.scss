@@ -1,0 +1,10 @@
+@mixin mail-list-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    mail-list {
+        background: map-get($background, card);
+        border-right-color: map-get($foreground, divider);
+    }
+}
