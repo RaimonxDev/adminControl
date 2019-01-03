@@ -42,6 +42,7 @@ export class DocsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Subscribe to docs data changes
         this._docsService.onDocsUpdated
             .pipe(
                 filter((data) => {
