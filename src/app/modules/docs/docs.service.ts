@@ -15,7 +15,7 @@ export class DocsService implements Resolve<any>
     /**
      * Constructor
      *
-     * @param _httpClient
+     * @param {HttpClient} _httpClient
      */
     constructor(
         private _httpClient: HttpClient
@@ -54,8 +54,8 @@ export class DocsService implements Resolve<any>
 
         // Return an observable which executes the
         // onDocsUpdated on success
-
-        return this._httpClient.get(apiUrl)
+        return this._httpClient
+                   .get(apiUrl)
                    .pipe(map((response) => {
                        this._onDocsUpdated.next(response);
                    }));
