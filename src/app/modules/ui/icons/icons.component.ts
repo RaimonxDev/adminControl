@@ -51,7 +51,8 @@ export class IconsComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to the icons data updates
-        this._iconsService.onIconsUpdated
+        this._iconsService
+            .onIconsUpdated
             .pipe(
                 filter((data) => {
                     return data !== null;
