@@ -1,0 +1,63 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@mixin asm-basic-navigation-theme($theme) {
+
+    $primary: map-get($theme, primary);
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Basic navigation
+    // -----------------------------------------------------------------------------------------------------
+    nav {
+
+        ul {
+
+            li {
+
+                &:hover {
+                    background: map-get($primary, 50);
+                }
+
+                &.active {
+                    background: map-get($primary, 50);
+                    color: map-get($primary, default);
+
+                    .nav-icon {
+                        color: map-get($primary, default);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Basic navigation
+// -----------------------------------------------------------------------------------------------------
+
+nav {
+    margin: 8px 0;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: flex;
+            align-items: center;
+            min-height: 48px;
+            padding: 0 32px;
+            cursor: pointer;
+
+            &:hover {
+
+            }
+
+            .nav-icon {
+                margin-right: 12px;
+                @include icon-size(16);
+            }
+        }
+    }
+}

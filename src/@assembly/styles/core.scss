@@ -2,7 +2,6 @@
 // @ This file meant to be imported only once!
 //   Use assembly.scss to access to the core Angular Material and Assembly mixins
 // -----------------------------------------------------------------------------------------------------
-
 // Perfect scrollbar
 @import '~perfect-scrollbar/css/perfect-scrollbar';
 
@@ -24,6 +23,7 @@
 @import "partials/colors";
 @import "partials/icons";
 @import "partials/typography";
+@import "partials/basic-navigation";
 
 // Plugins
 @import "plugins/angular-material";
@@ -39,6 +39,7 @@
     // Theming for Assembly core styles
     @include asm-colors-theme($theme);
     @include asm-typography-theme($theme);
+    @include asm-basic-navigation-theme($theme);
 
     // Theming for Assembly components
     @include asm-drawer-theme($theme);
