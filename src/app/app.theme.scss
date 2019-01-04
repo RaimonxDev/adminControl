@@ -115,7 +115,7 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
-$default-primary-palette: mat-palette($mat-pink);
+$default-primary-palette: mat-palette($mat-indigo, A700);
 $default-accent-palette: mat-palette($asm-navy);
 $default-warn-palette: mat-palette($mat-red);
 
