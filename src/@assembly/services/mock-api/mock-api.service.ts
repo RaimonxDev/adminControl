@@ -32,63 +32,71 @@ export class AsmMockApiService
      * Register 'delete' request handler
      *
      * @param url
+     * @param delay
      */
-    onDelete(url: string): AsmMockApiRequestHandler
+    onDelete(url: string, delay: number = 0): AsmMockApiRequestHandler
     {
-        return this._registerRequestHandler('delete', url);
+        return this._registerRequestHandler('delete', url, delay);
     }
 
     /**
      * Register 'get' request handler
      *
      * @param url
+     * @param delay
      */
-    onGet(url: string): AsmMockApiRequestHandler
+    onGet(url: string, delay: number = 0): AsmMockApiRequestHandler
     {
-        return this._registerRequestHandler('get', url);
+        return this._registerRequestHandler('get', url, delay);
     }
 
     /**
      * Register 'patch' request handler
      *
      * @param url
+     * @param delay
      */
-    onPatch(url: string): AsmMockApiRequestHandler
+    onPatch(url: string, delay: number = 0): AsmMockApiRequestHandler
     {
-        return this._registerRequestHandler('patch', url);
+        return this._registerRequestHandler('patch', url, delay);
     }
 
     /**
      * Register 'post' request handler
      *
      * @param url
+     * @param delay
      */
-    onPost(url: string): AsmMockApiRequestHandler
+    onPost(url: string, delay: number = 0): AsmMockApiRequestHandler
     {
-        return this._registerRequestHandler('post', url);
+        return this._registerRequestHandler('post', url, delay);
     }
 
     /**
      * Register 'put' request handler
      *
      * @param url
+     * @param delay
      */
-    onPut(url: string): AsmMockApiRequestHandler
+    onPut(url: string, delay: number = 0): AsmMockApiRequestHandler
     {
-        return this._registerRequestHandler('put', url);
+        return this._registerRequestHandler('put', url, delay);
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
-    private _registerRequestHandler(requestType, url): AsmMockApiRequestHandler
+    private _registerRequestHandler(requestType, url, delay): AsmMockApiRequestHandler
     {
         // Create a new instance of AsmMockApiRequestHandler
         const asmMockHttp = new AsmMockApiRequestHandler;
 
         // Store the url
         asmMockHttp.url = url;
+
+        // Store the delay
+        asmMockHttp.delay = delay;
 
         // Store the request mock
         this.requestHandlers[requestType].set(url, asmMockHttp);

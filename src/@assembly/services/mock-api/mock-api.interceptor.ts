@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
+import { delay, switchMap } from 'rxjs/operators';
 
+import { AsmMockApiRequestHandler } from '@assembly/services/mock-api/request-handler';
 import { AsmMockApiService } from '@assembly/services/mock-api/mock-api.service';
 
 @Injectable({
@@ -23,62 +25,66 @@ export class AsmMockApiInterceptor implements HttpInterceptor
     /**
      * Intercept
      *
-     * @param req
+     * @param request
      * @param next
      */
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
     {
         // Try to get the request handler
-        const requestHandler = this._asmMockApiService.requestHandlers[req.method.toLowerCase()].get(req.url);
+        const requestHandler: AsmMockApiRequestHandler = this._asmMockApiService.requestHandlers[request.method.toLowerCase()].get(request.url);
 
         // If the request handler exists..
         if ( requestHandler )
         {
-            // Prepare the response
-            let response;
+            // Set the intercepted request on the requestHandler
+            requestHandler.interceptedRequest = request;
 
-            // Run the callback function to get the response data
-            const responseData = requestHandler.executeReply(req);
+            // Subscribe to the execute reply function observable
+            return requestHandler.replyFunction.pipe(
+                delay(requestHandler.delay),
+                switchMap((response) => {
 
-            // Throw a not found response, if there is no response data
-            if ( !responseData )
-            {
-                response = new HttpErrorResponse({
-                    status: 404,
-                    error : 'NOT FOUND'
-                });
+                    // Throw a not found response, if there is no response data
+                    if ( !response )
+                    {
+                        response = new HttpErrorResponse({
+                            status: 404,
+                            error : 'NOT FOUND'
+                        });
 
-                return throwError(response);
-            }
+                        return throwError(response);
+                    }
 
-            // Parse the response data
-            const data = {
-                status: responseData[0],
-                body  : responseData[1]
-            };
+                    // Parse the response data
+                    const data = {
+                        status: response[0],
+                        body  : response[1]
+                    };
 
-            // If the status is in between 200 and 300,
-            // it's a success response
-            if ( data.status >= 200 && data.status < 300 )
-            {
-                response = new HttpResponse({
-                    status: data.status,
-                    body  : data.body
-                });
+                    // If the status is in between 200 and 300,
+                    // it's a success response
+                    if ( data.status >= 200 && data.status < 300 )
+                    {
+                        response = new HttpResponse({
+                            status: data.status,
+                            body  : data.body
+                        });
 
-                return of(response);
-            }
+                        return of(response);
+                    }
 
-            // Error response
-            response = new HttpErrorResponse({
-                status: data.status,
-                error : data.body.error
-            });
+                    // Error response
+                    response = new HttpErrorResponse({
+                        status: data.status,
+                        error : data.body.error
+                    });
 
-            return throwError(response);
+                    return throwError(response);
+
+                }));
         }
 
         // Pass through if the request handler does not exists
-        return next.handle(req);
+        return next.handle(request);
     }
 }
