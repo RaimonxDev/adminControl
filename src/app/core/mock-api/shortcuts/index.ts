@@ -9,8 +9,8 @@ import { shortcuts } from 'app/core/mock-api/shortcuts/data';
 })
 export class MockShortcutsApi
 {
-    // Data
-    private _shortcuts = shortcuts;
+    // Private Readonly
+    private readonly _shortcuts: any;
 
     /**
      * Constructor
@@ -21,6 +21,8 @@ export class MockShortcutsApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._shortcuts = shortcuts;
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -11,9 +11,9 @@ import { contacts } from 'app/core/mock-api/contacts/data';
 })
 export class MockSearchResultsApi
 {
-    // Data
-    private _defaultNavigation: AsmNavigationItem[] = defaultNavigation;
-    private _contacts: any[] = contacts;
+    // Private Readonly
+    private readonly _defaultNavigation: AsmNavigationItem[] = defaultNavigation;
+    private readonly _contacts: any[] = contacts;
 
     /**
      * Constructor
@@ -26,6 +26,9 @@ export class MockSearchResultsApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._defaultNavigation = defaultNavigation;
+        this._contacts = contacts;
     }
 
     // -----------------------------------------------------------------------------------------------------

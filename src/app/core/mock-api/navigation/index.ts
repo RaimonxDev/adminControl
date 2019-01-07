@@ -9,9 +9,9 @@ import { compactNavigation, defaultNavigation } from 'app/core/mock-api/navigati
 })
 export class MockNavigationApi
 {
-    // Data
-    private _defaultNavigation: AsmNavigationItem[] = defaultNavigation;
-    private _compactNavigation: AsmNavigationItem[] = compactNavigation;
+    // Private Readonly
+    private readonly _defaultNavigation: AsmNavigationItem[];
+    private readonly _compactNavigation: AsmNavigationItem[];
 
     /**
      * Constructor
@@ -22,6 +22,9 @@ export class MockNavigationApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._defaultNavigation = defaultNavigation;
+        this._compactNavigation = compactNavigation;
     }
 
     // -----------------------------------------------------------------------------------------------------

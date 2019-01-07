@@ -9,10 +9,10 @@ import { dripicons, iconsmind, materialOutline } from 'app/core/mock-api/icons/d
 })
 export class MockIconsApi
 {
-    // Data
-    private _dripicons = dripicons;
-    private _materialOutline = materialOutline;
-    private _iconsmind = iconsmind;
+    // Private Readonly
+    private readonly _dripicons: any;
+    private readonly _materialOutline: any;
+    private readonly _iconsmind: any;
 
     /**
      * Constructor
@@ -23,6 +23,10 @@ export class MockIconsApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._dripicons = dripicons;
+        this._materialOutline = materialOutline;
+        this._iconsmind = iconsmind;
     }
 
     // -----------------------------------------------------------------------------------------------------

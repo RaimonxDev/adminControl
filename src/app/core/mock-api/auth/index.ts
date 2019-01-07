@@ -9,9 +9,9 @@ import { user } from './data';
 })
 export class MockAuthApi
 {
-    // Data
-    private _user = user;
-    private _secret = 'YOUR_VERY_CONFIDENTIAL_SECRET_FOR_SIGNING_JWT_TOKENS!!!';
+    // Private Readonly
+    private readonly _user: any;
+    private readonly _secret: any;
 
     /**
      * Constructor
@@ -22,6 +22,9 @@ export class MockAuthApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._user = user;
+        this._secret = 'YOUR_VERY_CONFIDENTIAL_SECRET_FOR_SIGNING_JWT_TOKENS!!!';
     }
 
     // -----------------------------------------------------------------------------------------------------

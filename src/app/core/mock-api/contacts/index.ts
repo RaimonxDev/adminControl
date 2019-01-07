@@ -9,8 +9,8 @@ import { contacts } from 'app/core/mock-api/contacts/data';
 })
 export class MockContactsApi
 {
-    // Data
-    private _contacts = contacts;
+    // Private Readonly
+    private readonly _contacts: any;
 
     /**
      * Constructor
@@ -21,6 +21,8 @@ export class MockContactsApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._contacts = contacts;
     }
 
     // -----------------------------------------------------------------------------------------------------

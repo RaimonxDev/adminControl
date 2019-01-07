@@ -9,8 +9,8 @@ import { docs } from './data';
 })
 export class MockDocsApi
 {
-    // Data
-    private _docs = docs;
+    // Private Readonly
+    private readonly _docs: any;
 
     /**
      * Constructor
@@ -21,6 +21,8 @@ export class MockDocsApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._docs = docs;
     }
 
     // -----------------------------------------------------------------------------------------------------
