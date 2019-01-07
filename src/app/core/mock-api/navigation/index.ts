@@ -33,7 +33,9 @@ export class MockNavigationApi
      */
     init(): void
     {
-        // GET - Default navigation
+        // -----------------------------------------------------------------------------------------------------
+        // @ Default navigation - GET
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/navigation/default')
             .reply(() => {
@@ -45,7 +47,9 @@ export class MockNavigationApi
                 ];
             });
 
-        // GET - Compact navigation
+        // -----------------------------------------------------------------------------------------------------
+        // @ Compact navigation - GET
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/navigation/compact')
             .reply(() => {

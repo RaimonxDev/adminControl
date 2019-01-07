@@ -126,7 +126,10 @@ export class MockAuthApi
      */
     init(): void
     {
-        // Login
+        // -----------------------------------------------------------------------------------------------------
+        // @ Login - POST
+        // -----------------------------------------------------------------------------------------------------
+
         this._asmMockApiService
             .onPost('api/auth/login')
             .reply((request) => {
@@ -152,7 +155,9 @@ export class MockAuthApi
                 ];
             });
 
-        // Verify and Refresh the token
+        // -----------------------------------------------------------------------------------------------------
+        // @ Verify and refresh the access token - POST
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onPost('api/auth/refresh-access-token')
             .reply((request) => {

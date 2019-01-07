@@ -34,7 +34,9 @@ export class MockIconsApi
      */
     init(): void
     {
-        // GET - Dripicons icons
+        // -----------------------------------------------------------------------------------------------------
+        // @ Dripicons icons - GET
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/ui/icons/dripicons')
             .reply(() => {
@@ -47,7 +49,9 @@ export class MockIconsApi
                 ];
             });
 
-        // GET - Material Outline icons
+        // -----------------------------------------------------------------------------------------------------
+        // @ Material outline icons - GET
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/ui/icons/material-outline')
             .reply(() => {
@@ -60,7 +64,9 @@ export class MockIconsApi
                 ];
             });
 
-        // GET - Iconsmind icons
+        // -----------------------------------------------------------------------------------------------------
+        // @ Iconsmind icons - GET
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/ui/icons/iconsmind')
             .reply(() => {

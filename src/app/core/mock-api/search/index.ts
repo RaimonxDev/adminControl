@@ -40,7 +40,9 @@ export class MockSearchResultsApi
         // Get the flat navigation and store it
         const flatNavigation = this._asmNavigationService.getFlatNavigation(this._defaultNavigation);
 
-        // GET - Search results
+        // -----------------------------------------------------------------------------------------------------
+        // @ Search results - GET
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onPost('api/search')
             .reply((request) => {
