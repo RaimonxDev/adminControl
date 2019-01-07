@@ -1,12 +1,16 @@
-<ng-container *ngFor="let partial of data">
+<ng-container *ngIf="(docs$ | async) as docs">
 
-    <div *ngIf="partial.type === 'text'"
-         [innerHTML]="partial.content">
-    </div>
+    <ng-container *ngFor="let partial of docs">
 
-    <asm-highlight *ngIf="partial.type === 'code'"
-                   [lang]="partial.language"
-                   [code]="partial.content">
-    </asm-highlight>
+        <div *ngIf="partial.type === 'text'"
+             [innerHTML]="partial.content">
+        </div>
+
+        <asm-highlight *ngIf="partial.type === 'code'"
+                       [lang]="partial.language"
+                       [code]="partial.content">
+        </asm-highlight>
+
+    </ng-container>
 
 </ng-container>

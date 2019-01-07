@@ -43,8 +43,8 @@ export class MockIconsApi
                 return [
                     200,
                     {
-                        icons  : this._dripicons,
-                        fontSet: 'dripicons'
+                        fontSet: 'dripicons',
+                        list   : this._dripicons
                     }
                 ];
             });
@@ -58,8 +58,8 @@ export class MockIconsApi
                 return [
                     200,
                     {
-                        icons  : this._materialOutline,
-                        fontSet: 'material-icons'
+                        fontSet: 'material-icons',
+                        list   : this._materialOutline
                     }
                 ];
             });
@@ -73,8 +73,8 @@ export class MockIconsApi
                 return [
                     200,
                     {
-                        icons  : this._iconsmind,
-                        fontSet: 'iconsmind'
+                        fontSet: 'iconsmind',
+                        list   : this._iconsmind
                     }
                 ];
             });

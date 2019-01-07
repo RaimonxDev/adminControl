@@ -1,24 +1,22 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { DocsService } from 'app/modules/docs/docs.service';
 
 @Component({
-    selector     : 'docs',
-    templateUrl  : './docs.component.html',
-    styleUrls    : ['./docs.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'docs',
+    templateUrl    : './docs.component.html',
+    styleUrls      : ['./docs.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DocsComponent implements OnInit, OnDestroy
+export class DocsComponent implements OnInit
 {
-    data: any;
+    docs$: Observable<any>;
 
     // Private
     @ViewChild('content')
     private _content: ElementRef;
-
-    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -29,8 +27,6 @@ export class DocsComponent implements OnInit, OnDestroy
         private _docsService: DocsService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -42,28 +38,7 @@ export class DocsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to docs data changes
-        this._docsService
-            .onDocsUpdated
-            .pipe(
-                filter((data) => {
-                    return data !== null;
-                }),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe((data) => {
-                this.data = data;
-            });
+        // Get the docs data
+        this.docs$ = this._docsService.docs;
     }
-
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
-
 }

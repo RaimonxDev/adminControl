@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class IconsService implements Resolve<any>
 {
     // Private
-    private _onIconsUpdated: BehaviorSubject<any>;
+    private _icons: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ export class IconsService implements Resolve<any>
     )
     {
         // Set the private defaults
-        this._onIconsUpdated = new BehaviorSubject(null);
+        this._icons = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -30,11 +30,37 @@ export class IconsService implements Resolve<any>
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for onIconsUpdated
+     * Getter for icons
      */
-    get onIconsUpdated(): Observable<any>
+    get icons(): Observable<any>
     {
-        return this._onIconsUpdated.asObservable();
+        return this._icons.asObservable();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Get icons data
+     *
+     * @param url
+     * @private
+     */
+    private _getData(url): Observable<any>
+    {
+        // Prepend the url with 'api'
+        url = 'api' + url;
+
+        // Return an observable which executes the
+        // onIconsUpdated on success
+        return this._httpClient.get(url)
+                   .pipe(
+                       map((response: any) => {
+
+                           // Pass the response to the observables
+                           this._icons.next(response);
+                       }));
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -49,15 +75,6 @@ export class IconsService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        // Build the API url
-        const apiUrl = 'api' + state.url;
-
-        // Return an observable which executes the
-        // onIconsUpdated on success
-        return this._httpClient
-                   .get(apiUrl)
-                   .pipe(map((response) => {
-                       this._onIconsUpdated.next(response);
-                   }));
+        return this._getData(state.url);
     }
 }

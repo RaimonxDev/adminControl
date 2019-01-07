@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class DocsService implements Resolve<any>
 {
     // Private
-    private _onDocsUpdated: BehaviorSubject<any>;
+    private _docs: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ export class DocsService implements Resolve<any>
     )
     {
         // Set the private defaults
-        this._onDocsUpdated = new BehaviorSubject(null);
+        this._docs = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -30,11 +30,36 @@ export class DocsService implements Resolve<any>
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for onDocsUpdated
+     * Getter for docsData
      */
-    get onDocsUpdated(): Observable<any>
+    get docs(): Observable<any>
     {
-        return this._onDocsUpdated.asObservable();
+        return this._docs.asObservable();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Get docs
+     *
+     * @param url
+     * @private
+     */
+    private _getDocs(url): Observable<any>
+    {
+        // Prepend the url with 'api'
+        url = 'api' + url;
+
+        return this._httpClient.get(url)
+                   .pipe(
+                       map((response) => {
+
+                           // Pass the response to the observable
+                           this._docs.next(response);
+                       })
+                   );
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -49,15 +74,6 @@ export class DocsService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        // Build the API url
-        const apiUrl = 'api' + state.url;
-
-        // Return an observable which executes the
-        // onDocsUpdated on success
-        return this._httpClient
-                   .get(apiUrl)
-                   .pipe(map((response) => {
-                       this._onDocsUpdated.next(response);
-                   }));
+        return this._getDocs(state.url);
     }
 }

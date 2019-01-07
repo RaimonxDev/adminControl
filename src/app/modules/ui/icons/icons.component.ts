@@ -1,28 +1,28 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IconsService } from 'app/modules/ui/icons/icons.service';
 
 @Component({
-    selector     : 'icons',
-    templateUrl  : './icons.component.html',
-    styleUrls    : ['./icons.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'icons',
+    templateUrl    : './icons.component.html',
+    styleUrls      : ['./icons.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IconsComponent implements OnInit, OnDestroy
+export class IconsComponent implements OnInit
 {
-    data: any;
-    filteredIcons: any[];
-    searchInput: FormControl;
+    icons$: Observable<any>;
+    filteredIcons$: Observable<any>;
+
+    filterValue$: BehaviorSubject<any>;
     iconSizeInput: FormControl;
 
     // Private
     @ViewChild('content')
     private _content: ElementRef;
-
-    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -33,11 +33,8 @@ export class IconsComponent implements OnInit, OnDestroy
         private _iconsService: IconsService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
         // Set the defaults
-        this.searchInput = new FormControl('');
+        this.filterValue$ = new BehaviorSubject('');
         this.iconSizeInput = new FormControl('32');
     }
 
@@ -50,34 +47,24 @@ export class IconsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the icons data updates
-        this._iconsService
-            .onIconsUpdated
-            .pipe(
-                filter((data) => {
-                    return data !== null;
-                }),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe((data) => {
+        this.icons$ = this._iconsService.icons;
 
-                // Store the data
-                this.data = data;
-                this.filteredIcons = data.icons;
+        // Create filtered icons
+        this.filteredIcons$ =
+            combineLatest(this.icons$, this.filterValue$)
+                .pipe(
+                    map(([icons, filterValue]) => {
 
-                // Clear the search input
-                this.searchInput.setValue('');
-            });
-    }
+                        // Filter the icons
+                        const filteredIcons = icons.list.filter(icon => icon.name.includes(filterValue));
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
+                        // Update the list with the filtered icons
+                        return {
+                            ...icons,
+                            list: filteredIcons
+                        };
+                    })
+                );
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -91,12 +78,7 @@ export class IconsComponent implements OnInit, OnDestroy
      */
     filterIcons(event): void
     {
-        // Get the value
-        const value = event.target.value;
-
-        // Filter the icons
-        this.filteredIcons = this.data.icons.filter(icon => {
-            return icon.name.includes(value);
-        });
+        // Push the value to the observable
+        this.filterValue$.next(event.target.value);
     }
 }

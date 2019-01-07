@@ -5,7 +5,6 @@
         <mat-label>Search an icon</mat-label>
         <input matInput
                [attr.autocomplete]="'off'"
-               [formControl]="searchInput"
                (input)="filterIcons($event)">
     </mat-form-field>
 
@@ -26,18 +25,22 @@
 
 <div class="icon-tiles">
 
-    <ng-container *ngFor="let icon of filteredIcons">
+    <ng-container *ngIf="(filteredIcons$ | async) as icons">
 
-        <div class="icon-tile">
+        <ng-container *ngFor="let icon of icons.list">
 
-            <div class="icon-preview">
-                <mat-icon [ngClass]="'icon-size-' + iconSizeInput.value"
-                          [fontSet]="data.fontSet">{{icon.ligature}}</mat-icon>
+            <div class="icon-tile">
+
+                <div class="icon-preview">
+                    <mat-icon [ngClass]="'icon-size-' + iconSizeInput.value"
+                              [fontSet]="icons.fontSet">{{icon.ligature}}</mat-icon>
+                </div>
+
+                <div class="icon-name">{{icon.name}}</div>
+
             </div>
 
-            <div class="icon-name">{{icon.name}}</div>
-
-        </div>
+        </ng-container>
 
     </ng-container>
 
