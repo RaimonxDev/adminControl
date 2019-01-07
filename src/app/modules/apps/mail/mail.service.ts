@@ -2,18 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class MailService implements Resolve<any>
 {
-    // Data
-    systemLabels: any[];
-
     // Observables
-    private _onSystemLabelsUpdated: BehaviorSubject<any>;
+    private _systemLabels: BehaviorSubject<any>;
+    private _userLabels: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -24,8 +22,9 @@ export class MailService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
-        // Set the private defaults
-        this._onSystemLabelsUpdated = new BehaviorSubject(null);
+        // Set the defaults
+        this._systemLabels = new BehaviorSubject(null);
+        this._userLabels = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -33,11 +32,19 @@ export class MailService implements Resolve<any>
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for onSystemLabelsUpdated
+     * Getter for system labels
      */
-    get onSystemLabelsUpdated(): Observable<any>
+    get systemLabels(): Observable<any>
     {
-        return this._onSystemLabelsUpdated.asObservable();
+        return this._systemLabels.asObservable();
+    }
+
+    /**
+     * Getter for user labels
+     */
+    get userLabels(): Observable<any>
+    {
+        return this._userLabels.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -51,17 +58,29 @@ export class MailService implements Resolve<any>
     {
         return this._httpClient
                    .get('api/apps/mails/labels/system')
-                   .pipe(map((response: any) => {
+                   .pipe(
+                       take(1),
+                       map((response: any) => {
 
-                       // Execute the observable
-                       this._onSystemLabelsUpdated.next(response);
+                           // Pass the response to the observable
+                           this._systemLabels.next(response);
+                       }));
+    }
 
-                       // Store the system labels
-                       this.systemLabels = response.systemLabels;
+    /**
+     * Get user labels
+     */
+    private _getUserLabels(): Observable<any>
+    {
+        return this._httpClient
+                   .get('api/apps/mails/labels/user')
+                   .pipe(
+                       take(1),
+                       map((response: any) => {
 
-                       // Return the response
-                       return response;
-                   }));
+                           // Pass the response to the observable
+                           this._userLabels.next(response);
+                       }));
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -76,16 +95,15 @@ export class MailService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        console.log('resolve');
-
         // Fork join all the initial loaders
         return forkJoin(
-            // Get system labels
-            this._getSystemLabels()
+            // Get labels
+            this._getSystemLabels(),
+            this._getUserLabels()
         ).pipe(
             map((data) => {
 
-                console.log(data[0]);
+                // console.log(data[0]);
             })
         );
     }

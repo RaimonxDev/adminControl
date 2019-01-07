@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MailService } from 'app/modules/apps/mail/mail.service';
-import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector     : 'mail-sidebar',
@@ -11,11 +10,8 @@ import { filter, takeUntil } from 'rxjs/operators';
 })
 export class MailSidebarComponent implements OnInit, OnDestroy
 {
-    systemLabels: any[];
-    userLabels: any[];
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    systemLabels$: Observable<any>;
+    userLabels$: Observable<any>;
 
     /**
      * Constructor
@@ -26,8 +22,7 @@ export class MailSidebarComponent implements OnInit, OnDestroy
         private _mailService: MailService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
+
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -39,18 +34,9 @@ export class MailSidebarComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the system labels data updates
-        this._mailService
-            .onSystemLabelsUpdated
-            .pipe(
-                filter((data) => {
-                    return data !== null;
-                }),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe((data) => {
-                this.systemLabels = data.systemLabels;
-            });
+        // Get the labels
+        this.userLabels$ = this._mailService.userLabels;
+        this.systemLabels$ = this._mailService.systemLabels;
     }
 
     /**
@@ -58,8 +44,6 @@ export class MailSidebarComponent implements OnInit, OnDestroy
      */
     ngOnDestroy(): void
     {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
+
     }
 }

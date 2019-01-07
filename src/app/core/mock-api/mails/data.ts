@@ -42,3 +42,63 @@ export const systemLabels = [
         'slug' : 'trash'
     }
 ];
+
+export const userLabels = [
+    {
+        'id'   : '8b035cb5-65c0-4ab1-bb4c-43b0e442d1f3',
+        'title': 'Banks',
+        'color': 'red',
+        'slug' : 'banks'
+    },
+    {
+        'id'   : 'b2d1e4e7-7cfd-4b51-ae59-217a093df754',
+        'title': 'Invoices',
+        'color': 'amber',
+        'slug' : 'invoices'
+    },
+    {
+        'id'   : '184cd689-4ee4-47cf-9f8a-12233d614326',
+        'title': 'Accounts',
+        'color': 'blue-grey',
+        'slug' : 'accounts'
+    },
+    {
+        'id'   : '745cf30e-ca84-47a1-a553-b70eb630d8e7',
+        'title': 'Work',
+        'color': 'light-blue',
+        'slug' : 'work'
+    }
+];
+
+export const userLabels2 = [
+    {
+        'id'   : '8b035cb5-65c0-4ab1-bb4c-43b0e442d1f3',
+        'title': 'Banks',
+        'color': 'red',
+        'slug' : 'banks'
+    },
+    {
+        'id'   : 'b2d1e4e7-7cfd-4b51-ae59-217a093df754',
+        'title': 'Invoices',
+        'color': 'amber',
+        'slug' : 'invoices'
+    },
+    {
+        'id'   : '184cd689-4ee4-47cf-9f8a-12233d614326',
+        'title': 'Accounts',
+        'color': 'blue-grey',
+        'slug' : 'accounts'
+    },
+    {
+        'id'   : '745cf30e-ca84-47a1-a553-b70eb630d8e7',
+        'title': 'Work',
+        'color': 'light-blue',
+        'slug' : 'work'
+    },
+    {
+        'id'   : '745cf30e-ca84-47a1-a553-b70eb630d8e9',
+        'title': 'Work 2',
+        'color': 'red',
+        'slug' : 'work-2'
+    }
+];

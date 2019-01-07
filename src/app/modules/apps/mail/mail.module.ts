@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AsmScrollbarModule } from '@assembly';
 import { SharedModule } from 'app/core/shared.module';
 import { ContentLayoutWithSidebarModule } from 'app/core/content-layouts/with-sidebar/with-sidebar.module';
@@ -13,11 +13,21 @@ import { MailSidebarComponent } from 'app/modules/apps/mail/sidebar/sidebar.comp
 
 const routes: Route[] = [
     {
-        path     : '',
+        path     : ':label',
         component: MailComponent,
         resolve  : {
             mail: MailService
-        }
+        },
+        children : [
+            {
+                path     : ':id',
+                component: MailComponent
+            }
+        ]
+    },
+    {
+        path      : '**',
+        redirectTo: 'inbox'
     }
 ];
 
@@ -30,6 +40,7 @@ const routes: Route[] = [
     ],
     imports     : [
         RouterModule.forChild(routes),
+        MatButtonModule,
         MatIconModule,
         AsmScrollbarModule,
         SharedModule,

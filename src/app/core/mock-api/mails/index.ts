@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
-import { systemLabels } from 'app/core/mock-api/mails/data';
+import { systemLabels, userLabels, userLabels2 } from 'app/core/mock-api/mails/data';
 
 @Injectable({
     providedIn: 'root'
 })
 export class MockMailsApi
 {
-    // Data
-    private _systemLabels = systemLabels;
+    // Private Readonly
+    private readonly _systemLabels: any;
+    private readonly _userLabels: any;
 
     /**
      * Constructor
@@ -21,6 +22,9 @@ export class MockMailsApi
         private _asmMockApiService: AsmMockApiService
     )
     {
+        // Set the data
+        this._userLabels = userLabels;
+        this._systemLabels = systemLabels;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -32,15 +36,27 @@ export class MockMailsApi
      */
     init(): void
     {
-        // GET - System labels
+        // -----------------------------------------------------------------------------------------------------
+        // @ System labels - GET
+        // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/apps/mails/labels/system')
             .reply(() => {
                 return [
                     200,
-                    {
-                        systemLabels: this._systemLabels
-                    }
+                    this._systemLabels
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ User labels - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/mails/labels/user')
+            .reply(() => {
+                return [
+                    200,
+                    this._userLabels
                 ];
             });
     }

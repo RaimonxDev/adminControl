@@ -1,8 +1,50 @@
-Sidebar
+<div class="my-32">
 
-<ul>
-    <li *ngFor="let systemLabel of systemLabels">
-        <mat-icon class="pr-8">{{systemLabel.icon}}</mat-icon>
-        <span>{{systemLabel.title}}</span>
-    </li>
-</ul>
+    <div class="title-1 mx-32">
+        Mail Box
+    </div>
+
+    <div class="secondary-text mx-32">
+        watkins.andrew@company.com
+    </div>
+
+</div>
+
+<button class="compose-button mb-16 mx-32"
+        mat-raised-button
+        color="primary">
+    <span>Compose</span>
+</button>
+
+<nav>
+    <ul>
+        <!-- System labels -->
+        <ng-container *ngIf="(systemLabels$ | async) as systemLabels">
+
+            <li *ngFor="let systemLabel of systemLabels">
+                <a [routerLink]="['/', 'apps', 'mail', systemLabel.slug]"
+                   [routerLinkActive]="'active'">
+                    <mat-icon class="nav-icon">{{systemLabel.icon}}</mat-icon>
+                    <span>{{systemLabel.title}}</span>
+                </a>
+            </li>
+
+        </ng-container>
+
+        <!-- User labels -->
+        <ng-container *ngIf="(userLabels$ | async) as userLabels">
+
+            <li *ngFor="let userLabel of userLabels">
+                <a [routerLink]="['/', 'apps', 'mail', 'label', userLabel.slug]"
+                   [routerLinkActive]="'active'">
+                    <mat-icon class="nav-icon"
+                              [ngClass]="userLabel.color + '-fg'">label
+                    </mat-icon>
+                    <span>{{userLabel.title}}</span>
+                </a>
+            </li>
+
+        </ng-container>
+
+    </ul>
+</nav>

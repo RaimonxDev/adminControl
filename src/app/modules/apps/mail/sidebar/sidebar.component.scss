@@ -1,5 +1,13 @@
+@import 'src/@assembly/styles/assembly';
+
 mail-sidebar {
     display: flex;
     flex: 1 1 auto;
+    flex-direction: column;
     overflow-y: auto;
+
+    .compose-button {
+        font-size: 15px;
+        line-height: 40px;
+    }
 }
