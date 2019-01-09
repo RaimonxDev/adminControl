@@ -44,7 +44,7 @@ layout[type="basic"] {
             display: flex;
             flex: 1 1 auto;
             align-items: center;
-            justify-content: start;
+            justify-content: flex-start;
             width: 100%;
             height: 80px;
             max-height: 80px;
@@ -74,7 +74,7 @@ layout[type="basic"] {
             display: flex;
             flex: 1 1 auto;
             align-items: center;
-            justify-content: start;
+            justify-content: flex-start;
             width: 100%;
             height: 80px;
             max-height: 80px;
