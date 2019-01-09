@@ -23,6 +23,7 @@ content-layout[type="with-sidebar"] {
             display: flex;
             flex: 1 0 auto;
             min-width: 280px;
+            max-width: 280px;
 
             // Mat drawer inner container
             .mat-drawer-inner-container {
@@ -32,6 +33,7 @@ content-layout[type="with-sidebar"] {
                 .sidebar-content {
                     display: flex;
                     flex: 1 1 auto;
+                    width: 100%;
                 }
             }
         }
