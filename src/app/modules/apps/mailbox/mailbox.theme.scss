@@ -1,16 +1,18 @@
 @import './detail/detail.theme';
 @import './list/list.theme';
+@import './sidebar/sidebar.theme';
 
-@mixin mail-theme($theme) {
+@mixin mailbox-theme($theme) {
 
     // Include partial theme files
-    @include mail-detail-theme($theme);
-    @include mail-list-theme($theme);
+    @include mailbox-detail-theme($theme);
+    @include mailbox-list-theme($theme);
+    @include mailbox-sidebar-theme($theme);
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
-    mail {
+    mailbox {
 
         .mat-drawer {
             @if ($is-dark) {

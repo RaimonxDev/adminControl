@@ -350,11 +350,11 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link    : '/apps/academy'
     },
     {
-        id   : 'mail',
-        title: 'Mail',
+        id   : 'mailbox',
+        title: 'Mailbox',
         type : 'link',
         icon : 'email',
-        link : '/apps/mail',
+        link : '/apps/mailbox',
         badge: {
             title     : '25',
             background: '#F44336',

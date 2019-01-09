@@ -1,7 +1,7 @@
 <div class="my-32">
 
     <div class="title-1 mx-32">
-        Mail Box
+        MailBox
     </div>
 
     <div class="secondary-text mx-32">
@@ -22,7 +22,7 @@
         <ng-container *ngIf="(systemLabels$ | async) as systemLabels">
 
             <li *ngFor="let systemLabel of systemLabels">
-                <a [routerLink]="['/', 'apps', 'mail', systemLabel.slug]"
+                <a [routerLink]="['/', 'apps', 'mailbox', systemLabel.slug]"
                    [routerLinkActive]="'active'">
                     <mat-icon class="nav-icon">{{systemLabel.icon}}</mat-icon>
                     <span>{{systemLabel.title}}</span>
@@ -35,7 +35,7 @@
         <ng-container *ngIf="(userLabels$ | async) as userLabels">
 
             <li *ngFor="let userLabel of userLabels">
-                <a [routerLink]="['/', 'apps', 'mail', 'label', userLabel.slug]"
+                <a [routerLink]="['/', 'apps', 'mailbox', 'label', userLabel.slug]"
                    [routerLinkActive]="'active'">
                     <mat-icon class="nav-icon"
                               [ngClass]="userLabel.color + '-fg'">label

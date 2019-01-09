@@ -1,0 +1,35 @@
+<content-layout type="with-sidebar"
+                [sidebarPersistentAt]="'gt-md'"
+                [sidebarPosition]="'left'"
+                [innerScroll]="true"
+                #content>
+
+    <!-- Sidebar -->
+    <div class="sidebar-content"
+         sidebarContent>
+
+        <!-- Mailbox sidebar -->
+        <mailbox-sidebar asmScrollbar
+                         [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-sidebar>
+
+    </div>
+
+    <!-- Main -->
+    <div class="main-content"
+         mainContent>
+
+        <!-- Mailbox list -->
+        <mailbox-list [mails]="(this.mails$ | async)"
+                      [content]="content"
+                      (mailSelected)="onMailSelected($event)"
+                      asmScrollbar
+                      [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-list>
+
+        <!-- Mailbox detail -->
+        <mailbox-detail [mail]="(this.mail$ | async)"
+                        asmScrollbar
+                        [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-detail>
+
+    </div>
+
+</content-layout>

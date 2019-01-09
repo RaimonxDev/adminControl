@@ -1,0 +1,7 @@
+<ng-container *ngIf="mail else selectMailToRead">
+    {{mail.subject}}
+</ng-container>
+
+<ng-template #selectMailToRead>
+    ...Select a mail to read...
+</ng-template>

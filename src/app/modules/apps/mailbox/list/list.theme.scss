@@ -1,9 +1,9 @@
-@mixin mail-list-theme($theme) {
+@mixin mailbox-list-theme($theme) {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    mail-list {
+    mailbox-list {
         background: map-get($background, card);
         border-right-color: map-get($foreground, divider);
     }

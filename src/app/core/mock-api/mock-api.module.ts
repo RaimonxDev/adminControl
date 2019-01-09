@@ -5,22 +5,13 @@ import { MockAuthApi } from 'app/core/mock-api/auth';
 import { MockContactsApi } from 'app/core/mock-api/contacts';
 import { MockDocsApi } from 'app/core/mock-api/docs';
 import { MockIconsApi } from 'app/core/mock-api/icons';
-import { MockMailsApi } from 'app/core/mock-api/mails';
+import { MockMailboxApi } from 'app/core/mock-api/mailbox';
 import { MockNavigationApi } from 'app/core/mock-api/navigation';
 import { MockSearchResultsApi } from 'app/core/mock-api/search';
 import { MockShortcutsApi } from 'app/core/mock-api/shortcuts';
 
 @NgModule({
-    providers: [
-        MockAuthApi,
-        MockContactsApi,
-        MockDocsApi,
-        MockIconsApi,
-        MockNavigationApi,
-        MockSearchResultsApi,
-        MockShortcutsApi
-    ],
-    imports  : [
+    imports: [
         AsmMockApiModule
     ]
 })
@@ -33,7 +24,7 @@ export class MockApiModule
      * @param {MockContactsApi} _mockContactsApi
      * @param {MockDocsApi} _mockDocsApi
      * @param {MockIconsApi} _mockIconsApi
-     * @param {MockMailsApi} _mockMailsApi
+     * @param {MockMailboxApi} _mockMailboxApi
      * @param {MockNavigationApi} _mockNavigationApi
      * @param {MockSearchResultsApi} _mockSearchResultsApi
      * @param {MockShortcutsApi} _mockShortcutsApi
@@ -43,7 +34,7 @@ export class MockApiModule
         private _mockContactsApi: MockContactsApi,
         private _mockDocsApi: MockDocsApi,
         private _mockIconsApi: MockIconsApi,
-        private _mockMailsApi: MockMailsApi,
+        private _mockMailboxApi: MockMailboxApi,
         private _mockNavigationApi: MockNavigationApi,
         private _mockSearchResultsApi: MockSearchResultsApi,
         private _mockShortcutsApi: MockShortcutsApi
@@ -53,7 +44,7 @@ export class MockApiModule
         this._mockContactsApi.init();
         this._mockDocsApi.init();
         this._mockIconsApi.init();
-        this._mockMailsApi.init();
+        this._mockMailboxApi.init();
         this._mockNavigationApi.init();
         this._mockSearchResultsApi.init();
         this._mockShortcutsApi.init();

@@ -1,0 +1,11 @@
+<button (click)="content.sidebar.toggle()">Toggle Sidebar</button>
+
+<ng-container *ngIf="mails">
+    <ul>
+        <li *ngFor="let mail of mails">
+            <a (click)="onMailSelected(mail.id)">
+                {{mail.subject}}
+            </a>
+        </li>
+    </ul>
+</ng-container>

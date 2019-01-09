@@ -20,8 +20,8 @@ const routes: Route[] = [
                 canActivate : [AuthGuard]
             },
             {
-                path        : 'mail',
-                loadChildren: './mail/mail.module#MailModule',
+                path        : 'mailbox',
+                loadChildren: './mailbox/mailbox.module#MailboxModule',
                 canActivate : [AuthGuard]
             }
         ]
