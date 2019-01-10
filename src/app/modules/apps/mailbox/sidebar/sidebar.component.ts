@@ -11,8 +11,9 @@ import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 })
 export class MailboxSidebarComponent implements OnInit
 {
-    systemLabels$: Observable<any>;
-    userLabels$: Observable<any>;
+    folders$: Observable<any>;
+    filters$: Observable<any>;
+    labels$: Observable<any>;
 
     /**
      * Constructor
@@ -35,8 +36,9 @@ export class MailboxSidebarComponent implements OnInit
      */
     ngOnInit(): void
     {
-        // Get the labels
-        this.userLabels$ = this._mailboxService.userLabels;
-        this.systemLabels$ = this._mailboxService.systemLabels;
+        // Get folders, filters and labels
+        this.folders$ = this._mailboxService.folders;
+        this.filters$ = this._mailboxService.filters;
+        this.labels$ = this._mailboxService.labels;
     }
 }

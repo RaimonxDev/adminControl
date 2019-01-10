@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
-import { inbox, labels } from 'app/core/mock-api/mailbox/data';
+import { filters, folders, mails, labels } from 'app/core/mock-api/mailbox/data';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +11,9 @@ import { inbox, labels } from 'app/core/mock-api/mailbox/data';
 export class MockMailboxApi
 {
     // Private Readonly
-    private readonly _inbox: any;
+    private readonly _filters: any;
+    private readonly _folders: any;
+    private readonly _mails: any;
     private readonly _labels: any;
 
     /**
@@ -23,7 +26,9 @@ export class MockMailboxApi
     )
     {
         // Set the data
-        this._inbox = inbox;
+        this._filters = filters;
+        this._folders = folders;
+        this._mails = mails;
         this._labels = labels;
     }
 
@@ -37,19 +42,41 @@ export class MockMailboxApi
     init(): void
     {
         // -----------------------------------------------------------------------------------------------------
+        // @ Folders - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/mailbox/folders')
+            .reply(() => {
+
+                return [
+                    200,
+                    this._folders
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Filters - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/mailbox/filters')
+            .reply(() => {
+
+                return [
+                    200,
+                    this._filters
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Labels - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/apps/mailbox/labels')
-            .reply((request) => {
-
-                // Extract the type from the params
-                // and decide which labels to return
-                const type = request.params.get('type');
+            .reply(() => {
 
                 return [
                     200,
-                    this._labels[type]
+                    this._labels
                 ];
             });
 
@@ -60,27 +87,59 @@ export class MockMailboxApi
             .onGet('api/apps/mailbox/mails')
             .reply((request) => {
 
-                // First, decide if mails are requested by category or label
-                const category = request.params.get('category');
-                const label = request.params.get('label');
+                console.log(request);
 
-                // Prepare the mails
-                let mails;
+                // First, decide if mails are requested by folder, filter or label
+                const byFolder = request.params.get('folder');
+                const byFilter = request.params.get('filter');
+                const byLabel = request.params.get('label');
 
-                if ( category )
+                // Deep clone the inbox
+                let mailsList = _.cloneDeep(this._mails);
+
+                // Filter the mails depending on the requested by type
+                mailsList = mailsList.filter((mail) => {
+
+                    if ( byFolder )
+                    {
+                        return mail.folder === this._folders.filter(folder => folder.slug === byFolder)[0].id;
+                    }
+
+                    if ( byFilter )
+                    {
+                        return mail[byFilter] === true;
+                    }
+
+                    if ( byLabel )
+                    {
+                        return mail.labels.includes(this._labels.filter(label => label.slug === byLabel)[0].id);
+                    }
+                });
+
+                // Iterate through the mails
+                mailsList.forEach((mail) => {
+
+                    // Remove the email address portion from the contact
+                    mail.from.contact = mail.from.contact.split('<')[0].trim();
+
+                    // Truncate the mail content
+                    mail.content = mail.content.substring(0, 80) + ' ...';
+                });
+
+                /*if ( category )
                 {
                     mails = [{subject: category}, ...this._inbox];
                 }
                 else if ( label )
                 {
                     mails = [{subject: 'label/' + label}, ...this._inbox];
-                }
+                }*/
 
                 // Pagination
 
                 return [
                     200,
-                    mails
+                    mailsList
                 ];
             });
 
@@ -95,7 +154,7 @@ export class MockMailboxApi
                 const id = request.params.get('id');
 
                 // Find the mail
-                let mail = this._inbox.filter((mailItem) => {
+                let mail = this._mails.filter((mailItem) => {
                     return mailItem.id === id;
                 });
 

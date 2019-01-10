@@ -4,4 +4,54 @@ mailbox-list {
     flex-direction: column;
     overflow-y: auto;
     border-right: 1px solid;
+
+    .header {
+        border-bottom: 1px solid;
+    }
+
+    .list {
+
+        .item {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 32px 24px;
+            border-bottom: 1px solid;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .unread-indicator {
+                position: absolute;
+                left: 10px;
+                top: 49px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+            }
+
+            .avatar {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
 }

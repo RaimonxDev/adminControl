@@ -6,6 +6,70 @@ import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 @Injectable({
     providedIn: 'root'
 })
+export class MailboxFoldersResolver implements Resolve<any>
+{
+    /**
+     * Constructor
+     *
+     * @param {MailboxService} _mailboxService
+     */
+    constructor(
+        private _mailboxService: MailboxService
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Resolver
+     *
+     * @param route
+     * @param state
+     */
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    {
+        return this._mailboxService.getFolders();
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class MailboxFiltersResolver implements Resolve<any>
+{
+    /**
+     * Constructor
+     *
+     * @param {MailboxService} _mailboxService
+     */
+    constructor(
+        private _mailboxService: MailboxService
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Resolver
+     *
+     * @param route
+     * @param state
+     */
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    {
+        return this._mailboxService.getFilters();
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
 export class MailboxLabelsResolver implements Resolve<any>
 {
     /**
@@ -31,15 +95,7 @@ export class MailboxLabelsResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        // Create and build the sources array
-        const sources = [];
-
-        // Add labels
-        sources.push(this._mailboxService.getSystemLabels());
-        sources.push(this._mailboxService.getUserLabels());
-
-        // Fork join all the sources
-        return forkJoin(sources);
+        return this._mailboxService.getLabels();
     }
 }
 
@@ -74,17 +130,21 @@ export class MailboxMailsResolver implements Resolve<any>
         // Create and build the sources array
         const sources = [];
 
-        // If category is set on the parameters...
-        if ( route.params.category )
+        // If folder is set on the parameters...
+        if ( route.params.folder )
         {
-            // Add category mail loader
-            sources.push(this._mailboxService.getMailsByCategory(route.params.category));
+            sources.push(this._mailboxService.getMailsByFolder(route.params.folder));
+        }
+
+        // If filter is set on the parameters...
+        if ( route.params.filter )
+        {
+            sources.push(this._mailboxService.getMailsByFilter(route.params.filter));
         }
 
         // If label is set on the parameters...
         if ( route.params.label )
         {
-            // Add label mail loader
             sources.push(this._mailboxService.getMailsByLabel(route.params.label));
         }
 

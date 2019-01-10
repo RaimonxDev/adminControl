@@ -1,11 +1,69 @@
-<button (click)="content.sidebar.toggle()">Toggle Sidebar</button>
-
 <ng-container *ngIf="mails">
-    <ul>
-        <li *ngFor="let mail of mails">
-            <a (click)="onMailSelected(mail.id)">
-                {{mail.subject}}
-            </a>
-        </li>
-    </ul>
+
+    <!-- Header -->
+    <div class="header">
+        <button (click)="content.sidebar.toggle()">Toggle Sidebar</button>
+    </div>
+
+    <!-- Mails list -->
+    <div class="list">
+
+        <div class="item"
+             *ngFor="let mail of mails"
+             (click)="onMailSelected(mail.id)">
+
+            <div class="unread-indicator"
+                 *ngIf="mail.unread"></div>
+
+            <div class="flex flex-col content-start justify-center">
+
+                <div class="avatar">
+                    <img [src]="mail.from.avatar">
+                </div>
+
+                <div class="flex justify-center mt-8"
+                     *ngIf="mail.attachments && mail.attachments.length > 0">
+                    <mat-icon class="icon-size-18">attachment</mat-icon>
+                </div>
+
+                <div class="flex justify-center mt-8"
+                     *ngIf="mail.starred">
+                    <mat-icon class="orange-fg icon-size-18">star</mat-icon>
+                </div>
+
+            </div>
+
+            <div class="min-w-0 ml-24">
+
+                <div class="flex justify-between">
+
+                    <div class="min-w-0 mr-24">
+
+                        <div [ngClass]="{'secondary-text' : !mail.unread}">
+                            {{mail.from.contact}}
+                        </div>
+
+                        <div class="truncate"
+                             [ngClass]="{'font-bold': mail.unread}">
+                            {{mail.subject}}
+                        </div>
+
+                    </div>
+
+                    <div>
+                        time
+                    </div>
+
+                </div>
+
+                <div class="secondary-text mt-8">
+                    {{mail.content}}
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
 </ng-container>

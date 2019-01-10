@@ -53,11 +53,15 @@ nav {
                 align-items: center;
                 min-height: 48px;
                 cursor: pointer;
-                padding: 0 32px;
+                padding: 4px 32px;
 
                 .nav-icon {
                     margin-right: 12px;
                     @include icon-size(16);
+                }
+
+                .nav-label {
+                    word-break: break-all;
                 }
             }
         }

@@ -5,7 +5,10 @@ import { AsmScrollbarModule } from '@assembly';
 import { SharedModule } from 'app/core/shared.module';
 import { ContentLayoutWithSidebarModule } from 'app/core/content-layouts/with-sidebar/with-sidebar.module';
 
-import { MailboxLabelsResolver, MailboxMailResolver, MailboxMailsResolver } from 'app/modules/apps/mailbox/mailbox.resolvers';
+import {
+    MailboxFiltersResolver, MailboxFoldersResolver, MailboxLabelsResolver, MailboxMailResolver,
+    MailboxMailsResolver
+} from 'app/modules/apps/mailbox/mailbox.resolvers';
 import { MailboxComponent } from 'app/modules/apps/mailbox/mailbox.component';
 import { MailboxDetailComponent } from 'app/modules/apps/mailbox/detail/detail.component';
 import { MailboxListComponent } from 'app/modules/apps/mailbox/list/list.component';
@@ -21,9 +24,30 @@ const routes: Route[] = [
         path     : '',
         component: MailboxComponent,
         resolve  : {
-            labels: MailboxLabelsResolver
+            filters: MailboxFiltersResolver,
+            folders: MailboxFoldersResolver,
+            labels : MailboxLabelsResolver
         },
         children : [
+            {
+                path    : 'filter',
+                children: [
+                    {
+                        path    : ':filter',
+                        resolve : {
+                            mails: MailboxMailsResolver
+                        },
+                        children: [
+                            {
+                                path   : ':id',
+                                resolve: {
+                                    mail: MailboxMailResolver
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 path    : 'label',
                 children: [
@@ -34,7 +58,7 @@ const routes: Route[] = [
                         },
                         children: [
                             {
-                                path: ':id',
+                                path   : ':id',
                                 resolve: {
                                     mail: MailboxMailResolver
                                 }
@@ -44,13 +68,13 @@ const routes: Route[] = [
                 ]
             },
             {
-                path    : ':category',
+                path    : ':folder',
                 resolve : {
                     mails: MailboxMailsResolver
                 },
                 children: [
                     {
-                        path: ':id',
+                        path   : ':id',
                         resolve: {
                             mail: MailboxMailResolver
                         }

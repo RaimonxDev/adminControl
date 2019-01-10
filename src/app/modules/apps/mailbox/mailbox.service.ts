@@ -9,8 +9,9 @@ import { map } from 'rxjs/operators';
 export class MailboxService
 {
     // Observables
-    private _systemLabels: BehaviorSubject<any>;
-    private _userLabels: BehaviorSubject<any>;
+    private _filters: BehaviorSubject<any>;
+    private _folders: BehaviorSubject<any>;
+    private _labels: BehaviorSubject<any>;
     private _mails: BehaviorSubject<any>;
     private _mail: BehaviorSubject<any>;
 
@@ -24,8 +25,9 @@ export class MailboxService
     )
     {
         // Set the defaults
-        this._systemLabels = new BehaviorSubject(null);
-        this._userLabels = new BehaviorSubject(null);
+        this._filters = new BehaviorSubject(null);
+        this._folders = new BehaviorSubject(null);
+        this._labels = new BehaviorSubject(null);
         this._mails = new BehaviorSubject(null);
         this._mail = new BehaviorSubject(null);
     }
@@ -35,19 +37,27 @@ export class MailboxService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for system labels
+     * Getter for filters
      */
-    get systemLabels(): Observable<any>
+    get filters(): Observable<any>
     {
-        return this._systemLabels.asObservable();
+        return this._filters.asObservable();
     }
 
     /**
-     * Getter for user labels
+     * Getter for folders
      */
-    get userLabels(): Observable<any>
+    get folders(): Observable<any>
     {
-        return this._userLabels.asObservable();
+        return this._folders.asObservable();
+    }
+
+    /**
+     * Getter for labels
+     */
+    get labels(): Observable<any>
+    {
+        return this._labels.asObservable();
     }
 
     /**
@@ -71,42 +81,57 @@ export class MailboxService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Get system labels
+     * Get filters
      */
-    getSystemLabels(): Observable<any>
+    getFilters(): Observable<any>
     {
         return this._httpClient
-                   .get('api/apps/mailbox/labels', {params: {type: 'system'}})
+                   .get('api/apps/mailbox/filters')
                    .pipe(
                        map((response: any) => {
 
                            // Pass the response to the observable
-                           this._systemLabels.next(response);
+                           this._filters.next(response);
                        }));
     }
 
     /**
-     * Get user labels
+     * Get folders
      */
-    getUserLabels(): Observable<any>
+    getFolders(): Observable<any>
     {
         return this._httpClient
-                   .get('api/apps/mailbox/labels', {params: {type: 'user'}})
+                   .get('api/apps/mailbox/folders')
                    .pipe(
                        map((response: any) => {
 
                            // Pass the response to the observable
-                           this._userLabels.next(response);
+                           this._folders.next(response);
                        }));
     }
 
     /**
-     * Get mails by category
+     * Get labels
      */
-    getMailsByCategory(category): Observable<any>
+    getLabels(): Observable<any>
     {
         return this._httpClient
-                   .get('api/apps/mailbox/mails', {params: {category}})
+                   .get('api/apps/mailbox/labels')
+                   .pipe(
+                       map((response: any) => {
+
+                           // Pass the response to the observable
+                           this._labels.next(response);
+                       }));
+    }
+
+    /**
+     * Get mails by folder
+     */
+    getMailsByFolder(folder): Observable<any>
+    {
+        return this._httpClient
+                   .get('api/apps/mailbox/mails', {params: {folder}})
                    .pipe(
                        map((response: any) => {
 
@@ -122,6 +147,21 @@ export class MailboxService
     {
         return this._httpClient
                    .get('api/apps/mailbox/mails', {params: {label}})
+                   .pipe(
+                       map((response: any) => {
+
+                           // Pass the response to the observable
+                           this._mails.next(response);
+                       }));
+    }
+
+    /**
+     * Get mails by filter
+     */
+    getMailsByFilter(filter): Observable<any>
+    {
+        return this._httpClient
+                   .get('api/apps/mailbox/mails', {params: {filter}})
                    .pipe(
                        map((response: any) => {
 
