@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -53,13 +53,9 @@ export class DocsService implements Resolve<any>
         url = 'api' + url;
 
         return this._httpClient.get(url)
-                   .pipe(
-                       map((response) => {
-
-                           // Pass the response to the observable
-                           this._docs.next(response);
-                       })
-                   );
+                   .pipe(tap((response) => {
+                       this._docs.next(response);
+                   }));
     }
 
     // -----------------------------------------------------------------------------------------------------

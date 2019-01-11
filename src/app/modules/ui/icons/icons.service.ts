@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -52,15 +52,10 @@ export class IconsService implements Resolve<any>
         // Prepend the url with 'api'
         url = 'api' + url;
 
-        // Return an observable which executes the
-        // onIconsUpdated on success
         return this._httpClient.get(url)
-                   .pipe(
-                       map((response: any) => {
-
-                           // Pass the response to the observables
-                           this._icons.next(response);
-                       }));
+                   .pipe(tap((response: any) => {
+                       this._icons.next(response);
+                   }));
     }
 
     // -----------------------------------------------------------------------------------------------------
