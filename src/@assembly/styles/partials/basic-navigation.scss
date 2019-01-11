@@ -55,6 +55,12 @@ nav {
                 cursor: pointer;
                 padding: 4px 32px;
 
+                &.active {
+                    // Prevent any pointer events from happening on active
+                    // links to prevent re-clicking on the active menu item
+                    pointer-events: none;
+                }
+
                 .nav-icon {
                     margin-right: 12px;
                     @include icon-size(16);
