@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mapTo, switchMap, switchMapTo, take, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -87,12 +87,9 @@ export class MailboxService
     {
         return this._httpClient
                    .get('api/apps/mailbox/filters')
-                   .pipe(
-                       map((response: any) => {
-
-                           // Pass the response to the observable
-                           this._filters.next(response);
-                       }));
+                   .pipe(tap((response: any) => {
+                       this._filters.next(response);
+                   }));
     }
 
     /**
@@ -102,12 +99,9 @@ export class MailboxService
     {
         return this._httpClient
                    .get('api/apps/mailbox/folders')
-                   .pipe(
-                       map((response: any) => {
-
-                           // Pass the response to the observable
-                           this._folders.next(response);
-                       }));
+                   .pipe(tap((response: any) => {
+                       this._folders.next(response);
+                   }));
     }
 
     /**
@@ -117,12 +111,9 @@ export class MailboxService
     {
         return this._httpClient
                    .get('api/apps/mailbox/labels')
-                   .pipe(
-                       map((response: any) => {
-
-                           // Pass the response to the observable
-                           this._labels.next(response);
-                       }));
+                   .pipe(tap((response: any) => {
+                       this._labels.next(response);
+                   }));
     }
 
     /**
@@ -132,12 +123,9 @@ export class MailboxService
     {
         return this._httpClient
                    .get('api/apps/mailbox/mails', {params: {folder}})
-                   .pipe(
-                       map((response: any) => {
-
-                           // Pass the response to the observable
-                           this._mails.next(response);
-                       }));
+                   .pipe(tap((response: any) => {
+                       this._mails.next(response);
+                   }));
     }
 
     /**
@@ -147,12 +135,9 @@ export class MailboxService
     {
         return this._httpClient
                    .get('api/apps/mailbox/mails', {params: {label}})
-                   .pipe(
-                       map((response: any) => {
-
-                           // Pass the response to the observable
-                           this._mails.next(response);
-                       }));
+                   .pipe(tap((response: any) => {
+                       this._mails.next(response);
+                   }));
     }
 
     /**
@@ -162,12 +147,9 @@ export class MailboxService
     {
         return this._httpClient
                    .get('api/apps/mailbox/mails', {params: {filter}})
-                   .pipe(
-                       map((response: any) => {
-
-                           // Pass the response to the observable
-                           this._mails.next(response);
-                       }));
+                   .pipe(tap((response: any) => {
+                       this._mails.next(response);
+                   }));
     }
 
     /**
@@ -175,14 +157,24 @@ export class MailboxService
      */
     getMailById(id): Observable<any>
     {
-        return this._httpClient
-                   .get('api/apps/mailbox/mail', {params: {id}})
+        return this._mails
                    .pipe(
-                       map((response: any) => {
+                       tap((mails) => {
 
-                           // Pass the response to the observable
-                           this._mail.next(response);
-                       }));
+                           // Filter mails
+                           const mail = mails.filter(item => item.id === id);
+
+                           if ( mail )
+                           {
+                               this._mail.next(mail[0]);
+                           }
+                           else
+                           {
+                               this._mail.next(null);
+                           }
+                       }),
+                       take(1)
+                   );
     }
 
     /**
@@ -190,10 +182,19 @@ export class MailboxService
      */
     resetMail(): Observable<any>
     {
-        return of(true).pipe(map(() => {
-
-            // Pass null to the observable
+        return of(true).pipe(tap(() => {
             this._mail.next(null);
         }));
+    }
+
+    /**
+     * Update mail
+     *
+     * @param mail
+     */
+    updateMail(mail): Observable<any>
+    {
+        return this._httpClient
+                   .patch('api/apps/mailbox/mail', {mail});
     }
 }

@@ -12,6 +12,9 @@ import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 })
 export class MailboxComponent implements OnInit
 {
+    folders$: Observable<any>;
+    filters$: Observable<any>;
+    labels$: Observable<any>;
     mails$: Observable<any>;
     mail$: Observable<any>;
 
@@ -39,7 +42,10 @@ export class MailboxComponent implements OnInit
      */
     ngOnInit(): void
     {
-        // Get the mails and mail
+        // Get data
+        this.folders$ = this._mailboxService.folders;
+        this.filters$ = this._mailboxService.filters;
+        this.labels$ = this._mailboxService.labels;
         this.mails$ = this._mailboxService.mails;
         this.mail$ = this._mailboxService.mail;
     }
@@ -51,10 +57,20 @@ export class MailboxComponent implements OnInit
     /**
      * On mail selected
      *
-     * @param mailId
+     * @param mail
      */
-    onMailSelected(mailId): void
+    onMailSelected(mail): void
     {
+        // If the mail is marked as unread...
+        if ( mail.unread )
+        {
+            // Mark the mail as read
+            mail.unread = false;
+
+            // Update the mail
+            this._mailboxService.updateMail(mail).subscribe();
+        }
+
         // Find the last activated route by
         // recursively looking up the firstChild
         let route: ActivatedRoute = this._activatedRoute.firstChild;
@@ -75,6 +91,6 @@ export class MailboxComponent implements OnInit
         }
 
         // Navigate to the correct path
-        this._router.navigate([mailId], {relativeTo});
+        this._router.navigate([mail.id], {relativeTo});
     }
 }

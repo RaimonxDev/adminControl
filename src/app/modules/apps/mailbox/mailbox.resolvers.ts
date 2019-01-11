@@ -184,13 +184,6 @@ export class MailboxMailResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        // Create and build the sources array
-        const sources = [];
-
-        // Add mail loader
-        sources.push(this._mailboxService.getMailById(route.params.id));
-
-        // Fork join all the sources
-        return forkJoin(sources);
+        return this._mailboxService.getMailById(route.params.id);
     }
 }

@@ -9,7 +9,10 @@
          sidebarContent>
 
         <!-- Mailbox sidebar -->
-        <mailbox-sidebar asmScrollbar
+        <mailbox-sidebar [folders]="(this.folders$ | async)"
+                         [filters]="(this.filters$ | async)"
+                         [labels]="(this.labels$ | async)"
+                         asmScrollbar
                          [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-sidebar>
 
     </div>
@@ -19,8 +22,9 @@
          mainContent>
 
         <!-- Mailbox list -->
-        <mailbox-list [mails]="(this.mails$ | async)"
-                      [content]="content"
+        <mailbox-list [content]="content"
+                      [mails]="(this.mails$ | async)"
+                      [selectedMail]="(this.mail$ | async)"
                       (mailSelected)="onMailSelected($event)"
                       asmScrollbar
                       [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-list>

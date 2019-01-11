@@ -19,45 +19,33 @@
 <nav>
     <ul>
         <!-- Folders -->
-        <ng-container *ngIf="(folders$ | async) as folders">
-
-            <li *ngFor="let folder of folders">
-                <a [routerLink]="['/', 'apps', 'mailbox', folder.slug]"
-                   [routerLinkActive]="'active'">
-                    <mat-icon class="nav-icon">{{folder.icon}}</mat-icon>
-                    <span class="nav-label">{{folder.title}}</span>
-                </a>
-            </li>
-
-        </ng-container>
+        <li *ngFor="let folder of folders">
+            <a [routerLink]="['/', 'apps', 'mailbox', folder.slug]"
+               [routerLinkActive]="'active'">
+                <mat-icon class="nav-icon">{{folder.icon}}</mat-icon>
+                <span class="nav-label">{{folder.title}}</span>
+            </a>
+        </li>
 
         <!-- Filters -->
-        <ng-container *ngIf="(filters$ | async) as filters">
-
-            <li *ngFor="let filter of filters">
-                <a [routerLink]="['/', 'apps', 'mailbox', 'filter', filter.slug]"
-                   [routerLinkActive]="'active'">
-                    <mat-icon class="nav-icon">{{filter.icon}}</mat-icon>
-                    <span class="nav-label">{{filter.title}}</span>
-                </a>
-            </li>
-
-        </ng-container>
+        <li *ngFor="let filter of filters">
+            <a [routerLink]="['/', 'apps', 'mailbox', 'filter', filter.slug]"
+               [routerLinkActive]="'active'">
+                <mat-icon class="nav-icon">{{filter.icon}}</mat-icon>
+                <span class="nav-label">{{filter.title}}</span>
+            </a>
+        </li>
 
         <!-- Labels -->
-        <ng-container *ngIf="(labels$ | async) as labels">
-
-            <li *ngFor="let label of labels">
-                <a [routerLink]="['/', 'apps', 'mailbox', 'label', label.slug]"
-                   [routerLinkActive]="'active'">
-                    <mat-icon class="nav-icon"
-                              [ngClass]="label.color + '-fg'">label
-                    </mat-icon>
-                    <span class="nav-label">{{label.title}}</span>
-                </a>
-            </li>
-
-        </ng-container>
+        <li *ngFor="let label of labels">
+            <a [routerLink]="['/', 'apps', 'mailbox', 'label', label.slug]"
+               [routerLinkActive]="'active'">
+                <mat-icon class="nav-icon"
+                          [ngClass]="label.color + '-fg'">label
+                </mat-icon>
+                <span class="nav-label">{{label.title}}</span>
+            </a>
+        </li>
 
     </ul>
 </nav>

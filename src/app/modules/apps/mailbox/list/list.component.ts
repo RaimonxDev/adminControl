@@ -10,10 +10,13 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEn
 export class MailboxListComponent
 {
     @Input()
+    content: any;
+
+    @Input()
     mails: any;
 
     @Input()
-    content: any;
+    selectedMail: any;
 
     @Output()
     mailSelected: EventEmitter<any>;
@@ -34,10 +37,10 @@ export class MailboxListComponent
     /**
      * Emits the mail selected event
      *
-     * @param mailId
+     * @param mail
      */
-    onMailSelected(mailId): void
+    onMailSelected(mail): void
     {
-        this.mailSelected.emit(mailId);
+        this.mailSelected.emit(mail);
     }
 }

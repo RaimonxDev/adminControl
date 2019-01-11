@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector       : 'mailbox-sidebar',
@@ -9,36 +7,21 @@ import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MailboxSidebarComponent implements OnInit
+export class MailboxSidebarComponent
 {
-    folders$: Observable<any>;
-    filters$: Observable<any>;
-    labels$: Observable<any>;
+    @Input()
+    folders: any;
+
+    @Input()
+    filters: any;
+
+    @Input()
+    labels: any;
 
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
      */
-    constructor(
-        private _mailboxService: MailboxService
-    )
+    constructor()
     {
-
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
-        // Get folders, filters and labels
-        this.folders$ = this._mailboxService.folders;
-        this.filters$ = this._mailboxService.filters;
-        this.labels$ = this._mailboxService.labels;
     }
 }

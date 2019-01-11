@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
-import { filters, folders, mails, labels } from 'app/core/mock-api/mailbox/data';
+import { filters as filtersData, folders as foldersData, mails as mailsData, labels as labelsData } from 'app/core/mock-api/mailbox/data';
 
 @Injectable({
     providedIn: 'root'
@@ -26,10 +26,10 @@ export class MockMailboxApi
     )
     {
         // Set the data
-        this._filters = filters;
-        this._folders = folders;
-        this._mails = mails;
-        this._labels = labels;
+        this._filters = filtersData;
+        this._folders = foldersData;
+        this._mails = mailsData;
+        this._labels = labelsData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -87,18 +87,13 @@ export class MockMailboxApi
             .onGet('api/apps/mailbox/mails')
             .reply((request) => {
 
-                console.log(request);
-
                 // First, decide if mails are requested by folder, filter or label
                 const byFolder = request.params.get('folder');
                 const byFilter = request.params.get('filter');
                 const byLabel = request.params.get('label');
 
-                // Deep clone the inbox
-                let mailsList = _.cloneDeep(this._mails);
-
                 // Filter the mails depending on the requested by type
-                mailsList = mailsList.filter((mail) => {
+                let mails = this._mails.filter((mail) => {
 
                     if ( byFolder )
                     {
@@ -116,15 +111,18 @@ export class MockMailboxApi
                     }
                 });
 
-                // Iterate through the mails
-                mailsList.forEach((mail) => {
+                // Do some modifications
+                /*mails = mails.map((mail) => {
 
                     // Remove the email address portion from the contact
                     mail.from.contact = mail.from.contact.split('<')[0].trim();
 
                     // Truncate the mail content
                     mail.content = mail.content.substring(0, 80) + ' ...';
-                });
+
+                    // Return the modified mail object
+                    return mail;
+                });*/
 
                 /*if ( category )
                 {
@@ -139,7 +137,7 @@ export class MockMailboxApi
 
                 return [
                     200,
-                    mailsList
+                    mails
                 ];
             });
 
@@ -154,8 +152,8 @@ export class MockMailboxApi
                 const id = request.params.get('id');
 
                 // Find the mail
-                let mail = this._mails.filter((mailItem) => {
-                    return mailItem.id === id;
+                let mail = this._mails.filter((item) => {
+                    return item.id === id;
                 });
 
                 // Remove the array
@@ -169,6 +167,38 @@ export class MockMailboxApi
                 return [
                     200,
                     mail
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Mail - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/apps/mailbox/mail')
+            .reply((request) => {
+
+                // Get the updated mail object from the body
+                const mail = request.body.mail;
+
+                // Prepare the updated mail
+                let updatedMail = null;
+
+                // Find the mail and update it
+                this._mails.forEach((item, index, mails) => {
+
+                    if ( item.id === mail.id )
+                    {
+                        // Update the mail
+                        mails[index] = mail;
+
+                        // Store the updated mail
+                        updatedMail = mails[index];
+                    }
+                });
+
+                return [
+                    200,
+                    updatedMail
                 ];
             });
     }

@@ -1,7 +1,15 @@
 <ng-container *ngIf="mail else selectMailToRead">
-    {{mail.subject}}
+    {{mail.subject}} - {{mail.unread}}
 </ng-container>
 
 <ng-template #selectMailToRead>
     ...Select a mail to read...
 </ng-template>
+
+<button (click)="mail.unread = !mail.unread">
+    Toggle unread
+</button>
+
+<button (click)="mail.starred = !mail.starred">
+    Toggle starred
+</button>

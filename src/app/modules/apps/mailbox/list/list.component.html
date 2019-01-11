@@ -10,7 +10,8 @@
 
         <div class="item"
              *ngFor="let mail of mails"
-             (click)="onMailSelected(mail.id)">
+             [ngClass]="{'selected': selectedMail && selectedMail.id === mail.id}"
+             (click)="onMailSelected(mail)">
 
             <div class="unread-indicator"
                  *ngIf="mail.unread"></div>
@@ -50,13 +51,13 @@
 
                     </div>
 
-                    <div>
-                        time
+                    <div class="date secondary-text">
+                        {{mail.date | date}}
                     </div>
 
                 </div>
 
-                <div class="secondary-text mt-8">
+                <div class="content secondary-text mt-8">
                     {{mail.content}}
                 </div>
             </div>
