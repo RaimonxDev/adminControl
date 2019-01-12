@@ -30,8 +30,9 @@ $light-background: #F1F3F7;
         color: map-get($foreground, secondary-text);
     }
 
+    i,
     .icon,
-    i {
+    .mat-icon {
         color: map-get($foreground, icon);
     }
 
@@ -713,7 +714,8 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
     #{$classes} {
 
         i,
-        .icon {
+        .icon,
+        .mat-icon {
             color: map-get($foreground, icon);
         }
 

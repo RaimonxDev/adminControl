@@ -6,11 +6,6 @@
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    // Fix the icon colors
-    .mat-icon {
-        color: map-get($foreground, icon);
-    }
-
     // Do not override the color if the icon is
     // in a button and has a color property
     .mat-button,
