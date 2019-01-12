@@ -16,10 +16,16 @@ export class MailboxListComponent
     mails: any;
 
     @Input()
+    pagination: any;
+
+    @Input()
     selectedMail: any;
 
     @Output()
     mailSelected: EventEmitter<any>;
+
+    @Output()
+    pageChanged: EventEmitter<any>;
 
     /**
      * Constructor
@@ -28,6 +34,7 @@ export class MailboxListComponent
     {
         // Set the defaults
         this.mailSelected = new EventEmitter();
+        this.pageChanged = new EventEmitter();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -43,4 +50,15 @@ export class MailboxListComponent
     {
         this.mailSelected.emit(mail);
     }
+
+    /**
+     * Emits the page changed event
+     *
+     * @param page
+     */
+    onPageChanged(page): void
+    {
+        this.pageChanged.emit(page);
+    }
+
 }

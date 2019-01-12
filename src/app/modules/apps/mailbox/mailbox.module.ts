@@ -34,15 +34,20 @@ const routes: Route[] = [
                 children: [
                     {
                         path    : ':filter',
-                        resolve : {
-                            mails: MailboxMailsResolver
-                        },
                         children: [
                             {
-                                path   : ':id',
-                                resolve: {
-                                    mail: MailboxMailResolver
-                                }
+                                path    : ':page',
+                                resolve : {
+                                    mails: MailboxMailsResolver
+                                },
+                                children: [
+                                    {
+                                        path   : ':id',
+                                        resolve: {
+                                            mail: MailboxMailResolver
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -53,6 +58,30 @@ const routes: Route[] = [
                 children: [
                     {
                         path    : ':label',
+                        children: [
+                            {
+                                path    : ':page',
+                                resolve : {
+                                    mails: MailboxMailsResolver
+                                },
+                                children: [
+                                    {
+                                        path   : ':id',
+                                        resolve: {
+                                            mail: MailboxMailResolver
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                path    : ':folder',
+                children: [
+                    {
+                        path    : ':page',
                         resolve : {
                             mails: MailboxMailsResolver
                         },
@@ -64,20 +93,6 @@ const routes: Route[] = [
                                 }
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                path    : ':folder',
-                resolve : {
-                    mails: MailboxMailsResolver
-                },
-                children: [
-                    {
-                        path   : ':id',
-                        resolve: {
-                            mail: MailboxMailResolver
-                        }
                     }
                 ]
             }

@@ -23,22 +23,23 @@
                     box-shadow: none;
                 }
 
-                &:hover {
-                    background: map-get($background, hover);
-                }
-
                 &.selected {
+                    background: map-get($background, hover);
                     box-shadow: inset 4px 0 0 0 map-get($primary, default),
-                    0 0 12px 0 map-get($foreground, divider),
-                    0 4px 24px 0 map-get($foreground, divider);
+                    inset 0 1px 0 0 map-get($foreground, divider);
 
-                    + .item {
-                        box-shadow: none;
+                    &:first-child {
+                        box-shadow: inset 4px 0 0 0 map-get($primary, default);
+                    }
+
+                    .date,
+                    .content {
+                        color: map-get($primary, secondary-text);
                     }
                 }
 
                 .unread-indicator {
-                    background-color: map-get($primary, default);
+                    background: map-get($primary, default);
                 }
 
                 .avatar {

@@ -10,10 +10,10 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
 export class MailboxSidebarComponent
 {
     @Input()
-    folders: any;
+    filters: any;
 
     @Input()
-    filters: any;
+    folders: any;
 
     @Input()
     labels: any;

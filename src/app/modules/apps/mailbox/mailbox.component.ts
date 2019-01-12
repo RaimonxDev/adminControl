@@ -17,6 +17,7 @@ export class MailboxComponent implements OnInit
     labels$: Observable<any>;
     mails$: Observable<any>;
     mail$: Observable<any>;
+    pagination$: Observable<any>;
 
     /**
      * Constructor
@@ -48,6 +49,7 @@ export class MailboxComponent implements OnInit
         this.labels$ = this._mailboxService.labels;
         this.mails$ = this._mailboxService.mails;
         this.mail$ = this._mailboxService.mail;
+        this.pagination$ = this._mailboxService.pagination;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -92,5 +94,38 @@ export class MailboxComponent implements OnInit
 
         // Navigate to the correct path
         this._router.navigate([mail.id], {relativeTo});
+    }
+
+    /**
+     * On page changed
+     *
+     * @param page
+     */
+    onPageChanged(page): void
+    {
+        // Find the last activated route by
+        // recursively looking up the firstChild
+        let route: ActivatedRoute = this._activatedRoute.firstChild;
+
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // If the current activated route has an id param,
+        // take the route's parent otherwise take itself
+        let relativeTo = route;
+
+        if ( route.snapshot.params.id )
+        {
+            relativeTo = route.parent.parent;
+        }
+        else if ( route.snapshot.params.page )
+        {
+            relativeTo = route.parent;
+        }
+
+        // Navigate to the correct path
+        this._router.navigate([page], {relativeTo});
     }
 }

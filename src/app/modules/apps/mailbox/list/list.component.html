@@ -2,7 +2,29 @@
 
     <!-- Header -->
     <div class="header">
+
         <button (click)="content.sidebar.toggle()">Toggle Sidebar</button>
+
+        <button mat-icon-button
+                [disabled]="pagination.currentPage === 1"
+                (click)="onPageChanged(pagination.currentPage - 1)">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <button mat-icon-button
+                [disabled]="pagination.currentPage === pagination.lastPage"
+                (click)="onPageChanged(pagination.currentPage + 1)">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+
+        <div>
+            <span class="">{{pagination.startIndex + 1}}</span>
+            <span class="mx-4">-</span>
+            <span class="">{{pagination.endIndex + 1}}</span>
+            <span class="mx-4">of</span>
+            <span class="">{{pagination.totalResults}}</span>
+        </div>
+
     </div>
 
     <!-- Mails list -->
@@ -10,7 +32,7 @@
 
         <div class="item"
              *ngFor="let mail of mails"
-             [ngClass]="{'selected': selectedMail && selectedMail.id === mail.id}"
+             [ngClass]="{'selected': (selectedMail && selectedMail.id === mail.id)}"
              (click)="onMailSelected(mail)">
 
             <div class="unread-indicator"
@@ -40,8 +62,8 @@
 
                     <div class="min-w-0 mr-24">
 
-                        <div [ngClass]="{'secondary-text' : !mail.unread}">
-                            {{mail.from.contact}}
+                        <div>
+                            {{mail.from.contact.split('<')[0].trim()}}
                         </div>
 
                         <div class="truncate"
@@ -58,7 +80,7 @@
                 </div>
 
                 <div class="content secondary-text mt-8">
-                    {{mail.content}}
+                    {{mail.content.substring(0, 80)}}...
                 </div>
             </div>
 

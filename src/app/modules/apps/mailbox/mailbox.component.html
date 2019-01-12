@@ -24,7 +24,9 @@
         <!-- Mailbox list -->
         <mailbox-list [content]="content"
                       [mails]="(this.mails$ | async)"
+                      [pagination]="(this.pagination$ | async)"
                       [selectedMail]="(this.mail$ | async)"
+                      (pageChanged)="onPageChanged($event)"
                       (mailSelected)="onMailSelected($event)"
                       asmScrollbar
                       [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-list>

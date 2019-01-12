@@ -133,19 +133,19 @@ export class MailboxMailsResolver implements Resolve<any>
         // If folder is set on the parameters...
         if ( route.params.folder )
         {
-            sources.push(this._mailboxService.getMailsByFolder(route.params.folder));
+            sources.push(this._mailboxService.getMailsByFolder(route.params.folder, route.params.page));
         }
 
         // If filter is set on the parameters...
         if ( route.params.filter )
         {
-            sources.push(this._mailboxService.getMailsByFilter(route.params.filter));
+            sources.push(this._mailboxService.getMailsByFilter(route.params.filter, route.params.page));
         }
 
         // If label is set on the parameters...
         if ( route.params.label )
         {
-            sources.push(this._mailboxService.getMailsByLabel(route.params.label));
+            sources.push(this._mailboxService.getMailsByLabel(route.params.label, route.params.page));
         }
 
         // Reset the mail every time mails list updated

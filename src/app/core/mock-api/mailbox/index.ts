@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
 import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
@@ -111,33 +110,40 @@ export class MockMailboxApi
                     }
                 });
 
-                // Do some modifications
-                /*mails = mails.map((mail) => {
+                // Paginate - Start
 
-                    // Remove the email address portion from the contact
-                    mail.from.contact = mail.from.contact.split('<')[0].trim();
+                // Store the length of the total mails array
+                const mailsLength = mails.length;
 
-                    // Truncate the mail content
-                    mail.content = mail.content.substring(0, 80) + ' ...';
+                // Get the requested page number
+                const page = parseInt(request.params.get('page'), 10);
+                const resultsPerPage = 10;
 
-                    // Return the modified mail object
-                    return mail;
-                });*/
+                // Calculate the begin and the end indexes
+                const begin = (page - 1) * resultsPerPage;
+                const end = Math.min((begin + (resultsPerPage - 1)), (mailsLength - 1));
 
-                /*if ( category )
-                {
-                    mails = [{subject: category}, ...this._inbox];
-                }
-                else if ( label )
-                {
-                    mails = [{subject: 'label/' + label}, ...this._inbox];
-                }*/
+                // Paginate the results by 10
+                mails = mails.slice(begin, end);
 
-                // Pagination
+                // Prepare the pagination data
+                const pagination = {
+                    totalResults  : mailsLength,
+                    resultsPerPage: resultsPerPage,
+                    currentPage   : page,
+                    lastPage      : Math.ceil(mailsLength / resultsPerPage),
+                    startIndex    : begin,
+                    endIndex      : end
+                };
+
+                // Paginate - End
 
                 return [
                     200,
-                    mails
+                    {
+                        mails,
+                        pagination
+                    }
                 ];
             });
 

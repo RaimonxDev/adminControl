@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, mapTo, switchMap, switchMapTo, take, tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +14,7 @@ export class MailboxService
     private _labels: BehaviorSubject<any>;
     private _mails: BehaviorSubject<any>;
     private _mail: BehaviorSubject<any>;
+    private _pagination: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -30,6 +31,7 @@ export class MailboxService
         this._labels = new BehaviorSubject(null);
         this._mails = new BehaviorSubject(null);
         this._mail = new BehaviorSubject(null);
+        this._pagination = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -76,6 +78,14 @@ export class MailboxService
         return this._mail.asObservable();
     }
 
+    /**
+     * Getter for pagination
+     */
+    get pagination(): Observable<any>
+    {
+        return this._pagination.asObservable();
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -119,36 +129,54 @@ export class MailboxService
     /**
      * Get mails by folder
      */
-    getMailsByFolder(folder): Observable<any>
+    getMailsByFolder(folder, page = '1'): Observable<any>
     {
         return this._httpClient
-                   .get('api/apps/mailbox/mails', {params: {folder}})
+                   .get('api/apps/mailbox/mails', {
+                       params: {
+                           folder,
+                           page
+                       }
+                   })
                    .pipe(tap((response: any) => {
-                       this._mails.next(response);
+                       this._mails.next(response.mails);
+                       this._pagination.next(response.pagination);
                    }));
     }
 
     /**
      * Get mails by label
      */
-    getMailsByLabel(label): Observable<any>
+    getMailsByLabel(label, page = '1'): Observable<any>
     {
         return this._httpClient
-                   .get('api/apps/mailbox/mails', {params: {label}})
+                   .get('api/apps/mailbox/mails', {
+                       params: {
+                           label,
+                           page
+                       }
+                   })
                    .pipe(tap((response: any) => {
-                       this._mails.next(response);
+                       this._mails.next(response.mails);
+                       this._pagination.next(response.pagination);
                    }));
     }
 
     /**
      * Get mails by filter
      */
-    getMailsByFilter(filter): Observable<any>
+    getMailsByFilter(filter, page = '1'): Observable<any>
     {
         return this._httpClient
-                   .get('api/apps/mailbox/mails', {params: {filter}})
+                   .get('api/apps/mailbox/mails', {
+                       params: {
+                           filter,
+                           page
+                       }
+                   })
                    .pipe(tap((response: any) => {
-                       this._mails.next(response);
+                       this._mails.next(response.mails);
+                       this._pagination.next(response.pagination);
                    }));
     }
 
