@@ -31,8 +31,7 @@ $light-background: #F1F3F7;
     }
 
     i,
-    .icon,
-    .mat-icon {
+    .icon {
         color: map-get($foreground, icon);
     }
 
