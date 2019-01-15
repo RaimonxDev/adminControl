@@ -16,9 +16,19 @@ import { MailboxSidebarComponent } from 'app/modules/apps/mailbox/sidebar/sideba
 
 const routes: Route[] = [
     {
-        path      : '',
-        pathMatch : 'full',
-        redirectTo: 'inbox'
+        path      : 'filter/:filter',
+        redirectTo: 'filter/:filter/1',
+        pathMatch : 'full'
+    },
+    {
+        path      : 'label/:label',
+        redirectTo: 'label/:label/1',
+        pathMatch : 'full'
+    },
+    {
+        path      : ':folder',
+        redirectTo: ':folder/1',
+        pathMatch : 'full'
     },
     {
         path     : '',
@@ -30,48 +40,38 @@ const routes: Route[] = [
         },
         children : [
             {
-                path    : 'filter',
+                path    : 'filter/:filter',
                 children: [
                     {
-                        path    : ':filter',
+                        path    : ':page',
+                        resolve : {
+                            mails: MailboxMailsResolver
+                        },
                         children: [
                             {
-                                path    : ':page',
-                                resolve : {
-                                    mails: MailboxMailsResolver
-                                },
-                                children: [
-                                    {
-                                        path   : ':id',
-                                        resolve: {
-                                            mail: MailboxMailResolver
-                                        }
-                                    }
-                                ]
+                                path       : ':id',
+                                resolve    : {
+                                    mail: MailboxMailResolver
+                                }
                             }
                         ]
                     }
                 ]
             },
             {
-                path    : 'label',
+                path    : 'label/:label',
                 children: [
                     {
-                        path    : ':label',
+                        path    : ':page',
+                        resolve : {
+                            mails: MailboxMailsResolver
+                        },
                         children: [
                             {
-                                path    : ':page',
-                                resolve : {
-                                    mails: MailboxMailsResolver
-                                },
-                                children: [
-                                    {
-                                        path   : ':id',
-                                        resolve: {
-                                            mail: MailboxMailResolver
-                                        }
-                                    }
-                                ]
+                                path   : ':id',
+                                resolve: {
+                                    mail: MailboxMailResolver
+                                }
                             }
                         ]
                     }
@@ -97,10 +97,6 @@ const routes: Route[] = [
                 ]
             }
         ]
-    },
-    {
-        path      : '**',
-        redirectTo: 'inbox'
     }
 ];
 

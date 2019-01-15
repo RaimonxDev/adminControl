@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AsmMockApiService } from '@assembly';
+import * as _ from 'lodash';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import { filters as filtersData, folders as foldersData, mails as mailsData, labels as labelsData } from 'app/core/mock-api/mailbox/data';
@@ -91,8 +92,11 @@ export class MockMailboxApi
                 const byFilter = request.params.get('filter');
                 const byLabel = request.params.get('label');
 
+                // Clone the mails data to prevent accidental data updates
+                let mails = _.cloneDeep(this._mails);
+
                 // Filter the mails depending on the requested by type
-                let mails = this._mails.filter((mail) => {
+                mails = mails.filter((mail) => {
 
                     if ( byFolder )
                     {
@@ -112,29 +116,42 @@ export class MockMailboxApi
 
                 // Paginate - Start
 
-                // Store the length of the total mails array
                 const mailsLength = mails.length;
+                const resultsPerPage = 10;
 
                 // Get the requested page number
                 const page = parseInt(request.params.get('page'), 10);
-                const resultsPerPage = 10;
 
-                // Calculate the begin and the end indexes
+                // Calculate pagination details
                 const begin = (page - 1) * resultsPerPage;
                 const end = Math.min((begin + (resultsPerPage - 1)), (mailsLength - 1));
+                const lastPage = Math.ceil(mailsLength / resultsPerPage);
 
-                // Paginate the results by 10
-                mails = mails.slice(begin, end);
+                // Prepare the pagination object
+                let pagination = {};
 
-                // Prepare the pagination data
-                const pagination = {
-                    totalResults  : mailsLength,
-                    resultsPerPage: resultsPerPage,
-                    currentPage   : page,
-                    lastPage      : Math.ceil(mailsLength / resultsPerPage),
-                    startIndex    : begin,
-                    endIndex      : end
-                };
+                // If the requested page number is bigger than
+                // the last possible page number, return null
+                if ( page > lastPage )
+                {
+                    mails = null;
+                    pagination = null;
+                }
+                else
+                {
+                    // Paginate the results by 10
+                    mails = mails.slice(begin, end);
+
+                    // Prepare the pagination data
+                    pagination = {
+                        totalResults  : mailsLength,
+                        resultsPerPage: resultsPerPage,
+                        currentPage   : page,
+                        lastPage      : lastPage,
+                        startIndex    : begin,
+                        endIndex      : end
+                    };
+                }
 
                 // Paginate - End
 
@@ -157,8 +174,11 @@ export class MockMailboxApi
                 // Get the id from the params
                 const id = request.params.get('id');
 
+                // Clone the mails data to prevent accidental data updates
+                const mails = _.cloneDeep(this._mails);
+
                 // Find the mail
-                let mail = this._mails.filter((item) => {
+                let mail = mails.filter((item) => {
                     return item.id === id;
                 });
 
@@ -183,8 +203,9 @@ export class MockMailboxApi
             .onPatch('api/apps/mailbox/mail')
             .reply((request) => {
 
-                // Get the updated mail object from the body
-                const mail = request.body.mail;
+                // Get the id and mail
+                const id = request.body.id;
+                const mail = _.cloneDeep(request.body.mail);
 
                 // Prepare the updated mail
                 let updatedMail = null;
@@ -192,10 +213,10 @@ export class MockMailboxApi
                 // Find the mail and update it
                 this._mails.forEach((item, index, mails) => {
 
-                    if ( item.id === mail.id )
+                    if ( item.id === id )
                     {
-                        // Update the mail
-                        mails[index] = mail;
+                        // Update the mail by merging
+                        mails[index] = _.merge({}, mails[index], mail);
 
                         // Store the updated mail
                         updatedMail = mails[index];

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -127,6 +127,35 @@ export class MailboxService
     }
 
     /**
+     * Get mails by filter
+     */
+    getMailsByFilter(filter, page = '1'): Observable<any>
+    {
+        return this._httpClient
+                   .get('api/apps/mailbox/mails', {
+                       params: {
+                           filter,
+                           page
+                       }
+                   })
+                   .pipe(
+                       tap((response: any) => {
+                           this._mails.next(response.mails);
+                           this._pagination.next(response.pagination);
+                       }),
+                       switchMap((response) => {
+
+                           if ( response.mails === null && response.pagination === null )
+                           {
+                               return throwError('Requested page is not available!');
+                           }
+
+                           return of(response);
+                       })
+                   );
+    }
+
+    /**
      * Get mails by folder
      */
     getMailsByFolder(folder, page = '1'): Observable<any>
@@ -138,10 +167,21 @@ export class MailboxService
                            page
                        }
                    })
-                   .pipe(tap((response: any) => {
-                       this._mails.next(response.mails);
-                       this._pagination.next(response.pagination);
-                   }));
+                   .pipe(
+                       tap((response: any) => {
+                           this._mails.next(response.mails);
+                           this._pagination.next(response.pagination);
+                       }),
+                       switchMap((response) => {
+
+                           if ( response.mails === null && response.pagination === null )
+                           {
+                               return throwError('Requested page is not available!');
+                           }
+
+                           return of(response);
+                       })
+                   );
     }
 
     /**
@@ -156,28 +196,21 @@ export class MailboxService
                            page
                        }
                    })
-                   .pipe(tap((response: any) => {
-                       this._mails.next(response.mails);
-                       this._pagination.next(response.pagination);
-                   }));
-    }
+                   .pipe(
+                       tap((response: any) => {
+                           this._mails.next(response.mails);
+                           this._pagination.next(response.pagination);
+                       }),
+                       switchMap((response) => {
 
-    /**
-     * Get mails by filter
-     */
-    getMailsByFilter(filter, page = '1'): Observable<any>
-    {
-        return this._httpClient
-                   .get('api/apps/mailbox/mails', {
-                       params: {
-                           filter,
-                           page
-                       }
-                   })
-                   .pipe(tap((response: any) => {
-                       this._mails.next(response.mails);
-                       this._pagination.next(response.pagination);
-                   }));
+                           if ( response.mails === null && response.pagination === null )
+                           {
+                               return throwError('Requested page is not available!');
+                           }
+
+                           return of(response);
+                       })
+                   );
     }
 
     /**
@@ -187,12 +220,12 @@ export class MailboxService
     {
         return this._mails
                    .pipe(
-                       tap((mails) => {
+                       map((mails) => {
 
                            // Filter mails
                            const mail = mails.filter(item => item.id === id);
 
-                           if ( mail )
+                           if ( mail && mail.length > 0 )
                            {
                                this._mail.next(mail[0]);
                            }
@@ -200,9 +233,35 @@ export class MailboxService
                            {
                                this._mail.next(null);
                            }
+
+                           return mail;
+                       }),
+                       switchMap((mail) => {
+
+                           if ( !mail || mail.length === 0 )
+                           {
+                               return throwError('Could not found mail with id of ' + id + '!');
+                           }
+
+                           return of(mail);
                        }),
                        take(1)
                    );
+    }
+
+    /**
+     * Update mail
+     *
+     * @param id
+     * @param mail
+     */
+    updateMail(id, mail): Observable<any>
+    {
+        return this._httpClient
+                   .patch('api/apps/mailbox/mail', {
+                       id,
+                       mail
+                   });
     }
 
     /**
@@ -210,19 +269,9 @@ export class MailboxService
      */
     resetMail(): Observable<any>
     {
-        return of(true).pipe(tap(() => {
-            this._mail.next(null);
-        }));
-    }
-
-    /**
-     * Update mail
-     *
-     * @param mail
-     */
-    updateMail(mail): Observable<any>
-    {
-        return this._httpClient
-                   .patch('api/apps/mailbox/mail', {mail});
+        return of(true).pipe(
+            tap(() => {
+                this._mail.next(null);
+            }));
     }
 }

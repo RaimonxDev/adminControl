@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { forkJoin, Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { forkJoin, Observable, throwError } from 'rxjs';
 import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -108,9 +109,11 @@ export class MailboxMailsResolver implements Resolve<any>
      * Constructor
      *
      * @param {MailboxService} _mailboxService
+     * @param {Router} _router
      */
     constructor(
-        private _mailboxService: MailboxService
+        private _mailboxService: MailboxService,
+        private _router: Router
     )
     {
     }
@@ -152,7 +155,23 @@ export class MailboxMailsResolver implements Resolve<any>
         sources.push(this._mailboxService.resetMail());
 
         // Fork join all the sources
-        return forkJoin(sources);
+        return forkJoin(sources)
+            .pipe(
+                catchError((error) => {
+
+                    // Log the error
+                    console.error(error);
+
+                    // Get the parent url
+                    const parentUrl = state.url.split('/').slice(0, -1).join('/') + '/1';
+
+                    // Navigate to there
+                    this._router.navigateByUrl(parentUrl);
+
+                    // Throw an error
+                    return throwError(error);
+                })
+            );
     }
 }
 
@@ -165,9 +184,11 @@ export class MailboxMailResolver implements Resolve<any>
      * Constructor
      *
      * @param {MailboxService} _mailboxService
+     * @param {Router} _router
      */
     constructor(
-        private _mailboxService: MailboxService
+        private _mailboxService: MailboxService,
+        private _router: Router
     )
     {
     }
@@ -184,6 +205,22 @@ export class MailboxMailResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        return this._mailboxService.getMailById(route.params.id);
+        return this._mailboxService.getMailById(route.params.id)
+                   .pipe(
+                       catchError((error) => {
+
+                           // Log the error
+                           console.error(error);
+
+                           // Get the parent url
+                           const parentUrl = state.url.split('/').slice(0, -1).join('/');
+
+                           // Navigate to there
+                           this._router.navigateByUrl(parentUrl);
+
+                           // Throw an error
+                           return throwError(error);
+                       })
+                   );
     }
 }

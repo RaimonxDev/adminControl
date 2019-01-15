@@ -3,26 +3,38 @@
     <!-- Header -->
     <div class="header">
 
-        <button (click)="content.sidebar.toggle()">Toggle Sidebar</button>
+        <div class="flex">
 
-        <button mat-icon-button
-                [disabled]="pagination.currentPage === 1"
-                (click)="onPageChanged(pagination.currentPage - 1)">
-            <mat-icon>chevron_left</mat-icon>
-        </button>
+            <button class="gt-md:hidden"
+                    mat-icon-button
+                    (click)="content.sidebar.toggle()">
+                <mat-icon class="icon-size-24">menu</mat-icon>
+            </button>
 
-        <button mat-icon-button
-                [disabled]="pagination.currentPage === pagination.lastPage"
-                (click)="onPageChanged(pagination.currentPage + 1)">
-            <mat-icon>chevron_right</mat-icon>
-        </button>
+        </div>
 
-        <div>
-            <span class="">{{pagination.startIndex + 1}}</span>
-            <span class="mx-4">-</span>
-            <span class="">{{pagination.endIndex + 1}}</span>
-            <span class="mx-4">of</span>
-            <span class="">{{pagination.totalResults}}</span>
+        <div class="flex">
+
+            <div class="pagination-info">
+                <span class="">{{pagination.startIndex + 1}}</span>
+                <span class="secondary-text mx-4">-</span>
+                <span class="">{{pagination.endIndex + 1}}</span>
+                <span class="secondary-text mx-4">of</span>
+                <span class="">{{pagination.totalResults}}</span>
+            </div>
+
+            <button mat-icon-button
+                    [disabled]="pagination.currentPage === 1"
+                    (click)="onPageChanged(pagination.currentPage - 1)">
+                <mat-icon class="icon-size-18">arrow_back_ios</mat-icon>
+            </button>
+
+            <button mat-icon-button
+                    [disabled]="pagination.currentPage === pagination.lastPage"
+                    (click)="onPageChanged(pagination.currentPage + 1)">
+                <mat-icon class="icon-size-18">arrow_forward_ios</mat-icon>
+            </button>
+
         </div>
 
     </div>
@@ -38,20 +50,24 @@
             <div class="unread-indicator"
                  *ngIf="mail.unread"></div>
 
-            <div class="flex flex-col content-start justify-center">
+            <div class="left">
 
                 <div class="avatar">
                     <img [src]="mail.from.avatar">
                 </div>
 
-                <div class="flex justify-center mt-8"
-                     *ngIf="mail.attachments && mail.attachments.length > 0">
-                    <mat-icon class="icon-size-18">attachment</mat-icon>
-                </div>
+                <div class="indicators">
 
-                <div class="flex justify-center mt-8"
-                     *ngIf="mail.starred">
-                    <mat-icon class="orange-fg icon-size-18">star</mat-icon>
+                    <div class="flex justify-center mt-8"
+                         *ngIf="mail.attachments && mail.attachments.length > 0">
+                        <mat-icon class="icon-size-18">attachment</mat-icon>
+                    </div>
+
+                    <div class="flex justify-center mt-8"
+                         *ngIf="mail.starred">
+                        <mat-icon class="orange-fg icon-size-18">star</mat-icon>
+                    </div>
+
                 </div>
 
             </div>
@@ -82,8 +98,8 @@
                 <div class="content secondary-text mt-8">
                     {{mail.content.substring(0, 80)}}...
                 </div>
-            </div>
 
+            </div>
 
         </div>
 

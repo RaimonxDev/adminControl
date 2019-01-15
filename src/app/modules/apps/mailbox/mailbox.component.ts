@@ -70,7 +70,7 @@ export class MailboxComponent implements OnInit
             mail.unread = false;
 
             // Update the mail
-            this._mailboxService.updateMail(mail).subscribe();
+            this._mailboxService.updateMail(mail.id, {unread: false}).subscribe();
         }
 
         // Find the last activated route by
