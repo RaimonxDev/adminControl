@@ -10,6 +10,6 @@ import { AsmTimeAgoPipe } from '@assembly/pipes/time-ago/time-ago.pipe';
         AsmTimeAgoPipe
     ]
 })
-export class AsmTimeAgoModule
+export class AsmTimeAgoPipeModule
 {
 }

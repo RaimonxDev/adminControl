@@ -24,6 +24,7 @@ export * from './services/splash-screen/public-api';
 
 // Pipes
 export * from './pipes/time-ago/public-api';
+export * from './pipes/look-up-by/public-api';
 
 // Animations
 export * from './animations/public-api';

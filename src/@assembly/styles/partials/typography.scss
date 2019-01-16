@@ -55,7 +55,7 @@
 body {
     font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 14px;
-    line-height: 1.5 !important;
+    line-height: 1.4 !important;
 }
 
 html, body {
@@ -178,6 +178,12 @@ pre {
 .title-1 {
     font-size: 32px;
     font-weight: 800;
+    line-height: 1.2;
+}
+
+.title-2 {
+    font-size: 24px;
+    font-weight: 700;
     line-height: 1.2;
 }
 
