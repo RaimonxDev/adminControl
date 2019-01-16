@@ -1,21 +1,160 @@
 <ng-container *ngIf="mail; else selectMailToRead">
-    {{mail.subject}} - {{mail.unread}}
 
-    <div class="">
+    <div class="header">
 
-        <button (click)="mail.unread = !mail.unread">
-            Toggle unread
-        </button>
+        <div class="subject title-2">
+            {{mail.subject}}
+        </div>
 
-        <button (click)="mail.starred = !mail.starred">
-            Toggle starred
-        </button>
+        <div class="labels"
+             *ngIf="mail.labels && mail.labels.length > 0">
+
+            <div class="label"
+                 *ngFor="let label of (mail.labels | lookUpBy:'id':labels)"
+                 [ngClass]="[label.color + '-fg', label.color + '-50-bg']">
+
+                {{label.title}}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="content-container">
+
+        <div class="flex items-center justify-between w-full">
+
+            <div class="flex items-center">
+
+                <div class="avatar">
+                    <img [src]="mail.from.avatar">
+                </div>
+
+                <div class="flex flex-col ml-24">
+                    <div>{{mail.from.contact.split('<')[0].trim()}}</div>
+                    <div class="flex secondary-text">
+                        <div class="mr-4">to</div>
+                        <div class="flex"
+                             *ngFor="let to of mail.to; let index = index; let last = last;"
+                             [title]="to.split('<')[1].split('>')[0].trim()">
+                            {{to.split('<')[0].trim()}}
+                            <div class="mr-4"
+                                 *ngIf="!last && index !== mail.to.length - 2">
+                                ,
+                            </div>
+                            <div class="mx-4"
+                                 *ngIf="index === mail.to.length - 2">
+                                and
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex items-center">
+
+                <div class="date secondary-text mr-24">
+                    {{mail.date | date}}
+                </div>
+
+                <button class="mr-8"
+                        mat-icon-button
+                        (click)="toggleStar()">
+                    <mat-icon class="orange-fg icon-size-20"
+                              *ngIf="mail.starred">star
+                    </mat-icon>
+                    <mat-icon class="secondary-text icon-size-20"
+                              *ngIf="!mail.starred">
+                        star_border
+                    </mat-icon>
+                </button>
+
+                <button mat-icon-button>
+                    <mat-icon class="icon-size-20">more_vert</mat-icon>
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="content"
+             [innerHTML]="mail.content">
+        </div>
+
+        <ng-container *ngIf="mail.attachments && mail.attachments.length > 0">
+
+            <div class="attachments-title secondary-text">
+                <mat-icon class="icon-size-16 mr-8">attachment</mat-icon>
+                <div>Attachments</div>
+            </div>
+
+            <div class="attachments">
+
+                <div class="attachment"
+                     *ngFor="let attachment of mail.attachments">
+
+                    <img class="preview-image"
+                         *ngIf="attachment.type.startsWith('image/')"
+                         [src]="'assets/images/apps/mailbox/' + attachment.preview">
+
+                    <div class="preview-file"
+                         *ngIf="attachment.type.startsWith('application/')">
+                        <div class="filetype secondary-text">{{attachment.type.split('/')[1].trim().toUpperCase()}}</div>
+                    </div>
+
+                    <div class="filename secondary-text"
+                         [title]="attachment.name">
+                        {{attachment.name}}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </ng-container>
+
+        <div class="buttons">
+
+            <button mat-stroked-button
+                    [color]="'primary'">
+                <mat-icon class="icon-size-16 mr-8">reply
+                </mat-icon>
+                <span>Reply</span>
+            </button>
+
+            <button mat-stroked-button
+                    [color]="'primary'">
+                <mat-icon class="icon-size-16 mr-8">reply_all
+                </mat-icon>
+                <span>Reply All</span>
+            </button>
+
+            <button mat-stroked-button
+                    [color]="'primary'">
+                <mat-icon class="icon-size-16 mr-8"
+                          [color]="'primary'">forward
+                </mat-icon>
+                <span>Forward</span>
+            </button>
+
+        </div>
 
     </div>
 
 </ng-container>
 
 <ng-template #selectMailToRead>
-    ...Select a mail to read...
+
+    <div class="flex flex-1 flex-col items-center justify-center">
+
+        <mat-icon class="secondary-text icon-size-96"
+                  [fontSet]="'iconsmind'">mail
+        </mat-icon>
+        <div class="title-2 mt-16 secondary-text">Select an e-mail to start reading</div>
+
+    </div>
+
 </ng-template>
 

@@ -33,6 +33,8 @@
 
         <!-- Mailbox detail -->
         <mailbox-detail [mail]="(this.mail$ | async)"
+                        [labels]="(this.labels$ | async)"
+                        (mailUpdated)="onMailUpdated($event)"
                         asmScrollbar
                         [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-detail>
 

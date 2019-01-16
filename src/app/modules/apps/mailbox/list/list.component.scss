@@ -1,9 +1,12 @@
 mailbox-list {
     display: flex;
-    flex: 0 1 440px;
+    flex: 0 1 auto;
     flex-direction: column;
     overflow-y: auto;
     border-right: 1px solid;
+    width: 440px;
+    min-width: 440px;
+    max-width: 440px;
 
     .header {
         display: flex;

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule } from '@angular/material';
-import { AsmScrollbarModule } from '@assembly';
+import { AsmLookUpByPipeModule, AsmScrollbarModule } from '@assembly';
 import { SharedModule } from 'app/core/shared.module';
 import { ContentLayoutWithSidebarModule } from 'app/core/content-layouts/with-sidebar/with-sidebar.module';
 
@@ -15,6 +15,11 @@ import { MailboxListComponent } from 'app/modules/apps/mailbox/list/list.compone
 import { MailboxSidebarComponent } from 'app/modules/apps/mailbox/sidebar/sidebar.component';
 
 const routes: Route[] = [
+    {
+        path      : '',
+        redirectTo: 'inbox/1',
+        pathMatch : 'full'
+    },
     {
         path      : 'filter/:filter',
         redirectTo: 'filter/:filter/1',
@@ -49,8 +54,8 @@ const routes: Route[] = [
                         },
                         children: [
                             {
-                                path       : ':id',
-                                resolve    : {
+                                path   : ':id',
+                                resolve: {
                                     mail: MailboxMailResolver
                                 }
                             }
@@ -111,6 +116,7 @@ const routes: Route[] = [
         RouterModule.forChild(routes),
         MatButtonModule,
         MatIconModule,
+        AsmLookUpByPipeModule,
         AsmScrollbarModule,
         SharedModule,
         ContentLayoutWithSidebarModule

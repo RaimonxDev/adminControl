@@ -1,8 +1,34 @@
 @mixin mailbox-detail-theme($theme) {
 
     $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
     mailbox-detail {
         background: map-get($background, card);
+
+        .header {
+            border-bottom-color: map-get($foreground, divider);
+        }
+
+        .content-container {
+
+            .attachments {
+
+                .attachment {
+
+                    .preview-file {
+                        border-color: map-get($foreground, divider);
+
+                        .filetype {
+                            background: map-get($background, hover);
+                        }
+                    }
+                }
+            }
+
+            .buttons {
+                border-top-color: map-get($foreground, divider);
+            }
+        }
     }
 }

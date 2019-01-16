@@ -128,4 +128,15 @@ export class MailboxComponent implements OnInit
         // Navigate to the correct path
         this._router.navigate([page], {relativeTo});
     }
+
+    /**
+     * On mail updated
+     *
+     * @param mail
+     */
+    onMailUpdated(mail): void
+    {
+        // Update the mail
+        this._mailboxService.updateMail(mail.id, mail).subscribe();
+    }
 }
