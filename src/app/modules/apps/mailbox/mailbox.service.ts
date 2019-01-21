@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 
@@ -8,6 +9,9 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 })
 export class MailboxService
 {
+    // Private
+    private _reloadMailsMethod: Observable<any>;
+
     // Observables
     private _filters: BehaviorSubject<any>;
     private _folders: BehaviorSubject<any>;
@@ -20,9 +24,13 @@ export class MailboxService
      * Constructor
      *
      * @param {HttpClient} _httpClient
+     * @param {ActivatedRoute} _activatedRoute
+     * @param {Router} _router
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _activatedRoute: ActivatedRoute,
+        private _router: Router
     )
     {
         // Set the defaults
@@ -41,7 +49,7 @@ export class MailboxService
     /**
      * Getter for filters
      */
-    get filters(): Observable<any>
+    get filters$(): Observable<any>
     {
         return this._filters.asObservable();
     }
@@ -49,7 +57,7 @@ export class MailboxService
     /**
      * Getter for folders
      */
-    get folders(): Observable<any>
+    get folders$(): Observable<any>
     {
         return this._folders.asObservable();
     }
@@ -57,7 +65,7 @@ export class MailboxService
     /**
      * Getter for labels
      */
-    get labels(): Observable<any>
+    get labels$(): Observable<any>
     {
         return this._labels.asObservable();
     }
@@ -65,7 +73,7 @@ export class MailboxService
     /**
      * Getter for mails
      */
-    get mails(): Observable<any>
+    get mails$(): Observable<any>
     {
         return this._mails.asObservable();
     }
@@ -73,7 +81,7 @@ export class MailboxService
     /**
      * Getter for mail
      */
-    get mail(): Observable<any>
+    get mail$(): Observable<any>
     {
         return this._mail.asObservable();
     }
@@ -81,7 +89,7 @@ export class MailboxService
     /**
      * Getter for pagination
      */
-    get pagination(): Observable<any>
+    get pagination$(): Observable<any>
     {
         return this._pagination.asObservable();
     }
@@ -131,28 +139,33 @@ export class MailboxService
      */
     getMailsByFilter(filter, page = '1'): Observable<any>
     {
-        return this._httpClient
-                   .get('api/apps/mailbox/mails', {
-                       params: {
-                           filter,
-                           page
-                       }
-                   })
-                   .pipe(
-                       tap((response: any) => {
-                           this._mails.next(response.mails);
-                           this._pagination.next(response.pagination);
-                       }),
-                       switchMap((response) => {
+        // Store the method for reloading the mails easier
+        return this._reloadMailsMethod =
+            this._httpClient
+                .get('api/apps/mailbox/mails', {
+                    params: {
+                        filter,
+                        page
+                    }
+                })
+                .pipe(
+                    tap((response: any) => {
+                        this._mails.next(response.mails);
+                        this._pagination.next(response.pagination);
+                    }),
+                    switchMap((response) => {
 
-                           if ( response.mails === null && response.pagination === null )
-                           {
-                               return throwError('Requested page is not available!');
-                           }
+                        if ( response.mails === null )
+                        {
+                            return throwError({
+                                message   : 'Requested page is not available!',
+                                pagination: response.pagination
+                            });
+                        }
 
-                           return of(response);
-                       })
-                   );
+                        return of(response);
+                    })
+                );
     }
 
     /**
@@ -160,28 +173,33 @@ export class MailboxService
      */
     getMailsByFolder(folder, page = '1'): Observable<any>
     {
-        return this._httpClient
-                   .get('api/apps/mailbox/mails', {
-                       params: {
-                           folder,
-                           page
-                       }
-                   })
-                   .pipe(
-                       tap((response: any) => {
-                           this._mails.next(response.mails);
-                           this._pagination.next(response.pagination);
-                       }),
-                       switchMap((response) => {
+        // Store the method for reloading the mails easier
+        return this._reloadMailsMethod =
+            this._httpClient
+                .get('api/apps/mailbox/mails', {
+                    params: {
+                        folder,
+                        page
+                    }
+                })
+                .pipe(
+                    tap((response: any) => {
+                        this._mails.next(response.mails);
+                        this._pagination.next(response.pagination);
+                    }),
+                    switchMap((response) => {
 
-                           if ( response.mails === null && response.pagination === null )
-                           {
-                               return throwError('Requested page is not available!');
-                           }
+                        if ( response.mails === null )
+                        {
+                            return throwError({
+                                message   : 'Requested page is not available!',
+                                pagination: response.pagination
+                            });
+                        }
 
-                           return of(response);
-                       })
-                   );
+                        return of(response);
+                    })
+                );
     }
 
     /**
@@ -189,28 +207,34 @@ export class MailboxService
      */
     getMailsByLabel(label, page = '1'): Observable<any>
     {
-        return this._httpClient
-                   .get('api/apps/mailbox/mails', {
-                       params: {
-                           label,
-                           page
-                       }
-                   })
-                   .pipe(
-                       tap((response: any) => {
-                           this._mails.next(response.mails);
-                           this._pagination.next(response.pagination);
-                       }),
-                       switchMap((response) => {
+        // Store the method for reloading the mails easier
+        return this._reloadMailsMethod =
+            this._httpClient
+                .get('api/apps/mailbox/mails', {
+                    params: {
+                        label,
+                        page
+                    }
+                })
+                .pipe(
+                    tap((response: any) => {
+                        this._mails.next(response.mails);
+                        this._pagination.next(response.pagination);
+                    }),
+                    switchMap((response) => {
 
-                           if ( response.mails === null && response.pagination === null )
-                           {
-                               return throwError('Requested page is not available!');
-                           }
+                        if ( response.mails === null )
+                        {
 
-                           return of(response);
-                       })
-                   );
+                            return throwError({
+                                message   : 'Requested page is not available!',
+                                pagination: response.pagination
+                            });
+                        }
+
+                        return of(response);
+                    })
+                );
     }
 
     /**
@@ -265,6 +289,19 @@ export class MailboxService
     }
 
     /**
+     * Reset the mails list
+     */
+    resetMails(): Observable<any>
+    {
+        return of(true).pipe(
+            tap(() => {
+                this._mails.next(null);
+            }),
+            take(1)
+        );
+    }
+
+    /**
      * Reset the current mail
      */
     resetMail(): Observable<any>
@@ -272,6 +309,18 @@ export class MailboxService
         return of(true).pipe(
             tap(() => {
                 this._mail.next(null);
-            }));
+            }),
+            take(1)
+        );
+    }
+
+    /**
+     * Reload mails using the last method
+     * that's being called to list the mails
+     */
+    reloadMails(): Observable<any>
+    {
+        // Reload the mails
+        return this._reloadMailsMethod;
     }
 }

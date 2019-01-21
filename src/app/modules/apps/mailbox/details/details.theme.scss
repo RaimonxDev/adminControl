@@ -1,9 +1,9 @@
-@mixin mailbox-detail-theme($theme) {
+@mixin mailbox-details-theme($theme) {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    mailbox-detail {
+    mailbox-details {
         background: map-get($background, card);
 
         .header {
@@ -24,10 +24,6 @@
                         }
                     }
                 }
-            }
-
-            .buttons {
-                border-top-color: map-get($foreground, divider);
             }
         }
     }

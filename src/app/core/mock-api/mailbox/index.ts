@@ -124,18 +124,22 @@ export class MockMailboxApi
 
                 // Calculate pagination details
                 const begin = (page - 1) * resultsPerPage;
-                const end = Math.min((begin + (resultsPerPage - 1)), (mailsLength - 1));
-                const lastPage = Math.ceil(mailsLength / resultsPerPage);
+                const end = Math.min((resultsPerPage * page), mailsLength);
+                const lastPage = Math.max(Math.ceil(mailsLength / resultsPerPage), 1);
 
                 // Prepare the pagination object
                 let pagination = {};
 
                 // If the requested page number is bigger than
-                // the last possible page number, return null
+                // the last possible page number, return null for
+                // mails but also send the last possible page so
+                // the app can navigate to there
                 if ( page > lastPage )
                 {
                     mails = null;
-                    pagination = null;
+                    pagination = {
+                        lastPage: lastPage
+                    };
                 }
                 else
                 {
@@ -149,7 +153,7 @@ export class MockMailboxApi
                         currentPage   : page,
                         lastPage      : lastPage,
                         startIndex    : begin,
-                        endIndex      : end
+                        endIndex      : end - 1
                     };
                 }
 
@@ -215,8 +219,8 @@ export class MockMailboxApi
 
                     if ( item.id === id )
                     {
-                        // Update the mail by merging
-                        mails[index] = _.merge({}, mails[index], mail);
+                        // Update the mail
+                        mails[index] = _.assign({}, mails[index], mail);
 
                         // Store the updated mail
                         updatedMail = mails[index];

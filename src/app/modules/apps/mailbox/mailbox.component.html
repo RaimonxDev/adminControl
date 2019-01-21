@@ -21,22 +21,25 @@
     <div class="main-content"
          mainContent>
 
+        <router-outlet></router-outlet>
+
         <!-- Mailbox list -->
-        <mailbox-list [content]="content"
+        <!--<mailbox-list [content]="content"
                       [mails]="(this.mails$ | async)"
                       [pagination]="(this.pagination$ | async)"
                       [selectedMail]="(this.mail$ | async)"
                       (pageChanged)="onPageChanged($event)"
                       (mailSelected)="onMailSelected($event)"
                       asmScrollbar
-                      [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-list>
+                      [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-list>-->
 
         <!-- Mailbox detail -->
-        <mailbox-detail [mail]="(this.mail$ | async)"
+        <!--<mailbox-detail [mail]="(this.mail$ | async)"
                         [labels]="(this.labels$ | async)"
                         (mailUpdated)="onMailUpdated($event)"
+                        (reloadMails)="onReloadMails()"
                         asmScrollbar
-                        [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-detail>
+                        [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-detail>-->
 
     </div>
 

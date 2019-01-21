@@ -1,4 +1,4 @@
-mailbox-detail {
+mailbox-details {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -12,12 +12,8 @@ mailbox-detail {
         align-items: flex-start;
         justify-content: flex-start;
         width: 100%;
-        padding-bottom: 24px;
+        padding-bottom: 27px;
         border-bottom: 1px solid;
-
-        .subject {
-
-        }
 
         .labels {
             display: flex;
@@ -78,7 +74,7 @@ mailbox-detail {
 
         .content {
             display: flex;
-            margin: 32px 0 40px 0;
+            margin-top: 32px;
             white-space: pre-line;
             line-height: 1.8;
         }
@@ -86,6 +82,7 @@ mailbox-detail {
         .attachments-title {
             display: flex;
             align-items: center;
+            margin-top: 40px;
             margin-bottom: 16px;
         }
 
@@ -139,9 +136,7 @@ mailbox-detail {
         .buttons {
             display: flex;
             width: 100%;
-            margin-top: 32px;
-            padding-top: 32px;
-            border-top: 1px solid;
+            margin-top: 64px;
 
             .mat-stroked-button {
                 margin-right: 8px;

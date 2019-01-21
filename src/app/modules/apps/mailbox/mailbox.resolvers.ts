@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, Observable, throwError } from 'rxjs';
-import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 import { catchError } from 'rxjs/operators';
+import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 
 @Injectable({
     providedIn: 'root'
@@ -130,6 +130,19 @@ export class MailboxMailsResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
+        // Don't allow page param to go below 1
+        if ( route.params.page <= 0 )
+        {
+            // Get the parent url
+            const url = state.url.split('/').slice(0, -1).join('/') + '/1';
+
+            // Navigate to there
+            this._router.navigateByUrl(url);
+
+            // Don't allow request to go through
+            return false;
+        }
+
         // Create and build the sources array
         const sources = [];
 
@@ -157,16 +170,17 @@ export class MailboxMailsResolver implements Resolve<any>
         // Fork join all the sources
         return forkJoin(sources)
             .pipe(
+                // Error here means the requested page is not available
                 catchError((error) => {
 
                     // Log the error
-                    console.error(error);
+                    console.error(error.message);
 
-                    // Get the parent url
-                    const parentUrl = state.url.split('/').slice(0, -1).join('/') + '/1';
+                    // Get the parent url and append the last possible page number to the parent url
+                    const url = state.url.split('/').slice(0, -1).join('/') + '/' + error.pagination.lastPage;
 
                     // Navigate to there
-                    this._router.navigateByUrl(parentUrl);
+                    this._router.navigateByUrl(url);
 
                     // Throw an error
                     return throwError(error);
@@ -207,6 +221,9 @@ export class MailboxMailResolver implements Resolve<any>
     {
         return this._mailboxService.getMailById(route.params.id)
                    .pipe(
+                       // Error here means the requested mail is either
+                       // not available on the requested page or not
+                       // available at all
                        catchError((error) => {
 
                            // Log the error

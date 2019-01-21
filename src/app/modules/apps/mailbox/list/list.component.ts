@@ -1,40 +1,76 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Subject } from 'rxjs';
+import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector       : 'mailbox-list',
-    templateUrl    : './list.component.html',
-    styleUrls      : ['./list.component.scss'],
-    encapsulation  : ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    selector     : 'mailbox-list',
+    templateUrl  : './list.component.html',
+    styleUrls    : ['./list.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class MailboxListComponent
+export class MailboxListComponent implements OnInit, OnDestroy
 {
     @Input()
     content: any;
 
-    @Input()
-    mails: any;
-
-    @Input()
+    mails: any[];
     pagination: any;
-
-    @Input()
     selectedMail: any;
 
-    @Output()
-    mailSelected: EventEmitter<any>;
-
-    @Output()
-    pageChanged: EventEmitter<any>;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      */
-    constructor()
+    constructor(
+        private _mailboxService: MailboxService
+    )
     {
-        // Set the defaults
-        this.mailSelected = new EventEmitter();
-        this.pageChanged = new EventEmitter();
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Mails
+        this._mailboxService.mails$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((mails) => {
+                this.mails = mails;
+            });
+
+        // Pagination
+        this._mailboxService.pagination$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((pagination) => {
+                this.pagination = pagination;
+            });
+
+        // Selected mail
+        this._mailboxService.mail$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((mail) => {
+                this.selectedMail = mail;
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -42,23 +78,20 @@ export class MailboxListComponent
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Emits the mail selected event
+     * On mail selected
      *
      * @param mail
      */
     onMailSelected(mail): void
     {
-        this.mailSelected.emit(mail);
-    }
+        // If the mail is unread...
+        if ( mail.unread )
+        {
+            // Update the mail object
+            mail.unread = false;
 
-    /**
-     * Emits the page changed event
-     *
-     * @param page
-     */
-    onPageChanged(page): void
-    {
-        this.pageChanged.emit(page);
+            // Update the mail on the server
+            this._mailboxService.updateMail(mail.id, {unread: false}).subscribe();
+        }
     }
-
 }

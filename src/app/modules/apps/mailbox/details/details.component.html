@@ -12,9 +12,7 @@
             <div class="label"
                  *ngFor="let label of (mail.labels | lookUpBy:'id':labels)"
                  [ngClass]="[label.color + '-fg', label.color + '-50-bg']">
-
                 {{label.title}}
-
             </div>
 
         </div>
@@ -61,9 +59,23 @@
 
                 <button class="mr-8"
                         mat-icon-button
+                        (click)="toggleImportant()">
+                    <mat-icon class="red-fg icon-size-20"
+                              *ngIf="mail.important">
+                        label_important
+                    </mat-icon>
+                    <mat-icon class="secondary-text icon-size-20"
+                              *ngIf="!mail.important">
+                        label_important
+                    </mat-icon>
+                </button>
+
+                <button class="mr-8"
+                        mat-icon-button
                         (click)="toggleStar()">
                     <mat-icon class="orange-fg icon-size-20"
-                              *ngIf="mail.starred">star
+                              *ngIf="mail.starred">
+                        star
                     </mat-icon>
                     <mat-icon class="secondary-text icon-size-20"
                               *ngIf="!mail.starred">
@@ -71,9 +83,39 @@
                     </mat-icon>
                 </button>
 
-                <button mat-icon-button>
+                <button mat-icon-button
+                        [matMenuTriggerFor]="toggleLabelMenu">
+                    <mat-icon class="icon-size-20">label</mat-icon>
+                </button>
+                <mat-menu #toggleLabelMenu="matMenu">
+                    <div mat-menu-item
+                         *ngFor="let label of labels">
+                        <mat-checkbox (change)="toggleLabel(label)"
+                                      [color]="'primary'"
+                                      [checked]="mail.labels.includes(label.id)">
+                            {{label.title}}
+                        </mat-checkbox>
+                    </div>
+                </mat-menu>
+
+                <button mat-icon-button
+                        [matMenuTriggerFor]="mailMenu">
                     <mat-icon class="icon-size-20">more_vert</mat-icon>
                 </button>
+                <mat-menu #mailMenu="matMenu">
+                    <button mat-menu-item
+                            *ngIf="mail.unread"
+                            (click)="toggleUnread(false)">
+                        <mat-icon>mail</mat-icon>
+                        <span>Mark as read</span>
+                    </button>
+                    <button mat-menu-item
+                            *ngIf="!mail.unread"
+                            (click)="toggleUnread(true)">
+                        <mat-icon>mail</mat-icon>
+                        <span>Mark as unread</span>
+                    </button>
+                </mat-menu>
 
             </div>
 
@@ -150,7 +192,8 @@
     <div class="flex flex-1 flex-col items-center justify-center">
 
         <mat-icon class="secondary-text icon-size-96"
-                  [fontSet]="'iconsmind'">mail
+                  [fontSet]="'iconsmind'">
+            mail
         </mat-icon>
         <div class="title-2 mt-16 secondary-text">Select an e-mail to start reading</div>
 

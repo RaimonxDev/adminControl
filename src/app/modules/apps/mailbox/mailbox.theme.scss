@@ -1,11 +1,11 @@
-@import './detail/detail.theme';
-@import './list/list.theme';
-@import './sidebar/sidebar.theme';
+@import 'details/details.theme';
+@import 'list/list.theme';
+@import 'sidebar/sidebar.theme';
 
 @mixin mailbox-theme($theme) {
 
     // Include partial theme files
-    @include mailbox-detail-theme($theme);
+    @include mailbox-details-theme($theme);
     @include mailbox-list-theme($theme);
     @include mailbox-sidebar-theme($theme);
 

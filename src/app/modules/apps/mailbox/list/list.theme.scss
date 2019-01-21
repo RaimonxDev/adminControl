@@ -8,36 +8,39 @@
 
     mailbox-list {
         background: map-get($background, card);
-        border-right-color: map-get($foreground, divider);
 
-        .header {
-            border-bottom-color: map-get($foreground, divider);
-        }
+        .list-wrapper {
+            border-right-color: map-get($foreground, divider);
 
-        .list {
+            .header {
+                border-bottom-color: map-get($foreground, divider);
+            }
 
-            .item {
-                box-shadow: 0 1px 0 0 map-get($foreground, divider);
+            .list {
 
-                &.selected {
-                    background: map-get($background, hover);
-                    box-shadow: inset 4px 0 0 0 map-get($primary, default),
-                    0 1px 0 0 map-get($foreground, divider);
+                .item {
+                    box-shadow: 0 1px 0 0 map-get($foreground, divider);
 
-                    .date,
-                    .content {
-                        color: map-get($primary, secondary-text);
+                    &.selected {
+                        background: map-get($background, hover);
+                        box-shadow: inset 4px 0 0 0 map-get($primary, default),
+                        0 1px 0 0 map-get($foreground, divider);
+
+                        .date,
+                        .content {
+                            color: map-get($primary, secondary-text);
+                        }
                     }
-                }
 
-                .unread-indicator {
-                    background: map-get($primary, default);
-                }
+                    .unread-indicator {
+                        background: map-get($primary, default);
+                    }
 
-                .avatar {
+                    .avatar {
 
-                    &:before {
-                        box-shadow: inset 0 0 0 1px map-get($foreground, divider);
+                        &:before {
+                            box-shadow: inset 0 0 0 1px map-get($foreground, divider);
+                        }
                     }
                 }
             }

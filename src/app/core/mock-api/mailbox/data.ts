@@ -74,6 +74,12 @@ export const labels = [
         'title': 'Accounts',
         'color': 'blue-grey',
         'slug' : 'accounts'
+    },
+    {
+        'id'   : 'b67fc437-6118-4ec8-a3c7-9320b828e3fc',
+        'title': 'Forums',
+        'color': 'green',
+        'slug' : 'forums'
     }
 ];
 
