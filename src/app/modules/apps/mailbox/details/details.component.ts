@@ -96,31 +96,11 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         // If the label was removed...
         if ( removed )
         {
-            // If the current activated route has a label parameter
-            // and it equals to the one we are removing...
+            // If the current activated route has a label parameter and it equals to the one we are removing...
             if ( this._activatedRoute.snapshot.params.label && this._activatedRoute.snapshot.params.label === label.slug )
             {
-                // Reload the mails
-                this._mailboxService.reloadMails()
-                    .pipe(
-                        map(() => {
-
-                            // Navigate to the parent
-                            this._router.navigate(['./'], {relativeTo: this._activatedRoute});
-                        }),
-                        catchError((error) => {
-
-                            // Navigate to last possible page if there
-                            // are no more mails left in the current page
-                            this._router.navigate(['./../', error.pagination.lastPage], {relativeTo: this._activatedRoute});
-
-                            return of(error);
-                        })
-                    )
-                    .subscribe();
-
-                // Reset the mail
-                this._mailboxService.resetMail().subscribe();
+                // Navigate to the parent
+                this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});
             }
         }
     }

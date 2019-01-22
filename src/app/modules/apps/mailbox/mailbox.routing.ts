@@ -1,4 +1,5 @@
-import { Route, UrlMatchResult, UrlSegment } from '@angular/router';
+import { ActivatedRouteSnapshot, Route, UrlMatchResult, UrlSegment } from '@angular/router';
+import * as _ from 'lodash';
 import { MailboxComponent } from 'app/modules/apps/mailbox/mailbox.component';
 import {
     MailboxFiltersResolver,
@@ -51,6 +52,44 @@ function mailboxRouteMatcher(url: UrlSegment[]): UrlMatchResult
     };
 }
 
+function mailboxRunGuardsAndResolvers(from: ActivatedRouteSnapshot, to: ActivatedRouteSnapshot): boolean
+{
+    // If we are navigating from mail to mails, meaning there is an id in
+    // from's deepest first child and there isn't one in the to's, we
+    // will trigger the resolver
+
+    // Get the current activated route of the 'from'
+    let fromCurrentRoute = from;
+
+    while ( fromCurrentRoute.firstChild )
+    {
+        fromCurrentRoute = fromCurrentRoute.firstChild;
+    }
+
+    // Get the current activated route of the 'to'
+    let toCurrentRoute = to;
+
+    while ( toCurrentRoute.firstChild )
+    {
+        toCurrentRoute = toCurrentRoute.firstChild;
+    }
+
+    // Trigger the resolver if the condition met
+    if ( fromCurrentRoute.params.id && !toCurrentRoute.params.id )
+    {
+        return true;
+    }
+
+    // If the from and to params are equal, don't trigger the resolver
+    if ( _.isEqual(from.params, to.params) )
+    {
+        return false;
+    }
+
+    // Trigger the resolver on other cases
+    return true;
+}
+
 export const mailboxRoutes: Route[] = [
     {
         path      : '',
@@ -82,12 +121,13 @@ export const mailboxRoutes: Route[] = [
         },
         children : [
             {
-                matcher  : mailboxRouteMatcher,
-                component: MailboxListComponent,
-                resolve  : {
+                matcher              : mailboxRouteMatcher,
+                component            : MailboxListComponent,
+                runGuardsAndResolvers: mailboxRunGuardsAndResolvers,
+                resolve              : {
                     mails: MailboxMailsResolver
                 },
-                children : [
+                children             : [
                     {
                         path     : '',
                         component: MailboxDetailsComponent,
