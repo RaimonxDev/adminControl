@@ -103,6 +103,7 @@
                     <mat-icon class="icon-size-20">more_vert</mat-icon>
                 </button>
                 <mat-menu #mailMenu="matMenu">
+                    <!-- Unread -->
                     <button mat-menu-item
                             *ngIf="mail.unread"
                             (click)="toggleUnread(false)">
@@ -114,6 +115,26 @@
                             (click)="toggleUnread(true)">
                         <mat-icon>mail</mat-icon>
                         <span>Mark as unread</span>
+                    </button>
+                    <!-- Spam -->
+                    <button mat-menu-item
+                            *ngIf="getCurrentFolder() !== 'spam' && getCurrentFolder() !== 'drafts'"
+                            (click)="moveToFolder('spam')">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>Spam</span>
+                    </button>
+                    <button mat-menu-item
+                            *ngIf="getCurrentFolder() === 'spam'"
+                            (click)="moveToFolder('inbox')">
+                        <mat-icon>inbox</mat-icon>
+                        <span>Not spam</span>
+                    </button>
+                    <!-- Delete -->
+                    <button mat-menu-item
+                            *ngIf="getCurrentFolder() !== 'trash'"
+                            (click)="moveToFolder('trash')">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
                     </button>
                 </mat-menu>
 

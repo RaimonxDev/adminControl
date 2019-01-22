@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 import { takeUntil } from 'rxjs/operators';
+import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 
 @Component({
     selector     : 'mailbox-list',
@@ -23,6 +23,8 @@ export class MailboxListComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
+     *
+     * @param {MailboxService} _mailboxService
      */
     constructor(
         private _mailboxService: MailboxService
