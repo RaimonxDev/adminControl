@@ -130,8 +130,6 @@ export class MailboxMailsResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        console.log('...mails resolver...');
-
         // Don't allow page param to go below 1
         if ( route.params.page <= 0 )
         {
@@ -221,8 +219,6 @@ export class MailboxMailResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        console.log('...mail resolver...');
-
         return this._mailboxService.getMailById(route.params.id)
                    .pipe(
                        // Error here means the requested mail is either

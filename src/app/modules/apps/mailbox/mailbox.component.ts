@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 
 @Component({
-    selector       : 'mailbox',
-    templateUrl    : './mailbox.component.html',
-    styleUrls      : ['./mailbox.component.scss'],
-    encapsulation  : ViewEncapsulation.None
+    selector     : 'mailbox',
+    templateUrl  : './mailbox.component.html',
+    styleUrls    : ['./mailbox.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MailboxComponent implements OnInit
 {

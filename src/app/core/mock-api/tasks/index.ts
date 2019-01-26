@@ -2,23 +2,19 @@ import { Injectable } from '@angular/core';
 import { AsmMockApiService } from '@assembly';
 import * as _ from 'lodash';
 
-import { MockUtils } from 'app/core/mock-api/utils';
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
-import {
-    filters as filtersData, folders as foldersData, mails as mailsData, labels as labelsData, settings as settingsData
-} from 'app/core/mock-api/mailbox/data';
+import { filters as filtersData, folders as foldersData, mails as mailsData, labels as labelsData } from 'app/core/mock-api/mailbox/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockMailboxApi
+export class MockTasksApi
 {
     // Private Readonly
-    private readonly _filters: any[];
-    private readonly _folders: any[];
-    private readonly _mails: any[];
-    private readonly _labels: any[];
-    private _settings: any;
+    private readonly _filters: any;
+    private readonly _folders: any;
+    private readonly _mails: any;
+    private readonly _labels: any;
 
     /**
      * Constructor
@@ -34,7 +30,6 @@ export class MockMailboxApi
         this._folders = foldersData;
         this._mails = mailsData;
         this._labels = labelsData;
-        this._settings = settingsData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -47,38 +42,6 @@ export class MockMailboxApi
     init(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ Settings - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/apps/mailbox/settings')
-            .reply(() => {
-
-                return [
-                    200,
-                    _.cloneDeep(this._settings)
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Settings - PATCH
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onPatch('api/apps/mailbox/settings')
-            .reply((request) => {
-
-                // Get the settings
-                const settings = _.cloneDeep(request.body.settings);
-
-                // Update the settings
-                this._settings = _.assign({}, this._settings, settings);
-
-                return [
-                    200,
-                    _.cloneDeep(this._settings)
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
         // @ Folders - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -87,7 +50,7 @@ export class MockMailboxApi
 
                 return [
                     200,
-                    _.cloneDeep(this._folders)
+                    this._folders
                 ];
             });
 
@@ -100,7 +63,7 @@ export class MockMailboxApi
 
                 return [
                     200,
-                    _.cloneDeep(this._filters)
+                    this._filters
                 ];
             });
 
@@ -113,131 +76,7 @@ export class MockMailboxApi
 
                 return [
                     200,
-                    _.cloneDeep(this._labels)
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Labels - PUT
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onPut('api/apps/mailbox/label')
-            .reply((request) => {
-
-                // Get the label
-                const label = _.cloneDeep(request.body.label);
-
-                // Generate an id
-                label.id = MockUtils.guid();
-
-                // Generate a slug
-                label.slug = label.title.toLowerCase()
-                                  .replace(/ /g, '-')
-                                  .replace(/[-]+/g, '-')
-                                  .replace(/[^\w-]+/g, '');
-
-                // Check if the slug is being used and update it if necessary
-                const originalSlug = label.slug;
-
-                let sameSlug,
-                    slugSuffix = 1;
-
-                do
-                {
-                    sameSlug = this._labels.filter((item) => {
-                        return item.slug === label.slug;
-                    });
-
-                    if ( sameSlug.length > 0 )
-                    {
-                        label.slug = originalSlug + '-' + slugSuffix;
-                        slugSuffix++;
-                    }
-                }
-                while ( sameSlug.length > 0 );
-
-                // Add the label
-                this._labels.push(label);
-
-                return [
-                    200,
-                    label
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Labels - PATCH
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onPatch('api/apps/mailbox/label')
-            .reply((request) => {
-
-                // Get the id and label
-                const id = request.body.id;
-                const label = _.cloneDeep(request.body.label);
-
-                // Prepare the updated label
-                let updatedLabel = null;
-
-                // Find the label and update it
-                this._labels.forEach((item, index, labels) => {
-
-                    if ( item.id === id )
-                    {
-                        // Update the slug
-                        label.slug = label.title.toLowerCase()
-                                          .replace(/ /g, '-')
-                                          .replace(/[-]+/g, '-')
-                                          .replace(/[^\w-]+/g, '');
-
-                        // Update the label
-                        labels[index] = _.assign({}, labels[index], label);
-
-                        // Store the updated label
-                        updatedLabel = labels[index];
-                    }
-                });
-
-                return [
-                    200,
-                    updatedLabel
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Labels - DELETE
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onDelete('api/apps/mailbox/label')
-            .reply((request) => {
-
-                // Get the id
-                const id = request.params.get('id');
-
-                // Find the label and remove it
-                this._labels.forEach((item, index) => {
-
-                    if ( item.id === id )
-                    {
-                        this._labels.splice(index, 1);
-                    }
-
-                    return;
-                });
-
-                // Get all the mails that have the label
-                const mailsWithLabel = this._mails.filter((mail) => {
-                    return mail.labels.indexOf(id) > -1;
-                });
-
-                // Iterate through them and remove the label
-                mailsWithLabel.forEach((mail) => {
-                    mail.labels.splice(mail.labels.indexOf(id), 1);
-                });
-
-                return [
-                    200,
-                    true
+                    this._labels
                 ];
             });
 

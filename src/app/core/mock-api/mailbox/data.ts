@@ -2,66 +2,66 @@ export const folders = [
     {
         'id'   : '7c004a19-4506-48ef-93ab-f16381302e3b',
         'title': 'Inbox',
-        'icon' : 'inbox',
-        'slug' : 'inbox'
+        'slug' : 'inbox',
+        'icon' : 'inbox'
     },
     {
         'id'   : '1ee2ea29-9a1f-4c27-b4d2-5e465703b6a0',
         'title': 'Sent',
-        'icon' : 'send',
-        'slug' : 'sent'
+        'slug' : 'sent',
+        'icon' : 'send'
     },
     {
         'id'   : 'fbdc8e79-a0c4-4a27-bc98-9c81ee7a86e5',
         'title': 'Drafts',
-        'icon' : 'drafts',
-        'slug' : 'drafts'
+        'slug' : 'drafts',
+        'icon' : 'drafts'
     },
     {
         'id'   : '0197c436-2ef3-424d-b546-8b7f49186e15',
         'title': 'Spam',
-        'icon' : 'error_outline',
-        'slug' : 'spam'
+        'slug' : 'spam',
+        'icon' : 'error_outline'
     },
     {
         'id'   : '2fa74637-d362-4fd2-9a88-f7195a88bdde',
         'title': 'Trash',
-        'icon' : 'delete',
-        'slug' : 'trash'
+        'slug' : 'trash',
+        'icon' : 'delete'
     }
 ];
 export const filters = [
     {
         'id'   : 'de1b41f6-6839-4f1b-9d2c-07e55f6f8f82',
         'title': 'Starred',
-        'icon' : 'star_border',
-        'slug' : 'starred'
+        'slug' : 'starred',
+        'icon' : 'star_border'
     },
     {
         'id'   : '71bba1ec-a90e-4a71-9932-4bab0a99aa1c',
         'title': 'Important',
-        'icon' : 'label_important',
-        'slug' : 'important'
+        'slug' : 'important',
+        'icon' : 'label_important'
     }
 ];
 export const labels = [
     {
         'id'   : 'b167d3c4-f6ed-4ea6-9579-a12f95a9d76e',
         'title': 'Personal',
-        'color': 'blue',
-        'slug' : 'personal'
+        'slug' : 'personal',
+        'color': 'blue'
     },
     {
         'id'   : '745cf30e-ca84-47a1-a553-b70eb630d8e7',
         'title': 'Work',
-        'color': 'indigo',
-        'slug' : 'work'
+        'slug' : 'work',
+        'color': 'indigo'
     },
     {
         'id'   : '8b035cb5-65c0-4ab1-bb4c-43b0e442d1f3',
         'title': 'Payments',
-        'color': 'red',
-        'slug' : 'payments'
+        'slug' : 'payments',
+        'color': 'red'
     },
     {
         'id'   : 'b2d1e4e7-7cfd-4b51-ae59-217a093df754',
@@ -72,17 +72,19 @@ export const labels = [
     {
         'id'   : '184cd689-4ee4-47cf-9f8a-12233d614326',
         'title': 'Accounts',
-        'color': 'blue-grey',
-        'slug' : 'accounts'
+        'slug' : 'accounts',
+        'color': 'blue-grey'
     },
     {
         'id'   : 'b67fc437-6118-4ec8-a3c7-9320b828e3fc',
         'title': 'Forums',
-        'color': 'green',
-        'slug' : 'forums'
+        'slug' : 'forums',
+        'color': 'green'
     }
 ];
-
+export const settings = {
+    messageLayout: 'list'
+};
 export const mails = [
     {
         'id'         : 'f9c4c091-3ac4-4df9-ac5d-aec7b07c8e3f',

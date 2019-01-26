@@ -1,6 +1,7 @@
 @import 'details/details.theme';
 @import 'list/list.theme';
 @import 'sidebar/sidebar.theme';
+@import 'settings/settings.theme';
 
 @mixin mailbox-theme($theme) {
 
@@ -8,6 +9,7 @@
     @include mailbox-details-theme($theme);
     @include mailbox-list-theme($theme);
     @include mailbox-sidebar-theme($theme);
+    @include mailbox-settings-theme($theme);
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);

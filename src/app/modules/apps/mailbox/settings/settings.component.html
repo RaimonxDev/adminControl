@@ -1,0 +1,44 @@
+<h1>Manage Labels</h1>
+
+<form [formGroup]="labelsForm">
+
+    <div class="labels"
+         [formArrayName]="'labels'">
+
+        <div class="label"
+             *ngFor="let label of labels; let i = index; trackBy:trackBy">
+            <div [formGroupName]="i">
+                <mat-icon class="icon"
+                          [ngClass]="label.color + '-fg'">
+                    label
+                </mat-icon>
+                <input class="title"
+                       [formControlName]="'title'">
+                <button mat-icon-button
+                        (click)="deleteLabel(label.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="add-label"
+         [formGroupName]="'newLabel'">
+        <mat-icon class="icon">label</mat-icon>
+        <input class="title"
+               [formControlName]="'title'">
+        <button mat-icon-button
+                [disabled]="!labelsForm.get('newLabel').valid || !labelsForm.get('newLabel').dirty"
+                (click)="addLabel()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <button mat-raised-button
+            [disabled]="!labelsForm.get('labels').valid || !labelsForm.get('labels').dirty"
+            (click)="updateLabels()">
+        Save
+    </button>
+
+</form>
