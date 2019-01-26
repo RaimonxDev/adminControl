@@ -59,11 +59,11 @@ export class AsmSearchComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer
+     * @param {Renderer2} _renderer2
      */
     constructor(
         private _elementRef: ElementRef,
-        private _renderer: Renderer2
+        private _renderer2: Renderer2
     )
     {
         // Set the private defaults
@@ -105,14 +105,14 @@ export class AsmSearchComponent implements OnInit, OnDestroy
 
         // Remove the previous appearance class
         appearanceClassName = 'asm-search-appearance-' + this.appearance;
-        this._renderer.removeClass(this._elementRef.nativeElement, appearanceClassName);
+        this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
 
         // Store the appearance
         this._appearance = value;
 
         // Add the new appearance class
         appearanceClassName = 'asm-search-appearance-' + this.appearance;
-        this._renderer.addClass(this._elementRef.nativeElement, appearanceClassName);
+        this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
     }
 
     get appearance(): 'basic' | 'bar' | 'fullscreen'
@@ -140,12 +140,12 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         if ( value )
         {
             // Add opened class
-            this._renderer.addClass(this._elementRef.nativeElement, 'asm-search-opened');
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-search-opened');
         }
         else
         {
             // Remove opened class
-            this._renderer.removeClass(this._elementRef.nativeElement, 'asm-search-opened');
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-search-opened');
         }
     }
 

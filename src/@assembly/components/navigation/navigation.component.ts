@@ -61,7 +61,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
      * @param {AsmNavigationService} _asmNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer
+     * @param {Renderer2} _renderer2
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
@@ -69,7 +69,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         private _asmNavigationService: AsmNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
-        private _renderer: Renderer2
+        private _renderer2: Renderer2
     )
     {
         // Set the private defaults
@@ -110,14 +110,14 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
 
         // Remove the previous appearance class
         appearanceClassName = 'asm-navigation-appearance-' + this.appearance;
-        this._renderer.removeClass(this._elementRef.nativeElement, appearanceClassName);
+        this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
 
         // Store the appearance
         this._appearance = value;
 
         // Add the new appearance class
         appearanceClassName = 'asm-navigation-appearance-' + this.appearance;
-        this._renderer.addClass(this._elementRef.nativeElement, appearanceClassName);
+        this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
 
         // Execute the observable
         this._asmNavigationService.onAppearanceChanged.next(this.appearance);
@@ -195,14 +195,14 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
 
         // Remove the previous mode class
         modeClassName = 'asm-navigation-mode-' + this.mode;
-        this._renderer.removeClass(this._elementRef.nativeElement, modeClassName);
+        this._renderer2.removeClass(this._elementRef.nativeElement, modeClassName);
 
         // Store the mode
         this._mode = value;
 
         // Add the new mode class
         modeClassName = 'asm-navigation-mode-' + this.mode;
-        this._renderer.addClass(this._elementRef.nativeElement, modeClassName);
+        this._renderer2.addClass(this._elementRef.nativeElement, modeClassName);
 
         // Execute the observable
         this._asmNavigationService.onModeChanged.next(this.mode);
@@ -255,14 +255,14 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         if ( this.opened )
         {
             // Update styles and classes
-            this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'visible');
-            this._renderer.addClass(this._elementRef.nativeElement, 'asm-navigation-opened');
+            this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'visible');
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-navigation-opened');
         }
         else
         {
             // Update styles and classes
-            this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
-            this._renderer.removeClass(this._elementRef.nativeElement, 'asm-navigation-opened');
+            this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-navigation-opened');
         }
 
         // Execute the observable
@@ -292,14 +292,14 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
 
         // Remove the previous position class
         positionClassName = 'asm-navigation-position-' + this.position;
-        this._renderer.removeClass(this._elementRef.nativeElement, positionClassName);
+        this._renderer2.removeClass(this._elementRef.nativeElement, positionClassName);
 
         // Store the position
         this._position = value;
 
         // Add the new position class
         positionClassName = 'asm-navigation-position-' + this.position;
-        this._renderer.addClass(this._elementRef.nativeElement, positionClassName);
+        this._renderer2.addClass(this._elementRef.nativeElement, positionClassName);
 
         // Execute the observable
         this._asmNavigationService.onPositionChanged.next(this.position);
@@ -435,7 +435,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         }
 
         // Create the overlay element
-        this._overlay = this._renderer.createElement('div');
+        this._overlay = this._renderer2.createElement('div');
 
         // Add a class to the overlay element
         this._overlay.classList.add('asm-navigation-overlay');
@@ -447,7 +447,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         }
 
         // Append the overlay to the parent of the navigation
-        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
+        this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
 
         // Create the enter animation and attach it to the player
         this._player =
@@ -514,13 +514,13 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         }
 
         // Create the aside overlay element
-        this._asideOverlay = this._renderer.createElement('div');
+        this._asideOverlay = this._renderer2.createElement('div');
 
         // Add a class to the aside overlay element
         this._asideOverlay.classList.add('asm-navigation-aside-overlay');
 
         // Append the aside overlay to the parent of the navigation
-        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._asideOverlay);
+        this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._asideOverlay);
 
         // Create the enter animation and attach it to the player
         this._player =
@@ -585,7 +585,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         this._enableAnimations();
 
         // Add a class
-        this._renderer.addClass(this._elementRef.nativeElement, 'asm-navigation-hover');
+        this._renderer2.addClass(this._elementRef.nativeElement, 'asm-navigation-hover');
     }
 
     /**
@@ -600,7 +600,7 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
         this._enableAnimations();
 
         // Remove the class
-        this._renderer.removeClass(this._elementRef.nativeElement, 'asm-navigation-hover');
+        this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-navigation-hover');
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -22,14 +22,14 @@ export class AsmHighlightComponent implements OnInit
     /**
      * Constructor
      *
-     * @param _asmHighlightService
-     * @param _elementRef
-     * @param _renderer
+     * @param {AsmHighlightService} _asmHighlightService
+     * @param {ElementRef} _elementRef
+     * @param {Renderer2} _renderer2
      */
     constructor(
         private _asmHighlightService: AsmHighlightService,
         private _elementRef: ElementRef,
-        private _renderer: Renderer2
+        private _renderer2: Renderer2
     )
     {
         // Set the private defaults
@@ -137,12 +137,12 @@ export class AsmHighlightComponent implements OnInit
         const highlightedCode = this._asmHighlightService.highlight(this.code, this.lang);
 
         // Fill the container with pre and code blocks and put the highlighted code into
-        this._renderer.setProperty(this.codeElementRef.nativeElement, 'innerHTML', highlightedCode);
+        this._renderer2.setProperty(this.codeElementRef.nativeElement, 'innerHTML', highlightedCode);
 
         // Remove the textarea element if it exists
         if ( this._elementRef.nativeElement.children[0].nodeName.toLowerCase() === 'textarea' )
         {
-            this._renderer.removeChild(this._elementRef.nativeElement, this._elementRef.nativeElement.children[0]);
+            this._renderer2.removeChild(this._elementRef.nativeElement, this._elementRef.nativeElement.children[0]);
         }
     }
 }

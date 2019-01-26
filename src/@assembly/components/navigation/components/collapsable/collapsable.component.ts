@@ -1,6 +1,4 @@
-import {
-    ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -39,15 +37,11 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
      *
      * @param {AsmNavigationService} _asmNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer
      * @param {Router} _router
      */
     constructor(
         private _asmNavigationService: AsmNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
-        private _elementRef: ElementRef,
-        private _renderer: Renderer2,
         private _router: Router
     )
     {

@@ -37,13 +37,13 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
      * @param {AnimationBuilder} _animationBuilder
      * @param {AsmDrawerService} _asmDrawerService
      * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer
+     * @param {Renderer2} _renderer2
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
         private _asmDrawerService: AsmDrawerService,
         private _elementRef: ElementRef,
-        private _renderer: Renderer2
+        private _renderer2: Renderer2
     )
     {
         // Set the private defaults
@@ -89,14 +89,14 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
 
         // Remove the previous mode class
         modeClassName = 'asm-drawer-mode-' + this.mode;
-        this._renderer.removeClass(this._elementRef.nativeElement, modeClassName);
+        this._renderer2.removeClass(this._elementRef.nativeElement, modeClassName);
 
         // Store the mode
         this._mode = value;
 
         // Add the new mode class
         modeClassName = 'asm-drawer-mode-' + this.mode;
-        this._renderer.addClass(this._elementRef.nativeElement, modeClassName);
+        this._renderer2.addClass(this._elementRef.nativeElement, modeClassName);
 
         // Execute the observable
         this._onModeChanged.next(this.mode);
@@ -148,13 +148,13 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         // Update opened classes
         if ( this.opened )
         {
-            this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'visible');
-            this._renderer.addClass(this._elementRef.nativeElement, 'asm-drawer-opened');
+            this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'visible');
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-drawer-opened');
         }
         else
         {
-            this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
-            this._renderer.removeClass(this._elementRef.nativeElement, 'asm-drawer-opened');
+            this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-drawer-opened');
         }
 
         // Execute the observable
@@ -184,14 +184,14 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
 
         // Remove the previous position class
         positionClassName = 'asm-drawer-position-' + this.position;
-        this._renderer.removeClass(this._elementRef.nativeElement, positionClassName);
+        this._renderer2.removeClass(this._elementRef.nativeElement, positionClassName);
 
         // Store the position
         this._position = value;
 
         // Add the new position class
         positionClassName = 'asm-drawer-position-' + this.position;
-        this._renderer.addClass(this._elementRef.nativeElement, positionClassName);
+        this._renderer2.addClass(this._elementRef.nativeElement, positionClassName);
 
         // Execute the observable
         this._onPositionChanged.next(this.position);
@@ -310,7 +310,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     private _showOverlay(): void
     {
         // Create the backdrop element
-        this._overlay = this._renderer.createElement('div');
+        this._overlay = this._renderer2.createElement('div');
 
         // Add a class to the backdrop element
         this._overlay.classList.add('asm-drawer-overlay');
@@ -322,7 +322,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         }
 
         // Append the backdrop to the parent of the drawer
-        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
+        this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
 
         // Create the enter animation and attach it to the player
         this._player =
@@ -387,7 +387,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this._enableAnimations();
 
         // Add a class
-        this._renderer.addClass(this._elementRef.nativeElement, 'asm-drawer-hover');
+        this._renderer2.addClass(this._elementRef.nativeElement, 'asm-drawer-hover');
     }
 
     /**
@@ -402,7 +402,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this._enableAnimations();
 
         // Remove the class
-        this._renderer.removeClass(this._elementRef.nativeElement, 'asm-drawer-hover');
+        this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-drawer-hover');
     }
 
     // -----------------------------------------------------------------------------------------------------
