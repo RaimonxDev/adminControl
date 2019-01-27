@@ -51,7 +51,7 @@ export class MockSearchResultsApi
             .reply((request) => {
 
                 // Get the search query
-                const query = request.body.query.toLowerCase();
+                const query = _.cloneDeep(request.body.query.toLowerCase());
 
                 // If the search query is an empty string,
                 // return an empty array

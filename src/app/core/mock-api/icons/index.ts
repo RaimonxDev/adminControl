@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
@@ -48,7 +49,7 @@ export class MockIconsApi
                     200,
                     {
                         fontSet: 'dripicons',
-                        list   : this._dripicons
+                        list   : _.cloneDeep(this._dripicons)
                     }
                 ];
             });
@@ -63,7 +64,7 @@ export class MockIconsApi
                     200,
                     {
                         fontSet: 'material-icons',
-                        list   : this._materialOutline
+                        list   : _.cloneDeep(this._materialOutline)
                     }
                 ];
             });
@@ -78,7 +79,7 @@ export class MockIconsApi
                     200,
                     {
                         fontSet: 'iconsmind',
-                        list   : this._iconsmind
+                        list   : _.cloneDeep(this._iconsmind)
                     }
                 ];
             });

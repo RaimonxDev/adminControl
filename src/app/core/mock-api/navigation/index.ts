@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 import { AsmMockApiService, AsmNavigationItem } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
@@ -45,7 +46,7 @@ export class MockNavigationApi
                 return [
                     200,
                     {
-                        navigation: this._defaultNavigation
+                        navigation: _.cloneDeep(this._defaultNavigation)
                     }
                 ];
             });
@@ -59,7 +60,7 @@ export class MockNavigationApi
                 return [
                     200,
                     {
-                        navigation: this._compactNavigation
+                        navigation: _.cloneDeep(this._compactNavigation)
                     }
                 ];
             });
