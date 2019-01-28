@@ -11,96 +11,94 @@
 
     // Shortcuts panel
     .asm-shortcuts-panel {
+        background: map-get($background, card);
 
-        .mat-menu-content {
+        .asm-shortcuts-panel-header {
+            background: linear-gradient(0deg, map-get($primary, 400) 0%, map-get($primary, 700) 100%);
+            color: map-get($primary, default-contrast);
 
-            .asm-shortcuts-panel-header {
-                background: linear-gradient(0deg, map-get($primary, 400) 0%, map-get($primary, 700) 100%);
-                color: map-get($primary, default-contrast);
+            .asm-shortcuts-panel-header-left {
 
-                .asm-shortcuts-panel-header-left {
+                .asm-shortcuts-panel-subtitle {
+                    color: rgba(map-get($primary, default-contrast), 0.7);
+                }
+            }
 
-                    .asm-shortcuts-panel-subtitle {
-                        color: rgba(map-get($primary, default-contrast), 0.7);
+            .asm-shortcuts-panel-header-right {
+
+                .mat-icon {
+                    // If the default contrast of the primary color is white...
+                    @if (rgba(map-get($primary, default-contrast), 1) == rgba(255,255,255,1)) {
+                        color: rgba(255, 255, 255, 0.7);
+                    } @else {
+                        color: rgba(0, 0, 0, 0.54);
+                    }
+                }
+            }
+        }
+
+        .asm-shortcuts-panel-content {
+
+            .asm-shortcuts-shortcut {
+                border-color: transparentize(map-get($foreground, divider), 0.06);
+
+                &:hover {
+                    background: map-get($background, hover);
+                }
+
+                &.asm-shortcuts-add-button {
+
+                    .asm-shortcuts-shortcut-icon {
+                        background: transparent;
+                        border-color: map-get($primary, default);
+                    }
+
+                    .asm-shortcuts-shortcut-label {
+                        color: map-get($foreground, hint-text);
                     }
                 }
 
-                .asm-shortcuts-panel-header-right {
+                .asm-shortcuts-shortcut-overlay {
+                    @if ($is-dark) {
+                        background: rgba(0, 0, 0, 0.85);
+                    } @else {
+                        background: rgba(255, 255, 255, 0.95);
+                    }
+
+                    .asm-shortcuts-shortcut-edit-button,
+                    .asm-shortcuts-shortcut-remove-button {
+                        background: white;
+                        border-color: map-get($foreground, divider);
+                    }
+
+                    .asm-shortcuts-shortcut-edit-button {
+                        color: rgba(0, 0, 0, 0.54)
+                    }
+
+                    .asm-shortcuts-shortcut-remove-button {
+                        color: red;
+                    }
+                }
+
+                a {
+                    color: map-get($foreground, text);
+                }
+
+                .asm-shortcuts-shortcut-label {
+                    color: map-get($foreground, secondary-text);
+                }
+
+                .asm-shortcuts-shortcut-icon {
+                    background: map-get($primary, 50);
 
                     .mat-icon {
-                        // If the default contrast of the primary color is white...
-                        @if (rgba(map-get($primary, default-contrast), 1) == rgba(255,255,255,1)) {
-                            color: rgba(255, 255, 255, 0.7);
-                        } @else {
-                            color: rgba(0, 0, 0, 0.54);
-                        }
+                        color: map-get($primary, default);
                     }
                 }
             }
 
-            .asm-shortcuts-panel-content {
-
-                .asm-shortcuts-shortcut {
-                    border-color: transparentize(map-get($foreground, divider), 0.06);
-
-                    &:hover {
-                        background: map-get($background, hover);
-                    }
-
-                    &.asm-shortcuts-add-button {
-
-                        .asm-shortcuts-shortcut-icon {
-                            background: transparent;
-                            border-color: map-get($primary, default);
-                        }
-
-                        .asm-shortcuts-shortcut-label {
-                            color: map-get($foreground, hint-text);
-                        }
-                    }
-
-                    .asm-shortcuts-shortcut-overlay {
-                        @if ($is-dark) {
-                            background: rgba(0, 0, 0, 0.85);
-                        } @else {
-                            background: rgba(255, 255, 255, 0.95);
-                        }
-
-                        .asm-shortcuts-shortcut-edit-button,
-                        .asm-shortcuts-shortcut-remove-button {
-                            background: white;
-                            border-color: map-get($foreground, divider);
-                        }
-
-                        .asm-shortcuts-shortcut-edit-button {
-                            color: rgba(0, 0, 0, 0.54)
-                        }
-
-                        .asm-shortcuts-shortcut-remove-button {
-                            color: red;
-                        }
-                    }
-
-                    a {
-                        color: map-get($foreground, text);
-                    }
-
-                    .asm-shortcuts-shortcut-label {
-                        color: map-get($foreground, secondary-text);
-                    }
-
-                    .asm-shortcuts-shortcut-icon {
-                        background: map-get($primary, 50);
-
-                        .mat-icon {
-                            color: map-get($primary, default);
-                        }
-                    }
-                }
-
-                .asm-shortcuts-form {
-                    background: map-get($background, card);
-                }
+            .asm-shortcuts-form {
+                background: map-get($background, card);
             }
         }
     }
