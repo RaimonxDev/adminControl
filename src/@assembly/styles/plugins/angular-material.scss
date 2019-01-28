@@ -6,8 +6,8 @@
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    // Do not override the color if the icon is
-    // in a button and has a color property
+    // Do not override the color of the icon if
+    // is in a button and has a color property
     .mat-button,
     .mat-fab,
     .mat-flat-button,
@@ -21,7 +21,7 @@
         &.mat-warn {
 
             .mat-icon {
-                color: currentColor;
+                color: currentColor !important;
             }
         }
     }
