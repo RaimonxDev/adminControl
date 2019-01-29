@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { AsmMockApiService } from '@assembly';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
-import { dripicons, iconsmind, materialOutline } from 'app/core/mock-api/icons/data';
+import { dripicons, iconsmind, material } from 'app/core/mock-api/icons/data';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +12,7 @@ export class MockIconsApi
 {
     // Private Readonly
     private readonly _dripicons: any;
-    private readonly _materialOutline: any;
+    private readonly _material: any;
     private readonly _iconsmind: any;
 
     /**
@@ -26,7 +26,7 @@ export class MockIconsApi
     {
         // Set the data
         this._dripicons = dripicons;
-        this._materialOutline = materialOutline;
+        this._material = material;
         this._iconsmind = iconsmind;
     }
 
@@ -55,6 +55,21 @@ export class MockIconsApi
             });
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Material baseline icons - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/ui/icons/material-baseline')
+            .reply(() => {
+                return [
+                    200,
+                    {
+                        fontSet: 'material-baseline-icons',
+                        list   : _.cloneDeep(this._material)
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Material outline icons - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -63,8 +78,8 @@ export class MockIconsApi
                 return [
                     200,
                     {
-                        fontSet: 'material-icons',
-                        list   : _.cloneDeep(this._materialOutline)
+                        fontSet: 'material-outline-icons',
+                        list   : _.cloneDeep(this._material)
                     }
                 ];
             });

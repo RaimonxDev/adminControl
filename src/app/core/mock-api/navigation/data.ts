@@ -638,6 +638,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon : 'photo',
         children: [
             {
+                id   : 'material-baseline',
+                title: 'Material Baseline',
+                type : 'link',
+                link : '/ui/icons/material-baseline'
+            },
+            {
                 id   : 'material-outline',
                 title: 'Material Outline',
                 type : 'link',

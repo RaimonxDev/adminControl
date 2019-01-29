@@ -1,4 +1,4 @@
-export const materialOutline = [
+export const material = [
     {
         'name'    : '3d_rotation',
         'ligature': '3d_rotation'
@@ -3350,10 +3350,6 @@ export const materialOutline = [
     {
         'name'    : 'sort',
         'ligature': 'sort'
-    },
-    {
-        'name'    : 'spa',
-        'ligature': 'spa'
     },
     {
         'name'    : 'space_bar',
