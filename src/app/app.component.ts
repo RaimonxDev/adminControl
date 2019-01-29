@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmNavigationService } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
     selector   : 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy
         private _asmNavigationService: AsmNavigationService,
         private _asmConfigService: AsmConfigService,
         private _authService: AuthService,
+        private _matIconRegistry: MatIconRegistry,
         private _platform: Platform
     )
     {
@@ -85,6 +87,9 @@ export class AppComponent implements OnInit, OnDestroy
         {
             this.document.body.classList.add('is-mobile');
         }
+
+        // Change the default mat-icon font class
+        this._matIconRegistry.setDefaultFontSetClass('material-outline-icons');
     }
 
     /**

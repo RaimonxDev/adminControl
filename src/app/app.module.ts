@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material';
 
 // App component & app modules
 import { AppComponent } from 'app/app.component';
@@ -23,6 +24,9 @@ import { UIModule } from 'app/modules/ui/ui.module';
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot([]),
+
+        // Material
+        MatIconModule,
 
         // App core modules
         AuthModule,
