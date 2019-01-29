@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatIconModule, MatMenuModule } from '@angular/material';
+import {
+    MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule
+} from '@angular/material';
 import { AsmLookUpByPipeModule, AsmScrollbarModule } from '@assembly';
 import { SharedModule } from 'app/core/shared.module';
 import { ContentLayoutWithSidebarModule } from 'app/core/content-layouts/with-sidebar/with-sidebar.module';
@@ -27,8 +29,11 @@ import { MailboxSidebarComponent } from 'app/modules/apps/mailbox/sidebar/sideba
         MatButtonModule,
         MatCheckboxModule,
         MatDialogModule,
+        MatFormFieldModule,
         MatIconModule,
+        MatInputModule,
         MatMenuModule,
+        MatSelectModule,
         AsmLookUpByPipeModule,
         AsmScrollbarModule,
         SharedModule,

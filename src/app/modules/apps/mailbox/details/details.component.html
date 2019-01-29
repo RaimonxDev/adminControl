@@ -87,12 +87,14 @@
                         [matMenuTriggerFor]="toggleLabelMenu">
                     <mat-icon class="icon-size-20">label</mat-icon>
                 </button>
-                <mat-menu #toggleLabelMenu="matMenu">
+                <mat-menu class="mailbox-details-toggle-label-menu-panel"
+                          #toggleLabelMenu="matMenu">
                     <div mat-menu-item
                          *ngFor="let label of labels">
                         <mat-checkbox (change)="toggleLabel(label)"
                                       [color]="'primary'"
-                                      [checked]="mail.labels.includes(label.id)">
+                                      [checked]="mail.labels.includes(label.id)"
+                                      [disableRipple]="true">
                             {{label.title}}
                         </mat-checkbox>
                     </div>

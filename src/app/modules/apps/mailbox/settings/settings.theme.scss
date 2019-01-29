@@ -6,4 +6,7 @@
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
 
+    mailbox-settings {
+        background: map-get($background, card);
+    }
 }

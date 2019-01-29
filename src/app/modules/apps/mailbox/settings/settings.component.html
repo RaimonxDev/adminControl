@@ -1,44 +1,102 @@
-<h1>Manage Labels</h1>
+<div class="title-2 mb-4 ml-8">Manage Labels</div>
+<div class="h4 secondary-text mb-32 ml-8">Add, update and remove labels</div>
 
 <form [formGroup]="labelsForm">
+
+    <div class="add-label"
+         [formGroupName]="'newLabel'">
+
+        <div class="label">
+
+            <mat-select class="label-color-selector"
+                        [formControlName]="'color'"
+                        [panelClass]="'mailbox-label-color-select-panel'"
+                        [disableOptionCentering]="true">
+                <mat-select-trigger>
+                    <mat-icon class="icon-size-20"
+                              [ngClass]="labelsForm.get('newLabel.color').value + '-fg'"
+                              [fontSet]="'material-baseline-icons'">
+                        label
+                    </mat-icon>
+                </mat-select-trigger>
+                <div class="color-box-title">Label color</div>
+                <div class="color-box-container">
+                    <mat-option *ngFor="let color of labelColors"
+                                [value]="color"
+                                #matOption="matOption">
+                        <mat-icon class="icon-size-20"
+                                  [ngClass]="color"
+                                  *ngIf="matOption.selected">
+                            check
+                        </mat-icon>
+                        <span class="color-box"
+                              [ngClass]="color"></span>
+                    </mat-option>
+                </div>
+            </mat-select>
+
+            <mat-form-field appearance="standard">
+                <mat-label>New Label</mat-label>
+                <input matInput
+                       [formControlName]="'title'">
+                <button mat-icon-button
+                        matSuffix
+                        [disabled]="!labelsForm.get('newLabel').valid || !labelsForm.get('newLabel').dirty"
+                        (click)="addLabel()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-form-field>
+
+        </div>
+
+    </div>
 
     <div class="labels"
          [formArrayName]="'labels'">
 
         <div class="label"
-             *ngFor="let label of labels; let i = index; trackBy:trackBy">
-            <div [formGroupName]="i">
-                <mat-icon class="icon"
-                          [ngClass]="label.color + '-fg'">
-                    label
-                </mat-icon>
-                <input class="title"
-                       [formControlName]="'title'">
+             *ngFor="let label of labelsForm.get('labels').controls">
+
+            <mat-select class="label-color-selector"
+                        [formControl]="label.get('color')"
+                        [panelClass]="'mailbox-label-color-select-panel'"
+                        [disableOptionCentering]="true">
+                <mat-select-trigger>
+                    <mat-icon class="icon-size-20"
+                              [ngClass]="label.get('color').value + '-fg'"
+                              [fontSet]="'material-baseline-icons'">
+                        label
+                    </mat-icon>
+                </mat-select-trigger>
+                <div class="color-box-title">Label color</div>
+                <div class="color-box-container">
+                    <mat-option *ngFor="let color of labelColors"
+                                [value]="color"
+                                #matOption="matOption">
+                        <mat-icon class="icon-size-20"
+                                  [ngClass]="color"
+                                  *ngIf="matOption.selected">
+                            check
+                        </mat-icon>
+                        <span class="color-box"
+                              [ngClass]="color"></span>
+                    </mat-option>
+                </div>
+            </mat-select>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Label</mat-label>
+                <input matInput
+                       [formControl]="label.get('title')">
                 <button mat-icon-button
-                        (click)="deleteLabel(label.id)">
+                        matSuffix
+                        (click)="deleteLabel(label.get('id').value)">
                     <mat-icon>delete</mat-icon>
                 </button>
-            </div>
+            </mat-form-field>
+
         </div>
 
     </div>
-
-    <div class="add-label"
-         [formGroupName]="'newLabel'">
-        <mat-icon class="icon">label</mat-icon>
-        <input class="title"
-               [formControlName]="'title'">
-        <button mat-icon-button
-                [disabled]="!labelsForm.get('newLabel').valid || !labelsForm.get('newLabel').dirty"
-                (click)="addLabel()">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
-
-    <button mat-raised-button
-            [disabled]="!labelsForm.get('labels').valid || !labelsForm.get('labels').dirty"
-            (click)="updateLabels()">
-        Save
-    </button>
 
 </form>

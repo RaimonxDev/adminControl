@@ -154,3 +154,17 @@ mailbox-details {
         }
     }
 }
+
+.mailbox-details-toggle-label-menu-panel {
+
+    .mat-checkbox {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .mat-checkbox-layout {
+            align-items: center;
+            height: 100%;
+        }
+    }
+}

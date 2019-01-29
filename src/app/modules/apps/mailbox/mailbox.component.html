@@ -9,10 +9,7 @@
          sidebarContent>
 
         <!-- Mailbox sidebar -->
-        <mailbox-sidebar [folders]="(this.folders$ | async)"
-                         [filters]="(this.filters$ | async)"
-                         [labels]="(this.labels$ | async)"
-                         asmScrollbar
+        <mailbox-sidebar asmScrollbar
                          [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-sidebar>
 
     </div>
