@@ -1,24 +1,33 @@
-<content-layout type="with-sidebar"
-                [sidebarPersistentAt]="'gt-md'"
-                [sidebarPosition]="'left'"
-                [innerScroll]="true">
+<div class="content-layout with-drawer with-inner-scroll">
 
-    <!-- Sidebar -->
-    <div class="sidebar-content"
-         sidebarContent>
+    <mat-drawer-container class="content-layout with-drawer with-inner-scroll">
 
-        <!-- Mailbox sidebar -->
-        <mailbox-sidebar asmScrollbar
-                         [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-sidebar>
+        <mat-drawer [mode]="isDrawerPersistent ? 'side' : 'over'"
+                    [opened]="isDrawerPersistent"
+                    #drawer>
 
-    </div>
+            <!-- Drawer -->
+            <div class="drawer-content">
 
-    <!-- Main -->
-    <div class="main-content"
-         mainContent>
+                <!-- Mailbox sidebar -->
+                <mailbox-sidebar asmScrollbar
+                                 [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-sidebar>
 
-        <router-outlet></router-outlet>
+            </div>
 
-    </div>
+        </mat-drawer>
 
-</content-layout>
+        <mat-drawer-content>
+
+            <!-- Main -->
+            <div class="main-content">
+
+                <router-outlet></router-outlet>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

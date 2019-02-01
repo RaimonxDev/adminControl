@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-    MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule
+    MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule,
+    MatSidenavModule
 } from '@angular/material';
 import { AsmLookUpByPipeModule, AsmScrollbarModule } from '@assembly';
 import { SharedModule } from 'app/core/shared.module';
-import { ContentLayoutWithSidebarModule } from 'app/core/layouts/content/with-sidebar/with-sidebar.module';
 
 import { mailboxRoutes } from 'app/modules/apps/mailbox/mailbox.routing';
 import { MailboxComponent } from 'app/modules/apps/mailbox/mailbox.component';
@@ -34,10 +34,10 @@ import { MailboxSidebarComponent } from 'app/modules/apps/mailbox/sidebar/sideba
         MatInputModule,
         MatMenuModule,
         MatSelectModule,
+        MatSidenavModule,
         AsmLookUpByPipeModule,
         AsmScrollbarModule,
-        SharedModule,
-        ContentLayoutWithSidebarModule
+        SharedModule
     ]
 })
 export class MailboxModule

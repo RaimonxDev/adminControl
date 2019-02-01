@@ -1,0 +1,56 @@
+.content-layout {
+    display: flex;
+    flex: 1 1 auto;
+
+    // Inner scroll
+    &.with-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    // Drawer
+    &.with-drawer {
+
+        // Mat drawer container
+        > .mat-drawer-container {
+            display: flex;
+            flex: 1 1 auto;
+
+            // Mat drawer
+            > .mat-drawer {
+                display: flex;
+                flex: 1 0 auto;
+                min-width: 280px;
+                max-width: 280px;
+
+                // Mat drawer inner container
+                .mat-drawer-inner-container {
+                    display: flex;
+
+                    // Drawer content
+                    .drawer-content {
+                        display: flex;
+                        flex: 1 1 auto;
+                        width: 100%;
+                    }
+                }
+            }
+
+            // Mat drawer content
+            > .mat-drawer-content {
+                display: flex;
+                flex: 1 1 auto;
+
+                // Main content
+                .main-content {
+                    display: flex;
+                    flex: 1 1 auto;
+                }
+            }
+        }
+    }
+}

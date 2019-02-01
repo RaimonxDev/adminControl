@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
-import { ContentLayoutWithSidebarComponent } from 'app/core/layouts/content/with-sidebar/with-sidebar.component';
+import { MailboxComponent } from 'app/modules/apps/mailbox/mailbox.component';
 
 @Component({
     selector     : 'mailbox-list',
@@ -22,11 +22,11 @@ export class MailboxListComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {ContentLayoutWithSidebarComponent} contentLayoutWithSidebar
+     * @param {MailboxComponent} mailboxComponent
      * @param {MailboxService} _mailboxService
      */
     constructor(
-        public contentLayoutWithSidebar: ContentLayoutWithSidebarComponent,
+        public mailboxComponent: MailboxComponent,
         private _mailboxService: MailboxService
     )
     {
