@@ -1,7 +1,8 @@
-import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
+import { ContentLayoutWithSidebarComponent } from 'app/core/layouts/content/with-sidebar/with-sidebar.component';
 
 @Component({
     selector     : 'mailbox-list',
@@ -11,9 +12,6 @@ import { MailboxService } from 'app/modules/apps/mailbox/mailbox.service';
 })
 export class MailboxListComponent implements OnInit, OnDestroy
 {
-    @Input()
-    content: any;
-
     mails: any[];
     pagination: any;
     selectedMail: any;
@@ -24,9 +22,11 @@ export class MailboxListComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {ContentLayoutWithSidebarComponent} contentLayoutWithSidebar
      * @param {MailboxService} _mailboxService
      */
     constructor(
+        public contentLayoutWithSidebar: ContentLayoutWithSidebarComponent,
         private _mailboxService: MailboxService
     )
     {
