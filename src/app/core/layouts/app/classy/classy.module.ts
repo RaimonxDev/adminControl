@@ -1,29 +1,33 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule } from '@angular/material';
-import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly';
+import { AsmDrawerModule, AsmNavigationModule, AsmSearchModule, AsmShortcutsModule, AsmThemeConfiguratorModule } from '@assembly';
 
 import { SharedModule } from 'app/core/shared.module';
-import { BasicLayoutComponent } from 'app/core/layouts/basic/basic.component';
+import { ClassyLayoutComponent } from 'app/core/layouts/app/classy/classy.component';
 
 @NgModule({
     declarations: [
-        BasicLayoutComponent
+        ClassyLayoutComponent
     ],
     imports     : [
+        HttpClientModule,
         RouterModule,
         MatButtonModule,
         MatIconModule,
         AsmDrawerModule,
         AsmNavigationModule,
+        AsmSearchModule,
+        AsmShortcutsModule,
         AsmThemeConfiguratorModule,
 
         SharedModule
     ],
     exports     : [
-        BasicLayoutComponent
+        ClassyLayoutComponent
     ]
 })
-export class BasicLayoutModule
+export class ClassyLayoutModule
 {
 }

@@ -4,11 +4,11 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly';
 
 import { SharedModule } from 'app/core/shared.module';
-import { ModernLayoutComponent } from 'app/core/layouts/modern/modern.component';
+import { CompactLayoutComponent } from 'app/core/layouts/app/compact/compact.component';
 
 @NgModule({
     declarations: [
-        ModernLayoutComponent
+        CompactLayoutComponent
     ],
     imports     : [
         RouterModule,
@@ -21,9 +21,9 @@ import { ModernLayoutComponent } from 'app/core/layouts/modern/modern.component'
         SharedModule
     ],
     exports     : [
-        ModernLayoutComponent
+        CompactLayoutComponent
     ]
 })
-export class ModernLayoutModule
+export class CompactLayoutModule
 {
 }

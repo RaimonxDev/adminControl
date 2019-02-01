@@ -6,7 +6,7 @@ import {
 } from '@angular/material';
 import { AsmLookUpByPipeModule, AsmScrollbarModule } from '@assembly';
 import { SharedModule } from 'app/core/shared.module';
-import { ContentLayoutWithSidebarModule } from 'app/core/content-layouts/with-sidebar/with-sidebar.module';
+import { ContentLayoutWithSidebarModule } from 'app/core/layouts/content/with-sidebar/with-sidebar.module';
 
 import { mailboxRoutes } from 'app/modules/apps/mailbox/mailbox.routing';
 import { MailboxComponent } from 'app/modules/apps/mailbox/mailbox.component';

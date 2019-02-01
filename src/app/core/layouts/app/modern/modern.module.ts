@@ -4,11 +4,11 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly';
 
 import { SharedModule } from 'app/core/shared.module';
-import { ThinLightLayoutComponent } from 'app/core/layouts/thin-light/thin-light.component';
+import { ModernLayoutComponent } from 'app/core/layouts/app/modern/modern.component';
 
 @NgModule({
     declarations: [
-        ThinLightLayoutComponent
+        ModernLayoutComponent
     ],
     imports     : [
         RouterModule,
@@ -21,9 +21,9 @@ import { ThinLightLayoutComponent } from 'app/core/layouts/thin-light/thin-light
         SharedModule
     ],
     exports     : [
-        ThinLightLayoutComponent
+        ModernLayoutComponent
     ]
 })
-export class ThinLightLayoutModule
+export class ModernLayoutModule
 {
 }

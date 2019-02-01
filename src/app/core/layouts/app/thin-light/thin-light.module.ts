@@ -1,33 +1,29 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule } from '@angular/material';
-import { AsmDrawerModule, AsmNavigationModule, AsmSearchModule, AsmShortcutsModule, AsmThemeConfiguratorModule } from '@assembly';
+import { AsmDrawerModule, AsmNavigationModule, AsmThemeConfiguratorModule } from '@assembly';
 
 import { SharedModule } from 'app/core/shared.module';
-import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component';
+import { ThinLightLayoutComponent } from 'app/core/layouts/app/thin-light/thin-light.component';
 
 @NgModule({
     declarations: [
-        ClassyLayoutComponent
+        ThinLightLayoutComponent
     ],
     imports     : [
-        HttpClientModule,
         RouterModule,
         MatButtonModule,
         MatIconModule,
         AsmDrawerModule,
         AsmNavigationModule,
-        AsmSearchModule,
-        AsmShortcutsModule,
         AsmThemeConfiguratorModule,
 
         SharedModule
     ],
     exports     : [
-        ClassyLayoutComponent
+        ThinLightLayoutComponent
     ]
 })
-export class ClassyLayoutModule
+export class ThinLightLayoutModule
 {
 }

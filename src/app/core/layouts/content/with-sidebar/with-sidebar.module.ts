@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
 
-import { ContentLayoutWithSidebarComponent } from 'app/core/content-layouts/with-sidebar/with-sidebar.component';
+import { ContentLayoutWithSidebarComponent } from 'app/core/layouts/content/with-sidebar/with-sidebar.component';
 
 @NgModule({
     declarations: [
