@@ -43,6 +43,7 @@ export class ContentLayoutWithSidebarComponent implements OnInit, OnDestroy
 
         // Set the defaults
         this.innerScroll = false;
+        this.sidebarPersistentAt = 'never';
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -95,6 +96,9 @@ export class ContentLayoutWithSidebarComponent implements OnInit, OnDestroy
 
         // Store the value
         this._sidebarPersistentAt = value;
+
+        // Calculate if the sidebar should be persistent
+        this._shouldSidebarPersist();
     }
 
     get sidebarPersistentAt(): string
@@ -139,15 +143,8 @@ export class ContentLayoutWithSidebarComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
 
-                // Check if the breakpoint equals to the sidebarPersistentAt input
-                if ( !this.sidebarPersistentAt )
-                {
-                    this.isSidebarPersistent = false;
-                }
-                else
-                {
-                    this.isSidebarPersistent = this._asmMediaWatcherService.isActive(this.sidebarPersistentAt);
-                }
+                // Check if sidebar should be persistent
+                this._shouldSidebarPersist();
             });
     }
 
@@ -161,4 +158,31 @@ export class ContentLayoutWithSidebarComponent implements OnInit, OnDestroy
         this._unsubscribeAll.complete();
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Figure out if the sidebar should be persistent
+     *
+     * @private
+     */
+    private _shouldSidebarPersist(): void
+    {
+        // If the value is 'never', never show the sidebar
+        if ( this.sidebarPersistentAt === 'never' )
+        {
+            this.isSidebarPersistent = false;
+        }
+        // If the value is 'always', always show the sidebar
+        else if ( this.sidebarPersistentAt === 'always' )
+        {
+            this.isSidebarPersistent = true;
+        }
+        // Check if the breakpoint equals to the sidebarPersistentAt input
+        else
+        {
+            this.isSidebarPersistent = this._asmMediaWatcherService.isActive(this.sidebarPersistentAt);
+        }
+    }
 }
