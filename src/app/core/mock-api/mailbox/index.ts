@@ -13,11 +13,11 @@ import {
 })
 export class MockMailboxApi
 {
-    // Private Readonly
-    private readonly _filters: any[];
-    private readonly _folders: any[];
-    private readonly _mails: any[];
-    private readonly _labels: any[];
+    // Private
+    private _filters: any[];
+    private _folders: any[];
+    private _mails: any[];
+    private _labels: any[];
     private _settings: any;
 
     /**
