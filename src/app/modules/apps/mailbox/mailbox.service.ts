@@ -232,7 +232,7 @@ export class MailboxService
                    .pipe(
                        map((mails) => {
 
-                           // Filter mails
+                           // Find the mail
                            const mail = mails.find(item => item.id === id);
 
                            if ( mail )
