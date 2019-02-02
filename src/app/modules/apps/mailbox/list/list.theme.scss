@@ -19,7 +19,7 @@
             .list {
 
                 .item {
-                    box-shadow: 0 1px 0 0 map-get($foreground, divider);
+                    border-bottom-color: map-get($foreground, divider);
 
                     &.selected {
                         background: map-get($background, hover);

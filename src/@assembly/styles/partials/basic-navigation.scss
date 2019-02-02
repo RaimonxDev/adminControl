@@ -3,7 +3,10 @@
 // -----------------------------------------------------------------------------------------------------
 @mixin asm-basic-navigation-theme($theme) {
 
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
 
     // -----------------------------------------------------------------------------------------------------
     // @ Basic navigation
@@ -17,15 +20,28 @@
                 a {
 
                     &:hover {
-                        background: map-get($primary, 50);
+                        @if ($is-dark) {
+                            background: map-get($background, hover);
+                        } @else {
+                            background: map-get($primary, 50);
+                        }
                     }
 
                     &.active {
-                        background: map-get($primary, 50);
-                        color: map-get($primary, default);
+                        @if ($is-dark) {
+                            background: map-get($background, hover);
+                            color: map-get($foreground, base);
+                        } @else {
+                            background: map-get($primary, 50);
+                            color: map-get($primary, default);
+                        }
 
                         .nav-icon {
-                            color: map-get($primary, default);
+                            @if ($is-dark) {
+                                color: map-get($foreground, base);
+                            } @else {
+                                color: map-get($primary, default);
+                            }
                         }
                     }
                 }
