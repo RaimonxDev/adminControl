@@ -357,8 +357,6 @@ export class MockMailboxApi
                     mail = mail[0];
                 }
 
-                // Pagination
-
                 return [
                     200,
                     mail

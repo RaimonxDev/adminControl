@@ -104,9 +104,9 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     moveToFolder(folder): void
     {
         // Find the folder details
-        folder = this.folders.filter((item) => {
+        folder = this.folders.find((item) => {
             return item.slug === folder;
-        })[0];
+        });
 
         // Return if the current folder of the mail
         // is already equals to the given folder

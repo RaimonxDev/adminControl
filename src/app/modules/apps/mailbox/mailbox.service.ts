@@ -22,7 +22,7 @@ export class MailboxService
      * @param {HttpClient} _httpClient
      */
     constructor(
-        private _httpClient: HttpClient,
+        private _httpClient: HttpClient
     )
     {
         // Set the private defaults
@@ -233,11 +233,11 @@ export class MailboxService
                        map((mails) => {
 
                            // Filter mails
-                           const mail = mails.filter(item => item.id === id);
+                           const mail = mails.find(item => item.id === id);
 
-                           if ( mail && mail.length > 0 )
+                           if ( mail )
                            {
-                               this._mail.next(mail[0]);
+                               this._mail.next(mail);
                            }
                            else
                            {
@@ -248,7 +248,7 @@ export class MailboxService
                        }),
                        switchMap((mail) => {
 
-                           if ( !mail || mail.length === 0 )
+                           if ( !mail )
                            {
                                return throwError('Could not found mail with id of ' + id + '!');
                            }
