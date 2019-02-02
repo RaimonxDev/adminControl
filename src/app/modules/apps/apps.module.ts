@@ -23,6 +23,11 @@ const routes: Route[] = [
                 path        : 'mailbox',
                 loadChildren: './mailbox/mailbox.module#MailboxModule',
                 canActivate : [AuthGuard]
+            },
+            {
+                path        : 'tasks',
+                loadChildren: './tasks/tasks.module#TasksModule',
+                canActivate : [AuthGuard]
             }
         ]
     }

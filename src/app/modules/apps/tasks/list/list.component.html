@@ -1,0 +1,48 @@
+<div class="content-layout with-drawer with-inner-scroll">
+
+    <mat-drawer-container class="content-layout with-drawer with-inner-scroll">
+
+        <mat-drawer [mode]="drawerMode"
+                    [opened]="false"
+                    [position]="'end'"
+                    [disableClose]="true"
+                    #drawer>
+
+            <!-- Drawer -->
+            <div class="drawer-content">
+
+                <router-outlet></router-outlet>
+
+            </div>
+
+        </mat-drawer>
+
+        <mat-drawer-content>
+
+            <!-- Main -->
+            <div class="main-content">
+
+                <ul>
+
+                    <li *ngFor="let task of tasks">
+
+                        <span *ngIf="task.type === 'section'">
+                            {{task.title}}
+                        </span>
+
+                        <a [routerLink]="[task.id]"
+                           *ngIf="task.type === 'task'">
+                            {{task.title}}
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

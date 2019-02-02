@@ -1,0 +1,12 @@
+@import 'src/@assembly/styles/assembly';
+
+@mixin tasks-details-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+
+    tasks-details {
+        background: map-get($background, card);
+    }
+}

@@ -362,6 +362,20 @@ export const defaultNavigation: AsmNavigationItem[] = [
         }
     },
     {
+        id      : 'tasks',
+        title   : 'Tasks',
+        subtitle: '7 overdue tasks',
+        type    : 'link',
+        icon    : 'check_box',
+        link    : '/apps/tasks',
+        badge   : {
+            title     : 'HOT!',
+            style     : 'rounded',
+            background: '#FF6F00',
+            color     : '#FFFFFF'
+        }
+    },
+    {
         id   : 'mail-ngrx',
         title: 'Mail Ngrx',
         type : 'link',
@@ -401,20 +415,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type : 'link',
         icon : 'account_box',
         link : '/apps/contacts'
-    },
-    {
-        id      : 'to-do',
-        title   : 'To-Do',
-        subtitle: '7 overdue tasks',
-        type    : 'link',
-        icon    : 'check_box',
-        link    : '/apps/todo',
-        badge   : {
-            title     : 'HOT!',
-            style     : 'rounded',
-            background: '#FF6F00',
-            color     : '#FFFFFF'
-        }
     },
     {
         id   : 'scrumboard',

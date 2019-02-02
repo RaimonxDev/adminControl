@@ -1,0 +1,11 @@
+tasks-list {
+    display: flex;
+    flex: 1 1 auto;
+
+    .list-wrapper {
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+}

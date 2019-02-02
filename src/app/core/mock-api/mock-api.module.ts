@@ -9,6 +9,7 @@ import { MockMailboxApi } from 'app/core/mock-api/mailbox';
 import { MockNavigationApi } from 'app/core/mock-api/navigation';
 import { MockSearchResultsApi } from 'app/core/mock-api/search';
 import { MockShortcutsApi } from 'app/core/mock-api/shortcuts';
+import { MockTasksApi } from 'app/core/mock-api/tasks';
 
 @NgModule({
     imports: [
@@ -28,6 +29,7 @@ export class MockApiModule
      * @param {MockNavigationApi} _mockNavigationApi
      * @param {MockSearchResultsApi} _mockSearchResultsApi
      * @param {MockShortcutsApi} _mockShortcutsApi
+     * @param {MockTasksApi} _mockTasksApi
      */
     constructor(
         private _mockAuthApi: MockAuthApi,
@@ -37,7 +39,8 @@ export class MockApiModule
         private _mockMailboxApi: MockMailboxApi,
         private _mockNavigationApi: MockNavigationApi,
         private _mockSearchResultsApi: MockSearchResultsApi,
-        private _mockShortcutsApi: MockShortcutsApi
+        private _mockShortcutsApi: MockShortcutsApi,
+        private _mockTasksApi: MockTasksApi
     )
     {
         this._mockAuthApi.init();
@@ -48,5 +51,6 @@ export class MockApiModule
         this._mockNavigationApi.init();
         this._mockSearchResultsApi.init();
         this._mockShortcutsApi.init();
+        this._mockTasksApi.init();
     }
 }
