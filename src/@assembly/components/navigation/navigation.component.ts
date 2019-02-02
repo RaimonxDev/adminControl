@@ -1,6 +1,17 @@
 import {
-    ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList,
-    Renderer2, ViewChildren, ViewEncapsulation
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    HostBinding,
+    HostListener,
+    Input,
+    OnDestroy,
+    OnInit,
+    QueryList,
+    Renderer2,
+    ViewChildren,
+    ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { merge, Subject } from 'rxjs';

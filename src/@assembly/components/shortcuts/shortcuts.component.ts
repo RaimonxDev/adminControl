@@ -1,5 +1,13 @@
 import {
-    ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Input,
+    OnDestroy,
+    OnInit,
+    TemplateRef,
+    ViewChild,
+    ViewContainerRef,
     ViewEncapsulation
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

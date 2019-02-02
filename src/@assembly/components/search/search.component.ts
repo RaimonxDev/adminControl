@@ -1,5 +1,15 @@
 import {
-    Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild,
+    Component,
+    ContentChild,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2,
+    TemplateRef,
+    ViewChild,
     ViewEncapsulation
 } from '@angular/core';
 import { FormControl } from '@angular/forms';

@@ -2,7 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-    MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatSelectModule,
     MatSidenavModule
 } from '@angular/material';
 import { AsmLookUpByPipeModule, AsmScrollbarModule } from '@assembly';

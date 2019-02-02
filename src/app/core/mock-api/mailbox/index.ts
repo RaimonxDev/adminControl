@@ -5,7 +5,11 @@ import { AsmMockApiService } from '@assembly';
 import { MockUtils } from 'app/core/mock-api/utils';
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import {
-    filters as filtersData, folders as foldersData, mails as mailsData, labels as labelsData, settings as settingsData
+    filters as filtersData,
+    folders as foldersData,
+    mails as mailsData,
+    labels as labelsData,
+    settings as settingsData
 } from 'app/core/mock-api/mailbox/data';
 
 @Injectable({
@@ -309,12 +313,12 @@ export class MockMailboxApi
 
                     // Prepare the pagination data
                     pagination = {
-                        totalResults  : mailsLength,
+                        totalResults: mailsLength,
                         resultsPerPage: resultsPerPage,
-                        currentPage   : page,
-                        lastPage      : lastPage,
-                        startIndex    : begin,
-                        endIndex      : end - 1
+                        currentPage: page,
+                        lastPage: lastPage,
+                        startIndex: begin,
+                        endIndex: end - 1
                     };
                 }
 

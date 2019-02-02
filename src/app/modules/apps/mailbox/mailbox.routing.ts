@@ -2,7 +2,11 @@ import { ActivatedRouteSnapshot, Route, UrlMatchResult, UrlSegment } from '@angu
 import * as _ from 'lodash';
 import { MailboxComponent } from 'app/modules/apps/mailbox/mailbox.component';
 import {
-    MailboxFiltersResolver, MailboxFoldersResolver, MailboxLabelsResolver, MailboxMailResolver, MailboxMailsResolver
+    MailboxFiltersResolver,
+    MailboxFoldersResolver,
+    MailboxLabelsResolver,
+    MailboxMailResolver,
+    MailboxMailsResolver
 } from 'app/modules/apps/mailbox/mailbox.resolvers';
 import { MailboxListComponent } from 'app/modules/apps/mailbox/list/list.component';
 import { MailboxDetailsComponent } from 'app/modules/apps/mailbox/details/details.component';
