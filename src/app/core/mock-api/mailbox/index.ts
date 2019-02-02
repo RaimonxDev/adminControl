@@ -265,7 +265,7 @@ export class MockMailboxApi
 
                     if ( byFolder )
                     {
-                        return mail.folder === this._folders.filter(folder => folder.slug === byFolder)[0].id;
+                        return mail.folder === this._folders.find(folder => folder.slug === byFolder).id;
                     }
 
                     if ( byFilter )
@@ -275,7 +275,7 @@ export class MockMailboxApi
 
                     if ( byLabel )
                     {
-                        return mail.labels.includes(this._labels.filter(label => label.slug === byLabel)[0].id);
+                        return mail.labels.includes(this._labels.find(label => label.slug === byLabel).id);
                     }
                 });
 
@@ -313,12 +313,12 @@ export class MockMailboxApi
 
                     // Prepare the pagination data
                     pagination = {
-                        totalResults: mailsLength,
+                        totalResults  : mailsLength,
                         resultsPerPage: resultsPerPage,
-                        currentPage: page,
-                        lastPage: lastPage,
-                        startIndex: begin,
-                        endIndex: end - 1
+                        currentPage   : page,
+                        lastPage      : lastPage,
+                        startIndex    : begin,
+                        endIndex      : end - 1
                     };
                 }
 
@@ -347,15 +347,9 @@ export class MockMailboxApi
                 const mails = _.cloneDeep(this._mails);
 
                 // Find the mail
-                let mail = mails.filter((item) => {
+                const mail = mails.find((item) => {
                     return item.id === id;
                 });
-
-                // Remove the array
-                if ( mail && mail.length === 1 )
-                {
-                    mail = mail[0];
-                }
 
                 return [
                     200,
