@@ -1,15 +1,16 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDrawer } from '@angular/material';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly';
+import { AsmLookUpByPipe, AsmMediaWatcherService } from '@assembly';
 import { TasksService } from 'app/modules/apps/tasks/tasks.service';
 
 @Component({
-    selector     : 'tasks-list',
-    templateUrl  : './list.component.html',
-    styleUrls    : ['./list.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'tasks-list',
+    templateUrl    : './list.component.html',
+    styleUrls      : ['./list.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {
@@ -17,7 +18,9 @@ export class TasksListComponent implements OnInit, OnDestroy
     drawer: MatDrawer;
 
     drawerMode: 'side' | 'over';
+    tags: any;
     tasks: any[];
+    tasksCount: any;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -46,11 +49,25 @@ export class TasksListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Get the tags
+        this._tasksService.tags$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((tags) => {
+                this.tags = tags;
+            });
+
         // Get the tasks
         this._tasksService.tasks$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((tasks) => {
                 this.tasks = tasks;
+            });
+
+        // Get the tasks count
+        this._tasksService.tasksCount$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((tasksCount) => {
+                this.tasksCount = tasksCount;
             });
 
         // Subscribe to media changes
@@ -77,4 +94,60 @@ export class TasksListComponent implements OnInit, OnDestroy
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param item
+     * @param index
+     */
+    trackById(item, index): number
+    {
+        return index;
+    }
+
+    /**
+     * Organize the tags
+     *
+     * @param tags
+     */
+    organizeTags(tags): any
+    {
+        /*console.log(tags.splice(0, 2));
+        console.log(tags);*/
+
+        // Get the visible and hidden tags
+        let visible = tags.slice(0, 2);
+        let hidden = tags.slice(2, tags.length);
+
+        // If there are visible tags...
+        if ( visible.length > 0 )
+        {
+            // Convert them into tag objects
+            visible = new AsmLookUpByPipe().transform(visible, 'id', this.tags);
+        }
+
+        // If there are hidden tags...
+        if ( hidden.length > 0 )
+        {
+            // Convert them into tag objects
+            hidden = new AsmLookUpByPipe().transform(hidden, 'id', this.tags);
+
+            // Convert it to the tag titles array
+            hidden.forEach((item, index, items) => {
+                items[index] = item.title.toUpperCase();
+            });
+
+            // Join them together
+            hidden = hidden.join(', ');
+        }
+        else
+        {
+            hidden = false;
+        }
+
+        return {
+            visible,
+            hidden
+        };
+    }
 }

@@ -2,10 +2,146 @@ tasks-list {
     display: flex;
     flex: 1 1 auto;
 
-    .list-wrapper {
-        display: flex;
-        flex: 0 1 auto;
-        flex-direction: column;
+    .mat-drawer-container {
+
+        .mat-drawer {
+            min-width: 512px !important;
+            max-width: 512px !important;
+        }
+    }
+
+    .main-content {
+        padding: 32px;
         overflow-y: auto;
+
+        .search-and-filters {
+            padding: 0 24px;
+            border-radius: 8px;
+            min-height: 56px;
+            margin: 40px 0 48px 0;
+        }
+
+        .tasks-list {
+
+            .task {
+                position: relative;
+                display: flex;
+                align-items: center;
+
+                &:first-child {
+
+                    &.type-section,
+                    &.type-task {
+                        margin-top: 0;
+                    }
+                }
+
+                &:hover {
+
+                    .drag-handle {
+                        visibility: visible;
+                        pointer-events: auto;
+                        opacity: 1;
+                    }
+                }
+
+                &.type-section {
+                    font-size: 18px;
+                    font-weight: 800;
+                    margin: 48px 0 16px 0;
+                    line-height: 1.2;
+
+                    + .type-task {
+                        margin-top: 0;
+                    }
+                }
+
+                &.type-task {
+                    padding: 0 32px 0 12px;
+                    border-radius: 8px;
+                    margin-top: 4px;
+                    height: 64px;
+                    min-height: 64px;
+                    max-height: 64px;
+
+                    &.completed {
+
+                        a {
+
+                            .title {
+                                position: relative;
+                            }
+                        }
+                    }
+                }
+
+                .drag-handle {
+                    visibility: hidden;
+                    pointer-events: none;
+                    opacity: 0;
+                    cursor: grab;
+                    user-select: none;
+                    margin: 0 !important;
+                }
+
+                .completed {
+                    width: 32px;
+                    height: 32px;
+                    line-height: 1;
+                    margin-right: 8px;
+                }
+
+                a {
+                    display: flex;
+                    flex: 1 1 auto;
+                    align-items: center;
+                    justify-content: space-between;
+                    min-width: 0;
+                    height: 100%;
+
+                    .title {
+                        margin-right: 8px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    .tags {
+                        display: flex;
+                        flex: 0 0 auto;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: flex-start;
+
+                        .tag {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 16px;
+                            padding: 0 8px;
+                            margin-right: 8px;
+                            border-radius: 8px;
+                            font-size: 11px;
+                            font-weight: bold;
+                            white-space: nowrap;
+                            text-transform: uppercase;
+
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+
+                        .hidden-tags {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 32px;
+                            height: 16px;
+                            border-radius: 8px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

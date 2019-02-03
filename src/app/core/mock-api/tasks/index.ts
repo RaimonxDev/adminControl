@@ -66,6 +66,42 @@ export class MockTasksApi
             });
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Tasks Count - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/tasks/count')
+            .reply(() => {
+
+                // Clone the tasks
+                const tasks = _.cloneDeep(this._tasks);
+
+                // Start the counters
+                let completed    = 0,
+                    notCompleted = 0;
+
+                // Iterate the tasks and count them
+                tasks.forEach((task) => {
+
+                    // Only count actual tasks
+                    if ( task.type !== 'task' )
+                    {
+                        return;
+                    }
+
+                    // Increase the counter
+                    task.completed ? completed++ : notCompleted++;
+                });
+
+                return [
+                    200,
+                    {
+                        completed,
+                        notCompleted
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Tasks - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -117,6 +153,39 @@ export class MockTasksApi
                 return [
                     200,
                     task
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Task - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/apps/tasks/task')
+            .reply((request) => {
+
+                // Get the id and task
+                const id = request.body.id;
+                const mail = _.cloneDeep(request.body.task);
+
+                // Prepare the updated task
+                let updatedTask = null;
+
+                // Find the task and update it
+                this._tasks.forEach((item, index, tasks) => {
+
+                    if ( item.id === id )
+                    {
+                        // Update the task
+                        tasks[index] = _.assign({}, tasks[index], mail);
+
+                        // Store the updated task
+                        updatedTask = tasks[index];
+                    }
+                });
+
+                return [
+                    200,
+                    updatedTask
                 ];
             });
     }

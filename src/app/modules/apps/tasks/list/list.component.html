@@ -2,13 +2,13 @@
 
     <mat-drawer-container class="content-layout with-drawer with-inner-scroll">
 
+        <!-- Drawer -->
         <mat-drawer [mode]="drawerMode"
                     [opened]="false"
                     [position]="'end'"
                     [disableClose]="true"
                     #drawer>
 
-            <!-- Drawer -->
             <div class="drawer-content">
 
                 <router-outlet></router-outlet>
@@ -17,27 +17,121 @@
 
         </mat-drawer>
 
+        <!-- Content -->
         <mat-drawer-content>
 
-            <!-- Main -->
             <div class="main-content">
 
-                <ul>
+                <!-- Header -->
+                <div class="flex flex-no-shrink items-center">
 
-                    <li *ngFor="let task of tasks">
+                    <!-- Title -->
+                    <div class="flex-1 mr-32">
 
-                        <span *ngIf="task.type === 'section'">
-                            {{task.title}}
-                        </span>
+                        <div class="title-1">
+                            Tasks
+                        </div>
 
-                        <a [routerLink]="[task.id]"
-                           *ngIf="task.type === 'task'">
-                            {{task.title}}
-                        </a>
+                        <div class="secondary-text truncate">
+                            {{tasksCount.notCompleted}} remaining tasks
+                        </div>
 
-                    </li>
+                    </div>
 
-                </ul>
+                    <!-- Buttons -->
+                    <div>
+
+                        <button class="mr-16"
+                                mat-stroked-button
+                                [color]="'primary'">
+                            <mat-icon class="icon-size-20 mr-8">add</mat-icon>
+                            <span class="mr-8">Add Task</span>
+                        </button>
+
+                        <button class="mr-16"
+                                mat-stroked-button
+                                [color]="'primary'">
+                            <mat-icon class="icon-size-20 mr-8">add</mat-icon>
+                            <span class="mr-8">Add Section</span>
+                        </button>
+
+                        <button mat-stroked-button
+                                [color]="'accent'">
+                            <mat-icon class="icon-size-18 mr-8">settings</mat-icon>
+                            <span class="mr-8">Settings</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="search-and-filters">
+
+                </div>
+
+                <!-- Tasks list -->
+                <div class="tasks-list">
+
+                    <ng-container *ngFor="let task of tasks; trackBy: trackById">
+
+                        <div class="task"
+                             [class.completed]="task.completed"
+                             [ngClass]="'type-' + task.type">
+
+                            <div class="flex items-center"
+                                 *ngIf="task.type === 'task'">
+
+                                <mat-icon class="drag-handle icon-size-18 hint-text mr-16">
+                                    drag_indicator
+                                </mat-icon>
+
+                                <button class="completed"
+                                        mat-icon-button>
+
+                                    <mat-icon class="icon-size-22"
+                                              [color]="'primary'"
+                                              *ngIf="task.completed">
+                                        check_circle
+                                    </mat-icon>
+
+                                    <mat-icon class="icon-size-22"
+                                              *ngIf="!task.completed">
+                                        radio_button_unchecked
+                                    </mat-icon>
+
+                                </button>
+
+                            </div>
+
+                            <a [routerLink]="[task.id]">
+
+                                <div class="title">{{task.title}}</div>
+
+                                <div class="tags"
+                                     *ngIf="task.type === 'task'">
+
+                                    <div class="tag"
+                                         *ngFor="let tag of (organizeTags(task.tags).visible); trackBy: trackById"
+                                         [ngClass]="[tag.color + '-fg', tag.color + '-50-bg']">
+                                        {{tag.title}}
+                                    </div>
+
+                                    <div class="hidden-tags"
+                                         *ngIf="organizeTags(task.tags).hidden"
+                                         [matTooltip]="organizeTags(task.tags).hidden">
+                                        <mat-icon class="icon-size-16">more_horiz</mat-icon>
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </ng-container>
+
+                </div>
 
             </div>
 

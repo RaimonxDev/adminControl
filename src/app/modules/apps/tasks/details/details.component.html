@@ -1,5 +1,125 @@
-<a [routerLink]="['../']">x</a>
+<form [formGroup]="taskForm">
 
-{{task.description}}
+    <div class="flex flex-no-shrink items-center justify-between">
 
-<button (click)="task.title = 'Sercan!!!'">Name it!</button>
+        <div>
+
+            <!-- Mark as .... button -->
+            <button class="mark-as-button"
+                    mat-button
+                    (click)="toggleCompleted()">
+
+                <!-- Mark as complete -->
+                <ng-container *ngIf="!taskForm.get('completed').value">
+                    <mat-icon class="icon-size-20 mr-8">
+                        radio_button_unchecked
+                    </mat-icon>
+                    <span>MARK AS COMPLETE</span>
+                </ng-container>
+
+                <!-- Mark as not complete -->
+                <ng-container *ngIf="taskForm.get('completed').value">
+                    <mat-icon class="icon-size-20 mr-8"
+                              [color]="'primary'">
+                        check_circle
+                    </mat-icon>
+                    <span>MARK AS NOT COMPLETE</span>
+                </ng-container>
+
+            </button>
+
+        </div>
+
+        <button mat-icon-button
+                [routerLink]="['../']">
+            <mat-icon class="icon-size-20">close</mat-icon>
+        </button>
+
+    </div>
+
+    <div class="divider mx-16 mt-24 mb-8"></div>
+
+    <div class="title">
+        <mat-form-field class="asm-mat-simplify"
+                        [appearance]="'standard'">
+            <textarea matInput
+                      cdkTextareaAutosize
+                      [formControlName]="'title'"
+                      [placeholder]="'Task title'"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="tags">
+
+        <div class="tag"
+             *ngFor="let tag of (task.tags | lookUpBy:'id':tags)"
+             [ngClass]="[tag.color + '-fg', tag.color + '-50-bg']">
+            {{tag.title}}
+        </div>
+
+        <button class="toggle-tag"
+                mat-icon-button
+                [matMenuTriggerFor]="toggleTagsMenu">
+            <mat-icon class="icon-size-20">more_horiz</mat-icon>
+        </button>
+        <mat-menu class="tasks-details-toggle-tags-menu-panel"
+                  #toggleTagsMenu="matMenu">
+            <div mat-menu-item
+                 *ngFor="let tag of tags">
+                <mat-checkbox (change)="toggleTag(tag)"
+                              [color]="'primary'"
+                              [checked]="task.tags.includes(tag.id)"
+                              [disableRipple]="true">
+                    {{tag.title}}
+                </mat-checkbox>
+            </div>
+        </mat-menu>
+
+    </div>
+
+    <div class="description">
+        <mat-form-field class="asm-mat-simplify"
+                        [appearance]="'standard'">
+            <textarea matInput
+                      cdkTextareaAutosize
+                      [formControlName]="'description'"
+                      [placeholder]="'Task description'"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="divider mx-16 mt-8 mb-24"></div>
+
+    <div class="due-priority">
+
+        <mat-form-field class="due-date asm-mat-simplify"
+                        [appearance]="'standard'">
+            <mat-label>Due date</mat-label>
+            <input matInput
+                   [formControlName]="'dueDate'"
+                   [matDatepicker]="dueDatePicker">
+            <mat-datepicker-toggle matSuffix
+                                   [for]="dueDatePicker">
+                <mat-icon class="icon-size-24"
+                          matDatepickerToggleIcon>
+                    arrow_drop_down
+                </mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #dueDatePicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="priority asm-mat-simplify"
+                        [appearance]="'standard'">
+            <mat-label>Priority</mat-label>
+            <mat-select [formControlName]="'priority'">
+                <mat-option [value]="0">Low</mat-option>
+                <mat-option [value]="1">Normal</mat-option>
+                <mat-option [value]="2">High</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <div class="divider mx-16 mt-8 mb-24"></div>
+
+
+</form>

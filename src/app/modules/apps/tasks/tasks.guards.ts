@@ -23,6 +23,17 @@ export class CanDeactivateTasksDetails implements CanDeactivate<TasksDetailsComp
             nextRoute = nextRoute.firstChild;
         }
 
+        // If the next state doesn't contain '/tasks'
+        // it means we are navigating away from the
+        // tasks app
+        if ( !nextState.url.includes('/tasks') )
+        {
+            // Let it navigate
+            return new Promise<boolean>((resolve) => {
+                resolve(true);
+            });
+        }
+
         // If we are navigating to another task...
         if ( nextRoute.params.id )
         {
@@ -35,7 +46,11 @@ export class CanDeactivateTasksDetails implements CanDeactivate<TasksDetailsComp
         else
         {
             // Close the drawer first, and then navigate
-            return component.closeDrawer();
+            return component.closeDrawer().then(() => {
+                return new Promise<boolean>((resolve) => {
+                    resolve(true);
+                });
+            });
         }
     }
 }

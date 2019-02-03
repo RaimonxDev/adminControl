@@ -103,6 +103,38 @@ export class TasksResolver implements Resolve<any>
 @Injectable({
     providedIn: 'root'
 })
+export class TasksCountResolver implements Resolve<any>
+{
+    /**
+     * Constructor
+     *
+     * @param {TasksService} _tasksService
+     */
+    constructor(
+        private _tasksService: TasksService
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Resolver
+     *
+     * @param route
+     * @param state
+     */
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    {
+        return this._tasksService.getTasksCount();
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
 export class TasksTaskResolver implements Resolve<any>
 {
     /**

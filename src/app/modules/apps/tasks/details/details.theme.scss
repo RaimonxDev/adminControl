@@ -1,12 +1,26 @@
-@import 'src/@assembly/styles/assembly';
-
 @mixin tasks-details-theme($theme) {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
 
     tasks-details {
         background: map-get($background, card);
+
+        .divider {
+            border-bottom-color: map-get($foreground, divider);
+        }
+
+        .tags {
+
+            .toggle-tag {
+
+                @if ($is-dark) {
+                    background: map-get($background, background);
+                } @else {
+                    background: #EEEEEE;
+                }
+            }
+        }
     }
 }

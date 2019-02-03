@@ -1,4 +1,111 @@
 tasks-details {
     display: flex;
     flex: 1 1 auto;
+    flex-direction: column;
+    padding: 48px 32px;
+    overflow-y: auto;
+
+    .divider {
+        border-bottom: 1px solid;
+    }
+
+    .mark-as-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 700;
+        }
+    }
+
+    .title {
+        margin: 0 16px 8px 16px;
+
+        .mat-form-field {
+            width: 100%;
+
+            textarea {
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 1.2;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .tags {
+        display: flex;
+        flex: 0 0 auto;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0 16px;
+
+        .tag {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            margin: 0 8px 8px 0;
+            padding: 0 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .toggle-tag {
+            border-radius: 10px;
+            height: 20px;
+            line-height: 1;
+            margin: 0 8px 8px 0;
+        }
+    }
+
+    .description {
+        margin: 0 16px;
+
+        .mat-form-field {
+            width: 100%;
+
+            textarea {
+                white-space: pre-line;
+                line-height: 1.8;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .due-priority {
+        display: flex;
+        align-items: center;
+        margin: 0 16px;
+
+        .due-date {
+            width: 128px;
+            margin-right: 48px;
+        }
+
+        .priority {
+            width: 80px;
+        }
+    }
+}
+
+.tasks-details-toggle-tags-menu-panel {
+
+    .mat-checkbox {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .mat-checkbox-layout {
+            align-items: center;
+            height: 100%;
+        }
+    }
 }

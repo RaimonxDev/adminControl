@@ -1,17 +1,50 @@
-@import 'src/@assembly/styles/assembly';
-
 @mixin tasks-list-theme($theme) {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
 
     tasks-list {
-        background: map-get($background, card);
 
-        .list-wrapper {
-            border-right-color: map-get($foreground, divider);
+        .main-content {
 
+            .search-and-filters {
+                background: map-get($background, card);
+                box-shadow: 0 0 6px 0 transparentize(map-get($foreground, divider), 0.06),
+                0 6px 12px 0 transparentize(map-get($foreground, divider), 0.06);
+            }
+
+            .tasks-list {
+
+                .task {
+
+                    &.type-task {
+                        background: map-get($background, card);
+                    }
+
+                    &.completed {
+
+                        a {
+
+                            .title {
+                                color: map-get($foreground, disabled-text);
+                            }
+                        }
+                    }
+
+                    .tags {
+
+                        .hidden-tags {
+
+                            @if ($is-dark) {
+                                background: map-get($background, background);
+                            } @else {
+                                background: #EEEEEE;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
