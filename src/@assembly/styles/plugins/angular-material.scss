@@ -65,6 +65,25 @@
 // -----------------------------------------------------------------------------------------------------
 
 // ----------------------------------------------------
+// Standard
+// ----------------------------------------------------
+// Simplifies the form field to make it suitable
+// for smaller spaces and non-form usages
+.asm-mat-simplify {
+
+    &.mat-form-field.mat-form-field-appearance-standard {
+
+        .mat-form-field-wrapper {
+
+            .mat-form-field-underline,
+            .mat-form-field-subscript-wrapper {
+                display: none !important;
+            }
+        }
+    }
+}
+
+// ----------------------------------------------------
 // Outline
 // ----------------------------------------------------
 
