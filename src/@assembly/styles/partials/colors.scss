@@ -1,9 +1,9 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Variables
 // -----------------------------------------------------------------------------------------------------
-$dark-primary-text: rgba(37, 41, 52, 0.87);
-$light-primary-text: rgba(255, 255, 255, 1);
-$light-background: #F1F3F7;
+$asm-dark-primary-text: rgba(37, 41, 52, 0.87);
+$asm-light-primary-text: rgba(255, 255, 255, 1);
+$asm-light-background: #F1F3F7;
 
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
@@ -22,7 +22,7 @@ $light-background: #F1F3F7;
         @if ($is-dark) {
             background: map-get($background, background);
         } @else {
-            background: $light-background;
+            background: $asm-light-background;
         }
     }
 
@@ -70,20 +70,20 @@ $matPalettes: (
         A400: #FF1744,
         A700: #D50000,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-light-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     pink: (
@@ -102,20 +102,20 @@ $matPalettes: (
         A400: #F50057,
         A700: #C51162,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-light-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     purple: (
@@ -134,20 +134,20 @@ $matPalettes: (
         A400: #D500F9,
         A700: #AA00FF,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $light-primary-text,
-            400: $light-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-light-primary-text,
+            400: $asm-light-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-light-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     deep-purple: (
@@ -166,20 +166,20 @@ $matPalettes: (
         A400: #651FFF,
         A700: #6200EA,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $light-primary-text,
-            400: $light-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-light-primary-text,
+            400: $asm-light-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-light-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     indigo: (
@@ -198,20 +198,20 @@ $matPalettes: (
         A400: #3D5AFE,
         A700: #304FFE,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $light-primary-text,
-            400: $light-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-light-primary-text,
+            400: $asm-light-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-light-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     blue: (
@@ -230,20 +230,20 @@ $matPalettes: (
         A400: #2979FF,
         A700: #2962FF,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-light-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     light-blue: (
@@ -262,20 +262,20 @@ $matPalettes: (
         A400: #00B0FF,
         A700: #0091EA,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     cyan: (
@@ -294,20 +294,20 @@ $matPalettes: (
         A400: #00E5FF,
         A700: #00B8D4,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     teal: (
@@ -326,20 +326,20 @@ $matPalettes: (
         A400: #1DE9B6,
         A700: #00BFA5,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     green: (
@@ -358,20 +358,20 @@ $matPalettes: (
         A400: #00E676,
         A700: #00C853,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-dark-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     light-green: (
@@ -390,20 +390,20 @@ $matPalettes: (
         A400: #76FF03,
         A700: #64DD17,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $dark-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-dark-primary-text,
+            600: $asm-dark-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     lime: (
@@ -422,20 +422,20 @@ $matPalettes: (
         A400: #C6FF00,
         A700: #AEEA00,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $dark-primary-text,
-            700: $dark-primary-text,
-            800: $dark-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-dark-primary-text,
+            600: $asm-dark-primary-text,
+            700: $asm-dark-primary-text,
+            800: $asm-dark-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     yellow: (
@@ -454,20 +454,20 @@ $matPalettes: (
         A400: #FFEA00,
         A700: #FFD600,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $dark-primary-text,
-            700: $dark-primary-text,
-            800: $dark-primary-text,
-            900: $dark-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-dark-primary-text,
+            600: $asm-dark-primary-text,
+            700: $asm-dark-primary-text,
+            800: $asm-dark-primary-text,
+            900: $asm-dark-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     amber: (
@@ -486,20 +486,20 @@ $matPalettes: (
         A400: #FFC400,
         A700: #FFAB00,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $dark-primary-text,
-            700: $dark-primary-text,
-            800: $dark-primary-text,
-            900: $dark-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-dark-primary-text,
+            600: $asm-dark-primary-text,
+            700: $asm-dark-primary-text,
+            800: $asm-dark-primary-text,
+            900: $asm-dark-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     orange: (
@@ -518,20 +518,20 @@ $matPalettes: (
         A400: #FF9100,
         A700: #FF6D00,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $dark-primary-text,
-            700: $dark-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-dark-primary-text,
+            600: $asm-dark-primary-text,
+            700: $asm-dark-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-dark-primary-text,
         )
     ),
     deep-orange: (
@@ -550,20 +550,20 @@ $matPalettes: (
         A400: #FF3D00,
         A700: #DD2C00,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     brown: (
@@ -582,20 +582,20 @@ $matPalettes: (
         A400: #8D6E63,
         A700: #5D4037,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $light-primary-text,
-            400: $light-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-light-primary-text,
+            400: $asm-light-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     grey: (
@@ -614,20 +614,20 @@ $matPalettes: (
         A400: #BDBDBD,
         A700: #616161,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-dark-primary-text,
+            500: $asm-dark-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-dark-primary-text,
+            A700: $asm-light-primary-text,
         )
     ),
     blue-grey: (
@@ -646,20 +646,20 @@ $matPalettes: (
         A400: #78909C,
         A700: #455A64,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $light-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: $asm-dark-primary-text,
+            100: $asm-dark-primary-text,
+            200: $asm-dark-primary-text,
+            300: $asm-dark-primary-text,
+            400: $asm-light-primary-text,
+            500: $asm-light-primary-text,
+            600: $asm-light-primary-text,
+            700: $asm-light-primary-text,
+            800: $asm-light-primary-text,
+            900: $asm-light-primary-text,
+            A100: $asm-dark-primary-text,
+            A200: $asm-dark-primary-text,
+            A400: $asm-light-primary-text,
+            A700: $asm-light-primary-text,
         )
     )
 );
@@ -697,7 +697,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 
             @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
 
-                $value: rgba($dark-primary-text, alpha($value));
+                $value: rgba($asm-dark-primary-text, alpha($value));
             }
 
             $adjusted-palette: map-merge($adjusted-palette, ($key: $value));
@@ -775,7 +775,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 
             @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
 
-                $value: rgba($dark-primary-text, alpha($value));
+                $value: rgba($asm-dark-primary-text, alpha($value));
             }
 
             $adjusted-palette: map-merge($adjusted-palette, ($key: $value));
@@ -893,7 +893,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
                 @include _generate-color-classes($paletteName, $color, $contrast, '-#{$hue}');
 
                 // If the contrast color is dark
-                @if (rgba($dark-primary-text, 1) == rgba($contrast, 1)) {
+                @if (rgba($asm-dark-primary-text, 1) == rgba($contrast, 1)) {
                     $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}-#{$hue}'), 'comma');
                 }
                     // if the contrast color is light
@@ -911,7 +911,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
                     // Add color to the correct list depending on the contrasting color
 
                     // If the contrast color is dark
-                    @if (rgba($dark-primary-text, 1) == rgba($contrast, 1)) {
+                    @if (rgba($asm-dark-primary-text, 1) == rgba($contrast, 1)) {
                         $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
                     }
                         // if the contrast color is light
@@ -940,7 +940,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
             // Add color to the correct list depending on the contrasting color
 
             // If the contrast color is dark
-            @if (rgba($dark-primary-text, 1) == rgba($contrast, 1)) {
+            @if (rgba($asm-dark-primary-text, 1) == rgba($contrast, 1)) {
                 $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
             }
                 // if the contrast color is light
@@ -1005,7 +1005,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
                 @if (rgba($value, 1) == rgba(0,0,0,1)) {
 
                     // Replace the color
-                    $value: rgba($dark-primary-text, alpha($value));
+                    $value: rgba($asm-dark-primary-text, alpha($value));
                 }
 
                 // Add the value to the map
@@ -1024,7 +1024,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
                     @if (rgba($contrast-value, 1) == rgba(0,0,0,1)) {
 
                         // Replace the color
-                        $contrast-value: rgba($dark-primary-text, alpha($contrast-value));
+                        $contrast-value: rgba($asm-dark-primary-text, alpha($contrast-value));
                     }
 
                     // Add the value to the map
@@ -1057,14 +1057,14 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
             @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
 
                 // Replace the color
-                $value: rgba($dark-primary-text, alpha($value));
+                $value: rgba($asm-dark-primary-text, alpha($value));
             }
 
             // If the theme is light and the key is 'background'...
             @if (map-get($theme, is-dark) == false and $key == 'background') {
 
                 // Replace the background color
-                $value: $light-background;
+                $value: $asm-light-background;
             }
 
             // Add the value to the map
