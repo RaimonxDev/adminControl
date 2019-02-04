@@ -58,14 +58,10 @@ mailbox-settings {
 .mailbox-label-color-select-panel {
     overflow: hidden !important;
     max-height: none !important;
-    //display: contents;
-    //flex-wrap: wrap;
-    //min-width: 200px !important;
-    //max-width: 200px !important;
-    //width: 232px !important;
 
     .color-box-title {
         max-width: 192px;
+        min-width: 192px;
         margin: 0 auto;
         padding: 20px 4px 0 4px;
         font-weight: 600;
