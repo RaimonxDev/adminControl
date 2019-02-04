@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 
 import { mockWithAuth } from 'app/core/mock-api/with-auth';
 import { members as membersData, tags as tagsData, tasks as tasksData } from 'app/core/mock-api/tasks/data';
+import { MockUtils } from 'app/core/mock-api/utils';
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +12,8 @@ import { members as membersData, tags as tagsData, tasks as tasksData } from 'ap
 export class MockTasksApi
 {
     // Private Readonly
-    private _members: any;
-    private _tags: any;
+    private _members: any[];
+    private _tags: any[];
     private _tasks: any[];
 
     /**
@@ -62,6 +63,61 @@ export class MockTasksApi
                 return [
                     200,
                     _.cloneDeep(this._tags)
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Tags - PUT
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPut('api/apps/tasks/tag')
+            .reply((request) => {
+
+                // Get the tag
+                const newTag = _.cloneDeep(request.body.tag);
+
+                // Generate a new GUID
+                newTag.id = MockUtils.guid();
+
+                // Push the new tag
+                this._tags.push(newTag);
+
+                return [
+                    200,
+                    newTag
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Tags - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/apps/tasks/tag')
+            .reply((request) => {
+
+                // Get the id and tag
+                const id = request.body.id;
+                const tag = _.cloneDeep(request.body.tag);
+
+                // Prepare the updated tag
+                let updatedTag = null;
+
+                // Find the tag and update it
+                this._tags.forEach((item, index, tags) => {
+
+                    if ( item.id === id )
+                    {
+                        // Update the tag
+                        tags[index] = _.assign({}, tags[index], tag);
+
+                        // Store the updated tag
+                        updatedTag = tags[index];
+                    }
+                });
+
+                return [
+                    200,
+                    updatedTag
                 ];
             });
 
@@ -165,7 +221,7 @@ export class MockTasksApi
 
                 // Get the id and task
                 const id = request.body.id;
-                const mail = _.cloneDeep(request.body.task);
+                const task = _.cloneDeep(request.body.task);
 
                 // Prepare the updated task
                 let updatedTask = null;
@@ -176,7 +232,7 @@ export class MockTasksApi
                     if ( item.id === id )
                     {
                         // Update the task
-                        tasks[index] = _.assign({}, tasks[index], mail);
+                        tasks[index] = _.assign({}, tasks[index], task);
 
                         // Store the updated task
                         updatedTask = tasks[index];

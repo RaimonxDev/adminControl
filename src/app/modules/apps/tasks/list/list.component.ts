@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDrawer } from '@angular/material';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,8 +9,7 @@ import { TasksService } from 'app/modules/apps/tasks/tasks.service';
     selector       : 'tasks-list',
     templateUrl    : './list.component.html',
     styleUrls      : ['./list.component.scss'],
-    encapsulation  : ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    encapsulation  : ViewEncapsulation.None
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {

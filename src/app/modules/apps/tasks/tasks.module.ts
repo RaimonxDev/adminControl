@@ -10,6 +10,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatMenuModule,
+    MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
     MatTooltipModule
@@ -52,6 +53,7 @@ export const CUSTOM_DATE_FORMAT = {
         MatIconModule,
         MatInputModule,
         MatMenuModule,
+        MatRippleModule,
         MatSelectModule,
         MatSidenavModule,
         MatTooltipModule,

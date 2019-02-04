@@ -105,6 +105,40 @@ export class TasksService
     }
 
     /**
+     * Crate tag
+     *
+     * @param tag
+     */
+    createTag(tag): Observable<any>
+    {
+        return this._httpClient
+                   .put('api/apps/tasks/tag', {tag})
+                   .pipe(map((response) => {
+                       this.getTags().subscribe();
+                       return response;
+                   }));
+    }
+
+    /**
+     * Update tag
+     *
+     * @param id
+     * @param tag
+     */
+    updateTag(id, tag): Observable<any>
+    {
+        return this._httpClient
+                   .patch('api/apps/tasks/tag', {
+                       id,
+                       tag
+                   })
+                   .pipe(map((response) => {
+                       this.getTags().subscribe();
+                       return response;
+                   }));
+    }
+
+    /**
      * Get tasks
      */
     getTasks(): Observable<any>
@@ -213,93 +247,4 @@ export class TasksService
                        task
                    });
     }
-
-    /*/!**
-     * Update mail
-     *
-     * @param id
-     * @param mail
-     *!/
-    updateMail(id, mail): Observable<any>
-    {
-        return this._httpClient
-                   .patch('api/apps/mailbox/mail', {
-                       id,
-                       mail
-                   });
-    }
-
-    /!**
-     * Reset the current mail
-     *!/
-    resetMail(): Observable<any>
-    {
-        return of(true).pipe(
-            tap(() => {
-                this._mail.next(null);
-            }),
-            take(1)
-        );
-    }
-
-    /!**
-     * Add label
-     *
-     * @param label
-     *!/
-    addLabel(label): Observable<any>
-    {
-        return this._httpClient
-                   .put('api/apps/mailbox/label', {
-                       label
-                   })
-                   .pipe(
-                       map((response) => {
-                           this.getLabels().subscribe();
-                           return response;
-                       })
-                   );
-    }
-
-    /!**
-     * Update label
-     *
-     * @param id
-     * @param label
-     *!/
-    updateLabel(id, label): Observable<any>
-    {
-        return this._httpClient
-                   .patch('api/apps/mailbox/label', {
-                       id,
-                       label
-                   })
-                   .pipe(
-                       map((response) => {
-                           this.getLabels().subscribe();
-                           return response;
-                       })
-                   );
-    }
-
-    /!**
-     * Delete label
-     *
-     * @param id
-     *!/
-    deleteLabel(id): Observable<any>
-    {
-        return this._httpClient
-                   .delete('api/apps/mailbox/label', {
-                       params: {
-                           id
-                       }
-                   })
-                   .pipe(
-                       map((response) => {
-                           this.getLabels().subscribe();
-                           return response;
-                       })
-                   );
-    }*/
 }

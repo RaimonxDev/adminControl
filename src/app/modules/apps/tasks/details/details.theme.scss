@@ -13,7 +13,7 @@
 
         .tags {
 
-            .toggle-tag {
+            .add-tag {
 
                 @if ($is-dark) {
                     background: map-get($background, background);
@@ -21,6 +21,15 @@
                     background: #EEEEEE;
                 }
             }
+        }
+    }
+
+    // Add tag panel
+    .tasks-details-add-tag-panel {
+        background: map-get($background, card);
+
+        .create-tag {
+            background: map-get($background, hover);
         }
     }
 }
