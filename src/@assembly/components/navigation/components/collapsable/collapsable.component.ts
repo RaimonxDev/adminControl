@@ -120,6 +120,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
                         return;
                     }
 
+                    // Check if this is the expanded item
                     if ( this.item === expandedItem )
                     {
                         return;
@@ -223,7 +224,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
             return false;
         }
 
-        if ( children.indexOf(item) !== -1 )
+        if ( children.indexOf(item) > -1 )
         {
             return true;
         }
@@ -232,7 +233,10 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         {
             if ( child.children )
             {
-                return this._isChildrenOf(child, item);
+                if ( this._isChildrenOf(child, item) )
+                {
+                    return true;
+                }
             }
         }
 
