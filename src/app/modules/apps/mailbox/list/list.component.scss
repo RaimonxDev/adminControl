@@ -48,6 +48,19 @@ mailbox-list {
                 min-height: 152px;
                 border-bottom: 1px solid;
 
+                &.selected {
+
+                    &:before {
+                        content: '';
+                        display: flex;
+                        position: absolute;
+                        top: -1px;
+                        bottom: -1px;
+                        left: 0;
+                        width: 4px;
+                    }
+                }
+
                 .unread-indicator {
                     position: absolute;
                     left: 10px;

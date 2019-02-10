@@ -24,6 +24,10 @@
                     &.selected {
                         background: map-get($background, hover);
 
+                        &:before {
+                            background: map-get($primary, default);
+                        }
+
                         .date,
                         .content {
                             color: map-get($primary, secondary-text);
