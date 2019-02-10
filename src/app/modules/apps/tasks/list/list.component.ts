@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -6,10 +7,10 @@ import { AsmLookUpByPipe, AsmMediaWatcherService } from '@assembly';
 import { TasksService } from 'app/modules/apps/tasks/tasks.service';
 
 @Component({
-    selector       : 'tasks-list',
-    templateUrl    : './list.component.html',
-    styleUrls      : ['./list.component.scss'],
-    encapsulation  : ViewEncapsulation.None
+    selector     : 'tasks-list',
+    templateUrl  : './list.component.html',
+    styleUrls    : ['./list.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {
@@ -31,7 +32,9 @@ export class TasksListComponent implements OnInit, OnDestroy
      * @param {TasksService} _tasksService
      */
     constructor(
+        private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
+        private _router: Router,
         private _tasksService: TasksService
     )
     {
@@ -92,6 +95,23 @@ export class TasksListComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On backdrop clicked
+     */
+    onBackdropClicked(): void
+    {
+        // Get the current activated route
+        let route = this._activatedRoute;
+
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Go to the parent route
+        this._router.navigate(['../'], {relativeTo: route});
+    }
 
     /**
      * Track by function for ngFor loops

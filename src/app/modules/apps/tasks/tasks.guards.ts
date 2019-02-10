@@ -29,27 +29,21 @@ export class CanDeactivateTasksDetails implements CanDeactivate<TasksDetailsComp
         if ( !nextState.url.includes('/tasks') )
         {
             // Let it navigate
-            return new Promise<boolean>((resolve) => {
-                resolve(true);
-            });
+            return true;
         }
 
         // If we are navigating to another task...
         if ( nextRoute.params.id )
         {
             // Just navigate
-            return new Promise<boolean>((resolve) => {
-                resolve(true);
-            });
+            return true;
         }
         // Otherwise...
         else
         {
             // Close the drawer first, and then navigate
             return component.closeDrawer().then(() => {
-                return new Promise<boolean>((resolve) => {
-                    resolve(true);
-                });
+                return true;
             });
         }
     }

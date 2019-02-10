@@ -5,20 +5,17 @@ tasks-list {
     .mat-drawer-container {
 
         .mat-drawer {
-            min-width: 512px !important;
-            max-width: 512px !important;
+            min-width: 576px !important;
+            max-width: 576px !important;
         }
     }
 
     .main-content {
-        padding: 32px;
+        padding: 56px 16px;
         overflow-y: auto;
 
         .search-and-filters {
-            padding: 0 24px;
-            border-radius: 8px;
-            min-height: 56px;
-            margin: 40px 0 48px 0;
+            margin: 24px 48px 64px 48px;
         }
 
         .tasks-list {
@@ -46,9 +43,10 @@ tasks-list {
                 }
 
                 &.type-section {
-                    font-size: 18px;
+                    font-size: 20px;
                     font-weight: 800;
-                    margin: 48px 0 16px 0;
+                    padding-bottom: 12px;
+                    margin: 64px 48px 16px 48px;
                     line-height: 1.2;
 
                     + .type-task {
@@ -57,25 +55,34 @@ tasks-list {
                 }
 
                 &.type-task {
-                    padding: 0 32px 0 12px;
-                    border-radius: 8px;
+                    padding: 0 32px;
                     margin-top: 4px;
-                    height: 64px;
-                    min-height: 64px;
-                    max-height: 64px;
+                    height: 56px;
+                    min-height: 56px;
+                    max-height: 56px;
+
+                    .task-content {
+                        border-radius: 8px;
+                        padding: 0 16px 0 12px;
+                    }
 
                     &.completed {
 
-                        a {
+                        .task-content {
 
-                            .title {
-                                position: relative;
+                            a {
+
+                                .title {
+                                    position: relative;
+                                }
                             }
                         }
                     }
                 }
 
                 .drag-handle {
+                    position: absolute;
+                    left: 0;
                     visibility: hidden;
                     pointer-events: none;
                     opacity: 0;
@@ -84,60 +91,67 @@ tasks-list {
                     margin: 0 !important;
                 }
 
-                .completed {
-                    width: 32px;
-                    height: 32px;
-                    line-height: 1;
-                    margin-right: 8px;
-                }
-
-                a {
+                .task-content {
                     display: flex;
-                    flex: 1 1 auto;
                     align-items: center;
-                    justify-content: space-between;
-                    min-width: 0;
+                    width: 100%;
                     height: 100%;
 
-                    .title {
+                    .completed {
+                        width: 32px;
+                        height: 32px;
+                        line-height: 1;
                         margin-right: 8px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
                     }
 
-                    .tags {
+                    a {
                         display: flex;
-                        flex: 0 0 auto;
-                        flex-wrap: wrap;
+                        flex: 1 1 auto;
                         align-items: center;
-                        justify-content: flex-start;
+                        justify-content: space-between;
+                        min-width: 0;
+                        height: 100%;
 
-                        .tag {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            height: 16px;
-                            padding: 0 8px;
+                        .title {
                             margin-right: 8px;
-                            border-radius: 8px;
-                            font-size: 11px;
-                            font-weight: bold;
                             white-space: nowrap;
-                            text-transform: uppercase;
-
-                            &:last-child {
-                                margin-right: 0;
-                            }
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
 
-                        .hidden-tags {
-                            display: inline-flex;
+                        .tags {
+                            display: flex;
+                            flex: 0 0 auto;
+                            flex-wrap: wrap;
                             align-items: center;
-                            justify-content: center;
-                            width: 32px;
-                            height: 16px;
-                            border-radius: 8px;
+                            justify-content: flex-start;
+
+                            .tag {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                height: 16px;
+                                padding: 0 8px;
+                                margin-right: 8px;
+                                border-radius: 8px;
+                                font-size: 11px;
+                                font-weight: bold;
+                                white-space: nowrap;
+                                text-transform: uppercase;
+
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+
+                            .hidden-tags {
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 32px;
+                                height: 16px;
+                                border-radius: 8px;
+                            }
                         }
                     }
                 }

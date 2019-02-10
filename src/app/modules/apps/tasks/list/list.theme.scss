@@ -7,19 +7,24 @@
     tasks-list {
 
         .main-content {
-
-            .search-and-filters {
-                background: map-get($background, card);
-                box-shadow: 0 0 6px 0 transparentize(map-get($foreground, divider), 0.06),
-                0 6px 12px 0 transparentize(map-get($foreground, divider), 0.06);
-            }
+            background: map-get($background, card);
 
             .tasks-list {
 
                 .task {
 
+                    &.type-section {
+                        box-shadow: 0 1px 0 0 map-get($foreground, divider);
+                    }
+
                     &.type-task {
-                        background: map-get($background, card);
+
+                        &:hover {
+
+                            .task-content {
+                                background: map-get($background, hover);
+                            }
+                        }
                     }
 
                     &.completed {

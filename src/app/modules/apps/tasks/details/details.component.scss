@@ -4,7 +4,7 @@ tasks-details {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    padding: 48px 32px;
+    padding: 64px 40px;
     overflow-y: auto;
 
     .divider {
@@ -30,9 +30,9 @@ tasks-details {
             width: 100%;
 
             textarea {
-                font-size: 22px;
+                font-size: 24px;
                 font-weight: 700;
-                line-height: 1.2;
+                line-height: 1.25;
                 overflow: hidden;
             }
         }
