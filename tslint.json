@@ -29,7 +29,10 @@
         "label-position": true,
         "max-line-length": [
             true,
-            180
+            {
+                "limit": 180,
+                "ignore-pattern": "^import |^export | implements"
+            }
         ],
         "member-access": false,
         "member-ordering": [
