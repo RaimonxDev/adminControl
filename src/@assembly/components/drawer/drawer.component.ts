@@ -1,7 +1,6 @@
 import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { BehaviorSubject, Observable } from 'rxjs';
-
 import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 
 @Component({

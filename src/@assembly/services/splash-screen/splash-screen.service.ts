@@ -3,13 +3,9 @@ import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AsmSplashScreenService
 {
-    _disableAutoHide: boolean;
-
     /**
      * Constructor
      *
@@ -21,9 +17,6 @@ export class AsmSplashScreenService
         private _router: Router
     )
     {
-        // Set the private defaults
-        this._disableAutoHide = false;
-
         // Initialize
         this._init();
     }
@@ -47,12 +40,6 @@ export class AsmSplashScreenService
             )
             .subscribe(() => {
 
-                // Return, if the auto hide is disabled
-                if ( this._disableAutoHide )
-                {
-                    return;
-                }
-
                 // Hide the splash screen
                 this.hide();
             });
@@ -61,16 +48,6 @@ export class AsmSplashScreenService
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Disables the auto hide on first NavigationEnd event
-     * In order this to work, the method must be triggered
-     * before the first event.
-     */
-    disableAutoHide(): void
-    {
-        this._disableAutoHide = true;
-    }
 
     /**
      * Show the splash screen

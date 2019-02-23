@@ -77,19 +77,20 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Import app and page component themes here to enable theming for them
-@import 'core/layouts/app/basic/basic.theme';
-@import 'core/layouts/app/classic/classic.theme';
-@import 'core/layouts/app/classy/classy.theme';
-@import 'core/layouts/app/compact/compact.theme';
-@import 'core/layouts/app/dense/dense.theme';
-@import 'core/layouts/app/thin/thin.theme';
-@import 'core/layouts/app/thin-light/thin-light.theme';
+@import 'core/layouts/basic/basic.theme';
+@import 'core/layouts/classic/classic.theme';
+@import 'core/layouts/classy/classy.theme';
+@import 'core/layouts/compact/compact.theme';
+@import 'core/layouts/dense/dense.theme';
+@import 'core/layouts/empty/empty.theme';
+@import 'core/layouts/thin/thin.theme';
+@import 'core/layouts/thin-light/thin-light.theme';
 
-@import 'modules/apps/mailbox/mailbox.theme';
-@import 'modules/apps/tasks/tasks.theme';
+@import 'modules/admin/apps/mailbox/mailbox.theme';
+@import 'modules/admin/apps/tasks/tasks.theme';
 
-@import 'src/app/modules/docs/docs.theme';
-@import 'src/app/modules/ui/icons/icons.theme';
+@import 'modules/admin/docs/docs.theme';
+@import 'modules/admin/ui/icons/icons.theme';
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -100,6 +101,7 @@ $typography: mat-typography-config(
     @include classy-layout-theme($theme);
     @include compact-layout-theme($theme);
     @include dense-layout-theme($theme);
+    @include empty-layout-theme($theme);
     @include thin-layout-theme($theme);
     @include thin-light-layout-theme($theme);
 

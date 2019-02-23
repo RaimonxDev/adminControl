@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
-
 import { AsmShortcutsComponent } from '@assembly/components/shortcuts/shortcuts.component';
 
 @NgModule({

@@ -1,5 +1,4 @@
 import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
-
 import { AsmHighlightService } from '@assembly/components/highlight/highlight.service';
 
 @Component({

@@ -1,0 +1,18 @@
+@mixin empty-layout-theme($theme) {
+
+    $background: map-get($theme, background);
+    $isDark: map-get($theme, is-dark);
+
+    layout[type="empty"] {
+
+        // Container
+        > .container {
+
+            @if ($isDark) {
+                background: map-get($background, background);
+            } @else {
+                background: white;
+            }
+        }
+    }
+}

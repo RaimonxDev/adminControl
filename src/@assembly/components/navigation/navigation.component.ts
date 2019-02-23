@@ -1,22 +1,7 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ElementRef,
-    HostBinding,
-    HostListener,
-    Input,
-    OnDestroy,
-    OnInit,
-    QueryList,
-    Renderer2,
-    ViewChildren,
-    ViewEncapsulation
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { merge, Subject } from 'rxjs';
 import { delay, filter, takeUntil } from 'rxjs/operators';
-
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmConfig } from '@assembly/types/config';
 import { AsmConfigService } from '@assembly/services/config/config.service';

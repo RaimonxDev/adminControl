@@ -2,19 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material';
-
-// App component & app modules
+import { AsmCoreModule } from '@assembly';
+import { AsmMockApiModule } from '@mock-api/mock-api.module';
+import { CoreModule } from 'app/core/core.module';
 import { AppComponent } from 'app/app.component';
-
-import { AuthModule } from 'app/core/auth/auth.module';
-import { MockApiModule } from 'app/core/mock-api/mock-api.module';
-import { LayoutsModule } from 'app/core/layouts/layouts.module';
-
-import { AppsModule } from 'app/modules/apps/apps.module';
-import { DocsModule } from 'app/modules/docs/docs.module';
-import { PagesModule } from 'app/modules/pages/pages.module';
-import { UIModule } from 'app/modules/ui/ui.module';
+import { appRoutes } from 'app/app.routing';
 
 @NgModule({
     declarations: [
@@ -23,21 +15,17 @@ import { UIModule } from 'app/modules/ui/ui.module';
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot([]),
+        RouterModule.forRoot(appRoutes),
 
-        // Material
-        MatIconModule,
+        // Assembly Core
+        AsmCoreModule,
 
-        // App core modules
-        AuthModule,
-        MockApiModule,
-        LayoutsModule,
+        // App Core
+        CoreModule,
 
-        // App modules
-        AppsModule,
-        DocsModule,
-        PagesModule,
-        UIModule
+        // Assembly Mock API
+        AsmMockApiModule,
+
     ],
     bootstrap   : [
         AppComponent

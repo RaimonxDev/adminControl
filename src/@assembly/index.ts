@@ -4,6 +4,9 @@
  * import paths clean and tidy.
  */
 
+// Module
+export * from './assembly.module';
+
 // Components
 export * from './components/drawer/public-api';
 export * from './components/highlight/public-api';
@@ -19,7 +22,6 @@ export * from './directives/scrollbar/public-api';
 // Services
 export * from './services/config/public-api';
 export * from './services/media-watcher/public-api';
-export * from './services/mock-api/public-api';
 export * from './services/splash-screen/public-api';
 
 // Pipes

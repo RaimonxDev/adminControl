@@ -1,45 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { AsmSplashScreenService } from '@assembly';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
+import { AuthUtils } from 'app/core/auth/auth.utils';
 
-import { JWTUtilityService } from 'app/core/auth/jwt/jwt-utility.service';
-import { PopulateService } from 'app/core/populate/populate.service';
-
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AuthService
 {
     // Private
-    private _accessToken: string;
     private _authenticated: boolean;
-    private _onLoggedIn: BehaviorSubject<any>;
-    private _onLoggedOut: BehaviorSubject<any>;
-    private _user: any;
 
     /**
      * Constructor
      *
-     * @param {AsmSplashScreenService} _asmSplashScreenService
      * @param {HttpClient} _httpClient
-     * @param {JWTUtilityService} _JWTUtilityService
-     * @param {PopulateService} _populateService
      */
     constructor(
-        private _asmSplashScreenService: AsmSplashScreenService,
-        private _httpClient: HttpClient,
-        private _JWTUtilityService: JWTUtilityService,
-        private _populateService: PopulateService
+        private _httpClient: HttpClient
     )
     {
         // Set the defaults
         this._authenticated = false;
-
-        // Set the private defaults
-        this._onLoggedIn = new BehaviorSubject(null);
-        this._onLoggedOut = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -47,35 +28,16 @@ export class AuthService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for access token
+     * Getter and setter for access token
      */
-    get accessToken(): any
+    get accessToken(): string
     {
-        return this._accessToken;
+        return localStorage.getItem('accessToken');
     }
 
-    /**
-     * Getter for user
-     */
-    get user(): any
+    set accessToken(token: string)
     {
-        return this._user;
-    }
-
-    /**
-     * Getter for onLoggedIn
-     */
-    get onLoggedIn(): Observable<any>
-    {
-        return this._onLoggedIn.asObservable();
-    }
-
-    /**
-     * Getter for onLoggedOut
-     */
-    get onLoggedOut(): Observable<any>
-    {
-        return this._onLoggedOut.asObservable();
+        localStorage.setItem('accessToken', token);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -90,10 +52,10 @@ export class AuthService
      */
     login(username: string, password: string): Observable<any>
     {
-        // Return if the user is already logged in
-        if ( this.isAuthenticated() )
+        // Throw error, if the user is already logged in
+        if ( this._authenticated )
         {
-            return;
+            return throwError('User is already logged in.');
         }
 
         return this._httpClient.post('api/auth/login', {
@@ -102,26 +64,42 @@ export class AuthService
         }).pipe(
             switchMap((response: any) => {
 
-                // Get the data
-                const user        = response.user,
-                      accessToken = response.accessToken;
-
-                // Store the data in the local storage
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('user', JSON.stringify(user));
+                // Store the access token in the local storage
+                this.accessToken = response.accessToken;
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
 
-                // Store the data in the service
-                this._user = user;
-                this._accessToken = accessToken;
+                // Return a new observable with the response
+                return of(response);
+            })
+        );
+    }
 
-                // Execute the observable
-                this._onLoggedIn.next(user);
+    /**
+     * Login using the access token
+     */
+    loginUsingToken(): Observable<any>
+    {
+        // Renew token
+        return this._httpClient.post('api/auth/refresh-access-token', {
+            accessToken: this.accessToken
+        }).pipe(
+            catchError(() => {
 
-                // Populate the initial data
-                return this._populateService.load();
+                // Return false
+                return of(false);
+            }),
+            switchMap((response: any) => {
+
+                // Store the access token in the local storage
+                this.accessToken = response.accessToken;
+
+                // Set the authenticated flag to true
+                this._authenticated = true;
+
+                // Return true
+                return of(true);
             })
         );
     }
@@ -129,78 +107,42 @@ export class AuthService
     /**
      * Logout
      */
-    logout(): void
+    logout(): Observable<any>
     {
-        // Remove the data from the local storage
+        // Remove the access token from the local storage
         localStorage.removeItem('accessToken');
-        localStorage.removeItem('user');
 
         // Set the authenticated flag to false
         this._authenticated = false;
 
-        // Clear the service data
-        this._accessToken = null;
-        this._user = null;
-
-        // Execute the observable
-        this._onLoggedOut.next(true);
+        // Return the observable
+        return of(true);
     }
 
     /**
-     * Check session and renew the JWT if possible
+     * Check the authentication status
      */
-    checkSession(): void
+    check(): Observable<boolean>
     {
-        // Get the access token from the local storage
-        const accessToken = localStorage.getItem('accessToken');
-
-        // Return, if there is no access token available or if it expired
-        if ( !accessToken || this._JWTUtilityService.isTokenExpired(accessToken) )
+        // Check if the user is logged in
+        if ( this._authenticated )
         {
-            return;
+            return of(true);
         }
 
-        // Disable the splash screen's auto hide
-        this._asmSplashScreenService.disableAutoHide();
+        // Check the access token availability
+        if ( !this.accessToken )
+        {
+            return of(false);
+        }
 
-        // Renew token
-        this._httpClient.post('api/auth/refresh-access-token', {accessToken})
-            .pipe(
-                map((response: any) => {
+        // Check the access token expire date
+        if ( AuthUtils.isTokenExpired(this.accessToken) )
+        {
+            return of(false);
+        }
 
-                    // Get the data
-                    const newAccessToken = response.accessToken,
-                          user           = response.user;
-
-                    // Store the data in the local storage
-                    localStorage.setItem('accessToken', newAccessToken);
-                    localStorage.setItem('user', JSON.stringify(user));
-
-                    // Set the authenticated flag to true
-                    this._authenticated = true;
-
-                    // Store the data in the service
-                    this._user = user;
-                    this._accessToken = accessToken;
-
-                    // Execute the observable
-                    this._onLoggedIn.next(user);
-
-                    // Populate the initial data
-                    this._populateService.load().subscribe(() => {
-
-                        // Hide the splash screen
-                        this._asmSplashScreenService.hide();
-                    });
-                })
-            ).subscribe();
-    }
-
-    /**
-     * Check whether the user is authenticated or not
-     */
-    isAuthenticated(): boolean
-    {
-        return this._authenticated;
+        // If the access token exists and it didn't expire, login using it
+        return this.loginUsingToken();
     }
 }

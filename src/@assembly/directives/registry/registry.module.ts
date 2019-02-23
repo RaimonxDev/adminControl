@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { AsmRegistryService } from '@assembly/directives/registry/registry.service';
 
 @NgModule({

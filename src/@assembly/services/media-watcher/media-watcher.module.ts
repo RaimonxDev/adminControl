@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { AsmMediaWatcherService } from '@assembly/services/media-watcher/media-watcher.service';
 
 @NgModule({

@@ -4,12 +4,9 @@ import { Platform } from '@angular/cdk/platform';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import * as _ from 'lodash';
-
 import { AsmConfig } from '@assembly/types/config';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AsmConfigService
 {
     // Private
@@ -35,7 +32,8 @@ export class AsmConfigService
 
         this._defaultConfig = {
             colorTheme      : 'asm-theme-default',
-            customScrollbars: true
+            customScrollbars: true,
+            layout          : {}
         };
 
         // Initialize the service

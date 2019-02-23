@@ -1,4 +1,4 @@
-import { trigger, animate, style, transition } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 export const slideOut = trigger('slideOut', [
 

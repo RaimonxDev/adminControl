@@ -2,9 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AsmMediaWatcherService
 {
     private _mqlMap: Map<string, MediaQueryList>;

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { AsmThemeConfiguratorComponent } from '@assembly/components/theme-configurator/theme-configurator.component';
 
 @NgModule({

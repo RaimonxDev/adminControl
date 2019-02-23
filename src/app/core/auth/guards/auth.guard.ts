@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { AuthService } from 'app/core/auth/auth.service';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate
+export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
 {
     /**
      * Constructor
@@ -27,24 +27,32 @@ export class AuthGuard implements CanActivate
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Allow authenticated users
+     * Check the authenticated status
      *
      * @param redirectURL
      * @private
      */
-    private _checkAuthentication(redirectURL): boolean
+    private _check(redirectURL): Observable<boolean>
     {
-        // Allow, if the user is authenticated
-        if ( this._authService.isAuthenticated() )
-        {
-            return true;
-        }
+        // Check the authentication status
+        return this._authService.check()
+                   .pipe(
+                       switchMap((authenticated) => {
 
-        // Navigate to the login page with the redirectURL parameter
-        this._router.navigate(['pages', 'auth', 'login'], {queryParams: {redirectURL: redirectURL}});
+                           // If the user is not authenticated...
+                           if ( !authenticated )
+                           {
+                               // Redirect to the login page
+                               this._router.navigate(['auth', 'login'], {queryParams: {redirectURL}});
 
-        // Prevent the access
-        return false;
+                               // Prevent the access
+                               return of(false);
+                           }
+
+                           // Allow the access
+                           return of(true);
+                       })
+                   );
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -59,6 +67,28 @@ export class AuthGuard implements CanActivate
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean
     {
-        return this._checkAuthentication(state.url);
+        return this._check(state.url);
+    }
+
+    /**
+     * Can activate child
+     *
+     * @param childRoute
+     * @param state
+     */
+    canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
+    {
+        return this._check(state.url);
+    }
+
+    /**
+     * Can load
+     *
+     * @param route
+     * @param segments
+     */
+    canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean
+    {
+        return this._check('/');
     }
 }

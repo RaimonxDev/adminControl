@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { AsmConfigService } from '@assembly/services/config/config.service';
 
 @NgModule({
