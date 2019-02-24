@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AsmConfigService } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -14,35 +13,16 @@ export class LoginComponent
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {AsmConfigService} _asmConfigService
      * @param {AuthService} _authService
      * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _asmConfigService: AsmConfigService,
         private _authService: AuthService,
         private _router: Router
     )
     {
         console.log('login component constructor');
-
-        // Set the layout options
-        this._asmConfigService.config = {
-            layout: {
-                options: {
-                    navigation: {
-                        hidden: true
-                    },
-                    header    : {
-                        hidden: true
-                    },
-                    footer    : {
-                        hidden: true
-                    }
-                }
-            }
-        };
     }
 
     login(): void

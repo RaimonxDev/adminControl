@@ -1,10 +1,29 @@
 import { Route } from '@angular/router';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
+import { AuthGuard } from 'app/core/auth/guards/auth.guard';
+import { EmptyLayoutComponent } from 'app/core/layouts/empty/empty.component';
 
 export const authRoutes: Route[] = [
     {
-        path        : 'login',
-        loadChildren: './login/login.module#LoginModule',
-        canActivate : [NoAuthGuard]
+        path       : 'login',
+        component  : EmptyLayoutComponent,
+        canActivate: [NoAuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: './login/login.module#LoginModule'
+            }
+        ]
+    },
+    {
+        path       : 'logout',
+        component  : EmptyLayoutComponent,
+        canActivate: [AuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: './logout/logout.module#LogoutModule'
+            }
+        ]
     }
 ];

@@ -5,8 +5,9 @@ import { RouterModule } from '@angular/router';
 import { AsmCoreModule } from '@assembly';
 import { AsmMockApiModule } from '@mock-api/mock-api.module';
 import { CoreModule } from 'app/core/core.module';
+import { AuthModule } from 'app/modules/auth/auth.module';
+import { AdminModule } from 'app/modules/admin/admin.module';
 import { AppComponent } from 'app/app.component';
-import { appRoutes } from 'app/app.routing';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,7 @@ import { appRoutes } from 'app/app.routing';
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(appRoutes),
+        RouterModule.forRoot([]),
 
         // Assembly Core
         AsmCoreModule,
@@ -26,6 +27,9 @@ import { appRoutes } from 'app/app.routing';
         // Assembly Mock API
         AsmMockApiModule,
 
+        // App Modules
+        AuthModule,
+        AdminModule
     ],
     bootstrap   : [
         AppComponent

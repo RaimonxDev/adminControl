@@ -43,7 +43,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
                            if ( !authenticated )
                            {
                                // Redirect to the login page
-                               this._router.navigate(['auth', 'login'], {queryParams: {redirectURL}});
+                               this._router.navigate(['login'], {queryParams: {redirectURL}});
 
                                // Prevent the access
                                return of(false);

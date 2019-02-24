@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService } from '@assembly';
 
 @Component({
-    selector     : 'layout[type="basic"]',
+    selector     : 'layout[type="empty"]',
     templateUrl  : './empty.component.html',
     styleUrls    : ['./empty.component.scss'],
     encapsulation: ViewEncapsulation.None
