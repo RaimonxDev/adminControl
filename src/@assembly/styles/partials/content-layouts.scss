@@ -54,4 +54,11 @@
             }
         }
     }
+
+    // Centered card
+    &.with-centered-card {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

@@ -10,6 +10,7 @@ export * from './assembly.module';
 // Components
 export * from './components/drawer/public-api';
 export * from './components/highlight/public-api';
+export * from './components/message/public-api';
 export * from './components/navigation/public-api';
 export * from './components/search/public-api';
 export * from './components/shortcuts/public-api';

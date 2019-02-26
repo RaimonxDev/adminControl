@@ -47,10 +47,9 @@ export class AuthService
     /**
      * Login
      *
-     * @param username
-     * @param password
+     * @param credentials
      */
-    login(username: string, password: string): Observable<any>
+    login(credentials: { email: string, password: string }): Observable<any>
     {
         // Throw error, if the user is already logged in
         if ( this._authenticated )
@@ -58,10 +57,7 @@ export class AuthService
             return throwError('User is already logged in.');
         }
 
-        return this._httpClient.post('api/auth/login', {
-            username,
-            password
-        }).pipe(
+        return this._httpClient.post('api/auth/login', credentials).pipe(
             switchMap((response: any) => {
 
                 // Store the access token in the local storage

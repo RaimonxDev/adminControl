@@ -73,10 +73,10 @@ $typography: mat-typography-config(
 @include angular-material-typography($typography);
 
 // -----------------------------------------------------------------------------------------------------
-// @ Component theming
+// @ Modules themes
 // -----------------------------------------------------------------------------------------------------
 
-// Import app and page component themes here to enable theming for them
+// Import core and modules themes here to enable theming for them
 @import 'core/layouts/basic/basic.theme';
 @import 'core/layouts/classic/classic.theme';
 @import 'core/layouts/classy/classy.theme';
@@ -88,12 +88,13 @@ $typography: mat-typography-config(
 
 @import 'modules/admin/apps/mailbox/mailbox.theme';
 @import 'modules/admin/apps/tasks/tasks.theme';
-
 @import 'modules/admin/docs/docs.theme';
 @import 'modules/admin/ui/icons/icons.theme';
 
+@import 'modules/auth/login/login.theme';
+
 // Define a mixin for easier access
-@mixin components-theme($theme) {
+@mixin modules-themes($theme) {
 
     // Layouts
     @include basic-layout-theme($theme);
@@ -105,13 +106,14 @@ $typography: mat-typography-config(
     @include thin-layout-theme($theme);
     @include thin-light-layout-theme($theme);
 
-    // Apps
+    // Admin
     @include mailbox-theme($theme);
     @include tasks-theme($theme);
-
-    // Components
     @include docs-theme($theme);
     @include icons-theme($theme);
+
+    // Auth
+    @include login-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -139,8 +141,8 @@ body.asm-theme-default {
     // Apply the theme to the Assembly Core
     @include asm-core-theme($default-theme);
 
-    // Apply the theme to the user components
-    @include components-theme($default-theme);
+    // Apply the theme to the user modules
+    @include modules-themes($default-theme);
 
     // Generate Assembly color classes for primary, accent and warn colors
     $palettes: (
@@ -166,7 +168,7 @@ body.asm-theme-blue {
 
     @include angular-material-theme($blue-theme);
     @include asm-core-theme($blue-theme);
-    @include components-theme($blue-theme);
+    @include modules-themes($blue-theme);
 
     $blue-palettes: (
         primary: $blue-primary-palette,
@@ -191,7 +193,7 @@ body.asm-theme-blue-grey {
 
     @include angular-material-theme($blue-grey-theme);
     @include asm-core-theme($blue-grey-theme);
-    @include components-theme($blue-grey-theme);
+    @include modules-themes($blue-grey-theme);
 
     $blue-grey-palettes: (
         primary: $blue-grey-primary-palette,

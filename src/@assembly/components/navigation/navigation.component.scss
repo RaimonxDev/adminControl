@@ -470,7 +470,7 @@ asm-navigation {
                         .asm-navigation-item-icon {
                             margin-right: 0;
                             margin-bottom: 12px;
-                            @include icon-size(32);
+                            @include asm-icon-size(32);
                         }
 
                         .asm-navigation-item-title-wrapper {

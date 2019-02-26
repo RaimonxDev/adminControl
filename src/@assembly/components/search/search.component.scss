@@ -119,7 +119,7 @@ asm-search {
                         .mat-form-field-prefix {
 
                             .mat-icon {
-                                @include icon-size(32);
+                                @include asm-icon-size(32);
                             }
                         }
                     }
@@ -136,7 +136,7 @@ asm-search {
                 height: 40px;
 
                 .mat-icon {
-                    @include icon-size(40);
+                    @include asm-icon-size(40);
                 }
             }
         }

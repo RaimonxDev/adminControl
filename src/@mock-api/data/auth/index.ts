@@ -72,9 +72,9 @@ export class MockAuthApi
 
         // Define token payload
         const payload = {
-            iat   : iat,
-            iss   : 'Assembly',
-            exp   : exp
+            iat: iat,
+            iss: 'Assembly',
+            exp: exp
         };
 
         // Stringify and encode the header
@@ -133,7 +133,7 @@ export class MockAuthApi
             .reply((request) => {
 
                 // Login successful
-                if ( request.body.username === 'watkins.andrew@company.com' && request.body.password === 'admin' )
+                if ( request.body.email === 'watkins.andrew@company.com' && request.body.password === 'admin' )
                 {
                     return [
                         200,
@@ -147,7 +147,7 @@ export class MockAuthApi
                 return [
                     403,
                     {
-                        error: 'Wrong username or password'
+                        error: 'Wrong email or password'
                     }
                 ];
             }, false);

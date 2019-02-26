@@ -1,4 +1,78 @@
-LOGIN
+<div class="content-layout with-centered-card">
 
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
+    <div class="card">
+
+        <div class="logo">
+            <img class="logo-dark"
+                 src="assets/images/logo/logo-dark.svg">
+            <img class="logo-light"
+                 src="assets/images/logo/logo-light.svg">
+        </div>
+
+        <div class="title-2 mt-64">Log in to your account</div>
+        <div class="subtitle mt-8 secondary-text">Welcome back!</div>
+
+        <asm-message class="mt-40"
+                     *ngIf="errorMessage"
+                     [appearance]="'solid'"
+                     [type]="'error'">
+            <div asmMessageContent>{{errorMessage}}</div>
+        </asm-message>
+
+        <form class="mt-40"
+              [formGroup]="loginForm"
+              (ngSubmit)="login()"
+              novalidate>
+
+            <mat-form-field class="w-full"
+                            [appearance]="'standard'">
+                <mat-label>Username</mat-label>
+                <input id="email"
+                       matInput
+                       [formControlName]="'email'">
+                <mat-icon matSuffix>mail</mat-icon>
+                <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                    Email is required
+                </mat-error>
+                <mat-error
+                    *ngIf="!loginForm.get('email').hasError('required') &&
+                            loginForm.get('email').hasError('email')">
+                    Please enter a valid email address
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-full"
+                            [appearance]="'standard'">
+                <mat-label>Password</mat-label>
+                <input id="password"
+                       type="password"
+                       [formControlName]="'password'"
+                       matInput>
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-error>
+                    Password is required
+                </mat-error>
+            </mat-form-field>
+
+            <div class="mt-8 w-full text-right">
+                <a [routerLink]="['forgot-password']">Forgot password?</a>
+            </div>
+
+            <button class="asm-mat-button-large mt-48 w-full"
+                    mat-raised-button
+                    [color]="'primary'"
+                    [disabled]="loginForm.invalid">
+                Log In
+            </button>
+
+            <div class="mt-24 w-full text-center">
+                <span class="mr-4">Need an account?</span>
+                <a class="link"
+                   [routerLink]="['/sign-up']">Create one here</a>.
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

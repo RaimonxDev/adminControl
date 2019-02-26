@@ -5,14 +5,5 @@
 
     layout[type="empty"] {
 
-        // Container
-        > .container {
-
-            @if ($isDark) {
-                background: map-get($background, background);
-            } @else {
-                background: white;
-            }
-        }
     }
 }

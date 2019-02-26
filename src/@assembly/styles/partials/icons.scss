@@ -13,20 +13,20 @@ mat-icon {
     @for $size from 2 through 128 {
 
         &.icon-size-#{$size * 2} {
-            @include icon-size($size * 2);
+            @include asm-icon-size($size * 2);
         }
     }
 
-    @each $breakpoint, $media in $breakpoints {
+    @each $breakpoint, $media in $asm-breakpoints {
 
-        @include media-breakpoint($breakpoint) {
+        @include asm-media-breakpoint($breakpoint) {
 
             $alias: '#{'\\'}' + '#{'@'}' + '#{$breakpoint}';
 
             @for $size from 2 through 128 {
 
                 &.icon-size-#{$size * 2}#{$alias} {
-                    @include icon-size($size * 2);
+                    @include asm-icon-size($size * 2);
                 }
             }
         }

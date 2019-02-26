@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { IconsComponent } from 'app/modules/admin/ui/icons/icons.component';
-import { IconsService } from 'app/modules/admin/ui/icons/icons.service';
+import { IconsResolver } from 'app/modules/admin/ui/icons/icons.resolvers';
 
 export const iconRoutes: Route[] = [
     {
@@ -13,7 +13,7 @@ export const iconRoutes: Route[] = [
         path     : '**',
         component: IconsComponent,
         resolve  : {
-            icons: IconsService
+            icons: IconsResolver
         }
     }
 ];

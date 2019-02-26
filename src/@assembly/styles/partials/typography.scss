@@ -11,7 +11,7 @@
     $is-dark: map-get($theme, is-dark);
 
     // -----------------------------------------------------------------------------------------------------
-    // @ General
+    // @ Code
     // -----------------------------------------------------------------------------------------------------
     code:not([class*="language-"]) {
 
@@ -25,27 +25,11 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Message
+    // @ Link
     // -----------------------------------------------------------------------------------------------------
-    .message {
-        border-top-color: map-get($foreground, divider);
-        border-right-color: map-get($foreground, divider);
-        border-bottom-color: map-get($foreground, divider);
-        background: map-get($background, card);
-        color: map-get($foreground, text);
-
-        // Material theming
-        &.primary {
-            border-left-color: map-get($primary, default);
-        }
-
-        &.accent {
-            border-left-color: map-get($accent, default);
-        }
-
-        &.warn {
-            border-left-color: map-get($warn, default);
-        }
+    .link {
+        color: map-get($primary, default);
+        border-bottom-color: map-get($primary, default);
     }
 }
 
@@ -183,44 +167,16 @@ pre {
 
 .title-2 {
     font-size: 24px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.title-3 {
+    font-size: 24px;
     font-weight: 700;
     line-height: 1.2;
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Message
-// -----------------------------------------------------------------------------------------------------
-
-.message {
-    display: flex;
-    align-items: center;
-    border: 1px solid;
-    border-left: 4px solid;
-    border-radius: 4px;
-    min-height: 64px;
-    padding: 16px 24px;
-    margin: 16px 0 !important;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
-
-    &.info {
-        background: #B3E5FC;
-        border-left-color: #03A9F4;
-        color: rgba(0, 0, 0, 0.87);
-    }
-
-    &.success {
-        background: #4CAF50;
-        border-left-color: #2E7D32;
-    }
-
-    &.warning {
-        background: #FFECB3;
-        border-left-color: #FFC107;
-        color: rgba(0, 0, 0, 0.87);
-    }
-
-    &.error {
-        background: #EF5350;
-        border-left-color: #B71C1C;
-    }
+.subtitle {
+    font-size: 16px;
 }
