@@ -1,0 +1,40 @@
+@import 'src/@assembly/styles/assembly';
+
+asm-message {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+    padding: 16px 24px;
+    line-height: 1;
+
+    // Solid
+    &.asm-message-appearance-solid {
+        border-radius: 4px;
+    }
+
+    // Outline
+    &.asm-message-appearance-outline {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 6px;
+        }
+    }
+
+    // Icon
+    .asm-message-icon:not(:empty) {
+        margin-right: 16px;
+    }
+
+    // Content
+    .asm-message-content {
+        letter-spacing: 0.025em;
+    }
+}

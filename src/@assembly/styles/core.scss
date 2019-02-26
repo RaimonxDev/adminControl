@@ -11,6 +11,7 @@
 
 // Assembly component themes
 @import "src/@assembly/components/drawer/drawer.theme";
+@import "src/@assembly/components/message/message.theme";
 @import "src/@assembly/components/navigation/navigation.theme";
 @import "src/@assembly/components/search/search.theme";
 @import "src/@assembly/components/shortcuts/shortcuts.theme";
@@ -45,6 +46,7 @@
 
     // Theming for Assembly components
     @include asm-drawer-theme($theme);
+    @include asm-message-theme($theme);
     @include asm-navigation-theme($theme);
     @include asm-search-theme($theme);
     @include asm-shortcuts-theme($theme);
