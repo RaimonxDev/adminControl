@@ -5,6 +5,17 @@ import { EmptyLayoutComponent } from 'app/core/layouts/empty/empty.component';
 
 export const authRoutes: Route[] = [
     {
+        path       : 'confirmation-required',
+        component  : EmptyLayoutComponent,
+        canActivate: [NoAuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: './confirmation-required/confirmation-required.module#ConfirmationRequiredModule'
+            }
+        ]
+    },
+    {
         path       : 'forgot-password',
         component  : EmptyLayoutComponent,
         canActivate: [NoAuthGuard],
