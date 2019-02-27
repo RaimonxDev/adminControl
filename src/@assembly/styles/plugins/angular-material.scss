@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Angular Material library theming overrides and fixes
+// @ Theming overrides and fixes
 // -----------------------------------------------------------------------------------------------------
 @mixin material-theme($theme) {
 
@@ -61,14 +61,30 @@
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Angular Material button overrides and fixes
+// @ Button
 // -----------------------------------------------------------------------------------------------------
+[class^='asm-mat-button-'] {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
 .asm-mat-button-large {
-    line-height: 44px !important;
+    height: 48px;
+    min-height: 48px;
+    max-height: 48px;
+    line-height: 48px !important;
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Angular Material form field overrides and fixes
+// @ Icon
+// -----------------------------------------------------------------------------------------------------
+.mat-icon {
+    text-align: center;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Form field
 // -----------------------------------------------------------------------------------------------------
 
 // ----------------------------------------------------
@@ -255,6 +271,24 @@
         }
     }
 
+    // Removes subscript space
+    &.asm-mat-no-subscript,
+    &.asm-mat-no-hint,
+    &.asm-mat-no-error {
+
+        &.mat-form-field {
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0;
+
+                .mat-form-field-subscript-wrapper {
+                    display: none !important;
+                    height: 0 !important;
+                }
+            }
+        }
+    }
+
     // Makes the form field denser by removing
     // the extra padding around
     &.asm-mat-dense {
@@ -287,28 +321,6 @@
 
             .mat-form-field-underline {
                 display: none !important;
-            }
-        }
-    }
-}
-
-// ----------------------------------------------------
-// Global
-// ----------------------------------------------------
-
-// Removes subscript space from the form fields
-.asm-mat-no-subscript,
-.asm-mat-no-hint,
-.asm-mat-no-error {
-
-    &.mat-form-field {
-
-        .mat-form-field-wrapper {
-            padding-bottom: 0;
-
-            .mat-form-field-subscript-wrapper {
-                display: none !important;
-                height: 0 !important;
             }
         }
     }
