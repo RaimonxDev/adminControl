@@ -2,6 +2,7 @@
 
     <div class="card">
 
+        <!-- Logo -->
         <div class="logo">
             <img class="logo-dark"
                  src="assets/images/logo/logo-dark.svg">
@@ -9,24 +10,28 @@
                  src="assets/images/logo/logo-light.svg">
         </div>
 
+        <!-- Title -->
         <div class="title-2 mt-64">Log in to your account</div>
         <div class="subtitle mt-8 secondary-text">Welcome back!</div>
 
-        <asm-message class="mt-40"
+        <!-- Error message -->
+        <asm-message class="mt-48"
                      *ngIf="errorMessage"
                      [appearance]="'solid'"
-                     [type]="'error'">
+                     [type]="'error'"
+                     [@shake]="errorMessageAnimationState">
             <div asmMessageContent>{{errorMessage}}</div>
         </asm-message>
 
+        <!-- Login form -->
         <form class="mt-40"
               [formGroup]="loginForm"
-              (ngSubmit)="login()"
               novalidate>
 
+            <!-- Email field -->
             <mat-form-field class="w-full"
                             [appearance]="'standard'">
-                <mat-label>Username</mat-label>
+                <mat-label>Email</mat-label>
                 <input id="email"
                        matInput
                        [formControlName]="'email'">
@@ -41,30 +46,50 @@
                 </mat-error>
             </mat-form-field>
 
+            <!-- Password field -->
             <mat-form-field class="w-full"
                             [appearance]="'standard'">
                 <mat-label>Password</mat-label>
                 <input id="password"
+                       matInput
                        type="password"
                        [formControlName]="'password'"
-                       matInput>
-                <mat-icon matSuffix>lock</mat-icon>
+                       #passwordField>
+                <button class="w-24 h-24"
+                        mat-icon-button
+                        matSuffix
+                        (mousedown)="passwordField.type = 'text'"
+                        (mouseup)="passwordField.type = 'password'"
+                        [disableRipple]="true">
+                    <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
+                    <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                </button>
                 <mat-error>
                     Password is required
                 </mat-error>
             </mat-form-field>
 
+            <!-- Forgot password link -->
             <div class="mt-8 w-full text-right secondary-text">
                 <a [routerLink]="['forgot-password']">Forgot password?</a>
             </div>
 
+            <!-- Log in button -->
             <button class="asm-mat-button-large mt-48 w-full"
                     mat-raised-button
                     [color]="'primary'"
-                    [disabled]="loginForm.invalid">
-                Log In
+                    [disabled]="loginForm.disabled || loginForm.invalid"
+                    (click)="login()">
+                <span *ngIf="!loginForm.disabled">
+                    Log In
+                </span>
+                <span *ngIf="loginForm.disabled">
+                    <asm-spinner [appearance]="'material'"
+                                 [diameter]="24"></asm-spinner>
+                </span>
             </button>
 
+            <!-- Create account link -->
             <div class="mt-24 w-full text-center">
                 <span class="mr-4">Need an account?</span>
                 <a class="link"

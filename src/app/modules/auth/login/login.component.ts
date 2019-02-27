@@ -1,18 +1,21 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'login',
     templateUrl  : './login.component.html',
     styleUrls    : ['./login.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    animations   : AsmAnimations
 })
 export class LoginComponent implements OnInit
 {
     loginForm: FormGroup;
     errorMessage: string | null;
+    errorMessageAnimationState: boolean;
 
     /**
      * Constructor
@@ -31,6 +34,7 @@ export class LoginComponent implements OnInit
     {
         // Set the defaults
         this.errorMessage = null;
+        this.errorMessageAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -57,6 +61,12 @@ export class LoginComponent implements OnInit
      */
     login(): void
     {
+        // Disable the form
+        this.loginForm.disable();
+
+        // Hide the error message
+        this.errorMessage = null;
+
         // Get the credentials
         const credentials = this.loginForm.value;
 
@@ -67,22 +77,16 @@ export class LoginComponent implements OnInit
                 // Set the redirect url
                 const redirectURL = this._activatedRoute.snapshot.queryParams['redirectURL'] || '/';
 
-                // If the redirect url parameter exits...
-                if ( redirectURL )
-                {
-                    // navigate to it
-                    this._router.navigateByUrl(redirectURL);
-                }
+                // Navigate to the redirect url
+                this._router.navigateByUrl(redirectURL);
 
             }, (response) => {
 
-                // Set an error on the login form
-                this.loginForm.setErrors({error: response.error});
+                // Re-enable the form
+                this.loginForm.enable();
 
-                // Set the error message
+                // Show the error message
                 this.errorMessage = response.error;
-
-                console.log(response);
             });
     }
 }
