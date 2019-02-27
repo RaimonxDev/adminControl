@@ -1,21 +1,21 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'signup',
-    templateUrl  : './signup.component.html',
-    styleUrls    : ['./signup.component.scss'],
+    selector     : 'reset-password',
+    templateUrl  : './reset-password.component.html',
+    styleUrls    : ['./reset-password.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class SignupComponent implements OnInit, OnDestroy
+export class ResetPasswordComponent implements OnInit, OnDestroy
 {
-    signupForm: FormGroup;
+    resetPasswordForm: FormGroup;
     messageBox: any;
     messageBoxAnimationState: boolean;
 
@@ -55,19 +55,17 @@ export class SignupComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Create the form
-        this.signupForm = this._formBuilder.group({
-            name           : ['', Validators.required],
-            email          : ['', [Validators.required, Validators.email]],
+        this.resetPasswordForm = this._formBuilder.group({
             password       : ['', Validators.required],
             passwordConfirm: ['', [Validators.required, confirmPasswordValidator]]
         });
 
         // Update the validity of the 'passwordConfirm' field
         // when the 'password' field changes
-        this.signupForm.get('password').valueChanges
+        this.resetPasswordForm.get('password').valueChanges
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
-                this.signupForm.get('passwordConfirm').updateValueAndValidity();
+                this.resetPasswordForm.get('passwordConfirm').updateValueAndValidity();
             });
     }
 

@@ -38,6 +38,17 @@ export const authRoutes: Route[] = [
         ]
     },
     {
+        path       : 'reset-password',
+        component  : EmptyLayoutComponent,
+        canActivate: [NoAuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
+            }
+        ]
+    },
+    {
         path       : 'signup',
         component  : EmptyLayoutComponent,
         canActivate: [NoAuthGuard],

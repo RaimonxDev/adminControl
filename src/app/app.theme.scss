@@ -94,6 +94,7 @@ $typography: mat-typography-config(
 @import 'modules/auth/forgot-password/forgot-password.theme';
 @import 'modules/auth/login/login.theme';
 @import 'modules/auth/logout/logout.theme';
+@import 'modules/auth/reset-password/reset-password.theme';
 @import 'modules/auth/signup/signup.theme';
 
 // Define a mixin for easier access
@@ -119,6 +120,7 @@ $typography: mat-typography-config(
     @include forgot-password-theme($theme);
     @include login-theme($theme);
     @include logout-theme($theme);
+    @include reset-password-theme($theme);
     @include signup-theme($theme);
 }
 
