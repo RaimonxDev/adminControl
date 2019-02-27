@@ -25,5 +25,16 @@ export const authRoutes: Route[] = [
                 loadChildren: './logout/logout.module#LogoutModule'
             }
         ]
+    },
+    {
+        path       : 'signup',
+        component  : EmptyLayoutComponent,
+        canActivate: [NoAuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: './signup/signup.module#SignupModule'
+            }
+        ]
     }
 ];

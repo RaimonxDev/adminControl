@@ -67,6 +67,12 @@
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
+
+    .mat-button-wrapper {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .asm-mat-button-large {
