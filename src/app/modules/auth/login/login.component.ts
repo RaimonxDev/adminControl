@@ -14,8 +14,8 @@ import { AuthService } from 'app/core/auth/auth.service';
 export class LoginComponent implements OnInit
 {
     loginForm: FormGroup;
-    errorMessage: string | null;
-    errorMessageAnimationState: boolean;
+    messageBox: any;
+    messageBoxAnimationState: boolean;
 
     /**
      * Constructor
@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit
     )
     {
         // Set the defaults
-        this.errorMessage = null;
-        this.errorMessageAnimationState = false;
+        this.messageBox = null;
+        this.messageBoxAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -64,8 +64,8 @@ export class LoginComponent implements OnInit
         // Disable the form
         this.loginForm.disable();
 
-        // Hide the error message
-        this.errorMessage = null;
+        // Hide the message box
+        this.messageBox = null;
 
         // Get the credentials
         const credentials = this.loginForm.value;
@@ -86,7 +86,10 @@ export class LoginComponent implements OnInit
                 this.loginForm.enable();
 
                 // Show the error message
-                this.errorMessage = response.error;
+                this.messageBox = {
+                    message: response.error,
+                    type   : 'error'
+                };
             });
     }
 }

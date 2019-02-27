@@ -91,6 +91,7 @@ $typography: mat-typography-config(
 @import 'modules/admin/docs/docs.theme';
 @import 'modules/admin/ui/icons/icons.theme';
 
+@import 'modules/auth/forgot-password/forgot-password.theme';
 @import 'modules/auth/login/login.theme';
 @import 'modules/auth/logout/logout.theme';
 @import 'modules/auth/signup/signup.theme';
@@ -115,6 +116,7 @@ $typography: mat-typography-config(
     @include icons-theme($theme);
 
     // Auth
+    @include forgot-password-theme($theme);
     @include login-theme($theme);
     @include logout-theme($theme);
     @include signup-theme($theme);

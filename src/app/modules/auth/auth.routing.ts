@@ -5,6 +5,17 @@ import { EmptyLayoutComponent } from 'app/core/layouts/empty/empty.component';
 
 export const authRoutes: Route[] = [
     {
+        path       : 'forgot-password',
+        component  : EmptyLayoutComponent,
+        canActivate: [NoAuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
+            }
+        ]
+    },
+    {
         path       : 'login',
         component  : EmptyLayoutComponent,
         canActivate: [NoAuthGuard],

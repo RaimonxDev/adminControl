@@ -14,16 +14,16 @@
         <div class="title-2 mt-64">Create your account</div>
         <div class="subtitle mt-8 secondary-text">Join us to enjoy Assembly</div>
 
-        <!-- Error message -->
+        <!-- Message box -->
         <asm-message class="mt-48"
-                     *ngIf="errorMessage"
+                     *ngIf="messageBox"
                      [appearance]="'solid'"
-                     [type]="'error'"
-                     [@shake]="errorMessageAnimationState">
-            <div asmMessageContent>{{errorMessage}}</div>
+                     [type]="messageBox.type"
+                     [@shake]="messageBoxAnimationState">
+            <div asmMessageContent>{{messageBox.message}}</div>
         </asm-message>
 
-        <!-- Login form -->
+        <!-- Signup form -->
         <form class="mt-40"
               [formGroup]="signupForm"
               novalidate>
