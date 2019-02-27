@@ -14,6 +14,7 @@ export * from './components/message/public-api';
 export * from './components/navigation/public-api';
 export * from './components/search/public-api';
 export * from './components/shortcuts/public-api';
+export * from './components/spinner/public-api';
 export * from './components/theme-configurator/public-api';
 
 // Directives

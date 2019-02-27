@@ -60,7 +60,24 @@ export class AsmMessageComponent
     }
 
     /**
-     * Setter and getter for appearance
+     * Setter and getter for custom icon
+     *
+     * @param value
+     */
+    @Input()
+    set customIcon(value: boolean)
+    {
+        // Store the value
+        this._customIcon = value;
+    }
+
+    get customIcon(): boolean
+    {
+        return this._customIcon;
+    }
+
+    /**
+     * Setter and getter for show icon
      *
      * @param value
      */
@@ -105,22 +122,4 @@ export class AsmMessageComponent
     {
         return this._type;
     }
-
-    /**
-     * Setter and getter for custom icon
-     *
-     * @param value
-     */
-    @Input()
-    set customIcon(value: boolean)
-    {
-        // Store the value
-        this._customIcon = value;
-    }
-
-    get customIcon(): boolean
-    {
-        return this._customIcon;
-    }
-
 }
