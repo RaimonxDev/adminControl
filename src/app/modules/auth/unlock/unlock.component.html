@@ -1,0 +1,89 @@
+<div class="content-layout with-centered-card">
+
+    <div class="card">
+
+        <!-- Logo -->
+        <div class="logo">
+            <img class="logo-dark"
+                 src="assets/images/logo/logo-dark.svg">
+            <img class="logo-light"
+                 src="assets/images/logo/logo-light.svg">
+        </div>
+
+        <!-- Title -->
+        <div class="title-2 mt-64">Your session is locked!</div>
+        <div class="subtitle mt-8 secondary-text">Enter your password to continue</div>
+
+        <!-- Message box -->
+        <asm-message class="mt-48"
+                     *ngIf="messageBox"
+                     [appearance]="'solid'"
+                     [type]="messageBox.type"
+                     [@shake]="messageBoxAnimationState">
+            <div asmMessageContent>{{messageBox.message}}</div>
+        </asm-message>
+
+        <!-- Unlock form -->
+        <form class="mt-40"
+              [formGroup]="unlockForm"
+              novalidate>
+
+            <!-- Name field -->
+            <mat-form-field class="w-full"
+                            [appearance]="'standard'">
+                <mat-label>Name</mat-label>
+                <input id="name"
+                       matInput
+                       [formControlName]="'name'">
+                <mat-icon matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+
+            <!-- Password field -->
+            <mat-form-field class="w-full"
+                            [appearance]="'standard'">
+                <mat-label>Password</mat-label>
+                <input id="password"
+                       matInput
+                       type="password"
+                       [formControlName]="'password'"
+                       #passwordField>
+                <button class="w-24 h-24"
+                        mat-icon-button
+                        (mousedown)="passwordField.type = 'text'"
+                        (mouseup)="passwordField.type = 'password'"
+                        [disableRipple]="true"
+                        tabindex="-1"
+                        matSuffix>
+                    <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
+                    <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                </button>
+                <mat-error>
+                    Password is required
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Unlock button -->
+            <button class="asm-mat-button-large mt-48 w-full"
+                    mat-raised-button
+                    [color]="'primary'"
+                    [disabled]="unlockForm.disabled || unlockForm.invalid">
+                <span *ngIf="!unlockForm.disabled">
+                    Unlock Your Session
+                </span>
+                <span *ngIf="unlockForm.disabled">
+                    <asm-spinner [appearance]="'material'"
+                                 [diameter]="24"></asm-spinner>
+                </span>
+            </button>
+
+            <!-- Logout link -->
+            <div class="mt-24 w-full text-center">
+                <a class="link"
+                   [routerLink]="['/logout']">I'm not {{name}}</a>.
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

@@ -15,9 +15,9 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class SignupComponent implements OnInit, OnDestroy
 {
-    signupForm: FormGroup;
     messageBox: any;
     messageBoxAnimationState: boolean;
+    signupForm: FormGroup;
 
     // Private
     private _unsubscribeAll: Subject<any>;

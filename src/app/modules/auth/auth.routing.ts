@@ -58,5 +58,16 @@ export const authRoutes: Route[] = [
                 loadChildren: './signup/signup.module#SignupModule'
             }
         ]
+    },
+    {
+        path       : 'unlock',
+        component  : EmptyLayoutComponent,
+        canActivate: [AuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: './unlock/unlock.module#UnlockModule'
+            }
+        ]
     }
 ];

@@ -96,6 +96,7 @@ $typography: mat-typography-config(
 @import 'modules/auth/logout/logout.theme';
 @import 'modules/auth/reset-password/reset-password.theme';
 @import 'modules/auth/signup/signup.theme';
+@import 'modules/auth/unlock/unlock.theme';
 
 // Define a mixin for easier access
 @mixin modules-themes($theme) {
@@ -122,6 +123,7 @@ $typography: mat-typography-config(
     @include logout-theme($theme);
     @include reset-password-theme($theme);
     @include signup-theme($theme);
+    @include unlock-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

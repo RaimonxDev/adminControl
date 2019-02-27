@@ -15,9 +15,9 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy
 {
-    resetPasswordForm: FormGroup;
     messageBox: any;
     messageBoxAnimationState: boolean;
+    resetPasswordForm: FormGroup;
 
     // Private
     private _unsubscribeAll: Subject<any>;
