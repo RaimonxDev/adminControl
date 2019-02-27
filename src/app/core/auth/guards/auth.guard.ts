@@ -67,7 +67,14 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean
     {
-        return this._check(state.url);
+        let redirectUrl = state.url;
+
+        if ( redirectUrl === '/logout' )
+        {
+            redirectUrl = '/';
+        }
+
+        return this._check(redirectUrl);
     }
 
     /**
@@ -78,7 +85,14 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
      */
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
     {
-        return this._check(state.url);
+        let redirectUrl = state.url;
+
+        if ( redirectUrl === '/logout' )
+        {
+            redirectUrl = '/';
+        }
+
+        return this._check(redirectUrl);
     }
 
     /**

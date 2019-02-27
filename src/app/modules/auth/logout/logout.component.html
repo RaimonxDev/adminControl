@@ -1,9 +1,38 @@
-You have successfully logged out..
+<div class="content-layout with-centered-card">
 
-<ng-container *ngIf="countdown === 0">
-    You are now being redirected...
-</ng-container>
+    <div class="card">
 
-<ng-container *ngIf="countdown > 0">
-    You will be redirected after {{countdown | i18nPlural: countdownMapping }}.
-</ng-container>
+        <!-- Logo -->
+        <div class="logo">
+            <img class="logo-dark"
+                 src="assets/images/logo/logo-dark.svg">
+            <img class="logo-light"
+                 src="assets/images/logo/logo-light.svg">
+        </div>
+
+        <!-- Title -->
+        <div class="title-2 mt-64">Successfully logged out!</div>
+        <div class="subtitle mt-8 secondary-text">
+
+            <!-- Redirect countdown -->
+            <ng-container *ngIf="countdown > 0">
+                You will be redirected after {{countdown | i18nPlural: countdownMapping }}.
+            </ng-container>
+
+            <!-- Redirect message -->
+            <ng-container *ngIf="countdown === 0">
+                You are now being redirected...
+            </ng-container>
+
+        </div>
+
+        <!-- Login link -->
+        <div class="mt-48 w-full text-center">
+            <span class="mr-4">Go to</span>
+            <a class="link"
+               [routerLink]="['/login']">login</a>.
+        </div>
+
+    </div>
+
+</div>

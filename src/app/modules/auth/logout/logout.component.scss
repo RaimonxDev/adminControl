@@ -1,3 +1,14 @@
-:host {
+logout {
 
+    .content-layout {
+        margin: 32px;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: 384px;
+            border-radius: 8px;
+            padding: 64px 48px;
+        }
+    }
 }

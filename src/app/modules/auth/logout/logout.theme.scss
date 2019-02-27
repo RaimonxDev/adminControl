@@ -1,0 +1,35 @@
+@import 'src/@assembly/styles/assembly';
+
+@mixin logout-theme($theme) {
+
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    logout {
+
+        .content-layout {
+
+            .card {
+                background: map-get($background, card);
+                @include asm-shadow(1);
+
+                .logo {
+
+                    .logo-dark {
+
+                        @if ($is-dark) {
+                            display: none;
+                        }
+                    }
+
+                    .logo-light {
+
+                        @if ($is-dark == false) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

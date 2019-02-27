@@ -92,6 +92,7 @@ $typography: mat-typography-config(
 @import 'modules/admin/ui/icons/icons.theme';
 
 @import 'modules/auth/login/login.theme';
+@import 'modules/auth/logout/logout.theme';
 
 // Define a mixin for easier access
 @mixin modules-themes($theme) {
@@ -114,6 +115,7 @@ $typography: mat-typography-config(
 
     // Auth
     @include login-theme($theme);
+    @include logout-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
