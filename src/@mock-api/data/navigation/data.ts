@@ -435,240 +435,48 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title   : 'Authentication',
         type    : 'collapsable',
         icon    : 'lock',
-        badge   : {
-            title     : '30',
-            background: '#525e8a',
-            color     : '#FFFFFF'
-        },
         children: [
             {
-                id      : 'classic',
-                title   : 'Classic',
-                type    : 'collapsable',
-                children: [
-                    {
-                        id   : 'login',
-                        title: 'Login',
-                        type : 'link',
-                        link : '/pages/authentication/classic/login'
-                    },
-                    {
-                        id   : 'sign-up',
-                        title: 'Sign Up',
-                        type : 'link',
-                        link : '/pages/authentication/classic/sign-up'
-                    },
-                    {
-                        id   : 'forgot-password',
-                        title: 'Forgot Password',
-                        type : 'link',
-                        link : '/pages/authentication/classic/forgot-password'
-                    },
-                    {
-                        id   : 'reset-password',
-                        title: 'Reset Password',
-                        type : 'link',
-                        link : '/pages/authentication/classic/reset-password'
-                    },
-                    {
-                        id   : 'lock-screen',
-                        title: 'Lock Screen',
-                        type : 'link',
-                        link : '/pages/authentication/classic/lock-screen'
-                    },
-                    {
-                        id   : 'mail-confirmation',
-                        title: 'Mail Confirmation',
-                        type : 'link',
-                        link : '/pages/authentication/classic/mail-confirmation'
-                    }
-                ]
+                id   : 'login',
+                title: 'Login',
+                type : 'link',
+                link : '/pages/authentication/login'
             },
             {
-                id      : 'modern',
-                title   : 'Modern',
-                type    : 'collapsable',
-                children: [
-                    {
-                        id      : 'left',
-                        title   : 'Left',
-                        type    : 'collapsable',
-                        children: [
-                            {
-                                id   : 'login',
-                                title: 'Login',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/login'
-                            },
-                            {
-                                id   : 'sign-up',
-                                title: 'Sign Up',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/sign-up'
-                            },
-                            {
-                                id   : 'forgot-password',
-                                title: 'Forgot Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/forgot-password'
-                            },
-                            {
-                                id   : 'reset-password',
-                                title: 'Reset Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/reset-password'
-                            },
-                            {
-                                id   : 'lock-screen',
-                                title: 'Lock Screen',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/lock-screen'
-                            },
-                            {
-                                id   : 'mail-confirmation',
-                                title: 'Mail Confirmation',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/mail-confirmation'
-                            }
-                        ]
-                    },
-                    {
-                        id      : 'right',
-                        title   : 'Right Aligned',
-                        type    : 'collapsable',
-                        children: [
-                            {
-                                id   : 'login',
-                                title: 'Login',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/login'
-                            },
-                            {
-                                id   : 'sign-up',
-                                title: 'Sign Up',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/sign-up'
-                            },
-                            {
-                                id   : 'forgot-password',
-                                title: 'Forgot Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/forgot-password'
-                            },
-                            {
-                                id   : 'reset-password',
-                                title: 'Reset Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/reset-password'
-                            },
-                            {
-                                id   : 'lock-screen',
-                                title: 'Lock Screen',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/lock-screen'
-                            },
-                            {
-                                id   : 'mail-confirmation',
-                                title: 'Mail Confirmation',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/mail-confirmation'
-                            }
-                        ]
-                    }
-                ]
+                id   : 'signup',
+                title: 'Sign Up',
+                type : 'link',
+                link : '/pages/authentication/signup'
             },
             {
-                id      : 'modern-relaxed',
-                title   : 'Modern Relaxed',
-                type    : 'collapsable',
-                children: [
-                    {
-                        id      : 'left',
-                        title   : 'Left Aligned',
-                        type    : 'collapsable',
-                        children: [
-                            {
-                                id   : 'login',
-                                title: 'Login',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/login'
-                            },
-                            {
-                                id   : 'sign-up',
-                                title: 'Sign Up',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/sign-up'
-                            },
-                            {
-                                id   : 'forgot-password',
-                                title: 'Forgot Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/forgot-password'
-                            },
-                            {
-                                id   : 'reset-password',
-                                title: 'Reset Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/reset-password'
-                            },
-                            {
-                                id   : 'lock-screen',
-                                title: 'Lock Screen',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/lock-screen'
-                            },
-                            {
-                                id   : 'mail-confirmation',
-                                title: 'Mail Confirmation',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/left/mail-confirmation'
-                            }
-                        ]
-                    },
-                    {
-                        id      : 'right',
-                        title   : 'Right Aligned',
-                        type    : 'collapsable',
-                        children: [
-                            {
-                                id   : 'login',
-                                title: 'Login',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/login'
-                            },
-                            {
-                                id   : 'sign-up',
-                                title: 'Sign Up',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/sign-up'
-                            },
-                            {
-                                id   : 'forgot-password',
-                                title: 'Forgot Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/forgot-password'
-                            },
-                            {
-                                id   : 'reset-password',
-                                title: 'Reset Password',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/reset-password'
-                            },
-                            {
-                                id   : 'lock-screen',
-                                title: 'Lock Screen',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/lock-screen'
-                            },
-                            {
-                                id   : 'mail-confirmation',
-                                title: 'Mail Confirmation',
-                                type : 'link',
-                                link : '/pages/authentication/modern-relaxed/right/mail-confirmation'
-                            }
-                        ]
-                    }
-                ]
+                id   : 'forgot-password',
+                title: 'Forgot Password',
+                type : 'link',
+                link : '/pages/authentication/forgot-password'
+            },
+            {
+                id   : 'reset-password',
+                title: 'Reset Password',
+                type : 'link',
+                link : '/pages/authentication/reset-password'
+            },
+            {
+                id   : 'logout',
+                title: 'Logout',
+                type : 'link',
+                link : '/pages/authentication/logout'
+            },
+            {
+                id   : 'unlock',
+                title: 'Unlock',
+                type : 'link',
+                link : '/pages/authentication/unlock'
+            },
+            {
+                id   : 'confirmation-required',
+                title: 'Confirmation Required',
+                type : 'link',
+                link : '/pages/authentication/confirmation-required'
             }
         ]
     },
@@ -685,23 +493,23 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/pages/coming-soon/classic'
             },
             {
-                id   : 'modern',
-                title: 'Modern',
-                type : 'link',
-                link : '/pages/coming-soon/modern',
+                id      : 'modern',
+                title   : 'Modern',
+                type    : 'link',
+                link    : '/pages/coming-soon/modern',
                 children: [
                     {
-                        id: 'left',
+                        id   : 'left',
                         title: 'Left Aligned',
-                        type: 'link',
-                        link : '/pages/coming-soon/modern/left',
+                        type : 'link',
+                        link : '/pages/coming-soon/modern/left'
                     },
                     {
-                        id: 'right',
+                        id   : 'right',
                         title: 'Right Aligned',
-                        type: 'link',
-                        link : '/pages/coming-soon/modern/left',
-                    },
+                        type : 'link',
+                        link : '/pages/coming-soon/modern/left'
+                    }
 
                 ]
             },

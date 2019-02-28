@@ -1,135 +1,144 @@
 <div class="content-layout with-centered-content">
 
-    <div class="card">
+    <!-- Card -->
+    <div class="card modern">
 
-        <!-- Logo -->
-        <div class="logo">
-            <img class="logo-dark"
-                 src="assets/images/logo/logo-dark.svg">
-            <img class="logo-light"
-                 src="assets/images/logo/logo-light.svg">
-        </div>
+        <!-- Form container -->
+        <div class="form-container">
 
-        <!-- Title -->
-        <div class="title-2 mt-64">Create your account</div>
-        <div class="subtitle mt-8 secondary-text">Join us to enjoy Assembly</div>
-
-        <!-- Message box -->
-        <asm-message class="mt-48"
-                     *ngIf="messageBox"
-                     [appearance]="'solid'"
-                     [type]="messageBox.type"
-                     [@shake]="messageBoxAnimationState">
-            <div asmMessageContent>{{messageBox.message}}</div>
-        </asm-message>
-
-        <!-- Signup form -->
-        <form class="mt-40"
-              [formGroup]="signupForm"
-              novalidate>
-
-            <!-- Name field -->
-            <mat-form-field class="w-full"
-                            [appearance]="'standard'">
-                <mat-label>Name</mat-label>
-                <input id="name"
-                       matInput
-                       [formControlName]="'name'">
-                <mat-icon matSuffix>account_circle</mat-icon>
-                <mat-error *ngIf="signupForm.get('name').hasError('required')">
-                    Name is required
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Email field -->
-            <mat-form-field class="w-full"
-                            [appearance]="'standard'">
-                <mat-label>Email</mat-label>
-                <input id="email"
-                       matInput
-                       [formControlName]="'email'">
-                <mat-icon matSuffix>mail</mat-icon>
-                <mat-error *ngIf="signupForm.get('email').hasError('required')">
-                    Email is required
-                </mat-error>
-                <mat-error *ngIf="signupForm.get('email').hasError('email')">
-                    Please enter a valid email address
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Password field -->
-            <mat-form-field class="w-full"
-                            [appearance]="'standard'">
-                <mat-label>Password</mat-label>
-                <input id="password"
-                       matInput
-                       type="password"
-                       [formControlName]="'password'"
-                       #passwordField>
-                <button class="w-24 h-24"
-                        mat-icon-button
-                        (mousedown)="passwordField.type = 'text'"
-                        (mouseup)="passwordField.type = 'password'"
-                        [disableRipple]="true"
-                        tabindex="-1"
-                        matSuffix>
-                    <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
-                    <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
-                </button>
-                <mat-error>
-                    Password is required
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Password confirm field -->
-            <mat-form-field class="w-full"
-                            [appearance]="'standard'">
-                <mat-label>Password (Confirm)</mat-label>
-                <input id="password-confirm"
-                       matInput
-                       type="password"
-                       [formControlName]="'passwordConfirm'"
-                       #passwordConfirmField>
-                <button class="w-24 h-24"
-                        mat-icon-button
-                        (mousedown)="passwordConfirmField.type = 'text'"
-                        (mouseup)="passwordConfirmField.type = 'password'"
-                        [disableRipple]="true"
-                        tabindex="-1"
-                        matSuffix>
-                    <mat-icon *ngIf="passwordConfirmField.type === 'password'">visibility_on</mat-icon>
-                    <mat-icon *ngIf="passwordConfirmField.type === 'text'">visibility_off</mat-icon>
-                </button>
-                <mat-error *ngIf="signupForm.get('passwordConfirm').hasError('required')">
-                    Password confirmation is required
-                </mat-error>
-                <mat-error *ngIf="signupForm.get('passwordConfirm').hasError('passwordsNotMatching')">
-                    Passwords must match
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Sign up button -->
-            <button class="asm-mat-button-large mt-48 w-full"
-                    mat-raised-button
-                    [color]="'primary'"
-                    [disabled]="signupForm.disabled || signupForm.invalid">
-                <span *ngIf="!signupForm.disabled">
-                    Create Account
-                </span>
-                <span *ngIf="signupForm.disabled">
-                    <asm-spinner [appearance]="'material'"
-                                 [diameter]="24"></asm-spinner>
-                </span>
-            </button>
-
-            <!-- Login link -->
-            <div class="mt-24 w-full text-center">
-                <span class="mr-4">Already have an account?</span>
-                <a class="link"
-                   [routerLink]="['/login']">Log in</a>.
+            <!-- Logo -->
+            <div class="logo">
+                <img class="logo-dark"
+                     src="assets/images/logo/logo-dark.svg">
+                <img class="logo-light"
+                     src="assets/images/logo/logo-light.svg">
             </div>
 
-        </form>
+            <!-- Title -->
+            <div class="title-2 mt-64">Create your account</div>
+            <div class="subtitle mt-8 secondary-text">Join us to enjoy Assembly</div>
+
+            <!-- Message box -->
+            <asm-message class="mt-48"
+                         *ngIf="messageBox"
+                         [appearance]="'solid'"
+                         [type]="messageBox.type"
+                         [@shake]="messageBoxAnimationState">
+                <div asmMessageContent>{{messageBox.message}}</div>
+            </asm-message>
+
+            <!-- Signup form -->
+            <form class="mt-40"
+                  [formGroup]="signupForm"
+                  novalidate>
+
+                <!-- Name field -->
+                <mat-form-field class="w-full"
+                                [appearance]="'standard'">
+                    <mat-label>Name</mat-label>
+                    <input id="name"
+                           matInput
+                           [formControlName]="'name'">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <mat-error *ngIf="signupForm.get('name').hasError('required')">
+                        Name is required
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Email field -->
+                <mat-form-field class="w-full"
+                                [appearance]="'standard'">
+                    <mat-label>Email</mat-label>
+                    <input id="email"
+                           matInput
+                           [formControlName]="'email'">
+                    <mat-icon matSuffix>mail</mat-icon>
+                    <mat-error *ngIf="signupForm.get('email').hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="signupForm.get('email').hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Password field -->
+                <mat-form-field class="w-full"
+                                [appearance]="'standard'">
+                    <mat-label>Password</mat-label>
+                    <input id="password"
+                           matInput
+                           type="password"
+                           [formControlName]="'password'"
+                           #passwordField>
+                    <button class="w-24 h-24"
+                            mat-icon-button
+                            (mousedown)="passwordField.type = 'text'"
+                            (mouseup)="passwordField.type = 'password'"
+                            [disableRipple]="true"
+                            tabindex="-1"
+                            matSuffix>
+                        <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                    </button>
+                    <mat-error>
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Password confirm field -->
+                <mat-form-field class="w-full"
+                                [appearance]="'standard'">
+                    <mat-label>Password (Confirm)</mat-label>
+                    <input id="password-confirm"
+                           matInput
+                           type="password"
+                           [formControlName]="'passwordConfirm'"
+                           #passwordConfirmField>
+                    <button class="w-24 h-24"
+                            mat-icon-button
+                            (mousedown)="passwordConfirmField.type = 'text'"
+                            (mouseup)="passwordConfirmField.type = 'password'"
+                            [disableRipple]="true"
+                            tabindex="-1"
+                            matSuffix>
+                        <mat-icon *ngIf="passwordConfirmField.type === 'password'">visibility_on</mat-icon>
+                        <mat-icon *ngIf="passwordConfirmField.type === 'text'">visibility_off</mat-icon>
+                    </button>
+                    <mat-error *ngIf="signupForm.get('passwordConfirm').hasError('required')">
+                        Password confirmation is required
+                    </mat-error>
+                    <mat-error *ngIf="signupForm.get('passwordConfirm').hasError('passwordsNotMatching')">
+                        Passwords must match
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Sign up button -->
+                <button class="asm-mat-button-large mt-48 w-full"
+                        mat-raised-button
+                        [color]="'primary'"
+                        [disabled]="signupForm.disabled || signupForm.invalid">
+                    <span *ngIf="!signupForm.disabled">
+                        Create Account
+                    </span>
+                    <span *ngIf="signupForm.disabled">
+                        <asm-spinner [appearance]="'material'"
+                                     [diameter]="24"></asm-spinner>
+                    </span>
+                </button>
+
+                <!-- Login link -->
+                <div class="mt-24 w-full text-center">
+                    <span class="mr-4">Already have an account?</span>
+                    <a class="link"
+                       [routerLink]="['/login']">Log in</a>.
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- Image -->
+        <div class="image"></div>
 
     </div>
 

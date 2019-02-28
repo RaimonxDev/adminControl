@@ -3,7 +3,7 @@ import { Error404Component } from 'app/modules/admin/pages/errors/error-404/erro
 
 export const error404Routes: Route[] = [
     {
-        path     : '**',
+        path     : '',
         component: Error404Component
     }
 ];

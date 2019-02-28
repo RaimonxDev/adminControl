@@ -1,0 +1,140 @@
+<div class="content-layout with-centered-content">
+
+    <!-- Style selector -->
+    <mat-form-field class="mb-64"
+                    [appearance]="'fill'">
+        <mat-label>Style</mat-label>
+        <mat-select [value]="'classic'"
+                    #formStyle>
+            <mat-option [value]="'classic'">Classic</mat-option>
+            <mat-option [value]="'modern'">Modern</mat-option>
+            <mat-option [value]="'modern-relaxed'">Modern Relaxed</mat-option>
+            <mat-option [value]="'modern-reverse'">Modern Reverse</mat-option>
+            <mat-option [value]="'modern-relaxed-reverse'">Modern Relaxed Reverse</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <!-- Classic | Copy the contents of this ng-container to use this style -->
+    <ng-container *ngIf="formStyle.value === 'classic'">
+
+        <!-- Card -->
+        <div class="card classic">
+
+            <!-- Form template projection -->
+            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+
+        </div>
+
+    </ng-container>
+
+
+    <!-- Modern | Copy the contents of this ng-container to use this style -->
+    <ng-container *ngIf="formStyle.value === 'modern'">
+
+        <!-- Card -->
+        <div class="card modern">
+
+            <!-- Form template projection -->
+            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+
+            <!-- Image -->
+            <div class="image"></div>
+
+        </div>
+
+    </ng-container>
+
+
+    <!-- Modern relaxed | Copy the contents of this ng-container to use this style -->
+    <ng-container *ngIf="formStyle.value === 'modern-relaxed'">
+
+        <!-- Card -->
+        <div class="card modern-relaxed">
+
+            <!-- Form template projection -->
+            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+
+            <!-- Image -->
+            <div class="image"></div>
+
+        </div>
+
+    </ng-container>
+
+
+    <!-- Modern reverse | Copy the contents of this ng-container to use this style-->
+    <ng-container *ngIf="formStyle.value === 'modern-reverse'">
+
+        <!-- Card -->
+        <div class="card modern-reverse">
+
+            <!-- Image -->
+            <div class="image"></div>
+
+            <!-- Form template projection -->
+            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+
+        </div>
+
+    </ng-container>
+
+
+    <!-- Modern relaxed reverse | Copy the contents of this ng-container to use this style -->
+    <ng-container *ngIf="formStyle.value === 'modern-relaxed-reverse'">
+
+        <!-- Card -->
+        <div class="card modern-relaxed-reverse">
+
+            <!-- Image -->
+            <div class="image"></div>
+
+            <!-- Form template projection -->
+            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+
+        </div>
+
+    </ng-container>
+
+</div>
+
+<!-- Form template -->
+<ng-template #formTemplate>
+
+    <!-- Form container -->
+    <div class="form-container">
+
+        <!-- Logo -->
+        <div class="logo">
+            <img class="logo-dark"
+                 src="assets/images/logo/logo-dark.svg">
+            <img class="logo-light"
+                 src="assets/images/logo/logo-light.svg">
+        </div>
+
+        <!-- Title -->
+        <div class="title-2 mt-64">Successfully logged out!</div>
+        <div class="subtitle mt-8 secondary-text">
+
+            <!-- Redirect countdown -->
+            <ng-container *ngIf="countdown > 0">
+                You will be redirected after {{countdown | i18nPlural: countdownMapping }}.
+            </ng-container>
+
+            <!-- Redirect message -->
+            <ng-container *ngIf="countdown === 0">
+                You are now being redirected...
+            </ng-container>
+
+        </div>
+
+        <!-- Login link -->
+        <div class="mt-48 w-full text-center">
+            <span class="mr-4">Go to</span>
+            <a class="link"
+               [routerLink]="['/pages/authentication/classic/login']">login</a>.
+        </div>
+
+    </div>
+
+</ng-template>

@@ -1,32 +1,38 @@
 <div class="content-layout with-centered-content">
 
-    <div class="card">
+    <!-- Card -->
+    <div class="card classic">
 
-        <!-- Logo -->
-        <div class="logo">
-            <img class="logo-dark"
-                 src="assets/images/logo/logo-dark.svg">
-            <img class="logo-light"
-                 src="assets/images/logo/logo-light.svg">
-        </div>
+        <!-- Form container -->
+        <div class="form-container">
 
-        <!-- Title -->
-        <div class="title-2 mt-64">Confirmation required!</div>
+            <!-- Logo -->
+            <div class="logo">
+                <img class="logo-dark"
+                     src="assets/images/logo/logo-dark.svg">
+                <img class="logo-light"
+                     src="assets/images/logo/logo-light.svg">
+            </div>
 
-        <!-- Content -->
-        <p class="mt-32">
-            A confirmation mail has been sent to <b>{{email}}</b>
-        </p>
+            <!-- Title -->
+            <div class="title-2 mt-64">Confirmation required!</div>
 
-        <p>
-            Click on the <b>"Confirm my e-mail address"</b> link from the e-mail to confirm your address.
-        </p>
+            <!-- Content -->
+            <p class="mt-32">
+                A confirmation mail has been sent to <b>{{email}}</b>
+            </p>
 
-        <!-- Login link -->
-        <div class="mt-40 w-full text-center">
-            <span class="mr-4">Back to</span>
-            <a class="link"
-               [routerLink]="['/login']">login</a>.
+            <p>
+                Click on the <b>"Confirm my e-mail address"</b> link from the e-mail to confirm your address.
+            </p>
+
+            <!-- Login link -->
+            <div class="mt-40 w-full text-center">
+                <span class="mr-4">Back to</span>
+                <a class="link"
+                   [routerLink]="['/login']">login</a>.
+            </div>
+
         </div>
 
     </div>

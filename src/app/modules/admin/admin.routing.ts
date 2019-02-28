@@ -12,46 +12,95 @@ export const adminRoutes: Route[] = [
             admin: AdminResolver
         },
         children   : [
+
             // Redirect / to /apps/dashboard
             {
                 path      : '',
                 redirectTo: 'apps/dashboard',
                 pathMatch : 'full'
             },
+
             // Apps
             {
-                path        : 'apps/dashboard',
-                loadChildren: './apps/dashboard/dashboard.module#DashboardModule'
+                path    : 'apps',
+                children: [
+                    {
+                        path        : 'dashboard',
+                        loadChildren: './apps/dashboard/dashboard.module#DashboardModule'
+                    },
+                    {
+                        path        : 'mailbox',
+                        loadChildren: './apps/mailbox/mailbox.module#MailboxModule'
+                    },
+                    {
+                        path        : 'tasks',
+                        loadChildren: './apps/tasks/tasks.module#TasksModule'
+                    }
+                ]
             },
-            {
-                path        : 'apps/mailbox',
-                loadChildren: './apps/mailbox/mailbox.module#MailboxModule'
-            },
-            {
-                path        : 'apps/tasks',
-                loadChildren: './apps/tasks/tasks.module#TasksModule'
-            },
+
             // Pages
             {
-                path        : 'pages/errors/404',
-                loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
+                path    : 'pages',
+                children: [
+
+                    // Authentication
+                    {
+                        path        : 'authentication/confirmation-required',
+                        loadChildren: './pages/authentication/confirmation-required/confirmation-required.module#ConfirmationRequiredModule'
+                    },
+                    {
+                        path        : 'authentication/forgot-password',
+                        loadChildren: './pages/authentication/forgot-password/forgot-password.module#ForgotPasswordModule'
+                    },
+                    {
+                        path        : 'authentication/login',
+                        loadChildren: './pages/authentication/login/login.module#LoginModule'
+                    },
+                    {
+                        path        : 'authentication/logout',
+                        loadChildren: './pages/authentication/logout/logout.module#LogoutModule'
+                    },
+                    {
+                        path        : 'authentication/reset-password',
+                        loadChildren: './pages/authentication/reset-password/reset-password.module#ResetPasswordModule'
+                    },
+                    {
+                        path        : 'authentication/signup',
+                        loadChildren: './pages/authentication/signup/signup.module#SignupModule'
+                    },
+                    {
+                        path        : 'authentication/unlock',
+                        loadChildren: './pages/authentication/unlock/unlock.module#UnlockModule'
+                    },
+
+                    // Errors
+                    {
+                        path        : 'errors/404',
+                        loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
+                    }
+                ]
             },
+
             // User Interface
             {
                 path        : 'ui/icons',
                 loadChildren: './ui/icons/icons.module#IconsModule'
             },
+
             // Documentation
             {
                 path        : 'docs',
                 loadChildren: './docs/docs.module#DocsModule'
             },
+
             // 404
             {
                 path        : '404-not-found',
                 pathMatch   : 'full',
                 loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
             },
+
             // Catch all
             {
                 path      : '**',

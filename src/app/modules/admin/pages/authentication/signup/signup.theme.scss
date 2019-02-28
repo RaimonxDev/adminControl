@@ -1,0 +1,38 @@
+@import '../../../../../../@assembly/styles/assembly';
+
+@mixin signup-theme($theme) {
+
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    signup {
+
+        .content-layout {
+
+            .card {
+                background: map-get($background, card);
+                @include asm-shadow(1);
+
+                .form-container {
+
+                    .logo {
+
+                        .logo-dark {
+
+                            @if ($is-dark) {
+                                display: none;
+                            }
+                        }
+
+                        .logo-light {
+
+                            @if ($is-dark == false) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
