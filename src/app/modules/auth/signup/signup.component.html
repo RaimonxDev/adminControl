@@ -126,8 +126,18 @@
                     </span>
                 </button>
 
-                <!-- Login link -->
+                <!-- Terms and privacy -->
                 <div class="mt-24 w-full text-center">
+                    <span class="mr-4">By clicking "<b>Create Account</b>" you agree to the</span>
+                    <a class="link mr-4"
+                       [routerLink]="['./']">Terms of Service</a>
+                    <span class="mr-4">and</span>
+                    <a class="link"
+                       [routerLink]="['./']">Privacy Policy</a>.
+                </div>
+
+                <!-- Login link -->
+                <div class="mt-48 w-full text-center">
                     <span class="mr-4">Already have an account?</span>
                     <a class="link"
                        [routerLink]="['/login']">Log in</a>.

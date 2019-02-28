@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/auth/auth.service';
-import { interval } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { interval, Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector     : 'logout',
@@ -10,10 +10,13 @@ import { take } from 'rxjs/operators';
     styleUrls    : ['./logout.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class LogoutComponent implements OnInit
+export class LogoutComponent implements OnInit, OnDestroy
 {
     countdown: number;
     countdownMapping: any;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -26,6 +29,9 @@ export class LogoutComponent implements OnInit
         private _router: Router
     )
     {
+        // Set the private default
+        this._unsubscribeAll = new Subject();
+
         // Set the defaults
         this.countdown = 5;
         this.countdownMapping = {
@@ -51,7 +57,10 @@ export class LogoutComponent implements OnInit
 
         // Redirect after the countdown
         interval(1000)
-            .pipe(take(duration))
+            .pipe(
+                take(duration),
+                takeUntil(this._unsubscribeAll)
+            )
             .subscribe(() => {
                     this.countdown--;
                 },
@@ -61,5 +70,15 @@ export class LogoutComponent implements OnInit
                     this._router.navigate(['login']);
                 }
             );
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }

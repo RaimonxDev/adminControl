@@ -20,10 +20,10 @@ login {
 
             // Classic
             &.classic {
-                width: 384px;
+                width: 416px;
 
                 .form-container {
-                    padding: 64px 48px;
+                    padding: 64px;
                 }
             }
 
@@ -32,12 +32,12 @@ login {
             &.modern-reverse {
 
                 .form-container {
-                    width: 400px;
-                    padding: 64px 56px;
+                    width: 416px;
+                    padding: 64px;
                 }
 
                 .image {
-                    width: 560px;
+                    width: 544px;
                     background-image: url('assets/images/pages/authentication/card-image.jpg');
                     background-size: cover;
                 }
@@ -48,12 +48,12 @@ login {
             &.modern-relaxed-reverse {
 
                 .form-container {
-                    width: 560px;
-                    padding: 64px 136px;
+                    width: 624px;
+                    padding: 80px 120px;
                 }
 
                 .image {
-                    width: 400px;
+                    width: 416px;
                     background-image: url('assets/images/pages/authentication/card-image.jpg');
                     background-size: cover;
                 }
