@@ -1,11 +1,11 @@
 @import 'src/@assembly/styles/assembly';
 
-@mixin login-theme($theme) {
+@mixin auth-login-theme($theme) {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
-    login {
+    auth-login {
 
         .content-layout {
 

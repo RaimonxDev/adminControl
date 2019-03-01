@@ -3,18 +3,18 @@ import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { UnlockComponent } from 'app/modules/admin/pages/authentication/unlock/unlock.component';
+import { ComingSoonComponent } from 'app/modules/admin/pages/coming-soon/coming-soon.component';
 
 const routes: Route[] = [
     {
         path     : '',
-        component: UnlockComponent
+        component: ComingSoonComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        UnlockComponent
+        ComingSoonComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -28,6 +28,6 @@ const routes: Route[] = [
         SharedModule
     ]
 })
-export class UnlockModule
+export class ComingSoonModule
 {
 }

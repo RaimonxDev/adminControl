@@ -5,17 +5,18 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'auth-forgot-password',
-    templateUrl  : './forgot-password.component.html',
-    styleUrls    : ['./forgot-password.component.scss'],
+    selector     : 'auth-unlock-session',
+    templateUrl  : './unlock-session.component.html',
+    styleUrls    : ['./unlock-session.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class AuthForgotPasswordComponent implements OnInit
+export class AuthUnlockSessionComponent implements OnInit
 {
-    forgotPasswordForm: FormGroup;
     messageBox: any;
     messageBoxAnimationState: boolean;
+    name: string;
+    unlockSessionForm: FormGroup;
 
     /**
      * Constructor
@@ -46,9 +47,18 @@ export class AuthForgotPasswordComponent implements OnInit
      */
     ngOnInit(): void
     {
+        // Get the user's name
+        this.name = 'Andrew Watkins';
+
         // Create the form
-        this.forgotPasswordForm = this._formBuilder.group({
-            email: ['', [Validators.required, Validators.email]]
+        this.unlockSessionForm = this._formBuilder.group({
+            name    : [
+                {
+                    value   : this.name,
+                    disabled: true
+                }
+            ],
+            password: ['', Validators.required]
         });
     }
 }

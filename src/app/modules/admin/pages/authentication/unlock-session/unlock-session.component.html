@@ -113,8 +113,8 @@
         </div>
 
         <!-- Title -->
-        <div class="title-2 mt-64">Create your account</div>
-        <div class="subtitle mt-8 secondary-text">Join us to enjoy Assembly</div>
+        <div class="title-2 mt-64">Your session is locked!</div>
+        <div class="subtitle mt-8 secondary-text">Enter your password to continue</div>
 
         <!-- Message box -->
         <asm-message class="mt-48"
@@ -125,9 +125,9 @@
             <div asmMessageContent>{{messageBox.message}}</div>
         </asm-message>
 
-        <!-- Signup form -->
+        <!-- Unlock form -->
         <form class="mt-40"
-              [formGroup]="signupForm"
+              [formGroup]="unlockSessionForm"
               novalidate>
 
             <!-- Name field -->
@@ -138,25 +138,6 @@
                        matInput
                        [formControlName]="'name'">
                 <mat-icon matSuffix>account_circle</mat-icon>
-                <mat-error *ngIf="signupForm.get('name').hasError('required')">
-                    Name is required
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Email field -->
-            <mat-form-field class="w-full"
-                            [appearance]="'standard'">
-                <mat-label>Email</mat-label>
-                <input id="email"
-                       matInput
-                       [formControlName]="'email'">
-                <mat-icon matSuffix>mail</mat-icon>
-                <mat-error *ngIf="signupForm.get('email').hasError('required')">
-                    Email is required
-                </mat-error>
-                <mat-error *ngIf="signupForm.get('email').hasError('email')">
-                    Please enter a valid email address
-                </mat-error>
             </mat-form-field>
 
             <!-- Password field -->
@@ -183,62 +164,24 @@
                 </mat-error>
             </mat-form-field>
 
-            <!-- Password confirm field -->
-            <mat-form-field class="w-full"
-                            [appearance]="'standard'">
-                <mat-label>Password (Confirm)</mat-label>
-                <input id="password-confirm"
-                       matInput
-                       type="password"
-                       [formControlName]="'passwordConfirm'"
-                       #passwordConfirmField>
-                <button class="w-24 h-24"
-                        mat-icon-button
-                        (mousedown)="passwordConfirmField.type = 'text'"
-                        (mouseup)="passwordConfirmField.type = 'password'"
-                        [disableRipple]="true"
-                        tabindex="-1"
-                        matSuffix>
-                    <mat-icon *ngIf="passwordConfirmField.type === 'password'">visibility_on</mat-icon>
-                    <mat-icon *ngIf="passwordConfirmField.type === 'text'">visibility_off</mat-icon>
-                </button>
-                <mat-error *ngIf="signupForm.get('passwordConfirm').hasError('required')">
-                    Password confirmation is required
-                </mat-error>
-                <mat-error *ngIf="signupForm.get('passwordConfirm').hasError('passwordsNotMatching')">
-                    Passwords must match
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Sign up button -->
+            <!-- Unlock button -->
             <button class="asm-mat-button-large mt-48 w-full"
                     mat-raised-button
                     [color]="'primary'"
-                    [disabled]="signupForm.disabled || signupForm.invalid">
-                <span *ngIf="!signupForm.disabled">
-                    Create Account
+                    [disabled]="unlockSessionForm.disabled || unlockSessionForm.invalid">
+                <span *ngIf="!unlockSessionForm.disabled">
+                    Unlock Your Session
                 </span>
-                <span *ngIf="signupForm.disabled">
+                <span *ngIf="unlockSessionForm.disabled">
                     <asm-spinner [appearance]="'material'"
                                  [diameter]="24"></asm-spinner>
                 </span>
             </button>
 
-            <!-- Terms and privacy -->
+            <!-- Logout link -->
             <div class="mt-24 w-full text-center">
-                <span class="mr-4">By clicking "<b>Create Account</b>" you agree to the</span>
-                <a class="link mr-4"
-                   [routerLink]="['./']">Terms of Service</a>
-                <span class="mr-4">and</span>
                 <a class="link"
-                   [routerLink]="['./']">Privacy Policy</a>.
-            </div>
-
-            <!-- Login link -->
-            <div class="mt-48 w-full text-center">
-                <span class="mr-4">Already have an account?</span>
-                <a class="link"
-                   [routerLink]="['/login']">Log in</a>.
+                   [routerLink]="['/pages/authentication/logout']">I'm not {{name}}</a>.
             </div>
 
         </form>

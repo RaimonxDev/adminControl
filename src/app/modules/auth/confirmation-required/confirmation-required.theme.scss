@@ -1,11 +1,11 @@
 @import 'src/@assembly/styles/assembly';
 
-@mixin confirmation-required-theme($theme) {
+@mixin auth-confirmation-required-theme($theme) {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
-    confirmation-required {
+    auth-confirmation-required {
 
         .content-layout {
 

@@ -1,11 +1,11 @@
-@import '../../../../../../@assembly/styles/assembly';
+@import 'src/@assembly/styles/assembly';
 
-@mixin unlock-theme($theme) {
+@mixin auth-unlock-session-theme($theme) {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
-    unlock {
+    auth-unlock-session {
 
         .content-layout {
 

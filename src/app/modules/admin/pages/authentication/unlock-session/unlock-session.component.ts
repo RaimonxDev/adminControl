@@ -5,18 +5,18 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'unlock',
-    templateUrl  : './unlock.component.html',
-    styleUrls    : ['./unlock.component.scss'],
+    selector     : 'auth-unlock-session',
+    templateUrl  : './unlock-session.component.html',
+    styleUrls    : ['./unlock-session.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class UnlockComponent implements OnInit
+export class UnlockSessionComponent implements OnInit
 {
     messageBox: any;
     messageBoxAnimationState: boolean;
     name: string;
-    unlockForm: FormGroup;
+    unlockSessionForm: FormGroup;
 
     /**
      * Constructor
@@ -51,7 +51,7 @@ export class UnlockComponent implements OnInit
         this.name = 'Andrew Watkins';
 
         // Create the form
-        this.unlockForm = this._formBuilder.group({
+        this.unlockSessionForm = this._formBuilder.group({
             name    : [
                 {
                     value   : this.name,

@@ -467,10 +467,10 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/pages/authentication/logout'
             },
             {
-                id   : 'unlock',
-                title: 'Unlock',
+                id   : 'unlock-session',
+                title: 'Unlock Session',
                 type : 'link',
-                link : '/pages/authentication/unlock'
+                link : '/pages/authentication/unlock-session'
             },
             {
                 id   : 'confirmation-required',
@@ -481,45 +481,11 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id      : 'coming-soon',
-        title   : 'Coming Soon',
-        type    : 'collapsable',
-        icon    : 'alarm',
-        children: [
-            {
-                id   : 'classic',
-                title: 'Classic',
-                type : 'link',
-                link : '/pages/coming-soon/classic'
-            },
-            {
-                id      : 'modern',
-                title   : 'Modern',
-                type    : 'link',
-                link    : '/pages/coming-soon/modern',
-                children: [
-                    {
-                        id   : 'left',
-                        title: 'Left Aligned',
-                        type : 'link',
-                        link : '/pages/coming-soon/modern/left'
-                    },
-                    {
-                        id   : 'right',
-                        title: 'Right Aligned',
-                        type : 'link',
-                        link : '/pages/coming-soon/modern/left'
-                    }
-
-                ]
-            },
-            {
-                id   : 'modern-relaxed',
-                title: 'Modern Relaxed',
-                type : 'link',
-                link : '/pages/coming-soon/modern-relaxed'
-            }
-        ]
+        id   : 'coming-soon',
+        title: 'Coming Soon',
+        type : 'link',
+        icon : 'hourglass_empty',
+        link : '/pages/coming-soon'
     },
     {
         id   : 'maintenance',

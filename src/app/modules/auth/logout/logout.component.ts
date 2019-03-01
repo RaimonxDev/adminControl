@@ -5,12 +5,12 @@ import { interval, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector     : 'logout',
+    selector     : 'auth-logout',
     templateUrl  : './logout.component.html',
     styleUrls    : ['./logout.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class LogoutComponent implements OnInit, OnDestroy
+export class AuthLogoutComponent implements OnInit, OnDestroy
 {
     countdown: number;
     countdownMapping: any;

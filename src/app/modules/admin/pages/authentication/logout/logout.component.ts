@@ -5,7 +5,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector     : 'logout',
+    selector     : 'auth-logout',
     templateUrl  : './logout.component.html',
     styleUrls    : ['./logout.component.scss'],
     encapsulation: ViewEncapsulation.None

@@ -7,7 +7,7 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'signup',
+    selector     : 'auth-signup',
     templateUrl  : './signup.component.html',
     styleUrls    : ['./signup.component.scss'],
     encapsulation: ViewEncapsulation.None,

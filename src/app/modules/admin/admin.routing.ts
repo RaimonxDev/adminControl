@@ -70,8 +70,14 @@ export const adminRoutes: Route[] = [
                         loadChildren: './pages/authentication/signup/signup.module#SignupModule'
                     },
                     {
-                        path        : 'authentication/unlock',
-                        loadChildren: './pages/authentication/unlock/unlock.module#UnlockModule'
+                        path        : 'authentication/unlock-session',
+                        loadChildren: './pages/authentication/unlock-session/unlock-session.module#UnlockSessionModule'
+                    },
+
+                    // Coming soon
+                    {
+                        path        : 'coming-soon',
+                        loadChildren: './pages/coming-soon/coming-soon.module#ComingSoonModule'
                     },
 
                     // Errors

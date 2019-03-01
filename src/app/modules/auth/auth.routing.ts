@@ -11,7 +11,7 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './confirmation-required/confirmation-required.module#ConfirmationRequiredModule'
+                loadChildren: './confirmation-required/confirmation-required.module#AuthConfirmationRequiredModule'
             }
         ]
     },
@@ -22,7 +22,7 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
+                loadChildren: './forgot-password/forgot-password.module#AuthForgotPasswordModule'
             }
         ]
     },
@@ -33,7 +33,7 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './login/login.module#LoginModule'
+                loadChildren: './login/login.module#AuthLoginModule'
             }
         ]
     },
@@ -44,7 +44,7 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './logout/logout.module#LogoutModule'
+                loadChildren: './logout/logout.module#AuthLogoutModule'
             }
         ]
     },
@@ -55,7 +55,7 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
+                loadChildren: './reset-password/reset-password.module#AuthResetPasswordModule'
             }
         ]
     },
@@ -66,18 +66,18 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './signup/signup.module#SignupModule'
+                loadChildren: './signup/signup.module#AuthSignupModule'
             }
         ]
     },
     {
-        path       : 'unlock',
+        path       : 'unlock-session',
         component  : EmptyLayoutComponent,
         canActivate: [AuthGuard],
         children   : [
             {
                 path        : '',
-                loadChildren: './unlock/unlock.module#UnlockModule'
+                loadChildren: './unlock-session/unlock-session.module#AuthUnlockSessionModule'
             }
         ]
     }

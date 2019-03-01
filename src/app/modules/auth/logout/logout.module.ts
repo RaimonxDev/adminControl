@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
-import { LogoutComponent } from 'app/modules/auth/logout/logout.component';
+import { AuthLogoutComponent } from 'app/modules/auth/logout/logout.component';
 
 const routes: Route[] = [
     {
         path     : '',
-        component: LogoutComponent
+        component: AuthLogoutComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        LogoutComponent
+        AuthLogoutComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
         SharedModule
     ]
 })
-export class LogoutModule
+export class AuthLogoutModule
 {
 }

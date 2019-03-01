@@ -55,7 +55,7 @@ export class IconsComponent implements OnInit
                     map(([icons, filterValue]) => {
 
                         // Filter the icons
-                        const filteredIcons = icons.list.filter(icon => icon.name.includes(filterValue));
+                        const filteredIcons = icons.list.filter(icon => icon.name.toLowerCase().includes(filterValue.toLowerCase()));
 
                         // Update the list with the filtered icons
                         return {

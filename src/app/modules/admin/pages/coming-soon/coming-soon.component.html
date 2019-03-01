@@ -19,7 +19,7 @@
     <ng-container *ngIf="formStyle.value === 'classic'">
 
         <!-- Card -->
-        <div class="card classic">
+        <div class="card auth classic">
 
             <!-- Form template projection -->
             <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
@@ -33,13 +33,13 @@
     <ng-container *ngIf="formStyle.value === 'modern'">
 
         <!-- Card -->
-        <div class="card modern">
+        <div class="card auth modern">
 
             <!-- Form template projection -->
             <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
 
-            <!-- Image -->
-            <div class="image"></div>
+            <!-- Content container -->
+            <div class="content-container"></div>
 
         </div>
 
@@ -50,13 +50,13 @@
     <ng-container *ngIf="formStyle.value === 'modern-relaxed'">
 
         <!-- Card -->
-        <div class="card modern-relaxed">
+        <div class="card auth modern-relaxed">
 
             <!-- Form template projection -->
             <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
 
-            <!-- Image -->
-            <div class="image"></div>
+            <!-- Content container -->
+            <div class="content-container"></div>
 
         </div>
 
@@ -67,10 +67,10 @@
     <ng-container *ngIf="formStyle.value === 'modern-reverse'">
 
         <!-- Card -->
-        <div class="card modern-reverse">
+        <div class="card auth modern-reverse">
 
-            <!-- Image -->
-            <div class="image"></div>
+            <!-- Content container -->
+            <div class="content-container"></div>
 
             <!-- Form template projection -->
             <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
@@ -84,10 +84,10 @@
     <ng-container *ngIf="formStyle.value === 'modern-relaxed-reverse'">
 
         <!-- Card -->
-        <div class="card modern-relaxed-reverse">
+        <div class="card auth modern-relaxed-reverse">
 
-            <!-- Image -->
-            <div class="image"></div>
+            <!-- Content container -->
+            <div class="content-container"></div>
 
             <!-- Form template projection -->
             <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
@@ -113,8 +113,8 @@
         </div>
 
         <!-- Title -->
-        <div class="title-2 mt-64">Your session is locked!</div>
-        <div class="subtitle mt-8 secondary-text">Enter your password to continue</div>
+        <div class="title-2 mt-64">Lost your password?</div>
+        <div class="subtitle mt-8 secondary-text">Fill the form to reset your password</div>
 
         <!-- Message box -->
         <asm-message class="mt-48"
@@ -125,63 +125,45 @@
             <div asmMessageContent>{{messageBox.message}}</div>
         </asm-message>
 
-        <!-- Unlock form -->
+        <!-- Forgot password form -->
         <form class="mt-40"
-              [formGroup]="unlockForm"
+              [formGroup]="comingSoonForm"
               novalidate>
 
-            <!-- Name field -->
+            <!-- Email field -->
             <mat-form-field class="w-full"
                             [appearance]="'standard'">
-                <mat-label>Name</mat-label>
-                <input id="name"
+                <mat-label>Email</mat-label>
+                <input id="email"
                        matInput
-                       [formControlName]="'name'">
-                <mat-icon matSuffix>account_circle</mat-icon>
-            </mat-form-field>
-
-            <!-- Password field -->
-            <mat-form-field class="w-full"
-                            [appearance]="'standard'">
-                <mat-label>Password</mat-label>
-                <input id="password"
-                       matInput
-                       type="password"
-                       [formControlName]="'password'"
-                       #passwordField>
-                <button class="w-24 h-24"
-                        mat-icon-button
-                        (mousedown)="passwordField.type = 'text'"
-                        (mouseup)="passwordField.type = 'password'"
-                        [disableRipple]="true"
-                        tabindex="-1"
-                        matSuffix>
-                    <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
-                    <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
-                </button>
-                <mat-error>
-                    Password is required
+                       [formControlName]="'email'">
+                <mat-icon matSuffix>mail</mat-icon>
+                <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
+                    Email is required
+                </mat-error>
+                <mat-error *ngIf="comingSoonForm.get('email').hasError('email')">
+                    Please enter a valid email address
                 </mat-error>
             </mat-form-field>
 
-            <!-- Unlock button -->
+            <!-- Send reset link button -->
             <button class="asm-mat-button-large mt-48 w-full"
                     mat-raised-button
                     [color]="'primary'"
-                    [disabled]="unlockForm.disabled || unlockForm.invalid">
-                <span *ngIf="!unlockForm.disabled">
-                    Unlock Your Session
+                    [disabled]="comingSoonForm.disabled || comingSoonForm.invalid">
+                <span *ngIf="!comingSoonForm.disabled">
+                    Send Reset Link
                 </span>
-                <span *ngIf="unlockForm.disabled">
+                <span *ngIf="comingSoonForm.disabled">
                     <asm-spinner [appearance]="'material'"
                                  [diameter]="24"></asm-spinner>
                 </span>
             </button>
 
-            <!-- Logout link -->
+            <!-- Footer -->
             <div class="mt-24 w-full text-center">
-                <a class="link"
-                   [routerLink]="['/pages/authentication/logout']">I'm not {{name}}</a>.
+                <p>You are not joining to a newsletter!</p>
+                <p>We will only send one e-mail to above address when we launch and that's it!</p>
             </div>
 
         </form>

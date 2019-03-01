@@ -3,18 +3,18 @@ import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { UnlockComponent } from 'app/modules/auth/unlock/unlock.component';
+import { AuthUnlockSessionComponent } from 'app/modules/auth/unlock-session/unlock-session.component';
 
 const routes: Route[] = [
     {
         path     : '',
-        component: UnlockComponent
+        component: AuthUnlockSessionComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        UnlockComponent
+        AuthUnlockSessionComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -27,6 +27,6 @@ const routes: Route[] = [
         SharedModule
     ]
 })
-export class UnlockModule
+export class AuthUnlockSessionModule
 {
 }

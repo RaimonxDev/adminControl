@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { AuthConfirmationRequiredComponent } from 'app/modules/auth/confirmation-required/confirmation-required.component';
+import { UnlockSessionComponent } from 'app/modules/admin/pages/authentication/unlock-session/unlock-session.component';
 
 const routes: Route[] = [
     {
         path     : '',
-        component: AuthConfirmationRequiredComponent
+        component: UnlockSessionComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        AuthConfirmationRequiredComponent
+        UnlockSessionComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -22,11 +22,12 @@ const routes: Route[] = [
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatSelectModule,
         AsmMessageModule,
         AsmSpinnerModule,
         SharedModule
     ]
 })
-export class AuthConfirmationRequiredModule
+export class UnlockSessionModule
 {
 }

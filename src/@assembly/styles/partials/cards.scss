@@ -1,0 +1,67 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Cards
+// -----------------------------------------------------------------------------------------------------
+.card {
+    position: relative;
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Auth cards
+    // -----------------------------------------------------------------------------------------------------
+    &.auth {
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-container {
+            display: flex;
+        }
+
+        // Classic
+        &.classic {
+
+            .form-container {
+                width: 400px;
+                padding: 64px 56px;
+            }
+        }
+
+        // Modern
+        &.modern,
+        &.modern-reverse {
+
+            .form-container {
+                width: 416px;
+                padding: 64px;
+            }
+
+            .content-container {
+                width: 544px;
+                background-image: url('assets/images/pages/authentication/card-image.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        // Modern relaxed
+        &.modern-relaxed,
+        &.modern-relaxed-reverse {
+
+            .form-container {
+                width: 624px;
+                padding: 64px 120px;
+            }
+
+            .content-container {
+                width: 416px;
+                background-image: url('assets/images/pages/authentication/card-image.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+    }
+}

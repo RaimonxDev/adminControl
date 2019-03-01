@@ -5,7 +5,7 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'forgot-password',
+    selector     : 'auth-forgot-password',
     templateUrl  : './forgot-password.component.html',
     styleUrls    : ['./forgot-password.component.scss'],
     encapsulation: ViewEncapsulation.None,

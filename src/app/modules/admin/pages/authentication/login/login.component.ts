@@ -4,7 +4,7 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'login',
+    selector     : 'auth-login',
     templateUrl  : './login.component.html',
     styleUrls    : ['./login.component.scss'],
     encapsulation: ViewEncapsulation.None,

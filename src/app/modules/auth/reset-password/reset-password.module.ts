@@ -3,18 +3,18 @@ import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { ResetPasswordComponent } from 'app/modules/auth/reset-password/reset-password.component';
+import { AuthResetPasswordComponent } from 'app/modules/auth/reset-password/reset-password.component';
 
 const routes: Route[] = [
     {
         path     : '',
-        component: ResetPasswordComponent
+        component: AuthResetPasswordComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        ResetPasswordComponent
+        AuthResetPasswordComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -27,6 +27,6 @@ const routes: Route[] = [
         SharedModule
     ]
 })
-export class ResetPasswordModule
+export class AuthResetPasswordModule
 {
 }

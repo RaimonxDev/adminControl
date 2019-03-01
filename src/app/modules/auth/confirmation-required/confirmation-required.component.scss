@@ -1,63 +1,6 @@
-confirmation-required {
+auth-confirmation-required {
 
     .content-layout {
         margin: 32px;
-
-        .card {
-            position: relative;
-            display: flex;
-            border-radius: 8px;
-            overflow: hidden;
-
-            .form-container {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .image {
-                display: flex;
-            }
-
-            // Classic
-            &.classic {
-                width: 416px;
-
-                .form-container {
-                    padding: 64px;
-                }
-            }
-
-            // Modern
-            &.modern,
-            &.modern-reverse {
-
-                .form-container {
-                    width: 416px;
-                    padding: 64px;
-                }
-
-                .image {
-                    width: 544px;
-                    background-image: url('assets/images/pages/authentication/card-image.jpg');
-                    background-size: cover;
-                }
-            }
-
-            // Modern relaxed
-            &.modern-relaxed,
-            &.modern-relaxed-reverse {
-
-                .form-container {
-                    width: 624px;
-                    padding: 80px 120px;
-                }
-
-                .image {
-                    width: 416px;
-                    background-image: url('assets/images/pages/authentication/card-image.jpg');
-                    background-size: cover;
-                }
-            }
-        }
     }
 }

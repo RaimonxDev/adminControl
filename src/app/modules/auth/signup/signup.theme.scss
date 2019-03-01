@@ -1,11 +1,11 @@
 @import 'src/@assembly/styles/assembly';
 
-@mixin signup-theme($theme) {
+@mixin auth-signup-theme($theme) {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
-    signup {
+    auth-signup {
 
         .content-layout {
 

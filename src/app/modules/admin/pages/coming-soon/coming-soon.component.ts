@@ -5,18 +5,17 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'unlock',
-    templateUrl  : './unlock.component.html',
-    styleUrls    : ['./unlock.component.scss'],
+    selector     : 'coming-soon',
+    templateUrl  : './coming-soon.component.html',
+    styleUrls    : ['./coming-soon.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class UnlockComponent implements OnInit
+export class ComingSoonComponent implements OnInit
 {
+    comingSoonForm: FormGroup;
     messageBox: any;
     messageBoxAnimationState: boolean;
-    name: string;
-    unlockForm: FormGroup;
 
     /**
      * Constructor
@@ -47,18 +46,9 @@ export class UnlockComponent implements OnInit
      */
     ngOnInit(): void
     {
-        // Get the user's name
-        this.name = 'Andrew Watkins';
-
         // Create the form
-        this.unlockForm = this._formBuilder.group({
-            name    : [
-                {
-                    value   : this.name,
-                    disabled: true
-                }
-            ],
-            password: ['', Validators.required]
+        this.comingSoonForm = this._formBuilder.group({
+            email: ['', [Validators.required, Validators.email]]
         });
     }
 }

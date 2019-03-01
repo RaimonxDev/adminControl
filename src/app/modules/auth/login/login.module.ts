@@ -3,18 +3,18 @@ import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { LoginComponent } from 'app/modules/auth/login/login.component';
+import { AuthLoginComponent } from 'app/modules/auth/login/login.component';
 
 const routes: Route[] = [
     {
         path     : '',
-        component: LoginComponent
+        component: AuthLoginComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        LoginComponent
+        AuthLoginComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -27,6 +27,6 @@ const routes: Route[] = [
         SharedModule
     ]
 })
-export class LoginModule
+export class AuthLoginModule
 {
 }

@@ -7,7 +7,7 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'reset-password',
+    selector     : 'auth-reset-password',
     templateUrl  : './reset-password.component.html',
     styleUrls    : ['./reset-password.component.scss'],
     encapsulation: ViewEncapsulation.None,

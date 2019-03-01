@@ -88,6 +88,15 @@ $typography: mat-typography-config(
 
 @import 'modules/admin/apps/mailbox/mailbox.theme';
 @import 'modules/admin/apps/tasks/tasks.theme';
+@import 'modules/admin/pages/authentication/confirmation-required/confirmation-required.theme';
+@import 'modules/admin/pages/authentication/forgot-password/forgot-password.theme';
+@import 'modules/admin/pages/authentication/login/login.theme';
+@import 'modules/admin/pages/authentication/logout/logout.theme';
+@import 'modules/admin/pages/authentication/reset-password/reset-password.theme';
+@import 'modules/admin/pages/authentication/signup/signup.theme';
+@import 'modules/admin/pages/authentication/unlock-session/unlock-session.theme';
+@import 'modules/admin/pages/coming-soon/coming-soon.theme';
+@import 'modules/admin/pages/errors/error-404/error-404.theme';
 @import 'modules/admin/docs/docs.theme';
 @import 'modules/admin/ui/icons/icons.theme';
 
@@ -97,7 +106,7 @@ $typography: mat-typography-config(
 @import 'modules/auth/logout/logout.theme';
 @import 'modules/auth/reset-password/reset-password.theme';
 @import 'modules/auth/signup/signup.theme';
-@import 'modules/auth/unlock/unlock.theme';
+@import 'modules/auth/unlock-session/unlock-session.theme';
 
 // Define a mixin for easier access
 @mixin modules-themes($theme) {
@@ -115,17 +124,26 @@ $typography: mat-typography-config(
     // Admin
     @include mailbox-theme($theme);
     @include tasks-theme($theme);
-    @include docs-theme($theme);
-    @include icons-theme($theme);
-
-    // Auth
     @include confirmation-required-theme($theme);
     @include forgot-password-theme($theme);
     @include login-theme($theme);
     @include logout-theme($theme);
     @include reset-password-theme($theme);
     @include signup-theme($theme);
-    @include unlock-theme($theme);
+    @include unlock-session-theme($theme);
+    @include coming-soon-theme($theme);
+    @include error-404-theme($theme);
+    @include docs-theme($theme);
+    @include icons-theme($theme);
+
+    // Auth
+    @include auth-confirmation-required-theme($theme);
+    @include auth-forgot-password-theme($theme);
+    @include auth-login-theme($theme);
+    @include auth-logout-theme($theme);
+    @include auth-reset-password-theme($theme);
+    @include auth-signup-theme($theme);
+    @include auth-unlock-session-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

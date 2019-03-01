@@ -1,11 +1,11 @@
 @import 'src/@assembly/styles/assembly';
 
-@mixin reset-password-theme($theme) {
+@mixin unlock-session-theme($theme) {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
-    auth-reset-password {
+    auth-unlock-session {
 
         .content-layout {
 

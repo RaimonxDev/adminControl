@@ -1,7 +1,7 @@
 <div class="content-layout with-centered-content">
 
     <!-- Card -->
-    <div class="card modern">
+    <div class="card auth modern">
 
         <!-- Form container -->
         <div class="form-container">
@@ -29,7 +29,7 @@
 
             <!-- Unlock form -->
             <form class="mt-40"
-                  [formGroup]="unlockForm"
+                  [formGroup]="unlockSessionForm"
                   novalidate>
 
                 <!-- Name field -->
@@ -70,11 +70,11 @@
                 <button class="asm-mat-button-large mt-48 w-full"
                         mat-raised-button
                         [color]="'primary'"
-                        [disabled]="unlockForm.disabled || unlockForm.invalid">
-                    <span *ngIf="!unlockForm.disabled">
+                        [disabled]="unlockSessionForm.disabled || unlockSessionForm.invalid">
+                    <span *ngIf="!unlockSessionForm.disabled">
                         Unlock Your Session
                     </span>
-                    <span *ngIf="unlockForm.disabled">
+                    <span *ngIf="unlockSessionForm.disabled">
                         <asm-spinner [appearance]="'material'"
                                      [diameter]="24"></asm-spinner>
                     </span>
@@ -90,8 +90,8 @@
 
         </div>
 
-        <!-- Image -->
-        <div class="image"></div>
+        <!-- Content container -->
+        <div class="content-container"></div>
 
     </div>
 
