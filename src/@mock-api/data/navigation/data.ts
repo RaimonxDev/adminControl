@@ -504,13 +504,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : '404',
                 title: '404',
                 type : 'link',
-                link : '/pages/errors/error-404'
+                link : '/pages/errors/404'
             },
             {
                 id   : '500',
                 title: '500',
                 type : 'link',
-                link : '/pages/errors/error-500'
+                link : '/pages/errors/500'
             }
         ]
     },

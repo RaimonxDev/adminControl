@@ -80,10 +80,20 @@ export const adminRoutes: Route[] = [
                         loadChildren: './pages/coming-soon/coming-soon.module#ComingSoonModule'
                     },
 
+                    // Maintenance
+                    {
+                        path        : 'maintenance',
+                        loadChildren: './pages/maintenance/maintenance.module#MaintenanceModule'
+                    },
+
                     // Errors
                     {
                         path        : 'errors/404',
                         loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
+                    },
+                    {
+                        path        : 'errors/500',
+                        loadChildren: './pages/errors/error-500/error-500.module#Error500Module'
                     }
                 ]
             },

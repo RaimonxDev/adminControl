@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AsmAnimations } from '@assembly';
-import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'auth-unlock-session',
@@ -21,16 +19,10 @@ export class UnlockSessionComponent implements OnInit
     /**
      * Constructor
      *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {AuthService} _authService
      * @param {FormBuilder} _formBuilder
-     * @param {Router} _router
      */
     constructor(
-        private _activatedRoute: ActivatedRoute,
-        private _authService: AuthService,
-        private _formBuilder: FormBuilder,
-        private _router: Router
+        private _formBuilder: FormBuilder
     )
     {
         // Set the defaults

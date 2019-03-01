@@ -1,11 +1,11 @@
 <div class="content-layout with-centered-content">
 
-    <!-- Style selector -->
+    <!-- Card style selector -->
     <mat-form-field class="mb-64"
                     [appearance]="'outline'">
-        <mat-label>Style</mat-label>
+        <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
-                    #formStyle>
+                    #cardStyle>
             <mat-option [value]="'classic'">Classic</mat-option>
             <mat-option [value]="'modern'">Modern</mat-option>
             <mat-option [value]="'modern-relaxed'">Modern Relaxed</mat-option>
@@ -16,7 +16,7 @@
 
 
     <!-- Classic | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'classic'">
+    <ng-container *ngIf="cardStyle.value === 'classic'">
 
         <!-- Card -->
         <div class="card auth classic">
@@ -30,7 +30,7 @@
 
 
     <!-- Modern | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'modern'">
+    <ng-container *ngIf="cardStyle.value === 'modern'">
 
         <!-- Card -->
         <div class="card auth modern">
@@ -47,7 +47,7 @@
 
 
     <!-- Modern relaxed | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'modern-relaxed'">
+    <ng-container *ngIf="cardStyle.value === 'modern-relaxed'">
 
         <!-- Card -->
         <div class="card auth modern-relaxed">
@@ -64,7 +64,7 @@
 
 
     <!-- Modern reverse | Copy the contents of this ng-container to use this style-->
-    <ng-container *ngIf="formStyle.value === 'modern-reverse'">
+    <ng-container *ngIf="cardStyle.value === 'modern-reverse'">
 
         <!-- Card -->
         <div class="card auth modern-reverse">
@@ -81,7 +81,7 @@
 
 
     <!-- Modern relaxed reverse | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'modern-relaxed-reverse'">
+    <ng-container *ngIf="cardStyle.value === 'modern-relaxed-reverse'">
 
         <!-- Card -->
         <div class="card auth modern-relaxed-reverse">

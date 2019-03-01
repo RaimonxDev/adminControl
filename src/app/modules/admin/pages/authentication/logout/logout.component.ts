@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { interval, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
-import { AuthService } from 'app/core/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,11 +20,9 @@ export class LogoutComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {AuthService} _authService
      * @param {Router} _router
      */
     constructor(
-        private _authService: AuthService,
         private _router: Router
     )
     {

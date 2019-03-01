@@ -1,11 +1,11 @@
 <div class="content-layout with-centered-content">
 
-    <!-- Style selector -->
+    <!-- Card style selector -->
     <mat-form-field class="mb-64"
                     [appearance]="'outline'">
-        <mat-label>Style</mat-label>
+        <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
-                    #formStyle>
+                    #cardStyle>
             <mat-option [value]="'classic'">Classic</mat-option>
             <mat-option [value]="'modern'">Modern</mat-option>
             <mat-option [value]="'modern-relaxed'">Modern Relaxed</mat-option>
@@ -16,7 +16,7 @@
 
 
     <!-- Classic | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'classic'">
+    <ng-container *ngIf="cardStyle.value === 'classic'">
 
         <!-- Card -->
         <div class="card auth classic">
@@ -30,7 +30,7 @@
 
 
     <!-- Modern | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'modern'">
+    <ng-container *ngIf="cardStyle.value === 'modern'">
 
         <!-- Card -->
         <div class="card auth modern">
@@ -47,7 +47,7 @@
 
 
     <!-- Modern relaxed | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'modern-relaxed'">
+    <ng-container *ngIf="cardStyle.value === 'modern-relaxed'">
 
         <!-- Card -->
         <div class="card auth modern-relaxed">
@@ -64,7 +64,7 @@
 
 
     <!-- Modern reverse | Copy the contents of this ng-container to use this style-->
-    <ng-container *ngIf="formStyle.value === 'modern-reverse'">
+    <ng-container *ngIf="cardStyle.value === 'modern-reverse'">
 
         <!-- Card -->
         <div class="card auth modern-reverse">
@@ -81,7 +81,7 @@
 
 
     <!-- Modern relaxed reverse | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="formStyle.value === 'modern-relaxed-reverse'">
+    <ng-container *ngIf="cardStyle.value === 'modern-relaxed-reverse'">
 
         <!-- Card -->
         <div class="card auth modern-relaxed-reverse">
@@ -113,8 +113,8 @@
         </div>
 
         <!-- Title -->
-        <div class="title-2 mt-64">Lost your password?</div>
-        <div class="subtitle mt-8 secondary-text">Fill the form to reset your password</div>
+        <div class="title-2 mt-64">Almost there!</div>
+        <div class="subtitle mt-8 secondary-text">Do you want to be notified when we are ready? Register below so we can notify you about the launch!</div>
 
         <!-- Message box -->
         <asm-message class="mt-48"
@@ -125,7 +125,7 @@
             <div asmMessageContent>{{messageBox.message}}</div>
         </asm-message>
 
-        <!-- Forgot password form -->
+        <!-- Coming soon form -->
         <form class="mt-40"
               [formGroup]="comingSoonForm"
               novalidate>
@@ -146,13 +146,13 @@
                 </mat-error>
             </mat-form-field>
 
-            <!-- Send reset link button -->
+            <!-- Register to launch list button -->
             <button class="asm-mat-button-large mt-48 w-full"
                     mat-raised-button
                     [color]="'primary'"
                     [disabled]="comingSoonForm.disabled || comingSoonForm.invalid">
                 <span *ngIf="!comingSoonForm.disabled">
-                    Send Reset Link
+                    Register to Launch List
                 </span>
                 <span *ngIf="comingSoonForm.disabled">
                     <asm-spinner [appearance]="'material'"
@@ -161,7 +161,7 @@
             </button>
 
             <!-- Footer -->
-            <div class="mt-24 w-full text-center">
+            <div class="mt-24 w-full text-center text-md secondary-text">
                 <p>You are not joining to a newsletter!</p>
                 <p>We will only send one e-mail to above address when we launch and that's it!</p>
             </div>

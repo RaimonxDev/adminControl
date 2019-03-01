@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsmAnimations } from '@assembly';
-import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'auth-login',
@@ -19,11 +18,9 @@ export class LoginComponent implements OnInit
     /**
      * Constructor
      *
-     * @param {AuthService} _authService
      * @param {FormBuilder} _formBuilder
      */
     constructor(
-        private _authService: AuthService,
         private _formBuilder: FormBuilder
     )
     {
