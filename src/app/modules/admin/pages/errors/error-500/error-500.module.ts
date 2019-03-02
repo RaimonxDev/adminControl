@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material';
 import { Error500Component } from 'app/modules/admin/pages/errors/error-500/error-500.component';
 import { error500Routes } from 'app/modules/admin/pages/errors/error-500/error-500.routing';
 
@@ -9,8 +8,7 @@ import { error500Routes } from 'app/modules/admin/pages/errors/error-500/error-5
         Error500Component
     ],
     imports     : [
-        RouterModule.forChild(error500Routes),
-        MatButtonModule
+        RouterModule.forChild(error500Routes)
     ]
 })
 export class Error500Module

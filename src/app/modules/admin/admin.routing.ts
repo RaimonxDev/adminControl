@@ -46,32 +46,37 @@ export const adminRoutes: Route[] = [
 
                     // Authentication
                     {
-                        path        : 'authentication/confirmation-required',
-                        loadChildren: './pages/authentication/confirmation-required/confirmation-required.module#ConfirmationRequiredModule'
-                    },
-                    {
-                        path        : 'authentication/forgot-password',
-                        loadChildren: './pages/authentication/forgot-password/forgot-password.module#ForgotPasswordModule'
-                    },
-                    {
-                        path        : 'authentication/login',
-                        loadChildren: './pages/authentication/login/login.module#LoginModule'
-                    },
-                    {
-                        path        : 'authentication/logout',
-                        loadChildren: './pages/authentication/logout/logout.module#LogoutModule'
-                    },
-                    {
-                        path        : 'authentication/reset-password',
-                        loadChildren: './pages/authentication/reset-password/reset-password.module#ResetPasswordModule'
-                    },
-                    {
-                        path        : 'authentication/signup',
-                        loadChildren: './pages/authentication/signup/signup.module#SignupModule'
-                    },
-                    {
-                        path        : 'authentication/unlock-session',
-                        loadChildren: './pages/authentication/unlock-session/unlock-session.module#UnlockSessionModule'
+                        path    : 'authentication',
+                        children: [
+                            {
+                                path        : 'confirmation-required',
+                                loadChildren: './pages/authentication/confirmation-required/confirmation-required.module#ConfirmationRequiredModule'
+                            },
+                            {
+                                path        : 'forgot-password',
+                                loadChildren: './pages/authentication/forgot-password/forgot-password.module#ForgotPasswordModule'
+                            },
+                            {
+                                path        : 'login',
+                                loadChildren: './pages/authentication/login/login.module#LoginModule'
+                            },
+                            {
+                                path        : 'logout',
+                                loadChildren: './pages/authentication/logout/logout.module#LogoutModule'
+                            },
+                            {
+                                path        : 'reset-password',
+                                loadChildren: './pages/authentication/reset-password/reset-password.module#ResetPasswordModule'
+                            },
+                            {
+                                path        : 'signup',
+                                loadChildren: './pages/authentication/signup/signup.module#SignupModule'
+                            },
+                            {
+                                path        : 'unlock-session',
+                                loadChildren: './pages/authentication/unlock-session/unlock-session.module#UnlockSessionModule'
+                            }
+                        ]
                     },
 
                     // Coming soon
@@ -80,20 +85,36 @@ export const adminRoutes: Route[] = [
                         loadChildren: './pages/coming-soon/coming-soon.module#ComingSoonModule'
                     },
 
+                    // Errors
+                    {
+                        path    : 'errors',
+                        children: [
+                            {
+                                path        : '404',
+                                loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
+                            },
+                            {
+                                path        : '500',
+                                loadChildren: './pages/errors/error-500/error-500.module#Error500Module'
+                            }
+                        ]
+                    },
+
                     // Maintenance
                     {
                         path        : 'maintenance',
                         loadChildren: './pages/maintenance/maintenance.module#MaintenanceModule'
                     },
 
-                    // Errors
+                    // Pricing
                     {
-                        path        : 'errors/404',
-                        loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
-                    },
-                    {
-                        path        : 'errors/500',
-                        loadChildren: './pages/errors/error-500/error-500.module#Error500Module'
+                        path    : 'pricing',
+                        children: [
+                            {
+                                path        : 'modern',
+                                loadChildren: './pages/pricing/modern/modern.module#PricingModernModule'
+                            }
+                        ]
                     }
                 ]
             },

@@ -77,6 +77,8 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Import core and modules themes here to enable theming for them
+
+// Core
 @import 'core/layouts/basic/basic.theme';
 @import 'core/layouts/classic/classic.theme';
 @import 'core/layouts/classy/classy.theme';
@@ -86,6 +88,7 @@ $typography: mat-typography-config(
 @import 'core/layouts/thin/thin.theme';
 @import 'core/layouts/thin-light/thin-light.theme';
 
+// Admin
 @import 'modules/admin/apps/mailbox/mailbox.theme';
 @import 'modules/admin/apps/tasks/tasks.theme';
 @import 'modules/admin/pages/authentication/confirmation-required/confirmation-required.theme';
@@ -96,12 +99,14 @@ $typography: mat-typography-config(
 @import 'modules/admin/pages/authentication/signup/signup.theme';
 @import 'modules/admin/pages/authentication/unlock-session/unlock-session.theme';
 @import 'modules/admin/pages/coming-soon/coming-soon.theme';
-@import 'modules/admin/pages/maintenance/maintenance.theme';
 @import 'modules/admin/pages/errors/error-404/error-404.theme';
 @import 'modules/admin/pages/errors/error-500/error-500.theme';
+@import 'modules/admin/pages/maintenance/maintenance.theme';
+@import 'modules/admin/pages/pricing/modern/modern.theme';
 @import 'modules/admin/docs/docs.theme';
 @import 'modules/admin/ui/icons/icons.theme';
 
+// Auth
 @import 'modules/auth/confirmation-required/confirmation-required.theme';
 @import 'modules/auth/forgot-password/forgot-password.theme';
 @import 'modules/auth/login/login.theme';
@@ -134,9 +139,10 @@ $typography: mat-typography-config(
     @include signup-theme($theme);
     @include unlock-session-theme($theme);
     @include coming-soon-theme($theme);
-    @include maintenance-theme($theme);
     @include error-404-theme($theme);
     @include error-500-theme($theme);
+    @include maintenance-theme($theme);
+    @include pricing-modern-theme($theme);
     @include docs-theme($theme);
     @include icons-theme($theme);
 

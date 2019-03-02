@@ -61,4 +61,9 @@
         align-items: center;
         justify-content: center;
     }
+
+    // Column
+    &.with-columns {
+        flex-direction: column;
+    }
 }

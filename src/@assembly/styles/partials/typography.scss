@@ -157,34 +157,42 @@ pre {
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Custom title sizes
+// @ Titles and subtitles
 // -----------------------------------------------------------------------------------------------------
-.title-0 {
-    font-size: 40px;
+.title {
+    font-size: 24px;
     font-weight: 800;
     line-height: 1.2;
 }
 
-.title-1 {
+.title-md {
     font-size: 32px;
     font-weight: 800;
     line-height: 1.2;
 }
 
-.title-2 {
-    font-size: 24px;
+.title-lg {
+    font-size: 40px;
     font-weight: 800;
     line-height: 1.2;
 }
 
-.title-3 {
-    font-size: 24px;
-    font-weight: 700;
+.title-xl {
+    font-size: 40px;
+    font-weight: 900;
     line-height: 1.2;
 }
 
 .subtitle {
     font-size: 16px;
+}
+
+.subtitle-md {
+    font-size: 18px;
+}
+
+.subtitle-lg {
+    font-size: 20px;
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -194,5 +202,24 @@ pre {
 
     &:hover {
         text-decoration: underline;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Marker
+// -----------------------------------------------------------------------------------------------------
+.marker {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -4px;
+        bottom: 10%;
+        left: -4px;
+        z-index: -1;
+        background: #F7F49A;
+        pointer-events: none;
     }
 }

@@ -1,7 +1,7 @@
 import { AsmNavigationItem } from '@assembly';
 
 export const defaultNavigation: AsmNavigationItem[] = [
-    {
+    /*{
         id      : 'applications-aside-1',
         title   : 'Applications Aside 1',
         subtitle: 'Aside is good!',
@@ -281,7 +281,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/apps/scrumboard'
             }
         ]
-    },
+    },*/
     {
         id   : 'applications',
         title: 'Applications',
@@ -303,51 +303,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type    : 'link',
         icon    : 'today',
         link    : '/apps/calendar'
-    },
-    {
-        id      : 'e-commerce',
-        title   : 'E-Commerce',
-        subtitle: '4 new orders',
-        type    : 'collapsable',
-        icon    : 'shopping_cart',
-        children: [
-            {
-                id        : 'products',
-                title     : 'Products',
-                type      : 'link',
-                link      : '/apps/e-commerce/products',
-                exactMatch: true
-            },
-            {
-                id        : 'productDetail',
-                title     : 'Product Detail',
-                type      : 'link',
-                link      : '/apps/e-commerce/products/1/printed-dress',
-                exactMatch: true
-            },
-            {
-                id        : 'orders',
-                title     : 'Orders',
-                type      : 'link',
-                link      : '/apps/e-commerce/orders',
-                exactMatch: true
-            },
-            {
-                id        : 'orderDetail',
-                title     : 'Order Detail',
-                type      : 'link',
-                link      : '/apps/e-commerce/orders/1',
-                exactMatch: true
-            }
-        ]
-    },
-    {
-        id      : 'academy',
-        title   : 'Academy',
-        subtitle: 'New lessons available!',
-        type    : 'link',
-        icon    : 'school',
-        link    : '/apps/academy'
     },
     {
         id   : 'mailbox',
@@ -376,38 +331,11 @@ export const defaultNavigation: AsmNavigationItem[] = [
         }
     },
     {
-        id   : 'mail-ngrx',
-        title: 'Mail Ngrx',
+        id   : 'notes',
+        title: 'Notes',
         type : 'link',
-        icon : 'email',
-        link : '/apps/mail-ngrx',
-        badge: {
-            title     : 'NEW',
-            style     : 'rectangle',
-            background: '#EC0C8E',
-            color     : '#FFFFFF'
-        }
-    },
-    {
-        id   : 'chat',
-        title: 'Chat',
-        type : 'link',
-        icon : 'chat',
-        link : '/apps/chat',
-        badge: {
-            title     : '13',
-            style     : 'simple',
-            background: '#09d261',
-            color     : '#09d261'
-        }
-    },
-    {
-        id      : 'file-manager',
-        title   : 'File Manager',
-        subtitle: '1.4GB of 5GB used',
-        type    : 'link',
-        icon    : 'folder',
-        link    : '/apps/file-manager'
+        icon : 'note',
+        link : '/apps/notes'
     },
     {
         id   : 'contacts',
@@ -415,13 +343,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type : 'link',
         icon : 'account_box',
         link : '/apps/contacts'
-    },
-    {
-        id   : 'scrumboard',
-        title: 'Scrumboard',
-        type : 'link',
-        icon : 'assessment',
-        link : '/apps/scrumboard'
     },
     {
         id      : 'pages',
@@ -515,48 +436,22 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id      : 'invoice',
-        title   : 'Invoice',
-        type    : 'collapsable',
-        icon    : 'receipt',
-        children: [
-            {
-                id   : 'modern',
-                title: 'Modern',
-                type : 'link',
-                link : '/pages/invoices/modern'
-            },
-            {
-                id   : 'compact',
-                title: 'Compact',
-                type : 'link',
-                link : '/pages/invoices/compact'
-            }
-        ]
-    },
-    {
         id      : 'pricing',
         title   : 'Pricing',
         type    : 'collapsable',
         icon    : 'attach_money',
         children: [
             {
-                id   : 'style-1',
-                title: 'Style 1',
+                id   : 'pricing-modern',
+                title: 'Modern',
                 type : 'link',
-                link : '/pages/pricing/style-1'
+                link : '/pages/pricing/modern'
             },
             {
-                id   : 'style-2',
-                title: 'Style 2',
+                id   : 'pricing-simple',
+                title: 'Simple',
                 type : 'link',
-                link : '/pages/pricing/style-2'
-            },
-            {
-                id   : 'style-3',
-                title: 'Style 3',
-                type : 'link',
-                link : '/pages/pricing/style-3'
+                link : '/pages/pricing/simple'
             }
         ]
     },
