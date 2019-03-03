@@ -1,7 +1,10 @@
+@import 'src/@assembly/styles/assembly';
+
 docs {
     display: flex;
     flex-direction: column;
     max-width: 840px;
+    min-width: 0 !important;
     width: 100%;
     margin: 0 auto;
     padding: 24px;
@@ -26,7 +29,7 @@ docs {
         .subtitle {
             font-size: 22px;
             font-weight: 600;
-            margin: 32px 0 0 0;
+            margin: 40px 0 0 0;
         }
 
         .method {
@@ -60,7 +63,7 @@ docs {
             overflow-y: hidden;
             margin: 16px 0;
             border-radius: 4px;
-            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.06);
+            @include asm-shadow(1);
 
             table {
                 border: 0;
