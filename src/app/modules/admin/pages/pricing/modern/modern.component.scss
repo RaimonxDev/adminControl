@@ -83,50 +83,65 @@ pricing-modern {
 
         .features {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             align-self: center;
             align-items: center;
             justify-content: center;
             width: 100%;
-            margin-top: 32px;
+            margin-top: 96px;
             max-width: 1280px;
 
             @include asm-media-breakpoint('lt-sm') {
-                margin-top: 16px;
+                margin-top: 72px;
             }
 
-            .feature {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                max-width: 384px;
-                width: 100%;
-                padding: 64px 40px 0 40px;
-                text-align: center;
+            .features-title {
+                max-width: 560px;
 
                 @include asm-media-breakpoint('lt-sm') {
-                    padding: 64px 0 0 0;
+                    max-width: 384px;
                 }
+            }
 
-                .title {
+            .features-grid {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: center;
+
+                .feature {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    margin-bottom: 8px;
+                    max-width: 384px;
+                    width: 100%;
+                    padding: 64px 40px 0 40px;
+                    text-align: center;
 
-                    .mat-icon {
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 64px 0 0 0;
+                    }
+
+                    .title {
                         display: flex;
+                        flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        border-radius: 50%;
-                        margin-bottom: 24px;
+                        margin-bottom: 8px;
 
-                        @include asm-icon-size(22);
+                        .mat-icon {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            margin-bottom: 24px;
 
-                        width: 48px !important;
-                        height: 48px !important;
+                            @include asm-icon-size(22);
+
+                            width: 48px !important;
+                            height: 48px !important;
+                        }
                     }
                 }
             }
@@ -137,7 +152,9 @@ pricing-modern {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            align-self: center;
             width: 100%;
+            max-width: 1280px;
             margin: 152px 0 32px 0;
 
             @include asm-media-breakpoint('lt-sm') {
@@ -154,12 +171,11 @@ pricing-modern {
 
             .faqs-list {
                 display: flex;
-                flex-direction: column;
                 flex-wrap: wrap;
-                align-items: flex-start;
-                justify-content: space-between;
+                align-items: center;
+                justify-content: space-around;
+                width: 100%;
                 margin-top: 32px;
-                max-width: 560px;
 
                 @include asm-media-breakpoint('lt-sm') {
                     max-width: 384px;
@@ -169,6 +185,7 @@ pricing-modern {
                     display: flex;
                     flex-direction: column;
                     margin-top: 48px;
+                    max-width: 480px;
                 }
             }
         }
