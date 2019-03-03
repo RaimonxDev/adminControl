@@ -64,8 +64,8 @@ export const docs = {
                         Storing multiple navigation data
                     </p>
                     <p>
-                        Multiple navigation data can also be stored in the service with different keys. That is particularly useful if
-                        different set of navigation data needed by the app such as different navigation for different user groups or for
+                        Multiple navigation data can also be stored in the service with different keys. This is particularly useful if
+                        different set of navigation data needed by the app; such as different navigation for different user groups or for
                         different areas of the app.
                     </p>
                 `
