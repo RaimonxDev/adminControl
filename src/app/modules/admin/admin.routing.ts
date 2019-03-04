@@ -113,6 +113,10 @@ export const adminRoutes: Route[] = [
                             {
                                 path        : 'modern',
                                 loadChildren: './pages/pricing/modern/modern.module#PricingModernModule'
+                            },
+                            {
+                                path        : 'simple',
+                                loadChildren: './pages/pricing/simple/simple.module#PricingSimpleModule'
                             }
                         ]
                     }
