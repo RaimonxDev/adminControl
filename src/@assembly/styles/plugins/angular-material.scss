@@ -1,4 +1,49 @@
 // -----------------------------------------------------------------------------------------------------
+// @ Expose a material theme as css variables
+// -----------------------------------------------------------------------------------------------------
+@mixin expose-material-theme($theme) {
+
+    // Group color palettes together
+    $color-palettes: (
+        primary: map-get($theme, primary),
+        accent: map-get($theme, accent),
+        warn: map-get($theme, warn)
+    );
+
+    // Group background and foreground palettes together
+    $bgfg-palettes: (
+        background: map-get($theme, background),
+        foreground: map-get($theme, foreground)
+    );
+
+    // Create an empty map for generated css custom properties
+    $custom-properties: ();
+
+    // Handle color palettes
+    @each $palette-name, $palette in $color-palettes {
+        $custom-properties: map-merge($custom-properties, (--color-#{$palette-name}: map-get($palette, 500)));
+        $custom-properties: map-merge($custom-properties, (--color-#{$palette-name}-contrast: map-get($palette, '500-contrast')));
+        @each $key, $value in $palette {
+            @if ($key != 'contrast') {
+                $custom-properties: map-merge($custom-properties, (--color-#{$palette-name}-#{$key}: $value));
+            }
+        }
+    }
+
+    // Handle background and foreground palettes
+    @each $palette-name, $palette in $bgfg-palettes {
+        @each $key, $value in $palette {
+            $custom-properties: map-merge($custom-properties, (--color-#{$palette-name}-#{$key}: $value));
+        }
+    }
+
+    // Print out the custom properties
+    @each $property-name, $property-value in $custom-properties {
+        #{$property-name}: $property-value;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
 // @ Theming overrides and fixes
 // -----------------------------------------------------------------------------------------------------
 @mixin material-theme($theme) {
