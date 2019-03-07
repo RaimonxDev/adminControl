@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector       : 'pricing-modern',
     templateUrl    : './modern.component.html',
     styleUrls      : ['./modern.component.scss'],
-    encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PricingModernComponent

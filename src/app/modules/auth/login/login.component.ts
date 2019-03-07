@@ -1,15 +1,14 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'auth-login',
-    templateUrl  : './login.component.html',
-    styleUrls    : ['./login.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    selector   : 'auth-login',
+    templateUrl: './login.component.html',
+    styleUrls  : ['./login.component.scss'],
+    animations : AsmAnimations
 })
 export class AuthLoginComponent implements OnInit
 {

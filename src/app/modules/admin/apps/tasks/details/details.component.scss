@@ -1,6 +1,6 @@
 @import 'assembly';
 
-tasks-details {
+:host {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -249,6 +249,43 @@ tasks-details {
                     border-radius: 50%;
                 }
             }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    background: map-get($background, card);
+
+    .divider {
+        border-bottom-color: map-get($foreground, divider);
+    }
+
+    .tags {
+
+        .add-tag {
+
+            @if ($is-dark) {
+                background: map-get($background, background);
+            } @else {
+                background: #EEEEEE;
+            }
+        }
+    }
+
+    // Add tag panel
+    .tasks-details-add-tag-panel {
+        background: map-get($background, card);
+
+        .create-tag {
+            background: map-get($background, hover);
         }
     }
 }

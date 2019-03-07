@@ -1,4 +1,6 @@
-mailbox {
+@import 'assembly';
+
+:host {
 
     // Mat drawer
     .mat-drawer {
@@ -12,5 +14,22 @@ mailbox {
     // Mat drawer content
     .mat-drawer-content {
         overflow: hidden;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    .mat-drawer {
+        @if ($is-dark) {
+
+        } @else {
+            background: map-get($background, background);
+        }
     }
 }

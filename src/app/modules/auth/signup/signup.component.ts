@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
@@ -7,11 +7,10 @@ import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'auth-signup',
-    templateUrl  : './signup.component.html',
-    styleUrls    : ['./signup.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    selector   : 'auth-signup',
+    templateUrl: './signup.component.html',
+    styleUrls  : ['./signup.component.scss'],
+    animations : AsmAnimations
 })
 export class AuthSignupComponent implements OnInit, OnDestroy
 {

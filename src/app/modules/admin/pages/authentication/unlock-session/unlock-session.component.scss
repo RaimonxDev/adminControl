@@ -1,6 +1,45 @@
-auth-unlock-session {
+@import 'assembly';
+
+:host {
 
     .content-layout {
         margin: 32px;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    .content-layout {
+
+        .card {
+            background: map-get($background, card);
+            @include asm-shadow(1);
+
+            .form-container {
+
+                .logo {
+
+                    .logo-dark {
+
+                        @if ($is-dark) {
+                            display: none;
+                        }
+                    }
+
+                    .logo-light {
+
+                        @if ($is-dark == false) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

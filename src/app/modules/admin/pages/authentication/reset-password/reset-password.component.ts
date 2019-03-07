@@ -1,15 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector     : 'auth-reset-password',
-    templateUrl  : './reset-password.component.html',
-    styleUrls    : ['./reset-password.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    selector   : 'auth-reset-password',
+    templateUrl: './reset-password.component.html',
+    styleUrls  : ['./reset-password.component.scss'],
+    animations : AsmAnimations
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy
 {

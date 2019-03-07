@@ -832,3 +832,312 @@ asm-navigation {
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    asm-navigation {
+
+        // Aside wrapper
+        .asm-navigation-aside-wrapper {
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
+            0 2px 12px 0 rgba(0, 0, 0, 0.05),
+            inset 1px 0 0 0 rgba(0, 0, 0, 0.12);
+
+            // First item of the aside (header)
+            > asm-navigation-aside-item {
+
+                > .asm-navigation-item-wrapper {
+
+                    .asm-navigation-item {
+
+                        &:hover {
+                            background: transparent !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Navigation items common
+        .asm-navigation-item {
+            color: currentColor;
+
+            .asm-navigation-item-title {
+                color: map-get($foreground, primary);
+            }
+
+            &.asm-navigation-item-active {
+                box-shadow: inset 3px 0 0 0 map-get($primary, default);
+                background: rgba(0, 0, 0, 0.03);
+            }
+        }
+
+        // Link, Collapsable & Aside
+        asm-navigation-link-item,
+        asm-navigation-collapsable-item,
+        asm-navigation-aside-item {
+
+            > .asm-navigation-item-wrapper {
+
+                .asm-navigation-item {
+
+                    &:hover:not(.asm-navigation-item-active) {
+                        background: rgba(0, 0, 0, 0.03);
+                    }
+                }
+            }
+        }
+
+        // Collapsable
+        asm-navigation-collapsable-item {
+
+            &.asm-navigation-item-expanded {
+                background: rgba(0, 0, 0, 0.03);
+
+                asm-navigation-collapsable-item {
+                    background: transparent;
+                }
+            }
+        }
+
+        // Subheader
+        asm-navigation-subheader-item {
+
+            .asm-navigation-item {
+
+                .asm-navigation-item-title {
+                    color: map-get($foreground, default);
+                }
+            }
+        }
+
+        // DARK BACKGROUND
+        .asm-navigation-dark-background {
+
+            // Aside wrapper
+            &.asm-navigation-aside-wrapper {
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
+                0 2px 12px 0 rgba(0, 0, 0, 0.05),
+                inset 1px 0 0 0 rgba(255, 255, 255, 0.06);
+            }
+
+            // Navigation items common
+            .asm-navigation-item {
+
+                &.asm-navigation-item-active {
+                    background: rgba(0, 0, 0, 0.12);
+                }
+            }
+
+            // Link, Collapsable & Aside
+            asm-navigation-link-item,
+            asm-navigation-collapsable-item,
+            asm-navigation-aside-item {
+
+                > .asm-navigation-item-wrapper {
+
+                    .asm-navigation-item {
+
+                        &:hover:not(.asm-navigation-item-active) {
+                            background: rgba(0, 0, 0, 0.12);
+                        }
+                    }
+                }
+            }
+
+            // Collapsable
+            asm-navigation-collapsable-item {
+
+                &.asm-navigation-item-expanded {
+                    background: rgba(0, 0, 0, 0.06);
+
+                    asm-navigation-collapsable-item {
+                        background: transparent;
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Compact
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-navigation-appearance-compact {
+
+            // Wrapper
+            .asm-navigation-wrapper {
+
+                .asm-navigation-content {
+
+                    .asm-navigation-item {
+
+                        &.asm-navigation-item-active {
+                            background: transparent;
+
+                            .asm-navigation-item-title,
+                            .asm-navigation-item-icon {
+                                color: map-get($primary, default) !important;
+                            }
+                        }
+                    }
+
+                    asm-navigation-link-item,
+                    asm-navigation-collapsable-item,
+                    asm-navigation-aside-item {
+
+                        > .asm-navigation-item-wrapper {
+
+                            .asm-navigation-item {
+
+                                &:hover:not(.asm-navigation-item-active) {
+                                    background: transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Dense
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-navigation-appearance-dense {
+
+            // Wrapper
+            .asm-navigation-wrapper {
+
+                .asm-navigation-content {
+
+                    .asm-navigation-item {
+
+                        &.asm-navigation-item-active {
+
+                            .asm-navigation-item-title,
+                            .asm-navigation-item-icon {
+                                color: map-get($primary, default) !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:not(.asm-navigation-hover):not(.asm-navigation-mode-over) {
+
+                // Wrapper
+                .asm-navigation-wrapper {
+
+                    .asm-navigation-content {
+
+                        asm-navigation-subheader-item {
+
+                            .asm-navigation-item {
+
+                                &:before {
+                                    border-top-color: rgba(0, 0, 0, 0.12);
+                                }
+                            }
+                        }
+                    }
+
+                    // Dark background
+                    &.asm-navigation-dark-background {
+
+                        .asm-navigation-content {
+
+                            asm-navigation-subheader-item {
+
+                                .asm-navigation-item {
+
+                                    &:before {
+                                        border-top-color: rgba(255, 255, 255, 0.12);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Thin
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-navigation-appearance-thin {
+
+            // Wrapper
+            .asm-navigation-wrapper {
+
+                .asm-navigation-content {
+
+                    asm-navigation-subheader-item {
+
+                        .asm-navigation-item {
+
+                            &:before {
+                                border-top-color: rgba(0, 0, 0, 0.12);
+                            }
+                        }
+                    }
+                }
+
+                // Dark background
+                &.asm-navigation-dark-background {
+
+                    .asm-navigation-content {
+
+                        asm-navigation-subheader-item {
+
+                            .asm-navigation-item {
+
+                                &:before {
+                                    border-top-color: rgba(255, 255, 255, 0.12);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            asm-navigation-aside-item,
+            asm-navigation-link-item,
+            asm-navigation-collapsable-item {
+
+                .asm-navigation-item {
+
+                    &:before {
+                        background-color: map-get($primary, default);
+                    }
+
+                    &.asm-navigation-item-active {
+                        background: transparent;
+
+                        &:before {
+                            box-shadow: 2px 0 18px 0 map-get($primary, default);
+                        }
+
+                        .asm-navigation-item-title,
+                        .asm-navigation-item-icon {
+                            color: map-get($primary, default) !important;
+                        }
+
+                        .asm-navigation-item-subtitle {
+                            color: map-get($primary, 800) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

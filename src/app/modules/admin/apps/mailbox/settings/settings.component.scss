@@ -1,4 +1,6 @@
-mailbox-settings {
+@import 'assembly';
+
+:host {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -103,4 +105,14 @@ mailbox-settings {
             }
         }
     }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+
+    background: map-get($background, card);
 }

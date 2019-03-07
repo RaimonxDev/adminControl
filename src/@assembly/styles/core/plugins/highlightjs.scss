@@ -1,0 +1,204 @@
+@import 'assembly';
+
+// -----------------------------------------------------------------------------------------------------
+// @ Highlight.js <code> and <pre> style overrides
+// -----------------------------------------------------------------------------------------------------
+code[class*='language-'],
+pre[class*='language-'] {
+    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 4px;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+pre[class*='language-'] {
+    padding: 24px;
+    margin: 0;
+    @include asm-shadow(1);
+}
+
+:not(pre) > code[class*='language-'] {
+    padding: 3px 5px;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    // DARK COLOR SCHEME
+    @if ($is-dark) {
+
+        pre[class*='language-'] {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        code[class*='language-'],
+        pre[class*='language-'] {
+            background: #282A36;
+            color: #E6E9EF;
+
+            .hljs-built_in,
+            .hljs-selector-tag,
+            .hljs-section,
+            .hljs-link {
+                color: #8BE9FD;
+            }
+
+            .hljs-keyword {
+                color: #FF79C6;
+            }
+
+            .hljs,
+            .hljs-subst {
+                color: #F8F8F2;
+            }
+
+            .hljs-title {
+                color: #50FA7B;
+            }
+
+            .hljs-string,
+            .hljs-meta,
+            .hljs-name,
+            .hljs-type,
+            .hljs-attr,
+            .hljs-symbol,
+            .hljs-bullet,
+            .hljs-addition,
+            .hljs-variable,
+            .hljs-template-tag,
+            .hljs-template-variable {
+                color: #F1FA8C;
+            }
+
+            .hljs-comment,
+            .hljs-quote,
+            .hljs-deletion {
+                color: #6272A4;
+            }
+
+            .hljs-keyword,
+            .hljs-selector-tag,
+            .hljs-literal,
+            .hljs-title,
+            .hljs-section,
+            .hljs-doctag,
+            .hljs-type,
+            .hljs-name,
+            .hljs-strong {
+                font-weight: bold;
+            }
+
+            .hljs-literal,
+            .hljs-number {
+                color: #BD93F9;
+            }
+
+            .hljs-emphasis {
+                font-style: italic;
+            }
+        }
+    }
+        // LIGHT COLOR SCHEME
+    @else {
+
+        code[class*='language-'],
+        pre[class*='language-'] {
+            background: #FFFFFF;
+            color: #728FCB;
+
+            .hljs-comment,
+            .hljs-quote {
+                color: #A0A1A7;
+                font-style: italic;
+            }
+
+            .hljs-doctag,
+            .hljs-keyword,
+            .hljs-formula {
+                color: #A626A4;
+            }
+
+            .hljs-name {
+                color: #85879E;
+            }
+
+            .hljs-tag {
+                color: #B9BBD2;
+            }
+
+            .hljs-section,
+            .hljs-selector-tag,
+            .hljs-deletion,
+            .hljs-subst {
+                color: #E45649;
+            }
+
+            .hljs-literal {
+                color: #0184BB;
+            }
+
+            .hljs-string,
+            .hljs-regexp,
+            .hljs-addition,
+            .hljs-attribute,
+            .hljs-meta-string {
+                color: #50A14F;
+            }
+
+            .hljs-built_in,
+            .hljs-class .hljs-title {
+                color: #C18401;
+            }
+
+            .hljs-attr,
+            .hljs-variable,
+            .hljs-template-variable,
+            .hljs-type,
+            .hljs-selector-class,
+            .hljs-selector-attr,
+            .hljs-selector-pseudo,
+            .hljs-number {
+                color: #986801;
+            }
+
+            .hljs-symbol,
+            .hljs-bullet,
+            .hljs-link,
+            .hljs-meta,
+            .hljs-selector-id,
+            .hljs-title {
+                color: #4078F2;
+            }
+
+            .hljs-emphasis {
+                font-style: italic;
+            }
+
+            .hljs-strong {
+                font-weight: bold;
+            }
+
+            .hljs-link {
+                text-decoration: underline;
+            }
+        }
+    }
+}

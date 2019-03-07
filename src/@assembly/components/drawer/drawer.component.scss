@@ -115,3 +115,19 @@ asm-drawer {
         background-color: transparent;
     }
 }
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $background: map-get($theme, background);
+
+    asm-drawer {
+        background: map-get($background, background);
+
+        .asm-drawer-content {
+            background: map-get($background, background);
+        }
+    }
+}

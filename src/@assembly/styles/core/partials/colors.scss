@@ -1,0 +1,54 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Base colors
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $is-dark: map-get($theme, is-dark);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    // Base colors
+    & {
+        color: map-get($foreground, text);
+
+        // If it's a light theme, change the background color
+        @if ($is-dark) {
+            background: map-get($background, background);
+        } @else {
+            background: $asm-light-background;
+        }
+    }
+
+    .secondary-text {
+        color: map-get($foreground, secondary-text);
+    }
+
+    i,
+    .icon,
+    .mat-icon {
+        color: map-get($foreground, icon);
+    }
+
+    .hint-text {
+        color: map-get($foreground, hint-text);
+    }
+
+    .disabled-text {
+        color: map-get($foreground, disabled-text);
+    }
+
+    .fade-text,
+    .divider {
+        color: map-get($foreground, divider);
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Generate Assembly color classes from default Material palettes
+// -----------------------------------------------------------------------------------------------------
+@include asm-color-classes($asm-mat-palettes)
+
+// -----------------------------------------------------------------------------------------------------
+// @ Generate Assembly color classes from custom palettes
+// -----------------------------------------------------------------------------------------------------
+@include asm-color-classes($asm-palettes);

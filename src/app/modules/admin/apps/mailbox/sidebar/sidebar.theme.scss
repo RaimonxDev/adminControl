@@ -1,8 +1,0 @@
-@mixin mailbox-sidebar-theme($theme) {
-
-    $background: map-get($theme, background);
-
-    mailbox-sidebar {
-        background: map-get($background, card);
-    }
-}

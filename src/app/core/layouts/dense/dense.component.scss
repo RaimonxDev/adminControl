@@ -131,3 +131,25 @@ layout[type="dense"] {
         }
     }
 }
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $primary: map-get($theme, primary);
+
+    layout[type="dense"] {
+
+        // Navigation
+        > .navigation {
+
+            .asm-navigation-header {
+
+                .logo {
+                    background-color: map-get($primary, default);
+                }
+            }
+        }
+    }
+}

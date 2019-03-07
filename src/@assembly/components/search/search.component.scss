@@ -269,3 +269,81 @@ asm-search {
         }
     }
 }
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    asm-search {
+
+        // Fullscreen appearance
+        &.asm-search-appearance-fullscreen {
+            color: map-get($foreground, text);
+
+            .asm-search-container {
+                background: transparentize(map-get($background, card), 0.05);
+
+                .asm-search-input {
+
+                    .mat-form-field-wrapper {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+
+    // Search results panel
+    .asm-search-results {
+
+        &:before {
+            border-color: transparent;
+            border-bottom-color: map-get($foreground, divider);
+        }
+
+        &:after {
+            border-color: transparent;
+            border-bottom-color: map-get($background, card);
+        }
+
+        .mat-optgroup {
+
+            &.asm-search-no-results {
+
+                .mat-option {
+
+                    .mat-option-text {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+            }
+
+            .mat-option {
+
+                .mat-option-text {
+
+                    .asm-search-result-image {
+                        @if ($is-dark) {
+                            background: #303030;
+                        } @else {
+                            background: #F1F5F8;
+                        }
+
+                        .mat-icon {
+                            color: map-get($foreground, hint-text);
+                        }
+                    }
+
+                    .asm-search-result-hint {
+                        color: map-get($foreground, hint-text);
+                    }
+                }
+            }
+        }
+    }
+}

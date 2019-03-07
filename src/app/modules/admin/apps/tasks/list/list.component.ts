@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material';
 import { Subject } from 'rxjs';
@@ -7,10 +7,9 @@ import { AsmLookUpByPipe, AsmMediaWatcherService } from '@assembly';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
 @Component({
-    selector     : 'tasks-list',
-    templateUrl  : './list.component.html',
-    styleUrls    : ['./list.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector   : 'tasks-list',
+    templateUrl: './list.component.html',
+    styleUrls  : ['./list.component.scss']
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {

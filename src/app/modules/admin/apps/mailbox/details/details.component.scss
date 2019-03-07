@@ -1,4 +1,6 @@
-mailbox-details {
+@import 'assembly';
+
+:host {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -166,6 +168,38 @@ mailbox-details {
         .mat-checkbox-layout {
             align-items: center;
             height: 100%;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    background: map-get($background, card);
+
+    .header {
+        border-bottom-color: map-get($foreground, divider);
+    }
+
+    .content-container {
+
+        .attachments {
+
+            .attachment {
+
+                .preview-file {
+                    border-color: map-get($foreground, divider);
+
+                    .filetype {
+                        background: map-get($background, hover);
+                    }
+                }
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 
 asm-spinner {
 
+    // Material appearance
     &.asm-spinner-appearance-material {
 
         .loader {
@@ -53,6 +54,56 @@ asm-spinner {
             100% {
                 stroke-dasharray: 89, 200;
                 stroke-dashoffset: -124px;
+            }
+        }
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    asm-spinner {
+
+        // Material appearance
+        &.asm-spinner-appearance-material {
+
+            // Current color
+            &.asm-spinner-color-currentColor {
+
+                .path {
+                    stroke: currentColor;
+                }
+            }
+
+            // Primary
+            &.asm-spinner-color-primary {
+
+                .path {
+                    stroke: map-get($primary, default);
+                }
+            }
+
+            // Accent
+            &.asm-spinner-color-accent {
+
+                .path {
+                    stroke: map-get($accent, default);
+                }
+            }
+
+            // Warn
+            &.asm-spinner-color-warn {
+
+                .path {
+                    stroke: map-get($warn, default);
+                }
             }
         }
     }

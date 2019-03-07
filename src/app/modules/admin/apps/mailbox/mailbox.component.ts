@@ -1,14 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
 
 @Component({
-    selector     : 'mailbox',
-    templateUrl  : './mailbox.component.html',
-    styleUrls    : ['./mailbox.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector   : 'mailbox',
+    templateUrl: './mailbox.component.html',
+    styleUrls  : ['./mailbox.component.scss']
 })
 export class MailboxComponent implements OnInit, OnDestroy
 {

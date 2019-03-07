@@ -1,15 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector     : 'auth-signup',
-    templateUrl  : './signup.component.html',
-    styleUrls    : ['./signup.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    selector   : 'auth-signup',
+    templateUrl: './signup.component.html',
+    styleUrls  : ['./signup.component.scss'],
+    animations : AsmAnimations
 })
 export class SignupComponent implements OnInit, OnDestroy
 {

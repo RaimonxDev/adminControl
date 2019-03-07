@@ -1,4 +1,6 @@
-mailbox-list {
+@import 'assembly';
+
+:host {
     display: flex;
     flex: 1 1 auto;
 
@@ -117,6 +119,57 @@ mailbox-list {
 
                 .content {
                     line-height: 1.3;
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+
+    background: map-get($background, card);
+
+    .list-wrapper {
+        border-right-color: map-get($foreground, divider);
+
+        .header {
+            border-bottom-color: map-get($foreground, divider);
+        }
+
+        .list {
+
+            .item {
+                border-bottom-color: map-get($foreground, divider);
+
+                &.selected {
+                    background: map-get($background, hover);
+
+                    &:before {
+                        background: map-get($primary, default);
+                    }
+
+                    .date,
+                    .content {
+                        color: map-get($primary, secondary-text);
+                    }
+                }
+
+                .unread-indicator {
+                    background: map-get($primary, default);
+                }
+
+                .avatar {
+
+                    &:before {
+                        box-shadow: inset 0 0 0 1px map-get($foreground, divider);
+                    }
                 }
             }
         }

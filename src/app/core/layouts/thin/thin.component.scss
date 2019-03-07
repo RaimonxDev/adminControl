@@ -105,3 +105,25 @@ layout[type="thin"] {
         }
     }
 }
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $primary: map-get($theme, primary);
+
+    layout[type="thin"] {
+
+        // Navigation
+        > .navigation {
+
+            .asm-navigation-header {
+
+                .logo {
+                    background-color: map-get($primary, default);
+                }
+            }
+        }
+    }
+}

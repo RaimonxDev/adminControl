@@ -1,6 +1,6 @@
 @import 'assembly';
 
-mailbox-sidebar {
+:host {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -11,4 +11,14 @@ mailbox-sidebar {
         font-size: 15px;
         line-height: 40px;
     }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+
+    background: map-get($background, card);
 }

@@ -1,14 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/auth/auth.service';
 import { interval, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector     : 'auth-logout',
-    templateUrl  : './logout.component.html',
-    styleUrls    : ['./logout.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector   : 'auth-logout',
+    templateUrl: './logout.component.html',
+    styleUrls  : ['./logout.component.scss']
 })
 export class AuthLogoutComponent implements OnInit, OnDestroy
 {

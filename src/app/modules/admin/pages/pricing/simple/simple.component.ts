@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector       : 'pricing-simple',
     templateUrl    : './simple.component.html',
     styleUrls      : ['./simple.component.scss'],
-    encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PricingSimpleComponent

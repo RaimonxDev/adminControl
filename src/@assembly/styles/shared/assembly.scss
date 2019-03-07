@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Use this file to access to the core Angular Material and Assembly mixins
+// -----------------------------------------------------------------------------------------------------
+
+// Angular Material theming tools
+@import '~@angular/material/theming';
+
+// Partials
+@import 'partials/variables';
+@import 'partials/breakpoints';
+@import 'partials/colors';
+@import 'partials/icons';
+@import 'partials/shadows';
+
+// Plugins
+@import 'plugins/angular-material';

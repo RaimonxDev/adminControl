@@ -1,6 +1,6 @@
 @import 'assembly';
 
-pricing-simple {
+:host {
     display: flex;
 
     .content-layout {
@@ -186,6 +186,33 @@ pricing-simple {
                         max-width: 480px;
                     }
                 }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+
+    .cards {
+
+        .card {
+            background: map-get($background, card);
+            @include asm-shadow(1);
+
+            .tag {
+                background: map-get($accent, default);
+                color: map-get($accent, default-contrast)
+            }
+
+            .divider {
+                background: map-get($primary, default);
             }
         }
     }

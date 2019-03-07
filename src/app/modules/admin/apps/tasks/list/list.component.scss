@@ -1,4 +1,6 @@
-tasks-list {
+@import 'assembly';
+
+:host {
     display: flex;
     flex: 1 1 auto;
 
@@ -152,6 +154,62 @@ tasks-list {
                                 height: 16px;
                                 border-radius: 8px;
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme() {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    .main-content {
+        background: map-get($background, card);
+
+        .tasks-list {
+
+            .task {
+
+                &.type-section {
+                    box-shadow: 0 1px 0 0 map-get($foreground, divider);
+                }
+
+                &.type-task {
+
+                    &:hover {
+
+                        .task-content {
+                            background: map-get($background, hover);
+                        }
+                    }
+                }
+
+                &.completed {
+
+                    a {
+
+                        .title {
+                            color: map-get($foreground, disabled-text);
+                        }
+                    }
+                }
+
+                .tags {
+
+                    .hidden-tags {
+
+                        @if ($is-dark) {
+                            background: map-get($background, background);
+                        } @else {
+                            background: #EEEEEE;
                         }
                     }
                 }

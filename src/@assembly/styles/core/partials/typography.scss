@@ -1,0 +1,228 @@
+@import 'assembly';
+
+// -----------------------------------------------------------------------------------------------------
+// @ General
+// -----------------------------------------------------------------------------------------------------
+body {
+    font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.4 !important;
+}
+
+html, body {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: normal;
+}
+
+h1, .h1 {
+    font-size: 24px;
+}
+
+h2, .h2 {
+    font-size: 20px;
+}
+
+h3, .h3 {
+    font-size: 16px;
+}
+
+h4, .h4 {
+    font-size: 15px;
+}
+
+h5, .h5 {
+    font-size: 13px;
+}
+
+h6, .h6 {
+    font-size: 12px;
+}
+
+// Links
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+// Abbr
+abbr {
+    cursor: help;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.54);
+}
+
+// Blockquote
+blockquote {
+    border-left: 3px solid rgba(0, 0, 0, 0.12);
+    font-style: italic;
+    margin: 1em 0;
+    padding-left: 16px;
+
+    footer {
+        font-style: normal;
+
+        &:before {
+            content: '\2014 \00A0';
+        }
+    }
+
+    &.reverse {
+        border-left: none;
+        border-right: 3px solid rgba(0, 0, 0, 0.12);
+        text-align: right;
+        padding-left: 0;
+        padding-right: 16px;
+
+        footer {
+
+            &:before {
+                content: '';
+            }
+
+            &:after {
+                content: '\2014 \00A0';
+            }
+        }
+    }
+}
+
+// Code
+code:not([class*='language-']) {
+    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier, monospace;
+    font-size: 85%;
+    padding: 3px 7px;
+    border-radius: 3px;
+}
+
+// Definition lists
+dl {
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin: 4px 0 16px 0;
+    }
+}
+
+// Mark
+mark {
+    background: #F7F49A;
+}
+
+// Pre
+pre {
+    line-height: 1.6;
+    margin: 8px 16px;
+    white-space: pre-wrap;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Titles and subtitles
+// -----------------------------------------------------------------------------------------------------
+.title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.title-md {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.title-lg {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.title-xl {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 16px;
+}
+
+.subtitle-md {
+    font-size: 18px;
+}
+
+.subtitle-lg {
+    font-size: 20px;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Link
+// -----------------------------------------------------------------------------------------------------
+.link {
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Marker
+// -----------------------------------------------------------------------------------------------------
+.marker {
+    position: relative;
+    white-space: nowrap;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -4px;
+        bottom: 10%;
+        left: -4px;
+        z-index: -1;
+        background: #F7F49A;
+        pointer-events: none;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme(false) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $is-dark: map-get($theme, is-dark);
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Code
+    // -----------------------------------------------------------------------------------------------------
+    code:not([class*='language-']) {
+
+        @if ($is-dark) {
+            color: #CDD3DE;
+            background: #525252;
+        } @else {
+            color: #728FCB;
+            background: #E3E7F1;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Link
+    // -----------------------------------------------------------------------------------------------------
+    .link {
+        color: map-get($primary, default);
+        border-bottom-color: map-get($primary, default);
+    }
+}

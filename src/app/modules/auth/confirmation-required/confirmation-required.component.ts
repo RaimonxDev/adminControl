@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector     : 'auth-confirmation-required',
-    templateUrl  : './confirmation-required.component.html',
-    styleUrls    : ['./confirmation-required.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    selector   : 'auth-confirmation-required',
+    templateUrl: './confirmation-required.component.html',
+    styleUrls  : ['./confirmation-required.component.scss'],
+    animations : AsmAnimations
 })
 export class AuthConfirmationRequiredComponent implements OnInit
 {

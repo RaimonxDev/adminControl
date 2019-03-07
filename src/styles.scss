@@ -1,5 +1,16 @@
-// Import Assembly core library
-@import 'assembly-core';
+@import 'assembly';
 
-// Import app.theme.scss
-@import 'app/app.theme';
+// @ TODO : Add a custom palette and its Assembly color classes generations as an example
+
+// -----------------------------------------------------------------------------------------------------
+// @ Adjust Angular Material typography
+// -----------------------------------------------------------------------------------------------------
+$typography: mat-typography-config(
+    $font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
+    $title: mat-typography-level(20px, 32px, 600),
+    $body-2: mat-typography-level(14px, 24px, 600),
+    $button: mat-typography-level(14px, 14px, 600)
+);
+
+// Setup the typography
+@include angular-material-typography($typography);
