@@ -1,4 +1,4 @@
-@import "assembly";
+@import 'assembly';
 
 asm-search {
     display: flex;
@@ -180,7 +180,7 @@ asm-search {
 
     &:before,
     &:after {
-        content: " ";
+        content: ' ';
         position: absolute;
         width: 0;
         height: 0;

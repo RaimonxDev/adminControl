@@ -1,4 +1,4 @@
-@import "assembly";
+@import 'assembly';
 
 asm-navigation {
     position: sticky;
@@ -642,7 +642,7 @@ asm-navigation {
                             padding: 0 32px;
 
                             &:before {
-                                content: " ";
+                                content: '';
                                 position: absolute;
                                 top: 12px;
                                 width: 16px;
@@ -759,7 +759,7 @@ asm-navigation {
                     .asm-navigation-item {
 
                         &:before {
-                            content: " ";
+                            content: '';
                             position: absolute;
                             top: 12px;
                             width: 16px;
@@ -779,7 +779,7 @@ asm-navigation {
                 box-shadow: none;
 
                 &:before {
-                    content: "";
+                    content: '';
                     position: absolute;
                     top: 0;
                     bottom: 0;

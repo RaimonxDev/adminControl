@@ -3,7 +3,7 @@
     $background: map-get($theme, background);
     $isDark: map-get($theme, is-dark);
 
-    layout[type="empty"] {
+    layout[type='empty'] {
 
     }
 }

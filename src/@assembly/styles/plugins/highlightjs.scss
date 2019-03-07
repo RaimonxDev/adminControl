@@ -9,12 +9,12 @@
     // DARK COLOR SCHEME
     @if ($is-dark) {
 
-        pre[class*="language-"] {
+        pre[class*='language-'] {
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        code[class*="language-"],
-        pre[class*="language-"] {
+        code[class*='language-'],
+        pre[class*='language-'] {
             background: #282A36;
             color: #E6E9EF;
 
@@ -83,8 +83,8 @@
         // LIGHT COLOR SCHEME
     @else {
 
-        code[class*="language-"],
-        pre[class*="language-"] {
+        code[class*='language-'],
+        pre[class*='language-'] {
             background: #FFFFFF;
             color: #728FCB;
 
@@ -170,9 +170,9 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Highlight.js <code> and <pre> style overrides
 // -----------------------------------------------------------------------------------------------------
-code[class*="language-"],
-pre[class*="language-"] {
-    font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+code[class*='language-'],
+pre[class*='language-'] {
+    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier, monospace;
     font-size: 14px;
     line-height: 1.6;
     border-radius: 4px;
@@ -191,12 +191,12 @@ pre[class*="language-"] {
     word-wrap: break-word;
 }
 
-pre[class*="language-"] {
+pre[class*='language-'] {
     padding: 24px;
     margin: 0;
     @include asm-shadow(1);
 }
 
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
     padding: 3px 5px;
 }
