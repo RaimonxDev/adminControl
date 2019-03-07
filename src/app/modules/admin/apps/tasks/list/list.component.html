@@ -33,7 +33,7 @@
                             Tasks
                         </div>
 
-                        <div class="secondary-text truncate font-semibold">
+                        <div class="text-secondary truncate font-semibold">
                             {{tasksCount.notCompleted}} remaining tasks
                         </div>
 
@@ -87,7 +87,7 @@
                                 <div class="flex items-center"
                                      *ngIf="task.type === 'task'">
 
-                                    <mat-icon class="drag-handle icon-size-18 hint-text mr-16">
+                                    <mat-icon class="drag-handle icon-size-18 text-hint mr-16">
                                         drag_indicator
                                     </mat-icon>
 
@@ -124,7 +124,7 @@
                                         </mat-icon>
 
                                         <!-- Normal -->
-                                        <mat-icon class="icon-size-18 hint-text"
+                                        <mat-icon class="icon-size-18 text-hint"
                                                   *ngIf="task.priority === 1"
                                                   [title]="'Normal'">
                                             remove

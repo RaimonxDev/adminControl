@@ -31,7 +31,7 @@
 
                 <div class="flex flex-col ml-24">
                     <div>{{mail.from.contact.split('<')[0].trim()}}</div>
-                    <div class="flex secondary-text">
+                    <div class="flex text-secondary">
                         <div class="mr-4">to</div>
                         <div class="flex"
                              *ngFor="let to of mail.to; let index = index; let last = last;"
@@ -53,7 +53,7 @@
 
             <div class="flex items-center">
 
-                <div class="date secondary-text mr-24">
+                <div class="date text-secondary mr-24">
                     {{mail.date | date}}
                 </div>
 
@@ -64,7 +64,7 @@
                               *ngIf="mail.important">
                         label_important
                     </mat-icon>
-                    <mat-icon class="secondary-text icon-size-20"
+                    <mat-icon class="text-secondary icon-size-20"
                               *ngIf="!mail.important">
                         label_important
                     </mat-icon>
@@ -77,7 +77,7 @@
                               *ngIf="mail.starred">
                         star
                     </mat-icon>
-                    <mat-icon class="secondary-text icon-size-20"
+                    <mat-icon class="text-secondary icon-size-20"
                               *ngIf="!mail.starred">
                         star_border
                     </mat-icon>
@@ -150,7 +150,7 @@
 
         <ng-container *ngIf="mail.attachments && mail.attachments.length > 0">
 
-            <div class="attachments-title secondary-text">
+            <div class="attachments-title text-secondary">
                 <mat-icon class="icon-size-16 mr-8">attachment</mat-icon>
                 <div>Attachments</div>
             </div>
@@ -166,10 +166,10 @@
 
                     <div class="preview-file"
                          *ngIf="attachment.type.startsWith('application/')">
-                        <div class="filetype secondary-text">{{attachment.type.split('/')[1].trim().toUpperCase()}}</div>
+                        <div class="filetype text-secondary">{{attachment.type.split('/')[1].trim().toUpperCase()}}</div>
                     </div>
 
-                    <div class="filename secondary-text"
+                    <div class="filename text-secondary"
                          [title]="attachment.name">
                         {{attachment.name}}
                     </div>
@@ -214,11 +214,11 @@
 
     <div class="flex flex-1 flex-col items-center justify-center">
 
-        <mat-icon class="secondary-text icon-size-96"
+        <mat-icon class="text-secondary icon-size-96"
                   [fontSet]="'iconsmind'">
             mail
         </mat-icon>
-        <div class="title mt-16 secondary-text">Select an e-mail to start reading</div>
+        <div class="title mt-16 text-secondary">Select an e-mail to start reading</div>
 
     </div>
 

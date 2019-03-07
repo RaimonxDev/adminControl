@@ -37,7 +37,7 @@
 
             <div class="flex items-center justify-center mt-64 lt-sm:mt-48">
                 <span class="subtitle cursor-pointer select-none"
-                      [ngClass]="{'hint-text' : annualBilling}"
+                      [ngClass]="{'text-hint' : annualBilling}"
                       (click)="annualBilling = false">
                     Monthly
                 </span>
@@ -45,7 +45,7 @@
                                   [(ngModel)]="annualBilling">
                 </mat-slide-toggle>
                 <span class="subtitle cursor-pointer select-none"
-                      [ngClass]="{'hint-text' : !annualBilling}"
+                      [ngClass]="{'text-hint' : !annualBilling}"
                       (click)="annualBilling = true">
                     Yearly
                 </span>
@@ -60,7 +60,7 @@
             <div class="card">
 
                 <div class="title-md">Personal</div>
-                <div class="subtitle secondary-text mt-8">Perfect for an individual or a small team starting to get bigger</div>
+                <div class="subtitle text-secondary mt-8">Perfect for an individual or a small team starting to get bigger</div>
 
                 <div class="divider"></div>
 
@@ -69,7 +69,7 @@
                     <span class="font-bold">6.00</span>
                 </div>
 
-                <div class="flex flex-col secondary-text mt-8">
+                <div class="flex flex-col text-secondary mt-8">
                     <span>per month, billed annually</span>
                     <span>or <b>$9.90</b> billed monthly</span>
                 </div>
@@ -119,7 +119,7 @@
                 <div class="tag">POPULAR</div>
 
                 <div class="title-md">Premium</div>
-                <div class="subtitle secondary-text mt-8">Perfect for growing teams wanting to be in more control</div>
+                <div class="subtitle text-secondary mt-8">Perfect for growing teams wanting to be in more control</div>
 
                 <div class="divider"></div>
 
@@ -128,7 +128,7 @@
                     <span class="font-bold">12.00</span>
                 </div>
 
-                <div class="flex flex-col secondary-text mt-8">
+                <div class="flex flex-col text-secondary mt-8">
                     <span>per month, billed annually</span>
                     <span>or <b>$15.90</b> billed monthly</span>
                 </div>
@@ -176,7 +176,7 @@
             <div class="card">
 
                 <div class="title-md">Enterprise</div>
-                <div class="subtitle secondary-text mt-8">Perfect for companies wanting advanced tools and support</div>
+                <div class="subtitle text-secondary mt-8">Perfect for companies wanting advanced tools and support</div>
 
                 <div class="divider"></div>
 
@@ -185,7 +185,7 @@
                     <span class="font-bold">49.00</span>
                 </div>
 
-                <div class="flex flex-col secondary-text mt-8">
+                <div class="flex flex-col text-secondary mt-8">
                     <span>per month, billed annually</span>
                     <span>or <b>$69.90</b> billed monthly</span>
                 </div>
@@ -236,7 +236,7 @@
 
             <div class="features-title">
                 <div class="title-md text-center">Core Features</div>
-                <div class="subtitle text-center mt-8 secondary-text">List of features that are included into all plans</div>
+                <div class="subtitle text-center mt-8 text-secondary">List of features that are included into all plans</div>
             </div>
 
             <div class="features-grid">
@@ -248,7 +248,7 @@
                         <div class="subtitle font-bold">Create and Edit Projects</div>
                     </div>
 
-                    <div class="subtitle secondary-text">Create and edit projects, upload images via drag drop, add categories, add custom fields and more.</div>
+                    <div class="subtitle text-secondary">Create and edit projects, upload images via drag drop, add categories, add custom fields and more.</div>
 
                 </div>
 
@@ -259,7 +259,7 @@
                         <div class="subtitle font-bold">Search and Filter</div>
                     </div>
 
-                    <div class="subtitle secondary-text">Search and filter within the projects, categories and custom fields. Save search and filter details for easy access.</div>
+                    <div class="subtitle text-secondary">Search and filter within the projects, categories and custom fields. Save search and filter details for easy access.</div>
 
                 </div>
 
@@ -270,7 +270,7 @@
                         <div class="subtitle font-bold">Real Time Updates</div>
                     </div>
 
-                    <div class="subtitle secondary-text">Real time updates that doesn’t require page reload. Lean back and watch the changes happen in real time.</div>
+                    <div class="subtitle text-secondary">Real time updates that doesn’t require page reload. Lean back and watch the changes happen in real time.</div>
 
                 </div>
 
@@ -281,7 +281,7 @@
                         <div class="subtitle font-bold">Meta Information</div>
                     </div>
 
-                    <div class="subtitle secondary-text">Add and remove meta information to custom fields to differentiate them in reports and analytics results.</div>
+                    <div class="subtitle text-secondary">Add and remove meta information to custom fields to differentiate them in reports and analytics results.</div>
 
                 </div>
 
@@ -292,7 +292,7 @@
                         <div class="subtitle font-bold">Pre-rendered Results</div>
                     </div>
 
-                    <div class="subtitle secondary-text">Pre-render results to make reports and analytics more accessible by screen readers and other accesibility tools.</div>
+                    <div class="subtitle text-secondary">Pre-render results to make reports and analytics more accessible by screen readers and other accesibility tools.</div>
 
                 </div>
 
@@ -303,7 +303,7 @@
                         <div class="subtitle font-bold">Simple Analytics</div>
                     </div>
 
-                    <div class="subtitle secondary-text">Simple analytics with no unnecessary data flow or weight. More readable results with less data consumption.</div>
+                    <div class="subtitle text-secondary">Simple analytics with no unnecessary data flow or weight. More readable results with less data consumption.</div>
 
                 </div>
 
@@ -316,7 +316,7 @@
 
             <div class="faqs-title">
                 <div class="title-md text-center">Frequently Asked Questions</div>
-                <div class="subtitle text-center mt-8 secondary-text">Here are the most frequently asked questions you may check before getting started</div>
+                <div class="subtitle text-center mt-8 text-secondary">Here are the most frequently asked questions you may check before getting started</div>
             </div>
 
             <div class="faqs-list">
@@ -324,7 +324,7 @@
                 <div class="faq">
 
                     <div class="subtitle font-bold mb-8">What is the duration of the free trial?</div>
-                    <div class="subtitle secondary-text">
+                    <div class="subtitle text-secondary">
                         <p>
                             Our app is free to try for 14 days, if you want more, you can provide
                             payment details which will extend your trial to 30 days providing you
@@ -333,7 +333,7 @@
                     </div>
 
                     <div class="subtitle font-bold mb-8 mt-48">What is the storage is for?</div>
-                    <div class="subtitle secondary-text">
+                    <div class="subtitle text-secondary">
                         <p>
                             Since we provide an extremely detailed reporting and analytics
                             tool, they require quite a bit storage space. For average use, you
@@ -352,7 +352,7 @@
                 <div class="faq">
 
                     <div class="subtitle font-bold mb-8">What happens if I’m not satisfied?</div>
-                    <div class="subtitle secondary-text">
+                    <div class="subtitle text-secondary">
                         <p>
                             If you are still in your free trial period, you can cancel your
                             account at anytime with a single click of a button. If you already
@@ -368,7 +368,7 @@
                     </div>
 
                     <div class="subtitle font-bold mb-8 mt-48">Are there discounts for non-profits or educational use?</div>
-                    <div class="subtitle secondary-text">
+                    <div class="subtitle text-secondary">
                         <p>
                             Yes, our Personal and Premium packages are free for non-profits and
                             educational use. E-mail your details to us after starting your Free
