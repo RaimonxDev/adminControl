@@ -26,6 +26,11 @@
                             "src/favicon.ico",
                             "src/assets"
                         ],
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "src/@assembly/styles"
+                            ]
+                        },
                         "styles": [
                             "src/styles.scss",
                             "src/tailwind.scss"
