@@ -275,7 +275,8 @@ module.exports = {
         '3xl' : '24px',
         '4xl' : '30px',
         '5xl' : '36px',
-        '6xl' : '48px'
+        '6xl' : '40px',
+        '7xl' : '48px'
     },
 
 
@@ -1093,7 +1094,7 @@ module.exports = {
         maxWidth            : ['responsive'],
         minHeight           : ['responsive'],
         minWidth            : ['responsive'],
-        negativeMargin      : false,
+        negativeMargin      : ['responsive'],
         objectFit           : false,
         objectPosition      : false,
         opacity             : ['responsive'],

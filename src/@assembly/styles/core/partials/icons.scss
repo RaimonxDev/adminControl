@@ -21,11 +21,11 @@ mat-icon {
 
         @include asm-media-breakpoint($breakpoint) {
 
-            $alias: '#{'\\'}' + '#{'@'}' + '#{$breakpoint}';
+            $alias: '#{$breakpoint}' + '#{'\\'}' + '#{':'}';
 
             @for $size from 2 through 128 {
 
-                &.icon-size-#{$size * 2}#{$alias} {
+                &.#{$alias}icon-size-#{$size * 2} {
                     @include asm-icon-size($size * 2);
                 }
             }
