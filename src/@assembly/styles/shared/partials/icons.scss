@@ -1,12 +1,12 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Icon size mixin
 // -----------------------------------------------------------------------------------------------------
-@mixin asm-icon-size($size) {
+@mixin asm-icon-size($size, $important: false) {
 
-    font-size: #{($size) + 'px'} !important;
-    width: #{($size) + 'px'} !important;
-    height: #{($size) + 'px'} !important;
-    min-width: #{($size) + 'px'} !important;
-    min-height: #{($size) + 'px'} !important;
-    line-height: #{($size) + 'px'} !important;
+    font-size: #{($size) + 'px'} if($important == true, !important, null);
+    width: #{($size) + 'px'} if($important == true, !important, null);
+    height: #{($size) + 'px'} if($important == true, !important, null);
+    min-width: #{($size) + 'px'} if($important == true, !important, null);
+    min-height: #{($size) + 'px'} if($important == true, !important, null);
+    line-height: #{($size) + 'px'} if($important == true, !important, null);
 }
