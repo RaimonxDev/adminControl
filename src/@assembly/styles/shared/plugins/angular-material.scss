@@ -67,8 +67,6 @@
 
         } @else {
 
-            @debug $encapsulated;
-
             // Do everything inside a body class
             body.#{$class-name} {
                 @content;
