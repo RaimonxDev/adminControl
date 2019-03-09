@@ -273,7 +273,7 @@ module.exports = {
         'xl'  : '18px',
         '2xl' : '20px',
         '3xl' : '24px',
-        '4xl' : '30px',
+        '4xl' : '32px',
         '5xl' : '36px',
         '6xl' : '40px',
         '7xl' : '48px'
@@ -1137,10 +1137,7 @@ module.exports = {
     */
 
     plugins: [
-        require('tailwindcss/plugins/container')({
-            // center: true,
-            // padding: '1rem',
-        })
+        require('tailwindcss/plugins/container')()
     ],
 
 

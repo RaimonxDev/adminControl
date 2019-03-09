@@ -1,3 +1,13 @@
+.container {
+  max-width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
 .list-reset {
   list-style: none !important;
   padding: 0 !important;
@@ -3157,7 +3167,7 @@
 }
 
 .text-4xl {
-  font-size: 30px !important;
+  font-size: 32px !important;
 }
 
 .text-5xl {
@@ -3620,6 +3630,59 @@
 
 .z-auto {
   z-index: auto !important;
+}
+
+.title {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+}
+
+.title-md {
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+}
+
+.title-lg {
+  font-size: 40px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+}
+
+.title-xl {
+  font-size: 40px !important;
+  font-weight: 900 !important;
+  line-height: 1.25 !important;
+}
+
+.subtitle {
+  font-size: 16px !important;
+}
+
+.subtitle-md {
+  font-size: 18px !important;
+}
+
+.subtitle-lg {
+  font-size: 20px !important;
+}
+
+.marker {
+  position: relative !important;
+  white-space: nowrap !important;
+
+  &:after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    right: -4px !important;
+    bottom: 10% !important;
+    left: -4px !important;
+    z-index: -1 !important;
+    background: #f7f49a !important;
+    pointer-events: none !important;
+  }
 }
 
 @media (min-width: 0) and (max-width: 599px) {
@@ -6611,7 +6674,7 @@
   }
 
   .xs\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .xs\:text-5xl {
@@ -6936,6 +6999,59 @@
 
   .xs\:z-auto {
     z-index: auto !important;
+  }
+
+  .xs\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xs\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xs\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xs\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xs\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .xs\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .xs\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .xs\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -9928,7 +10044,7 @@
   }
 
   .sm\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .sm\:text-5xl {
@@ -10253,6 +10369,59 @@
 
   .sm\:z-auto {
     z-index: auto !important;
+  }
+
+  .sm\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .sm\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .sm\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .sm\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .sm\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .sm\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .sm\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .sm\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -13245,7 +13414,7 @@
   }
 
   .md\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .md\:text-5xl {
@@ -13570,6 +13739,59 @@
 
   .md\:z-auto {
     z-index: auto !important;
+  }
+
+  .md\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .md\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .md\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .md\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .md\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .md\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .md\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .md\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -16562,7 +16784,7 @@
   }
 
   .lg\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .lg\:text-5xl {
@@ -16887,6 +17109,59 @@
 
   .lg\:z-auto {
     z-index: auto !important;
+  }
+
+  .lg\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lg\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lg\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lg\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lg\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .lg\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .lg\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .lg\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -19879,7 +20154,7 @@
   }
 
   .xl\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .xl\:text-5xl {
@@ -20204,6 +20479,59 @@
 
   .xl\:z-auto {
     z-index: auto !important;
+  }
+
+  .xl\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xl\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xl\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xl\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .xl\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .xl\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .xl\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .xl\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -23196,7 +23524,7 @@
   }
 
   .lt-sm\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .lt-sm\:text-5xl {
@@ -23521,6 +23849,59 @@
 
   .lt-sm\:z-auto {
     z-index: auto !important;
+  }
+
+  .lt-sm\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-sm\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-sm\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-sm\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-sm\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .lt-sm\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .lt-sm\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .lt-sm\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -26513,7 +26894,7 @@
   }
 
   .lt-md\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .lt-md\:text-5xl {
@@ -26838,6 +27219,59 @@
 
   .lt-md\:z-auto {
     z-index: auto !important;
+  }
+
+  .lt-md\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-md\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-md\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-md\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-md\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .lt-md\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .lt-md\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .lt-md\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -29830,7 +30264,7 @@
   }
 
   .lt-lg\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .lt-lg\:text-5xl {
@@ -30155,6 +30589,59 @@
 
   .lt-lg\:z-auto {
     z-index: auto !important;
+  }
+
+  .lt-lg\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-lg\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-lg\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-lg\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-lg\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .lt-lg\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .lt-lg\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .lt-lg\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -33147,7 +33634,7 @@
   }
 
   .lt-xl\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .lt-xl\:text-5xl {
@@ -33472,6 +33959,59 @@
 
   .lt-xl\:z-auto {
     z-index: auto !important;
+  }
+
+  .lt-xl\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-xl\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-xl\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-xl\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .lt-xl\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .lt-xl\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .lt-xl\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .lt-xl\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -36464,7 +37004,7 @@
   }
 
   .gt-xs\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .gt-xs\:text-5xl {
@@ -36789,6 +37329,59 @@
 
   .gt-xs\:z-auto {
     z-index: auto !important;
+  }
+
+  .gt-xs\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-xs\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-xs\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-xs\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-xs\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .gt-xs\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .gt-xs\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .gt-xs\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -39781,7 +40374,7 @@
   }
 
   .gt-sm\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .gt-sm\:text-5xl {
@@ -40106,6 +40699,59 @@
 
   .gt-sm\:z-auto {
     z-index: auto !important;
+  }
+
+  .gt-sm\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-sm\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-sm\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-sm\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-sm\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .gt-sm\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .gt-sm\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .gt-sm\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -43098,7 +43744,7 @@
   }
 
   .gt-md\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .gt-md\:text-5xl {
@@ -43423,6 +44069,59 @@
 
   .gt-md\:z-auto {
     z-index: auto !important;
+  }
+
+  .gt-md\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-md\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-md\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-md\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-md\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .gt-md\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .gt-md\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .gt-md\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
 
@@ -46415,7 +47114,7 @@
   }
 
   .gt-lg\:text-4xl {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .gt-lg\:text-5xl {
@@ -46740,5 +47439,58 @@
 
   .gt-lg\:z-auto {
     z-index: auto !important;
+  }
+
+  .gt-lg\:title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-lg\:title-md {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-lg\:title-lg {
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-lg\:title-xl {
+    font-size: 40px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+  }
+
+  .gt-lg\:subtitle {
+    font-size: 16px !important;
+  }
+
+  .gt-lg\:subtitle-md {
+    font-size: 18px !important;
+  }
+
+  .gt-lg\:subtitle-lg {
+    font-size: 20px !important;
+  }
+
+  .gt-lg\:marker {
+    position: relative !important;
+    white-space: nowrap !important;
+
+    &:after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      right: -4px !important;
+      bottom: 10% !important;
+      left: -4px !important;
+      z-index: -1 !important;
+      background: #f7f49a !important;
+      pointer-events: none !important;
+    }
   }
 }
