@@ -14,7 +14,7 @@
                         [disableOptionCentering]="true">
                 <mat-select-trigger>
                     <mat-icon class="icon-size-20"
-                              [ngClass]="labelsForm.get('newLabel.color').value + '-fg'"
+                              [ngClass]="'text-' + labelsForm.get('newLabel.color').value"
                               [fontSet]="'material-baseline-icons'">
                         label
                     </mat-icon>
@@ -63,7 +63,7 @@
                         [disableOptionCentering]="true">
                 <mat-select-trigger>
                     <mat-icon class="icon-size-20"
-                              [ngClass]="label.get('color').value + '-fg'"
+                              [ngClass]="'text-' + label.get('color').value"
                               [fontSet]="'material-baseline-icons'">
                         label
                     </mat-icon>

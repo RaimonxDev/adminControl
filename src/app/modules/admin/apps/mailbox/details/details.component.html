@@ -11,7 +11,7 @@
 
             <div class="label"
                  *ngFor="let label of (mail.labels | lookUpBy:'id':labels)"
-                 [ngClass]="[label.color + '-fg', label.color + '-50-bg']">
+                 [ngClass]="['text-' + label.color, 'bg-' + label.color + '-50']">
                 {{label.title}}
             </div>
 
@@ -60,7 +60,7 @@
                 <button class="mr-8"
                         mat-icon-button
                         (click)="toggleImportant()">
-                    <mat-icon class="red-fg icon-size-20"
+                    <mat-icon class="text-red icon-size-20"
                               *ngIf="mail.important">
                         label_important
                     </mat-icon>
@@ -73,7 +73,7 @@
                 <button class="mr-8"
                         mat-icon-button
                         (click)="toggleStar()">
-                    <mat-icon class="orange-fg icon-size-20"
+                    <mat-icon class="text-orange icon-size-20"
                               *ngIf="mail.starred">
                         star
                     </mat-icon>

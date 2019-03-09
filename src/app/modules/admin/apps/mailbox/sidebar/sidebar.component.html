@@ -41,7 +41,7 @@
             <a [routerLink]="['/', 'apps', 'mailbox', 'label', label.slug]"
                [routerLinkActive]="'active'">
                 <mat-icon class="nav-icon"
-                          [ngClass]="label.color + '-fg'"
+                          [ngClass]="'text-' + label.color"
                           [fontSet]="'material-baseline-icons'">
                     label
                 </mat-icon>

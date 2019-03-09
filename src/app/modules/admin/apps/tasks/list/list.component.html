@@ -117,7 +117,7 @@
                                          *ngIf="task.type === 'task'">
 
                                         <!-- Low -->
-                                        <mat-icon class="icon-size-18 green-600-fg"
+                                        <mat-icon class="icon-size-18 text-green-600"
                                                   *ngIf="task.priority === 0"
                                                   [title]="'Low'">
                                             arrow_downward
@@ -131,7 +131,7 @@
                                         </mat-icon>
 
                                         <!-- High -->
-                                        <mat-icon class="icon-size-18 red-600-fg"
+                                        <mat-icon class="icon-size-18 text-red-600"
                                                   *ngIf="task.priority === 2"
                                                   [title]="'High'">
                                             arrow_upward
@@ -144,7 +144,7 @@
 
                                         <div class="tag"
                                              *ngFor="let tag of (organizeTags(task.tags).visible); trackBy: trackById"
-                                             [ngClass]="[tag.color + '-fg', tag.color + '-50-bg']">
+                                             [ngClass]="['text-' + tag.color, 'bg-' + tag.color + '-50']">
                                             {{tag.title}}
                                         </div>
 

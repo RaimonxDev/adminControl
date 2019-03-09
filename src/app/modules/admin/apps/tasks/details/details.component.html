@@ -58,13 +58,13 @@
                     [disableOptionCentering]="true">
             <mat-select-trigger>
                 <div class="tag"
-                     [ngClass]="[tag.color + '-fg', tag.color + '-50-bg']">
+                     [ngClass]="['text-' + tag.color, 'bg-' + tag.color + '-50']">
                     <span class="tag-title">{{tag.title}}</span>
                     <button class="tag-remove-button"
                             mat-icon-button
                             (click)="removeTag(tag)">
                         <mat-icon class="icon-size-14"
-                                  [ngClass]="tag.color + '-fg'">
+                                  [ngClass]="'text-' + tag.color">
                             close
                         </mat-icon>
                     </button>

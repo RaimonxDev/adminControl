@@ -46,7 +46,7 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Generate Assembly color classes from default Material palettes
 // -----------------------------------------------------------------------------------------------------
-@include asm-color-classes($asm-mat-palettes)
+@include asm-color-classes($asm-mat-palettes);
 
 // -----------------------------------------------------------------------------------------------------
 // @ Generate Assembly color classes from custom palettes

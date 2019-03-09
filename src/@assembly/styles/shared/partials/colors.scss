@@ -163,37 +163,40 @@
 // -----------------------------------------------------------------------------------------------------
 @mixin _generate-color-classes($colorName, $color, $contrastColor, $hue) {
 
-    .#{$colorName}#{$hue}-bg {
+    // Text color
+    .text-#{$colorName}#{$hue} {
+        color: $color !important;
+    }
+
+    // Background color
+    .bg-#{$colorName}#{$hue} {
         background: $color !important;
     }
 
+    // Background and text color
     .#{$colorName}#{$hue} {
         background: $color !important;
         color: $contrastColor !important;
     }
 
-    .#{$colorName}#{$hue}-fg {
-        color: $color !important;
-    }
-
-    .#{$colorName}#{$hue}-border {
+    // Border color
+    .border-#{$colorName}#{$hue} {
         border-color: $color !important;
     }
 
-    .#{$colorName}#{$hue}-border-top {
-        border-top-color: $color !important;
+    // Border color on hover
+    .hover\:border-#{$colorName}#{$hue}:hover {
+        border-color: $color !important;
     }
 
-    .#{$colorName}#{$hue}-border-right {
-        border-right-color: $color !important;
+    // Border color on focus
+    .focus\:border-#{$colorName}#{$hue}:focus {
+        border-color: $color !important;
     }
 
-    .#{$colorName}#{$hue}-border-bottom {
-        border-bottom-color: $color !important;
-    }
-
-    .#{$colorName}#{$hue}-border-left {
-        border-left-color: $color !important;
+    // Border color on active
+    .active\:border-#{$colorName}#{$hue}:active {
+        border-color: $color !important;
     }
 }
 
@@ -209,13 +212,13 @@
     // Generate the color classes...
     @each $paletteName, $palette in $palettes {
 
-        // Get the contrasts map
+        // Get the contrast map and remove if from the palette
         $contrasts: map-get($palette, 'contrast');
+        $palette: map-remove($palette, 'contrast');
 
-        @each $hue in $asm-mat-hues {
+        @each $hue, $color in $palette {
 
-            // Get the color and the contrasting color
-            $color: map-get($palette, $hue);
+            // Get the contrasting color
             $contrast: map-get($contrasts, $hue);
 
             @if ($color != null and $contrast != null) {
@@ -260,8 +263,7 @@
         // by the user when the Material theme being generated.
         @if ($paletteName == 'primary' or $paletteName == 'accent' or $paletteName == 'warn') {
 
-            // Get the color and the contrasting color for the selected
-            // default hue
+            // Get the color and the contrasting color for the selected default hue
             $color: map-get($palette, 'default');
             $contrast: map-get($palette, 'default-contrast');
 

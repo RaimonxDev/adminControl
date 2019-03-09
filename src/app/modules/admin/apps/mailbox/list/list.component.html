@@ -68,7 +68,7 @@
 
                         <div class="flex justify-center mt-12"
                              *ngIf="mail.starred">
-                            <mat-icon class="orange-fg icon-size-18">star</mat-icon>
+                            <mat-icon class="text-orange icon-size-18">star</mat-icon>
                         </div>
 
                     </div>
@@ -85,7 +85,7 @@
                                 <div>
                                     {{mail.from.contact.split('<')[0].trim()}}
                                 </div>
-                                <mat-icon class="ml-4 icon-size-12 red-fg"
+                                <mat-icon class="ml-4 icon-size-12 text-red"
                                           *ngIf="mail.important">
                                     label_important
                                 </mat-icon>
