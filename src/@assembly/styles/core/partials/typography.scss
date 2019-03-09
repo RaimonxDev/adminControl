@@ -124,45 +124,6 @@ pre {
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Titles and subtitles
-// -----------------------------------------------------------------------------------------------------
-.title {
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-.title-md {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-.title-lg {
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-.title-xl {
-    font-size: 40px;
-    font-weight: 900;
-    line-height: 1.2;
-}
-
-.subtitle {
-    font-size: 16px;
-}
-
-.subtitle-md {
-    font-size: 18px;
-}
-
-.subtitle-lg {
-    font-size: 20px;
-}
-
-// -----------------------------------------------------------------------------------------------------
 // @ Link
 // -----------------------------------------------------------------------------------------------------
 .link {
@@ -197,11 +158,7 @@ pre {
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme() {
 
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
-    $accent: map-get($theme, accent);
-    $warn: map-get($theme, warn);
     $is-dark: map-get($theme, is-dark);
 
     // -----------------------------------------------------------------------------------------------------
