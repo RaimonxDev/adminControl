@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,6 +8,7 @@ import { IconsService } from 'app/modules/admin/ui/icons/icons.service';
     selector       : 'icons',
     templateUrl    : './icons.component.html',
     styleUrls      : ['./icons.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconsComponent implements OnInit

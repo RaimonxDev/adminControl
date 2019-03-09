@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+mailbox-details {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -180,23 +180,25 @@
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    background: map-get($background, card);
+    mailbox-details {
+        background: map-get($background, card);
 
-    .header {
-        border-bottom-color: map-get($foreground, divider);
-    }
+        .header {
+            border-bottom-color: map-get($foreground, divider);
+        }
 
-    .content-container {
+        .content-container {
 
-        .attachments {
+            .attachments {
 
-            .attachment {
+                .attachment {
 
-                .preview-file {
-                    border-color: map-get($foreground, divider);
+                    .preview-file {
+                        border-color: map-get($foreground, divider);
 
-                    .filetype {
-                        background: map-get($background, hover);
+                        .filetype {
+                            background: map-get($background, hover);
+                        }
                     }
                 }
             }

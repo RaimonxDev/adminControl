@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+tasks {
 
     // Mat drawer
     .mat-drawer {
@@ -22,4 +22,7 @@
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme() {
 
+    tasks {
+
+    }
 }

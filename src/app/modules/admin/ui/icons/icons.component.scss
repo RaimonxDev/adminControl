@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+icons {
     flex-direction: column;
     align-items: center;
     padding: 32px;
@@ -65,21 +65,24 @@
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    .icon-tiles {
+    icons {
 
-        .icon-tile {
-            background: map-get($background, card);
-            border-color: map-get($foreground, divider);
+        .icon-tiles {
 
-            .icon-preview {
+            .icon-tile {
+                background: map-get($background, card);
+                border-color: map-get($foreground, divider);
 
-                .mat-icon {
-                    color: map-get($foreground, hint-text) !important;
+                .icon-preview {
+
+                    .mat-icon {
+                        color: map-get($foreground, hint-text) !important;
+                    }
                 }
-            }
 
-            .icon-name {
-                color: map-get($foreground, secondary-text) !important;
+                .icon-name {
+                    color: map-get($foreground, secondary-text) !important;
+                }
             }
         }
     }

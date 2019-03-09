@@ -134,7 +134,7 @@ layout[type="thin-light"] {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme(false) {
+@include asm-angular-material-theme() {
 
     $primary: map-get($theme, primary);
 

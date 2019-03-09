@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, take } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { labelColors as labelColorsData } from 'app/modules/admin/apps/mailbox/settings/label-colors';
 
 @Component({
-    selector   : 'mailbox-settings',
-    templateUrl: './settings.component.html',
-    styleUrls  : ['./settings.component.scss']
+    selector     : 'mailbox-settings',
+    templateUrl  : './settings.component.html',
+    styleUrls    : ['./settings.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MailboxSettingsComponent implements OnInit
 {

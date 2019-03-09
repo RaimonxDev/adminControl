@@ -2,7 +2,8 @@
 // @ Icons and 'icon-size-xx' helper classes
 // -----------------------------------------------------------------------------------------------------
 i,
-mat-icon {
+mat-icon,
+.mat-icon-button .mat-icon {
     font-size: 24px;
     width: 24px;
     height: 24px;

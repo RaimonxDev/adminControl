@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector   : 'coming-soon',
-    templateUrl: './coming-soon.component.html',
-    styleUrls  : ['./coming-soon.component.scss'],
-    animations : AsmAnimations
+    selector     : 'coming-soon',
+    templateUrl  : './coming-soon.component.html',
+    styleUrls    : ['./coming-soon.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : AsmAnimations
 })
 export class ComingSoonComponent implements OnInit
 {

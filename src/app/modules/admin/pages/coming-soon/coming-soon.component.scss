@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+coming-soon {
 
     .content-layout {
         margin: 32px;
@@ -15,27 +15,30 @@
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
-    .content-layout {
+    coming-soon {
 
-        .card {
-            background: map-get($background, card);
-            @include asm-shadow(1);
+        .content-layout {
 
-            .form-container {
+            .card {
+                background: map-get($background, card);
+                @include asm-shadow(1);
 
-                .logo {
+                .form-container {
 
-                    .logo-dark {
+                    .logo {
 
-                        @if ($is-dark) {
-                            display: none;
+                        .logo-dark {
+
+                            @if ($is-dark) {
+                                display: none;
+                            }
                         }
-                    }
 
-                    .logo-light {
+                        .logo-light {
 
-                        @if ($is-dark == false) {
-                            display: none;
+                            @if ($is-dark == false) {
+                                display: none;
+                            }
                         }
                     }
                 }

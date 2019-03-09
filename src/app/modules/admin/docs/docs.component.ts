@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DocsService } from 'app/modules/admin/docs/docs.service';
 
@@ -6,6 +6,7 @@ import { DocsService } from 'app/modules/admin/docs/docs.service';
     selector       : 'docs',
     templateUrl    : './docs.component.html',
     styleUrls      : ['./docs.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DocsComponent implements OnInit

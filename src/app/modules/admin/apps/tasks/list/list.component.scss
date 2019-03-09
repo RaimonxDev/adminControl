@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+tasks-list {
     display: flex;
     flex: 1 1 auto;
 
@@ -171,45 +171,48 @@
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    .main-content {
-        background: map-get($background, card);
+    tasks-list {
 
-        .tasks-list {
+        .main-content {
+            background: map-get($background, card);
 
-            .task {
+            .tasks-list {
 
-                &.type-section {
-                    box-shadow: 0 1px 0 0 map-get($foreground, divider);
-                }
+                .task {
 
-                &.type-task {
+                    &.type-section {
+                        box-shadow: 0 1px 0 0 map-get($foreground, divider);
+                    }
 
-                    &:hover {
+                    &.type-task {
 
-                        .task-content {
-                            background: map-get($background, hover);
+                        &:hover {
+
+                            .task-content {
+                                background: map-get($background, hover);
+                            }
                         }
                     }
-                }
 
-                &.completed {
+                    &.completed {
 
-                    a {
+                        a {
 
-                        .title {
-                            color: map-get($foreground, disabled-text);
+                            .title {
+                                color: map-get($foreground, disabled-text);
+                            }
                         }
                     }
-                }
 
-                .tags {
+                    .tags {
 
-                    .hidden-tags {
+                        .hidden-tags {
 
-                        @if ($is-dark) {
-                            background: map-get($background, background);
-                        } @else {
-                            background: #EEEEEE;
+                            @if ($is-dark) {
+                                background: map-get($background, background);
+                            } @else {
+                                background: #EEEEEE;
+                            }
                         }
                     }
                 }

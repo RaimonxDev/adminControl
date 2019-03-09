@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -12,9 +12,10 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 import { tagColors as tagColorsData } from 'app/modules/admin/apps/tasks/details/tag-colors';
 
 @Component({
-    selector   : 'tasks-details',
-    templateUrl: './details.component.html',
-    styleUrls  : ['./details.component.scss']
+    selector     : 'tasks-details',
+    templateUrl  : './details.component.html',
+    styleUrls    : ['./details.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TasksDetailsComponent implements OnInit, OnDestroy
 {

@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 
 @Component({
-    selector   : 'mailbox-list',
-    templateUrl: './list.component.html',
-    styleUrls  : ['./list.component.scss']
+    selector     : 'mailbox-list',
+    templateUrl  : './list.component.html',
+    styleUrls    : ['./list.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MailboxListComponent implements OnInit, OnDestroy
 {

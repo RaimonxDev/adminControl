@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+docs {
     display: flex;
     flex-direction: column;
     max-width: 840px;
@@ -150,49 +150,52 @@
         $td-odd-background-color: rgba(255, 255, 255, 0.04);
     }
 
-    > div {
+    docs {
 
-        .docs-simple-table {
-            background-color: map-get($background, card);
+        > div {
 
-            table {
+            .docs-simple-table {
+                background-color: map-get($background, card);
 
-                thead {
+                table {
 
-                    tr {
+                    thead {
 
-                        th {
-                            border-right: 1px solid map-get($foreground, divider);
+                        tr {
 
-                            &:last-child {
-                                border-right: none;
+                            th {
+                                border-right: 1px solid map-get($foreground, divider);
+
+                                &:last-child {
+                                    border-right: none;
+                                }
                             }
                         }
                     }
-                }
 
-                tbody {
+                    tbody {
 
-                    tr {
-
-                        td {
-                            border-right: 1px solid map-get($foreground, divider);
-
-                            &:last-child {
-                                border-right: none;
-                            }
-
-                            .required {
-                                background-color: #8CC592;
-                                color: #FFFFFF;
-                                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
-                            }
-                        }
-
-                        &:nth-child(2n-1) {
+                        tr {
 
                             td {
-                                background-color: $td-odd-background-color;
+                                border-right: 1px solid map-get($foreground, divider);
+
+                                &:last-child {
+                                    border-right: none;
+                                }
+
+                                .required {
+                                    background-color: #8CC592;
+                                    color: #FFFFFF;
+                                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+                                }
+                            }
+
+                            &:nth-child(2n-1) {
+
+                                td {
+                                    background-color: $td-odd-background-color;
+                                }
                             }
                         }
                     }

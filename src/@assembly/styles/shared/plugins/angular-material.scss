@@ -50,7 +50,7 @@
 // @ Theming
 //   Go through the each defined theme and apply it to whatever content this mixin has
 // -----------------------------------------------------------------------------------------------------
-@mixin asm-angular-material-theme($encapsulated: true) {
+@mixin asm-angular-material-theme($encapsulated: false) {
 
     @each $class-name, $theme in $asm-themes {
 

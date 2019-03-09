@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector   : 'auth-unlock-session',
-    templateUrl: './unlock-session.component.html',
-    styleUrls  : ['./unlock-session.component.scss'],
-    animations : AsmAnimations
+    selector     : 'auth-unlock-session',
+    templateUrl  : './unlock-session.component.html',
+    styleUrls    : ['./unlock-session.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : AsmAnimations
 })
 export class UnlockSessionComponent implements OnInit
 {

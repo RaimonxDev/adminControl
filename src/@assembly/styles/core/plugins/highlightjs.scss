@@ -37,7 +37,7 @@ pre[class*='language-'] {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme(false) {
+@include asm-angular-material-theme() {
 
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);

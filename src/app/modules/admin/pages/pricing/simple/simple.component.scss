@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+pricing-simple {
     display: flex;
 
     .content-layout {
@@ -200,19 +200,22 @@
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
 
-    .cards {
+    pricing-simple {
 
-        .card {
-            background: map-get($background, card);
-            @include asm-shadow(1);
+        .cards {
 
-            .tag {
-                background: map-get($accent, default);
-                color: map-get($accent, default-contrast)
-            }
+            .card {
+                background: map-get($background, card);
+                @include asm-shadow(1);
 
-            .divider {
-                background: map-get($primary, default);
+                .tag {
+                    background: map-get($accent, default);
+                    color: map-get($accent, default-contrast)
+                }
+
+                .divider {
+                    background: map-get($primary, default);
+                }
             }
         }
     }

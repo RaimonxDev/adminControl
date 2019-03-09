@@ -1,12 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'mailbox-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls  : ['./sidebar.component.scss']
+    selector     : 'mailbox-sidebar',
+    templateUrl  : './sidebar.component.html',
+    styleUrls    : ['./sidebar.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MailboxSidebarComponent implements OnInit, OnDestroy
 {

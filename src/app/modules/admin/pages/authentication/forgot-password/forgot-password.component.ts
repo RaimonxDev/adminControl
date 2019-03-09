@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector   : 'auth-forgot-password',
-    templateUrl: './forgot-password.component.html',
-    styleUrls  : ['./forgot-password.component.scss'],
-    animations : AsmAnimations
+    selector     : 'auth-forgot-password',
+    templateUrl  : './forgot-password.component.html',
+    styleUrls    : ['./forgot-password.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : AsmAnimations
 })
 export class ForgotPasswordComponent implements OnInit
 {

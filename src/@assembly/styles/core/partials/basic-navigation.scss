@@ -42,7 +42,7 @@ nav {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme(false) {
+@include asm-angular-material-theme() {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);

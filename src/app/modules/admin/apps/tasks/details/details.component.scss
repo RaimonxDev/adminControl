@@ -1,6 +1,6 @@
 @import 'assembly';
 
-:host {
+tasks-details {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -262,20 +262,22 @@
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    background: map-get($background, card);
+    tasks-details {
+        background: map-get($background, card);
 
-    .divider {
-        border-bottom-color: map-get($foreground, divider);
-    }
+        .divider {
+            border-bottom-color: map-get($foreground, divider);
+        }
 
-    .tags {
+        .tags {
 
-        .add-tag {
+            .add-tag {
 
-            @if ($is-dark) {
-                background: map-get($background, background);
-            } @else {
-                background: #EEEEEE;
+                @if ($is-dark) {
+                    background: map-get($background, background);
+                } @else {
+                    background: #EEEEEE;
+                }
             }
         }
     }

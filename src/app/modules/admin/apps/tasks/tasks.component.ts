@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector   : 'tasks',
-    templateUrl: './tasks.component.html',
-    styleUrls  : ['./tasks.component.scss']
+    selector     : 'tasks',
+    templateUrl  : './tasks.component.html',
+    styleUrls    : ['./tasks.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TasksComponent
 {

@@ -109,7 +109,7 @@ layout[type="thin"] {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme(false) {
+@include asm-angular-material-theme() {
 
     $primary: map-get($theme, primary);
 
