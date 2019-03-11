@@ -15,25 +15,23 @@
             </div>
 
             <!-- Title -->
-            <div class="title mt-64">Your session is locked!</div>
-            <div class="subtitle mt-8 text-secondary">Enter your password to continue</div>
+            <div class="title">Your session is locked!</div>
+            <div class="subtitle text-secondary">Enter your password to continue</div>
 
-            <!-- Message box -->
-            <asm-message class="mt-48"
-                         *ngIf="messageBox"
+            <!-- Message -->
+            <asm-message *ngIf="message"
                          [appearance]="'solid'"
-                         [type]="messageBox.type"
-                         [@shake]="messageBoxAnimationState">
-                <div asmMessageContent>{{messageBox.message}}</div>
+                         [type]="message.type"
+                         [@shake]="messageAnimationState">
+                <div asmMessageContent>{{message.content}}</div>
             </asm-message>
 
             <!-- Unlock form -->
-            <form class="mt-40"
-                  [formGroup]="unlockSessionForm"
+            <form [formGroup]="unlockSessionForm"
                   novalidate>
 
                 <!-- Name field -->
-                <mat-form-field class="w-full"
+                <mat-form-field class="name-field"
                                 [appearance]="'standard'">
                     <mat-label>Name</mat-label>
                     <input id="name"
@@ -43,7 +41,7 @@
                 </mat-form-field>
 
                 <!-- Password field -->
-                <mat-form-field class="w-full"
+                <mat-form-field class="password-field"
                                 [appearance]="'standard'">
                     <mat-label>Password</mat-label>
                     <input id="password"
@@ -51,8 +49,7 @@
                            type="password"
                            [formControlName]="'password'"
                            #passwordField>
-                    <button class="w-24 h-24"
-                            mat-icon-button
+                    <button mat-icon-button
                             (mousedown)="passwordField.type = 'text'"
                             (mouseup)="passwordField.type = 'password'"
                             [disableRipple]="true"
@@ -67,21 +64,20 @@
                 </mat-form-field>
 
                 <!-- Unlock button -->
-                <button class="asm-mat-button-large mt-48 w-full"
+                <button class="unlock-button asm-mat-button-large"
                         mat-raised-button
                         [color]="'primary'"
                         [disabled]="unlockSessionForm.disabled || unlockSessionForm.invalid">
                     <span *ngIf="!unlockSessionForm.disabled">
                         Unlock Your Session
                     </span>
-                    <span *ngIf="unlockSessionForm.disabled">
-                        <asm-spinner [appearance]="'material'"
-                                     [diameter]="24"></asm-spinner>
-                    </span>
+                    <asm-spinner *ngIf="unlockSessionForm.disabled"
+                                 [appearance]="'material'"
+                                 [diameter]="24"></asm-spinner>
                 </button>
 
                 <!-- Logout link -->
-                <div class="mt-24 w-full text-center">
+                <div class="logout-link">
                     <a class="link"
                        [routerLink]="['/logout']">I'm not {{name}}</a>.
                 </div>

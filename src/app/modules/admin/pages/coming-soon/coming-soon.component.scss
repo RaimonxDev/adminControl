@@ -4,6 +4,50 @@ coming-soon {
 
     .content-layout {
         margin: 32px;
+
+        .card {
+
+            .form-container {
+
+                .title {
+                    @extend %title;
+                    margin-top: 64px;
+                }
+
+                .subtitle {
+                    @extend %subtitle;
+                    margin-top: 8px;
+                }
+
+                asm-message {
+                    margin-top: 48px;
+                }
+
+                form {
+                    margin-top: 40px;
+
+                    .mat-form-field {
+                        width: 100%;
+                    }
+
+                    .register-to-launch-list-button {
+                        width: 100%;
+                        margin-top: 48px;
+                    }
+
+                    .footer {
+                        font-size: 12px;
+                        width: 100%;
+                        margin-top: 24px;
+                        text-align: center;
+
+                        p:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

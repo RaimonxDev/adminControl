@@ -113,25 +113,23 @@
         </div>
 
         <!-- Title -->
-        <div class="title mt-64">Log in to your account</div>
-        <div class="subtitle mt-8 text-secondary">Welcome back!</div>
+        <div class="title">Log in to your account</div>
+        <div class="subtitle text-secondary">Welcome back!</div>
 
-        <!-- Message box -->
-        <asm-message class="mt-48"
-                     *ngIf="messageBox"
+        <!-- Message -->
+        <asm-message *ngIf="message"
                      [appearance]="'solid'"
-                     [type]="messageBox.type"
-                     [@shake]="messageBoxAnimationState">
-            <div asmMessageContent>{{messageBox.message}}</div>
+                     [type]="message.type"
+                     [@shake]="messageAnimationState">
+            <div asmMessageContent>{{message.content}}</div>
         </asm-message>
 
         <!-- Login form -->
-        <form class="mt-40"
-              [formGroup]="loginForm"
+        <form [formGroup]="loginForm"
               novalidate>
 
             <!-- Email field -->
-            <mat-form-field class="w-full"
+            <mat-form-field class="email-field"
                             [appearance]="'standard'">
                 <mat-label>Email</mat-label>
                 <input id="email"
@@ -147,7 +145,7 @@
             </mat-form-field>
 
             <!-- Password field -->
-            <mat-form-field class="w-full"
+            <mat-form-field class="password-field"
                             [appearance]="'standard'">
                 <mat-label>Password</mat-label>
                 <input id="password"
@@ -171,29 +169,28 @@
             </mat-form-field>
 
             <!-- Forgot password link -->
-            <div class="mt-8 w-full text-right text-secondary">
+            <div class="forgot-password-link text-secondary">
                 <a [routerLink]="['/forgot-password']">Forgot password?</a>
             </div>
 
-            <!-- Log in button -->
-            <button class="asm-mat-button-large mt-48 w-full"
+            <!-- Login button -->
+            <button class="login-button asm-mat-button-large"
                     mat-raised-button
                     [color]="'primary'"
                     [disabled]="loginForm.disabled || loginForm.invalid">
                 <span *ngIf="!loginForm.disabled">
                     Log In
                 </span>
-                <span *ngIf="loginForm.disabled">
-                    <asm-spinner [appearance]="'material'"
-                                 [diameter]="24"></asm-spinner>
-                </span>
+                <asm-spinner *ngIf="loginForm.disabled"
+                             [appearance]="'material'"
+                             [diameter]="24"></asm-spinner>
             </button>
 
             <!-- Create account link -->
-            <div class="mt-24 w-full text-center">
-                <span class="mr-4">Need an account?</span>
+            <div class="create-account-link">
+                <span>Need an account?</span>
                 <a class="link"
-                   [routerLink]="['/pages/authentication/signup']">Create one here</a>.
+                   [routerLink]="['/signup']">Create one here</a>.
             </div>
 
         </form>

@@ -8,6 +8,18 @@ maintenance {
         max-width: 640px;
         width: 100%;
     }
+
+    .title {
+        @extend %title-lg;
+        margin-top: 64px;
+        text-align: center;
+    }
+
+    .subtitle {
+        @extend %subtitle;
+        margin-top: 12px;
+        text-align: center;
+    }
 }
 
 // -----------------------------------------------------------------------------------------------------

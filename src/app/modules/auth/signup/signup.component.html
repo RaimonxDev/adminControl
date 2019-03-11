@@ -15,25 +15,23 @@
             </div>
 
             <!-- Title -->
-            <div class="title mt-64">Create your account</div>
-            <div class="subtitle mt-8 text-secondary">Join us to enjoy Assembly</div>
+            <div class="title">Create your account</div>
+            <div class="subtitle text-secondary">Join us to enjoy Assembly</div>
 
-            <!-- Message box -->
-            <asm-message class="mt-48"
-                         *ngIf="messageBox"
+            <!-- Message -->
+            <asm-message *ngIf="message"
                          [appearance]="'solid'"
-                         [type]="messageBox.type"
-                         [@shake]="messageBoxAnimationState">
-                <div asmMessageContent>{{messageBox.message}}</div>
+                         [type]="message.type"
+                         [@shake]="messageAnimationState">
+                <div asmMessageContent>{{message.content}}</div>
             </asm-message>
 
             <!-- Signup form -->
-            <form class="mt-40"
-                  [formGroup]="signupForm"
+            <form [formGroup]="signupForm"
                   novalidate>
 
                 <!-- Name field -->
-                <mat-form-field class="w-full"
+                <mat-form-field class="name-field"
                                 [appearance]="'standard'">
                     <mat-label>Name</mat-label>
                     <input id="name"
@@ -46,7 +44,7 @@
                 </mat-form-field>
 
                 <!-- Email field -->
-                <mat-form-field class="w-full"
+                <mat-form-field class="email-field"
                                 [appearance]="'standard'">
                     <mat-label>Email</mat-label>
                     <input id="email"
@@ -62,7 +60,7 @@
                 </mat-form-field>
 
                 <!-- Password field -->
-                <mat-form-field class="w-full"
+                <mat-form-field class="password-field"
                                 [appearance]="'standard'">
                     <mat-label>Password</mat-label>
                     <input id="password"
@@ -70,8 +68,7 @@
                            type="password"
                            [formControlName]="'password'"
                            #passwordField>
-                    <button class="w-24 h-24"
-                            mat-icon-button
+                    <button mat-icon-button
                             (mousedown)="passwordField.type = 'text'"
                             (mouseup)="passwordField.type = 'password'"
                             [disableRipple]="true"
@@ -86,7 +83,7 @@
                 </mat-form-field>
 
                 <!-- Password confirm field -->
-                <mat-form-field class="w-full"
+                <mat-form-field class="password-confirm-field"
                                 [appearance]="'standard'">
                     <mat-label>Password (Confirm)</mat-label>
                     <input id="password-confirm"
@@ -94,8 +91,7 @@
                            type="password"
                            [formControlName]="'passwordConfirm'"
                            #passwordConfirmField>
-                    <button class="w-24 h-24"
-                            mat-icon-button
+                    <button mat-icon-button
                             (mousedown)="passwordConfirmField.type = 'text'"
                             (mouseup)="passwordConfirmField.type = 'password'"
                             [disableRipple]="true"
@@ -113,32 +109,31 @@
                 </mat-form-field>
 
                 <!-- Sign up button -->
-                <button class="asm-mat-button-large mt-48 w-full"
+                <button class="signup-button asm-mat-button-large"
                         mat-raised-button
                         [color]="'primary'"
                         [disabled]="signupForm.disabled || signupForm.invalid">
                     <span *ngIf="!signupForm.disabled">
                         Create Account
                     </span>
-                    <span *ngIf="signupForm.disabled">
-                        <asm-spinner [appearance]="'material'"
-                                     [diameter]="24"></asm-spinner>
-                    </span>
+                    <asm-spinner *ngIf="signupForm.disabled"
+                                 [appearance]="'material'"
+                                 [diameter]="24"></asm-spinner>
                 </button>
 
                 <!-- Terms and privacy -->
-                <div class="mt-24 w-full text-center">
-                    <span class="mr-4">By clicking "<b>Create Account</b>" you agree to the</span>
-                    <a class="link mr-4"
+                <div class="terms-and-privacy">
+                    <span>By clicking "<b>Create Account</b>" you agree to the</span>
+                    <a class="link"
                        [routerLink]="['./']">Terms of Service</a>
-                    <span class="mr-4">and</span>
+                    <span>and</span>
                     <a class="link"
                        [routerLink]="['./']">Privacy Policy</a>.
                 </div>
 
                 <!-- Login link -->
-                <div class="mt-48 w-full text-center">
-                    <span class="mr-4">Already have an account?</span>
+                <div class="login-link">
+                    <span>Already have an account?</span>
                     <a class="link"
                        [routerLink]="['/login']">Log in</a>.
                 </div>

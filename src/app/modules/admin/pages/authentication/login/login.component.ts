@@ -12,8 +12,8 @@ import { AsmAnimations } from '@assembly';
 export class LoginComponent implements OnInit
 {
     loginForm: FormGroup;
-    messageBox: any;
-    messageBoxAnimationState: boolean;
+    message: any;
+    messageAnimationState: boolean;
 
     /**
      * Constructor
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit
     )
     {
         // Set the defaults
-        this.messageBox = null;
-        this.messageBoxAnimationState = false;
+        this.message = null;
+        this.messageAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

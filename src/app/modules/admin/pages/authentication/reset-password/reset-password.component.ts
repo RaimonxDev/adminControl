@@ -13,8 +13,8 @@ import { AsmAnimations } from '@assembly';
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy
 {
-    messageBox: any;
-    messageBoxAnimationState: boolean;
+    message: any;
+    messageAnimationState: boolean;
     resetPasswordForm: FormGroup;
 
     // Private
@@ -30,8 +30,8 @@ export class ResetPasswordComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
-        this.messageBox = null;
-        this.messageBoxAnimationState = false;
+        this.message = null;
+        this.messageAnimationState = false;
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();

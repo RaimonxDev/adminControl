@@ -113,22 +113,26 @@
         </div>
 
         <!-- Title -->
-        <div class="title mt-64">Confirmation required!</div>
+        <div class="title">Confirmation required!</div>
 
-        <!-- Content -->
-        <p class="mt-32">
-            A confirmation mail has been sent to <b>{{email}}</b>
-        </p>
+        <!-- Description -->
+        <div class="description">
 
-        <p>
-            Click on the <b>"Confirm my e-mail address"</b> link from the e-mail to confirm your address.
-        </p>
+            <p>
+                A confirmation mail has been sent to <b>{{email}}</b>
+            </p>
+
+            <p>
+                Click on the <b>"Confirm my e-mail address"</b> link from the e-mail to confirm your address.
+            </p>
+
+        </div>
 
         <!-- Login link -->
-        <div class="mt-40 w-full text-center">
-            <span class="mr-4">Back to</span>
+        <div class="login-link">
+            <span>Back to</span>
             <a class="link"
-               [routerLink]="['/pages/authentication/login']">login</a>.
+               [routerLink]="['/login']">login</a>.
         </div>
 
     </div>

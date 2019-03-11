@@ -4,6 +4,31 @@ auth-logout {
 
     .content-layout {
         margin: 32px;
+
+        .card {
+
+            .form-container {
+
+                .title {
+                    @extend %title;
+                    margin-top: 64px;
+                }
+
+                .subtitle {
+                    @extend %subtitle;
+                    margin-top: 8px;
+                }
+
+                .login-link {
+                    width: 100%;
+                    margin-top: 48px;
+
+                    .link {
+                        margin-left: 4px;
+                    }
+                }
+            }
+        }
     }
 }
 

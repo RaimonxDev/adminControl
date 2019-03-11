@@ -4,6 +4,76 @@ auth-signup {
 
     .content-layout {
         margin: 32px;
+
+        .card {
+
+            .form-container {
+
+                .title {
+                    @extend %title;
+                    margin-top: 64px;
+                }
+
+                .subtitle {
+                    @extend %subtitle;
+                    margin-top: 8px;
+                }
+
+                asm-message {
+                    margin-top: 48px;
+                }
+
+                form {
+                    margin-top: 40px;
+
+                    .mat-form-field {
+                        width: 100%;
+                    }
+
+                    .password-field,
+                    .password-confirm-field {
+
+                        button {
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+
+                    .signup-button {
+                        width: 100%;
+                        margin-top: 48px;
+                    }
+
+                    .terms-and-privacy {
+                        width: 100%;
+                        margin-top: 24px;
+                        text-align: center;
+
+                        > span {
+                            margin-right: 4px;
+                        }
+
+                        .link {
+                            margin: 0 4px;
+
+                            &:last-of-type {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+
+                    .login-link {
+                        width: 100%;
+                        margin-top: 48px;
+                        text-align: center;
+
+                        .link {
+                            margin-left: 4px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

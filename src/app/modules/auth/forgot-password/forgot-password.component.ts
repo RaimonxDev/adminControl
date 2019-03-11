@@ -14,8 +14,8 @@ import { AuthService } from 'app/core/auth/auth.service';
 export class AuthForgotPasswordComponent implements OnInit
 {
     forgotPasswordForm: FormGroup;
-    messageBox: any;
-    messageBoxAnimationState: boolean;
+    message: any;
+    messageAnimationState: boolean;
 
     /**
      * Constructor
@@ -33,8 +33,8 @@ export class AuthForgotPasswordComponent implements OnInit
     )
     {
         // Set the defaults
-        this.messageBox = null;
-        this.messageBoxAnimationState = false;
+        this.message = null;
+        this.messageAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

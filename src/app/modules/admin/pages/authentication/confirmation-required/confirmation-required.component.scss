@@ -4,6 +4,30 @@ auth-confirmation-required {
 
     .content-layout {
         margin: 32px;
+
+        .card {
+
+            .form-container {
+
+                .title {
+                    @extend %title;
+                    margin-top: 64px;
+                }
+
+                .content {
+                    margin-top: 32px;
+                }
+
+                .login-link {
+                    width: 100%;
+                    margin-top: 40px;
+
+                    .link {
+                        margin-left: 4px;
+                    }
+                }
+            }
+        }
     }
 }
 

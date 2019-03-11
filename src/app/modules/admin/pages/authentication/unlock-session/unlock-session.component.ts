@@ -11,8 +11,8 @@ import { AsmAnimations } from '@assembly';
 })
 export class UnlockSessionComponent implements OnInit
 {
-    messageBox: any;
-    messageBoxAnimationState: boolean;
+    message: any;
+    messageAnimationState: boolean;
     name: string;
     unlockSessionForm: FormGroup;
 
@@ -26,8 +26,8 @@ export class UnlockSessionComponent implements OnInit
     )
     {
         // Set the defaults
-        this.messageBox = null;
-        this.messageBoxAnimationState = false;
+        this.message = null;
+        this.messageAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
