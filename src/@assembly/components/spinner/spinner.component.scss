@@ -1,6 +1,9 @@
 @import 'assembly';
 
 asm-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     // Material appearance
     &.asm-spinner-appearance-material {
