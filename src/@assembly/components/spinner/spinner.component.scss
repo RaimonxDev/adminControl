@@ -63,7 +63,7 @@ asm-spinner {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);

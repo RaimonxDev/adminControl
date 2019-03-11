@@ -1,4 +1,4 @@
-<!-- LEFT NAVIGATION -->
+<!-- Navigation -->
 <asm-navigation class="navigation"
                 *ngIf="!asmConfig.layout.options.navigation.hidden"
                 [name]="'leftNavigation'"
@@ -32,12 +32,11 @@
     </div>
 
 </asm-navigation>
-<!-- / LEFT NAVIGATION -->
 
-<!-- CONTAINER -->
-<div class="container">
+<!-- Wrapper -->
+<div class="wrapper">
 
-    <!-- HEADER -->
+    <!-- Header -->
     <div class="header"
          *ngIf="!asmConfig.layout.options.header.hidden"
          [ngClass]="asmConfig.layout.options.header.background">
@@ -86,9 +85,8 @@
         </div>
 
     </div>
-    <!-- / HEADER -->
 
-    <!-- CONTENT -->
+    <!-- Content -->
     <div class="content">
 
         <!--
@@ -98,9 +96,8 @@
         <router-outlet *ngIf="true"></router-outlet>
 
     </div>
-    <!-- / CONTENT -->
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <div class="footer"
          *ngIf="!asmConfig.layout.options.footer.hidden"
          [ngClass]="asmConfig.layout.options.footer.background">
@@ -108,15 +105,12 @@
         Footer
 
     </div>
-    <!-- / FOOTER -->
 
 </div>
-<!-- / CONTAINER -->
 
-<!-- RIGHT DRAWER -->
+<!-- Drawer -->
 <asm-drawer [name]="'rightDrawer'"
             [position]="'right'"
             [mode]="'over'">
     <asm-theme-configurator></asm-theme-configurator>
 </asm-drawer>
-<!-- / RIGHT DRAWER -->

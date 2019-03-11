@@ -113,7 +113,7 @@ layout[type="basic"] {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $background: map-get($theme, background);
     $primary: map-get($theme, primary);

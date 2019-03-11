@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Use this file to access to the core Angular Material and Assembly utilities
+// -----------------------------------------------------------------------------------------------------
+
+// Angular Material theming tools
+@import '~@angular/material/theming';
+
+// Utilities
+@import 'utilities/angular-material';
+@import 'utilities/breakpoints';
+@import 'utilities/colors';
+@import 'utilities/icons';
+@import 'utilities/shadows';
+@import 'utilities/typography';
+
+// Themes definition file that includes $asm-themes map
+@import 'src/themes';

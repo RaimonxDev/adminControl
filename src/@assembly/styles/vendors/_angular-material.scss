@@ -1,4 +1,9 @@
-@import 'assembly';
+// -----------------------------------------------------------------------------------------------------
+// @ Angular Material styles, overrides and extensions
+// -----------------------------------------------------------------------------------------------------
+
+// Include core Angular Material styles from '~@angular/material/theming'
+@include mat-core();
 
 // -----------------------------------------------------------------------------------------------------
 // @ Button
@@ -275,7 +280,7 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Theming overrides and fixes
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);

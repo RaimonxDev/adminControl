@@ -10,7 +10,7 @@ auth-signup {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
@@ -36,7 +36,7 @@ auth-signup {
 
                         .logo-light {
 
-                            @if ($is-dark == false) {
+                            @if (not $is-dark) {
                                 display: none;
                             }
                         }

@@ -20,7 +20,7 @@ mailbox {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);

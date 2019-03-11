@@ -25,11 +25,12 @@ pricing-modern {
             }
         }
 
-        .content-container {
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1280px;
 
             .header {
                 display: flex;
@@ -40,6 +41,40 @@ pricing-modern {
 
                 @include asm-media-breakpoint('lt-sm') {
                     margin: 48px 0 56px 0;
+                }
+
+                .title {
+                    @extend %title-xl;
+                    text-align: center;
+                    max-width: 600px;
+                }
+
+                .subtitle {
+                    @extend %subtitle-md;
+                    text-align: center;
+                    margin-top: 32px;
+                    max-width: 480px;
+                }
+
+                .recurring-selector {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        margin-top: 48px;
+                    }
+
+                    > span {
+                        @extend %subtitle;
+                        cursor: pointer;
+                        user-select: none;
+                    }
+
+                    mat-slide-toggle {
+                        margin: 0 16px;
+                    }
                 }
             }
 
@@ -194,7 +229,7 @@ pricing-modern {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $background: map-get($theme, background);
     $primary: map-get($theme, primary);

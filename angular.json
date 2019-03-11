@@ -28,13 +28,12 @@
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
-                                "src/@assembly/styles/shared"
+                                "src/@assembly/styles"
                             ]
                         },
                         "styles": [
-                            "src/@assembly/styles/core/core.scss",
-                            "src/styles.scss",
-                            "src/tailwind.scss"
+                            "src/@assembly/styles/core.scss",
+                            "src/styles.scss"
                         ],
                         "scripts": []
                     },

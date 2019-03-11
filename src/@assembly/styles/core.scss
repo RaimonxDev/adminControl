@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------------------------------
+// @ This file meant to be imported only once!
+//   Use assembly.scss to access to the Angular Material and Assembly mixins
+// -----------------------------------------------------------------------------------------------------
+
+// 1. Utilities
+@import 'assembly';
+
+// 2. Vendors
+@import 'vendors/normalize';
+@import 'vendors/angular-material';
+@import 'vendors/highlightjs';
+@import 'vendors/perfect-scrollbar';
+
+// 3. Base
+@import 'base/base';
+@import 'base/typography';
+@import 'base/colors';
+@import 'base/icons';
+
+// 4. Layout
+@import 'layout/content';
+
+// 5. Components
+@import 'components/basic-navigation';
+@import 'components/cards';
+
+// 6. Themes
+@import 'themes/default';

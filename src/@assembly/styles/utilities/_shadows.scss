@@ -1,6 +1,12 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Get correct shadow with the given elevation
+// @ Functions
 // -----------------------------------------------------------------------------------------------------
+
+/// Generate the shadow from the given elevation and color
+///
+/// @access private
+/// @param {String} $elevation - The amount of the elevation that the element will have
+/// @param {Color} $color - Color of the shadow
 @function _get-shadow($elevation, $color) {
 
     $shadow-map: (
@@ -10,9 +16,16 @@
     @return map-get($shadow-map, $elevation);
 }
 
+
 // -----------------------------------------------------------------------------------------------------
-// @ Shadow mixin
+// @ Mixins
 // -----------------------------------------------------------------------------------------------------
+
+/// Adds a shadow
+///
+/// @access public
+/// @param {String} $elevation - The amount of the elevation that the element will have
+/// @param {Color} $color - Color of the shadow
 @mixin asm-shadow($elevation, $color: rgb(37, 41, 52)) {
     box-shadow: #{_get_shadow($elevation, $color)};
 }

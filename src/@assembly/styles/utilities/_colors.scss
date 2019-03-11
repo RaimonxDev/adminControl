@@ -1,13 +1,12 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Colors
+// @ Variables
 // -----------------------------------------------------------------------------------------------------
+
 $asm-dark-primary-text: rgba(37, 41, 52, 0.87);
 $asm-light-primary-text: rgba(255, 255, 255, 1);
 $asm-light-background: #F3F6F7;
 
-// -----------------------------------------------------------------------------------------------------
-// @ Custom Palettes
-// -----------------------------------------------------------------------------------------------------
+// Custom palettes
 $asm-white: (
     500: white,
     contrast: (
@@ -55,15 +54,14 @@ $asm-navy: (
     )
 );
 
+// Merge the custom palettes
 $asm-palettes: (
     asm-white: $asm-white,
     asm-black: $asm-black,
     asm-navy: $asm-navy
 );
 
-// -----------------------------------------------------------------------------------------------------
-// @ Material color palettes (with custom contrast colors)
-// -----------------------------------------------------------------------------------------------------
+// Material color palettes (with custom contrast colors)
 $asm-mat-palettes: (
     red: (
         50: #FFEBEE,
@@ -674,3 +672,443 @@ $asm-mat-palettes: (
         )
     )
 );
+
+// -----------------------------------------------------------------------------------------------------
+// @ Mixins
+// -----------------------------------------------------------------------------------------------------
+
+/// Generate contrasting text colors
+///
+/// @access private
+/// @param {String} $classes - Class names for applying the contrasts
+/// @param {String} $contrast - Type of the contrast (dark/light)
+@mixin _generate-contrasting-text-colors($classes, $contrast) {
+
+    $background: $mat-dark-theme-background;
+    $foreground: $mat-dark-theme-foreground;
+
+    // If the contrast color is dark...
+    @if ($contrast == 'dark') {
+        $background: $mat-light-theme-background;
+        $foreground: $mat-light-theme-foreground;
+    }
+
+    // Start - Adjust the contrast colors to soften the blacks
+    $palettes: (
+        background: $background,
+        foreground: $foreground
+    );
+
+    $adjusted-palettes: ();
+
+    @each $palette-name, $palette in $palettes {
+
+        $adjusted-palette: ();
+
+        @each $key, $value in $palette {
+
+            @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
+
+                $value: rgba($asm-dark-primary-text, alpha($value));
+            }
+
+            $adjusted-palette: map-merge($adjusted-palette, ($key: $value));
+        }
+
+        $adjusted-palettes: map-merge($adjusted-palettes, ($palette-name: $adjusted-palette));
+    }
+
+    $background: map-get($adjusted-palettes, background);
+    $foreground: map-get($adjusted-palettes, foreground);
+    // End - Adjust the contrast colors to soften the blacks
+
+    // Put down the color classes
+    #{$classes} {
+
+        i,
+        .icon,
+        .mat-icon {
+            color: map-get($foreground, icon) !important;
+        }
+
+        &.text-secondary,
+        .text-secondary {
+            color: map-get($foreground, secondary-text) !important;
+        }
+
+        &.text-hint,
+        .text-hint,
+        &.text-disabled,
+        .text-disabled {
+            color: map-get($foreground, disabled-text) !important;
+        }
+
+        &.text-fade,
+        .text-fade,
+        &.divider,
+        .divider {
+            color: map-get($foreground, divider) !important;
+        }
+
+        .mat-ripple-element {
+            color: map-get($background, hover);
+        }
+    }
+}
+
+
+/// Generate contrasting Angular Material element colors
+///
+/// @access private
+/// @param {String} $classes - Class names for applying the contrasts
+/// @param {String} $contrast - Type of the contrast (dark/light)
+@mixin _generate-contrasting-material-elements-colors($classes, $contrast) {
+
+    // If the contrast color is light...
+    $background: $mat-dark-theme-background;
+    $foreground: $mat-dark-theme-foreground;
+
+    // If the contrast color is dark...
+    @if ($contrast == 'dark') {
+        $background: $mat-light-theme-background;
+        $foreground: $mat-light-theme-foreground;
+    }
+
+    // Start - Adjust the contrast colors to soften the blacks
+    $palettes: (
+        background: $background,
+        foreground: $foreground
+    );
+
+    $adjusted-palettes: ();
+
+    @each $palette-name, $palette in $palettes {
+
+        $adjusted-palette: ();
+
+        @each $key, $value in $palette {
+
+            @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
+
+                $value: rgba($asm-dark-primary-text, alpha($value));
+            }
+
+            $adjusted-palette: map-merge($adjusted-palette, ($key: $value));
+        }
+
+        $adjusted-palettes: map-merge($adjusted-palettes, ($palette-name: $adjusted-palette));
+    }
+
+    $background: map-get($adjusted-palettes, background);
+    $foreground: map-get($adjusted-palettes, foreground);
+    // End - Adjust the contrast colors to soften the blacks
+
+    // Put down the color classes
+    #{$classes} {
+
+        // Native Input
+        input[type='text'] {
+            color: map-get($foreground, base);
+        }
+
+        // Input
+        .mat-form-field-label {
+            color: map-get($foreground, hint-text);
+        }
+
+        .mat-form-field-underline {
+            background-color: map-get($foreground, divider);
+        }
+
+        // Select
+        .mat-select-trigger,
+        .mat-select-arrow {
+            color: map-get($foreground, hint-text);
+        }
+
+        .mat-select-underline {
+            background-color: map-get($foreground, divider);
+        }
+
+        .mat-select-disabled .mat-select-value,
+        .mat-select-arrow,
+        .mat-select-trigger {
+            color: map-get($foreground, hint-text);
+        }
+
+        .mat-select-value {
+            color: map-get($foreground, text);
+        }
+    }
+}
+
+
+/// Generate color classes
+///
+/// @access private
+/// @param {String} $colorName - Name of the color
+/// @param {Color} $color - Color
+/// @param {Color} $contrastColor - Contrasting color of the Color
+/// @param {String} $hue - Hue value of the Color
+@mixin _generate-color-classes($colorName, $color, $contrastColor, $hue) {
+
+    // Text color
+    .text-#{$colorName}#{$hue} {
+        color: $color !important;
+    }
+
+    // Background color
+    .bg-#{$colorName}#{$hue} {
+        background: $color !important;
+    }
+
+    // Background and text color
+    .#{$colorName}#{$hue} {
+        background: $color !important;
+        color: $contrastColor !important;
+    }
+
+    // Border color
+    .border-#{$colorName}#{$hue} {
+        border-color: $color !important;
+    }
+
+    // Border color on hover
+    .hover\:border-#{$colorName}#{$hue}:hover {
+        border-color: $color !important;
+    }
+
+    // Border color on focus
+    .focus\:border-#{$colorName}#{$hue}:focus {
+        border-color: $color !important;
+    }
+
+    // Border color on active
+    .active\:border-#{$colorName}#{$hue}:active {
+        border-color: $color !important;
+    }
+}
+
+
+/// Generate color classes
+///
+/// @access public
+/// @param {Map} $palettes - Color palettes that will have helper classes
+@mixin asm-color-classes($palettes) {
+
+    // Define contrast lists
+    $light-contrasting-classes: ();
+    $dark-contrasting-classes: ();
+
+    // Generate the color classes...
+    @each $paletteName, $palette in $palettes {
+
+        // Get the contrast map and remove if from the palette
+        $contrasts: map-get($palette, 'contrast');
+        $palette: map-remove($palette, 'contrast');
+
+        @each $hue, $color in $palette {
+
+            // Get the contrasting color
+            $contrast: map-get($contrasts, $hue);
+
+            @if ($color != null and $contrast != null) {
+
+                // Generate color classes
+                @include _generate-color-classes($paletteName, $color, $contrast, '-#{$hue}');
+
+                // If the contrast color is dark
+                @if (rgba($asm-dark-primary-text, 1) == rgba($contrast, 1)) {
+                    $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}-#{$hue}'), 'comma');
+                }
+                    // if the contrast color is light
+                @else {
+                    $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}-#{$hue}'), 'comma');
+                }
+
+                // Run the generator one more time for default values (500)
+                // if we are not working with primary, accent or warn palettes
+                @if ($hue == 500 and $paletteName != 'primary' and $paletteName != 'accent' and $paletteName != 'warn') {
+
+                    // Generate color classes
+                    @include _generate-color-classes($paletteName, $color, $contrast, '');
+
+                    // Add color to the correct list depending on the contrasting color
+
+                    // If the contrast color is dark
+                    @if (rgba($asm-dark-primary-text, 1) == rgba($contrast, 1)) {
+                        $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+                    }
+                        // if the contrast color is light
+                    @else {
+                        $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+                    }
+                }
+            }
+        }
+
+        // Run the generator again for the selected default hue values for
+        // primary, accent and warn palettes
+        //
+        // We are doing this because the default hue value can be changed
+        // by the user when the Material theme being generated.
+        @if ($paletteName == 'primary' or $paletteName == 'accent' or $paletteName == 'warn') {
+
+            // Get the color and the contrasting color for the selected default hue
+            $color: map-get($palette, 'default');
+            $contrast: map-get($palette, 'default-contrast');
+
+            // Generate color classes
+            @include _generate-color-classes($paletteName, $color, $contrast, '');
+
+            // Add color to the correct list depending on the contrasting color
+
+            // If the contrast color is dark
+            @if (rgba($asm-dark-primary-text, 1) == rgba($contrast, 1)) {
+                $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+            }
+                // if the contrast color is light
+            @else {
+                $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+            }
+        }
+    }
+
+    // Generate contrasting colors
+    @include _generate-contrasting-text-colors($dark-contrasting-classes, 'dark');
+    @include _generate-contrasting-text-colors($light-contrasting-classes, 'light');
+    @include _generate-contrasting-material-elements-colors($dark-contrasting-classes, 'dark');
+    @include _generate-contrasting-material-elements-colors($light-contrasting-classes, 'light');
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// @ Functions
+// -----------------------------------------------------------------------------------------------------
+
+/// Adjust the Angular Material theme object
+///
+/// Current objectives:
+///     Soften the blacks
+///
+/// @access public
+/// @param {Map} $theme - Angular Material theme map
+@function asm-adjust-angular-material-theme($theme) {
+
+    // Create a variable for the adjusted theme
+    $adjusted-theme: (
+        is-dark: map-get($theme, is-dark)
+    );
+
+    // Group the palettes together
+    $color-palettes: (
+        primary: map-get($theme, primary),
+        accent: map-get($theme, accent),
+        warn: map-get($theme, warn)
+    );
+
+    // Group background and foreground together
+    $bgfg-palettes: (
+        background: map-get($theme, background),
+        foreground: map-get($theme, foreground)
+    );
+
+    // Create an empty lists for the adjusted stuff
+    $adjusted-color-palettes: ();
+    $adjusted-bgfg-palettes: ();
+
+    // Handle the palettes
+    @each $palette-name, $palette in $color-palettes {
+
+        // Create an empty list for the adjusted palette
+        $adjusted-palette: ();
+
+        // Go through each palette
+        @each $key, $value in $palette {
+
+            // If the value is a color...
+            @if (type-of($value) == 'color') {
+
+                // If the value is a black or a shade of black...
+                @if (rgba($value, 1) == rgba(0,0,0,1)) {
+
+                    // Replace the color
+                    $value: rgba($asm-dark-primary-text, alpha($value));
+                }
+
+                // Add the value to the map
+                $adjusted-palette: map-merge($adjusted-palette, ($key: $value))
+            }
+                // If we hit the contrast map, loop through it
+            @else if ($key == 'contrast') {
+
+                // Create an empty list for the adjusted contrasts
+                $adjusted-palette-contrasts: ();
+
+                // Gp through all the contrast values
+                @each $contrast-name, $contrast-value in $value {
+
+                    // If the contrast value is a black or a shade of black...
+                    @if (rgba($contrast-value, 1) == rgba(0,0,0,1)) {
+
+                        // Replace the color
+                        $contrast-value: rgba($asm-dark-primary-text, alpha($contrast-value));
+                    }
+
+                    // Add the value to the map
+                    $adjusted-palette-contrasts: map-merge($adjusted-palette-contrasts, (#{$contrast-name}: $contrast-value));
+                }
+
+                // Add the adjusted contrasts map to the adjusted palette map
+                $adjusted-palette: map-merge($adjusted-palette, (contrast: $adjusted-palette-contrasts))
+            }
+                // Otherwise just add the value to the map
+            @else {
+                $adjusted-palette: map-merge($adjusted-palette, ($key: $value))
+            }
+        }
+
+        // Add the palette to the adjusted color palettes map
+        $adjusted-color-palettes: map-merge($adjusted-color-palettes, (#{$palette-name}: $adjusted-palette));
+    }
+
+    // Handle the background and foreground
+    @each $palette-name, $palette in $bgfg-palettes {
+
+        // Create an empty list for the map
+        $adjusted-palette: ();
+
+        // Go through each map
+        @each $key, $value in $palette {
+
+            // If the value is a color and it is a black or a shade of black...
+            @if (type-of($value) == 'color' and rgba($value, 1) == rgba(0,0,0,1)) {
+
+                // Replace the color
+                $value: rgba($asm-dark-primary-text, alpha($value));
+            }
+
+            // If the theme is light and the key is 'background'...
+            @if (not map-get($theme, is-dark) and $key == 'background') {
+
+                // Replace the background color
+                $value: $asm-light-background;
+            }
+
+            // Add the value to the map
+            $adjusted-palette: map-merge($adjusted-palette, ($key: $value))
+        }
+
+        // Add the adjusted palette to the adjusted bgfg palette
+        $adjusted-bgfg-palettes: map-merge($adjusted-bgfg-palettes, ($palette-name: $adjusted-palette));
+    }
+
+    // Add the adjusted palettes to the adjusted theme
+    $adjusted-theme: map-merge($adjusted-theme, $adjusted-color-palettes);
+
+    // Add the adjusted maps to the adjusted theme
+    $adjusted-theme: map-merge($adjusted-theme, $adjusted-bgfg-palettes);
+
+    // Return the adjusted theme
+    @return $adjusted-theme;
+}

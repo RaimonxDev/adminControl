@@ -1,9 +1,11 @@
-// Themes definition file that includes $asm-themes map
-@import 'src/themes';
+// -----------------------------------------------------------------------------------------------------
+// @ Mixins
+// -----------------------------------------------------------------------------------------------------
 
-// -----------------------------------------------------------------------------------------------------
-// @ Expose an Angular Material theme as css custom properties (not used at the moment)
-// -----------------------------------------------------------------------------------------------------
+/// Expose an Angular Material theme as css custom properties (not used at the moment)
+///
+/// @access public
+/// @param {Map} $theme - Angular Material theme map
 @mixin asm-expose-angular-material-theme($theme) {
 
     // Group color palettes together
@@ -46,10 +48,11 @@
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-//   Go through the each defined theme and apply it to whatever content this mixin has
-// -----------------------------------------------------------------------------------------------------
+
+/// Go through the each defined theme and apply it to whatever content this mixin has
+///
+/// @access public
+/// @param {Boolean} $encapsulated - Should the generated rules compatible with encapsulated components?
 @mixin asm-angular-material-theme($encapsulated: false) {
 
     @each $class-name, $theme in $asm-themes {
@@ -58,7 +61,7 @@
         $theme: asm-adjust-angular-material-theme($theme) !global;
 
         // If encapsulated...
-        @if ($encapsulated == true) {
+        @if ($encapsulated) {
 
             // Do everything inside a host context
             :host-context(.#{$class-name}) {

@@ -1,6 +1,9 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Breakpoint steps based on Material design specs
+// @ Variables
 // -----------------------------------------------------------------------------------------------------
+
+// Breakpoint steps based on Material design specs
+// Modify these steps if you want more/less breakpoints
 $asm-breakpoints: (
     xs: '(max-width: 599px)',
     sm: '(min-width: 600px) and (max-width: 959px)',
@@ -17,9 +20,15 @@ $asm-breakpoints: (
     gt-lg: '(min-width: 1920px)'
 ) !default;
 
+
 // -----------------------------------------------------------------------------------------------------
-// @ Media breakpoint mixin
+// @ Mixins
 // -----------------------------------------------------------------------------------------------------
+
+/// Wrap the mixin content with the given media breakpoint
+///
+/// @access public
+/// @param {String} $breakpointName - Name of the breakpoint
 @mixin asm-media-breakpoint($breakpointName) {
 
     $mediaQuery: map-get($asm-breakpoints, $breakpointName);

@@ -165,7 +165,7 @@ tasks-list {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);

@@ -58,8 +58,8 @@ layout[type="classy"] {
         }
     }
 
-    // Container
-    > .container {
+    // Wrapper
+    > .wrapper {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
@@ -143,13 +143,13 @@ layout[type="classy"] {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme() {
+@include asm-angular-material-theme {
 
     $background: map-get($theme, background);
 
     layout[type='classy'] {
 
-        .navigation {
+        > .navigation {
 
             .asm-navigation-wrapper {
                 background: radial-gradient(circle at top left, #44505D 0%, #272F38 50%) !important;

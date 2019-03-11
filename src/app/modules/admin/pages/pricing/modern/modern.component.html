@@ -20,32 +20,28 @@
 
     </div>
 
-    <!-- Content container -->
-    <div class="content-container">
+    <!-- Container -->
+    <div class="container">
 
         <!-- Header -->
         <div class="header">
 
-            <div class="title-xl text-center max-w-md">
-                <span class="marker">Simple pricing</span>
+            <div class="title">
+                <span class="marked">Simple pricing</span>
                 that scales with your business
             </div>
 
-            <div class="subtitle-md text-center mt-32 max-w-sm">
+            <div class="subtitle">
                 Whether you are an individual or a Fortune 500 enterprise, there is a plan that's right for you
             </div>
 
-            <div class="flex items-center justify-center mt-64 lt-sm:mt-48">
-                <span class="subtitle cursor-pointer select-none"
-                      [ngClass]="{'text-hint' : annualBilling}"
+            <div class="recurring-selector">
+                <span [ngClass]="{'text-hint' : annualBilling}"
                       (click)="annualBilling = false">
                     Monthly
                 </span>
-                <mat-slide-toggle class="mx-16"
-                                  [(ngModel)]="annualBilling">
-                </mat-slide-toggle>
-                <span class="subtitle cursor-pointer select-none"
-                      [ngClass]="{'text-hint' : !annualBilling}"
+                <mat-slide-toggle [(ngModel)]="annualBilling"></mat-slide-toggle>
+                <span [ngClass]="{'text-hint' : !annualBilling}"
                       (click)="annualBilling = true">
                     Yearly
                 </span>
@@ -54,10 +50,10 @@
         </div>
 
         <!-- Cards -->
-        <div class="cards">
+        <div class="relative flex flex-wrap justify-center -mx-12 z-10 lt-sm:m-0">
 
             <!-- Card 1 -->
-            <div class="card">
+            <div class="card relative flex flex-col overflow-visible max-w-384 mx-12 mb-32 px-64 py-48 lt-sm:mx-0">
 
                 <div class="title-md">Personal</div>
                 <div class="subtitle text-secondary mt-8">Perfect for an individual or a small team starting to get bigger</div>
@@ -114,7 +110,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="card">
+            <div class="card relative flex flex-col overflow-visible max-w-384 mx-12 mb-32 px-64 py-48 lt-sm:mx-0">
 
                 <div class="tag">POPULAR</div>
 
@@ -173,7 +169,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="card">
+            <div class="card relative flex flex-col overflow-visible max-w-384 mx-12 mb-32 px-64 py-48 lt-sm:mx-0">
 
                 <div class="title-md">Enterprise</div>
                 <div class="subtitle text-secondary mt-8">Perfect for companies wanting advanced tools and support</div>
@@ -232,78 +228,96 @@
         </div>
 
         <!-- Features -->
-        <div class="features">
+        <div class="flex flex-col items-center mt-96 lt-sm:mt-72">
 
-            <div class="features-title">
+            <div class="max-w-480">
                 <div class="title-md text-center">Core Features</div>
                 <div class="subtitle text-center mt-8 text-secondary">List of features that are included into all plans</div>
             </div>
 
-            <div class="features-grid">
+            <div class="flex flex-wrap items-start justify-center">
 
-                <div class="feature">
+                <!-- Feature -->
+                <div class="flex flex-col items-center max-w-384 pt-64 px-40 text-center lt-sm:px-0">
 
-                    <div class="title">
-                        <mat-icon class="primary">edit</mat-icon>
+                    <div class="flex flex-col items-center mb-8">
+                        <mat-icon class="flex items-center justify-center rounded-full mb-24 icon-size-22 w-48 h-48 primary">edit</mat-icon>
                         <div class="subtitle font-bold">Create and Edit Projects</div>
                     </div>
 
-                    <div class="subtitle text-secondary">Create and edit projects, upload images via drag drop, add categories, add custom fields and more.</div>
+                    <div class="subtitle text-secondary">
+                        Create and edit projects, upload images via drag drop, add categories, add custom fields and more.
+                    </div>
 
                 </div>
 
-                <div class="feature">
+                <!-- Feature -->
+                <div class="flex flex-col items-center max-w-384 pt-64 px-40 text-center lt-sm:px-0">
 
-                    <div class="title">
-                        <mat-icon class="primary">filter_list</mat-icon>
+                    <div class="flex flex-col items-center mb-8">
+                        <mat-icon class="flex items-center justify-center rounded-full mb-24 icon-size-22 w-48 h-48 primary">filter_list</mat-icon>
                         <div class="subtitle font-bold">Search and Filter</div>
                     </div>
 
-                    <div class="subtitle text-secondary">Search and filter within the projects, categories and custom fields. Save search and filter details for easy access.</div>
+                    <div class="subtitle text-secondary">
+                        Search and filter within the projects, categories and custom fields. Save search and filter details for easy access.
+                    </div>
 
                 </div>
 
-                <div class="feature">
+                <!-- Feature -->
+                <div class="flex flex-col items-center max-w-384 pt-64 px-40 text-center lt-sm:px-0">
 
-                    <div class="title">
-                        <mat-icon class="primary">update</mat-icon>
+                    <div class="flex flex-col items-center mb-8">
+                        <mat-icon class="flex items-center justify-center rounded-full mb-24 icon-size-22 w-48 h-48 primary">update</mat-icon>
                         <div class="subtitle font-bold">Real Time Updates</div>
                     </div>
 
-                    <div class="subtitle text-secondary">Real time updates that doesn’t require page reload. Lean back and watch the changes happen in real time.</div>
+                    <div class="subtitle text-secondary">
+                        Real time updates that doesn’t require page reload. Lean back and watch the changes happen in real time.
+                    </div>
 
                 </div>
 
-                <div class="feature">
+                <!-- Feature -->
+                <div class="flex flex-col items-center max-w-384 pt-64 px-40 text-center lt-sm:px-0">
 
-                    <div class="title">
-                        <mat-icon class="primary">label</mat-icon>
+                    <div class="flex flex-col items-center mb-8">
+                        <mat-icon class="flex items-center justify-center rounded-full mb-24 icon-size-22 w-48 h-48 primary">label</mat-icon>
                         <div class="subtitle font-bold">Meta Information</div>
                     </div>
 
-                    <div class="subtitle text-secondary">Add and remove meta information to custom fields to differentiate them in reports and analytics results.</div>
+                    <div class="subtitle text-secondary">
+                        Add and remove meta information to custom fields to differentiate them in reports and analytics results.
+                    </div>
 
                 </div>
 
-                <div class="feature">
+                <!-- Feature -->
+                <div class="flex flex-col items-center max-w-384 pt-64 px-40 text-center lt-sm:px-0">
 
-                    <div class="title">
-                        <mat-icon class="primary">pageview</mat-icon>
+                    <div class="flex flex-col items-center mb-8">
+                        <mat-icon class="flex items-center justify-center rounded-full mb-24 icon-size-22 w-48 h-48 primary">pageview</mat-icon>
                         <div class="subtitle font-bold">Pre-rendered Results</div>
                     </div>
 
-                    <div class="subtitle text-secondary">Pre-render results to make reports and analytics more accessible by screen readers and other accesibility tools.</div>
+                    <div class="subtitle text-secondary">
+                        Pre-render results to make reports and analytics more accessible by screen readers and other accesibility tools.
+                    </div>
 
                 </div>
 
-                <div class="feature">
+                <!-- Feature -->
+                <div class="flex flex-col items-center max-w-384 pt-64 px-40 text-center lt-sm:px-0">
 
-                    <div class="title">
-                        <mat-icon class="primary">bar_chart</mat-icon>
+                    <div class="flex flex-col items-center mb-8">
+                        <mat-icon class="flex items-center justify-center rounded-full mb-24 icon-size-22 w-48 h-48 primary">bar_chart</mat-icon>
                         <div class="subtitle font-bold">Simple Analytics</div>
                     </div>
 
-                    <div class="subtitle text-secondary">Simple analytics with no unnecessary data flow or weight. More readable results with less data consumption.</div>
+                    <div class="subtitle text-secondary">
+                        Simple analytics with no unnecessary data flow or weight. More readable results with less data consumption.
+                    </div>
 
                 </div>
 
@@ -312,18 +326,23 @@
         </div>
 
         <!-- Frequently asked questions -->
-        <div class="faqs">
+        <div class="flex flex-col items-center w-full mt-152 mb-32 lt-sm:mt-128">
 
-            <div class="faqs-title">
+            <div class="max-w-480">
                 <div class="title-md text-center">Frequently Asked Questions</div>
-                <div class="subtitle text-center mt-8 text-secondary">Here are the most frequently asked questions you may check before getting started</div>
+                <div class="subtitle text-center mt-8 text-secondary">
+                    Here are the most frequently asked questions you may check before getting started
+                </div>
             </div>
 
-            <div class="faqs-list">
+            <div class="flex flex-wrap items-start justify-around w-full mt-32 lt-sm:max-w-384">
 
-                <div class="faq">
+                <!-- Faq -->
+                <div class="flex flex-col mt-48 max-w-480">
 
-                    <div class="subtitle font-bold mb-8">What is the duration of the free trial?</div>
+                    <div class="subtitle font-bold mb-8">
+                        What is the duration of the free trial?
+                    </div>
                     <div class="subtitle text-secondary">
                         <p>
                             Our app is free to try for 14 days, if you want more, you can provide
@@ -332,7 +351,9 @@
                         </p>
                     </div>
 
-                    <div class="subtitle font-bold mb-8 mt-48">What is the storage is for?</div>
+                    <div class="subtitle font-bold mb-8 mt-48">
+                        What is the storage is for?
+                    </div>
                     <div class="subtitle text-secondary">
                         <p>
                             Since we provide an extremely detailed reporting and analytics
@@ -349,9 +370,12 @@
 
                 </div>
 
-                <div class="faq">
+                <!-- Faq -->
+                <div class="flex flex-col mt-48 max-w-480">
 
-                    <div class="subtitle font-bold mb-8">What happens if I’m not satisfied?</div>
+                    <div class="subtitle font-bold mb-8">
+                        What happens if I’m not satisfied?
+                    </div>
                     <div class="subtitle text-secondary">
                         <p>
                             If you are still in your free trial period, you can cancel your
@@ -367,7 +391,9 @@
                         </p>
                     </div>
 
-                    <div class="subtitle font-bold mb-8 mt-48">Are there discounts for non-profits or educational use?</div>
+                    <div class="subtitle font-bold mb-8 mt-48">
+                        Are there discounts for non-profits or educational use?
+                    </div>
                     <div class="subtitle text-secondary">
                         <p>
                             Yes, our Personal and Premium packages are free for non-profits and
