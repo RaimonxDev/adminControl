@@ -43,13 +43,13 @@ pricing-modern {
                     margin: 48px 0 56px 0;
                 }
 
-                .title {
+                > .title {
                     @extend %title-xl;
                     text-align: center;
                     max-width: 600px;
                 }
 
-                .subtitle {
+                > .subtitle {
                     @extend %subtitle-md;
                     text-align: center;
                     margin-top: 32px;
@@ -115,16 +115,69 @@ pricing-modern {
                         border-radius: 16px;
                     }
 
+                    .title {
+                        @extend %title-md;
+                    }
+
+                    .subtitle {
+                        @extend %subtitle;
+                        margin-top: 8px;
+                    }
+
                     .divider {
                         width: 32px;
                         height: 4px;
                         margin: 40px 0;
                         border-radius: 2px;
                     }
+
+                    .price {
+
+                        .currency {
+                            @extend %subtitle-lg;
+                            font-weight: normal;
+                            margin-right: 2px;
+                        }
+
+                        .amount {
+                            @extend %title-md;
+                            font-weight: bold;
+                        }
+                    }
+
+                    .price-details {
+                        display: flex;
+                        flex-direction: column;
+                        margin-top: 8px;
+                    }
+
+                    .cta-button {
+                        margin: 40px 0 48px 0;
+                    }
+
+                    .included-features {
+                        display: flex;
+                        flex-direction: column;
+
+                        .included-feature-title {
+                            font-weight: bold;
+                            margin-bottom: 8px;
+                        }
+
+                        .feature {
+                            display: flex;
+                            align-items: center;
+                            margin-top: 8px;
+
+                            .mat-icon {
+                                margin-right: 8px;
+                            }
+                        }
+                    }
                 }
             }
 
-            .features {
+            .features-section {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -134,15 +187,22 @@ pricing-modern {
                     margin-top: 72px;
                 }
 
-                .features-title {
-                    max-width: 560px;
+                .title-container {
+                    max-width: 480px;
 
-                    @include asm-media-breakpoint('lt-sm') {
-                        max-width: 384px;
+                    .title {
+                        @extend %title-md;
+                        text-align: center;
+                    }
+
+                    .subtitle {
+                        @extend %subtitle;
+                        text-align: center;
+                        margin-top: 8px;
                     }
                 }
 
-                .features-grid {
+                .grid {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: flex-start;
@@ -160,7 +220,7 @@ pricing-modern {
                             padding: 64px 0 0 0;
                         }
 
-                        .title {
+                        .title-container {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
@@ -172,18 +232,25 @@ pricing-modern {
                                 justify-content: center;
                                 border-radius: 50%;
                                 margin-bottom: 24px;
-
                                 @include asm-icon-size(22);
-
                                 width: 48px !important;
                                 height: 48px !important;
                             }
+
+                            div {
+                                @extend %subtitle;
+                                font-weight: bold;
+                            }
+                        }
+
+                        .description {
+                            @extend %subtitle;
                         }
                     }
                 }
             }
 
-            .faqs {
+            .faqs-section {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -194,15 +261,22 @@ pricing-modern {
                     margin: 128px 0 32px 0;
                 }
 
-                .faqs-title {
-                    max-width: 560px;
+                .title-container {
+                    max-width: 480px;
 
-                    @include asm-media-breakpoint('lt-sm') {
-                        max-width: 384px;
+                    .title {
+                        @extend %title-md;
+                        text-align: center;
+                    }
+
+                    .subtitle {
+                        @extend %subtitle;
+                        text-align: center;
+                        margin-top: 8px;
                     }
                 }
 
-                .faqs-list {
+                .list {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: flex-start;
@@ -214,11 +288,25 @@ pricing-modern {
                         max-width: 384px;
                     }
 
-                    .faq {
+                    .column {
                         display: flex;
                         flex-direction: column;
                         margin-top: 48px;
                         max-width: 480px;
+
+                        .question {
+                            @extend %subtitle;
+                            font-weight: bold;
+                            margin: 48px 0 8px 0;
+
+                            &:first-of-type {
+                                margin-top: 0;
+                            }
+                        }
+
+                        .answer {
+                            @extend %subtitle;
+                        }
                     }
                 }
             }
