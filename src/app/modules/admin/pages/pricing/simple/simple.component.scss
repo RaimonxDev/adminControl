@@ -346,7 +346,6 @@ pricing-simple {
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme {
 
-    $background: map-get($theme, background);
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
 
@@ -355,8 +354,6 @@ pricing-simple {
         .cards {
 
             .card {
-                background: map-get($background, card);
-                @include asm-shadow(1);
 
                 .tag {
                     background: map-get($accent, default);

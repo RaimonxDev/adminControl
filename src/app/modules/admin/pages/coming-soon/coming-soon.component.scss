@@ -56,7 +56,6 @@ coming-soon {
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme {
 
-    $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
     coming-soon {
@@ -64,8 +63,6 @@ coming-soon {
         .content-layout {
 
             .card {
-                background: map-get($background, card);
-                @include asm-shadow(1);
 
                 .form-container {
 
