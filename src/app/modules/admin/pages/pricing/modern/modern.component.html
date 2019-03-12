@@ -38,12 +38,13 @@
             <div class="recurring-selector">
                 <span [ngClass]="{'text-hint' : annualBilling}"
                       (click)="annualBilling = false">
-                    Monthly
+                    MONTHLY
                 </span>
-                <mat-slide-toggle [(ngModel)]="annualBilling"></mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]="annualBilling"
+                                  [color]="'primary'"></mat-slide-toggle>
                 <span [ngClass]="{'text-hint' : !annualBilling}"
                       (click)="annualBilling = true">
-                    Yearly
+                    YEARLY
                 </span>
             </div>
 
@@ -62,12 +63,22 @@
 
                 <div class="price">
                     <span class="currency">$</span>
-                    <span class="amount">6.00</span>
+                    <span class="amount">
+                        <ng-container *ngIf="annualBilling">6.00</ng-container>
+                        <ng-container *ngIf="!annualBilling">9.00</ng-container>
+                    </span>
                 </div>
 
                 <div class="price-details text-secondary">
-                    <span>per month, billed annually</span>
-                    <span>or <b>$9.90</b> billed monthly</span>
+                    <ng-container *ngIf="annualBilling">
+                        <span>billed annually</span>
+                        <span>or <b>$9.00</b> billed monthly</span>
+                    </ng-container>
+
+                    <ng-container *ngIf="!annualBilling">
+                        <span>billed monthly</span>
+                        <span>or <b>$6.00</b> billed annually</span>
+                    </ng-container>
                 </div>
 
                 <button class="cta-button asm-mat-button-large"
@@ -78,7 +89,7 @@
 
                 <div class="features">
 
-                    <div class="title">All core features, including:</div>
+                    <div class="description">All core features, including:</div>
 
                     <div class="feature">
                         <mat-icon class="text-green icon-size-20">check</mat-icon>
@@ -121,12 +132,22 @@
 
                 <div class="price">
                     <span class="currency">$</span>
-                    <span class="amount">12.00</span>
+                    <span class="amount">
+                        <ng-container *ngIf="annualBilling">12.00</ng-container>
+                        <ng-container *ngIf="!annualBilling">15.00</ng-container>
+                    </span>
                 </div>
 
-                <div class="price-details">
-                    <span>per month, billed annually</span>
-                    <span>or <b>$15.90</b> billed monthly</span>
+                <div class="price-details text-secondary">
+                    <ng-container *ngIf="annualBilling">
+                        <span>billed annually</span>
+                        <span>or <b>$15.00</b> billed monthly</span>
+                    </ng-container>
+
+                    <ng-container *ngIf="!annualBilling">
+                        <span>billed monthly</span>
+                        <span>or <b>$12.00</b> billed annually</span>
+                    </ng-container>
                 </div>
 
                 <button class="cta-button asm-mat-button-large"
@@ -137,7 +158,7 @@
 
                 <div class="features">
 
-                    <div class="title">Everything in Free, plus:</div>
+                    <div class="description">Everything in Free, plus:</div>
 
                     <div class="feature">
                         <mat-icon class="text-green icon-size-20">check</mat-icon>
@@ -178,12 +199,22 @@
 
                 <div class="price">
                     <span class="currency">$</span>
-                    <span class="amount">49.00</span>
+                    <span class="amount">
+                        <ng-container *ngIf="annualBilling">49.00</ng-container>
+                        <ng-container *ngIf="!annualBilling">69.00</ng-container>
+                    </span>
                 </div>
 
-                <div class="price-details">
-                    <span>per month, billed annually</span>
-                    <span>or <b>$69.90</b> billed monthly</span>
+                <div class="price-details text-secondary">
+                    <ng-container *ngIf="annualBilling">
+                        <span>billed annually</span>
+                        <span>or <b>$69.00</b> billed monthly</span>
+                    </ng-container>
+
+                    <ng-container *ngIf="!annualBilling">
+                        <span>billed monthly</span>
+                        <span>or <b>$49.00</b> billed annually</span>
+                    </ng-container>
                 </div>
 
                 <button class="cta-button asm-mat-button-large"
@@ -192,9 +223,9 @@
                     Start Free Trial
                 </button>
 
-                <div class="included-features">
+                <div class="features">
 
-                    <div class="included-feature-title">Everything in Premium, plus:</div>
+                    <div class="description">Everything in Premium, plus:</div>
 
                     <div class="feature">
                         <mat-icon class="text-green icon-size-20">check</mat-icon>
@@ -335,7 +366,7 @@
                 </div>
             </div>
 
-            <div class="list">
+            <div class="grid">
 
                 <!-- Column -->
                 <div class="column">

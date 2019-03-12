@@ -17,6 +17,6 @@ export class PricingModernComponent
     constructor()
     {
         // Set the defaults
-        this.annualBilling = false;
+        this.annualBilling = true;
     }
 }

@@ -30,7 +30,7 @@ pricing-modern {
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 1280px;
+            max-width: 1200px;
 
             .header {
                 display: flex;
@@ -67,7 +67,7 @@ pricing-modern {
                     }
 
                     > span {
-                        @extend %subtitle;
+                        font-weight: bold;
                         cursor: pointer;
                         user-select: none;
                     }
@@ -81,12 +81,12 @@ pricing-modern {
             .cards {
                 position: relative;
                 display: flex;
-                flex-wrap: wrap;
                 justify-content: center;
                 margin: 0 -12px;
                 z-index: 10;
 
-                @include asm-media-breakpoint('lt-sm') {
+                @include asm-media-breakpoint('lt-lg') {
+                    flex-direction: column;
                     margin: 0;
                 }
 
@@ -99,7 +99,7 @@ pricing-modern {
                     padding: 64px 48px;
                     overflow: visible;
 
-                    @include asm-media-breakpoint('lt-sm') {
+                    @include asm-media-breakpoint('lt-lg') {
                         margin: 0 0 32px 0;
                     }
 
@@ -132,15 +132,18 @@ pricing-modern {
                     }
 
                     .price {
+                        white-space: nowrap;
 
                         .currency {
+                            position: relative;
+                            top: -2px;
                             @extend %subtitle-lg;
                             font-weight: normal;
-                            margin-right: 2px;
+                            margin-right: 4px;
                         }
 
                         .amount {
-                            @extend %title-md;
+                            @extend %title-lg;
                             font-weight: bold;
                         }
                     }
@@ -155,11 +158,11 @@ pricing-modern {
                         margin: 40px 0 48px 0;
                     }
 
-                    .included-features {
+                    .features {
                         display: flex;
                         flex-direction: column;
 
-                        .included-feature-title {
+                        .description {
                             font-weight: bold;
                             margin-bottom: 8px;
                         }
@@ -276,7 +279,7 @@ pricing-modern {
                     }
                 }
 
-                .list {
+                .grid {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: flex-start;

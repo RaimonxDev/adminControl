@@ -25,10 +25,11 @@ pricing-simple {
             }
         }
 
-        .content-container {
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
             max-width: 1200px;
 
             .header {
@@ -41,31 +42,90 @@ pricing-simple {
                 @include asm-media-breakpoint('lt-sm') {
                     margin: 48px 0 56px 0;
                 }
+
+                > .title {
+                    @extend %title-xl;
+                    text-align: center;
+                    max-width: 600px;
+                }
+
+                > .subtitle {
+                    @extend %subtitle-md;
+                    text-align: center;
+                    margin-top: 32px;
+                    max-width: 480px;
+                }
+
+                .recurring-selector {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        margin-top: 48px;
+                    }
+
+                    > span {
+                        font-weight: bold;
+                        cursor: pointer;
+                        user-select: none;
+                    }
+
+                    mat-slide-toggle {
+                        margin: 0 16px;
+                    }
+                }
             }
 
             .cards {
                 position: relative;
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin: 0 -12px;
                 z-index: 10;
+                width: 100%;
 
-                @include asm-media-breakpoint('lt-sm') {
-                    margin: 0;
+                @include asm-media-breakpoint('lt-lg') {
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 .card {
                     position: relative;
                     display: flex;
                     flex-direction: column;
-                    max-width: 384px;
-                    margin: 0 12px 32px 12px;
-                    padding: 64px 48px;
+                    flex: 1 0 auto;
+                    align-items: center;
+                    justify-content: flex-start;
+                    padding: 64px;
+                    z-index: 1;
                     overflow: visible;
 
-                    @include asm-media-breakpoint('lt-sm') {
-                        margin: 0 0 32px 0;
+                    &:nth-child(1),
+                    &:nth-child(3) {
+                        margin: 64px 0;
+                        padding: 48px 64px;
+                        max-width: 378px;
+                    }
+
+                    &:nth-child(1) {
+                        border-radius: 8px 0 0 8px;
+                    }
+
+                    &:nth-child(2) {
+                        padding: 112px 64px;
+                        z-index: 5;
+                    }
+
+                    &:nth-child(3) {
+                        border-radius: 0 8px 8px 0;
+                    }
+
+                    @include asm-media-breakpoint('lt-lg') {
+                        width: 100% !important;
+                        max-width: 384px !important;
+                        padding: 64px 48px !important;
+                        margin: 0 0 32px 0 !important;
+                        border-radius: 8px !important;
                     }
 
                     .tag {
@@ -80,34 +140,95 @@ pricing-simple {
                         border-radius: 16px;
                     }
 
-                    .divider {
-                        width: 32px;
-                        height: 4px;
+                    .title {
+                        @extend %subtitle-lg;
+                        font-weight: bold;
+                        margin-bottom: 16px;
+                    }
+
+                    .price {
+                        white-space: nowrap;
+
+                        .currency {
+                            position: relative;
+                            top: -2px;
+                            @extend %title-md;
+                            font-weight: 400;
+                            margin-right: 6px;
+                        }
+
+                        .amount {
+                            font-size: 64px;
+                            font-weight: bold;
+                        }
+
+                        .per {
+                            @extend %title-md;
+                            font-weight: bold;
+                            margin-left: 8px;
+                        }
+                    }
+
+                    .price-details {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    .features {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
                         margin: 40px 0;
-                        border-radius: 2px;
+
+                        .feature {
+                            display: flex;
+                            align-items: center;
+                            margin-top: 8px;
+
+                            &:first-child {
+                                margin-top: 0;
+                            }
+
+                            .mat-icon {
+                                margin-right: 8px;
+                            }
+                        }
+                    }
+
+                    .cta-button {
+                        min-width: 128px;
                     }
                 }
             }
 
-            .features {
+            .features-section {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 margin-top: 96px;
+                max-width: 1200px;
 
                 @include asm-media-breakpoint('lt-sm') {
                     margin-top: 72px;
                 }
 
-                .features-title {
-                    max-width: 560px;
+                .title-container {
+                    max-width: 480px;
 
-                    @include asm-media-breakpoint('lt-sm') {
-                        max-width: 384px;
+                    .title {
+                        @extend %title-md;
+                        text-align: center;
+                    }
+
+                    .subtitle {
+                        @extend %subtitle;
+                        text-align: center;
+                        margin-top: 8px;
                     }
                 }
 
-                .features-grid {
+                .grid {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: flex-start;
@@ -125,7 +246,7 @@ pricing-simple {
                             padding: 64px 0 0 0;
                         }
 
-                        .title {
+                        .title-container {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
@@ -137,21 +258,29 @@ pricing-simple {
                                 justify-content: center;
                                 border-radius: 50%;
                                 margin-bottom: 24px;
-
                                 @include asm-icon-size(22);
-
                                 width: 48px !important;
                                 height: 48px !important;
                             }
+
+                            div {
+                                @extend %subtitle;
+                                font-weight: bold;
+                            }
+                        }
+
+                        .description {
+                            @extend %subtitle;
                         }
                     }
                 }
             }
 
-            .faqs {
+            .faqs-section {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                max-width: 1200px;
                 width: 100%;
                 margin: 152px 0 32px 0;
 
@@ -159,15 +288,22 @@ pricing-simple {
                     margin: 128px 0 32px 0;
                 }
 
-                .faqs-title {
-                    max-width: 560px;
+                .title-container {
+                    max-width: 480px;
 
-                    @include asm-media-breakpoint('lt-sm') {
-                        max-width: 384px;
+                    .title {
+                        @extend %title-md;
+                        text-align: center;
+                    }
+
+                    .subtitle {
+                        @extend %subtitle;
+                        text-align: center;
+                        margin-top: 8px;
                     }
                 }
 
-                .faqs-list {
+                .grid {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: flex-start;
@@ -179,11 +315,25 @@ pricing-simple {
                         max-width: 384px;
                     }
 
-                    .faq {
+                    .column {
                         display: flex;
                         flex-direction: column;
                         margin-top: 48px;
                         max-width: 480px;
+
+                        .question {
+                            @extend %subtitle;
+                            font-weight: bold;
+                            margin: 48px 0 8px 0;
+
+                            &:first-of-type {
+                                margin-top: 0;
+                            }
+                        }
+
+                        .answer {
+                            @extend %subtitle;
+                        }
                     }
                 }
             }
