@@ -6,76 +6,73 @@
     display: flex;
     border-radius: 8px;
     overflow: hidden;
+
     @include asm-shadow(1);
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Auth cards
+    // @ Layout types
     // -----------------------------------------------------------------------------------------------------
-    &.auth {
+    &.classic {
 
         .form-container {
-            display: flex;
-            flex-direction: column;
+            width: 400px;
+            padding: 64px 56px;
+        }
+    }
+
+    // Modern
+    &.modern,
+    &.modern-reverse {
+
+        .form-container {
+            width: 416px;
+            padding: 64px;
         }
 
         .content-container {
-            display: flex;
+            width: 544px;
+            background-image: url('assets/images/pages/authentication/card-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+    // Modern relaxed
+    &.modern-relaxed,
+    &.modern-relaxed-reverse {
+
+        .form-container {
+            width: 624px;
+            padding: 64px 120px;
         }
 
-        // Classic
-        &.classic {
-
-            .form-container {
-                width: 400px;
-                padding: 64px 56px;
-            }
-        }
-
-        // Modern
-        &.modern,
-        &.modern-reverse {
-
-            .form-container {
-                width: 416px;
-                padding: 64px;
-            }
-
-            .content-container {
-                width: 544px;
-                background-image: url('assets/images/pages/authentication/card-image.jpg');
-                background-size: cover;
-                background-position: center;
-            }
-        }
-
-        // Modern relaxed
-        &.modern-relaxed,
-        &.modern-relaxed-reverse {
-
-            .form-container {
-                width: 624px;
-                padding: 64px 120px;
-            }
-
-            .content-container {
-                width: 416px;
-                background-image: url('assets/images/pages/authentication/card-image.jpg');
-                background-size: cover;
-                background-position: center;
-            }
+        .content-container {
+            width: 416px;
+            background-image: url('assets/images/pages/authentication/card-image.jpg');
+            background-size: cover;
+            background-position: center;
         }
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Card sizes
+    // @ Sizes
     // -----------------------------------------------------------------------------------------------------
     &.small {
         max-width: 320px;
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Card components
+    // @ Components
     // -----------------------------------------------------------------------------------------------------
+    .form-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-container {
+        display: flex;
+    }
+
     .title {
         font-size: 20px;
         font-weight: 800;
