@@ -33,7 +33,8 @@
                         },
                         "styles": [
                             "src/@assembly/styles/core.scss",
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "src/tailwind.scss"
                         ],
                         "scripts": []
                     },

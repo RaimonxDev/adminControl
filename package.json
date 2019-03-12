@@ -10,7 +10,8 @@
         "build:prod:mem": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "build:tw": "./node_modules/.bin/tailwind build ./src/@assembly/styles/vendors/_tailwind.scss -c ./src/app/configs/tailwind.js -o ./src/tailwind.scss"
     },
     "private": true,
     "dependencies": {
@@ -57,6 +58,7 @@
         "karma-jasmine": "1.1.2",
         "karma-jasmine-html-reporter": "0.2.2",
         "protractor": "5.4.2",
+        "tailwindcss": "0.7.4",
         "ts-node": "7.0.1",
         "tslib": "1.9.3",
         "tslint": "5.11.0",
