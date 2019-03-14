@@ -8,6 +8,7 @@
 export * from './assembly.module';
 
 // Components
+export * from './components/card/public-api';
 export * from './components/drawer/public-api';
 export * from './components/highlight/public-api';
 export * from './components/message/public-api';
