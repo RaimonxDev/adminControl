@@ -193,7 +193,10 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         {
             if ( child.children )
             {
-                return this._hasCurrentLinkInChildren(child, link);
+                if ( this._hasCurrentLinkInChildren(child, link) )
+                {
+                    return true;
+                }
             }
 
             if ( child.link === link || link.includes(child.link) )
