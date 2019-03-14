@@ -7,6 +7,11 @@
     width: 100%;
     max-width: 100%;
     min-width: 0;
+    padding: 64px;
+
+    @include asm-media-breakpoint('lt-sm') {
+        padding: 16px;
+    }
 
     // Inner scroll
     &.with-inner-scroll {
@@ -63,13 +68,17 @@
 
     // Centered content
     &.with-centered-content {
-        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
     // Column
-    &.with-columns {
+    &.with-direction-column {
         flex-direction: column;
+    }
+
+    // No padding
+    &.with-no-padding {
+        padding: 0 !important;
     }
 }

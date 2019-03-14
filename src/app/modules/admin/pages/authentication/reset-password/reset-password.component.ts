@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector     : 'auth-reset-password',
+    selector     : 'reset-password',
     templateUrl  : './reset-password.component.html',
     styleUrls    : ['./reset-password.component.scss'],
     encapsulation: ViewEncapsulation.None,

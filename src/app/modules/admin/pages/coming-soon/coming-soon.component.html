@@ -1,6 +1,6 @@
-<div class="content-layout with-centered-content">
+<div class="content-layout with-direction-column with-centered-content">
 
-    <!-- Card style selector -->
+    <!-- Card style selector - Remove this in production -->
     <mat-form-field class="mb-64"
                     [appearance]="'outline'">
         <mat-label>Card style</mat-label>
@@ -9,162 +9,90 @@
             <mat-option [value]="'classic'">Classic</mat-option>
             <mat-option [value]="'modern'">Modern</mat-option>
             <mat-option [value]="'modern-relaxed'">Modern Relaxed</mat-option>
-            <mat-option [value]="'modern-reverse'">Modern Reverse</mat-option>
-            <mat-option [value]="'modern-relaxed-reverse'">Modern Relaxed Reverse</mat-option>
+            <mat-option [value]="'modern flipped'">Modern (Flipped)</mat-option>
+            <mat-option [value]="'modern-relaxed flipped'">Modern Relaxed (Flipped)</mat-option>
         </mat-select>
     </mat-form-field>
+    <!-- / Card style selector -->
 
+    <!-- Card - Can be 'classic', 'modern', 'modern-relaxed', 'modern flipped', 'modern-relaxed flipped' -->
+    <div class="asm-card"
+         [ngClass]="cardStyle.value">
 
-    <!-- Classic | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'classic'">
+        <!-- Primary content area -->
+        <div class="primary-content">
 
-        <!-- Card -->
-        <div class="card classic">
+            <!-- Column -->
+            <div class="column">
 
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+                <!-- Logo -->
+                <div class="logo">
+                    <img class="logo-dark"
+                         src="assets/images/logo/logo-dark.svg">
+                    <img class="logo-light"
+                         src="assets/images/logo/logo-light.svg">
+                </div>
 
-        </div>
+                <!-- Title -->
+                <div class="title">Almost there!</div>
+                <div class="subtitle text-secondary">Do you want to be notified when we are ready? Register below so we can notify you about the launch!</div>
 
-    </ng-container>
+                <!-- Message -->
+                <asm-message *ngIf="message"
+                             [appearance]="'solid'"
+                             [type]="message.type"
+                             [@shake]="messageAnimationState">
+                    <div asmMessageContent>{{message.content}}</div>
+                </asm-message>
 
+                <!-- Coming soon form -->
+                <form [formGroup]="comingSoonForm"
+                      novalidate>
 
-    <!-- Modern | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern'">
+                    <!-- Email field -->
+                    <mat-form-field class="email-field"
+                                    [appearance]="'standard'">
+                        <mat-label>Email</mat-label>
+                        <input id="email"
+                               matInput
+                               [formControlName]="'email'">
+                        <mat-icon matSuffix>mail</mat-icon>
+                        <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
+                            Email is required
+                        </mat-error>
+                        <mat-error *ngIf="comingSoonForm.get('email').hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                    </mat-form-field>
 
-        <!-- Card -->
-        <div class="card modern">
+                    <!-- Register to launch list button -->
+                    <button class="register-to-launch-list-button asm-mat-button-large"
+                            mat-raised-button
+                            [color]="'primary'"
+                            [disabled]="comingSoonForm.disabled || comingSoonForm.invalid">
+                        <span *ngIf="!comingSoonForm.disabled">
+                            Register to Launch List
+                        </span>
+                        <asm-spinner *ngIf="comingSoonForm.disabled"
+                                     [appearance]="'material'"
+                                     [diameter]="24"></asm-spinner>
+                    </button>
 
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+                    <!-- Footer -->
+                    <div class="footer text-secondary">
+                        <p>You are not joining to a newsletter!</p>
+                        <p>We will only send one e-mail to above address when we launch and that's it!</p>
+                    </div>
 
-            <!-- Content container -->
-            <div class="content-container"></div>
+                </form>
 
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern relaxed | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern-relaxed'">
-
-        <!-- Card -->
-        <div class="card modern-relaxed">
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern reverse | Copy the contents of this ng-container to use this style-->
-    <ng-container *ngIf="cardStyle.value === 'modern-reverse'">
-
-        <!-- Card -->
-        <div class="card modern-reverse">
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern relaxed reverse | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern-relaxed-reverse'">
-
-        <!-- Card -->
-        <div class="card modern-relaxed-reverse">
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-        </div>
-
-    </ng-container>
-
-</div>
-
-<!-- Form template -->
-<ng-template #formTemplate>
-
-    <!-- Form container -->
-    <div class="form-container">
-
-        <!-- Logo -->
-        <div class="logo">
-            <img class="logo-dark"
-                 src="assets/images/logo/logo-dark.svg">
-            <img class="logo-light"
-                 src="assets/images/logo/logo-light.svg">
-        </div>
-
-        <!-- Title -->
-        <div class="title">Almost there!</div>
-        <div class="subtitle text-secondary">Do you want to be notified when we are ready? Register below so we can notify you about the launch!</div>
-
-        <!-- Message -->
-        <asm-message *ngIf="message"
-                     [appearance]="'solid'"
-                     [type]="message.type"
-                     [@shake]="messageAnimationState">
-            <div asmMessageContent>{{message.content}}</div>
-        </asm-message>
-
-        <!-- Coming soon form -->
-        <form [formGroup]="comingSoonForm"
-              novalidate>
-
-            <!-- Email field -->
-            <mat-form-field class="email-field"
-                            [appearance]="'standard'">
-                <mat-label>Email</mat-label>
-                <input id="email"
-                       matInput
-                       [formControlName]="'email'">
-                <mat-icon matSuffix>mail</mat-icon>
-                <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
-                    Email is required
-                </mat-error>
-                <mat-error *ngIf="comingSoonForm.get('email').hasError('email')">
-                    Please enter a valid email address
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Register to launch list button -->
-            <button class="register-to-launch-list-button asm-mat-button-large"
-                    mat-raised-button
-                    [color]="'primary'"
-                    [disabled]="comingSoonForm.disabled || comingSoonForm.invalid">
-                <span *ngIf="!comingSoonForm.disabled">
-                    Register to Launch List
-                </span>
-                <asm-spinner *ngIf="comingSoonForm.disabled"
-                             [appearance]="'material'"
-                             [diameter]="24"></asm-spinner>
-            </button>
-
-            <!-- Footer -->
-            <div class="footer text-secondary">
-                <p>You are not joining to a newsletter!</p>
-                <p>We will only send one e-mail to above address when we launch and that's it!</p>
             </div>
 
-        </form>
+        </div>
+
+        <!-- Secondary content area -->
+        <div class="secondary-content"></div>
 
     </div>
 
-</ng-template>
+</div>

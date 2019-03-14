@@ -497,10 +497,24 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/ui/angular-material'
     },
     {
+        id      : 'cards',
+        title   : 'Cards',
+        type    : 'collapsable',
+        icon    : 'web_asset',
+        children: [
+            {
+                id   : 'cards-content',
+                title: 'Content',
+                type : 'link',
+                link : '/ui/cards/content'
+            }
+        ]
+    },
+    {
         id   : 'forms',
         title: 'Forms',
         type : 'link',
-        icon : 'web_asset',
+        icon : 'ballot',
         link : '/ui/forms'
     },
     {
@@ -561,7 +575,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 type    : 'collapsable',
                 badge   : {
                     title     : '12',
-                    background: '#525e8a',
+                    background: '#525E8A',
                     color     : '#FFFFFF'
                 },
                 children: [
@@ -645,7 +659,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 type    : 'collapsable',
                 badge   : {
                     title     : '10',
-                    background: '#525e8a',
+                    background: '#525E8A',
                     color     : '#FFFFFF'
                 },
                 children: [
@@ -1015,7 +1029,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                 link : '/apps/chat',
                 badge: {
                     title     : '13',
-                    background: '#09d261',
+                    background: '#09D261',
                     color     : '#FFFFFF'
                 }
             },
@@ -1068,7 +1082,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                 icon    : 'lock',
                 badge   : {
                     title     : '10',
-                    background: '#525e8a',
+                    background: '#525E8A',
                     color     : '#FFFFFF'
                 },
                 children: [
@@ -1298,7 +1312,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                         type    : 'collapsable',
                         badge   : {
                             title     : '12',
-                            background: '#525e8a',
+                            background: '#525E8A',
                             color     : '#FFFFFF'
                         },
                         children: [
@@ -1382,7 +1396,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                         type    : 'collapsable',
                         badge   : {
                             title     : '10',
-                            background: '#525e8a',
+                            background: '#525E8A',
                             color     : '#FFFFFF'
                         },
                         children: [

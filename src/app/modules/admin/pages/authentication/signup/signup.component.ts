@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector     : 'auth-signup',
+    selector     : 'signup',
     templateUrl  : './signup.component.html',
     styleUrls    : ['./signup.component.scss'],
     encapsulation: ViewEncapsulation.None,

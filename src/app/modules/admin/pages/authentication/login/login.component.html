@@ -1,7 +1,7 @@
-<div class="content-layout with-centered-content">
+<div class="content-layout with-direction-column with-centered-content">
 
-    <!-- Card style selector -->
-    <mat-form-field class="mb-64"
+    <!-- Card style selector - Remove this in production -->
+    <mat-form-field class="mb-32"
                     [appearance]="'outline'">
         <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
@@ -9,192 +9,115 @@
             <mat-option [value]="'classic'">Classic</mat-option>
             <mat-option [value]="'modern'">Modern</mat-option>
             <mat-option [value]="'modern-relaxed'">Modern Relaxed</mat-option>
-            <mat-option [value]="'modern-reverse'">Modern Reverse</mat-option>
-            <mat-option [value]="'modern-relaxed-reverse'">Modern Relaxed Reverse</mat-option>
+            <mat-option [value]="'modern flipped'">Modern (Flipped)</mat-option>
+            <mat-option [value]="'modern-relaxed flipped'">Modern Relaxed (Flipped)</mat-option>
         </mat-select>
     </mat-form-field>
+    <!-- / Card style selector -->
 
+    <!-- Card - Can be 'classic', 'modern', 'modern-relaxed', 'modern flipped', 'modern-relaxed flipped' -->
+    <div class="asm-card"
+         [ngClass]="cardStyle.value">
 
-    <!-- Classic | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'classic'">
+        <!-- Primary content area -->
+        <div class="primary-content">
 
-        <!-- Card -->
-        <div class="card classic">
+            <!-- Logo -->
+            <div class="logo">
+                <img class="logo-dark"
+                     src="assets/images/logo/logo-dark.svg">
+                <img class="logo-light"
+                     src="assets/images/logo/logo-light.svg">
+            </div>
 
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+            <!-- Title -->
+            <div class="title">Log in to your account</div>
+            <div class="subtitle text-secondary">Welcome back!</div>
 
-        </div>
+            <!-- Message -->
+            <asm-message *ngIf="message"
+                         [appearance]="'solid'"
+                         [type]="message.type"
+                         [@shake]="messageAnimationState">
+                <div asmMessageContent>{{message.content}}</div>
+            </asm-message>
 
-    </ng-container>
+            <!-- Login form -->
+            <form [formGroup]="loginForm"
+                  novalidate>
 
+                <!-- Email field -->
+                <mat-form-field class="email-field"
+                                [appearance]="'standard'">
+                    <mat-label>Email</mat-label>
+                    <input id="email"
+                           matInput
+                           [formControlName]="'email'">
+                    <mat-icon matSuffix>mail</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('email').hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
 
-    <!-- Modern | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern'">
+                <!-- Password field -->
+                <mat-form-field class="password-field"
+                                [appearance]="'standard'">
+                    <mat-label>Password</mat-label>
+                    <input id="password"
+                           matInput
+                           type="password"
+                           [formControlName]="'password'"
+                           #passwordField>
+                    <button class="w-24 h-24"
+                            mat-icon-button
+                            (mousedown)="passwordField.type = 'text'"
+                            (mouseup)="passwordField.type = 'password'"
+                            [disableRipple]="true"
+                            tabindex="-1"
+                            matSuffix>
+                        <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                    </button>
+                    <mat-error>
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
 
-        <!-- Card -->
-        <div class="card modern">
+                <!-- Forgot password link -->
+                <div class="forgot-password-link text-secondary">
+                    <a [routerLink]="['/forgot-password']">Forgot password?</a>
+                </div>
 
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern relaxed | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern-relaxed'">
-
-        <!-- Card -->
-        <div class="card modern-relaxed">
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern reverse | Copy the contents of this ng-container to use this style-->
-    <ng-container *ngIf="cardStyle.value === 'modern-reverse'">
-
-        <!-- Card -->
-        <div class="card modern-reverse">
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern relaxed reverse | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern-relaxed-reverse'">
-
-        <!-- Card -->
-        <div class="card modern-relaxed-reverse">
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-        </div>
-
-    </ng-container>
-
-</div>
-
-<!-- Form template -->
-<ng-template #formTemplate>
-
-    <!-- Form container -->
-    <div class="form-container">
-
-        <!-- Logo -->
-        <div class="logo">
-            <img class="logo-dark"
-                 src="assets/images/logo/logo-dark.svg">
-            <img class="logo-light"
-                 src="assets/images/logo/logo-light.svg">
-        </div>
-
-        <!-- Title -->
-        <div class="title">Log in to your account</div>
-        <div class="subtitle text-secondary">Welcome back!</div>
-
-        <!-- Message -->
-        <asm-message *ngIf="message"
-                     [appearance]="'solid'"
-                     [type]="message.type"
-                     [@shake]="messageAnimationState">
-            <div asmMessageContent>{{message.content}}</div>
-        </asm-message>
-
-        <!-- Login form -->
-        <form [formGroup]="loginForm"
-              novalidate>
-
-            <!-- Email field -->
-            <mat-form-field class="email-field"
-                            [appearance]="'standard'">
-                <mat-label>Email</mat-label>
-                <input id="email"
-                       matInput
-                       [formControlName]="'email'">
-                <mat-icon matSuffix>mail</mat-icon>
-                <mat-error *ngIf="loginForm.get('email').hasError('required')">
-                    Email is required
-                </mat-error>
-                <mat-error *ngIf="loginForm.get('email').hasError('email')">
-                    Please enter a valid email address
-                </mat-error>
-            </mat-form-field>
-
-            <!-- Password field -->
-            <mat-form-field class="password-field"
-                            [appearance]="'standard'">
-                <mat-label>Password</mat-label>
-                <input id="password"
-                       matInput
-                       type="password"
-                       [formControlName]="'password'"
-                       #passwordField>
-                <button class="w-24 h-24"
-                        mat-icon-button
-                        (mousedown)="passwordField.type = 'text'"
-                        (mouseup)="passwordField.type = 'password'"
-                        [disableRipple]="true"
-                        tabindex="-1"
-                        matSuffix>
-                    <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
-                    <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                <!-- Login button -->
+                <button class="login-button asm-mat-button-large"
+                        mat-raised-button
+                        [color]="'primary'"
+                        [disabled]="loginForm.disabled || loginForm.invalid">
+                    <span *ngIf="!loginForm.disabled">
+                        Log In
+                    </span>
+                    <asm-spinner *ngIf="loginForm.disabled"
+                                 [appearance]="'material'"
+                                 [diameter]="24"></asm-spinner>
                 </button>
-                <mat-error>
-                    Password is required
-                </mat-error>
-            </mat-form-field>
 
-            <!-- Forgot password link -->
-            <div class="forgot-password-link text-secondary">
-                <a [routerLink]="['/forgot-password']">Forgot password?</a>
-            </div>
+                <!-- Create account link -->
+                <div class="create-account-link">
+                    <span>Need an account?</span>
+                    <a class="link"
+                       [routerLink]="['/pages/authentication/signup']">Create one here</a>.
+                </div>
 
-            <!-- Login button -->
-            <button class="login-button asm-mat-button-large"
-                    mat-raised-button
-                    [color]="'primary'"
-                    [disabled]="loginForm.disabled || loginForm.invalid">
-                <span *ngIf="!loginForm.disabled">
-                    Log In
-                </span>
-                <asm-spinner *ngIf="loginForm.disabled"
-                             [appearance]="'material'"
-                             [diameter]="24"></asm-spinner>
-            </button>
+            </form>
 
-            <!-- Create account link -->
-            <div class="create-account-link">
-                <span>Need an account?</span>
-                <a class="link"
-                   [routerLink]="['/signup']">Create one here</a>.
-            </div>
+        </div>
 
-        </form>
+        <!-- Secondary content area -->
+        <div class="secondary-content"></div>
 
     </div>
 
-</ng-template>
+</div>

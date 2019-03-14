@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector     : 'auth-confirmation-required',
+    selector     : 'confirmation-required',
     templateUrl  : './confirmation-required.component.html',
     styleUrls    : ['./confirmation-required.component.scss'],
     encapsulation: ViewEncapsulation.None,

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsmAnimations } from '@assembly';
 
 @Component({
-    selector     : 'auth-unlock-session',
+    selector     : 'unlock-session',
     templateUrl  : './unlock-session.component.html',
     styleUrls    : ['./unlock-session.component.scss'],
     encapsulation: ViewEncapsulation.None,

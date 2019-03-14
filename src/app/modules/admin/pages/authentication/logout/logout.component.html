@@ -1,7 +1,7 @@
-<div class="content-layout with-centered-content">
+<div class="content-layout with-direction-column with-centered-content">
 
-    <!-- Card style selector -->
-    <mat-form-field class="mb-64"
+    <!-- Card style selector - Remove this in production -->
+    <mat-form-field class="mb-32"
                     [appearance]="'outline'">
         <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
@@ -9,132 +9,55 @@
             <mat-option [value]="'classic'">Classic</mat-option>
             <mat-option [value]="'modern'">Modern</mat-option>
             <mat-option [value]="'modern-relaxed'">Modern Relaxed</mat-option>
-            <mat-option [value]="'modern-reverse'">Modern Reverse</mat-option>
-            <mat-option [value]="'modern-relaxed-reverse'">Modern Relaxed Reverse</mat-option>
+            <mat-option [value]="'modern flipped'">Modern (Flipped)</mat-option>
+            <mat-option [value]="'modern-relaxed flipped'">Modern Relaxed (Flipped)</mat-option>
         </mat-select>
     </mat-form-field>
+    <!-- / Card style selector -->
 
+    <!-- Card - Can be 'classic', 'modern', 'modern-relaxed', 'modern flipped', 'modern-relaxed flipped' -->
+    <div class="asm-card"
+         [ngClass]="cardStyle.value">
 
-    <!-- Classic | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'classic'">
+        <!-- Primary content area -->
+        <div class="primary-content">
 
-        <!-- Card -->
-        <div class="card classic">
+            <!-- Logo -->
+            <div class="logo">
+                <img class="logo-dark"
+                     src="assets/images/logo/logo-dark.svg">
+                <img class="logo-light"
+                     src="assets/images/logo/logo-light.svg">
+            </div>
 
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+            <!-- Title -->
+            <div class="title">Successfully logged out!</div>
+            <div class="subtitle text-secondary">
 
-        </div>
+                <!-- Redirect countdown -->
+                <ng-container *ngIf="countdown > 0">
+                    You will be redirected after {{countdown | i18nPlural: countdownMapping }}.
+                </ng-container>
 
-    </ng-container>
+                <!-- Redirect message -->
+                <ng-container *ngIf="countdown === 0">
+                    You are now being redirected...
+                </ng-container>
 
+            </div>
 
-    <!-- Modern | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern'">
-
-        <!-- Card -->
-        <div class="card modern">
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern relaxed | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern-relaxed'">
-
-        <!-- Card -->
-        <div class="card modern-relaxed">
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-            <!-- Content container -->
-            <div class="content-container"></div>
+            <!-- Login link -->
+            <div class="login-link">
+                <span>Go to</span>
+                <a class="link"
+                   [routerLink]="['/pages/authentication/login']">login</a>.
+            </div>
 
         </div>
 
-    </ng-container>
-
-
-    <!-- Modern reverse | Copy the contents of this ng-container to use this style-->
-    <ng-container *ngIf="cardStyle.value === 'modern-reverse'">
-
-        <!-- Card -->
-        <div class="card modern-reverse">
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-        </div>
-
-    </ng-container>
-
-
-    <!-- Modern relaxed reverse | Copy the contents of this ng-container to use this style -->
-    <ng-container *ngIf="cardStyle.value === 'modern-relaxed-reverse'">
-
-        <!-- Card -->
-        <div class="card modern-relaxed-reverse">
-
-            <!-- Content container -->
-            <div class="content-container"></div>
-
-            <!-- Form template projection -->
-            <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
-
-        </div>
-
-    </ng-container>
-
-</div>
-
-<!-- Form template -->
-<ng-template #formTemplate>
-
-    <!-- Form container -->
-    <div class="form-container">
-
-        <!-- Logo -->
-        <div class="logo">
-            <img class="logo-dark"
-                 src="assets/images/logo/logo-dark.svg">
-            <img class="logo-light"
-                 src="assets/images/logo/logo-light.svg">
-        </div>
-
-        <!-- Title -->
-        <div class="title">Successfully logged out!</div>
-        <div class="subtitle text-secondary">
-
-            <!-- Redirect countdown -->
-            <ng-container *ngIf="countdown > 0">
-                You will be redirected after {{countdown | i18nPlural: countdownMapping }}.
-            </ng-container>
-
-            <!-- Redirect message -->
-            <ng-container *ngIf="countdown === 0">
-                You are now being redirected...
-            </ng-container>
-
-        </div>
-
-        <!-- Login link -->
-        <div class="login-link">
-            <span>Go to</span>
-            <a class="link"
-               [routerLink]="['/login']">login</a>.
-        </div>
+        <!-- Secondary content area -->
+        <div class="secondary-content"></div>
 
     </div>
 
-</ng-template>
+</div>

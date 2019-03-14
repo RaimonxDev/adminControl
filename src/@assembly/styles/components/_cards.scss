@@ -1,90 +1,12 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Cards
+// @ Card
 // -----------------------------------------------------------------------------------------------------
-.card {
+.asm-card {
     position: relative;
     display: flex;
     border-radius: 8px;
     overflow: hidden;
-
     @include asm-shadow(1);
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Layout types
-    // -----------------------------------------------------------------------------------------------------
-    &.classic {
-
-        .form-container {
-            width: 400px;
-            padding: 64px 56px;
-        }
-    }
-
-    // Modern
-    &.modern,
-    &.modern-reverse {
-
-        .form-container {
-            width: 416px;
-            padding: 64px;
-        }
-
-        .content-container {
-            width: 544px;
-            background-image: url('assets/images/pages/authentication/card-image.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-    }
-
-    // Modern relaxed
-    &.modern-relaxed,
-    &.modern-relaxed-reverse {
-
-        .form-container {
-            width: 624px;
-            padding: 64px 120px;
-        }
-
-        .content-container {
-            width: 416px;
-            background-image: url('assets/images/pages/authentication/card-image.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Sizes
-    // -----------------------------------------------------------------------------------------------------
-    &.small {
-        max-width: 320px;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Components
-    // -----------------------------------------------------------------------------------------------------
-    .form-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content-container {
-        display: flex;
-    }
-
-    .title {
-        font-size: 20px;
-        font-weight: 800;
-    }
-
-    .subtitle {
-        font-size: 14px;
-    }
-
-    p {
-        font-size: 14px;
-    }
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -93,8 +15,9 @@
 @include asm-angular-material-theme {
 
     $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
-    .card {
+    .asm-card {
         background: map-get($background, card);
     }
 }
