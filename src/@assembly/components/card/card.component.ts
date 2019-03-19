@@ -10,9 +10,7 @@ import { Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@ang
 export class AsmCardComponent
 {
     // Private
-    private _appearance: 'material';
-    private _color: 'currentColor' | 'primary' | 'accent' | 'warn';
-    private _diameter: number;
+    private _flippable: boolean;
 
     /**
      * Constructor
@@ -26,9 +24,7 @@ export class AsmCardComponent
     )
     {
         // Set the defaults
-        this.appearance = 'material';
-        this.color = 'currentColor';
-        this.diameter = 32;
+        this.flippable = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -36,62 +32,36 @@ export class AsmCardComponent
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for appearance
+     * Setter and getter for flippable
      *
      * @param value
      */
     @Input()
-    set appearance(value: 'material')
+    set flippable(value: boolean)
     {
+        // If the value is the same, return...
+        if ( this._flippable === value )
+        {
+            return;
+        }
+
         // Update the class name
-        this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-spinner-appearance-' + this.appearance);
-        this._renderer2.addClass(this._elementRef.nativeElement, 'asm-spinner-appearance-' + value);
+        if ( value )
+        {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-card-flippable');
+        }
+        else
+        {
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-card-flippable');
+        }
 
         // Store the value
-        this._appearance = value;
+        this._flippable = value;
     }
 
-    get appearance(): 'material'
+    get flippable(): boolean
     {
-        return this._appearance;
-    }
-
-    /**
-     * Setter and getter for color
-     *
-     * @param value
-     */
-    @Input()
-    set color(value: 'currentColor' | 'primary' | 'accent' | 'warn')
-    {
-        // Update the class name
-        this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-spinner-color-' + this.color);
-        this._renderer2.addClass(this._elementRef.nativeElement, 'asm-spinner-color-' + value);
-
-        // Store the value
-        this._color = value;
-    }
-
-    get color(): 'currentColor' | 'primary' | 'accent' | 'warn'
-    {
-        return this._color;
-    }
-
-    /**
-     * Setter and getter for diameter
-     *
-     * @param value
-     */
-    @Input()
-    set diameter(value: number)
-    {
-        // Store the value
-        this._diameter = value;
-    }
-
-    get diameter(): number
-    {
-        return this._diameter;
+        return this._flippable;
     }
 
 }

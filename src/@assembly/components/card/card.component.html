@@ -1,1 +1,21 @@
-<ng-content></ng-content>
+<!-- Flippable card -->
+<ng-container *ngIf="flippable">
+
+    <!-- Front -->
+    <div class="asm-card-front">
+        <ng-content select="[asmCardFront]"></ng-content>
+    </div>
+
+    <!-- Back -->
+    <div class="asm-card-back">
+        <ng-content select="[asmCardBack]"></ng-content>
+    </div>
+
+</ng-container>
+
+<!-- Normal card -->
+<ng-container *ngIf="!flippable">
+
+    <ng-content></ng-content>
+
+</ng-container>

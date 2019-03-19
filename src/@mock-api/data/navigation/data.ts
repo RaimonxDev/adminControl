@@ -497,6 +497,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/ui/angular-material'
     },
     {
+        id   : 'index.ts',
+        title: 'Animations',
+        type : 'link',
+        icon : 'movie_creation',
+        link : '/ui/animations'
+    },
+    {
         id      : 'cards',
         title   : 'Cards',
         type    : 'collapsable',

@@ -53,8 +53,7 @@
     </div>
 
     <div class="asm-navigation-item-children"
-         *ngIf="!isCollapsed"
-         @expandCollapse>
+         [@expandCollapse]="isCollapsed ? 'collapsed' : 'expanded'">
 
         <ng-container *ngFor="let item of item.children; trackBy: trackById">
 

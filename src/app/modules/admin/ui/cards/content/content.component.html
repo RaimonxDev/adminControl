@@ -1,0 +1,114 @@
+<div class="content-layout with-no-padding">
+
+    <div class="container">
+
+
+        <!-- Card 01 -->
+        <asm-card class="flex flex-col max-w-320 w-full">
+            <img src="assets/images/cards/01-320x200.jpg">
+            <div class="m-32">
+                <div class="text-2xl font-extrabold leading-tight">Most beautiful and quite places to see</div>
+                <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+            </div>
+        </asm-card>
+
+
+        <!-- Card 02 -->
+        <asm-card class="flex flex-col max-w-320 w-full">
+            <img src="assets/images/cards/02-320x200.jpg">
+            <div class="m-32">
+                <div class="text-2xl font-extrabold leading-tight">Rocky mountain tops</div>
+                <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+            </div>
+        </asm-card>
+
+
+        <!-- Card 03 -->
+        <asm-card class="flex flex-col max-w-320 w-full">
+            <img src="assets/images/cards/03-320x200.jpg">
+            <div class="m-32 mb-16">
+                <div class="text-2xl font-extrabold leading-tight">Most beautiful and quite places to see</div>
+                <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                <div class="mt-12 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </asm-card>
+
+
+        <!-- Card 04 -->
+        <asm-card class="flex flex-col max-w-320 w-full">
+            <img src="assets/images/cards/04-320x200.jpg">
+            <div class="m-32 mb-16">
+                <div class="text-2xl font-extrabold leading-tight">Rocky mountain tops</div>
+                <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                <div class="mt-12 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </asm-card>
+
+
+        <!-- Card 05 -->
+        <asm-card class="flex flex-col max-w-320 w-full">
+            <img src="assets/images/cards/05-320x200.jpg">
+            <div class="m-32 mb-16">
+
+                <asm-card-panel #asmCardPanel>
+
+                    <ng-container asmCardContent>
+
+                        <div class="text-2xl font-extrabold leading-tight">Rocky mountain tops</div>
+                        <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                        <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                        <div class="flex justify-between mt-12 -mx-12">
+                            <button class="px-12"
+                                    mat-button
+                                    [color]="'primary'"
+                                    [routerLink]="['./']">
+                                Read More
+                            </button>
+                            <button class="px-12"
+                                    mat-icon-button
+                                    [color]="'primary'">
+                                <mat-icon class="icon-size-16"
+                                          *ngIf="!asmCardPanel.showDetails">
+                                    expand_more
+                                </mat-icon>
+
+                                <mat-icon class="icon-size-16"
+                                          *ngIf="asmCardPanel.showDetails">
+                                    expand_less
+                                </mat-icon>
+                            </button>
+                        </div>
+
+                    </ng-container>
+
+                    <ng-container asmCardDetails>
+
+                        This is the details pane
+
+                    </ng-container>
+
+                </asm-card-panel>
+
+            </div>
+        </asm-card>
+
+
+    </div>
+
+</div>

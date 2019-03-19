@@ -125,8 +125,32 @@ export const adminRoutes: Route[] = [
 
             // User Interface
             {
-                path        : 'ui/icons',
-                loadChildren: './ui/icons/icons.module#IconsModule'
+                path    : 'ui',
+                children: [
+
+                    // Animations
+                    {
+                        path        : 'animations',
+                        loadChildren: './ui/animations/animations.module#AnimationsModule'
+                    },
+
+                    // Cards
+                    {
+                        path    : 'cards',
+                        children: [
+                            {
+                                path        : 'content',
+                                loadChildren: './ui/cards/content/content.module#CardsContentModule'
+                            }
+                        ]
+                    },
+
+                    // Icons
+                    {
+                        path        : 'icons',
+                        loadChildren: './ui/icons/icons.module#IconsModule'
+                    }
+                ]
             },
 
             // Documentation

@@ -1,63 +1,110 @@
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
-export const fadeIn = trigger('fadeIn', [
+export const fadeIn = trigger('fadeIn',
+    [
 
-    // In
-    transition('void => *, false => true', [
-        style({
-            opacity: 0
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            opacity: 1
-        }))
-    ]),
+        // In
+        transition('void => in',
+            [
+                style({
+                    opacity: 0
+                }),
+                animate('{{timings}}',
+                    style({
+                        opacity: 1
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Top
-    transition('void => top, false => top', [
-        style({
-            opacity  : 0,
-            transform: 'translateY(-100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            opacity  : 1,
-            transform: 'translateY(0)'
-        }))
-    ]),
+        // Top
+        transition('void => top',
+            [
+                style({
+                    opacity  : 0,
+                    transform: 'translate3d(0, -100%, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        opacity  : 1,
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Right
-    transition('void => right, false => right', [
-        style({
-            opacity  : 0,
-            transform: 'translateX(100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            opacity  : 1,
-            transform: 'translateX(0)'
-        }))
-    ]),
+        // Bottom
+        transition('void => bottom',
+            [
+                style({
+                    opacity  : 0,
+                    transform: 'translate3d(0, 100%, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        opacity  : 1,
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Bottom
-    transition('void => bottom, false => bottom', [
-        style({
-            opacity  : 0,
-            transform: 'translateY(100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            opacity  : 1,
-            transform: 'translateY(0)'
-        }))
-    ]),
+        // Left
+        transition('void => left',
+            [
+                style({
+                    opacity  : 0,
+                    transform: 'translate3d(-100%, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        opacity  : 1,
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Left
-    transition('void => left, false => left', [
-        style({
-            opacity  : 0,
-            transform: 'translateX(-100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            opacity  : 1,
-            transform: 'translateX(0)'
-        }))
-    ])
-
-]);
+        // Right
+        transition('void => right',
+            [
+                style({
+                    opacity  : 0,
+                    transform: 'translate3d(100%, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        opacity  : 1,
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);

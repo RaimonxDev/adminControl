@@ -1,45 +1,83 @@
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
-export const slideIn = trigger('slideIn', [
+export const slideIn = trigger('slideIn',
+    [
 
-    // Top
-    transition('void => top, false => top', [
-        style({
-            transform: 'translateY(-100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateY(0)'
-        }))
-    ]),
+        // Top
+        transition('void => top',
+            [
+                style({
+                    transform: 'translate3d(0, -100%, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Right
-    transition('void => right, false => right', [
-        style({
-            transform: 'translateX(100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateX(0)'
-        }))
-    ]),
+        // Bottom
+        transition('void => bottom',
+            [
+                style({
+                    transform: 'translate3d(0, 100%, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Bottom
-    transition('void => bottom, false => bottom', [
-        style({
-            transform: 'translateY(100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateY(0)'
-        }))
-    ]),
+        // Left
+        transition('void => left',
+            [
+                style({
+                    transform: 'translate3d(-100%, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Left
-    transition('void => left, false => left', [
-        style({
-            transform: 'translateX(-100%)'
-        }),
-        animate('225ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateX(0)'
-        }))
-    ])
-
-]);
+        // Right
+        transition('void => right',
+            [
+                style({
+                    transform: 'translate3d(100%, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);

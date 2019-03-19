@@ -1,0 +1,10 @@
+<!-- Content -->
+<div class="asm-card-panel-content">
+    <ng-content select="[asmCardContent]"></ng-content>
+</div>
+
+<!-- Details -->
+<div class="asm-card-panel-details"
+     *ngIf="showDetails">
+    <ng-content select="[asmCardDetails]"></ng-content>
+</div>

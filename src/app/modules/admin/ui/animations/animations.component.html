@@ -1,0 +1,264 @@
+<div class="content-layout">
+
+    <div class="container">
+
+        <h1 class="title-lg">Animations</h1>
+        <div class="description">
+            <span>Assembly provides set of ready-to-use animations for convenience.</span>
+        </div>
+
+        <!-- Expand / Collapse -->
+        <div class="animation">
+
+            <h3 class="title-md">Expand / Collapse</h3>
+
+            <div class="buttons">
+
+                <button mat-stroked-button
+                        [color]="'primary'"
+                        (click)="animationStates.expandCollapse === 'expanded' ? animationStates.expandCollapse = 'collapsed' : animationStates.expandCollapse = 'expanded'">
+                    Animate using state
+                </button>
+
+                <button mat-stroked-button
+                        [color]="'primary'"
+                        (click)="visibilityStates.expandCollapse = !visibilityStates.expandCollapse">
+                    Animate using *ngIf
+                </button>
+
+            </div>
+
+            <div class="animated-box-area">
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.expandCollapse"
+                     [@expandCollapse]="animationStates.expandCollapse">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Shake -->
+        <div class="animation">
+
+            <h3 class="title-md">Shake</h3>
+
+            <div class="buttons">
+
+                <button mat-stroked-button
+                        [color]="'primary'"
+                        (click)="toggleAnimationState('shake', false, true, 0)">
+                    Animate using state
+                </button>
+
+                <button mat-stroked-button
+                        [color]="'primary'"
+                        (click)="toggleVisibilityState('shake')">
+                    Animate using *ngIf
+                </button>
+
+            </div>
+
+            <div class="animated-box-area">
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.shake"
+                     [@shake]="animationStates.shake">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Fade In -->
+        <div class="animation">
+
+            <h3 class="title-md">Fade In</h3>
+
+            <mat-form-field [appearance]="'fill'">
+                <mat-label>From</mat-label>
+                <mat-select [(value)]="animationStates.fadeIn"
+                            (valueChange)="animationStates.fadeIn = fadeInSelector.value"
+                            #fadeInSelector>
+                    <mat-option [value]="'in'">In</mat-option>
+                    <mat-option [value]="'top'">Top</mat-option>
+                    <mat-option [value]="'bottom'">Bottom</mat-option>
+                    <mat-option [value]="'left'">Left</mat-option>
+                    <mat-option [value]="'right'">Right</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="animated-box-area">
+
+                <div class="info">Click on the box to animate</div>
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.fadeIn"
+                     (click)="toggleVisibilityState('fadeIn')"
+                     [@fadeIn]="animationStates.fadeIn">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Fade Out -->
+        <div class="animation">
+
+            <h3 class="title-md">Fade Out</h3>
+
+            <mat-form-field [appearance]="'fill'">
+                <mat-label>From</mat-label>
+                <mat-select [(value)]="animationStates.fadeOut"
+                            (valueChange)="animationStates.fadeOut = fadeOutSelector.value"
+                            #fadeOutSelector>
+                    <mat-option [value]="'out'">Out</mat-option>
+                    <mat-option [value]="'top'">Top</mat-option>
+                    <mat-option [value]="'bottom'">Bottom</mat-option>
+                    <mat-option [value]="'left'">Left</mat-option>
+                    <mat-option [value]="'right'">Right</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="animated-box-area">
+
+                <div class="info">Click on the box to animate</div>
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.fadeOut"
+                     (click)="toggleVisibilityState('fadeOut', 700)"
+                     [@fadeOut]="animationStates.fadeOut">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Slide In -->
+        <div class="animation">
+
+            <h3 class="title-md">Slide In</h3>
+
+            <mat-form-field [appearance]="'fill'">
+                <mat-label>From</mat-label>
+                <mat-select [(value)]="animationStates.slideIn"
+                            (valueChange)="animationStates.slideIn = slideInSelector.value"
+                            #slideInSelector>
+                    <mat-option [value]="'top'">Top</mat-option>
+                    <mat-option [value]="'bottom'">Bottom</mat-option>
+                    <mat-option [value]="'left'">Left</mat-option>
+                    <mat-option [value]="'right'">Right</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="animated-box-area">
+
+                <div class="info">Click on the box to animate</div>
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.slideIn"
+                     (click)="toggleVisibilityState('slideIn')"
+                     [@slideIn]="animationStates.slideIn">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Slide Out -->
+        <div class="animation">
+
+            <h3 class="title-md">Slide Out</h3>
+
+            <mat-form-field [appearance]="'fill'">
+                <mat-label>From</mat-label>
+                <mat-select [(value)]="animationStates.slideOut"
+                            (valueChange)="animationStates.slideOut = slideOutSelector.value"
+                            #slideOutSelector>
+                    <mat-option [value]="'top'">Top</mat-option>
+                    <mat-option [value]="'bottom'">Bottom</mat-option>
+                    <mat-option [value]="'left'">Left</mat-option>
+                    <mat-option [value]="'right'">Right</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="animated-box-area">
+
+                <div class="info">Click on the box to animate</div>
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.slideOut"
+                     (click)="toggleVisibilityState('slideOut', 700)"
+                     [@slideOut]="animationStates.slideOut">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Zoom In -->
+        <div class="animation">
+
+            <h3 class="title-md">Zoom In</h3>
+
+            <div class="animated-box-area">
+
+                <div class="info">Click on the box to animate</div>
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.zoomIn"
+                     (click)="toggleVisibilityState('zoomIn', 700)"
+                     [@zoomIn]="animationStates.zoomIn">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Zoom Out -->
+        <div class="animation">
+
+            <h3 class="title-md">Zoom Out</h3>
+
+            <div class="animated-box-area">
+
+                <div class="info">Click on the box to animate</div>
+
+                <div class="animated-box"
+                     *ngIf="visibilityStates.zoomOut"
+                     (click)="toggleVisibilityState('zoomOut', 700)"
+                     [@zoomOut]="animationStates.zoomOut">
+                    <div class="animated-box-content">
+                        Animated box
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

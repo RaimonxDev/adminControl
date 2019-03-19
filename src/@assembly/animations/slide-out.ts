@@ -1,45 +1,83 @@
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
-export const slideOut = trigger('slideOut', [
+export const slideOut = trigger('slideOut',
+    [
 
-    // Top
-    transition('top => void, top => false', [
-        style({
-            transform: 'translateY(0)'
-        }),
-        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateY(-100%)'
-        }))
-    ]),
+        // Top
+        transition('top => void',
+            [
+                style({
+                    transform: 'translate3d(0, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, -100%, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Right
-    transition('right => void, right => false', [
-        style({
-            transform: 'translateX(0)'
-        }),
-        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateX(100%)'
-        }))
-    ]),
+        // Bottom
+        transition('bottom => void',
+            [
+                style({
+                    transform: 'translate3d(0, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 100%, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Bottom
-    transition('bottom => void, bottom => false', [
-        style({
-            transform: 'translateY(0)'
-        }),
-        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateY(100%)'
-        }))
-    ]),
+        // Left
+        transition('left => void',
+            [
+                style({
+                    transform: 'translate3d(0, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(-100%, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        ),
 
-    // Left
-    transition('left => void, left => false', [
-        style({
-            transform: 'translateX(0)'
-        }),
-        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-            transform: 'translateX(-100%)'
-        }))
-    ])
-
-]);
+        // Right
+        transition('right => void',
+            [
+                style({
+                    transform: 'translate3d(0, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(100%, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);

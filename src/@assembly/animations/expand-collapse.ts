@@ -1,22 +1,34 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
-export const
-    expandCollapse =
-        trigger('expandCollapse', [
+export const expandCollapse = trigger('expandCollapse', [
 
-            // Collapsed
-            state('void, collapsed', style({
-                height : '0px',
-                display: 'none'
-            })),
+    /**
+     * Collapsed state
+     */
+    state('void, collapsed',
+        style({
+            height : '0',
+            display: 'none'
+        })
+    ),
 
-            // Expanded
-            state('*, expanded', style({
-                height : '*',
-                display: '*'
-            })),
+    /**
+     * Expanded state
+     */
+    state('*, expanded',
+        style('*')
+    ),
 
-            // Transitions
-            transition('void <=> *', animate('225ms cubic-bezier(0.4, 0, 0.2, 1)')),
-            transition('collapsed <=> expanded', animate('225ms cubic-bezier(0.4, 0, 0.2, 1)'))
-        ]);
+    /**
+     * Expand / Collapse
+     */
+    transition('void <=> *, collapsed <=> expanded',
+        animate('{{timings}}'),
+        {
+            params: {
+                timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+            }
+        }
+    )
+]);
