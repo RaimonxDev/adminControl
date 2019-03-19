@@ -47,7 +47,7 @@ export class AsmHighlightComponent implements OnInit
     set code(value: string | null)
     {
         // If the value is the same, return...
-        if ( this.code === value )
+        if ( this._code === value )
         {
             return;
         }
@@ -71,7 +71,7 @@ export class AsmHighlightComponent implements OnInit
     set lang(value: string | null)
     {
         // If the value is the same, return...
-        if ( this.lang === value )
+        if ( this._lang === value )
         {
             return;
         }

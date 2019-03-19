@@ -128,8 +128,9 @@ pre {
 // @ Helpers
 // -----------------------------------------------------------------------------------------------------
 
-// Ling
+// Link
 .link {
+    cursor: pointer;
 
     &:hover {
         text-decoration: underline;
@@ -152,6 +153,34 @@ pre {
         background: #F7F49A;
         pointer-events: none;
     }
+}
+
+.title {
+    @extend %title;
+}
+
+.title-md {
+    @extend %title-md;
+}
+
+.title-lg {
+    @extend %title-lg;
+}
+
+.title-xl {
+    @extend %title-xl;
+}
+
+.subtitle {
+    @extend %subtitle;
+}
+
+.subtitle-md {
+    @extend %subtitle-md;
+}
+
+.subtitle-lg {
+    @extend %subtitle-lg
 }
 
 // -----------------------------------------------------------------------------------------------------
