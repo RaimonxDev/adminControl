@@ -1,38 +1,104 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
-export const fadeOut = trigger('fadeOut',
+// -----------------------------------------------------------------------------------------------------
+// @ Slide in
+// -----------------------------------------------------------------------------------------------------
+const slideIn = trigger('slideIn',
     [
 
-        // Out
-        transition('out => void',
+        // Top
+        transition('void => top',
             [
                 style({
-                    opacity: 1
+                    transform: 'translate3d(0, -100%, 0)'
                 }),
                 animate('{{timings}}',
                     style({
-                        opacity: 0
+                        transform: 'translate3d(0, 0, 0)'
                     })
                 )
             ],
             {
                 params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
                 }
             }
         ),
+
+        // Bottom
+        transition('void => bottom',
+            [
+                style({
+                    transform: 'translate3d(0, 100%, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
+
+        // Left
+        transition('void => left',
+            [
+                style({
+                    transform: 'translate3d(-100%, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        ),
+
+        // Right
+        transition('void => right',
+            [
+                style({
+                    transform: 'translate3d(100%, 0, 0)'
+                }),
+                animate('{{timings}}',
+                    style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })
+                )
+            ],
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Slide out
+// -----------------------------------------------------------------------------------------------------
+const slideOut = trigger('slideOut',
+    [
 
         // Top
         transition('top => void',
             [
                 style({
-                    opacity  : 1,
                     transform: 'translate3d(0, 0, 0)'
                 }),
                 animate('{{timings}}',
                     style({
-                        opacity  : 0,
                         transform: 'translate3d(0, -100%, 0)'
                     })
                 )
@@ -48,12 +114,10 @@ export const fadeOut = trigger('fadeOut',
         transition('bottom => void',
             [
                 style({
-                    opacity  : 1,
                     transform: 'translate3d(0, 0, 0)'
                 }),
                 animate('{{timings}}',
                     style({
-                        opacity  : 0,
                         transform: 'translate3d(0, 100%, 0)'
                     })
                 )
@@ -69,12 +133,10 @@ export const fadeOut = trigger('fadeOut',
         transition('left => void',
             [
                 style({
-                    opacity  : 1,
                     transform: 'translate3d(0, 0, 0)'
                 }),
                 animate('{{timings}}',
                     style({
-                        opacity  : 0,
                         transform: 'translate3d(-100%, 0, 0)'
                     })
                 )
@@ -90,12 +152,10 @@ export const fadeOut = trigger('fadeOut',
         transition('right => void',
             [
                 style({
-                    opacity  : 1,
                     transform: 'translate3d(0, 0, 0)'
                 }),
                 animate('{{timings}}',
                     style({
-                        opacity  : 0,
                         transform: 'translate3d(100%, 0, 0)'
                     })
                 )
@@ -108,3 +168,5 @@ export const fadeOut = trigger('fadeOut',
         )
     ]
 );
+
+export { slideIn, slideOut };
