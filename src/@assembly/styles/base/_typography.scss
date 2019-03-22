@@ -112,6 +112,25 @@ dl {
     }
 }
 
+// Fieldset
+fieldset {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    padding-block-start: 0;
+    padding-block-end: 0;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 24px;
+
+    legend {
+        padding: 0 8px;
+        margin-left: -8px;
+    }
+}
+
 // Mark
 mark {
     background: #F7F49A;
@@ -188,12 +207,11 @@ pre {
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme {
 
+    $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Code
-    // -----------------------------------------------------------------------------------------------------
+    // Code
     code:not([class*='language-']) {
 
         @if ($is-dark) {
@@ -203,6 +221,11 @@ pre {
             color: #728FCB;
             background: #E3E7F1;
         }
+    }
+
+    // Fieldset
+    fieldset {
+        border-color: map-get($foreground, divider);
     }
 
     // -----------------------------------------------------------------------------------------------------
