@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
 // -----------------------------------------------------------------------------------------------------
@@ -6,103 +6,135 @@ import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/
 // -----------------------------------------------------------------------------------------------------
 const fadeIn = trigger('fadeIn',
     [
+        state('void',
+            style({
+                opacity: 0
+            })
+        ),
 
-        // In
-        transition('void => in',
-            [
-                style({
-                    opacity: 0
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity: 1
-                    })
-                )
-            ],
+        state('*',
+            style({
+                opacity: 1
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
                 }
             }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fade in top
+// -----------------------------------------------------------------------------------------------------
+const fadeInTop = trigger('fadeInTop',
+    [
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(0, -100%, 0)'
+            })
         ),
 
-        // Top
-        transition('void => top',
-            [
-                style({
-                    opacity  : 0,
-                    transform: 'translate3d(0, -100%, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 1,
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
                 }
             }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fade in bottom
+// -----------------------------------------------------------------------------------------------------
+const fadeInBottom = trigger('fadeInBottom',
+    [
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(0, 100%, 0)'
+            })
         ),
 
-        // Bottom
-        transition('void => bottom',
-            [
-                style({
-                    opacity  : 0,
-                    transform: 'translate3d(0, 100%, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 1,
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
                 }
             }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fade in left
+// -----------------------------------------------------------------------------------------------------
+const fadeInLeft = trigger('fadeInLeft',
+    [
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(-100%, 0, 0)'
+            })
         ),
 
-        // Left
-        transition('void => left',
-            [
-                style({
-                    opacity  : 0,
-                    transform: 'translate3d(-100%, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 1,
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
                 }
             }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fade in right
+// -----------------------------------------------------------------------------------------------------
+const fadeInRight = trigger('fadeInRight',
+    [
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(100%, 0, 0)'
+            })
         ),
 
-        // Right
-        transition('void => right',
-            [
-                style({
-                    opacity  : 0,
-                    transform: 'translate3d(100%, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 1,
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
@@ -117,103 +149,19 @@ const fadeIn = trigger('fadeIn',
 // -----------------------------------------------------------------------------------------------------
 const fadeOut = trigger('fadeOut',
     [
-
-        // Out
-        transition('out => void',
-            [
-                style({
-                    opacity: 1
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity: 0
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
-                }
-            }
+        state('*',
+            style({
+                opacity: 1
+            })
         ),
 
-        // Top
-        transition('top => void',
-            [
-                style({
-                    opacity  : 1,
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 0,
-                        transform: 'translate3d(0, -100%, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
-                }
-            }
+        state('void',
+            style({
+                opacity: 0
+            })
         ),
 
-        // Bottom
-        transition('bottom => void',
-            [
-                style({
-                    opacity  : 1,
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 0,
-                        transform: 'translate3d(0, 100%, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
-                }
-            }
-        ),
-
-        // Left
-        transition('left => void',
-            [
-                style({
-                    opacity  : 1,
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 0,
-                        transform: 'translate3d(-100%, 0, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
-                }
-            }
-        ),
-
-        // Right
-        transition('right => void',
-            [
-                style({
-                    opacity  : 1,
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 0,
-                        transform: 'translate3d(100%, 0, 0)'
-                    })
-                )
-            ],
+        transition('* => void', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
@@ -223,4 +171,120 @@ const fadeOut = trigger('fadeOut',
     ]
 );
 
-export { fadeIn, fadeOut };
+// -----------------------------------------------------------------------------------------------------
+// @ Fade out top
+// -----------------------------------------------------------------------------------------------------
+const fadeOutTop = trigger('fadeOutTop',
+    [
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(0, -100%, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fade out bottom
+// -----------------------------------------------------------------------------------------------------
+const fadeOutBottom = trigger('fadeOutBottom',
+    [
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(0, 100%, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fade out left
+// -----------------------------------------------------------------------------------------------------
+const fadeOutLeft = trigger('fadeOutLeft',
+    [
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(-100%, 0, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fade out right
+// -----------------------------------------------------------------------------------------------------
+const fadeOutRight = trigger('fadeOutRight',
+    [
+        state('*',
+            style({
+                opacity: 1,
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                opacity: 0,
+                transform: 'translate3d(100%, 0, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+export { fadeIn, fadeInTop, fadeInBottom, fadeInLeft, fadeInRight, fadeOut, fadeOutTop, fadeOutBottom, fadeOutLeft, fadeOutRight };

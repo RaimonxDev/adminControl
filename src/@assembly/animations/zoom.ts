@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
 // -----------------------------------------------------------------------------------------------------
@@ -7,20 +7,21 @@ import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/
 const zoomIn = trigger('zoomIn',
     [
 
-        // In
-        transition('void => *',
-            [
-                style({
-                    opacity  : 0,
-                    transform: 'scale(0.5)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 1,
-                        transform: 'scale(1)'
-                    })
-                )
-            ],
+        state('void',
+            style({
+                opacity  : 0,
+                transform: 'scale(0.5)'
+            })
+        ),
+
+        state('*',
+            style({
+                opacity  : 1,
+                transform: 'scale(1)'
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
@@ -36,20 +37,21 @@ const zoomIn = trigger('zoomIn',
 const zoomOut = trigger('zoomOut',
     [
 
-        // Out
-        transition('* => void',
-            [
-                style({
-                    opacity  : 1,
-                    transform: 'scale(1)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        opacity  : 0,
-                        transform: 'scale(0.5)'
-                    })
-                )
-            ],
+        state('*',
+            style({
+                opacity  : 1,
+                transform: 'scale(1)'
+            })
+        ),
+
+        state('void',
+            style({
+                opacity  : 0,
+                transform: 'scale(0.5)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`

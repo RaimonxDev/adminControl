@@ -20,16 +20,26 @@ animations {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                max-width: 480px;
-                text-align: center;
+                max-width: 560px;
                 font-weight: 600;
-                margin-bottom: 32px;
+                margin-bottom: 16px;
 
                 span {
                     margin-bottom: 6px;
 
                     &:last-child {
                         margin-bottom: 0;
+                    }
+
+                }
+
+                ol {
+                    margin: 16px 0 6px 0;
+                    padding-inline-start: 1em;
+
+                    li {
+                        margin-bottom: 16px;
+                        line-height: 1.8;
                     }
                 }
             }
@@ -38,71 +48,103 @@ animations {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
                 margin: 32px 0 64px 0;
                 width: 100%;
 
-                .buttons {
+                .preview {
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
-                    justify-content: center;
-                    margin: 0 0 24px 0;
+                    max-width: 640px;
+                    width: 100%;
+                    margin-bottom: 32px;
 
-                    button {
-                        margin-right: 16px;
+                    .animated-box-area {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        min-height: 360px;
+                        max-height: 360px;
+                        height: 360px;
+                        padding: 120px 80px;
+                        border-radius: 8px;
+                        overflow: hidden;
 
-                        &:last-child {
-                            margin-right: 0;
+                        .info {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            left: 0;
+                            padding: 8px 12px;
+                            font-size: 12px;
+                            font-weight: 600;
+                            text-align: center;
+                            z-index: 10;
+                        }
+
+                        .animated-box {
+                            width: 120px;
+                            height: 120px;
+                            overflow: hidden;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            user-select: none;
+
+                            .animated-box-content {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                flex: 1 0 auto;
+                                height: 100%;
+                                text-align: center;
+                                font-size: 11px;
+                                font-weight: 900;
+                            }
                         }
                     }
                 }
 
-                .animated-box-area {
-                    position: relative;
+                .details {
                     display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
                     justify-content: center;
-                    width: 100%;
                     max-width: 640px;
-                    min-height: 360px;
-                    padding: 120px 80px;
-                    margin-top: 24px;
-                    border-radius: 8px;
-                    overflow: hidden;
+                    width: 100%;
 
-                    .info {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        left: 0;
-                        padding: 8px 12px;
-                        font-size: 12px;
-                        font-weight: 600;
-                        text-align: center;
-                        z-index: 10;
-                    }
+                    fieldset {
+                        margin-bottom: 32px;
+                        padding: 8px 24px;
 
-                    + .description {
-                        margin-top: 64px;
-                    }
-
-                    .animated-box {
-                        width: 120px;
-                        height: 120px;
-                        overflow: hidden;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        user-select: none;
-
-                        .animated-box-content {
+                        .fieldset-content {
                             display: flex;
+                            flex-direction: column;
                             align-items: center;
-                            justify-content: center;
-                            flex: 1 0 auto;
-                            height: 100%;
-                            text-align: center;
-                            font-size: 11px;
-                            font-weight: 900;
+
+                            .mat-form-field {
+
+                            }
+
+                            .buttons {
+                                display: flex;
+                                margin: 8px 0 24px 0;
+
+                                button {
+                                    margin-right: 16px;
+
+                                    &:last-child {
+                                        margin-right: 0;
+                                    }
+                                }
+                            }
                         }
+                    }
+
+                    .description {
+                        align-items: flex-start;
+                        margin-bottom: 0;
+                        max-width: none;
                     }
                 }
             }
@@ -125,26 +167,29 @@ animations {
             .container {
 
                 .description {
-
-                    span {
-                        color: map-get($foreground, secondary-text)
-                    }
+                    color: map-get($foreground, secondary-text)
                 }
 
-                .animated-box-area {
-                    background: mat-color($mat-blue-grey, 100);
+                .animation {
 
-                    .info {
-                        background: mat-color($mat-blue-grey, 200);
-                        color: map-get($foreground, secondary-text);
-                    }
+                    .preview {
 
-                    .animated-box {
-                        background: map-get($background, card);
-                        @include asm-shadow(1);
+                        .animated-box-area {
+                            background: mat-color($mat-blue-grey, 100);
 
-                        .animated-box-content {
-                            color: map-get($foreground, secondary-text);
+                            .info {
+                                background: mat-color($mat-blue-grey, 200);
+                                color: map-get($foreground, secondary-text);
+                            }
+
+                            .animated-box {
+                                background: map-get($background, card);
+                                @include asm-shadow(1);
+
+                                .animated-box-content {
+                                    color: map-get($foreground, secondary-text);
+                                }
+                            }
                         }
                     }
                 }

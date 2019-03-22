@@ -1,9 +1,10 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
-export const shake = trigger('shake',
+// -----------------------------------------------------------------------------------------------------
+// @ Shake
+// -----------------------------------------------------------------------------------------------------
+const shake = trigger('shake',
     [
-
-        // Shake
         transition('void => *, * => true',
             [
                 animate('{{timings}}',
@@ -54,11 +55,14 @@ export const shake = trigger('shake',
                         })
                     ])
                 )
-            ], {
+            ],
+            {
                 params: {
                     timings: '0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955)'
                 }
             }
         )
+    ]
+);
 
-    ]);
+export { shake };

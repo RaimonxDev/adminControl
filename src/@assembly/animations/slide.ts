@@ -1,81 +1,24 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AsmAnimationCurves, AsmAnimationDurations } from '@assembly/animations/defaults';
 
 // -----------------------------------------------------------------------------------------------------
-// @ Slide in
+// @ Slide in top
 // -----------------------------------------------------------------------------------------------------
-const slideIn = trigger('slideIn',
+const slideInTop = trigger('slideInTop',
     [
-
-        // Top
-        transition('void => top',
-            [
-                style({
-                    transform: 'translate3d(0, -100%, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
-                }
-            }
+        state('void',
+            style({
+                transform: 'translate3d(0, -100%, 0)'
+            })
         ),
 
-        // Bottom
-        transition('void => bottom',
-            [
-                style({
-                    transform: 'translate3d(0, 100%, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
-                }
-            }
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
         ),
 
-        // Left
-        transition('void => left',
-            [
-                style({
-                    transform: 'translate3d(-100%, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
-                }
-            }
-        ),
-
-        // Right
-        transition('void => right',
-            [
-                style({
-                    transform: 'translate3d(100%, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(0, 0, 0)'
-                    })
-                )
-            ],
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
@@ -86,80 +29,104 @@ const slideIn = trigger('slideIn',
 );
 
 // -----------------------------------------------------------------------------------------------------
-// @ Slide out
+// @ Slide in bottom
 // -----------------------------------------------------------------------------------------------------
-const slideOut = trigger('slideOut',
+const slideInBottom = trigger('slideInBottom',
     [
-
-        // Top
-        transition('top => void',
-            [
-                style({
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(0, -100%, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
-                }
-            }
+        state('void',
+            style({
+                transform: 'translate3d(0, 100%, 0)'
+            })
         ),
 
-        // Bottom
-        transition('bottom => void',
-            [
-                style({
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(0, 100%, 0)'
-                    })
-                )
-            ],
-            {
-                params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
-                }
-            }
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
         ),
 
-        // Left
-        transition('left => void',
-            [
-                style({
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(-100%, 0, 0)'
-                    })
-                )
-            ],
+        transition('void => *', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
                 }
             }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Slide in left
+// -----------------------------------------------------------------------------------------------------
+const slideInLeft = trigger('slideInLeft',
+    [
+        state('void',
+            style({
+                transform: 'translate3d(-100%, 0, 0)'
+            })
         ),
 
-        // Right
-        transition('right => void',
-            [
-                style({
-                    transform: 'translate3d(0, 0, 0)'
-                }),
-                animate('{{timings}}',
-                    style({
-                        transform: 'translate3d(100%, 0, 0)'
-                    })
-                )
-            ],
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Slide in right
+// -----------------------------------------------------------------------------------------------------
+const slideInRight = trigger('slideInRight',
+    [
+        state('void',
+            style({
+                transform: 'translate3d(100%, 0, 0)'
+            })
+        ),
+
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        transition('void => *', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.ENTERING} ${AsmAnimationCurves.DECELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Slide out top
+// -----------------------------------------------------------------------------------------------------
+const slideOutTop = trigger('slideOutTop',
+    [
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                transform: 'translate3d(0, -100%, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
             {
                 params: {
                     timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
@@ -169,4 +136,85 @@ const slideOut = trigger('slideOut',
     ]
 );
 
-export { slideIn, slideOut };
+// -----------------------------------------------------------------------------------------------------
+// @ Slide out bottom
+// -----------------------------------------------------------------------------------------------------
+const slideOutBottom = trigger('slideOutBottom',
+    [
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                transform: 'translate3d(0, 100%, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Slide out left
+// -----------------------------------------------------------------------------------------------------
+const slideOutLeft = trigger('slideOutLeft',
+    [
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                transform: 'translate3d(-100%, 0, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Slide out right
+// -----------------------------------------------------------------------------------------------------
+const slideOutRight = trigger('slideOutRight',
+    [
+        state('*',
+            style({
+                transform: 'translate3d(0, 0, 0)'
+            })
+        ),
+
+        state('void',
+            style({
+                transform: 'translate3d(100%, 0, 0)'
+            })
+        ),
+
+        transition('* => void', animate('{{timings}}'),
+            {
+                params: {
+                    timings: `${AsmAnimationDurations.EXITING} ${AsmAnimationCurves.ACCELERATION_CURVE}`
+                }
+            }
+        )
+    ]
+);
+
+export { slideInTop, slideInBottom, slideInLeft, slideInRight, slideOutTop, slideOutBottom, slideOutLeft, slideOutRight };

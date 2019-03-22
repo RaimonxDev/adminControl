@@ -10,8 +10,8 @@
 <div class="asm-search-container"
      *ngIf="appearance === 'basic' || (appearance !== 'basic' && opened)"
      [@.disabled]="appearance === 'basic'"
-     [@slideIn]="'top'"
-     [@slideOut]="'top'">
+     @slideInTop
+     @slideOutTop>
 
     <mat-form-field class="asm-search-input asm-mat-simplify asm-mat-dense asm-mat-no-label asm-mat-no-subscript"
                     [appearance]="'outline'"

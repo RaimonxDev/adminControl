@@ -21,13 +21,45 @@ export class AnimationsComponent
         // Set the defaults
         this.animationStates = {
             expandCollapse: 'expanded',
-            fadeIn        : 'in',
-            fadeOut       : 'out',
-            shake         : true,
-            slideIn       : 'top',
-            slideOut      : 'top',
-            zoomIn        : true,
-            zoomOut       : true
+            fadeIn        : {
+                direction: 'in',
+                in       : '*',
+                top      : '*',
+                bottom   : '*',
+                left     : '*',
+                right    : '*'
+            },
+            fadeOut       : {
+                direction: 'out',
+                out      : '*',
+                top      : '*',
+                bottom   : '*',
+                left     : '*',
+                right    : '*'
+            },
+            shake         : {
+                shake: true
+            },
+            slideIn       : {
+                direction: 'top',
+                top      : '*',
+                bottom   : '*',
+                left     : '*',
+                right    : '*'
+            },
+            slideOut      : {
+                direction: 'top',
+                top      : '*',
+                bottom   : '*',
+                left     : '*',
+                right    : '*'
+            },
+            zoomIn        : {
+                in: '*'
+            },
+            zoomOut       : {
+                out: '*'
+            }
         };
 
         this.visibilityStates = {
@@ -50,15 +82,20 @@ export class AnimationsComponent
      * Toggle animation state
      *
      * @param animation
+     * @param firstState
+     * @param secondState
      * @param timeout
      */
     toggleAnimationState(animation, firstState, secondState, timeout = 500): void
     {
+        // Split the animation
+        animation = animation.split('.');
+
         // Toggle the animation state
-        this.animationStates[animation] = firstState;
+        this.animationStates[animation[0]][animation[1]] = firstState;
 
         setTimeout(() => {
-            this.animationStates[animation] = secondState;
+            this.animationStates[animation[0]][animation[1]] = secondState;
         }, timeout);
     }
 
@@ -70,11 +107,16 @@ export class AnimationsComponent
      */
     toggleVisibilityState(animation, timeout = 500): void
     {
+        // Split the animation
+        animation = animation.split('.');
+
         // Toggle the visibility status
-        this.visibilityStates[animation] = false;
+        this.visibilityStates[animation[0]] = false;
+        this.animationStates[animation[0]][animation[1]] = 'void';
 
         setTimeout(() => {
-            this.visibilityStates[animation] = true;
+            this.visibilityStates[animation[0]] = true;
+            this.animationStates[animation[0]][animation[1]] = '*';
         }, timeout);
     }
 }
