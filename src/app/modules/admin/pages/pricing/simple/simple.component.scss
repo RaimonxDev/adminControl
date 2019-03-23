@@ -222,7 +222,7 @@ pricing-simple {
                     }
 
                     .subtitle {
-                        @extend %subtitle;
+                        @extend %subtitle-base;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -264,13 +264,13 @@ pricing-simple {
                             }
 
                             div {
-                                @extend %subtitle;
+                                @extend %subtitle-base;
                                 font-weight: bold;
                             }
                         }
 
                         .description {
-                            @extend %subtitle;
+                            @extend %subtitle-base;
                         }
                     }
                 }
@@ -297,7 +297,7 @@ pricing-simple {
                     }
 
                     .subtitle {
-                        @extend %subtitle;
+                        @extend %subtitle-base;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -322,7 +322,7 @@ pricing-simple {
                         max-width: 480px;
 
                         .question {
-                            @extend %subtitle;
+                            @extend %subtitle-base;
                             font-weight: bold;
                             margin: 48px 0 8px 0;
 
@@ -332,7 +332,7 @@ pricing-simple {
                         }
 
                         .answer {
-                            @extend %subtitle;
+                            @extend %subtitle-base;
                         }
                     }
                 }

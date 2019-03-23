@@ -120,7 +120,7 @@ pricing-modern {
                     }
 
                     .subtitle {
-                        @extend %subtitle;
+                        @extend %subtitle-base;
                         margin-top: 8px;
                     }
 
@@ -199,7 +199,7 @@ pricing-modern {
                     }
 
                     .subtitle {
-                        @extend %subtitle;
+                        @extend %subtitle-base;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -241,13 +241,13 @@ pricing-modern {
                             }
 
                             div {
-                                @extend %subtitle;
+                                @extend %subtitle-base;
                                 font-weight: bold;
                             }
                         }
 
                         .description {
-                            @extend %subtitle;
+                            @extend %subtitle-base;
                         }
                     }
                 }
@@ -273,7 +273,7 @@ pricing-modern {
                     }
 
                     .subtitle {
-                        @extend %subtitle;
+                        @extend %subtitle-base;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -298,7 +298,7 @@ pricing-modern {
                         max-width: 480px;
 
                         .question {
-                            @extend %subtitle;
+                            @extend %subtitle-base;
                             font-weight: bold;
                             margin: 48px 0 8px 0;
 
@@ -308,7 +308,7 @@ pricing-modern {
                         }
 
                         .answer {
-                            @extend %subtitle;
+                            @extend %subtitle-base;
                         }
                     }
                 }

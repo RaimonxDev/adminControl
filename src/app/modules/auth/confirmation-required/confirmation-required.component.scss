@@ -87,7 +87,7 @@ auth-confirmation-required {
                 width: 100%;
 
                 .title {
-                    @extend %title;
+                    @extend %title-base;
                     margin-top: 64px;
                 }
 

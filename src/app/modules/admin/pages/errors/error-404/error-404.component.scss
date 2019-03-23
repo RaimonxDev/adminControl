@@ -16,7 +16,7 @@ error-404 {
     }
 
     .subtitle {
-        @extend %subtitle;
+        @extend %subtitle-base;
         margin-top: 12px;
         text-align: center;
     }

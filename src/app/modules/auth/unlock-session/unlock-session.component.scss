@@ -87,12 +87,12 @@ auth-unlock-session {
                 width: 100%;
 
                 .title {
-                    @extend %title;
+                    @extend %title-base;
                     margin-top: 64px;
                 }
 
                 .subtitle {
-                    @extend %subtitle;
+                    @extend %subtitle-base;
                     margin-top: 8px;
                 }
 

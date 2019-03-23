@@ -16,7 +16,7 @@ error-500 {
     }
 
     .subtitle {
-        @extend %subtitle;
+        @extend %subtitle-base;
         margin-top: 12px;
         text-align: center;
     }
