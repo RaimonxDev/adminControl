@@ -61,7 +61,7 @@ export class ThinLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-navy',
+                            background: 'asm-grey-900',
                             isDark    : true
                         }
                     },
@@ -70,7 +70,7 @@ export class ThinLayoutComponent implements OnInit, OnDestroy
                         hidden    : false
                     },
                     footer    : {
-                        background: 'asm-navy-900',
+                        background: 'asm-grey-900',
                         hidden    : false,
                         fixed     : false
                     }

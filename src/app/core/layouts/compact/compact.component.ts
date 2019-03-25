@@ -67,7 +67,7 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
                         hidden    : false
                     },
                     footer    : {
-                        background: 'asm-navy-900',
+                        background: 'asm-grey-900',
                         hidden    : false,
                         fixed     : false
                     }

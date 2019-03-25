@@ -1,0 +1,70 @@
+<div class="content-layout">
+
+    <div class="container">
+
+        <h1 class="title">Colors</h1>
+        <div class="description">
+            <span>Assembly provides set of ready-to-use colors for convenience.</span>
+        </div>
+
+        <!-- Primary, Accent, Warn, White, Black -->
+        <div class="palettes">
+
+            <div class="palette">
+
+                <div class="colors">
+
+                    <div class="color"
+                         *ngFor="let palette of themePalettes"
+                         [ngClass]="palette"
+                         matRipple>
+                        <span class="hue">
+                            <span class="hue-value">{{palette}}</span>
+                        </span>
+                        <span class="separator divider"></span>
+                        <span class="text-secondary">Secondary</span>
+                        <span class="text-disabled">Disabled</span>
+                        <span class="text-fade">Fade</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Assembly colors -->
+        <div class="palettes">
+
+            <div class="palette"
+                 *ngFor="let palette of asmPalettes">
+
+                <div class="title">
+                    {{palette}}
+                </div>
+
+                <div class="colors">
+
+                    <div class="color"
+                         *ngFor="let hue of hues"
+                         [ngClass]="palette + '-' + hue"
+                         matRipple>
+                        <span class="hue">
+                            <mat-icon class="icon-size-20">palette</mat-icon>
+                            <span class="hue-value">{{hue}}</span>
+                        </span>
+                        <span class="separator divider"></span>
+                        <span class="text-secondary">Secondary</span>
+                        <span class="text-disabled">Disabled</span>
+                        <span class="text-fade">Fade</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -145,6 +145,12 @@ export const adminRoutes: Route[] = [
                         ]
                     },
 
+                    // Colors
+                    {
+                        path        : 'colors',
+                        loadChildren: './ui/colors/colors.module#ColorsModule'
+                    },
+
                     // Icons
                     {
                         path        : 'icons',

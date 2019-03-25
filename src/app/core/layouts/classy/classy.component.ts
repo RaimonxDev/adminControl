@@ -72,7 +72,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-black',
+                            background: 'asm-dark',
                             isDark    : true
                         }
                     },
@@ -82,7 +82,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                         fixed     : false
                     },
                     footer    : {
-                        background: 'asm-navy-900',
+                        background: 'asm-grey-900',
                         hidden    : false,
                         fixed     : false
                     }

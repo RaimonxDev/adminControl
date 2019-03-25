@@ -518,6 +518,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
+        id   : 'colors',
+        title: 'Colors',
+        type : 'link',
+        icon : 'color_lens',
+        link : '/ui/colors'
+    },
+    {
         id   : 'forms',
         title: 'Forms',
         type : 'link',
@@ -739,13 +746,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/ui/page-layouts/blank'
             }
         ]
-    },
-    {
-        id   : 'colors',
-        title: 'Colors',
-        type : 'link',
-        icon : 'color_lens',
-        link : '/ui/colors'
     },
     {
         id   : 'documentation',

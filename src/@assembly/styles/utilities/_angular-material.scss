@@ -57,8 +57,8 @@
 
     @each $class-name, $theme in $asm-themes {
 
-        // Adjust the theme and set it as global so it can be accessible from outside
-        $theme: asm-adjust-angular-material-theme($theme) !global;
+        // Modify the theme and set it as global so it can be accessible from outside
+        $theme: asm-modify-angular-material-theme($theme) !global;
 
         // If encapsulated...
         @if ($encapsulated) {
@@ -70,8 +70,9 @@
 
         } @else {
 
-            // Do everything inside a body class
-            body.#{$class-name} {
+            // Do everything openly
+            .#{$class-name},
+            &.#{$class-name} {
                 @content;
             }
         }

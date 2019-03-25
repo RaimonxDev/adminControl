@@ -19,14 +19,14 @@
         }
     }
 
-    .text-secondary {
-        color: map-get($foreground, secondary-text);
-    }
-
     i,
     .icon,
     .mat-icon {
         color: map-get($foreground, icon);
+    }
+
+    .text-secondary {
+        color: map-get($foreground, secondary-text);
     }
 
     .text-hint {
@@ -37,18 +37,16 @@
         color: map-get($foreground, disabled-text);
     }
 
-    .text-fade,
+    .text-fade {
+        color: rgba(map-get($foreground, base), 0.2);
+    }
+
     .divider {
         color: map-get($foreground, divider);
     }
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Generate Assembly color classes from default Material palettes
-// -----------------------------------------------------------------------------------------------------
-@include asm-color-classes($asm-mat-palettes);
-
-// -----------------------------------------------------------------------------------------------------
-// @ Generate Assembly color classes from custom palettes
+// @ Generate Assembly color classes from assembly color palettes
 // -----------------------------------------------------------------------------------------------------
 @include asm-color-classes($asm-palettes);

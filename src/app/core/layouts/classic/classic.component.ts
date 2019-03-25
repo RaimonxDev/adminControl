@@ -62,7 +62,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-navy',
+                            background: 'asm-grey-900',
                             isDark    : true
                         }
                     },
@@ -72,7 +72,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
                         fixed     : false
                     },
                     footer    : {
-                        background: 'asm-navy-900',
+                        background: 'asm-grey-900',
                         hidden    : false,
                         fixed     : false
                     }

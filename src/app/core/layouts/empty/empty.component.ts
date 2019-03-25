@@ -45,7 +45,7 @@ export class EmptyLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'blue-grey-50',
+                            background: 'asm-blue-grey-50',
                             isDark    : false
                         }
                     },

@@ -62,11 +62,11 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
                         }
                     },
                     header    : {
-                        background: 'asm-navy-600',
+                        background: 'asm-grey-900',
                         hidden    : false
                     },
                     footer    : {
-                        background: 'asm-navy-900',
+                        background: 'asm-grey-900',
                         hidden    : false
                     }
                 }
