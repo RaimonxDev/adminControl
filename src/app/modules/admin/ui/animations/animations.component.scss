@@ -183,10 +183,10 @@ animations {
                     .preview {
 
                         .animated-box-area {
-                            background: mat-color($mat-blue-grey, 100);
+                            background: asm-color($asm-blue-grey, 400);
 
                             .info {
-                                background: mat-color($mat-blue-grey, 200);
+                                background: asm-color($asm-blue-grey);
                                 color: map-get($foreground, secondary-text);
                             }
 

@@ -749,6 +749,9 @@ $asm-palettes: (
 ///
 @function asm-color($palette, $hue: 500, $opacity: 1) {
 
+    // Prepare the color
+    $color: null;
+
     // Convert the hue to a string so we can work on it
     $hue: $hue + unquote('');
 
@@ -759,21 +762,21 @@ $asm-palettes: (
         $requested-hue: str-slice($hue, 1, (str-index($hue, '-contrast') - 1));
 
         // Return the contrast color
-        @return map-get(map-get($palette, 'contrast'), to-number($requested-hue));
+        $color: map-get(map-get($palette, 'contrast'), to-number($requested-hue));
 
     } @else if (str-index($hue, 'contrast')) {
 
         // Return the contrast of the default hue (500)
-        @return map-get(map-get($palette, 'contrast'), 500);
+        $color: map-get(map-get($palette, 'contrast'), 500);
 
     } @else {
 
         // Return the hue value from the palette
-        @return map-get($palette, to-number($hue));
+        $color: map-get($palette, to-number($hue));
     }
 
-    // Throw error if none of the above works
-    @error 'Error on "asm-color" syntax!';
+    // Return the color
+    @return rgba($color, $opacity);
 }
 
 // -----------------------------------------------------------------------------------------------------
