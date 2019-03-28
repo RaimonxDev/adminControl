@@ -25,10 +25,12 @@ $asm-breakpoints: (
 // @ Mixins
 // -----------------------------------------------------------------------------------------------------
 
+///
 /// Wrap the mixin content with the given media breakpoint
 ///
 /// @access public
 /// @param {String} $breakpointName - Name of the breakpoint
+///
 @mixin asm-media-breakpoint($breakpointName) {
 
     $mediaQuery: map-get($asm-breakpoints, $breakpointName);
