@@ -121,28 +121,7 @@ colors {
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme {
 
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-
     colors {
 
-        .content-layout {
-
-            .container {
-
-                .palettes {
-
-                    .palette {
-
-                        .colors {
-
-                            .color {
-
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
