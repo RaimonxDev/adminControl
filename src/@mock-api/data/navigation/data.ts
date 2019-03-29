@@ -103,8 +103,8 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 badge: {
                     title     : '13',
                     style     : 'simple',
-                    background: '#09d261',
-                    color     : '#09d261'
+                    background: '#09D261',
+                    color     : '#09D261'
                 }
             },
             {
@@ -242,8 +242,8 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 badge: {
                     title     : '13',
                     style     : 'simple',
-                    background: '#09d261',
-                    color     : '#09d261'
+                    background: '#09D261',
+                    color     : '#09D261'
                 }
             },
             {
@@ -283,18 +283,18 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },*/
     {
-        id   : 'applications',
-        title: 'Applications',
-        type : 'subheader',
-        icon : 'apps'
+        id      : 'applications',
+        title   : 'Applications',
+        subtitle: 'Example & ready to use apps',
+        type    : 'subheader',
+        icon    : 'apps'
     },
     {
-        id      : 'dashboard',
-        title   : 'Dashboard',
-        subtitle: 'Health tracking',
-        type    : 'link',
-        icon    : 'dashboards',
-        link    : '/apps/dashboard'
+        id   : 'dashboard',
+        title: 'Dashboard',
+        type : 'link',
+        icon : 'dashboards',
+        link : '/apps/dashboard'
     },
     {
         id      : 'calendar',
@@ -312,7 +312,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/apps/mailbox',
         badge: {
             title     : '25',
-            background: '#F44336',
+            background: '#E91E63',
             color     : '#FFFFFF'
         }
     },
@@ -322,13 +322,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         subtitle: '7 overdue tasks',
         type    : 'link',
         icon    : 'check_box',
-        link    : '/apps/tasks',
-        badge   : {
-            title     : 'HOT!',
-            style     : 'rounded',
-            background: '#FF6F00',
-            color     : '#FFFFFF'
-        }
+        link    : '/apps/tasks'
     },
     {
         id   : 'notes',
@@ -342,12 +336,26 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title: 'Contacts',
         type : 'link',
         icon : 'account_box',
-        link : '/apps/contacts'
+        link : '/apps/contacts',
+        badge: {
+            title     : 'NEW',
+            style     : 'rounded',
+            background: '#304FFE',
+            color     : '#FFFFFF'
+        }
+    },
+    {
+        id      : 'help-center',
+        title   : 'Help Center',
+        subtitle: 'Faqs, Knowledge base & Guides',
+        type    : 'link',
+        icon    : 'help_outline',
+        link    : '/apps/help-center'
     },
     {
         id      : 'pages',
         title   : 'Pages',
-        subtitle: 'Lots of pages',
+        subtitle: 'Example & ready to use pages',
         type    : 'subheader',
         icon    : 'pages'
     },
@@ -358,43 +366,43 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'lock',
         children: [
             {
-                id   : 'login',
+                id   : 'authentication.login',
                 title: 'Login',
                 type : 'link',
                 link : '/pages/authentication/login'
             },
             {
-                id   : 'signup',
+                id   : 'authentication.signup',
                 title: 'Sign Up',
                 type : 'link',
                 link : '/pages/authentication/signup'
             },
             {
-                id   : 'forgot-password',
+                id   : 'authentication.forgot-password',
                 title: 'Forgot Password',
                 type : 'link',
                 link : '/pages/authentication/forgot-password'
             },
             {
-                id   : 'reset-password',
+                id   : 'authentication.reset-password',
                 title: 'Reset Password',
                 type : 'link',
                 link : '/pages/authentication/reset-password'
             },
             {
-                id   : 'logout',
+                id   : 'authentication.logout',
                 title: 'Logout',
                 type : 'link',
                 link : '/pages/authentication/logout'
             },
             {
-                id   : 'unlock-session',
+                id   : 'authentication.unlock-session',
                 title: 'Unlock Session',
                 type : 'link',
                 link : '/pages/authentication/unlock-session'
             },
             {
-                id   : 'confirmation-required',
+                id   : 'authentication.confirmation-required',
                 title: 'Confirmation Required',
                 type : 'link',
                 link : '/pages/authentication/confirmation-required'
@@ -409,31 +417,31 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/pages/coming-soon'
     },
     {
-        id   : 'maintenance',
-        title: 'Maintenance',
-        type : 'link',
-        icon : 'build',
-        link : '/pages/maintenance'
-    },
-    {
         id      : 'errors',
         title   : 'Errors',
         type    : 'collapsable',
         icon    : 'error',
         children: [
             {
-                id   : '404',
+                id   : 'errors.404',
                 title: '404',
                 type : 'link',
                 link : '/pages/errors/404'
             },
             {
-                id   : '500',
+                id   : 'errors.500',
                 title: '500',
                 type : 'link',
                 link : '/pages/errors/500'
             }
         ]
+    },
+    {
+        id   : 'maintenance',
+        title: 'Maintenance',
+        type : 'link',
+        icon : 'build',
+        link : '/pages/maintenance'
     },
     {
         id      : 'pricing',
@@ -442,13 +450,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'attach_money',
         children: [
             {
-                id   : 'pricing-modern',
+                id   : 'pricing.modern',
                 title: 'Modern',
                 type : 'link',
                 link : '/pages/pricing/modern'
             },
             {
-                id   : 'pricing-simple',
+                id   : 'pricing.simple',
                 title: 'Simple',
                 type : 'link',
                 link : '/pages/pricing/simple'
@@ -463,31 +471,11 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/pages/profile'
     },
     {
-        id   : 'search',
-        title: 'Search',
-        type : 'link',
-        icon : 'search',
-        link : '/pages/search'
-    },
-    {
-        id   : 'faq',
-        title: 'Faq',
-        type : 'link',
-        icon : 'help',
-        link : '/pages/faq'
-    },
-    {
-        id   : 'knowledge-base',
-        title: 'Knowledge Base',
-        type : 'link',
-        icon : 'import_contacts',
-        link : '/pages/knowledge-base'
-    },
-    {
-        id   : 'user-interface',
-        title: 'User Interface',
-        type : 'subheader',
-        icon : 'web'
+        id      : 'ui-elements',
+        title   : 'UI Elements',
+        subtitle: 'User interface elements',
+        type    : 'subheader',
+        icon    : 'web'
     },
     {
         id   : 'angular-material',
@@ -497,20 +485,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/ui/angular-material'
     },
     {
-        id   : 'index.ts',
-        title: 'Animations',
-        type : 'link',
-        icon : 'movie_creation',
-        link : '/ui/animations'
-    },
-    {
         id      : 'cards',
         title   : 'Cards',
         type    : 'collapsable',
         icon    : 'web_asset',
         children: [
             {
-                id   : 'cards-content',
+                id   : 'cards.content',
                 title: 'Content',
                 type : 'link',
                 link : '/ui/cards/content'
@@ -532,50 +513,43 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/ui/forms'
     },
     {
+        id   : 'helper-classes',
+        title: 'Helper Classes',
+        type : 'link',
+        icon : 'help',
+        link : '/ui/helper-classes'
+    },
+    {
         id      : 'icons',
         title   : 'Icons',
         type    : 'collapsable',
         icon    : 'photo',
         children: [
             {
-                id   : 'material-baseline',
+                id   : 'icons.material-baseline',
                 title: 'Material Baseline',
                 type : 'link',
                 link : '/ui/icons/material-baseline'
             },
             {
-                id   : 'material-outline',
+                id   : 'icons.material-outline',
                 title: 'Material Outline',
                 type : 'link',
                 link : '/ui/icons/material-outline'
             },
             {
-                id   : 'dripicons',
+                id   : 'icons.dripicons',
                 title: 'Dripicons',
                 type : 'link',
                 link : '/ui/icons/dripicons'
             },
             {
-                id   : 'iconsmind',
+                id   : 'icons.iconsmind',
                 title: 'Iconsmind',
                 type : 'link',
                 link : '/ui/icons/iconsmind'
             }
         ]
-    },
-    {
-        id   : 'typography',
-        title: 'Typography',
-        type : 'link',
-        icon : 'text_fields',
-        link : '/ui/typography'
-    },
-    {
-        id   : 'helper-classes',
-        title: 'Helper Classes',
-        type : 'link',
-        icon : 'help',
-        link : '/ui/helper-classes'
     },
     {
         id      : 'page-layouts',
@@ -748,6 +722,171 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
+        id   : 'typography',
+        title: 'Typography',
+        type : 'link',
+        icon : 'text_fields',
+        link : '/ui/typography'
+    },
+    {
+        id      : 'assembly',
+        title   : 'Assembly',
+        subtitle: 'Built-in components and more',
+        type    : 'subheader'
+    },
+    {
+        id   : 'animations',
+        title: 'Animations',
+        type : 'link',
+        icon : 'movie_creation',
+        link : '/ui/animations'
+    },
+    {
+        id   : 'messages',
+        title: 'Messages',
+        type : 'link',
+        icon : 'info',
+        link : '/ui/messages'
+    },
+    {
+        id   : 'navigation',
+        title: 'Navigation',
+        type : 'link',
+        icon : 'menu',
+        link : '/docs/components/navigation'
+    },
+    {
+        id      : 'directives',
+        title   : 'Directives',
+        icon    : 'memory',
+        type    : 'collapsable',
+        children: []
+    },
+    {
+        id      : 'services',
+        title   : 'Services',
+        icon    : 'memory',
+        type    : 'collapsable',
+        children: []
+    },
+    {
+        id      : 'pipes',
+        title   : 'Pipes',
+        icon    : 'memory',
+        type    : 'collapsable',
+        children: []
+    },
+    {
+        type: 'divider'
+    },
+    {
+        id      : 'navigation-features',
+        title   : 'Navigation features',
+        subtitle: 'Collapsable levels & Badge styles',
+        type    : 'subheader'
+    },
+    {
+        id      : 'levels.0',
+        title   : 'Level 0',
+        icon    : 'menu',
+        type    : 'collapsable',
+        children: [
+            {
+                id      : 'levels.0.1',
+                title   : 'Level 1',
+                type    : 'collapsable',
+                children: [
+                    {
+                        id      : 'levels.0.1.2',
+                        title   : 'Level 2',
+                        type    : 'collapsable',
+                        children: [
+                            {
+                                id      : 'levels.0.1.2.3',
+                                title   : 'Level 3',
+                                type    : 'collapsable',
+                                children: [
+                                    {
+                                        id      : 'levels.0.1.2.3.4',
+                                        title   : 'Level 4',
+                                        type    : 'collapsable',
+                                        children: [
+                                            {
+                                                id      : 'levels.0.1.2.3.4.5',
+                                                title   : 'Level 5',
+                                                type    : 'collapsable',
+                                                children: [
+                                                    {
+                                                        id   : 'levels.0.1.2.3.4.5.6',
+                                                        title: 'Level 6',
+                                                        type : 'collapsable'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id   : 'badge-style-oval',
+        title: 'Oval badge',
+        icon : 'label',
+        type : 'link',
+        link : '#',
+        badge: {
+            title     : '35',
+            background: '#17FEFF',
+            color     : '#000000'
+        }
+    },
+    {
+        id   : 'badge-style-rectangle',
+        title: 'Rectangle badge',
+        icon : 'label',
+        type : 'link',
+        link : '#',
+        badge: {
+            title     : 'Updated!',
+            style     : 'rectangle',
+            background: '#17FEFF',
+            color     : '#000000'
+        }
+    },
+    {
+        id   : 'badge-style-rounded',
+        title: 'Rounded badge',
+        icon : 'label',
+        type : 'link',
+        link : '#',
+        badge: {
+            title     : 'NEW',
+            style     : 'rounded',
+            background: '#17FEFF',
+            color     : '#000000'
+        }
+    },
+    {
+        id   : 'badge-style-simple',
+        title: 'Simple badge',
+        icon : 'label',
+        type : 'link',
+        link : '#',
+        badge: {
+            title: '87 Unread',
+            style: 'simple',
+            color: '#17FEFF'
+        }
+    },
+    {
+        type: 'divider'
+    },
+    {
         id   : 'documentation',
         title: 'Documentation',
         icon : 'import_contacts',
@@ -762,8 +901,8 @@ export const defaultNavigation: AsmNavigationItem[] = [
         badge: {
             title     : '1.0.0',
             style     : 'rounded',
-            background: '#EC0C8E',
-            color     : '#FFFFFF'
+            background: '#FFEB3B',
+            color     : '#000000'
         }
     },
     {
@@ -787,142 +926,42 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'import_contacts',
         children: [
             {
-                id   : 'directory-structure',
+                id   : 'fundamentals.directory-structure',
                 title: 'Directory Structure',
                 type : 'link',
                 link : '/docs/fundamentals/directory-structure'
             },
             {
-                id   : 'updating-assembly',
+                id   : 'fundamentals.updating-assembly',
                 title: 'Updating Assembly',
                 type : 'link',
                 link : '/docs/fundamentals/updating-assmebly'
             },
             {
-                id   : 'multi-language',
+                id   : 'fundamentals.multi-language',
                 title: 'Multi Language',
                 type : 'link',
                 link : '/docs/fundamentals/multi-language'
             },
             {
-                id   : 'material-theming',
+                id   : 'fundamentals.material-theming',
                 title: 'Material Theming',
                 type : 'link',
                 link : '/docs/fundamentals/material-theming'
             },
             {
-                id   : 'theme-layouts',
+                id   : 'fundamentals.theme-layouts',
                 title: 'Theme Layouts',
                 type : 'link',
                 link : '/docs/fundamentals/theme-layouts'
             },
             {
-                id   : 'page-layouts',
+                id   : 'fundamentals.page-layouts',
                 title: 'Page Layouts',
                 type : 'link',
                 link : '/docs/fundamentals/page-layouts'
             }
         ]
-    },
-    {
-        id      : 'components',
-        title   : 'Components',
-        type    : 'collapsable',
-        icon    : 'import_contacts',
-        children: [
-            {
-                id   : 'navigation',
-                title: 'Navigation',
-                type : 'link',
-                link : '/docs/components/navigation'
-            }
-        ]
-    },
-    {
-        id      : '3rd-party-components',
-        title   : '3rd Party Components',
-        type    : 'collapsable',
-        icon    : 'import_contacts',
-        children: [
-            {
-                id      : 'datatables',
-                title   : 'Datatables',
-                type    : 'collapsable',
-                children: [
-                    {
-                        id   : 'ngxdatatable',
-                        title: 'ngx-datatable',
-                        type : 'link',
-                        link : '/docs/components-third-party/datatables/ngx-datatable'
-                    }
-                ]
-            },
-            {
-                id   : 'google-maps',
-                title: 'Google Maps',
-                type : 'link',
-                link : '/docs/components-third-party/google-maps'
-            }
-        ]
-    },
-    {
-        id      : 'directives',
-        title   : 'Directives',
-        type    : 'collapsable',
-        icon    : 'import_contacts',
-        children: [
-            {
-                id   : 'fuse-if-on-dom',
-                title: 'fuseIfOnDom',
-                type : 'link',
-                link : '/docs/directives/fuse-if-on-dom'
-            },
-            {
-                id   : 'fuse-inner-scroll',
-                title: 'fuseInnerScroll',
-                type : 'link',
-                link : '/docs/directives/fuse-inner-scroll'
-            },
-            {
-                id   : 'fuse-mat-sidenav',
-                title: 'fuseMatSidenav',
-                type : 'link',
-                link : '/docs/directives/fuse-mat-sidenav'
-            },
-            {
-                id   : 'fuse-perfect-scrollbar',
-                title: 'fusePerfectScrollbar',
-                type : 'link',
-                link : '/docs/directives/fuse-perfect-scrollbar'
-            }
-        ]
-    },
-    {
-        id      : 'services',
-        title   : 'Services',
-        type    : 'collapsable',
-        icon    : 'import_contacts',
-        children: [
-            {
-                id   : 'fuse-config',
-                title: 'Fuse Config',
-                type : 'link',
-                link : '/docs/services/fuse-config'
-            },
-            {
-                id   : 'fuse-splash-screen',
-                title: 'Fuse Splash Screen',
-                type : 'link',
-                link : '/docs/services/fuse-splash-screen'
-            }
-        ]
-    },
-    {
-        id      : 'pipes',
-        title   : 'Pipes',
-        type    : 'collapsable',
-        icon    : 'import_contacts',
-        children: []
     }
 ];
 export const compactNavigation: AsmNavigationItem[] = [
