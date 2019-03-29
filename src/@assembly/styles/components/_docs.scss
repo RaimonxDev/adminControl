@@ -1,0 +1,277 @@
+.docs {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    line-height: 1.7;
+
+    .container {
+        max-width: 680px;
+        width: 100%;
+
+        // H tags
+        h1 {
+            @extend %title-lg;
+        }
+
+        h2 {
+            @extend %title-base;
+            font-weight: 700;
+            margin-top: 56px;
+        }
+
+        h3 {
+            @extend %subtitle-lg;
+            font-weight: 600;
+            margin-top: 40px;
+        }
+
+        // Paragraph
+        p {
+            margin: 12px 0 0 0;
+        }
+
+        // AsmMessage
+        asm-message {
+            display: block;
+            margin-top: 32px;
+        }
+
+        // AsmHighlight
+        asm-highlight {
+            display: block;
+            margin: 32px 0;
+        }
+
+        > .header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 48px;
+
+            .breadcrumb {
+                margin-bottom: 4px;
+            }
+        }
+
+        > .content {
+            margin-top: 24px;
+
+            // Example container
+            .example-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 32px;
+                border-radius: 4px;
+                @include asm-shadow(1);
+
+                .header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 88px;
+                    min-height: 88px;
+                    max-height: 88px;
+                    padding: 0 24px 0 40px;
+
+                    h6 {
+                        font-weight: 700;
+                    }
+                }
+
+                .content {
+                    padding: 40px;
+                }
+            }
+
+            // Fieldset
+            fieldset {
+                margin-top: 32px;
+
+                .fieldset-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            // Methods
+            .method {
+                margin: 8px 0 0 0;
+
+                p:first-child {
+
+                    code {
+                        display: block;
+                        font-weight: normal;
+                        font-size: 16px;
+                    }
+
+                    ~ p {
+                        margin-left: 20px;
+                    }
+                }
+            }
+
+            // Simple table
+            .simple-table {
+                width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                margin: 32px 0;
+                border-radius: 4px;
+                @include asm-shadow(1);
+
+                table {
+                    border: 0;
+                    border-collapse: collapse;
+                    width: 100%;
+
+                    thead {
+
+                        tr {
+
+                            th {
+                                font-size: 14px;
+                                text-transform: uppercase;
+                                text-align: left;
+                                padding: 8px 16px;
+                            }
+                        }
+                    }
+
+                    tbody {
+
+                        tr {
+
+                            td {
+                                text-align: left;
+                                vertical-align: top;
+                                padding: 16px;
+
+                                code {
+
+                                }
+
+                                p {
+                                    margin: 0;
+
+                                    & + p {
+                                        margin: 16px 0 0 0;
+                                    }
+                                }
+
+                                .required {
+                                    font-size: 12px;
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    margin-left: 2px;
+                                    padding: 2px 6px;
+                                    border-radius: 2px;
+                                    cursor: help;
+                                }
+
+                                .allowed-values-title {
+                                    font-size: 12px;
+                                    font-weight: 700;
+                                    letter-spacing: -0.025em;
+                                    text-transform: uppercase;
+
+                                    + p {
+                                        margin: 0 8px 0 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    // Light
+    $td-bottom-border-color: rgba(0, 0, 0, 0.06);
+    $td-odd-background-color: #F5F8FB;
+
+    // Dark
+    @if ($is-dark) {
+        $td-bottom-border-color: rgba(255, 255, 255, 0.06);
+        $td-odd-background-color: rgba(255, 255, 255, 0.04);
+    }
+
+    .docs {
+
+        .container {
+
+            .content {
+
+                // Example container
+                .example-container {
+                    background: map-get($background, card);
+
+                    .header {
+                        box-shadow: 0 1px 0 0 map-get($foreground, divider);
+                    }
+                }
+
+                // Simple table
+                .simple-table {
+                    background-color: map-get($background, card);
+
+                    table {
+
+                        thead {
+
+                            tr {
+
+                                th {
+                                    border-right: 1px solid transparentize(map-get($foreground, divider), 0.06);
+
+                                    &:last-child {
+                                        border-right: none;
+                                    }
+                                }
+                            }
+                        }
+
+                        tbody {
+
+                            tr {
+
+                                td {
+                                    border-right: 1px solid transparentize(map-get($foreground, divider), 0.06);
+
+                                    &:last-child {
+                                        border-right: none;
+                                    }
+
+                                    .required {
+                                        background-color: #8CC592;
+                                        color: #FFFFFF;
+                                        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+                                    }
+                                }
+
+                                &:nth-child(2n-1) {
+
+                                    td {
+                                        background-color: $td-odd-background-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

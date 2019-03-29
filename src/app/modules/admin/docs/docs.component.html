@@ -1,16 +1,49 @@
-<ng-container *ngIf="(docs$ | async) as docs">
+<div class="content-layout docs">
 
-    <ng-container *ngFor="let partial of docs">
+    <div class="container">
 
-        <div *ngIf="partial.type === 'text'"
-             [innerHTML]="partial.content">
+        <ng-container *ngIf="(docs$ | async) as docs">
+
+            <ng-container *ngFor="let partial of docs">
+
+                <div class="header"
+                     *ngIf="partial.type === 'title'"
+                     [innerHTML]="partial.content">
+                </div>
+
+            </ng-container>
+
+        </ng-container>
+
+
+        <div class="content">
+
+            <ng-container *ngIf="(docs$ | async) as docs">
+
+                <ng-container *ngFor="let partial of docs">
+
+                    <div class="section"
+                         *ngIf="partial.type === 'section'"
+                         [innerHTML]="partial.content">
+                    </div>
+
+                    <asm-message *ngIf="partial.type === 'message'"
+                                 [type]="partial.messageType"
+                                 [appearance]="'outline'">
+                        {{partial.content}}
+                    </asm-message>
+
+                    <asm-highlight *ngIf="partial.type === 'code'"
+                                   [lang]="partial.language"
+                                   [code]="partial.content">
+                    </asm-highlight>
+
+                </ng-container>
+
+            </ng-container>
+
         </div>
 
-        <asm-highlight *ngIf="partial.type === 'code'"
-                       [lang]="partial.language"
-                       [code]="partial.content">
-        </asm-highlight>
+    </div>
 
-    </ng-container>
-
-</ng-container>
+</div>

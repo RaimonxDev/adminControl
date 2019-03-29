@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AsmHighlightModule } from '@assembly';
+import { AsmHighlightModule, AsmMessageModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { DocsComponent } from 'app/modules/admin/docs/docs.component';
 import { docsRoutes } from 'app/modules/admin/docs/docs.routing';
@@ -12,6 +12,7 @@ import { docsRoutes } from 'app/modules/admin/docs/docs.routing';
     imports     : [
         RouterModule.forChild(docsRoutes),
         AsmHighlightModule,
+        AsmMessageModule,
         SharedModule
     ]
 })
