@@ -5,20 +5,42 @@ export const docs = {
     components        : {
         navigation: [
             {
-                type   : 'text',
+                type   : 'title',
                 // language=HTML
                 content: `
-                    <p class="title">Navigation</p>
+                    <div class="breadcrumb">
+                        <span class="path">DOCUMENTATION</span>
+                        <span class="separator">/</span>
+                        <span class="path">COMPONENTS</span>
+                        <span class="separator">/</span>
+                        <span class="path current">NAVIGATION</span>
+                    </div>
+                    <h1>Navigation</h1>
+                `
+            },
+            {
+                type   : 'section',
+                // language=HTML
+                content: `
+                    <h2>Introduction</h2>
                     <p>
                         <code>asm-navigation</code> is a component that can be used to create application wide navigation. It has a built in
                         programmable drawer with different styles.
                     </p>
-                    <p class="message warning">
-                        Navigation component is not suitable for multi use. It can only be used once in the entire application.
-                    </p>
-                    <p class="subtitle">
-                        Storing navigation data
-                    </p>
+                `
+            },
+            {
+                type       : 'message',
+                messageType: 'warning',
+                content    : `
+                    Navigation component is not suitable for multi use. It can only be used once in the entire application.
+                `
+            },
+            {
+                type   : 'section',
+                // language=HTML
+                content: `
+                    <h2>Storing navigation data</h2>
                     <p>
                         Before using the navigation component, data must be stored in the service using the <code>storeNavigation</code>
                         method of the <code>AsmNavigationService</code>
@@ -38,7 +60,7 @@ export const docs = {
                 `
             },
             {
-                type   : 'text',
+                type   : 'section',
                 // language=HTML
                 content: `
                     <p>
@@ -57,12 +79,10 @@ export const docs = {
                 `
             },
             {
-                type   : 'text',
+                type   : 'section',
                 // language=HTML
                 content: `
-                    <p class="subtitle">
-                        Storing multiple navigation data
-                    </p>
+                    <h2>Storing multiple navigation data</h2>
                     <p>
                         Multiple navigation data can also be stored in the service with different keys. This is particularly useful if
                         different set of navigation data needed by the app; such as different navigation for different user groups or for
@@ -85,7 +105,7 @@ export const docs = {
                 `
             },
             {
-                type   : 'text',
+                type   : 'section',
                 // language=HTML
                 content: `
                     <p>
@@ -113,12 +133,10 @@ export const docs = {
                 `
             },
             {
-                type   : 'text',
+                type   : 'section',
                 // language=HTML
                 content: `
-                    <p class="subtitle">
-                        Using the component
-                    </p>
+                    <h2>Using the component</h2>
                     <p>
                         In order to use the navigation component, <code>AsmNavigationModule</code> must be imported into the related module.
                         Following inputs are available for customizing and controlling the component and its built-in drawer.
@@ -142,10 +160,10 @@ export const docs = {
                 `
             },
             {
-                type   : 'text',
+                type   : 'section',
                 // language=HTML
                 content: `
-                    <div class="docs-simple-table">
+                    <div class="simple-table">
                         <table>
                             <thead>
                                 <tr>
@@ -278,143 +296,179 @@ export const docs = {
                 `
             },
             {
-                type   : 'text',
+                type   : 'section',
                 // language=HTML
                 content: `
-                    <p class="subtitle">
-                        Using the service
-                    </p>
+                    <h2>Using the service</h2>
                     <p>
                         In order to use the navigation service, <code>AsmNavigationModule</code> must be imported into the related module.
                         Following methods are available to use.
                     </p>
-                    <div class="method">
-                        <p>
-                            <code>registerComponent(name, component): void</code>
-                        </p>
-                        <p>
-                            Navigation component uses this method internally to register itself.
-                        </p>
+                    <div class="simple-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>registerComponent(name, component): void</code>
+                                        </p>
+                                        <p>
+                                            Navigation component uses this method internally to register itself.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>deregisterComponent(name): void</code>
+                                        </p>
+                                        <p>
+                                            Navigation component uses this method internally to deregister itself.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>getComponent(name): void</code>
+                                        </p>
+                                        <p>
+                                            Get the stored component. Useful for controlling the navigation component and its built-in drawer.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>storeNavigation(key, navigation): void</code>
+                                        </p>
+                                        <p>
+                                            Store navigation data in the service.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>deleteNavigation(key): void</code>
+                                        </p>
+                                        <p>
+                                            Delete the stored navigation.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>getNavigation(key): void</code>
+                                        </p>
+                                        <p>
+                                            Get the stored navigation.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>getFlatNavigation(): any[]</code>
+                                        </p>
+                                        <p>
+                                            Get flattened navigation data. Useful for searching within the navigation.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>setCurrentNavigation(key): void</code>
+                                        </p>
+                                        <p>
+                                            Set the navigation as current.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>getCurrentNavigation(): any</code>
+                                        </p>
+                                        <p>
+                                            Get the current navigation data.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>getItem(id): any | boolean</code>
+                                        </p>
+                                        <p>
+                                            Get item by the given id from the current navigation.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>getItemParent(id): any</code>
+                                        </p>
+                                        <p>
+                                            Get the parent of the item from the current navigation.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>addItem(item, idOrLocation): void</code>
+                                        </p>
+                                        <p>
+                                            Add an item to the current navigation at the specified location. If the <code>idOrLocation</code> is
+                                            <code>'end'</code> the item will be added at the very end of the navigation. If it's <code>'start'</code>
+                                            then it will be added at the very beginning of the navigation.
+                                        </p>
+                                        <p>
+                                            If the <code>idOrLocation</code> parameter is an another string other than <code>'start'</code> and
+                                            <code>'end'</code>, the service will look for the item with the id of given string value. If found, the item
+                                            will be added as a child to the found item.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>updateItem(id, properties): void</code>
+                                        </p>
+                                        <p>
+                                            Update the item from the current navigation. <code>properties</code> can be partial. Service will merge the
+                                            objects and replace the given ones from the current object.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <code>deleteItem(id): void</code>
+                                        </p>
+                                        <p>
+                                            Delete the item from the current navigation.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="method">
-                        <p>
-                            <code>deregisterComponent(name): void</code>
-                        </p>
-                        <p>
-                            Navigation component uses this method internally to deregister itself.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>getComponent(name): void</code>
-                        </p>
-                        <p>
-                            Get the stored component. Useful for controlling the navigation component and its built-in drawer.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>storeNavigation(key, navigation): void</code>
-                        </p>
-                        <p>
-                            Store navigation data in the service.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>deleteNavigation(key): void</code>
-                        </p>
-                        <p>
-                            Delete the stored navigation.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>getNavigation(key): void</code>
-                        </p>
-                        <p>
-                            Get the stored navigation.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>getFlatNavigation(): any[]</code>
-                        </p>
-                        <p>
-                            Get flattened navigation data. Useful for searching within the navigation.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>setCurrentNavigation(key): void</code>
-                        </p>
-                        <p>
-                            Set the navigation as current.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>getCurrentNavigation(): any</code>
-                        </p>
-                        <p>
-                            Get the current navigation data.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>getItem(id): any | boolean</code>
-                        </p>
-                        <p>
-                            Get item by the given id from the current navigation.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>getItemParent(id): any</code>
-                        </p>
-                        <p>
-                            Get the parent of the item from the current navigation.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>addItem(item, idOrLocation): void</code>
-                        </p>
-                        <p>
-                            Add an item to the current navigation at the specified location. If the <code>idOrLocation</code> is
-                            <code>'end'</code> the item will be added at the very end of the navigation. If it's <code>'start'</code>
-                            then it will be added at the very beginning of the navigation.
-                        </p>
-                        <p>
-                            If the <code>idOrLocation</code> parameter is an another string other than <code>'start'</code> and
-                            <code>'end'</code>, the service will look for the item with the id of given string value. If found, the item
-                            will be added as a child to the found item.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>updateItem(id, properties): void</code>
-                        </p>
-                        <p>
-                            Update the item from the current navigation. <code>properties</code> can be partial. Service will merge the
-                            objects and replace the given ones from the current object.
-                        </p>
-                    </div>
-                    <div class="method">
-                        <p>
-                            <code>deleteItem(id): void</code>
-                        </p>
-                        <p>
-                            Delete the item from the current navigation.
-                        </p>
-                    </div>
-                    <p class="subtitle">
-                        Service observables
-                    </p>
+
+                    <h2>Service observables</h2>
                     <p>
-                        Following observables can be accessed through the <code>AsmNavigationService</code>.
+                        Following observables can be accessed and used through the <code>AsmNavigationService</code>.
                     </p>
-                    <div class="docs-simple-table">
+                    <div class="simple-table">
                         <table>
                             <thead>
                                 <tr>
@@ -528,16 +582,14 @@ export const docs = {
                 `
             },
             {
-                type   : 'text',
+                type   : 'section',
                 // language=HTML
                 content: `
-                    <p class="subtitle">
-                        Navigation item data model
-                    </p>
+                    <h2>Navigation item data model</h2>
                     <p>
                         Each navigation item has following parameters that can be set.
                     </p>
-                    <div class="docs-simple-table">
+                    <div class="simple-table">
                         <table>
                             <thead>
                                 <tr>

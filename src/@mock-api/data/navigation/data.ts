@@ -485,20 +485,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/ui/angular-material'
     },
     {
-        id      : 'cards',
-        title   : 'Cards',
-        type    : 'collapsable',
-        icon    : 'web_asset',
-        children: [
-            {
-                id   : 'cards.content',
-                title: 'Content',
-                type : 'link',
-                link : '/ui/cards/content'
-            }
-        ]
-    },
-    {
         id   : 'colors',
         title: 'Colors',
         type : 'link',
@@ -739,21 +725,35 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title: 'Animations',
         type : 'link',
         icon : 'movie_creation',
-        link : '/ui/animations'
+        link : '/assembly/components/animations'
+    },
+    {
+        id      : 'cards',
+        title   : 'Cards',
+        type    : 'collapsable',
+        icon    : 'web_asset',
+        children: [
+            {
+                id   : 'cards.content',
+                title: 'Content',
+                type : 'link',
+                link : '/assembly/components/cards/content'
+            }
+        ]
     },
     {
         id   : 'messages',
         title: 'Messages',
         type : 'link',
         icon : 'info',
-        link : '/ui/messages'
+        link : '/assembly/components/messages'
     },
     {
         id   : 'navigation',
         title: 'Navigation',
         type : 'link',
         icon : 'menu',
-        link : '/docs/components/navigation'
+        link : '/assembly/components/navigation'
     },
     {
         id      : 'directives',

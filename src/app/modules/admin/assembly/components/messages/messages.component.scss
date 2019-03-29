@@ -1,0 +1,31 @@
+@import 'assembly';
+
+messages {
+
+    .content-layout {
+
+        .container {
+
+            .content {
+
+                .example-container {
+
+                    asm-message {
+                        margin-top: 0;
+
+                        .asm-message-container {
+                            margin-bottom: 32px;
+                        }
+
+                        &:last-child {
+
+                            .asm-message-container {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

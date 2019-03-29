@@ -128,23 +128,6 @@ export const adminRoutes: Route[] = [
                 path    : 'ui',
                 children: [
 
-                    // Animations
-                    {
-                        path        : 'animations',
-                        loadChildren: './ui/animations/animations.module#AnimationsModule'
-                    },
-
-                    // Cards
-                    {
-                        path    : 'cards',
-                        children: [
-                            {
-                                path        : 'content',
-                                loadChildren: './ui/cards/content/content.module#CardsContentModule'
-                            }
-                        ]
-                    },
-
                     // Colors
                     {
                         path        : 'colors',
@@ -155,6 +138,49 @@ export const adminRoutes: Route[] = [
                     {
                         path        : 'icons',
                         loadChildren: './ui/icons/icons.module#IconsModule'
+                    }
+                ]
+            },
+
+            // Assembly
+            {
+                path    : 'assembly',
+                children: [
+                    {
+
+                        // Components
+                        path    : 'components',
+                        children: [
+
+                            // Animations
+                            {
+                                path        : 'animations',
+                                loadChildren: './assembly/components/animations/animations.module#AnimationsModule'
+                            },
+
+                            // Cards
+                            {
+                                path    : 'cards',
+                                children: [
+                                    {
+                                        path        : 'content',
+                                        loadChildren: './assembly/components/cards/content/content.module#CardsContentModule'
+                                    }
+                                ]
+                            },
+
+                            // Messages
+                            {
+                                path        : 'messages',
+                                loadChildren: './assembly/components/messages/messages.module#MessagesModule'
+                            },
+
+                            // Navigation
+                            {
+                                path        : 'navigation',
+                                loadChildren: './assembly/components/navigation/navigation.module#NavigationModule'
+                            }
+                        ]
                     }
                 ]
             },

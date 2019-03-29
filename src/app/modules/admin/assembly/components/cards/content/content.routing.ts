@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { CardsContentComponent } from 'app/modules/admin/ui/cards/content/content.component';
+import { CardsContentComponent } from 'app/modules/admin/assembly/components/cards/content/content.component';
 
 export const cardsContentRoutes: Route[] = [
     {
