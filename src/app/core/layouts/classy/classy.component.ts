@@ -76,12 +76,12 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                         }
                     },
                     header    : {
-                        background: 'asm-white',
+                        background: 'white light-theme',
                         hidden    : false,
                         fixed     : false
                     },
                     footer    : {
-                        background: 'asm-grey-900',
+                        background: 'blue-grey-900 dark-theme',
                         hidden    : false,
                         fixed     : false
                     }

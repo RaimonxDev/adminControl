@@ -62,15 +62,15 @@ export class ThinLightLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-white'
+                            background: 'white light-theme'
                         }
                     },
                     header    : {
-                        background: 'asm-white',
+                        background: 'white light-theme',
                         hidden    : false
                     },
                     footer    : {
-                        background: 'asm-white',
+                        background: 'white light-theme',
                         hidden    : false,
                         fixed     : false
                     }

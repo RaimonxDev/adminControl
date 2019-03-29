@@ -57,15 +57,15 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-white'
+                            background: 'white light-theme'
                         }
                     },
                     header    : {
-                        background: 'asm-grey-900',
+                        background: 'blue-grey-900 dark-theme',
                         hidden    : false
                     },
                     footer    : {
-                        background: 'asm-grey-900',
+                        background: 'blue-grey-900 dark-theme',
                         hidden    : false
                     }
                 }
