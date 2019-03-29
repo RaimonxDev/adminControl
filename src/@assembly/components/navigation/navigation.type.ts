@@ -1,9 +1,9 @@
 export interface AsmNavigationItem
 {
-    id: string;
-    title: string;
+    id?: string;
+    title?: string;
     subtitle?: string;
-    type: 'aside' | 'collapsable' | 'link' | 'subheader';
+    type: 'aside' | 'collapsable' | 'divider' | 'link' | 'subheader';
     hidden?: boolean;
     link?: string;
     externalLink?: boolean;

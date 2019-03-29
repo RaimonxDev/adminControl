@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
@@ -19,11 +19,9 @@ export class AsmNavigationLinkItemComponent implements OnInit
      * Constructor
      *
      * @param {AsmNavigationService} _asmNavigationService
-     * @param {ChangeDetectorRef} _changeDetectorRef
      */
     constructor(
-        private _asmNavigationService: AsmNavigationService,
-        private _changeDetectorRef: ChangeDetectorRef
+        private _asmNavigationService: AsmNavigationService
     )
     {
     }

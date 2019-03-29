@@ -11,7 +11,7 @@
              (click)="toggleCollapsable()">
 
             <!-- Icon -->
-            <mat-icon class="asm-navigation-item-icon text-secondary icon-size-18"
+            <mat-icon class="asm-navigation-item-icon text-secondary icon-size-16"
                       *ngIf="item.icon"
                       [fontSet]="item.iconFontSet">
                 {{item.icon}}
@@ -53,13 +53,18 @@
     </div>
 
     <div class="asm-navigation-item-children"
-         [@expandCollapse]="isCollapsed ? 'collapsed' : 'expanded'">
+         *ngIf="!isCollapsed"
+         @expandCollapse>
 
         <ng-container *ngFor="let item of item.children; trackBy: trackById">
 
             <!-- Collapsable -->
             <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
                                              [item]="item"></asm-navigation-collapsable-item>
+
+            <!-- Divider -->
+            <asm-navigation-divider-item *ngIf="item.type === 'divider'"
+                                         [item]="item"></asm-navigation-divider-item>
 
             <!-- Link -->
             <asm-navigation-link-item *ngIf="item.type === 'link'"

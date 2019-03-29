@@ -195,8 +195,9 @@ asm-navigation {
 
     // Navigation items common
     asm-navigation-aside-item,
-    asm-navigation-link-item,
     asm-navigation-collapsable-item,
+    asm-navigation-divider-item,
+    asm-navigation-link-item,
     asm-navigation-subheader-item {
         display: flex;
         flex-direction: column;
@@ -245,6 +246,8 @@ asm-navigation {
                 }
 
                 .asm-navigation-item-badge {
+                    // Use a more generic font to have a visible text on very small sizes
+                    font-family: Arial, Helvetica, sans-serif;
                     margin-left: auto;
 
                     .asm-navigation-item-badge-content {
@@ -273,8 +276,10 @@ asm-navigation {
                             width: auto;
                             min-width: 24px;
                             height: 20px;
-                            padding: 0 6px;
+                            line-height: normal;
+                            padding: 0 10px;
                             border-radius: 12px;
+                            letter-spacing: 0.03em;
                         }
 
                         // Simple
@@ -308,11 +313,6 @@ asm-navigation {
 
     // Aside
     asm-navigation-aside-item {
-
-    }
-
-    // Link
-    asm-navigation-link-item {
 
     }
 
@@ -382,6 +382,21 @@ asm-navigation {
                 }
             }
         }
+    }
+
+    // Divider
+    asm-navigation-divider-item {
+        margin: 24px 0;
+
+        .asm-navigation-divider {
+            height: 1px;
+            box-shadow: 0 1px 0 0;
+        }
+    }
+
+    // Link
+    asm-navigation-link-item {
+
     }
 
     // Subheader
@@ -906,6 +921,11 @@ asm-navigation {
                     background: transparent;
                 }
             }
+        }
+
+        // Divider
+        asm-navigation-divider-item {
+
         }
 
         // Subheader
