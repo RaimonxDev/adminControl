@@ -68,8 +68,10 @@
      [class.asm-navigation-dark-background]="asmConfig.layout.options.navigation.theme.isDark"
      asmScrollbar
      [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}"
-     [@fadeIn]="position"
-     [@fadeOut]="position">
+     [@fadeInLeft]="position === 'left'"
+     [@fadeInRight]="position === 'right'"
+     [@fadeOutLeft]="position === 'left'"
+     [@fadeOutRight]="position === 'right'">
 
     <!-- NAVIGATION ITEMS -->
     <ng-container *ngFor="let item of data; trackBy: trackById">

@@ -18,6 +18,10 @@ const fadeIn = trigger('fadeIn',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -35,18 +39,22 @@ const fadeInTop = trigger('fadeInTop',
     [
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(0, -100%, 0)'
             })
         ),
 
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -64,18 +72,22 @@ const fadeInBottom = trigger('fadeInBottom',
     [
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(0, 100%, 0)'
             })
         ),
 
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -93,18 +105,22 @@ const fadeInLeft = trigger('fadeInLeft',
     [
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(-100%, 0, 0)'
             })
         ),
 
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -122,18 +138,22 @@ const fadeInRight = trigger('fadeInRight',
     [
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(100%, 0, 0)'
             })
         ),
 
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -161,6 +181,10 @@ const fadeOut = trigger('fadeOut',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
@@ -178,18 +202,22 @@ const fadeOutTop = trigger('fadeOutTop',
     [
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(0, -100%, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
@@ -207,18 +235,22 @@ const fadeOutBottom = trigger('fadeOutBottom',
     [
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(0, 100%, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
@@ -236,18 +268,22 @@ const fadeOutLeft = trigger('fadeOutLeft',
     [
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(-100%, 0, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
@@ -265,18 +301,22 @@ const fadeOutRight = trigger('fadeOutRight',
     [
         state('*',
             style({
-                opacity: 1,
+                opacity  : 1,
                 transform: 'translate3d(0, 0, 0)'
             })
         ),
 
         state('void',
             style({
-                opacity: 0,
+                opacity  : 0,
                 transform: 'translate3d(100%, 0, 0)'
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {

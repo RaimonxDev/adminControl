@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,10 +18,6 @@ export class IconsComponent implements OnInit
 
     filterValue$: BehaviorSubject<any>;
     iconSizeInput: FormControl;
-
-    // Private
-    @ViewChild('content')
-    private _content: ElementRef;
 
     /**
      * Constructor

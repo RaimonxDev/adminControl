@@ -18,6 +18,10 @@ const slideInTop = trigger('slideInTop',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -45,6 +49,10 @@ const slideInBottom = trigger('slideInBottom',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -72,6 +80,10 @@ const slideInLeft = trigger('slideInLeft',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -99,6 +111,10 @@ const slideInRight = trigger('slideInRight',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -126,6 +142,10 @@ const slideOutTop = trigger('slideOutTop',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
@@ -153,6 +173,10 @@ const slideOutBottom = trigger('slideOutBottom',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
@@ -180,6 +204,10 @@ const slideOutLeft = trigger('slideOutLeft',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
@@ -207,6 +235,10 @@ const slideOutRight = trigger('slideOutRight',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {

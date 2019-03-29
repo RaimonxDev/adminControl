@@ -21,6 +21,10 @@ const zoomIn = trigger('zoomIn',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
@@ -51,6 +55,10 @@ const zoomOut = trigger('zoomOut',
             })
         ),
 
+        // Prevent the transition if the state is false
+        transition('false => void', []),
+
+        // Transition
         transition('* => void', animate('{{timings}}'),
             {
                 params: {

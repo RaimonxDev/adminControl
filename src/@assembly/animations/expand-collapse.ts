@@ -17,6 +17,10 @@ const expandCollapse = trigger('expandCollapse',
             style('*')
         ),
 
+        // Prevent the transition if the state is false
+        transition('void <=> false, collapsed <=> false, expanded <=> false', []),
+
+        // Transition
         transition('void <=> *, collapsed <=> expanded',
             animate('{{timings}}'),
             {

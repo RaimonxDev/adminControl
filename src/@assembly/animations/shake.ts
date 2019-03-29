@@ -5,6 +5,11 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
 // -----------------------------------------------------------------------------------------------------
 const shake = trigger('shake',
     [
+
+        // Prevent the transition if the state is false
+        transition('void => false', []),
+
+        // Transition
         transition('void => *, * => true',
             [
                 animate('{{timings}}',

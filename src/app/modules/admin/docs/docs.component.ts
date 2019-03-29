@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DocsService } from 'app/modules/admin/docs/docs.service';
 
@@ -12,10 +12,6 @@ import { DocsService } from 'app/modules/admin/docs/docs.service';
 export class DocsComponent implements OnInit
 {
     docs$: Observable<any>;
-
-    // Private
-    @ViewChild('content')
-    private _content: ElementRef;
 
     /**
      * Constructor
