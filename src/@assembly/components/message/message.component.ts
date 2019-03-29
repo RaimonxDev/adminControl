@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Subject } from 'rxjs';
+import { AsmAnimations } from '@assembly/animations/public-api';
+import { AsmMessageService } from '@assembly/components/message/message.service';
+import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector       : 'asm-message',
@@ -6,32 +10,49 @@ import { ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewE
     styleUrls      : ['./message.component.scss'],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations     : AsmAnimations,
     exportAs       : 'asmMessage'
 })
-export class AsmMessageComponent
+export class AsmMessageComponent implements OnInit, OnDestroy
 {
+    // Name
+    @Input()
+    name: string;
+
     // Private
     private _appearance: 'solid' | 'outline';
-    private _showIcon: boolean;
-    private _type: 'basic' | 'primary' | 'accent' | 'warn' | 'error' | 'info' | 'success' | 'warning';
     private _customIcon: boolean;
+    private _dismissible: boolean;
+    private _dismissed: boolean;
+    private _showIcon: boolean;
+    private _type: 'primary' | 'accent' | 'warn' | 'basic' | 'info' | 'success' | 'warning' | 'error';
+    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
+     * @param {AsmMessageService} _asmMessageService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
      */
     constructor(
+        private _asmMessageService: AsmMessageService,
+        private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _renderer2: Renderer2
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+
         // Set the defaults
         this.appearance = 'solid';
+        this.customIcon = false;
+        this.dismissible = false;
+        this.dismissed = true;
         this.showIcon = true;
         this.type = 'primary';
-        this._customIcon = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -46,6 +67,12 @@ export class AsmMessageComponent
     @Input()
     set appearance(value: 'solid' | 'outline')
     {
+        // If the value is the same, return...
+        if ( this._appearance === value )
+        {
+            return;
+        }
+
         // Update the class name
         this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-appearance-' + this.appearance);
         this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-appearance-' + value);
@@ -67,6 +94,12 @@ export class AsmMessageComponent
     @Input()
     set customIcon(value: boolean)
     {
+        // If the value is the same, return...
+        if ( this._customIcon === value )
+        {
+            return;
+        }
+
         // Store the value
         this._customIcon = value;
     }
@@ -77,6 +110,72 @@ export class AsmMessageComponent
     }
 
     /**
+     * Setter and getter for dismissible
+     *
+     * @param value
+     */
+    @Input()
+    set dismissible(value: boolean)
+    {
+        // If the value is the same, return...
+        if ( this._dismissible === value )
+        {
+            return;
+        }
+
+        // Update the class name
+        if ( value )
+        {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-dismissible');
+        }
+        else
+        {
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-dismissible');
+        }
+
+        // Store the value
+        this._dismissible = value;
+    }
+
+    get dismissible(): boolean
+    {
+        return this._dismissible;
+    }
+
+    /**
+     * Setter and getter for dismissed
+     *
+     * @param value
+     */
+    @Input()
+    set dismissed(value: boolean)
+    {
+        // If the value is the same, return...
+        if ( this._dismissed === value )
+        {
+            return;
+        }
+
+        // Update the class name
+        if ( value )
+        {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-dismissed');
+        }
+        else
+        {
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-dismissed');
+        }
+
+        // Store the value
+        this._dismissed = value;
+    }
+
+    get dismissed(): boolean
+    {
+        return this._dismissed;
+    }
+
+    /**
      * Setter and getter for show icon
      *
      * @param value
@@ -84,11 +183,18 @@ export class AsmMessageComponent
     @Input()
     set showIcon(value: boolean)
     {
+        // If the value is the same, return...
+        if ( this._showIcon === value )
+        {
+            return;
+        }
+
         // Update the class name
         if ( value )
         {
             this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-show-icon' + this.appearance);
         }
+        else
         {
             this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-show-icon' + this.appearance);
         }
@@ -108,8 +214,14 @@ export class AsmMessageComponent
      * @param value
      */
     @Input()
-    set type(value: 'basic' | 'primary' | 'accent' | 'warn' | 'error' | 'info' | 'success' | 'warning')
+    set type(value: 'primary' | 'accent' | 'warn' | 'basic' | 'info' | 'success' | 'warning' | 'error')
     {
+        // If the value is the same, return...
+        if ( this._type === value )
+        {
+            return;
+        }
+
         // Update the class name
         this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-type-' + this.type);
         this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-type-' + value);
@@ -118,8 +230,97 @@ export class AsmMessageComponent
         this._type = value;
     }
 
-    get type(): 'basic' | 'primary' | 'accent' | 'warn' | 'error' | 'info' | 'success' | 'warning'
+    get type(): 'primary' | 'accent' | 'warn' | 'basic' | 'info' | 'success' | 'warning' | 'error'
     {
         return this._type;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Subscribe to the service calls if only
+        // a name provided for the message box
+        if ( this.name )
+        {
+            // Subscribe to the dismiss calls
+            this._asmMessageService.onDismiss
+                .pipe(
+                    filter((name) => this.name === name),
+                    takeUntil(this._unsubscribeAll)
+                )
+                .subscribe(() => {
+
+                    // Dismiss the message box
+                    this.dismiss();
+                });
+
+            // Subscribe to the show calls
+            this._asmMessageService.onShow
+                .pipe(
+                    filter((name) => this.name === name),
+                    takeUntil(this._unsubscribeAll)
+                )
+                .subscribe(() => {
+
+                    // Show the message box
+                    this.show();
+                });
+        }
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Dismiss the message box
+     */
+    dismiss(): void
+    {
+        // Return, if already dismissed
+        if ( this.dismissed )
+        {
+            return;
+        }
+
+        // Dismiss
+        this.dismissed = true;
+
+        // Notify the change detector
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Show the dismissed message box
+     */
+    show(): void
+    {
+        // Return, if not dismissed
+        if ( !this.dismissed )
+        {
+            return;
+        }
+
+        // Show
+        this.dismissed = false;
+
+        // Notify the change detector
+        this._changeDetectorRef.markForCheck();
     }
 }

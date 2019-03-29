@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { AsmMessageComponent } from '@assembly/components/message/message.component';
 
 @NgModule({
@@ -9,6 +9,7 @@ import { AsmMessageComponent } from '@assembly/components/message/message.compon
     ],
     imports     : [
         CommonModule,
+        MatButtonModule,
         MatIconModule
     ],
     exports     : [

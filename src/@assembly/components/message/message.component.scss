@@ -1,41 +1,68 @@
 @import 'assembly';
 
 asm-message {
-    display: flex;
-    align-items: center;
-    min-height: 64px;
-    padding: 16px 24px;
-    line-height: 1;
+
+    .asm-message-container {
+        display: flex;
+        align-items: center;
+        min-height: 64px;
+        padding: 16px 24px;
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    // Dismissible
+    &.asm-message-dismissible {
+
+        .asm-message-container {
+            padding: 16px 16px 16px 24px;
+        }
+    }
 
     // Solid
     &.asm-message-appearance-solid {
-        border-radius: 4px;
+
+        .asm-message-container {
+            border-radius: 4px;
+        }
     }
 
     // Outline
     &.asm-message-appearance-outline {
-        position: relative;
-        overflow: hidden;
-        border-radius: 4px;
 
-        &:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 6px;
+        .asm-message-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 6px;
+            }
         }
     }
 
-    // Icon
-    .asm-message-icon:not(:empty) {
-        margin-right: 16px;
-    }
+    .asm-message-container {
 
-    // Content
-    .asm-message-content {
-        letter-spacing: 0.025em;
+        // Icon
+        .asm-message-icon:not(:empty) {
+            margin-right: 24px;
+        }
+
+        // Content
+        .asm-message-content {
+            letter-spacing: 0.025em;
+            line-height: 1.5;
+        }
+
+        // Dismiss button
+        .asm-message-dismiss-button {
+            margin-left: 16px;
+        }
     }
 }
 
@@ -52,178 +79,179 @@ asm-message {
 
     asm-message {
 
+        .asm-message-container {
+
+            // Icon
+            .mat-icon {
+                color: currentColor;
+            }
+        }
+
         // Solid
         &.asm-message-appearance-solid {
 
-            // Icon
-            .asm-message-icon {
+            .asm-message-container {
 
-                .mat-icon {
-                    color: white;
+            }
+
+            // Primary
+            &.asm-message-type-primary {
+
+                .asm-message-container {
+                    background: map-get($primary, default);
+                    color: map-get($primary, default-contrast);
+                }
+            }
+
+            // Accent
+            &.asm-message-type-accent {
+
+                .asm-message-container {
+                    background: map-get($accent, default);
+                    color: map-get($accent, default-contrast);
+                }
+            }
+
+            // Warn
+            &.asm-message-type-warn {
+
+                .asm-message-container {
+                    background: map-get($warn, default);
+                    color: map-get($warn, default-contrast);
                 }
             }
 
             // Basic
             &.asm-message-type-basic {
-                background: asm-color($asm-grey, 200);
-                color: asm-color($asm-grey, '200-contrast');
-            }
 
-            // Primary
-            &.asm-message-type-primary {
-                background: map-get($primary, default);
-                color: map-get($primary, default-contrast);
-            }
-
-            // Accent
-            &.asm-message-type-accent {
-                background: map-get($accent, default);
-                color: map-get($accent, default-contrast);
-            }
-
-            // Warn
-            &.asm-message-type-warn {
-                background: map-get($warn, default);
-                color: map-get($warn, default-contrast);
-            }
-
-            // Error
-            &.asm-message-type-error {
-                background: #E53935;
-                color: #FFFFFF;
+                .asm-message-container {
+                    background: asm-color($asm-blue-grey, 500);
+                    color: asm-color($asm-blue-grey, 50);
+                }
             }
 
             // Info
             &.asm-message-type-info {
-                background: #1E88E5;
-                color: #FFFFFF;
+
+                .asm-message-container {
+                    background: #4299E1;
+                    color: #EBF8FF;
+                }
             }
 
             // Success
             &.asm-message-type-success {
-                background: #4CAF50;
-                color: #FFFFFF;
+
+                .asm-message-container {
+                    background: #48BB78;
+                    color: #F0FFF4;
+                }
             }
 
             // Warning
             &.asm-message-type-warning {
-                background: #FFB300;
-                color: map-get($foreground, text);
 
-                .asm-message-icon {
+                .asm-message-container {
+                    background: #ED8936;
+                    color: #FFFAF0;
+                }
+            }
 
-                    .mat-icon {
-                        color: map-get($foreground, text);
-                    }
+            // Error
+            &.asm-message-type-error {
+
+                .asm-message-container {
+                    background: #E53E3E;
+                    color: #FFF5F5;
                 }
             }
         }
 
         // Outline
         &.asm-message-appearance-outline {
-            background: map-get($background, hover);
 
-            // Basic
-            &.asm-message-type-basic {
-                background: asm-color($asm-grey, 100);
-                box-shadow: inset 0 0 0 1px asm-color($asm-grey, 400);
-
-                .asm-message-icon {
-
-                    .mat-icon {
-                        color: asm-color($asm-grey, '100-contrast');
-                    }
-                }
+            .asm-message-container {
+                background: map-get($background, hover);
             }
 
             // Primary
             &.asm-message-type-primary {
-                background: map-get($primary, 50);
-                box-shadow: inset 0 0 0 1px map-get($primary, 200);
 
-                .asm-message-icon {
-
-                    .mat-icon {
-                        color: map-get($primary, default);
-                    }
+                .asm-message-container {
+                    background: map-get($primary, 100);
+                    color: map-get($primary, 700);
+                    box-shadow: inset 0 0 0 1px map-get($primary, 400);
                 }
             }
 
             // Accent
             &.asm-message-type-accent {
-                background: map-get($accent, 50);
-                box-shadow: inset 0 0 0 1px map-get($accent, 200);
 
-                .asm-message-icon {
-
-                    .mat-icon {
-                        color: map-get($accent, default);
-                    }
+                .asm-message-container {
+                    background: map-get($accent, 100);
+                    color: map-get($accent, 700);
+                    box-shadow: inset 0 0 0 1px map-get($accent, 400);
                 }
             }
 
             // Warn
             &.asm-message-type-warn {
-                background: map-get($warn, 50);
-                box-shadow: inset 0 0 0 1px map-get($warn, 200);
 
-                .asm-message-icon {
-
-                    .mat-icon {
-                        color: map-get($warn, default);
-                    }
+                .asm-message-container {
+                    background: map-get($warn, 100);
+                    color: map-get($warn, 700);
+                    box-shadow: inset 0 0 0 1px map-get($warn, 400);
                 }
+
             }
 
-            // Error
-            &.asm-message-type-error {
-                background: #FFEBEE;
-                box-shadow: inset 0 0 0 1px #EF9A9A;
+            // Basic
+            &.asm-message-type-basic {
 
-                .asm-message-icon {
-
-                    .mat-icon {
-                        color: #F44336;
-                    }
+                .asm-message-container {
+                    background: asm-color($asm-blue-grey, 100);
+                    color: asm-color($asm-blue-grey, 700);
+                    box-shadow: inset 0 0 0 1px asm-color($asm-blue-grey, 400);
                 }
             }
 
             // Info
             &.asm-message-type-info {
-                background: #E3F2FD;
-                box-shadow: inset 0 0 0 1px #90CAF9;
 
-                .asm-message-icon {
-
-                    .mat-icon {
-                        color: #2196F3;
-                    }
+                .asm-message-container {
+                    background: #EBF8FF;
+                    color: #2B6CB0;
+                    box-shadow: inset 0 0 0 1px #63B3ED;
                 }
             }
 
             // Success
             &.asm-message-type-success {
-                background: #E8F5E9;
-                box-shadow: inset 0 0 0 1px #A5D6A7;
 
-                .asm-message-icon {
-
-                    .mat-icon {
-                        color: #4CAF50;
-                    }
+                .asm-message-container {
+                    background: #F0FFF4;
+                    color: #2F855A;
+                    box-shadow: inset 0 0 0 1px #68D391;
                 }
             }
 
             // Warning
             &.asm-message-type-warning {
-                background: #FFF3E0;
-                box-shadow: inset 0 0 0 1px #FFCC80;
 
-                .asm-message-icon {
+                .asm-message-container {
+                    background: #FFFAF0;
+                    color: #C05621;
+                    box-shadow: inset 0 0 0 1px #F6AD55;
+                }
+            }
 
-                    .mat-icon {
-                        color: #FF9800;
-                    }
+            // Error
+            &.asm-message-type-error {
+
+                .asm-message-container {
+                    background: #FFF5F5;
+                    color: #C53030;
+                    box-shadow: inset 0 0 0 1px #FC8181;
                 }
             }
         }
