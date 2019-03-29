@@ -15,34 +15,31 @@ html, body {
 // Headings
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-weight: normal;
+    margin: 0;
 }
 
 h1, .h1 {
-    font-size: 24px;
-    font-weight: 800;
+    @extend %title-xl;
 }
 
 h2, .h2 {
-    font-size: 20px;
-    font-weight: 800;
+    @extend %title-lg;
 }
 
 h3, .h3 {
-    font-size: 20px;
-    font-weight: 600;
+    @extend %title-md;
 }
 
 h4, .h4 {
-    font-size: 16px;
+    @extend %title-base;
 }
 
 h5, .h5 {
-    font-size: 13px;
+    @extend %subtitle-md;
 }
 
 h6, .h6 {
-    font-size: 12px;
+    @extend %subtitle-base;
 }
 
 // Links
@@ -174,6 +171,28 @@ pre {
     }
 }
 
+// Breadcrumb
+.breadcrumb {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    .path {
+
+        &a {
+            color: inherit;
+        }
+
+        &.current {
+
+        }
+    }
+
+    .separator {
+        margin: 0 6px;
+    }
+}
+
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
@@ -208,5 +227,17 @@ pre {
     .link {
         color: map-get($primary, default);
         border-bottom-color: map-get($primary, default);
+    }
+
+    // Breadcrumb
+    .breadcrumb {
+        color: map-get($foreground, text);
+
+        .path {
+
+            &.current {
+                color: map-get($primary, default);
+            }
+        }
     }
 }
