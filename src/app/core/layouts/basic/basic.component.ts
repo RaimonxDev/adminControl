@@ -63,8 +63,7 @@ export class BasicLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'blue-grey-50',
-                            isDark    : false
+                            background: 'blue-grey-50'
                         }
                     },
                     header    : {

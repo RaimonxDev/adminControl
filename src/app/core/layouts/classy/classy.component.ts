@@ -72,8 +72,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'theme-dark',
-                            isDark    : true
+                            background: 'blue-grey-800 theme-dark'
                         }
                     },
                     header    : {

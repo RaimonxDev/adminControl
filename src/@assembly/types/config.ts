@@ -9,8 +9,7 @@ export interface AsmConfig
             navigation?: {
                 hidden?: boolean,
                 theme?: {
-                    background?: string,
-                    isDark?: boolean
+                    background?: string
                 }
             },
             header?: {

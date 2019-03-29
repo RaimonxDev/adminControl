@@ -58,8 +58,7 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'asm-white',
-                            isDark    : false
+                            background: 'asm-white'
                         }
                     },
                     header    : {
