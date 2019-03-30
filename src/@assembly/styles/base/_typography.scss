@@ -92,7 +92,7 @@ blockquote {
 // Code
 code:not([class*='language-']) {
     font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
-    font-size: 85%;
+    font-size: 80%;
     padding: 3px 7px;
     border-radius: 3px;
 }
@@ -209,8 +209,8 @@ pre {
             color: #CDD3DE;
             background: #525252;
         } @else {
-            color: #728FCB;
-            background: #E3E7F1;
+            color: #748DB9;
+            background: #E2E8EF;
         }
     }
 

@@ -1,7 +1,7 @@
 <div class="asm-message-container"
      *ngIf="!dismissible || dismissible && !dismissed"
-     @fadeIn
-     @fadeOut>
+     [@fadeIn]="dismissible"
+     [@fadeOut]="dismissible">
 
     <!-- Icon -->
     <div class="asm-message-icon"
