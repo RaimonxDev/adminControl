@@ -118,7 +118,7 @@ layout[type="classy"] {
     // Fixed header
     &.fixed-header {
 
-        > .container {
+        > .wrapper {
 
             > .header {
                 position: sticky;
@@ -130,7 +130,7 @@ layout[type="classy"] {
     // Fixed footer
     &.fixed-footer {
 
-        > .container {
+        > .wrapper {
 
             > .footer {
                 position: sticky;
