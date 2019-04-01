@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 export const docs = {
     changelog         : {},
     gettingStarted    : {},
@@ -99,7 +100,7 @@ export const docs = {
                     const adminNavigationData = {...};
                     const userNavigationData = {...};
 
-                    // Store multiple navigation data 
+                    // Store multiple navigation data
                     this.asmNavigationService.storeNavigation('admin', adminNavigationData);
                     this.asmNavigationService.storeNavigation('user', userNavigationData);
                 `

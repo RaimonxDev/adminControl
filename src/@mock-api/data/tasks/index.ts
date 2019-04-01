@@ -130,8 +130,8 @@ export class MockTasksApi
                 const tasks = _.cloneDeep(this._tasks);
 
                 // Start the counters
-                let completed    = 0,
-                    notCompleted = 0;
+                let completed = 0;
+                let notCompleted = 0;
 
                 // Iterate the tasks and count them
                 tasks.forEach((task) => {

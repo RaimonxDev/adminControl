@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 import { AsmNavigationItem } from '@assembly';
 
 export const defaultNavigation: AsmNavigationItem[] = [

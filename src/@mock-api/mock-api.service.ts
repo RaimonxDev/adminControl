@@ -97,7 +97,7 @@ export class AsmMockApiService
     private _registerRequestHandler(requestType, url, delay): AsmMockApiRequestHandler
     {
         // Create a new instance of AsmMockApiRequestHandler
-        const asmMockHttp = new AsmMockApiRequestHandler;
+        const asmMockHttp = new AsmMockApiRequestHandler();
 
         // Store the url
         asmMockHttp.url = url;

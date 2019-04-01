@@ -56,7 +56,7 @@ export class AuthInterceptor implements HttpInterceptor
                     this._authService.logout();
 
                     // Reload the app
-                    location.reload(true);
+                    location.reload();
                 }
 
                 return throwError(error);

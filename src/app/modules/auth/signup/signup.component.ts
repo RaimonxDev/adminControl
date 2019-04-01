@@ -113,5 +113,7 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
         return null;
     }
 
-    return {'passwordsNotMatching': true};
+    return {
+        passwordsNotMatching: true
+    };
 };

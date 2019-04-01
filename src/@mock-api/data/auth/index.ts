@@ -103,10 +103,10 @@ export class MockAuthApi
     private _verifyJWTToken(token): boolean
     {
         // Split the token into parts
-        const parts     = token.split('.'),
-              header    = parts[0],
-              payload   = parts[1],
-              signature = parts[2];
+        const parts = token.split('.');
+        const header = parts[0];
+        const payload = parts[1];
+        const signature = parts[2];
 
         // Re-sign and encode the header and payload using the secret
         const signatureCheck = this._base64url(CryptoJS.HmacSHA256(header + '.' + payload, this._secret));

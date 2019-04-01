@@ -135,8 +135,8 @@ export class MockMailboxApi
                 // Check if the slug is being used and update it if necessary
                 const originalSlug = label.slug;
 
-                let sameSlug,
-                    slugSuffix = 1;
+                let sameSlug;
+                let slugSuffix = 1;
 
                 do
                 {
@@ -295,7 +295,7 @@ export class MockMailboxApi
                 {
                     mails = null;
                     pagination = {
-                        lastPage: lastPage
+                        lastPage
                     };
                 }
                 else
