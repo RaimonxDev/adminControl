@@ -15,7 +15,7 @@ const spacing = (() =>
     };
 
     // Loop and add specified values to the object
-    for ( let i = 24; i < 512; i += 8 )
+    for ( let i = 24; i <= 128; i += 8 )
     {
         obj[i + ''] = i + 'px';
     }
@@ -108,6 +108,16 @@ module.exports = {
         // Min width
         minWidth: {
             'auto'  : 'auto',
+            'xs'    : '320px',
+            'sm'    : '480px',
+            'md'    : '600px',
+            'lg'    : '800px',
+            'xl'    : '960px',
+            '2xl'   : '1120px',
+            '3xl'   : '1280px',
+            '4xl'   : '1440px',
+            '5xl'   : '1600px',
+            '6xl'   : '1920px',
             'full'  : '100%',
             'screen': '100vw',
             ...spacing
@@ -116,6 +126,16 @@ module.exports = {
         // Min height
         minHeight: {
             'auto'  : 'auto',
+            'xs'    : '320px',
+            'sm'    : '480px',
+            'md'    : '600px',
+            'lg'    : '800px',
+            'xl'    : '960px',
+            '2xl'   : '1120px',
+            '3xl'   : '1280px',
+            '4xl'   : '1440px',
+            '5xl'   : '1600px',
+            '6xl'   : '1920px',
             'full'  : '100%',
             'screen': '100vh',
             ...spacing
@@ -142,6 +162,16 @@ module.exports = {
         // Max height
         maxHeight: {
             'none'  : 'none',
+            'xs'    : '320px',
+            'sm'    : '480px',
+            'md'    : '600px',
+            'lg'    : '800px',
+            'xl'    : '960px',
+            '2xl'   : '1120px',
+            '3xl'   : '1280px',
+            '4xl'   : '1440px',
+            '5xl'   : '1600px',
+            '6xl'   : '1920px',
             'full'  : '100%',
             'screen': '100vh',
             ...spacing
@@ -150,6 +180,7 @@ module.exports = {
         // zIndex
         zIndex: {
             'auto' : 'auto',
+            '-1'   : -1,
             '0'    : 0,
             '10'   : 10,
             '20'   : 20,

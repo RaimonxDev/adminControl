@@ -744,39 +744,43 @@ $asm-palettes: (
 ///
 /// @access public
 /// @param {Map} $palette - Desired palette
-/// @param {String|Number} $hue - Desired hue of the palette, if it's 'contrast' or suffixed with '-contrast' it will return the contrast color of the desired hue
+/// @param {String|Number} $hue - Desired hue
 /// @param {Number} $opacity - Desired opacity
 ///
 @function asm-color($palette, $hue: 500, $opacity: 1) {
 
-    // Prepare the color
-    $color: null;
+    // Get the color
+    $color: map-get($palette, $hue);
 
-    // Convert the hue to a string so we can work on it
-    $hue: $hue + unquote('');
-
-    // If certain hue's contrast color is requested...
-    @if (str-index($hue, '-contrast')) {
-
-        // Extract the hue to figure out which hue's contrast color requested
-        $requested-hue: str-slice($hue, 1, (str-index($hue, '-contrast') - 1));
-
-        // Return the contrast color
-        $color: map-get(map-get($palette, 'contrast'), to-number($requested-hue));
-
-    } @else if (str-index($hue, 'contrast')) {
-
-        // Return the contrast of the default hue (500)
-        $color: map-get(map-get($palette, 'contrast'), 500);
-
-    } @else {
-
-        // Return the hue value from the palette
-        $color: map-get($palette, to-number($hue));
+    // Apply the opacity if possible
+    @if (type-of($color) == color) {
+        $color: rgba($color, $opacity);
     }
 
     // Return the color
-    @return rgba($color, $opacity);
+    @return $color;
+}
+
+///
+/// Get contrast color from assembly color maps
+///
+/// @access public
+/// @param {Map} $palette - Desired palette
+/// @param {String|Number} $hue - Desired hue
+/// @param {Number} $opacity - Desired opacity
+///
+@function asm-contrast($palette, $hue: 500, $opacity: 1) {
+
+    // Get the contrasting color
+    $color: map-get(map-get($palette, contrast), $hue);
+
+    // Apply the opacity if possible
+    @if (type-of($color) == color) {
+        $color: rgba($color, $opacity);
+    }
+
+    // Return the color
+    @return $color;
 }
 
 // -----------------------------------------------------------------------------------------------------

@@ -75,8 +75,7 @@
         } @else {
 
             // Do everything openly
-            .#{$class-name},
-            &.#{$class-name} {
+            .#{$class-name} {
                 @content;
             }
         }

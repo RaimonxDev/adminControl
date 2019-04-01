@@ -16,6 +16,10 @@ asm-message {
 
         .asm-message-container {
             padding: 16px 16px 16px 24px;
+
+            .asm-message-content {
+                margin-right: 8px;
+            }
         }
     }
 
@@ -61,7 +65,7 @@ asm-message {
 
         // Dismiss button
         .asm-message-dismiss-button {
-            margin-left: 16px;
+            margin-left: auto;
         }
     }
 }
