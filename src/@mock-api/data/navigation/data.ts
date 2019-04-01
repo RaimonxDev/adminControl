@@ -539,8 +539,8 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id      : 'page-layouts',
-        title   : 'Page Layouts',
+        id      : 'content-layouts',
+        title   : 'Content Layouts',
         type    : 'collapsable',
         icon    : 'view_quilt',
         children: [
