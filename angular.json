@@ -36,7 +36,8 @@
                             "src/styles.scss",
                             "src/tailwind.scss"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "es5BrowserSupport": true
                     },
                     "configurations": {
                         "production": {
