@@ -13,16 +13,19 @@
 
     // H tags
     h1 {
+        display: inline-block;
         @extend %title-lg;
     }
 
     h2 {
+        display: inline-block;
         @extend %title-base;
         font-weight: 700;
         margin-top: 56px;
     }
 
     h3 {
+        display: inline-block;
         @extend %subtitle-lg;
         font-weight: 600;
         margin-top: 40px;
@@ -31,6 +34,11 @@
     // Paragraph
     p {
         margin: 12px 0 0 0;
+    }
+
+    // Lists
+    ul, ol {
+        margin: 12px 0 40px 0;
     }
 
     // AsmMessage
@@ -84,10 +92,19 @@
                 height: 88px;
                 min-height: 88px;
                 max-height: 88px;
-                padding: 0 24px 0 40px;
+                padding: 0 40px;
 
                 h6 {
                     font-weight: 700;
+                }
+
+                .controls {
+                    display: flex;
+                    align-items: center;
+
+                    > * + * {
+                        margin-left: 8px;
+                    }
                 }
             }
 

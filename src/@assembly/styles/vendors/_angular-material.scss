@@ -62,20 +62,11 @@
 // Outline
 // ----------------------------------------------------
 
-// Increase the padding and border radius
-// of the default 'outline' form fields
+// Increase the padding of the default 'outline' form fields
 .mat-form-field.mat-form-field-appearance-outline {
 
     .mat-form-field-flex {
         padding: 0 1.25em;
-
-        .mat-form-field-outline-start {
-            border-radius: 6px 0 0 6px;
-        }
-
-        .mat-form-field-outline-end {
-            border-radius: 0 6px 6px 0;
-        }
     }
 }
 
