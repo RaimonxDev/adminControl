@@ -8,8 +8,7 @@ const expandCollapse = trigger('expandCollapse',
     [
         state('void, collapsed',
             style({
-                height : '0',
-                display: 'none'
+                height: '0'
             })
         ),
 
