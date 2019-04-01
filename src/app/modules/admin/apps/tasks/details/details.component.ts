@@ -123,7 +123,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
                 this.taskForm.setControl('assignedTo', this._formBuilder.array(this.task.assignedTo || []));
 
                 // Manually fill the sub tasks
-                const subTasksFormArray = <FormArray>this.taskForm.get('subTasks');
+                const subTasksFormArray = this.taskForm.get('subTasks') as FormArray;
                 while ( subTasksFormArray.length )
                 {
                     subTasksFormArray.removeAt(0);
@@ -139,7 +139,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
                     });
 
                     // Add the sub task form group to the sub tasks form array
-                    (<FormArray>this.taskForm.get('subTasks')).push(subTaskFormGroup);
+                    (this.taskForm.get('subTasks') as FormArray).push(subTaskFormGroup);
                 });
 
                 // Update task when there is a value change
@@ -301,7 +301,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     addTag(tag): void
     {
         // Get the tags form array
-        const tagsFormArray = <FormArray>this.taskForm.get('tags');
+        const tagsFormArray = this.taskForm.get('tags') as FormArray;
 
         // Add the tag
         tagsFormArray.push(this._formBuilder.control(tag.id));
@@ -318,7 +318,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     removeTag(tag): void
     {
         // Get the tags form array
-        const tagsFormArray = <FormArray>this.taskForm.get('tags');
+        const tagsFormArray = this.taskForm.get('tags') as FormArray;
 
         // Remove the tag
         tagsFormArray.removeAt(tagsFormArray.value.findIndex((item) => item === tag.id));

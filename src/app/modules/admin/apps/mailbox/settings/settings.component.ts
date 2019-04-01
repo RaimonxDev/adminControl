@@ -69,7 +69,7 @@ export class MailboxSettingsComponent implements OnInit
                     });
 
                     // Add the label form group to the labels form array
-                    (<FormArray>this.labelsForm.get('labels')).push(labelFormGroup);
+                    (this.labelsForm.get('labels') as FormArray).push(labelFormGroup);
                 });
             });
 
@@ -96,7 +96,7 @@ export class MailboxSettingsComponent implements OnInit
         this._mailboxService.addLabel(this.labelsForm.get('newLabel').value).subscribe((addedLabel) => {
 
             // Push the new label to the labels form array
-            (<FormArray>this.labelsForm.get('labels')).push(this._formBuilder.group({
+            (this.labelsForm.get('labels') as FormArray).push(this._formBuilder.group({
                 id   : [addedLabel.id],
                 title: [addedLabel.title, Validators.required],
                 slug : [addedLabel.slug],
@@ -118,7 +118,7 @@ export class MailboxSettingsComponent implements OnInit
     deleteLabel(id): void
     {
         // Get the labels form array
-        const labelsFormArray = <FormArray>this.labelsForm.get('labels');
+        const labelsFormArray = this.labelsForm.get('labels') as FormArray;
 
         // Remove the label from the labels form array
         labelsFormArray.removeAt(labelsFormArray.value.findIndex((label) => label.id === id));
@@ -133,7 +133,7 @@ export class MailboxSettingsComponent implements OnInit
     updateLabels(): void
     {
         // Iterate through the labels form array controls
-        (<FormArray>this.labelsForm.get('labels')).controls.forEach((labelFormGroup) => {
+        (this.labelsForm.get('labels') as FormArray).controls.forEach((labelFormGroup) => {
 
             // If the label has been edited...
             if ( labelFormGroup.dirty )

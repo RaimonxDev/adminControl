@@ -1,17 +1,17 @@
 /**
  * Generate spacing object
  */
-const spacing = (() =>
-{
+const spacing = (() => {
+
     // Create the object and add some values by hand
     const obj = {
-        px  : '1px',
-        '0' : '0',
-        '4' : '4px',
-        '8' : '8px',
-        '12': '12px',
-        '16': '16px',
-        '20': '20px'
+        px: '1px',
+        0 : '0',
+        4 : '4px',
+        8 : '8px',
+        12: '12px',
+        16: '16px',
+        20: '20px'
     };
 
     // Loop and add specified values to the object
@@ -24,6 +24,7 @@ const spacing = (() =>
 })();
 
 module.exports = {
+
     // Options
     important: true,
 
@@ -36,47 +37,47 @@ module.exports = {
         // Screens
         screens: {
             'xs'   : {
-                'min': '0',
-                'max': '599px'
+                min: '0',
+                max: '599px'
             },
             'sm'   : {
-                'min': '600px',
-                'max': '959px'
+                min: '600px',
+                max: '959px'
             },
             'md'   : {
-                'min': '960px',
-                'max': '1279px'
+                min: '960px',
+                max: '1279px'
             },
             'lg'   : {
-                'min': '1280px',
-                'max': '1919px'
+                min: '1280px',
+                max: '1919px'
             },
             'xl'   : {
-                'min': '1920px'
+                min: '1920px'
             },
             'lt-sm': {
-                'max': '599px'
+                max: '599px'
             },
             'lt-md': {
-                'max': '959px'
+                max: '959px'
             },
             'lt-lg': {
-                'max': '1279px'
+                max: '1279px'
             },
             'lt-xl': {
-                'max': '1919px'
+                max: '1919px'
             },
             'gt-xs': {
-                'min': '600px'
+                min: '600px'
             },
             'gt-sm': {
-                'min': '960px'
+                min: '960px'
             },
             'gt-md': {
-                'min': '1280px'
+                min: '1280px'
             },
             'gt-lg': {
-                'min': '1920px'
+                min: '1920px'
             }
         },
 
@@ -99,10 +100,10 @@ module.exports = {
         // Border radius
         borderRadius: {
             default: '8px',
-            'none' : '0',
-            '4'    : '4px',
-            '8'    : '8px',
-            'full' : '9999px'
+            none   : '0',
+            4      : '4px',
+            8      : '8px',
+            full   : '9999px'
         },
 
         // Min width
@@ -199,13 +200,13 @@ module.exports = {
 
         // Opacity
         opacity: {
-            '0'  : '0',
-            '12' : '0.12',
-            '38' : '0.38',
-            '54' : '0.54',
-            '70' : '0.70',
-            '84' : '0.84',
-            '100': '1'
+            0  : '0',
+            12 : '0.12',
+            38 : '0.38',
+            54 : '0.54',
+            70 : '0.70',
+            84 : '0.84',
+            100: '1'
         }
     },
 
