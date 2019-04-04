@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { merge, Subject } from 'rxjs';
+import { merge, Subject, Subscription } from 'rxjs';
 import { delay, filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmConfig } from '@assembly/types/config';
@@ -17,7 +17,7 @@ import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs       : 'asmNavigation'
 })
-export class AsmNavigationComponent implements OnInit, OnDestroy
+export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 {
     activeAsideItemId: null | string;
     asmConfig: AsmConfig;
@@ -38,6 +38,8 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     // Private
     private _appearance: 'classic' | 'compact' | 'dense' | 'thin';
     private _asideOverlay: HTMLElement | null;
+    private _asmScrollbarDirectives: QueryList<AsmScrollbarDirective>;
+    private _asmScrollbarDirectivesSubscription: Subscription;
     private _mode: 'over' | 'side';
     private _opened: boolean | '';
     private _overlay: HTMLElement | null;
@@ -130,27 +132,38 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
     @ViewChildren(AsmScrollbarDirective)
     set asmScrollbarDirectives(asmScrollbarDirectives: QueryList<AsmScrollbarDirective>)
     {
+        // Store the directives
+        this._asmScrollbarDirectives = asmScrollbarDirectives;
+
         // Return, if there are no directives
         if ( asmScrollbarDirectives.length === 0 )
         {
             return;
         }
 
-        // Update the scrollbars on collapsable items' collapse/expand
-        merge(
-            this._asmNavigationService.onCollapsableItemCollapsed,
-            this._asmNavigationService.onCollapsableItemExpanded
-        ).pipe(
-            takeUntil(this._unsubscribeAll),
-            delay(250)
-        )
-         .subscribe(() => {
+        // Unsubscribe the previous subscriptions
+        if ( this._asmScrollbarDirectivesSubscription )
+        {
+            this._asmScrollbarDirectivesSubscription.unsubscribe();
+        }
 
-             // Loop through the scrollbars and update them
-             asmScrollbarDirectives.forEach((asmScrollbarDirective) => {
-                 asmScrollbarDirective.update();
-             });
-         });
+        // Update the scrollbars on collapsable items' collapse/expand
+        this._asmScrollbarDirectivesSubscription =
+            merge(
+                this._asmNavigationService.onCollapsableItemCollapsed,
+                this._asmNavigationService.onCollapsableItemExpanded
+            )
+                .pipe(
+                    takeUntil(this._unsubscribeAll),
+                    delay(250)
+                )
+                .subscribe(() => {
+
+                    // Loop through the scrollbars and update them
+                    asmScrollbarDirectives.forEach((asmScrollbarDirective) => {
+                        asmScrollbarDirective.update();
+                    });
+                });
     }
 
     /**
@@ -381,6 +394,21 @@ export class AsmNavigationComponent implements OnInit, OnDestroy
                 // Update the asmConfig from the config
                 this.asmConfig = config;
             });
+    }
+
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
+    {
+        // Go through all the scrollbar directives
+        this._asmScrollbarDirectives.forEach((asmScrollbarDirective) => {
+
+            // Scroll to the active element
+            setTimeout(() => {
+                asmScrollbarDirective.scrollToElement('.asm-navigation-item-active', -120);
+            });
+        });
     }
 
     /**
