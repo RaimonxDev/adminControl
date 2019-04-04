@@ -1,25 +1,35 @@
 <div class="content-layout docs">
 
-    <div class="container">
+    <div class="header">
 
-        <div class="header">
+        <div class="container">
+
             <div class="breadcrumb">
-                <span class="path">DOCUMENTATION</span>
+                <span class="path">ASSEMBLY</span>
                 <span class="separator">/</span>
                 <span class="path">COMPONENTS</span>
                 <span class="separator">/</span>
                 <span class="path current">NAVIGATION</span>
             </div>
             <h1>Navigation</h1>
+
         </div>
 
-        <div class="content">
+    </div>
 
-            <!-- Section -->
+    <div class="content">
+
+        <div class="container">
+
             <h2>Introduction</h2>
             <p>
                 <code>asm-navigation</code> is a component that can be used to create application wide navigation. It has a built in
                 programmable drawer with different styles.
+            </p>
+
+            <h2>Module</h2>
+            <p>
+                <code>import &#123; AsmNavigationModule &#125; from '@assembly';</code>
             </p>
 
             <asm-message [appearance]="'outline'"
@@ -27,7 +37,6 @@
                 Navigation component is not suitable for multi use. It can only be used once in the entire application.
             </asm-message>
 
-            <!-- Section -->
             <h2>Storing navigation data</h2>
             <p>
                 Before using the navigation component, data must be stored in the service using the <code>storeNavigation</code>
@@ -46,7 +55,6 @@
             <asm-highlight lang="typescript"
                            [code]="codeExamples.settingCurrentNav"></asm-highlight>
 
-            <!-- Section -->
             <h2>Storing multiple navigation data</h2>
             <p>
                 Multiple navigation data can also be stored in the service with different keys. This is particularly useful if
@@ -64,35 +72,30 @@
             <asm-highlight lang="typescript"
                            [code]="codeExamples.settingMultipleNav"></asm-highlight>
 
-            <!-- Section -->
             <h2>Using the component</h2>
             <p>
-                In order to use the navigation component, <code>AsmNavigationModule</code> must be imported into the related module.
                 Following inputs are available for customizing and controlling the component and its built-in drawer.
             </p>
 
             <asm-highlight lang="typescript"
                            [code]="codeExamples.component"></asm-highlight>
 
-            <div class="simple-table">
+            <div class="simple-table with-background">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Input</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>
                                 <code>name</code>
-                                <span class="required"
-                                      title="Required">R
-                                </span>
                             </td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                    <span class="label">
+                                        Required
+                                    </span>
+                                </p>
                                 <p>
                                     Name of the component. The navigation component must have a name which will allow its
                                     drawer to be controlled from outside using the navigation service.
@@ -102,69 +105,67 @@
                         <tr>
                             <td>
                                 <code>appearance</code>
-                                <span class="required"
-                                      title="Required">R
-                                </span>
                             </td>
-                            <td>String Literal</td>
                             <td>
                                 <p>
-                                    Sets the appearance of the navigation.
-                                </p>
-                                <p class="allowed-values-title">
-                                    Allowed values
+                                    <span class="label">
+                                        string literal: 'classic' | 'compact' | 'dense' | 'thin'
+                                    </span>
+                                    <span class="label">
+                                        Required
+                                    </span>
                                 </p>
                                 <p>
-                                    <code>'classic' | 'compact' | 'dense' | 'thin'</code>
+                                    Sets the appearance of the navigation.
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <code>mode</code>
-                                <span class="required"
-                                      title="Required">R
-                                </span>
                             </td>
-                            <td>String Literal</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string literal: 'over' | 'side'
+                                    </span>
+                                    <span class="label">
+                                        Required
+                                    </span>
+                                </p>
                                 <p>
                                     Sets the navigation drawer behavior. <code>over</code> mode opens the navigation on top of
                                     the content while <code>side</code> mode will push the content when its opened.
-                                </p>
-                                <p class="allowed-values-title">
-                                    Allowed values
-                                </p>
-                                <p>
-                                    <code>'over' | 'side'</code>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <code>position</code>
-                                <span class="required"
-                                      title="Required">R
-                                </span>
                             </td>
-                            <td>String Literal</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string literal: 'left' | 'right'
+                                    </span>
+                                    <span class="label">
+                                        Required
+                                    </span>
+                                </p>
                                 <p>
                                     Sets the position of the navigation on the screen. It's required for navigation drawer to
                                     work correctly.
-                                </p>
-                                <p class="allowed-values-title">
-                                    Allowed values
-                                </p>
-                                <p>
-                                    <code>'left' | 'right'</code>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td><code>autoCollapse</code></td>
-                            <td>Boolean</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        boolean
+                                    </span>
+                                </p>
                                 <p>
                                     Activates / deactivates the auto collapse for the collapsable navigation items. When activated,
                                     currently expanded item will be collapsed automatically when another item expanded. If the
@@ -174,8 +175,12 @@
                         </tr>
                         <tr>
                             <td><code>opened</code></td>
-                            <td>Boolean</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        boolean
+                                    </span>
+                                </p>
                                 <p>
                                     Sets the opened status of the navigation drawer. Useful for manually opening and closing the
                                     drawer based on certain conditions such as screen size changes or <code>mode</code> changes.
@@ -184,8 +189,10 @@
                         </tr>
                         <tr>
                             <td><code>showTooltips</code></td>
-                            <td>Boolean</td>
                             <td>
+                                <span class="label">
+                                    boolean
+                                </span>
                                 <p>
                                     Shows the title of navigation items as a tooltip. Useful in certain appearances.
                                 </p>
@@ -193,8 +200,12 @@
                         </tr>
                         <tr>
                             <td><code>transparentOverlay</code></td>
-                            <td>Boolean</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        boolean
+                                    </span>
+                                </p>
                                 <p>
                                     Makes the overlay that helps closing the navigation drawer on <code>over</code> mode
                                     transparent.
@@ -205,25 +216,25 @@
                 </table>
             </div>
 
-            <!-- Section -->
             <h2>Using the service</h2>
             <p>
-                In order to use the navigation service, <code>AsmNavigationModule</code> must be imported into the related module.
-                Following methods are available to use.
+                Following methods can be accessed and used through the <code>AsmNavigationService</code>.
             </p>
 
-            <div class="simple-table">
+            <div class="simple-table with-background">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Method</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>
                                 <p>
-                                    <code>registerComponent(name, component): void</code>
+                                    <code>registerComponent(name, component)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Navigation component uses this method internally to register itself.
@@ -233,7 +244,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>deregisterComponent(name): void</code>
+                                    <code>deregisterComponent(name)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Navigation component uses this method internally to deregister itself.
@@ -243,7 +261,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>getComponent(name): void</code>
+                                    <code>getComponent(name)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Get the stored component. Useful for controlling the navigation component and its built-in drawer.
@@ -253,7 +278,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>storeNavigation(key, navigation): void</code>
+                                    <code>storeNavigation(key, navigation)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Store navigation data in the service.
@@ -263,7 +295,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>deleteNavigation(key): void</code>
+                                    <code>deleteNavigation(key)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Delete the stored navigation.
@@ -273,7 +312,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>getNavigation(key): void</code>
+                                    <code>getNavigation(key)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Get the stored navigation.
@@ -283,7 +329,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>getFlatNavigation(): any[]</code>
+                                    <code>getFlatNavigation()</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        any[]
+                                    </span>
                                 </p>
                                 <p>
                                     Get flattened navigation data. Useful for searching within the navigation.
@@ -293,7 +346,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>setCurrentNavigation(key): void</code>
+                                    <code>setCurrentNavigation(key)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Set the navigation as current.
@@ -303,7 +363,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>getCurrentNavigation(): any</code>
+                                    <code>getCurrentNavigation()</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        any
+                                    </span>
                                 </p>
                                 <p>
                                     Get the current navigation data.
@@ -313,7 +380,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>getItem(id): any | boolean</code>
+                                    <code>getItem(id)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        any | boolean
+                                    </span>
                                 </p>
                                 <p>
                                     Get item by the given id from the current navigation.
@@ -323,7 +397,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>getItemParent(id): any</code>
+                                    <code>getItemParent(id)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        any
+                                    </span>
                                 </p>
                                 <p>
                                     Get the parent of the item from the current navigation.
@@ -333,16 +414,27 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>addItem(item, idOrLocation): void</code>
+                                    <code>addItem(item, idOrLocation)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
-                                    Add an item to the current navigation at the specified location. If the <code>idOrLocation</code> is
-                                    <code>'end'</code> the item will be added at the very end of the navigation. If it's <code>'start'</code>
+                                    Add an item to the current navigation at the specified location.
+                                </p>
+                                <p>
+                                    If the <code>idOrLocation</code> is <code>'end'</code> the item will
+                                    be added at the very end of the navigation. If it's <code>'start'</code>
                                     then it will be added at the very beginning of the navigation.
                                 </p>
                                 <p>
-                                    If the <code>idOrLocation</code> parameter is an another string other than <code>'start'</code> and
-                                    <code>'end'</code>, the service will look for the item with the id of given string value. If found, the item
+                                    If the <code>idOrLocation</code> parameter is an another string other
+                                    than <code>'start'</code> and <code>'end'</code>, the service will look
+                                    for the item with the id of given string value. If found, the item
                                     will be added as a child to the found item.
                                 </p>
                             </td>
@@ -350,7 +442,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>updateItem(id, properties): void</code>
+                                    <code>updateItem(id, properties)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Update the item from the current navigation. <code>properties</code> can be partial. Service will merge the
@@ -361,7 +460,14 @@
                         <tr>
                             <td>
                                 <p>
-                                    <code>deleteItem(id): void</code>
+                                    <code>deleteItem(id)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="label">
+                                        void
+                                    </span>
                                 </p>
                                 <p>
                                     Delete the item from the current navigation.
@@ -372,19 +478,12 @@
                 </table>
             </div>
 
-            <!-- Section -->
             <h2>Service observables</h2>
             <p>
                 Following observables can be accessed and used through the <code>AsmNavigationService</code>.
             </p>
-            <div class="simple-table">
+            <div class="simple-table with-background">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>
@@ -489,30 +588,23 @@
                 </table>
             </div>
 
-            <!-- Section -->
             <h2>Navigation item data model</h2>
             <p>
                 Each navigation item has following parameters that can be set.
             </p>
-            <div class="simple-table">
+            <div class="simple-table with-background">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>
                                 <code>id</code>
-                                <span class="required"
-                                      title="Required">R
-                                </span>
                             </td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     All navigation items must have a unique id for actions to be performed on such as update and
                                     remove.
@@ -522,32 +614,28 @@
                         <tr>
                             <td>
                                 <code>type</code>
-                                <span class="required"
-                                      title="Required">R
-                                </span>
                             </td>
-                            <td>String Literal</td>
                             <td>
                                 <p>
-                                    Type of the navigation item.
-                                </p>
-                                <p class="allowed-values-title">
-                                    Allowed values
+                                    <span class="label">
+                                        string literal: 'aside' | 'collapsable' | 'link' | 'subheader'
+                                    </span>
                                 </p>
                                 <p>
-                                    <code>'aside' | 'collapsable' | 'link' | 'subheader'</code>
+                                    Type of the navigation item.
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <code>title</code>
-                                <span class="required"
-                                      title="Required">R
-                                </span>
                             </td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     Title of the navigation item.
                                 </p>
@@ -555,8 +643,12 @@
                         </tr>
                         <tr>
                             <td><code>subtitle</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     Subtitle / description of the navigation item.
                                 </p>
@@ -564,8 +656,12 @@
                         </tr>
                         <tr>
                             <td><code>hidden</code></td>
-                            <td>Boolean</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        boolean
+                                    </span>
+                                </p>
                                 <p>
                                     Shows / hides the navigation item
                                 </p>
@@ -573,8 +669,12 @@
                         </tr>
                         <tr>
                             <td><code>link</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     Internal link for the navigation item, only works if the item type is <code>link</code>.
                                 </p>
@@ -582,8 +682,12 @@
                         </tr>
                         <tr>
                             <td><code>externalLink</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     External web link for the navigation item, only works if the item type is <code>link</code>.
                                 </p>
@@ -591,8 +695,12 @@
                         </tr>
                         <tr>
                             <td><code>exactMatch</code></td>
-                            <td>Boolean</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        boolean
+                                    </span>
+                                </p>
                                 <p>
                                     Leverages Angular Router's <code>exact</code> parameter for the active status of the
                                     navigation item. <a href="https://angular.io/guide/router#active-router-links"
@@ -602,8 +710,12 @@
                         </tr>
                         <tr>
                             <td><code>function</code></td>
-                            <td>Any</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        any
+                                    </span>
+                                </p>
                                 <p>
                                     Custom function to trigger when the navigation item clicked.
                                 </p>
@@ -611,17 +723,25 @@
                         </tr>
                         <tr>
                             <td><code>classes</code></td>
-                            <td>String</td>
                             <td>
                                 <p>
-                                    Custom class names for the navigation item.
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
+                                <p>
+                                    Custom class names for the navigation item separated by space.
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td><code>icon</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     Name of the icon for the navigation item.
                                 </p>
@@ -629,8 +749,12 @@
                         </tr>
                         <tr>
                             <td><code>iconFontSet</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     fontSet attribute of the mat-icon element that is used in the navigation item.
                                     <a href="https://material.angular.io/components/icon/api#directives"
@@ -640,8 +764,12 @@
                         </tr>
                         <tr>
                             <td><code>badge</code></td>
-                            <td>Any</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        any
+                                    </span>
+                                </p>
                                 <p>
                                     Object of the badge.
                                 </p>
@@ -649,8 +777,12 @@
                         </tr>
                         <tr>
                             <td><code>badge.title</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     Title of the badge.
                                 </p>
@@ -658,23 +790,25 @@
                         </tr>
                         <tr>
                             <td><code>badge.style</code></td>
-                            <td>String Literal</td>
                             <td>
                                 <p>
-                                    Style of the badge.
-                                </p>
-                                <p class="allowed-values-title">
-                                    Allowed values
+                                    <span class="label">
+                                        string literal: 'rectangle' | 'rounded' | 'simple'
+                                    </span>
                                 </p>
                                 <p>
-                                    <code>'rectangle' | 'rounded' | 'simple'</code>
+                                    Style of the badge.
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td><code>badge.background</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     Background color of the badge.
                                 </p>
@@ -682,8 +816,12 @@
                         </tr>
                         <tr>
                             <td><code>badge.color</code></td>
-                            <td>String</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        string
+                                    </span>
+                                </p>
                                 <p>
                                     Foreground color of the badge.
                                 </p>
@@ -691,8 +829,12 @@
                         </tr>
                         <tr>
                             <td><code>children</code></td>
-                            <td>Array</td>
                             <td>
+                                <p>
+                                    <span class="label">
+                                        array
+                                    </span>
+                                </p>
                                 <p>
                                     Array of navigation items as children items.
                                 </p>

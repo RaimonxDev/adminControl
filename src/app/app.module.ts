@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ExtraOptions, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AsmCoreModule } from '@assembly';
 import { AsmMockApiModule } from '@mock-api/mock-api.module';
 import { CoreModule } from 'app/core/core.module';
 import { AuthModule } from 'app/modules/auth/auth.module';
 import { AdminModule } from 'app/modules/admin/admin.module';
 import { AppComponent } from 'app/app.component';
-
-// Router extra options
-const routerExtraOptions: ExtraOptions = {
-    anchorScrolling: 'enabled'
-};
 
 @NgModule({
     declarations: [
@@ -21,7 +16,7 @@ const routerExtraOptions: ExtraOptions = {
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot([], routerExtraOptions),
+        RouterModule.forRoot([]),
 
         // Assembly Core
         AsmCoreModule,

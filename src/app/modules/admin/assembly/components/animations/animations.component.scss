@@ -2,157 +2,56 @@
 
 animations {
 
-    .content-layout {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
+    ol {
+        padding-inline-start: 2em;
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            max-width: 1200px;
-            width: 100%;
+        li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+    }
 
-            > .title {
-               @extend %title-lg;
-            }
+    .mat-form-field {
+        width: 100%;
+        margin-top: 32px;
+    }
 
-            .description {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                max-width: 560px;
-                font-weight: 600;
-                margin-bottom: 16px;
+    mat-tab-group {
 
-                span {
-                    margin-bottom: 6px;
+        .mat-tab-header {
+            border-top: 1px solid;
+        }
 
-                    &:last-child {
-                        margin-bottom: 0;
-                    }
+        .mat-tab-body-wrapper {
 
-                }
+            .mat-tab-body {
 
-                ol {
-                    margin: 16px 0 6px 0;
-                    padding-inline-start: 1em;
+                &:first-child {
 
-                    li {
-                        margin-bottom: 16px;
-                        line-height: 1.8;
-                    }
-                }
-            }
-
-            .animation {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin: 32px 0 64px 0;
-                width: 100%;
-
-                .title {
-                    @extend %title-md;
-                }
-
-                .preview {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    max-width: 640px;
-                    width: 100%;
-                    margin-bottom: 32px;
-
-                    .animated-box-area {
-                        position: relative;
+                    .mat-tab-body-content {
                         display: flex;
                         justify-content: center;
-                        width: 100%;
-                        min-height: 360px;
-                        max-height: 360px;
-                        height: 360px;
-                        padding: 120px 80px;
-                        border-radius: 8px;
-                        overflow: hidden;
-
-                        .info {
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            left: 0;
-                            padding: 8px 12px;
-                            font-size: 12px;
-                            font-weight: 600;
-                            text-align: center;
-                            z-index: 10;
-                        }
-
-                        .animated-box {
-                            width: 120px;
-                            height: 120px;
-                            overflow: hidden;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            user-select: none;
-
-                            .animated-box-content {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                flex: 1 0 auto;
-                                height: 100%;
-                                text-align: center;
-                                font-size: 11px;
-                                font-weight: 900;
-                            }
-                        }
+                        min-height: 200px;
                     }
                 }
 
-                .details {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    justify-content: center;
-                    max-width: 640px;
-                    width: 100%;
+                .animated-box {
+                    width: 120px;
+                    height: 120px;
+                    overflow: hidden;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    user-select: none;
 
-                    fieldset {
-                        margin-bottom: 32px;
-                        padding: 8px 24px;
-
-                        .fieldset-content {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-
-                            .mat-form-field {
-
-                            }
-
-                            .buttons {
-                                display: flex;
-                                margin: 8px 0 24px 0;
-
-                                button {
-                                    margin-right: 16px;
-
-                                    &:last-child {
-                                        margin-right: 0;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    .description {
-                        align-items: flex-start;
-                        margin-bottom: 0;
-                        max-width: none;
+                    .animated-box-content {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex: 1 0 auto;
+                        height: 100%;
+                        text-align: center;
+                        font-size: 11px;
+                        font-weight: 700;
                     }
                 }
             }
@@ -167,40 +66,21 @@ animations {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
 
     animations {
 
-        .content-layout {
+        .info {
+            background: asm-color($asm-blue-grey);
+            color: map-get($foreground, secondary-text);
+        }
 
-            .container {
+        .animated-box {
+            background: map-get($primary, default);
+            @include asm-shadow(2);
 
-                .description {
-                    color: map-get($foreground, secondary-text)
-                }
-
-                .animation {
-
-                    .preview {
-
-                        .animated-box-area {
-                            background: asm-color($asm-blue-grey, 400);
-
-                            .info {
-                                background: asm-color($asm-blue-grey);
-                                color: map-get($foreground, secondary-text);
-                            }
-
-                            .animated-box {
-                                background: map-get($background, card);
-                                @include asm-shadow(1);
-
-                                .animated-box-content {
-                                    color: map-get($foreground, secondary-text);
-                                }
-                            }
-                        }
-                    }
-                }
+            .animated-box-content {
+                color: map-get($primary, default-contrast);
             }
         }
     }

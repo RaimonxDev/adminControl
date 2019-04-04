@@ -64,13 +64,41 @@ export class AnimationsComponent
 
         this.visibilityStates = {
             expandCollapse: true,
-            fadeIn        : true,
-            fadeOut       : true,
-            shake         : true,
-            slideIn       : true,
-            slideOut      : true,
-            zoomIn        : true,
-            zoomOut       : true
+            fadeIn        : {
+                in    : true,
+                top   : true,
+                bottom: true,
+                left  : true,
+                right : true
+            },
+            fadeOut       : {
+                out   : true,
+                top   : true,
+                bottom: true,
+                left  : true,
+                right : true
+            },
+            shake         : {
+                shake: true
+            },
+            slideIn       : {
+                top   : true,
+                bottom: true,
+                left  : true,
+                right : true
+            },
+            slideOut      : {
+                top   : true,
+                bottom: true,
+                left  : true,
+                right : true
+            },
+            zoomIn        : {
+                in: true
+            },
+            zoomOut       : {
+                out: true
+            }
         };
     }
 
@@ -111,11 +139,11 @@ export class AnimationsComponent
         animation = animation.split('.');
 
         // Toggle the visibility status
-        this.visibilityStates[animation[0]] = false;
+        this.visibilityStates[animation[0]][animation[1]] = false;
         this.animationStates[animation[0]][animation[1]] = 'void';
 
         setTimeout(() => {
-            this.visibilityStates[animation[0]] = true;
+            this.visibilityStates[animation[0]][animation[1]] = true;
             this.animationStates[animation[0]][animation[1]] = '*';
         }, timeout);
     }

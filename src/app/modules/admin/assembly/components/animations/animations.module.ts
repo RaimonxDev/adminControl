@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatSelectModule, MatTabsModule } from '@angular/material';
+import { AsmHighlightModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { AnimationsComponent } from 'app/modules/admin/assembly/components/animations/animations.component';
 import { animationsRoutes } from 'app/modules/admin/assembly/components/animations/animations.routing';
@@ -9,12 +10,14 @@ import { animationsRoutes } from 'app/modules/admin/assembly/components/animatio
     declarations: [
         AnimationsComponent
     ],
-    imports: [
+    imports     : [
         RouterModule.forChild(animationsRoutes),
         MatButtonModule,
         MatFormFieldModule,
         MatSelectModule,
-        SharedModule,
+        MatTabsModule,
+        AsmHighlightModule,
+        SharedModule
     ]
 })
 export class AnimationsModule

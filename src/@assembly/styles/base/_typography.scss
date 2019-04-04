@@ -148,29 +148,8 @@ pre {
 .link {
     cursor: pointer;
 
-    &:not(.fragment) {
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &.fragment {
-        position: relative;
-
-        &:before {
-            display: none;
-            content: '#';
-            position: absolute;
-            left: -1em;
-        }
-
-        &:hover {
-
-            &:before {
-                display: inline-block;
-            }
-        }
+    &:hover {
+        text-decoration: underline;
     }
 }
 
@@ -246,18 +225,8 @@ pre {
 
     // Linked
     .link {
-
-        &:not(.fragment) {
-            color: map-get($primary, default);
-            border-bottom-color: map-get($primary, default);
-        }
-
-        &.fragment {
-
-            &:before {
-                color: map-get($foreground, hint-text);
-            }
-        }
+        color: map-get($primary, default);
+        border-bottom-color: map-get($primary, default);
     }
 
     // Breadcrumb

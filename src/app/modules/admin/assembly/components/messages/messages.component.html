@@ -1,264 +1,514 @@
 <div class="content-layout docs">
 
-    <div class="container">
+    <div class="header">
 
-        <div class="header">
+        <div class="container">
+
             <div class="breadcrumb">
-                <span class="path">USER INTERFACE</span>
+                <span class="path">ASSEMBLY</span>
                 <span class="separator">/</span>
                 <span class="path">COMPONENTS</span>
                 <span class="separator">/</span>
                 <span class="path current">MESSAGES</span>
             </div>
             <h1>Messages</h1>
+
         </div>
 
-        <div class="content">
+    </div>
 
-            <h2>Introduction</h2>
+    <div class="content">
+
+        <div class="container message-doc-scroll-container">
+
+            <!-- Introduction -->
+            <h2>
+                Introduction
+            </h2>
             <p>
                 <code>asm-message</code> is a highly customizable and detailed component
                 for displaying all kinds of messages across your app. They can be controlled
                 from your components as well as via the <code>AsmMessageService</code>.
             </p>
 
-            <h2>Appearances</h2>
+            <!-- Module -->
+            <h2>
+                Module
+            </h2>
             <p>
-                Message boxes have 3 different built-in appearances to choose from. You can
+                <code>import &#123; AsmMessageModule &#125; from '@assembly';</code>
+            </p>
+
+            <!-- Appearance -->
+            <h2>
+                Appearance
+            </h2>
+            <p>
+                Message boxes have 2 different built-in appearances to choose from. You can
                 use them as they are or modify them for your own needs and likings.
             </p>
 
-            <!-- Solid appearance -->
-            <div class="example-container">
+            <div class="example-viewer">
 
-                <div class="header">
-                    <h6>Solid appearance</h6>
+                <!-- Solid -->
+                <div class="title">
+                    <h6>Solid (default)</h6>
                 </div>
 
-                <div class="content">
+                <mat-tab-group [animationDuration]="'0ms'">
 
-                    <!-- Primary -->
-                    <asm-message [type]="'primary'">
-                        <div asmMessageContent>Primary message box</div>
-                    </asm-message>
+                    <mat-tab label="Preview">
 
-                    <!-- Accent -->
-                    <asm-message [type]="'accent'">
-                        <div asmMessageContent>Accent message box</div>
-                    </asm-message>
+                        <!-- Primary -->
+                        <asm-message [type]="'primary'">
+                            Primary message box
+                        </asm-message>
 
-                    <!-- Warn -->
-                    <asm-message [type]="'warn'">
-                        <div asmMessageContent>Warn message box</div>
-                    </asm-message>
+                        <!-- Accent -->
+                        <asm-message [type]="'accent'">
+                            Accent message box
+                        </asm-message>
 
-                    <!-- Basic -->
-                    <asm-message [appearance]="'solid'"
-                                 [type]="'basic'"
-                                 [showIcon]="true">
-                        <div asmMessageContent>Basic message box</div>
-                    </asm-message>
+                        <!-- Warn -->
+                        <asm-message [type]="'warn'">
+                            Warn message box
+                        </asm-message>
 
-                    <!-- Info -->
-                    <asm-message [type]="'info'">
-                        <div asmMessageContent>Info message box</div>
-                    </asm-message>
+                        <!-- Basic -->
+                        <asm-message [type]="'basic'">
+                            Basic message box
+                        </asm-message>
 
-                    <!-- Success -->
-                    <asm-message [type]="'success'">
-                        <div asmMessageContent>Success message box</div>
-                    </asm-message>
+                        <!-- Info -->
+                        <asm-message [type]="'info'">
+                            Info message box
+                        </asm-message>
 
-                    <!-- Warning -->
-                    <asm-message [type]="'warning'">
-                        <div asmMessageContent>Warning message box</div>
-                    </asm-message>
+                        <!-- Success -->
+                        <asm-message [type]="'success'">
+                            Success message box
+                        </asm-message>
 
-                    <!-- Error -->
-                    <asm-message [type]="'error'">
-                        <div asmMessageContent>Error message box</div>
-                    </asm-message>
+                        <!-- Warning -->
+                        <asm-message [type]="'warning'">
+                            Warning message box
+                        </asm-message>
 
-                </div>
+                        <!-- Error -->
+                        <asm-message [type]="'error'">
+                            Error message box
+                        </asm-message>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <asm-highlight [lang]="'html'">
+                            <textarea>
+
+                                <!-- Primary -->
+                                <asm-message [type]="'primary'">
+                                    Primary message box
+                                </asm-message>
+
+                                <!-- Accent -->
+                                <asm-message [type]="'accent'">
+                                    Accent message box
+                                </asm-message>
+
+                                <!-- Warn -->
+                                <asm-message [type]="'warn'">
+                                    Warn message box
+                                </asm-message>
+
+                                <!-- Basic -->
+                                <asm-message [type]="'basic'">
+                                    Basic message box
+                                </asm-message>
+
+                                <!-- Info -->
+                                <asm-message [type]="'info'">
+                                    Info message box
+                                </asm-message>
+
+                                <!-- Success -->
+                                <asm-message [type]="'success'">
+                                    Success message box
+                                </asm-message>
+
+                                <!-- Warning -->
+                                <asm-message [type]="'warning'">
+                                    Warning message box
+                                </asm-message>
+
+                                <!-- Error -->
+                                <asm-message [type]="'error'">
+                                    Error message box
+                                </asm-message>
+
+                            </textarea>
+                        </asm-highlight>
+
+                    </mat-tab>
+
+                </mat-tab-group>
 
             </div>
 
-            <!-- Outline appearance -->
-            <div class="example-container">
+            <div class="example-viewer">
 
-                <div class="header">
-                    <h6>Outline appearance</h6>
+                <!-- Outline -->
+                <div class="title">
+                    <h6>Outline</h6>
                 </div>
 
-                <div class="content">
+                <mat-tab-group [animationDuration]="'0ms'">
 
-                    <!-- Primary -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'primary'">
-                        <div asmMessageContent>Primary message box</div>
-                    </asm-message>
+                    <mat-tab label="Preview">
 
-                    <!-- Accent -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'accent'">
-                        <div asmMessageContent>Accent message box</div>
-                    </asm-message>
+                        <!-- Primary -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'primary'">
+                            Primary message box
+                        </asm-message>
 
-                    <!-- Warn -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'warn'">
-                        <div asmMessageContent>Warn message box</div>
-                    </asm-message>
+                        <!-- Accent -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'accent'">
+                            Accent message box
+                        </asm-message>
 
-                    <!-- Basic -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'basic'">
-                        <div asmMessageContent>Basic message box</div>
-                    </asm-message>
+                        <!-- Warn -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'warn'">
+                            Warn message box
+                        </asm-message>
 
-                    <!-- Info -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'info'">
-                        <div asmMessageContent>Info message box</div>
-                    </asm-message>
+                        <!-- Basic -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'basic'">
+                            Basic message box
+                        </asm-message>
 
-                    <!-- Success -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'success'">
-                        <div asmMessageContent>Success message box</div>
-                    </asm-message>
+                        <!-- Info -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'info'">
+                            Info message box
+                        </asm-message>
 
-                    <!-- Warning -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'warning'">
-                        <div asmMessageContent>Warning message box</div>
-                    </asm-message>
+                        <!-- Success -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'success'">
+                            Success message box
+                        </asm-message>
 
-                    <!-- Error -->
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'error'">
-                        <div asmMessageContent>Error message box</div>
-                    </asm-message>
+                        <!-- Warning -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'warning'">
+                            Warning message box
+                        </asm-message>
 
-                </div>
+                        <!-- Error -->
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'error'">
+                            Error message box
+                        </asm-message>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <asm-highlight [lang]="'html'">
+                            <textarea>
+
+                                <!-- Primary -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'primary'">
+                                    Primary message box
+                                </asm-message>
+
+                                <!-- Accent -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'accent'">
+                                    Accent message box
+                                </asm-message>
+
+                                <!-- Warn -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'warn'">
+                                    Warn message box
+                                </asm-message>
+
+                                <!-- Basic -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'basic'">
+                                    Basic message box
+                                </asm-message>
+
+                                <!-- Info -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'info'">
+                                    Info message box
+                                </asm-message>
+
+                                <!-- Success -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'success'">
+                                    Success message box
+                                </asm-message>
+
+                                <!-- Warning -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'warning'">
+                                    Warning message box
+                                </asm-message>
+
+                                <!-- Error -->
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'error'">
+                                    Error message box
+                                </asm-message>
+
+                            </textarea>
+                        </asm-highlight>
+
+                    </mat-tab>
+
+                </mat-tab-group>
 
             </div>
 
-            <!-- Outline appearance -->
-            <div class="example-container">
-
-                <div class="header">
-                    <h6>Border appearance</h6>
-                </div>
-
-                <!--<div class="content">
-
-                    &lt;!&ndash; Primary &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'primary'">
-                        <div asmMessageContent>Primary message box</div>
-                    </asm-message>
-
-                    &lt;!&ndash; Accent &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'accent'">
-                        <div asmMessageContent>Accent message box</div>
-                    </asm-message>
-
-                    &lt;!&ndash; Warn &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'warn'">
-                        <div asmMessageContent>Warn message box</div>
-                    </asm-message>
-
-                    &lt;!&ndash; Basic &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'basic'">
-                        <div asmMessageContent>Basic message box</div>
-                    </asm-message>
-
-                    &lt;!&ndash; Info &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'info'">
-                        <div asmMessageContent>Info message box</div>
-                    </asm-message>
-
-                    &lt;!&ndash; Success &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'success'">
-                        <div asmMessageContent>Success message box</div>
-                    </asm-message>
-
-                    &lt;!&ndash; Warning &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'warning'">
-                        <div asmMessageContent>Warning message box</div>
-                    </asm-message>
-
-                    &lt;!&ndash; Error &ndash;&gt;
-                    <asm-message [appearance]="'outline'"
-                                 [type]="'error'">
-                        <div asmMessageContent>Error message box</div>
-                    </asm-message>
-
-                </div>-->
-
-            </div>
-
-            <!-- Dismissible boxes -->
-            <h2>Dismissible boxes</h2>
+            <!-- Icons -->
+            <h2>
+                Icons
+            </h2>
             <p>
-                Dismissible boxes can be removed from the view by clicking their <b>X</b> button.
+                The <code>info</code>, <code>success</code>, <code>warning</code> and <code>error</code> type message boxes have
+                default icons and they are visible by default. If you wish to hide those icons, use the <code>[showIcon]="false"</code>
+                attribute.
             </p>
-            <div class="example-container">
 
-                <div class="header">
+            <div class="example-viewer">
 
+                <div class="title">
                     <h6>Example</h6>
-
-                    <div>
-                        <button mat-button
-                                [color]="'primary'"
-                                (click)="show('dismissibleMessageBoxExample1Box1'); show('dismissibleMessageBoxExample1Box2')">
-                            Reset
-                        </button>
-                    </div>
-
                 </div>
 
-                <div class="content">
+                <mat-tab-group [animationDuration]="'0ms'">
 
-                    <asm-message [appearance]="'outline'"
-                                 [dismissible]="true"
-                                 [dismissed]="false"
-                                 [name]="'dismissibleMessageBoxExample1Box1'"
-                                 [type]="'success'">
-                        Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
-                    </asm-message>
-                    <asm-message [appearance]="'outline'"
-                                 [dismissible]="true"
-                                 [dismissed]="false"
-                                 [name]="'dismissibleMessageBoxExample1Box2'"
-                                 [type]="'info'">
-                        This one has a lot of text so you can see how the text is going to be displayed.
-                        Also this is a dismissible message box which can be dismissed by clicking the
-                        <b>close</b> button.
-                    </asm-message>
+                    <mat-tab label="Preview">
 
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'success'"
+                                     [showIcon]="false">
+                            Success message with no icon
+                        </asm-message>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <asm-highlight [lang]="'html'">
+                            <textarea>
+
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'success'"
+                                             [showIcon]="false">
+                                    Success message with no icon
+                                </asm-message>
+
+                            </textarea>
+                        </asm-highlight>
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
+            </div>
+
+            <!-- Custom icons -->
+            <h2>
+                Custom icons
+            </h2>
+            <p>
+                All message boxes come with icon support. To use a custom icon, set the <code>[customIcon]="true"</code>
+                and use <code>asmMessageIcon</code> attribute on an element you wish to use as the icon.
+            </p>
+
+            <div class="example-viewer">
+
+                <div class="title">
+                    <h6>Example</h6>
                 </div>
+
+                <mat-tab-group [animationDuration]="'0ms'">
+
+                    <mat-tab label="Preview">
+
+                        <asm-message [appearance]="'outline'"
+                                     [customIcon]="true"
+                                     [type]="'info'">
+                            <mat-icon asmMessageIcon>notifications</mat-icon>
+                            Info message with a custom icon
+                        </asm-message>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <asm-highlight [lang]="'html'">
+                            <textarea>
+
+                                <asm-message [appearance]="'outline'"
+                                             [customIcon]="true"
+                                             [type]="'info'">
+                                    <mat-icon asmMessageIcon>notifications</mat-icon>
+                                    Info message with a custom icon
+                                </asm-message>
+
+                            </textarea>
+                        </asm-highlight>
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
+            </div>
+
+            <!-- Complex content -->
+            <h2>
+                Complex content
+            </h2>
+            <p>
+                The content of the message box can also be set using the <code>asmMessageContent</code> attribute which
+                may allow to have a better structure on complex contents.
+            </p>
+
+            <div class="example-viewer">
+
+                <div class="title">
+                    <h6>Example</h6>
+                </div>
+
+                <mat-tab-group [animationDuration]="'0ms'">
+
+                    <mat-tab label="Preview">
+
+                        <asm-message [appearance]="'outline'"
+                                     [type]="'warning'">
+                            <div asmMessageContent>
+                                This is a warning message!
+                            </div>
+                        </asm-message>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <asm-highlight [lang]="'html'">
+                            <textarea>
+
+                                <asm-message [appearance]="'outline'"
+                                             [type]="'warn'">
+                                    <div asmMessageContent>
+                                        This is a warning message!
+                                    </div>
+                                </asm-message>
+
+                            </textarea>
+                        </asm-highlight>
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
+            </div>
+
+            <!-- Dismissible messages -->
+            <h2>
+                Dismissible messages
+            </h2>
+            <p>
+                Dismissible messages can be removed from the view by clicking their <b>X</b> button.
+            </p>
+
+            <div class="example-viewer">
+
+                <div class="title">
+                    <h6>Example</h6>
+                    <button mat-button
+                            [color]="'primary'"
+                            (click)="show('dismissibleMessageBoxExample1Box1'); show('dismissibleMessageBoxExample1Box2')">
+                        Reset
+                    </button>
+                </div>
+
+                <mat-tab-group [animationDuration]="'0ms'">
+
+                    <mat-tab label="Preview">
+
+                        <asm-message [appearance]="'outline'"
+                                     [dismissible]="true"
+                                     [dismissed]="false"
+                                     [name]="'dismissibleMessageBoxExample1Box1'"
+                                     [type]="'success'">
+                            Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
+                        </asm-message>
+
+                        <asm-message [appearance]="'outline'"
+                                     [dismissible]="true"
+                                     [dismissed]="false"
+                                     [name]="'dismissibleMessageBoxExample1Box2'"
+                                     [type]="'info'">
+                            This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed by
+                            clicking the<b>close</b> button.
+                        </asm-message>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <asm-highlight [lang]="'html'">
+                            <textarea>
+
+                                <asm-message [appearance]="'outline'"
+                                             [dismissible]="true"
+                                             [dismissed]="false"
+                                             [name]="'dismissibleMessageBoxExample1Box1'"
+                                             [type]="'success'">
+                                    Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
+                                </asm-message>
+
+                                <asm-message [appearance]="'outline'"
+                                             [dismissible]="true"
+                                             [dismissed]="false"
+                                             [name]="'dismissibleMessageBoxExample1Box2'"
+                                             [type]="'info'">
+                                    This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed
+                                    by clicking the<b>close</b> button.
+                                </asm-message>
+
+                            </textarea>
+                        </asm-highlight>
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
             </div>
 
             <!-- Dismissible boxes controlled from the service -->
-            <h2>Dismissible boxes controlled from the service</h2>
+            <h2>
+                Dismissible messages controlled from the service
+            </h2>
             <p>
-                Message boxes can be shown and dismissed via the <code>AsmMessageService</code>.
+                Messages can be shown and dismissed via the <code>AsmMessageService</code>.
             </p>
-            <div class="example-container">
 
-                <div class="header">
+            <div class="example-viewer">
 
+                <div class="title">
                     <h6>Example</h6>
-
                     <div>
                         <button mat-button
                                 [color]="'primary'"
@@ -272,30 +522,60 @@
                             Dismiss
                         </button>
                     </div>
-
                 </div>
 
-                <div class="content">
+                <mat-tab-group [animationDuration]="'0ms'">
 
-                    <asm-message [appearance]="'outline'"
-                                 [dismissible]="true"
-                                 [dismissed]="false"
-                                 [name]="'dismissibleMessageBoxExample2Box1'"
-                                 [type]="'success'">
-                        Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
-                    </asm-message>
+                    <mat-tab label="Preview">
 
-                    <asm-message [appearance]="'outline'"
-                                 [dismissible]="true"
-                                 [dismissed]="false"
-                                 [name]="'dismissibleMessageBoxExample2Box2'"
-                                 [type]="'info'">
-                        This one has a lot of text so you can see how the text is going to be displayed.
-                        Also this is a dismissible message box which can be dismissed by clicking the
-                        <b>close</b> button.
-                    </asm-message>
+                        <asm-message [appearance]="'outline'"
+                                     [dismissible]="true"
+                                     [dismissed]="false"
+                                     [name]="'dismissibleMessageBoxExample2Box1'"
+                                     [type]="'success'">
+                            Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
+                        </asm-message>
 
-                </div>
+                        <asm-message [appearance]="'outline'"
+                                     [dismissible]="true"
+                                     [dismissed]="false"
+                                     [name]="'dismissibleMessageBoxExample2Box2'"
+                                     [type]="'info'">
+                            This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed by
+                            clicking the <b>close</b> button.
+                        </asm-message>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <asm-highlight [lang]="'html'">
+                            <textarea>
+
+                                <asm-message [appearance]="'outline'"
+                                             [dismissible]="true"
+                                             [dismissed]="false"
+                                             [name]="'dismissibleMessageBoxExample2Box1'"
+                                             [type]="'success'">
+                                    Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
+                                </asm-message>
+
+                                <asm-message [appearance]="'outline'"
+                                             [dismissible]="true"
+                                             [dismissed]="false"
+                                             [name]="'dismissibleMessageBoxExample2Box2'"
+                                             [type]="'info'">
+                                    This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed
+                                    by clicking the <b>close</b> button.
+                                </asm-message>
+
+                            </textarea>
+                        </asm-highlight>
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
             </div>
 
         </div>

@@ -2,27 +2,21 @@
 
 messages {
 
-    .content-layout {
+    .content {
 
-        .container {
+        .example-viewer {
 
-            .content {
+            asm-message {
+                margin-top: 0;
 
-                .example-container {
+                .asm-message-container {
+                    margin-bottom: 32px;
+                }
 
-                    asm-message {
-                        margin-top: 0;
+                &:last-child {
 
-                        .asm-message-container {
-                            margin-bottom: 32px;
-                        }
-
-                        &:last-child {
-
-                            .asm-message-container {
-                                margin-bottom: 0;
-                            }
-                        }
+                    .asm-message-container {
+                        margin-bottom: 0;
                     }
                 }
             }

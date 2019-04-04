@@ -31,6 +31,13 @@
         margin-top: 40px;
     }
 
+    h4 {
+        display: inline-block;
+        @extend %subtitle-md;
+        font-weight: 600;
+        margin-top: 40px;
+    }
+
     // Paragraph
     p {
         margin: 12px 0 0 0;
@@ -66,6 +73,8 @@
 
     // Content
     > .content {
+        display: flex;
+        align-items: flex-start;
         padding: 64px;
 
         .container {
@@ -80,7 +89,7 @@
         .example-viewer {
             display: flex;
             flex-direction: column;
-            margin-top: 32px;
+            margin: 32px 0;
             border-radius: 4px;
             overflow: hidden;
             @include asm-shadow(1);
@@ -272,6 +281,17 @@
                 }
             }
         }
+
+        // Table of contents
+        asm-toc {
+            top: 64px;
+            margin-left: 160px;
+
+            // Fixed header
+            .fixed-header & {
+                top: 144px;
+            }
+        }
     }
 }
 
@@ -296,7 +316,12 @@
 
 
         .header {
-            background: asm-color($asm-blue-grey, 300);
+
+            @if ($is-dark) {
+                background: map-get($background, card);
+            } @else {
+                background: asm-color($asm-blue-grey, 300);
+            }
         }
 
         .content {
@@ -308,15 +333,26 @@
                 mat-tab-group {
 
                     .mat-tab-header {
-                        background: asm-color($asm-blue-grey, 100);
-                        border-color: transparentize(map-get($foreground, divider), 0.09)
+
+                        @if ($is-dark) {
+                            background: map-get($background, card);
+                            border-color: map-get($foreground, divider);
+                        } @else {
+                            background: asm-color($asm-blue-grey, 100);
+                            border-color: transparentize(map-get($foreground, divider), 0.09)
+                        }
                     }
 
                     .mat-tab-body-content {
 
                         asm-highlight {
 
-                            pre {
+                            pre[class*='language-'] {
+                                border: none;
+                            }
+
+                            code[class*='language-'],
+                            pre[class*='language-'] {
                                 background: none;
                             }
                         }
