@@ -781,6 +781,84 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type: 'divider'
     },
     {
+        id   : 'documentation',
+        title: 'Documentation',
+        icon : 'import_contacts',
+        type : 'subheader'
+    },
+    {
+        id   : 'changelog',
+        title: 'Changelog',
+        type : 'link',
+        icon : 'update',
+        link : '/docs/changelog',
+        badge: {
+            title     : '1.0.0',
+            style     : 'rounded',
+            background: '#FFEB3B',
+            color     : '#000000'
+        }
+    },
+    {
+        id   : 'getting-started',
+        title: 'Getting Started',
+        type : 'link',
+        icon : 'import_contacts',
+        link : '/docs/getting-started'
+    },
+    {
+        id   : 'building-and-serving',
+        title: 'Building and Serving',
+        type : 'link',
+        icon : 'import_contacts',
+        link : '/docs/building-and-serving'
+    },
+    {
+        id   : 'fundamentals.directory-structure',
+        title: 'Directory Structure',
+        icon : 'import_contacts',
+        type : 'link',
+        link : '/docs/fundamentals/directory-structure'
+    },
+    {
+        id   : 'fundamentals.updating-assembly',
+        title: 'Updating Assembly',
+        icon : 'import_contacts',
+        type : 'link',
+        link : '/docs/fundamentals/updating-assmebly'
+    },
+    {
+        id   : 'fundamentals.multi-language',
+        title: 'Multi Language',
+        icon : 'import_contacts',
+        type : 'link',
+        link : '/docs/fundamentals/multi-language'
+    },
+    {
+        id   : 'fundamentals.material-theming',
+        title: 'Material Theming',
+        icon : 'import_contacts',
+        type : 'link',
+        link : '/docs/fundamentals/material-theming'
+    },
+    {
+        id   : 'fundamentals.theme-layouts',
+        title: 'Theme Layouts',
+        icon : 'import_contacts',
+        type : 'link',
+        link : '/docs/fundamentals/theme-layouts'
+    },
+    {
+        id   : 'fundamentals.page-layouts',
+        title: 'Page Layouts',
+        icon : 'import_contacts',
+        type : 'link',
+        link : '/docs/fundamentals/page-layouts'
+    },
+    {
+        type: 'divider'
+    },
+    {
         id      : 'navigation-features',
         title   : 'Navigation features',
         subtitle: 'Collapsable levels & Badge styles',
@@ -883,86 +961,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
             style: 'simple',
             color: '#17FEFF'
         }
-    },
-    {
-        type: 'divider'
-    },
-    {
-        id   : 'documentation',
-        title: 'Documentation',
-        icon : 'import_contacts',
-        type : 'subheader'
-    },
-    {
-        id   : 'changelog',
-        title: 'Changelog',
-        type : 'link',
-        icon : 'update',
-        link : '/docs/changelog',
-        badge: {
-            title     : '1.0.0',
-            style     : 'rounded',
-            background: '#FFEB3B',
-            color     : '#000000'
-        }
-    },
-    {
-        id   : 'getting-started',
-        title: 'Getting Started',
-        type : 'link',
-        icon : 'import_contacts',
-        link : '/docs/getting-started'
-    },
-    {
-        id   : 'building-and-serving',
-        title: 'Building and Serving',
-        type : 'link',
-        icon : 'import_contacts',
-        link : '/docs/building-and-serving'
-    },
-    {
-        id      : 'fundamentals',
-        title   : 'Fundamentals',
-        type    : 'collapsable',
-        icon    : 'import_contacts',
-        children: [
-            {
-                id   : 'fundamentals.directory-structure',
-                title: 'Directory Structure',
-                type : 'link',
-                link : '/docs/fundamentals/directory-structure'
-            },
-            {
-                id   : 'fundamentals.updating-assembly',
-                title: 'Updating Assembly',
-                type : 'link',
-                link : '/docs/fundamentals/updating-assmebly'
-            },
-            {
-                id   : 'fundamentals.multi-language',
-                title: 'Multi Language',
-                type : 'link',
-                link : '/docs/fundamentals/multi-language'
-            },
-            {
-                id   : 'fundamentals.material-theming',
-                title: 'Material Theming',
-                type : 'link',
-                link : '/docs/fundamentals/material-theming'
-            },
-            {
-                id   : 'fundamentals.theme-layouts',
-                title: 'Theme Layouts',
-                type : 'link',
-                link : '/docs/fundamentals/theme-layouts'
-            },
-            {
-                id   : 'fundamentals.page-layouts',
-                title: 'Page Layouts',
-                type : 'link',
-                link : '/docs/fundamentals/page-layouts'
-            }
-        ]
     }
 ];
 export const compactNavigation: AsmNavigationItem[] = [
