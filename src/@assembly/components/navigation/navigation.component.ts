@@ -700,6 +700,8 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 
     /**
      * Toggle the aside
+     *
+     * @param navigationId
      */
     toggleAside(navigationId): void
     {
