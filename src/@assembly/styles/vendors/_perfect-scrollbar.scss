@@ -17,6 +17,11 @@
         }
     }
 
+    > .ps__rail-x,
+    > .ps__rail-y {
+        z-index: 99999;
+    }
+
     > .ps__rail-x {
         height: 14px;
         background: transparent !important;

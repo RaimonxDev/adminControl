@@ -21,16 +21,17 @@ export class AppComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {DOCUMENT} document
      * @param {AsmNavigationService} _asmNavigationService
      * @param {AsmConfigService} _asmConfigService
+     * @param {DOCUMENT} _document
      * @param {MatIconRegistry} _matIconRegistry
      * @param {Platform} _platform
      */
     constructor(
-        @Inject(DOCUMENT) private document: any,
         private _asmNavigationService: AsmNavigationService,
         private _asmConfigService: AsmConfigService,
+        @Inject(DOCUMENT)
+        private _document: any,
         private _matIconRegistry: MatIconRegistry,
         private _platform: Platform
     )
@@ -60,17 +61,17 @@ export class AppComponent implements OnInit, OnDestroy
                 this.asmConfig = config;
 
                 // Loop through body class names
-                this.document.body.classList.forEach((className) => {
+                this._document.body.classList.forEach((className) => {
 
                     // Find the one that starts with 'asm-theme-'
                     // and update it if it's changed
                     if ( className.startsWith('asm-theme-') && className !== this.asmConfig.colorTheme )
                     {
                         // Remove the old class name
-                        this.document.body.classList.remove(className);
+                        this._document.body.classList.remove(className);
 
                         // Add the new one
-                        this.document.body.classList.add(this.asmConfig.colorTheme);
+                        this._document.body.classList.add(this.asmConfig.colorTheme);
 
                         return;
                     }
@@ -80,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy
         // Add 'is-mobile' class to the body if the platform is mobile
         if ( this._platform.ANDROID || this._platform.IOS )
         {
-            this.document.body.classList.add('is-mobile');
+            this._document.body.classList.add('is-mobile');
         }
 
         // Change the default mat-icon font class

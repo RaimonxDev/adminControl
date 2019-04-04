@@ -13,7 +13,8 @@ export class AsmSplashScreenService
      * @param {Router} _router
      */
     constructor(
-        @Inject(DOCUMENT) private _document: any,
+        @Inject(DOCUMENT)
+        private _document: any,
         private _router: Router
     )
     {
