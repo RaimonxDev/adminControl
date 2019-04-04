@@ -12,26 +12,26 @@
 
     // H tags
     h1 {
-        display: inline-block;
+        display: block;
         @extend %title-lg;
     }
 
     h2 {
-        display: inline-block;
+        display: block;
         @extend %title-base;
         font-weight: 700;
         margin-top: 56px;
     }
 
     h3 {
-        display: inline-block;
+        display: block;
         @extend %subtitle-lg;
         font-weight: 600;
         margin-top: 40px;
     }
 
     h4 {
-        display: inline-block;
+        display: block;
         @extend %subtitle-md;
         font-weight: 600;
         margin-top: 40px;
@@ -45,6 +45,16 @@
     // Lists
     ul, ol {
         margin: 12px 0 40px 0;
+        padding-inline-start: 2em;
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
     }
 
     // AsmMessage
