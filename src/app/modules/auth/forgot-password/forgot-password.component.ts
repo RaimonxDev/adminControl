@@ -15,7 +15,6 @@ export class AuthForgotPasswordComponent implements OnInit
 {
     forgotPasswordForm: FormGroup;
     message: any;
-    messageAnimationState: boolean;
 
     /**
      * Constructor
@@ -34,7 +33,6 @@ export class AuthForgotPasswordComponent implements OnInit
     {
         // Set the defaults
         this.message = null;
-        this.messageAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

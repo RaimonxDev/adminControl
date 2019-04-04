@@ -15,7 +15,6 @@ export class AuthLoginComponent implements OnInit
 {
     loginForm: FormGroup;
     message: any;
-    messageAnimationState: boolean;
 
     /**
      * Constructor
@@ -34,7 +33,6 @@ export class AuthLoginComponent implements OnInit
     {
         // Set the defaults
         this.message = null;
-        this.messageAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

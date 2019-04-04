@@ -20,10 +20,9 @@
 
             <!-- Message -->
             <asm-message *ngIf="message"
-                         [appearance]="'solid'"
                          [type]="message.type"
-                         [@shake]="messageAnimationState">
-                <div asmMessageContent>{{message.content}}</div>
+                         @shake>
+                {{message.content}}
             </asm-message>
 
             <!-- Login form -->

@@ -16,7 +16,6 @@ import { AuthService } from 'app/core/auth/auth.service';
 export class AuthSignupComponent implements OnInit, OnDestroy
 {
     message: any;
-    messageAnimationState: boolean;
     signupForm: FormGroup;
 
     // Private
@@ -39,7 +38,6 @@ export class AuthSignupComponent implements OnInit, OnDestroy
     {
         // Set the defaults
         this.message = null;
-        this.messageAnimationState = false;
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();

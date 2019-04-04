@@ -14,7 +14,6 @@ import { AsmAnimations } from '@assembly';
 export class SignupComponent implements OnInit, OnDestroy
 {
     message: any;
-    messageAnimationState: boolean;
     signupForm: FormGroup;
 
     // Private
@@ -31,7 +30,6 @@ export class SignupComponent implements OnInit, OnDestroy
     {
         // Set the defaults
         this.message = null;
-        this.messageAnimationState = false;
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
