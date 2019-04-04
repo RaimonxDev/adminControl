@@ -66,6 +66,10 @@
         flex-direction: column;
         padding: 64px;
 
+        @include asm-media-breakpoint('lt-sm') {
+            padding: 64px 32px;
+        }
+
         .breadcrumb {
             margin-bottom: 4px;
         }
@@ -76,6 +80,10 @@
         display: flex;
         align-items: flex-start;
         padding: 64px;
+
+        @include asm-media-breakpoint('lt-sm') {
+            padding: 32px;
+        }
 
         .container {
 

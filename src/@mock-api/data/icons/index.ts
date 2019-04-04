@@ -47,6 +47,7 @@ export class MockIconsApi
                     200,
                     {
                         fontSet: 'dripicons',
+                        name   : 'Dripicons',
                         list   : _.cloneDeep(this._dripicons)
                     }
                 ];
@@ -62,6 +63,7 @@ export class MockIconsApi
                     200,
                     {
                         fontSet: 'material-baseline-icons',
+                        name   : 'Material Baseline',
                         list   : _.cloneDeep(this._material)
                     }
                 ];
@@ -77,6 +79,7 @@ export class MockIconsApi
                     200,
                     {
                         fontSet: 'material-outline-icons',
+                        name   : 'Material Outline',
                         list   : _.cloneDeep(this._material)
                     }
                 ];
@@ -92,6 +95,7 @@ export class MockIconsApi
                     200,
                     {
                         fontSet: 'iconsmind',
+                        name   : 'Iconsmind',
                         list   : _.cloneDeep(this._iconsmind)
                     }
                 ];
