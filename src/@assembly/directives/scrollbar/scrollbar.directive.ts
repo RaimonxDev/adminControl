@@ -2,53 +2,52 @@
 // @ Info
 // This directive is a wrapper for the Perfect Scrollbar plugin
 // https://github.com/utatti/perfect-scrollbar
+//
+// Based on https://github.com/zefoy/ngx-perfect-scrollbar
 // -----------------------------------------------------------------------------------------------------
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { fromEvent, Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
+import { ScrollbarGeometry, ScrollbarPosition } from './scrolbar.interfaces';
 import * as _ from 'lodash';
 
 @Directive({
     selector: '[asmScrollbar]'
 })
-export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
+export class AsmScrollbarDirective implements OnInit, OnDestroy
 {
-    isInitialized: boolean;
     isMobile: boolean;
     ps: PerfectScrollbar | any;
 
     // Private
-    private _enabled: boolean | '';
-    private _debouncedUpdate: any;
+    private _animation: number | null;
+    private _enabled: boolean;
     private _options: any;
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
-     * @param {ElementRef} elementRef
+     * @param {ElementRef} _elementRef
      * @param {Platform} _platform
      * @param {Router} _router
      */
     constructor(
-        public elementRef: ElementRef,
+        private _elementRef: ElementRef,
         private _platform: Platform,
         private _router: Router
     )
     {
         // Set the private defaults
-        this._enabled = false;
-        this._debouncedUpdate = _.debounce(this.update, 150);
-        this._options = {
-            updateOnRouteChange: false
-        };
+        this._animation = null;
+        this._options = {};
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.isInitialized = false;
+        this.enabled = true;
         this.isMobile = false;
     }
 
@@ -66,6 +65,15 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
     {
         // Merge the options
         this._options = _.merge({}, this._options, value);
+
+        // Destroy and re-init the PerfectScrollbar to update its options
+        setTimeout(() => {
+            this._destroy();
+        });
+
+        setTimeout(() => {
+            this._init();
+        });
     }
 
     get asmScrollbarOptions(): any
@@ -77,20 +85,13 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
     /**
      * Is enabled
      *
-     * @param {boolean | ""} value
+     * @param value
      */
     @Input('asmScrollbar')
-    set enabled(value: boolean | '')
+    set enabled(value: boolean)
     {
-        // If nothing is provided with the directive (empty string),
-        // we will take that as a true
-        if ( value === '' )
-        {
-            value = true;
-        }
-
-        // Return, if both values are the same
-        if ( this.enabled === value )
+        // If the value is the same, return...
+        if ( this._enabled === value )
         {
             return;
         }
@@ -111,10 +112,18 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
         }
     }
 
-    get enabled(): boolean | ''
+    get enabled(): boolean
     {
         // Return the enabled status
         return this._enabled;
+    }
+
+    /**
+     * Getter for _elementRef
+     */
+    get elementRef(): ElementRef
+    {
+        return this._elementRef;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -122,25 +131,21 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * After view init
+     * On init
      */
-    ngAfterViewInit(): void
+    ngOnInit(): void
     {
-        // Scroll to the top on every route change
-        if ( this.asmScrollbarOptions.updateOnRouteChange )
-        {
-            this._router.events
-                .pipe(
-                    filter(event => event instanceof NavigationEnd),
-                    takeUntil(this._unsubscribeAll)
-                )
-                .subscribe(() => {
-                    setTimeout(() => {
-                        this.scrollToTop();
-                        this.update();
-                    }, 0);
-                });
-        }
+        // Subscribe to window resize event
+        fromEvent(window, 'resize')
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                debounceTime(150)
+            )
+            .subscribe(() => {
+
+                // Update the PerfectScrollbar
+                this.update();
+            });
     }
 
     /**
@@ -167,7 +172,7 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
     private _init(): void
     {
         // Return, if already initialized
-        if ( this.isInitialized )
+        if ( this.ps )
         {
             return;
         }
@@ -178,31 +183,14 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
             this.isMobile = true;
         }
 
-        // Return if it's mobile
-        if ( this.isMobile )
+        // Return if it's mobile or the platform is not a browser
+        if ( this.isMobile || !this._platform.isBrowser )
         {
-            // Return...
             return;
         }
 
-        // Set as initialized
-        this.isInitialized = true;
-
-        // Initialize the perfect-scrollbar
-        this.ps = new PerfectScrollbar(this.elementRef.nativeElement, {...this.asmScrollbarOptions});
-
-        // Loop through all the event elements of this PerfectScrollbar instance
-        // and unbind 'keydown' events of PerfectScrollbar since it causes an
-        // extremely high CPU usage on Angular Material inputs.
-        this.ps.event.eventElements.forEach((eventElement) => {
-
-            // If we hit to the element with a 'keydown' event...
-            if ( typeof eventElement.handlers.keydown !== 'undefined' )
-            {
-                // Unbind it
-                eventElement.element.removeEventListener('keydown', eventElement.handlers.keydown[0]);
-            }
-        });
+        // Initialize the PerfectScrollbar
+        this.ps = new PerfectScrollbar(this._elementRef.nativeElement, {...this.asmScrollbarOptions});
     }
 
     /**
@@ -212,28 +200,16 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      */
     private _destroy(): void
     {
-        if ( !this.isInitialized || !this.ps )
+        if ( !this.ps )
         {
             return;
         }
 
-        // Destroy the perfect-scrollbar
+        // Destroy the PerfectScrollbar
         this.ps.destroy();
 
         // Clean up
         this.ps = null;
-        this.isInitialized = false;
-    }
-
-    /**
-     * Update scrollbars on window resize
-     *
-     * @private
-     */
-    @HostListener('window:resize')
-    private _updateOnResize(): void
-    {
-        this._debouncedUpdate();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -241,36 +217,16 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Document click
-     *
-     * @param {Event} event
-     */
-    @HostListener('document:click', ['$event'])
-    documentClick(event: Event): void
-    {
-        if ( !this.isInitialized || !this.ps )
-        {
-            return;
-        }
-
-        // Update the scrollbar on document click..
-        // This isn't the most elegant solution but there is no other way
-        // of knowing when the contents of the scrollable container changes.
-        // Therefore, we update scrollbars on every document click.
-        this.ps.update();
-    }
-
-    /**
      * Update the scrollbar
      */
     update(): void
     {
-        if ( !this.isInitialized )
+        if ( !this.ps )
         {
             return;
         }
 
-        // Update the perfect-scrollbar
+        // Update the PerfectScrollbar
         this.ps.update();
     }
 
@@ -280,6 +236,71 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
     destroy(): void
     {
         this.ngOnDestroy();
+    }
+
+    /**
+     * Returns the geometry of the scrollable element
+     *
+     * @param prefix
+     */
+    geometry(prefix: string = 'scroll'): ScrollbarGeometry
+    {
+        return new ScrollbarGeometry(
+            this._elementRef.nativeElement[prefix + 'Left'],
+            this._elementRef.nativeElement[prefix + 'Top'],
+            this._elementRef.nativeElement[prefix + 'Width'],
+            this._elementRef.nativeElement[prefix + 'Height']
+        );
+    }
+
+    /**
+     * Returns the position of the scrollable element
+     *
+     * @param absolute
+     */
+    position(absolute: boolean = false): ScrollbarPosition
+    {
+        if ( !absolute && this.ps )
+        {
+            return new ScrollbarPosition(
+                this.ps.reach.x || 0,
+                this.ps.reach.y || 0
+            );
+        }
+        else
+        {
+            return new ScrollbarPosition(
+                this._elementRef.nativeElement.scrollLeft,
+                this._elementRef.nativeElement.scrollTop
+            );
+        }
+    }
+
+    /**
+     * Scroll to
+     *
+     * @param x
+     * @param y
+     * @param speed
+     */
+    scrollTo(x: number, y?: number, speed?: number): void
+    {
+        if ( y == null && speed == null )
+        {
+            this.animateScrolling('scrollTop', x, speed);
+        }
+        else
+        {
+            if ( x != null )
+            {
+                this.animateScrolling('scrollLeft', x, speed);
+            }
+
+            if ( y != null )
+            {
+                this.animateScrolling('scrollTop', y, speed);
+            }
+        }
     }
 
     /**
@@ -334,9 +355,8 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      */
     scrollToRight(offset?: number, speed?: number): void
     {
-        const width = this.elementRef.nativeElement.scrollWidth;
-
-        this.animateScrolling('scrollLeft', width - (offset || 0), speed);
+        const left = this._elementRef.nativeElement.scrollWidth - this._elementRef.nativeElement.clientWidth;
+        this.animateScrolling('scrollLeft', left - (offset || 0), speed);
     }
 
     /**
@@ -347,61 +367,95 @@ export class AsmScrollbarDirective implements AfterViewInit, OnDestroy
      */
     scrollToBottom(offset?: number, speed?: number): void
     {
-        const height = this.elementRef.nativeElement.scrollHeight;
+        const top = this._elementRef.nativeElement.scrollHeight - this._elementRef.nativeElement.clientHeight;
+        this.animateScrolling('scrollTop', top - (offset || 0), speed);
+    }
 
-        this.animateScrolling('scrollTop', height - (offset || 0), speed);
+    /**
+     * Scroll to element
+     *
+     * @param qs
+     * @param offset
+     * @param speed
+     */
+    scrollToElement(qs: string, offset?: number, speed?: number): void
+    {
+        const element = this._elementRef.nativeElement.querySelector(qs);
+
+        if ( !element )
+        {
+            return;
+        }
+
+        const elementPos = element.getBoundingClientRect();
+        const scrollerPos = this._elementRef.nativeElement.getBoundingClientRect();
+
+        if ( this._elementRef.nativeElement.classList.contains('ps--active-x') )
+        {
+            const currentPos = this._elementRef.nativeElement['scrollLeft'];
+            const position = elementPos.left - scrollerPos.left + currentPos;
+
+            this.animateScrolling('scrollLeft', position + (offset || 0), speed);
+        }
+
+        if ( this._elementRef.nativeElement.classList.contains('ps--active-y') )
+        {
+            const currentPos = this._elementRef.nativeElement['scrollTop'];
+            const position = elementPos.top - scrollerPos.top + currentPos;
+
+            this.animateScrolling('scrollTop', position + (offset || 0), speed);
+        }
     }
 
     /**
      * Animate scrolling
      *
-     * @param {string} target
-     * @param {number} value
-     * @param {number} speed
+     * @param target
+     * @param value
+     * @param speed
      */
     animateScrolling(target: string, value: number, speed?: number): void
     {
-        if ( !speed )
+        if ( this._animation )
         {
-            this.elementRef.nativeElement[target] = value;
-
-            // PS has weird event sending order, this is a workaround for that
-            this.update();
-            this.update();
+            window.cancelAnimationFrame(this._animation);
+            this._animation = null;
         }
-        else if ( value !== this.elementRef.nativeElement[target] )
+
+        if ( !speed || typeof window === 'undefined' )
+        {
+            this._elementRef.nativeElement[target] = value;
+        }
+        else if ( value !== this._elementRef.nativeElement[target] )
         {
             let newValue = 0;
             let scrollCount = 0;
 
             let oldTimestamp = performance.now();
-            let oldValue = this.elementRef.nativeElement[target];
+            let oldValue = this._elementRef.nativeElement[target];
 
             const cosParameter = (oldValue - value) / 2;
 
-            const step = (newTimestamp) => {
+            const step = (newTimestamp: number) => {
                 scrollCount += Math.PI / (speed / (newTimestamp - oldTimestamp));
-
                 newValue = Math.round(value + cosParameter + cosParameter * Math.cos(scrollCount));
 
                 // Only continue animation if scroll position has not changed
-                if ( this.elementRef.nativeElement[target] === oldValue )
+                if ( this._elementRef.nativeElement[target] === oldValue )
                 {
                     if ( scrollCount >= Math.PI )
                     {
-                        this.elementRef.nativeElement[target] = value;
-
-                        // PS has weird event sending order, this is a workaround for that
-                        this.update();
-                        this.update();
+                        this.animateScrolling(target, value, 0);
                     }
                     else
                     {
-                        this.elementRef.nativeElement[target] = oldValue = newValue;
+                        this._elementRef.nativeElement[target] = newValue;
 
+                        // On a zoomed out page the resulting offset may differ
+                        oldValue = this._elementRef.nativeElement[target];
                         oldTimestamp = newTimestamp;
 
-                        window.requestAnimationFrame(step);
+                        this._animation = window.requestAnimationFrame(step);
                     }
                 }
             };
