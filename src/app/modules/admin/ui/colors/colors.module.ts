@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatIconModule, MatRippleModule } from '@angular/material';
+import { MatIconModule, MatRippleModule, MatTabsModule } from '@angular/material';
+import { AsmHighlightModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { ColorsComponent } from 'app/modules/admin/ui/colors/colors.component';
 import { colorsRoutes } from 'app/modules/admin/ui/colors/colors.routing';
@@ -13,6 +14,8 @@ import { colorsRoutes } from 'app/modules/admin/ui/colors/colors.routing';
         RouterModule.forChild(colorsRoutes),
         MatIconModule,
         MatRippleModule,
+        MatTabsModule,
+        AsmHighlightModule,
         SharedModule
     ]
 })
