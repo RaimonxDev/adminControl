@@ -148,6 +148,7 @@ pre {
 .link {
     cursor: pointer;
 
+    &:focus,
     &:hover {
         text-decoration: underline;
     }
