@@ -128,6 +128,12 @@ export const adminRoutes: Route[] = [
                 path    : 'ui',
                 children: [
 
+                    // Angular Material
+                    {
+                        path        : 'angular-material',
+                        loadChildren: './ui/angular-material/angular-material.module#AngularMaterialModule'
+                    },
+
                     // Colors
                     {
                         path        : 'colors',
