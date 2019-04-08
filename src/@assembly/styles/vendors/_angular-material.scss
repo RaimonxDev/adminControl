@@ -41,6 +41,20 @@
 // ----------------------------------------------------
 // Standard
 // ----------------------------------------------------
+.mat-form-field.mat-form-field-appearance-standard {
+
+    // Increase the font weight of the
+    // placeholder/label
+    .mat-form-field-label {
+        font-weight: 500;
+    }
+
+    // Increase the height of the underline for
+    // more modern look
+    .mat-form-field-underline {
+        height: 2px;
+    }
+}
 
 // Simplifies the form field to make it suitable
 // for smaller spaces and non-form usages
@@ -62,9 +76,9 @@
 // Outline
 // ----------------------------------------------------
 
-// Increase the padding of the default 'outline' form fields
 .mat-form-field.mat-form-field-appearance-outline {
 
+    // Increase the padding
     .mat-form-field-flex {
         padding: 0 1.25em;
     }
@@ -256,9 +270,17 @@
         .mat-form-field-wrapper {
 
             .mat-form-field-flex {
-                border: 1px solid;
                 border-radius: 6px;
                 padding: 0.75em 1.25em 0 1.25em;
+
+                .mat-form-field-prefix,
+                .mat-form-field-suffix {
+
+                    .mat-icon {
+                        position: relative;
+                        top: -3px;
+                    }
+                }
             }
 
             .mat-form-field-underline {
@@ -305,27 +327,17 @@
     }
 
     // ----------------------------------------------------
-    // Fill
+    // Standard
     // ----------------------------------------------------
+    .mat-form-field.mat-form-field-appearance-standard {
 
-    // Simplify
-    .asm-mat-simplify {
+        .mat-form-field-label {
+            color: map-get($foreground, hint-text);
+        }
 
-        &.mat-form-field.mat-form-field-appearance-fill {
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-flex {
-
-                    @if ($is-dark) {
-                        background: #303030;
-                    } @else {
-                        background: white;
-                    }
-
-                    border-color: map-get($foreground, divider);
-                }
-            }
+        .mat-form-field-underline {
+            background-color: map-get($foreground, divider);
         }
     }
+
 }
