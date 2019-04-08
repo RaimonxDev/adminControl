@@ -84,8 +84,9 @@
                 </mat-form-field>
 
                 <!-- Forgot password link -->
-                <div class="forgot-password-link text-secondary">
-                    <a [routerLink]="['/forgot-password']">Forgot password?</a>
+                <div class="forgot-password-link">
+                    <a class="link"
+                       [routerLink]="['/pages/authentication/forgot-password']">Forgot password?</a>
                 </div>
 
                 <!-- Login button -->
@@ -103,9 +104,9 @@
 
                 <!-- Create account link -->
                 <div class="create-account-link">
-                    <span>Need an account?</span>
+                    <span class="text-secondary">Need an account?</span>
                     <a class="link"
-                       [routerLink]="['/pages/authentication/signup']">Create one here</a>.
+                       [routerLink]="['/pages/authentication/signup']">Create one here</a>
                 </div>
 
             </form>

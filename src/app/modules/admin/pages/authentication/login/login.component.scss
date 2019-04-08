@@ -105,6 +105,7 @@ login {
 
                     .mat-form-field {
                         width: 100%;
+                        margin-bottom: 8px;
                     }
 
                     .password-field {
@@ -117,7 +118,8 @@ login {
 
                     .forgot-password-link {
                         width: 100%;
-                        margin-top: 4px;
+                        font-size: 13px;
+                        font-weight: 500;
                         text-align: right;
                     }
 
@@ -129,7 +131,8 @@ login {
                     .create-account-link {
                         width: 100%;
                         margin-top: 24px;
-                        text-align: center;
+                        font-size: 13px;
+                        font-weight: 500;
 
                         .link {
                             margin-left: 4px;

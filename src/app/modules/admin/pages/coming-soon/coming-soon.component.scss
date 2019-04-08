@@ -105,18 +105,19 @@ coming-soon {
 
                     .mat-form-field {
                         width: 100%;
+                        margin-bottom: 8px;
                     }
 
                     .register-to-launch-list-button {
                         width: 100%;
-                        margin-top: 48px;
+                        margin-top: 40px;
                     }
 
                     .footer {
-                        font-size: 12px;
                         width: 100%;
                         margin-top: 24px;
-                        text-align: center;
+                        font-size: 13px;
+                        font-weight: 500;
 
                         p:last-child {
                             margin-bottom: 0;
