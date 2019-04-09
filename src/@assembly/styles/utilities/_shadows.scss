@@ -35,6 +35,6 @@
 /// @param {String} $elevation - The amount of the elevation that the element will have
 /// @param {Color} $color - Color of the shadow
 ///
-@mixin asm-shadow($elevation, $color: rgb(37, 41, 52)) {
+@mixin asm-shadow($elevation, $color: rgb(0, 0, 0)) {
     box-shadow: #{_get_shadow($elevation, $color)};
 }

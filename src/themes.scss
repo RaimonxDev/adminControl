@@ -23,10 +23,10 @@ $asm-themes: (
             mat-palette($asm-red, 800)
     ),
 
-    // Teal - Dark
-    'asm-theme-teal': mat-dark-theme(
+    // Dark
+    'asm-theme-dark': mat-dark-theme(
             mat-palette($asm-teal),
-            mat-palette($asm-blue-grey, 800),
+            mat-palette($asm-pink, 500),
             mat-palette($asm-red, 800)
     ),
 

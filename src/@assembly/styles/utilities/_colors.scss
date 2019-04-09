@@ -11,16 +11,68 @@ $asm-light-primary-text: $light-primary-text;
 /// Mostly based on Material colors with minor modifications
 ///
 $asm-white: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
     500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
     contrast: (
-        500: $asm-dark-primary-text
+        50: $asm-dark-primary-text,
+        100: $asm-dark-primary-text,
+        200: $asm-dark-primary-text,
+        300: $asm-dark-primary-text,
+        400: $asm-dark-primary-text,
+        500: $asm-dark-primary-text,
+        600: $asm-dark-primary-text,
+        700: $asm-dark-primary-text,
+        800: $asm-dark-primary-text,
+        900: $asm-dark-primary-text,
+        A100: $asm-dark-primary-text,
+        A200: $asm-dark-primary-text,
+        A400: $asm-dark-primary-text,
+        A700: $asm-dark-primary-text,
     )
 );
 
 $asm-black: (
+    50: black,
+    100: black,
+    200: black,
+    300: black,
+    400: black,
     500: black,
+    600: black,
+    700: black,
+    800: black,
+    900: black,
+    A100: black,
+    A200: black,
+    A400: black,
+    A700: black,
     contrast: (
-        500: $asm-light-primary-text
+        50: $asm-light-primary-text,
+        100: $asm-light-primary-text,
+        200: $asm-light-primary-text,
+        300: $asm-light-primary-text,
+        400: $asm-light-primary-text,
+        500: $asm-light-primary-text,
+        600: $asm-light-primary-text,
+        700: $asm-light-primary-text,
+        800: $asm-light-primary-text,
+        900: $asm-light-primary-text,
+        A100: $asm-light-primary-text,
+        A200: $asm-light-primary-text,
+        A400: $asm-light-primary-text,
+        A700: $asm-light-primary-text,
     )
 );
 
