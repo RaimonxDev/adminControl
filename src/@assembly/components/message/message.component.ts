@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmMessageService } from '@assembly/components/message/message.service';
-import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector       : 'asm-message',
@@ -20,8 +20,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _appearance: 'solid' | 'outline';
-    private _customIcon: boolean;
+    private _appearance: 'border' | 'solid' | 'outline';
     private _dismissible: boolean;
     private _dismissed: boolean;
     private _showIcon: boolean;
@@ -48,7 +47,6 @@ export class AsmMessageComponent implements OnInit, OnDestroy
 
         // Set the defaults
         this.appearance = 'solid';
-        this.customIcon = false;
         this.dismissible = false;
         this.dismissed = true;
         this.showIcon = true;
@@ -65,7 +63,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
      * @param value
      */
     @Input()
-    set appearance(value: 'solid' | 'outline')
+    set appearance(value: 'border' | 'solid' | 'outline')
     {
         // If the value is the same, return...
         if ( this._appearance === value )
@@ -81,32 +79,9 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         this._appearance = value;
     }
 
-    get appearance(): 'solid' | 'outline'
+    get appearance(): 'border' | 'solid' | 'outline'
     {
         return this._appearance;
-    }
-
-    /**
-     * Setter and getter for custom icon
-     *
-     * @param value
-     */
-    @Input()
-    set customIcon(value: boolean)
-    {
-        // If the value is the same, return...
-        if ( this._customIcon === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._customIcon = value;
-    }
-
-    get customIcon(): boolean
-    {
-        return this._customIcon;
     }
 
     /**

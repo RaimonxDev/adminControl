@@ -8,30 +8,37 @@
          *ngIf="showIcon">
 
         <!-- Custom icon -->
-        <ng-container *ngIf="customIcon">
+        <div class="asm-message-custom-icon">
             <ng-content select="[asmMessageIcon]"></ng-content>
-        </ng-container>
+        </div>
 
         <!-- Default icons -->
-        <ng-container *ngIf="!customIcon">
+        <div class="asm-message-default-icon">
             <mat-icon *ngIf="type === 'info'">info</mat-icon>
             <mat-icon *ngIf="type === 'success'">check_circle</mat-icon>
             <mat-icon *ngIf="type === 'warning'">error_outline</mat-icon>
             <mat-icon *ngIf="type === 'error'">error_outline</mat-icon>
-        </ng-container>
+        </div>
 
     </div>
 
     <!-- Content -->
     <div class="asm-message-content">
-        <ng-content></ng-content>
-        <ng-content select="[asmMessageContent]"></ng-content>
+
+        <div class="asm-message-title">
+            <ng-content select="[asmMessageTitle]"></ng-content>
+        </div>
+
+        <div class="asm-message-message">
+            <ng-content></ng-content>
+        </div>
+
     </div>
 
     <!-- Dismiss button -->
     <button class="asm-message-dismiss-button"
-            *ngIf="dismissible"
             mat-icon-button
+            *ngIf="dismissible"
             (click)="dismiss()">
         <mat-icon>close</mat-icon>
     </button>
