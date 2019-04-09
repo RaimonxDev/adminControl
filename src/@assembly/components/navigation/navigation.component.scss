@@ -125,10 +125,16 @@ asm-navigation {
 
             // Subheader
             > asm-navigation-subheader-item {
+                margin-top: 24px;
 
                 &:first-child {
                     margin-top: 0;
                 }
+            }
+
+            // Divider
+            > asm-navigation-divider-item {
+                margin: 24px 0;
             }
         }
 
@@ -208,8 +214,6 @@ asm-navigation {
             &.asm-navigation-item-has-subtitle {
 
                 .asm-navigation-item {
-                    height: 56px;
-                    max-height: 56px;
                     min-height: 56px;
                 }
             }
@@ -217,25 +221,23 @@ asm-navigation {
             .asm-navigation-item {
                 position: relative;
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: flex-start;
-                padding: 0 28px 0 32px;
-                height: 48px;
-                max-height: 48px;
+                padding: 14px 24px 14px 32px;
                 min-height: 48px;
                 font-size: 13px;
                 text-decoration: none;
                 transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
 
                 .asm-navigation-item-icon {
-                    margin-right: 16px;
+                    margin-right: 18px;
                     user-select: none;
                 }
 
                 .asm-navigation-item-title-wrapper {
 
                     .asm-navigation-item-title {
-                        line-height: 1;
+                        line-height: 20px;
                     }
 
                     .asm-navigation-item-subtitle {
@@ -255,9 +257,8 @@ asm-navigation {
                         font-size: 10px;
                         font-weight: 700;
                         white-space: nowrap;
-                        width: 22px;
-                        height: 22px;
-                        line-height: 22px;
+                        width: 20px;
+                        height: 20px;
                         border-radius: 50%;
 
                         // Rectangle
@@ -330,8 +331,10 @@ asm-navigation {
                 }
 
                 .asm-navigation-item-arrow {
-                    transition: transform 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                    height: 20px;
+                    line-height: 20px;
                     margin-left: auto;
+                    transition: transform 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
                 }
             }
         }
@@ -354,28 +357,28 @@ asm-navigation {
             overflow: hidden;
 
             .asm-navigation-item {
-                padding-left: 64px;
+                padding-left: 70px;
             }
 
             // 2nd level
             .asm-navigation-item-children {
 
                 .asm-navigation-item {
-                    padding-left: 80px;
+                    padding-left: 86px;
                 }
 
                 // 3rd level
                 .asm-navigation-item-children {
 
                     .asm-navigation-item {
-                        padding-left: 96px;
+                        padding-left: 102px;
                     }
 
                     // 4th level
                     .asm-navigation-item-children {
 
                         .asm-navigation-item {
-                            padding-left: 112px;
+                            padding-left: 118px;
                         }
                     }
                 }
@@ -385,7 +388,7 @@ asm-navigation {
 
     // Divider
     asm-navigation-divider-item {
-        margin: 24px 0;
+        margin: 12px 0;
 
         .asm-navigation-divider {
             height: 1px;
@@ -400,10 +403,8 @@ asm-navigation {
 
     // Subheader
     asm-navigation-subheader-item {
-        margin-top: 24px;
 
         .asm-navigation-item {
-            font-size: 12px;
 
             .asm-navigation-item-badge,
             .asm-navigation-item-icon {
@@ -411,7 +412,8 @@ asm-navigation {
             }
 
             .asm-navigation-item-title {
-                font-weight: bold;
+                font-size: 12px;
+                font-weight: 500;
                 text-transform: uppercase;
             }
         }
@@ -976,7 +978,7 @@ asm-navigation {
             asm-navigation-collapsable-item {
 
                 &.asm-navigation-item-expanded {
-                    background: rgba(0, 0, 0, 0.06);
+                    background: rgba(0, 0, 0, 0.12);
 
                     asm-navigation-collapsable-item {
                         background: transparent;
