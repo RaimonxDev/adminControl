@@ -291,14 +291,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'apps'
     },
     {
-        id   : 'dashboard',
+        id   : 'applications.dashboard',
         title: 'Dashboard',
         type : 'link',
         icon : 'dashboards',
         link : '/apps/dashboard'
     },
     {
-        id      : 'calendar',
+        id      : 'applications.calendar',
         title   : 'Calendar',
         subtitle: '3 upcoming events',
         type    : 'link',
@@ -306,19 +306,20 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link    : '/apps/calendar'
     },
     {
-        id   : 'mailbox',
+        id   : 'applications.mailbox',
         title: 'Mailbox',
         type : 'link',
         icon : 'email',
         link : '/apps/mailbox',
         badge: {
             title     : '25',
+            style     : 'rounded',
             background: '#E91E63',
             color     : '#FFFFFF'
         }
     },
     {
-        id      : 'tasks',
+        id      : 'applications.tasks',
         title   : 'Tasks',
         subtitle: '7 overdue tasks',
         type    : 'link',
@@ -326,14 +327,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link    : '/apps/tasks'
     },
     {
-        id   : 'notes',
+        id   : 'applications.notes',
         title: 'Notes',
         type : 'link',
         icon : 'note',
         link : '/apps/notes'
     },
     {
-        id   : 'contacts',
+        id   : 'applications.contacts',
         title: 'Contacts',
         type : 'link',
         icon : 'account_box',
@@ -346,9 +347,9 @@ export const defaultNavigation: AsmNavigationItem[] = [
         }
     },
     {
-        id      : 'help-center',
-        title   : 'Help Center',
-        subtitle: 'Faqs, Knowledge base & Guides',
+        id      : 'applications.help-center',
+        title   : 'Help center',
+        subtitle: 'Faqs, knowledge base & guides',
         type    : 'link',
         icon    : 'help_outline',
         link    : '/apps/help-center'
@@ -361,76 +362,76 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'pages'
     },
     {
-        id      : 'authentication',
+        id      : 'pages.authentication',
         title   : 'Authentication',
         type    : 'collapsable',
         icon    : 'lock',
         children: [
             {
-                id   : 'authentication.login',
+                id   : 'pages.authentication.login',
                 title: 'Login',
                 type : 'link',
                 link : '/pages/authentication/login'
             },
             {
-                id   : 'authentication.signup',
-                title: 'Sign Up',
+                id   : 'pages.authentication.signup',
+                title: 'Sign up',
                 type : 'link',
                 link : '/pages/authentication/signup'
             },
             {
-                id   : 'authentication.forgot-password',
-                title: 'Forgot Password',
+                id   : 'pages.authentication.forgot-password',
+                title: 'Forgot password',
                 type : 'link',
                 link : '/pages/authentication/forgot-password'
             },
             {
-                id   : 'authentication.reset-password',
-                title: 'Reset Password',
+                id   : 'pages.authentication.reset-password',
+                title: 'Reset password',
                 type : 'link',
                 link : '/pages/authentication/reset-password'
             },
             {
-                id   : 'authentication.logout',
+                id   : 'pages.authentication.logout',
                 title: 'Logout',
                 type : 'link',
                 link : '/pages/authentication/logout'
             },
             {
-                id   : 'authentication.unlock-session',
-                title: 'Unlock Session',
+                id   : 'pages.authentication.unlock-session',
+                title: 'Unlock session',
                 type : 'link',
                 link : '/pages/authentication/unlock-session'
             },
             {
-                id   : 'authentication.confirmation-required',
-                title: 'Confirmation Required',
+                id   : 'pages.authentication.confirmation-required',
+                title: 'Confirmation required',
                 type : 'link',
                 link : '/pages/authentication/confirmation-required'
             }
         ]
     },
     {
-        id   : 'coming-soon',
-        title: 'Coming Soon',
+        id   : 'pages.coming-soon',
+        title: 'Coming soon',
         type : 'link',
         icon : 'hourglass_empty',
         link : '/pages/coming-soon'
     },
     {
-        id      : 'errors',
+        id      : 'pages.errors',
         title   : 'Errors',
         type    : 'collapsable',
         icon    : 'error',
         children: [
             {
-                id   : 'errors.404',
+                id   : 'pages.errors.404',
                 title: '404',
                 type : 'link',
                 link : '/pages/errors/404'
             },
             {
-                id   : 'errors.500',
+                id   : 'pages.errors.500',
                 title: '500',
                 type : 'link',
                 link : '/pages/errors/500'
@@ -438,26 +439,26 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id   : 'maintenance',
+        id   : 'pages.maintenance',
         title: 'Maintenance',
         type : 'link',
         icon : 'build',
         link : '/pages/maintenance'
     },
     {
-        id      : 'pricing',
+        id      : 'pages.pricing',
         title   : 'Pricing',
         type    : 'collapsable',
         icon    : 'attach_money',
         children: [
             {
-                id   : 'pricing.modern',
+                id   : 'pages.pricing.modern',
                 title: 'Modern',
                 type : 'link',
                 link : '/pages/pricing/modern'
             },
             {
-                id   : 'pricing.simple',
+                id   : 'pages.pricing.simple',
                 title: 'Simple',
                 type : 'link',
                 link : '/pages/pricing/simple'
@@ -465,7 +466,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id   : 'profile',
+        id   : 'pages.profile',
         title: 'Profile',
         type : 'link',
         icon : 'person',
@@ -479,59 +480,59 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'web'
     },
     {
-        id   : 'angular-material',
+        id   : 'ui-elements.angular-material',
         title: 'Angular Material',
         type : 'link',
         icon : 'layers',
         link : '/ui/angular-material'
     },
     {
-        id   : 'colors',
+        id   : 'ui-elements.colors',
         title: 'Colors',
         type : 'link',
         icon : 'color_lens',
         link : '/ui/colors'
     },
     {
-        id   : 'forms',
+        id   : 'ui-elements.forms',
         title: 'Forms',
         type : 'link',
         icon : 'ballot',
         link : '/ui/forms'
     },
     {
-        id   : 'helper-classes',
-        title: 'Helper Classes',
+        id   : 'ui-elements.helper-classes',
+        title: 'Helper classes',
         type : 'link',
         icon : 'help',
         link : '/ui/helper-classes'
     },
     {
-        id      : 'icons',
+        id      : 'ui-elements.icons',
         title   : 'Icons',
         type    : 'collapsable',
         icon    : 'photo',
         children: [
             {
-                id   : 'icons.material-baseline',
-                title: 'Material Baseline',
+                id   : 'ui-elements.icons.material-baseline',
+                title: 'Material baseline',
                 type : 'link',
                 link : '/ui/icons/material-baseline'
             },
             {
-                id   : 'icons.material-outline',
-                title: 'Material Outline',
+                id   : 'ui-elements.icons.material-outline',
+                title: 'Material outline',
                 type : 'link',
                 link : '/ui/icons/material-outline'
             },
             {
-                id   : 'icons.dripicons',
+                id   : 'ui-elements.icons.dripicons',
                 title: 'Dripicons',
                 type : 'link',
                 link : '/ui/icons/dripicons'
             },
             {
-                id   : 'icons.iconsmind',
+                id   : 'ui-elements.icons.iconsmind',
                 title: 'Iconsmind',
                 type : 'link',
                 link : '/ui/icons/iconsmind'
@@ -539,104 +540,80 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id      : 'content-layouts',
-        title   : 'Content Layouts',
+        id      : 'ui-elements.content-layouts',
+        title   : 'Content layouts',
+        subtitle: '44 unique layout styles',
         type    : 'collapsable',
         icon    : 'view_quilt',
         children: [
             {
-                id      : 'carded',
-                title   : 'Carded',
+                id   : 'ui-elements.content-layouts.overview',
+                title: 'Overview',
+                type : 'link',
+                link : '/ui/content-layouts/overview'
+            },
+            {
+                id      : 'ui-elements.content-layouts.fullwidth',
+                title   : 'Fullwidth',
                 type    : 'collapsable',
-                badge   : {
-                    title     : '12',
-                    background: '#525E8A',
-                    color     : '#FFFFFF'
-                },
                 children: [
                     {
-                        id   : 'full-width-1',
-                        title: 'Full Width #1',
+                        id   : 'ui-elements.content-layouts.fullwidth.basic',
+                        title: 'Basic',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/full-width-1'
+                        link : '/ui/content-layouts/fullwidth/basic'
                     },
                     {
-                        id   : 'full-width-2',
-                        title: 'Full Width #2',
+                        id   : 'ui-elements.content-layouts.fullwidth.standard',
+                        title: 'Standard',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/full-width-2'
+                        link : '/ui/content-layouts/fullwidth/standard'
                     },
                     {
-                        id   : 'full-width-tabbed-1',
-                        title: 'Full Width Tabbed #1',
+                        id   : 'ui-elements.content-layouts.fullwidth.tabbed',
+                        title: 'Tabbed',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/full-width-tabbed-1'
+                        link : '/ui/content-layouts/fullwidth/tabbed'
                     },
                     {
-                        id   : 'full-width-tabbed-2',
-                        title: 'Full Width Tabbed #2',
+                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-nav',
+                        title: 'Tabbed nav',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/full-width-tabbed-2'
+                        link : '/ui/content-layouts/fullwidth/tabbed-nav'
                     },
                     {
-                        id   : 'left-sidebar-1',
-                        title: 'Left Sidebar #1',
-                        type : 'link',
-                        link : '/ui/page-layouts/carded/left-sidebar-1'
+                        type: 'divider'
                     },
                     {
-                        id   : 'left-sidebar-2',
-                        title: 'Left Sidebar #2',
+                        id   : 'ui-elements.content-layouts.fullwidth.basic-inner-scroll',
+                        title: 'Basic inner scroll',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/left-sidebar-2'
+                        link : '/ui/content-layouts/fullwidth/basic-inner-scroll'
                     },
                     {
-                        id   : 'left-sidebar-tabbed-1',
-                        title: 'Left Sidebar Tabbed #1',
+                        id   : 'ui-elements.content-layouts.fullwidth.standard-inner-scroll',
+                        title: 'Standard inner scroll',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/left-sidebar-tabbed-1'
+                        link : '/ui/content-layouts/fullwidth/standard-inner-scroll'
                     },
                     {
-                        id   : 'left-sidebar-tabbed-2',
-                        title: 'Left Sidebar Tabbed #2',
+                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-inner-scroll',
+                        title: 'Tabbed inner scroll',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/left-sidebar-tabbed-2'
+                        link : '/ui/content-layouts/fullwidth/tabbed-inner-scroll'
                     },
                     {
-                        id   : 'right-sidebar-1',
-                        title: 'Right Sidebar #1',
+                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-nav-inner-scroll',
+                        title: 'Tabbed nav inner scroll',
                         type : 'link',
-                        link : '/ui/page-layouts/carded/right-sidebar-1'
-                    },
-                    {
-                        id   : 'right-sidebar-2',
-                        title: 'Right Sidebar #2',
-                        type : 'link',
-                        link : '/ui/page-layouts/carded/right-sidebar-2'
-                    },
-                    {
-                        id   : 'right-sidebar-tabbed-1',
-                        title: 'Right Sidebar Tabbed #1',
-                        type : 'link',
-                        link : '/ui/page-layouts/carded/right-sidebar-tabbed-1'
-                    },
-                    {
-                        id   : 'right-sidebar-tabbed-2',
-                        title: 'Right Sidebar Tabbed #2',
-                        type : 'link',
-                        link : '/ui/page-layouts/carded/right-sidebar-tabbed-2'
+                        link : '/ui/content-layouts/fullwidth/tabbed-nav-inner-scroll'
                     }
                 ]
             },
             {
-                id      : 'simple',
-                title   : 'Simple',
+                id      : 'content-layouts.left-sidebar',
+                title   : 'Left Sidebar',
                 type    : 'collapsable',
-                badge   : {
-                    title     : '10',
-                    background: '#525E8A',
-                    color     : '#FFFFFF'
-                },
                 children: [
                     {
                         id   : 'full-width-1',
@@ -701,15 +678,19 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 ]
             },
             {
-                id   : 'blank',
-                title: 'Blank',
-                type : 'link',
-                link : '/ui/page-layouts/blank'
+                id   : 'content-layouts.right-sidebar',
+                title: 'Right Sidebar',
+                type : 'collapsable'
+            },
+            {
+                id   : 'content-layouts.dual-sidebars',
+                title: 'Dual Sidebars',
+                type : 'collapsable'
             }
         ]
     },
     {
-        id   : 'typography',
+        id   : 'ui-elements.typography',
         title: 'Typography',
         type : 'link',
         icon : 'text_fields',
@@ -722,20 +703,20 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type    : 'subheader'
     },
     {
-        id   : 'animations',
+        id   : 'assembly.animations',
         title: 'Animations',
         type : 'link',
         icon : 'movie_creation',
         link : '/assembly/components/animations'
     },
     {
-        id      : 'cards',
+        id      : 'assembly.cards',
         title   : 'Cards',
         type    : 'collapsable',
         icon    : 'web_asset',
         children: [
             {
-                id   : 'cards.content',
+                id   : 'assembly.cards.content',
                 title: 'Content',
                 type : 'link',
                 link : '/assembly/components/cards/content'
@@ -743,35 +724,35 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id   : 'messages',
+        id   : 'assembly.messages',
         title: 'Messages',
         type : 'link',
         icon : 'info',
         link : '/assembly/components/messages'
     },
     {
-        id   : 'navigation',
+        id   : 'assembly.navigation',
         title: 'Navigation',
         type : 'link',
         icon : 'menu',
         link : '/assembly/components/navigation'
     },
     {
-        id      : 'directives',
+        id      : 'assembly.directives',
         title   : 'Directives',
         icon    : 'memory',
         type    : 'collapsable',
         children: []
     },
     {
-        id      : 'services',
+        id      : 'assembly.services',
         title   : 'Services',
         icon    : 'memory',
         type    : 'collapsable',
         children: []
     },
     {
-        id      : 'pipes',
+        id      : 'assembly.pipes',
         title   : 'Pipes',
         icon    : 'memory',
         type    : 'collapsable',
@@ -787,7 +768,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type : 'subheader'
     },
     {
-        id   : 'changelog',
+        id   : 'documentation.changelog',
         title: 'Changelog',
         type : 'link',
         icon : 'update',
@@ -800,57 +781,57 @@ export const defaultNavigation: AsmNavigationItem[] = [
         }
     },
     {
-        id   : 'getting-started',
-        title: 'Getting Started',
+        id   : 'documentation.getting-started',
+        title: 'Getting started',
         type : 'link',
         icon : 'import_contacts',
         link : '/docs/getting-started'
     },
     {
-        id   : 'building-and-serving',
-        title: 'Building and Serving',
+        id   : 'documentation.building-and-serving',
+        title: 'Building and serving',
         type : 'link',
         icon : 'import_contacts',
         link : '/docs/building-and-serving'
     },
     {
-        id   : 'fundamentals.directory-structure',
-        title: 'Directory Structure',
+        id   : 'documentation.directory-structure',
+        title: 'Directory structure',
         icon : 'import_contacts',
         type : 'link',
         link : '/docs/fundamentals/directory-structure'
     },
     {
-        id   : 'fundamentals.updating-assembly',
+        id   : 'documentation.updating-assembly',
         title: 'Updating Assembly',
         icon : 'import_contacts',
         type : 'link',
         link : '/docs/fundamentals/updating-assmebly'
     },
     {
-        id   : 'fundamentals.multi-language',
-        title: 'Multi Language',
+        id   : 'documentation.multi-language',
+        title: 'Multi language',
         icon : 'import_contacts',
         type : 'link',
         link : '/docs/fundamentals/multi-language'
     },
     {
-        id   : 'fundamentals.material-theming',
-        title: 'Material Theming',
+        id   : 'documentation.material-theming',
+        title: 'Material theming',
         icon : 'import_contacts',
         type : 'link',
         link : '/docs/fundamentals/material-theming'
     },
     {
-        id   : 'fundamentals.theme-layouts',
-        title: 'Theme Layouts',
+        id   : 'documentation.theme-layouts',
+        title: 'Theme layouts',
         icon : 'import_contacts',
         type : 'link',
         link : '/docs/fundamentals/theme-layouts'
     },
     {
-        id   : 'fundamentals.page-layouts',
-        title: 'Page Layouts',
+        id   : 'documentation.content-layouts',
+        title: 'Content layouts',
         icon : 'import_contacts',
         type : 'link',
         link : '/docs/fundamentals/page-layouts'
@@ -865,38 +846,38 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type    : 'subheader'
     },
     {
-        id      : 'levels.0',
+        id      : 'navigation-features.levels.0',
         title   : 'Level 0',
         icon    : 'menu',
         type    : 'collapsable',
         children: [
             {
-                id      : 'levels.0.1',
+                id      : 'navigation-features.levels.0.1',
                 title   : 'Level 1',
                 type    : 'collapsable',
                 children: [
                     {
-                        id      : 'levels.0.1.2',
+                        id      : 'navigation-features.levels.0.1.2',
                         title   : 'Level 2',
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'levels.0.1.2.3',
+                                id      : 'navigation-features.levels.0.1.2.3',
                                 title   : 'Level 3',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id      : 'levels.0.1.2.3.4',
+                                        id      : 'navigation-features.levels.0.1.2.3.4',
                                         title   : 'Level 4',
                                         type    : 'collapsable',
                                         children: [
                                             {
-                                                id      : 'levels.0.1.2.3.4.5',
+                                                id      : 'navigation-features.levels.0.1.2.3.4.5',
                                                 title   : 'Level 5',
                                                 type    : 'collapsable',
                                                 children: [
                                                     {
-                                                        id   : 'levels.0.1.2.3.4.5.6',
+                                                        id   : 'navigation-features.levels.0.1.2.3.4.5.6',
                                                         title: 'Level 6',
                                                         type : 'collapsable'
                                                     }
@@ -913,19 +894,19 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id   : 'badge-style-oval',
+        id   : 'navigation-features.badge-style-oval',
         title: 'Oval badge',
         icon : 'label',
         type : 'link',
         link : '#',
         badge: {
-            title     : '35',
+            title     : '8',
             background: '#17FEFF',
             color     : '#000000'
         }
     },
     {
-        id   : 'badge-style-rectangle',
+        id   : 'navigation-features.badge-style-rectangle',
         title: 'Rectangle badge',
         icon : 'label',
         type : 'link',
@@ -938,7 +919,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         }
     },
     {
-        id   : 'badge-style-rounded',
+        id   : 'navigation-features.badge-style-rounded',
         title: 'Rounded badge',
         icon : 'label',
         type : 'link',
@@ -951,7 +932,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         }
     },
     {
-        id   : 'badge-style-simple',
+        id   : 'navigation-features.badge-style-simple',
         title: 'Simple badge',
         icon : 'label',
         type : 'link',
@@ -961,6 +942,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
             style: 'simple',
             color: '#17FEFF'
         }
+    },
+    {
+        id   : 'navigation-features.multi-line',
+        title: 'A multi line navigation item title example which works just fine',
+        icon : 'menu',
+        type : 'link',
+        link : '#'
     }
 ];
 export const compactNavigation: AsmNavigationItem[] = [
