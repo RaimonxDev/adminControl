@@ -41,3 +41,123 @@ img {
     vertical-align: top;
     border: none;
 }
+
+// -----------------------------------------------------------------------------------------------------
+// @ Table
+// -----------------------------------------------------------------------------------------------------
+table {
+    width: 100%;
+    border-spacing: 0;
+    @include asm-shadow(2);
+
+    thead {
+
+        tr {
+
+            th {
+                padding: 16px;
+                border-bottom: 2px solid;
+                text-align: left;
+
+                &:first-child {
+                    padding-left: 24px;
+                }
+
+                &:last-child {
+                    padding-right: 24px;
+                }
+            }
+        }
+    }
+
+    tbody {
+
+        tr {
+
+            td {
+                padding: 16px;
+                border-bottom: 1px solid;
+                text-align: left;
+
+                &:first-child {
+                    padding-left: 24px;
+                }
+
+                &:last-child {
+                    padding-right: 24px;
+                }
+            }
+
+            &:last-child {
+
+                td {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    tfoot {
+
+        tr {
+
+            th {
+                padding: 16px;
+                border-top: 2px solid;
+                text-align: left;
+
+                &:first-child {
+                    padding-left: 24px;
+                }
+
+                &:last-child {
+                    padding-right: 24px;
+                }
+            }
+        }
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    table {
+        background: map-get($background, card);
+
+        thead {
+
+            tr {
+
+                th {
+                    border-bottom-color: map-get($foreground, divider);
+                }
+            }
+        }
+
+        tbody {
+
+            tr {
+
+                td {
+                    border-bottom-color: map-get($foreground, divider);
+                }
+            }
+        }
+
+        tfoot {
+
+            tr {
+
+                th {
+                    border-top-color: map-get($foreground, divider);
+                }
+            }
+        }
+    }
+}

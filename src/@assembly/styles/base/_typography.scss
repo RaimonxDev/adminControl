@@ -15,7 +15,11 @@ html, body {
 // Headings
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin: 0;
+    margin: 1.25em 0 0.5em 0;
+
+    &:first-child {
+        margin-top: 0;
+    }
 }
 
 h1, .h1 {
@@ -51,12 +55,12 @@ a {
 // Abbr
 abbr {
     cursor: help;
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.54);
+    border-bottom: 1px dotted;
 }
 
 // Blockquote
 blockquote {
-    border-left: 3px solid rgba(0, 0, 0, 0.12);
+    border-left: 3px solid;
     font-style: italic;
     margin: 1em 0;
     padding-left: 16px;
@@ -71,7 +75,7 @@ blockquote {
 
     &.reverse {
         border-left: none;
-        border-right: 3px solid rgba(0, 0, 0, 0.12);
+        border-right: 3px solid;
         text-align: right;
         padding-left: 0;
         padding-right: 16px;
@@ -135,8 +139,6 @@ mark {
 
 // Pre
 pre {
-    line-height: 1.6;
-    margin: 8px 16px;
     white-space: pre-wrap;
 }
 
@@ -202,6 +204,21 @@ pre {
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
+
+    // Abbr
+    abbr {
+        border-bottom-color: map-get($foreground, secondary-text);
+    }
+
+
+    // Blockquote
+    blockquote {
+        border-left-color: map-get($foreground, divider);
+
+        &.reverse {
+            border-right-color: map-get($foreground, divider);
+        }
+    }
 
     // Code
     code:not([class*='language-']) {
