@@ -2,27 +2,11 @@
 
 cards-content {
 
-    .content-layout {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 32px;
+    asm-card {
+        margin: 32px;
 
-        .container {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            width: 100%;
-
-            asm-card {
-                margin: 32px;
-
-                @include asm-media-breakpoint('lt-sm') {
-                    margin: 16px;
-                }
-            }
+        @include asm-media-breakpoint('lt-sm') {
+            margin: 16px;
         }
     }
 }

@@ -4,13 +4,11 @@
     line-height: 1.7;
     padding: 0;
 
-    // Container
-    .container {
-        max-width: 680px;
-        width: 100%;
+    // H tags
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
     }
 
-    // H tags
     h1 {
         display: block;
         @extend %title-lg;
@@ -69,32 +67,12 @@
         margin: 32px 0;
     }
 
-    // Header
-    > .header {
-        display: flex;
-        flex-direction: column;
-        padding: 64px;
-
-        @include asm-media-breakpoint('lt-sm') {
-            padding: 64px 32px;
-        }
-
-        .breadcrumb {
-            margin-bottom: 4px;
-        }
-    }
-
-    // Content
-    > .content {
-        display: flex;
-        align-items: flex-start;
-        padding: 64px;
-
-        @include asm-media-breakpoint('lt-sm') {
-            padding: 32px;
-        }
+    // Main
+    > .main {
 
         .container {
+            max-width: 680px;
+            width: 100%;
 
             & > :first-child {
                 margin-top: 0;
@@ -298,17 +276,6 @@
                 }
             }
         }
-
-        // Table of contents
-        asm-toc {
-            top: 64px;
-            margin-left: 160px;
-
-            // Fixed header
-            .fixed-header & {
-                top: 144px;
-            }
-        }
     }
 }
 
@@ -331,17 +298,7 @@
 
     .docs {
 
-
-        .header {
-
-            @if ($is-dark) {
-                background: map-get($background, card);
-            } @else {
-                background: asm-color($asm-blue-grey, 300);
-            }
-        }
-
-        .content {
+        > .main {
 
             // Example viewer
             .example-viewer {
