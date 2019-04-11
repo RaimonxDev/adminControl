@@ -7,10 +7,113 @@
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    padding: 64px;
 
-    @include asm-media-breakpoint('lt-sm') {
-        padding: 16px;
+    // -----------------------------------------------------------------------------------------------------
+    // @ Common
+    // -----------------------------------------------------------------------------------------------------
+    > .header {
+
+        .breadcrumb {
+            margin-bottom: 8px;
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6 {
+            margin: 0;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Fullwidth basic
+    // -----------------------------------------------------------------------------------------------------
+    &.fullwidth-basic {
+        padding: 64px;
+
+        @include asm-media-breakpoint('lt-sm') {
+            padding: 32px;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Fullwidth basic inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.fullwidth-basic-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .main {
+            padding: 64px;
+            width: 100%;
+            overflow-x: auto;
+
+            @include asm-media-breakpoint('lt-sm') {
+                padding: 32px;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Fullwidth standard
+    // -----------------------------------------------------------------------------------------------------
+    &.fullwidth-standard {
+        flex-direction: column;
+
+        > .header {
+            display: flex;
+            flex-direction: column;
+            padding: 64px;
+
+            @include asm-media-breakpoint('lt-sm') {
+                padding: 64px 32px;
+            }
+        }
+
+        > .main {
+            display: flex;
+            align-items: flex-start;
+            padding: 64px;
+
+            @include asm-media-breakpoint('lt-sm') {
+                padding: 32px;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Fullwidth standard inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.fullwidth-standard-inner-scroll {
+        position: absolute;
+        flex-direction: column;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            display: flex;
+            flex-direction: column;
+            padding: 64px;
+
+            @include asm-media-breakpoint('lt-sm') {
+                padding: 64px 32px;
+            }
+        }
+
+        > .main {
+            padding: 64px;
+            width: 100%;
+            overflow-x: auto;
+
+            @include asm-media-breakpoint('lt-sm') {
+                padding: 32px;
+            }
+        }
     }
 
     // Inner scroll
@@ -80,5 +183,31 @@
     // No padding
     &.with-no-padding {
         padding: 0 !important;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-angular-material-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    .content-layout {
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Common
+        // -----------------------------------------------------------------------------------------------------
+        > .header {
+
+            @if ($is-dark) {
+                background: map-get($background, card);
+            } @else {
+                background: asm-color($asm-blue-grey, 300);
+            }
+        }
     }
 }
