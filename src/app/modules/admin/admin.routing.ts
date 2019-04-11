@@ -24,14 +24,20 @@ export const adminRoutes: Route[] = [
             {
                 path    : 'apps',
                 children: [
+
+                    // Dashboard
                     {
                         path        : 'dashboard',
                         loadChildren: './apps/dashboard/dashboard.module#DashboardModule'
                     },
+
+                    // Mailbox
                     {
                         path        : 'mailbox',
                         loadChildren: './apps/mailbox/mailbox.module#MailboxModule'
                     },
+
+                    // Tasks
                     {
                         path        : 'tasks',
                         loadChildren: './apps/tasks/tasks.module#TasksModule'
@@ -48,30 +54,44 @@ export const adminRoutes: Route[] = [
                     {
                         path    : 'authentication',
                         children: [
+
+                            // Confirmation required
                             {
                                 path        : 'confirmation-required',
                                 loadChildren: './pages/authentication/confirmation-required/confirmation-required.module#ConfirmationRequiredModule'
                             },
+
+                            // Forgot password
                             {
                                 path        : 'forgot-password',
                                 loadChildren: './pages/authentication/forgot-password/forgot-password.module#ForgotPasswordModule'
                             },
+
+                            // Login
                             {
                                 path        : 'login',
                                 loadChildren: './pages/authentication/login/login.module#LoginModule'
                             },
+
+                            // Logout
                             {
                                 path        : 'logout',
                                 loadChildren: './pages/authentication/logout/logout.module#LogoutModule'
                             },
+
+                            // Reset password
                             {
                                 path        : 'reset-password',
                                 loadChildren: './pages/authentication/reset-password/reset-password.module#ResetPasswordModule'
                             },
+
+                            // Signup
                             {
                                 path        : 'signup',
                                 loadChildren: './pages/authentication/signup/signup.module#SignupModule'
                             },
+
+                            // Unlock session
                             {
                                 path        : 'unlock-session',
                                 loadChildren: './pages/authentication/unlock-session/unlock-session.module#UnlockSessionModule'
@@ -89,10 +109,14 @@ export const adminRoutes: Route[] = [
                     {
                         path    : 'errors',
                         children: [
+
+                            // 404
                             {
                                 path        : '404',
                                 loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
                             },
+
+                            // 500
                             {
                                 path        : '500',
                                 loadChildren: './pages/errors/error-500/error-500.module#Error500Module'
