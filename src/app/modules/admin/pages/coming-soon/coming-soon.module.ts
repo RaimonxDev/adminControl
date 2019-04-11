@@ -1,23 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Route, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { ComingSoonComponent } from 'app/modules/admin/pages/coming-soon/coming-soon.component';
-
-const routes: Route[] = [
-    {
-        path     : '',
-        component: ComingSoonComponent
-    }
-];
+import { comingSoonRoutes } from 'app/modules/admin/pages/coming-soon/coming-soon.routing';
 
 @NgModule({
     declarations: [
         ComingSoonComponent
     ],
     imports     : [
-        RouterModule.forChild(routes),
+        RouterModule.forChild(comingSoonRoutes),
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,

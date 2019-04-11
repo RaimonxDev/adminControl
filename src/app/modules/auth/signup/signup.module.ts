@@ -1,23 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Route, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthSignupComponent } from 'app/modules/auth/signup/signup.component';
-
-const routes: Route[] = [
-    {
-        path     : '',
-        component: AuthSignupComponent
-    }
-];
+import { authSignupRoutes } from 'app/modules/auth/signup/signup.routing';
 
 @NgModule({
     declarations: [
         AuthSignupComponent
     ],
     imports     : [
-        RouterModule.forChild(routes),
+        RouterModule.forChild(authSignupRoutes),
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,

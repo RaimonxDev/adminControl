@@ -1,23 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Route, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthConfirmationRequiredComponent } from 'app/modules/auth/confirmation-required/confirmation-required.component';
-
-const routes: Route[] = [
-    {
-        path     : '',
-        component: AuthConfirmationRequiredComponent
-    }
-];
+import { authConfirmationRequiredRoutes } from 'app/modules/auth/confirmation-required/confirmation-required.routing';
 
 @NgModule({
     declarations: [
         AuthConfirmationRequiredComponent
     ],
     imports     : [
-        RouterModule.forChild(routes),
+        RouterModule.forChild(authConfirmationRequiredRoutes),
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
