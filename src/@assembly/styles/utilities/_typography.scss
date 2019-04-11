@@ -1,6 +1,18 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Extendable styles
+// @ Titles
 // -----------------------------------------------------------------------------------------------------
+
+%title-xs {
+    font-size: 16px;
+}
+
+%title-sm {
+    font-size: 18px;
+}
+
+%title-md {
+    font-size: 20px;
+}
 
 %title-base {
     font-size: 24px;
@@ -8,32 +20,14 @@
     line-height: 1.25;
 }
 
-%title-md {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.25;
-}
-
 %title-lg {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 700;
     line-height: 1.25;
 }
 
 %title-xl {
     font-size: 40px;
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.25;
-}
-
-%subtitle-base {
-    font-size: 16px;
-}
-
-%subtitle-md {
-    font-size: 18px;
-}
-
-%subtitle-lg {
-    font-size: 20px;
 }

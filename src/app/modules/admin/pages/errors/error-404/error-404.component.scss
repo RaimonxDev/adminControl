@@ -10,13 +10,13 @@ error-404 {
     }
 
     .title {
-        @extend %title-lg;
+        @extend %title-xl;
         margin-top: 64px;
         text-align: center;
     }
 
     .subtitle {
-        @extend %subtitle-base;
+        @extend %title-xs;
         margin-top: 12px;
         text-align: center;
     }
@@ -31,7 +31,12 @@ error-404 {
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme {
 
+    $foreground: map-get($theme, foreground);
+
     error-404 {
 
+        .subtitle {
+            color: map-get($foreground, secondary-text);
+        }
     }
 }

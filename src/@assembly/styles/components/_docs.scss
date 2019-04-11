@@ -11,27 +11,20 @@
 
     h1 {
         display: block;
-        @extend %title-lg;
     }
 
     h2 {
         display: block;
-        @extend %title-base;
-        font-weight: 700;
         margin-top: 56px;
     }
 
     h3 {
         display: block;
-        @extend %subtitle-lg;
-        font-weight: 600;
         margin-top: 40px;
     }
 
     h4 {
         display: block;
-        @extend %subtitle-md;
-        font-weight: 600;
         margin-top: 40px;
     }
 

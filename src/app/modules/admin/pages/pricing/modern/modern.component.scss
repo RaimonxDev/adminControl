@@ -50,7 +50,7 @@ pricing-modern {
                 }
 
                 > .subtitle {
-                    @extend %subtitle-md;
+                    @extend %title-sm;
                     text-align: center;
                     margin-top: 32px;
                     max-width: 480px;
@@ -116,11 +116,11 @@ pricing-modern {
                     }
 
                     .title {
-                        @extend %title-md;
+                        @extend %title-lg;
                     }
 
                     .subtitle {
-                        @extend %subtitle-base;
+                        @extend %title-xs;
                         margin-top: 8px;
                     }
 
@@ -137,13 +137,13 @@ pricing-modern {
                         .currency {
                             position: relative;
                             top: -2px;
-                            @extend %subtitle-lg;
+                            @extend %title-md;
                             font-weight: normal;
                             margin-right: 4px;
                         }
 
                         .amount {
-                            @extend %title-lg;
+                            @extend %title-xl;
                             font-weight: bold;
                         }
                     }
@@ -194,12 +194,12 @@ pricing-modern {
                     max-width: 480px;
 
                     .title {
-                        @extend %title-md;
+                        @extend %title-lg;
                         text-align: center;
                     }
 
                     .subtitle {
-                        @extend %subtitle-base;
+                        @extend %title-xs;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -241,13 +241,13 @@ pricing-modern {
                             }
 
                             div {
-                                @extend %subtitle-base;
+                                @extend %title-xs;
                                 font-weight: bold;
                             }
                         }
 
                         .description {
-                            @extend %subtitle-base;
+                            @extend %title-xs;
                         }
                     }
                 }
@@ -268,12 +268,12 @@ pricing-modern {
                     max-width: 480px;
 
                     .title {
-                        @extend %title-md;
+                        @extend %title-lg;
                         text-align: center;
                     }
 
                     .subtitle {
-                        @extend %subtitle-base;
+                        @extend %title-xs;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -298,7 +298,7 @@ pricing-modern {
                         max-width: 480px;
 
                         .question {
-                            @extend %subtitle-base;
+                            @extend %title-xs;
                             font-weight: bold;
                             margin: 48px 0 8px 0;
 
@@ -308,7 +308,7 @@ pricing-modern {
                         }
 
                         .answer {
-                            @extend %subtitle-base;
+                            @extend %title-xs;
                         }
                     }
                 }

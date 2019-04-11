@@ -92,7 +92,7 @@ logout {
                 }
 
                 .subtitle {
-                    @extend %subtitle-base;
+                    @extend %title-xs;
                     margin-top: 4px;
                 }
 

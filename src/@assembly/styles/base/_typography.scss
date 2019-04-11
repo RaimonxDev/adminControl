@@ -31,19 +31,22 @@ h2, .h2 {
 }
 
 h3, .h3 {
-    @extend %title-md;
-}
-
-h4, .h4 {
     @extend %title-base;
 }
 
+h4, .h4 {
+    @extend %title-md;
+    font-weight: 500;
+}
+
 h5, .h5 {
-    @extend %subtitle-md;
+    @extend %title-sm;
+    font-weight: 500;
 }
 
 h6, .h6 {
-    @extend %subtitle-base;
+    @extend %title-xs;
+    font-weight: 500;
 }
 
 // Links
