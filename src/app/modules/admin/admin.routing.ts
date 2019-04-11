@@ -164,6 +164,44 @@ export const adminRoutes: Route[] = [
                         loadChildren: './ui/colors/colors.module#ColorsModule'
                     },
 
+                    // Content layouts
+                    {
+                        path    : 'content-layouts',
+                        children: [
+
+                            // Fullwidth
+                            {
+                                path    : 'fullwidth',
+                                children: [
+
+                                    // Basic
+                                    {
+                                        path        : 'basic',
+                                        loadChildren: './ui/content-layouts/fullwidth/basic/basic.module#FullwidthBasicModule'
+                                    },
+
+                                    // Basic inner scroll
+                                    {
+                                        path        : 'basic-inner-scroll',
+                                        loadChildren: './ui/content-layouts/fullwidth/basic-inner-scroll/basic-inner-scroll.module#FullwidthBasicInnerScrollModule'
+                                    },
+
+                                    // Standard
+                                    {
+                                        path        : 'standard',
+                                        loadChildren: './ui/content-layouts/fullwidth/standard/standard.module#FullwidthStandardModule'
+                                    },
+
+                                    // Standard inner scroll
+                                    {
+                                        path        : 'standard-inner-scroll',
+                                        loadChildren: './ui/content-layouts/fullwidth/standard-inner-scroll/standard-inner-scroll.module#FullwidthStandardInnerScrollModule'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
                     // Icons
                     {
                         path        : 'icons',
