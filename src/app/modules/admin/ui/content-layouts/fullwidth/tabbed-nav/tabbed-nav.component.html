@@ -14,23 +14,30 @@
 
     </div>
 
-    <!-- Tabs -->
-    <nav mat-tab-nav-bar>
-
-        <a mat-tab-link
-           *ngFor="let link of navLinks"
-           [routerLink]="link.path"
-           routerLinkActive
-           [active]="rla.isActive"
-           #rla="routerLinkActive">
-            {{link.title}}
-        </a>
-
-    </nav>
-
     <!-- Main -->
     <div class="main">
-        <router-outlet></router-outlet>
+
+        <!-- Navbar -->
+        <nav mat-tab-nav-bar>
+
+            <a mat-tab-link
+               *ngFor="let link of navLinks"
+               [routerLink]="link.path"
+               routerLinkActive
+               [active]="rla.isActive"
+               #rla="routerLinkActive">
+                {{link.title}}
+            </a>
+
+        </nav>
+
+        <!-- Main inner -->
+        <div class="main-inner">
+
+            <router-outlet></router-outlet>
+
+        </div>
+
     </div>
 
 </div>

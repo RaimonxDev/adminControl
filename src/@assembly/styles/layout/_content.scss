@@ -3,6 +3,7 @@
 // -----------------------------------------------------------------------------------------------------
 .content-layout {
     display: flex;
+    flex-direction: column;
     flex: 1 1 auto;
     width: 100%;
     max-width: 100%;
@@ -27,10 +28,13 @@
     // @ Fullwidth basic
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-basic {
-        padding: 64px;
 
-        @include asm-media-breakpoint('lt-sm') {
-            padding: 32px;
+        > .main {
+            padding: 64px;
+
+            @include asm-media-breakpoint('lt-sm') {
+                padding: 32px;
+            }
         }
     }
 
@@ -46,7 +50,6 @@
         overflow: hidden;
 
         > .main {
-            width: 100%;
             padding: 64px;
             overflow-x: auto;
 
@@ -60,7 +63,6 @@
     // @ Fullwidth standard
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-standard {
-        flex-direction: column;
 
         > .header {
             padding: 64px;
@@ -71,6 +73,7 @@
         }
 
         > .main {
+            flex: 1 1 auto;
             padding: 64px;
 
             @include asm-media-breakpoint('lt-sm') {
@@ -84,7 +87,6 @@
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-standard-inner-scroll {
         position: absolute;
-        flex-direction: column;
         top: 0;
         right: 0;
         bottom: 0;
@@ -100,6 +102,7 @@
         }
 
         > .main {
+            flex: 1 1 auto;
             padding: 64px;
             overflow-x: auto;
 
@@ -113,7 +116,6 @@
     // @ Fullwidth tabbed
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-tabbed {
-        flex-direction: column;
 
         > .header {
             padding: 64px 64px 40px 64px;
@@ -123,22 +125,26 @@
             }
         }
 
-        > .mat-tab-group {
+        > .main {
+            flex: 1 1 auto;
 
-            .mat-tab-header {
-                padding: 0 64px;
-                border-bottom: none;
-            }
+            .mat-tab-group {
 
-            .mat-tab-body-wrapper {
+                .mat-tab-header {
+                    padding: 0 64px;
+                    border-bottom: none;
+                }
 
-                .mat-tab-body {
+                .mat-tab-body-wrapper {
 
-                    .mat-tab-body-content {
-                        padding: 64px;
+                    .mat-tab-body {
 
-                        @include asm-media-breakpoint('lt-sm') {
-                            padding: 32px;
+                        .mat-tab-body-content {
+                            padding: 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 32px;
+                            }
                         }
                     }
                 }
@@ -151,7 +157,6 @@
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-tabbed-inner-scroll {
         position: absolute;
-        flex-direction: column;
         top: 0;
         right: 0;
         bottom: 0;
@@ -166,22 +171,28 @@
             }
         }
 
-        > .mat-tab-group {
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
 
-            .mat-tab-header {
-                padding: 0 64px;
-                border-bottom: none;
-            }
+            .mat-tab-group {
 
-            .mat-tab-body-wrapper {
+                .mat-tab-header {
+                    padding: 0 64px;
+                    border-bottom: none;
+                }
 
-                .mat-tab-body {
+                .mat-tab-body-wrapper {
 
-                    .mat-tab-body-content {
-                        padding: 64px;
+                    .mat-tab-body {
 
-                        @include asm-media-breakpoint('lt-sm') {
-                            padding: 32px;
+                        .mat-tab-body-content {
+                            padding: 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 32px;
+                            }
                         }
                     }
                 }
@@ -193,7 +204,6 @@
     // @ Fullwidth tabbed nav
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-tabbed-nav {
-        flex-direction: column;
 
         > .header {
             padding: 64px 64px 40px 64px;
@@ -203,20 +213,28 @@
             }
         }
 
-        > nav {
-            margin: 0;
-            padding: 0 64px;
-
-            &.mat-tab-nav-bar {
-                border-bottom: none;
-            }
-        }
-
         > .main {
-            padding: 64px;
+            flex: 1 1 auto;
 
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 32px;
+            nav {
+                margin: 0;
+                padding: 0 64px;
+
+                &.mat-tab-nav-bar {
+                    border-bottom: none;
+                }
+            }
+
+            .main-inner {
+                padding: 64px;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 32px;
+                }
+
+                > *:not(router-outlet) {
+                    display: block;
+                }
             }
         }
     }
@@ -226,7 +244,6 @@
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-tabbed-nav-inner-scroll {
         position: absolute;
-        flex-direction: column;
         top: 0;
         right: 0;
         bottom: 0;
@@ -241,28 +258,66 @@
             }
         }
 
-        > nav {
-            margin: 0;
-            padding: 0 64px;
-
-            &.mat-tab-nav-bar {
-                border-bottom: none;
-            }
-        }
-
         > .main {
-            padding: 64px;
-            overflow-x: auto;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
 
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 32px;
+            nav {
+                margin: 0;
+                padding: 0 64px;
+
+                &.mat-tab-nav-bar {
+                    border-bottom: none;
+                }
+            }
+
+            .main-inner {
+                padding: 64px;
+                overflow-x: auto;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 32px;
+                }
+
+                > *:not(router-outlet) {
+                    display: block;
+                }
             }
         }
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight basic
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-basic {
 
+        > .mat-drawer-container {
+            width: 100%;
 
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
 
+                .mat-drawer-inner-container {
+                    padding: 64px 16px;
+                    overflow: visible;
+                }
+            }
+
+            .mat-drawer-content {
+
+                .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
 
 
     // Inner scroll
@@ -364,14 +419,17 @@
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-tabbed {
 
-            > .mat-tab-group {
+            > .main {
 
-                .mat-tab-header {
+                .mat-tab-group {
 
-                    @if ($is-dark) {
-                        background: map-get($background, card);
-                    } @else {
-                        background: asm-color($asm-blue-grey, 300);
+                    .mat-tab-header {
+
+                        @if ($is-dark) {
+                            background: map-get($background, card);
+                        } @else {
+                            background: asm-color($asm-blue-grey, 300);
+                        }
                     }
                 }
             }
@@ -382,9 +440,30 @@
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-tabbed-inner-scroll {
 
-            > .mat-tab-group {
+            > .main {
 
-                .mat-tab-header {
+                .mat-tab-group {
+
+                    .mat-tab-header {
+
+                        @if ($is-dark) {
+                            background: map-get($background, card);
+                        } @else {
+                            background: asm-color($asm-blue-grey, 300);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Fullwidth tabbed nav
+        // -----------------------------------------------------------------------------------------------------
+        &.fullwidth-tabbed-nav {
+
+            > .main {
+
+                nav {
 
                     @if ($is-dark) {
                         background: map-get($background, card);
@@ -396,31 +475,32 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth tabbed nav
+        // @ Fullwidth tabbed nav inner scroll
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-tabbed-nav {
+        &.fullwidth-tabbed-nav-inner-scroll {
 
-            > nav {
+            > .main {
 
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
+                nav {
+
+                    @if ($is-dark) {
+                        background: map-get($background, card);
+                    } @else {
+                        background: asm-color($asm-blue-grey, 300);
+                    }
                 }
             }
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth tabbed nav inner scroll
+        // @ Left sidebar fullheight basic
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-tabbed-nav-inner-scroll {
+        &.left-sidebar-fullheight-basic {
 
-            > nav {
+            > .mat-drawer-container {
 
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
+                .mat-drawer {
+                    background: transparent;
                 }
             }
         }
