@@ -5,4 +5,11 @@
     img {
         max-width: 720px;
     }
+
+    .extra-content:empty {
+
+        + h1 {
+            margin-top: 0;
+        }
+    }
 }
