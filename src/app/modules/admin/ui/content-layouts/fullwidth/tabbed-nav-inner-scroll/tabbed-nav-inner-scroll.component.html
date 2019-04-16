@@ -1,0 +1,36 @@
+<div class="content-layout fullwidth-tabbed-nav-inner-scroll">
+
+    <!-- Header -->
+    <div class="header">
+
+        <div class="breadcrumb">
+            <span class="path">CONTENT LAYOUTS</span>
+            <span class="separator">/</span>
+            <span class="path">FULLWIDTH</span>
+            <span class="separator">/</span>
+            <span class="path current">TABBED NAV</span>
+        </div>
+        <h1>Fullwidth tabbed nav layout</h1>
+
+    </div>
+
+    <!-- Tabs -->
+    <nav mat-tab-nav-bar>
+
+        <a mat-tab-link
+           *ngFor="let link of navLinks"
+           [routerLink]="link.path"
+           routerLinkActive
+           [active]="rla.isActive"
+           #rla="routerLinkActive">
+            {{link.title}}
+        </a>
+
+    </nav>
+
+    <!-- Main -->
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

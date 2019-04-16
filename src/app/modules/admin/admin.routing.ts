@@ -196,6 +196,30 @@ export const adminRoutes: Route[] = [
                                     {
                                         path        : 'standard-inner-scroll',
                                         loadChildren: './ui/content-layouts/fullwidth/standard-inner-scroll/standard-inner-scroll.module#FullwidthStandardInnerScrollModule'
+                                    },
+
+                                    // Tabbed
+                                    {
+                                        path        : 'tabbed',
+                                        loadChildren: './ui/content-layouts/fullwidth/tabbed/tabbed.module#FullwidthTabbedModule'
+                                    },
+
+                                    // Tabbed inner scroll
+                                    {
+                                        path        : 'tabbed-inner-scroll',
+                                        loadChildren: './ui/content-layouts/fullwidth/tabbed-inner-scroll/tabbed-inner-scroll.module#FullwidthTabbedInnerScrollModule'
+                                    },
+
+                                    // Tabbed nav
+                                    {
+                                        path        : 'tabbed-nav',
+                                        loadChildren: './ui/content-layouts/fullwidth/tabbed-nav/tabbed-nav.module#FullwidthTabbedNavModule'
+                                    },
+
+                                    // Tabbed nav inner scroll
+                                    {
+                                        path        : 'tabbed-nav-inner-scroll',
+                                        loadChildren: './ui/content-layouts/fullwidth/tabbed-nav-inner-scroll/tabbed-nav-inner-scroll.module#FullwidthTabbedNavInnerScrollModule'
                                     }
                                 ]
                             }
