@@ -30,6 +30,7 @@
     &.fullwidth-basic {
 
         > .main {
+            flex: 1 1 auto;
             padding: 64px;
 
             @include asm-media-breakpoint('lt-sm') {
@@ -50,6 +51,7 @@
         overflow: hidden;
 
         > .main {
+            flex: 1 1 auto;
             padding: 64px;
             overflow-x: auto;
 
@@ -214,6 +216,8 @@
         }
 
         > .main {
+            display: flex;
+            flex-direction: column;
             flex: 1 1 auto;
 
             nav {
@@ -226,6 +230,7 @@
             }
 
             .main-inner {
+                flex: 1 1 auto;
                 padding: 64px;
 
                 @include asm-media-breakpoint('lt-sm') {
@@ -273,6 +278,7 @@
             }
 
             .main-inner {
+                flex: 1 1 auto;
                 padding: 64px;
                 overflow-x: auto;
 
@@ -293,7 +299,7 @@
     &.left-sidebar-fullheight-basic {
 
         > .mat-drawer-container {
-            width: 100%;
+            flex: 1 1 auto;
 
             .mat-drawer {
                 min-width: 256px;
@@ -301,14 +307,15 @@
                 width: 256px;
 
                 .mat-drawer-inner-container {
-                    padding: 64px 16px;
-                    overflow: visible;
+                    padding: 64px 0;
                 }
             }
 
             .mat-drawer-content {
+                display: flex;
 
                 .main {
+                    flex: 1 1 auto;
                     padding: 64px;
 
                     @include asm-media-breakpoint('lt-sm') {

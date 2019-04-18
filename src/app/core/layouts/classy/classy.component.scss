@@ -89,6 +89,7 @@ layout[type="classy"] {
             flex: 1 1 auto;
 
             > *:not(router-outlet) {
+                position: relative;
                 display: flex;
                 flex: 1 1 auto;
             }
