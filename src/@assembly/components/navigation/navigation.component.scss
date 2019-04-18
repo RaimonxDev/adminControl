@@ -221,7 +221,7 @@ asm-navigation {
             .asm-navigation-item {
                 position: relative;
                 display: flex;
-                align-items: flex-start;
+                align-items: center;
                 justify-content: flex-start;
                 padding: 14px 24px 14px 32px;
                 min-height: 48px;
@@ -236,14 +236,9 @@ asm-navigation {
 
                 .asm-navigation-item-title-wrapper {
 
-                    .asm-navigation-item-title {
-                        line-height: 20px;
-                    }
-
                     .asm-navigation-item-subtitle {
-                        line-height: 1;
                         font-size: 12px;
-                        margin-top: 6px;
+                        margin-top: 2px;
                     }
                 }
 
