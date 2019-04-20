@@ -76,12 +76,12 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                         }
                     },
                     header    : {
-                        background: 'white light-theme',
+                        background: 'white theme-light',
                         hidden    : false,
                         fixed     : false
                     },
                     footer    : {
-                        background: 'blue-grey-900 dark-theme',
+                        background: 'blue-grey-900 theme-dark',
                         hidden    : false,
                         fixed     : false
                     }
