@@ -887,21 +887,21 @@ asm-navigation {
 
             &.asm-navigation-item-active {
                 box-shadow: inset 3px 0 0 0 map-get($primary, default);
-                background: rgba(0, 0, 0, 0.03);
+                background: rgba(0, 0, 0, 0.06);
             }
         }
 
-        // Link, Collapsable & Aside
-        asm-navigation-link-item,
+        // Aside, Collapsable & Link
+        asm-navigation-aside-item,
         asm-navigation-collapsable-item,
-        asm-navigation-aside-item {
+        asm-navigation-link-item {
 
             > .asm-navigation-item-wrapper {
 
                 .asm-navigation-item {
 
                     &:hover:not(.asm-navigation-item-active) {
-                        background: rgba(0, 0, 0, 0.03);
+                        background: rgba(0, 0, 0, 0.06);
                     }
                 }
             }
@@ -953,10 +953,10 @@ asm-navigation {
                 }
             }
 
-            // Link, Collapsable & Aside
-            asm-navigation-link-item,
+            // Aside, Collapsable & Link
+            asm-navigation-aside-item,
             asm-navigation-collapsable-item,
-            asm-navigation-aside-item {
+            asm-navigation-link-item {
 
                 > .asm-navigation-item-wrapper {
 
@@ -1005,9 +1005,10 @@ asm-navigation {
                         }
                     }
 
-                    asm-navigation-link-item,
+                    // Aside, Collapsable & Link
+                    asm-navigation-aside-item,
                     asm-navigation-collapsable-item,
-                    asm-navigation-aside-item {
+                    asm-navigation-link-item {
 
                         > .asm-navigation-item-wrapper {
 
@@ -1076,7 +1077,6 @@ asm-navigation {
 
                                     &:before {
                                         border-top-color: rgba(255, 255, 255, 0.12);
-
                                     }
                                 }
                             }
@@ -1126,9 +1126,10 @@ asm-navigation {
                 }
             }
 
+            // Aside, Collapsable & Link
             asm-navigation-aside-item,
-            asm-navigation-link-item,
-            asm-navigation-collapsable-item {
+            asm-navigation-collapsable-item,
+            asm-navigation-link-item {
 
                 .asm-navigation-item {
 
