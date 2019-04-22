@@ -59,6 +59,14 @@
 
         </a>
 
+        <!-- Item with a no link and no function -->
+        <div class="asm-vertical-menu-item"
+             *ngIf="!item.link && !item.function">
+
+            <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+
+        </div>
+
     </div>
 
     <!-- Item template -->
