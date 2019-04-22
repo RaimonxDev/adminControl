@@ -222,6 +222,26 @@ export const adminRoutes: Route[] = [
                                         loadChildren: './ui/content-layouts/fullwidth/tabbed-nav-inner-scroll/tabbed-nav-inner-scroll.module#FullwidthTabbedNavInnerScrollModule'
                                     }
                                 ]
+                            },
+
+                            // Left sidebar
+                            {
+                                path    : 'left-sidebar',
+                                children: [
+
+                                    // Fullheight
+                                    {
+                                        path    : 'fullheight',
+                                        children: [
+
+                                            // Basic
+                                            {
+                                                path        : 'basic',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/basic/basic.module#LeftSidebarFullheightBasicModule'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
