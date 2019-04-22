@@ -55,6 +55,10 @@
 
             <ng-container *ngFor="let item of item.children; trackBy: trackById">
 
+                <!-- Basic -->
+                <asm-navigation-basic-item *ngIf="item.type === 'basic'"
+                                           [item]="item"></asm-navigation-basic-item>
+
                 <!-- Collapsable -->
                 <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
                                                  [item]="item"></asm-navigation-collapsable-item>
@@ -62,10 +66,6 @@
                 <!-- Divider -->
                 <asm-navigation-divider-item *ngIf="item.type === 'divider'"
                                              [item]="item"></asm-navigation-divider-item>
-
-                <!-- Link -->
-                <asm-navigation-link-item *ngIf="item.type === 'link'"
-                                          [item]="item"></asm-navigation-link-item>
 
                 <!-- Subheader -->
                 <asm-navigation-subheader-item *ngIf="item.type === 'subheader'"

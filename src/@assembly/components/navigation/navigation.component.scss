@@ -201,9 +201,9 @@ asm-navigation {
 
     // Navigation items common
     asm-navigation-aside-item,
+    asm-navigation-basic-item,
     asm-navigation-collapsable-item,
     asm-navigation-divider-item,
-    asm-navigation-link-item,
     asm-navigation-subheader-item {
         display: flex;
         flex-direction: column;
@@ -298,7 +298,7 @@ asm-navigation {
     }
 
     asm-navigation-aside-item,
-    asm-navigation-link-item,
+    asm-navigation-basic-item,
     asm-navigation-collapsable-item {
 
         .asm-navigation-item {
@@ -308,6 +308,11 @@ asm-navigation {
 
     // Aside
     asm-navigation-aside-item {
+
+    }
+
+    // Basic
+    asm-navigation-basic-item {
 
     }
 
@@ -391,11 +396,6 @@ asm-navigation {
         }
     }
 
-    // Link
-    asm-navigation-link-item {
-
-    }
-
     // Subheader
     asm-navigation-subheader-item {
 
@@ -469,7 +469,7 @@ asm-navigation {
                 }
 
                 > asm-navigation-aside-item,
-                > asm-navigation-link-item {
+                > asm-navigation-basic-item {
 
                     .asm-navigation-item {
                         flex-direction: column;
@@ -588,7 +588,7 @@ asm-navigation {
             .asm-navigation-content {
 
                 asm-navigation-aside-item,
-                asm-navigation-link-item,
+                asm-navigation-basic-item,
                 asm-navigation-collapsable-item,
                 asm-navigation-subheader-item {
 
@@ -615,7 +615,7 @@ asm-navigation {
                 .asm-navigation-content {
 
                     asm-navigation-aside-item,
-                    asm-navigation-link-item,
+                    asm-navigation-basic-item,
                     asm-navigation-collapsable-item,
                     asm-navigation-subheader-item {
 
@@ -735,7 +735,7 @@ asm-navigation {
                 }
 
                 asm-navigation-aside-item,
-                asm-navigation-link-item,
+                asm-navigation-basic-item,
                 asm-navigation-subheader-item {
 
                     .asm-navigation-item {
@@ -783,7 +783,7 @@ asm-navigation {
         }
 
         asm-navigation-aside-item,
-        asm-navigation-link-item,
+        asm-navigation-basic-item,
         asm-navigation-collapsable-item {
 
             .asm-navigation-item {
@@ -891,10 +891,10 @@ asm-navigation {
             }
         }
 
-        // Aside, Collapsable & Link
+        // Aside, Basic, Collapsable
         asm-navigation-aside-item,
-        asm-navigation-collapsable-item,
-        asm-navigation-link-item {
+        asm-navigation-basic-item,
+        asm-navigation-collapsable-item {
 
             > .asm-navigation-item-wrapper {
 
@@ -953,10 +953,10 @@ asm-navigation {
                 }
             }
 
-            // Aside, Collapsable & Link
+            // Aside, Basic, Collapsable
             asm-navigation-aside-item,
-            asm-navigation-collapsable-item,
-            asm-navigation-link-item {
+            asm-navigation-basic-item,
+            asm-navigation-collapsable-item {
 
                 > .asm-navigation-item-wrapper {
 
@@ -1005,10 +1005,10 @@ asm-navigation {
                         }
                     }
 
-                    // Aside, Collapsable & Link
+                    // Aside, Basic, Collapsable
                     asm-navigation-aside-item,
-                    asm-navigation-collapsable-item,
-                    asm-navigation-link-item {
+                    asm-navigation-basic-item,
+                    asm-navigation-collapsable-item {
 
                         > .asm-navigation-item-wrapper {
 
@@ -1126,10 +1126,10 @@ asm-navigation {
                 }
             }
 
-            // Aside, Collapsable & Link
+            // Aside, Basic, Collapsable
             asm-navigation-aside-item,
-            asm-navigation-collapsable-item,
-            asm-navigation-link-item {
+            asm-navigation-basic-item,
+            asm-navigation-collapsable-item {
 
                 .asm-navigation-item {
 

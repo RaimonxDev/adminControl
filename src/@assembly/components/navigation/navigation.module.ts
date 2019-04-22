@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule, MatTooltipModule } from '@angular/material';
 import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public-api';
-import { AsmNavigationLinkItemComponent } from '@assembly/components/navigation/components/link/link.component';
+import { AsmNavigationBasicItemComponent } from '@assembly/components/navigation/components/basic/basic.component';
 import { AsmNavigationCollapsableItemComponent } from '@assembly/components/navigation/components/collapsable/collapsable.component';
 import { AsmNavigationDividerItemComponent } from '@assembly/components/navigation/components/divider/divider.component';
 import { AsmNavigationSubheaderItemComponent } from '@assembly/components/navigation/components/subheader/subheader.component';
@@ -13,7 +13,7 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 
 @NgModule({
     declarations: [
-        AsmNavigationLinkItemComponent,
+        AsmNavigationBasicItemComponent,
         AsmNavigationCollapsableItemComponent,
         AsmNavigationDividerItemComponent,
         AsmNavigationSubheaderItemComponent,

@@ -3,7 +3,7 @@ export interface AsmNavigationItem
     id?: string;
     title?: string;
     subtitle?: string;
-    type: 'aside' | 'collapsable' | 'divider' | 'link' | 'subheader';
+    type: 'aside' | 'basic' | 'collapsable' | 'divider' | 'subheader';
     hidden?: boolean;
     link?: string;
     externalLink?: boolean;

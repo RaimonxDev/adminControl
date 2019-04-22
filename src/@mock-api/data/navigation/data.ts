@@ -13,7 +13,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'dashboard',
                 title   : 'Dashboard',
                 subtitle: 'Health tracking',
-                type    : 'link',
+                type    : 'basic',
                 icon    : 'dashboards',
                 link    : 'apps/dashboard'
             },
@@ -21,7 +21,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'calendar',
                 title   : 'Calendar',
                 subtitle: '3 upcoming events',
-                type    : 'link',
+                type    : 'basic',
                 icon    : 'today',
                 link    : '/apps/calendar'
             },
@@ -35,28 +35,28 @@ export const defaultNavigation: AsmNavigationItem[] = [
                     {
                         id        : 'products',
                         title     : 'Products',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/products',
                         exactMatch: true
                     },
                     {
                         id        : 'productDetail',
                         title     : 'Product Detail',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/products/1/printed-dress',
                         exactMatch: true
                     },
                     {
                         id        : 'orders',
                         title     : 'Orders',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/orders',
                         exactMatch: true
                     },
                     {
                         id        : 'orderDetail',
                         title     : 'Order Detail',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/orders/1',
                         exactMatch: true
                     }
@@ -66,14 +66,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'academy',
                 title   : 'Academy',
                 subtitle: 'New lessons available!',
-                type    : 'link',
+                type    : 'basic',
                 icon    : 'school',
                 link    : '/apps/academy'
             },
             {
                 id   : 'mail',
                 title: 'Mail',
-                type : 'link',
+                type : 'basic',
                 icon : 'email',
                 link : '/apps/mail',
                 badge: {
@@ -85,7 +85,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'mail-ngrx',
                 title: 'Mail Ngrx',
-                type : 'link',
+                type : 'basic',
                 icon : 'email',
                 link : '/apps/mail-ngrx',
                 badge: {
@@ -98,7 +98,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'chat',
                 title: 'Chat',
-                type : 'link',
+                type : 'basic',
                 icon : 'chat',
                 link : '/apps/chat',
                 badge: {
@@ -112,14 +112,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'file-manager',
                 title   : 'File Manager',
                 subtitle: '1.4GB of 5GB used',
-                type    : 'link',
+                type    : 'basic',
                 icon    : 'folder',
                 link    : '/apps/file-manager'
             },
             {
                 id   : 'contacts',
                 title: 'Contacts',
-                type : 'link',
+                type : 'basic',
                 icon : 'account_box',
                 link : '/apps/contacts'
             },
@@ -127,7 +127,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'to-do',
                 title   : 'To-Do',
                 subtitle: '7 overdue tasks',
-                type    : 'link',
+                type    : 'basic',
                 icon    : 'check_box',
                 link    : '/apps/todo',
                 badge   : {
@@ -140,7 +140,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'scrumboard',
                 title: 'Scrumboard',
-                type : 'link',
+                type : 'basic',
                 icon : 'assessment',
                 link : '/apps/scrumboard'
             }
@@ -155,14 +155,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'dashboard',
                 title: 'Dashboard',
-                type : 'link',
+                type : 'basic',
                 icon : 'dashboards',
                 link : 'apps/dashboard'
             },
             {
                 id   : 'calendar',
                 title: 'Calendar',
-                type : 'link',
+                type : 'basic',
                 icon : 'today',
                 link : '/apps/calendar'
             },
@@ -175,28 +175,28 @@ export const defaultNavigation: AsmNavigationItem[] = [
                     {
                         id        : 'products',
                         title     : 'Products',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/products',
                         exactMatch: true
                     },
                     {
                         id        : 'productDetail',
                         title     : 'Product Detail',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/products/1/printed-dress',
                         exactMatch: true
                     },
                     {
                         id        : 'orders',
                         title     : 'Orders',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/orders',
                         exactMatch: true
                     },
                     {
                         id        : 'orderDetail',
                         title     : 'Order Detail',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/orders/1',
                         exactMatch: true
                     }
@@ -205,14 +205,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'academy',
                 title: 'Academy',
-                type : 'link',
+                type : 'basic',
                 icon : 'school',
                 link : '/apps/academy'
             },
             {
                 id   : 'mail',
                 title: 'Mail',
-                type : 'link',
+                type : 'basic',
                 icon : 'email',
                 link : '/apps/mail',
                 badge: {
@@ -224,7 +224,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'mail-ngrx',
                 title: 'Mail Ngrx',
-                type : 'link',
+                type : 'basic',
                 icon : 'email',
                 link : '/apps/mail-ngrx',
                 badge: {
@@ -237,7 +237,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'chat',
                 title: 'Chat',
-                type : 'link',
+                type : 'basic',
                 icon : 'chat',
                 link : '/apps/chat',
                 badge: {
@@ -250,21 +250,21 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'file-manager',
                 title: 'File Manager',
-                type : 'link',
+                type : 'basic',
                 icon : 'folder',
                 link : '/apps/file-manager'
             },
             {
                 id   : 'contacts',
                 title: 'Contacts',
-                type : 'link',
+                type : 'basic',
                 icon : 'account_box',
                 link : '/apps/contacts'
             },
             {
                 id   : 'to-do',
                 title: 'To-Do',
-                type : 'link',
+                type : 'basic',
                 icon : 'check_box',
                 link : '/apps/todo',
                 badge: {
@@ -277,7 +277,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'scrumboard',
                 title: 'Scrumboard',
-                type : 'link',
+                type : 'basic',
                 icon : 'assessment',
                 link : '/apps/scrumboard'
             }
@@ -293,7 +293,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'applications.dashboard',
         title: 'Dashboard',
-        type : 'link',
+        type : 'basic',
         icon : 'dashboards',
         link : '/apps/dashboard'
     },
@@ -301,14 +301,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id      : 'applications.calendar',
         title   : 'Calendar',
         subtitle: '3 upcoming events',
-        type    : 'link',
+        type    : 'basic',
         icon    : 'today',
         link    : '/apps/calendar'
     },
     {
         id   : 'applications.mailbox',
         title: 'Mailbox',
-        type : 'link',
+        type : 'basic',
         icon : 'email',
         link : '/apps/mailbox',
         badge: {
@@ -322,21 +322,21 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id      : 'applications.tasks',
         title   : 'Tasks',
         subtitle: '7 overdue tasks',
-        type    : 'link',
+        type    : 'basic',
         icon    : 'check_box',
         link    : '/apps/tasks'
     },
     {
         id   : 'applications.notes',
         title: 'Notes',
-        type : 'link',
+        type : 'basic',
         icon : 'note',
         link : '/apps/notes'
     },
     {
         id   : 'applications.contacts',
         title: 'Contacts',
-        type : 'link',
+        type : 'basic',
         icon : 'account_box',
         link : '/apps/contacts',
         badge: {
@@ -350,7 +350,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id      : 'applications.help-center',
         title   : 'Help center',
         subtitle: 'Faqs, knowledge base & guides',
-        type    : 'link',
+        type    : 'basic',
         icon    : 'help_outline',
         link    : '/apps/help-center'
     },
@@ -370,43 +370,43 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'pages.authentication.login',
                 title: 'Login',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/authentication/login'
             },
             {
                 id   : 'pages.authentication.signup',
                 title: 'Sign up',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/authentication/signup'
             },
             {
                 id   : 'pages.authentication.forgot-password',
                 title: 'Forgot password',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/authentication/forgot-password'
             },
             {
                 id   : 'pages.authentication.reset-password',
                 title: 'Reset password',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/authentication/reset-password'
             },
             {
                 id   : 'pages.authentication.logout',
                 title: 'Logout',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/authentication/logout'
             },
             {
                 id   : 'pages.authentication.unlock-session',
                 title: 'Unlock session',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/authentication/unlock-session'
             },
             {
                 id   : 'pages.authentication.confirmation-required',
                 title: 'Confirmation required',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/authentication/confirmation-required'
             }
         ]
@@ -414,7 +414,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'pages.coming-soon',
         title: 'Coming soon',
-        type : 'link',
+        type : 'basic',
         icon : 'hourglass_empty',
         link : '/pages/coming-soon'
     },
@@ -427,13 +427,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'pages.errors.404',
                 title: '404',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/errors/404'
             },
             {
                 id   : 'pages.errors.500',
                 title: '500',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/errors/500'
             }
         ]
@@ -441,7 +441,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'pages.maintenance',
         title: 'Maintenance',
-        type : 'link',
+        type : 'basic',
         icon : 'build',
         link : '/pages/maintenance'
     },
@@ -454,13 +454,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'pages.pricing.modern',
                 title: 'Modern',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/pricing/modern'
             },
             {
                 id   : 'pages.pricing.simple',
                 title: 'Simple',
-                type : 'link',
+                type : 'basic',
                 link : '/pages/pricing/simple'
             }
         ]
@@ -468,7 +468,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'pages.profile',
         title: 'Profile',
-        type : 'link',
+        type : 'basic',
         icon : 'person',
         link : '/pages/profile'
     },
@@ -482,28 +482,28 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'ui-elements.angular-material',
         title: 'Angular Material',
-        type : 'link',
+        type : 'basic',
         icon : 'layers',
         link : '/ui/angular-material'
     },
     {
         id   : 'ui-elements.colors',
         title: 'Colors',
-        type : 'link',
+        type : 'basic',
         icon : 'color_lens',
         link : '/ui/colors'
     },
     {
         id   : 'ui-elements.forms',
         title: 'Forms',
-        type : 'link',
+        type : 'basic',
         icon : 'ballot',
         link : '/ui/forms'
     },
     {
         id   : 'ui-elements.helper-classes',
         title: 'Helper classes',
-        type : 'link',
+        type : 'basic',
         icon : 'help',
         link : '/ui/helper-classes'
     },
@@ -516,25 +516,25 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'ui-elements.icons.material-baseline',
                 title: 'Material baseline',
-                type : 'link',
+                type : 'basic',
                 link : '/ui/icons/material-baseline'
             },
             {
                 id   : 'ui-elements.icons.material-outline',
                 title: 'Material outline',
-                type : 'link',
+                type : 'basic',
                 link : '/ui/icons/material-outline'
             },
             {
                 id   : 'ui-elements.icons.dripicons',
                 title: 'Dripicons',
-                type : 'link',
+                type : 'basic',
                 link : '/ui/icons/dripicons'
             },
             {
                 id   : 'ui-elements.icons.iconsmind',
                 title: 'Iconsmind',
-                type : 'link',
+                type : 'basic',
                 link : '/ui/icons/iconsmind'
             }
         ]
@@ -549,7 +549,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'ui-elements.content-layouts.overview',
                 title: 'Overview',
-                type : 'link',
+                type : 'basic',
                 link : '/ui/content-layouts/overview'
             },
             {
@@ -560,120 +560,118 @@ export const defaultNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'ui-elements.content-layouts.fullwidth.basic',
                         title: 'Basic',
-                        type : 'link',
+                        type : 'basic',
                         link : '/ui/content-layouts/fullwidth/basic'
-                    },
-                    {
-                        id   : 'ui-elements.content-layouts.fullwidth.standard',
-                        title: 'Standard',
-                        type : 'link',
-                        link : '/ui/content-layouts/fullwidth/standard'
-                    },
-                    {
-                        id   : 'ui-elements.content-layouts.fullwidth.tabbed',
-                        title: 'Tabbed',
-                        type : 'link',
-                        link : '/ui/content-layouts/fullwidth/tabbed'
-                    },
-                    {
-                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-nav',
-                        title: 'Tabbed nav',
-                        type : 'link',
-                        link : '/ui/content-layouts/fullwidth/tabbed-nav'
-                    },
-                    {
-                        type: 'divider'
                     },
                     {
                         id   : 'ui-elements.content-layouts.fullwidth.basic-inner-scroll',
                         title: 'Basic inner scroll',
-                        type : 'link',
+                        type : 'basic',
                         link : '/ui/content-layouts/fullwidth/basic-inner-scroll'
+                    },
+                    {
+                        id   : 'ui-elements.content-layouts.fullwidth.standard',
+                        title: 'Standard',
+                        type : 'basic',
+                        link : '/ui/content-layouts/fullwidth/standard'
                     },
                     {
                         id   : 'ui-elements.content-layouts.fullwidth.standard-inner-scroll',
                         title: 'Standard inner scroll',
-                        type : 'link',
+                        type : 'basic',
                         link : '/ui/content-layouts/fullwidth/standard-inner-scroll'
+                    },
+                    {
+                        id   : 'ui-elements.content-layouts.fullwidth.tabbed',
+                        title: 'Tabbed',
+                        type : 'basic',
+                        link : '/ui/content-layouts/fullwidth/tabbed'
                     },
                     {
                         id   : 'ui-elements.content-layouts.fullwidth.tabbed-inner-scroll',
                         title: 'Tabbed inner scroll',
-                        type : 'link',
+                        type : 'basic',
                         link : '/ui/content-layouts/fullwidth/tabbed-inner-scroll'
+                    },
+                    {
+                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-nav',
+                        title: 'Tabbed nav',
+                        type : 'basic',
+                        link : '/ui/content-layouts/fullwidth/tabbed-nav'
                     },
                     {
                         id   : 'ui-elements.content-layouts.fullwidth.tabbed-nav-inner-scroll',
                         title: 'Tabbed nav inner scroll',
-                        type : 'link',
+                        type : 'basic',
                         link : '/ui/content-layouts/fullwidth/tabbed-nav-inner-scroll'
                     }
                 ]
             },
             {
-                id      : 'content-layouts.left-sidebar',
+                id      : 'ui-elements.content-layouts.left-sidebar',
                 title   : 'Left Sidebar',
                 type    : 'collapsable',
                 children: [
                     {
-                        id   : 'full-width-1',
-                        title: 'Full Width #1',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/full-width-1'
+                        id      : 'ui-elements.content-layouts.left-sidebar.fullheight',
+                        title   : 'Fullheight',
+                        type    : 'collapsable',
+                        children: [
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.basic',
+                                title: 'Basic',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/basic'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.basic-inner-scroll',
+                                title: 'Basic inner scroll',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/basic-inner-scroll'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard',
+                                title: 'Standard',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/standard'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard-inner-scroll',
+                                title: 'Standard inner scroll',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/standard-inner-scroll'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed',
+                                title: 'Tabbed',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-inner-scroll',
+                                title: 'Tabbed inner scroll',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-inner-scroll'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-nav',
+                                title: 'Tabbed nav',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-nav'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-nav-inner-scroll',
+                                title: 'Tabbed nav inner scroll',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-nav-inner-scroll'
+                            }
+                        ]
                     },
                     {
-                        id   : 'full-width-tabbed-1',
-                        title: 'Full Width Tabbed #1',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/full-width-tabbed-1'
-                    },
-                    {
-                        id   : 'left-sidebar-1',
-                        title: 'Left Sidebar #1',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/left-sidebar-1'
-                    },
-                    {
-                        id   : 'left-sidebar-2',
-                        title: 'Left Sidebar #2',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/left-sidebar-2'
-                    },
-                    {
-                        id   : 'left-sidebar-3',
-                        title: 'Left Sidebar #3',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/left-sidebar-3'
-                    },
-                    {
-                        id   : 'left-sidebar-4',
-                        title: 'Left Sidebar #4',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/left-sidebar-4'
-                    },
-                    {
-                        id   : 'right-sidebar-1',
-                        title: 'Right Sidebar #1',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/right-sidebar-1'
-                    },
-                    {
-                        id   : 'right-sidebar-2',
-                        title: 'Right Sidebar #2',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/right-sidebar-2'
-                    },
-                    {
-                        id   : 'right-sidebar-3',
-                        title: 'Right Sidebar #3',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/right-sidebar-3'
-                    },
-                    {
-                        id   : 'right-sidebar-4',
-                        title: 'Right Sidebar #4',
-                        type : 'link',
-                        link : '/ui/page-layouts/simple/right-sidebar-4'
+                        id      : 'ui-elements.content-layouts.left-sidebar.content',
+                        title   : 'Content',
+                        type    : 'collapsable',
+                        children: []
                     }
                 ]
             },
@@ -692,7 +690,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'ui-elements.typography',
         title: 'Typography',
-        type : 'link',
+        type : 'basic',
         icon : 'text_fields',
         link : '/ui/typography'
     },
@@ -705,7 +703,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'assembly.animations',
         title: 'Animations',
-        type : 'link',
+        type : 'basic',
         icon : 'movie_creation',
         link : '/assembly/components/animations'
     },
@@ -718,7 +716,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'assembly.cards.content',
                 title: 'Content',
-                type : 'link',
+                type : 'basic',
                 link : '/assembly/components/cards/content'
             }
         ]
@@ -726,14 +724,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'assembly.messages',
         title: 'Messages',
-        type : 'link',
+        type : 'basic',
         icon : 'info',
         link : '/assembly/components/messages'
     },
     {
         id   : 'assembly.navigation',
         title: 'Navigation',
-        type : 'link',
+        type : 'basic',
         icon : 'menu',
         link : '/assembly/components/navigation'
     },
@@ -770,7 +768,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'documentation.changelog',
         title: 'Changelog',
-        type : 'link',
+        type : 'basic',
         icon : 'update',
         link : '/docs/changelog',
         badge: {
@@ -783,14 +781,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id   : 'documentation.getting-started',
         title: 'Getting started',
-        type : 'link',
+        type : 'basic',
         icon : 'import_contacts',
         link : '/docs/getting-started'
     },
     {
         id   : 'documentation.building-and-serving',
         title: 'Building and serving',
-        type : 'link',
+        type : 'basic',
         icon : 'import_contacts',
         link : '/docs/building-and-serving'
     },
@@ -798,42 +796,42 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'documentation.directory-structure',
         title: 'Directory structure',
         icon : 'import_contacts',
-        type : 'link',
+        type : 'basic',
         link : '/docs/fundamentals/directory-structure'
     },
     {
         id   : 'documentation.updating-assembly',
         title: 'Updating Assembly',
         icon : 'import_contacts',
-        type : 'link',
+        type : 'basic',
         link : '/docs/fundamentals/updating-assmebly'
     },
     {
         id   : 'documentation.multi-language',
         title: 'Multi language',
         icon : 'import_contacts',
-        type : 'link',
+        type : 'basic',
         link : '/docs/fundamentals/multi-language'
     },
     {
         id   : 'documentation.material-theming',
         title: 'Material theming',
         icon : 'import_contacts',
-        type : 'link',
+        type : 'basic',
         link : '/docs/fundamentals/material-theming'
     },
     {
         id   : 'documentation.theme-layouts',
         title: 'Theme layouts',
         icon : 'import_contacts',
-        type : 'link',
+        type : 'basic',
         link : '/docs/fundamentals/theme-layouts'
     },
     {
         id   : 'documentation.content-layouts',
         title: 'Content layouts',
         icon : 'import_contacts',
-        type : 'link',
+        type : 'basic',
         link : '/docs/fundamentals/page-layouts'
     },
     {
@@ -897,7 +895,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'navigation-features.badge-style-oval',
         title: 'Oval badge',
         icon : 'label',
-        type : 'link',
+        type : 'basic',
         link : '#',
         badge: {
             title     : '8',
@@ -909,7 +907,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'navigation-features.badge-style-rectangle',
         title: 'Rectangle badge',
         icon : 'label',
-        type : 'link',
+        type : 'basic',
         link : '#',
         badge: {
             title     : 'Updated!',
@@ -922,7 +920,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'navigation-features.badge-style-rounded',
         title: 'Rounded badge',
         icon : 'label',
-        type : 'link',
+        type : 'basic',
         link : '#',
         badge: {
             title     : 'NEW',
@@ -935,7 +933,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'navigation-features.badge-style-simple',
         title: 'Simple badge',
         icon : 'label',
-        type : 'link',
+        type : 'basic',
         link : '#',
         badge: {
             title: '87 Unread',
@@ -947,7 +945,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'navigation-features.multi-line',
         title: 'A multi line navigation item title example which works just fine',
         icon : 'menu',
-        type : 'link',
+        type : 'basic',
         link : '#'
     }
 ];
@@ -962,7 +960,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'dashboard',
                 title: 'Dashboard',
-                type : 'link',
+                type : 'basic',
                 icon : 'dashboards',
                 link : 'apps/dashboard'
             }
@@ -983,7 +981,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'calendar',
                 title: 'Calendar',
-                type : 'link',
+                type : 'basic',
                 icon : 'today',
                 link : '/apps/calendar'
             },
@@ -996,28 +994,28 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id        : 'products',
                         title     : 'Products',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/products',
                         exactMatch: true
                     },
                     {
                         id        : 'productDetail',
                         title     : 'Product Detail',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/products/1/printed-dress',
                         exactMatch: true
                     },
                     {
                         id        : 'orders',
                         title     : 'Orders',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/orders',
                         exactMatch: true
                     },
                     {
                         id        : 'orderDetail',
                         title     : 'Order Detail',
-                        type      : 'link',
+                        type      : 'basic',
                         link      : '/apps/e-commerce/orders/1',
                         exactMatch: true
                     }
@@ -1026,14 +1024,14 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'academy',
                 title: 'Academy',
-                type : 'link',
+                type : 'basic',
                 icon : 'school',
                 link : '/apps/academy'
             },
             {
                 id   : 'mail',
                 title: 'Mail',
-                type : 'link',
+                type : 'basic',
                 icon : 'email',
                 link : '/apps/mail',
                 badge: {
@@ -1045,7 +1043,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'mail-ngrx',
                 title: 'Mail Ngrx',
-                type : 'link',
+                type : 'basic',
                 icon : 'email',
                 link : '/apps/mail-ngrx',
                 badge: {
@@ -1057,7 +1055,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'chat',
                 title: 'Chat',
-                type : 'link',
+                type : 'basic',
                 icon : 'chat',
                 link : '/apps/chat',
                 badge: {
@@ -1069,21 +1067,21 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'file-manager',
                 title: 'File Manager',
-                type : 'link',
+                type : 'basic',
                 icon : 'folder',
                 link : '/apps/file-manager'
             },
             {
                 id   : 'contacts',
                 title: 'Contacts',
-                type : 'link',
+                type : 'basic',
                 icon : 'account_box',
                 link : '/apps/contacts'
             },
             {
                 id   : 'to-do',
                 title: 'To-Do',
-                type : 'link',
+                type : 'basic',
                 icon : 'check_box',
                 link : '/apps/todo',
                 badge: {
@@ -1095,7 +1093,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'scrumboard',
                 title: 'Scrumboard',
-                type : 'link',
+                type : 'basic',
                 icon : 'assessment',
                 link : '/apps/scrumboard'
             }
@@ -1122,61 +1120,61 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'login',
                         title: 'Login',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/login'
                     },
                     {
                         id   : 'login-v2',
                         title: 'Login v2',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/login-2'
                     },
                     {
                         id   : 'register',
                         title: 'Register',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/register'
                     },
                     {
                         id   : 'register-v2',
                         title: 'Register v2',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/register-2'
                     },
                     {
                         id   : 'forgot-password',
                         title: 'Forgot Password',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/forgot-password'
                     },
                     {
                         id   : 'forgot-password-v2',
                         title: 'Forgot Password v2',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/forgot-password-2'
                     },
                     {
                         id   : 'reset-password',
                         title: 'Reset Password',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/reset-password'
                     },
                     {
                         id   : 'reset-password-v2',
                         title: 'Reset Password v2',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/reset-password-2'
                     },
                     {
                         id   : 'lock-screen',
                         title: 'Lock Screen',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/lock'
                     },
                     {
                         id   : 'mail-confirmation',
                         title: 'Mail Confirmation',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/auth/mail-confirm'
                     }
                 ]
@@ -1184,7 +1182,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'coming-soon',
                 title: 'Coming Soon',
-                type : 'link',
+                type : 'basic',
                 icon : 'alarm',
                 link : '/pages/coming-soon'
             },
@@ -1197,13 +1195,13 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : '404',
                         title: '404',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/errors/error-404'
                     },
                     {
                         id   : '500',
                         title: '500',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/errors/error-500'
                     }
                 ]
@@ -1217,13 +1215,13 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'modern',
                         title: 'Modern',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/invoices/modern'
                     },
                     {
                         id   : 'compact',
                         title: 'Compact',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/invoices/compact'
                     }
                 ]
@@ -1231,7 +1229,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'maintenance',
                 title: 'Maintenance',
-                type : 'link',
+                type : 'basic',
                 icon : 'build',
                 link : '/pages/maintenance'
             },
@@ -1244,19 +1242,19 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'style-1',
                         title: 'Style 1',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/pricing/style-1'
                     },
                     {
                         id   : 'style-2',
                         title: 'Style 2',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/pricing/style-2'
                     },
                     {
                         id   : 'style-3',
                         title: 'Style 3',
-                        type : 'link',
+                        type : 'basic',
                         link : '/pages/pricing/style-3'
                     }
                 ]
@@ -1264,28 +1262,28 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'profile',
                 title: 'Profile',
-                type : 'link',
+                type : 'basic',
                 icon : 'person',
                 link : '/pages/profile'
             },
             {
                 id   : 'search',
                 title: 'Search',
-                type : 'link',
+                type : 'basic',
                 icon : 'search',
                 link : '/pages/search'
             },
             {
                 id   : 'faq',
                 title: 'Faq',
-                type : 'link',
+                type : 'basic',
                 icon : 'help',
                 link : '/pages/faq'
             },
             {
                 id   : 'knowledge-base',
                 title: 'Knowledge Base',
-                type : 'link',
+                type : 'basic',
                 icon : 'import_contacts',
                 link : '/pages/knowledge-base'
             }
@@ -1301,35 +1299,35 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'angular-material',
                 title: 'Angular Material',
-                type : 'link',
+                type : 'basic',
                 icon : 'layers',
                 link : '/ui/angular-material'
             },
             {
                 id   : 'forms',
                 title: 'Forms',
-                type : 'link',
+                type : 'basic',
                 icon : 'web_asset',
                 link : '/ui/forms'
             },
             {
                 id   : 'icons',
                 title: 'Icons',
-                type : 'link',
+                type : 'basic',
                 icon : 'photo',
                 link : '/ui/icons'
             },
             {
                 id   : 'typography',
                 title: 'Typography',
-                type : 'link',
+                type : 'basic',
                 icon : 'text_fields',
                 link : '/ui/typography'
             },
             {
                 id   : 'helper-classes',
                 title: 'Helper Classes',
-                type : 'link',
+                type : 'basic',
                 icon : 'help',
                 link : '/ui/helper-classes'
             },
@@ -1352,73 +1350,73 @@ export const compactNavigation: AsmNavigationItem[] = [
                             {
                                 id   : 'full-width-1',
                                 title: 'Full Width #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/full-width-1'
                             },
                             {
                                 id   : 'full-width-2',
                                 title: 'Full Width #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/full-width-2'
                             },
                             {
                                 id   : 'full-width-tabbed-1',
                                 title: 'Full Width Tabbed #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/full-width-tabbed-1'
                             },
                             {
                                 id   : 'full-width-tabbed-2',
                                 title: 'Full Width Tabbed #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/full-width-tabbed-2'
                             },
                             {
                                 id   : 'left-sidebar-1',
                                 title: 'Left Sidebar #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/left-sidebar-1'
                             },
                             {
                                 id   : 'left-sidebar-2',
                                 title: 'Left Sidebar #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/left-sidebar-2'
                             },
                             {
                                 id   : 'left-sidebar-tabbed-1',
                                 title: 'Left Sidebar Tabbed #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/left-sidebar-tabbed-1'
                             },
                             {
                                 id   : 'left-sidebar-tabbed-2',
                                 title: 'Left Sidebar Tabbed #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/left-sidebar-tabbed-2'
                             },
                             {
                                 id   : 'right-sidebar-1',
                                 title: 'Right Sidebar #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/right-sidebar-1'
                             },
                             {
                                 id   : 'right-sidebar-2',
                                 title: 'Right Sidebar #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/right-sidebar-2'
                             },
                             {
                                 id   : 'right-sidebar-tabbed-1',
                                 title: 'Right Sidebar Tabbed #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/right-sidebar-tabbed-1'
                             },
                             {
                                 id   : 'right-sidebar-tabbed-2',
                                 title: 'Right Sidebar Tabbed #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/carded/right-sidebar-tabbed-2'
                             }
                         ]
@@ -1436,61 +1434,61 @@ export const compactNavigation: AsmNavigationItem[] = [
                             {
                                 id   : 'full-width-1',
                                 title: 'Full Width #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/full-width-1'
                             },
                             {
                                 id   : 'full-width-tabbed-1',
                                 title: 'Full Width Tabbed #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/full-width-tabbed-1'
                             },
                             {
                                 id   : 'left-sidebar-1',
                                 title: 'Left Sidebar #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/left-sidebar-1'
                             },
                             {
                                 id   : 'left-sidebar-2',
                                 title: 'Left Sidebar #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/left-sidebar-2'
                             },
                             {
                                 id   : 'left-sidebar-3',
                                 title: 'Left Sidebar #3',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/left-sidebar-3'
                             },
                             {
                                 id   : 'left-sidebar-4',
                                 title: 'Left Sidebar #4',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/left-sidebar-4'
                             },
                             {
                                 id   : 'right-sidebar-1',
                                 title: 'Right Sidebar #1',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/right-sidebar-1'
                             },
                             {
                                 id   : 'right-sidebar-2',
                                 title: 'Right Sidebar #2',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/right-sidebar-2'
                             },
                             {
                                 id   : 'right-sidebar-3',
                                 title: 'Right Sidebar #3',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/right-sidebar-3'
                             },
                             {
                                 id   : 'right-sidebar-4',
                                 title: 'Right Sidebar #4',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/ui/page-layouts/simple/right-sidebar-4'
                             }
                         ]
@@ -1498,7 +1496,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'blank',
                         title: 'Blank',
-                        type : 'link',
+                        type : 'basic',
                         link : '/ui/page-layouts/blank'
                     }
                 ]
@@ -1506,7 +1504,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'colors',
                 title: 'Colors',
-                type : 'link',
+                type : 'basic',
                 icon : 'color_lens',
                 link : '/ui/colors'
             }
@@ -1522,7 +1520,7 @@ export const compactNavigation: AsmNavigationItem[] = [
             {
                 id   : 'changelog',
                 title: 'Changelog',
-                type : 'link',
+                type : 'basic',
                 icon : 'update',
                 link : '/docs/changelog',
                 badge: {
@@ -1541,13 +1539,13 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'introduction',
                         title: 'Introduction',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/getting-started/introduction'
                     },
                     {
                         id   : 'installation',
                         title: 'Installation',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/getting-started/installation'
                     }
                 ]
@@ -1561,49 +1559,49 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'server',
                         title: 'Server',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/server'
                     },
                     {
                         id   : 'production',
                         title: 'Production',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/production'
                     },
                     {
                         id   : 'directory-structure',
                         title: 'Directory Structure',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/directory-structure'
                     },
                     {
                         id   : 'updating-fuse',
                         title: 'Updating Fuse',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/updating-fuse'
                     },
                     {
                         id   : 'multi-language',
                         title: 'Multi Language',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/multi-language'
                     },
                     {
                         id   : 'material-theming',
                         title: 'Material Theming',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/material-theming'
                     },
                     {
                         id   : 'theme-layouts',
                         title: 'Theme Layouts',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/theme-layouts'
                     },
                     {
                         id   : 'page-layouts',
                         title: 'Page Layouts',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/working-with-fuse/page-layouts'
                     }
                 ]
@@ -1617,61 +1615,61 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'cards',
                         title: 'Cards',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/cards'
                     },
                     {
                         id   : 'countdown',
                         title: 'Countdown',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/countdown'
                     },
                     {
                         id   : 'highlight',
                         title: 'Highlight',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/highlight'
                     },
                     {
                         id   : 'material-color-picker',
                         title: 'Material Color Picker',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/material-color-picker'
                     },
                     {
                         id   : 'navigation',
                         title: 'Navigation',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/navigation'
                     },
                     {
                         id   : 'progress-bar',
                         title: 'Progress Bar',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/progress-bar'
                     },
                     {
                         id   : 'search-bar',
                         title: 'Search Bar',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/search-bar'
                     },
                     {
                         id   : 'sidebar',
                         title: 'Sidebar',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/sidebar'
                     },
                     {
                         id   : 'shortcuts',
                         title: 'Shortcuts',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/shortcuts'
                     },
                     {
                         id   : 'widget',
                         title: 'Widget',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components/widget'
                     }
                 ]
@@ -1690,7 +1688,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                             {
                                 id   : 'ngxdatatable',
                                 title: 'ngx-datatable',
-                                type : 'link',
+                                type : 'basic',
                                 link : '/docs/components-third-party/datatables/ngx-datatable'
                             }
                         ]
@@ -1698,7 +1696,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'google-maps',
                         title: 'Google Maps',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/components-third-party/google-maps'
                     }
                 ]
@@ -1712,25 +1710,25 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'fuse-if-on-dom',
                         title: 'fuseIfOnDom',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/directives/fuse-if-on-dom'
                     },
                     {
                         id   : 'fuse-inner-scroll',
                         title: 'fuseInnerScroll',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/directives/fuse-inner-scroll'
                     },
                     {
                         id   : 'fuse-mat-sidenav',
                         title: 'fuseMatSidenav',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/directives/fuse-mat-sidenav'
                     },
                     {
                         id   : 'fuse-perfect-scrollbar',
                         title: 'fusePerfectScrollbar',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/directives/fuse-perfect-scrollbar'
                     }
                 ]
@@ -1744,13 +1742,13 @@ export const compactNavigation: AsmNavigationItem[] = [
                     {
                         id   : 'fuse-config',
                         title: 'Fuse Config',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/services/fuse-config'
                     },
                     {
                         id   : 'fuse-splash-screen',
                         title: 'Fuse Splash Screen',
-                        type : 'link',
+                        type : 'basic',
                         link : '/docs/services/fuse-splash-screen'
                     }
                 ]

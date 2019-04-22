@@ -191,7 +191,7 @@ export class AsmNavigationService
 
         for ( const item of navigation )
         {
-            if ( item.type === 'link' )
+            if ( item.type === 'basic' )
             {
                 flatNavigation.push(item);
 

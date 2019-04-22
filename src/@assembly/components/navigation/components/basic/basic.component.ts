@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
-    selector       : 'asm-navigation-link-item',
-    templateUrl    : './link.component.html',
+    selector       : 'asm-navigation-basic-item',
+    templateUrl    : './basic.component.html',
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationLinkItemComponent implements OnInit
+export class AsmNavigationBasicItemComponent implements OnInit
 {
     showTooltips: boolean;
 
