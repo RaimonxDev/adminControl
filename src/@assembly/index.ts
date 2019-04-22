@@ -14,6 +14,7 @@ export * from './components/demo-sidebar-content/public-api';
 export * from './components/drawer/public-api';
 export * from './components/highlight/public-api';
 export * from './components/message/public-api';
+export * from './components/menu/public-api';
 export * from './components/navigation/public-api';
 export * from './components/search/public-api';
 export * from './components/shortcuts/public-api';

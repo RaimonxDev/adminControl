@@ -1,0 +1,48 @@
+<ng-container *ngIf="!item.hidden">
+
+    <div class="asm-vertical-menu-item-wrapper"
+         [class.asm-vertical-menu-item-has-subtitle]="!!item.subtitle"
+         [ngClass]="item.classes">
+
+        <div class="asm-vertical-menu-item">
+
+            <!-- Icon -->
+            <mat-icon class="asm-vertical-menu-item-icon text-hint icon-size-20"
+                      *ngIf="item.icon"
+                      [fontSet]="item.iconFontSet">
+                {{item.icon}}
+            </mat-icon>
+
+            <!-- Title & Subtitle -->
+            <div class="asm-vertical-menu-item-title-wrapper">
+
+                <div class="asm-vertical-menu-item-title">{{item.title}}</div>
+
+                <div class="asm-vertical-menu-item-subtitle text-hint"
+                     *ngIf="item.subtitle">
+                    {{item.subtitle}}
+                </div>
+
+            </div>
+
+            <!-- Badge -->
+            <div class="asm-vertical-menu-item-badge"
+                 *ngIf="item.badge">
+
+                <div class="asm-vertical-menu-item-badge-content"
+                     [ngClass]="'asm-vertical-menu-item-badge-style-' + item.badge.style"
+                     [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+                    {{item.badge.title}}
+                </div>
+
+                <div class="asm-vertical-menu-item-badge-indicator"
+                     [ngStyle]="{'background-color': item.badge.style === 'simple' ? item.badge.color : item.badge.background}">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</ng-container>

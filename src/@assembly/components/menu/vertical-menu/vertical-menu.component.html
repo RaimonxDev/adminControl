@@ -1,0 +1,27 @@
+<div class="asm-vertical-menu-wrapper">
+
+    <div class="asm-vertical-menu-content">
+
+        <ng-container *ngFor="let item of data; trackBy: trackById">
+
+            <!-- Basic -->
+            <asm-vertical-menu-basic-item *ngIf="item.type === 'basic'"
+                                          [item]="item"></asm-vertical-menu-basic-item>
+
+            <!-- Collapsable -->
+            <asm-vertical-menu-collapsable-item *ngIf="item.type === 'collapsable'"
+                                                [item]="item"></asm-vertical-menu-collapsable-item>
+
+            <!-- Divider -->
+            <asm-vertical-menu-divider-item *ngIf="item.type === 'divider'"
+                                            [item]="item"></asm-vertical-menu-divider-item>
+
+            <!-- Subheader -->
+            <asm-vertical-menu-subheader-item *ngIf="item.type === 'subheader'"
+                                              [item]="item"></asm-vertical-menu-subheader-item>
+
+        </ng-container>
+
+    </div>
+
+</div>
