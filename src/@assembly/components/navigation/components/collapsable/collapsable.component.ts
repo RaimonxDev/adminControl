@@ -62,7 +62,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // If the item has a children that has a matching url with the current url, expand...
-        if ( this._hasCurrentLinkInChildren(this.item, this._router.url) )
+        if ( this._hasCurrentUrlInChildren(this.item, this._router.url) )
         {
             this.expand();
         }
@@ -114,7 +114,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
                     }
 
                     // Check if this has a children with a matching url with the current active url
-                    if ( this._hasCurrentLinkInChildren(this.item, this._router.url) )
+                    if ( this._hasCurrentUrlInChildren(this.item, this._router.url) )
                     {
                         return;
                     }
@@ -139,7 +139,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
             .subscribe((event: NavigationEnd) => {
 
                 // If the item has a children that has a matching url with the current url, expand...
-                if ( this._hasCurrentLinkInChildren(this.item, event.urlAfterRedirects) )
+                if ( this._hasCurrentUrlInChildren(this.item, event.urlAfterRedirects) )
                 {
                     this.expand();
                 }
@@ -173,14 +173,14 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Check if the current active item
-     * is the children of the given item
+     * Check if the given item has the given url
+     * in one of its children
      *
      * @param item
-     * @param link
+     * @param url
      * @private
      */
-    private _hasCurrentLinkInChildren(item, link): boolean
+    private _hasCurrentUrlInChildren(item, url): boolean
     {
         const children = item.children;
 
@@ -193,13 +193,23 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         {
             if ( child.children )
             {
-                if ( this._hasCurrentLinkInChildren(child, link) )
+                if ( this._hasCurrentUrlInChildren(child, url) )
                 {
                     return true;
                 }
             }
 
-            if ( child.link === link || link.includes(child.link) )
+            // Check if the item's link is the exact same of the
+            // current url
+            if ( child.link === url )
+            {
+                return true;
+            }
+
+            // If exactMatch is not set for the item, also check
+            // if the current url starts with the item's link and
+            // continues with a question mark or a pound sign
+            if ( !child.exactMatch && (child.link === url || url.startsWith(child.link + '?') || url.startsWith(child.link + '#')) )
             {
                 return true;
             }
