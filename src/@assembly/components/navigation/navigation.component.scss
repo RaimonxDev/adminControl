@@ -208,6 +208,7 @@ asm-navigation {
         display: flex;
         flex-direction: column;
         flex: 1 0 auto;
+        user-select: none;
 
         .asm-navigation-item-wrapper {
 
@@ -231,7 +232,6 @@ asm-navigation {
 
                 .asm-navigation-item-icon {
                     margin-right: 18px;
-                    user-select: none;
                 }
 
                 .asm-navigation-item-title-wrapper {
