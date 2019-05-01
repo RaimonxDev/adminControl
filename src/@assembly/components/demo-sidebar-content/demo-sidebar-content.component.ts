@@ -15,89 +15,119 @@ export class AsmDemoSidebarContentComponent
         // Set the defaults
         this.menuData = [
             {
-                title   : 'Subheader',
-                subtitle: 'Subheader subtitle',
-                type    : 'subheader',
-                icon    : 'apps'
+                title   : 'Actions',
+                subtitle: 'Task, project & team',
+                type    : 'subheader'
             },
             {
-                title     : 'Menu Item 1',
-                type      : 'basic',
-                icon      : 'dashboards',
-                exactMatch: true
-            },
-            {
-                title   : 'Menu Item 2',
-                subtitle: 'Item subtitle',
-                type    : 'basic',
-                icon    : 'today'
-            },
-            {
-                title: 'Menu Item 3',
+                title: 'Create task',
                 type : 'basic',
-                icon : 'email',
+                icon : 'add_circle_outline'
+            },
+            {
+                title: 'Create team',
+                type : 'basic',
+                icon : 'people_outline'
+            },
+            {
+                title: 'Create project',
+                type : 'basic',
+                icon : 'work_outline'
+            },
+            {
+                title: 'Create user',
+                type : 'basic',
+                icon : 'person'
+            },
+            {
+                title   : 'Assign user or team',
+                subtitle: 'Assign to a task or a project',
+                type    : 'basic',
+                icon    : 'assignment_ind'
+            },
+            {
+                title: 'Tasks',
+                type : 'subheader'
+            },
+            {
+                title: 'All tasks',
+                type : 'basic',
+                icon : 'format_list_bulleted',
                 badge: {
-                    title     : '9',
+                    title     : '49',
                     background: '#E91E63',
                     color     : '#FFFFFF'
                 }
             },
             {
-                title: 'Menu Item 4',
+                title: 'Ongoing tasks',
                 type : 'basic',
-                icon : 'check_box'
+                icon : 'play_circle_outline'
             },
             {
-                title: 'Menu Item 5',
+                title: 'Completed tasks',
                 type : 'basic',
-                icon : 'note'
+                icon : 'check_circle'
             },
             {
-                title: 'Menu Item 6',
+                title: 'Abandoned tasks',
                 type : 'basic',
-                icon : 'account_box'
+                icon : 'remove_circle_outline'
             },
             {
-                title: 'Subheader',
+                title: 'Assigned to me',
+                type : 'basic',
+                icon : 'person'
+            },
+            {
+                title: 'Assigned to my team',
+                type : 'basic',
+                icon : 'people_outline'
+            },
+            {
+                title: 'Settings',
                 type : 'subheader'
             },
             {
-                title   : 'Menu Item 1',
+                title   : 'General',
                 type    : 'collapsable',
-                icon    : 'lock',
+                icon    : 'settings',
                 children: [
                     {
-                        title: 'Menu Item Children 1',
+                        title: 'Tasks',
                         type : 'basic'
                     },
                     {
-                        title: 'Menu Item Children 2',
+                        title: 'Users',
                         type : 'basic'
                     },
                     {
-                        title: 'Menu Item Children 3',
-                        type : 'basic'
-                    },
-                    {
-                        title: 'Menu Item Children 4',
+                        title: 'Teams',
                         type : 'basic'
                     }
                 ]
             },
             {
-                title: 'Menu Item 2',
-                type : 'basic',
-                icon : 'hourglass_empty'
+                title   : 'Account',
+                type    : 'collapsable',
+                icon    : 'settings',
+                children: [
+                    {
+                        title: 'Personal',
+                        type : 'basic'
+                    },
+                    {
+                        title: 'Payment',
+                        type : 'basic'
+                    },
+                    {
+                        title: 'Security',
+                        type : 'basic'
+                    }
+                ]
             },
             {
-                title: 'Menu Item 3',
-                type : 'basic',
-                icon : 'build'
-            },
-            {
-                title: 'Menu Item 4',
-                type : 'basic',
-                icon : 'person'
+                type: 'divider'
             }
         ];
 

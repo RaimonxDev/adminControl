@@ -5,4 +5,15 @@
 
 <!-- Fixed demo sidebar -->
 <h3 class="mx-32 mt-0 mb-16">Demo Sidebar</h3>
-<asm-vertical-menu [data]="menuData" [autoCollapse]="false"></asm-vertical-menu>
+<asm-vertical-menu [data]="menuData"
+                   [autoCollapse]="false"></asm-vertical-menu>
+
+<div class="flex items-center mr-24 ml-32">
+    <mat-icon class="icon-size-20 mr-16">storage</mat-icon>
+    <h6 class="m-0">Storage</h6>
+</div>
+<div class="flex flex-col flex-auto mt-20 mx-32">
+    <span class="text-sm leading-none mb-12">19.9 GB of 100 GB used</span>
+    <mat-progress-bar mode="determinate"
+                      value="19.9"></mat-progress-bar>
+</div>
