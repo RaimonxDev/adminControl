@@ -208,8 +208,9 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
 
             // If exactMatch is not set for the item, also check
             // if the current url starts with the item's link and
-            // continues with a question mark or a pound sign
-            if ( !child.exactMatch && (child.link === url || url.startsWith(child.link + '?') || url.startsWith(child.link + '#')) )
+            // continues with a question mark, a pound sign or a
+            // slash
+            if ( !child.exactMatch && (child.link === url || url.startsWith(child.link + '?') || url.startsWith(child.link + '#') || url.startsWith(child.link + '/')) )
             {
                 return true;
             }
