@@ -422,7 +422,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id      : 'pages.errors',
         title   : 'Errors',
         type    : 'collapsable',
-        icon    : 'error',
+        icon    : 'error_outline',
         children: [
             {
                 id   : 'pages.errors.404',
@@ -449,7 +449,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id      : 'pages.pricing',
         title   : 'Pricing',
         type    : 'collapsable',
-        icon    : 'attach_money',
+        icon    : 'monetization_on',
         children: [
             {
                 id   : 'pages.pricing.modern',
@@ -469,7 +469,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'pages.profile',
         title: 'Profile',
         type : 'basic',
-        icon : 'person',
+        icon : 'account_circle',
         link : '/pages/profile'
     },
     {
@@ -504,7 +504,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'ui-elements.helper-classes',
         title: 'Helper classes',
         type : 'basic',
-        icon : 'help',
+        icon : 'help_outline',
         link : '/ui/helper-classes'
     },
     {
@@ -1190,7 +1190,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                 id      : 'errors',
                 title   : 'Errors',
                 type    : 'collapsable',
-                icon    : 'error',
+                icon    : 'error_outline',
                 children: [
                     {
                         id   : '404',
@@ -1237,7 +1237,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                 id      : 'pricing',
                 title   : 'Pricing',
                 type    : 'collapsable',
-                icon    : 'attach_money',
+                icon    : 'monetization_on',
                 children: [
                     {
                         id   : 'style-1',
@@ -1277,7 +1277,7 @@ export const compactNavigation: AsmNavigationItem[] = [
                 id   : 'faq',
                 title: 'Faq',
                 type : 'basic',
-                icon : 'help',
+                icon : 'help_outline',
                 link : '/pages/faq'
             },
             {
