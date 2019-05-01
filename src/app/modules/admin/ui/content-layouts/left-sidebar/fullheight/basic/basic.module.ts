@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatSidenavModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { AsmDemoContentModule, AsmDemoSidebarContentModule } from '@assembly';
 import { LeftSidebarFullheightBasicComponent } from 'app/modules/admin/ui/content-layouts/left-sidebar/fullheight/basic/basic.component';
 import { leftSidebarFullheightBasicRoutes } from 'app/modules/admin/ui/content-layouts/left-sidebar/fullheight/basic/basic.routing';

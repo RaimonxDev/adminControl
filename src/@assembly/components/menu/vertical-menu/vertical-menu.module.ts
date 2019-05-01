@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public-api';
 import { AsmVerticalMenuCollapsableItemComponent } from '@assembly/components/menu/vertical-menu/components/collapsable/collapsable.component';
 import { AsmVerticalMenuSubheaderItemComponent } from '@assembly/components/menu/vertical-menu/components/subheader/subheader.component';

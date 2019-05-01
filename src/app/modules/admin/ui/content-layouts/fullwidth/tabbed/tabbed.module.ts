@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AsmDemoContentModule } from '@assembly';
 import { FullwidthTabbedComponent } from 'app/modules/admin/ui/content-layouts/fullwidth/tabbed/tabbed.component';
 import { fullwidthTabbedRoutes } from 'app/modules/admin/ui/content-layouts/fullwidth/tabbed/tabbed.routing';

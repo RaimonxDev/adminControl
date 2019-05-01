@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatIconModule, MatRippleModule, MatTabsModule } from '@angular/material';
+import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AsmHighlightModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { ColorsComponent } from 'app/modules/admin/ui/colors/colors.component';

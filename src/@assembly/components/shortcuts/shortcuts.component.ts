@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { MatButton } from '@angular/material';
+import { MatButton } from '@angular/material/button';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AsmAnimations } from '@assembly/animations/public-api';

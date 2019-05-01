@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AsmDemoContentModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { FullwidthTabbedNavInnerScrollComponent } from 'app/modules/admin/ui/content-layouts/fullwidth/tabbed-nav-inner-scroll/tabbed-nav-inner-scroll.component';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatSelectModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 import { AsmCardModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { LogoutComponent } from 'app/modules/admin/pages/authentication/logout/logout.component';

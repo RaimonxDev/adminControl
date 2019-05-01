@@ -1,6 +1,6 @@
 import { Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatFormField } from '@angular/material';
+import { MatFormField } from '@angular/material/form-field';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AsmAnimations } from '@assembly/animations/public-api';

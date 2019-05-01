@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public-api';
 import { AsmNavigationBasicItemComponent } from '@assembly/components/navigation/components/basic/basic.component';
 import { AsmNavigationCollapsableItemComponent } from '@assembly/components/navigation/components/collapsable/collapsable.component';
