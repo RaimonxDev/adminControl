@@ -1,4 +1,37 @@
 // -----------------------------------------------------------------------------------------------------
+// @ Common
+// -----------------------------------------------------------------------------------------------------
+
+// Header
+%content-layout-header {
+    display: flex;
+    padding: 64px;
+
+    @include asm-media-breakpoint('lt-sm') {
+        padding: 64px 32px;
+    }
+
+    .breadcrumb {
+        margin-bottom: 8px;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+        margin: 0;
+    }
+
+    .left {
+        align-self: center;
+    }
+
+    .right {
+        align-self: center;
+        margin-left: auto;
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
 // @ Content layout
 // -----------------------------------------------------------------------------------------------------
 .content-layout {
@@ -8,21 +41,6 @@
     width: 100%;
     max-width: 100%;
     min-width: 0;
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Common
-    // -----------------------------------------------------------------------------------------------------
-    > .header {
-
-        .breadcrumb {
-            margin-bottom: 8px;
-        }
-
-        h1, h2, h3, h4, h5, h6,
-        .h1, .h2, .h3, .h4, .h5, .h6 {
-            margin: 0;
-        }
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Fullwidth basic
@@ -67,11 +85,7 @@
     &.fullwidth-standard {
 
         > .header {
-            padding: 64px;
-
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 64px 32px;
-            }
+            @extend %content-layout-header;
         }
 
         > .main {
@@ -96,11 +110,7 @@
         overflow: hidden;
 
         > .header {
-            padding: 64px;
-
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 64px 32px;
-            }
+            @extend %content-layout-header;
         }
 
         > .main {
@@ -120,11 +130,8 @@
     &.fullwidth-tabbed {
 
         > .header {
-            padding: 64px 64px 40px 64px;
-
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 64px 32px;
-            }
+            @extend %content-layout-header;
+            padding-bottom: 40px;
         }
 
         > .main {
@@ -166,11 +173,8 @@
         overflow: hidden;
 
         > .header {
-            padding: 64px 64px 40px 64px;
-
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 64px 32px;
-            }
+            @extend %content-layout-header;
+            padding-bottom: 40px;
         }
 
         > .main {
@@ -208,11 +212,8 @@
     &.fullwidth-tabbed-nav {
 
         > .header {
-            padding: 64px 64px 40px 64px;
-
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 64px 32px;
-            }
+            @extend %content-layout-header;
+            padding-bottom: 40px;
         }
 
         > .main {
@@ -256,11 +257,8 @@
         overflow: hidden;
 
         > .header {
-            padding: 64px 64px 40px 64px;
-
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 64px 32px;
-            }
+            @extend %content-layout-header;
+            padding-bottom: 40px;
         }
 
         > .main {
@@ -312,10 +310,8 @@
             }
 
             .mat-drawer-content {
-                display: flex;
 
-                .main {
-                    flex: 1 1 auto;
+                > .main {
                     padding: 64px;
 
                     @include asm-media-breakpoint('lt-sm') {
@@ -326,74 +322,76 @@
         }
     }
 
-
-    // Inner scroll
-    &.with-inner-scroll {
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight basic inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-basic-inner-scroll {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
         overflow: hidden;
-    }
 
-    // Drawer
-    &.with-drawer {
-
-        // Mat drawer container
         > .mat-drawer-container {
-            display: flex;
             flex: 1 1 auto;
 
-            // Mat drawer
-            > .mat-drawer {
-                display: flex;
-                flex: 1 0 auto;
-                min-width: 280px;
-                max-width: 280px;
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
 
-                // Mat drawer inner container
                 .mat-drawer-inner-container {
-                    display: flex;
-
-                    // Drawer content
-                    .drawer-content {
-                        display: flex;
-                        flex: 1 1 auto;
-                        width: 100%;
-                    }
+                    padding: 64px 0;
                 }
             }
 
-            // Mat drawer content
-            > .mat-drawer-content {
-                display: flex;
-                flex: 1 1 auto;
+            .mat-drawer-content {
 
-                // Main content
-                .main-content {
-                    display: flex;
-                    flex: 1 1 auto;
-                    flex-direction: column;
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
                 }
             }
         }
     }
 
-    // Centered content
-    &.with-centered-content {
-        align-items: center;
-        justify-content: center;
-    }
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight standard
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-standard {
 
-    // Column
-    &.with-direction-column {
-        flex-direction: column;
-    }
+        > .mat-drawer-container {
+            flex: 1 1 auto;
 
-    // No padding
-    &.with-no-padding {
-        padding: 0 !important;
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -410,14 +408,62 @@
     .content-layout {
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Common
+        // @ Fullwidth basic
         // -----------------------------------------------------------------------------------------------------
-        > .header {
+        &.fullwidth-basic {
 
-            @if ($is-dark) {
-                background: map-get($background, card);
-            } @else {
-                background: asm-color($asm-blue-grey, 300);
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Fullwidth basic inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.fullwidth-basic-inner-scroll {
+
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Fullwidth standard
+        // -----------------------------------------------------------------------------------------------------
+        &.fullwidth-standard {
+
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Fullwidth standard inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.fullwidth-standard-inner-scroll {
+
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
             }
         }
 
@@ -425,6 +471,15 @@
         // @ Fullwidth tabbed
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-tabbed {
+
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
+            }
 
             > .main {
 
@@ -447,6 +502,15 @@
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-tabbed-inner-scroll {
 
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
+            }
+
             > .main {
 
                 .mat-tab-group {
@@ -468,6 +532,15 @@
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-tabbed-nav {
 
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
+            }
+
             > .main {
 
                 nav {
@@ -485,6 +558,15 @@
         // @ Fullwidth tabbed nav inner scroll
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-tabbed-nav-inner-scroll {
+
+            > .header {
+
+                @if ($is-dark) {
+                    background: map-get($background, card);
+                } @else {
+                    background: asm-color($asm-blue-grey, 300);
+                }
+            }
 
             > .main {
 
@@ -506,10 +588,61 @@
 
             > .mat-drawer-container {
 
-                .mat-drawer {
-                    background: transparent;
+                .mat-drawer-content {
+
+                    > .header {
+
+                        @if ($is-dark) {
+                            background: map-get($background, card);
+                        } @else {
+                            background: asm-color($asm-blue-grey, 300);
+                        }
+                    }
                 }
             }
         }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight basic inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-basic-inner-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+
+                        @if ($is-dark) {
+                            background: map-get($background, card);
+                        } @else {
+                            background: asm-color($asm-blue-grey, 300);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight standard
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-standard {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+
+                        @if ($is-dark) {
+                            background: map-get($background, card);
+                        } @else {
+                            background: asm-color($asm-blue-grey, 300);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
