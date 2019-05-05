@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { AsmVerticalMenuService } from '@assembly/components/menu/vertical-menu/vertical-menu.service';
-import { AsmVerticalMenuItem } from '@assembly';
+import { AsmVerticalMenu } from '@assembly/components/menu/vertical-menu/vertical-menu.type';
 
 @Component({
     selector       : 'asm-vertical-menu',
@@ -18,7 +18,7 @@ export class AsmVerticalMenuComponent implements OnInit
 
     // Data
     @Input()
-    data: AsmVerticalMenuItem[];
+    data: AsmVerticalMenu[];
 
     /**
      * Constructor
