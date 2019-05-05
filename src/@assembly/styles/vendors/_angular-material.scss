@@ -8,23 +8,34 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Button
 // -----------------------------------------------------------------------------------------------------
-[class^='asm-mat-button-'] {
+.mat-button,
+.mat-fab,
+.mat-flat-button,
+.mat-icon-button,
+.mat-mini-fab,
+.mat-raised-button,
+.mat-stroked-button {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    line-height: 1 !important;
 
     .mat-button-wrapper {
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
+        height: 100%;
     }
-}
 
-.asm-mat-button-large {
-    height: 48px;
-    min-height: 48px;
-    max-height: 48px;
-    line-height: 1 !important;
+    // Large button
+    &.asm-mat-button-large {
+        height: 48px;
+        min-height: 48px;
+        max-height: 48px;
+    }
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -98,7 +109,6 @@
                 align-items: center;
                 min-height: 48px;
                 margin-top: 0;
-                padding: 0 12px;
 
                 // Prefix & Suffix
                 .mat-form-field-prefix,
@@ -296,35 +306,6 @@
 @include asm-angular-material-theme {
 
     $foreground: map-get($theme, foreground);
-    $is-dark: map-get($theme, is-dark);
-
-    // Do not override the color of the icon in
-    // certain cases if it's used inside a button
-    .mat-button,
-    .mat-fab,
-    .mat-flat-button,
-    .mat-mini-fab,
-    .mat-icon-button,
-    .mat-raised-button,
-    .mat-stroked-button {
-
-        &.mat-primary,
-        &.mat-accent,
-        &.mat-warn {
-
-            .mat-icon {
-                color: currentColor !important;
-            }
-        }
-
-        &.disabled,
-        &[disabled] {
-
-            .mat-icon {
-                color: currentColor !important;
-            }
-        }
-    }
 
     // ----------------------------------------------------
     // Standard
