@@ -238,6 +238,18 @@ export const adminRoutes: Route[] = [
                                             {
                                                 path        : 'basic',
                                                 loadChildren: './ui/content-layouts/left-sidebar/fullheight/basic/basic.module#LeftSidebarFullheightBasicModule'
+                                            },
+
+                                            // Basic inner scroll
+                                            {
+                                                path        : 'basic-inner-scroll',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/basic-inner-scroll/basic-inner-scroll.module#LeftSidebarFullheightBasicInnerScrollModule'
+                                            },
+
+                                            // Standard
+                                            {
+                                                path        : 'standard',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard/standard.module#LeftSidebarFullheightStandardModule'
                                             }
                                         ]
                                     }

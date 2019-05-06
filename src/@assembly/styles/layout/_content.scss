@@ -7,8 +7,12 @@
     display: flex;
     padding: 64px;
 
+    @include asm-media-breakpoint('lt-md') {
+        flex-direction: column;
+    }
+
     @include asm-media-breakpoint('lt-sm') {
-        padding: 64px 32px;
+        padding: 40px 32px;
     }
 
     .breadcrumb {
@@ -22,11 +26,27 @@
 
     .left {
         align-self: center;
+        margin-right: 24px;
+
+        @include asm-media-breakpoint('lt-md') {
+            align-self: flex-start;
+            justify-self: center;
+        }
     }
 
     .right {
+        display: flex;
+        align-items: center;
         align-self: center;
         margin-left: auto;
+        white-space: nowrap;
+
+        @include asm-media-breakpoint('lt-md') {
+            align-self: flex-start;
+            justify-self: center;
+            margin-top: 24px;
+            margin-left: 0;
+        }
     }
 }
 
@@ -141,7 +161,18 @@
 
                 .mat-tab-header {
                     padding: 0 64px;
-                    border-bottom: none;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 0 32px;
+                    }
+
+                    &.mat-tab-header-pagination-controls-enabled {
+                        padding: 0;
+                    }
+
+                    .mat-tab-header-pagination {
+                        box-shadow: none;
+                    }
                 }
 
                 .mat-tab-body-wrapper {
@@ -186,7 +217,18 @@
 
                 .mat-tab-header {
                     padding: 0 64px;
-                    border-bottom: none;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 0 32px;
+                    }
+
+                    &.mat-tab-header-pagination-controls-enabled {
+                        padding: 0;
+                    }
+
+                    .mat-tab-header-pagination {
+                        box-shadow: none;
+                    }
                 }
 
                 .mat-tab-body-wrapper {
@@ -225,8 +267,8 @@
                 margin: 0;
                 padding: 0 64px;
 
-                &.mat-tab-nav-bar {
-                    border-bottom: none;
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 0 32px;
                 }
             }
 
@@ -270,8 +312,8 @@
                 margin: 0;
                 padding: 0 64px;
 
-                &.mat-tab-nav-bar {
-                    border-bottom: none;
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 0 32px;
                 }
             }
 
@@ -412,14 +454,6 @@
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-basic {
 
-            > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
-            }
         }
 
         // -----------------------------------------------------------------------------------------------------
@@ -427,14 +461,6 @@
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-basic-inner-scroll {
 
-            > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
-            }
         }
 
         // -----------------------------------------------------------------------------------------------------
@@ -443,12 +469,8 @@
         &.fullwidth-standard {
 
             > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
             }
         }
 
@@ -458,12 +480,8 @@
         &.fullwidth-standard-inner-scroll {
 
             > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
             }
         }
 
@@ -473,12 +491,7 @@
         &.fullwidth-tabbed {
 
             > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
+                background: map-get($background, card);
             }
 
             > .main {
@@ -486,11 +499,17 @@
                 .mat-tab-group {
 
                     .mat-tab-header {
+                        background: map-get($background, card);
 
-                        @if ($is-dark) {
-                            background: map-get($background, card);
-                        } @else {
-                            background: asm-color($asm-blue-grey, 300);
+                        .mat-tab-header-pagination {
+
+                            &.mat-tab-header-pagination-before {
+                                border-right: 1px solid map-get($foreground, divider);
+                            }
+
+                            &.mat-tab-header-pagination-after {
+                                border-left: 1px solid map-get($foreground, divider);
+                            }
                         }
                     }
                 }
@@ -503,12 +522,7 @@
         &.fullwidth-tabbed-inner-scroll {
 
             > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
+                background: map-get($background, card);
             }
 
             > .main {
@@ -516,11 +530,17 @@
                 .mat-tab-group {
 
                     .mat-tab-header {
+                        background: map-get($background, card);
 
-                        @if ($is-dark) {
-                            background: map-get($background, card);
-                        } @else {
-                            background: asm-color($asm-blue-grey, 300);
+                        .mat-tab-header-pagination {
+
+                            &.mat-tab-header-pagination-before {
+                                border-right: 1px solid map-get($foreground, divider);
+                            }
+
+                            &.mat-tab-header-pagination-after {
+                                border-left: 1px solid map-get($foreground, divider);
+                            }
                         }
                     }
                 }
@@ -533,23 +553,13 @@
         &.fullwidth-tabbed-nav {
 
             > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
+                background: map-get($background, card);
             }
 
             > .main {
 
                 nav {
-
-                    @if ($is-dark) {
-                        background: map-get($background, card);
-                    } @else {
-                        background: asm-color($asm-blue-grey, 300);
-                    }
+                    background: map-get($background, card);
                 }
             }
         }
@@ -560,23 +570,13 @@
         &.fullwidth-tabbed-nav-inner-scroll {
 
             > .header {
-
-                @if ($is-dark) {
-                    background: map-get($background, card);
-                } @else {
-                    background: asm-color($asm-blue-grey, 300);
-                }
+                background: map-get($background, card);
             }
 
             > .main {
 
                 nav {
-
-                    @if ($is-dark) {
-                        background: map-get($background, card);
-                    } @else {
-                        background: asm-color($asm-blue-grey, 300);
-                    }
+                    background: map-get($background, card);
                 }
             }
         }
@@ -586,20 +586,6 @@
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-basic {
 
-            > .mat-drawer-container {
-
-                .mat-drawer-content {
-
-                    > .header {
-
-                        @if ($is-dark) {
-                            background: map-get($background, card);
-                        } @else {
-                            background: asm-color($asm-blue-grey, 300);
-                        }
-                    }
-                }
-            }
         }
 
         // -----------------------------------------------------------------------------------------------------
@@ -607,20 +593,6 @@
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-basic-inner-scroll {
 
-            > .mat-drawer-container {
-
-                .mat-drawer-content {
-
-                    > .header {
-
-                        @if ($is-dark) {
-                            background: map-get($background, card);
-                        } @else {
-                            background: asm-color($asm-blue-grey, 300);
-                        }
-                    }
-                }
-            }
         }
 
         // -----------------------------------------------------------------------------------------------------
@@ -633,12 +605,8 @@
                 .mat-drawer-content {
 
                     > .header {
-
-                        @if ($is-dark) {
-                            background: map-get($background, card);
-                        } @else {
-                            background: asm-color($asm-blue-grey, 300);
-                        }
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
                     }
                 }
             }

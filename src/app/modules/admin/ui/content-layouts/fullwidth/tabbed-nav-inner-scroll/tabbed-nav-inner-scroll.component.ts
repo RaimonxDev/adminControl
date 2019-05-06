@@ -27,18 +27,6 @@ export class FullwidthTabbedNavInnerScrollComponent
             {
                 path : 'tab-3',
                 title: 'Third'
-            },
-            {
-                path : 'tab-4',
-                title: 'Fourth'
-            },
-            {
-                path : 'tab-5',
-                title: 'Fifth'
-            },
-            {
-                path : 'tab-6',
-                title: 'Sixth'
             }
         ];
     }

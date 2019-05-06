@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'left-sidebar-fullheight-basic',
-    templateUrl: './basic.component.html',
-    styleUrls  : ['./basic.component.scss']
+    selector   : 'left-sidebar-fullheight-basic-inner-scroll',
+    templateUrl: './basic-inner-scroll.component.html',
+    styleUrls  : ['./basic-inner-scroll.component.scss']
 })
-export class LeftSidebarFullheightBasicComponent implements OnInit, OnDestroy
+export class LeftSidebarFullheightBasicInnerScrollComponent implements OnInit, OnDestroy
 {
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;

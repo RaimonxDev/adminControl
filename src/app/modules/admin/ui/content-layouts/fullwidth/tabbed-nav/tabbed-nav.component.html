@@ -3,14 +3,89 @@
     <!-- Header -->
     <div class="header">
 
-        <div class="breadcrumb">
-            <span class="path">CONTENT LAYOUTS</span>
-            <span class="separator">/</span>
-            <span class="path">FULLWIDTH</span>
-            <span class="separator">/</span>
-            <span class="path current">TABBED NAV</span>
+        <div class="left">
+
+            <div class="breadcrumb">
+                <span class="path">CONTENT LAYOUTS</span>
+                <span class="separator">/</span>
+                <span class="path">FULLWIDTH</span>
+                <span class="separator">/</span>
+                <span class="path current">TABBED NAV</span>
+            </div>
+            <h1>Fullwidth tabbed nav layout</h1>
+
         </div>
-        <h1>Fullwidth tabbed nav layout</h1>
+
+        <div class="right">
+
+            <!-- Actions menu -->
+            <button class="mr-16"
+                    mat-stroked-button
+                    [matMenuTriggerFor]="actionsMenu">
+                <mat-icon class="icon-size-18">add_circle_outline</mat-icon>
+                <span class="ml-8 md:hidden xs:hidden">Actions</span>
+                <mat-icon class="icon-size-18 ml-12">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #actionsMenu>
+                <button mat-menu-item>
+                    <mat-icon>format_list_bulleted</mat-icon>
+                    <span>Create task</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>people_outline</mat-icon>
+                    <span>Create team</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>work_outline</mat-icon>
+                    <span>Create project</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>person</mat-icon>
+                    <span>Create user</span>
+                </button>
+                <mat-divider class="my-8"></mat-divider>
+                <button mat-menu-item>
+                    <mat-icon>assignment_ind</mat-icon>
+                    <span>Assign user or team</span>
+                </button>
+            </mat-menu>
+
+            <!-- Filters menu -->
+            <button mat-stroked-button
+                    [matMenuTriggerFor]="filtersMenu">
+                <mat-icon class="icon-size-18">filter_list</mat-icon>
+                <span class="ml-8 md:hidden xs:hidden">Filters</span>
+                <mat-icon class="icon-size-18 ml-12">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #filtersMenu>
+                <button mat-menu-item>
+                    <mat-icon>format_list_bulleted</mat-icon>
+                    <span>All tasks</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>play_circle_outline</mat-icon>
+                    <span>Ongoing tasks</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>check_circle</mat-icon>
+                    <span>Completed tasks</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>remove_circle_outline</mat-icon>
+                    <span>Abandoned tasks</span>
+                </button>
+                <mat-divider class="my-8"></mat-divider>
+                <button mat-menu-item>
+                    <mat-icon>person</mat-icon>
+                    <span>Assigned to me</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>people_outline</mat-icon>
+                    <span>Assigned to my team</span>
+                </button>
+            </mat-menu>
+
+        </div>
 
     </div>
 
