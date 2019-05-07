@@ -7,12 +7,26 @@
 <h3 class="mx-32 mt-0 mb-16">Demo Sidebar</h3>
 <asm-vertical-menu [data]="menuData"></asm-vertical-menu>
 
+<!-- Storage -->
 <div class="flex items-center mr-24 ml-32">
     <mat-icon class="icon-size-20 mr-16">storage</mat-icon>
     <h6 class="m-0">Storage</h6>
 </div>
-<div class="flex flex-col flex-auto mt-20 mx-32">
+<div class="flex flex-col flex-auto mt-16 mx-32">
     <span class="text-sm leading-none mb-12">19.9 GB of 100 GB used</span>
-    <mat-progress-bar mode="determinate"
-                      value="19.9"></mat-progress-bar>
+    <mat-progress-bar [mode]="'determinate'"
+                      [color]="'primary'"
+                      [value]="19.9"></mat-progress-bar>
+</div>
+
+<!-- Users -->
+<div class="flex items-center mt-40 mr-24 ml-32">
+    <mat-icon class="icon-size-20 mr-16">people_outline</mat-icon>
+    <h6 class="m-0">Users</h6>
+</div>
+<div class="flex flex-col flex-auto mt-16 mx-32">
+    <span class="text-sm leading-none mb-12">8 of 20 users used</span>
+    <mat-progress-bar [mode]="'determinate'"
+                      [color]="'accent'"
+                      [value]="40"></mat-progress-bar>
 </div>
