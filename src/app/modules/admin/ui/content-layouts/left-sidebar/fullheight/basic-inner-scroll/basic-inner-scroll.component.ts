@@ -65,5 +65,4 @@ export class LeftSidebarFullheightBasicInnerScrollComponent implements OnInit, O
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
-
 }

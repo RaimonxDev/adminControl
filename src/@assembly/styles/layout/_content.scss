@@ -167,11 +167,20 @@
                     }
 
                     &.mat-tab-header-pagination-controls-enabled {
-                        padding: 0;
+                        padding: 0 32px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0;
+                        }
                     }
 
                     .mat-tab-header-pagination {
+                        padding: 0;
                         box-shadow: none;
+                    }
+
+                    .mat-tab-label {
+                        min-width: 128px;
                     }
                 }
 
@@ -223,11 +232,20 @@
                     }
 
                     &.mat-tab-header-pagination-controls-enabled {
-                        padding: 0;
+                        padding: 0 32px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0;
+                        }
                     }
 
                     .mat-tab-header-pagination {
+                        padding: 0;
                         box-shadow: none;
+                    }
+
+                    .mat-tab-label {
+                        min-width: 128px;
                     }
                 }
 
@@ -269,6 +287,10 @@
 
                 @include asm-media-breakpoint('lt-sm') {
                     padding: 0 32px;
+                }
+
+                .mat-tab-link {
+                    min-width: 128px;
                 }
             }
 
@@ -314,6 +336,10 @@
 
                 @include asm-media-breakpoint('lt-sm') {
                     padding: 0 32px;
+                }
+
+                .mat-tab-link {
+                    min-width: 128px;
                 }
             }
 
@@ -435,6 +461,333 @@
             }
         }
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight standard content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight standard inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabbed
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabbed {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabbed content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabbed-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabbed inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabbed-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    .mat-tab-group {
+                        height: 100%;
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+                                    -webkit-overflow-scrolling: touch;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -500,17 +853,6 @@
 
                     .mat-tab-header {
                         background: map-get($background, card);
-
-                        .mat-tab-header-pagination {
-
-                            &.mat-tab-header-pagination-before {
-                                border-right: 1px solid map-get($foreground, divider);
-                            }
-
-                            &.mat-tab-header-pagination-after {
-                                border-left: 1px solid map-get($foreground, divider);
-                            }
-                        }
                     }
                 }
             }
@@ -531,17 +873,6 @@
 
                     .mat-tab-header {
                         background: map-get($background, card);
-
-                        .mat-tab-header-pagination {
-
-                            &.mat-tab-header-pagination-before {
-                                border-right: 1px solid map-get($foreground, divider);
-                            }
-
-                            &.mat-tab-header-pagination-after {
-                                border-left: 1px solid map-get($foreground, divider);
-                            }
-                        }
                     }
                 }
             }
@@ -607,6 +938,118 @@
                     > .header {
                         background: map-get($background, card);
                         border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight standard content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-standard-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight standard inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-standard-inner-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabbed
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabbed {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabbed content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabbed-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabbed inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabbed-inner-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
                     }
                 }
             }

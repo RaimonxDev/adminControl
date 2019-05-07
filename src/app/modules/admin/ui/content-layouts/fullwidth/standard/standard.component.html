@@ -12,7 +12,8 @@
                 <span class="separator">/</span>
                 <span class="path current">STANDARD</span>
             </div>
-            <h1>Fullwidth standard layout</h1>
+
+            <h1>Fullwidth standard</h1>
 
         </div>
 
@@ -21,6 +22,7 @@
             <!-- Actions menu -->
             <button class="mr-16"
                     mat-stroked-button
+                    [color]="'primary'"
                     [matMenuTriggerFor]="actionsMenu">
                 <mat-icon class="icon-size-18">add_circle_outline</mat-icon>
                 <span class="ml-8 md:hidden xs:hidden">Actions</span>
@@ -52,6 +54,7 @@
 
             <!-- Filters menu -->
             <button mat-stroked-button
+                    [color]="'primary'"
                     [matMenuTriggerFor]="filtersMenu">
                 <mat-icon class="icon-size-18">filter_list</mat-icon>
                 <span class="ml-8 md:hidden xs:hidden">Filters</span>

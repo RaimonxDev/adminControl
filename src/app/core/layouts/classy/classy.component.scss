@@ -81,8 +81,6 @@ layout[type="classy"] {
             max-height: 80px;
             min-height: 80px;
             padding: 0 24px;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
-            0 2px 12px 0 rgba(0, 0, 0, 0.05);
             z-index: 49;
         }
 
@@ -110,8 +108,6 @@ layout[type="classy"] {
             max-height: 80px;
             min-height: 80px;
             padding: 0 24px;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
-            0 2px 12px 0 rgba(0, 0, 0, 0.05);
             z-index: 49;
         }
     }
@@ -147,9 +143,11 @@ layout[type="classy"] {
 @include asm-angular-material-theme {
 
     $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
     layout[type='classy'] {
 
+        // Navigation
         > .navigation {
 
             .asm-navigation-wrapper {
@@ -173,6 +171,22 @@ layout[type="classy"] {
                         }
                     }
                 }
+            }
+        }
+
+        // Wrapper
+        > .wrapper {
+
+            // Header
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+
+            // Footer
+            > .footer {
+                background: map-get($background, card);
+                border-top: 1px solid map-get($foreground, divider);
             }
         }
     }

@@ -636,6 +636,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
                                 link : '/ui/content-layouts/left-sidebar/fullheight/standard'
                             },
                             {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard-content-scroll',
+                                title: 'Standard content scroll',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/standard-content-scroll'
+                            },
+                            {
                                 id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard-inner-scroll',
                                 title: 'Standard inner scroll',
                                 type : 'basic',
@@ -646,6 +652,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
                                 title: 'Tabbed',
                                 type : 'basic',
                                 link : '/ui/content-layouts/left-sidebar/fullheight/tabbed'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-content-scroll',
+                                title: 'Tabbed content scroll',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-content-scroll'
                             },
                             {
                                 id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-inner-scroll',

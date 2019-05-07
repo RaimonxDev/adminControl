@@ -12,7 +12,8 @@
                 <span class="separator">/</span>
                 <span class="path current">TABBED INNER SCROLL</span>
             </div>
-            <h1>Fullwidth tabbed inner scroll layout</h1>
+
+            <h1>Fullwidth tabbed inner scroll</h1>
 
         </div>
 
@@ -21,6 +22,7 @@
             <!-- Actions menu -->
             <button class="mr-16"
                     mat-stroked-button
+                    [color]="'primary'"
                     [matMenuTriggerFor]="actionsMenu">
                 <mat-icon class="icon-size-18">add_circle_outline</mat-icon>
                 <span class="ml-8 md:hidden xs:hidden">Actions</span>
@@ -52,6 +54,7 @@
 
             <!-- Filters menu -->
             <button mat-stroked-button
+                    [color]="'primary'"
                     [matMenuTriggerFor]="filtersMenu">
                 <mat-icon class="icon-size-18">filter_list</mat-icon>
                 <span class="ml-8 md:hidden xs:hidden">Filters</span>
@@ -95,42 +98,42 @@
         <!-- Tabs -->
         <mat-tab-group>
 
-            <mat-tab label="First">
+            <mat-tab label="First Tab">
 
                 <!-- Demo content -->
                 <asm-demo-content></asm-demo-content>
 
             </mat-tab>
 
-            <mat-tab label="Second">
+            <mat-tab label="Second Tab">
 
                 <!-- Demo content -->
                 <asm-demo-content></asm-demo-content>
 
             </mat-tab>
 
-            <mat-tab label="Third">
+            <mat-tab label="Third Tab">
 
                 <!-- Demo content -->
                 <asm-demo-content></asm-demo-content>
 
             </mat-tab>
 
-            <mat-tab label="Fourth">
+            <mat-tab label="Fourth Tab">
 
                 <!-- Demo content -->
                 <asm-demo-content></asm-demo-content>
 
             </mat-tab>
 
-            <mat-tab label="Fifth">
+            <mat-tab label="Fifth Tab">
 
                 <!-- Demo content -->
                 <asm-demo-content></asm-demo-content>
 
             </mat-tab>
 
-            <mat-tab label="Sixth">
+            <mat-tab label="Sixth Tab">
 
                 <!-- Demo content -->
                 <asm-demo-content></asm-demo-content>

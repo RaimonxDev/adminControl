@@ -3,6 +3,7 @@ import { AdminResolver } from 'app/modules/admin/admin.resolvers';
 import { LayoutsComponent } from 'app/core/layouts/layouts.component';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 
+/* tslint:disable:max-line-length */
 export const adminRoutes: Route[] = [
     {
         path       : '',
@@ -250,6 +251,36 @@ export const adminRoutes: Route[] = [
                                             {
                                                 path        : 'standard',
                                                 loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard/standard.module#LeftSidebarFullheightStandardModule'
+                                            },
+
+                                            // Standard content scroll
+                                            {
+                                                path        : 'standard-content-scroll',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard-content-scroll/standard-content-scroll.module#LeftSidebarFullheightStandardContentScrollModule'
+                                            },
+
+                                            // Standard inner scroll
+                                            {
+                                                path        : 'standard-inner-scroll',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard-inner-scroll/standard-inner-scroll.module#LeftSidebarFullheightStandardInnerScrollModule'
+                                            },
+
+                                            // Tabbed
+                                            {
+                                                path        : 'tabbed',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabbed/tabbed.module#LeftSidebarFullheightTabbedModule'
+                                            },
+
+                                            // Tabbed content scroll
+                                            {
+                                                path        : 'tabbed-content-scroll',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabbed-content-scroll/tabbed-content-scroll.module#LeftSidebarFullheightTabbedContentScrollModule'
+                                            },
+
+                                            // Tabbed inner scroll
+                                            {
+                                                path        : 'tabbed-inner-scroll',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabbed-inner-scroll/tabbed-inner-scroll.module#LeftSidebarFullheightTabbedInnerScrollModule'
                                             }
                                         ]
                                     }

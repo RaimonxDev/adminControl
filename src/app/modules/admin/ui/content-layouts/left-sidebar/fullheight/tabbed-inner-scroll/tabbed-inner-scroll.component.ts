@@ -4,11 +4,11 @@ import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
 
 @Component({
-    selector   : 'left-sidebar-fullheight-basic',
-    templateUrl: './basic.component.html',
-    styleUrls  : ['./basic.component.scss']
+    selector   : 'left-sidebar-fullheight-tabbed-inner-scroll',
+    templateUrl: './tabbed-inner-scroll.component.html',
+    styleUrls  : ['./tabbed-inner-scroll.component.scss']
 })
-export class LeftSidebarFullheightBasicComponent implements OnInit, OnDestroy
+export class LeftSidebarFullheightTabbedInnerScrollComponent implements OnInit, OnDestroy
 {
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;

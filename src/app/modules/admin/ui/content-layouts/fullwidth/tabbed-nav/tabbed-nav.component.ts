@@ -18,15 +18,15 @@ export class FullwidthTabbedNavComponent
         this.navLinks = [
             {
                 path : 'tab-1',
-                title: 'First'
+                title: 'First Tab'
             },
             {
                 path : 'tab-2',
-                title: 'Second'
+                title: 'Second Tab'
             },
             {
                 path : 'tab-3',
-                title: 'Third'
+                title: 'Third Tab'
             }
         ];
     }
