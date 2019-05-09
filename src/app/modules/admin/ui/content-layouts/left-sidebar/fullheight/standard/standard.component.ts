@@ -12,6 +12,7 @@ export class LeftSidebarFullheightStandardComponent implements OnInit, OnDestroy
 {
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;
+    scrollMode: string;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -26,6 +27,7 @@ export class LeftSidebarFullheightStandardComponent implements OnInit, OnDestroy
         // Set the defaults
         this.drawerMode = 'side';
         this.drawerOpened = true;
+        this.scrollMode = 'normal';
     }
 
     // -----------------------------------------------------------------------------------------------------

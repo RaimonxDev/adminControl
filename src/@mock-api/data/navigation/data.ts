@@ -564,46 +564,22 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         link : '/ui/content-layouts/fullwidth/basic'
                     },
                     {
-                        id   : 'ui-elements.content-layouts.fullwidth.basic-inner-scroll',
-                        title: 'Basic inner scroll',
-                        type : 'basic',
-                        link : '/ui/content-layouts/fullwidth/basic-inner-scroll'
-                    },
-                    {
                         id   : 'ui-elements.content-layouts.fullwidth.standard',
                         title: 'Standard',
                         type : 'basic',
                         link : '/ui/content-layouts/fullwidth/standard'
                     },
                     {
-                        id   : 'ui-elements.content-layouts.fullwidth.standard-inner-scroll',
-                        title: 'Standard inner scroll',
+                        id   : 'ui-elements.content-layouts.fullwidth.tabs',
+                        title: 'Tabs',
                         type : 'basic',
-                        link : '/ui/content-layouts/fullwidth/standard-inner-scroll'
+                        link : '/ui/content-layouts/fullwidth/tabs'
                     },
                     {
-                        id   : 'ui-elements.content-layouts.fullwidth.tabbed',
-                        title: 'Tabbed',
+                        id   : 'ui-elements.content-layouts.fullwidth.tabs-navigation',
+                        title: 'Tabs navigation',
                         type : 'basic',
-                        link : '/ui/content-layouts/fullwidth/tabbed'
-                    },
-                    {
-                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-inner-scroll',
-                        title: 'Tabbed inner scroll',
-                        type : 'basic',
-                        link : '/ui/content-layouts/fullwidth/tabbed-inner-scroll'
-                    },
-                    {
-                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-nav',
-                        title: 'Tabbed nav',
-                        type : 'basic',
-                        link : '/ui/content-layouts/fullwidth/tabbed-nav'
-                    },
-                    {
-                        id   : 'ui-elements.content-layouts.fullwidth.tabbed-nav-inner-scroll',
-                        title: 'Tabbed nav inner scroll',
-                        type : 'basic',
-                        link : '/ui/content-layouts/fullwidth/tabbed-nav-inner-scroll'
+                        link : '/ui/content-layouts/fullwidth/tabs-navigation'
                     }
                 ]
             },
@@ -624,58 +600,22 @@ export const defaultNavigation: AsmNavigationItem[] = [
                                 link : '/ui/content-layouts/left-sidebar/fullheight/basic'
                             },
                             {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.basic-inner-scroll',
-                                title: 'Basic inner scroll',
-                                type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/basic-inner-scroll'
-                            },
-                            {
                                 id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard',
                                 title: 'Standard',
                                 type : 'basic',
                                 link : '/ui/content-layouts/left-sidebar/fullheight/standard'
                             },
                             {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard-content-scroll',
-                                title: 'Standard content scroll',
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabs',
+                                title: 'Tabs',
                                 type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/standard-content-scroll'
+                                link : '/ui/content-layouts/left-sidebar/fullheight/tabs'
                             },
                             {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard-inner-scroll',
-                                title: 'Standard inner scroll',
+                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabs-navigation',
+                                title: 'Tabs navigation',
                                 type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/standard-inner-scroll'
-                            },
-                            {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed',
-                                title: 'Tabbed',
-                                type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed'
-                            },
-                            {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-content-scroll',
-                                title: 'Tabbed content scroll',
-                                type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-content-scroll'
-                            },
-                            {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-inner-scroll',
-                                title: 'Tabbed inner scroll',
-                                type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-inner-scroll'
-                            },
-                            {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-nav',
-                                title: 'Tabbed nav',
-                                type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-nav'
-                            },
-                            {
-                                id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabbed-nav-inner-scroll',
-                                title: 'Tabbed nav inner scroll',
-                                type : 'basic',
-                                link : '/ui/content-layouts/left-sidebar/fullheight/tabbed-nav-inner-scroll'
+                                link : '/ui/content-layouts/left-sidebar/fullheight/tabs-navigation'
                             }
                         ]
                     },

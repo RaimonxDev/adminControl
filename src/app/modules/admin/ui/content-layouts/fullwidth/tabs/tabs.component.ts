@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fullwidth-basic',
-    templateUrl: './basic.component.html',
-    styleUrls  : ['./basic.component.scss']
+    selector   : 'fullwidth-tabs',
+    templateUrl: './tabs.component.html',
+    styleUrls  : ['./tabs.component.scss']
 })
-export class FullwidthBasicComponent
+export class FullwidthTabsComponent
 {
     scrollMode: string;
 

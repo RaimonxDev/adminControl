@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class FullwidthStandardComponent
 {
+    scrollMode: string;
 
     constructor()
     {
+        // Set the defaults
+        this.scrollMode = 'normal';
     }
-
 }

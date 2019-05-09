@@ -181,46 +181,22 @@ export const adminRoutes: Route[] = [
                                         loadChildren: './ui/content-layouts/fullwidth/basic/basic.module#FullwidthBasicModule'
                                     },
 
-                                    // Basic inner scroll
-                                    {
-                                        path        : 'basic-inner-scroll',
-                                        loadChildren: './ui/content-layouts/fullwidth/basic-inner-scroll/basic-inner-scroll.module#FullwidthBasicInnerScrollModule'
-                                    },
-
                                     // Standard
                                     {
                                         path        : 'standard',
                                         loadChildren: './ui/content-layouts/fullwidth/standard/standard.module#FullwidthStandardModule'
                                     },
 
-                                    // Standard inner scroll
+                                    // Tabs
                                     {
-                                        path        : 'standard-inner-scroll',
-                                        loadChildren: './ui/content-layouts/fullwidth/standard-inner-scroll/standard-inner-scroll.module#FullwidthStandardInnerScrollModule'
+                                        path        : 'tabs',
+                                        loadChildren: './ui/content-layouts/fullwidth/tabs/tabs.module#FullwidthTabsModule'
                                     },
 
-                                    // Tabbed
+                                    // Tabs navigation
                                     {
-                                        path        : 'tabbed',
-                                        loadChildren: './ui/content-layouts/fullwidth/tabbed/tabbed.module#FullwidthTabbedModule'
-                                    },
-
-                                    // Tabbed inner scroll
-                                    {
-                                        path        : 'tabbed-inner-scroll',
-                                        loadChildren: './ui/content-layouts/fullwidth/tabbed-inner-scroll/tabbed-inner-scroll.module#FullwidthTabbedInnerScrollModule'
-                                    },
-
-                                    // Tabbed nav
-                                    {
-                                        path        : 'tabbed-nav',
-                                        loadChildren: './ui/content-layouts/fullwidth/tabbed-nav/tabbed-nav.module#FullwidthTabbedNavModule'
-                                    },
-
-                                    // Tabbed nav inner scroll
-                                    {
-                                        path        : 'tabbed-nav-inner-scroll',
-                                        loadChildren: './ui/content-layouts/fullwidth/tabbed-nav-inner-scroll/tabbed-nav-inner-scroll.module#FullwidthTabbedNavInnerScrollModule'
+                                        path        : 'tabs-navigation',
+                                        loadChildren: './ui/content-layouts/fullwidth/tabs-navigation/tabs-navigation.module#FullwidthTabsNavigationModule'
                                     }
                                 ]
                             },
@@ -241,47 +217,23 @@ export const adminRoutes: Route[] = [
                                                 loadChildren: './ui/content-layouts/left-sidebar/fullheight/basic/basic.module#LeftSidebarFullheightBasicModule'
                                             },
 
-                                            // Basic inner scroll
-                                            {
-                                                path        : 'basic-inner-scroll',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/basic-inner-scroll/basic-inner-scroll.module#LeftSidebarFullheightBasicInnerScrollModule'
-                                            },
-
                                             // Standard
                                             {
                                                 path        : 'standard',
                                                 loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard/standard.module#LeftSidebarFullheightStandardModule'
                                             },
 
-                                            // Standard content scroll
+                                            // Tabs
                                             {
-                                                path        : 'standard-content-scroll',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard-content-scroll/standard-content-scroll.module#LeftSidebarFullheightStandardContentScrollModule'
+                                                path        : 'tabs',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabs/tabs.module#LeftSidebarFullheightTabsModule'
                                             },
 
-                                            // Standard inner scroll
-                                            {
-                                                path        : 'standard-inner-scroll',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard-inner-scroll/standard-inner-scroll.module#LeftSidebarFullheightStandardInnerScrollModule'
-                                            },
-
-                                            // Tabbed
-                                            {
-                                                path        : 'tabbed',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabbed/tabbed.module#LeftSidebarFullheightTabbedModule'
-                                            },
-
-                                            // Tabbed content scroll
-                                            {
-                                                path        : 'tabbed-content-scroll',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabbed-content-scroll/tabbed-content-scroll.module#LeftSidebarFullheightTabbedContentScrollModule'
-                                            },
-
-                                            // Tabbed inner scroll
-                                            {
-                                                path        : 'tabbed-inner-scroll',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabbed-inner-scroll/tabbed-inner-scroll.module#LeftSidebarFullheightTabbedInnerScrollModule'
-                                            }
+                                            // Tabs navigation
+                                            // {
+                                                // path        : 'tabs-navigation',
+                                                // loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabs-navigation/tabs-navigation.module#LeftSidebarFullheightTabsNavigationModule'
+                                            // }
                                         ]
                                     }
                                 ]

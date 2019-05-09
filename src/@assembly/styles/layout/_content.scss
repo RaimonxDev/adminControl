@@ -63,9 +63,9 @@
     min-width: 0;
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth basic
+    // @ Fullwidth basic - Normal scroll
     // -----------------------------------------------------------------------------------------------------
-    &.fullwidth-basic {
+    &.fullwidth-basic-normal-scroll {
 
         > .main {
             flex: 1 1 auto;
@@ -78,20 +78,20 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth basic inner scroll
+    // @ Fullwidth basic - Content scroll
     // -----------------------------------------------------------------------------------------------------
-    &.fullwidth-basic-inner-scroll {
+    &.fullwidth-basic-content-scroll {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        overflow: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
 
         > .main {
             flex: 1 1 auto;
             padding: 64px;
-            overflow-x: auto;
 
             @include asm-media-breakpoint('lt-sm') {
                 padding: 32px;
@@ -100,9 +100,9 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth standard
+    // @ Fullwidth standard - Normal scroll
     // -----------------------------------------------------------------------------------------------------
-    &.fullwidth-standard {
+    &.fullwidth-standard-normal-scroll {
 
         > .header {
             @extend %content-layout-header;
@@ -119,7 +119,33 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth standard inner scroll
+    // @ Fullwidth standard - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.fullwidth-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .main {
+            flex: 1 1 auto;
+            padding: 64px;
+
+            @include asm-media-breakpoint('lt-sm') {
+                padding: 32px;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Fullwidth standard - Inner scroll
     // -----------------------------------------------------------------------------------------------------
     &.fullwidth-standard-inner-scroll {
         position: absolute;
@@ -136,7 +162,8 @@
         > .main {
             flex: 1 1 auto;
             padding: 64px;
-            overflow-x: auto;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
 
             @include asm-media-breakpoint('lt-sm') {
                 padding: 32px;
@@ -145,9 +172,9 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth tabbed
+    // @ Fullwidth tabs - Normal scroll
     // -----------------------------------------------------------------------------------------------------
-    &.fullwidth-tabbed {
+    &.fullwidth-tabs-normal-scroll {
 
         > .header {
             @extend %content-layout-header;
@@ -202,15 +229,16 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth tabbed inner scroll
+    // @ Fullwidth tabs - Content scroll
     // -----------------------------------------------------------------------------------------------------
-    &.fullwidth-tabbed-inner-scroll {
+    &.fullwidth-tabs-content-scroll {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        overflow: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
 
         > .header {
             @extend %content-layout-header;
@@ -267,52 +295,9 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth tabbed nav
+    // @ Fullwidth tabs - Inner scroll
     // -----------------------------------------------------------------------------------------------------
-    &.fullwidth-tabbed-nav {
-
-        > .header {
-            @extend %content-layout-header;
-            padding-bottom: 40px;
-        }
-
-        > .main {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 auto;
-
-            nav {
-                margin: 0;
-                padding: 0 64px;
-
-                @include asm-media-breakpoint('lt-sm') {
-                    padding: 0 32px;
-                }
-
-                .mat-tab-link {
-                    min-width: 128px;
-                }
-            }
-
-            .main-inner {
-                flex: 1 1 auto;
-                padding: 64px;
-
-                @include asm-media-breakpoint('lt-sm') {
-                    padding: 32px;
-                }
-
-                > *:not(router-outlet) {
-                    display: block;
-                }
-            }
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Fullwidth tabbed nav inner scroll
-    // -----------------------------------------------------------------------------------------------------
-    &.fullwidth-tabbed-nav-inner-scroll {
+    &.fullwidth-tabs-inner-scroll {
         position: absolute;
         top: 0;
         right: 0;
@@ -329,6 +314,68 @@
             display: flex;
             flex-direction: column;
             flex: 1 1 auto;
+            overflow: hidden;
+
+            .mat-tab-group {
+                overflow: hidden;
+
+                .mat-tab-header {
+                    padding: 0 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 0 32px;
+                    }
+
+                    &.mat-tab-header-pagination-controls-enabled {
+                        padding: 0 32px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0;
+                        }
+                    }
+
+                    .mat-tab-header-pagination {
+                        padding: 0;
+                        box-shadow: none;
+                    }
+
+                    .mat-tab-label {
+                        min-width: 128px;
+                    }
+                }
+
+                .mat-tab-body-wrapper {
+
+                    .mat-tab-body {
+
+                        .mat-tab-body-content {
+                            padding: 64px;
+                            -webkit-overflow-scrolling: touch;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 32px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Fullwidth tabs navigation - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.fullwidth-tabs-navigation-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 40px;
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
 
             nav {
                 margin: 0;
@@ -346,7 +393,6 @@
             .main-inner {
                 flex: 1 1 auto;
                 padding: 64px;
-                overflow-x: auto;
 
                 @include asm-media-breakpoint('lt-sm') {
                     padding: 32px;
@@ -360,9 +406,111 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight basic
+    // @ Fullwidth tabs navigation - Content scroll
     // -----------------------------------------------------------------------------------------------------
-    &.left-sidebar-fullheight-basic {
+    &.fullwidth-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 40px;
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+
+            nav {
+                margin: 0;
+                padding: 0 64px;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 0 32px;
+                }
+
+                .mat-tab-link {
+                    min-width: 128px;
+                }
+            }
+
+            .main-inner {
+                flex: 1 1 auto;
+                padding: 64px;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 32px;
+                }
+
+                > *:not(router-outlet) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Fullwidth tabs navigation - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.fullwidth-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 40px;
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            nav {
+                margin: 0;
+                padding: 0 64px;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 0 32px;
+                }
+
+                .mat-tab-link {
+                    min-width: 128px;
+                }
+            }
+
+            .main-inner {
+                flex: 1 1 auto;
+                padding: 64px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 32px;
+                }
+
+                > *:not(router-outlet) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight basic - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-basic-normal-scroll {
 
         > .mat-drawer-container {
             flex: 1 1 auto;
@@ -391,7 +539,7 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight basic inner scroll
+    // @ Left sidebar fullheight basic - Inner scroll
     // -----------------------------------------------------------------------------------------------------
     &.left-sidebar-fullheight-basic-inner-scroll {
         position: absolute;
@@ -428,9 +576,9 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight standard
+    // @ Left sidebar fullheight standard - Normal scroll
     // -----------------------------------------------------------------------------------------------------
-    &.left-sidebar-fullheight-standard {
+    &.left-sidebar-fullheight-standard-normal-scroll {
 
         > .mat-drawer-container {
             flex: 1 1 auto;
@@ -463,7 +611,7 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight standard content scroll
+    // @ Left sidebar fullheight standard - Content scroll
     // -----------------------------------------------------------------------------------------------------
     &.left-sidebar-fullheight-standard-content-scroll {
         position: absolute;
@@ -504,7 +652,7 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight standard inner scroll
+    // @ Left sidebar fullheight standard - Inner scroll
     // -----------------------------------------------------------------------------------------------------
     &.left-sidebar-fullheight-standard-inner-scroll {
         position: absolute;
@@ -550,9 +698,9 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight tabbed
+    // @ Left sidebar fullheight tabs - Normal scroll
     // -----------------------------------------------------------------------------------------------------
-    &.left-sidebar-fullheight-tabbed {
+    &.left-sidebar-fullheight-tabs-normal-scroll {
 
         > .mat-drawer-container {
             flex: 1 1 auto;
@@ -624,9 +772,9 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight tabbed content scroll
+    // @ Left sidebar fullheight tabs - Content scroll
     // -----------------------------------------------------------------------------------------------------
-    &.left-sidebar-fullheight-tabbed-content-scroll {
+    &.left-sidebar-fullheight-tabs-content-scroll {
         position: absolute;
         top: 0;
         right: 0;
@@ -704,9 +852,9 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Left sidebar fullheight tabbed inner scroll
+    // @ Left sidebar fullheight tabs - Inner scroll
     // -----------------------------------------------------------------------------------------------------
-    &.left-sidebar-fullheight-tabbed-inner-scroll {
+    &.left-sidebar-fullheight-tabs-inner-scroll {
         position: absolute;
         top: 0;
         right: 0;
@@ -803,23 +951,23 @@
     .content-layout {
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth basic
+        // @ Fullwidth basic - Normal scroll
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-basic {
+        &.fullwidth-basic-normal-scroll {
 
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth basic inner scroll
+        // @ Fullwidth basic - Content scroll
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-basic-inner-scroll {
 
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth standard
+        // @ Fullwidth standard - Normal scroll
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-standard {
+        &.fullwidth-standard-normal-scroll {
 
             > .header {
                 background: map-get($background, card);
@@ -828,7 +976,18 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth standard inner scroll
+        // @ Fullwidth standard - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.fullwidth-standard-content-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Fullwidth standard - Inner scroll
         // -----------------------------------------------------------------------------------------------------
         &.fullwidth-standard-inner-scroll {
 
@@ -839,9 +998,9 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth tabbed
+        // @ Fullwidth tabs - Normal scroll
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-tabbed {
+        &.fullwidth-tabs-normal-scroll {
 
             > .header {
                 background: map-get($background, card);
@@ -859,9 +1018,9 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth tabbed inner scroll
+        // @ Fullwidth tabs - Content scroll
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-tabbed-inner-scroll {
+        &.fullwidth-tabs-content-scroll {
 
             > .header {
                 background: map-get($background, card);
@@ -879,9 +1038,29 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth tabbed nav
+        // @ Fullwidth tabs - Inner scroll
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-tabbed-nav {
+        &.fullwidth-tabs-inner-scroll {
+
+            > .header {
+                background: map-get($background, card);
+            }
+
+            > .main {
+
+                .mat-tab-group {
+
+                    .mat-tab-header {
+                        background: map-get($background, card);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Fullwidth tabs navigation - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.fullwidth-tabs-navigation-normal-scroll {
 
             > .header {
                 background: map-get($background, card);
@@ -896,9 +1075,9 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Fullwidth tabbed nav inner scroll
+        // @ Fullwidth tabs navigation - Content scroll
         // -----------------------------------------------------------------------------------------------------
-        &.fullwidth-tabbed-nav-inner-scroll {
+        &.fullwidth-tabs-navigation-content-scroll {
 
             > .header {
                 background: map-get($background, card);
@@ -913,23 +1092,40 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight basic
+        // @ Fullwidth tabs navigation - Inner scroll
         // -----------------------------------------------------------------------------------------------------
-        &.left-sidebar-fullheight-basic {
+        &.fullwidth-tabs-navigation-inner-scroll {
+
+            > .header {
+                background: map-get($background, card);
+            }
+
+            > .main {
+
+                nav {
+                    background: map-get($background, card);
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight basic - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-basic-normal-scroll {
 
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight basic inner scroll
+        // @ Left sidebar fullheight basic - Inner scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-basic-inner-scroll {
 
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight standard
+        // @ Left sidebar fullheight standard - Normal scroll
         // -----------------------------------------------------------------------------------------------------
-        &.left-sidebar-fullheight-standard {
+        &.left-sidebar-fullheight-standard-normal-scroll {
 
             > .mat-drawer-container {
 
@@ -944,7 +1140,7 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight standard content scroll
+        // @ Left sidebar fullheight standard - Content scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-standard-content-scroll {
 
@@ -961,7 +1157,7 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight standard inner scroll
+        // @ Left sidebar fullheight standard - Inner scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-standard-inner-scroll {
 
@@ -978,9 +1174,9 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight tabbed
+        // @ Left sidebar fullheight tabs - Normal scroll
         // -----------------------------------------------------------------------------------------------------
-        &.left-sidebar-fullheight-tabbed {
+        &.left-sidebar-fullheight-tabs-normal-scroll {
 
             > .mat-drawer-container {
 
@@ -1004,9 +1200,9 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight tabbed content scroll
+        // @ Left sidebar fullheight tabs - Content scroll
         // -----------------------------------------------------------------------------------------------------
-        &.left-sidebar-fullheight-tabbed-content-scroll {
+        &.left-sidebar-fullheight-tabs-content-scroll {
 
             > .mat-drawer-container {
 
@@ -1030,9 +1226,9 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Left sidebar fullheight tabbed inner scroll
+        // @ Left sidebar fullheight tabs - Inner scroll
         // -----------------------------------------------------------------------------------------------------
-        &.left-sidebar-fullheight-tabbed-inner-scroll {
+        &.left-sidebar-fullheight-tabs-inner-scroll {
 
             > .mat-drawer-container {
 

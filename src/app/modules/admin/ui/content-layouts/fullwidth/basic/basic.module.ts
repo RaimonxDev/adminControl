@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { AsmDemoContentModule } from '@assembly';
+import { SharedModule } from 'app/shared/shared.module';
 import { FullwidthBasicComponent } from 'app/modules/admin/ui/content-layouts/fullwidth/basic/basic.component';
 import { fullwidthBasicRoutes } from 'app/modules/admin/ui/content-layouts/fullwidth/basic/basic.routing';
 
@@ -10,7 +14,11 @@ import { fullwidthBasicRoutes } from 'app/modules/admin/ui/content-layouts/fullw
     ],
     imports     : [
         RouterModule.forChild(fullwidthBasicRoutes),
-        AsmDemoContentModule
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        AsmDemoContentModule,
+        SharedModule
     ]
 })
 export class FullwidthBasicModule

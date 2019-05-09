@@ -1,5 +1,5 @@
 <div class="content-layout"
-     [ngClass]="'fullwidth-standard-' + scrollMode + '-scroll'">
+     [ngClass]="'fullwidth-tabs-navigation-' + scrollMode + '-scroll'">
 
     <!-- Header -->
     <div class="header">
@@ -11,10 +11,10 @@
                 <span class="separator">/</span>
                 <span class="path">FULLWIDTH</span>
                 <span class="separator">/</span>
-                <span class="path current">STANDARD</span>
+                <span class="path current">TABS NAVIGATION</span>
             </div>
 
-            <h1>Fullwidth standard</h1>
+            <h1>Fullwidth tabs navigation</h1>
 
         </div>
 
@@ -62,8 +62,26 @@
     <!-- Main -->
     <div class="main">
 
-        <!-- Demo content -->
-        <asm-demo-content></asm-demo-content>
+        <!-- Navbar -->
+        <nav mat-tab-nav-bar>
+
+            <a mat-tab-link
+               *ngFor="let link of navLinks"
+               [routerLink]="link.path"
+               routerLinkActive
+               [active]="rla.isActive"
+               #rla="routerLinkActive">
+                {{link.title}}
+            </a>
+
+        </nav>
+
+        <!-- Main inner -->
+        <div class="main-inner">
+
+            <router-outlet></router-outlet>
+
+        </div>
 
     </div>
 

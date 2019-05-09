@@ -1,5 +1,5 @@
 <div class="content-layout"
-     [ngClass]="'left-sidebar-fullheight-standard-' + scrollMode + '-scroll'">
+     [ngClass]="'left-sidebar-fullheight-tabs-' + scrollMode + '-scroll'">
 
     <mat-drawer-container>
 
@@ -28,10 +28,10 @@
                         <span class="separator">/</span>
                         <span class="path">FULLHEIGHT</span>
                         <span class="separator">/</span>
-                        <span class="path current">STANDARD</span>
+                        <span class="path current">TABBED</span>
                     </div>
 
-                    <h1>Left sidebar fullheight standard</h1>
+                    <h1>Left sidebar fullheight tabbed</h1>
 
                 </div>
 
@@ -87,8 +87,52 @@
             <!-- Main -->
             <div class="main">
 
-                <!-- Demo content -->
-                <asm-demo-content></asm-demo-content>
+                <!-- Tabs -->
+                <mat-tab-group>
+
+                    <mat-tab label="First Tab">
+
+                        <!-- Demo content -->
+                        <asm-demo-content></asm-demo-content>
+
+                    </mat-tab>
+
+                    <mat-tab label="Second Tab">
+
+                        <!-- Demo content -->
+                        <asm-demo-content></asm-demo-content>
+
+                    </mat-tab>
+
+                    <mat-tab label="Third Tab">
+
+                        <!-- Demo content -->
+                        <asm-demo-content></asm-demo-content>
+
+                    </mat-tab>
+
+                    <mat-tab label="Fourth Tab">
+
+                        <!-- Demo content -->
+                        <asm-demo-content></asm-demo-content>
+
+                    </mat-tab>
+
+                    <mat-tab label="Fifth Tab">
+
+                        <!-- Demo content -->
+                        <asm-demo-content></asm-demo-content>
+
+                    </mat-tab>
+
+                    <mat-tab label="Sixth Tab">
+
+                        <!-- Demo content -->
+                        <asm-demo-content></asm-demo-content>
+
+                    </mat-tab>
+
+                </mat-tab-group>
 
             </div>
 
@@ -96,6 +140,5 @@
 
     </mat-drawer-container>
 
+
 </div>
-
-
