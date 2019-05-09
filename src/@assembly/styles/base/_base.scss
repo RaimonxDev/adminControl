@@ -47,80 +47,82 @@ img {
 // @ Table
 // -----------------------------------------------------------------------------------------------------
 table {
-    width: 100%;
-    border-spacing: 0;
-    @include asm-shadow(2);
 
-    thead {
+    &.asm-table {
+        width: 100%;
+        border-spacing: 0;
+        @include asm-shadow(2);
 
-        tr {
+        thead {
 
-            th {
-                padding: 16px;
-                border-bottom: 2px solid;
-                text-align: left;
-                font-weight: 500;
+            tr {
 
-                &:first-child {
-                    padding-left: 24px;
-                }
+                th {
+                    padding: 16px;
+                    border-bottom: 2px solid;
+                    text-align: left;
+                    font-weight: 500;
 
-                &:last-child {
-                    padding-right: 24px;
+                    &:first-child {
+                        padding-left: 24px;
+                    }
+
+                    &:last-child {
+                        padding-right: 24px;
+                    }
                 }
             }
         }
-    }
 
-    tbody {
+        tbody {
 
-        tr {
-
-            td {
-                padding: 16px;
-                border-bottom: 1px solid;
-                text-align: left;
-
-                &:first-child {
-                    padding-left: 24px;
-                }
-
-                &:last-child {
-                    padding-right: 24px;
-                }
-            }
-
-            &:last-child {
+            tr {
 
                 td {
-                    border-bottom: none;
-                }
-            }
-        }
-    }
+                    padding: 16px;
+                    border-bottom: 1px solid;
+                    text-align: left;
 
-    tfoot {
+                    &:first-child {
+                        padding-left: 24px;
+                    }
 
-        tr {
-
-            th {
-                padding: 16px;
-                border-top: 2px solid;
-                text-align: left;
-                font-weight: 500;
-
-                &:first-child {
-                    padding-left: 24px;
+                    &:last-child {
+                        padding-right: 24px;
+                    }
                 }
 
                 &:last-child {
-                    padding-right: 24px;
+
+                    td {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+
+        tfoot {
+
+            tr {
+
+                th {
+                    padding: 16px;
+                    border-top: 2px solid;
+                    text-align: left;
+                    font-weight: 500;
+
+                    &:first-child {
+                        padding-left: 24px;
+                    }
+
+                    &:last-child {
+                        padding-right: 24px;
+                    }
                 }
             }
         }
     }
 }
-
 
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
@@ -131,34 +133,37 @@ table {
     $foreground: map-get($theme, foreground);
 
     table {
-        background: map-get($background, card);
 
-        thead {
+        &.asm-table {
+            background: map-get($background, card);
 
-            tr {
+            thead {
 
-                th {
-                    border-bottom-color: map-get($foreground, divider);
+                tr {
+
+                    th {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
                 }
             }
-        }
 
-        tbody {
+            tbody {
 
-            tr {
+                tr {
 
-                td {
-                    border-bottom-color: map-get($foreground, divider);
+                    td {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
                 }
             }
-        }
 
-        tfoot {
+            tfoot {
 
-            tr {
+                tr {
 
-                th {
-                    border-top-color: map-get($foreground, divider);
+                    th {
+                        border-top-color: map-get($foreground, divider);
+                    }
                 }
             }
         }

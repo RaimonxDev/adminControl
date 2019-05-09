@@ -50,6 +50,19 @@
 // -----------------------------------------------------------------------------------------------------
 
 // ----------------------------------------------------
+// Global
+// ----------------------------------------------------
+
+// Add min-height and min-width to non-legacy form
+// fields prefix and suffix icon buttons for better
+// scaling on non-default font sizes
+.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,
+.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+    min-height: 2.5em;
+    min-width: 2.5em;
+}
+
+// ----------------------------------------------------
 // Standard
 // ----------------------------------------------------
 .mat-form-field.mat-form-field-appearance-standard {
