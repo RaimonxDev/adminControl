@@ -230,10 +230,10 @@ export const adminRoutes: Route[] = [
                                             },
 
                                             // Tabs navigation
-                                            // {
-                                                // path        : 'tabs-navigation',
-                                                // loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabs-navigation/tabs-navigation.module#LeftSidebarFullheightTabsNavigationModule'
-                                            // }
+                                            {
+                                                path        : 'tabs-navigation',
+                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabs-navigation/tabs-navigation.module#LeftSidebarFullheightTabsNavigationModule'
+                                            }
                                         ]
                                     }
                                 ]

@@ -17,6 +17,11 @@ export class LeftSidebarFullheightTabsComponent implements OnInit, OnDestroy
     // Private
     private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     */
     constructor(
         private _asmMediaWatcherService: AsmMediaWatcherService
     )

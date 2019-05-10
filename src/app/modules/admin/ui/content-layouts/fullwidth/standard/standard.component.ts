@@ -9,6 +9,9 @@ export class FullwidthStandardComponent
 {
     scrollMode: string;
 
+    /**
+     * Constructor
+     */
     constructor()
     {
         // Set the defaults

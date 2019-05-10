@@ -936,6 +936,205 @@
             }
         }
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabs navigation - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabs-navigation-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabs navigation - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabs navigation - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -1251,5 +1450,73 @@
             }
         }
 
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabs navigation - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabs-navigation-normal-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabs navigation - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabs-navigation-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabs navigation - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabs-navigation-inner-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

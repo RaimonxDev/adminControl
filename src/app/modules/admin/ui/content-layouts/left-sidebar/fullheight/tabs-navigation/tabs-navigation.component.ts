@@ -4,14 +4,15 @@ import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
 
 @Component({
-    selector   : 'left-sidebar-fullheight-standard',
-    templateUrl: './standard.component.html',
-    styleUrls  : ['./standard.component.scss']
+    selector   : 'left-sidebar-fullheight-tabs-navigation',
+    templateUrl: './tabs-navigation.component.html',
+    styleUrls  : ['./tabs-navigation.component.scss']
 })
-export class LeftSidebarFullheightStandardComponent implements OnInit, OnDestroy
+export class LeftSidebarFullheightTabsNavigationComponent implements OnInit, OnDestroy
 {
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;
+    navLinks: any[];
     scrollMode: string;
 
     // Private
@@ -32,6 +33,20 @@ export class LeftSidebarFullheightStandardComponent implements OnInit, OnDestroy
         // Set the defaults
         this.drawerMode = 'side';
         this.drawerOpened = true;
+        this.navLinks = [
+            {
+                path : 'tab-1',
+                title: 'First Tab'
+            },
+            {
+                path : 'tab-2',
+                title: 'Second Tab'
+            },
+            {
+                path : 'tab-3',
+                title: 'Third Tab'
+            }
+        ];
         this.scrollMode = 'normal';
     }
 

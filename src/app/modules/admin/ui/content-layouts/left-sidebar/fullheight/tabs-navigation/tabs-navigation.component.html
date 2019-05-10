@@ -1,5 +1,5 @@
 <div class="content-layout"
-     [ngClass]="'left-sidebar-fullheight-standard-' + scrollMode + '-scroll'">
+     [ngClass]="'left-sidebar-fullheight-tabs-navigation-' + scrollMode + '-scroll'">
 
     <mat-drawer-container>
 
@@ -26,24 +26,14 @@
                         <span class="separator">/</span>
                         <span class="path">LEFT SIDEBAR</span>
                         <span class="separator">/</span>
-                        <span class="path">FULLHEIGHT</span>
-                        <span class="separator">/</span>
-                        <span class="path current">STANDARD</span>
+                        <span class="path current">TABS NAVIGATION</span>
                     </div>
 
-                    <h1>Fullheight left sidebar standard</h1>
+                    <h1>Fullheight left sidebar tabs navigation</h1>
 
                 </div>
 
                 <div class="right">
-
-                    <!-- Drawer toggle -->
-                    <button class="mr-16"
-                            mat-stroked-button
-                            (click)="matDrawer.toggle()">
-                        <mat-icon class="icon-size-18">menu</mat-icon>
-                        <span class="ml-8 md:hidden xs:hidden">Menu</span>
-                    </button>
 
                     <!-- Scroll mode menu -->
                     <button mat-flat-button
@@ -87,8 +77,26 @@
             <!-- Main -->
             <div class="main">
 
-                <!-- Demo content -->
-                <asm-demo-content></asm-demo-content>
+                <!-- Navbar -->
+                <nav mat-tab-nav-bar>
+
+                    <a mat-tab-link
+                       *ngFor="let link of navLinks"
+                       [routerLink]="link.path"
+                       routerLinkActive
+                       [active]="rla.isActive"
+                       #rla="routerLinkActive">
+                        {{link.title}}
+                    </a>
+
+                </nav>
+
+                <!-- Main inner -->
+                <div class="main-inner">
+
+                    <router-outlet></router-outlet>
+
+                </div>
 
             </div>
 
@@ -97,5 +105,3 @@
     </mat-drawer-container>
 
 </div>
-
-

@@ -9,6 +9,9 @@ export class FullwidthTabsComponent
 {
     scrollMode: string;
 
+    /**
+     * Constructor
+     */
     constructor()
     {
         // Set the defaults
