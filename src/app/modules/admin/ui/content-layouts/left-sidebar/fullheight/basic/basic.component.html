@@ -48,6 +48,14 @@
                             </mat-icon>
                         </button>
                         <button mat-menu-item
+                                (click)="scrollMode = 'content'">
+                            <span>Content scroll</span>
+                            <mat-icon class="ml-24 mr-0 icon-size-18"
+                                      *ngIf="scrollMode === 'content'">
+                                check
+                            </mat-icon>
+                        </button>
+                        <button mat-menu-item
                                 (click)="scrollMode = 'inner'">
                             <span>Inner scroll</span>
                             <mat-icon class="ml-24 mr-0 icon-size-18"

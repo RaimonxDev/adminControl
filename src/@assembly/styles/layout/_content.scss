@@ -539,6 +539,45 @@
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight basic - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-basic-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Left sidebar fullheight basic - Inner scroll
     // -----------------------------------------------------------------------------------------------------
     &.left-sidebar-fullheight-basic-inner-scroll {
@@ -614,6 +653,49 @@
     // @ Left sidebar fullheight standard - Content scroll
     // -----------------------------------------------------------------------------------------------------
     &.left-sidebar-fullheight-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight standard - Drawer content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-standard-drawer-content-scroll {
         position: absolute;
         top: 0;
         right: 0;
@@ -775,6 +857,88 @@
     // @ Left sidebar fullheight tabs - Content scroll
     // -----------------------------------------------------------------------------------------------------
     &.left-sidebar-fullheight-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabs - Drawer content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabs-drawer-content-scroll {
         position: absolute;
         top: 0;
         right: 0;
@@ -1001,6 +1165,74 @@
     // @ Left sidebar fullheight tabs navigation - Content scroll
     // -----------------------------------------------------------------------------------------------------
     &.left-sidebar-fullheight-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Left sidebar fullheight tabs navigation - Drawer content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.left-sidebar-fullheight-tabs-navigation-drawer-content-scroll {
         position: absolute;
         top: 0;
         right: 0;
@@ -1315,6 +1547,13 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight basic - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-basic-content-scroll {
+
+        }
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Left sidebar fullheight basic - Inner scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-basic-inner-scroll {
@@ -1342,6 +1581,23 @@
         // @ Left sidebar fullheight standard - Content scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-standard-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight standard - Drawer content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-standard-drawer-content-scroll {
 
             > .mat-drawer-container {
 
@@ -1425,6 +1681,32 @@
         }
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabs - Drawer content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabs-drawer-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Left sidebar fullheight tabs - Inner scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-tabs-inner-scroll {
@@ -1477,6 +1759,29 @@
         // @ Left sidebar fullheight tabs navigation - Content scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-fullheight-tabs-navigation-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Left sidebar fullheight tabs navigation - Drawer content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.left-sidebar-fullheight-tabs-navigation-drawer-content-scroll {
 
             > .mat-drawer-container {
 

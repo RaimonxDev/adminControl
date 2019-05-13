@@ -26,6 +26,8 @@
                         <span class="separator">/</span>
                         <span class="path">LEFT SIDEBAR</span>
                         <span class="separator">/</span>
+                        <span class="path">FULLHEIGHT</span>
+                        <span class="separator">/</span>
                         <span class="path current">TABS NAVIGATION</span>
                     </div>
 
@@ -57,6 +59,14 @@
                             <span>Content scroll</span>
                             <mat-icon class="ml-24 mr-0 icon-size-18"
                                       *ngIf="scrollMode === 'content'">
+                                check
+                            </mat-icon>
+                        </button>
+                        <button mat-menu-item
+                                (click)="scrollMode = 'drawer-content'">
+                            <span>Drawer content scroll</span>
+                            <mat-icon class="ml-24 mr-0 icon-size-18"
+                                      *ngIf="scrollMode === 'drawer-content'">
                                 check
                             </mat-icon>
                         </button>
