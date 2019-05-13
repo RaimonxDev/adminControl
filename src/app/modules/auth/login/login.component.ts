@@ -74,7 +74,7 @@ export class AuthLoginComponent implements OnInit
             .subscribe(() => {
 
                 // Set the redirect url
-                const redirectURL = this._activatedRoute.snapshot.queryParams['redirectURL'] || '/';
+                const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/';
 
                 // Navigate to the redirect url
                 this._router.navigateByUrl(redirectURL);

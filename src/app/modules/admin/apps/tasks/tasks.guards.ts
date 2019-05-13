@@ -33,7 +33,7 @@ export class CanDeactivateTasksDetails implements CanDeactivate<TasksDetailsComp
         }
 
         // If we are navigating to another task...
-        if ( nextRoute.params.id )
+        if ( nextRoute.paramMap.get('id') )
         {
             // Just navigate
             return true;

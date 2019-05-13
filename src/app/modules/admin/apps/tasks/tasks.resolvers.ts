@@ -162,7 +162,7 @@ export class TasksTaskResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        return this._tasksService.getTaskById(route.params.id)
+        return this._tasksService.getTaskById(route.paramMap.get('id'))
                    .pipe(
                        // Error here means the requested task is not available
                        catchError((error) => {

@@ -77,13 +77,24 @@ export const mailboxRunGuardsAndResolvers = (from: ActivatedRouteSnapshot, to: A
     }
 
     // Trigger the resolver if the condition met
-    if ( fromCurrentRoute.params.id && !toCurrentRoute.params.id )
+    if ( fromCurrentRoute.paramMap.get('id') && !toCurrentRoute.paramMap.get('id') )
     {
         return true;
     }
 
     // If the from and to params are equal, don't trigger the resolver
-    if ( _.isEqual(from.params, to.params) )
+    const fromParams = {};
+    const toParams = {};
+
+    from.paramMap.keys.forEach((key) => {
+        fromParams[key] = from.paramMap.get(key);
+    });
+
+    to.paramMap.keys.forEach((key) => {
+        toParams[key] = to.paramMap.get(key);
+    });
+
+    if ( _.isEqual(fromParams, toParams) )
     {
         return false;
     }

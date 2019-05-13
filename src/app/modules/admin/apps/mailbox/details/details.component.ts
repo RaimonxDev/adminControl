@@ -86,14 +86,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      */
     getCurrentFolder(): any
     {
-        const folder = this._activatedRoute.snapshot.params.folder;
-
-        if ( folder )
-        {
-            return folder;
-        }
-
-        return null;
+        return this._activatedRoute.snapshot.paramMap.get('folder');
     }
 
     /**
@@ -156,7 +149,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         if ( removed )
         {
             // If the current activated route has a label parameter and it equals to the one we are removing...
-            if ( this._activatedRoute.snapshot.params.label && this._activatedRoute.snapshot.params.label === label.slug )
+            if ( this._activatedRoute.snapshot.paramMap.get('label') && this._activatedRoute.snapshot.paramMap.get('label') === label.slug )
             {
                 // Navigate to the parent
                 this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});
@@ -179,7 +172,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         if ( !this.mail.important )
         {
             // If the current activated route has a filter parameter and it equals to the 'important'...
-            if ( this._activatedRoute.snapshot.params.filter && this._activatedRoute.snapshot.params.filter === 'important' )
+            if ( this._activatedRoute.snapshot.paramMap.get('filter') && this._activatedRoute.snapshot.paramMap.get('filter') === 'important' )
             {
                 // Navigate to the parent
                 this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});
@@ -202,7 +195,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         if ( !this.mail.starred )
         {
             // If the current activated route has a filter parameter and it equals to the 'starred'...
-            if ( this._activatedRoute.snapshot.params.filter && this._activatedRoute.snapshot.params.filter === 'starred' )
+            if ( this._activatedRoute.snapshot.paramMap.get('filter') && this._activatedRoute.snapshot.paramMap.get('filter') === 'starred' )
             {
                 // Navigate to the parent
                 this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});

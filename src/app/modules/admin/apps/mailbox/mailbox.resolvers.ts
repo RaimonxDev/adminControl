@@ -131,7 +131,7 @@ export class MailboxMailsResolver implements Resolve<any>
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
         // Don't allow page param to go below 1
-        if ( route.params.page <= 0 )
+        if ( route.paramMap.get('page') && parseInt(route.paramMap.get('page'), 10) <= 0 )
         {
             // Get the parent url
             const url = state.url.split('/').slice(0, -1).join('/') + '/1';
@@ -147,21 +147,21 @@ export class MailboxMailsResolver implements Resolve<any>
         const sources = [];
 
         // If folder is set on the parameters...
-        if ( route.params.folder )
+        if ( route.paramMap.get('folder') )
         {
-            sources.push(this._mailboxService.getMailsByFolder(route.params.folder, route.params.page));
+            sources.push(this._mailboxService.getMailsByFolder(route.paramMap.get('folder'), route.paramMap.get('page')));
         }
 
         // If filter is set on the parameters...
-        if ( route.params.filter )
+        if ( route.paramMap.get('filter') )
         {
-            sources.push(this._mailboxService.getMailsByFilter(route.params.filter, route.params.page));
+            sources.push(this._mailboxService.getMailsByFilter(route.paramMap.get('filter'), route.paramMap.get('page')));
         }
 
         // If label is set on the parameters...
-        if ( route.params.label )
+        if ( route.paramMap.get('label') )
         {
-            sources.push(this._mailboxService.getMailsByLabel(route.params.label, route.params.page));
+            sources.push(this._mailboxService.getMailsByLabel(route.paramMap.get('label'), route.paramMap.get('page')));
         }
 
         // Reset the mail every time mails list updated
@@ -219,7 +219,7 @@ export class MailboxMailResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        return this._mailboxService.getMailById(route.params.id)
+        return this._mailboxService.getMailById(route.paramMap.get('id'))
                    .pipe(
                        // Error here means the requested mail is either
                        // not available on the requested page or not
