@@ -11,7 +11,8 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './confirmation-required/confirmation-required.module#AuthConfirmationRequiredModule'
+                loadChildren: () => import('./confirmation-required/confirmation-required.module')
+                    .then(m => m.AuthConfirmationRequiredModule)
             }
         ]
     },
@@ -22,7 +23,8 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './forgot-password/forgot-password.module#AuthForgotPasswordModule'
+                loadChildren: () => import('./forgot-password/forgot-password.module')
+                    .then(m => m.AuthForgotPasswordModule)
             }
         ]
     },
@@ -33,7 +35,8 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './login/login.module#AuthLoginModule'
+                loadChildren: () => import('./login/login.module')
+                    .then(m => m.AuthLoginModule)
             }
         ]
     },
@@ -44,7 +47,8 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './logout/logout.module#AuthLogoutModule'
+                loadChildren: () => import('./logout/logout.module')
+                    .then(m => m.AuthLogoutModule)
             }
         ]
     },
@@ -55,7 +59,8 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './reset-password/reset-password.module#AuthResetPasswordModule'
+                loadChildren: () => import('./reset-password/reset-password.module')
+                    .then(m => m.AuthResetPasswordModule)
             }
         ]
     },
@@ -66,7 +71,8 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './signup/signup.module#AuthSignupModule'
+                loadChildren: () => import('./signup/signup.module')
+                    .then(m => m.AuthSignupModule)
             }
         ]
     },
@@ -77,7 +83,8 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: './unlock-session/unlock-session.module#AuthUnlockSessionModule'
+                loadChildren: () => import('./unlock-session/unlock-session.module')
+                    .then(m => m.AuthUnlockSessionModule)
             }
         ]
     }

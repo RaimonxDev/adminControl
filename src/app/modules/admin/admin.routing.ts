@@ -3,7 +3,6 @@ import { AdminResolver } from 'app/modules/admin/admin.resolvers';
 import { LayoutsComponent } from 'app/core/layouts/layouts.component';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 
-/* tslint:disable:max-line-length */
 export const adminRoutes: Route[] = [
     {
         path       : '',
@@ -29,19 +28,22 @@ export const adminRoutes: Route[] = [
                     // Dashboard
                     {
                         path        : 'dashboard',
-                        loadChildren: './apps/dashboard/dashboard.module#DashboardModule'
+                        loadChildren: () => import('./apps/dashboard/dashboard.module')
+                            .then(m => m.DashboardModule)
                     },
 
                     // Mailbox
                     {
                         path        : 'mailbox',
-                        loadChildren: './apps/mailbox/mailbox.module#MailboxModule'
+                        loadChildren: () => import('./apps/mailbox/mailbox.module')
+                            .then(m => m.MailboxModule)
                     },
 
                     // Tasks
                     {
                         path        : 'tasks',
-                        loadChildren: './apps/tasks/tasks.module#TasksModule'
+                        loadChildren: () => import('./apps/tasks/tasks.module')
+                            .then(m => m.TasksModule)
                     }
                 ]
             },
@@ -59,43 +61,50 @@ export const adminRoutes: Route[] = [
                             // Confirmation required
                             {
                                 path        : 'confirmation-required',
-                                loadChildren: './pages/authentication/confirmation-required/confirmation-required.module#ConfirmationRequiredModule'
+                                loadChildren: () => import('./pages/authentication/confirmation-required/confirmation-required.module')
+                                    .then(m => m.ConfirmationRequiredModule)
                             },
 
                             // Forgot password
                             {
                                 path        : 'forgot-password',
-                                loadChildren: './pages/authentication/forgot-password/forgot-password.module#ForgotPasswordModule'
+                                loadChildren: () => import('./pages/authentication/forgot-password/forgot-password.module')
+                                    .then(m => m.ForgotPasswordModule)
                             },
 
                             // Login
                             {
                                 path        : 'login',
-                                loadChildren: './pages/authentication/login/login.module#LoginModule'
+                                loadChildren: () => import('./pages/authentication/login/login.module')
+                                    .then(m => m.LoginModule)
                             },
 
                             // Logout
                             {
                                 path        : 'logout',
-                                loadChildren: './pages/authentication/logout/logout.module#LogoutModule'
+                                loadChildren: () => import('./pages/authentication/logout/logout.module')
+                                    .then(m => m.LogoutModule)
                             },
 
                             // Reset password
                             {
                                 path        : 'reset-password',
-                                loadChildren: './pages/authentication/reset-password/reset-password.module#ResetPasswordModule'
+                                loadChildren: () => import('./pages/authentication/reset-password/reset-password.module')
+                                    .then(m => m.ResetPasswordModule)
                             },
 
                             // Signup
                             {
                                 path        : 'signup',
-                                loadChildren: './pages/authentication/signup/signup.module#SignupModule'
+                                loadChildren: () => import('./pages/authentication/signup/signup.module')
+                                    .then(m => m.SignupModule)
                             },
 
                             // Unlock session
                             {
                                 path        : 'unlock-session',
-                                loadChildren: './pages/authentication/unlock-session/unlock-session.module#UnlockSessionModule'
+                                loadChildren: () => import('./pages/authentication/unlock-session/unlock-session.module')
+                                    .then(m => m.UnlockSessionModule)
                             }
                         ]
                     },
@@ -103,7 +112,8 @@ export const adminRoutes: Route[] = [
                     // Coming soon
                     {
                         path        : 'coming-soon',
-                        loadChildren: './pages/coming-soon/coming-soon.module#ComingSoonModule'
+                        loadChildren: () => import('./pages/coming-soon/coming-soon.module')
+                            .then(m => m.ComingSoonModule)
                     },
 
                     // Errors
@@ -114,13 +124,15 @@ export const adminRoutes: Route[] = [
                             // 404
                             {
                                 path        : '404',
-                                loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
+                                loadChildren: () => import('./pages/errors/error-404/error-404.module')
+                                    .then(m => m.Error404Module)
                             },
 
                             // 500
                             {
                                 path        : '500',
-                                loadChildren: './pages/errors/error-500/error-500.module#Error500Module'
+                                loadChildren: () => import('./pages/errors/error-500/error-500.module')
+                                    .then(m => m.Error500Module)
                             }
                         ]
                     },
@@ -128,7 +140,8 @@ export const adminRoutes: Route[] = [
                     // Maintenance
                     {
                         path        : 'maintenance',
-                        loadChildren: './pages/maintenance/maintenance.module#MaintenanceModule'
+                        loadChildren: () => import('./pages/maintenance/maintenance.module')
+                            .then(m => m.MaintenanceModule)
                     },
 
                     // Pricing
@@ -137,11 +150,13 @@ export const adminRoutes: Route[] = [
                         children: [
                             {
                                 path        : 'modern',
-                                loadChildren: './pages/pricing/modern/modern.module#PricingModernModule'
+                                loadChildren: () => import('./pages/pricing/modern/modern.module')
+                                    .then(m => m.PricingModernModule)
                             },
                             {
                                 path        : 'simple',
-                                loadChildren: './pages/pricing/simple/simple.module#PricingSimpleModule'
+                                loadChildren: () => import('./pages/pricing/simple/simple.module')
+                                    .then(m => m.PricingSimpleModule)
                             }
                         ]
                     }
@@ -156,13 +171,15 @@ export const adminRoutes: Route[] = [
                     // Angular Material
                     {
                         path        : 'angular-material',
-                        loadChildren: './ui/angular-material/angular-material.module#AngularMaterialModule'
+                        loadChildren: () => import('./ui/angular-material/angular-material.module')
+                            .then(m => m.AngularMaterialModule)
                     },
 
                     // Colors
                     {
                         path        : 'colors',
-                        loadChildren: './ui/colors/colors.module#ColorsModule'
+                        loadChildren: () => import('./ui/colors/colors.module')
+                            .then(m => m.ColorsModule)
                     },
 
                     // Content layouts
@@ -178,25 +195,29 @@ export const adminRoutes: Route[] = [
                                     // Basic
                                     {
                                         path        : 'basic',
-                                        loadChildren: './ui/content-layouts/fullwidth/basic/basic.module#FullwidthBasicModule'
+                                        loadChildren: () => import('./ui/content-layouts/fullwidth/basic/basic.module')
+                                            .then(m => m.FullwidthBasicModule)
                                     },
 
                                     // Standard
                                     {
                                         path        : 'standard',
-                                        loadChildren: './ui/content-layouts/fullwidth/standard/standard.module#FullwidthStandardModule'
+                                        loadChildren: () => import('./ui/content-layouts/fullwidth/standard/standard.module')
+                                            .then(m => m.FullwidthStandardModule)
                                     },
 
                                     // Tabs
                                     {
                                         path        : 'tabs',
-                                        loadChildren: './ui/content-layouts/fullwidth/tabs/tabs.module#FullwidthTabsModule'
+                                        loadChildren: () => import('./ui/content-layouts/fullwidth/tabs/tabs.module')
+                                            .then(m => m.FullwidthTabsModule)
                                     },
 
                                     // Tabs navigation
                                     {
                                         path        : 'tabs-navigation',
-                                        loadChildren: './ui/content-layouts/fullwidth/tabs-navigation/tabs-navigation.module#FullwidthTabsNavigationModule'
+                                        loadChildren: () => import('./ui/content-layouts/fullwidth/tabs-navigation/tabs-navigation.module')
+                                            .then(m => m.FullwidthTabsNavigationModule)
                                     }
                                 ]
                             },
@@ -214,25 +235,29 @@ export const adminRoutes: Route[] = [
                                             // Basic
                                             {
                                                 path        : 'basic',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/basic/basic.module#LeftSidebarFullheightBasicModule'
+                                                loadChildren: () => import('./ui/content-layouts/left-sidebar/fullheight/basic/basic.module')
+                                                    .then(m => m.LeftSidebarFullheightBasicModule)
                                             },
 
                                             // Standard
                                             {
                                                 path        : 'standard',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/standard/standard.module#LeftSidebarFullheightStandardModule'
+                                                loadChildren: () => import('./ui/content-layouts/left-sidebar/fullheight/standard/standard.module')
+                                                    .then(m => m.LeftSidebarFullheightStandardModule)
                                             },
 
                                             // Tabs
                                             {
                                                 path        : 'tabs',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabs/tabs.module#LeftSidebarFullheightTabsModule'
+                                                loadChildren: () => import('./ui/content-layouts/left-sidebar/fullheight/tabs/tabs.module')
+                                                    .then(m => m.LeftSidebarFullheightTabsModule)
                                             },
 
                                             // Tabs navigation
                                             {
                                                 path        : 'tabs-navigation',
-                                                loadChildren: './ui/content-layouts/left-sidebar/fullheight/tabs-navigation/tabs-navigation.module#LeftSidebarFullheightTabsNavigationModule'
+                                                loadChildren: () => import('./ui/content-layouts/left-sidebar/fullheight/tabs-navigation/tabs-navigation.module')
+                                                    .then(m => m.LeftSidebarFullheightTabsNavigationModule)
                                             }
                                         ]
                                     }
@@ -244,7 +269,8 @@ export const adminRoutes: Route[] = [
                     // Icons
                     {
                         path        : 'icons',
-                        loadChildren: './ui/icons/icons.module#IconsModule'
+                        loadChildren: () => import('./ui/icons/icons.module')
+                            .then(m => m.IconsModule)
                     }
                 ]
             },
@@ -262,7 +288,8 @@ export const adminRoutes: Route[] = [
                             // Animations
                             {
                                 path        : 'animations',
-                                loadChildren: './assembly/components/animations/animations.module#AnimationsModule'
+                                loadChildren: () => import('./assembly/components/animations/animations.module')
+                                    .then(m => m.AnimationsModule)
                             },
 
                             // Cards
@@ -271,7 +298,8 @@ export const adminRoutes: Route[] = [
                                 children: [
                                     {
                                         path        : 'content',
-                                        loadChildren: './assembly/components/cards/content/content.module#CardsContentModule'
+                                        loadChildren: () => import('./assembly/components/cards/content/content.module')
+                                            .then(m => m.CardsContentModule)
                                     }
                                 ]
                             },
@@ -279,13 +307,15 @@ export const adminRoutes: Route[] = [
                             // Messages
                             {
                                 path        : 'messages',
-                                loadChildren: './assembly/components/messages/messages.module#MessagesModule'
+                                loadChildren: () => import('./assembly/components/messages/messages.module')
+                                    .then(m => m.MessagesModule)
                             },
 
                             // Navigation
                             {
                                 path        : 'navigation',
-                                loadChildren: './assembly/components/navigation/navigation.module#NavigationModule'
+                                loadChildren: () => import('./assembly/components/navigation/navigation.module')
+                                    .then(m => m.NavigationModule)
                             }
                         ]
                     }
@@ -295,14 +325,16 @@ export const adminRoutes: Route[] = [
             // Documentation
             {
                 path        : 'docs',
-                loadChildren: './docs/docs.module#DocsModule'
+                loadChildren: () => import('./docs/docs.module')
+                    .then(m => m.DocsModule)
             },
 
             // 404
             {
                 path        : '404-not-found',
                 pathMatch   : 'full',
-                loadChildren: './pages/errors/error-404/error-404.module#Error404Module'
+                loadChildren: () => import('./pages/errors/error-404/error-404.module')
+                    .then(m => m.Error404Module)
             },
 
             // Catch all
