@@ -260,6 +260,34 @@ export const adminRoutes: Route[] = [
                                                     .then(m => m.LeftSidebarFullheightTabsNavigationModule)
                                             }
                                         ]
+                                    },
+
+                                    // Content
+                                    {
+                                        path    : 'content',
+                                        children: [
+
+                                            // Standard
+                                            {
+                                                path        : 'standard',
+                                                loadChildren: () => import('./ui/content-layouts/left-sidebar/content/standard/standard.module')
+                                                    .then(m => m.LeftSidebarContentStandardModule)
+                                            },
+
+                                            // Tabs
+                                            {
+                                                path        : 'tabs',
+                                                loadChildren: () => import('./ui/content-layouts/left-sidebar/content/tabs/tabs.module')
+                                                    .then(m => m.LeftSidebarContentTabsModule)
+                                            },
+
+                                            // Tabs navigation
+                                            {
+                                                path        : 'tabs-navigation',
+                                                loadChildren: () => import('./ui/content-layouts/left-sidebar/content/tabs-navigation/tabs-navigation.module')
+                                                    .then(m => m.LeftSidebarContentTabsNavigationModule)
+                                            }
+                                        ]
                                     }
                                 ]
                             }

@@ -623,7 +623,26 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         id      : 'ui-elements.content-layouts.left-sidebar.content',
                         title   : 'Content',
                         type    : 'collapsable',
-                        children: []
+                        children: [
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.content.standard',
+                                title: 'Standard',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/content/standard'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.content.tabs',
+                                title: 'Tabs',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/content/tabs'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.left-sidebar.content.tabs-navigation',
+                                title: 'Tabs navigation',
+                                type : 'basic',
+                                link : '/ui/content-layouts/left-sidebar/content/tabs-navigation'
+                            }
+                        ]
                     }
                 ]
             },

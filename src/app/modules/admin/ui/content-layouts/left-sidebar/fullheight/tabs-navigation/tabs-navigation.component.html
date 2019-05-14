@@ -37,6 +37,14 @@
 
                 <div class="right">
 
+                    <!-- Drawer toggle -->
+                    <button class="mr-16"
+                            mat-stroked-button
+                            (click)="matDrawer.toggle()">
+                        <mat-icon class="icon-size-18">menu</mat-icon>
+                        <span class="ml-8 md:hidden xs:hidden">Menu</span>
+                    </button>
+
                     <!-- Scroll mode menu -->
                     <button mat-flat-button
                             [color]="'primary'"
