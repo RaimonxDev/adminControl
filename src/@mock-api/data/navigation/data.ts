@@ -542,7 +542,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'ui-elements.content-layouts',
         title   : 'Content layouts',
-        subtitle: '44 unique layout styles',
+        subtitle: '18 unique layout styles',
         type    : 'collapsable',
         icon    : 'view_quilt',
         children: [
@@ -649,12 +649,65 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'content-layouts.right-sidebar',
                 title: 'Right Sidebar',
-                type : 'collapsable'
-            },
-            {
-                id   : 'content-layouts.dual-sidebars',
-                title: 'Dual Sidebars',
-                type : 'collapsable'
+                type : 'collapsable',
+                children: [
+                    {
+                        id      : 'ui-elements.content-layouts.right-sidebar.fullheight',
+                        title   : 'Fullheight',
+                        type    : 'collapsable',
+                        children: [
+                            {
+                                id   : 'ui-elements.content-layouts.right-sidebar.fullheight.basic',
+                                title: 'Basic',
+                                type : 'basic',
+                                link : '/ui/content-layouts/right-sidebar/fullheight/basic'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.right-sidebar.fullheight.standard',
+                                title: 'Standard',
+                                type : 'basic',
+                                link : '/ui/content-layouts/right-sidebar/fullheight/standard'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.right-sidebar.fullheight.tabs',
+                                title: 'Tabs',
+                                type : 'basic',
+                                link : '/ui/content-layouts/right-sidebar/fullheight/tabs'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.right-sidebar.fullheight.tabs-navigation',
+                                title: 'Tabs navigation',
+                                type : 'basic',
+                                link : '/ui/content-layouts/right-sidebar/fullheight/tabs-navigation'
+                            }
+                        ]
+                    },
+                    {
+                        id      : 'ui-elements.content-layouts.right-sidebar.content',
+                        title   : 'Content',
+                        type    : 'collapsable',
+                        children: [
+                            {
+                                id   : 'ui-elements.content-layouts.right-sidebar.content.standard',
+                                title: 'Standard',
+                                type : 'basic',
+                                link : '/ui/content-layouts/right-sidebar/content/standard'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.right-sidebar.content.tabs',
+                                title: 'Tabs',
+                                type : 'basic',
+                                link : '/ui/content-layouts/right-sidebar/content/tabs'
+                            },
+                            {
+                                id   : 'ui-elements.content-layouts.right-sidebar.content.tabs-navigation',
+                                title: 'Tabs navigation',
+                                type : 'basic',
+                                link : '/ui/content-layouts/right-sidebar/content/tabs-navigation'
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     },

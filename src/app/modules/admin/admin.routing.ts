@@ -290,6 +290,76 @@ export const adminRoutes: Route[] = [
                                         ]
                                     }
                                 ]
+                            },
+
+                            // Right sidebar
+                            {
+                                path    : 'right-sidebar',
+                                children: [
+
+                                    // Fullheight
+                                    {
+                                        path    : 'fullheight',
+                                        children: [
+
+                                            // Basic
+                                            {
+                                                path        : 'basic',
+                                                loadChildren: () => import('./ui/content-layouts/right-sidebar/fullheight/basic/basic.module')
+                                                    .then(m => m.RightSidebarFullheightBasicModule)
+                                            },
+
+                                            // Standard
+                                            {
+                                                path        : 'standard',
+                                                loadChildren: () => import('./ui/content-layouts/right-sidebar/fullheight/standard/standard.module')
+                                                    .then(m => m.RightSidebarFullheightStandardModule)
+                                            },
+
+                                            // Tabs
+                                            {
+                                                path        : 'tabs',
+                                                loadChildren: () => import('./ui/content-layouts/right-sidebar/fullheight/tabs/tabs.module')
+                                                    .then(m => m.RightSidebarFullheightTabsModule)
+                                            },
+
+                                            // Tabs navigation
+                                            {
+                                                path        : 'tabs-navigation',
+                                                loadChildren: () => import('./ui/content-layouts/right-sidebar/fullheight/tabs-navigation/tabs-navigation.module')
+                                                    .then(m => m.RightSidebarFullheightTabsNavigationModule)
+                                            }
+                                        ]
+                                    },
+
+                                    // Content
+                                    {
+                                        path    : 'content',
+                                        children: [
+
+                                            // Standard
+                                            {
+                                                path        : 'standard',
+                                                loadChildren: () => import('./ui/content-layouts/right-sidebar/content/standard/standard.module')
+                                                    .then(m => m.RightSidebarContentStandardModule)
+                                            },
+
+                                            // Tabs
+                                            {
+                                                path        : 'tabs',
+                                                loadChildren: () => import('./ui/content-layouts/right-sidebar/content/tabs/tabs.module')
+                                                    .then(m => m.RightSidebarContentTabsModule)
+                                            },
+
+                                            // Tabs navigation
+                                            {
+                                                path        : 'tabs-navigation',
+                                                loadChildren: () => import('./ui/content-layouts/right-sidebar/content/tabs-navigation/tabs-navigation.module')
+                                                    .then(m => m.RightSidebarContentTabsNavigationModule)
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },

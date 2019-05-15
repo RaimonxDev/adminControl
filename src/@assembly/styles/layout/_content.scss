@@ -1932,6 +1932,1432 @@
             }
         }
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Basic - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-basic-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Basic - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-basic-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Basic - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-basic-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Standard - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-standard-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Standard - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Standard - Drawer content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-standard-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Standard - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                }
+
+                > .main {
+                    padding: 64px;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs - Drawer content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    .mat-tab-group {
+                        height: 100%;
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+                                    -webkit-overflow-scrolling: touch;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs navigation - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-navigation-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs navigation - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs navigation - Drawer content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-navigation-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar fullheight - Tabs navigation - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-fullheight-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 40px;
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Standard - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-standard-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Standard - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 64px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Standard - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    padding: 64px;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        padding: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Tabs - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-tabs-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 64px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Tabs - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 64px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Tabs - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-tabs-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    .mat-tab-group {
+                        height: 100%;
+
+                        .mat-tab-header {
+                            padding: 0 64px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 32px;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0 32px;
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    padding: 0;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 64px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 64px;
+                                    -webkit-overflow-scrolling: touch;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        padding: 32px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Tabs navigation - Normal scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-tabs-navigation-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 64px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Tabs navigation - Content scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 64px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Right sidebar content - Tabs navigation - Inner scroll
+    // -----------------------------------------------------------------------------------------------------
+    &.right-sidebar-content-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+
+                .mat-drawer-inner-container {
+                    padding: 64px 0;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 64px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 0 32px;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 64px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 64px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -2481,6 +3907,390 @@
         // @ Left sidebar content - Tabs navigation - Inner scroll
         // -----------------------------------------------------------------------------------------------------
         &.left-sidebar-content-tabs-navigation-inner-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Basic - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-basic-normal-scroll {
+
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Basic - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-basic-content-scroll {
+
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Basic - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-basic-inner-scroll {
+
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Standard - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-standard-normal-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Standard - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-standard-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Standard - Drawer content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-standard-drawer-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Standard - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-standard-inner-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                        border-bottom: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-normal-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs - Drawer content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-drawer-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-inner-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs navigation - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-navigation-normal-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs navigation - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-navigation-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs navigation - Drawer content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-navigation-drawer-content-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar fullheight - Tabs navigation - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-fullheight-tabs-navigation-inner-scroll {
+
+            > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .header {
+                        background: map-get($background, card);
+                    }
+
+                    > .main {
+
+                        nav {
+                            background: map-get($background, card);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Standard - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-standard-normal-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Standard - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-standard-content-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Standard - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-standard-inner-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Tabs - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-tabs-normal-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Tabs - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-tabs-content-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Tabs - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-tabs-inner-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Tabs navigation - Normal scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-tabs-navigation-normal-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Tabs navigation - Content scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-tabs-navigation-content-scroll {
+
+            > .header {
+                background: map-get($background, card);
+                border-bottom: 1px solid map-get($foreground, divider);
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Right sidebar content - Tabs navigation - Inner scroll
+        // -----------------------------------------------------------------------------------------------------
+        &.right-sidebar-content-tabs-navigation-inner-scroll {
 
             > .header {
                 background: map-get($background, card);
