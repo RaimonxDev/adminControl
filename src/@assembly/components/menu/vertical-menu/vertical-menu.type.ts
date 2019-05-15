@@ -12,6 +12,7 @@ export interface AsmVerticalMenuItem
     classes?: string;
     icon?: string;
     iconFontSet?: string;
+    iconClassNames?: string;
     badge?: {
         title?: string;
         style?: 'rectangle' | 'rounded' | 'simple',
