@@ -13,35 +13,46 @@ html, body {
 }
 
 // Headings
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6 {
     margin: 1.25em 0 0.5em 0;
 }
 
-h1, .h1 {
-    @extend %title-xl;
+h1,
+.h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.25;
 }
 
-h2, .h2 {
-    @extend %title-lg;
+h2,
+.h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.25;
 }
 
-h3, .h3 {
-    @extend %title-base;
+h3,
+.h3 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
 }
 
-h4, .h4 {
-    @extend %title-md;
+h4,
+.h4 {
+    font-size: 20px;
     font-weight: 500;
 }
 
-h5, .h5 {
-    @extend %title-sm;
+h5,
+.h5 {
+    font-size: 18px;
     font-weight: 500;
 }
 
-h6, .h6 {
-    @extend %title-xs;
+h6,
+.h6 {
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -212,7 +223,6 @@ pre {
     abbr {
         border-bottom-color: map-get($foreground, secondary-text);
     }
-
 
     // Blockquote
     blockquote {

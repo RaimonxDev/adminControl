@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Base colors
+// @ Colors
 // -----------------------------------------------------------------------------------------------------
 @include asm-angular-material-theme {
 
@@ -17,6 +17,13 @@
         } @else {
             background: $asm-light-background;
         }
+    }
+
+    // Base border color for all elements
+    *,
+    *::before,
+    *::after {
+        border-color: map-get($foreground, divider);
     }
 
     // Force the disabled colors on disabled elements
@@ -51,6 +58,20 @@
 
     .divider {
         color: map-get($foreground, divider);
+    }
+
+    // Background colors
+    .bg-base {
+        background: map-get($background, background);
+    }
+
+    .bg-dialog,
+    .bg-card {
+        background: map-get($background, card);
+    }
+
+    .bg-hover {
+        background: map-get($background, hover);
     }
 
     // Apply palette's contrasting color rather than
