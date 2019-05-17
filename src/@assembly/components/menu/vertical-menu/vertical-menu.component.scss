@@ -269,7 +269,12 @@ asm-vertical-menu {
 
             &.asm-vertical-menu-item-active {
                 box-shadow: inset 3px 0 0 0 map-get($primary, default);
-                background: rgba(0, 0, 0, 0.06);
+
+                @if ($is-dark) {
+                    background: rgba(0, 0, 0, 0.12);
+                } @else {
+                    background: rgba(map-get($primary, 50), 0.7);
+                }
             }
         }
 
@@ -282,7 +287,12 @@ asm-vertical-menu {
                 .asm-vertical-menu-item {
 
                     &:hover:not(.asm-vertical-menu-item-active) {
-                        background: rgba(0, 0, 0, 0.06);
+
+                        @if ($is-dark) {
+                            background: rgba(0, 0, 0, 0.12);
+                        } @else {
+                            background: rgba(map-get($primary, 50), 0.7);
+                        }
                     }
                 }
             }
@@ -292,7 +302,12 @@ asm-vertical-menu {
         asm-vertical-menu-collapsable-item {
 
             &.asm-vertical-menu-item-expanded {
-                background: rgba(0, 0, 0, 0.03);
+
+                @if ($is-dark) {
+                    background: rgba(0, 0, 0, 0.12);
+                } @else {
+                    background: rgba(map-get($primary, 50), 0.3);
+                }
 
                 asm-vertical-menu-collapsable-item {
                     background: transparent;
