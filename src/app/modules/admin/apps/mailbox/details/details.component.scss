@@ -91,6 +91,7 @@ mailbox-details {
                     .from {
                         display: flex;
                         flex-direction: column;
+                        font-weight: 500;
                     }
 
                     .to {
@@ -163,7 +164,12 @@ mailbox-details {
 
                 .mat-icon {
                     margin-right: 8px;
-                    @include asm-icon-size(16);
+                    @include asm-icon-size(20);
+                }
+
+                div {
+                    font-size: 15px;
+                    font-weight: 500;
                 }
             }
 
@@ -206,10 +212,11 @@ mailbox-details {
 
                     .file-name {
                         margin-top: 8px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
                         font-size: 13px;
+                        font-weight: 500;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
                     }
                 }
             }
@@ -334,7 +341,10 @@ mailbox-details {
             .attachments {
 
                 .title {
-                    color: map-get($foreground, secondary-text);
+
+                    .mat-icon {
+                        color: map-get($foreground, secondary-text);
+                    }
                 }
 
                 .file {

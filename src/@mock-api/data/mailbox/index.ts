@@ -271,8 +271,12 @@ export class MockMailboxApi
                     }
                 });
 
-                // Paginate - Start
+                // Sort by date - descending
+                mails.sort((a, b) => {
+                    return new Date(b.date).getTime() - new Date(a.date).getTime();
+                });
 
+                // Paginate - Start
                 const mailsLength = mails.length;
                 const resultsPerPage = 10;
 

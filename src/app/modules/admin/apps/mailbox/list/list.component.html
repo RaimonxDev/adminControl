@@ -16,7 +16,7 @@
                 </button>
 
                 <!-- Category name -->
-                <h6 class="category">{{category.name}}</h6>
+                <div class="category">{{category.name}}</div>
 
             </div>
 
@@ -55,76 +55,88 @@
         <!-- Mail list -->
         <div class="list">
 
-            <!-- Mail list item -->
-            <a class="item"
-               *ngFor="let mail of mails"
-               [ngClass]="{'selected': (selectedMail && selectedMail.id === mail.id),
-                           'unread'  : mail.unread}"
-               [routerLink]="[mail.id]"
-               (click)="onMailSelected(mail)">
+            <!-- Mail list item loop -->
+            <ng-container *ngFor="let mail of mails; let i = index">
 
-                <!-- Unread dot indicator -->
-                <div class="unread-dot"
-                     *ngIf="mail.unread"></div>
+                <!-- Mail list item group -->
+                <ng-container *ngIf="mailListGroupLabel(i)">
 
-                <!-- Other indicators -->
-                <div class="indicators">
-
-                    <!-- Attachments indicator -->
-                    <div class="attachments-indicator"
-                         *ngIf="mail.attachments && mail.attachments.length > 0">
-                        <mat-icon>attachment</mat-icon>
+                    <div class="item-group">
+                        {{mailListGroupLabel(i)}}
                     </div>
 
-                    <!-- Starred indicator -->
-                    <div class="starred-indicator"
-                         *ngIf="mail.starred">
-                        <mat-icon class="text-orange">star</mat-icon>
-                    </div>
+                </ng-container>
 
-                </div>
+                <!-- Mail list item -->
+                <a class="item"
+                   [ngClass]="{'selected': (selectedMail && selectedMail.id === mail.id), 'unread': mail.unread}"
+                   [routerLink]="[mail.id]"
+                   (click)="onMailSelected(mail)">
 
-                <!-- Avatar -->
-                <div class="avatar">
-                    <img [src]="mail.from.avatar">
-                </div>
+                    <!-- Unread dot indicator -->
+                    <div class="unread-dot"
+                         *ngIf="mail.unread"></div>
 
-                <!-- Mail details -->
-                <div class="details">
+                    <!-- Other indicators -->
+                    <div class="indicators">
 
-                    <div class="info">
-
-                        <!-- Sender name -->
-                        <div class="name">
-                            {{mail.from.contact.split('<')[0].trim()}}
+                        <!-- Attachments indicator -->
+                        <div class="attachments-indicator"
+                             *ngIf="mail.attachments && mail.attachments.length > 0">
+                            <mat-icon>attachment</mat-icon>
                         </div>
 
-                        <!-- Important indicator -->
-                        <mat-icon class="important-indicator"
-                                  *ngIf="mail.important">
-                            label_important
-                        </mat-icon>
-
-                        <!-- Mail date -->
-                        <div class="date">
-                            {{mail.date | date:'dd/MM/yy'}}
+                        <!-- Starred indicator -->
+                        <div class="starred-indicator"
+                             *ngIf="mail.starred">
+                            <mat-icon class="text-orange">star</mat-icon>
                         </div>
 
                     </div>
 
-                    <!-- Mail subject -->
-                    <div class="subject">
-                        {{mail.subject}}
+                    <!-- Avatar -->
+                    <div class="avatar">
+                        <img [src]="mail.from.avatar">
                     </div>
 
-                    <!-- Mail excerpt -->
-                    <div class="excerpt">
-                        {{mail.content.substring(0, 72)}}...
+                    <!-- Mail details -->
+                    <div class="details">
+
+                        <div class="info">
+
+                            <!-- Sender name -->
+                            <div class="name">
+                                {{mail.from.contact.split('<')[0].trim()}}
+                            </div>
+
+                            <!-- Important indicator -->
+                            <mat-icon class="important-indicator"
+                                      *ngIf="mail.important">
+                                label_important
+                            </mat-icon>
+
+                            <!-- Mail date -->
+                            <div class="date">
+                                {{mail.date | date:'hh:mm a'}}
+                            </div>
+
+                        </div>
+
+                        <!-- Mail subject -->
+                        <div class="subject">
+                            {{mail.subject}}
+                        </div>
+
+                        <!-- Mail excerpt -->
+                        <div class="excerpt">
+                            {{mail.content.substring(0, 72)}}...
+                        </div>
+
                     </div>
 
-                </div>
+                </a>
 
-            </a>
+            </ng-container>
 
         </div>
 
