@@ -1,26 +1,20 @@
-<div class="content-layout with-drawer with-inner-scroll">
+<div class="content-layout left-sidebar-fullheight-basic-inner-scroll">
 
-    <mat-drawer-container class="content-layout with-drawer with-inner-scroll">
+    <mat-drawer-container>
 
-        <mat-drawer [mode]="isDrawerPersistent ? 'side' : 'over'"
-                    [opened]="isDrawerPersistent"
+        <mat-drawer [mode]="drawerMode"
+                    [opened]="drawerOpened"
                     #drawer>
 
-            <!-- Drawer -->
-            <div class="drawer-content">
-
-                <!-- Mailbox sidebar -->
-                <mailbox-sidebar asmScrollbar
-                                 [asmScrollbarOptions]="{suppressScrollX: true}"></mailbox-sidebar>
-
-            </div>
+            <!-- Mailbox sidebar -->
+            <mailbox-sidebar></mailbox-sidebar>
 
         </mat-drawer>
 
         <mat-drawer-content>
 
             <!-- Main -->
-            <div class="main-content">
+            <div class="main">
 
                 <router-outlet></router-outlet>
 

@@ -2,18 +2,19 @@
 
 mailbox {
 
-    // Mat drawer
-    .mat-drawer {
-        overflow: hidden;
+    .mat-drawer-container {
 
-        .mat-drawer-inner-container {
+        .mat-drawer-content {
+            display: flex;
             overflow: hidden;
-        }
-    }
 
-    // Mat drawer content
-    .mat-drawer-content {
-        overflow: hidden;
+            .main {
+                display: flex;
+                flex: 1 1 auto;
+                padding: 0 !important;
+            }
+        }
+
     }
 }
 
@@ -28,9 +29,7 @@ mailbox {
     mailbox {
 
         .mat-drawer {
-            @if ($is-dark) {
-
-            } @else {
+            @if (not $is-dark) {
                 background: map-get($background, background);
             }
         }

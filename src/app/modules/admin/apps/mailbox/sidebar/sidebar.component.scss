@@ -4,12 +4,23 @@ mailbox-sidebar {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
+    height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .title {
+        margin: 48px 32px 0 32px;
+    }
+
+    .account {
+        margin: 0 32px 48px 32px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
     .compose-button {
-        flex: 0 0 auto;
-        font-size: 15px;
-        line-height: 40px;
+        margin: 0 32px 40px 32px;
     }
 }
 
@@ -19,8 +30,13 @@ mailbox-sidebar {
 @include asm-angular-material-theme {
 
     $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
     mailbox-sidebar {
         background: map-get($background, card);
+
+        .account {
+            color: map-get($foreground, secondary-text);
+        }
     }
 }

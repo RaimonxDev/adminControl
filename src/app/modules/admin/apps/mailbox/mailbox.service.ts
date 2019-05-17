@@ -9,6 +9,7 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 export class MailboxService
 {
     // Observables
+    private _category: BehaviorSubject<any>;
     private _filters: BehaviorSubject<any>;
     private _folders: BehaviorSubject<any>;
     private _labels: BehaviorSubject<any>;
@@ -26,6 +27,7 @@ export class MailboxService
     )
     {
         // Set the private defaults
+        this._category = new BehaviorSubject(null);
         this._filters = new BehaviorSubject(null);
         this._folders = new BehaviorSubject(null);
         this._labels = new BehaviorSubject(null);
@@ -37,6 +39,14 @@ export class MailboxService
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for category
+     */
+    get category$(): Observable<any>
+    {
+        return this._category.asObservable();
+    }
 
     /**
      * Getter for filters
@@ -140,6 +150,10 @@ export class MailboxService
                    })
                    .pipe(
                        tap((response: any) => {
+                           this._category.next({
+                               type: 'filter',
+                               name: filter
+                           });
                            this._mails.next(response.mails);
                            this._pagination.next(response.pagination);
                        }),
@@ -172,6 +186,10 @@ export class MailboxService
                    })
                    .pipe(
                        tap((response: any) => {
+                           this._category.next({
+                               type: 'folder',
+                               name: folder
+                           });
                            this._mails.next(response.mails);
                            this._pagination.next(response.pagination);
                        }),
@@ -204,6 +222,10 @@ export class MailboxService
                    })
                    .pipe(
                        tap((response: any) => {
+                           this._category.next({
+                               type: 'label',
+                               name: label
+                           });
                            this._mails.next(response.mails);
                            this._pagination.next(response.pagination);
                        }),

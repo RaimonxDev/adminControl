@@ -1,5 +1,5 @@
-<div class="title mb-4 ml-8">Manage Labels</div>
-<div class="h4 text-secondary mb-32 ml-8">Add, update and remove labels</div>
+<h2 class="title">Manage Labels</h2>
+<h6 class="subtitle">Add, update and remove labels</h6>
 
 <form [formGroup]="labelsForm">
 
@@ -13,8 +13,7 @@
                         [panelClass]="'mailbox-label-color-select-panel'"
                         [disableOptionCentering]="true">
                 <mat-select-trigger>
-                    <mat-icon class="icon-size-20"
-                              [ngClass]="'text-' + labelsForm.get('newLabel.color').value"
+                    <mat-icon [ngClass]="'text-' + labelsForm.get('newLabel.color').value"
                               [fontSet]="'material-baseline-icons'">
                         label
                     </mat-icon>
@@ -24,8 +23,7 @@
                     <mat-option *ngFor="let color of labelColors"
                                 [value]="color"
                                 #matOption="matOption">
-                        <mat-icon class="icon-size-20"
-                                  [ngClass]="color"
+                        <mat-icon [ngClass]="color"
                                   *ngIf="matOption.selected">
                             check
                         </mat-icon>
@@ -62,8 +60,7 @@
                         [panelClass]="'mailbox-label-color-select-panel'"
                         [disableOptionCentering]="true">
                 <mat-select-trigger>
-                    <mat-icon class="icon-size-20"
-                              [ngClass]="'text-' + label.get('color').value"
+                    <mat-icon [ngClass]="'text-' + label.get('color').value"
                               [fontSet]="'material-baseline-icons'">
                         label
                     </mat-icon>
@@ -73,8 +70,7 @@
                     <mat-option *ngFor="let color of labelColors"
                                 [value]="color"
                                 #matOption="matOption">
-                        <mat-icon class="icon-size-20"
-                                  [ngClass]="color"
+                        <mat-icon [ngClass]="color"
                                   *ngIf="matOption.selected">
                             check
                         </mat-icon>

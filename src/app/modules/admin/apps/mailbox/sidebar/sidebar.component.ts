@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { takeUntil } from 'rxjs/operators';
+import { AsmVerticalMenuItem } from '@assembly';
+import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 
 @Component({
     selector     : 'mailbox-sidebar',
@@ -14,6 +15,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     filters: any[];
     folders: any[];
     labels: any[];
+    menuData: AsmVerticalMenuItem[];
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -29,6 +31,9 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.menuData = [];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -60,6 +65,9 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             .subscribe((labels) => {
                 this.labels = labels;
             });
+
+        // Generate menu links
+        this._generateMenu();
     }
 
     /**
@@ -71,4 +79,59 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Generate the menu data
+     *
+     * @private
+     */
+    private _generateMenu(): void
+    {
+        // Generate menus for folders
+        this.folders.forEach((folder) => {
+
+            this.menuData.push({
+                title: folder.title,
+                type : 'basic',
+                icon : folder.icon,
+                link : '/apps/mailbox/' + folder.slug
+            });
+        });
+
+        // Generate menus for filters
+        this.filters.forEach((filter) => {
+
+            this.menuData.push({
+                title: filter.title,
+                type : 'basic',
+                icon : filter.icon,
+                link : '/apps/mailbox/filter/' + filter.slug
+            });
+        });
+
+        // Generate menus for labels
+        this.labels.forEach((label) => {
+
+            this.menuData.push({
+                title         : label.title,
+                type          : 'basic',
+                icon          : 'label',
+                iconClassNames: 'text-' + label.color,
+                link          : '/apps/mailbox/label/' + label.slug
+            });
+        });
+
+        // Add settings menu
+        this.menuData.push({
+            title: 'Settings',
+            type : 'basic',
+            icon : 'settings',
+            link : '/apps/mailbox/settings'
+        });
+    }
+
 }

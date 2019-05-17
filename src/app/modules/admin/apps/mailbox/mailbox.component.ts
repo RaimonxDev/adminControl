@@ -15,7 +15,8 @@ export class MailboxComponent implements OnInit, OnDestroy
     @ViewChild('drawer')
     drawer: MatDrawer;
 
-    isDrawerPersistent: boolean;
+    drawerMode: 'over' | 'side';
+    drawerOpened: boolean;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -31,6 +32,10 @@ export class MailboxComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.drawerMode = 'side';
+        this.drawerOpened = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -47,8 +52,17 @@ export class MailboxComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
 
-                // Calculate if drawer should be persistent
-                this.isDrawerPersistent = this._shouldDrawerPersist('gt-md');
+                // Set the drawerMode and drawerOpened if the given breakpoint is active
+                if ( this._asmMediaWatcherService.isActive('lt-lg') )
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
+                }
+                else
+                {
+                    this.drawerMode = 'side';
+                    this.drawerOpened = true;
+                }
             });
     }
 
@@ -60,20 +74,5 @@ export class MailboxComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Calculate if drawer should be persistent
-     *
-     * @param breakpoint
-     * @private
-     */
-    private _shouldDrawerPersist(breakpoint): boolean
-    {
-        return this._asmMediaWatcherService.isActive(breakpoint);
     }
 }

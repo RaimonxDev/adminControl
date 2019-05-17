@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { AsmLookUpByPipeModule, AsmScrollbarModule } from '@assembly';
+import { AsmLookUpByPipeModule, AsmScrollbarModule, AsmVerticalMenuModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 import { MailboxDetailsComponent } from 'app/modules/admin/apps/mailbox/details/details.component';
@@ -39,6 +39,7 @@ import { mailboxRoutes } from 'app/modules/admin/apps/mailbox/mailbox.routing';
         MatSidenavModule,
         AsmLookUpByPipeModule,
         AsmScrollbarModule,
+        AsmVerticalMenuModule,
         SharedModule
     ]
 })

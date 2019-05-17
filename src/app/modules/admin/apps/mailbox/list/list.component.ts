@@ -12,6 +12,7 @@ import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.compone
 })
 export class MailboxListComponent implements OnInit, OnDestroy
 {
+    category: any;
     mails: any[];
     pagination: any;
     selectedMail: any;
@@ -43,6 +44,13 @@ export class MailboxListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Category
+        this._mailboxService.category$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((category) => {
+                this.category = category;
+            });
+
         // Mails
         this._mailboxService.mails$
             .pipe(takeUntil(this._unsubscribeAll))
