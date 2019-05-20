@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 
 @Component({
     selector       : 'asm-navigation-subheader-item',
@@ -10,7 +11,7 @@ export class AsmNavigationSubheaderItemComponent
 {
     // Item
     @Input()
-    item: any;
+    item: AsmNavigationItem;
 
     /**
      * Constructor

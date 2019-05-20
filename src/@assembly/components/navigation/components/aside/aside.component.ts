@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class AsmNavigationAsideItemComponent implements OnInit
 
     // Item
     @Input()
-    item: any;
+    item: AsmNavigationItem;
 
     // Skip children
     @Input()

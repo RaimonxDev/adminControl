@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
+import { AsmVerticalMenuItem } from '@assembly/components/menu/vertical-menu/vertical-menu.type';
 import { AsmVerticalMenuService } from '@assembly/components/menu/vertical-menu/vertical-menu.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class AsmVerticalMenuCollapsableItemComponent implements OnInit, OnDestro
 {
     // Item
     @Input()
-    item: any;
+    item: AsmVerticalMenuItem;
 
     // Collapsed
     @HostBinding('class.asm-vertical-menu-item-collapsed')

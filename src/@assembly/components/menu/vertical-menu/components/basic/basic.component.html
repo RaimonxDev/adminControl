@@ -94,7 +94,9 @@
              *ngIf="item.badge">
 
             <div class="asm-vertical-menu-item-badge-content"
-                 [ngClass]="'asm-vertical-menu-item-badge-style-' + item.badge.style"
+                 [ngClass]="[(item.badge.style != undefined ? 'asm-vertical-menu-item-badge-style-' + item.badge.style : ''),
+                             (item.badge.background != undefined && !item.badge.background.startsWith('#') ? item.badge.background : ''),
+                             (item.badge.color != undefined && !item.badge.color.startsWith('#') ? item.badge.color : '')]"
                  [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
                 {{item.badge.title}}
             </div>

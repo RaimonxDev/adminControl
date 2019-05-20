@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AsmVerticalMenuItem } from '@assembly/components/menu/vertical-menu/vertical-menu.type';
 
 @Component({
     selector       : 'asm-vertical-menu-divider-item',
@@ -10,7 +11,7 @@ export class AsmVerticalMenuDividerItemComponent
 {
     // Item
     @Input()
-    item: any;
+    item: AsmVerticalMenuItem;
 
     /**
      * Constructor

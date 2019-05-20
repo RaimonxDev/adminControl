@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
 
     // Item
     @Input()
-    item: any;
+    item: AsmNavigationItem;
 
     // Collapsed
     @HostBinding('class.asm-navigation-item-collapsed')
