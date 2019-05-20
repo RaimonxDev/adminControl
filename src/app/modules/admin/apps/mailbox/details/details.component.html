@@ -104,7 +104,7 @@
                 <mat-menu class="mailbox-details-toggle-label-menu-panel"
                           #toggleLabelMenu="matMenu">
                     <div mat-menu-item
-                         *ngFor="let label of labels">
+                         *ngFor="let label of labels; trackBy: trackById">
                         <mat-checkbox (change)="toggleLabel(label)"
                                       [color]="'primary'"
                                       [checked]="mail.labels.includes(label.id)"
@@ -202,29 +202,94 @@
 
         </ng-container>
 
+        <mat-divider class="footer-divider"></mat-divider>
+
         <!-- Buttons -->
-        <div class="buttons">
+        <div class="buttons"
+             *ngIf="!replyFormActive">
 
             <!-- Reply -->
             <button mat-stroked-button
-                    [color]="'primary'">
+                    [color]="'primary'"
+                    (click)="reply()">
                 <mat-icon>reply</mat-icon>
                 <span>Reply</span>
             </button>
 
             <!-- Reply all -->
             <button mat-stroked-button
-                    [color]="'primary'">
+                    [color]="'primary'"
+                    (click)="replyAll()">
                 <mat-icon>reply_all</mat-icon>
                 <span>Reply All</span>
             </button>
 
             <!-- Forward -->
             <button mat-stroked-button
-                    [color]="'primary'">
+                    [color]="'primary'"
+                    (click)="forward()">
                 <mat-icon [color]="'primary'">forward</mat-icon>
                 <span>Forward</span>
             </button>
+
+        </div>
+
+        <!-- Reply form -->
+        <div class="reply-form"
+             *ngIf="replyFormActive">
+
+            <mat-form-field [appearance]="'outline'">
+                <textarea class="textarea"
+                          matInput
+                          [placeholder]="'Type your reply here'"
+                          [rows]="4"></textarea>
+            </mat-form-field>
+
+            <div class="actions">
+
+                <div class="formatting">
+
+                    <!-- Attach file -->
+                    <button mat-icon-button>
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+
+                    <!-- Insert link -->
+                    <button mat-icon-button>
+                        <mat-icon>link</mat-icon>
+                    </button>
+
+                    <!-- Insert emoji -->
+                    <button mat-icon-button>
+                        <mat-icon>insert_emoticon</mat-icon>
+                    </button>
+
+                    <!-- Insert image -->
+                    <button mat-icon-button>
+                        <mat-icon>image</mat-icon>
+                    </button>
+
+                </div>
+
+                <div class="discard-or-send">
+
+                    <!-- Discard -->
+                    <button mat-flat-button
+                            (click)="discard()">
+                        <span>Discard</span>
+                    </button>
+
+                    <!-- Send -->
+                    <button class="send-button"
+                            mat-raised-button
+                            [color]="'primary'"
+                            (click)="send()">
+                        <span>Send</span>
+                    </button>
+
+                </div>
+
+            </div>
 
         </div>
 

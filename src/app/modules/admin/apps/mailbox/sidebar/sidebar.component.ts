@@ -18,6 +18,10 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     menuData: AsmVerticalMenuItem[];
 
     // Private
+    private _filtersMenuData: AsmVerticalMenuItem[];
+    private _foldersMenuData: AsmVerticalMenuItem[];
+    private _labelsMenuData: AsmVerticalMenuItem[];
+    private _otherMenuData: AsmVerticalMenuItem[];
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -30,6 +34,10 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     )
     {
         // Set the private defaults
+        this._filtersMenuData = [];
+        this._foldersMenuData = [];
+        this._labelsMenuData = [];
+        this._otherMenuData = [];
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
@@ -50,6 +58,9 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((filters) => {
                 this.filters = filters;
+
+                // Generate menu links
+                this._generateFiltersMenuLinks();
             });
 
         // Folders
@@ -57,6 +68,9 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((folders) => {
                 this.folders = folders;
+
+                // Generate menu links
+                this._generateFoldersMenuLinks();
             });
 
         // Labels
@@ -64,10 +78,13 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((labels) => {
                 this.labels = labels;
+
+                // Generate menu links
+                this._generateLabelsMenuLinks();
             });
 
-        // Generate menu links
-        this._generateMenu();
+        // Generate other menu links
+        this._generateOtherMenuLinks();
     }
 
     /**
@@ -85,27 +102,60 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Generate the menu data
+     * Generate menus for folders
      *
      * @private
      */
-    private _generateMenu(): void
+    private _generateFoldersMenuLinks(): void
     {
-        // Generate menus for folders
+        // Reset the folders menu data
+        this._foldersMenuData = [];
+
+        // Iterate through the folders
         this.folders.forEach((folder) => {
 
-            this.menuData.push({
+            // Generate menu item for the folder
+            const menuItem: AsmVerticalMenuItem = {
                 title: folder.title,
                 type : 'basic',
                 icon : folder.icon,
                 link : '/apps/mailbox/' + folder.slug
-            });
+            };
+
+            // If the count is available and is bigger than zero...
+            if ( folder.count && folder.count > 0 )
+            {
+                // Add the count as a badge
+                menuItem['badge'] = {
+                    title: folder.count,
+                    color: 'text-secondary',
+                    style: 'simple'
+                };
+            }
+
+            // Push the menu item to the folders menu data
+            this._foldersMenuData.push(menuItem);
         });
 
-        // Generate menus for filters
+        // Update the menu data
+        this._updateMenuData();
+    }
+
+    /**
+     * Generate menus for filters
+     *
+     * @private
+     */
+    private _generateFiltersMenuLinks(): void
+    {
+        // Reset the filters menu
+        this._filtersMenuData = [];
+
+        // Iterate through the filters
         this.filters.forEach((filter) => {
 
-            this.menuData.push({
+            // Generate menu item for the filter
+            this._filtersMenuData.push({
                 title: filter.title,
                 type : 'basic',
                 icon : filter.icon,
@@ -113,10 +163,25 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             });
         });
 
-        // Generate menus for labels
+        // Update the menu data
+        this._updateMenuData();
+    }
+
+    /**
+     * Generate menus for labels
+     *
+     * @private
+     */
+    private _generateLabelsMenuLinks(): void
+    {
+        // Reset the labels menu
+        this._labelsMenuData = [];
+
+        // Iterate through the labels
         this.labels.forEach((label) => {
 
-            this.menuData.push({
+            // Generate menu item for the label
+            this._labelsMenuData.push({
                 title         : label.title,
                 type          : 'basic',
                 icon          : 'label',
@@ -125,13 +190,42 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             });
         });
 
-        // Add settings menu
-        this.menuData.push({
+        // Update the menu data
+        this._updateMenuData();
+    }
+
+    /**
+     * Generate other menus
+     *
+     * @private
+     */
+    private _generateOtherMenuLinks(): void
+    {
+        // Settings menu
+        this._otherMenuData.push({
             title: 'Settings',
             type : 'basic',
             icon : 'settings',
             link : '/apps/mailbox/settings'
         });
+
+        // Update the menu data
+        this._updateMenuData();
+    }
+
+    /**
+     * Update the menu data
+     *
+     * @private
+     */
+    private _updateMenuData(): void
+    {
+        this.menuData = [
+            ...this._foldersMenuData,
+            ...this._filtersMenuData,
+            ...this._labelsMenuData,
+            ...this._otherMenuData
+        ];
     }
 
 }

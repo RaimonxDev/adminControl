@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { ExtraOptions, RouterModule } from '@angular/router';
 import { AsmCoreModule } from '@assembly';
 import { AsmMockApiModule } from '@mock-api/mock-api.module';
 import { CoreModule } from 'app/core/core.module';
 import { AuthModule } from 'app/modules/auth/auth.module';
 import { AdminModule } from 'app/modules/admin/admin.module';
 import { AppComponent } from 'app/app.component';
+
+const routerConfig: ExtraOptions = {
+    scrollPositionRestoration: 'top'
+};
 
 @NgModule({
     declarations: [
@@ -16,7 +20,7 @@ import { AppComponent } from 'app/app.component';
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot([]),
+        RouterModule.forRoot([], routerConfig),
 
         // Assembly Core
         AsmCoreModule,

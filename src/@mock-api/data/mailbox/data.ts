@@ -1823,7 +1823,7 @@ export const mails = [
         attachments: [],
         starred    : false,
         important  : true,
-        unread     : true,
+        unread     : false,
         folder     : 'fbdc8e79-a0c4-4a27-bc98-9c81ee7a86e5',
         labels     : [
             'b167d3c4-f6ed-4ea6-9579-a12f95a9d76e'
@@ -1872,7 +1872,7 @@ export const mails = [
         attachments: [],
         starred    : true,
         important  : false,
-        unread     : true,
+        unread     : false,
         folder     : 'fbdc8e79-a0c4-4a27-bc98-9c81ee7a86e5',
         labels     : [
             'b167d3c4-f6ed-4ea6-9579-a12f95a9d76e',
@@ -1900,7 +1900,7 @@ export const mails = [
         attachments: [],
         starred    : false,
         important  : false,
-        unread     : true,
+        unread     : false,
         folder     : 'fbdc8e79-a0c4-4a27-bc98-9c81ee7a86e5',
         labels     : [
             'b167d3c4-f6ed-4ea6-9579-a12f95a9d76e',

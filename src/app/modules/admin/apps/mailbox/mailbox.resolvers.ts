@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 
 @Injectable({
@@ -164,12 +164,32 @@ export class MailboxMailsResolver implements Resolve<any>
             sources.push(this._mailboxService.getMailsByLabel(route.paramMap.get('label'), route.paramMap.get('page')));
         }
 
-        // Reset the mail every time mails list updated
-        sources.push(this._mailboxService.resetMail());
-
         // Fork join all the sources
         return forkJoin(sources)
             .pipe(
+                finalize(() => {
+
+                    // Reset the mail every time mails list changes,
+                    // if there is no selected mail. This will ensure
+                    // that the mail will be reset while navigating
+                    // between the folders/filters/labels but it won't
+                    // reset on page reload if we are reading a mail.
+
+                    // Try to get the current activated route
+                    let currentRoute = route;
+                    while ( currentRoute.firstChild )
+                    {
+                        currentRoute = currentRoute.firstChild;
+                    }
+
+                    // Make sure there is no 'id' parameter on the current route
+                    if ( !currentRoute.paramMap.get('id') )
+                    {
+                        // Reset the mail
+                        this._mailboxService.resetMail().subscribe();
+                    }
+                }),
+
                 // Error here means the requested page is not available
                 catchError((error) => {
 

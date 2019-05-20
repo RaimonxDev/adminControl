@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import * as moment from 'moment';
@@ -15,8 +15,12 @@ export class MailboxListComponent implements OnInit, OnDestroy
 {
     category: any;
     mails: any[];
+    mailsLoading: boolean;
     pagination: any;
     selectedMail: any;
+
+    @ViewChild('mailList')
+    mailList: ElementRef;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -34,6 +38,9 @@ export class MailboxListComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.mailsLoading = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -57,6 +64,20 @@ export class MailboxListComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((mails) => {
                 this.mails = mails;
+            });
+
+        // Mails loading
+        this._mailboxService.mailsLoading$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((mailsLoading) => {
+                this.mailsLoading = mailsLoading;
+
+                // If the mail list element is available & the mails are loaded...
+                if ( this.mailList && !mailsLoading )
+                {
+                    // Reset the mail list element scroll position to top
+                    this.mailList.nativeElement.scrollTo(0, 0);
+                }
             });
 
         // Pagination
@@ -104,6 +125,9 @@ export class MailboxListComponent implements OnInit, OnDestroy
             // Update the mail on the server
             this._mailboxService.updateMail(mail.id, {unread: false}).subscribe();
         }
+
+        // Execute the mailSelected observable
+        this._mailboxService.selectedMailChanged.next(mail);
     }
 
     /**
@@ -171,5 +195,19 @@ export class MailboxListComponent implements OnInit, OnDestroy
 
         // Return a date
         return date.format('LL');
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Track by function for ngFor loop
+     *
+     * @param item
+     */
+    trackById(item): number
+    {
+        return item.id;
     }
 }

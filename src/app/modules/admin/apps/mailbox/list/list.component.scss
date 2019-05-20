@@ -12,18 +12,15 @@ mailbox-list {
         min-width: 400px;
         max-width: 400px;
         border-right: 1px solid;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
 
         > .header {
-            position: sticky;
+            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid;
             min-height: 80px;
             height: 80px;
-            top: 0;
             padding: 0 8px 0 16px;
             z-index: 9;
 
@@ -69,9 +66,19 @@ mailbox-list {
                 }
 
             }
+
+            .loading-progress-bar {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                height: 2px;
+            }
         }
 
         .list {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
 
             .item-group {
                 display: flex;

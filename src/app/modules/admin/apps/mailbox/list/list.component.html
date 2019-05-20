@@ -50,13 +50,19 @@
 
             </div>
 
+            <!-- Loading bar -->
+            <mat-progress-bar class="loading-progress-bar"
+                              *ngIf="mailsLoading"
+                              [mode]="'indeterminate'"></mat-progress-bar>
+
         </div>
 
         <!-- Mail list -->
-        <div class="list">
+        <div class="list"
+             #mailList>
 
             <!-- Mail list item loop -->
-            <ng-container *ngFor="let mail of mails; let i = index">
+            <ng-container *ngFor="let mail of mails; let i = index; trackBy: trackById">
 
                 <!-- Mail list item group -->
                 <ng-container *ngIf="mailListGroupLabel(i)">

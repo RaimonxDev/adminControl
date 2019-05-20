@@ -15,6 +15,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     folders: any[];
     labels: any[];
     mail: any;
+    replyFormActive: boolean;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -34,6 +35,9 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the default
+        this.replyFormActive = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -64,6 +68,15 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((mail) => {
                 this.mail = mail;
+            });
+
+        // Selected mail changed
+        this._mailboxService.selectedMailChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+
+                // De-activate the reply form
+                this.replyFormActive = false;
             });
     }
 
@@ -215,5 +228,60 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
 
         // Update the mail on the server
         this._mailboxService.updateMail(this.mail.id, {unread: this.mail.unread}).subscribe();
+    }
+
+    /**
+     * Reply
+     */
+    reply(): void
+    {
+        // Activate the reply form
+        this.replyFormActive = true;
+    }
+
+    /**
+     * Reply all
+     */
+    replyAll(): void
+    {
+        // Activate the reply form
+        this.replyFormActive = true;
+    }
+
+    /**
+     * Forward
+     */
+    forward(): void
+    {
+        // Activate the reply form
+        this.replyFormActive = true;
+    }
+
+    /**
+     * Discard
+     */
+    discard(): void
+    {
+        // Deactivate the reply form
+        this.replyFormActive = false;
+    }
+
+    /**
+     * Send
+     */
+    send(): void
+    {
+        // Deactivate the reply form
+        this.replyFormActive = false;
+    }
+
+    /**
+     * Track by function for ngFor loop
+     *
+     * @param item
+     */
+    trackById(item): number
+    {
+        return item.id;
     }
 }

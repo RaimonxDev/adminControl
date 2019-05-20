@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { finalize, map, switchMap, take, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +14,12 @@ export class MailboxService
     private _folders: BehaviorSubject<any>;
     private _labels: BehaviorSubject<any>;
     private _mails: BehaviorSubject<any>;
+    private _mailsLoading: BehaviorSubject<boolean>;
     private _mail: BehaviorSubject<any>;
     private _pagination: BehaviorSubject<any>;
+
+    // Observables that can be executable from outside
+    selectedMailChanged: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -32,8 +36,12 @@ export class MailboxService
         this._folders = new BehaviorSubject(null);
         this._labels = new BehaviorSubject(null);
         this._mails = new BehaviorSubject(null);
+        this._mailsLoading = new BehaviorSubject(false);
         this._mail = new BehaviorSubject(null);
         this._pagination = new BehaviorSubject(null);
+
+        // Set the defaults
+        this.selectedMailChanged = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -78,6 +86,14 @@ export class MailboxService
     get mails$(): Observable<any>
     {
         return this._mails.asObservable();
+    }
+
+    /**
+     * Getter for mails loading
+     */
+    get mailsLoading$(): Observable<any>
+    {
+        return this._mailsLoading.asObservable();
     }
 
     /**
@@ -141,6 +157,9 @@ export class MailboxService
      */
     getMailsByFilter(filter, page = '1'): Observable<any>
     {
+        // Execute the mails loading with true
+        this._mailsLoading.next(true);
+
         return this._httpClient
                    .get('api/apps/mailbox/mails', {
                        params: {
@@ -156,6 +175,7 @@ export class MailboxService
                            });
                            this._mails.next(response.mails);
                            this._pagination.next(response.pagination);
+                           this._mailsLoading.next(false);
                        }),
                        switchMap((response) => {
 
@@ -177,6 +197,9 @@ export class MailboxService
      */
     getMailsByFolder(folder, page = '1'): Observable<any>
     {
+        // Execute the mails loading with true
+        this._mailsLoading.next(true);
+
         return this._httpClient
                    .get('api/apps/mailbox/mails', {
                        params: {
@@ -192,6 +215,7 @@ export class MailboxService
                            });
                            this._mails.next(response.mails);
                            this._pagination.next(response.pagination);
+                           this._mailsLoading.next(false);
                        }),
                        switchMap((response) => {
 
@@ -213,6 +237,9 @@ export class MailboxService
      */
     getMailsByLabel(label, page = '1'): Observable<any>
     {
+        // Execute the mails loading with true
+        this._mailsLoading.next(true);
+
         return this._httpClient
                    .get('api/apps/mailbox/mails', {
                        params: {
@@ -228,6 +255,7 @@ export class MailboxService
                            });
                            this._mails.next(response.mails);
                            this._pagination.next(response.pagination);
+                           this._mailsLoading.next(false);
                        }),
                        switchMap((response) => {
 
@@ -293,7 +321,15 @@ export class MailboxService
                    .patch('api/apps/mailbox/mail', {
                        id,
                        mail
-                   });
+                   })
+                   .pipe(
+                       tap(() => {
+
+                           // Re-fetch the folders on mail update
+                           // to get the updated counts on the sidebar
+                           this.getFolders().subscribe();
+                       })
+                   );
     }
 
     /**
@@ -301,12 +337,13 @@ export class MailboxService
      */
     resetMail(): Observable<any>
     {
-        return of(true).pipe(
-            tap(() => {
-                this._mail.next(null);
-            }),
-            take(1)
-        );
+        return of(true)
+            .pipe(
+                tap(() => {
+                    this._mail.next(null);
+                }),
+                take(1)
+            );
     }
 
     /**

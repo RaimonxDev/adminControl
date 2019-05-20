@@ -81,6 +81,46 @@ export class MockMailboxApi
             .onGet('api/apps/mailbox/folders')
             .reply(() => {
 
+                let count = 0;
+
+                // Iterate through the folders
+                this._folders.forEach((folder) => {
+
+                    // Get the mails of this folder
+                    const mails = this._mails.filter((mail) => mail.folder === folder.id);
+
+                    // If we are counting the 'sent' or the 'trash' folder...
+                    if ( folder.slug === 'sent' || folder.slug === 'trash' )
+                    {
+                        // Always set the count to 0
+                        count = 0;
+                    }
+                    // If we are counting the 'drafts' or the 'spam' folder...
+                    else if ( folder.slug === 'drafts' || folder.slug === 'trash' || folder.slug === 'spam' )
+                    {
+                        // Set the count to the count of all mails
+                        count = mails.length;
+                    }
+                    // Otherwise ('inbox')...
+                    else
+                    {
+                        // Go through the mails and count the unread ones
+                        mails.forEach((mail) => {
+
+                            if ( mail.unread )
+                            {
+                                count++;
+                            }
+                        });
+                    }
+
+                    // Append the count to the folder data
+                    folder.count = count;
+
+                    // Reset the count
+                    count = 0;
+                });
+
                 return [
                     200,
                     _.cloneDeep(this._folders)
@@ -241,7 +281,7 @@ export class MockMailboxApi
         // @ Mails - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/apps/mailbox/mails')
+            .onGet('api/apps/mailbox/mails', 625)
             .reply((request) => {
 
                 // First, decide if mails are requested by folder, filter or label
