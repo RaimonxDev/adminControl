@@ -77,8 +77,8 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.appearance = 'classic';
         this.activeAsideItemId = null;
+        this.appearance = 'classic';
         this.autoCollapse = true;
         this.mode = 'side';
         this.opened = false;
