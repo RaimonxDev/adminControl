@@ -26,18 +26,25 @@ $asm-breakpoints: (
 // -----------------------------------------------------------------------------------------------------
 
 ///
-/// Wrap the mixin content with the given media breakpoint
+/// Wrap the mixin content with the given media breakpoint.
+/// If breakpoint name does not exist on the breakpoints list,
+/// apply the given name as a media rule.
 ///
 /// @access public
-/// @param {String} $breakpointName - Name of the breakpoint
+/// @param {String} $breakpoint - Name of the breakpoint or a media rule
 ///
-@mixin asm-media-breakpoint($breakpointName) {
+@mixin asm-media-breakpoint($breakpoint) {
 
-    $mediaQuery: map-get($asm-breakpoints, $breakpointName);
+    $mediaQuery: map-get($asm-breakpoints, $breakpoint);
 
     @if ($mediaQuery != null) {
 
         @media #{$mediaQuery} {
+            @content
+        }
+    } @else {
+
+        @media #{$breakpoint} {
             @content
         }
     }
