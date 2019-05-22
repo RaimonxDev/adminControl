@@ -126,10 +126,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
 
                 // Manually fill the sub tasks
                 const subTasksFormArray = this.taskForm.get('subTasks') as FormArray;
-                while ( subTasksFormArray.length )
-                {
-                    subTasksFormArray.removeAt(0);
-                }
+                subTasksFormArray.clear();
 
                 this.task.subTasks.forEach((subTask) => {
 
