@@ -32,10 +32,10 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     private _taskFormValueChangesSubscription: Subscription | null;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('addTagPanelOrigin')
+    @ViewChild('addTagPanelOrigin', {static: false})
     private _addTagPanelOrigin: MatButton;
 
-    @ViewChild('addTagPanel')
+    @ViewChild('addTagPanel', {static: false})
     private _addTagPanel: TemplateRef<any>;
 
     /**

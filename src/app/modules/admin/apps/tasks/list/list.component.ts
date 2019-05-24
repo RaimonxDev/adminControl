@@ -14,7 +14,7 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('drawer')
+    @ViewChild('drawer', {static: false})
     drawer: MatDrawer;
 
     drawerMode: 'side' | 'over';
