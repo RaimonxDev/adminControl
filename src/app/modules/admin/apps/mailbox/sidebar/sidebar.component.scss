@@ -13,6 +13,7 @@ mailbox-sidebar {
     }
 
     .account {
+        flex-shrink: 0;
         margin: 0 32px 48px 32px;
         overflow: hidden;
         text-overflow: ellipsis;
