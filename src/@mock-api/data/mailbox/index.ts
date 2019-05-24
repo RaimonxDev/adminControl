@@ -316,6 +316,12 @@ export class MockMailboxApi
                     return new Date(b.date).getTime() - new Date(a.date).getTime();
                 });
 
+                // Figure out the cc and bcc counts
+                mails.forEach((mail) => {
+                    mail.ccCount = mail.cc ? mail.cc.length : 0;
+                    mail.bccCount = mail.bcc ? mail.bcc.length : 0;
+                });
+
                 // Paginate - Start
                 const mailsLength = mails.length;
                 const resultsPerPage = 10;

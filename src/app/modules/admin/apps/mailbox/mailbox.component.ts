@@ -12,7 +12,7 @@ import { AsmMediaWatcherService } from '@assembly';
 })
 export class MailboxComponent implements OnInit, OnDestroy
 {
-    @ViewChild('drawer')
+    @ViewChild('drawer', {static: false})
     drawer: MatDrawer;
 
     drawerMode: 'over' | 'side';
@@ -53,7 +53,7 @@ export class MailboxComponent implements OnInit, OnDestroy
             .subscribe(() => {
 
                 // Set the drawerMode and drawerOpened if the given breakpoint is active
-                if ( this._asmMediaWatcherService.isActive('lt-lg') )
+                if ( this._asmMediaWatcherService.isActive('lt-sm') )
                 {
                     this.drawerMode = 'over';
                     this.drawerOpened = false;

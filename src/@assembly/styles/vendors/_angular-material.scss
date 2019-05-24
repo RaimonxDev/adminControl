@@ -100,14 +100,6 @@
 // Outline
 // ----------------------------------------------------
 
-.mat-form-field.mat-form-field-appearance-outline {
-
-    // Increase the padding
-    .mat-form-field-flex {
-        padding: 0 1.25em;
-    }
-}
-
 // Simplifies the form field to make it suitable
 // for smaller spaces and non-form usages
 .asm-mat-simplify {
@@ -121,6 +113,7 @@
             .mat-form-field-flex {
                 align-items: center;
                 min-height: 48px;
+                padding: 0 1.25em;
                 margin-top: 0;
 
                 // Prefix & Suffix

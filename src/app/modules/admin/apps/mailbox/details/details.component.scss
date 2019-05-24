@@ -10,37 +10,49 @@ mailbox-details {
 
     > .header {
         display: flex;
-        flex-direction: column;
-        flex: 0 0 auto;
-        align-items: flex-start;
-        justify-content: flex-start;
+        align-items: center;
         width: 100%;
         padding-bottom: 40px;
         border-bottom: 1px solid;
 
-        .subject {
-            margin: 0;
+        .back-button {
+            display: none !important;
+            margin: 0 24px 0 -12px;
+
+            @include asm-media-breakpoint('lt-lg') {
+                display: inline-block !important;
+            }
         }
 
-        .labels {
+        .subject-and-labels {
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-top: 16px;
+            flex-direction: column;
+            align-items: flex-start;
 
-            .label {
+            .subject {
+                margin: 0;
+            }
+
+            .labels {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                height: 20px;
-                padding: 0 10px;
-                margin-right: 8px;
-                border-radius: 10px;
-                font-size: 11px;
-                font-weight: bold;
-                line-height: 1;
-                white-space: nowrap;
-                text-transform: uppercase;
+                justify-content: flex-start;
+                margin-top: 16px;
+
+                .label {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 20px;
+                    padding: 0 10px;
+                    margin-right: 8px;
+                    border-radius: 10px;
+                    font-size: 11px;
+                    font-weight: bold;
+                    line-height: 1;
+                    white-space: nowrap;
+                    text-transform: uppercase;
+                }
             }
         }
     }
@@ -59,9 +71,16 @@ mailbox-details {
             justify-content: space-between;
             width: 100%;
 
-            .left {
+            @include asm-media-breakpoint('(max-width:799px), (min-width:960px) and (max-width: 1103px), (min-width:1280px) and (max-width: 1519px)') {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .from-to-info {
                 display: flex;
                 align-items: center;
+                min-width: 0;
+                max-width: 100%;
 
                 .avatar {
                     position: relative;
@@ -88,45 +107,77 @@ mailbox-details {
 
                 .info {
                     margin-left: 24px;
+                    min-width: 0;
 
                     .from {
-                        display: flex;
-                        flex-direction: column;
                         font-weight: 500;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                     }
 
                     .to {
                         display: flex;
+                        align-items: center;
+                        height: 20px;
 
                         .to-label {
                             margin-right: 4px;
                         }
 
-                        .person {
-                            display: flex;
+                        .me-label {
+                            margin-right: 4px;
+                            font-weight: 500;
+                        }
 
-                            .comma {
+                        .others {
+
+                            .and-label {
                                 margin-right: 4px;
                             }
 
-                            .and-label {
-                                margin: 0 4px;
+                            .count {
+                                margin-right: 4px;
+                                font-weight: 500;
+                            }
+
+                            .label {
+                                margin-right: 4px;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .person {
+                            display: flex;
+                            font-weight: 500;
+
+                            .comma {
+                                margin-right: 4px;
+                                font-weight: normal;
+                            }
+                        }
+
+                        .info-details-panel-button {
+                            width: 20px;
+                            height: 20px;
+                            min-height: 20px;
+                            line-height: 20px !important;
+
+                            .mat-icon {
+                                @include asm-icon-size(20);
                             }
                         }
                     }
                 }
             }
 
-            .right {
+            .action-buttons {
                 display: flex;
                 align-items: center;
+                margin-left: 24px;
 
-                .date {
-                    margin-right: 24px;
-                    font-size: 13px;
-                    font-weight: 600;
-                    white-space: nowrap;
-                    line-height: normal;
+                @include asm-media-breakpoint('(max-width:799px), (min-width:960px) and (max-width: 1103px), (min-width:1280px) and (max-width: 1519px)') {
+                    margin: 24px 0 0 -12px
                 }
 
                 .toggle-important,
@@ -156,12 +207,14 @@ mailbox-details {
         }
 
         .attachments {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
 
             .title {
                 display: flex;
                 align-items: center;
                 margin-top: 40px;
-                margin-bottom: 16px;
 
                 .mat-icon {
                     margin-right: 8px;
@@ -176,9 +229,10 @@ mailbox-details {
 
             .files {
                 display: flex;
+                flex-wrap: wrap;
 
                 .file {
-                    margin-right: 16px;
+                    margin: 24px 24px 0 0;
                     width: 112px;
 
                     &:last-child {
@@ -230,10 +284,11 @@ mailbox-details {
 
         .buttons {
             display: flex;
+            flex-wrap: wrap;
             width: 100%;
 
             .mat-stroked-button {
-                margin-right: 8px;
+                margin: 0 8px 8px 0;
 
                 &:last-child {
                     margin-right: 0;
@@ -276,7 +331,7 @@ mailbox-details {
                     }
                 }
 
-                .discard-or-send {
+                .reply-form-buttons {
                     display: flex;
                     align-items: center;
 
@@ -315,14 +370,70 @@ mailbox-details {
 
 .mailbox-details-toggle-label-menu-panel {
 
-    .mat-checkbox {
-        display: flex;
-        align-items: center;
-        height: 100%;
+    .mat-menu-item {
+        padding: 0;
 
-        .mat-checkbox-layout {
+        .mat-checkbox {
+            display: flex;
             align-items: center;
             height: 100%;
+
+            .mat-checkbox-layout {
+                align-items: center;
+                padding: 0 16px;
+                width: 100%;
+                height: 100%;
+
+                .mat-checkbox-inner-container {
+                    margin: 0 12px 0 0;
+                }
+            }
+        }
+    }
+}
+
+.mailbox-info-details-panel {
+    max-width: 640px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 13px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    @include asm-shadow(2);
+
+    .info-details-panel-content {
+        display: flex;
+        padding: 16px 24px;
+
+        table {
+
+            tbody {
+
+                tr {
+
+                    td {
+                        vertical-align: top;
+                        padding-bottom: 6px;
+
+                        &.title {
+                            font-weight: 500;
+                            text-align: right;
+                            padding-right: 8px;
+                        }
+
+                        &.detail {
+                            white-space: pre-wrap;
+                        }
+                    }
+
+                    &:last-child {
+
+                        td {
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -346,7 +457,7 @@ mailbox-details {
 
             .header {
 
-                .left {
+                .from-to-info {
 
                     .info {
 
@@ -356,11 +467,7 @@ mailbox-details {
                     }
                 }
 
-                .right {
-
-                    .date {
-                        color: map-get($foreground, secondary-text);
-                    }
+                .action-buttons {
 
                     .toggle-important {
 
@@ -423,5 +530,10 @@ mailbox-details {
                 color: map-get($foreground, secondary-text);
             }
         }
+    }
+
+    .mailbox-info-details-panel {
+        background: map-get($background, card);
+        border-color: map-get($foreground, divider);
     }
 }

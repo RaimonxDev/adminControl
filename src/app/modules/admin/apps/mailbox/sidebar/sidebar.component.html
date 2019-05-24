@@ -3,7 +3,8 @@
 
 <button class="compose-button"
         mat-raised-button
-        color="primary">
+        [color]="'primary'"
+        (click)="openComposeDialog()">
     <span>Compose</span>
 </button>
 

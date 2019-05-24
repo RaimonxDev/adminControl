@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmVerticalMenuItem } from '@assembly';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
+import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
 
 @Component({
     selector     : 'mailbox-sidebar',
@@ -28,9 +30,11 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {MailboxService} _mailboxService
+     * @param {MatDialog} _matDialog
      */
     constructor(
-        private _mailboxService: MailboxService
+        private _mailboxService: MailboxService,
+        private _matDialog: MatDialog
     )
     {
         // Set the private defaults
@@ -228,4 +232,22 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         ];
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open compose dialog
+     */
+    openComposeDialog(): void
+    {
+        // Open the dialog
+        const dialogRef = this._matDialog.open(MailboxComposeComponent);
+        dialogRef.addPanelClass('mailbox-compose-dialog');
+
+        dialogRef.afterClosed()
+                 .subscribe(result => {
+                     console.log('Compose dialog was closed!');
+                 });
+    }
 }

@@ -1,5 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TemplatePortal } from '@angular/cdk/portal';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { MatButton } from '@angular/material/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
@@ -18,19 +21,32 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     replyFormActive: boolean;
 
     // Private
+    private _overlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any>;
+
+    @ViewChild('infoDetailsPanelOrigin', {static: false})
+    private _infoDetailsPanelOrigin: MatButton;
+
+    @ViewChild('infoDetailsPanel', {static: false})
+    private _infoDetailsPanel: TemplateRef<any>;
 
     /**
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {ElementRef} _elementRef
      * @param {MailboxService} _mailboxService
+     * @param {Overlay} _overlay
      * @param {Router} _router
+     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _elementRef: ElementRef,
         private _mailboxService: MailboxService,
-        private _router: Router
+        private _overlay: Overlay,
+        private _router: Router,
+        private _viewContainerRef: ViewContainerRef
     )
     {
         // Set the private defaults
@@ -237,6 +253,11 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     {
         // Activate the reply form
         this.replyFormActive = true;
+
+        // Scroll to the bottom of the details pane
+        setTimeout(() => {
+            this._elementRef.nativeElement.scrollTop = this._elementRef.nativeElement.scrollHeight;
+        });
     }
 
     /**
@@ -246,6 +267,11 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     {
         // Activate the reply form
         this.replyFormActive = true;
+
+        // Scroll to the bottom of the details pane
+        setTimeout(() => {
+            this._elementRef.nativeElement.scrollTop = this._elementRef.nativeElement.scrollHeight;
+        });
     }
 
     /**
@@ -255,6 +281,11 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     {
         // Activate the reply form
         this.replyFormActive = true;
+
+        // Scroll to the bottom of the details pane
+        setTimeout(() => {
+            this._elementRef.nativeElement.scrollTop = this._elementRef.nativeElement.scrollHeight;
+        });
     }
 
     /**
@@ -283,5 +314,74 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     trackById(item): number
     {
         return item.id;
+    }
+
+    /**
+     * Open info details panel
+     */
+    openInfoDetailsPanel(): void
+    {
+        // Create the overlay
+        this._overlayRef = this._overlay.create({
+            backdropClass   : '',
+            panelClass      : 'mailbox-info-details-panel',
+            hasBackdrop     : true,
+            scrollStrategy  : this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay.position()
+                                  .flexibleConnectedTo(this._infoDetailsPanelOrigin._elementRef.nativeElement)
+                                  .withFlexibleDimensions()
+                                  .withViewportMargin(16)
+                                  .withLockedPosition()
+                                  .withPositions([
+                                      {
+                                          originX : 'start',
+                                          originY : 'bottom',
+                                          overlayX: 'start',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'start',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'bottom'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
+                                          overlayX: 'end',
+                                          overlayY: 'bottom'
+                                      }
+                                  ])
+        });
+
+        // Create a portal from the template
+        const templatePortal = new TemplatePortal(this._infoDetailsPanel, this._viewContainerRef);
+
+        // Attach the portal to the overlay
+        this._overlayRef.attach(templatePortal);
+
+        // Subscribe to the backdrop click
+        this._overlayRef.backdropClick().subscribe(() => {
+
+            // If overlay exists and attached...
+            if ( this._overlayRef && this._overlayRef.hasAttached() )
+            {
+                // Detach it
+                this._overlayRef.detach();
+            }
+
+            // If template portal exists and attached...
+            if ( templatePortal && templatePortal.isAttached )
+            {
+                // Detach it
+                templatePortal.detach();
+            }
+        });
     }
 }

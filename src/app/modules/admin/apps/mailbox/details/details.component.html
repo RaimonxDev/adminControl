@@ -3,19 +3,31 @@
     <!-- Header -->
     <div class="header">
 
-        <!-- Subject -->
-        <h3 class="subject">
-            {{mail.subject}}
-        </h3>
+        <!-- Back button -->
+        <a class="back-button"
+           mat-icon-button
+           [routerLink]="['./']">
+            <mat-icon>arrow_back</mat-icon>
+        </a>
 
-        <!-- Labels -->
-        <div class="labels"
-             *ngIf="mail.labels && mail.labels.length > 0">
+        <!-- Subject & labels -->
+        <div class="subject-and-labels">
 
-            <div class="label"
-                 *ngFor="let label of (mail.labels | lookUpBy:'id':labels)"
-                 [ngClass]="['text-' + label.color, 'bg-' + label.color + '-50']">
-                {{label.title}}
+            <!-- Subject -->
+            <h3 class="subject">
+                {{mail.subject}}
+            </h3>
+
+            <!-- Labels -->
+            <div class="labels"
+                 *ngIf="mail.labels && mail.labels.length > 0">
+
+                <div class="label"
+                     *ngFor="let label of (mail.labels | lookUpBy:'id':labels)"
+                     [ngClass]="['text-' + label.color, 'bg-' + label.color + '-50']">
+                    {{label.title}}
+                </div>
+
             </div>
 
         </div>
@@ -29,43 +41,99 @@
         <div class="header">
 
             <!-- Thread header left -->
-            <div class="left">
+            <div class="from-to-info">
 
                 <!-- Sender avatar -->
                 <div class="avatar">
                     <img [src]="mail.from.avatar">
                 </div>
 
-                <!-- From & to info -->
+                <!-- Info -->
                 <div class="info">
+
+                    <!-- From -->
                     <div class="from">{{mail.from.contact.split('<')[0].trim()}}</div>
+
+                    <!-- To -->
                     <div class="to">
+
                         <div class="to-label">to</div>
-                        <div class="person"
-                             *ngFor="let to of mail.to; let index = index; let last = last;"
-                             [title]="to.split('<')[1].split('>')[0].trim()">
-                            {{to.split('<')[0].trim()}}
-                            <div class="comma"
-                                 *ngIf="!last && index !== mail.to.length - 2">
-                                ,
-                            </div>
-                            <div class="and-label"
-                                 *ngIf="index === mail.to.length - 2">
-                                and
-                            </div>
+                        <div class="me-label">me</div>
+
+                        <div class="others"
+                             *ngIf="(mail.ccCount + mail.bccCount) > 0">
+                            <span class="and-label">and</span>
+                            <span class="count">{{mail.ccCount + mail.bccCount}}</span>
+                            <span class="label"
+                                  [ngPlural]="(mail.ccCount + mail.bccCount)">
+                                <ng-template ngPluralCase="=1">other</ng-template>
+                                <ng-template ngPluralCase="other">others</ng-template>
+                            </span>
                         </div>
+
+                        <!-- Info details panel button -->
+                        <button class="info-details-panel-button"
+                                mat-icon-button
+                                (click)="openInfoDetailsPanel()"
+                                #infoDetailsPanelOrigin>
+                            <mat-icon>arrow_drop_down</mat-icon>
+                        </button>
+
+                        <!-- Info details panel -->
+                        <ng-template #infoDetailsPanel>
+
+                            <div class="info-details-panel-content">
+
+                                <table>
+
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="title">from:</td>
+                                            <td class="detail">{{mail.from.contact}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="title">to:</td>
+                                            <td class="detail">{{mail.to}}</td>
+                                        </tr>
+
+                                        <tr *ngIf="mail.cc">
+                                            <td class="title">cc:</td>
+                                            <td class="detail">{{mail.cc.join(',\n')}}</td>
+                                        </tr>
+
+                                        <tr *ngIf="mail.bcc">
+                                            <td class="title">bcc:</td>
+                                            <td class="detail">{{mail.bcc.join(',\n')}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="title">date:</td>
+                                            <td class="detail">{{mail.date | date:'EEEE, MMMM d, y - hh:mm a'}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="title">subject:</td>
+                                            <td class="detail">{{mail.subject}}</td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </ng-template>
+
                     </div>
+
                 </div>
 
             </div>
 
-            <!-- Thread header right -->
-            <div class="right">
-
-                <!-- Date -->
-                <div class="date">
-                    {{mail.date | date:'E, MMMM d, y, hh:mm a'}}
-                </div>
+            <!-- Action buttons -->
+            <div class="action-buttons">
 
                 <!-- Toggle important button -->
                 <button class="toggle-important"
@@ -236,7 +304,8 @@
 
         <!-- Reply form -->
         <div class="reply-form"
-             *ngIf="replyFormActive">
+             *ngIf="replyFormActive"
+             #replyForm>
 
             <mat-form-field [appearance]="'outline'">
                 <textarea class="textarea"
@@ -271,7 +340,7 @@
 
                 </div>
 
-                <div class="discard-or-send">
+                <div class="reply-form-buttons">
 
                     <!-- Discard -->
                     <button mat-flat-button

@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AsmLookUpByPipeModule, AsmScrollbarModule, AsmVerticalMenuModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
+import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
 import { MailboxDetailsComponent } from 'app/modules/admin/apps/mailbox/details/details.component';
 import { MailboxListComponent } from 'app/modules/admin/apps/mailbox/list/list.component';
 import { MailboxSettingsComponent } from 'app/modules/admin/apps/mailbox/settings/settings.component';
@@ -21,14 +22,18 @@ import { MailboxSidebarComponent } from 'app/modules/admin/apps/mailbox/sidebar/
 import { mailboxRoutes } from 'app/modules/admin/apps/mailbox/mailbox.routing';
 
 @NgModule({
-    declarations: [
+    entryComponents: [
+        MailboxComposeComponent
+    ],
+    declarations   : [
         MailboxComponent,
+        MailboxComposeComponent,
         MailboxDetailsComponent,
         MailboxListComponent,
         MailboxSettingsComponent,
         MailboxSidebarComponent
     ],
-    imports     : [
+    imports        : [
         RouterModule.forChild(mailboxRoutes),
         MatButtonModule,
         MatCheckboxModule,
