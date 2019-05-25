@@ -76,7 +76,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Open the drawer
-        this._tasksListComponent.drawer.open();
+        this._tasksListComponent.matDrawer.open();
 
         // Create the task form
         this.taskForm = this._formBuilder.group({
@@ -186,7 +186,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
      */
     closeDrawer(): Promise<MatDrawerToggleResult>
     {
-        return this._tasksListComponent.drawer.close();
+        return this._tasksListComponent.matDrawer.close();
     }
 
     openPanel(): void

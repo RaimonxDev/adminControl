@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -14,9 +15,10 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('drawer', {static: false})
-    drawer: MatDrawer;
+    @ViewChild('matDrawer', {static: true})
+    matDrawer: MatDrawer;
 
+    filteredTasks: any[];
     drawerMode: 'side' | 'over';
     tags: any;
     tasks: any[];
@@ -28,7 +30,9 @@ export class TasksListComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {ActivatedRoute} _activatedRoute
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {Router} _router
      * @param {TasksService} _tasksService
      */
     constructor(
@@ -62,6 +66,7 @@ export class TasksListComponent implements OnInit, OnDestroy
         this._tasksService.tasks$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((tasks) => {
+                this.filteredTasks = tasks;
                 this.tasks = tasks;
             });
 
@@ -111,6 +116,57 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Go to the parent route
         this._router.navigate(['../'], {relativeTo: route});
+    }
+
+    /**
+     * Toggle the completed status
+     * of the given task
+     *
+     * @param task
+     */
+    toggleCompleted(task): void
+    {
+        // Toggle the completed status
+        task.completed = !task.completed;
+
+        // Update the task on the server
+        this._tasksService.updateTask(task.id, task).subscribe();
+    }
+
+    /**
+     * Task dropped
+     *
+     * @param event
+     */
+    dropped(event: CdkDragDrop<string[]>): void
+    {
+        // Move the item in the array
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+
+        // Save the new order
+        this._tasksService.updateTaskOrders(event.container.data).subscribe();
+    }
+
+    /**
+     * On search
+     *
+     * @param event
+     */
+    onSearch(event): void
+    {
+        const term = event.target.value;
+
+        // Reset the search if the term is empty
+        if ( !term )
+        {
+            this.filteredTasks = this.tasks;
+            return;
+        }
+
+        // Filter the results
+        this.filteredTasks = this.tasks.filter((task) => {
+            return (task.title && task.title.toLowerCase().includes(term.toLowerCase())) || (task.description && task.description.toLowerCase().includes(term.toLowerCase()));
+        });
     }
 
     /**

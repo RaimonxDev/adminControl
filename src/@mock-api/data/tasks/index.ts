@@ -165,6 +165,11 @@ export class MockTasksApi
                 // Clone the tasks
                 const tasks = _.cloneDeep(this._tasks);
 
+                // Sort the tasks by order
+                tasks.sort((a, b) => {
+                    return a.order - b.order;
+                });
+
                 // Iterate over tasks...
                 tasks.forEach((task) => {
 
@@ -180,6 +185,33 @@ export class MockTasksApi
                 return [
                     200,
                     tasks
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Tasks Order - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/apps/tasks/order')
+            .reply((request) => {
+
+                // Get the tasks
+                const tasks = request.body.tasks;
+
+                // Go through the tasks
+                this._tasks.forEach((task) => {
+
+                    // Find this task's index within the tasks array that comes with the request
+                    // and assign that index as the new order number for the task
+                    task.order = tasks.findIndex(item => item.id === task.id);
+                });
+
+                // Clone the tasks
+                const updatedTasks = _.cloneDeep(this._tasks);
+
+                return [
+                    200,
+                    updatedTasks
                 ];
             });
 

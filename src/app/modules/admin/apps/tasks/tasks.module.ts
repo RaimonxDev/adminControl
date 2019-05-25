@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DATE_FORMATS, MatRippleModule } from '@angular/material/core';
@@ -40,6 +41,7 @@ export const CUSTOM_DATE_FORMAT = {
     ],
     imports     : [
         RouterModule.forChild(tasksRoutes),
+        DragDropModule,
         MatButtonModule,
         MatCheckboxModule,
         MatDatepickerModule,

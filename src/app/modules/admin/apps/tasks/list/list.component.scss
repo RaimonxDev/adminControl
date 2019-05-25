@@ -10,155 +10,252 @@ tasks-list {
             min-width: 576px !important;
             max-width: 576px !important;
         }
-    }
 
-    .main-content {
-        padding: 56px 16px;
-        overflow-y: auto;
+        .mat-drawer-content {
 
-        .search-and-filters {
-            margin: 24px 48px 64px 48px;
-        }
+            .main {
+                padding: 56px 16px !important;
+                min-height: 100%;
 
-        .tasks-list {
+                .header {
+                    display: flex;
+                    flex: 1 1 auto;
+                    align-items: center;
+                    margin: 0 48px;
 
-            .task {
-                position: relative;
-                display: flex;
-                align-items: center;
+                    .title {
 
-                &:first-child {
+                        h2 {
+                            margin: 0;
+                        }
 
-                    &.type-section,
-                    &.type-task {
-                        margin-top: 0;
-                    }
-                }
-
-                &:hover {
-
-                    .drag-handle {
-                        visibility: visible;
-                        pointer-events: auto;
-                        opacity: 1;
-                    }
-                }
-
-                &.type-section {
-                    font-size: 20px;
-                    font-weight: 700;
-                    padding-bottom: 12px;
-                    margin: 64px 48px 16px 48px;
-                    line-height: 1.2;
-
-                    + .type-task {
-                        margin-top: 0;
-                    }
-                }
-
-                &.type-task {
-                    padding: 0 32px;
-                    margin-top: 4px;
-                    height: 56px;
-                    min-height: 56px;
-                    max-height: 56px;
-
-                    .task-content {
-                        border-radius: 8px;
-                        padding: 0 16px 0 12px;
+                        .remaining-tasks-count {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
                     }
 
-                    &.completed {
+                    .main-actions {
+                        margin-left: auto;
 
-                        .task-content {
+                        .add-task {
+                            margin-right: 16px;
+                        }
 
-                            a {
+                        .add-task,
+                        .add-section {
 
-                                .title {
-                                    position: relative;
+                            .mat-icon {
+                                margin-right: 8px;
+                                @include asm-icon-size(20);
+
+                                + span {
+                                    margin-right: 6px;
                                 }
                             }
                         }
                     }
                 }
 
-                .drag-handle {
-                    position: absolute;
-                    left: 0;
-                    visibility: hidden;
-                    pointer-events: none;
-                    opacity: 0;
-                    cursor: grab;
-                    user-select: none;
-                    margin: 0 !important;
+                .search-and-filters {
+                    margin: 32px 48px 64px 48px;
+
+                    .mat-form-field {
+                        width: 100%;
+                    }
                 }
 
-                .task-content {
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    height: 100%;
+                .tasks-list {
 
-                    .completed {
-                        width: 32px;
-                        height: 32px;
-                        line-height: 1;
-                        margin-right: 8px;
+                    &.cdk-drop-list-dragging {
+
+                        .task {
+                            transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+
+                            &.cdk-drag-placeholder {
+                                z-index: 10;
+                            }
+
+                            &:hover {
+
+                                .task-content {
+
+                                    .drag-handle {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
                     }
 
-                    a {
+                    .task {
+                        position: relative;
                         display: flex;
-                        flex: 1 1 auto;
                         align-items: center;
-                        justify-content: space-between;
-                        min-width: 0;
-                        height: 100%;
+                        padding: 4px 32px 4px 32px;
+                        height: 64px;
+                        min-height: 64px;
+                        max-height: 64px;
+                        user-select: none;
 
-                        .title {
-                            margin-right: 8px;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
+                        &.cdk-drag-disabled {
+
+                            .task-content {
+
+                                .drag-handle {
+                                    display: none;
+                                }
+                            }
                         }
 
-                        .tags {
-                            display: flex;
-                            flex: 0 0 auto;
-                            flex-wrap: wrap;
-                            align-items: center;
-                            justify-content: flex-start;
+                        &:hover {
 
-                            .tag {
+                            .task-content {
+
+                                .drag-handle {
+                                    visibility: visible;
+                                    pointer-events: auto;
+                                    opacity: 1;
+                                }
+                            }
+                        }
+
+                        &.type-section {
+                            font-size: 20px;
+                            font-weight: 700;
+
+                            .task-content {
+                                padding: 0 16px;
+
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    display: block;
+                                    right: 48px;
+                                    bottom: 8px;
+                                    left: 48px;
+                                    height: 1px;
+                                }
+                            }
+                        }
+
+                        &.type-task {
+
+                        }
+
+                        .task-content {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            height: 100%;
+                            padding: 0 16px 0 8px;
+                            border-radius: 8px;
+
+                            .drag-handle {
+                                position: absolute;
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                height: 16px;
-                                padding: 0 8px;
-                                margin-right: 8px;
-                                border-radius: 8px;
-                                font-size: 11px;
-                                font-weight: bold;
-                                white-space: nowrap;
-                                text-transform: uppercase;
+                                top: 0;
+                                bottom: 0;
+                                left: -16px;
+                                width: 48px;
+                                visibility: hidden;
+                                pointer-events: none;
+                                opacity: 0;
+                                cursor: grab;
 
-                                &:last-child {
-                                    margin-right: 0;
+                                .mat-icon {
+                                    @include asm-icon-size(18);
                                 }
                             }
 
-                            .hidden-tags {
-                                display: inline-flex;
+                            .complete-task {
+                                margin-right: 8px;
+                                line-height: 1;
+
+                                .mat-icon {
+                                    @include asm-icon-size(26);
+                                }
+                            }
+
+                            a {
+                                display: flex;
+                                flex: 1 1 auto;
                                 align-items: center;
-                                justify-content: center;
-                                width: 32px;
-                                height: 16px;
-                                border-radius: 8px;
+                                justify-content: space-between;
+                                min-width: 0;
+                                height: 100%;
+
+                                .title {
+                                    margin-right: 8px;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
+
+                                .priority {
+
+                                    .low,
+                                    .normal,
+                                    .high {
+                                        @include asm-icon-size(18);
+                                    }
+                                }
+
+                                .tags {
+                                    display: flex;
+                                    flex: 0 0 auto;
+                                    flex-wrap: wrap;
+                                    align-items: center;
+                                    justify-content: flex-start;
+
+                                    .tag {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        height: 16px;
+                                        padding: 0 8px;
+                                        margin-right: 8px;
+                                        border-radius: 8px;
+                                        font-size: 11px;
+                                        font-weight: bold;
+                                        white-space: nowrap;
+                                        text-transform: uppercase;
+
+                                        &:last-child {
+                                            margin-right: 0;
+                                        }
+                                    }
+
+                                    .hidden-tags {
+                                        display: inline-flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        width: 32px;
+                                        height: 16px;
+                                        border-radius: 8px;
+                                    }
+                                }
                             }
                         }
+                    }
+
+                    .no-tasks {
+                        padding: 0 48px;
+                        font-size: 16px;
                     }
                 }
             }
         }
+    }
+}
+
+.cdk-drag-preview {
+
+    &.task {
+        display: none !important;
     }
 }
 
@@ -173,45 +270,123 @@ tasks-list {
 
     tasks-list {
 
-        .main-content {
-            background: map-get($background, card);
+        .mat-drawer-container {
 
-            .tasks-list {
+            .mat-drawer {
+                min-width: 576px !important;
+                max-width: 576px !important;
+            }
 
-                .task {
+            .mat-drawer-content {
 
-                    &.type-section {
-                        box-shadow: 0 1px 0 0 map-get($foreground, divider);
+                .main {
+                    background: map-get($background, card);
+
+                    .header {
+
+                        .remaining-tasks-count {
+                            color: map-get($foreground, secondary-text);
+                        }
                     }
 
-                    &.type-task {
+                    .tasks-list {
 
-                        &:hover {
+                        &.cdk-drop-list-dragging {
+
+                            .task {
+
+                                &:hover {
+
+                                    &.type-task {
+
+                                        .task-content {
+                                            background: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .task {
+
+                            &.type-section {
+
+                                .task-content {
+
+                                    &:after {
+                                        background: map-get($foreground, divider);
+                                    }
+                                }
+                            }
+
+                            &.completed {
+
+                                a {
+
+                                    .title {
+                                        color: map-get($foreground, disabled-text);
+                                    }
+                                }
+                            }
+
+                            &.cdk-drag-placeholder {
+
+                                &.type-task {
+
+                                    .task-content {
+                                        background: map-get($background, hover) !important;
+                                    }
+                                }
+                            }
+
+                            &:hover {
+
+                                &.type-task {
+
+                                    .task-content {
+                                        background: map-get($background, hover);
+                                    }
+                                }
+                            }
 
                             .task-content {
-                                background: map-get($background, hover);
-                            }
-                        }
-                    }
 
-                    &.completed {
+                                .drag-handle {
 
-                        a {
+                                    .mat-icon {
+                                        color: map-get($foreground, hint-text);
+                                    }
+                                }
 
-                            .title {
-                                color: map-get($foreground, disabled-text);
-                            }
-                        }
-                    }
+                                a {
 
-                    .tags {
+                                    .priority {
 
-                        .hidden-tags {
+                                        .low {
+                                            color: asm-color($asm-green, 600);
+                                        }
 
-                            @if ($is-dark) {
-                                background: map-get($background, background);
-                            } @else {
-                                background: #EEEEEE;
+                                        .normal {
+                                            color: map-get($foreground, divider);
+                                        }
+
+                                        .high {
+                                            color: asm-color($asm-red, 600);
+                                        }
+                                    }
+
+                                    .tags {
+
+                                        .hidden-tags {
+
+                                            @if ($is-dark) {
+                                                background: map-get($background, background);
+                                            } @else {
+                                                background: #EEEEEE;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

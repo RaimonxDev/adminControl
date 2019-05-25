@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, forkJoin, Observable, of, throwError } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -245,6 +245,44 @@ export class TasksService
                    .patch('api/apps/tasks/task', {
                        id,
                        task
+                   })
+                   .pipe(
+                       tap((response: any) => {
+
+                           // Get the tasks
+                           const tasks = this._tasks.getValue();
+
+                           // Iterate through the tasks
+                           tasks.forEach((item, index, array) => {
+
+                               // Update the task
+                               if ( item.id === response.id )
+                               {
+                                   array[index] = response;
+                               }
+                           });
+
+                           // Execute the observables
+                           this._tasks.next(tasks);
+                       }),
+                       switchMap(() => {
+
+                           // Get the updated task
+                           return this.getTaskById(id);
+                       })
+                   );
+    }
+
+    /**
+     * Update task orders
+     *
+     * @param tasks
+     */
+    updateTaskOrders(tasks): Observable<any>
+    {
+        return this._httpClient
+                   .patch('api/apps/tasks/order', {
+                       tasks
                    });
     }
 }

@@ -1,58 +1,54 @@
-<div class="content-layout with-drawer with-inner-scroll">
+<div class="content-layout right-sidebar-fullheight-basic-inner-scroll">
 
-    <mat-drawer-container class="content-layout with-drawer with-inner-scroll"
-                          (backdropClick)="onBackdropClicked()">
+    <mat-drawer-container (backdropClick)="onBackdropClicked()">
 
         <!-- Drawer -->
         <mat-drawer [mode]="drawerMode"
                     [opened]="false"
                     [position]="'end'"
                     [disableClose]="true"
-                    #drawer>
+                    #matDrawer>
 
-            <div class="drawer-content">
-
-                <router-outlet></router-outlet>
-
-            </div>
+            <router-outlet></router-outlet>
 
         </mat-drawer>
 
-        <!-- Content -->
         <mat-drawer-content>
 
-            <div class="main-content">
+            <!-- Main -->
+            <div class="main">
 
                 <!-- Header -->
-                <div class="flex flex-no-shrink items-center mx-48">
+                <div class="header">
 
                     <!-- Title -->
-                    <div class="flex-1 mr-32">
+                    <div class="title">
 
-                        <div class="title-md">
-                            Tasks
-                        </div>
+                        <h2>Tasks</h2>
 
-                        <div class="text-secondary truncate font-semibold">
+                        <div class="remaining-tasks-count">
                             {{tasksCount.notCompleted}} remaining tasks
                         </div>
 
                     </div>
 
-                    <!-- Buttons -->
-                    <div>
+                    <!-- Main actions -->
+                    <div class="main-actions">
 
-                        <button class="mr-16"
-                                mat-raised-button
+                        <!-- Add task button -->
+                        <button class="add-task"
+                                mat-flat-button
                                 [color]="'primary'">
-                            <mat-icon class="icon-size-20 mr-8">add</mat-icon>
-                            <span class="mr-8">Add Task</span>
+                            <mat-icon>add</mat-icon>
+                            <span>Add Task</span>
                         </button>
 
-                        <button mat-raised-button
+                        <!-- Add section button -->
+                        <button class="add-section"
+                                mat-flat-button
                                 [color]="'accent'">
-                            <mat-icon class="icon-size-20 mr-8">add</mat-icon>
-                            <span class="mr-8">Add Section</span>
+                            <mat-icon>add</mat-icon>
+                            Add Section
                         </button>
 
                     </div>
@@ -62,53 +58,60 @@
                 <!-- Search & Filters -->
                 <div class="search-and-filters">
 
-                    <mat-form-field class="asm-mat-simplify asm-mat-dense asm-mat-no-label asm-mat-no-subscript w-full"
+                    <mat-form-field class="asm-mat-simplify asm-mat-dense asm-mat-no-label asm-mat-no-subscript"
                                     [appearance]="'outline'">
-                        <mat-icon matPrefix>
-                            search
-                        </mat-icon>
+                        <mat-icon matPrefix>search</mat-icon>
                         <input matInput
-                               placeholder="Search tasks">
+                               placeholder="Search tasks"
+                               (input)="onSearch($event)"
+                               #searchInput>
                     </mat-form-field>
 
                 </div>
 
                 <!-- Tasks list -->
-                <div class="tasks-list">
+                <div class="tasks-list"
+                     cdkDropList
+                     [cdkDropListData]="tasks"
+                     (cdkDropListDropped)="dropped($event)">
 
-                    <ng-container *ngFor="let task of tasks; trackBy: trackById">
+                    <ng-container *ngIf="filteredTasks && filteredTasks.length > 0; else noTasks">
 
+                        <!-- Task -->
                         <div class="task"
                              [class.completed]="task.completed"
-                             [ngClass]="'type-' + task.type">
+                             [ngClass]="'type-' + task.type"
+                             *ngFor="let task of filteredTasks; trackBy: trackById"
+                             cdkDrag
+                             [cdkDragDisabled]="!!searchInput.value">
 
+                            <!-- Task content -->
                             <div class="task-content">
 
-                                <div class="flex items-center"
-                                     *ngIf="task.type === 'task'">
-
-                                    <mat-icon class="drag-handle icon-size-18 text-hint mr-16">
-                                        drag_indicator
-                                    </mat-icon>
-
-                                    <button class="completed"
-                                            mat-icon-button>
-
-                                        <mat-icon class="icon-size-26"
-                                                  [color]="'primary'"
-                                                  *ngIf="task.completed">
-                                            check_circle
-                                        </mat-icon>
-
-                                        <mat-icon class="icon-size-26"
-                                                  *ngIf="!task.completed">
-                                            radio_button_unchecked
-                                        </mat-icon>
-
-                                    </button>
-
+                                <!-- Drag handle -->
+                                <div class="drag-handle"
+                                     cdkDragHandle>
+                                    <mat-icon>drag_indicator</mat-icon>
                                 </div>
 
+                                <!-- Complete task button -->
+                                <button class="complete-task"
+                                        *ngIf="task.type === 'task'"
+                                        (click)="toggleCompleted(task)"
+                                        mat-icon-button>
+
+                                    <mat-icon [color]="'primary'"
+                                              *ngIf="task.completed">
+                                        check_circle
+                                    </mat-icon>
+
+                                    <mat-icon *ngIf="!task.completed">
+                                        radio_button_unchecked
+                                    </mat-icon>
+
+                                </button>
+
+                                <!-- Task link -->
                                 <a [routerLink]="[task.id]">
 
                                     <div class="title">{{task.title}}</div>
@@ -117,21 +120,21 @@
                                          *ngIf="task.type === 'task'">
 
                                         <!-- Low -->
-                                        <mat-icon class="icon-size-18 text-green-600"
+                                        <mat-icon class="low"
                                                   *ngIf="task.priority === 0"
                                                   [title]="'Low'">
                                             arrow_downward
                                         </mat-icon>
 
                                         <!-- Normal -->
-                                        <mat-icon class="icon-size-18 text-hint"
+                                        <mat-icon class="normal"
                                                   *ngIf="task.priority === 1"
                                                   [title]="'Normal'">
                                             remove
                                         </mat-icon>
 
                                         <!-- High -->
-                                        <mat-icon class="icon-size-18 text-red-600"
+                                        <mat-icon class="high"
                                                   *ngIf="task.priority === 2"
                                                   [title]="'High'">
                                             arrow_upward
@@ -163,6 +166,13 @@
                         </div>
 
                     </ng-container>
+
+                    <ng-template #noTasks>
+                        <div class="no-tasks">
+                            <span *ngIf="!searchInput.value">There are no tasks!</span>
+                            <span *ngIf="searchInput.value">No tasks found for <b>'{{searchInput.value}}'</b></span>
+                        </div>
+                    </ng-template>
 
                 </div>
 
