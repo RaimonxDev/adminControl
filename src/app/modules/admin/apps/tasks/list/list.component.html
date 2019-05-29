@@ -142,7 +142,7 @@
 
                                     </div>
 
-                                    <!--<div class="tags"
+                                    <div class="tags"
                                          *ngIf="task.type === 'task'">
 
                                         <div class="tag"
@@ -154,10 +154,10 @@
                                         <div class="hidden-tags"
                                              *ngIf="organizeTags(task.tags).hidden"
                                              [matTooltip]="organizeTags(task.tags).hidden">
-                                            <mat-icon class="icon-size-16">more_horiz</mat-icon>
+                                            <span>+{{organizeTags(task.tags).hidden.split(',').length}}</span>
                                         </div>
 
-                                    </div>-->
+                                    </div>
 
                                 </a>
 

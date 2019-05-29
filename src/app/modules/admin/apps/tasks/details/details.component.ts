@@ -189,7 +189,10 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
         return this._tasksListComponent.matDrawer.close();
     }
 
-    openPanel(): void
+    /**
+     * Open add tag panel
+     */
+    openAddTagPanel(): void
     {
         // Create the overlay
         this._overlayRef = this._overlay.create({
@@ -242,6 +245,9 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
             {
                 // Detach it
                 this._overlayRef.detach();
+
+                // Reset the tag filter
+                this.filteredTags = this.tags;
             }
 
             // If template portal exists and attached...
