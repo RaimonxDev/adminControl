@@ -324,7 +324,6 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         // Create the overlay
         this._overlayRef = this._overlay.create({
             backdropClass   : '',
-            panelClass      : 'mailbox-info-details-panel',
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()

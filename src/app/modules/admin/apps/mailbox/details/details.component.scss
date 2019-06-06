@@ -393,6 +393,8 @@ mailbox-details {
 }
 
 .mailbox-info-details-panel {
+    display: flex;
+    padding: 16px 24px;
     max-width: 640px;
     border: 1px solid;
     border-radius: 6px;
@@ -401,36 +403,31 @@ mailbox-details {
     -webkit-overflow-scrolling: touch;
     @include asm-shadow(2);
 
-    .info-details-panel-content {
-        display: flex;
-        padding: 16px 24px;
+    table {
 
-        table {
+        tbody {
 
-            tbody {
+            tr {
 
-                tr {
+                td {
+                    vertical-align: top;
+                    padding-bottom: 6px;
 
-                    td {
-                        vertical-align: top;
-                        padding-bottom: 6px;
-
-                        &.title {
-                            font-weight: 500;
-                            text-align: right;
-                            padding-right: 8px;
-                        }
-
-                        &.detail {
-                            white-space: pre-wrap;
-                        }
+                    &.title {
+                        font-weight: 500;
+                        text-align: right;
+                        padding-right: 8px;
                     }
 
-                    &:last-child {
+                    &.detail {
+                        white-space: pre-wrap;
+                    }
+                }
 
-                        td {
-                            padding-bottom: 0;
-                        }
+                &:last-child {
+
+                    td {
+                        padding-bottom: 0;
                     }
                 }
             }
