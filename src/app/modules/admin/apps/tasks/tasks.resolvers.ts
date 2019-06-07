@@ -3,38 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
-
-@Injectable({
-    providedIn: 'root'
-})
-export class TasksMembersResolver implements Resolve<any>
-{
-    /**
-     * Constructor
-     *
-     * @param {TasksService} _tasksService
-     */
-    constructor(
-        private _tasksService: TasksService
-    )
-    {
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Resolver
-     *
-     * @param route
-     * @param state
-     */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
-    {
-        return this._tasksService.getMembers();
-    }
-}
+import { Tag, Task, TasksCount } from 'app/modules/admin/apps/tasks/tasks.type';
 
 @Injectable({
     providedIn: 'root'
@@ -62,7 +31,7 @@ export class TasksTagsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tag[]> | Promise<Tag[]> | Tag[]
     {
         return this._tasksService.getTags();
     }
@@ -94,7 +63,7 @@ export class TasksResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Task[]> | Promise<Task[]> | Task[]
     {
         return this._tasksService.getTasks();
     }
@@ -126,7 +95,7 @@ export class TasksCountResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<TasksCount> | Promise<TasksCount> | TasksCount
     {
         return this._tasksService.getTasksCount();
     }
@@ -160,7 +129,7 @@ export class TasksTaskResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Task> | Promise<Task> | Task
     {
         return this._tasksService.getTaskById(route.paramMap.get('id'))
                    .pipe(

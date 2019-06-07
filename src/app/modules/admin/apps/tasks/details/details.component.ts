@@ -9,9 +9,10 @@ import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, takeUntil, tap } from 'rxjs/operators';
 import * as _ from 'lodash';
+import * as moment from 'moment';
+import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksListComponent } from 'app/modules/admin/apps/tasks/list/list.component';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
-import { tagColors as tagColorsData } from 'app/modules/admin/apps/tasks/details/tag-colors';
 
 @Component({
     selector     : 'tasks-details',
@@ -21,22 +22,37 @@ import { tagColors as tagColorsData } from 'app/modules/admin/apps/tasks/details
 })
 export class TasksDetailsComponent implements OnInit, OnDestroy
 {
-    tagColors: string[];
-    tags: any[];
-    filteredTags: any[];
-    task: any;
+    tags: Tag[];
+    filteredTags: Tag[];
+    task: Task;
     taskForm: FormGroup;
 
     // Private
-    private _overlayRef: OverlayRef;
+    private _dueDatePanelOverlayRef: OverlayRef;
+    private _dueDatePanelTemplatePortal: TemplatePortal;
+    private _priorityPanelOverlayRef: OverlayRef;
+    private _priorityPanelTemplatePortal: TemplatePortal;
+    private _tagsPanelOverlayRef: OverlayRef;
     private _taskFormValueChangesSubscription: Subscription | null;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('addTagPanelOrigin', {static: false})
-    private _addTagPanelOrigin: MatButton;
+    @ViewChild('dueDatePanelOrigin', {static: false})
+    private _dueDatePanelOrigin: MatButton;
 
-    @ViewChild('addTagPanel', {static: false})
-    private _addTagPanel: TemplateRef<any>;
+    @ViewChild('dueDatePanel', {static: false})
+    private _dueDatePanel: TemplateRef<any>;
+
+    @ViewChild('priorityPanelOrigin', {static: false})
+    private _priorityPanelOrigin: MatButton;
+
+    @ViewChild('priorityPanel', {static: false})
+    private _priorityPanel: TemplateRef<any>;
+
+    @ViewChild('tagsPanelOrigin', {static: false})
+    private _tagsPanelOrigin: MatButton;
+
+    @ViewChild('tagsPanel', {static: false})
+    private _tagsPanel: TemplateRef<any>;
 
     /**
      * Constructor
@@ -61,9 +77,6 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.tagColors = tagColorsData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -80,17 +93,16 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
 
         // Create the task form
         this.taskForm = this._formBuilder.group({
-            id         : [''],
-            type       : [''],
-            title      : [''],
-            description: [''],
-            completed  : [false],
-            dueDate    : [''],
-            priority   : [0],
-            tags       : this._formBuilder.array([]),
-            assignedTo : this._formBuilder.array([]),
-            subTasks   : this._formBuilder.array([]),
-            order      : [0]
+            id        : [''],
+            type      : [''],
+            title     : [''],
+            notes     : [''],
+            completed : [false],
+            dueDate   : [null],
+            priority  : [0],
+            tags      : this._formBuilder.array([]),
+            subTasks  : this._formBuilder.array([]),
+            order     : [0]
         });
 
         // Get the tags
@@ -120,9 +132,8 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
                 // Patch values to the form
                 this.taskForm.patchValue(task);
 
-                // Manually fill the tags and assigned to arrays
+                // Manually fill the tags
                 this.taskForm.setControl('tags', this._formBuilder.array(this.task.tags || []));
-                this.taskForm.setControl('assignedTo', this._formBuilder.array(this.task.assignedTo || []));
 
                 // Manually fill the sub tasks
                 const subTasksFormArray = this.taskForm.get('subTasks') as FormArray;
@@ -170,10 +181,20 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
 
-        // Dispose the overlay if it's still on the DOM
-        if ( this._overlayRef )
+        // Dispose the overlays if they are still on the DOM
+        if ( this._dueDatePanelOverlayRef )
         {
-            this._overlayRef.dispose();
+            this._dueDatePanelOverlayRef.dispose();
+        }
+
+        if ( this._priorityPanelOverlayRef )
+        {
+            this._priorityPanelOverlayRef.dispose();
+        }
+
+        if ( this._tagsPanelOverlayRef )
+        {
+            this._tagsPanelOverlayRef.dispose();
         }
     }
 
@@ -190,61 +211,81 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Open add tag panel
+     * Toggle the completed status
      */
-    openAddTagPanel(): void
+    toggleCompleted(): void
+    {
+        // Get the form control for 'completed'
+        const completedFormControl = this.taskForm.get('completed');
+
+        // Toggle the completed status
+        completedFormControl.setValue(!completedFormControl.value);
+    }
+
+    /**
+     * Open tags panel
+     */
+    openTagsPanel(): void
     {
         // Create the overlay
-        this._overlayRef = this._overlay.create({
+        this._tagsPanelOverlayRef = this._overlay.create({
+            backdropClass   : '',
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._addTagPanelOrigin._elementRef.nativeElement)
+                                  .flexibleConnectedTo(this._tagsPanelOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
                                   .withPositions([
                                       {
                                           originX : 'start',
+                                          originY : 'top',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
                                           originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
                                           overlayX: 'start',
                                           overlayY: 'top'
                                       },
                                       {
                                           originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'bottom'
-                                      },
-                                      {
-                                          originX : 'end',
                                           originY : 'bottom',
-                                          overlayX: 'end',
+                                          overlayX: 'start',
                                           overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'bottom'
                                       }
                                   ])
         });
 
+        // Subscribe to the attachments observable
+        this._tagsPanelOverlayRef.attachments().subscribe(() => {
+
+            // Focus to the search input once the overlay has been attached
+            this._tagsPanelOverlayRef.overlayElement.querySelector('input').focus();
+        });
+
         // Create a portal from the template
-        const templatePortal = new TemplatePortal(this._addTagPanel, this._viewContainerRef);
+        const templatePortal = new TemplatePortal(this._tagsPanel, this._viewContainerRef);
 
         // Attach the portal to the overlay
-        this._overlayRef.attach(templatePortal);
+        this._tagsPanelOverlayRef.attach(templatePortal);
 
         // Subscribe to the backdrop click
-        this._overlayRef.backdropClick().subscribe(() => {
+        this._tagsPanelOverlayRef.backdropClick().subscribe(() => {
 
             // If overlay exists and attached...
-            if ( this._overlayRef && this._overlayRef.hasAttached() )
+            if ( this._tagsPanelOverlayRef && this._tagsPanelOverlayRef.hasAttached() )
             {
                 // Detach it
-                this._overlayRef.detach();
+                this._tagsPanelOverlayRef.detach();
 
                 // Reset the tag filter
                 this.filteredTags = this.tags;
@@ -274,6 +315,24 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     }
 
     /**
+     * Filter tags input key down event
+     *
+     * @param event
+     */
+    filterTagsInputKeyDown(event): void
+    {
+        // Enter
+        if ( event.key === 'Enter' )
+        {
+            // Create the tag
+            this.createTag(event.target.value);
+
+            // Clear the input
+            event.target.value = '';
+        }
+    }
+
+    /**
      * Create new tag
      *
      * @param title
@@ -281,8 +340,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     createTag(title): void
     {
         const tag = {
-            title,
-            color: 'blue'
+            title
         };
 
         // Create tag on the server
@@ -290,7 +348,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
             .subscribe((response) => {
 
                 // Update the tags manually until they are being refreshed automatically
-                this.tags.push(response);
+                this.tags.unshift(response);
                 this.filteredTags = this.tags;
 
                 // Add the tag to the task
@@ -309,7 +367,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
         const tagsFormArray = this.taskForm.get('tags') as FormArray;
 
         // Add the tag
-        tagsFormArray.push(this._formBuilder.control(tag.id));
+        tagsFormArray.insert(0, this._formBuilder.control(tag.id));
 
         // Update the task on the server
         this._tasksService.updateTask(this.task.id, {tags: this.task.tags}).subscribe();
@@ -351,41 +409,228 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Update the tag color
-     *
-     * @param id
-     * @param color
-     */
-    updateTagColor(id, color): void
-    {
-        // Update the tag on the server
-        this._tasksService.updateTag(id, {color}).subscribe();
-    }
-
-    /**
      * Should the create tag button be visible
      *
      * @param inputValue
      */
     shouldShowCreateTagButton(inputValue): boolean
     {
-        if ( inputValue === '' || this.tags.findIndex(tag => tag.title.toLowerCase() === inputValue.toLowerCase()) > -1 )
-        {
-            return false;
-        }
-
-        return true;
+        return !!!(inputValue === '' || this.tags.findIndex(tag => tag.title.toLowerCase() === inputValue.toLowerCase()) > -1);
     }
 
     /**
-     * Toggle the completed status
+     * Toggle notes
      */
-    toggleCompleted(): void
+    toggleNotes(): void
     {
-        // Get the completed form control
-        const completedFormControl = this.taskForm.get('completed');
+        // Get the form control for 'notes'
+        const notesFormControl = this.taskForm.get('notes');
 
-        // Toggle the completed status
-        completedFormControl.setValue(!completedFormControl.value);
+        // Toggle the notes
+        if ( notesFormControl.value === null )
+        {
+            notesFormControl.setValue('');
+        }
+        else
+        {
+            notesFormControl.setValue(null);
+        }
+    }
+
+    /**
+     * Open priority panel
+     */
+    openPriorityPanel(): void
+    {
+        // Create the overlay
+        this._priorityPanelOverlayRef = this._overlay.create({
+            backdropClass   : '',
+            hasBackdrop     : true,
+            scrollStrategy  : this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay.position()
+                                  .flexibleConnectedTo(this._priorityPanelOrigin._elementRef.nativeElement)
+                                  .withFlexibleDimensions()
+                                  .withViewportMargin(64)
+                                  .withLockedPosition()
+                                  .withPositions([
+                                      {
+                                          originX : 'start',
+                                          originY : 'top',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'start',
+                                          originY : 'bottom',
+                                          overlayX: 'start',
+                                          overlayY: 'top'
+                                      }
+                                  ])
+        });
+
+        // Subscribe to the attachments observable
+        this._priorityPanelOverlayRef.attachments().subscribe(() => {
+
+            // Focus to the search input once the overlay has been attached
+            this._priorityPanelOverlayRef.overlayElement.querySelector('input').focus();
+        });
+
+        // Create a portal from the template
+        this._priorityPanelTemplatePortal = new TemplatePortal(this._priorityPanel, this._viewContainerRef);
+
+        // Attach the portal to the overlay
+        this._priorityPanelOverlayRef.attach(this._priorityPanelTemplatePortal);
+
+        // Subscribe to the backdrop click
+        this._priorityPanelOverlayRef.backdropClick().subscribe(() => {
+            this.closePriorityPanel();
+        });
+    }
+
+    /**
+     * Close the priority panel if it's open
+     */
+    closePriorityPanel(): void
+    {
+        // If overlay exists and attached...
+        if ( this._priorityPanelOverlayRef && this._priorityPanelOverlayRef.hasAttached() )
+        {
+            // Detach it
+            this._priorityPanelOverlayRef.detach();
+        }
+
+        // If template portal exists and attached...
+        if ( this._priorityPanelTemplatePortal && this._priorityPanelTemplatePortal.isAttached )
+        {
+            // Detach it
+            this._priorityPanelTemplatePortal.detach();
+        }
+    }
+
+    /**
+     * Open due date panel
+     */
+    openDueDatePanel(): void
+    {
+        // Create the overlay
+        this._dueDatePanelOverlayRef = this._overlay.create({
+            backdropClass   : '',
+            hasBackdrop     : true,
+            scrollStrategy  : this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay.position()
+                                  .flexibleConnectedTo(this._dueDatePanelOrigin._elementRef.nativeElement)
+                                  .withFlexibleDimensions()
+                                  .withViewportMargin(64)
+                                  .withLockedPosition()
+                                  .withPositions([
+                                      {
+                                          originX : 'start',
+                                          originY : 'top',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'start',
+                                          originY : 'bottom',
+                                          overlayX: 'start',
+                                          overlayY: 'top'
+                                      }
+                                  ])
+        });
+
+        // Create a portal from the template
+        this._dueDatePanelTemplatePortal = new TemplatePortal(this._dueDatePanel, this._viewContainerRef);
+
+        // Attach the portal to the overlay
+        this._dueDatePanelOverlayRef.attach(this._dueDatePanelTemplatePortal);
+
+        // Subscribe to the backdrop click
+        this._dueDatePanelOverlayRef.backdropClick().subscribe(() => {
+            this.closeDueDatePanel();
+        });
+    }
+
+    /**
+     * Close the due date panel
+     */
+    closeDueDatePanel(): void
+    {
+        // If overlay exists and attached...
+        if ( this._dueDatePanelOverlayRef && this._dueDatePanelOverlayRef.hasAttached() )
+        {
+            // Detach it
+            this._dueDatePanelOverlayRef.detach();
+        }
+
+        // If template portal exists and attached...
+        if ( this._dueDatePanelTemplatePortal && this._dueDatePanelTemplatePortal.isAttached )
+        {
+            // Detach it
+            this._dueDatePanelTemplatePortal.detach();
+        }
+    }
+
+    /**
+     * Update the due date
+     *
+     * @param event
+     */
+    updateDueDate(event: moment.Moment): void
+    {
+        // Get the form control for 'dueDate'
+        const dueDateFormControl = this.taskForm.get('dueDate');
+
+        // Update it
+        dueDateFormControl.setValue(event.toISOString());
+
+        // Close the due date panel...
+        this.closeDueDatePanel();
+    }
+
+    /**
+     * Remove the due date
+     */
+    removeDueDate(): void
+    {
+        // Get the form control for 'dueDate'
+        const dueDateFormControl = this.taskForm.get('dueDate');
+
+        // Clear the due date
+        dueDateFormControl.setValue(null);
+
+        // Close the due date panel...
+        this.closeDueDatePanel();
+    }
+
+    /**
+     * Check if the task is overdue or not
+     */
+    isOverdue(): boolean
+    {
+        return moment(this.task.dueDate, moment.ISO_8601).isBefore(moment(), 'days');
     }
 }

@@ -184,24 +184,15 @@ tasks-list {
                                 display: flex;
                                 flex: 1 1 auto;
                                 align-items: center;
-                                justify-content: space-between;
                                 min-width: 0;
                                 height: 100%;
 
                                 .title {
+                                    flex: 1 1 auto;
                                     margin-right: 8px;
                                     white-space: nowrap;
                                     overflow: hidden;
                                     text-overflow: ellipsis;
-                                }
-
-                                .priority {
-
-                                    .low,
-                                    .normal,
-                                    .high {
-                                        @include asm-icon-size(18);
-                                    }
                                 }
 
                                 .tags {
@@ -221,6 +212,7 @@ tasks-list {
                                         border-radius: 8px;
                                         font-size: 11px;
                                         font-weight: bold;
+                                        line-height: 1;
                                         white-space: nowrap;
                                         text-transform: uppercase;
 
@@ -229,13 +221,19 @@ tasks-list {
                                         }
                                     }
 
-                                    .hidden-tags {
-                                        display: inline-flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        width: 32px;
-                                        height: 16px;
-                                        border-radius: 8px;
+                                    + .priority {
+                                        margin-left: 16px;
+                                    }
+                                }
+
+                                .priority {
+                                    width: 18px;
+                                    height: 18px;
+
+                                    .low,
+                                    .normal,
+                                    .high {
+                                        @include asm-icon-size(16);
                                     }
                                 }
                             }
@@ -339,7 +337,8 @@ tasks-list {
                                 }
                             }
 
-                            &:hover {
+                            &:hover,
+                            &.selected {
 
                                 &.type-task {
 
@@ -360,6 +359,19 @@ tasks-list {
 
                                 a {
 
+                                    .tags {
+
+                                        .tag {
+                                            color: map-get($foreground, secondary-text);
+
+                                            @if ($is-dark) {
+                                                background: map-get($background, background);
+                                            } @else {
+                                                background: #EEEEEE;
+                                            }
+                                        }
+                                    }
+
                                     .priority {
 
                                         .low {
@@ -372,18 +384,6 @@ tasks-list {
 
                                         .high {
                                             color: asm-color($asm-red, 600);
-                                        }
-                                    }
-
-                                    .tags {
-
-                                        .hidden-tags {
-
-                                            @if ($is-dark) {
-                                                background: map-get($background, background);
-                                            } @else {
-                                                background: #EEEEEE;
-                                            }
                                         }
                                     }
                                 }

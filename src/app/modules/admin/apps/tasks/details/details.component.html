@@ -1,185 +1,287 @@
 <form [formGroup]="taskForm">
 
-    <div class="flex flex-no-shrink items-center justify-between">
+    <div class="task-details">
 
-        <!-- MARK AS .... BUTTON -->
-        <button class="mark-as-button"
-                mat-button
-                (click)="toggleCompleted()">
+        <div class="header">
 
-            <!-- MARK AS COMPLETE -->
-            <ng-container *ngIf="!taskForm.get('completed').value">
-                <mat-icon class="icon-size-20 mr-8">
-                    radio_button_unchecked
-                </mat-icon>
-                <span>MARK AS COMPLETE</span>
-            </ng-container>
+            <!-- Mark as ... button -->
+            <button class="mark-as-button"
+                    mat-button
+                    (click)="toggleCompleted()">
 
-            <!-- MARK AS NOT COMPLETE -->
-            <ng-container *ngIf="taskForm.get('completed').value">
-                <mat-icon class="icon-size-20 mr-8"
-                          [color]="'primary'">
-                    check_circle
-                </mat-icon>
-                <span>MARK AS NOT COMPLETE</span>
-            </ng-container>
+                <!-- Mark as complete -->
+                <span class="complete"
+                      *ngIf="!taskForm.get('completed').value">
+                    <mat-icon>radio_button_unchecked</mat-icon>
+                    <span>MARK AS COMPLETE</span>
+                </span>
 
-        </button>
+                <!-- Mark as incomplete -->
+                <span class="incomplete"
+                      *ngIf="taskForm.get('completed').value">
+                    <mat-icon [color]="'primary'">check_circle</mat-icon>
+                    <span>MARK AS INCOMPLETE</span>
+                </span>
 
-        <!-- CLOSE BUTTON -->
-        <button mat-icon-button
-                [routerLink]="['../']">
-            <mat-icon>close</mat-icon>
-        </button>
+            </button>
 
-    </div>
+            <!-- Close button -->
+            <button mat-icon-button
+                    [routerLink]="['../']">
+                <mat-icon>close</mat-icon>
+            </button>
 
-    <div class="divider mx-16 mt-24 mb-8"></div>
+        </div>
 
-    <!-- TITLE -->
-    <div class="title">
-        <mat-form-field class="asm-mat-simplify"
-                        [appearance]="'standard'">
-            <textarea matInput
-                      cdkTextareaAutosize
-                      [formControlName]="'title'"
-                      [placeholder]="'Task title'"></textarea>
-        </mat-form-field>
-    </div>
+        <mat-divider></mat-divider>
 
-    <div class="tags">
+        <!-- Title -->
+        <div class="title">
+            <mat-form-field class="asm-mat-simplify asm-mat-no-subscript asm-mat-no-label"
+                            [appearance]="'standard'">
+                <textarea matInput
+                          cdkTextareaAutosize
+                          [formControlName]="'title'"
+                          [placeholder]="'Task title'"></textarea>
+            </mat-form-field>
+        </div>
 
-        <!-- TAG WITH COLOR SELECTOR -->
-        <mat-select class="tag-wrapper"
-                    *ngFor="let tag of (task.tags | lookUpBy:'id':tags)"
-                    (valueChange)="updateTagColor(tag.id, $event)"
-                    [panelClass]="'tasks-details-tag-color-select-panel'"
-                    [value]="tag.color"
-                    [disableOptionCentering]="true">
-            <mat-select-trigger>
-                <div class="tag"
-                     [ngClass]="['text-' + tag.color, 'bg-' + tag.color + '-50']">
-                    <span class="tag-title">{{tag.title}}</span>
-                    <button class="tag-remove-button"
-                            mat-icon-button
-                            (click)="removeTag(tag)">
-                        <mat-icon class="icon-size-14"
-                                  [ngClass]="'text-' + tag.color">
-                            close
-                        </mat-icon>
-                    </button>
-                </div>
-            </mat-select-trigger>
-            <div class="color-box-title">Change the tag color</div>
-            <div class="color-box-container">
-                <mat-option *ngFor="let color of tagColors"
-                            [value]="color"
-                            #matOption="matOption">
-                    <mat-icon class="icon-size-20"
-                              [ngClass]="color"
-                              *ngIf="matOption.selected">
-                        check
+        <!-- Tags -->
+        <div class="tags"
+             *ngIf="task.tags.length > 0">
+
+            <div class="tag"
+                 *ngFor="let tag of (task.tags | lookUpBy:'id':tags)">
+                <span class="tag-title">{{tag.title}}</span>
+            </div>
+
+        </div>
+
+        <!-- Details -->
+        <div class="details">
+
+            <!-- Priority -->
+            <div class="priority">
+
+                <div class="priority-icon">
+                    <mat-icon class="low"
+                              *ngIf="task.priority === 0">
+                        arrow_downward
                     </mat-icon>
-                    <span class="color-box"
-                          [ngClass]="color"></span>
-                </mat-option>
-            </div>
-        </mat-select>
-
-        <!-- ADD TAG BUTTON -->
-        <button class="add-tag"
-                mat-icon-button
-                (click)="openAddTagPanel()"
-                #addTagPanelOrigin>
-            <mat-icon class="icon-size-16 mr-4">add</mat-icon>
-            <span class="text-secondary">ADD</span>
-        </button>
-
-        <!-- ADD TAG PANEL -->
-        <ng-template #addTagPanel>
-
-            <div class="tasks-details-add-tag-panel">
-
-                <div class="new-tag">
-                    <input type="text"
-                           placeholder="Enter tag name"
-                           (input)="filterTags($event)"
-                           [maxLength]="50"
-                           #newTagInput>
-                    <mat-icon class="icon-size-16">search</mat-icon>
+                    <mat-icon class="normal"
+                              *ngIf="task.priority === 1">
+                        remove
+                    </mat-icon>
+                    <mat-icon class="high"
+                              *ngIf="task.priority === 2">
+                        arrow_upward
+                    </mat-icon>
                 </div>
 
-                <div class="available-tags">
-
-                    <mat-checkbox *ngFor="let tag of filteredTags"
-                                  (change)="toggleTag(tag, $event)"
-                                  [color]="'primary'"
-                                  [checked]="task.tags.includes(tag.id)"
-                                  [disableRipple]="true">
-                        {{tag.title}}
-                    </mat-checkbox>
-
-                </div>
-
-                <div class="create-tag"
-                     *ngIf="shouldShowCreateTagButton(newTagInput.value)"
-                     (click)="createTag(newTagInput.value); newTagInput.value = ''"
-                     matRipple>
-                    <mat-icon class="icon-size-18 mr-4">add</mat-icon>
-                    <div>Create "<b>{{newTagInput.value}}</b>"</div>
+                <div class="priority-content">
+                    <div class="priority-title">Priority</div>
+                    <div class="priority-label">
+                        <span class="low"
+                              *ngIf="task.priority === 0">
+                            Low
+                        </span>
+                        <span class="normal"
+                              *ngIf="task.priority === 1">
+                            Normal
+                        </span>
+                        <span class="high"
+                              *ngIf="task.priority === 2">
+                            High
+                        </span>
+                    </div>
                 </div>
 
             </div>
 
-        </ng-template>
+            <!-- Due date -->
+            <div class="due-date"
+                 *ngIf="task.dueDate"
+                 [ngClass]="{'overdue': isOverdue()}">
+
+                <mat-icon class="due-date-icon">today</mat-icon>
+
+                <div class="due-date-content">
+                    <div class="due-date-title">Due date</div>
+                    <div class="due-date-label">
+                        {{task.dueDate | date:'longDate'}}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Notes -->
+        <div class="notes"
+             *ngIf="task.notes !== null">
+
+            <mat-form-field class="asm-mat-simplify asm-mat-no-subscript asm-mat-no-label"
+                            [appearance]="'standard'">
+                <textarea matInput
+                          cdkTextareaAutosize
+                          [formControlName]="'notes'"
+                          [placeholder]="'Type here to add notes'"></textarea>
+            </mat-form-field>
+
+        </div>
 
     </div>
 
-    <!-- DESCRIPTION -->
-    <div class="description">
-        <mat-form-field class="asm-mat-simplify"
-                        [appearance]="'standard'">
-            <textarea matInput
-                      cdkTextareaAutosize
-                      [formControlName]="'description'"
-                      [placeholder]="'Task description'"></textarea>
-        </mat-form-field>
+    <div class="task-actions">
+
+        <!-- Add / Change tags -->
+        <div class="add-change-tags">
+
+            <button mat-icon-button
+                    [matTooltip]="task.tags.length > 0 ? 'Change tags' : 'Add tag'"
+                    [matTooltipPosition]="'before'"
+                    (click)="openTagsPanel()"
+                    #tagsPanelOrigin>
+                <mat-icon>label_outline</mat-icon>
+            </button>
+
+            <!-- Tags panel -->
+            <ng-template #tagsPanel>
+
+                <div class="tasks-details-tags-panel">
+
+                    <div class="new-tag">
+                        <mat-icon>search</mat-icon>
+                        <input type="text"
+                               placeholder="Enter tag name"
+                               (input)="filterTags($event)"
+                               (keydown)="filterTagsInputKeyDown($event)"
+                               [maxLength]="50"
+                               #newTagInput>
+                    </div>
+
+                    <div class="available-tags">
+
+                        <mat-checkbox *ngFor="let tag of filteredTags"
+                                      (change)="toggleTag(tag, $event)"
+                                      [color]="'primary'"
+                                      [checked]="task.tags.includes(tag.id)">
+                            {{tag.title}}
+                        </mat-checkbox>
+
+                    </div>
+
+                    <div class="create-tag"
+                         *ngIf="shouldShowCreateTagButton(newTagInput.value)"
+                         (click)="createTag(newTagInput.value); newTagInput.value = ''"
+                         matRipple>
+                        <mat-icon>add</mat-icon>
+                        <div>Create "<b>{{newTagInput.value}}</b>"</div>
+                    </div>
+
+                </div>
+
+            </ng-template>
+
+        </div>
+
+        <!-- Priority -->
+        <div class="change-priority">
+
+            <button mat-icon-button
+                    [matTooltip]="'Change priority'"
+                    [matTooltipPosition]="'before'"
+                    (click)="openPriorityPanel()"
+                    #priorityPanelOrigin>
+                <mat-icon>error_outline</mat-icon>
+            </button>
+
+            <!-- Priority panel -->
+            <ng-template #priorityPanel>
+
+                <div class="tasks-details-priority-panel">
+
+                    <mat-radio-group [color]="'primary'"
+                                     [formControlName]="'priority'"
+                                     (change)="closePriorityPanel()">
+
+                        <mat-radio-button class="low"
+                                          [value]="0">
+                            <span>Low</span>
+                            <mat-icon>arrow_downward</mat-icon>
+                        </mat-radio-button>
+
+                        <mat-radio-button class="normal"
+                                          [value]="1">
+                            <span>Normal</span>
+                            <mat-icon>remove</mat-icon>
+                        </mat-radio-button>
+
+                        <mat-radio-button class="high"
+                                          [value]="2">
+                            <span>High</span>
+                            <mat-icon>arrow_upward</mat-icon>
+                        </mat-radio-button>
+
+                    </mat-radio-group>
+
+                </div>
+
+            </ng-template>
+
+        </div>
+
+        <!-- Due date -->
+        <div class="add-change-due-date">
+
+            <button mat-icon-button
+                    [matTooltip]="task.dueDate ? 'Change due date' : 'Add due date'"
+                    [matTooltipPosition]="'before'"
+                    (click)="openDueDatePanel()"
+                    #dueDatePanelOrigin>
+                <mat-icon>today</mat-icon>
+            </button>
+
+            <!-- Due date panel -->
+            <ng-template #dueDatePanel>
+
+                <div class="tasks-details-due-date-panel">
+
+                    <mat-calendar [selected]="taskForm.get('dueDate').value"
+                                  [startAt]="taskForm.get('dueDate').value"
+                                  (selectedChange)="updateDueDate($event)"></mat-calendar>
+
+                    <button mat-stroked-button
+                            *ngIf="taskForm.get('dueDate').value"
+                            (click)="removeDueDate()">
+                        <mat-icon>remove_circle_outline</mat-icon>
+                        Remove due date
+                    </button>
+
+                </div>
+
+            </ng-template>
+
+        </div>
+
+        <!-- Toggle notes -->
+        <div class="toggle-notes">
+            <button mat-icon-button
+                    [matTooltip]="task.notes === null ? 'Add notes' : 'Remove notes'"
+                    [matTooltipPosition]="'before'"
+                    (click)="toggleNotes()">
+                <mat-icon>notes</mat-icon>
+            </button>
+            <mat-icon class="add"
+                      *ngIf="task.notes === null">
+                add
+            </mat-icon>
+            <mat-icon class="remove"
+                      *ngIf="task.notes !== null">
+                remove
+            </mat-icon>
+        </div>
+
     </div>
-
-    <div class="divider mx-16 mt-8 mb-24"></div>
-
-    <!-- DUE DATE & PRIORITY -->
-    <div class="due-priority">
-
-        <mat-form-field class="due-date asm-mat-simplify"
-                        [appearance]="'standard'">
-            <mat-label>Due date</mat-label>
-            <input matInput
-                   [formControlName]="'dueDate'"
-                   [matDatepicker]="dueDatePicker">
-            <mat-datepicker-toggle matSuffix
-                                   [for]="dueDatePicker">
-                <mat-icon class="icon-size-24"
-                          matDatepickerToggleIcon>
-                    arrow_drop_down
-                </mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #dueDatePicker></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field class="priority asm-mat-simplify"
-                        [appearance]="'standard'">
-            <mat-label>Priority</mat-label>
-            <mat-select [formControlName]="'priority'">
-                <mat-option [value]="0">Low</mat-option>
-                <mat-option [value]="1">Normal</mat-option>
-                <mat-option [value]="2">High</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-    </div>
-
-    <div class="divider mx-16 mt-8 mb-24"></div>
-
 
 </form>

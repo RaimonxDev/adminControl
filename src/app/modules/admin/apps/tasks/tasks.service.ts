@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, forkJoin, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
+import { Tag, Task, TasksCount } from 'app/modules/admin/apps/tasks/tasks.type';
 
 @Injectable({
     providedIn: 'root'
@@ -9,11 +10,10 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 export class TasksService
 {
     // Observables
-    private _members: BehaviorSubject<any>;
-    private _tags: BehaviorSubject<any>;
-    private _task: BehaviorSubject<any>;
-    private _tasks: BehaviorSubject<any>;
-    private _tasksCount: BehaviorSubject<any>;
+    private _tags: BehaviorSubject<Tag[] | null>;
+    private _task: BehaviorSubject<Task | null>;
+    private _tasks: BehaviorSubject<Task[] | null>;
+    private _tasksCount: BehaviorSubject<TasksCount | null>;
 
     /**
      * Constructor
@@ -25,7 +25,6 @@ export class TasksService
     )
     {
         // Set the private defaults
-        this._members = new BehaviorSubject(null);
         this._tags = new BehaviorSubject(null);
         this._task = new BehaviorSubject(null);
         this._tasks = new BehaviorSubject(null);
@@ -35,14 +34,6 @@ export class TasksService
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Getter for members
-     */
-    get members$(): Observable<any>
-    {
-        return this._members.asObservable();
-    }
 
     /**
      * Getter for tags
@@ -81,24 +72,12 @@ export class TasksService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Get members
-     */
-    getMembers(): Observable<any>
-    {
-        return this._httpClient
-                   .get('api/apps/tasks/members')
-                   .pipe(tap((response: any) => {
-                       this._members.next(response);
-                   }));
-    }
-
-    /**
      * Get tags
      */
-    getTags(): Observable<any>
+    getTags(): Observable<Tag[]>
     {
         return this._httpClient
-                   .get('api/apps/tasks/tags')
+                   .get<Tag[]>('api/apps/tasks/tags')
                    .pipe(tap((response: any) => {
                        this._tags.next(response);
                    }));
@@ -109,10 +88,10 @@ export class TasksService
      *
      * @param tag
      */
-    createTag(tag): Observable<any>
+    createTag(tag): Observable<Tag>
     {
         return this._httpClient
-                   .put('api/apps/tasks/tag', {tag})
+                   .put<Tag>('api/apps/tasks/tag', {tag})
                    .pipe(map((response) => {
                        this.getTags().subscribe();
                        return response;
@@ -125,10 +104,10 @@ export class TasksService
      * @param id
      * @param tag
      */
-    updateTag(id, tag): Observable<any>
+    updateTag(id, tag): Observable<Tag>
     {
         return this._httpClient
-                   .patch('api/apps/tasks/tag', {
+                   .patch<Tag>('api/apps/tasks/tag', {
                        id,
                        tag
                    })
@@ -141,10 +120,10 @@ export class TasksService
     /**
      * Get tasks
      */
-    getTasks(): Observable<any>
+    getTasks(): Observable<Task[]>
     {
         return this._httpClient
-                   .get('api/apps/tasks/all')
+                   .get<Task[]>('api/apps/tasks/all')
                    .pipe(tap((response: any) => {
                        this._tasks.next(response);
                    }));
@@ -153,10 +132,10 @@ export class TasksService
     /**
      * Get tasks count
      */
-    getTasksCount(): Observable<any>
+    getTasksCount(): Observable<TasksCount>
     {
         return this._httpClient
-                   .get('api/apps/tasks/count')
+                   .get<TasksCount>('api/apps/tasks/count')
                    .pipe(tap((response: any) => {
                        this._tasksCount.next(response);
                    }));
@@ -165,7 +144,7 @@ export class TasksService
     /**
      * Get task by id
      */
-    getTaskById(id): Observable<any>
+    getTaskById(id): Observable<Task>
     {
         // Get the task from tasks
         const taskItem = this._tasks.getValue().find(item => item.id === id);
@@ -176,12 +155,13 @@ export class TasksService
             // Update the task
             this._task.next(taskItem);
 
-            return of(true);
+            // Return the task
+            return of(taskItem);
         }
 
         // If the task is not loaded...
         return this._httpClient
-                   .get('api/apps/tasks/task', {params: {id}})
+                   .get<Task>('api/apps/tasks/task', {params: {id}})
                    .pipe(
                        map((response: any) => {
 
@@ -239,10 +219,10 @@ export class TasksService
      * @param id
      * @param task
      */
-    updateTask(id, task): Observable<any>
+    updateTask(id, task): Observable<Task>
     {
         return this._httpClient
-                   .patch('api/apps/tasks/task', {
+                   .patch<Task>('api/apps/tasks/task', {
                        id,
                        task
                    })
@@ -274,14 +254,14 @@ export class TasksService
     }
 
     /**
-     * Update task orders
+     * Update tasks orders
      *
      * @param tasks
      */
-    updateTaskOrders(tasks): Observable<any>
+    updateTasksOrders(tasks): Observable<Task[]>
     {
         return this._httpClient
-                   .patch('api/apps/tasks/order', {
+                   .patch<Task[]>('api/apps/tasks/order', {
                        tasks
                    });
     }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { members as membersData, tags as tagsData, tasks as tasksData } from '@mock-api/data/tasks/data';
+import { tags as tagsData, tasks as tasksData } from '@mock-api/data/tasks/data';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +10,6 @@ import { members as membersData, tags as tagsData, tasks as tasksData } from '@m
 export class MockTasksApi
 {
     // Private Readonly
-    private _members: any[];
     private _tags: any[];
     private _tasks: any[];
 
@@ -24,7 +23,6 @@ export class MockTasksApi
     )
     {
         // Set the data
-        this._members = membersData;
         this._tags = tagsData;
         this._tasks = tasksData;
     }
@@ -38,19 +36,6 @@ export class MockTasksApi
      */
     init(): void
     {
-        // -----------------------------------------------------------------------------------------------------
-        // @ Members - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/apps/tasks/members')
-            .reply(() => {
-
-                return [
-                    200,
-                    _.cloneDeep(this._members)
-                ];
-            });
-
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
         // -----------------------------------------------------------------------------------------------------
@@ -77,8 +62,8 @@ export class MockTasksApi
                 // Generate a new GUID
                 newTag.id = AsmMockApiUtils.guid();
 
-                // Push the new tag
-                this._tags.push(newTag);
+                // Unshift the new tag
+                this._tags.unshift(newTag);
 
                 return [
                     200,
@@ -174,8 +159,7 @@ export class MockTasksApi
                 tasks.forEach((task) => {
 
                     // Make the task lighter
-                    delete task.description;
-                    delete task.assignedTo;
+                    delete task.notes;
                     delete task.subtasks;
 
                     // Add the loaded completely status
@@ -189,7 +173,7 @@ export class MockTasksApi
             });
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Tasks Order - PATCH
+        // @ Tasks Orders - PATCH
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onPatch('api/apps/tasks/order')

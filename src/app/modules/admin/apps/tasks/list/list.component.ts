@@ -5,6 +5,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmLookUpByPipe, AsmMediaWatcherService } from '@assembly';
+import { Tag, Task, TasksCount } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
 @Component({
@@ -18,11 +19,12 @@ export class TasksListComponent implements OnInit, OnDestroy
     @ViewChild('matDrawer', {static: true})
     matDrawer: MatDrawer;
 
-    filteredTasks: any[];
+    filteredTasks: Task[];
     drawerMode: 'side' | 'over';
-    tags: any;
-    tasks: any[];
-    tasksCount: any;
+    selectedTask: Task;
+    tags: Tag[];
+    tasks: Task[];
+    tasksCount: TasksCount;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -68,6 +70,13 @@ export class TasksListComponent implements OnInit, OnDestroy
             .subscribe((tasks) => {
                 this.filteredTasks = tasks;
                 this.tasks = tasks;
+            });
+
+        // Get the task
+        this._tasksService.task$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((task) => {
+                this.selectedTask = task;
             });
 
         // Get the tasks count
@@ -138,13 +147,13 @@ export class TasksListComponent implements OnInit, OnDestroy
      *
      * @param event
      */
-    dropped(event: CdkDragDrop<string[]>): void
+    dropped(event: CdkDragDrop<Task[]>): void
     {
         // Move the item in the array
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
 
         // Save the new order
-        this._tasksService.updateTaskOrders(event.container.data).subscribe();
+        this._tasksService.updateTasksOrders(event.container.data).subscribe();
     }
 
     /**
@@ -165,7 +174,7 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Filter the results
         this.filteredTasks = this.tasks.filter((task) => {
-            return (task.title && task.title.toLowerCase().includes(term.toLowerCase())) || (task.description && task.description.toLowerCase().includes(term.toLowerCase()));
+            return (task.title && task.title.toLowerCase().includes(term.toLowerCase())) || (task.notes && task.notes.toLowerCase().includes(term.toLowerCase()));
         });
     }
 

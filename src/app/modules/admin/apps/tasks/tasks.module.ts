@@ -5,10 +5,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DATE_FORMATS, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -27,7 +29,7 @@ export const CUSTOM_DATE_FORMAT = {
     },
     display: {
         dateInput         : 'll',
-        monthYearLabel    : 'MMMM YYYY',
+        monthYearLabel    : 'MMM YYYY',
         dateA11yLabel     : 'LL',
         monthYearA11yLabel: 'MMMM YYYY'
     }
@@ -45,10 +47,12 @@ export const CUSTOM_DATE_FORMAT = {
         MatButtonModule,
         MatCheckboxModule,
         MatDatepickerModule,
+        MatDividerModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
         MatMenuModule,
+        MatRadioModule,
         MatRippleModule,
         MatSelectModule,
         MatSidenavModule,

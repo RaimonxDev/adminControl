@@ -3,188 +3,282 @@
 tasks-details {
     display: flex;
     flex: 1 1 auto;
-    flex-direction: column;
-    padding: 64px 40px;
-    overflow-y: auto;
+    height: 100%;
 
-    .divider {
-        border-bottom: 1px solid;
-    }
-
-    .mark-as-button {
+    form {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex: 1 1 auto;
+        height: 100%;
 
-        span {
-            display: inline-flex;
-            align-items: center;
-            font-weight: 700;
-        }
-    }
+        .task-details {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            padding: 64px 48px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
 
-    .title {
-        margin: 0 16px 8px 16px;
-
-        .mat-form-field {
-            width: 100%;
-
-            textarea {
-                font-size: 24px;
-                font-weight: 700;
-                line-height: 1.25;
-                overflow: hidden;
-            }
-        }
-    }
-
-    .tags {
-        display: flex;
-        flex: 0 0 auto;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: flex-start;
-        margin: 0 16px;
-
-        .tag-wrapper {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 20px;
-            width: auto;
-            margin: 0 8px 8px 0;
-
-            .mat-select-value {
-                max-width: none;
-
-                mat-select-trigger {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
-
-            .mat-select-arrow-wrapper {
-                display: none;
-            }
-
-            .tag {
+            .header {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                height: 20px;
-                padding: 0 0 0 10px;
-                border-radius: 10px;
+                justify-content: space-between;
+                margin: 0 -12px 0 -18px;
 
-                .tag-title {
-                    font-size: 11px;
-                    font-weight: 700;
-                    white-space: nowrap;
-                    text-transform: uppercase;
-                    margin-right: 2px;
-                }
+                .mark-as-button {
 
-                .tag-remove-button {
-                    width: 20px;
-                    height: 20px;
-                    line-height: 20px;
-
-                    .mat-button-wrapper {
+                    .complete,
+                    .incomplete {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        height: 100%;
+
+                        .mat-icon {
+                            margin-right: 8px;
+                            @include asm-icon-size(20);
+                        }
+
+                        span {
+                            display: inline-flex;
+                            align-items: center;
+                            font-weight: 700;
+                        }
+                    }
+                }
+
+                + .mat-divider {
+                    margin: 24px 0;
+                }
+            }
+
+            .title {
+
+                .mat-form-field {
+                    width: 100%;
+
+                    textarea {
+                        font-size: 24px;
+                        font-weight: 700;
+                        line-height: 1.25;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .tags {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                margin-top: 16px;
+
+                .tag {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 20px;
+                    min-height: 20px;
+                    line-height: 1 !important;
+                    padding: 0 12px;
+                    margin: 0 12px 12px 0;
+                    border-radius: 10px;
+
+                    .tag-title {
+                        font-size: 11px;
+                        font-weight: 700;
+                        white-space: nowrap;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .details {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                margin-top: 40px;
+
+                .priority {
+                    display: flex;
+                    align-items: center;
+                    margin: 0 48px 40px 0;
+
+                    .priority-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 12px;
+
+                        .mat-icon {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            @include asm-icon-size(18);
+                            width: 32px;
+                            height: 32px;
+                            min-width: 32px;
+                            min-height: 32px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .priority-content {
+                        font-weight: 500;
+                        line-height: normal;
+                        white-space: nowrap;
+
+                        .priority-title {
+                            margin-bottom: 1px;
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .due-date {
+                    display: flex;
+                    flex: 1 1 auto;
+                    align-items: center;
+                    margin-bottom: 40px;
+
+                    .due-date-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include asm-icon-size(18);
+                        width: 32px;
+                        height: 32px;
+                        min-width: 32px;
+                        min-height: 32px;
+                        margin-right: 12px;
+                        border-radius: 50%;
+                    }
+
+                    .due-date-content {
+                        font-weight: 500;
+                        line-height: normal;
+                        white-space: nowrap;
+
+                        .due-date-title {
+                            margin-bottom: 1px;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            .notes {
+                margin-bottom: 40px;
+
+                .mat-form-field {
+                    width: 100%;
+
+                    textarea {
+                        white-space: pre-line;
+                        line-height: 1.8;
+                        overflow: hidden;
                     }
                 }
             }
         }
 
-        .add-tag {
-            border-radius: 10px;
-            width: 64px;
-            height: 20px;
-            line-height: 1;
-            margin: 0 8px 8px 0;
+        .task-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+            min-width: 80px;
+            max-width: 80px;
+            padding: 64px 0;
 
-            .mat-button-wrapper {
+            > div {
+                position: relative;
+                margin-bottom: 24px;
 
-                span {
-                    font-size: 11px;
-                    font-weight: 700;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                &.add-change-due-date {
+
+                    .due-date-input {
+                        position: absolute;
+                        top: -100%;
+                        right: calc(100% + 4px);
+                        width: 100%;
+                        height: 100%;
+                        visibility: hidden;
+                        opacity: 0;
+                        pointer-events: none;
+                    }
+                }
+
+                &.toggle-notes {
+                    position: relative;
+
+                    .add,
+                    .remove {
+                        position: absolute;
+                        right: 2px;
+                        bottom: 2px;
+                        border-radius: 50%;
+                        pointer-events: none;
+                        @include asm-icon-size(14);
+                    }
+                }
+
+                .mat-icon {
+                    @include asm-icon-size(24);
                 }
             }
         }
     }
-
-    .description {
-        margin: 0 16px;
-
-        .mat-form-field {
-            width: 100%;
-
-            textarea {
-                white-space: pre-line;
-                line-height: 1.8;
-                overflow: hidden;
-            }
-        }
-    }
-
-    .due-priority {
-        display: flex;
-        align-items: center;
-        margin: 0 16px;
-
-        .due-date {
-            width: 128px;
-            margin-right: 48px;
-        }
-
-        .priority {
-            width: 80px;
-        }
-    }
 }
 
-.tasks-details-add-tag-panel {
+.tasks-details-tags-panel {
     min-width: 200px;
     max-width: 200px;
-    margin: 4px;
-    @include mat-elevation(6);
+    border-radius: 4px;
+    border: 1px solid;
+    @include asm-shadow(2);
 
     .new-tag {
         display: flex;
         align-items: center;
         margin: 16px;
 
+        .mat-icon {
+            @include asm-icon-size(16);
+        }
+
         input {
-            margin: 0 4px 0 0;
+            margin: 0 0 0 8px;
             border: none;
             padding: 4px 0;
         }
     }
 
     .available-tags {
-        max-height: 200px;
+        max-height: 256px;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        &:not(:empty) {
+            padding: 8px 0;
+        }
 
         .mat-checkbox {
             display: flex;
             align-items: center;
-            height: 24px;
-            min-height: 24px;
-            margin: 12px 16px;
-
-            &:first-child {
-                margin-top: 0;
-            }
+            height: 40px;
+            min-height: 40px;
 
             .mat-checkbox-layout {
                 align-items: center;
+                width: 100%;
                 height: 100%;
+                padding: 8px 16px;
 
-                .mat-checkbox-label {
-                    font-size: 13px;
+                .mat-checkbox-inner-container {
+                    margin: 0 8px 0 0
                 }
             }
         }
@@ -196,6 +290,12 @@ tasks-details {
         align-items: center;
         padding: 16px 16px 16px 12px;
         cursor: pointer;
+        line-height: 1;
+
+        .mat-icon {
+            margin-right: 8px;
+            @include asm-icon-size(18);
+        }
 
         div {
             width: 100%;
@@ -204,51 +304,60 @@ tasks-details {
     }
 }
 
-.tasks-details-tag-color-select-panel {
-    overflow: hidden !important;
-    max-height: none !important;
+.tasks-details-priority-panel {
+    min-width: 200px;
+    max-width: 200px;
+    border-radius: 4px;
+    border: 1px solid;
+    @include asm-shadow(2);
 
-    .color-box-title {
-        max-width: 192px;
-        min-width: 192px;
-        margin: 0 auto;
-        padding: 20px 4px 0 4px;
-        font-weight: 500;
-    }
-
-    .color-box-container {
+    .mat-radio-group {
         display: flex;
-        flex-wrap: wrap;
-        max-width: 192px;
-        margin: 16px auto 16px auto;
+        flex-direction: column;
+        padding: 8px 0;
 
-        .mat-option {
+        .mat-radio-button {
             display: flex;
-            width: 48px !important;
-            height: 48px !important;
-            padding: 0;
-            background: none !important;
+            align-items: center;
+            height: 40px;
+            min-height: 40px;
 
-            .mat-option-text {
-                position: relative;
-                width: 48px !important;
-                height: 48px !important;
+            .mat-radio-label {
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                padding: 8px 16px;
 
-                .mat-icon {
-                    position: absolute;
-                    top: 14px;
-                    left: 14px;
-                    margin: 0;
-                }
-
-                .color-box {
+                .mat-radio-label-content {
                     display: flex;
-                    width: 40px;
-                    height: 40px;
-                    margin: 4px;
-                    border-radius: 50%;
+                    align-items: center;
+                    flex: 1 1 auto;
+
+                    .mat-icon {
+                        @include asm-icon-size(18);
+                        margin-left: auto;
+                    }
                 }
             }
+        }
+    }
+}
+
+.tasks-details-due-date-panel {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    max-width: 320px;
+    border-radius: 4px;
+    border: 1px solid;
+    @include asm-shadow(2);
+
+    > .mat-stroked-button {
+        margin: 16px;
+
+        .mat-icon {
+            margin-right: 8px;
+            @include asm-icon-size(20);
         }
     }
 }
@@ -265,29 +374,147 @@ tasks-details {
     tasks-details {
         background: map-get($background, card);
 
-        .divider {
-            border-bottom-color: map-get($foreground, divider);
-        }
+        form {
 
-        .tags {
+            .task-details {
 
-            .add-tag {
+                .tags {
 
-                @if ($is-dark) {
-                    background: map-get($background, background);
-                } @else {
-                    background: #EEEEEE;
+                    .tag {
+                        color: map-get($foreground, secondary-text);
+
+                        @if ($is-dark) {
+                            background: map-get($background, background);
+                        } @else {
+                            background: #EEEEEE;
+                        }
+                    }
+
+                    .change-tags {
+                        color: map-get($foreground, secondary-text);
+
+                        @if ($is-dark) {
+                            background: map-get($background, background);
+                        } @else {
+                            background: #EEEEEE;
+                        }
+                    }
+                }
+
+                .priority {
+
+                    .priority-icon {
+
+                        .low {
+                            color: asm-color($asm-green, 600);
+                            background: asm-color($asm-green, 50);
+                        }
+
+                        .normal {
+                            color: asm-color($asm-grey, 400);
+                            background: asm-color($asm-grey, 100);
+                        }
+
+                        .high {
+                            color: asm-color($asm-red, 600);
+                            background: asm-color($asm-red, 50);
+                        }
+                    }
+
+                    .priority-content {
+
+                        .priority-title {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+                }
+
+                .due-date {
+
+                    .due-date-icon {
+                        color: asm-color($asm-green, 600);
+                        background: asm-color($asm-green, 50);
+                    }
+
+                    &.overdue {
+
+                        .due-date-icon {
+                            color: asm-color($asm-red, 500);
+                            background: asm-color($asm-red, 50);
+                        }
+                    }
+
+                    .due-date-content {
+
+                        .due-date-title {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+                }
+            }
+
+            .task-actions {
+                background: map-get($background, background);
+
+                .toggle-notes {
+
+                    .add,
+                    .remove {
+                        background: rgba(0, 0, 0, 0.12);
+                        color: map-get($foreground, icon);
+                    }
                 }
             }
         }
     }
 
-    // Add tag panel
-    .tasks-details-add-tag-panel {
+    .tasks-details-tags-panel {
         background: map-get($background, card);
+        border-color: map-get($foreground, divider);
+
+        .available-tags {
+            box-shadow: 0 -1px 0 0 map-get($foreground, divider);
+        }
 
         .create-tag {
             background: map-get($background, hover);
         }
+    }
+
+    .tasks-details-priority-panel {
+        background: map-get($background, card);
+        border-color: map-get($foreground, divider);
+
+        .mat-radio-group {
+
+            .mat-radio-button {
+
+                &.low {
+
+                    .mat-icon {
+                        color: asm-color($asm-green, 600);
+                    }
+                }
+
+                &.normal {
+
+                    .mat-icon {
+                        color: map-get($foreground, divider);
+                    }
+                }
+
+                &.high {
+
+                    .mat-icon {
+                        color: asm-color($asm-red, 600);
+                    }
+                }
+            }
+        }
+    }
+
+    .tasks-details-due-date-panel {
+        background: map-get($background, card);
+        border-color: map-get($foreground, divider);
     }
 }
