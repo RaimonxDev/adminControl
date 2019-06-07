@@ -20,14 +20,19 @@ export class AsmLookUpByPipe implements PipeTransform
      * @param property
      * @param source
      */
-    transform(value: string[], property: string, source: any[]): any
+    transform(value: string | string[], property: string, source: any[]): any
     {
         const transformedDestination = [];
 
-        value.forEach((item) => {
-            transformedDestination.push(source.filter(sourceItem => sourceItem[property] === item)[0]);
-        });
+        if ( Array.isArray(value) )
+        {
+            value.forEach((item) => {
+                transformedDestination.push(source.find(sourceItem => sourceItem[property] === item));
+            });
 
-        return transformedDestination;
+            return transformedDestination;
+        }
+
+        return source.find(sourceItem => sourceItem[property] === value);
     }
 }

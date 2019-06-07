@@ -34,7 +34,8 @@
 /// @access public
 /// @param {String} $elevation - The amount of the elevation that the element will have
 /// @param {Color} $color - Color of the shadow
+/// @param {Boolean} $important - Whether to add an !important tag to the shadow rule
 ///
-@mixin asm-shadow($elevation, $color: rgb(0, 0, 0)) {
-    box-shadow: #{_get_shadow($elevation, $color)};
+@mixin asm-shadow($elevation, $color: rgb(0, 0, 0), $important: false) {
+    box-shadow: #{_get_shadow($elevation, $color)} if($important, !important, null);
 }

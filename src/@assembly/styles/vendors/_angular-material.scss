@@ -94,6 +94,29 @@
             }
         }
     }
+
+    // Disables the floating label
+    &.asm-mat-no-label {
+
+        &.mat-form-field.mat-form-field-appearance-standard {
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0 !important;
+
+                .mat-form-field-flex {
+                    padding-top: 0 !important;
+
+                    .mat-form-field-infix {
+                        border-top: 0 !important;
+
+                        .mat-form-field-label-wrapper {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // ----------------------------------------------------
