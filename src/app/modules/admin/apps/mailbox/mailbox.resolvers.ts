@@ -165,47 +165,46 @@ export class MailboxMailsResolver implements Resolve<any>
         }
 
         // Fork join all the sources
-        return forkJoin(sources)
-            .pipe(
-                finalize(() => {
+        return forkJoin(sources).pipe(
+            finalize(() => {
 
-                    // Reset the mail every time mails list changes,
-                    // if there is no selected mail. This will ensure
-                    // that the mail will be reset while navigating
-                    // between the folders/filters/labels but it won't
-                    // reset on page reload if we are reading a mail.
+                // Reset the mail every time mails list changes,
+                // if there is no selected mail. This will ensure
+                // that the mail will be reset while navigating
+                // between the folders/filters/labels but it won't
+                // reset on page reload if we are reading a mail.
 
-                    // Try to get the current activated route
-                    let currentRoute = route;
-                    while ( currentRoute.firstChild )
-                    {
-                        currentRoute = currentRoute.firstChild;
-                    }
+                // Try to get the current activated route
+                let currentRoute = route;
+                while ( currentRoute.firstChild )
+                {
+                    currentRoute = currentRoute.firstChild;
+                }
 
-                    // Make sure there is no 'id' parameter on the current route
-                    if ( !currentRoute.paramMap.get('id') )
-                    {
-                        // Reset the mail
-                        this._mailboxService.resetMail().subscribe();
-                    }
-                }),
+                // Make sure there is no 'id' parameter on the current route
+                if ( !currentRoute.paramMap.get('id') )
+                {
+                    // Reset the mail
+                    this._mailboxService.resetMail().subscribe();
+                }
+            }),
 
-                // Error here means the requested page is not available
-                catchError((error) => {
+            // Error here means the requested page is not available
+            catchError((error) => {
 
-                    // Log the error
-                    console.error(error.message);
+                // Log the error
+                console.error(error.message);
 
-                    // Get the parent url and append the last possible page number to the parent url
-                    const url = state.url.split('/').slice(0, -1).join('/') + '/' + error.pagination.lastPage;
+                // Get the parent url and append the last possible page number to the parent url
+                const url = state.url.split('/').slice(0, -1).join('/') + '/' + error.pagination.lastPage;
 
-                    // Navigate to there
-                    this._router.navigateByUrl(url);
+                // Navigate to there
+                this._router.navigateByUrl(url);
 
-                    // Throw an error
-                    return throwError(error);
-                })
-            );
+                // Throw an error
+                return throwError(error);
+            })
+        );
     }
 }
 
@@ -239,25 +238,24 @@ export class MailboxMailResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        return this._mailboxService.getMailById(route.paramMap.get('id'))
-                   .pipe(
-                       // Error here means the requested mail is either
-                       // not available on the requested page or not
-                       // available at all
-                       catchError((error) => {
+        return this._mailboxService.getMailById(route.paramMap.get('id')).pipe(
+            // Error here means the requested mail is either
+            // not available on the requested page or not
+            // available at all
+            catchError((error) => {
 
-                           // Log the error
-                           console.error(error);
+                // Log the error
+                console.error(error);
 
-                           // Get the parent url
-                           const parentUrl = state.url.split('/').slice(0, -1).join('/');
+                // Get the parent url
+                const parentUrl = state.url.split('/').slice(0, -1).join('/');
 
-                           // Navigate to there
-                           this._router.navigateByUrl(parentUrl);
+                // Navigate to there
+                this._router.navigateByUrl(parentUrl);
 
-                           // Throw an error
-                           return throwError(error);
-                       })
-                   );
+                // Throw an error
+                return throwError(error);
+            })
+        );
     }
 }

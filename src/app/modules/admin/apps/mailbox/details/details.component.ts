@@ -154,15 +154,15 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      */
     toggleLabel(label): void
     {
-        let removed = false;
+        let deleted = false;
 
         // Update the mail object
         if ( this.mail.labels.includes(label.id) )
         {
-            // Set the removed
-            removed = true;
+            // Set the deleted
+            deleted = true;
 
-            // Remove the label
+            // Delete the label
             this.mail.labels.splice(this.mail.labels.indexOf(label.id), 1);
         }
         else
@@ -174,8 +174,8 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         // Update the mail on the server
         this._mailboxService.updateMail(this.mail.id, {labels: this.mail.labels}).subscribe();
 
-        // If the label was removed...
-        if ( removed )
+        // If the label was deleted...
+        if ( deleted )
         {
             // If the current activated route has a label parameter and it equals to the one we are removing...
             if ( this._activatedRoute.snapshot.paramMap.get('label') && this._activatedRoute.snapshot.paramMap.get('label') === label.slug )

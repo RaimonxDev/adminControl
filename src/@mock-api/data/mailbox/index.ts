@@ -250,15 +250,13 @@ export class MockMailboxApi
                 // Get the id
                 const id = request.params.get('id');
 
-                // Find the label and remove it
+                // Find the label and delete it
                 this._labels.forEach((item, index) => {
 
                     if ( item.id === id )
                     {
                         this._labels.splice(index, 1);
                     }
-
-                    return;
                 });
 
                 // Get all the mails that have the label
