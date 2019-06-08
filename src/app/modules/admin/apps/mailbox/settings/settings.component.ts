@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, take } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { labelColors as labelColorsData } from 'app/modules/admin/apps/mailbox/settings/label-colors';
 
@@ -51,11 +51,14 @@ export class MailboxSettingsComponent implements OnInit
 
         // Labels
         this._mailboxService.labels$
-            .pipe(take(1))
+            .pipe()
             .subscribe((labels) => {
 
                 // Get the labels
                 this.labels = labels;
+
+                // Clear the labels form array
+                (this.labelsForm.get('labels') as FormArray).clear();
 
                 // Iterate through the labels
                 labels.forEach((label) => {
@@ -75,10 +78,8 @@ export class MailboxSettingsComponent implements OnInit
 
         // Update labels when there is a value change
         this.labelsForm.get('labels').valueChanges
-            .pipe(
-                debounceTime(500)
-            )
-            .subscribe((value) => {
+            .pipe(debounceTime(500))
+            .subscribe(() => {
                 this.updateLabels();
             });
     }
@@ -93,23 +94,16 @@ export class MailboxSettingsComponent implements OnInit
     addLabel(): void
     {
         // Add label to the server
-        this._mailboxService.addLabel(this.labelsForm.get('newLabel').value).subscribe((addedLabel) => {
+        this._mailboxService.addLabel(this.labelsForm.get('newLabel').value)
+            .subscribe(() => {
 
-            // Push the new label to the labels form array
-            (this.labelsForm.get('labels') as FormArray).push(this._formBuilder.group({
-                id   : [addedLabel.id],
-                title: [addedLabel.title, Validators.required],
-                slug : [addedLabel.slug],
-                color: [addedLabel.color]
-            }));
-
-            // Reset the new label form
-            this.labelsForm.get('newLabel').markAsPristine();
-            this.labelsForm.get('newLabel').markAsUntouched();
-            this.labelsForm.get('newLabel.title').reset();
-            this.labelsForm.get('newLabel.title').clearValidators();
-            this.labelsForm.get('newLabel.title').updateValueAndValidity();
-        });
+                // Reset the new label form
+                this.labelsForm.get('newLabel').markAsPristine();
+                this.labelsForm.get('newLabel').markAsUntouched();
+                this.labelsForm.get('newLabel.title').reset();
+                this.labelsForm.get('newLabel.title').clearValidators();
+                this.labelsForm.get('newLabel.title').updateValueAndValidity();
+            });
     }
 
     /**
@@ -117,12 +111,6 @@ export class MailboxSettingsComponent implements OnInit
      */
     deleteLabel(id): void
     {
-        // Get the labels form array
-        const labelsFormArray = this.labelsForm.get('labels') as FormArray;
-
-        // Remove the label from the labels form array
-        labelsFormArray.removeAt(labelsFormArray.value.findIndex((label) => label.id === id));
-
         // Delete label on the server
         this._mailboxService.deleteLabel(id).subscribe();
     }

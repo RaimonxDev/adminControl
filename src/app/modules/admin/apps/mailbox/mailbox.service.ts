@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { map, mapTo, switchMap, take, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -261,7 +261,6 @@ export class MailboxService
 
                            if ( response.mails === null )
                            {
-
                                return throwError({
                                    message   : 'Requested page is not available!',
                                    pagination: response.pagination
@@ -354,13 +353,10 @@ export class MailboxService
     addLabel(label): Observable<any>
     {
         return this._httpClient
-                   .put('api/apps/mailbox/label', {
-                       label
-                   })
+                   .put('api/apps/mailbox/label', {label})
                    .pipe(
-                       map((response) => {
-                           this.getLabels().subscribe();
-                           return response;
+                       switchMap((response) => {
+                           return this.getLabels().pipe(mapTo(response));
                        })
                    );
     }
@@ -378,12 +374,9 @@ export class MailboxService
                        id,
                        label
                    })
-                   .pipe(
-                       map((response) => {
-                           this.getLabels().subscribe();
-                           return response;
-                       })
-                   );
+                   .pipe(switchMap((response) => {
+                       return this.getLabels().pipe(mapTo(response));
+                   }));
     }
 
     /**
@@ -395,15 +388,10 @@ export class MailboxService
     {
         return this._httpClient
                    .delete('api/apps/mailbox/label', {
-                       params: {
-                           id
-                       }
+                       params: {id}
                    })
-                   .pipe(
-                       map((response) => {
-                           this.getLabels().subscribe();
-                           return response;
-                       })
-                   );
+                   .pipe(switchMap((response) => {
+                       return this.getLabels().pipe(mapTo(response));
+                   }));
     }
 }
