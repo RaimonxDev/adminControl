@@ -382,7 +382,7 @@ export class MailboxService
                     // Update the labels
                     this._labels.next(labels);
 
-                    // Return the new label
+                    // Return the updated label
                     return updatedLabel;
                 })
             ))
@@ -401,7 +401,7 @@ export class MailboxService
             switchMap(labels => this._httpClient.delete('api/apps/mailbox/label', {params: {id}}).pipe(
                 map((isDeleted: any) => {
 
-                    // Find the index of the deletel label within the labels
+                    // Find the index of the deleted label within the labels
                     const index = labels.findIndex(item => item.id === id);
 
                     // Delete the label
