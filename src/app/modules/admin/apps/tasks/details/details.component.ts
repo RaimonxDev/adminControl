@@ -93,16 +93,15 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
 
         // Create the task form
         this.taskForm = this._formBuilder.group({
-            id        : [''],
-            type      : [''],
-            title     : [''],
-            notes     : [''],
-            completed : [false],
-            dueDate   : [null],
-            priority  : [0],
-            tags      : this._formBuilder.array([]),
-            subTasks  : this._formBuilder.array([]),
-            order     : [0]
+            id       : [''],
+            type     : [''],
+            title    : [''],
+            notes    : [''],
+            completed: [false],
+            dueDate  : [null],
+            priority : [0],
+            tags     : this._formBuilder.array([]),
+            order    : [0]
         });
 
         // Get the tags
@@ -129,28 +128,11 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
                 // Get the task
                 this.task = task;
 
-                // Patch values to the form
+                // Patch values to the form from the task
                 this.taskForm.patchValue(task);
 
                 // Manually fill the tags
                 this.taskForm.setControl('tags', this._formBuilder.array(this.task.tags || []));
-
-                // Manually fill the sub tasks
-                const subTasksFormArray = this.taskForm.get('subTasks') as FormArray;
-                subTasksFormArray.clear();
-
-                this.task.subTasks.forEach((subTask) => {
-
-                    // Create a sub task form group
-                    const subTaskFormGroup = this._formBuilder.group({
-                        id       : [subTask.id],
-                        title    : [subTask.title, Validators.required],
-                        completed: [subTask.completed]
-                    });
-
-                    // Add the sub task form group to the sub tasks form array
-                    (this.taskForm.get('subTasks') as FormArray).push(subTaskFormGroup);
-                });
 
                 // Update task when there is a value change
                 this._taskFormValueChangesSubscription =

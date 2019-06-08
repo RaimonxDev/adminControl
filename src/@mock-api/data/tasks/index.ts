@@ -160,7 +160,6 @@ export class MockTasksApi
 
                     // Make the task lighter
                     delete task.notes;
-                    delete task.subtasks;
 
                     // Add the loaded completely status
                     task.loadedCompletely = false;

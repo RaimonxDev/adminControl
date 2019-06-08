@@ -444,6 +444,14 @@ tasks-details {
                         }
                     }
 
+                    &.not-set {
+
+                        .due-date-icon {
+                            color: asm-color($asm-grey, 400);
+                            background: asm-color($asm-grey, 100);
+                        }
+                    }
+
                     .due-date-content {
 
                         .due-date-title {

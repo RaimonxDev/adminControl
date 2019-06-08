@@ -4,13 +4,6 @@ export interface Tag
     title: string;
 }
 
-export interface SubTask
-{
-    id: string;
-    title: string;
-    completed: boolean;
-}
-
 export interface Task
 {
     id: string;
@@ -21,9 +14,7 @@ export interface Task
     dueDate: string | null;
     priority: 1 | 2 | 3;
     tags: string[];
-    subTasks: SubTask[];
     order: number;
-
     loadedCompletely?: boolean;
 }
 

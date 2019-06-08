@@ -25,6 +25,108 @@ export const tags = [
         title: 'Discuss'
     }
 ];
+export const members = [
+    {
+        id    : '65f1c421-83c5-4cdf-99da-d97794328679',
+        name  : 'Angeline Vinson',
+        avatar: 'assets/images/avatars/female-01.jpg'
+    },
+    {
+        id    : '88a2a76c-0e6f-49da-b617-46d7c3b6e64d',
+        name  : 'Roseann Greer',
+        avatar: 'assets/images/avatars/female-02.jpg'
+    },
+    {
+        id    : '6ab7751e-6579-40af-9171-231c0fd6a993',
+        name  : 'Lorraine Barnett',
+        avatar: 'assets/images/avatars/female-03.jpg'
+    },
+    {
+        id    : '3e353312-6a9b-46af-adda-5061b06e806b',
+        name  : 'Middleton Bradford',
+        avatar: 'assets/images/avatars/male-01.jpg'
+    },
+    {
+        id    : '3a23baf7-2db8-4ef5-8d49-86d3e708dff5',
+        name  : 'Sue Hays',
+        avatar: 'assets/images/avatars/female-04.jpg'
+    },
+    {
+        id    : 'e62ab50e-90d3-4ed7-a911-093bb44d0c50',
+        name  : 'Keith Neal',
+        avatar: 'assets/images/avatars/male-02.jpg'
+    },
+    {
+        id    : '368aab1e-ebce-43ba-8925-4cf13937867b',
+        name  : 'Wilkins Gilmore',
+        avatar: 'assets/images/avatars/male-03.jpg'
+    },
+    {
+        id    : 'ef44b39b-3272-45f5-a15e-264c3b2d118e',
+        name  : 'Baldwin Stein',
+        avatar: 'assets/images/avatars/male-04.jpg'
+    },
+    {
+        id    : '7f5db993-ec36-412f-9db3-16d076a98807',
+        name  : 'Bobbie Cohen',
+        avatar: 'assets/images/avatars/female-05.jpg'
+    },
+    {
+        id    : 'e2c81627-a8a1-4bbc-9adc-ac4281e040d4',
+        name  : 'Melody Peters',
+        avatar: 'assets/images/avatars/female-06.jpg'
+    },
+    {
+        id    : 'a21ec32e-54ba-480b-afdc-d1cbe18a96fd',
+        name  : 'Marquez Ryan',
+        avatar: 'assets/images/avatars/male-05.jpg'
+    },
+    {
+        id    : '45e09584-1a54-40e6-8210-1de4d1c05593',
+        name  : 'Roberta Briggs',
+        avatar: 'assets/images/avatars/female-07.jpg'
+    },
+    {
+        id    : '6617b0a3-0ccd-44ea-af78-c6633115d683',
+        name  : 'Robbie Buckley',
+        avatar: 'assets/images/avatars/female-08.jpg'
+    },
+    {
+        id    : '271e6a06-0d37-433d-bc8d-607b12bcbed9',
+        name  : 'Garcia Whitney',
+        avatar: 'assets/images/avatars/male-06.jpg'
+    },
+    {
+        id    : '65e15136-5168-4655-8bbc-e3ad8a94bf67',
+        name  : 'Spencer Pate',
+        avatar: 'assets/images/avatars/male-07.jpg'
+    },
+    {
+        id    : '28dcda24-812d-4086-9638-b28bd85beecc',
+        name  : 'Monica Mcdaniel',
+        avatar: 'assets/images/avatars/female-09.jpg'
+    },
+    {
+        id    : '56a3e7ce-01da-43fc-ab9f-a8a39fa980de',
+        name  : 'Mcmillan Durham',
+        avatar: 'assets/images/avatars/male-08.jpg'
+    },
+    {
+        id    : '4d24cf48-a322-4d53-89cb-9140dfd5c6ba',
+        name  : 'Jasmine Hebert',
+        avatar: 'assets/images/avatars/female-10.jpg'
+    },
+    {
+        id    : 'b2e97a96-2f15-4e3d-aff5-4ddf2af924d4',
+        name  : 'Susanna Kline',
+        avatar: 'assets/images/avatars/female-11.jpg'
+    },
+    {
+        id    : '4678ad07-e057-48a9-a5d1-3cf98e722eeb',
+        name  : 'Suzette Singleton',
+        avatar: 'assets/images/avatars/female-12.jpg'
+    }
+];
 export const tasks = [
     {
         id        : 'f65d517a-6f69-4c88-81f5-416f47405ce1',
@@ -38,6 +140,7 @@ export const tasks = [
             '91658b8a-f382-4b0c-a53f-e9390351c2c5',
             '51483dd3-cb98-4400-9128-4bd66b455807'
         ],
+        assignedTo: null,
         subTasks  : [
             {
                 id       : '2768a969-a316-449b-bf82-93cff4252cbf',
@@ -61,6 +164,7 @@ export const tasks = [
         dueDate   : null,
         priority  : 1,
         tags      : [],
+        assignedTo: 'e2c81627-a8a1-4bbc-9adc-ac4281e040d4',
         subTasks  : [],
         order     : 1
     },
@@ -75,6 +179,7 @@ export const tasks = [
         tags      : [
             'd3ef4226-ef2c-43b0-a986-3e3e07f32799'
         ],
+        assignedTo: '88a2a76c-0e6f-49da-b617-46d7c3b6e64d',
         subTasks  : [
             {
                 id       : 'b9566b52-82cd-4d2a-b9b6-240c6b44e52b',
@@ -100,6 +205,7 @@ export const tasks = [
         tags      : [
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270'
         ],
+        assignedTo: null,
         subTasks  : [
             {
                 id       : '8e9644dc-0815-4258-8a08-4ce8d9912ec0',
@@ -135,6 +241,7 @@ export const tasks = [
         tags      : [
             '51483dd3-cb98-4400-9128-4bd66b455807'
         ],
+        assignedTo: '4678ad07-e057-48a9-a5d1-3cf98e722eeb',
         subTasks  : [
             {
                 id       : 'b076c673-7d76-43b5-aaca-d0c496f397e5',
@@ -160,6 +267,7 @@ export const tasks = [
         tags      : [
             'c6058d0d-a4b0-4453-986a-9d249ec230b1'
         ],
+        assignedTo: '6617b0a3-0ccd-44ea-af78-c6633115d683',
         subTasks  : [],
         order     : 5
     },
@@ -172,6 +280,7 @@ export const tasks = [
         dueDate   : '2017-10-12T12:03:55.559Z',
         priority  : 1,
         tags      : [],
+        assignedTo: '271e6a06-0d37-433d-bc8d-607b12bcbed9',
         subTasks  : [
             {
                 id       : '9cd8eba8-7c41-4230-9d80-f71f7ed1cfe9',
@@ -190,6 +299,7 @@ export const tasks = [
         dueDate   : '2022-06-05T19:41:12.501Z',
         priority  : 1,
         tags      : [],
+        assignedTo: '7f5db993-ec36-412f-9db3-16d076a98807',
         subTasks  : [
             {
                 id       : 'cdb08aa2-980d-48c6-b15c-7970775b7b5a',
@@ -226,6 +336,7 @@ export const tasks = [
             'c6058d0d-a4b0-4453-986a-9d249ec230b1',
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270'
         ],
+        assignedTo: 'a21ec32e-54ba-480b-afdc-d1cbe18a96fd',
         subTasks  : [
             {
                 id       : 'b1849778-a69c-46ad-8373-99aa6a655965',
@@ -252,6 +363,7 @@ export const tasks = [
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270',
             '2b884143-419a-45ca-a7f6-48f99f4e7798'
         ],
+        assignedTo: '3e353312-6a9b-46af-adda-5061b06e806b',
         subTasks  : [],
         order     : 9
     },
@@ -266,6 +378,7 @@ export const tasks = [
         tags      : [
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270'
         ],
+        assignedTo: '368aab1e-ebce-43ba-8925-4cf13937867b',
         subTasks  : [
             {
                 id       : '756ceee7-a9b2-45b6-9f22-5be974da7cf5',
@@ -286,6 +399,7 @@ export const tasks = [
         tags      : [
             '91658b8a-f382-4b0c-a53f-e9390351c2c5'
         ],
+        assignedTo: '271e6a06-0d37-433d-bc8d-607b12bcbed9',
         subTasks  : [
             {
                 id       : '35b06803-2019-4025-b642-841e44de7571',
@@ -328,6 +442,7 @@ export const tasks = [
             'd3ef4226-ef2c-43b0-a986-3e3e07f32799',
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270'
         ],
+        assignedTo: '4d24cf48-a322-4d53-89cb-9140dfd5c6ba',
         subTasks  : [
             {
                 id       : 'a72f756b-e1db-4492-96b9-93785400e8bb',
@@ -368,6 +483,7 @@ export const tasks = [
         tags      : [
             '2b884143-419a-45ca-a7f6-48f99f4e7798'
         ],
+        assignedTo: '3a23baf7-2db8-4ef5-8d49-86d3e708dff5',
         subTasks  : [
             {
                 id       : 'f1890ef6-89ed-47ca-a124-8305d7fe71fd',
@@ -410,6 +526,7 @@ export const tasks = [
             '2b884143-419a-45ca-a7f6-48f99f4e7798',
             '91658b8a-f382-4b0c-a53f-e9390351c2c5'
         ],
+        assignedTo: null,
         subTasks  : [
             {
                 id       : 'e5fece14-cc26-40df-9319-23568cf89662',
@@ -445,6 +562,7 @@ export const tasks = [
         tags      : [
             '2b884143-419a-45ca-a7f6-48f99f4e7798'
         ],
+        assignedTo: 'b2e97a96-2f15-4e3d-aff5-4ddf2af924d4',
         subTasks  : [
             {
                 id       : '2ef107fb-3c21-4801-861f-abaf4fd6def0',
@@ -475,6 +593,7 @@ export const tasks = [
         tags      : [
             '2b884143-419a-45ca-a7f6-48f99f4e7798'
         ],
+        assignedTo: '65e15136-5168-4655-8bbc-e3ad8a94bf67',
         subTasks  : [],
         order     : 16
     },
@@ -487,6 +606,7 @@ export const tasks = [
         dueDate   : '2020-03-09T19:42:06.383Z',
         priority  : 1,
         tags      : [],
+        assignedTo: '7f5db993-ec36-412f-9db3-16d076a98807',
         subTasks  : [
             {
                 id       : '9e710568-306f-47f9-b397-5634dc7a1a52',
@@ -520,6 +640,7 @@ export const tasks = [
             'c6058d0d-a4b0-4453-986a-9d249ec230b1',
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270'
         ],
+        assignedTo: '88a2a76c-0e6f-49da-b617-46d7c3b6e64d',
         subTasks  : [
             {
                 id       : 'f82708c3-2b58-4ac0-b58c-164c0804c631',
@@ -550,6 +671,7 @@ export const tasks = [
         tags      : [
             'd3ef4226-ef2c-43b0-a986-3e3e07f32799'
         ],
+        assignedTo: null,
         subTasks  : [
             {
                 id       : 'eaab24ed-cf9e-4ee7-b7ff-acd8f62f617a',
@@ -575,6 +697,7 @@ export const tasks = [
         tags      : [
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270'
         ],
+        assignedTo: '368aab1e-ebce-43ba-8925-4cf13937867b',
         subTasks  : [
             {
                 id       : '651a87c6-4376-42c4-9dfd-fad7525e7eb3',
@@ -593,6 +716,7 @@ export const tasks = [
         dueDate   : '2021-02-22T17:42:00.257Z',
         priority  : 2,
         tags      : [],
+        assignedTo: '65f1c421-83c5-4cdf-99da-d97794328679',
         subTasks  : [],
         order     : 21
     },
@@ -605,6 +729,7 @@ export const tasks = [
         dueDate   : '2018-08-04T19:32:53.652Z',
         priority  : 1,
         tags      : [],
+        assignedTo: 'e62ab50e-90d3-4ed7-a911-093bb44d0c50',
         subTasks  : [
             {
                 id       : 'c5a8b915-0b0f-4dd3-a1a3-e538fa191747',
@@ -628,6 +753,7 @@ export const tasks = [
         dueDate   : '2020-09-29T02:25:14.111Z',
         priority  : 1,
         tags      : [],
+        assignedTo: 'ef44b39b-3272-45f5-a15e-264c3b2d118e',
         subTasks  : [
             {
                 id       : '654c9b65-6f94-4ae7-bf11-27f979cc670e',
@@ -664,6 +790,7 @@ export const tasks = [
             'c6058d0d-a4b0-4453-986a-9d249ec230b1',
             'd3ef4226-ef2c-43b0-a986-3e3e07f32799'
         ],
+        assignedTo: '6617b0a3-0ccd-44ea-af78-c6633115d683',
         subTasks  : [
             {
                 id       : '56f3dccb-a72b-485c-94e7-fe68477023e2',
@@ -699,6 +826,7 @@ export const tasks = [
         tags      : [
             'a0bf42ca-c3a5-47be-8341-b9c0bb8ef270'
         ],
+        assignedTo: null,
         subTasks  : [],
         order     : 25
     },
@@ -711,6 +839,7 @@ export const tasks = [
         dueDate   : '2018-01-14T09:58:38.444Z',
         priority  : 1,
         tags      : [],
+        assignedTo: '56a3e7ce-01da-43fc-ab9f-a8a39fa980de',
         subTasks  : [
             {
                 id       : '3a4c4013-27f1-4164-8a64-e7bb4f1a63a9',
@@ -751,6 +880,7 @@ export const tasks = [
         tags      : [
             '91658b8a-f382-4b0c-a53f-e9390351c2c5'
         ],
+        assignedTo: '65f1c421-83c5-4cdf-99da-d97794328679',
         subTasks  : [
             {
                 id       : '4028671b-ef75-4b76-a03f-9f2bddadc618',
@@ -786,6 +916,7 @@ export const tasks = [
         tags      : [
             'd3ef4226-ef2c-43b0-a986-3e3e07f32799'
         ],
+        assignedTo: 'b2e97a96-2f15-4e3d-aff5-4ddf2af924d4',
         subTasks  : [
             {
                 id       : 'd2ffe439-2f80-4dce-84a7-d4ac5e17bbf3',
@@ -806,6 +937,7 @@ export const tasks = [
         tags      : [
             '51483dd3-cb98-4400-9128-4bd66b455807'
         ],
+        assignedTo: '7f5db993-ec36-412f-9db3-16d076a98807',
         subTasks  : [
             {
                 id       : '75f55d75-c835-4a6c-a2ae-7a42ae3a7c9d',

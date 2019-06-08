@@ -100,15 +100,15 @@
 
             <!-- Due date -->
             <div class="due-date"
-                 *ngIf="task.dueDate"
-                 [ngClass]="{'overdue': isOverdue()}">
+                 [ngClass]="{'overdue': isOverdue(), 'not-set': !task.dueDate}">
 
                 <mat-icon class="due-date-icon">today</mat-icon>
 
                 <div class="due-date-content">
                     <div class="due-date-title">Due date</div>
                     <div class="due-date-label">
-                        {{task.dueDate | date:'longDate'}}
+                        <span *ngIf="task.dueDate">{{task.dueDate | date:'longDate'}}</span>
+                        <span *ngIf="!task.dueDate">Not set</span>
                     </div>
                 </div>
 
