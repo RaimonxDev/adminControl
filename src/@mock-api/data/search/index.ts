@@ -82,7 +82,7 @@ export class MockSearchResultsApi
                         result.hint = result.link;
                         result.resultType = 'page';
 
-                        // Make the found chars bold
+                        // Mark the found chars
                         const re = new RegExp('(' + query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + ')', 'ig');
                         result.title = result.title.replace(re, '<mark>$1</mark>');
                     });

@@ -14,10 +14,9 @@ import { IconsService } from 'app/modules/admin/ui/icons/icons.service';
 export class IconsComponent implements OnInit
 {
     icons$: Observable<any>;
-    filteredIcons$: Observable<any>;
-
-    filterValue$: BehaviorSubject<any>;
     iconSizeInput: FormControl;
+    filteredIcons$: Observable<any>;
+    filterValue$: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -45,21 +44,20 @@ export class IconsComponent implements OnInit
         this.icons$ = this._iconsService.icons;
 
         // Create filtered icons
-        this.filteredIcons$ =
-            combineLatest(this.icons$, this.filterValue$)
-                .pipe(
-                    map(([icons, filterValue]) => {
+        this.filteredIcons$ = combineLatest(this.icons$, this.filterValue$)
+            .pipe(
+                map(([icons, filterValue]) => {
 
-                        // Filter the icons
-                        const filteredIcons = icons.list.filter(icon => icon.name.toLowerCase().includes(filterValue.toLowerCase()));
+                    // Filter the icons
+                    const filteredIcons = icons.list.filter(icon => icon.name.toLowerCase().includes(filterValue.toLowerCase()));
 
-                        // Update the list with the filtered icons
-                        return {
-                            ...icons,
-                            list: filteredIcons
-                        };
-                    })
-                );
+                    // Update the list with the filtered icons
+                    return {
+                        ...icons,
+                        list: filteredIcons
+                    };
+                })
+            );
     }
 
     // -----------------------------------------------------------------------------------------------------
