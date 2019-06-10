@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { map, switchMap, take, tap } from 'rxjs/operators';
-import { Tag, Task, TasksCount } from 'app/modules/admin/apps/tasks/tasks.type';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, mapTo, switchMap, take, tap } from 'rxjs/operators';
+import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TasksService
 {
-    // Observables
+    // Private
     private _tags: BehaviorSubject<Tag[] | null>;
     private _task: BehaviorSubject<Task | null>;
     private _tasks: BehaviorSubject<Task[] | null>;
-    private _tasksCount: BehaviorSubject<TasksCount | null>;
 
     /**
      * Constructor
@@ -28,7 +27,6 @@ export class TasksService
         this._tags = new BehaviorSubject(null);
         this._task = new BehaviorSubject(null);
         this._tasks = new BehaviorSubject(null);
-        this._tasksCount = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -38,7 +36,7 @@ export class TasksService
     /**
      * Getter for tags
      */
-    get tags$(): Observable<any>
+    get tags$(): Observable<Tag[]>
     {
         return this._tags.asObservable();
     }
@@ -46,7 +44,7 @@ export class TasksService
     /**
      * Getter for task
      */
-    get task$(): Observable<any>
+    get task$(): Observable<Task>
     {
         return this._task.asObservable();
     }
@@ -54,17 +52,9 @@ export class TasksService
     /**
      * Getter for tasks
      */
-    get tasks$(): Observable<any>
+    get tasks$(): Observable<Task[]>
     {
         return this._tasks.asObservable();
-    }
-
-    /**
-     * Getter for tasks count
-     */
-    get tasksCount$(): Observable<any>
-    {
-        return this._tasksCount.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -76,11 +66,11 @@ export class TasksService
      */
     getTags(): Observable<Tag[]>
     {
-        return this._httpClient
-                   .get<Tag[]>('api/apps/tasks/tags')
-                   .pipe(tap((response: any) => {
-                       this._tags.next(response);
-                   }));
+        return this._httpClient.get<Tag[]>('api/apps/tasks/tags').pipe(
+            tap((response: any) => {
+                this._tags.next(response);
+            })
+        );
     }
 
     /**
@@ -90,12 +80,19 @@ export class TasksService
      */
     createTag(tag): Observable<Tag>
     {
-        return this._httpClient
-                   .put<Tag>('api/apps/tasks/tag', {tag})
-                   .pipe(map((response) => {
-                       this.getTags().subscribe();
-                       return response;
-                   }));
+        return this.tags$.pipe(
+            take(1),
+            switchMap(tags => this._httpClient.put<Tag>('api/apps/tasks/tag', {tag}).pipe(
+                map((newTag) => {
+
+                    // Update the tags with the new tag
+                    this._tags.next([...tags, newTag]);
+
+                    // Return new tag from observable
+                    return newTag;
+                })
+            ))
+        );
     }
 
     /**
@@ -106,15 +103,12 @@ export class TasksService
      */
     updateTag(id, tag): Observable<Tag>
     {
-        return this._httpClient
-                   .patch<Tag>('api/apps/tasks/tag', {
-                       id,
-                       tag
-                   })
-                   .pipe(map((response) => {
-                       this.getTags().subscribe();
-                       return response;
-                   }));
+        return this._httpClient.patch<Tag>('api/apps/tasks/tag', {
+            id,
+            tag
+        }).pipe(switchMap((response) => {
+            return this.getTags().pipe(mapTo(response));
+        }));
     }
 
     /**
@@ -122,94 +116,65 @@ export class TasksService
      */
     getTasks(): Observable<Task[]>
     {
-        return this._httpClient
-                   .get<Task[]>('api/apps/tasks/all')
-                   .pipe(tap((response: any) => {
-                       this._tasks.next(response);
-                   }));
+        return this._httpClient.get<Task[]>('api/apps/tasks/all').pipe(
+            tap((response: any) => {
+                this._tasks.next(response);
+            })
+        );
     }
 
     /**
-     * Get tasks count
+     * Update tasks orders
+     *
+     * @param tasks
      */
-    getTasksCount(): Observable<TasksCount>
+    updateTasksOrders(tasks): Observable<Task[]>
     {
-        return this._httpClient
-                   .get<TasksCount>('api/apps/tasks/count')
-                   .pipe(tap((response: any) => {
-                       this._tasksCount.next(response);
-                   }));
+        return this._httpClient.patch<Task[]>('api/apps/tasks/order', {tasks});
     }
 
     /**
-     * Get task by id
+     * Search tasks with given query
+     *
+     * @param query
+     */
+    searchTasks(query): Observable<Task[] | null>
+    {
+        return this._httpClient.get<Task[] | null>('api/apps/tasks/search', {params: {query}});
+    }
+
+    /**
+     * Get task by id from tasks
      */
     getTaskById(id): Observable<Task>
     {
         // Get the task from tasks
         const taskItem = this._tasks.getValue().find(item => item.id === id);
 
-        // If the task is already loaded...
-        if ( taskItem.loadedCompletely )
-        {
-            // Update the task
-            this._task.next(taskItem);
+        // Update the task
+        this._task.next(taskItem);
 
-            // Return the task
-            return of(taskItem);
-        }
+        // Return the task
+        return of(taskItem);
+    }
 
-        // If the task is not loaded...
+    /**
+     * Create task
+     *
+     * @param task
+     */
+    createTask(task): Observable<Task>
+    {
         return this._httpClient
-                   .get<Task>('api/apps/tasks/task', {params: {id}})
+                   .put<Task>('api/apps/tasks', {task})
                    .pipe(
-                       map((response: any) => {
-
-                           // Get the tasks
-                           const tasks = this._tasks.getValue();
-
-                           // Iterate through the tasks
-                           tasks.forEach((task, index, array) => {
-
-                               // Update the task
-                               if ( task.id === response.id )
-                               {
-                                   array[index] = response;
-                               }
-                           });
-
-                           // Execute the observable
-                           this._tasks.next(tasks);
+                       map((id) => {
+                           this.getTasks().subscribe();
+                           return id;
                        }),
-                       switchMap(() => {
-                           return this._tasks;
-                       }),
-                       map((tasks) => {
-
-                           // Find the task
-                           const task = tasks.find(item => item.id === id);
-
-                           if ( task )
-                           {
-                               this._task.next(task);
-                           }
-                           else
-                           {
-                               this._task.next(null);
-                           }
-
-                           return task;
-                       }),
-                       switchMap((task) => {
-
-                           if ( !task )
-                           {
-                               return throwError('Could not found task with id of ' + id + '!');
-                           }
-
-                           return of(task);
-                       }),
-                       take(1)
+                       switchMap((id) => {
+                           return this.getTaskById(id);
+                       })
                    );
     }
 
@@ -221,48 +186,69 @@ export class TasksService
      */
     updateTask(id, task): Observable<Task>
     {
-        return this._httpClient
-                   .patch<Task>('api/apps/tasks/task', {
-                       id,
-                       task
-                   })
-                   .pipe(
-                       tap((response: any) => {
+        return this.tasks$.pipe(
+            take(1),
+            switchMap(tasks => this._httpClient.patch<Task>('api/apps/tasks/task', {
+                id,
+                task
+            }).pipe(
+                map((updatedTask) => {
 
-                           // Get the tasks
-                           const tasks = this._tasks.getValue();
+                    // Find the index of the updated task within the labels
+                    const index = tasks.findIndex(item => item.id === id);
 
-                           // Iterate through the tasks
-                           tasks.forEach((item, index, array) => {
+                    // Update the task
+                    tasks[index] = updatedTask;
 
-                               // Update the task
-                               if ( item.id === response.id )
-                               {
-                                   array[index] = response;
-                               }
-                           });
+                    // Update the tasks
+                    this._tasks.next(tasks);
 
-                           // Execute the observables
-                           this._tasks.next(tasks);
-                       }),
-                       switchMap(() => {
+                    // Update the task if it's selected
+                    if ( this._task.getValue() && this._task.getValue().id === task.id )
+                    {
+                        this._task.next(updatedTask);
+                    }
 
-                           // Get the updated task
-                           return this.getTaskById(id);
-                       })
-                   );
+                    // Return the updated task
+                    return updatedTask;
+                })
+            ))
+        );
     }
 
     /**
-     * Update tasks orders
+     * Delete the task
      *
-     * @param tasks
+     * @param id
      */
-    updateTasksOrders(tasks): Observable<Task[]>
+    deleteTask(id): Observable<boolean>
     {
-        return this._httpClient
-                   .patch<Task[]>('api/apps/tasks/order', {
-                       tasks
-                   });
+        return this.tasks$.pipe(
+            take(1),
+            switchMap(tasks => this._httpClient.delete('api/apps/tasks/task', {params: {id}}).pipe(
+                map((isDeleted: boolean) => {
+
+                    // Find the index of the deleted task within the tasks
+                    const index = tasks.findIndex(item => item.id === id);
+
+                    // Delete the task
+                    tasks.splice(index, 1);
+
+                    // Update the tasks
+                    this._tasks.next(tasks);
+
+                    // Return the deleted status
+                    return isDeleted;
+                })
+            ))
+        );
+    }
+
+    /**
+     * Reset the selected task
+     */
+    resetSelectedTask(): void
+    {
+        this._task.next(null);
     }
 }

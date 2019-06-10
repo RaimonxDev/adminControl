@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { MatButton } from '@angular/material/button';
@@ -26,6 +26,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     filteredTags: Tag[];
     task: Task;
     taskForm: FormGroup;
+    tasks: Task[];
 
     // Private
     private _dueDatePanelOverlayRef: OverlayRef;
@@ -112,6 +113,13 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
                 this.filteredTags = tags;
             });
 
+        // Get the tasks
+        this._tasksService.tasks$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((tasks) => {
+                this.tasks = tasks;
+            });
+
         // Get the task
         this._tasksService.task$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -136,21 +144,19 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
 
                 // Update task when there is a value change
                 this._taskFormValueChangesSubscription =
-                    this.taskForm.valueChanges
-                        .pipe(
-                            tap((value) => {
+                    this.taskForm.valueChanges.pipe(
+                        tap((value) => {
 
-                                // Update the task object
-                                this.task = _.assign(this.task, value);
-                            }),
-                            debounceTime(500),
-                            takeUntil(this._unsubscribeAll)
-                        )
-                        .subscribe((value) => {
+                            // Update the task object
+                            this.task = _.assign(this.task, value);
+                        }),
+                        debounceTime(500),
+                        takeUntil(this._unsubscribeAll)
+                    ).subscribe((value) => {
 
-                            // Update the task on the server
-                            this._tasksService.updateTask(value.id, value).subscribe();
-                        });
+                        // Update the task on the server
+                        this._tasksService.updateTask(value.id, value).subscribe();
+                    });
             });
     }
 
@@ -178,6 +184,9 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
         {
             this._tagsPanelOverlayRef.dispose();
         }
+
+        // Reset the selected task
+        this._tasksService.resetSelectedTask();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -303,19 +312,44 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
      */
     filterTagsInputKeyDown(event): void
     {
-        // Enter
-        if ( event.key === 'Enter' )
+        // Return, if the pressed key is not 'Enter'
+        if ( event.key !== 'Enter' )
+        {
+            return;
+        }
+
+        // If there is no tag available...
+        if ( this.filteredTags.length === 0 )
         {
             // Create the tag
             this.createTag(event.target.value);
 
             // Clear the input
             event.target.value = '';
+
+            // Return
+            return;
+        }
+
+        // If there is a tag...
+        const tag = this.filteredTags[0];
+        const isTagApplied = this.task.tags.find((id) => id === tag.id);
+
+        // If the found tag is already applied to the task...
+        if ( isTagApplied )
+        {
+            // Remove the tag from the task
+            this.removeTagFromTask(tag);
+        }
+        else
+        {
+            // Otherwise add the tag to the task
+            this.addTagToTask(tag);
         }
     }
 
     /**
-     * Create new tag
+     * Create a new tag
      *
      * @param title
      */
@@ -326,16 +360,11 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
         };
 
         // Create tag on the server
-        this._tasksService.createTag(tag)
-            .subscribe((response) => {
+        this._tasksService.createTag(tag).subscribe((response) => {
 
-                // Update the tags manually until they are being refreshed automatically
-                this.tags.unshift(response);
-                this.filteredTags = this.tags;
-
-                // Add the tag to the task
-                this.addTag(response);
-            });
+            // Add the tag to the task
+            this.addTagToTask(response);
+        });
     }
 
     /**
@@ -343,7 +372,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
      *
      * @param tag
      */
-    addTag(tag): void
+    addTagToTask(tag): void
     {
         // Get the tags form array
         const tagsFormArray = this.taskForm.get('tags') as FormArray;
@@ -360,7 +389,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
      *
      * @param tag
      */
-    removeTag(tag): void
+    removeTagFromTask(tag): void
     {
         // Get the tags form array
         const tagsFormArray = this.taskForm.get('tags') as FormArray;
@@ -373,20 +402,20 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Toggle tag
+     * Toggle task tag
      *
      * @param tag
      * @param change
      */
-    toggleTag(tag, change: MatCheckboxChange): void
+    toggleTaskTag(tag, change: MatCheckboxChange): void
     {
         if ( change.checked )
         {
-            this.addTag(tag);
+            this.addTagToTask(tag);
         }
         else
         {
-            this.removeTag(tag);
+            this.removeTagFromTask(tag);
         }
     }
 
@@ -398,25 +427,6 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     shouldShowCreateTagButton(inputValue): boolean
     {
         return !!!(inputValue === '' || this.tags.findIndex(tag => tag.title.toLowerCase() === inputValue.toLowerCase()) > -1);
-    }
-
-    /**
-     * Toggle notes
-     */
-    toggleNotes(): void
-    {
-        // Get the form control for 'notes'
-        const notesFormControl = this.taskForm.get('notes');
-
-        // Toggle the notes
-        if ( notesFormControl.value === null )
-        {
-            notesFormControl.setValue('');
-        }
-        else
-        {
-            notesFormControl.setValue(null);
-        }
     }
 
     /**
@@ -614,5 +624,66 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     isOverdue(): boolean
     {
         return moment(this.task.dueDate, moment.ISO_8601).isBefore(moment(), 'days');
+    }
+
+    /**
+     * Toggle notes
+     */
+    toggleNotes(): void
+    {
+        // Get the form control for 'notes'
+        const notesFormControl = this.taskForm.get('notes');
+
+        // Toggle the notes
+        if ( notesFormControl.value === null )
+        {
+            notesFormControl.setValue('');
+        }
+        else
+        {
+            notesFormControl.setValue(null);
+        }
+    }
+
+    /**
+     * Delete the task
+     */
+    deleteTask(): void
+    {
+        // Get the current task's id
+        const id = this.task.id;
+
+        // Get the next/previous task's id
+        const currentTaskIndex = this.tasks.findIndex(item => item.id === id);
+        const nextTaskIndex = currentTaskIndex + ((currentTaskIndex === (this.tasks.length - 1)) ? -1 : 1);
+        const nextTaskId = (this.tasks.length === 1 && this.tasks[0].id === id) ? null : this.tasks[nextTaskIndex].id;
+
+        // Delete the task
+        this._tasksService.deleteTask(this.task.id).subscribe((isDeleted) => {
+
+            // Return if the task wasn't deleted...
+            if ( !isDeleted )
+            {
+                return;
+            }
+
+            // Get the current activated route
+            let route = this._activatedRoute;
+            while ( route.firstChild )
+            {
+                route = route.firstChild;
+            }
+
+            // Navigate to the next task if available
+            if ( nextTaskId )
+            {
+                this._router.navigate(['../', nextTaskId], {relativeTo: route});
+            }
+            // Otherwise, navigate to the parent
+            else
+            {
+                this._router.navigate(['../'], {relativeTo: route});
+            }
+        });
     }
 }

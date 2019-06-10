@@ -17,7 +17,6 @@ export class CanDeactivateTasksDetails implements CanDeactivate<TasksDetailsComp
     {
         // Get the next route
         let nextRoute: ActivatedRouteSnapshot = nextState.root;
-
         while ( nextRoute.firstChild )
         {
             nextRoute = nextRoute.firstChild;

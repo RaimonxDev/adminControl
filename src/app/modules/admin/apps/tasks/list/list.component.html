@@ -27,7 +27,8 @@
                         <h2>Tasks</h2>
 
                         <div class="remaining-tasks-count">
-                            {{tasksCount.notCompleted}} remaining tasks
+                            <span *ngIf="incompleteTasksCount === 0">All tasks completed!</span>
+                            <span *ngIf="incompleteTasksCount !== 0">{{incompleteTasksCount}} remaining tasks</span>
                         </div>
 
                     </div>
@@ -55,16 +56,46 @@
 
                 </div>
 
-                <!-- Search & Filters -->
-                <div class="search-and-filters">
+                <!-- Search -->
+                <div class="search">
 
                     <mat-form-field class="asm-mat-simplify asm-mat-dense asm-mat-no-label asm-mat-no-subscript"
                                     [appearance]="'outline'">
+
                         <mat-icon matPrefix>search</mat-icon>
+
                         <input matInput
-                               placeholder="Search tasks"
-                               (input)="onSearch($event)"
+                               [formControl]="searchInputControl"
+                               [matAutocomplete]="searchAutocomplete"
+                               [autocomplete]="'off'"
+                               [placeholder]="'Search tasks'"
                                #searchInput>
+
+                        <mat-autocomplete class="tasks-list-search-results-panel"
+                                          (optionSelected)="this.goToTask($event)"
+                                          #searchAutocomplete="matAutocomplete">
+
+                            <mat-optgroup class="no-results"
+                                          *ngIf="searchResults && !searchResults.length">
+                                <mat-option>No tasks found for <b>'{{searchInput.value}}'</b></mat-option>
+                            </mat-optgroup>
+
+                            <mat-option [id]="task.id"
+                                        *ngFor="let task of searchResults"
+                                        [routerLink]="[task.id]">
+                                <mat-icon [color]="'primary'"
+                                          *ngIf="task.completed">
+                                    check_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="!task.completed">
+                                    radio_button_unchecked
+                                </mat-icon>
+                                <div class="result-title"
+                                     [innerHTML]="task.title"></div>
+                            </mat-option>
+
+                        </mat-autocomplete>
+
                     </mat-form-field>
 
                 </div>
@@ -75,16 +106,16 @@
                      [cdkDropListData]="tasks"
                      (cdkDropListDropped)="dropped($event)">
 
-                    <ng-container *ngIf="filteredTasks && filteredTasks.length > 0; else noTasks">
+                    <ng-container *ngIf="tasks && tasks.length > 0; else noTasks">
 
                         <!-- Task -->
-                        <div class="task"
+                        <div [id]="'task-' + task.id"
+                             class="task"
                              [class.completed]="task.completed"
                              [class.selected]="selectedTask && selectedTask.id === task.id"
                              [ngClass]="'type-' + task.type"
-                             *ngFor="let task of filteredTasks; trackBy: trackById"
-                             cdkDrag
-                             [cdkDragDisabled]="!!searchInput.value">
+                             *ngFor="let task of tasks; trackBy: trackById"
+                             cdkDrag>
 
                             <!-- Task content -->
                             <div class="task-content">
@@ -168,10 +199,7 @@
                     </ng-container>
 
                     <ng-template #noTasks>
-                        <div class="no-tasks">
-                            <span *ngIf="!searchInput.value">There are no tasks!</span>
-                            <span *ngIf="searchInput.value">No tasks found for <b>'{{searchInput.value}}'</b></span>
-                        </div>
+                        <div class="no-tasks">There are no tasks!</div>
                     </ng-template>
 
                 </div>

@@ -28,12 +28,6 @@ tasks-list {
                         h2 {
                             margin: 0;
                         }
-
-                        .remaining-tasks-count {
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                        }
                     }
 
                     .main-actions {
@@ -58,7 +52,7 @@ tasks-list {
                     }
                 }
 
-                .search-and-filters {
+                .search {
                     margin: 32px 48px 64px 48px;
 
                     .mat-form-field {
@@ -127,16 +121,6 @@ tasks-list {
 
                             .task-content {
                                 padding: 0 16px;
-
-                                &:after {
-                                    content: '';
-                                    position: absolute;
-                                    display: block;
-                                    right: 48px;
-                                    bottom: 8px;
-                                    left: 48px;
-                                    height: 1px;
-                                }
                             }
                         }
 
@@ -242,10 +226,46 @@ tasks-list {
 
                     .no-tasks {
                         padding: 0 48px;
+                        height: 64px;
+                        line-height: 64px;
                         font-size: 16px;
                     }
                 }
             }
+        }
+    }
+}
+
+.tasks-list-search-results-panel {
+
+    > .mat-optgroup {
+
+        &.no-results {
+
+            label {
+                visibility: hidden;
+                opacity: 0;
+                height: 0;
+                pointer-events: none;
+            }
+
+            .mat-option {
+                pointer-events: none;
+            }
+        }
+    }
+
+    > .mat-option {
+
+        .mat-option-text {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .mat-icon {
+            margin-right: 12px;
+            @include asm-icon-size(26);
         }
     }
 }
@@ -307,16 +327,6 @@ tasks-list {
 
                         .task {
 
-                            &.type-section {
-
-                                .task-content {
-
-                                    &:after {
-                                        background: map-get($foreground, divider);
-                                    }
-                                }
-                            }
-
                             &.completed {
 
                                 a {
@@ -340,11 +350,8 @@ tasks-list {
                             &:hover,
                             &.selected {
 
-                                &.type-task {
-
-                                    .task-content {
-                                        background: map-get($background, hover);
-                                    }
+                                .task-content {
+                                    background: map-get($background, hover);
                                 }
                             }
 
@@ -390,6 +397,19 @@ tasks-list {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    .tasks-list-search-results-panel {
+
+        .mat-option {
+
+            .result {
+
+                .result-notes {
+                    color: map-get($foreground, secondary-text);
                 }
             }
         }

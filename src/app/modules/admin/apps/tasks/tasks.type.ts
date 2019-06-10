@@ -17,9 +17,3 @@ export interface Task
     order: number;
     loadedCompletely?: boolean;
 }
-
-export interface TasksCount
-{
-    completed: number;
-    notCompleted: number;
-}

@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { AsmLookUpByPipe, AsmMediaWatcherService } from '@assembly';
-import { Tag, Task, TasksCount } from 'app/modules/admin/apps/tasks/tasks.type';
+import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
+import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
     selector     : 'tasks-list',
@@ -19,12 +21,12 @@ export class TasksListComponent implements OnInit, OnDestroy
     @ViewChild('matDrawer', {static: true})
     matDrawer: MatDrawer;
 
-    filteredTasks: Task[];
     drawerMode: 'side' | 'over';
+    searchInputControl: FormControl;
+    searchResults: Task[] | null;
     selectedTask: Task;
     tags: Tag[];
     tasks: Task[];
-    tasksCount: TasksCount;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -46,6 +48,21 @@ export class TasksListComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.searchInputControl = new FormControl();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for incomplete tasks count
+     */
+    get incompleteTasksCount(): number
+    {
+        return this.tasks.filter(task => task.type === 'task' && !task.completed).length;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -68,7 +85,6 @@ export class TasksListComponent implements OnInit, OnDestroy
         this._tasksService.tasks$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((tasks) => {
-                this.filteredTasks = tasks;
                 this.tasks = tasks;
             });
 
@@ -79,12 +95,21 @@ export class TasksListComponent implements OnInit, OnDestroy
                 this.selectedTask = task;
             });
 
-        // Get the tasks count
-        this._tasksService.tasksCount$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((tasksCount) => {
-                this.tasksCount = tasksCount;
-            });
+        // Subscribe to search input field value changes
+        this.searchInputControl.valueChanges
+            .pipe(
+                debounceTime(300),
+                takeUntil(this._unsubscribeAll),
+                switchMap((query) => {
+
+                    // Search
+                    return this._tasksService.searchTasks(query);
+                }),
+                tap((results) => {
+                    this.searchResults = results;
+                })
+            )
+            .subscribe();
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange
@@ -111,13 +136,33 @@ export class TasksListComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Go to task
+     *
+     * @param event
+     */
+    goToTask(event: MatAutocompleteSelectedEvent): void
+    {
+        // Get the id from the selected option
+        const id = event.option.id;
+
+        // Get the current activated route
+        let route = this._activatedRoute;
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Go to task
+        this._router.navigate(['../', id], {relativeTo: route});
+    }
+
+    /**
      * On backdrop clicked
      */
     onBackdropClicked(): void
     {
         // Get the current activated route
         let route = this._activatedRoute;
-
         while ( route.firstChild )
         {
             route = route.firstChild;
@@ -157,48 +202,12 @@ export class TasksListComponent implements OnInit, OnDestroy
     }
 
     /**
-     * On search
-     *
-     * @param event
-     */
-    onSearch(event): void
-    {
-        const term = event.target.value;
-
-        // Reset the search if the term is empty
-        if ( !term )
-        {
-            this.filteredTasks = this.tasks;
-            return;
-        }
-
-        // Filter the results
-        this.filteredTasks = this.tasks.filter((task) => {
-            return (task.title && task.title.toLowerCase().includes(term.toLowerCase())) || (task.notes && task.notes.toLowerCase().includes(term.toLowerCase()));
-        });
-    }
-
-    /**
-     * Track by function for ngFor loops
-     *
-     * @param item
-     * @param index
-     */
-    trackById(item, index): number
-    {
-        return index;
-    }
-
-    /**
      * Organize the tags
      *
      * @param tags
      */
     organizeTags(tags): any
     {
-        /*console.log(tags.splice(0, 2));
-        console.log(tags);*/
-
         // Get the visible and hidden tags
         let visible = tags.slice(0, 2);
         let hidden = tags.slice(2, tags.length);
@@ -233,5 +242,16 @@ export class TasksListComponent implements OnInit, OnDestroy
             visible,
             hidden
         };
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param item
+     * @param index
+     */
+    trackById(item, index): number
+    {
+        return index;
     }
 }

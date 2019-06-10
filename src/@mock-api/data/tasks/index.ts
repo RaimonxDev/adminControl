@@ -105,42 +105,6 @@ export class MockTasksApi
             });
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Tasks Count - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/apps/tasks/count')
-            .reply(() => {
-
-                // Clone the tasks
-                const tasks = _.cloneDeep(this._tasks);
-
-                // Start the counters
-                let completed = 0;
-                let notCompleted = 0;
-
-                // Iterate the tasks and count them
-                tasks.forEach((task) => {
-
-                    // Only count actual tasks
-                    if ( task.type !== 'task' )
-                    {
-                        return;
-                    }
-
-                    // Increase the counter
-                    task.completed ? completed++ : notCompleted++;
-                });
-
-                return [
-                    200,
-                    {
-                        completed,
-                        notCompleted
-                    }
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
         // @ Tasks - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -155,19 +119,54 @@ export class MockTasksApi
                     return a.order - b.order;
                 });
 
-                // Iterate over tasks...
-                tasks.forEach((task) => {
-
-                    // Make the task lighter
-                    delete task.notes;
-
-                    // Add the loaded completely status
-                    task.loadedCompletely = false;
-                });
-
                 return [
                     200,
                     tasks
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Tasks Search - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/tasks/search')
+            .reply((request) => {
+
+                // Get the search query
+                const query = request.params.get('query');
+
+                // Prepare the search results
+                let results;
+
+                // If the query exists...
+                if ( query )
+                {
+                    // Clone the tasks
+                    let tasks = _.cloneDeep(this._tasks);
+
+                    // Filter the tasks
+                    tasks = tasks.filter((task) => {
+                        return task.title && task.title.toLowerCase().includes(query.toLowerCase()) || task.notes && task.notes.toLowerCase().includes(query.toLowerCase());
+                    });
+
+                    // Mark the found chars
+                    tasks.forEach((task) => {
+                        const re = new RegExp('(' + query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + ')', 'ig');
+                        task.title = task.title.replace(re, '<mark>$1</mark>');
+                    });
+
+                    // Set them as the search result
+                    results = tasks;
+                }
+                // Otherwise, set the results to null
+                else
+                {
+                    results = null;
+                }
+
+                return [
+                    200,
+                    results
                 ];
             });
 
@@ -216,12 +215,31 @@ export class MockTasksApi
                     return item.id === id;
                 });
 
-                // Add the loaded completely status
-                task.loadedCompletely = true;
-
                 return [
                     200,
                     task
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Task - PUT
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPut('api/apps/tasks/task')
+            .reply((request) => {
+
+                // Get the task
+                const newTask = _.cloneDeep(request.body.task);
+
+                // Generate a new GUID
+                newTask.id = AsmMockApiUtils.guid();
+
+                // Unshift the new task
+                this._tasks.unshift(newTask);
+
+                return [
+                    200,
+                    newTask
                 ];
             });
 
@@ -255,6 +273,31 @@ export class MockTasksApi
                 return [
                     200,
                     updatedTask
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Task - DELETE
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onDelete('api/apps/tasks/task')
+            .reply((request) => {
+
+                // Get the id
+                const id = request.params.get('id');
+
+                // Find the task and delete it
+                this._tasks.forEach((item, index, tasks) => {
+
+                    if ( item.id === id )
+                    {
+                        this._tasks.splice(index, 1);
+                    }
+                });
+
+                return [
+                    200,
+                    true
                 ];
             });
     }

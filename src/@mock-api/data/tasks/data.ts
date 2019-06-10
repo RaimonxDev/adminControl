@@ -131,7 +131,7 @@ export const tasks = [
     {
         id        : 'f65d517a-6f69-4c88-81f5-416f47405ce1',
         type      : 'section',
-        title     : 'Company internal application v2:',
+        title     : 'Company internal application v2',
         notes     : 'Magna consectetur culpa duis ad est tempor pariatur velit ullamco aute exercitation magna sunt commodo minim enim aliquip eiusmod ipsum adipisicing magna ipsum reprehenderit Lorem magna voluptate magna aliqua culpa.\n\nSit nisi adipisicing pariatur enim enim sunt officia ad labore voluptate magna proident velit excepteur pariatur cillum sit excepteur elit veniam excepteur minim nisi cupidatat proident dolore irure veniam mollit.',
         completed : false,
         dueDate   : '2017-10-18T13:03:37.943Z',
@@ -354,7 +354,7 @@ export const tasks = [
     {
         id        : '1a680c29-7ece-4a80-9709-277ad4da8b4b',
         type      : 'section',
-        title     : 'Developer API for the payment system:',
+        title     : 'Developer API for the payment system',
         notes     : 'Magna laborum et amet magna fugiat officia deserunt in exercitation aliquip nulla magna velit ea labore quis deserunt ipsum occaecat id id consequat non eiusmod mollit est voluptate ea ex.\n\nReprehenderit mollit ut excepteur minim veniam fugiat enim id pariatur amet elit nostrud occaecat pariatur et esse aliquip irure quis officia reprehenderit voluptate voluptate est et voluptate sint esse dolor.',
         completed : false,
         dueDate   : '2020-02-08T22:42:35.937Z',
@@ -723,7 +723,7 @@ export const tasks = [
     {
         id        : '1ebde495-1bcd-4e8f-b6f6-cf63b521ad06',
         type      : 'section',
-        title     : 'Marketing and promotions for the mobile app:',
+        title     : 'Marketing and promotions for the mobile app',
         notes     : 'Aute commodo reprehenderit cupidatat duis nulla mollit sint cupidatat elit adipisicing fugiat sunt cupidatat amet proident fugiat aute adipisicing et non minim occaecat ea esse consectetur aute culpa exercitation incididunt.\n\nEnim et Lorem anim dolor excepteur qui tempor cupidatat do proident adipisicing esse incididunt mollit quis irure amet ad officia culpa minim cillum veniam voluptate Lorem exercitation sunt cillum dolor.',
         completed : false,
         dueDate   : '2018-08-04T19:32:53.652Z',

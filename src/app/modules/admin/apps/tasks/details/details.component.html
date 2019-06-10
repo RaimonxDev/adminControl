@@ -163,7 +163,7 @@
                     <div class="available-tags">
 
                         <mat-checkbox *ngFor="let tag of filteredTags"
-                                      (change)="toggleTag(tag, $event)"
+                                      (change)="toggleTaskTag(tag, $event)"
                                       [color]="'primary'"
                                       [checked]="task.tags.includes(tag.id)">
                             {{tag.title}}
@@ -280,6 +280,16 @@
                       *ngIf="task.notes !== null">
                 remove
             </mat-icon>
+        </div>
+
+        <!-- Delete task -->
+        <div class="delete-task">
+            <button mat-icon-button
+                    [matTooltip]="'Delete task'"
+                    [matTooltipPosition]="'before'"
+                    (click)="deleteTask()">
+                <mat-icon>delete</mat-icon>
+            </button>
         </div>
 
     </div>

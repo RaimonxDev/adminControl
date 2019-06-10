@@ -89,6 +89,10 @@ tasks-details {
                         text-transform: uppercase;
                     }
                 }
+
+                + .details {
+                    margin-top: 32px !important;
+                }
             }
 
             .details {
@@ -278,7 +282,7 @@ tasks-details {
                 padding: 8px 16px;
 
                 .mat-checkbox-inner-container {
-                    margin: 0 8px 0 0
+                    margin: 0 12px 0 0
                 }
             }
         }
@@ -482,6 +486,13 @@ tasks-details {
 
         .available-tags {
             box-shadow: 0 -1px 0 0 map-get($foreground, divider);
+
+            .mat-checkbox {
+
+                &:hover {
+                    background: map-get($background, hover);
+                }
+            }
         }
 
         .create-tag {
