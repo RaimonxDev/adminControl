@@ -27,8 +27,8 @@
                         <h2>Tasks</h2>
 
                         <div class="remaining-tasks-count">
-                            <span *ngIf="incompleteTasksCount === 0">All tasks completed!</span>
-                            <span *ngIf="incompleteTasksCount !== 0">{{incompleteTasksCount}} remaining tasks</span>
+                            <span *ngIf="tasksCount.incomplete === 0">All tasks completed!</span>
+                            <span *ngIf="tasksCount.incomplete !== 0">{{tasksCount.incomplete}} remaining tasks</span>
                         </div>
 
                     </div>

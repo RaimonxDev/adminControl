@@ -321,7 +321,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'applications.tasks',
         title   : 'Tasks',
-        subtitle: '7 overdue tasks',
+        subtitle: '10 remaining tasks',
         type    : 'basic',
         icon    : 'check_box',
         link    : '/apps/tasks'
@@ -647,9 +647,9 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 ]
             },
             {
-                id   : 'content-layouts.right-sidebar',
-                title: 'Right Sidebar',
-                type : 'collapsable',
+                id      : 'content-layouts.right-sidebar',
+                title   : 'Right Sidebar',
+                type    : 'collapsable',
                 children: [
                     {
                         id      : 'ui-elements.content-layouts.right-sidebar.fullheight',
@@ -781,6 +781,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         children: []
     },
     {
+        id  : 'divider-1',
         type: 'divider'
     },
     {
@@ -859,6 +860,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/docs/fundamentals/page-layouts'
     },
     {
+        id  : 'divider-2',
         type: 'divider'
     },
     {

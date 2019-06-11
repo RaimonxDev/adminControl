@@ -5,7 +5,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { debounceTime, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { AsmLookUpByPipe, AsmMediaWatcherService } from '@assembly';
+import { AsmLookUpByPipe, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
@@ -27,6 +27,7 @@ export class TasksListComponent implements OnInit, OnDestroy
     selectedTask: Task;
     tags: Tag[];
     tasks: Task[];
+    tasksCount: any;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -36,12 +37,14 @@ export class TasksListComponent implements OnInit, OnDestroy
      *
      * @param {ActivatedRoute} _activatedRoute
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {AsmNavigationService} _asmNavigationService
      * @param {Router} _router
      * @param {TasksService} _tasksService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
+        private _asmNavigationService: AsmNavigationService,
         private _router: Router,
         private _tasksService: TasksService
     )
@@ -51,18 +54,11 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Set the defaults
         this.searchInputControl = new FormControl();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Getter for incomplete tasks count
-     */
-    get incompleteTasksCount(): number
-    {
-        return this.tasks.filter(task => task.type === 'task' && !task.completed).length;
+        this.tasksCount = {
+            completed : 0,
+            incomplete: 0,
+            total     : 0
+        };
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -86,6 +82,18 @@ export class TasksListComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((tasks) => {
                 this.tasks = tasks;
+
+                // Update the counts
+                this.tasksCount.total = this.tasks.filter(task => task.type === 'task').length;
+                this.tasksCount.completed = this.tasks.filter(task => task.type === 'task' && task.completed).length;
+                this.tasksCount.incomplete = this.tasksCount.total - this.tasksCount.completed;
+
+                // Update the count on the navigation
+                setTimeout(() => {
+                    this._asmNavigationService.updateItem('applications.tasks', {
+                        subtitle: this.tasksCount.incomplete + ' remaining tasks'
+                    });
+                });
             });
 
         // Get the task
