@@ -2,7 +2,7 @@ import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@a
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigation, AsmNavigationService } from '@assembly';
+import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
     asmConfig: AsmConfig;
     isScreenSmall: boolean;
-    navigation: AsmNavigation[];
     searchResults: any[] | null;
 
     @HostBinding('class.fixed-header')
@@ -76,12 +75,12 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                         }
                     },
                     header    : {
-                        hidden    : false,
-                        fixed     : false
+                        hidden: false,
+                        fixed : false
                     },
                     footer    : {
-                        hidden    : false,
-                        fixed     : false
+                        hidden: false,
+                        fixed : false
                     }
                 }
             }

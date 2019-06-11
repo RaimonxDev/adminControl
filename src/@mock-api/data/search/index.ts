@@ -79,8 +79,8 @@ export class MockSearchResultsApi
                     navigationResults.forEach((result) => {
 
                         // Normalize
-                        result.hint = result.link;
-                        result.resultType = 'page';
+                        result['hint'] = result.link;
+                        result['resultType'] = 'page';
 
                         // Mark the found chars
                         const re = new RegExp('(' + query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + ')', 'ig');

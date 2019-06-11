@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigation, AsmNavigationService } from '@assembly';
+import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 
 @Component({
     selector     : 'layout[type="classic"]',
@@ -12,7 +12,6 @@ import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, 
 export class ClassicLayoutComponent implements OnInit, OnDestroy
 {
     asmConfig: AsmConfig;
-    navigation: AsmNavigation[];
     isScreenSmall: boolean;
 
     @HostBinding('class.fixed-header')

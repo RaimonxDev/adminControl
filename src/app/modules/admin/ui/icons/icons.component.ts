@@ -44,7 +44,7 @@ export class IconsComponent implements OnInit
         this.icons$ = this._iconsService.icons;
 
         // Create filtered icons
-        this.filteredIcons$ = combineLatest(this.icons$, this.filterValue$)
+        this.filteredIcons$ = combineLatest([this.icons$, this.filterValue$])
             .pipe(
                 map(([icons, filterValue]) => {
 
