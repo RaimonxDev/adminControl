@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
+import { merge, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector       : 'asm-navigation-basic-item',
@@ -8,7 +10,7 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationBasicItemComponent implements OnInit
+export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
 {
     showTooltips: boolean;
 
@@ -16,15 +18,22 @@ export class AsmNavigationBasicItemComponent implements OnInit
     @Input()
     item: AsmNavigationItem;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
     /**
      * Constructor
      *
      * @param {AsmNavigationService} _asmNavigationService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      */
     constructor(
-        private _asmNavigationService: AsmNavigationService
+        private _asmNavigationService: AsmNavigationService,
+        private _changeDetectorRef: ChangeDetectorRef
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -36,7 +45,35 @@ export class AsmNavigationBasicItemComponent implements OnInit
      */
     ngOnInit(): void
     {
+        // Subscribe to item changes
+        merge(
+            this._asmNavigationService.onItemAdded,
+            this._asmNavigationService.onItemUpdated,
+            this._asmNavigationService.onItemDeleted
+        ).pipe(
+            takeUntil(this._unsubscribeAll),
+            filter((item) => {
+
+                // Only react if the changed item equals to this item
+                return item && this.item.id === item.id;
+            })
+        ).subscribe(() => {
+
+            // Apply the changes
+            this._changeDetectorRef.markForCheck();
+        });
+
         // Get the showTooltips option
         this.showTooltips = this._asmNavigationService.showTooltips;
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }

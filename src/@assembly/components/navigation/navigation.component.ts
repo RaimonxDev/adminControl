@@ -7,6 +7,7 @@ import { AsmConfig } from '@assembly/types/config';
 import { AsmConfigService } from '@assembly/services/config/config.service';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.directive';
+import { AsmNavigationAppearance, AsmNavigationMode, AsmNavigationPosition } from '@assembly';
 
 @Component({
     selector       : 'asm-navigation',
@@ -96,7 +97,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      * @param value
      */
     @Input()
-    set appearance(value: 'classic' | 'compact' | 'dense' | 'thin')
+    set appearance(value: AsmNavigationAppearance)
     {
         // If the value is the same, return...
         if ( this._appearance === value )
@@ -121,7 +122,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._asmNavigationService.onAppearanceChanged.next(this.appearance);
     }
 
-    get appearance(): 'classic' | 'compact' | 'dense' | 'thin'
+    get appearance(): AsmNavigationAppearance
     {
         return this._appearance;
     }
@@ -172,7 +173,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      * @param value
      */
     @Input()
-    set mode(value: 'over' | 'side')
+    set mode(value: AsmNavigationMode)
     {
         // If the value is the same, return...
         if ( this._mode === value )
@@ -217,7 +218,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._asmNavigationService.onModeChanged.next(this.mode);
     }
 
-    get mode(): 'over' | 'side'
+    get mode(): AsmNavigationMode
     {
         return this._mode;
     }
@@ -289,7 +290,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      * @param value
      */
     @Input()
-    set position(value: 'left' | 'right')
+    set position(value: AsmNavigationPosition)
     {
         // If the value is the same, return...
         if ( this._position === value )
@@ -314,7 +315,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._asmNavigationService.onPositionChanged.next(this.position);
     }
 
-    get position(): 'left' | 'right'
+    get position(): AsmNavigationPosition
     {
         return this._position;
     }

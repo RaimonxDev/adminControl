@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { merge, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @Component({
     selector       : 'asm-navigation-divider-item',
@@ -7,16 +10,65 @@ import { AsmNavigationItem } from '@assembly/components/navigation/navigation.ty
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationDividerItemComponent
+export class AsmNavigationDividerItemComponent implements OnInit, OnDestroy
 {
     // Item
     @Input()
     item: AsmNavigationItem;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
     /**
      * Constructor
+     *
+     * @param {AsmNavigationService} _asmNavigationService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      */
-    constructor()
+    constructor(
+        private _asmNavigationService: AsmNavigationService,
+        private _changeDetectorRef: ChangeDetectorRef
+    )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Subscribe to item changes
+        merge(
+            this._asmNavigationService.onItemAdded,
+            this._asmNavigationService.onItemUpdated,
+            this._asmNavigationService.onItemDeleted
+        ).pipe(
+            takeUntil(this._unsubscribeAll),
+            filter((item) => {
+
+                // Only react if the changed item equals to this item
+                return item && this.item.id === item.id;
+            })
+        ).subscribe(() => {
+
+            // Apply the changes
+            this._changeDetectorRef.markForCheck();
+        });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }

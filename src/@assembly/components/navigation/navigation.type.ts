@@ -1,6 +1,6 @@
 export interface AsmNavigationItem
 {
-    id?: string;
+    id: string;
     title?: string;
     subtitle?: string;
     type: 'aside' | 'basic' | 'collapsable' | 'divider' | 'subheader';
@@ -22,7 +22,6 @@ export interface AsmNavigationItem
     children?: AsmNavigationItem[];
 }
 
-export interface AsmNavigation extends AsmNavigationItem
-{
-    children?: AsmNavigationItem[];
-}
+export type AsmNavigationAppearance = 'classic' | 'compact' | 'dense' | 'thin';
+export type AsmNavigationMode = 'over' | 'side';
+export type AsmNavigationPosition = 'left' | 'right';

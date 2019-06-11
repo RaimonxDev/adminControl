@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as _ from 'lodash';
-import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 
 @Injectable({
@@ -11,21 +11,25 @@ export class AsmNavigationService
 {
     autoCollapse: boolean;
     showTooltips: boolean;
-    onAppearanceChanged: BehaviorSubject<any>;
-    onModeChanged: BehaviorSubject<any>;
-    onOpenedChanged: BehaviorSubject<any>;
-    onPositionChanged: BehaviorSubject<any>;
-    onCollapsableItemCollapsed: BehaviorSubject<any>;
-    onCollapsableItemExpanded: BehaviorSubject<any>;
+    onAppearanceChanged: BehaviorSubject<AsmNavigationAppearance | null>;
+    onModeChanged: BehaviorSubject<AsmNavigationMode | null>;
+    onOpenedChanged: BehaviorSubject<boolean | '' | null>;
+    onPositionChanged: BehaviorSubject<AsmNavigationPosition | null>;
+    onCollapsableItemCollapsed: BehaviorSubject<AsmNavigationItem | null>;
+    onCollapsableItemExpanded: BehaviorSubject<AsmNavigationItem | null>;
 
     // Private
     private _componentRegistry: Map<string, AsmNavigationComponent>;
-    private _navigationStore: Map<string, any>;
+    private _navigationStore: Map<string, AsmNavigationItem[]>;
 
     private _currentNavigationKey: string;
     private _onCurrentChanged: BehaviorSubject<any>;
     private _onStored: BehaviorSubject<any>;
     private _onDeleted: BehaviorSubject<any>;
+
+    private _onItemAdded: BehaviorSubject<AsmNavigationItem | null>;
+    private _onItemUpdated: BehaviorSubject<AsmNavigationItem | null>;
+    private _onItemDeleted: BehaviorSubject<AsmNavigationItem | null>;
 
     /**
      * Constructor
@@ -40,6 +44,10 @@ export class AsmNavigationService
         this._onCurrentChanged = new BehaviorSubject(null);
         this._onStored = new BehaviorSubject(null);
         this._onDeleted = new BehaviorSubject(null);
+
+        this._onItemAdded = new BehaviorSubject(null);
+        this._onItemUpdated = new BehaviorSubject(null);
+        this._onItemDeleted = new BehaviorSubject(null);
 
         // Set the defaults
         this.onAppearanceChanged = new BehaviorSubject(null);
@@ -56,8 +64,6 @@ export class AsmNavigationService
 
     /**
      * Getter for onStored
-     *
-     * @returns {Observable<any>}
      */
     get onStored(): Observable<any>
     {
@@ -66,8 +72,6 @@ export class AsmNavigationService
 
     /**
      * Getter for onDeleted
-     *
-     * @returns {Observable<any>}
      */
     get onDeleted(): Observable<any>
     {
@@ -76,12 +80,34 @@ export class AsmNavigationService
 
     /**
      * Getter for onCurrentChanged
-     *
-     * @returns {Observable<any>}
      */
     get onCurrentChanged(): Observable<any>
     {
         return this._onCurrentChanged.asObservable();
+    }
+
+    /**
+     * Getter for onItemAdded
+     */
+    get onItemAdded(): Observable<AsmNavigationItem>
+    {
+        return this._onItemAdded.asObservable();
+    }
+
+    /**
+     * Getter for onItemUpdated
+     */
+    get onItemUpdated(): Observable<AsmNavigationItem>
+    {
+        return this._onItemUpdated.asObservable();
+    }
+
+    /**
+     * Getter for onItemDeleted
+     */
+    get onItemDeleted(): Observable<AsmNavigationItem>
+    {
+        return this._onItemDeleted.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -94,7 +120,7 @@ export class AsmNavigationService
      * @param name
      * @param component
      */
-    registerComponent(name, component): void
+    registerComponent(name: string, component: AsmNavigationComponent): void
     {
         this._componentRegistry.set(name, component);
     }
@@ -104,7 +130,7 @@ export class AsmNavigationService
      *
      * @param name
      */
-    deregisterComponent(name): void
+    deregisterComponent(name: string): void
     {
         this._componentRegistry.delete(name);
     }
@@ -114,7 +140,7 @@ export class AsmNavigationService
      *
      * @param name
      */
-    getComponent(name): AsmNavigationComponent
+    getComponent(name: string): AsmNavigationComponent
     {
         return this._componentRegistry.get(name);
     }
@@ -125,7 +151,7 @@ export class AsmNavigationService
      * @param key
      * @param navigation
      */
-    storeNavigation(key, navigation): void
+    storeNavigation(key: string, navigation: AsmNavigationItem[]): void
     {
         // Add to the store
         this._navigationStore.set(key, navigation);
@@ -147,7 +173,7 @@ export class AsmNavigationService
      *
      * @param key
      */
-    deleteNavigation(key): void
+    deleteNavigation(key: string): void
     {
         // Check if the navigation exists
         if ( !this._navigationStore.has(key) )
@@ -168,7 +194,7 @@ export class AsmNavigationService
      * @param key
      * @returns {any}
      */
-    getNavigation(key): any
+    getNavigation(key: string): AsmNavigationItem[]
     {
         return this._navigationStore.get(key);
     }
@@ -180,7 +206,7 @@ export class AsmNavigationService
      * @param flatNavigation
      * @returns {any[]}
      */
-    getFlatNavigation(navigation = null, flatNavigation: AsmNavigationItem[] = []): any[]
+    getFlatNavigation(navigation: AsmNavigationItem[] | null = null, flatNavigation: AsmNavigationItem[] = []): AsmNavigationItem[]
     {
         // If the navigation is not given...
         if ( !navigation )
@@ -215,7 +241,7 @@ export class AsmNavigationService
      *
      * @param key
      */
-    setCurrentNavigation(key): void
+    setCurrentNavigation(key: string): void
     {
         // Set the current navigation key
         this._currentNavigationKey = key;
@@ -226,10 +252,8 @@ export class AsmNavigationService
 
     /**
      * Get the current navigation
-     *
-     * @returns {any}
      */
-    getCurrentNavigation(): any
+    getCurrentNavigation(): AsmNavigationItem[]
     {
         return this.getNavigation(this._currentNavigationKey);
     }
@@ -241,7 +265,7 @@ export class AsmNavigationService
      * @param id
      * @param navigation
      */
-    getItem(id, navigation = null): any | boolean
+    getItem(id: string, navigation: AsmNavigationItem[] | null = null): AsmNavigationItem | false
     {
         if ( !navigation )
         {
@@ -271,20 +295,23 @@ export class AsmNavigationService
 
     /**
      * Get the parent of the navigation item
-     * with the id from the current navigation
+     * from the current navigation
      *
      * @param id
      * @param navigation
      * @param parent
      */
-    getItemParent(id, navigation: any = null, parent = null): any
+    getItemParent(
+        id: string,
+        navigation: AsmNavigationItem[] | null                 = null,
+        parent: AsmNavigationItem[] | AsmNavigationItem | null = null
+    ): AsmNavigationItem[] | AsmNavigationItem | false
     {
-        // Use the current navigation,
-        // if the navigation is not given
+        // If the navigation is not given,
+        // use the current navigation
         if ( !navigation )
         {
-            navigation = this.getCurrentNavigation();
-            parent = navigation;
+            parent = navigation = this.getCurrentNavigation();
         }
 
         for ( const item of navigation )
@@ -315,7 +342,7 @@ export class AsmNavigationService
      * @param item
      * @param idOrLocation
      */
-    addItem(item, idOrLocation): void
+    addItem(item: AsmNavigationItem, idOrLocation: string): void
     {
         // Get the current navigation
         const navigation = this.getCurrentNavigation();
@@ -326,6 +353,9 @@ export class AsmNavigationService
             // Add the item at the end
             navigation.push(item);
 
+            // Execute the observable
+            this._onItemAdded.next(item);
+
             return;
         }
 
@@ -334,6 +364,9 @@ export class AsmNavigationService
         {
             // Add the item at the beginning
             navigation.unshift(item);
+
+            // Execute the observable
+            this._onItemAdded.next(item);
 
             return;
         }
@@ -352,6 +385,9 @@ export class AsmNavigationService
 
             // Add the item
             parent.children.push(item);
+
+            // Execute the observable
+            this._onItemAdded.next(item);
         }
     }
 
@@ -362,7 +398,7 @@ export class AsmNavigationService
      * @param id
      * @param properties
      */
-    updateItem(id, properties): void
+    updateItem(id: string, properties: any): void
     {
         // Get the navigation item
         const item = this.getItem(id);
@@ -375,6 +411,9 @@ export class AsmNavigationService
 
         // Merge the navigation properties
         _.merge(item, properties);
+
+        // Execute the observable
+        this._onItemUpdated.next(item);
     }
 
     /**
@@ -383,7 +422,7 @@ export class AsmNavigationService
      *
      * @param id
      */
-    deleteItem(id): void
+    deleteItem(id: string): void
     {
         // Get the navigation item
         const item = this.getItem(id);
@@ -394,15 +433,33 @@ export class AsmNavigationService
             return;
         }
 
+        // Clone the navigation item to pass with the observable
+        const deletedItem = _.cloneDeep(item);
+
         // Get the parent of the item
         let parent = this.getItemParent(id);
+
+        // Return, if there is no parent
+        if ( !parent )
+        {
+            return;
+        }
 
         // This check is required because of the first level
         // of the navigation since it is not inside the
         // 'children' array
-        parent = parent.children || parent;
+        if ( !Array.isArray(parent) )
+        {
+            parent = parent.children;
+        }
 
         // Delete the item
         parent.splice(parent.indexOf(item), 1);
+
+        console.log(item);
+        console.log(deletedItem);
+
+        // Execute the observable
+        this._onItemDeleted.next(deletedItem);
     }
 }
