@@ -30,8 +30,7 @@ export class AppComponent implements OnInit, OnDestroy
     constructor(
         private _asmNavigationService: AsmNavigationService,
         private _asmConfigService: AsmConfigService,
-        @Inject(DOCUMENT)
-        private _document: any,
+        @Inject(DOCUMENT) private _document: any,
         private _matIconRegistry: MatIconRegistry,
         private _platform: Platform
     )
