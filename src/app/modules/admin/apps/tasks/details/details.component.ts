@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
@@ -7,7 +7,7 @@ import { MatButton } from '@angular/material/button';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject, Subscription } from 'rxjs';
-import { debounceTime, takeUntil, tap } from 'rxjs/operators';
+import { debounceTime, filter, takeUntil, tap } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
@@ -20,7 +20,7 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
     styleUrls    : ['./details.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TasksDetailsComponent implements OnInit, OnDestroy
+export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 {
     tags: Tag[];
     filteredTags: Tag[];
@@ -34,7 +34,6 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     private _priorityPanelOverlayRef: OverlayRef;
     private _priorityPanelTemplatePortal: TemplatePortal;
     private _tagsPanelOverlayRef: OverlayRef;
-    private _taskFormValueChangesSubscription: Subscription | null;
     private _unsubscribeAll: Subject<any>;
 
     @ViewChild('dueDatePanelOrigin', {static: false})
@@ -54,6 +53,11 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
 
     @ViewChild('tagsPanel', {static: false})
     private _tagsPanel: TemplateRef<any>;
+
+    @ViewChild('titleField', {static: false})
+    private _titleField: ElementRef;
+
+    private _notesField: ElementRef;
 
     /**
      * Constructor
@@ -81,6 +85,32 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Setter for notes field
+     *
+     * @param element
+     */
+    @ViewChild('notesField', {static: false})
+    set notesField(element)
+    {
+        // If the notes field is empty and wasn't exist before
+        // it means that the notes field is toggled on, so focus
+        // to the field in that case
+        if ( this.task.notes === '' && !this._notesField )
+        {
+            setTimeout(() => {
+                element.nativeElement.focus();
+            });
+        }
+
+        // Store the notes field element
+        this._notesField = element;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
 
@@ -101,7 +131,7 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
             completed: [false],
             dueDate  : [null],
             priority : [0],
-            tags     : this._formBuilder.array([]),
+            tags     : [[]],
             order    : [0]
         });
 
@@ -125,38 +155,58 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((task) => {
 
-                // Unsubscribe from the form value changes subscription
-                // before starting to filling up the form
-                if ( this._taskFormValueChangesSubscription )
-                {
-                    this._taskFormValueChangesSubscription.unsubscribe();
-                    this._taskFormValueChangesSubscription = null;
-                }
-
                 // Get the task
                 this.task = task;
 
                 // Patch values to the form from the task
-                this.taskForm.patchValue(task);
+                this.taskForm.patchValue(task, {emitEvent: false});
+            });
 
-                // Manually fill the tags
-                this.taskForm.setControl('tags', this._formBuilder.array(this.task.tags || []));
+        // Update task when there is a value change on the task form
+        this.taskForm.valueChanges
+            .pipe(
+                tap((value) => {
 
-                // Update task when there is a value change
-                this._taskFormValueChangesSubscription =
-                    this.taskForm.valueChanges.pipe(
-                        tap((value) => {
+                    // Update the task object
+                    this.task = _.assign(this.task, value);
+                }),
+                debounceTime(500),
+                takeUntil(this._unsubscribeAll)
+            )
+            .subscribe((value) => {
 
-                            // Update the task object
-                            this.task = _.assign(this.task, value);
-                        }),
-                        debounceTime(500),
-                        takeUntil(this._unsubscribeAll)
-                    ).subscribe((value) => {
+                // Update the task on the server
+                this._tasksService.updateTask(value.id, value).subscribe();
+            });
 
-                        // Update the task on the server
-                        this._tasksService.updateTask(value.id, value).subscribe();
-                    });
+        // Listen for NavigationEnd event to focus on the title field
+        this._router.events
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                filter(event => event instanceof NavigationEnd)
+            )
+            .subscribe(() => {
+
+                // Focus on the title field
+                this._titleField.nativeElement.focus();
+            });
+    }
+
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
+    {
+        // Listen for matDrawer opened change
+        this._tasksListComponent.matDrawer.openedChange
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                filter(opened => opened)
+            )
+            .subscribe(() => {
+
+                // Focus on the title element
+                this._titleField.nativeElement.focus();
             });
     }
 
@@ -360,11 +410,12 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
         };
 
         // Create tag on the server
-        this._tasksService.createTag(tag).subscribe((response) => {
+        this._tasksService.createTag(tag)
+            .subscribe((response) => {
 
-            // Add the tag to the task
-            this.addTagToTask(response);
-        });
+                // Add the tag to the task
+                this.addTagToTask(response);
+            });
     }
 
     /**
@@ -374,14 +425,11 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
      */
     addTagToTask(tag): void
     {
-        // Get the tags form array
-        const tagsFormArray = this.taskForm.get('tags') as FormArray;
-
         // Add the tag
-        tagsFormArray.insert(0, this._formBuilder.control(tag.id));
+        this.task.tags.unshift(tag.id);
 
-        // Update the task on the server
-        this._tasksService.updateTask(this.task.id, {tags: this.task.tags}).subscribe();
+        // Update the task form
+        this.taskForm.get('tags').patchValue(this.task.tags);
     }
 
     /**
@@ -391,14 +439,11 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
      */
     removeTagFromTask(tag): void
     {
-        // Get the tags form array
-        const tagsFormArray = this.taskForm.get('tags') as FormArray;
-
         // Remove the tag
-        tagsFormArray.removeAt(tagsFormArray.value.findIndex((item) => item === tag.id));
+        this.task.tags.splice(this.task.tags.findIndex(item => item === tag.id), 1);
 
-        // Update the task on the server
-        this._tasksService.updateTask(this.task.id, {tags: this.task.tags}).subscribe();
+        // Update the task form
+        this.taskForm.get('tags').patchValue(this.task.tags);
     }
 
     /**
@@ -659,31 +704,32 @@ export class TasksDetailsComponent implements OnInit, OnDestroy
         const nextTaskId = (this.tasks.length === 1 && this.tasks[0].id === id) ? null : this.tasks[nextTaskIndex].id;
 
         // Delete the task
-        this._tasksService.deleteTask(this.task.id).subscribe((isDeleted) => {
+        this._tasksService.deleteTask(this.task.id)
+            .subscribe((isDeleted) => {
 
-            // Return if the task wasn't deleted...
-            if ( !isDeleted )
-            {
-                return;
-            }
+                // Return if the task wasn't deleted...
+                if ( !isDeleted )
+                {
+                    return;
+                }
 
-            // Get the current activated route
-            let route = this._activatedRoute;
-            while ( route.firstChild )
-            {
-                route = route.firstChild;
-            }
+                // Get the current activated route
+                let route = this._activatedRoute;
+                while ( route.firstChild )
+                {
+                    route = route.firstChild;
+                }
 
-            // Navigate to the next task if available
-            if ( nextTaskId )
-            {
-                this._router.navigate(['../', nextTaskId], {relativeTo: route});
-            }
-            // Otherwise, navigate to the parent
-            else
-            {
-                this._router.navigate(['../'], {relativeTo: route});
-            }
-        });
+                // Navigate to the next task if available
+                if ( nextTaskId )
+                {
+                    this._router.navigate(['../', nextTaskId], {relativeTo: route});
+                }
+                // Otherwise, navigate to the parent
+                else
+                {
+                    this._router.navigate(['../'], {relativeTo: route});
+                }
+            });
     }
 }

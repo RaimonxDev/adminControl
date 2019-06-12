@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, mapTo, switchMap, take, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { filter, map, mapTo, switchMap, take, tap } from 'rxjs/operators';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 
 @Injectable({
@@ -144,38 +144,55 @@ export class TasksService
     }
 
     /**
-     * Get task by id from tasks
+     * Get task by id
      */
     getTaskById(id): Observable<Task>
     {
-        // Get the task from tasks
-        const taskItem = this._tasks.getValue().find(item => item.id === id);
+        return this._tasks.pipe(
+            take(1),
+            map((tasks) => {
 
-        // Update the task
-        this._task.next(taskItem);
+                // Find the task
+                const task = tasks.find(item => item.id === id) || null;
 
-        // Return the task
-        return of(taskItem);
+                // Update the task
+                this._task.next(task);
+
+                // Return the task
+                return task;
+            }),
+            switchMap((task) => {
+
+                if ( !task )
+                {
+                    return throwError('Could not found task with id of ' + id + '!');
+                }
+
+                return of(task);
+            })
+        );
     }
 
     /**
      * Create task
      *
-     * @param task
+     * @param type
      */
-    createTask(task): Observable<Task>
+    createTask(type): Observable<Task>
     {
-        return this._httpClient
-                   .put<Task>('api/apps/tasks', {task})
-                   .pipe(
-                       map((id) => {
-                           this.getTasks().subscribe();
-                           return id;
-                       }),
-                       switchMap((id) => {
-                           return this.getTaskById(id);
-                       })
-                   );
+        return this.tasks$.pipe(
+            take(1),
+            switchMap((tasks) => this._httpClient.put<Task>('api/apps/tasks/task', {type}).pipe(
+                map((newTask) => {
+
+                    // Update the tasks with the new task
+                    this._tasks.next([newTask, ...tasks]);
+
+                    // Return the new task
+                    return newTask;
+                })
+            ))
+        );
     }
 
     /**
@@ -186,34 +203,41 @@ export class TasksService
      */
     updateTask(id, task): Observable<Task>
     {
-        return this.tasks$.pipe(
-            take(1),
-            switchMap(tasks => this._httpClient.patch<Task>('api/apps/tasks/task', {
-                id,
-                task
-            }).pipe(
-                map((updatedTask) => {
+        return this.tasks$
+                   .pipe(
+                       take(1),
+                       switchMap(tasks => this._httpClient.patch<Task>('api/apps/tasks/task', {
+                           id,
+                           task
+                       }).pipe(
+                           map((updatedTask) => {
 
-                    // Find the index of the updated task within the labels
-                    const index = tasks.findIndex(item => item.id === id);
+                               // Find the index of the updated task within the labels
+                               const index = tasks.findIndex(item => item.id === id);
 
-                    // Update the task
-                    tasks[index] = updatedTask;
+                               // Update the task
+                               tasks[index] = updatedTask;
 
-                    // Update the tasks
-                    this._tasks.next(tasks);
+                               // Update the tasks
+                               this._tasks.next(tasks);
 
-                    // Update the task if it's selected
-                    if ( this._task.getValue() && this._task.getValue().id === task.id )
-                    {
-                        this._task.next(updatedTask);
-                    }
+                               // Return the updated task
+                               return updatedTask;
+                           }),
+                           switchMap(updatedTask => this.task$.pipe(
+                               take(1),
+                               filter(item => item && item.id === task.id),
+                               tap(() => {
 
-                    // Return the updated task
-                    return updatedTask;
-                })
-            ))
-        );
+                                   // Update the task if it's selected
+                                   this._task.next(updatedTask);
+
+                                   // Return the updated task
+                                   return updatedTask;
+                               })
+                           ))
+                       ))
+                   );
     }
 
     /**

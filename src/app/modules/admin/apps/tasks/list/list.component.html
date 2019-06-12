@@ -39,7 +39,9 @@
                         <!-- Add task button -->
                         <button class="add-task"
                                 mat-flat-button
-                                [color]="'primary'">
+                                [color]="'primary'"
+                                (click)="createTask('task')"
+                                [matTooltip]="'Shortcut: Ctrl + /'">
                             <mat-icon>add</mat-icon>
                             <span>Add Task</span>
                         </button>
@@ -47,7 +49,9 @@
                         <!-- Add section button -->
                         <button class="add-section"
                                 mat-flat-button
-                                [color]="'accent'">
+                                [color]="'accent'"
+                                (click)="createTask('section')"
+                                [matTooltip]="'Shortcut: Ctrl + .'">
                             <mat-icon>add</mat-icon>
                             Add Section
                         </button>
@@ -72,7 +76,7 @@
                                #searchInput>
 
                         <mat-autocomplete class="tasks-list-search-results-panel"
-                                          (optionSelected)="this.goToTask($event)"
+                                          (optionSelected)="this.goToTask($event.option.id)"
                                           #searchAutocomplete="matAutocomplete">
 
                             <mat-optgroup class="no-results"
@@ -146,7 +150,17 @@
                                 <!-- Task link -->
                                 <a [routerLink]="[task.id]">
 
-                                    <div class="title">{{task.title}}</div>
+                                    <div class="title">
+                                        <span *ngIf="task.title">{{task.title}}</span>
+                                        <span class="placeholder"
+                                              *ngIf="!task.title && task.type === 'task'">
+                                            Task title
+                                        </span>
+                                        <span class="placeholder"
+                                              *ngIf="!task.title && task.type === 'section'">
+                                            Section title
+                                        </span>
+                                    </div>
 
                                     <div class="tags"
                                          *ngIf="task.type === 'task' && organizeTags(task.tags).visible.length > 0">

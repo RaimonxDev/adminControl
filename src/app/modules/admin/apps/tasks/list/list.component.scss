@@ -177,6 +177,10 @@ tasks-list {
                                     white-space: nowrap;
                                     overflow: hidden;
                                     text-overflow: ellipsis;
+
+                                    .placeholder {
+                                        user-select: none;
+                                    }
                                 }
 
                                 .tags {
@@ -365,6 +369,13 @@ tasks-list {
                                 }
 
                                 a {
+
+                                    .title {
+
+                                        .placeholder {
+                                            color: map-get($foreground, hint-text);
+                                        }
+                                    }
 
                                     .tags {
 

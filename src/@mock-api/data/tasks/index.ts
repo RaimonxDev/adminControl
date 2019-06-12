@@ -228,14 +228,26 @@ export class MockTasksApi
             .onPut('api/apps/tasks/task')
             .reply((request) => {
 
-                // Get the task
-                const newTask = _.cloneDeep(request.body.task);
-
-                // Generate a new GUID
-                newTask.id = AsmMockApiUtils.guid();
+                // Generate a new task
+                const newTask = {
+                    id       : AsmMockApiUtils.guid(),
+                    type     : request.body.type,
+                    title    : '',
+                    notes    : null,
+                    completed: false,
+                    dueDate  : null,
+                    priority : 1,
+                    tags     : [],
+                    order    : 0
+                };
 
                 // Unshift the new task
                 this._tasks.unshift(newTask);
+
+                // Go through the tasks and update their order numbers
+                this._tasks.forEach((task, index) => {
+                    task.order = index;
+                });
 
                 return [
                     200,

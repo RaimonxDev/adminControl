@@ -1,14 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Subject } from 'rxjs';
-import { debounceTime, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { fromEvent, Subject } from 'rxjs';
+import { debounceTime, filter, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { AsmLookUpByPipe, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
     selector     : 'tasks-list',
@@ -38,6 +38,7 @@ export class TasksListComponent implements OnInit, OnDestroy
      * @param {ActivatedRoute} _activatedRoute
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
+     * @param {DOCUMENT} _document
      * @param {Router} _router
      * @param {TasksService} _tasksService
      */
@@ -45,6 +46,7 @@ export class TasksListComponent implements OnInit, OnDestroy
         private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
+        @Inject(DOCUMENT) private _document: any,
         private _router: Router,
         private _tasksService: TasksService
     )
@@ -127,6 +129,30 @@ export class TasksListComponent implements OnInit, OnDestroy
                 // Calculate the drawer mode
                 this.drawerMode = this._asmMediaWatcherService.isActive('gt-md') ? 'side' : 'over';
             });
+
+        // Listen for shortcuts
+        fromEvent(this._document, 'keydown')
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                filter<KeyboardEvent>((event) => {
+                    return (event.ctrlKey === true || event.metaKey) // Ctrl or Cmd
+                        && (event.key === '/' || event.key === '.'); // '/' or '.' key
+                })
+            )
+            .subscribe((event: KeyboardEvent) => {
+
+                // If the '/' pressed
+                if ( event.key === '/' )
+                {
+                    this.createTask('task');
+                }
+
+                // If the '.' pressed
+                if ( event.key === '.' )
+                {
+                    this.createTask('section');
+                }
+            });
     }
 
     /**
@@ -146,13 +172,10 @@ export class TasksListComponent implements OnInit, OnDestroy
     /**
      * Go to task
      *
-     * @param event
+     * @param id
      */
-    goToTask(event: MatAutocompleteSelectedEvent): void
+    goToTask(id: string): void
     {
-        // Get the id from the selected option
-        const id = event.option.id;
-
         // Get the current activated route
         let route = this._activatedRoute;
         while ( route.firstChild )
@@ -178,6 +201,21 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Go to the parent route
         this._router.navigate(['../'], {relativeTo: route});
+    }
+
+    /**
+     * Create task
+     *
+     * @param type
+     */
+    createTask(type: 'task' | 'section'): void
+    {
+        // Create the task
+        this._tasksService.createTask(type).subscribe((newTask) => {
+
+            // Go to new task
+            this.goToTask(newTask.id);
+        });
     }
 
     /**

@@ -42,7 +42,8 @@
                 <textarea matInput
                           cdkTextareaAutosize
                           [formControlName]="'title'"
-                          [placeholder]="'Task title'"></textarea>
+                          [placeholder]="task.type === 'task' ? 'Task title' : 'Section title'"
+                          #titleField></textarea>
             </mat-form-field>
         </div>
 
@@ -125,7 +126,8 @@
                 <textarea matInput
                           cdkTextareaAutosize
                           [formControlName]="'notes'"
-                          [placeholder]="'Type here to add notes'"></textarea>
+                          [placeholder]="'Type here to add notes'"
+                          #notesField></textarea>
             </mat-form-field>
 
         </div>

@@ -15,5 +15,4 @@ export interface Task
     priority: 1 | 2 | 3;
     tags: string[];
     order: number;
-    loadedCompletely?: boolean;
 }
