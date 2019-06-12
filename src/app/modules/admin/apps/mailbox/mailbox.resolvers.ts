@@ -239,6 +239,7 @@ export class MailboxMailResolver implements Resolve<any>
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
         return this._mailboxService.getMailById(route.paramMap.get('id')).pipe(
+
             // Error here means the requested mail is either
             // not available on the requested page or not
             // available at all
