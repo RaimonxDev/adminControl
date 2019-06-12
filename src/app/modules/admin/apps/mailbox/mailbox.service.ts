@@ -272,20 +272,16 @@ export class MailboxService
     getMailById(id): Observable<any>
     {
         return this._mails.pipe(
+            take(1),
             map((mails) => {
 
                 // Find the mail
-                const mail = mails.find(item => item.id === id);
+                const mail = mails.find(item => item.id === id) || null;
 
-                if ( mail )
-                {
-                    this._mail.next(mail);
-                }
-                else
-                {
-                    this._mail.next(null);
-                }
+                // Update the mail
+                this._mail.next(mail);
 
+                // Return the mail
                 return mail;
             }),
             switchMap((mail) => {
@@ -296,8 +292,7 @@ export class MailboxService
                 }
 
                 return of(mail);
-            }),
-            take(1)
+            })
         );
     }
 
@@ -328,10 +323,10 @@ export class MailboxService
     resetMail(): Observable<any>
     {
         return of(true).pipe(
+            take(1),
             tap(() => {
                 this._mail.next(null);
-            }),
-            take(1)
+            })
         );
     }
 
