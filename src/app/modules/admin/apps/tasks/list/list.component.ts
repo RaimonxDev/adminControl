@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Subject } from 'rxjs';
-import { debounceTime, filter, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { debounceTime, filter, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 import { AsmLookUpByPipe, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
@@ -121,13 +121,13 @@ export class TasksListComponent implements OnInit, OnDestroy
             )
             .subscribe();
 
-        // Subscribe to media changes
-        this._asmMediaWatcherService.onMediaChange
+        // Subscribe to media query change
+        this._asmMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
+            .subscribe((matches) => {
 
                 // Calculate the drawer mode
-                this.drawerMode = this._asmMediaWatcherService.isActive('gt-md') ? 'side' : 'over';
+                this.drawerMode = matches ? 'side' : 'over';
             });
 
         // Listen for shortcuts

@@ -9,6 +9,11 @@ tasks-list {
         .mat-drawer {
             min-width: 576px !important;
             max-width: 576px !important;
+
+            @include asm-media-breakpoint('lt-sm') {
+                min-width: 100% !important;
+                max-width: 100% !important;
+            }
         }
 
         .mat-drawer-content {
@@ -17,11 +22,21 @@ tasks-list {
                 padding: 56px 16px !important;
                 min-height: 100%;
 
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 40px 8px !important;
+                }
+
                 .header {
                     display: flex;
                     flex: 1 1 auto;
                     align-items: center;
                     margin: 0 48px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        margin: 0 40px;
+                    }
 
                     .title {
 
@@ -33,12 +48,24 @@ tasks-list {
                     .main-actions {
                         margin-left: auto;
 
+                        @include asm-media-breakpoint('lt-sm') {
+                            margin-left: 0;
+                        }
+
                         .add-task {
                             margin-right: 16px;
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                margin-right: 12px;
+                            }
                         }
 
                         .add-task,
                         .add-section {
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                margin-top: 24px;
+                            }
 
                             .mat-icon {
                                 margin-right: 8px;
@@ -54,6 +81,10 @@ tasks-list {
 
                 .search {
                     margin: 32px 48px 64px 48px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        margin: 32px 40px 16px 40px;
+                    }
 
                     .mat-form-field {
                         width: 100%;
@@ -87,11 +118,15 @@ tasks-list {
                         position: relative;
                         display: flex;
                         align-items: center;
-                        padding: 4px 32px 4px 32px;
+                        padding: 4px 32px;
                         height: 64px;
                         min-height: 64px;
                         max-height: 64px;
                         user-select: none;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 4px 16px 4px 24px;
+                        }
 
                         &.cdk-drag-disabled {
 
@@ -190,6 +225,10 @@ tasks-list {
                                     align-items: center;
                                     justify-content: flex-start;
 
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        display: none;
+                                    }
+
                                     .tag {
                                         display: flex;
                                         align-items: center;
@@ -217,6 +256,10 @@ tasks-list {
                                 .priority {
                                     width: 18px;
                                     height: 18px;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        display: none;
+                                    }
 
                                     .low,
                                     .normal,
@@ -293,11 +336,6 @@ tasks-list {
     tasks-list {
 
         .mat-drawer-container {
-
-            .mat-drawer {
-                min-width: 576px !important;
-                max-width: 576px !important;
-            }
 
             .mat-drawer-content {
 
