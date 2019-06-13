@@ -48,12 +48,12 @@ export class MailboxComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to media changes
-        this._asmMediaWatcherService.onMediaChange
+        this._asmMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
+            .subscribe((matchingAliases) => {
 
                 // Set the drawerMode and drawerOpened if the given breakpoint is active
-                if ( this._asmMediaWatcherService.isActive('lt-sm') )
+                if ( matchingAliases.includes('lt-sm') )
                 {
                     this.drawerMode = 'over';
                     this.drawerOpened = false;

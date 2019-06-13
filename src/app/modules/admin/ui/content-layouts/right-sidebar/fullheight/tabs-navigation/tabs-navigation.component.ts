@@ -60,12 +60,12 @@ export class RightSidebarFullheightTabsNavigationComponent implements OnInit, On
     ngOnInit(): void
     {
         // Subscribe to media changes
-        this._asmMediaWatcherService.onMediaChange
+        this._asmMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
+            .subscribe((matchingAliases) => {
 
                 // Set the drawerMode and drawerOpened if 'lt-lg' breakpoint is active
-                if ( this._asmMediaWatcherService.isActive('lt-lg') )
+                if ( matchingAliases.includes('lt-lg') )
                 {
                     this.drawerMode = 'over';
                     this.drawerOpened = false;
