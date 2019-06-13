@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { MatButton } from '@angular/material/button';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil, tap } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as moment from 'moment';
@@ -23,6 +23,7 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 {
     tags: Tag[];
+    tagsEditMode: boolean;
     filteredTags: Tag[];
     task: Task;
     taskForm: FormGroup;
@@ -82,6 +83,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.tagsEditMode = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -170,7 +174,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                     // Update the task object
                     this.task = _.assign(this.task, value);
                 }),
-                debounceTime(500),
+                debounceTime(300),
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe((value) => {
@@ -330,6 +334,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
                 // Reset the tag filter
                 this.filteredTags = this.tags;
+
+                // Toggle the edit mode off
+                this.tagsEditMode = false;
             }
 
             // If template portal exists and attached...
@@ -339,6 +346,14 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                 templatePortal.detach();
             }
         });
+    }
+
+    /**
+     * Toggle the tags edit mode
+     */
+    toggleTagsEditMode(): void
+    {
+        this.tagsEditMode = !this.tagsEditMode;
     }
 
     /**
@@ -416,6 +431,35 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                 // Add the tag to the task
                 this.addTagToTask(response);
             });
+    }
+
+    /**
+     * Update the tag title
+     *
+     * @param tag
+     * @param event
+     */
+    updateTagTitle(tag, event): void
+    {
+        // Update the title on the tag
+        tag.title = event.target.value;
+
+        // Update the tag on the server
+        this._tasksService.updateTag(tag.id, tag)
+            .pipe(debounceTime(300))
+            .subscribe();
+    }
+
+    /**
+     * Delete the tag
+     *
+     * @param tag
+     */
+    deleteTag(tag): void
+    {
+        // Delete the tag from the server
+        this._tasksService.deleteTag(tag.id)
+            .subscribe();
     }
 
     /**
@@ -731,5 +775,15 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                     this._router.navigate(['../'], {relativeTo: route});
                 }
             });
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param item
+     */
+    trackById(item): number
+    {
+        return item.id;
     }
 }

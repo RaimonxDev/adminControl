@@ -85,7 +85,7 @@
                             </mat-optgroup>
 
                             <mat-option [id]="task.id"
-                                        *ngFor="let task of searchResults"
+                                        *ngFor="let task of searchResults; trackBy: trackById"
                                         [routerLink]="[task.id]">
                                 <mat-icon [color]="'primary'"
                                           *ngIf="task.completed">
@@ -115,10 +115,10 @@
                         <!-- Task -->
                         <div [id]="'task-' + task.id"
                              class="task"
+                             *ngFor="let task of tasks; trackBy: trackById"
                              [class.completed]="task.completed"
                              [class.selected]="selectedTask && selectedTask.id === task.id"
                              [ngClass]="'type-' + task.type"
-                             *ngFor="let task of tasks; trackBy: trackById"
                              cdkDrag>
 
                             <!-- Task content -->

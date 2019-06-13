@@ -294,10 +294,9 @@ export class TasksListComponent implements OnInit, OnDestroy
      * Track by function for ngFor loops
      *
      * @param item
-     * @param index
      */
-    trackById(item, index): number
+    trackById(item): number
     {
-        return index;
+        return item.id;
     }
 }

@@ -96,19 +96,85 @@ export class TasksService
     }
 
     /**
-     * Update tag
+     * Update the tag
      *
      * @param id
      * @param tag
      */
     updateTag(id, tag): Observable<Tag>
     {
-        return this._httpClient.patch<Tag>('api/apps/tasks/tag', {
-            id,
-            tag
-        }).pipe(switchMap((response) => {
-            return this.getTags().pipe(mapTo(response));
-        }));
+        return this.tags$
+                   .pipe(
+                       take(1),
+                       switchMap(tags => this._httpClient.patch<Tag>('api/apps/tasks/tag', {
+                           id,
+                           tag
+                       }).pipe(
+                           map((updatedTag) => {
+
+                               // Find the index of the updated tag
+                               const index = tags.findIndex(item => item.id === id);
+
+                               // Update the tag
+                               tags[index] = updatedTag;
+
+                               // Update the tags
+                               this._tags.next(tags);
+
+                               // Return the updated tag
+                               return updatedTag;
+                           })
+                       ))
+                   );
+    }
+
+    /**
+     * Delete the tag
+     *
+     * @param id
+     */
+    deleteTag(id): Observable<boolean>
+    {
+        return this.tags$.pipe(
+            take(1),
+            switchMap(tags => this._httpClient.delete('api/apps/tasks/tag', {params: {id}}).pipe(
+                map((isDeleted: boolean) => {
+
+                    // Find the index of the deleted tag
+                    const index = tags.findIndex(item => item.id === id);
+
+                    // Delete the tag
+                    tags.splice(index, 1);
+
+                    // Update the tags
+                    this._tags.next(tags);
+
+                    // Return the deleted status
+                    return isDeleted;
+                }),
+                filter(isDeleted => isDeleted),
+                switchMap(isDeleted => this.tasks$.pipe(
+                    take(1),
+                    map((tasks) => {
+
+                        // Iterate through the tasks
+                        tasks.forEach((task) => {
+
+                            const tagIndex = task.tags.findIndex(tag => tag === id);
+
+                            // If the task has a tag, remove it
+                            if ( tagIndex > -1 )
+                            {
+                                task.tags.splice(tagIndex, 1);
+                            }
+                        });
+
+                        // Return the deleted status
+                        return isDeleted;
+                    })
+                ))
+            ))
+        );
     }
 
     /**
@@ -212,7 +278,7 @@ export class TasksService
                        }).pipe(
                            map((updatedTask) => {
 
-                               // Find the index of the updated task within the labels
+                               // Find the index of the updated task
                                const index = tasks.findIndex(item => item.id === id);
 
                                // Update the task
@@ -252,7 +318,7 @@ export class TasksService
             switchMap(tasks => this._httpClient.delete('api/apps/tasks/task', {params: {id}}).pipe(
                 map((isDeleted: boolean) => {
 
-                    // Find the index of the deleted task within the tasks
+                    // Find the index of the deleted task
                     const index = tasks.findIndex(item => item.id === id);
 
                     // Delete the task

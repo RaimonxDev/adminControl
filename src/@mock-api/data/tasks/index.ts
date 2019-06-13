@@ -105,6 +105,39 @@ export class MockTasksApi
             });
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Tag - DELETE
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onDelete('api/apps/tasks/tag')
+            .reply((request) => {
+
+                // Get the id
+                const id = request.params.get('id');
+
+                // Find the tag and delete it
+                this._tags.forEach((item, index) => {
+
+                    if ( item.id === id )
+                    {
+                        this._tags.splice(index, 1);
+                    }
+                });
+
+                // Get the tasks that have the tag
+                const tasksWithTag = this._tasks.filter(task => task.tags.indexOf(id) > -1);
+
+                // Iterate through them and remove the tag
+                tasksWithTag.forEach((task) => {
+                    task.tags.splice(task.tags.indexOf(id), 1);
+                });
+
+                return [
+                    200,
+                    true
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Tasks - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -299,7 +332,7 @@ export class MockTasksApi
                 const id = request.params.get('id');
 
                 // Find the task and delete it
-                this._tasks.forEach((item, index, tasks) => {
+                this._tasks.forEach((item, index) => {
 
                     if ( item.id === id )
                     {
