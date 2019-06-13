@@ -1,83 +1,17 @@
 import { Injectable, NgZone } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Injectable()
 export class AsmMediaWatcherService
 {
     private _mqlMap: Map<string, MediaQueryList>;
-    private _onMediaChangeSubject: BehaviorSubject<string>;
+    private _onMediaChange: BehaviorSubject<string[] | null>;
 
-    private readonly _rules: any = [
-        // Base rules
-        {
-            alias: 'xs',
-            query: '(min-width: 0px) and (max-width: 599px)',
-            base : true
-        },
-        {
-            alias: 'sm',
-            query: '(min-width: 600px) and (max-width: 959px)',
-            base : true
-        },
-        {
-            alias: 'md',
-            query: '(min-width: 960px) and (max-width: 1279px)',
-            base : true
-        },
-        {
-            alias: 'lg',
-            query: '(min-width: 1280px) and (max-width: 1919px)',
-            base : true
-        },
-        {
-            alias: 'xl',
-            query: '(min-width: 1920px) and (max-width: 5000px)',
-            base : true
-        },
-        // Extended rules
-        {
-            alias   : 'lt-sm',
-            query   : '(max-width: 599px)',
-            extended: true
-        },
-        {
-            alias     : 'lt-md',
-            query: '(max-width: 959px)',
-            extended  : true
-        },
-        {
-            alias     : 'lt-lg',
-            query: '(max-width: 1279px)',
-            extended  : true
-        },
-        {
-            alias   : 'lt-xl',
-            query   : '(max-width: 1919px)',
-            extended: true
-        },
-        {
-            alias   : 'gt-xs',
-            query   : '(min-width: 600px)',
-            extended: true
-        },
-        {
-            alias   : 'gt-sm',
-            query   : '(min-width: 960px)',
-            extended: true
-        },
-        {
-            alias   : 'gt-md',
-            query   : '(min-width: 1280px)',
-            extended: true
-        },
-
-        {
-            alias   : 'gt-lg',
-            query   : '(min-width: 1920px)',
-            extended: true
-        }
-    ];
+    private readonly _baseRules: string[];
+    private readonly _extendedRules: string[];
+    private readonly _rules: any[];
 
     /**
      * Constructor
@@ -91,7 +25,65 @@ export class AsmMediaWatcherService
     )
     {
         // Set the defaults
-        this._onMediaChangeSubject = new BehaviorSubject<string>('');
+        this._baseRules = ['xs', 'sm', 'md', 'lg', 'xl'];
+        this._extendedRules = ['lt-sm', 'lt-md', 'lt-lg', 'lt-xl', 'gt-xs', 'gt-sm', 'gt-md', 'gt-lg'];
+        this._onMediaChange = new BehaviorSubject(null);
+        this._rules = [
+            // Base rules
+            {
+                alias: 'xs',
+                query: '(min-width: 0px) and (max-width: 599px)'
+            },
+            {
+                alias: 'sm',
+                query: '(min-width: 600px) and (max-width: 959px)'
+            },
+            {
+                alias: 'md',
+                query: '(min-width: 960px) and (max-width: 1279px)'
+            },
+            {
+                alias: 'lg',
+                query: '(min-width: 1280px) and (max-width: 1919px)'
+            },
+            {
+                alias: 'xl',
+                query: '(min-width: 1920px) and (max-width: 5000px)'
+            },
+            // Extended rules
+            {
+                alias: 'lt-sm',
+                query: '(max-width: 599px)'
+            },
+            {
+                alias: 'lt-md',
+                query: '(max-width: 959px)'
+            },
+            {
+                alias: 'lt-lg',
+                query: '(max-width: 1279px)'
+            },
+            {
+                alias: 'lt-xl',
+                query: '(max-width: 1919px)'
+            },
+            {
+                alias: 'gt-xs',
+                query: '(min-width: 600px)'
+            },
+            {
+                alias: 'gt-sm',
+                query: '(min-width: 960px)'
+            },
+            {
+                alias: 'gt-md',
+                query: '(min-width: 1280px)'
+            },
+            {
+                alias: 'gt-lg',
+                query: '(min-width: 1920px)'
+            }
+        ];
 
         // Initialize
         this._init();
@@ -102,11 +94,11 @@ export class AsmMediaWatcherService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * OnMediaChange subscribable
+     * Getter for _onMediaChange
      */
-    get onMediaChange(): Observable<any>
+    get onMediaChange$(): Observable<string[]>
     {
-        return this._onMediaChangeSubject.asObservable();
+        return this._onMediaChange.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -123,40 +115,77 @@ export class AsmMediaWatcherService
         // Prepare the mqlMap
         this._mqlMap = new Map<string, MediaQueryList>();
 
-        // Loop through all the rules
+        // Create MediaQueryLists from the rules and store them in the map
         this._rules.forEach((rule) => {
 
-            // If the mql already exists in the map, skip it...
-            if ( this._mqlMap.get[rule.alias] )
+            // Create a new MediaQueryList for the rule
+            const mql = this._mediaMatcher.matchMedia(rule.query);
+
+            // Add the MediaQueryList to the map
+            this._mqlMap.set(rule.alias, mql);
+        });
+
+        // Iterate through the MediaQueryList map for the base rules
+        this._mqlMap.forEach((mql, key) => {
+
+            // Return if this is not a base rule
+            if ( !this._baseRules.includes(key) )
             {
                 return;
             }
 
-            // Create a MediaQueryList object for the rule
-            const mql = this._mediaMatcher.matchMedia(rule.query);
+            // Add an event listener to the MediaQueryList
+            mql.addEventListener('change', (event) => {
 
-            // Set a new entry to the mqlMap
-            this._mqlMap.set(rule.alias, mql);
-
-            // Add a listener to that MediaQueryList
-            mql.addListener((event) => {
-
-                // If it's a base rule and matches, execute the observable
-                if ( event.matches && rule.base )
+                // If the rule doesn't match, return
+                if ( !event.matches )
                 {
-                    this._ngZone.run(() => {
-                        this._onMediaChangeSubject.next(rule.alias);
-                    });
+                    return;
                 }
+
+                // Prepare the matching aliases array
+                const matchingAliases = [];
+
+                // Iterate through the entire MediaQueryList
+                // map to find all the matching rules
+                this._mqlMap.forEach((r, a) => {
+
+                    // If the rule matches...
+                    if ( r.matches )
+                    {
+                        // Add it to the matching aliases
+                        matchingAliases.push(a);
+                    }
+                });
+
+                // Execute the observable within the zone
+                // to trigger change detection
+                this._ngZone.run(() => {
+                    this._onMediaChange.next(matchingAliases);
+                });
             });
 
-            // If the breakpoint is active, trigger
-            // the observable for the first time
-            if ( mql.matches && rule.base )
+            // If the rule matches...
+            if ( mql.matches )
             {
-                // Execute the observable
+                const matchingAliases = [];
+
+                // Iterate through the entire MediaQueryList
+                // map to find the matching rules
+                this._mqlMap.forEach((v, k) => {
+
+                    // If the rule matches...
+                    if ( v.matches )
+                    {
+                        // Add it to the matching aliases
+                        matchingAliases.push(k);
+                    }
+                });
+
+                // Execute the observable within the zone
+                // to trigger change detection
                 this._ngZone.run(() => {
-                    this._onMediaChangeSubject.next(rule.alias);
+                    this._onMediaChange.next(matchingAliases);
                 });
             }
         });
@@ -167,13 +196,34 @@ export class AsmMediaWatcherService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Check if the given alias is active
+     * On media query change
      *
-     * @param alias
-     * @return {boolean}
+     * @param query
      */
-    isActive(alias): boolean
+    onMediaQueryChange$(query: string): Observable<boolean>
     {
-        return this._mqlMap.get(alias).matches;
+        // Create a new MediaQueryList from the query
+        const mql: MediaQueryList = this._mediaMatcher.matchMedia(query);
+
+        // Create a behavior subject with the initial matches value
+        const mediaQuerySubject: BehaviorSubject<boolean> = new BehaviorSubject(mql.matches);
+
+        // Execute observable
+        const executeObservable = (event: MediaQueryListEvent) => {
+            mediaQuerySubject.next(event.matches);
+        };
+
+        // Add an event listener to the MediaQueryList
+        mql.addEventListener('change', executeObservable);
+
+        // Return the subject as observable
+        return mediaQuerySubject.asObservable().pipe(
+            // On finalize....
+            finalize(() => {
+
+                // Remove the event listener to prevent memory leaks
+                mql.removeEventListener('change', executeObservable);
+            })
+        );
     }
 }
