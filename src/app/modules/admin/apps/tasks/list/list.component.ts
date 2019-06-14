@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Subject } from 'rxjs';
-import { debounceTime, filter, switchMap, take, takeUntil, tap } from 'rxjs/operators';
+import { debounceTime, filter, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { AsmLookUpByPipe, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
