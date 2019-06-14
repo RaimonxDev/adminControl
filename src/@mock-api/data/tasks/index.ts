@@ -9,7 +9,7 @@ import { tags as tagsData, tasks as tasksData } from '@mock-api/data/tasks/data'
 })
 export class MockTasksApi
 {
-    // Private Readonly
+    // Private
     private _tags: any[];
     private _tasks: any[];
 
@@ -240,7 +240,7 @@ export class MockTasksApi
                 // Get the id from the params
                 const id = request.params.get('id');
 
-                // Clone the tasks data to prevent accidental data updates
+                // Clone the tasks
                 const tasks = _.cloneDeep(this._tasks);
 
                 // Find the task
