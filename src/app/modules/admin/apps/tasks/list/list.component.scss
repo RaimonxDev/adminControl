@@ -80,7 +80,7 @@ tasks-list {
                 }
 
                 .search {
-                    margin: 32px 48px 64px 48px;
+                    margin: 32px 48px 48px 48px;
 
                     @include asm-media-breakpoint('lt-sm') {
                         margin: 32px 40px 16px 40px;
