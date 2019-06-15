@@ -183,7 +183,7 @@ export class TasksService
     getTasks(): Observable<Task[]>
     {
         return this._httpClient.get<Task[]>('api/apps/tasks/all').pipe(
-            tap((response: any) => {
+            tap((response) => {
                 this._tasks.next(response);
             })
         );
