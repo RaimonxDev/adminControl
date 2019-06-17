@@ -84,13 +84,23 @@
 // for smaller spaces and non-form usages
 .asm-mat-simplify {
 
+    // Remove position absolute from the
+    // underline to make things easier
     &.mat-form-field.mat-form-field-appearance-standard {
 
         .mat-form-field-wrapper {
 
-            .mat-form-field-underline,
-            .mat-form-field-subscript-wrapper {
-                display: none !important;
+            .mat-form-field-flex {
+                padding-top: 0;
+
+                .mat-form-field-infix {
+                    border-top: 0;
+                }
+            }
+
+            .mat-form-field-underline {
+                position: relative;
+                bottom: 0;
             }
         }
     }
@@ -101,18 +111,56 @@
         &.mat-form-field.mat-form-field-appearance-standard {
 
             .mat-form-field-wrapper {
-                padding-bottom: 0 !important;
 
                 .mat-form-field-flex {
-                    padding-top: 0 !important;
+                    padding-top: 0;
 
                     .mat-form-field-infix {
-                        border-top: 0 !important;
+                        border-top: 0;
 
                         .mat-form-field-label-wrapper {
                             display: none !important;
                         }
                     }
+                }
+            }
+
+            // Select
+            .mat-select {
+
+                .mat-select-arrow-wrapper {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+
+    // Removes subscript space
+    &.asm-mat-no-subscript,
+    &.asm-mat-no-hint,
+    &.asm-mat-no-error {
+
+        &.mat-form-field.mat-form-field-appearance-standard {
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0;
+
+                .mat-form-field-subscript-wrapper {
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    // Removes underline
+    &.asm-mat-no-underline {
+
+        &.mat-form-field.mat-form-field-appearance-standard {
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-underline {
+                    display: none !important;
                 }
             }
         }
@@ -162,6 +210,7 @@
                     }
                 }
 
+                // Infix
                 .mat-form-field-infix {
                     border-top: none;
                     padding: 0 8px;
@@ -271,7 +320,7 @@
     &.asm-mat-no-hint,
     &.asm-mat-no-error {
 
-        &.mat-form-field {
+        &.mat-form-field.mat-form-field-appearance-outline {
 
             .mat-form-field-wrapper {
                 padding-bottom: 0;
