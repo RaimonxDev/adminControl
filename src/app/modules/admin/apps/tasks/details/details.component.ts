@@ -748,7 +748,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         const nextTaskId = (this.tasks.length === 1 && this.tasks[0].id === id) ? null : this.tasks[nextTaskIndex].id;
 
         // Delete the task
-        this._tasksService.deleteTask(this.task.id)
+        this._tasksService.deleteTask(id)
             .subscribe((isDeleted) => {
 
                 // Return if the task wasn't deleted...

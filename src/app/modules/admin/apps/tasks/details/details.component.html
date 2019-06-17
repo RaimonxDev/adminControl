@@ -37,12 +37,13 @@
 
         <!-- Title -->
         <div class="title">
-            <mat-form-field class="asm-mat-simplify asm-mat-no-subscript asm-mat-no-label"
+            <mat-form-field class="asm-mat-simplify asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                             [appearance]="'standard'">
                 <textarea matInput
                           cdkTextareaAutosize
                           [formControlName]="'title'"
                           [placeholder]="task.type === 'task' ? 'Task title' : 'Section title'"
+                          [spellcheck]="false"
                           #titleField></textarea>
             </mat-form-field>
         </div>
@@ -121,12 +122,13 @@
         <div class="notes"
              *ngIf="task.notes !== null">
 
-            <mat-form-field class="asm-mat-simplify asm-mat-no-subscript asm-mat-no-label"
+            <mat-form-field class="asm-mat-simplify  asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                             [appearance]="'standard'">
                 <textarea matInput
                           cdkTextareaAutosize
                           [formControlName]="'notes'"
                           [placeholder]="'Type here to add notes'"
+                          [spellcheck]="false"
                           #notesField></textarea>
             </mat-form-field>
 
@@ -193,7 +195,7 @@
                                         (click)="deleteTag(tag)">
                                     <mat-icon>delete</mat-icon>
                                 </button>
-                                <mat-form-field class="asm-mat-simplify asm-mat-no-label asm-mat-no-subscript"
+                                <mat-form-field class="asm-mat-simplify asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                                                 [appearance]="'standard'">
                                     <input matInput
                                            [value]="tag.title"
