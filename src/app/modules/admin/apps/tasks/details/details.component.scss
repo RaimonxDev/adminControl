@@ -55,13 +55,27 @@ tasks-details {
             }
 
             .title {
-                margin: 0 -12px;
 
                 .mat-form-field {
                     width: 100%;
-                    padding: 4px 12px;
-                    border-radius: 4px;
-                    transition: background 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
+
+                    &:hover,
+                    &.mat-focused {
+
+                        .mat-form-field-wrapper {
+
+                            .mat-form-field-underline {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    .mat-form-field-wrapper {
+
+                        .mat-form-field-underline {
+                            opacity: 0;
+                        }
+                    }
 
                     textarea {
                         margin: 0;
@@ -181,8 +195,24 @@ tasks-details {
                 .mat-form-field {
                     width: 100%;
                     padding: 4px 12px;
-                    border-radius: 4px;
-                    transition: background 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
+
+                    &:hover,
+                    &.mat-focused {
+
+                        .mat-form-field-wrapper {
+
+                            .mat-form-field-underline {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    .mat-form-field-wrapper {
+
+                        .mat-form-field-underline {
+                            opacity: 0;
+                        }
+                    }
 
                     textarea {
                         margin: 0;
@@ -438,24 +468,6 @@ tasks-details {
 
             .task-details {
 
-                .title {
-
-                    .mat-form-field {
-
-                        &:hover {
-
-                            &:not(.mat-focused) {
-                                background: map-get($background, hover);
-                            }
-                        }
-
-                        &.mat-focused {
-                            background: none;
-                            box-shadow: 0 0 0 2px map-get($primary, default);
-                        }
-                    }
-                }
-
                 .tags {
 
                     .tag {
@@ -534,24 +546,6 @@ tasks-details {
 
                         .due-date-title {
                             color: map-get($foreground, secondary-text);
-                        }
-                    }
-                }
-
-                .notes {
-
-                    .mat-form-field {
-
-                        &:hover {
-
-                            &:not(.mat-focused) {
-                                background: map-get($background, hover);
-                            }
-                        }
-
-                        &.mat-focused {
-                            background: none;
-                            box-shadow: 0 0 0 2px map-get($primary, default);
                         }
                     }
                 }
