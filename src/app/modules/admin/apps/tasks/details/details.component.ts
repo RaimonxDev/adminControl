@@ -38,13 +38,13 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     private _unsubscribeAll: Subject<any>;
 
     @ViewChild('dueDatePanelOrigin', {static: false})
-    private _dueDatePanelOrigin: ElementRef;
+    private _dueDatePanelOrigin: MatButton;
 
     @ViewChild('dueDatePanel', {static: false})
     private _dueDatePanel: TemplateRef<any>;
 
     @ViewChild('priorityPanelOrigin', {static: false})
-    private _priorityPanelOrigin: ElementRef;
+    private _priorityPanelOrigin: MatButton;
 
     @ViewChild('priorityPanel', {static: false})
     private _priorityPanel: TemplateRef<any>;
@@ -491,7 +491,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._priorityPanelOrigin.nativeElement)
+                                  .flexibleConnectedTo(this._priorityPanelOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
@@ -509,7 +509,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         this._priorityPanelOverlayRef.attachments().subscribe(() => {
 
             // Add a class to the origin
-            this._renderer2.addClass(this._priorityPanelOrigin.nativeElement, 'panel-opened');
+            this._renderer2.addClass(this._priorityPanelOrigin._elementRef.nativeElement, 'panel-opened');
         });
 
         // Create a portal from the template
@@ -532,7 +532,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     closePriorityPanel(): void
     {
         // Remove the class from the origin
-        this._renderer2.removeClass(this._priorityPanelOrigin.nativeElement, 'panel-opened');
+        this._renderer2.removeClass(this._priorityPanelOrigin._elementRef.nativeElement, 'panel-opened');
 
         // If overlay exists and attached...
         if ( this._priorityPanelOverlayRef && this._priorityPanelOverlayRef.hasAttached() )
@@ -560,11 +560,17 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._dueDatePanelOrigin.nativeElement)
+                                  .flexibleConnectedTo(this._dueDatePanelOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
                                   .withPositions([
+                                      {
+                                          originX : 'end',
+                                          originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
                                       {
                                           originX : 'start',
                                           originY : 'bottom',
@@ -578,7 +584,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         this._dueDatePanelOverlayRef.attachments().subscribe(() => {
 
             // Add a class to the origin
-            this._renderer2.addClass(this._dueDatePanelOrigin.nativeElement, 'panel-opened');
+            this._renderer2.addClass(this._dueDatePanelOrigin._elementRef.nativeElement, 'panel-opened');
         });
 
         // Create a portal from the template
@@ -601,7 +607,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     closeDueDatePanel(): void
     {
         // Remove the class from the origin
-        this._renderer2.removeClass(this._dueDatePanelOrigin.nativeElement, 'panel-opened');
+        this._renderer2.removeClass(this._dueDatePanelOrigin._elementRef.nativeElement, 'panel-opened');
 
         // If overlay exists and attached...
         if ( this._dueDatePanelOverlayRef && this._dueDatePanelOverlayRef.hasAttached() )

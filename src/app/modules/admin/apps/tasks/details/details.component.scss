@@ -95,7 +95,8 @@ tasks-details {
             justify-content: flex-start;
             margin-top: 24px;
 
-            .tag {
+            .tag,
+            .edit-tags {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -104,7 +105,10 @@ tasks-details {
                 line-height: 1 !important;
                 padding: 0 12px;
                 margin: 0 12px 12px 0;
-                border-radius: 10px;
+                border-radius: 4px;
+            }
+
+            .tag {
 
                 .tag-title {
                     font-size: 11px;
@@ -114,28 +118,27 @@ tasks-details {
                 }
             }
 
-            .add-tag {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 20px;
-                min-height: 20px;
-                line-height: 1 !important;
-                padding: 0 12px 0 8px;
-                margin: 0 12px 12px 0;
-                border-radius: 10px;
+            .edit-tags {
                 cursor: pointer;
+                padding: 0 12px 0 8px;
 
                 .mat-icon {
-                    @include asm-icon-size(16);
+
+                    &.add-icon {
+                        @include asm-icon-size(16);
+                        margin-right: 4px;
+                    }
+
+                    &.edit-icon {
+                        @include asm-icon-size(14);
+                        margin-right: 6px;
+                    }
                 }
 
                 span {
-                    margin-left: 4px;
                     font-size: 11px;
                     font-weight: 700;
                     white-space: nowrap;
-                    text-transform: uppercase;
                 }
             }
         }
@@ -144,16 +147,13 @@ tasks-details {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            margin-top: 32px;
+            margin: 32px -16px 0 -16px;
 
             .priority {
-                display: flex;
-                align-items: center;
-                margin: 0 48px 32px -8px;
-                padding: 8px 24px 8px 8px;
-                border-radius: 24px;
-                cursor: pointer;
-                transition: box-shadow 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
+                min-height: 48px;
+                max-height: 48px;
+                margin: 0 24px 32px 0;
+                padding: 0 24px 0 16px;
 
                 .priority-icon {
                     display: flex;
@@ -175,6 +175,9 @@ tasks-details {
                 }
 
                 .priority-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
                     font-weight: 500;
                     line-height: normal;
                     white-space: nowrap;
@@ -187,13 +190,10 @@ tasks-details {
             }
 
             .due-date {
-                display: flex;
-                align-items: center;
-                margin: 0 0 32px -8px;
-                padding: 8px 24px 8px 8px;
-                border-radius: 24px;
-                cursor: pointer;
-                transition: box-shadow 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
+                min-height: 48px;
+                max-height: 48px;
+                margin: 0 48px 32px 0;
+                padding: 0 24px 0 16px;
 
                 .due-date-icon {
                     display: flex;
@@ -209,6 +209,9 @@ tasks-details {
                 }
 
                 .due-date-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
                     font-weight: 500;
                     line-height: normal;
                     white-space: nowrap;
@@ -369,7 +372,7 @@ tasks-details {
 .tasks-details-priority-panel {
     min-width: 200px;
     max-width: 200px;
-    margin-top: 2px;
+    margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
     @include asm-shadow(2);
@@ -411,7 +414,7 @@ tasks-details {
     flex-direction: column;
     min-width: 320px;
     max-width: 320px;
-    margin-top: 2px;
+    margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
     @include asm-shadow(2);
@@ -468,7 +471,8 @@ tasks-details {
 
             .tags {
 
-                .tag {
+                .tag,
+                .edit-tags {
                     color: map-get($foreground, secondary-text);
 
                     @if ($is-dark) {
@@ -477,30 +481,12 @@ tasks-details {
                         background: #EEEEEE;
                     }
                 }
-
-                .add-tag {
-                    color: map-get($foreground, secondary-text);
-                    box-shadow: 0 0 0 2px map-get($foreground, divider);
-
-                    &:hover {
-                        @if ($is-dark) {
-                            background: map-get($background, background);
-                        } @else {
-                            background: #EEEEEE;
-                        }
-                    }
-                }
             }
 
             .priority {
-                box-shadow: none;
-
-                &:hover {
-                    box-shadow: inset 0 0 0 2px map-get($foreground, divider);
-                }
 
                 &.panel-opened {
-                    box-shadow: inset 0 0 0 2px map-get($primary, default);
+                    background: map-get($background, hover);
                 }
 
                 .priority-icon {
@@ -530,14 +516,9 @@ tasks-details {
             }
 
             .due-date {
-                box-shadow: none;
-
-                &:hover {
-                    box-shadow: inset 0 0 0 2px map-get($foreground, divider);
-                }
 
                 &.panel-opened {
-                    box-shadow: inset 0 0 0 2px map-get($primary, default);
+                    background: map-get($background, hover);
                 }
 
                 .due-date-icon {

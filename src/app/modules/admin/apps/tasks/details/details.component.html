@@ -69,11 +69,19 @@
             <span class="tag-title">{{tag.title}}</span>
         </div>
 
-        <div class="add-tag"
+        <div class="edit-tags"
              (click)="openTagsPanel()"
              #tagsPanelOrigin>
-            <mat-icon>add</mat-icon>
-            <span>Add Tag</span>
+
+            <ng-container *ngIf="task.tags.length">
+                <mat-icon class="edit-icon">edit</mat-icon>
+                <span>Edit Tags</span>
+            </ng-container>
+
+            <ng-container *ngIf="!task.tags.length">
+                <mat-icon class="add-icon">add</mat-icon>
+                <span>Add Tag</span>
+            </ng-container>
 
             <!-- Tags panel -->
             <ng-template #tagsPanel>
@@ -152,11 +160,12 @@
     <div class="details">
 
         <!-- Priority -->
-        <div class="priority"
-             (click)="openPriorityPanel()"
-             #priorityPanelOrigin>
+        <button class="priority"
+                mat-button
+                (click)="openPriorityPanel()"
+                #priorityPanelOrigin>
 
-            <div class="priority-icon">
+            <span class="priority-icon">
                 <mat-icon class="low"
                           *ngIf="task.priority === 0">
                     arrow_downward
@@ -169,11 +178,11 @@
                           *ngIf="task.priority === 2">
                     arrow_upward
                 </mat-icon>
-            </div>
+            </span>
 
-            <div class="priority-content">
-                <div class="priority-title">Priority</div>
-                <div class="priority-label">
+            <span class="priority-content">
+                <span class="priority-title">Priority</span>
+                <span class="priority-label">
                     <span class="low"
                           *ngIf="task.priority === 0">
                         Low
@@ -186,81 +195,82 @@
                           *ngIf="task.priority === 2">
                         High
                     </span>
-                </div>
+                </span>
+            </span>
+
+        </button>
+
+        <!-- Priority panel -->
+        <ng-template #priorityPanel>
+
+            <div class="tasks-details-priority-panel">
+
+                <mat-radio-group [color]="'primary'"
+                                 [formControlName]="'priority'"
+                                 (change)="closePriorityPanel()">
+
+                    <mat-radio-button class="low"
+                                      [value]="0">
+                        <span>Low</span>
+                        <mat-icon>arrow_downward</mat-icon>
+                    </mat-radio-button>
+
+                    <mat-radio-button class="normal"
+                                      [value]="1">
+                        <span>Normal</span>
+                        <mat-icon>remove</mat-icon>
+                    </mat-radio-button>
+
+                    <mat-radio-button class="high"
+                                      [value]="2">
+                        <span>High</span>
+                        <mat-icon>arrow_upward</mat-icon>
+                    </mat-radio-button>
+
+                </mat-radio-group>
+
             </div>
 
-            <!-- Priority panel -->
-            <ng-template #priorityPanel>
-
-                <div class="tasks-details-priority-panel">
-
-                    <mat-radio-group [color]="'primary'"
-                                     [formControlName]="'priority'"
-                                     (change)="closePriorityPanel()">
-
-                        <mat-radio-button class="low"
-                                          [value]="0">
-                            <span>Low</span>
-                            <mat-icon>arrow_downward</mat-icon>
-                        </mat-radio-button>
-
-                        <mat-radio-button class="normal"
-                                          [value]="1">
-                            <span>Normal</span>
-                            <mat-icon>remove</mat-icon>
-                        </mat-radio-button>
-
-                        <mat-radio-button class="high"
-                                          [value]="2">
-                            <span>High</span>
-                            <mat-icon>arrow_upward</mat-icon>
-                        </mat-radio-button>
-
-                    </mat-radio-group>
-
-                </div>
-
-            </ng-template>
-
-        </div>
+        </ng-template>
 
         <!-- Due date -->
-        <div class="due-date"
-             [ngClass]="{'overdue': isOverdue(), 'not-set': !task.dueDate}"
-             (click)="openDueDatePanel()"
-             #dueDatePanelOrigin>
+        <button class="due-date"
+                mat-button
+                [ngClass]="{'overdue': isOverdue(), 'not-set': !task.dueDate}"
+                (click)="openDueDatePanel()"
+                #dueDatePanelOrigin>
 
             <mat-icon class="due-date-icon">today</mat-icon>
 
-            <div class="due-date-content">
-                <div class="due-date-title">Due date</div>
-                <div class="due-date-label">
+            <span class="due-date-content">
+                <span class="due-date-title">Due date</span>
+                <span class="due-date-label">
                     <span *ngIf="task.dueDate">{{task.dueDate | date:'longDate'}}</span>
                     <span *ngIf="!task.dueDate">Not set</span>
-                </div>
+                </span>
+            </span>
+
+        </button>
+
+        <!-- Due date panel -->
+        <ng-template #dueDatePanel>
+
+            <div class="tasks-details-due-date-panel">
+
+                <mat-calendar [selected]="taskForm.get('dueDate').value"
+                              [startAt]="taskForm.get('dueDate').value"
+                              (selectedChange)="updateDueDate($event)"></mat-calendar>
+
+                <button mat-stroked-button
+                        *ngIf="taskForm.get('dueDate').value"
+                        (click)="removeDueDate()">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                    Remove due date
+                </button>
+
             </div>
 
-            <!-- Due date panel -->
-            <ng-template #dueDatePanel>
-
-                <div class="tasks-details-due-date-panel">
-
-                    <mat-calendar [selected]="taskForm.get('dueDate').value"
-                                  [startAt]="taskForm.get('dueDate').value"
-                                  (selectedChange)="updateDueDate($event)"></mat-calendar>
-
-                    <button mat-stroked-button
-                            *ngIf="taskForm.get('dueDate').value"
-                            (click)="removeDueDate()">
-                        <mat-icon>remove_circle_outline</mat-icon>
-                        Remove due date
-                    </button>
-
-                </div>
-
-            </ng-template>
-
-        </div>
+        </ng-template>
 
     </div>
 
