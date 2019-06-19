@@ -1,153 +1,79 @@
 <form [formGroup]="taskForm">
 
-    <div class="task-details">
+    <div class="header">
 
-        <div class="header">
+        <!-- Mark as ... button -->
+        <button class="mark-as-button"
+                mat-button
+                (click)="toggleCompleted()">
 
-            <!-- Mark as ... button -->
-            <button class="mark-as-button"
-                    mat-button
-                    (click)="toggleCompleted()">
+            <!-- Mark as complete -->
+            <span class="complete"
+                  *ngIf="!taskForm.get('completed').value">
+                <mat-icon>radio_button_unchecked</mat-icon>
+                <span>MARK AS COMPLETE</span>
+            </span>
 
-                <!-- Mark as complete -->
-                <span class="complete"
-                      *ngIf="!taskForm.get('completed').value">
-                    <mat-icon>radio_button_unchecked</mat-icon>
-                    <span>MARK AS COMPLETE</span>
-                </span>
+            <!-- Mark as incomplete -->
+            <span class="incomplete"
+                  *ngIf="taskForm.get('completed').value">
+                <mat-icon [color]="'primary'">check_circle</mat-icon>
+                <span>MARK AS INCOMPLETE</span>
+            </span>
 
-                <!-- Mark as incomplete -->
-                <span class="incomplete"
-                      *ngIf="taskForm.get('completed').value">
-                    <mat-icon [color]="'primary'">check_circle</mat-icon>
-                    <span>MARK AS INCOMPLETE</span>
-                </span>
+        </button>
 
+        <!-- More menu -->
+        <button class="more-menu"
+                mat-icon-button
+                [matMenuTriggerFor]="moreMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #moreMenu="matMenu">
+            <button mat-menu-item
+                    (click)="deleteTask()">
+                <mat-icon>delete</mat-icon>
+                <span>Delete task</span>
             </button>
+        </mat-menu>
 
-            <!-- Close button -->
-            <button mat-icon-button
-                    [routerLink]="['../']">
-                <mat-icon>close</mat-icon>
-            </button>
-
-        </div>
-
-        <mat-divider></mat-divider>
-
-        <!-- Title -->
-        <div class="title">
-            <mat-form-field class="asm-mat-simplify asm-mat-no-label asm-mat-no-subscript"
-                            [appearance]="'standard'">
-                <textarea matInput
-                          cdkTextareaAutosize
-                          [formControlName]="'title'"
-                          [placeholder]="task.type === 'task' ? 'Task title' : 'Section title'"
-                          [spellcheck]="false"
-                          #titleField></textarea>
-            </mat-form-field>
-        </div>
-
-        <!-- Tags -->
-        <div class="tags"
-             *ngIf="task.tags.length > 0">
-
-            <div class="tag"
-                 *ngFor="let tag of (task.tags | lookUpBy:'id':tags); trackBy: trackById">
-                <span class="tag-title">{{tag.title}}</span>
-            </div>
-
-        </div>
-
-        <!-- Details -->
-        <div class="details">
-
-            <!-- Priority -->
-            <div class="priority">
-
-                <div class="priority-icon">
-                    <mat-icon class="low"
-                              *ngIf="task.priority === 0">
-                        arrow_downward
-                    </mat-icon>
-                    <mat-icon class="normal"
-                              *ngIf="task.priority === 1">
-                        remove
-                    </mat-icon>
-                    <mat-icon class="high"
-                              *ngIf="task.priority === 2">
-                        arrow_upward
-                    </mat-icon>
-                </div>
-
-                <div class="priority-content">
-                    <div class="priority-title">Priority</div>
-                    <div class="priority-label">
-                        <span class="low"
-                              *ngIf="task.priority === 0">
-                            Low
-                        </span>
-                        <span class="normal"
-                              *ngIf="task.priority === 1">
-                            Normal
-                        </span>
-                        <span class="high"
-                              *ngIf="task.priority === 2">
-                            High
-                        </span>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Due date -->
-            <div class="due-date"
-                 [ngClass]="{'overdue': isOverdue(), 'not-set': !task.dueDate}">
-
-                <mat-icon class="due-date-icon">today</mat-icon>
-
-                <div class="due-date-content">
-                    <div class="due-date-title">Due date</div>
-                    <div class="due-date-label">
-                        <span *ngIf="task.dueDate">{{task.dueDate | date:'longDate'}}</span>
-                        <span *ngIf="!task.dueDate">Not set</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Notes -->
-        <div class="notes"
-             *ngIf="task.notes !== null">
-
-            <mat-form-field class="asm-mat-simplify  asm-mat-no-label asm-mat-no-subscript"
-                            [appearance]="'standard'">
-                <textarea matInput
-                          cdkTextareaAutosize
-                          [formControlName]="'notes'"
-                          [placeholder]="'Type here to add notes'"
-                          [spellcheck]="false"
-                          #notesField></textarea>
-            </mat-form-field>
-
-        </div>
+        <!-- Close button -->
+        <button mat-icon-button
+                [routerLink]="['../']">
+            <mat-icon>close</mat-icon>
+        </button>
 
     </div>
 
-    <div class="task-actions">
+    <mat-divider></mat-divider>
 
-        <!-- Add / Change tags -->
-        <div class="add-change-tags">
+    <!-- Title -->
+    <div class="title">
+        <mat-form-field class="asm-mat-simplify asm-mat-no-label asm-mat-no-subscript"
+                        [appearance]="'standard'">
+            <textarea matInput
+                      cdkTextareaAutosize
+                      [formControlName]="'title'"
+                      [placeholder]="task.type === 'task' ? 'Task title' : 'Section title'"
+                      [spellcheck]="false"
+                      #titleField></textarea>
+        </mat-form-field>
+    </div>
 
-            <button mat-icon-button
-                    [matTooltip]="task.tags.length > 0 ? 'Change tags' : 'Add tag'"
-                    [matTooltipPosition]="'before'"
-                    (click)="openTagsPanel()"
-                    #tagsPanelOrigin>
-                <mat-icon>label_outline</mat-icon>
-            </button>
+    <!-- Tags -->
+    <div class="tags">
+
+        <div class="tag"
+             *ngFor="let tag of (task.tags | lookUpBy:'id':tags); trackBy: trackById">
+            <span class="tag-title">{{tag.title}}</span>
+        </div>
+
+        <div class="add-tag"
+             (click)="openTagsPanel()"
+             #tagsPanelOrigin>
+            <mat-icon>add</mat-icon>
+            <span>Add Tag</span>
 
             <!-- Tags panel -->
             <ng-template #tagsPanel>
@@ -220,16 +146,48 @@
 
         </div>
 
-        <!-- Priority -->
-        <div class="change-priority">
+    </div>
 
-            <button mat-icon-button
-                    [matTooltip]="'Change priority'"
-                    [matTooltipPosition]="'before'"
-                    (click)="openPriorityPanel()"
-                    #priorityPanelOrigin>
-                <mat-icon>error_outline</mat-icon>
-            </button>
+    <!-- Details -->
+    <div class="details">
+
+        <!-- Priority -->
+        <div class="priority"
+             (click)="openPriorityPanel()"
+             #priorityPanelOrigin>
+
+            <div class="priority-icon">
+                <mat-icon class="low"
+                          *ngIf="task.priority === 0">
+                    arrow_downward
+                </mat-icon>
+                <mat-icon class="normal"
+                          *ngIf="task.priority === 1">
+                    remove
+                </mat-icon>
+                <mat-icon class="high"
+                          *ngIf="task.priority === 2">
+                    arrow_upward
+                </mat-icon>
+            </div>
+
+            <div class="priority-content">
+                <div class="priority-title">Priority</div>
+                <div class="priority-label">
+                    <span class="low"
+                          *ngIf="task.priority === 0">
+                        Low
+                    </span>
+                    <span class="normal"
+                          *ngIf="task.priority === 1">
+                        Normal
+                    </span>
+                    <span class="high"
+                          *ngIf="task.priority === 2">
+                        High
+                    </span>
+                </div>
+            </div>
 
             <!-- Priority panel -->
             <ng-template #priorityPanel>
@@ -267,15 +225,20 @@
         </div>
 
         <!-- Due date -->
-        <div class="add-change-due-date">
+        <div class="due-date"
+             [ngClass]="{'overdue': isOverdue(), 'not-set': !task.dueDate}"
+             (click)="openDueDatePanel()"
+             #dueDatePanelOrigin>
 
-            <button mat-icon-button
-                    [matTooltip]="task.dueDate ? 'Change due date' : 'Add due date'"
-                    [matTooltipPosition]="'before'"
-                    (click)="openDueDatePanel()"
-                    #dueDatePanelOrigin>
-                <mat-icon>today</mat-icon>
-            </button>
+            <mat-icon class="due-date-icon">today</mat-icon>
+
+            <div class="due-date-content">
+                <div class="due-date-title">Due date</div>
+                <div class="due-date-label">
+                    <span *ngIf="task.dueDate">{{task.dueDate | date:'longDate'}}</span>
+                    <span *ngIf="!task.dueDate">Not set</span>
+                </div>
+            </div>
 
             <!-- Due date panel -->
             <ng-template #dueDatePanel>
@@ -299,33 +262,19 @@
 
         </div>
 
-        <!-- Toggle notes -->
-        <div class="toggle-notes">
-            <button mat-icon-button
-                    [matTooltip]="task.notes === null ? 'Add notes' : 'Remove notes'"
-                    [matTooltipPosition]="'before'"
-                    (click)="toggleNotes()">
-                <mat-icon>notes</mat-icon>
-            </button>
-            <mat-icon class="add"
-                      *ngIf="task.notes === null">
-                add
-            </mat-icon>
-            <mat-icon class="remove"
-                      *ngIf="task.notes !== null">
-                remove
-            </mat-icon>
-        </div>
+    </div>
 
-        <!-- Delete task -->
-        <div class="delete-task">
-            <button mat-icon-button
-                    [matTooltip]="'Delete task'"
-                    [matTooltipPosition]="'before'"
-                    (click)="deleteTask()">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </div>
+    <!-- Notes -->
+    <div class="notes">
+
+        <mat-form-field class="asm-mat-simplify asm-mat-no-label asm-mat-no-subscript"
+                        [appearance]="'standard'">
+            <textarea matInput
+                      cdkTextareaAutosize
+                      [formControlName]="'notes'"
+                      [placeholder]="'Notes'"
+                      [spellcheck]="false"></textarea>
+        </mat-form-field>
 
     </div>
 

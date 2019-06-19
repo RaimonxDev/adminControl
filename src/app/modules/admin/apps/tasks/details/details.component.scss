@@ -7,163 +7,161 @@ tasks-details {
 
     form {
         display: flex;
+        flex-direction: column;
         flex: 1 1 auto;
         height: 100%;
+        padding: 64px 48px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
 
-        .task-details {
+        @include asm-media-breakpoint('lt-sm') {
+            padding: 40px;
+        }
+
+        .header {
             display: flex;
-            flex: 1 1 auto;
-            flex-direction: column;
-            padding: 64px 48px;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
+            align-items: center;
+            margin: 0 -12px 0 -18px;
 
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 40px;
-            }
+            .mark-as-button {
 
-            .header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin: 0 -12px 0 -18px;
+                .complete,
+                .incomplete {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
 
-                .mark-as-button {
+                    .mat-icon {
+                        margin-right: 8px;
+                        @include asm-icon-size(20);
+                    }
 
-                    .complete,
-                    .incomplete {
-                        display: flex;
+                    span {
+                        display: inline-flex;
                         align-items: center;
-                        justify-content: center;
-
-                        .mat-icon {
-                            margin-right: 8px;
-                            @include asm-icon-size(20);
-                        }
-
-                        span {
-                            display: inline-flex;
-                            align-items: center;
-                            font-weight: 700;
-                        }
+                        font-weight: 700;
                     }
-                }
-
-                + .mat-divider {
-                    margin: 24px 0 16px 0;
                 }
             }
 
-            .title {
+            .more-menu {
+                margin-left: auto;
+            }
 
-                .mat-form-field {
-                    width: 100%;
+            + .mat-divider {
+                margin: 24px 0 16px 0;
+            }
+        }
 
-                    &:hover,
-                    &.mat-focused {
+        .title {
 
-                        .mat-form-field-wrapper {
+            .mat-form-field {
+                width: 100%;
 
-                            .mat-form-field-underline {
-                                opacity: 1;
-                            }
-                        }
-                    }
+                &:hover,
+                &.mat-focused {
 
                     .mat-form-field-wrapper {
 
                         .mat-form-field-underline {
-                            opacity: 0;
+                            opacity: 1;
                         }
                     }
+                }
 
-                    textarea {
-                        margin: 0;
-                        padding: 0;
-                        font-size: 20px;
-                        font-weight: 700;
-                        line-height: 1.25;
-                        overflow: hidden;
+                .mat-form-field-wrapper {
+
+                    .mat-form-field-underline {
+                        transition: opacity 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
+                        opacity: 0;
                     }
+                }
+
+                textarea {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: 1.25;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 24px;
+
+            .tag {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 22px;
+                min-height: 22px;
+                line-height: 1 !important;
+                padding: 0 12px;
+                margin: 0 12px 12px 0;
+                border-radius: 10px;
+
+                .tag-title {
+                    font-size: 11px;
+                    font-weight: 700;
+                    white-space: nowrap;
+                    text-transform: uppercase;
                 }
             }
 
-            .tags {
+            .add-tag {
                 display: flex;
-                flex-wrap: wrap;
                 align-items: center;
-                justify-content: flex-start;
-                margin-top: 16px;
+                justify-content: center;
+                height: 20px;
+                min-height: 20px;
+                line-height: 1 !important;
+                padding: 0 12px 0 8px;
+                margin: 0 12px 12px 0;
+                border-radius: 10px;
+                cursor: pointer;
 
-                .tag {
+                .mat-icon {
+                    @include asm-icon-size(16);
+                }
+
+                span {
+                    margin-left: 4px;
+                    font-size: 11px;
+                    font-weight: 700;
+                    white-space: nowrap;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .details {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+
+            .priority {
+                display: flex;
+                align-items: center;
+                margin: 0 48px 32px -8px;
+                padding: 8px 24px 8px 8px;
+                border-radius: 24px;
+                cursor: pointer;
+                transition: box-shadow 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
+
+                .priority-icon {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    height: 20px;
-                    min-height: 20px;
-                    line-height: 1 !important;
-                    padding: 0 12px;
-                    margin: 0 12px 12px 0;
-                    border-radius: 10px;
+                    margin-right: 12px;
 
-                    .tag-title {
-                        font-size: 11px;
-                        font-weight: 700;
-                        white-space: nowrap;
-                        text-transform: uppercase;
-                    }
-                }
-            }
-
-            .details {
-                display: flex;
-                align-items: center;
-                flex-wrap: wrap;
-                margin-top: 32px;
-
-                .priority {
-                    display: flex;
-                    align-items: center;
-                    margin: 0 48px 40px 0;
-
-                    .priority-icon {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin-right: 12px;
-
-                        .mat-icon {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            @include asm-icon-size(18);
-                            width: 32px;
-                            height: 32px;
-                            min-width: 32px;
-                            min-height: 32px;
-                            border-radius: 50%;
-                        }
-                    }
-
-                    .priority-content {
-                        font-weight: 500;
-                        line-height: normal;
-                        white-space: nowrap;
-
-                        .priority-title {
-                            margin-bottom: 1px;
-                            font-size: 12px;
-                        }
-                    }
-                }
-
-                .due-date {
-                    display: flex;
-                    flex: 1 1 auto;
-                    align-items: center;
-                    margin-bottom: 40px;
-
-                    .due-date-icon {
+                    .mat-icon {
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -172,110 +170,89 @@ tasks-details {
                         height: 32px;
                         min-width: 32px;
                         min-height: 32px;
-                        margin-right: 12px;
                         border-radius: 50%;
                     }
+                }
 
-                    .due-date-content {
-                        font-weight: 500;
-                        line-height: normal;
-                        white-space: nowrap;
+                .priority-content {
+                    font-weight: 500;
+                    line-height: normal;
+                    white-space: nowrap;
 
-                        .due-date-title {
-                            margin-bottom: 1px;
-                            font-size: 12px;
-                        }
+                    .priority-title {
+                        margin-bottom: 1px;
+                        font-size: 12px;
                     }
                 }
             }
 
-            .notes {
-                margin: 0 -12px 40px -12px;
+            .due-date {
+                display: flex;
+                align-items: center;
+                margin: 0 0 32px -8px;
+                padding: 8px 24px 8px 8px;
+                border-radius: 24px;
+                cursor: pointer;
+                transition: box-shadow 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-                .mat-form-field {
-                    width: 100%;
-                    padding: 4px 12px;
+                .due-date-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    @include asm-icon-size(18);
+                    width: 32px;
+                    height: 32px;
+                    min-width: 32px;
+                    min-height: 32px;
+                    margin-right: 12px;
+                    border-radius: 50%;
+                }
 
-                    &:hover,
-                    &.mat-focused {
+                .due-date-content {
+                    font-weight: 500;
+                    line-height: normal;
+                    white-space: nowrap;
 
-                        .mat-form-field-wrapper {
-
-                            .mat-form-field-underline {
-                                opacity: 1;
-                            }
-                        }
-                    }
-
-                    .mat-form-field-wrapper {
-
-                        .mat-form-field-underline {
-                            opacity: 0;
-                        }
-                    }
-
-                    textarea {
-                        margin: 0;
-                        padding: 0;
-                        white-space: pre-line;
-                        line-height: 1.8;
-                        overflow: hidden;
+                    .due-date-title {
+                        margin-bottom: 1px;
+                        font-size: 12px;
                     }
                 }
             }
         }
 
-        .task-actions {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 80px;
-            min-width: 80px;
-            max-width: 80px;
-            padding: 64px 0;
+        .notes {
+            margin: 0 -12px 40px -12px;
 
-            @include asm-media-breakpoint('lt-sm') {
-                padding: 40px 0;
-            }
+            .mat-form-field {
+                width: 100%;
+                padding: 4px 12px;
 
-            > div {
-                position: relative;
-                margin-bottom: 24px;
+                &:hover,
+                &.mat-focused {
 
-                &:last-child {
-                    margin-bottom: 0;
+                    .mat-form-field-wrapper {
+
+                        .mat-form-field-underline {
+                            transition: opacity 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
+                            opacity: 1;
+                        }
+                    }
                 }
 
-                &.add-change-due-date {
+                .mat-form-field-wrapper {
 
-                    .due-date-input {
-                        position: absolute;
-                        top: -100%;
-                        right: calc(100% + 4px);
-                        width: 100%;
-                        height: 100%;
-                        visibility: hidden;
+                    .mat-form-field-underline {
                         opacity: 0;
-                        pointer-events: none;
                     }
                 }
 
-                &.toggle-notes {
-                    position: relative;
-
-                    .add,
-                    .remove {
-                        position: absolute;
-                        right: 2px;
-                        bottom: 2px;
-                        border-radius: 50%;
-                        pointer-events: none;
-                        @include asm-icon-size(14);
-                    }
-                }
-
-                .mat-icon {
-                    @include asm-icon-size(24);
+                textarea {
+                    margin: 0;
+                    padding: 0;
+                    white-space: pre-line;
+                    line-height: 1.8;
+                    overflow: hidden;
                 }
             }
         }
@@ -285,6 +262,7 @@ tasks-details {
 .tasks-details-tags-panel {
     min-width: 200px;
     max-width: 200px;
+    margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
     @include asm-shadow(2);
@@ -391,6 +369,7 @@ tasks-details {
 .tasks-details-priority-panel {
     min-width: 200px;
     max-width: 200px;
+    margin-top: 2px;
     border-radius: 4px;
     border: 1px solid;
     @include asm-shadow(2);
@@ -432,6 +411,7 @@ tasks-details {
     flex-direction: column;
     min-width: 320px;
     max-width: 320px;
+    margin-top: 2px;
     border-radius: 4px;
     border: 1px solid;
     @include asm-shadow(2);
@@ -466,100 +446,145 @@ tasks-details {
 
         form {
 
-            .task-details {
+            .title {
 
-                .tags {
+                .mat-form-field {
 
-                    .tag {
-                        color: map-get($foreground, secondary-text);
+                    &:not(.mat-focused) {
 
-                        @if ($is-dark) {
-                            background: map-get($background, background);
-                        } @else {
-                            background: #EEEEEE;
-                        }
-                    }
+                        .mat-form-field-wrapper {
 
-                    .change-tags {
-                        color: map-get($foreground, secondary-text);
+                            .mat-form-field-underline {
+                                background-color: map-get($foreground, divider);
 
-                        @if ($is-dark) {
-                            background: map-get($background, background);
-                        } @else {
-                            background: #EEEEEE;
-                        }
-                    }
-                }
-
-                .priority {
-
-                    .priority-icon {
-
-                        .low {
-                            color: asm-color($asm-green, 600);
-                            background: asm-color($asm-green, 50);
-                        }
-
-                        .normal {
-                            color: asm-color($asm-grey, 400);
-                            background: asm-color($asm-grey, 100);
-                        }
-
-                        .high {
-                            color: asm-color($asm-red, 600);
-                            background: asm-color($asm-red, 50);
-                        }
-                    }
-
-                    .priority-content {
-
-                        .priority-title {
-                            color: map-get($foreground, secondary-text);
-                        }
-                    }
-                }
-
-                .due-date {
-
-                    .due-date-icon {
-                        color: asm-color($asm-green, 600);
-                        background: asm-color($asm-green, 50);
-                    }
-
-                    &.overdue {
-
-                        .due-date-icon {
-                            color: asm-color($asm-red, 500);
-                            background: asm-color($asm-red, 50);
-                        }
-                    }
-
-                    &.not-set {
-
-                        .due-date-icon {
-                            color: asm-color($asm-grey, 400);
-                            background: asm-color($asm-grey, 100);
-                        }
-                    }
-
-                    .due-date-content {
-
-                        .due-date-title {
-                            color: map-get($foreground, secondary-text);
+                                .mat-form-field-ripple {
+                                    background-color: transparent;
+                                }
+                            }
                         }
                     }
                 }
             }
 
-            .task-actions {
-                background: map-get($background, background);
+            .tags {
 
-                .toggle-notes {
+                .tag {
+                    color: map-get($foreground, secondary-text);
 
-                    .add,
-                    .remove {
-                        background: rgba(0, 0, 0, 0.12);
-                        color: map-get($foreground, icon);
+                    @if ($is-dark) {
+                        background: map-get($background, background);
+                    } @else {
+                        background: #EEEEEE;
+                    }
+                }
+
+                .add-tag {
+                    color: map-get($foreground, secondary-text);
+                    box-shadow: 0 0 0 2px map-get($foreground, divider);
+
+                    &:hover {
+                        @if ($is-dark) {
+                            background: map-get($background, background);
+                        } @else {
+                            background: #EEEEEE;
+                        }
+                    }
+                }
+            }
+
+            .priority {
+                box-shadow: none;
+
+                &:hover {
+                    box-shadow: inset 0 0 0 2px map-get($foreground, divider);
+                }
+
+                &.panel-opened {
+                    box-shadow: inset 0 0 0 2px map-get($primary, default);
+                }
+
+                .priority-icon {
+
+                    .low {
+                        color: asm-color($asm-green, 600);
+                        background: asm-color($asm-green, 50);
+                    }
+
+                    .normal {
+                        color: asm-color($asm-grey, 400);
+                        background: asm-color($asm-grey, 100);
+                    }
+
+                    .high {
+                        color: asm-color($asm-red, 600);
+                        background: asm-color($asm-red, 50);
+                    }
+                }
+
+                .priority-content {
+
+                    .priority-title {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+            }
+
+            .due-date {
+                box-shadow: none;
+
+                &:hover {
+                    box-shadow: inset 0 0 0 2px map-get($foreground, divider);
+                }
+
+                &.panel-opened {
+                    box-shadow: inset 0 0 0 2px map-get($primary, default);
+                }
+
+                .due-date-icon {
+                    color: asm-color($asm-green, 600);
+                    background: asm-color($asm-green, 50);
+                }
+
+                &.overdue {
+
+                    .due-date-icon {
+                        color: asm-color($asm-red, 500);
+                        background: asm-color($asm-red, 50);
+                    }
+                }
+
+                &.not-set {
+
+                    .due-date-icon {
+                        color: asm-color($asm-grey, 400);
+                        background: asm-color($asm-grey, 100);
+                    }
+                }
+
+                .due-date-content {
+
+                    .due-date-title {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+            }
+
+            .notes {
+
+                .mat-form-field {
+
+                    &:not(.mat-focused) {
+
+                        .mat-form-field-wrapper {
+
+                            .mat-form-field-underline {
+                                background-color: map-get($foreground, divider);
+
+                                .mat-form-field-ripple {
+                                    background-color: transparent;
+                                }
+                            }
+                        }
                     }
                 }
             }

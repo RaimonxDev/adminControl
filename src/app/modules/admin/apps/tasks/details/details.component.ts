@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -38,19 +38,19 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     private _unsubscribeAll: Subject<any>;
 
     @ViewChild('dueDatePanelOrigin', {static: false})
-    private _dueDatePanelOrigin: MatButton;
+    private _dueDatePanelOrigin: ElementRef;
 
     @ViewChild('dueDatePanel', {static: false})
     private _dueDatePanel: TemplateRef<any>;
 
     @ViewChild('priorityPanelOrigin', {static: false})
-    private _priorityPanelOrigin: MatButton;
+    private _priorityPanelOrigin: ElementRef;
 
     @ViewChild('priorityPanel', {static: false})
     private _priorityPanel: TemplateRef<any>;
 
     @ViewChild('tagsPanelOrigin', {static: false})
-    private _tagsPanelOrigin: MatButton;
+    private _tagsPanelOrigin: ElementRef;
 
     @ViewChild('tagsPanel', {static: false})
     private _tagsPanel: TemplateRef<any>;
@@ -58,13 +58,12 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     @ViewChild('titleField', {static: false})
     private _titleField: ElementRef;
 
-    private _notesField: ElementRef;
-
     /**
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
      * @param {FormBuilder} _formBuilder
+     * @param {Renderer2} _renderer2
      * @param {Router} _router
      * @param {TasksListComponent} _tasksListComponent
      * @param {TasksService} _tasksService
@@ -74,6 +73,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _formBuilder: FormBuilder,
+        private _renderer2: Renderer2,
         private _router: Router,
         private _tasksListComponent: TasksListComponent,
         private _tasksService: TasksService,
@@ -86,32 +86,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Set the defaults
         this.tagsEditMode = false;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter for notes field
-     *
-     * @param element
-     */
-    @ViewChild('notesField', {static: false})
-    set notesField(element)
-    {
-        // If the notes field is empty and wasn't exist before
-        // it means that the notes field is toggled on, so focus
-        // to the field in that case
-        if ( this.task.notes === '' && !this._notesField )
-        {
-            setTimeout(() => {
-                element.nativeElement.focus();
-            });
-        }
-
-        // Store the notes field element
-        this._notesField = element;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -278,29 +252,11 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._tagsPanelOrigin._elementRef.nativeElement)
+                                  .flexibleConnectedTo(this._tagsPanelOrigin.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
                                   .withPositions([
-                                      {
-                                          originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'top'
-                                      },
                                       {
                                           originX : 'start',
                                           originY : 'bottom',
@@ -312,6 +268,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Subscribe to the attachments observable
         this._tagsPanelOverlayRef.attachments().subscribe(() => {
+
+            // Add a class to the origin
+            this._renderer2.addClass(this._tagsPanelOrigin.nativeElement, 'panel-opened');
 
             // Focus to the search input once the overlay has been attached
             this._tagsPanelOverlayRef.overlayElement.querySelector('input').focus();
@@ -325,6 +284,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Subscribe to the backdrop click
         this._tagsPanelOverlayRef.backdropClick().subscribe(() => {
+
+            // Remove the class from the origin
+            this._renderer2.removeClass(this._tagsPanelOrigin.nativeElement, 'panel-opened');
 
             // If overlay exists and attached...
             if ( this._tagsPanelOverlayRef && this._tagsPanelOverlayRef.hasAttached() )
@@ -529,29 +491,11 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._priorityPanelOrigin._elementRef.nativeElement)
+                                  .flexibleConnectedTo(this._priorityPanelOrigin.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
                                   .withPositions([
-                                      {
-                                          originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'top'
-                                      },
                                       {
                                           originX : 'start',
                                           originY : 'bottom',
@@ -564,8 +508,8 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         // Subscribe to the attachments observable
         this._priorityPanelOverlayRef.attachments().subscribe(() => {
 
-            // Focus to the search input once the overlay has been attached
-            this._priorityPanelOverlayRef.overlayElement.querySelector('input').focus();
+            // Add a class to the origin
+            this._renderer2.addClass(this._priorityPanelOrigin.nativeElement, 'panel-opened');
         });
 
         // Create a portal from the template
@@ -576,6 +520,8 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Subscribe to the backdrop click
         this._priorityPanelOverlayRef.backdropClick().subscribe(() => {
+
+            // Close the panel
             this.closePriorityPanel();
         });
     }
@@ -585,6 +531,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      */
     closePriorityPanel(): void
     {
+        // Remove the class from the origin
+        this._renderer2.removeClass(this._priorityPanelOrigin.nativeElement, 'panel-opened');
+
         // If overlay exists and attached...
         if ( this._priorityPanelOverlayRef && this._priorityPanelOverlayRef.hasAttached() )
         {
@@ -611,29 +560,11 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._dueDatePanelOrigin._elementRef.nativeElement)
+                                  .flexibleConnectedTo(this._dueDatePanelOrigin.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
                                   .withPositions([
-                                      {
-                                          originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'top'
-                                      },
                                       {
                                           originX : 'start',
                                           originY : 'bottom',
@@ -641,6 +572,13 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                                           overlayY: 'top'
                                       }
                                   ])
+        });
+
+        // Subscribe to the attachments observable
+        this._dueDatePanelOverlayRef.attachments().subscribe(() => {
+
+            // Add a class to the origin
+            this._renderer2.addClass(this._dueDatePanelOrigin.nativeElement, 'panel-opened');
         });
 
         // Create a portal from the template
@@ -651,6 +589,8 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Subscribe to the backdrop click
         this._dueDatePanelOverlayRef.backdropClick().subscribe(() => {
+
+            // Close the panel
             this.closeDueDatePanel();
         });
     }
@@ -660,6 +600,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      */
     closeDueDatePanel(): void
     {
+        // Remove the class from the origin
+        this._renderer2.removeClass(this._dueDatePanelOrigin.nativeElement, 'panel-opened');
+
         // If overlay exists and attached...
         if ( this._dueDatePanelOverlayRef && this._dueDatePanelOverlayRef.hasAttached() )
         {
@@ -713,25 +656,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     isOverdue(): boolean
     {
         return moment(this.task.dueDate, moment.ISO_8601).isBefore(moment(), 'days');
-    }
-
-    /**
-     * Toggle notes
-     */
-    toggleNotes(): void
-    {
-        // Get the form control for 'notes'
-        const notesFormControl = this.taskForm.get('notes');
-
-        // Toggle the notes
-        if ( notesFormControl.value === null )
-        {
-            notesFormControl.setValue('');
-        }
-        else
-        {
-            notesFormControl.setValue(null);
-        }
     }
 
     /**

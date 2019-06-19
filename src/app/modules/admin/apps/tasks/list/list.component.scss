@@ -7,8 +7,8 @@ tasks-list {
     .mat-drawer-container {
 
         .mat-drawer {
-            min-width: 576px !important;
-            max-width: 576px !important;
+            min-width: 496px !important;
+            max-width: 496px !important;
 
             @include asm-media-breakpoint('lt-sm') {
                 min-width: 100% !important;
@@ -233,10 +233,10 @@ tasks-list {
                                         display: flex;
                                         align-items: center;
                                         justify-content: center;
-                                        height: 16px;
+                                        height: 22px;
                                         padding: 0 8px;
                                         margin-right: 8px;
-                                        border-radius: 8px;
+                                        border-radius: 11px;
                                         font-size: 11px;
                                         font-weight: bold;
                                         line-height: 1;

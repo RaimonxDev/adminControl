@@ -9,7 +9,7 @@ export interface Task
     id: string;
     type: 'task' | 'section';
     title: string;
-    notes?: string | null;
+    notes: string;
     completed: boolean;
     dueDate: string | null;
     priority: 1 | 2 | 3;
