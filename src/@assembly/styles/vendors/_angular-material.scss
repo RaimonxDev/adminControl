@@ -72,35 +72,49 @@
     .mat-form-field-label {
         font-weight: 500;
     }
-
-    // Increase the height of the underline for
-    // more modern look
-    .mat-form-field-underline {
-        height: 2px;
-    }
 }
 
 // Simplifies the form field to make it suitable
 // for smaller spaces and non-form usages
-.asm-mat-simplify {
+.asm-mat {
 
-    // Remove position absolute from the
-    // underline to make things easier
     &.mat-form-field.mat-form-field-appearance-standard {
 
+        // Remove position absolute from the
+        // underline to make things easier
         .mat-form-field-wrapper {
-
-            .mat-form-field-flex {
-                padding-top: 0;
-
-                .mat-form-field-infix {
-                    border-top: 0;
-                }
-            }
 
             .mat-form-field-underline {
                 position: relative;
                 bottom: 0;
+            }
+        }
+
+        // Makes mat-select usable as prefix
+        // and suffix by default
+        .mat-form-field-prefix,
+        .mat-form-field-suffix {
+
+            > .mat-select {
+                display: flex;
+                align-items: center;
+                margin-right: 8px;
+
+                .mat-select-trigger {
+                    display: flex;
+                    align-items: center;
+
+                    .mat-select-value {
+                        display: flex;
+                        max-width: none;
+                    }
+
+                    .mat-select-arrow-wrapper {
+                        display: flex;
+                        transform: none;
+                        margin-left: 8px;
+                    }
+                }
             }
         }
     }
@@ -165,6 +179,32 @@
             }
         }
     }
+
+    // Shows the underline only on hover and focused
+    &.asm-mat-hover-underline {
+
+        &.mat-form-field.mat-form-field-appearance-standard {
+
+            &:hover,
+            &.mat-focused {
+
+                .mat-form-field-wrapper {
+
+                    .mat-form-field-underline {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-underline {
+                    transition: opacity 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
+                    opacity: 0;
+                }
+            }
+        }
+    }
 }
 
 // ----------------------------------------------------
@@ -173,7 +213,7 @@
 
 // Simplifies the form field to make it suitable
 // for smaller spaces and non-form usages
-.asm-mat-simplify {
+.asm-mat {
 
     &.mat-form-field.mat-form-field-appearance-outline {
 
@@ -351,7 +391,7 @@
 // ----------------------------------------------------
 
 // Simplify
-.asm-mat-simplify {
+.asm-mat {
 
     &.mat-form-field.mat-form-field-appearance-fill {
 
@@ -363,16 +403,90 @@
 
                 .mat-form-field-prefix,
                 .mat-form-field-suffix {
+                    position: relative;
+                    top: -3px;
+                }
 
-                    .mat-icon {
-                        position: relative;
-                        top: -3px;
-                    }
+                .mat-form-field-prefix {
+                    margin-right: 16px;
+                }
+
+                .mat-form-field-suffix {
+                    margin-left: 16px;
                 }
             }
 
             .mat-form-field-underline {
                 display: none !important;
+            }
+        }
+
+        // Makes mat-select usable as prefix
+        // and suffix by default
+        .mat-form-field-prefix,
+        .mat-form-field-suffix {
+
+            > .mat-select {
+                display: flex;
+                align-items: center;
+
+                .mat-select-trigger {
+                    display: flex;
+                    align-items: center;
+
+                    .mat-select-value {
+                        display: flex;
+                        max-width: none;
+                    }
+
+                    .mat-select-arrow-wrapper {
+                        display: flex;
+                        transform: none;
+                        margin-left: 8px;
+                    }
+                }
+            }
+        }
+    }
+
+    // Disables the floating label
+    &.asm-mat-no-label {
+
+        &.mat-form-field.mat-form-field-appearance-fill {
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-flex {
+                    padding-top: 0;
+
+                    .mat-form-field-infix {
+                        border-top: 0;
+                        padding: 1em 0;
+
+                        .mat-form-field-label-wrapper {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Removes subscript space
+    &.asm-mat-no-subscript,
+    &.asm-mat-no-hint,
+    &.asm-mat-no-error {
+
+        &.mat-form-field.mat-form-field-appearance-fill {
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0;
+
+                .mat-form-field-subscript-wrapper {
+                    display: none !important;
+                    height: 0 !important;
+                }
             }
         }
     }
@@ -396,6 +510,30 @@
 
         .mat-form-field-underline {
             background-color: map-get($foreground, divider);
+        }
+    }
+
+    .asm-mat {
+
+        // Shows the underline only on hover and focused
+        &.asm-mat-hover-underline {
+
+            &.mat-form-field.mat-form-field-appearance-standard {
+
+                &:not(.mat-focused) {
+
+                    .mat-form-field-wrapper {
+
+                        .mat-form-field-underline {
+                            background-color: map-get($foreground, divider);
+
+                            .mat-form-field-ripple {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
