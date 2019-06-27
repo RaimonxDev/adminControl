@@ -295,7 +295,7 @@ export class TasksListComponent implements OnInit, OnDestroy
      *
      * @param item
      */
-    trackById(item): number
+    trackById(item): string
     {
         return item.id;
     }

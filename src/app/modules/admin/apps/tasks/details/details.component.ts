@@ -712,7 +712,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param item
      */
-    trackById(item): number
+    trackById(item): string
     {
         return item.id;
     }
