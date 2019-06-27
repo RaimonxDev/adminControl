@@ -321,7 +321,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'applications.tasks',
         title   : 'Tasks',
-        subtitle: '10 remaining tasks',
         type    : 'basic',
         icon    : 'check_box',
         link    : '/apps/tasks'
@@ -501,11 +500,24 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/ui/forms'
     },
     {
-        id   : 'ui-elements.helper-classes',
-        title: 'Helper classes',
-        type : 'basic',
-        icon : 'help_outline',
-        link : '/ui/helper-classes'
+        id      : 'ui-elements.helper-classes',
+        title   : 'Helper classes',
+        type    : 'collapsable',
+        icon    : 'help_outline',
+        children: [
+            {
+                id   : 'ui-elements.helper-classes.assembly',
+                title: 'Assembly',
+                type : 'basic',
+                link : '/ui/helper-classes/assembly'
+            },
+            {
+                id   : 'ui-elements.helper-classes.tailwindcss',
+                title: 'TailwindCSS',
+                type : 'basic',
+                link : '/ui/helper-classes/tailwindcss'
+            }
+        ]
     },
     {
         id      : 'ui-elements.icons',

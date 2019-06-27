@@ -1,0 +1,286 @@
+<div class="content-layout fullwidth-standard-normal-scroll docs">
+
+    <div class="header">
+
+        <div class="container">
+
+            <div class="breadcrumb">
+                <span class="path">UI ELEMENTS</span>
+                <span class="separator">/</span>
+                <span class="path">HELPER CLASSES</span>
+                <span class="separator">/</span>
+                <span class="path current">ASSEMBLY</span>
+            </div>
+            <h1>Assembly specific helper classes</h1>
+
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="container">
+
+            <form [formGroup]="demoForm">
+
+                <div class="flex">
+
+                    <div class="mr-64">
+
+                        <h3>Standard</h3>
+
+                        <br><br><br><br>
+                        <p>Simplify</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                        <br><br><br><br>
+                        <p>No label</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-label"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                        <br><br><br><br>
+                        <p>No subscript / error / hint</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-subscript"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+
+                        <br><br><br><br>
+                        <p>No underline</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-underline"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Standard</h3>
+
+                        <br><br><br><br>
+                        <p>Simplify</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+
+                        <br><br><br><br>
+                        <p>No label</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-label"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                        <br><br><br><br>
+                        <p>No subscript / error / hint</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-subscript"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+
+                        <br><br><br><br>
+                        <p>No underline</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-underline"
+                                        [appearance]="'standard'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+
+                <div class="flex">
+
+                    <div class="mr-64">
+
+                        <h3>Outline</h3>
+
+                        <br><br><br><br>
+                        <p>Simplify</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                        <br><br><br><br>
+                        <p>No label</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-label"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                        <br><br><br><br>
+                        <p>No subscript / error / hint</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-subscript"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+
+                        <br><br><br><br>
+                        <p>Rounded</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-rounded"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <input matInput
+                                   [formControlName]="'fieldInput'">
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Outline</h3>
+
+                        <br><br><br><br>
+                        <p>Simplify</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                        <br><br><br><br>
+                        <p>No label</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-label"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                        <br><br><br><br>
+                        <p>No subscript / error / hint</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-no-subscript"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+
+                        <br><br><br><br>
+                        <p>Rounded</p>
+                        <br><br>
+
+                        <mat-form-field class="asm-mat asm-mat-rounded"
+                                        [appearance]="'outline'">
+                            <mat-label>Demo label</mat-label>
+                            <mat-select [formControlName]="'fieldSelect'">
+                                <mat-option [value]="'value1'">Value 1</mat-option>
+                                <mat-option [value]="'value2'">Value 2</mat-option>
+                                <mat-option [value]="'value3'">Value 3</mat-option>
+                            </mat-select>
+                            <mat-error>Field is required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
