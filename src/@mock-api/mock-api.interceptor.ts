@@ -38,8 +38,8 @@ export class AsmMockApiInterceptor implements HttpInterceptor
             // Set the intercepted request on the requestHandler
             requestHandler.interceptedRequest = request;
 
-            // Subscribe to the execute reply function observable
-            return requestHandler.replyFunction.pipe(
+            // Subscribe to the reply function observable
+            return requestHandler.replyCallback.pipe(
                 delay(requestHandler.delay),
                 switchMap((response) => {
 

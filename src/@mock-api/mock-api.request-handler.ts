@@ -11,7 +11,7 @@ export class AsmMockApiRequestHandler
     private _executionCount: number;
     private _executionLimit: number;
     private _interceptedRequest: HttpRequest<any>;
-    private _replyFunction: any;
+    private _replyCallback: any;
     private _replyWithAuth: boolean;
     private _url: string;
 
@@ -97,9 +97,9 @@ export class AsmMockApiRequestHandler
     }
 
     /**
-     * Getter for reply function
+     * Getter for reply callback
      */
-    get replyFunction(): Observable<any>
+    get replyCallback(): Observable<any>
     {
         // Throw an error, if the execution limit has been reached
         if ( this._executionLimit > 0 && this._executionCount === this._executionLimit )
@@ -123,11 +123,18 @@ export class AsmMockApiRequestHandler
             return of([401, {error: 'Unauthorized'}]);
         }
 
-        // Return an observable which executes the reply function
-        return of(this._replyFunction(this.interceptedRequest))
-            .pipe(
-                take(1)
-            );
+        // Execute the reply callback
+        const replyCallbackResult = this._replyCallback(this.interceptedRequest);
+
+        // If the result of the reply function is an observable...
+        if ( replyCallbackResult instanceof Observable )
+        {
+            // Return the result as it is
+            return replyCallbackResult.pipe(take(1));
+        }
+
+        // Otherwise, return the result as an observable
+        return of(replyCallbackResult).pipe(take(1));
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -140,10 +147,10 @@ export class AsmMockApiRequestHandler
      * @param callback
      * @param withAuth
      */
-    reply(callback: (req: HttpRequest<any>) => ([number, any | string]), withAuth = true): void
+    reply(callback: (req: HttpRequest<any>) => ([number, any | string] | Observable<any>), withAuth = true): void
     {
         // Store the reply callback
-        this._replyFunction = callback;
+        this._replyCallback = callback;
 
         // Store the withAuth preference
         this._replyWithAuth = withAuth;

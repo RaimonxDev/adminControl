@@ -105,7 +105,7 @@ export class AsmMockApiService
         // Store the delay
         asmMockHttp.delay = delay;
 
-        // Store the request mock
+        // Store the request handler to access them from the interceptor
         this.requestHandlers[requestType].set(url, asmMockHttp);
 
         // Return the instance
