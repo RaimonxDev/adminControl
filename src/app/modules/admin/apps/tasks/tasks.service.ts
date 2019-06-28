@@ -292,7 +292,7 @@ export class TasksService
                            }),
                            switchMap(updatedTask => this.task$.pipe(
                                take(1),
-                               filter(item => item && item.id === task.id),
+                               filter(item => item && item.id === id),
                                tap(() => {
 
                                    // Update the task if it's selected
