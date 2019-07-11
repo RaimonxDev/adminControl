@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AsmHighlightService } from '@assembly/components/highlight/highlight.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { AsmHighlightService } from '@assembly/components/highlight/highlight.se
     encapsulation: ViewEncapsulation.None,
     exportAs     : 'asmHighlight'
 })
-export class AsmHighlightComponent implements OnInit
+export class AsmHighlightComponent implements AfterViewInit
 {
     // Code element
     @ViewChild('code', {static: false})
@@ -93,9 +93,9 @@ export class AsmHighlightComponent implements OnInit
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * On init
+     * After view init
      */
-    ngOnInit(): void
+    ngAfterViewInit(): void
     {
         // Return, if there is no language set
         if ( !this.lang )
