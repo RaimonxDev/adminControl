@@ -237,7 +237,7 @@ asm-vertical-menu {
 
             .asm-vertical-menu-item-badge,
             .asm-vertical-menu-item-icon {
-                display: none;
+                display: none !important;
             }
 
             .asm-vertical-menu-item-title {

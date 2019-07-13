@@ -176,7 +176,7 @@ asm-navigation {
 
                     .asm-navigation-item-badge,
                     .asm-navigation-item-icon {
-                        display: none;
+                        display: none !important;
                     }
 
                     .asm-navigation-item-title {
@@ -402,7 +402,7 @@ asm-navigation {
 
             .asm-navigation-item-badge,
             .asm-navigation-item-icon {
-                display: none;
+                display: none !important;
             }
 
             .asm-navigation-item-title {
