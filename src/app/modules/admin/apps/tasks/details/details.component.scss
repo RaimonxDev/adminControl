@@ -10,7 +10,7 @@ tasks-details {
         flex-direction: column;
         flex: 1 1 auto;
         height: 100%;
-        padding: 64px 48px;
+        padding: 72px 48px 64px 48px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
@@ -39,7 +39,7 @@ tasks-details {
                     span {
                         display: inline-flex;
                         align-items: center;
-                        font-weight: 700;
+                        font-weight: 500;
                     }
                 }
             }
@@ -61,8 +61,8 @@ tasks-details {
                 textarea {
                     margin: 0;
                     padding: 0;
-                    font-size: 20px;
-                    font-weight: 700;
+                    font-size: 28px;
+                    font-weight: 500;
                     line-height: 1.25;
                     overflow: hidden;
                 }
@@ -93,7 +93,7 @@ tasks-details {
 
                 .tag-title {
                     font-size: 11px;
-                    font-weight: 700;
+                    font-weight: 500;
                     white-space: nowrap;
                     text-transform: uppercase;
                 }
@@ -118,7 +118,7 @@ tasks-details {
 
                 span {
                     font-size: 11px;
-                    font-weight: 700;
+                    font-weight: 500;
                     white-space: nowrap;
                 }
             }
@@ -400,7 +400,7 @@ tasks-details {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -440,17 +440,17 @@ tasks-details {
 
                     .low {
                         color: asm-color($asm-green, 600);
-                        background: asm-color($asm-green, 50);
+                        background: asm-color($asm-green, 100);
                     }
 
                     .normal {
-                        color: asm-color($asm-grey, 400);
-                        background: asm-color($asm-grey, 100);
+                        color: asm-color($asm-gray, 400);
+                        background: asm-color($asm-gray, 100);
                     }
 
                     .high {
                         color: asm-color($asm-red, 600);
-                        background: asm-color($asm-red, 50);
+                        background: asm-color($asm-red, 100);
                     }
                 }
 
@@ -470,22 +470,22 @@ tasks-details {
 
                 .due-date-icon {
                     color: asm-color($asm-green, 600);
-                    background: asm-color($asm-green, 50);
+                    background: asm-color($asm-green, 100);
                 }
 
                 &.overdue {
 
                     .due-date-icon {
                         color: asm-color($asm-red, 500);
-                        background: asm-color($asm-red, 50);
+                        background: asm-color($asm-red, 100);
                     }
                 }
 
                 &.not-set {
 
                     .due-date-icon {
-                        color: asm-color($asm-grey, 400);
-                        background: asm-color($asm-grey, 100);
+                        color: asm-color($asm-gray, 400);
+                        background: asm-color($asm-gray, 100);
                     }
                 }
 

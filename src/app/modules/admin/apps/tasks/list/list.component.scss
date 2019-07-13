@@ -40,7 +40,7 @@ tasks-list {
 
                     .title {
 
-                        h2 {
+                        h1 {
                             margin: 0;
                         }
                     }
@@ -119,9 +119,9 @@ tasks-list {
                         display: flex;
                         align-items: center;
                         padding: 4px 32px;
-                        height: 64px;
-                        min-height: 64px;
-                        max-height: 64px;
+                        height: 72px;
+                        min-height: 72px;
+                        max-height: 72px;
                         user-select: none;
 
                         @include asm-media-breakpoint('lt-sm') {
@@ -152,7 +152,7 @@ tasks-list {
 
                         &.type-section {
                             font-size: 20px;
-                            font-weight: 700;
+                            font-weight: 600;
 
                             .task-content {
                                 padding: 0 16px;
@@ -238,7 +238,7 @@ tasks-list {
                                         margin-right: 8px;
                                         border-radius: 4px;
                                         font-size: 11px;
-                                        font-weight: bold;
+                                        font-weight: 500;
                                         line-height: 1;
                                         white-space: nowrap;
                                         text-transform: uppercase;
@@ -327,13 +327,14 @@ tasks-list {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
     tasks-list {
+        background: #F9FBFC;
 
         .mat-drawer-container {
 
