@@ -44,6 +44,13 @@ export const adminRoutes: Route[] = [
                         path        : 'tasks',
                         loadChildren: () => import('./apps/tasks/tasks.module')
                             .then(m => m.TasksModule)
+                    },
+
+                    // Contacts
+                    {
+                        path        : 'contacts',
+                        loadChildren: () => import('./apps/contacts/contacts.module')
+                            .then(m => m.ContactsModule)
                     }
                 ]
             },
