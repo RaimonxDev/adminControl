@@ -71,7 +71,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'blue-grey-800 theme-dark'
+                            background: 'bg-gray-800 theme-dark'
                         }
                     },
                     header    : {
@@ -79,7 +79,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                         fixed : false
                     },
                     footer    : {
-                        hidden: false,
+                        hidden: true,
                         fixed : false
                     }
                 }
