@@ -69,14 +69,14 @@ export const labels = [
     {
         id   : 'b2d1e4e7-7cfd-4b51-ae59-217a093df754',
         title: 'Invoices',
-        color: 'teal',
-        slug : 'invoices'
+        slug : 'invoices',
+        color: 'teal'
     },
     {
         id   : '184cd689-4ee4-47cf-9f8a-12233d614326',
         title: 'Accounts',
         slug : 'accounts',
-        color: 'blue-grey'
+        color: 'purple'
     },
     {
         id   : 'b67fc437-6118-4ec8-a3c7-9320b828e3fc',
