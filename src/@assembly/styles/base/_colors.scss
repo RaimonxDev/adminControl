@@ -1,29 +1,25 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Colors
+// @ Generate and apply base theme colors
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    $is-dark: map-get($theme, is-dark);
 
     // Base color and background
     & {
         color: map-get($foreground, text);
-
-        // If it's a light theme, use a custom background color
-        @if ($is-dark) {
-            background: map-get($background, background);
-        } @else {
-            background: $asm-light-background;
-        }
+        background: map-get($background, background);
     }
 
     // Base border color for all elements
     *,
     *::before,
     *::after {
-        border-color: map-get($foreground, divider);
+        border-top-color: map-get($foreground, divider);
+        border-right-color: map-get($foreground, divider);
+        border-bottom-color: map-get($foreground, divider);
+        border-left-color: map-get($foreground, divider);
     }
 
     // Force the disabled colors on disabled elements
@@ -34,8 +30,6 @@
         }
     }
 
-    i,
-    .icon,
     .mat-icon {
         color: map-get($foreground, icon);
     }
@@ -50,10 +44,6 @@
 
     .text-disabled {
         color: map-get($foreground, disabled-text);
-    }
-
-    .text-fade {
-        color: rgba(map-get($foreground, base), 0.2);
     }
 
     .divider {
@@ -72,134 +62,6 @@
 
     .bg-hover {
         background: map-get($background, hover);
-    }
-
-    // Apply palette's contrasting color rather than
-    // main foreground color on solid colored buttons
-    .mat-flat-button,
-    .mat-raised-button,
-    .mat-fab,
-    .mat-mini-fab {
-
-        @each $palette in (primary, accent, warn) {
-
-            $palette-contrast-color: map-get(map-get($theme, $palette), default-contrast);
-            $palette-contrast-is-dark: if(rgba($palette-contrast-color, 1) == rgba($asm-dark-primary-text, 1), true, false);
-
-            &.mat-#{$palette} {
-
-                & {
-                    color: $palette-contrast-color;
-                }
-
-                // Force the disabled colors on disabled buttons
-                &[disabled] {
-
-                    * {
-                        @if ($palette-contrast-is-dark) {
-                            color: rgba(rgba($palette-contrast-color, 1), 0.38) !important;
-                        } @else {
-                            color: rgba(rgba($palette-contrast-color, 1), 0.5) !important;
-                        }
-                    }
-                }
-
-                i,
-                .icon,
-                .mat-icon {
-                    @if ($palette-contrast-is-dark) {
-                        color: rgba(rgba($palette-contrast-color, 1), 0.54);
-                    } @else {
-                        color: rgba($palette-contrast-color, 1);
-                    }
-                }
-
-                .text-secondary {
-                    @if ($palette-contrast-is-dark) {
-                        color: rgba(rgba($palette-contrast-color, 1), 0.54);
-                    } @else {
-                        color: rgba(rgba($palette-contrast-color, 1), 0.7);
-                    }
-                }
-
-                .text-hint {
-                    @if ($palette-contrast-is-dark) {
-                        color: rgba(rgba($palette-contrast-color, 1), 0.38);
-                    } @else {
-                        color: rgba(rgba($palette-contrast-color, 1), 0.5);
-                    }
-                }
-
-                .text-disabled {
-                    @if ($palette-contrast-is-dark) {
-                        color: rgba(rgba($palette-contrast-color, 1), 0.38);
-                    } @else {
-                        color: rgba(rgba($palette-contrast-color, 1), 0.5);
-                    }
-                }
-
-                .text-fade {
-                    color: rgba($palette-contrast-color, 0.2);
-                }
-
-                .divider {
-                    color: rgba($palette-contrast-color, 0.12);
-                }
-            }
-        }
-    }
-
-    // Apply palette's color rather than main
-    // foreground color on transparent buttons
-    .mat-button,
-    .mat-icon-button,
-    .mat-stroked-button {
-
-        @each $palette in (primary, accent, warn) {
-
-            $palette-color: map-get(map-get($theme, $palette), default);
-
-            &.mat-#{$palette} {
-
-                & {
-                    color: $palette-color;
-                }
-
-                // Force the disabled colors on disabled buttons
-                &[disabled] {
-
-                    * {
-                        color: rgba(rgba($palette-color, 1), 0.38) !important;
-                    }
-                }
-
-                i,
-                .icon,
-                .mat-icon {
-                    color: $palette-color;
-                }
-
-                .text-secondary {
-                    color: rgba(rgba($palette-color, 1), 0.54);
-                }
-
-                .text-hint {
-                    color: rgba(rgba($palette-color, 1), 0.38);
-                }
-
-                .text-disabled {
-                    color: rgba(rgba($palette-color, 1), 0.38);
-                }
-
-                .text-fade {
-                    color: rgba($palette-color, 0.2);
-                }
-
-                .divider {
-                    color: rgba($palette-color, 0.12);
-                }
-            }
-        }
     }
 }
 

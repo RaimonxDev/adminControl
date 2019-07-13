@@ -39,3 +39,38 @@
 @mixin asm-shadow($elevation, $color: rgb(0, 0, 0), $important: false) {
     box-shadow: #{_get_shadow($elevation, $color)} if($important, !important, null);
 }
+
+///
+/// Adds an elevation on dark themes, based on Google's Material Dark specs.
+///
+/// @access public
+/// @param {String} $elevation - The amount of the elevation that the element will have
+/// @param {Boolean} $important - Whether to add an !important tag to the shadow rule
+///
+@mixin asm-dark-elevation($elevation, $important: false) {
+
+    // Elevations map
+    $elevations: (
+        0: 0,
+        1: 0.05,
+        2: 0.07,
+        3: 0.08,
+        4: 0.09,
+        6: 0.11,
+        8: 0.12,
+        12: 0.14,
+        16: 0.15,
+        24: 0.16
+    );
+
+    // Get the opacity value
+    $opacity: map-get($elevations, $elevation);
+
+    // Throw an error if the elevation value does not exist
+    @if ($opacity == null) {
+        @error 'Elevation `' + $elevation + '` does not exists!';
+    }
+
+    // Set the background
+    background: rgba(255, 255, 255, $opacity) if($important, !important, null);
+}

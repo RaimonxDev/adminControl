@@ -275,7 +275,7 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -305,7 +305,7 @@
                             background: map-get($background, card);
                             border-color: map-get($foreground, divider);
                         } @else {
-                            background: asm-color($asm-blue-grey, 100);
+                            background: asm-color($asm-gray, 100);
                             border-color: transparentize(map-get($foreground, divider), 0.09)
                         }
                     }
@@ -355,7 +355,7 @@
 
                                 .label {
                                     color: map-get($foreground, secondary-text);
-                                    background: asm-color($asm-blue-grey, 300);
+                                    background: asm-color($asm-gray, 300);
                                 }
                             }
                         }

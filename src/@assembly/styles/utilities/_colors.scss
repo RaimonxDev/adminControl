@@ -1,15 +1,33 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Variables
+// @ Color palettes and Variables
 // -----------------------------------------------------------------------------------------------------
 
-$asm-light-background: #F3F6F7;
-$asm-dark-primary-text: $dark-primary-text;
-$asm-light-primary-text: $light-primary-text;
+///
+/// Color palettes based on Tailwind
+///
+$asm-black: (
+    100: black,
+    200: black,
+    300: black,
+    400: black,
+    500: black,
+    600: black,
+    700: black,
+    800: black,
+    900: black,
+    contrast: (
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+    )
+);
 
-///
-/// Palettes
-/// Mostly based on Material colors with minor modifications
-///
 $asm-white: (
     50: white,
     100: white,
@@ -26,655 +44,26 @@ $asm-white: (
     A400: white,
     A700: white,
     contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-dark-primary-text,
-        800: $asm-dark-primary-text,
-        900: $asm-dark-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
+        50: #1A202C, // Gray 900
+        100: #1A202C, // Gray 900
+        200: #1A202C, // Gray 900
+        300: #1A202C, // Gray 900
+        400: #1A202C, // Gray 900
+        500: #1A202C, // Gray 900
+        600: #1A202C, // Gray 900
+        700: #1A202C, // Gray 900
+        800: #1A202C, // Gray 900
+        900: #1A202C, // Gray 900
+        A100: #1A202C, // Gray 900
+        A200: #1A202C, // Gray 900
+        A400: #1A202C, // Gray 900
+        A700: #1A202C // Gray 900
     )
 );
 
-$asm-black: (
-    50: black,
-    100: black,
-    200: black,
-    300: black,
-    400: black,
-    500: black,
-    600: black,
-    700: black,
-    800: black,
-    900: black,
-    A100: black,
-    A200: black,
-    A400: black,
-    A700: black,
-    contrast: (
-        50: $asm-light-primary-text,
-        100: $asm-light-primary-text,
-        200: $asm-light-primary-text,
-        300: $asm-light-primary-text,
-        400: $asm-light-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-light-primary-text,
-        A200: $asm-light-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-red: (
-    50: #FFEBEE,
-    100: #FFCDD2,
-    200: #EF9A9A,
-    300: #E57373,
-    400: #EF5350,
-    500: #F44336,
-    600: #E53935,
-    700: #D32F2F,
-    800: #C62828,
-    900: #B71C1C,
-    A100: #FF8A80,
-    A200: #FF5252,
-    A400: #FF1744,
-    A700: #D50000,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-light-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-light-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-pink: (
-    50: #FCE4EC,
-    100: #F8BBD0,
-    200: #F48FB1,
-    300: #F06292,
-    400: #EC407A,
-    500: #E91E63,
-    600: #D81B60,
-    700: #C2185B,
-    800: #AD1457,
-    900: #880E4F,
-    A100: #FF80AB,
-    A200: #FF4081,
-    A400: #F50057,
-    A700: #C51162,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-light-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-light-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-purple: (
-    50: #F3E5F5,
-    100: #E1BEE7,
-    200: #CE93D8,
-    300: #BA68C8,
-    400: #AB47BC,
-    500: #9C27B0,
-    600: #8E24AA,
-    700: #7B1FA2,
-    800: #6A1B9A,
-    900: #4A148C,
-    A100: #EA80FC,
-    A200: #E040FB,
-    A400: #D500F9,
-    A700: #AA00FF,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-light-primary-text,
-        400: $asm-light-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-light-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-deep-purple: (
-    50: #EDE7F6,
-    100: #D1C4E9,
-    200: #B39DDB,
-    300: #9575CD,
-    400: #7E57C2,
-    500: #673AB7,
-    600: #5E35B1,
-    700: #512DA8,
-    800: #4527A0,
-    900: #311B92,
-    A100: #B388FF,
-    A200: #7C4DFF,
-    A400: #651FFF,
-    A700: #6200EA,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-light-primary-text,
-        400: $asm-light-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-light-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-indigo: (
-    50: #E8EAF6,
-    100: #C5CAE9,
-    200: #9FA8DA,
-    300: #7986CB,
-    400: #5C6BC0,
-    500: #3F51B5,
-    600: #3949AB,
-    700: #303F9F,
-    800: #283593,
-    900: #1A237E,
-    A100: #8C9EFF,
-    A200: #536DFE,
-    A400: #3D5AFE,
-    A700: #304FFE,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-light-primary-text,
-        400: $asm-light-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-light-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-blue: (
-    50: #E3F2FD,
-    100: #BBDEFB,
-    200: #90CAF9,
-    300: #64B5F6,
-    400: #42A5F5,
-    500: #2196F3,
-    600: #1E88E5,
-    700: #1976D2,
-    800: #1565C0,
-    900: #0D47A1,
-    A100: #82B1FF,
-    A200: #448AFF,
-    A400: #2979FF,
-    A700: #2962FF,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-light-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-light-blue: (
-    50: #E1F5FE,
-    100: #B3E5FC,
-    200: #81D4FA,
-    300: #4FC3F7,
-    400: #29B6F6,
-    500: #03A9F4,
-    600: #039BE5,
-    700: #0288D1,
-    800: #0277BD,
-    900: #01579B,
-    A100: #80D8FF,
-    A200: #40C4FF,
-    A400: #00B0FF,
-    A700: #0091EA,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-cyan: (
-    50: #E0F7FA,
-    100: #B2EBF2,
-    200: #80DEEA,
-    300: #4DD0E1,
-    400: #26C6DA,
-    500: #00BCD4,
-    600: #00ACC1,
-    700: #0097A7,
-    800: #00838F,
-    900: #006064,
-    A100: #84FFFF,
-    A200: #18FFFF,
-    A400: #00E5FF,
-    A700: #00B8D4,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-teal: (
-    50: #E0F2F1,
-    100: #B2DFDB,
-    200: #80CBC4,
-    300: #4DB6AC,
-    400: #26A69A,
-    500: #009688,
-    600: #00897B,
-    700: #00796B,
-    800: #00695C,
-    900: #004D40,
-    A100: #A7FFEB,
-    A200: #64FFDA,
-    A400: #1DE9B6,
-    A700: #00BFA5,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-green: (
-    50: #E8F5E9,
-    100: #C8E6C9,
-    200: #A5D6A7,
-    300: #81C784,
-    400: #66BB6A,
-    500: #4CAF50,
-    600: #43A047,
-    700: #388E3C,
-    800: #2E7D32,
-    900: #1B5E20,
-    A100: #B9F6CA,
-    A200: #69F0AE,
-    A400: #00E676,
-    A700: #00C853,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-light-green: (
-    50: #F1F8E9,
-    100: #DCEDC8,
-    200: #C5E1A5,
-    300: #AED581,
-    400: #9CCC65,
-    500: #8BC34A,
-    600: #7CB342,
-    700: #689F38,
-    800: #558B2F,
-    900: #33691E,
-    A100: #CCFF90,
-    A200: #B2FF59,
-    A400: #76FF03,
-    A700: #64DD17,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-dark-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-lime: (
-    50: #F9FBE7,
-    100: #F0F4C3,
-    200: #E6EE9C,
-    300: #DCE775,
-    400: #D4E157,
-    500: #CDDC39,
-    600: #C0CA33,
-    700: #AFB42B,
-    800: #9E9D24,
-    900: #827717,
-    A100: #F4FF81,
-    A200: #EEFF41,
-    A400: #C6FF00,
-    A700: #AEEA00,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-dark-primary-text,
-        800: $asm-dark-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-yellow: (
-    50: #FFFDE7,
-    100: #FFF9C4,
-    200: #FFF59D,
-    300: #FFF176,
-    400: #FFEE58,
-    500: #FFEB3B,
-    600: #FDD835,
-    700: #FBC02D,
-    800: #F9A825,
-    900: #F57F17,
-    A100: #FFFF8D,
-    A200: #FFFF00,
-    A400: #FFEA00,
-    A700: #FFD600,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-dark-primary-text,
-        800: $asm-dark-primary-text,
-        900: $asm-dark-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-amber: (
-    50: #FFF8E1,
-    100: #FFECB3,
-    200: #FFE082,
-    300: #FFD54F,
-    400: #FFCA28,
-    500: #FFC107,
-    600: #FFB300,
-    700: #FFA000,
-    800: #FF8F00,
-    900: #FF6F00,
-    A100: #FFE57F,
-    A200: #FFD740,
-    A400: #FFC400,
-    A700: #FFAB00,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-dark-primary-text,
-        800: $asm-dark-primary-text,
-        900: $asm-dark-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-orange: (
-    50: #FFF3E0,
-    100: #FFE0B2,
-    200: #FFCC80,
-    300: #FFB74D,
-    400: #FFA726,
-    500: #FF9800,
-    600: #FB8C00,
-    700: #F57C00,
-    800: #EF6C00,
-    900: #E65100,
-    A100: #FFD180,
-    A200: #FFAB40,
-    A400: #FF9100,
-    A700: #FF6D00,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-dark-primary-text,
-        700: $asm-dark-primary-text,
-        800: $asm-dark-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-dark-primary-text,
-    )
-);
-
-$asm-deep-orange: (
-    50: #FBE9E7,
-    100: #FFCCBC,
-    200: #FFAB91,
-    300: #FF8A65,
-    400: #FF7043,
-    500: #FF5722,
-    600: #F4511E,
-    700: #E64A19,
-    800: #D84315,
-    900: #BF360C,
-    A100: #FF9E80,
-    A200: #FF6E40,
-    A400: #FF3D00,
-    A700: #DD2C00,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-brown: (
-    50: #EFEBE9,
-    100: #D7CCC8,
-    200: #BCAAA4,
-    300: #A1887F,
-    400: #8D6E63,
-    500: #795548,
-    600: #6D4C41,
-    700: #5D4037,
-    800: #4E342E,
-    900: #3E2723,
-    A100: #D7CCC8,
-    A200: #BCAAA4,
-    A400: #8D6E63,
-    A700: #5D4037,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-light-primary-text,
-        400: $asm-light-primary-text,
-        500: $asm-light-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-light-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-$asm-grey: (
-    50: #FAFAFA,
-    100: #F5F5F5,
-    200: #EEEEEE,
-    300: #E0E0E0,
-    400: #BDBDBD,
-    500: #9E9E9E,
-    600: #757575,
-    700: #616161,
-    800: #424242,
-    900: #212121,
-    A100: #FFFFFF,
-    A200: #EEEEEE,
-    A400: #BDBDBD,
-    A700: #616161,
-    contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-light-primary-text,
-    )
-);
-
-// Custom
-$asm-blue-grey: (
-    50: #F7FAFC,
-    100: #EDF2F7,
-    200: #EAEFF5,
+$asm-gray: (
+    100: #F7FAFC,
+    200: #EDF2F7,
     300: #E2E8F0,
     400: #CBD5E0,
     500: #A0AEC0,
@@ -682,50 +71,241 @@ $asm-blue-grey: (
     700: #4A5568,
     800: #2D3748,
     900: #1A202C,
-    A100: #DCE9F5,
-    A200: #C3D0DE,
-    A400: #748DB9,
-    A700: #405780,
     contrast: (
-        50: $asm-dark-primary-text,
-        100: $asm-dark-primary-text,
-        200: $asm-dark-primary-text,
-        300: $asm-dark-primary-text,
-        400: $asm-dark-primary-text,
-        500: $asm-dark-primary-text,
-        600: $asm-light-primary-text,
-        700: $asm-light-primary-text,
-        800: $asm-light-primary-text,
-        900: $asm-light-primary-text,
-        A100: $asm-dark-primary-text,
-        A200: $asm-dark-primary-text,
-        A400: $asm-dark-primary-text,
-        A700: $asm-light-primary-text,
+        100: #1A202C, // Gray 900
+        200: #1A202C, // Gray 900
+        300: #1A202C, // Gray 900
+        400: #1A202C, // Gray 900
+        500: #1A202C, // Gray 900
+        600: #F7FAFC, // Gray 100
+        700: #F7FAFC, // Gray 100
+        800: #F7FAFC, // Gray 100
+        900: #F7FAFC, // Gray 100
+    )
+);
+
+$asm-red: (
+    100: #FFF5F5,
+    200: #FED7D7,
+    300: #FEB2B2,
+    400: #FC8181,
+    500: #F56565,
+    600: #E53E3E,
+    700: #C53030,
+    800: #9B2C2C,
+    900: #742A2A,
+    contrast: (
+        100: #742A2A, // Red 900
+        200: #742A2A, // Red 900
+        300: #742A2A, // Red 900
+        400: #742A2A, // Red 900
+        500: #742A2A, // Red 900
+        600: #FFF5F5, // Red 100
+        700: #FFF5F5, // Red 100
+        800: #FFF5F5, // Red 100
+        900: #FFF5F5, // Red 100
+    )
+);
+
+$asm-orange: (
+    100: #FFFAF0,
+    200: #FEEBC8,
+    300: #FBD38D,
+    400: #F6AD55,
+    500: #ED8936,
+    600: #DD6B20,
+    700: #C05621,
+    800: #9C4221,
+    900: #7B341E,
+    contrast: (
+        100: #7B341E, // Orange 900
+        200: #7B341E, // Orange 900
+        300: #7B341E, // Orange 900
+        400: #7B341E, // Orange 900
+        500: #7B341E, // Orange 900
+        600: #FFFAF0, // Orange 100
+        700: #FFFAF0, // Orange 100
+        800: #FFFAF0, // Orange 100
+        900: #FFFAF0, // Orange 100
+    )
+);
+
+$asm-yellow: (
+    100: #FFFFF0,
+    200: #FEFCBF,
+    300: #FAF089,
+    400: #F6E05E,
+    500: #ECC94B,
+    600: #D69E2E,
+    700: #B7791F,
+    800: #975A16,
+    900: #744210,
+    contrast: (
+        100: #744210, // Yellow 900
+        200: #744210, // Yellow 900
+        300: #744210, // Yellow 900
+        400: #744210, // Yellow 900
+        500: #744210, // Yellow 900
+        600: #FFFFF0, // Yellow 100
+        700: #FFFFF0, // Yellow 100
+        800: #FFFFF0, // Yellow 100
+        900: #FFFFF0, // Yellow 100
+    )
+);
+
+$asm-green: (
+    100: #F0FFF4,
+    200: #C6F6D5,
+    300: #9AE6B4,
+    400: #68D391,
+    500: #48BB78,
+    600: #38A169,
+    700: #2F855A,
+    800: #276749,
+    900: #22543D,
+    contrast: (
+        100: #22543D, // Green 900
+        200: #22543D, // Green 900
+        300: #22543D, // Green 900
+        400: #22543D, // Green 900
+        500: #F0FFF4, // Green 100
+        600: #F0FFF4, // Green 100
+        700: #F0FFF4, // Green 100
+        800: #F0FFF4, // Green 100
+        900: #F0FFF4, // Green 100
+    )
+);
+
+$asm-teal: (
+    100: #E6FFFA,
+    200: #B2F5EA,
+    300: #81E6D9,
+    400: #4FD1C5,
+    500: #38B2AC,
+    600: #319795,
+    700: #2C7A7B,
+    800: #285E61,
+    900: #234E52,
+    contrast: (
+        100: #234E52, // Teal 900
+        200: #234E52, // Teal 900
+        300: #234E52, // Teal 900
+        400: #234E52, // Teal 900
+        500: #E6FFFA, // Teal 100
+        600: #E6FFFA, // Teal 100
+        700: #E6FFFA, // Teal 100
+        800: #E6FFFA, // Teal 100
+        900: #E6FFFA, // Teal 100
+    )
+);
+
+$asm-blue: (
+    100: #EBF8FF,
+    200: #BEE3F8,
+    300: #90CDF4,
+    400: #63B3ED,
+    500: #4299E1,
+    600: #3182CE,
+    700: #2B6CB0,
+    800: #2C5282,
+    900: #2A4365,
+    contrast: (
+        100: #2A4365, // Blue 900
+        200: #2A4365, // Blue 900
+        300: #2A4365, // Blue 900
+        400: #2A4365, // Blue 900
+        500: #EBF8FF, // Blue 100
+        600: #EBF8FF, // Blue 100
+        700: #EBF8FF, // Blue 100
+        800: #EBF8FF, // Blue 100
+        900: #EBF8FF, // Blue 100
+    )
+);
+
+$asm-indigo: (
+    100: #EBF4FF,
+    200: #C3DAFE,
+    300: #A3BFFA,
+    400: #7F9CF5,
+    500: #667EEA,
+    600: #5A67D8,
+    700: #4C51BF,
+    800: #434190,
+    900: #3C366B,
+    A100: #304FFE,
+    contrast: (
+        100: #3C366B, // Indigo 900
+        200: #3C366B, // Indigo 900
+        300: #3C366B, // Indigo 900
+        400: #3C366B, // Indigo 900
+        500: #EBF4FF, // Indigo 100
+        600: #EBF4FF, // Indigo 100
+        700: #EBF4FF, // Indigo 100
+        800: #EBF4FF, // Indigo 100
+        900: #EBF4FF, // Indigo 100
+        A100: #EBF4FF, // Indigo 100
+    )
+);
+
+$asm-purple: (
+    100: #FAF5FF,
+    200: #E9D8FD,
+    300: #D6BCFA,
+    400: #B794F4,
+    500: #9F7AEA,
+    600: #805AD5,
+    700: #6B46C1,
+    800: #553C9A,
+    900: #44337A,
+    contrast: (
+        100: #44337A, // Purple 900
+        200: #44337A, // Purple 900
+        300: #44337A, // Purple 900
+        400: #44337A, // Purple 900
+        500: #FAF5FF, // Purple 100
+        600: #FAF5FF, // Purple 100
+        700: #FAF5FF, // Purple 100
+        800: #FAF5FF, // Purple 100
+        900: #FAF5FF, // Purple 100
+    )
+);
+
+$asm-pink: (
+    100: #FFF5F7,
+    200: #FED7E2,
+    300: #FBB6CE,
+    400: #F687B3,
+    500: #ED64A6,
+    600: #D53F8C,
+    700: #B83280,
+    800: #97266D,
+    900: #702459,
+    contrast: (
+        100: #702459, // Pink 900
+        200: #702459, // Pink 900
+        300: #702459, // Pink 900
+        400: #702459, // Pink 900
+        500: #FFF5F7, // Pink 100
+        600: #FFF5F7, // Pink 100
+        700: #FFF5F7, // Pink 100
+        800: #FFF5F7, // Pink 100
+        900: #FFF5F7, // Pink 100
     )
 );
 
 $asm-palettes: (
-    'white': $asm-white,
     'black': $asm-black,
+    'white': $asm-white,
+    'gray': $asm-gray,
     'red': $asm-red,
-    'pink': $asm-pink,
-    'purple': $asm-purple,
-    'deep-purple': $asm-deep-purple,
-    'indigo': $asm-indigo,
-    'blue': $asm-blue,
-    'light-blue': $asm-light-blue,
-    'cyan': $asm-cyan,
-    'teal': $asm-teal,
-    'green': $asm-green,
-    'light-green': $asm-light-green,
-    'lime': $asm-lime,
-    'yellow': $asm-yellow,
-    'amber': $asm-amber,
     'orange': $asm-orange,
-    'deep-orange': $asm-deep-orange,
-    'brown': $asm-brown,
-    'grey': $asm-grey,
-    'blue-grey': $asm-blue-grey,
+    'yellow': $asm-yellow,
+    'green': $asm-green,
+    'teal': $asm-teal,
+    'blue': $asm-blue,
+    'indigo': $asm-indigo,
+    'purple': $asm-purple,
+    'pink': $asm-pink,
 );
 
 // -----------------------------------------------------------------------------------------------------
@@ -733,62 +313,108 @@ $asm-palettes: (
 // -----------------------------------------------------------------------------------------------------
 
 ///
-/// Modify the Angular Material theme object
+/// Modify the Angular Material theme object to soften foreground colors
+/// on light themes and increase contrast on dark themes
 ///
-/// Current objectives:
-///     Change the light background color
-///
-/// @access public
+/// @access private
 /// @param {Map} $theme - Angular Material theme map
 ///
-@function asm-modify-angular-material-theme($theme) {
+@function _asm-modify-angular-material-theme-colors($theme) {
 
-    // Create a variable for the modified theme
+    // Store the is-dark for convenience
+    $is-dark: map-get($theme, is-dark);
+
+    // Generate the modified foreground palette based on
+    // Angular Material's mat-xxx-theme-foreground map
+    $foreground: (
+        base: if($is-dark, white, black),
+        text: if($is-dark, white, map-get($asm-gray, 800)),
+        secondary-text: if($is-dark, map-get($asm-gray, 500), map-get($asm-gray, 600)),
+        hint-text: if($is-dark, map-get($asm-gray, 600), map-get($asm-gray, 500)),
+        disabled: if($is-dark, map-get($asm-gray, 700), map-get($asm-gray, 500)),
+        disabled-button: if($is-dark, map-get($asm-gray, 800), map-get($asm-gray, 500)),
+        disabled-text: if($is-dark, map-get($asm-gray, 700), map-get($asm-gray, 500)),
+        divider: if($is-dark, rgba(map-get($asm-gray, 200), 0.12), rgba(map-get($asm-gray, 800), 0.12)),
+        dividers: if($is-dark, rgba(map-get($asm-gray, 200), 0.12), rgba(map-get($asm-gray, 800), 0.12)),
+        elevation: black,
+        icon: if($is-dark, map-get($asm-gray, 100), map-get($asm-gray, 600)),
+        icons: if($is-dark, map-get($asm-gray, 100), map-get($asm-gray, 600)),
+        slider-min: if($is-dark, white, map-get($asm-gray, 800)),
+        slider-off: if($is-dark, map-get($asm-gray, 600), map-get($asm-gray, 400)),
+        slider-off-active: if($is-dark, map-get($asm-gray, 500), map-get($asm-gray, 500)),
+    );
+
+    // Generate the modified background palette based on
+    // Angular Material's mat-xxx-theme-background map
+    $background: (
+        status-bar: if($is-dark, map-get($asm-gray, 900), map-get($asm-gray, 400)),
+        app-bar: if($is-dark, map-get($asm-gray, 900), white),
+        background: if($is-dark, map-get($asm-gray, 900), map-get($asm-gray, 200)),
+        hover: if($is-dark, rgba(255, 255, 255, 0.05), rgba(map-get($asm-gray, 600), 0.12)),
+        card: if($is-dark, map-get($asm-gray, 800), white),
+        dialog: if($is-dark, map-get($asm-gray, 800), white),
+        disabled-button: if($is-dark, rgba(map-get($asm-gray, 900), 0.38), rgba(map-get($asm-gray, 500), 0.38)),
+        raised-button: if($is-dark, map-get($asm-gray, 900), white),
+        focused-button: if($is-dark, map-get($asm-gray, 300), map-get($asm-gray, 600)),
+        selected-button: if($is-dark, rgba(255, 255, 255, 0.05), map-get($asm-gray, 300)),
+        selected-disabled-button: if($is-dark, map-get($asm-gray, 800), map-get($asm-gray, 300)),
+        disabled-button-toggle: if($is-dark, map-get($asm-gray, 900), map-get($asm-gray, 400)),
+        unselected-chip: if($is-dark, map-get($asm-gray, 700), map-get($asm-gray, 300)),
+        disabled-list-option: if($is-dark, map-get($asm-gray, 300), map-get($asm-gray, 400)),
+    );
+
+    // Store the modified theme.
+    //
+    // Since modifications only being done on 'foreground'
+    // and 'background' palettes add them from above but
+    // keep everything else original
     $modified-theme: (
         primary: map-get($theme, primary),
         accent: map-get($theme, accent),
         warn: map-get($theme, warn),
-        is-dark: map-get($theme, is-dark)
+        is-dark: map-get($theme, is-dark),
+        foreground: $foreground,
+        background: $background
     );
-
-    // Group background and foreground together
-    $palettes: (
-        background: map-get($theme, background),
-        foreground: map-get($theme, foreground)
-    );
-
-    // Create an empty lists for the modified palettes
-    $modified-palettes: ();
-
-    // Handle the palettes
-    @each $palette-name, $palette in $palettes {
-
-        // Create an empty list for the map
-        $modified-palette: ();
-
-        // Go through each map
-        @each $key, $value in $palette {
-
-            // If the theme is light and the key is 'background'...
-            @if (not map-get($theme, is-dark) and $key == 'background') {
-
-                // Replace the background color
-                $value: $asm-light-background;
-            }
-
-            // Add the value to the map
-            $modified-palette: map-merge($modified-palette, ($key: $value))
-        }
-
-        // Add the modified palette to the modified palettes
-        $modified-palettes: map-merge($modified-palettes, ($palette-name: $modified-palette));
-    }
-
-    // Add the modified palettes to the modified theme
-    $modified-theme: map-merge($modified-theme, $modified-palettes);
 
     // Return the modified theme
     @return $modified-theme;
+}
+
+///
+/// Generate an Angular Material light theme
+/// and modify it before returning
+///
+/// @access public
+/// @param {Map} $primary-palette - Desired primary palette
+/// @param {Map} $accent-palette - Desired accent palette
+/// @param {Map} $warn-palette - Desired warn palette
+///
+@function asm-light-theme($primary-palette, $accent-palette, $warn-palette) {
+
+    // Generate the Angular Material theme
+    $angular-material-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+
+    // Modify and return the theme
+    @return _asm-modify-angular-material-theme-colors($angular-material-theme);
+}
+
+///
+/// Generate an Angular Material dark theme
+/// and modify it before returning
+///
+/// @access public
+/// @param {Map} $primary-palette - Desired primary palette
+/// @param {Map} $accent-palette - Desired accent palette
+/// @param {Map} $warn-palette - Desired warn palette
+///
+@function asm-dark-theme($primary-palette, $accent-palette, $warn-palette) {
+
+    // Generate the Angular Material theme
+    $angular-material-theme: mat-dark-theme($primary-palette, $accent-palette, $warn-palette);
+
+    // Modify and return the theme
+    @return _asm-modify-angular-material-theme-colors($angular-material-theme);
 }
 
 ///
@@ -850,16 +476,6 @@ $asm-palettes: (
 ///
 @mixin _generate-color-classes($color-name, $color, $contrast-color, $hue-value) {
 
-    // Determine the luminance of the contrast color and get the Angular
-    // Material background and foreground color maps depending on that
-    $background: $mat-dark-theme-background;
-    $foreground: $mat-dark-theme-foreground;
-
-    @if (rgba($contrast-color, 1) == rgba($asm-dark-primary-text, 1)) {
-        $background: $mat-light-theme-background;
-        $foreground: $mat-light-theme-foreground;
-    }
-
     // Text color
     .text-#{$color-name}#{$hue-value} {
         color: $color !important;
@@ -873,63 +489,68 @@ $asm-palettes: (
     // Background and text color
     .#{$color-name}#{$hue-value} {
         background: $color !important;
-        color: map-get($foreground, text) !important;
+        color: $contrast-color !important;
 
-        i,
-        .icon,
         .mat-icon {
-            color: map-get($foreground, icon) !important;
+            color: $contrast-color !important;
         }
 
         &.text-secondary,
         .text-secondary {
-            color: map-get($foreground, secondary-text) !important;
+            color: rgba($contrast-color, 0.6) !important;
         }
 
         &.text-hint,
         .text-hint {
-            color: map-get($foreground, hint-text) !important;
+            color: rgba($contrast-color, 0.38) !important;
         }
 
         &.text-disabled,
         .text-disabled {
-            color: map-get($foreground, disabled-text) !important;
-        }
-
-        &.text-fade,
-        .text-fade {
-            color: rgba(map-get($foreground, base), 0.2) !important;
+            color: rgba($contrast-color, 0.38) !important;
         }
 
         &.divider,
         .divider {
-            color: map-get($foreground, divider) !important;
+            color: rgba($contrast-color, 0.12) !important;
         }
     }
 
     // Border color
     .border-#{$color-name}#{$hue-value} {
-        border-color: $color !important;
+        border-top-color: $color !important;
+        border-right-color: $color !important;
+        border-bottom-color: $color !important;
+        border-left-color: $color !important;
     }
 
     // Border color on hover
     .hover\:border-#{$color-name}#{$hue-value}:hover {
-        border-color: $color !important;
+        border-top-color: $color !important;
+        border-right-color: $color !important;
+        border-bottom-color: $color !important;
+        border-left-color: $color !important;
     }
 
     // Border color on focus
     .focus\:border-#{$color-name}#{$hue-value}:focus {
-        border-color: $color !important;
+        border-top-color: $color !important;
+        border-right-color: $color !important;
+        border-bottom-color: $color !important;
+        border-left-color: $color !important;
     }
 
     // Border color on active
     .active\:border-#{$color-name}#{$hue-value}:active {
-        border-color: $color !important;
+        border-top-color: $color !important;
+        border-right-color: $color !important;
+        border-bottom-color: $color !important;
+        border-left-color: $color !important;
     }
 }
 
 ///
-/// Generate helper classes for background and foreground colors
+/// Generate helper classes for colors
 ///
 /// @access public
 /// @param {Map} $palettes - Palettes to generate classes for
