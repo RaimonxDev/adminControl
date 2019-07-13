@@ -108,14 +108,6 @@ auth-login {
                         margin-bottom: 8px;
                     }
 
-                    .password-field {
-
-                        button {
-                            width: 24px !important;
-                            height: 24px !important;
-                        }
-                    }
-
                     .forgot-password-link {
                         width: 100%;
                         font-size: 13px;
@@ -160,7 +152,7 @@ auth-login {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $is-dark: map-get($theme, is-dark);
 

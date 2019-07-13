@@ -108,14 +108,6 @@ auth-unlock-session {
                         margin-bottom: 8px;
                     }
 
-                    .password-field {
-
-                        button {
-                            width: 24px !important;
-                            height: 24px !important;
-                        }
-                    }
-
                     .unlock-button {
                         width: 100%;
                         margin-top: 40px;
@@ -149,7 +141,7 @@ auth-unlock-session {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $is-dark: map-get($theme, is-dark);
 

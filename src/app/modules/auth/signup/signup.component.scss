@@ -108,15 +108,6 @@ auth-signup {
                         margin-bottom: 8px;
                     }
 
-                    .password-field,
-                    .password-confirm-field {
-
-                        button {
-                            width: 24px !important;
-                            height: 24px !important;
-                        }
-                    }
-
                     .signup-button {
                         width: 100%;
                         margin-top: 40px;
@@ -169,7 +160,7 @@ auth-signup {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $is-dark: map-get($theme, is-dark);
 
