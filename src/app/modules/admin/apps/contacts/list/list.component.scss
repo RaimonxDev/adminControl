@@ -1,0 +1,380 @@
+@import 'assembly';
+
+contacts-list {
+    display: flex;
+    flex: 1 1 auto;
+
+    .mat-drawer-container {
+
+        .mat-drawer {
+            width: 512px !important;
+            min-width: 512px !important;
+            max-width: 512px !important;
+
+            @include asm-media-breakpoint('lt-sm') {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+
+        .mat-drawer-content {
+
+            .main {
+                padding: 56px 16px !important;
+                min-height: 100%;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 40px 8px !important;
+                }
+
+                .header {
+                    display: flex;
+                    flex: 1 1 auto;
+                    align-items: center;
+                    margin: 0 48px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        margin: 0 40px;
+                    }
+
+                    .title {
+
+                        h2 {
+                            margin: 0;
+                        }
+                    }
+
+                    .main-actions {
+                        margin-left: auto;
+
+
+                        .add-contact {
+
+                            .mat-icon {
+                                margin-right: 8px;
+                                @include asm-icon-size(20);
+
+                                @include asm-media-breakpoint('(max-width: 420px)') {
+                                    margin-right: 0;
+                                }
+
+                                + span {
+                                    margin-right: 6px;
+
+                                    @include asm-media-breakpoint('(max-width: 420px)') {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .search {
+                    margin: 32px 48px 48px 48px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        margin: 32px 40px 16px 40px;
+                    }
+
+                    .mat-form-field {
+                        width: 100%;
+                    }
+                }
+
+                .contacts-list {
+                    margin: 0 48px;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        margin: 0 40px;
+                    }
+
+                    table {
+                        width: 100%;
+
+                        td.mat-cell:first-of-type,
+                        td.mat-footer-cell:first-of-type,
+                        th.mat-header-cell:first-of-type {
+
+                            @include asm-media-breakpoint('lt-sm') {
+                                padding: 0 8px;
+                            }
+                        }
+
+                        th {
+
+                            &.mat-column-email {
+
+                                @include asm-media-breakpoint('lt-sm') {
+                                    display: none;
+                                }
+                            }
+
+                            &.mat-column-phoneNumber {
+
+                                @include asm-media-breakpoint('(max-width: 720px)') {
+                                    display: none;
+                                }
+                            }
+
+                            &.mat-column-job {
+
+                                @include asm-media-breakpoint('lt-lg') {
+                                    display: none;
+                                }
+                            }
+
+                            &.mat-column-tags {
+
+                                @include asm-media-breakpoint('lt-lg') {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        tr.contact-row {
+                            height: 64px;
+                            cursor: pointer;
+
+                            td {
+                                line-height: 1;
+                                border-bottom: none;
+
+                                &.mat-column-name {
+                                    padding-right: 16px;
+                                    max-width: 240px;
+
+                                    .name-content {
+                                        display: flex;
+                                        align-items: center;
+
+                                        .avatar {
+                                            width: 32px;
+                                            min-width: 32px;
+                                            max-width: 32px;
+                                            height: 32px;
+                                            min-height: 32px;
+                                            max-height: 32px;
+                                            margin-right: 24px;
+
+                                            > img,
+                                            > span {
+                                                border-radius: 50%;
+                                            }
+
+                                            > span {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                width: 100%;
+                                                height: 100%;
+                                                text-transform: uppercase;
+                                                font-size: 16px;
+                                            }
+                                        }
+
+                                        .name {
+                                            overflow: hidden;
+                                            white-space: nowrap;
+                                            text-overflow: ellipsis;
+                                            line-height: normal;
+                                        }
+                                    }
+                                }
+
+                                &.mat-column-email {
+                                    padding-right: 16px;
+                                    max-width: 160px;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+
+                                    @include asm-media-breakpoint('lt-sm') {
+                                        display: none;
+                                    }
+                                }
+
+                                &.mat-column-phoneNumber {
+                                    padding-right: 16px;
+                                    max-width: 160px;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+
+                                    @include asm-media-breakpoint('(max-width: 720px)') {
+                                        display: none;
+                                    }
+                                }
+
+                                &.mat-column-job {
+                                    padding-right: 16px;
+                                    max-width: 160px;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+
+                                    @include asm-media-breakpoint('lt-lg') {
+                                        display: none;
+                                    }
+                                }
+
+                                &.mat-column-tags {
+
+                                    @include asm-media-breakpoint('lt-lg') {
+                                        display: none;
+                                    }
+
+                                    .tag {
+                                        display: inline-flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        vertical-align: middle;
+                                        height: 18px;
+                                        padding: 0 8px;
+                                        margin-right: 8px;
+                                        border-radius: 4px;
+                                        font-size: 11px;
+                                        font-weight: bold;
+                                        line-height: 1;
+                                        white-space: nowrap;
+                                        text-transform: uppercase;
+
+                                        &:last-child {
+                                            margin-right: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .no-contacts {
+                        padding: 0 48px;
+                        height: 64px;
+                        line-height: 64px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contacts-list-search-results-panel {
+
+    > .mat-optgroup {
+
+        &.no-results {
+
+            label {
+                visibility: hidden;
+                opacity: 0;
+                height: 0;
+                pointer-events: none;
+            }
+
+            .mat-option {
+                pointer-events: none;
+            }
+        }
+    }
+
+    > .mat-option {
+
+        .mat-option-text {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .mat-icon {
+            margin-right: 12px;
+            @include asm-icon-size(26);
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    contacts-list {
+
+        .mat-drawer-container {
+
+            .mat-drawer-content {
+
+                .main {
+                    background: map-get($background, card);
+
+                    .header {
+
+                        .contacts-count {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+
+                    .contacts-list {
+
+                        table {
+
+                            tr.contact-row {
+
+                                &:hover,
+                                &.selected {
+                                    background: map-get($background, hover);
+                                }
+
+                                td {
+
+                                    &.mat-column-name {
+
+                                        .avatar {
+
+                                            > span {
+                                                background: asm-color($asm-gray, 300);
+                                                color: asm-color($asm-gray, 700);
+                                            }
+                                        }
+                                    }
+
+                                    &.mat-column-tags {
+
+                                        .tag {
+                                            color: map-get($foreground, secondary-text);
+
+                                            @if ($is-dark) {
+                                                background: map-get($background, background);
+                                            } @else {
+                                                background: #EEEEEE;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .contacts-list-search-results-panel {
+
+        .mat-option {
+
+            .result {
+
+                .result-notes {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
+        }
+    }
+}
