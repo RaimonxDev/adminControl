@@ -10,10 +10,10 @@ mailbox-list {
         display: flex;
         flex: 0 1 auto;
         flex-direction: column;
-        width: 400px;
-        min-width: 400px;
-        max-width: 400px;
-        border-right: 1px solid;
+        padding: 24px 32px 0 32px;
+        width: 416px;
+        min-width: 416px;
+        max-width: 416px;
 
         @include asm-media-breakpoint('lt-lg') {
             width: 100%;
@@ -68,7 +68,7 @@ mailbox-list {
                 }
 
                 .category {
-                    font-weight: 700;
+                    font-weight: 500;
                     text-transform: uppercase;
                 }
             }
@@ -114,129 +114,161 @@ mailbox-list {
             .item-group {
                 display: flex;
                 align-items: center;
-                min-height: 32px;
-                height: 32px;
-                padding: 0 24px;
-                font-size: 12px;
+                margin: 0 24px 16px 24px;
+                padding-top: 40px;
+                font-size: 11px;
                 font-weight: 500;
-                border-bottom: 1px solid;
+                line-height: 1;
+                letter-spacing: 0.075em;
                 text-transform: uppercase;
+
+                + .item {
+
+                    .item-content {
+                        box-shadow: none !important;
+                    }
+                }
             }
 
             .item {
                 position: relative;
                 display: flex;
-                align-items: flex-start;
-                justify-content: flex-start;
-                padding: 32px 24px;
+                padding: 0 24px 24px 24px;
                 height: 152px;
                 max-height: 152px;
                 min-height: 152px;
-                border-bottom: 1px solid;
 
-                .unread-dot {
-                    position: absolute;
-                    left: 8px;
-                    top: 48px;
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 50%;
+                &.selected {
+                    border-radius: 4px;
+
+                    .item-content {
+                        box-shadow: none !important;
+                    }
+
+                    + .item {
+
+                        .item-content {
+                            box-shadow: none !important;
+                        }
+                    }
+
+                    + .item-group {
+                        box-shadow: none !important;
+                    }
                 }
 
-                .indicators {
-                    position: absolute;
+                .item-content {
                     display: flex;
                     flex-direction: column;
-                    top: 80px;
-                    left: 33px;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    width: 100%;
+                    padding-top: 24px;
 
-                    .attachments-indicator {
-                        display: flex;
-                        justify-content: center;
-
-                        .mat-icon {
-                            @include asm-icon-size(18);
-                        }
-
-                        + .starred-indicator {
-                            margin-top: 8px;
-                        }
-                    }
-
-                    .starred-indicator {
-                        display: flex;
-                        justify-content: center;
-
-                        .mat-icon {
-                            @include asm-icon-size(18);
-                        }
-                    }
-                }
-
-                .avatar {
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 40px;
-                    min-width: 40px;
-                    height: 40px;
-                    min-height: 40px;
-                    border-radius: 50%;
-                    overflow: hidden;
-
-                    &:before {
-                        content: '';
+                    .unread-indicator {
                         position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
+                        left: 10px;
+                        top: 37px;
+                        width: 6px;
+                        height: 6px;
                         border-radius: 50%;
                     }
-                }
-
-                .details {
-                    display: flex;
-                    flex-direction: column;
-                    min-width: 0;
-                    height: 88px;
-                    margin-left: 24px;
 
                     .info {
                         display: flex;
                         align-items: center;
+                        width: 100%;
                         line-height: normal;
 
-                        .name {
+                        .avatar {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 32px;
+                            min-width: 32px;
+                            height: 32px;
+                            min-height: 32px;
+                            border-radius: 50%;
+                            overflow: hidden;
 
+                            &:before {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                bottom: 0;
+                                left: 0;
+                                border-radius: 50%;
+                            }
+                        }
+
+                        .name {
+                            margin-left: 16px;
                         }
 
                         .important-indicator {
-                            margin-left: 4px;
+                            margin-left: 8px;
                             @include asm-icon-size(12);
                         }
 
                         .date {
+                            margin-left: auto;
                             font-size: 12px;
                             font-weight: 500;
                             white-space: nowrap;
                             text-align: right;
-                            margin-left: auto;
                         }
                     }
 
                     .subject {
-                        font-weight: 500;
-                        margin-top: 4px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        margin-top: 10px;
+
+                        span {
+                            font-weight: 500;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            line-height: 16px;
+
+                            + .indicators {
+                                margin-left: auto;
+                                padding-left: 8px;
+                            }
+                        }
+
+                        .indicators {
+                            display: flex;
+
+                            .attachments-indicator {
+                                display: flex;
+                                justify-content: center;
+
+                                .mat-icon {
+                                    @include asm-icon-size(16);
+                                }
+
+                                + .starred-indicator {
+                                    margin-left: 8px;
+                                }
+                            }
+
+                            .starred-indicator {
+                                display: flex;
+                                justify-content: center;
+
+                                .mat-icon {
+                                    @include asm-icon-size(16);
+                                }
+                            }
+                        }
                     }
 
                     .excerpt {
-                        max-height: 38px;
-                        margin-top: auto;
+                        margin-top: 8px;
                         line-height: 1.4;
                         overflow: hidden;
                     }
@@ -265,7 +297,7 @@ mailbox-list {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -273,13 +305,13 @@ mailbox-list {
     $is-dark: map-get($theme, is-dark);
 
     mailbox-list {
-        background: map-get($background, card);
+        @if (not $is-dark) {
+            background: map-get($background, card);
+        }
 
         .list-wrapper {
-            border-right-color: map-get($foreground, divider);
 
             > .header {
-                background: map-get($background, card);
                 border-bottom-color: map-get($foreground, divider);
 
                 .pagination {
@@ -296,34 +328,45 @@ mailbox-list {
             .list {
 
                 .item-group {
-                    background: map-get($background, background);
                     color: map-get($foreground, secondary-text);
-                    border-color: map-get($foreground, divider);
+
+                    &:not(:first-child) {
+                        @if ($is-dark) {
+                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 800);
+                        } @else {
+                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 300);
+                        }
+                    }
                 }
 
                 .item {
-                    border-bottom-color: map-get($foreground, divider);
 
                     &.selected {
                         @if ($is-dark) {
-                            background: map-get($background, hover);
+                            @include asm-dark-elevation(1);
                         } @else {
-                            background: rgba(map-get($primary, 50), 0.54);
+                            background: asm-color($asm-gray, 200);
                         }
                     }
 
-                    .unread-dot {
-                        background: map-get($primary, default);
-                    }
+                    .item-content {
 
-                    .avatar {
-
-                        &:before {
-                            box-shadow: inset 0 0 0 1px map-get($foreground, divider);
+                        @if ($is-dark) {
+                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 800);
+                        } @else {
+                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 300);
                         }
-                    }
 
-                    .details {
+                        .unread-indicator {
+                            background: map-get($primary, default);
+                        }
+
+                        .avatar {
+
+                            &:before {
+                                box-shadow: inset 0 0 0 1px map-get($foreground, divider);
+                            }
+                        }
 
                         .info {
 

@@ -9,35 +9,33 @@ mailbox-sidebar {
     -webkit-overflow-scrolling: touch;
 
     .title {
-        margin: 48px 32px 0 32px;
-    }
-
-    .account {
-        flex-shrink: 0;
-        margin: 0 32px 48px 32px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        margin: 40px 32px 24px 32px;
     }
 
     .compose-button {
         margin: 0 32px 40px 32px;
+
+        .mat-icon {
+            @include asm-icon-size(16);
+            margin-right: 4px;
+        }
     }
 }
 
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
 
     mailbox-sidebar {
-        background: map-get($background, card);
-
-        .account {
-            color: map-get($foreground, secondary-text);
+        @if ($is-dark) {
+            background: asm-color($asm-gray, 900);
+        } @else {
+            background: asm-color($asm-gray, 200);
         }
     }
 }

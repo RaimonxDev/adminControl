@@ -14,9 +14,9 @@
         <div class="subject-and-labels">
 
             <!-- Subject -->
-            <h3 class="subject">
+            <h2 class="subject">
                 {{mail.subject}}
-            </h3>
+            </h2>
 
             <!-- Labels -->
             <div class="labels"
@@ -24,7 +24,7 @@
 
                 <div class="label"
                      *ngFor="let label of (mail.labels | lookUpBy:'id':labels)"
-                     [ngClass]="['text-' + label.color, 'bg-' + label.color + '-50']">
+                     [ngClass]="['text-' + label.color, 'bg-' + label.color + '-100']">
                     {{label.title}}
                 </div>
 
@@ -240,7 +240,7 @@
 
                 <div class="title">
                     <mat-icon>attachment</mat-icon>
-                    <div>Attachments</div>
+                    <div>{{mail.attachments.length}} Attachments</div>
                 </div>
 
                 <div class="files">
@@ -257,9 +257,18 @@
                             <div class="file-type">{{attachment.type.split('/')[1].trim().toUpperCase()}}</div>
                         </div>
 
-                        <div class="file-name"
-                             [title]="attachment.name">
-                            {{attachment.name}}
+                        <div class="file-info">
+
+                            <div class="file-name"
+                                 [title]="attachment.name">
+                                {{attachment.name}}
+                            </div>
+
+                            <div class="file-size"
+                                 [title]="attachment.size">
+                                {{attachment.size / 1000 | number:'1.0-2'}} KB
+                            </div>
+
                         </div>
 
                     </div>
@@ -269,8 +278,6 @@
             </div>
 
         </ng-container>
-
-        <mat-divider class="footer-divider"></mat-divider>
 
         <!-- Buttons -->
         <div class="buttons"

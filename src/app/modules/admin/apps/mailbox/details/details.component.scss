@@ -4,7 +4,7 @@ mailbox-details {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    padding: 40px;
+    padding: 40px 32px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -203,6 +203,7 @@ mailbox-details {
             display: flex;
             margin-top: 32px;
             white-space: pre-line;
+            font-size: 15px;
             line-height: 1.8;
         }
 
@@ -229,63 +230,67 @@ mailbox-details {
 
             .files {
                 display: flex;
-                flex-wrap: wrap;
+                flex-direction: column;
 
                 .file {
-                    margin: 24px 24px 0 0;
-                    width: 112px;
+                    display: flex;
+                    align-items: center;
+                    margin-top: 24px;
 
                     &:last-child {
                         margin-right: 0;
                     }
 
                     .preview-image {
-                        width: 112px;
-                        height: 112px;
-                        border-radius: 8px;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 4px;
                     }
 
                     .preview-file {
-                        width: 112px;
-                        height: 112px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        border-radius: 8px;
-                        border: 1px solid;
+                        border-radius: 4px;
+                        width: 40px;
+                        height: 40px;
 
                         .file-type {
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            padding: 0 8px;
+                            font-size: 13px;
                             font-weight: bold;
-                            height: 24px;
-                            border-radius: 4px;
                         }
                     }
 
-                    .file-name {
-                        margin-top: 8px;
-                        font-size: 13px;
-                        font-weight: 500;
-                        overflow: hidden;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
+                    .file-info {
+                        margin-left: 16px;
+
+                        .file-name {
+                            font-size: 13px;
+                            font-weight: 500;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+
+                        .file-size {
+                            font-size: 13px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
                     }
                 }
             }
-        }
-
-        .footer-divider {
-            width: 100%;
-            margin: 32px 0 56px 0;
         }
 
         .buttons {
             display: flex;
             flex-wrap: wrap;
             width: 100%;
+            margin-top: 64px;
 
             .mat-stroked-button {
                 margin: 0 8px 8px 0;
@@ -311,6 +316,7 @@ mailbox-details {
             display: flex;
             flex-direction: column;
             width: 100%;
+            margin-top: 64px;
 
             .textarea {
                 min-height: 80px;
@@ -438,13 +444,17 @@ mailbox-details {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+    $primary: map-get($theme, primary);
 
     mailbox-details {
-        background: map-get($background, card);
+        @if (not $is-dark) {
+            background: map-get($background, card);
+        }
 
         > .header {
             border-bottom-color: map-get($foreground, divider);
@@ -502,16 +512,18 @@ mailbox-details {
                 .file {
 
                     .preview-file {
-                        border-color: map-get($foreground, divider);
+                        background-color: asm-color($asm-gray, 100);
 
                         .file-type {
-                            background: map-get($background, hover);
-                            color: map-get($foreground, secondary-text);
+                            color: map-get($primary, default);
                         }
                     }
 
-                    .file-name {
-                        color: map-get($foreground, secondary-text);
+                    .file-info {
+
+                        .file-size {
+                            color: map-get($foreground, secondary-text);
+                        }
                     }
                 }
             }

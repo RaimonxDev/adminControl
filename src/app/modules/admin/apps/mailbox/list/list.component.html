@@ -80,36 +80,19 @@
                    [routerLink]="[mail.id]"
                    (click)="onMailSelected(mail)">
 
-                    <!-- Unread dot indicator -->
-                    <div class="unread-dot"
-                         *ngIf="mail.unread"></div>
+                    <div class="item-content">
 
-                    <!-- Other indicators -->
-                    <div class="indicators">
+                        <!-- Unread indicator -->
+                        <div class="unread-indicator"
+                             *ngIf="mail.unread"></div>
 
-                        <!-- Attachments indicator -->
-                        <div class="attachments-indicator"
-                             *ngIf="mail.attachments && mail.attachments.length > 0">
-                            <mat-icon>attachment</mat-icon>
-                        </div>
-
-                        <!-- Starred indicator -->
-                        <div class="starred-indicator"
-                             *ngIf="mail.starred">
-                            <mat-icon class="text-orange">star</mat-icon>
-                        </div>
-
-                    </div>
-
-                    <!-- Avatar -->
-                    <div class="avatar">
-                        <img [src]="mail.from.avatar">
-                    </div>
-
-                    <!-- Mail details -->
-                    <div class="details">
-
+                        <!-- Info -->
                         <div class="info">
+
+                            <!-- Avatar -->
+                            <div class="avatar">
+                                <img [src]="mail.from.avatar">
+                            </div>
 
                             <!-- Sender name -->
                             <div class="name">
@@ -122,19 +105,39 @@
                                 label_important
                             </mat-icon>
 
-                            <!-- Mail date -->
+                            <!-- Date -->
                             <div class="date">
                                 {{mail.date | date:'hh:mm a'}}
                             </div>
 
                         </div>
 
-                        <!-- Mail subject -->
+                        <!-- Subject -->
                         <div class="subject">
-                            {{mail.subject}}
+
+                            <span>{{mail.subject}}</span>
+
+                            <!-- Indicators -->
+                            <div class="indicators"
+                                 *ngIf="(mail.attachments && mail.attachments.length > 0) || mail.starred">
+
+                                <!-- Attachments indicator -->
+                                <div class="attachments-indicator"
+                                     *ngIf="mail.attachments && mail.attachments.length > 0">
+                                    <mat-icon>attachment</mat-icon>
+                                </div>
+
+                                <!-- Starred indicator -->
+                                <div class="starred-indicator"
+                                     *ngIf="mail.starred">
+                                    <mat-icon class="text-orange">star</mat-icon>
+                                </div>
+
+                            </div>
+
                         </div>
 
-                        <!-- Mail excerpt -->
+                        <!-- Excerpt -->
                         <div class="excerpt">
                             {{mail.content}}
                         </div>
