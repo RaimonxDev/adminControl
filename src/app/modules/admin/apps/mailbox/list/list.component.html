@@ -139,7 +139,8 @@
 
                         <!-- Excerpt -->
                         <div class="excerpt">
-                            {{mail.content}}
+                            {{mail.content | slice:0:80}}
+                            <ng-container *ngIf="mail.content.length > 80">...</ng-container>
                         </div>
 
                     </div>

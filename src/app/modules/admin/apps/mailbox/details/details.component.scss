@@ -63,7 +63,7 @@ mailbox-details {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        margin-top: 32px;
+        margin-top: 40px;
 
         .header {
             display: flex;
@@ -106,10 +106,11 @@ mailbox-details {
                 }
 
                 .info {
-                    margin-left: 24px;
+                    margin-left: 16px;
                     min-width: 0;
 
                     .from {
+                        font-size: 15px;
                         font-weight: 500;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -215,7 +216,7 @@ mailbox-details {
             .title {
                 display: flex;
                 align-items: center;
-                margin-top: 40px;
+                margin-top: 64px;
 
                 .mat-icon {
                     margin-right: 8px;
@@ -290,7 +291,7 @@ mailbox-details {
             display: flex;
             flex-wrap: wrap;
             width: 100%;
-            margin-top: 64px;
+            margin-top: 72px;
 
             .mat-stroked-button {
                 margin: 0 8px 8px 0;
@@ -512,7 +513,7 @@ mailbox-details {
                 .file {
 
                     .preview-file {
-                        background-color: asm-color($asm-gray, 100);
+                        background-color: map-get($primary, 100);
 
                         .file-type {
                             color: map-get($primary, default);

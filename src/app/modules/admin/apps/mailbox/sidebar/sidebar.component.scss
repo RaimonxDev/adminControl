@@ -27,15 +27,22 @@ mailbox-sidebar {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
     mailbox-sidebar {
         @if ($is-dark) {
             background: asm-color($asm-gray, 900);
-        } @else {
-            background: asm-color($asm-gray, 200);
+        }
+
+        asm-vertical-menu {
+
+            .asm-vertical-menu-item {
+
+                &.asm-vertical-menu-item-active {
+                    background: map-get($primary, 100);
+                }
+            }
         }
     }
 }
