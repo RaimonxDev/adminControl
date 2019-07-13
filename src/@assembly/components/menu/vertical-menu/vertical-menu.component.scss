@@ -6,6 +6,7 @@ asm-vertical-menu {
     flex: 1 1 auto;
     top: 0;
     width: 100%;
+    padding: 0 32px;
 
     // Wrapper
     .asm-vertical-menu-wrapper {
@@ -62,8 +63,9 @@ asm-vertical-menu {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                padding: 14px 24px 14px 32px;
+                padding: 14px 16px;
                 min-height: 48px;
+                border-radius: 4px;
                 font-size: 13px;
                 text-decoration: none;
 
@@ -189,28 +191,28 @@ asm-vertical-menu {
             overflow: hidden;
 
             .asm-vertical-menu-item {
-                padding-left: 70px;
+                padding-left: 56px;
             }
 
             // 2nd level
             .asm-vertical-menu-item-children {
 
                 .asm-vertical-menu-item {
-                    padding-left: 86px;
+                    padding-left: 72px;
                 }
 
                 // 3rd level
                 .asm-vertical-menu-item-children {
 
                     .asm-vertical-menu-item {
-                        padding-left: 102px;
+                        padding-left: 88px;
                     }
 
                     // 4th level
                     .asm-vertical-menu-item-children {
 
                         .asm-vertical-menu-item {
-                            padding-left: 118px;
+                            padding-left: 104px;
                         }
                     }
                 }
@@ -250,7 +252,7 @@ asm-vertical-menu {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -268,12 +270,11 @@ asm-vertical-menu {
             }
 
             &.asm-vertical-menu-item-active {
-                box-shadow: inset 3px 0 0 0 map-get($primary, default);
 
                 @if ($is-dark) {
-                    background: rgba(0, 0, 0, 0.12);
+                    @include asm-dark-elevation(1);
                 } @else {
-                    background: rgba(map-get($primary, 50), 0.7);
+                    background: map-get($background, hover);
                 }
             }
         }
@@ -289,9 +290,9 @@ asm-vertical-menu {
                     &:hover:not(.asm-vertical-menu-item-active) {
 
                         @if ($is-dark) {
-                            background: rgba(0, 0, 0, 0.12);
+                            @include asm-dark-elevation(1);
                         } @else {
-                            background: rgba(map-get($primary, 50), 0.7);
+                            background: map-get($background, hover);
                         }
                     }
                 }
@@ -304,9 +305,21 @@ asm-vertical-menu {
             &.asm-vertical-menu-item-expanded {
 
                 @if ($is-dark) {
-                    background: rgba(0, 0, 0, 0.12);
+                    @include asm-dark-elevation(1);
                 } @else {
-                    background: rgba(map-get($primary, 50), 0.3);
+                    background: map-get($background, hover);
+                }
+
+                .asm-vertical-menu-item {
+
+                    &:hover:not(.asm-vertical-menu-item-active) {
+
+                        @if ($is-dark) {
+                            @include asm-dark-elevation(1);
+                        } @else {
+                            background: map-get($background, hover);
+                        }
+                    }
                 }
 
                 asm-vertical-menu-collapsable-item {

@@ -53,7 +53,7 @@ animations {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -62,7 +62,7 @@ animations {
     animations {
 
         .info {
-            background: asm-color($asm-blue-grey);
+            background: asm-color($asm-gray);
             color: map-get($foreground, secondary-text);
         }
 

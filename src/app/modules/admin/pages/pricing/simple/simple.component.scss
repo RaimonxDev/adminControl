@@ -344,7 +344,7 @@ pricing-simple {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);

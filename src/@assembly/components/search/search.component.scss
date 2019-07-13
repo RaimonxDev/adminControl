@@ -273,7 +273,7 @@ asm-search {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);

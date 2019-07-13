@@ -140,7 +140,7 @@ layout[type="classy"] {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-angular-material-theme {
+@include asm-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -180,7 +180,7 @@ layout[type="classy"] {
             // Header
             > .header {
                 background: map-get($background, card);
-                border-bottom: 1px solid map-get($foreground, divider);
+                @include asm-shadow(1);
             }
 
             // Footer
