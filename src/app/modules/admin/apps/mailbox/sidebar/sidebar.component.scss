@@ -35,14 +35,13 @@ mailbox-sidebar {
             background: asm-color($asm-gray, 900);
         }
 
-        asm-vertical-menu {
+        asm-vertical-menu .asm-vertical-menu-item.asm-vertical-menu-item-active {
+            background: map-get($primary, 100);
+        }
 
-            .asm-vertical-menu-item {
-
-                &.asm-vertical-menu-item-active {
-                    background: map-get($primary, 100);
-                }
-            }
+        asm-vertical-menu-basic-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active),
+        asm-vertical-menu asm-vertical-menu-collapsable-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active) {
+            background: map-get($primary, 100) !important;
         }
     }
 }
