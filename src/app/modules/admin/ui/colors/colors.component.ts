@@ -28,26 +28,17 @@ export class ColorsComponent
             'black'
         ];
         this.asmPalettes = [
+            'gray',
             'red',
-            'pink',
-            'purple',
-            'deep-purple',
-            'indigo',
-            'blue',
-            'light-blue',
-            'cyan',
-            'teal',
-            'green',
-            'light-green',
-            'lime',
-            'yellow',
-            'amber',
             'orange',
-            'deep-orange',
-            'brown',
-            'grey',
-            'blue-grey',
+            'yellow',
+            'green',
+            'teal',
+            'blue',
+            'indigo',
+            'purple',
+            'pink',
         ];
-        this.hues = ['900', '800', '700', '600', '500', '400', '300', '200', '100', '50', 'A100', 'A200', 'A400', 'A700'];
+        this.hues = ['900', '800', '700', '600', '500', '400', '300', '200', '100'];
     }
 }
