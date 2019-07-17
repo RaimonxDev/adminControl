@@ -93,7 +93,6 @@
         align-items: center;
         justify-content: center;
 
-        .mat-icon,
         .mat-icon-button {
             min-width: 40px;
             min-height: 40px;
@@ -101,6 +100,20 @@
 
         .mat-icon {
             font-size: 20px !important;
+        }
+    }
+
+    .mat-form-field-prefix {
+
+        .mat-icon-button {
+            margin-left: -8px;
+        }
+    }
+
+    .mat-form-field-suffix {
+
+        .mat-icon-button {
+            margin-right: -8px;
         }
     }
 }
