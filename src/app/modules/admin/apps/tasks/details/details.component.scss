@@ -420,12 +420,16 @@ tasks-details {
 
                 .tag,
                 .edit-tags {
-                    color: map-get($foreground, secondary-text);
+                    color: asm-color($asm-gray, 600);
+
+                    .mat-icon {
+                        color: asm-color($asm-gray, 600);
+                    }
 
                     @if ($is-dark) {
                         background: map-get($background, background);
                     } @else {
-                        background: #EEEEEE;
+                        background: asm-color($asm-gray, 200);
                     }
                 }
             }
@@ -440,17 +444,17 @@ tasks-details {
 
                     .low {
                         color: asm-color($asm-green, 600);
-                        background: asm-color($asm-green, 100);
+                        background: asm-color($asm-green, 200);
                     }
 
                     .normal {
-                        color: asm-color($asm-gray, 400);
-                        background: asm-color($asm-gray, 100);
+                        color: map-get($primary, 600);
+                        background: map-get($primary, 100);
                     }
 
                     .high {
                         color: asm-color($asm-red, 600);
-                        background: asm-color($asm-red, 100);
+                        background: asm-color($asm-red, 200);
                     }
                 }
 
@@ -470,22 +474,22 @@ tasks-details {
 
                 .due-date-icon {
                     color: asm-color($asm-green, 600);
-                    background: asm-color($asm-green, 100);
+                    background: asm-color($asm-green, 200);
                 }
 
                 &.overdue {
 
                     .due-date-icon {
-                        color: asm-color($asm-red, 500);
-                        background: asm-color($asm-red, 100);
+                        color: asm-color($asm-red, 600);
+                        background: asm-color($asm-red, 200);
                     }
                 }
 
                 &.not-set {
 
                     .due-date-icon {
-                        color: asm-color($asm-gray, 400);
-                        background: asm-color($asm-gray, 100);
+                        color: map-get($primary, 600);
+                        background: map-get($primary, 100);
                     }
                 }
 

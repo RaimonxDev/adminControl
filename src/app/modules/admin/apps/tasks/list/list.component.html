@@ -162,22 +162,6 @@
                                         </span>
                                     </div>
 
-                                    <div class="tags"
-                                         *ngIf="task.type === 'task' && organizeTags(task.tags).visible.length > 0">
-
-                                        <div class="tag"
-                                             *ngFor="let tag of organizeTags(task.tags).visible; trackBy: trackById">
-                                            {{tag.title}}
-                                        </div>
-
-                                        <div class="tag"
-                                             *ngIf="organizeTags(task.tags).hidden"
-                                             [matTooltip]="organizeTags(task.tags).hidden">
-                                            <span>+{{organizeTags(task.tags).hidden.split(',').length}}</span>
-                                        </div>
-
-                                    </div>
-
                                     <div class="priority"
                                          *ngIf="task.type === 'task'">
 
@@ -186,13 +170,6 @@
                                                   *ngIf="task.priority === 0"
                                                   [title]="'Low'">
                                             arrow_downward
-                                        </mat-icon>
-
-                                        <!-- Normal -->
-                                        <mat-icon class="normal"
-                                                  *ngIf="task.priority === 1"
-                                                  [title]="'Normal'">
-                                            remove
                                         </mat-icon>
 
                                         <!-- High -->

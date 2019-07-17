@@ -6,7 +6,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, filter, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { AsmLookUpByPipe, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
@@ -245,49 +245,6 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Save the new order
         this._tasksService.updateTasksOrders(event.container.data).subscribe();
-    }
-
-    /**
-     * Organize the tags
-     *
-     * @param tags
-     */
-    organizeTags(tags): any
-    {
-        // Get the visible and hidden tags
-        let visible = tags.slice(0, 2);
-        let hidden = tags.slice(2, tags.length);
-
-        // If there are visible tags...
-        if ( visible.length > 0 )
-        {
-            // Convert them into tag objects
-            visible = new AsmLookUpByPipe().transform(visible, 'id', this.tags);
-        }
-
-        // If there are hidden tags...
-        if ( hidden.length > 0 )
-        {
-            // Convert them into tag objects
-            hidden = new AsmLookUpByPipe().transform(hidden, 'id', this.tags);
-
-            // Convert it to the tag titles array
-            hidden.forEach((item, index, items) => {
-                items[index] = item.title.toUpperCase();
-            });
-
-            // Join them together
-            hidden = hidden.join(', ');
-        }
-        else
-        {
-            hidden = false;
-        }
-
-        return {
-            visible,
-            hidden
-        };
     }
 
     /**

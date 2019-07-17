@@ -152,7 +152,7 @@ tasks-list {
 
                         &.type-section {
                             font-size: 20px;
-                            font-weight: 600;
+                            font-weight: 500;
 
                             .task-content {
                                 padding: 0 16px;
@@ -218,41 +218,6 @@ tasks-list {
                                     }
                                 }
 
-                                .tags {
-                                    display: flex;
-                                    flex: 0 0 auto;
-                                    flex-wrap: wrap;
-                                    align-items: center;
-                                    justify-content: flex-start;
-
-                                    @include asm-media-breakpoint('lt-sm') {
-                                        display: none;
-                                    }
-
-                                    .tag {
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        height: 18px;
-                                        padding: 0 8px;
-                                        margin-right: 8px;
-                                        border-radius: 4px;
-                                        font-size: 11px;
-                                        font-weight: 500;
-                                        line-height: 1;
-                                        white-space: nowrap;
-                                        text-transform: uppercase;
-
-                                        &:last-child {
-                                            margin-right: 0;
-                                        }
-                                    }
-
-                                    + .priority {
-                                        margin-left: 16px;
-                                    }
-                                }
-
                                 .priority {
                                     width: 18px;
                                     height: 18px;
@@ -262,7 +227,6 @@ tasks-list {
                                     }
 
                                     .low,
-                                    .normal,
                                     .high {
                                         @include asm-icon-size(16);
                                     }
@@ -331,6 +295,7 @@ tasks-list {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
     tasks-list {
@@ -394,7 +359,7 @@ tasks-list {
                             &.selected {
 
                                 .task-content {
-                                    background: map-get($background, hover);
+                                    background: map-get($primary, 100);
                                 }
                             }
 
@@ -416,27 +381,10 @@ tasks-list {
                                         }
                                     }
 
-                                    .tags {
-
-                                        .tag {
-                                            color: map-get($foreground, secondary-text);
-
-                                            @if ($is-dark) {
-                                                background: map-get($background, background);
-                                            } @else {
-                                                background: #EEEEEE;
-                                            }
-                                        }
-                                    }
-
                                     .priority {
 
                                         .low {
                                             color: asm-color($asm-green, 600);
-                                        }
-
-                                        .normal {
-                                            color: map-get($foreground, divider);
                                         }
 
                                         .high {
