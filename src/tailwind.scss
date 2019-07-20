@@ -453,10 +453,12 @@
 }
 
 .flex {
+  display: -webkit-box !important;
   display: flex !important
 }
 
 .inline-flex {
+  display: -webkit-inline-box !important;
   display: inline-flex !important
 }
 
@@ -477,19 +479,27 @@
 }
 
 .flex-row {
-  flex-direction: row !important
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+          flex-direction: row !important
 }
 
 .flex-row-reverse {
-  flex-direction: row-reverse !important
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: reverse !important;
+          flex-direction: row-reverse !important
 }
 
 .flex-col {
-  flex-direction: column !important
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+          flex-direction: column !important
 }
 
 .flex-col-reverse {
-  flex-direction: column-reverse !important
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: reverse !important;
+          flex-direction: column-reverse !important
 }
 
 .flex-wrap {
@@ -505,23 +515,28 @@
 }
 
 .items-start {
-  align-items: flex-start !important
+  -webkit-box-align: start !important;
+          align-items: flex-start !important
 }
 
 .items-end {
-  align-items: flex-end !important
+  -webkit-box-align: end !important;
+          align-items: flex-end !important
 }
 
 .items-center {
-  align-items: center !important
+  -webkit-box-align: center !important;
+          align-items: center !important
 }
 
 .items-baseline {
-  align-items: baseline !important
+  -webkit-box-align: baseline !important;
+          align-items: baseline !important
 }
 
 .items-stretch {
-  align-items: stretch !important
+  -webkit-box-align: stretch !important;
+          align-items: stretch !important
 }
 
 .self-auto {
@@ -545,19 +560,23 @@
 }
 
 .justify-start {
-  justify-content: flex-start !important
+  -webkit-box-pack: start !important;
+          justify-content: flex-start !important
 }
 
 .justify-end {
-  justify-content: flex-end !important
+  -webkit-box-pack: end !important;
+          justify-content: flex-end !important
 }
 
 .justify-center {
-  justify-content: center !important
+  -webkit-box-pack: center !important;
+          justify-content: center !important
 }
 
 .justify-between {
-  justify-content: space-between !important
+  -webkit-box-pack: justify !important;
+          justify-content: space-between !important
 }
 
 .justify-around {
@@ -585,27 +604,33 @@
 }
 
 .flex-1 {
-  flex: 1 1 0% !important
+  -webkit-box-flex: 1 !important;
+          flex: 1 1 0% !important
 }
 
 .flex-auto {
-  flex: 1 1 auto !important
+  -webkit-box-flex: 1 !important;
+          flex: 1 1 auto !important
 }
 
 .flex-initial {
-  flex: 0 1 auto !important
+  -webkit-box-flex: 0 !important;
+          flex: 0 1 auto !important
 }
 
 .flex-none {
-  flex: none !important
+  -webkit-box-flex: 0 !important;
+          flex: none !important
 }
 
 .flex-grow-0 {
-  flex-grow: 0 !important
+  -webkit-box-flex: 0 !important;
+          flex-grow: 0 !important
 }
 
 .flex-grow {
-  flex-grow: 1 !important
+  -webkit-box-flex: 1 !important;
+          flex-grow: 1 !important
 }
 
 .flex-shrink-0 {
@@ -617,63 +642,78 @@
 }
 
 .order-1 {
-  order: 1 !important
+  -webkit-box-ordinal-group: 2 !important;
+          order: 1 !important
 }
 
 .order-2 {
-  order: 2 !important
+  -webkit-box-ordinal-group: 3 !important;
+          order: 2 !important
 }
 
 .order-3 {
-  order: 3 !important
+  -webkit-box-ordinal-group: 4 !important;
+          order: 3 !important
 }
 
 .order-4 {
-  order: 4 !important
+  -webkit-box-ordinal-group: 5 !important;
+          order: 4 !important
 }
 
 .order-5 {
-  order: 5 !important
+  -webkit-box-ordinal-group: 6 !important;
+          order: 5 !important
 }
 
 .order-6 {
-  order: 6 !important
+  -webkit-box-ordinal-group: 7 !important;
+          order: 6 !important
 }
 
 .order-7 {
-  order: 7 !important
+  -webkit-box-ordinal-group: 8 !important;
+          order: 7 !important
 }
 
 .order-8 {
-  order: 8 !important
+  -webkit-box-ordinal-group: 9 !important;
+          order: 8 !important
 }
 
 .order-9 {
-  order: 9 !important
+  -webkit-box-ordinal-group: 10 !important;
+          order: 9 !important
 }
 
 .order-10 {
-  order: 10 !important
+  -webkit-box-ordinal-group: 11 !important;
+          order: 10 !important
 }
 
 .order-11 {
-  order: 11 !important
+  -webkit-box-ordinal-group: 12 !important;
+          order: 11 !important
 }
 
 .order-12 {
-  order: 12 !important
+  -webkit-box-ordinal-group: 13 !important;
+          order: 12 !important
 }
 
 .order-first {
-  order: -9999 !important
+  -webkit-box-ordinal-group: -9998 !important;
+          order: -9999 !important
 }
 
 .order-last {
-  order: 9999 !important
+  -webkit-box-ordinal-group: 10000 !important;
+          order: 9999 !important
 }
 
 .order-none {
-  order: 0 !important
+  -webkit-box-ordinal-group: 1 !important;
+          order: 0 !important
 }
 
 .font-sans {
@@ -4542,10 +4582,12 @@
   }
 
   .xs\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .xs\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -4566,19 +4608,27 @@
   }
 
   .xs\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .xs\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .xs\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .xs\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .xs\:flex-wrap {
@@ -4594,23 +4644,28 @@
   }
 
   .xs\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .xs\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .xs\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .xs\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .xs\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .xs\:self-auto {
@@ -4634,19 +4689,23 @@
   }
 
   .xs\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .xs\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .xs\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .xs\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .xs\:justify-around {
@@ -4674,27 +4733,33 @@
   }
 
   .xs\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .xs\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .xs\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .xs\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .xs\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .xs\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .xs\:flex-shrink-0 {
@@ -4706,63 +4771,78 @@
   }
 
   .xs\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .xs\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .xs\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .xs\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .xs\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .xs\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .xs\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .xs\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .xs\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .xs\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .xs\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .xs\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .xs\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .xs\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .xs\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .xs\:font-hairline {
@@ -8594,10 +8674,12 @@
   }
 
   .sm\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .sm\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -8618,19 +8700,27 @@
   }
 
   .sm\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .sm\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .sm\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .sm\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .sm\:flex-wrap {
@@ -8646,23 +8736,28 @@
   }
 
   .sm\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .sm\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .sm\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .sm\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .sm\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .sm\:self-auto {
@@ -8686,19 +8781,23 @@
   }
 
   .sm\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .sm\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .sm\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .sm\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .sm\:justify-around {
@@ -8726,27 +8825,33 @@
   }
 
   .sm\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .sm\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .sm\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .sm\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .sm\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .sm\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .sm\:flex-shrink-0 {
@@ -8758,63 +8863,78 @@
   }
 
   .sm\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .sm\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .sm\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .sm\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .sm\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .sm\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .sm\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .sm\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .sm\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .sm\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .sm\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .sm\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .sm\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .sm\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .sm\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .sm\:font-hairline {
@@ -12646,10 +12766,12 @@
   }
 
   .md\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .md\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -12670,19 +12792,27 @@
   }
 
   .md\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .md\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .md\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .md\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .md\:flex-wrap {
@@ -12698,23 +12828,28 @@
   }
 
   .md\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .md\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .md\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .md\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .md\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .md\:self-auto {
@@ -12738,19 +12873,23 @@
   }
 
   .md\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .md\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .md\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .md\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .md\:justify-around {
@@ -12778,27 +12917,33 @@
   }
 
   .md\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .md\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .md\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .md\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .md\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .md\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .md\:flex-shrink-0 {
@@ -12810,63 +12955,78 @@
   }
 
   .md\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .md\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .md\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .md\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .md\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .md\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .md\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .md\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .md\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .md\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .md\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .md\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .md\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .md\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .md\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .md\:font-hairline {
@@ -16698,10 +16858,12 @@
   }
 
   .lg\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .lg\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -16722,19 +16884,27 @@
   }
 
   .lg\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .lg\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .lg\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .lg\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .lg\:flex-wrap {
@@ -16750,23 +16920,28 @@
   }
 
   .lg\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .lg\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .lg\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .lg\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .lg\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .lg\:self-auto {
@@ -16790,19 +16965,23 @@
   }
 
   .lg\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .lg\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .lg\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .lg\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .lg\:justify-around {
@@ -16830,27 +17009,33 @@
   }
 
   .lg\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .lg\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .lg\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .lg\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .lg\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .lg\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .lg\:flex-shrink-0 {
@@ -16862,63 +17047,78 @@
   }
 
   .lg\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .lg\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .lg\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .lg\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .lg\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .lg\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .lg\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .lg\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .lg\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .lg\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .lg\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .lg\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .lg\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .lg\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .lg\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .lg\:font-hairline {
@@ -20750,10 +20950,12 @@
   }
 
   .xl\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .xl\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -20774,19 +20976,27 @@
   }
 
   .xl\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .xl\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .xl\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .xl\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .xl\:flex-wrap {
@@ -20802,23 +21012,28 @@
   }
 
   .xl\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .xl\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .xl\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .xl\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .xl\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .xl\:self-auto {
@@ -20842,19 +21057,23 @@
   }
 
   .xl\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .xl\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .xl\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .xl\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .xl\:justify-around {
@@ -20882,27 +21101,33 @@
   }
 
   .xl\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .xl\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .xl\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .xl\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .xl\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .xl\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .xl\:flex-shrink-0 {
@@ -20914,63 +21139,78 @@
   }
 
   .xl\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .xl\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .xl\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .xl\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .xl\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .xl\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .xl\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .xl\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .xl\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .xl\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .xl\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .xl\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .xl\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .xl\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .xl\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .xl\:font-hairline {
@@ -24802,10 +25042,12 @@
   }
 
   .lt-sm\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .lt-sm\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -24826,19 +25068,27 @@
   }
 
   .lt-sm\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .lt-sm\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .lt-sm\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .lt-sm\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .lt-sm\:flex-wrap {
@@ -24854,23 +25104,28 @@
   }
 
   .lt-sm\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .lt-sm\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .lt-sm\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .lt-sm\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .lt-sm\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .lt-sm\:self-auto {
@@ -24894,19 +25149,23 @@
   }
 
   .lt-sm\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .lt-sm\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .lt-sm\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .lt-sm\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .lt-sm\:justify-around {
@@ -24934,27 +25193,33 @@
   }
 
   .lt-sm\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .lt-sm\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .lt-sm\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .lt-sm\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .lt-sm\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .lt-sm\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .lt-sm\:flex-shrink-0 {
@@ -24966,63 +25231,78 @@
   }
 
   .lt-sm\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .lt-sm\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .lt-sm\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .lt-sm\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .lt-sm\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .lt-sm\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .lt-sm\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .lt-sm\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .lt-sm\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .lt-sm\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .lt-sm\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .lt-sm\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .lt-sm\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .lt-sm\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .lt-sm\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .lt-sm\:font-hairline {
@@ -28854,10 +29134,12 @@
   }
 
   .lt-md\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .lt-md\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -28878,19 +29160,27 @@
   }
 
   .lt-md\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .lt-md\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .lt-md\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .lt-md\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .lt-md\:flex-wrap {
@@ -28906,23 +29196,28 @@
   }
 
   .lt-md\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .lt-md\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .lt-md\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .lt-md\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .lt-md\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .lt-md\:self-auto {
@@ -28946,19 +29241,23 @@
   }
 
   .lt-md\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .lt-md\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .lt-md\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .lt-md\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .lt-md\:justify-around {
@@ -28986,27 +29285,33 @@
   }
 
   .lt-md\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .lt-md\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .lt-md\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .lt-md\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .lt-md\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .lt-md\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .lt-md\:flex-shrink-0 {
@@ -29018,63 +29323,78 @@
   }
 
   .lt-md\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .lt-md\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .lt-md\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .lt-md\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .lt-md\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .lt-md\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .lt-md\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .lt-md\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .lt-md\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .lt-md\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .lt-md\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .lt-md\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .lt-md\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .lt-md\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .lt-md\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .lt-md\:font-hairline {
@@ -32906,10 +33226,12 @@
   }
 
   .lt-lg\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .lt-lg\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -32930,19 +33252,27 @@
   }
 
   .lt-lg\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .lt-lg\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .lt-lg\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .lt-lg\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .lt-lg\:flex-wrap {
@@ -32958,23 +33288,28 @@
   }
 
   .lt-lg\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .lt-lg\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .lt-lg\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .lt-lg\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .lt-lg\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .lt-lg\:self-auto {
@@ -32998,19 +33333,23 @@
   }
 
   .lt-lg\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .lt-lg\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .lt-lg\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .lt-lg\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .lt-lg\:justify-around {
@@ -33038,27 +33377,33 @@
   }
 
   .lt-lg\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .lt-lg\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .lt-lg\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .lt-lg\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .lt-lg\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .lt-lg\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .lt-lg\:flex-shrink-0 {
@@ -33070,63 +33415,78 @@
   }
 
   .lt-lg\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .lt-lg\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .lt-lg\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .lt-lg\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .lt-lg\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .lt-lg\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .lt-lg\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .lt-lg\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .lt-lg\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .lt-lg\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .lt-lg\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .lt-lg\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .lt-lg\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .lt-lg\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .lt-lg\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .lt-lg\:font-hairline {
@@ -36958,10 +37318,12 @@
   }
 
   .lt-xl\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .lt-xl\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -36982,19 +37344,27 @@
   }
 
   .lt-xl\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .lt-xl\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .lt-xl\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .lt-xl\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .lt-xl\:flex-wrap {
@@ -37010,23 +37380,28 @@
   }
 
   .lt-xl\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .lt-xl\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .lt-xl\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .lt-xl\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .lt-xl\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .lt-xl\:self-auto {
@@ -37050,19 +37425,23 @@
   }
 
   .lt-xl\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .lt-xl\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .lt-xl\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .lt-xl\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .lt-xl\:justify-around {
@@ -37090,27 +37469,33 @@
   }
 
   .lt-xl\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .lt-xl\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .lt-xl\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .lt-xl\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .lt-xl\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .lt-xl\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .lt-xl\:flex-shrink-0 {
@@ -37122,63 +37507,78 @@
   }
 
   .lt-xl\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .lt-xl\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .lt-xl\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .lt-xl\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .lt-xl\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .lt-xl\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .lt-xl\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .lt-xl\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .lt-xl\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .lt-xl\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .lt-xl\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .lt-xl\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .lt-xl\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .lt-xl\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .lt-xl\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .lt-xl\:font-hairline {
@@ -41010,10 +41410,12 @@
   }
 
   .gt-xs\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .gt-xs\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -41034,19 +41436,27 @@
   }
 
   .gt-xs\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .gt-xs\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .gt-xs\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .gt-xs\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .gt-xs\:flex-wrap {
@@ -41062,23 +41472,28 @@
   }
 
   .gt-xs\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .gt-xs\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .gt-xs\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .gt-xs\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .gt-xs\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .gt-xs\:self-auto {
@@ -41102,19 +41517,23 @@
   }
 
   .gt-xs\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .gt-xs\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .gt-xs\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .gt-xs\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .gt-xs\:justify-around {
@@ -41142,27 +41561,33 @@
   }
 
   .gt-xs\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .gt-xs\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .gt-xs\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .gt-xs\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .gt-xs\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .gt-xs\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .gt-xs\:flex-shrink-0 {
@@ -41174,63 +41599,78 @@
   }
 
   .gt-xs\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .gt-xs\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .gt-xs\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .gt-xs\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .gt-xs\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .gt-xs\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .gt-xs\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .gt-xs\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .gt-xs\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .gt-xs\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .gt-xs\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .gt-xs\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .gt-xs\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .gt-xs\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .gt-xs\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .gt-xs\:font-hairline {
@@ -45062,10 +45502,12 @@
   }
 
   .gt-sm\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .gt-sm\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -45086,19 +45528,27 @@
   }
 
   .gt-sm\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .gt-sm\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .gt-sm\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .gt-sm\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .gt-sm\:flex-wrap {
@@ -45114,23 +45564,28 @@
   }
 
   .gt-sm\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .gt-sm\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .gt-sm\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .gt-sm\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .gt-sm\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .gt-sm\:self-auto {
@@ -45154,19 +45609,23 @@
   }
 
   .gt-sm\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .gt-sm\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .gt-sm\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .gt-sm\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .gt-sm\:justify-around {
@@ -45194,27 +45653,33 @@
   }
 
   .gt-sm\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .gt-sm\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .gt-sm\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .gt-sm\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .gt-sm\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .gt-sm\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .gt-sm\:flex-shrink-0 {
@@ -45226,63 +45691,78 @@
   }
 
   .gt-sm\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .gt-sm\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .gt-sm\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .gt-sm\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .gt-sm\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .gt-sm\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .gt-sm\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .gt-sm\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .gt-sm\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .gt-sm\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .gt-sm\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .gt-sm\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .gt-sm\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .gt-sm\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .gt-sm\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .gt-sm\:font-hairline {
@@ -49114,10 +49594,12 @@
   }
 
   .gt-md\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .gt-md\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -49138,19 +49620,27 @@
   }
 
   .gt-md\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .gt-md\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .gt-md\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .gt-md\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .gt-md\:flex-wrap {
@@ -49166,23 +49656,28 @@
   }
 
   .gt-md\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .gt-md\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .gt-md\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .gt-md\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .gt-md\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .gt-md\:self-auto {
@@ -49206,19 +49701,23 @@
   }
 
   .gt-md\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .gt-md\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .gt-md\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .gt-md\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .gt-md\:justify-around {
@@ -49246,27 +49745,33 @@
   }
 
   .gt-md\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .gt-md\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .gt-md\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .gt-md\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .gt-md\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .gt-md\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .gt-md\:flex-shrink-0 {
@@ -49278,63 +49783,78 @@
   }
 
   .gt-md\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .gt-md\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .gt-md\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .gt-md\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .gt-md\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .gt-md\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .gt-md\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .gt-md\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .gt-md\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .gt-md\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .gt-md\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .gt-md\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .gt-md\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .gt-md\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .gt-md\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .gt-md\:font-hairline {
@@ -53166,10 +53686,12 @@
   }
 
   .gt-lg\:flex {
+    display: -webkit-box !important;
     display: flex !important
   }
 
   .gt-lg\:inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important
   }
 
@@ -53190,19 +53712,27 @@
   }
 
   .gt-lg\:flex-row {
-    flex-direction: row !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important
   }
 
   .gt-lg\:flex-row-reverse {
-    flex-direction: row-reverse !important
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important
   }
 
   .gt-lg\:flex-col {
-    flex-direction: column !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important
   }
 
   .gt-lg\:flex-col-reverse {
-    flex-direction: column-reverse !important
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important
   }
 
   .gt-lg\:flex-wrap {
@@ -53218,23 +53748,28 @@
   }
 
   .gt-lg\:items-start {
-    align-items: flex-start !important
+    -webkit-box-align: start !important;
+            align-items: flex-start !important
   }
 
   .gt-lg\:items-end {
-    align-items: flex-end !important
+    -webkit-box-align: end !important;
+            align-items: flex-end !important
   }
 
   .gt-lg\:items-center {
-    align-items: center !important
+    -webkit-box-align: center !important;
+            align-items: center !important
   }
 
   .gt-lg\:items-baseline {
-    align-items: baseline !important
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important
   }
 
   .gt-lg\:items-stretch {
-    align-items: stretch !important
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important
   }
 
   .gt-lg\:self-auto {
@@ -53258,19 +53793,23 @@
   }
 
   .gt-lg\:justify-start {
-    justify-content: flex-start !important
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important
   }
 
   .gt-lg\:justify-end {
-    justify-content: flex-end !important
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important
   }
 
   .gt-lg\:justify-center {
-    justify-content: center !important
+    -webkit-box-pack: center !important;
+            justify-content: center !important
   }
 
   .gt-lg\:justify-between {
-    justify-content: space-between !important
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important
   }
 
   .gt-lg\:justify-around {
@@ -53298,27 +53837,33 @@
   }
 
   .gt-lg\:flex-1 {
-    flex: 1 1 0% !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 0% !important
   }
 
   .gt-lg\:flex-auto {
-    flex: 1 1 auto !important
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important
   }
 
   .gt-lg\:flex-initial {
-    flex: 0 1 auto !important
+    -webkit-box-flex: 0 !important;
+            flex: 0 1 auto !important
   }
 
   .gt-lg\:flex-none {
-    flex: none !important
+    -webkit-box-flex: 0 !important;
+            flex: none !important
   }
 
   .gt-lg\:flex-grow-0 {
-    flex-grow: 0 !important
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important
   }
 
   .gt-lg\:flex-grow {
-    flex-grow: 1 !important
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important
   }
 
   .gt-lg\:flex-shrink-0 {
@@ -53330,63 +53875,78 @@
   }
 
   .gt-lg\:order-1 {
-    order: 1 !important
+    -webkit-box-ordinal-group: 2 !important;
+            order: 1 !important
   }
 
   .gt-lg\:order-2 {
-    order: 2 !important
+    -webkit-box-ordinal-group: 3 !important;
+            order: 2 !important
   }
 
   .gt-lg\:order-3 {
-    order: 3 !important
+    -webkit-box-ordinal-group: 4 !important;
+            order: 3 !important
   }
 
   .gt-lg\:order-4 {
-    order: 4 !important
+    -webkit-box-ordinal-group: 5 !important;
+            order: 4 !important
   }
 
   .gt-lg\:order-5 {
-    order: 5 !important
+    -webkit-box-ordinal-group: 6 !important;
+            order: 5 !important
   }
 
   .gt-lg\:order-6 {
-    order: 6 !important
+    -webkit-box-ordinal-group: 7 !important;
+            order: 6 !important
   }
 
   .gt-lg\:order-7 {
-    order: 7 !important
+    -webkit-box-ordinal-group: 8 !important;
+            order: 7 !important
   }
 
   .gt-lg\:order-8 {
-    order: 8 !important
+    -webkit-box-ordinal-group: 9 !important;
+            order: 8 !important
   }
 
   .gt-lg\:order-9 {
-    order: 9 !important
+    -webkit-box-ordinal-group: 10 !important;
+            order: 9 !important
   }
 
   .gt-lg\:order-10 {
-    order: 10 !important
+    -webkit-box-ordinal-group: 11 !important;
+            order: 10 !important
   }
 
   .gt-lg\:order-11 {
-    order: 11 !important
+    -webkit-box-ordinal-group: 12 !important;
+            order: 11 !important
   }
 
   .gt-lg\:order-12 {
-    order: 12 !important
+    -webkit-box-ordinal-group: 13 !important;
+            order: 12 !important
   }
 
   .gt-lg\:order-first {
-    order: -9999 !important
+    -webkit-box-ordinal-group: -9998 !important;
+            order: -9999 !important
   }
 
   .gt-lg\:order-last {
-    order: 9999 !important
+    -webkit-box-ordinal-group: 10000 !important;
+            order: 9999 !important
   }
 
   .gt-lg\:order-none {
-    order: 0 !important
+    -webkit-box-ordinal-group: 1 !important;
+            order: 0 !important
   }
 
   .gt-lg\:font-hairline {
