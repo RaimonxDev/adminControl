@@ -797,7 +797,7 @@
 
     .mat-drawer-backdrop.mat-drawer-shown {
         @if ($is-dark) {
-            background-color: asm-dark-elevation(8);
+            background-color: asm-dark-elevation(4);
         } @else {
             background-color: rgba(asm-color($asm-gray, 900), 0.6);
         }
