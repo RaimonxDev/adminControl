@@ -644,6 +644,56 @@
                 }
             }
         }
+
+        .mat-icon {
+            color: currentColor !important;
+        }
+
+        // Add hover and focus style on all buttons
+        .mat-button-focus-overlay {
+            @if ($is-dark) {
+                background-color: asm-dark-elevation(1);
+            } @else {
+                background-color: rgba(asm-color($asm-gray, 500), 0.2);
+            }
+        }
+
+        // On palette colored buttons, use a darker color
+        @each $palette in (primary, accent, warn) {
+
+            &.mat-#{$palette} {
+
+                .mat-button-focus-overlay {
+                    background-color: rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+
+        &:hover,
+        &.cdk-keyboard-focused,
+        &.cdk-program-focused {
+
+            .mat-button-focus-overlay {
+                opacity: 1;
+            }
+        }
+
+        @media (hover: none) {
+
+            &:hover {
+
+                .mat-button-focus-overlay {
+                    opacity: 0 !important;
+                }
+            }
+        }
+
+        &[disabled] {
+
+            .mat-button-focus-overlay {
+                opacity: 0 !important;
+            }
+        }
     }
 
     // Transparent background buttons
@@ -663,6 +713,52 @@
                 }
             }
         }
+
+        // Add hover and focus styles
+        .mat-button-focus-overlay {
+            @if ($is-dark) {
+                background-color: asm-dark-elevation(1) !important;
+            } @else {
+                background-color: rgba(asm-color($asm-gray, 500), 0.2) !important;
+            }
+        }
+
+        // On palette colored buttons, use a the palette color
+        @each $palette in (primary, accent, warn) {
+
+            &.mat-#{$palette} {
+
+                .mat-button-focus-overlay {
+                    background-color: rgba(map-get(map-get($theme, $palette), default), 0.1) !important;
+                }
+            }
+        }
+
+        &:hover,
+        &.cdk-keyboard-focused,
+        &.cdk-program-focused {
+
+            .mat-button-focus-overlay {
+                opacity: 1;
+            }
+        }
+
+        @media (hover: none) {
+
+            &:hover {
+
+                .mat-button-focus-overlay {
+                    opacity: 0 !important;
+                }
+            }
+        }
+
+        &[disabled] {
+
+            .mat-button-focus-overlay {
+                opacity: 0 !important;
+            }
+        }
     }
 
     // All buttons
@@ -674,43 +770,36 @@
     .mat-icon-button,
     .mat-stroked-button {
 
-        .mat-button-focus-overlay {
-            @if ($is-dark) {
-                background: asm-dark-elevation(1);
-            } @else {
-                background: asm-color($asm-gray, 900);
-            }
+        // Move mat-button-wrapper above the ripple and focus overlay
+        .mat-button-wrapper {
+            position: relative;
+            z-index: 2;
         }
 
-        &:hover,
-        &.cdk-keyboard-focused,
-        &.cdk-program-focused {
-
-            .mat-button-focus-overlay {
-                @if ($is-dark) {
-                    opacity: 1;
-                }
-            }
+        .mat-button-focus-overlay,
+        .mat-button-ripple {
+            z-index: 1;
         }
     }
 
-    // Colored background buttons
-    .mat-flat-button,
-    .mat-raised-button,
-    .mat-fab,
-    .mat-mini-fab {
-
-        // Do not override the mat-icon color
-        .mat-icon {
-            color: currentColor !important;
-        }
-    }
-
+    // Stroked buttons
     .mat-stroked-button {
 
         // Enable stroke color on stroked buttons
         &:not([disabled]) {
             border-color: currentColor !important;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Drawer
+    // -----------------------------------------------------------------------------------------------------
+
+    .mat-drawer-backdrop.mat-drawer-shown {
+        @if ($is-dark) {
+            background-color: asm-dark-elevation(8);
+        } @else {
+            background-color: rgba(asm-color($asm-gray, 900), 0.6);
         }
     }
 
