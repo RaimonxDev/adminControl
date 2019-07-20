@@ -272,7 +272,7 @@ asm-vertical-menu {
             &.asm-vertical-menu-item-active {
 
                 @if ($is-dark) {
-                    @include asm-dark-elevation(1);
+                    background: asm-dark-elevation(1);
                 } @else {
                     background: map-get($background, hover);
                 }
@@ -290,7 +290,7 @@ asm-vertical-menu {
                     &:hover:not(.asm-vertical-menu-item-active) {
 
                         @if ($is-dark) {
-                            @include asm-dark-elevation(1);
+                            background: asm-dark-elevation(1);
                         } @else {
                             background: map-get($background, hover);
                         }
@@ -305,7 +305,7 @@ asm-vertical-menu {
             &.asm-vertical-menu-item-expanded {
 
                 @if ($is-dark) {
-                    @include asm-dark-elevation(1);
+                    background: asm-dark-elevation(1);
                 } @else {
                     background: map-get($background, hover);
                 }
@@ -315,7 +315,7 @@ asm-vertical-menu {
                     &:hover:not(.asm-vertical-menu-item-active) {
 
                         @if ($is-dark) {
-                            @include asm-dark-elevation(1);
+                            background: asm-dark-elevation(1);
                         } @else {
                             background: map-get($background, hover);
                         }

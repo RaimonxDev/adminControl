@@ -25,7 +25,7 @@ pre[class*='language-'] {
 pre[class*='language-'] {
     padding: 24px;
     margin: 0;
-    @include asm-shadow(1);
+    @include asm-elevation(1);
 }
 
 :not(pre) > code[class*='language-'] {

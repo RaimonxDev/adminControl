@@ -783,7 +783,7 @@
 
         .mat-form-field-flex {
             @if ($is-dark) {
-                @include asm-dark-elevation(1);
+                background: asm-dark-elevation(1);
             } @else {
                 background: asm-color($asm-gray, 200);
             }

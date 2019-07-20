@@ -341,7 +341,7 @@ mailbox-list {
 
                     &.selected {
                         @if ($is-dark) {
-                            @include asm-dark-elevation(1);
+                            background: asm-dark-elevation(1);
                         } @else {
                             background: map-get($primary, 100);
                         }

@@ -3,15 +3,15 @@
 // -----------------------------------------------------------------------------------------------------
 
 ///
-/// Generate the shadow from the given elevation and color
+/// Generate the elevation from the given elevation and color
 ///
 /// @access private
 /// @param {String} $elevation - The amount of the elevation that the element will have
 /// @param {Color} $color - Color of the shadow
 ///
-@function _get-shadow($elevation, $color) {
+@function _get-elevation($elevation, $color) {
 
-    $shadow-map: (
+    $elevation-map: (
         0: 'none',
         1: '0 1px 3px 0 #{rgba($color, 0.12)}, 0 1px 2px 0 #{rgba($color, 0.06)}',
         2: '0 4px 6px -1px #{rgba($color, 0.1)}, 0 2px 4px -1px #{rgba($color, 0.06)}',
@@ -20,7 +20,7 @@
         5: '0 25px 50px -12px #{rgba($color, 0.25)}',
     );
 
-    @return map-get($shadow-map, $elevation);
+    @return map-get($elevation-map, $elevation);
 }
 
 
@@ -29,15 +29,15 @@
 // -----------------------------------------------------------------------------------------------------
 
 ///
-/// Adds a shadow
+/// Adds an elevation
 ///
 /// @access public
 /// @param {String} $elevation - The amount of the elevation that the element will have
 /// @param {Color} $color - Color of the shadow
 /// @param {Boolean} $important - Whether to add an !important tag to the shadow rule
 ///
-@mixin asm-shadow($elevation, $color: rgb(0, 0, 0), $important: false) {
-    box-shadow: #{_get_shadow($elevation, $color)} if($important, !important, null);
+@mixin asm-elevation($elevation, $color: rgb(0, 0, 0), $important: false) {
+    box-shadow: #{_get-elevation($elevation, $color)} if($important, !important, null);
 }
 
 ///
@@ -47,7 +47,7 @@
 /// @param {String} $elevation - The amount of the elevation that the element will have
 /// @param {Boolean} $important - Whether to add an !important tag to the shadow rule
 ///
-@mixin asm-dark-elevation($elevation, $important: false) {
+@function asm-dark-elevation($elevation) {
 
     // Elevations map
     $elevations: (
@@ -71,6 +71,6 @@
         @error 'Elevation `' + $elevation + '` does not exists!';
     }
 
-    // Set the background
-    background: rgba(255, 255, 255, $opacity) if($important, !important, null);
+    // Return the background color
+    @return rgba(255, 255, 255, $opacity);
 }

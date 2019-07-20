@@ -144,6 +144,7 @@ layout[type="classy"] {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
 
     layout[type='classy'] {
 
@@ -179,8 +180,12 @@ layout[type="classy"] {
 
             // Header
             > .header {
-                background: map-get($background, card);
-                @include asm-shadow(1);
+                @if ($is-dark) {
+                    background: asm-dark-elevation(1);
+                } @else {
+                    background: map-get($background, card);
+                    @include asm-elevation(1);
+                }
             }
 
             // Footer

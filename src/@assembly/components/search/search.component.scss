@@ -281,6 +281,11 @@ asm-search {
 
     asm-search {
 
+        // Basic appearance
+        &.asm-search-appearance-basic {
+            background: transparent;
+        }
+
         // Fullscreen appearance
         &.asm-search-appearance-fullscreen {
             color: map-get($foreground, text);

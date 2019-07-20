@@ -80,7 +80,7 @@
             margin: 32px 0;
             border-radius: 4px;
             overflow: hidden;
-            @include asm-shadow(1);
+            @include asm-elevation(1);
 
             .title {
                 display: flex;
@@ -147,7 +147,7 @@
 
             &.with-background {
                 border-radius: 4px;
-                @include asm-shadow(1);
+                @include asm-elevation(1);
 
                 table {
 

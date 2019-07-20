@@ -95,7 +95,7 @@ asm-message {
             overflow: hidden;
             border-left: 6px solid;
             border-radius: 4px;
-            @include asm-shadow(1);
+            @include asm-elevation(1);
         }
     }
 

@@ -68,7 +68,7 @@ animations {
 
         .animated-box {
             background: map-get($primary, default);
-            @include asm-shadow(2);
+            @include asm-elevation(2);
 
             .animated-box-content {
                 color: map-get($primary, default-contrast);

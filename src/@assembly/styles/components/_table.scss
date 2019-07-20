@@ -3,7 +3,7 @@ table {
     &.asm-table {
         width: 100%;
         border-spacing: 0;
-        @include asm-shadow(2);
+        @include asm-elevation(2);
 
         thead {
 

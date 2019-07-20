@@ -408,7 +408,7 @@ mailbox-details {
     font-size: 13px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    @include asm-shadow(2);
+    @include asm-elevation(2);
 
     table {
 

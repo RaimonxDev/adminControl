@@ -37,7 +37,7 @@ mailbox-sidebar {
 
         asm-vertical-menu .asm-vertical-menu-item.asm-vertical-menu-item-active {
             @if ($is-dark) {
-                @include asm-dark-elevation(1, true);
+                background: asm-dark-elevation(1) !important;
             } @else {
                 background: map-get($primary, 100) !important;
             }
@@ -46,7 +46,7 @@ mailbox-sidebar {
         asm-vertical-menu-basic-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active),
         asm-vertical-menu asm-vertical-menu-collapsable-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active) {
             @if ($is-dark) {
-                @include asm-dark-elevation(1, true);
+                background: asm-dark-elevation(1) !important;
             } @else {
                 background: map-get($primary, 100) !important;
             }
