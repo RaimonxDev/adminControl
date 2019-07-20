@@ -1,0 +1,32 @@
+input {
+
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $foreground: map-get($theme, foreground);
+
+    input {
+        background: transparent;
+
+        // Placeholder color
+        &::placeholder {
+            color: map-get($foreground, secondary-text);
+        }
+
+        &::-moz-placeholder {
+            color: map-get($foreground, secondary-text);
+        }
+
+        &::-webkit-input-placeholder {
+            color: map-get($foreground, secondary-text);
+        }
+
+        &:-ms-input-placeholder {
+            color: map-get($foreground, secondary-text);
+        }
+    }
+}
