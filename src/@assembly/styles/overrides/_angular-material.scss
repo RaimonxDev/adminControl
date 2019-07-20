@@ -675,7 +675,22 @@
     .mat-stroked-button {
 
         .mat-button-focus-overlay {
-            background: asm-color($asm-gray, 900);
+            @if ($is-dark) {
+                background: asm-dark-elevation(1);
+            } @else {
+                background: asm-color($asm-gray, 900);
+            }
+        }
+
+        &:hover,
+        &.cdk-keyboard-focused,
+        &.cdk-program-focused {
+
+            .mat-button-focus-overlay {
+                @if ($is-dark) {
+                    opacity: 1;
+                }
+            }
         }
     }
 
