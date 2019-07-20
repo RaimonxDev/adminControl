@@ -36,12 +36,20 @@ mailbox-sidebar {
         }
 
         asm-vertical-menu .asm-vertical-menu-item.asm-vertical-menu-item-active {
-            background: map-get($primary, 100);
+            @if ($is-dark) {
+                @include asm-dark-elevation(1, true);
+            } @else {
+                background: map-get($primary, 100) !important;
+            }
         }
 
         asm-vertical-menu-basic-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active),
         asm-vertical-menu asm-vertical-menu-collapsable-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active) {
-            background: map-get($primary, 100) !important;
+            @if ($is-dark) {
+                @include asm-dark-elevation(1, true);
+            } @else {
+                background: map-get($primary, 100) !important;
+            }
         }
     }
 }

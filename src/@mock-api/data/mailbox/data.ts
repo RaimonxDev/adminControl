@@ -86,7 +86,7 @@ export const labels = [
     }
 ];
 export const settings = {
-    messageLayout: 'list'
+    messageLayout: 'right'
 };
 export const mails = [
     {
@@ -104,7 +104,7 @@ export const mails = [
             'Julie T. <julie.t@company.com>'
         ],
         date       : moment().hour(20).minute(13).toISOString(), // Today - 20:13
-        subject    : 'Exercitation enim aute qui excepteur nostrud',
+        subject    : 'Please review and sign the attached agreement',
         content    : 'Hi Andrew,\n\nUllamco deserunt commodo esse deserunt deserunt quis eiusmod. Laborum sint excepteur non sit eiusmod sunt voluptate ipsum nisi ullamco magna. Lorem consectetur est dolor minim exercitation deserunt quis duis fugiat ipsum incididunt non. Anim aute ipsum cupidatat nisi occaecat quis sit nisi labore labore dolore do. Pariatur veniam culpa quis veniam nisi exercitation veniam ut. Quis do sint proident fugiat ad.\n\nNon id nisi commodo veniam. Veniam veniam minim ea laborum voluptate id duis deserunt. Anim ut ut amet et ullamco nulla fugiat id incididunt adipisicing excepteur amet. Ex amet eu cillum non fugiat velit dolore. Incididunt duis est eu et ex sunt consectetur cillum nisi aute proident.\n\nIncididunt excepteur laborum quis sit. Ex quis officia incididunt proident aliqua adipisicing. Irure ad in Lorem laborum deserunt nulla consequat. Pariatur excepteur exercitation cupidatat aute.\n\nCheers!\nMyra Dudley',
         attachments: [
             {
@@ -148,7 +148,7 @@ export const mails = [
         },
         to         : 'me <watkins.andrew@company.com>',
         date       : moment().hour(18).minute(56).toISOString(), // Today - 18:56
-        subject    : 'Incididunt dolor proident laboris',
+        subject    : 'Delivery address confirmation',
         content    : 'Dear Andrew,\n\nDolore consectetur est cupidatat ipsum reprehenderit anim quis veniam anim ipsum incididunt exercitation. Velit exercitation culpa eiusmod dolore labore irure. Duis esse quis elit pariatur labore occaecat esse voluptate dolore deserunt cillum irure. Aute qui nulla est exercitation qui sunt anim aliquip. Ex ad est velit laboris exercitation ea ut pariatur. Amet reprehenderit ut est id sunt commodo anim et est voluptate et.\n\nMagna aliqua incididunt non ut voluptate nulla aliqua exercitation elit consectetur cupidatat. Proident in reprehenderit occaecat laborum non eu amet id aliqua nulla dolore. Eiusmod quis adipisicing quis cupidatat labore.\n\nReprehenderit nulla ullamco est dolore ex irure sunt nostrud reprehenderit quis dolor. Tempor nostrud elit elit aute ut ut eiusmod laboris excepteur consequat ex. Velit id ex ullamco in. Ea elit Lorem Lorem aliquip amet consequat irure nisi qui cillum incididunt. Commodo aute Lorem eiusmod veniam consectetur aute eu dolore. Ea magna incididunt laboris quis quis et tempor dolore dolore ut nisi.\n\nBest Regards,\nShaw Murray',
         attachments: [],
         starred    : false,
@@ -171,7 +171,7 @@ export const mails = [
             'Graham Belltower <graham.belltower@company.com>'
         ],
         date       : moment().hour(14).minute(35).toISOString(), // Today - 14:35
-        subject    : 'Eu sunt elit consectetur',
+        subject    : 'Insurance documents',
         content    : 'Hi Andrew,\n\nAliquip ipsum sunt sit sunt velit velit pariatur. Nisi incididunt eiusmod consequat ut cillum eu exercitation. Enim proident nostrud aute in. Non irure nisi duis aliquip commodo proident veniam adipisicing id velit. Enim magna Lorem fugiat tempor.\n\nCommodo non nulla incididunt irure voluptate. Fugiat culpa cillum aute quis. Voluptate veniam adipisicing dolor sint. Proident eiusmod quis duis ipsum sit eu.\n\nDeserunt reprehenderit adipisicing reprehenderit ipsum. Laborum in veniam amet occaecat tempor esse enim dolore elit sit quis adipisicing. Aute occaecat eiusmod enim cupidatat sunt.\n\nBest Regards,\nSanders Beck',
         attachments: [],
         starred    : false,
@@ -189,7 +189,7 @@ export const mails = [
         },
         to         : 'me <watkins.andrew@company.com>',
         date       : moment().hour(22).minute(26).subtract(1, 'day').toISOString(), // Yesterday - 08:22
-        subject    : 'Elit minim incididunt proident qui',
+        subject    : 'Previous clients and their invoices',
         content    : 'Dear Andrew,\n\nDo aute eu dolore officia laborum id anim fugiat incididunt nulla esse proident. Veniam veniam nostrud ut nisi magna ipsum ea eiusmod esse velit id aliqua nisi irure. Amet laborum fugiat deserunt est. Quis amet veniam anim nostrud irure cillum voluptate consequat qui cupidatat minim occaecat elit enim. Ut ut incididunt cillum sit sit irure culpa. Culpa exercitation minim velit eu. Ipsum exercitation excepteur et ad do sit.\n\nVeniam cupidatat officia aliqua ad excepteur cillum laboris deserunt esse laboris adipisicing reprehenderit. Reprehenderit anim consectetur pariatur labore do in irure. Ad consequat commodo non pariatur occaecat. Eiusmod cillum non anim consequat culpa nisi. Est nulla ut sint qui deserunt anim. Excepteur qui occaecat dolore nulla occaecat cupidatat aute sit laborum magna.\n\nConsequat aliqua commodo officia excepteur. Ex consectetur elit dolor exercitation ullamco amet laboris. Deserunt nulla non proident est pariatur reprehenderit reprehenderit. Ea nisi id aliqua cillum velit tempor ipsum dolor proident cillum eiusmod et ipsum anim. Elit non quis mollit enim Lorem cupidatat et labore. Laboris cillum reprehenderit aute veniam aliqua esse officia proident deserunt. Eiusmod laboris ullamco amet consectetur amet.\n\nKind Regards,\nZimmerman Gould',
         attachments: [],
         starred    : false,
@@ -210,7 +210,7 @@ export const mails = [
             'Graham Belltower <graham.belltower@company.com>'
         ],
         date       : moment().hour(20).minute(5).subtract(1, 'day').toISOString(), // Yesterday - 22:05
-        subject    : 'Aliquip do do tempor voluptate',
+        subject    : 'Quote for a new web design project',
         content    : 'Hey Andrew,\n\nNisi officia aliqua ex non cupidatat sint ullamco. Irure pariatur ullamco consequat ut eu anim. Ut ad elit pariatur est non sunt. Tempor dolore quis commodo dolore duis officia laboris nostrud sint. Exercitation ullamco laboris eiusmod culpa ut.\n\nAute Lorem aute occaecat dolore tempor ipsum proident fugiat deserunt non incididunt velit nulla. Dolor pariatur tempor amet qui eu exercitation. Tempor minim culpa proident nisi esse ea. Enim est fugiat aliqua aliqua aute velit laborum cupidatat irure nisi dolor deserunt aliqua.\n\nFugiat ut dolor tempor sunt aliquip dolor nostrud. Consequat incididunt ullamco cillum dolore excepteur deserunt est dolor aliquip irure do mollit officia. Consectetur cillum et non minim nisi. Esse quis sunt deserunt elit sint velit tempor et ullamco laboris officia excepteur. Veniam ad ut aliqua sunt consequat reprehenderit nostrud non in duis aute quis pariatur. Occaecat mollit anim non pariatur. Ad do ad id fugiat et culpa laborum esse cupidatat voluptate elit ut magna voluptate.\n\nBest Regards,\nKarina Alford',
         attachments: [],
         starred    : false,
