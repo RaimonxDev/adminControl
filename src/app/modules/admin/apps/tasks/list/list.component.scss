@@ -299,14 +299,15 @@ tasks-list {
     $is-dark: map-get($theme, is-dark);
 
     tasks-list {
-        background: #F9FBFC;
 
         .mat-drawer-container {
+            @if (not $is-dark) {
+                background: map-get($background, card);
+            }
 
             .mat-drawer-content {
 
                 .main {
-                    background: map-get($background, card);
 
                     .header {
 
@@ -359,7 +360,11 @@ tasks-list {
                             &.selected {
 
                                 .task-content {
-                                    background: map-get($primary, 100);
+                                    @if ($is-dark) {
+                                        background: asm-dark-elevation(1);
+                                    } @else {
+                                        background: map-get($primary, 100);
+                                    }
                                 }
                             }
 
@@ -384,17 +389,31 @@ tasks-list {
                                     .priority {
 
                                         .low {
-                                            color: asm-color($asm-green, 600);
+                                            @if ($is-dark) {
+                                                color: asm-color($asm-green, 400);
+                                            } @else {
+                                                color: asm-color($asm-green, 600);
+                                            }
                                         }
 
                                         .high {
-                                            color: asm-color($asm-red, 600);
+                                            @if ($is-dark) {
+                                                color: asm-color($asm-red, 400);
+                                            } @else {
+                                                color: asm-color($asm-red, 600);
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                }
+            }
+
+            .mat-drawer {
+                @if ($is-dark) {
+                    background: map-get($background, background);
                 }
             }
         }

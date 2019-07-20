@@ -5,8 +5,8 @@ import { FormControl } from '@angular/forms';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
-import { AsmLookUpByPipe, AsmMediaWatcherService } from '@assembly';
-import { Contact, Country, Tag } from 'app/modules/admin/apps/contacts/contacts.type';
+import { AsmMediaWatcherService } from '@assembly';
+import { Contact, Country } from 'app/modules/admin/apps/contacts/contacts.type';
 import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.service';
 
 @Component({
@@ -24,7 +24,6 @@ export class ContactsListComponent implements OnInit, OnDestroy
     drawerMode: 'side' | 'over';
     searchInputControl: FormControl;
     selectedContact: Contact;
-    tags: Tag[];
 
     @ViewChild('matDrawer', {static: true})
     matDrawer: MatDrawer;
@@ -54,7 +53,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
         // Set the defaults
         this.contactsCount = 0;
-        this.contactsTableColumns = ['name', 'email', 'phoneNumber', 'job', 'tags'];
+        this.contactsTableColumns = ['name', 'email', 'phoneNumber', 'job'];
         this.searchInputControl = new FormControl();
     }
 
@@ -67,13 +66,6 @@ export class ContactsListComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the tags
-        this._contactsService.tags$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((tags) => {
-                this.tags = tags;
-            });
-
         // Get the contacts
         this.contacts$ = this._contactsService.contacts$;
         this._contactsService.contacts$
@@ -213,49 +205,6 @@ export class ContactsListComponent implements OnInit, OnDestroy
         }
 
         return this.countries.find((country) => country.iso === iso).code;
-    }
-
-    /**
-     * Organize the tags
-     *
-     * @param tags
-     */
-    organizeTags(tags): any
-    {
-        // Get the visible and hidden tags
-        let visible = tags.slice(0, 1);
-        let hidden = tags.slice(1, tags.length);
-
-        // If there are visible tags...
-        if ( visible.length > 0 )
-        {
-            // Convert them into tag objects
-            visible = new AsmLookUpByPipe().transform(visible, 'id', this.tags);
-        }
-
-        // If there are hidden tags...
-        if ( hidden.length > 0 )
-        {
-            // Convert them into tag objects
-            hidden = new AsmLookUpByPipe().transform(hidden, 'id', this.tags);
-
-            // Convert it to the tag titles array
-            hidden.forEach((item, index, items) => {
-                items[index] = item.title.toUpperCase();
-            });
-
-            // Join them together
-            hidden = hidden.join(', ');
-        }
-        else
-        {
-            hidden = false;
-        }
-
-        return {
-            visible,
-            hidden
-        };
     }
 
     /**

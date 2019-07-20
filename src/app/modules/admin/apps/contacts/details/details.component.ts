@@ -329,6 +329,12 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
      */
     uploadAvatar(files: FileList): void
     {
+        // Return if canceled
+        if ( !files.length )
+        {
+            return;
+        }
+
         const allowedTypes = ['image/jpeg', 'image/png'];
         const file = files[0];
 
@@ -352,6 +358,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Set the avatar as null
         avatarFormControl.setValue(null);
+
+        // Update the contact
+        this.contact.avatar = null;
     }
 
     /**

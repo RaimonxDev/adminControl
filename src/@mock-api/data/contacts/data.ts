@@ -1847,7 +1847,7 @@ export const contacts = [
     },
     {
         id          : '22f18d47-ff8d-440e-888d-a1747c093052',
-        avatar      : null,
+        avatar      : 'assets/images/avatars/female-07.jpg',
         name        : 'Aimee Harding',
         emails      : [
             {
@@ -2736,7 +2736,7 @@ export const contacts = [
     },
     {
         id          : '7184be71-a28f-4f2b-8c45-15f78cf2f825',
-        avatar      : null,
+        avatar      : 'assets/images/avatars/female-05.jpg',
         name        : 'Alissa Nelson',
         emails      : [
             {

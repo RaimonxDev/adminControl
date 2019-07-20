@@ -40,7 +40,7 @@ contacts-list {
 
                     .title {
 
-                        h2 {
+                        h1 {
                             margin: 0;
                         }
                     }
@@ -124,13 +124,6 @@ contacts-list {
                                     display: none;
                                 }
                             }
-
-                            &.mat-column-tags {
-
-                                @include asm-media-breakpoint('lt-lg') {
-                                    display: none;
-                                }
-                            }
                         }
 
                         tr.contact-row {
@@ -141,6 +134,14 @@ contacts-list {
                                 line-height: 1;
                                 border-bottom: none;
 
+                                &:first-child {
+                                    border-radius: 8px 0 0 8px;
+                                }
+
+                                &:last-child {
+                                    border-radius: 0 8px 8px 0;
+                                }
+
                                 &.mat-column-name {
                                     padding-right: 16px;
                                     max-width: 240px;
@@ -150,6 +151,7 @@ contacts-list {
                                         align-items: center;
 
                                         .avatar {
+                                            position: relative;
                                             width: 32px;
                                             min-width: 32px;
                                             max-width: 32px;
@@ -157,10 +159,17 @@ contacts-list {
                                             min-height: 32px;
                                             max-height: 32px;
                                             margin-right: 24px;
+                                            overflow: hidden;
+                                            border-radius: 50%;
 
-                                            > img,
                                             > span {
                                                 border-radius: 50%;
+                                            }
+
+                                            > img {
+                                                object-fit: cover;
+                                                width: 100%;
+                                                height: 100%;
                                             }
 
                                             > span {
@@ -216,33 +225,6 @@ contacts-list {
 
                                     @include asm-media-breakpoint('lt-lg') {
                                         display: none;
-                                    }
-                                }
-
-                                &.mat-column-tags {
-
-                                    @include asm-media-breakpoint('lt-lg') {
-                                        display: none;
-                                    }
-
-                                    .tag {
-                                        display: inline-flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        vertical-align: middle;
-                                        height: 18px;
-                                        padding: 0 8px;
-                                        margin-right: 8px;
-                                        border-radius: 4px;
-                                        font-size: 11px;
-                                        font-weight: bold;
-                                        line-height: 1;
-                                        white-space: nowrap;
-                                        text-transform: uppercase;
-
-                                        &:last-child {
-                                            margin-right: 0;
-                                        }
                                     }
                                 }
                             }
@@ -302,16 +284,19 @@ contacts-list {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
     contacts-list {
 
         .mat-drawer-container {
+            @if (not $is-dark) {
+                background: map-get($background, card);
+            }
 
             .mat-drawer-content {
 
                 .main {
-                    background: map-get($background, card);
 
                     .header {
 
@@ -323,12 +308,17 @@ contacts-list {
                     .contacts-list {
 
                         table {
+                            background: transparent;
 
                             tr.contact-row {
 
                                 &:hover,
                                 &.selected {
-                                    background: map-get($background, hover);
+                                    @if ($is-dark) {
+                                        background: asm-dark-elevation(1);
+                                    } @else {
+                                        background: map-get($primary, 100);
+                                    }
                                 }
 
                                 td {
@@ -343,23 +333,16 @@ contacts-list {
                                             }
                                         }
                                     }
-
-                                    &.mat-column-tags {
-
-                                        .tag {
-                                            color: map-get($foreground, secondary-text);
-
-                                            @if ($is-dark) {
-                                                background: map-get($background, background);
-                                            } @else {
-                                                background: #EEEEEE;
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }
                     }
+                }
+            }
+
+            .mat-drawer {
+                @if ($is-dark) {
+                    background: map-get($background, background);
                 }
             }
         }

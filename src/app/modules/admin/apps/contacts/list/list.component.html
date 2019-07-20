@@ -25,7 +25,7 @@
                     <!-- Title -->
                     <div class="title">
 
-                        <h2>Contacts</h2>
+                        <h1>Contacts</h1>
 
                         <div class="contacts-count">
                             {{contactsCount}} contacts
@@ -135,33 +135,6 @@
                                         {{contact.job.company}}
                                     </ng-container>
                                 </ng-container>
-                            </td>
-                        </ng-container>
-
-                        <!-- Tags -->
-                        <ng-container matColumnDef="tags">
-                            <th mat-header-cell
-                                *matHeaderCellDef>
-                                Tags
-                            </th>
-                            <td mat-cell
-                                *matCellDef="let contact">
-
-                                <ng-container *ngIf="organizeTags(contact.tags).visible.length > 0">
-
-                                    <div class="tag"
-                                         *ngFor="let tag of organizeTags(contact.tags).visible; trackBy: trackById">
-                                        {{tag.title}}
-                                    </div>
-
-                                    <div class="tag"
-                                         *ngIf="organizeTags(contact.tags).hidden"
-                                         [matTooltip]="organizeTags(contact.tags).hidden">
-                                        <span>+{{organizeTags(contact.tags).hidden.split(',').length}}</span>
-                                    </div>
-
-                                </ng-container>
-
                             </td>
                         </ng-container>
 

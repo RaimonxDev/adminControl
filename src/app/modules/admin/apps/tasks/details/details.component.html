@@ -236,7 +236,7 @@
         <!-- Due date -->
         <button class="due-date"
                 mat-button
-                [ngClass]="{'overdue': isOverdue(), 'not-set': !task.dueDate}"
+                [ngClass]="{'overdue': isOverdue(), 'due-set': task.dueDate}"
                 (click)="openDueDatePanel()"
                 #dueDatePanelOrigin>
 
