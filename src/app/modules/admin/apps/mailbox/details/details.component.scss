@@ -480,7 +480,11 @@ mailbox-details {
                     .toggle-important {
 
                         .important {
-                            color: asm-color($asm-red);
+                            @if ($is-dark) {
+                                color: asm-color($asm-red, 600);
+                            } @else {
+                                color: asm-color($asm-red);
+                            }
                         }
 
                         .not-important {
@@ -491,7 +495,11 @@ mailbox-details {
                     .toggle-starred {
 
                         .starred {
-                            color: asm-color($asm-orange);
+                            @if ($is-dark) {
+                                color: asm-color($asm-orange, 400);
+                            } @else {
+                                color: asm-color($asm-orange);
+                            }
                         }
 
                         .not-starred {

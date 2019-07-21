@@ -122,16 +122,16 @@
                                  *ngIf="(mail.attachments && mail.attachments.length > 0) || mail.starred">
 
                                 <!-- Attachments indicator -->
-                                <div class="attachments-indicator"
-                                     *ngIf="mail.attachments && mail.attachments.length > 0">
-                                    <mat-icon>attachment</mat-icon>
-                                </div>
+                                <mat-icon class="attachments-indicator"
+                                          *ngIf="mail.attachments && mail.attachments.length > 0">
+                                    attachment
+                                </mat-icon>
 
                                 <!-- Starred indicator -->
-                                <div class="starred-indicator"
-                                     *ngIf="mail.starred">
-                                    <mat-icon class="text-orange">star</mat-icon>
-                                </div>
+                                <mat-icon class="starred-indicator"
+                                          *ngIf="mail.starred">
+                                    star
+                                </mat-icon>
 
                             </div>
 

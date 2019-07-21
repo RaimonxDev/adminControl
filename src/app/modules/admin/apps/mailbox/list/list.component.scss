@@ -201,13 +201,16 @@ mailbox-list {
                         }
 
                         .name {
+                            margin: 0 8px;
                             font-size: 15px;
                             font-weight: 500;
-                            margin-left: 12px;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
                         }
 
                         .important-indicator {
-                            margin-left: 8px;
+                            margin-right: 12px;
                             @include asm-icon-size(12);
                         }
 
@@ -244,10 +247,7 @@ mailbox-list {
                             .attachments-indicator {
                                 display: flex;
                                 justify-content: center;
-
-                                .mat-icon {
-                                    @include asm-icon-size(16);
-                                }
+                                @include asm-icon-size(16);
 
                                 + .starred-indicator {
                                     margin-left: 8px;
@@ -257,10 +257,7 @@ mailbox-list {
                             .starred-indicator {
                                 display: flex;
                                 justify-content: center;
-
-                                .mat-icon {
-                                    @include asm-icon-size(16);
-                                }
+                                @include asm-icon-size(16);
                             }
                         }
                     }
@@ -369,11 +366,30 @@ mailbox-list {
                         .info {
 
                             .important-indicator {
-                                color: asm-color($asm-red);
+                                @if ($is-dark) {
+                                    color: asm-color($asm-red, 600);
+                                } @else {
+                                    color: asm-color($asm-red);
+                                }
                             }
 
                             .date {
                                 color: map-get($foreground, hint-text);
+                            }
+                        }
+
+                        .subject {
+
+                            .indicators {
+
+                                .starred-indicator {
+
+                                    @if ($is-dark) {
+                                        color: asm-color($asm-orange, 400);
+                                    } @else {
+                                        color: asm-color($asm-orange);
+                                    }
+                                }
                             }
                         }
 
