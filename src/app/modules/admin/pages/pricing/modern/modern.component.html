@@ -1,4 +1,4 @@
-<div class="content-layout">
+<div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Background -->
     <div class="background">
@@ -26,26 +26,19 @@
         <!-- Header -->
         <div class="header">
 
-            <div class="title">
+            <h1>
                 <span class="marked">Simple pricing</span>
                 that scales with your business
-            </div>
+            </h1>
 
-            <div class="subtitle">
-                Whether you are an individual or a Fortune 500 enterprise, there is a plan that's right for you
-            </div>
+            <h5>Whether you are an individual or a Fortune 500 enterprise, there is a plan that's right for you</h5>
 
-            <div class="recurring-selector">
-                <span [ngClass]="{'text-hint' : annualBilling}"
-                      (click)="annualBilling = false">
-                    MONTHLY
-                </span>
+            <div class="recurring-selector"
+                 [ngClass]="{'annual-billing' : annualBilling}">
+                <span (click)="annualBilling = false">MONTHLY</span>
                 <mat-slide-toggle [(ngModel)]="annualBilling"
                                   [color]="'primary'"></mat-slide-toggle>
-                <span [ngClass]="{'text-hint' : !annualBilling}"
-                      (click)="annualBilling = true">
-                    YEARLY
-                </span>
+                <span (click)="annualBilling = true">YEARLY</span>
             </div>
 
         </div>
@@ -57,7 +50,7 @@
             <div class="card">
 
                 <div class="title">Personal</div>
-                <div class="subtitle text-secondary">Perfect for an individual or a small team starting to get bigger</div>
+                <div class="subtitle">Perfect for an individual or a small team starting to get bigger</div>
 
                 <div class="divider"></div>
 
@@ -69,7 +62,7 @@
                     </span>
                 </div>
 
-                <div class="price-details text-secondary">
+                <div class="price-details">
                     <ng-container *ngIf="annualBilling">
                         <span>billed annually</span>
                         <span>or <b>$9.00</b> billed monthly</span>
@@ -92,27 +85,27 @@
                     <div class="description">All core features, including:</div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span><b>10</b> projects</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span><b>5GB</b> storage</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>Analytics</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>Free mobile app</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>Access to support forums</span>
                     </div>
 
@@ -126,7 +119,7 @@
                 <div class="tag">POPULAR</div>
 
                 <div class="title">Premium</div>
-                <div class="subtitle text-secondary">Perfect for growing teams wanting to be in more control</div>
+                <div class="subtitle">Perfect for growing teams wanting to be in more control</div>
 
                 <div class="divider"></div>
 
@@ -138,7 +131,7 @@
                     </span>
                 </div>
 
-                <div class="price-details text-secondary">
+                <div class="price-details">
                     <ng-container *ngIf="annualBilling">
                         <span>billed annually</span>
                         <span>or <b>$15.00</b> billed monthly</span>
@@ -161,27 +154,27 @@
                     <div class="description">Everything in Free, plus:</div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span><b>Unlimited</b> projects</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span><b>Unlimited</b> storage</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>Custom domain support</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>Bulk editing</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>12 / 5 support</span>
                     </div>
 
@@ -193,7 +186,7 @@
             <div class="card">
 
                 <div class="title">Enterprise</div>
-                <div class="subtitle text-secondary">Perfect for companies wanting advanced tools and support</div>
+                <div class="subtitle">Perfect for companies wanting advanced tools and support</div>
 
                 <div class="divider"></div>
 
@@ -205,7 +198,7 @@
                     </span>
                 </div>
 
-                <div class="price-details text-secondary">
+                <div class="price-details">
                     <ng-container *ngIf="annualBilling">
                         <span>billed annually</span>
                         <span>or <b>$69.00</b> billed monthly</span>
@@ -228,27 +221,27 @@
                     <div class="description">Everything in Premium, plus:</div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span><b>Dedicated</b> hardware</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span><b>%99.9 uptime</b> guarantee</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>Advanced analytics</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>3rd party integrations</span>
                     </div>
 
                     <div class="feature">
-                        <mat-icon class="text-green icon-size-20">check</mat-icon>
+                        <mat-icon>check</mat-icon>
                         <span>24 / 7 support</span>
                     </div>
 
@@ -263,7 +256,7 @@
 
             <div class="title-container">
                 <div class="title">Core Features</div>
-                <div class="subtitle text-secondary">List of features that are included into all plans</div>
+                <div class="subtitle">List of features that are included into all plans</div>
             </div>
 
             <div class="grid">
@@ -272,11 +265,11 @@
                 <div class="feature">
 
                     <div class="title-container">
-                        <mat-icon class="icon-size-22 primary">edit</mat-icon>
+                        <mat-icon>edit</mat-icon>
                         <div>Create and Edit Projects</div>
                     </div>
 
-                    <div class="description text-secondary">
+                    <div class="description">
                         Create and edit projects, upload images via drag drop, add categories, add custom fields and more.
                     </div>
 
@@ -286,11 +279,11 @@
                 <div class="feature">
 
                     <div class="title-container">
-                        <mat-icon class="icon-size-22 primary">filter_list</mat-icon>
+                        <mat-icon>filter_list</mat-icon>
                         <div>Search and Filter</div>
                     </div>
 
-                    <div class="description text-secondary">
+                    <div class="description">
                         Search and filter within the projects, categories and custom fields. Save search and filter details for easy access.
                     </div>
 
@@ -300,11 +293,11 @@
                 <div class="feature">
 
                     <div class="title-container">
-                        <mat-icon class="icon-size-22 primary">update</mat-icon>
+                        <mat-icon>update</mat-icon>
                         <div>Real Time Updates</div>
                     </div>
 
-                    <div class="description text-secondary">
+                    <div class="description">
                         Real time updates that doesn’t require page reload. Lean back and watch the changes happen in real time.
                     </div>
 
@@ -314,11 +307,11 @@
                 <div class="feature">
 
                     <div class="title-container">
-                        <mat-icon class="icon-size-22 primary">label</mat-icon>
+                        <mat-icon>label</mat-icon>
                         <div>Meta Information</div>
                     </div>
 
-                    <div class="description text-secondary">
+                    <div class="description">
                         Add and remove meta information to custom fields to differentiate them in reports and analytics results.
                     </div>
 
@@ -328,11 +321,11 @@
                 <div class="feature">
 
                     <div class="title-container">
-                        <mat-icon class="icon-size-22 primary">pageview</mat-icon>
+                        <mat-icon>pageview</mat-icon>
                         <div>Pre-rendered Results</div>
                     </div>
 
-                    <div class="description text-secondary">
+                    <div class="description">
                         Pre-render results to make reports and analytics more accessible by screen readers and other accesibility tools.
                     </div>
 
@@ -342,11 +335,11 @@
                 <div class="feature">
 
                     <div class="title-container">
-                        <mat-icon class="icon-size-22 primary">bar_chart</mat-icon>
+                        <mat-icon>bar_chart</mat-icon>
                         <div>Simple Analytics</div>
                     </div>
 
-                    <div class="description text-secondary">
+                    <div class="description">
                         Simple analytics with no unnecessary data flow or weight. More readable results with less data consumption.
                     </div>
 
@@ -361,9 +354,7 @@
 
             <div class="title-container">
                 <div class="title">Frequently Asked Questions</div>
-                <div class="subtitle text-secondary">
-                    Here are the most frequently asked questions you may check before getting started
-                </div>
+                <div class="subtitle">Here are the most frequently asked questions you may check before getting started</div>
             </div>
 
             <div class="grid">
@@ -374,7 +365,7 @@
                     <div class="question">
                         What is the duration of the free trial?
                     </div>
-                    <div class="answer text-secondary">
+                    <div class="answer">
                         <p>
                             Our app is free to try for 14 days, if you want more, you can provide
                             payment details which will extend your trial to 30 days providing you
@@ -385,7 +376,7 @@
                     <div class="question">
                         What is the storage is for?
                     </div>
-                    <div class="answer text-secondary">
+                    <div class="answer">
                         <p>
                             Since we provide an extremely detailed reporting and analytics
                             tool, they require quite a bit storage space. For average use, you
@@ -407,7 +398,7 @@
                     <div class="question">
                         What happens if I’m not satisfied?
                     </div>
-                    <div class="answer text-secondary">
+                    <div class="answer">
                         <p>
                             If you are still in your free trial period, you can cancel your
                             account at anytime with a single click of a button. If you already
@@ -425,7 +416,7 @@
                     <div class="question">
                         Are there discounts for non-profits or educational use?
                     </div>
-                    <div class="answer text-secondary">
+                    <div class="answer">
                         <p>
                             Yes, our Personal and Premium packages are free for non-profits and
                             educational use. E-mail your details to us after starting your Free

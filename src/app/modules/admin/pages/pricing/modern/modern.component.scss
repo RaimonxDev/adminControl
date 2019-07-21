@@ -5,7 +5,7 @@ pricing-modern {
 
     .content-layout {
         padding: 32px;
-        justify-content: center;
+        align-items: center;
 
         @include asm-media-breakpoint('lt-sm') {
             padding: 16px;
@@ -43,17 +43,18 @@ pricing-modern {
                     margin: 48px 0 56px 0;
                 }
 
-                > .title {
-                    @extend %title-xl;
-                    text-align: center;
+                h1 {
+                    font-weight: 700;
                     max-width: 600px;
+                    text-align: center;
+                    margin: 0;
                 }
 
-                > .subtitle {
-                    @extend %title-sm;
-                    text-align: center;
-                    margin-top: 32px;
+                h5 {
                     max-width: 480px;
+                    margin: 32px 0 0 0;
+                    font-weight: normal;
+                    text-align: center;
                 }
 
                 .recurring-selector {
@@ -98,6 +99,8 @@ pricing-modern {
                     margin: 0 12px 32px 12px;
                     padding: 64px 48px;
                     overflow: visible;
+                    border-radius: 8px;
+                    @include asm-elevation(2);
 
                     @include asm-media-breakpoint('lt-lg') {
                         margin: 0 0 32px 0;
@@ -116,11 +119,13 @@ pricing-modern {
                     }
 
                     .title {
-                        @extend %title-lg;
+                        font-size: 32px;
+                        font-weight: 700;
+                        line-height: 1.25;
                     }
 
                     .subtitle {
-                        @extend %title-xs;
+                        font-size: 16px;
                         margin-top: 8px;
                     }
 
@@ -137,14 +142,15 @@ pricing-modern {
                         .currency {
                             position: relative;
                             top: -2px;
-                            @extend %title-md;
+                            font-size: 20px;
                             font-weight: normal;
                             margin-right: 4px;
                         }
 
                         .amount {
-                            @extend %title-xl;
+                            font-size: 40px;
                             font-weight: bold;
+                            line-height: 1.25;
                         }
                     }
 
@@ -174,6 +180,7 @@ pricing-modern {
 
                             .mat-icon {
                                 margin-right: 8px;
+                                @include asm-icon-size(20);
                             }
                         }
                     }
@@ -194,12 +201,14 @@ pricing-modern {
                     max-width: 480px;
 
                     .title {
-                        @extend %title-lg;
+                        font-size: 32px;
+                        font-weight: 700;
+                        line-height: 1.25;
                         text-align: center;
                     }
 
                     .subtitle {
-                        @extend %title-xs;
+                        font-size: 16px;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -241,13 +250,13 @@ pricing-modern {
                             }
 
                             div {
-                                @extend %title-xs;
-                                font-weight: bold;
+                                font-size: 16px;
+                                font-weight: 500;
                             }
                         }
 
                         .description {
-                            @extend %title-xs;
+                            font-size: 16px;
                         }
                     }
                 }
@@ -268,12 +277,14 @@ pricing-modern {
                     max-width: 480px;
 
                     .title {
-                        @extend %title-lg;
+                        font-size: 32px;
+                        font-weight: 700;
+                        line-height: 1.25;
                         text-align: center;
                     }
 
                     .subtitle {
-                        @extend %title-xs;
+                        font-size: 16px;
                         text-align: center;
                         margin-top: 8px;
                     }
@@ -298,8 +309,8 @@ pricing-modern {
                         max-width: 480px;
 
                         .question {
-                            @extend %title-xs;
-                            font-weight: bold;
+                            font-size: 16px;
+                            font-weight: 500;
                             margin: 48px 0 8px 0;
 
                             &:first-of-type {
@@ -308,7 +319,7 @@ pricing-modern {
                         }
 
                         .answer {
-                            @extend %title-xs;
+                            font-size: 16px;
                         }
                     }
                 }
@@ -322,22 +333,110 @@ pricing-modern {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
 
     pricing-modern {
 
+        .recurring-selector {
+
+            &.annual-billing {
+
+                span {
+
+                    &:first-child {
+                        opacity: 0.5;
+                    }
+                }
+            }
+
+            &:not(.annual-billing) {
+
+                span {
+
+                    &:last-child {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+
         .cards {
 
             .card {
+                background: map-get($background, card);
 
                 .tag {
                     background: map-get($accent, default);
-                    color: map-get($accent, default-contrast)
+                    color: map-get($accent, default-contrast);
                 }
 
-                .divider {
-                    background: map-get($primary, default);
+                .subtitle {
+                    color: map-get($foreground, secondary-text);
+                }
+
+                .price-details {
+                    color: map-get($foreground, secondary-text);
+                }
+
+                .features {
+
+                    .feature {
+
+                        .mat-icon {
+                            color: asm-color($asm-green);
+                        }
+                    }
+                }
+            }
+        }
+
+        .features-section {
+
+            .title-container {
+
+                .subtitle {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
+
+            .grid {
+
+                .feature {
+
+                    .title-container {
+
+                        .mat-icon {
+                            background: map-get($primary, default);
+                            color: map-get($primary, default-contrast);
+                        }
+                    }
+
+                    .description {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+            }
+        }
+
+        .faqs-section {
+
+            .title-container {
+
+                .subtitle {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
+
+            .grid {
+
+                .column {
+
+                    .answer {
+                        color: map-get($foreground, secondary-text);
+                    }
                 }
             }
         }

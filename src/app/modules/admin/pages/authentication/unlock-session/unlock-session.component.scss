@@ -3,8 +3,12 @@
 unlock-session {
 
     .content-layout {
+        align-items: center;
+        justify-content: center;
+        padding: 64px;
 
         asm-card {
+            margin: 64px;
 
             // Classic
             &.classic {
@@ -86,14 +90,17 @@ unlock-session {
                 order: 1;
                 width: 100%;
 
-                .title {
-                    @extend %title-base;
-                    margin-top: 64px;
+                .logo {
+                    width: 200px;
                 }
 
-                .subtitle {
-                    @extend %title-xs;
-                    margin-top: 4px;
+                h3 {
+                    margin: 64px 0 0 0;
+                }
+
+                h6 {
+                    margin: 4px 0 0 0;
+                    font-weight: normal;
                 }
 
                 asm-message {
@@ -143,6 +150,7 @@ unlock-session {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
+    $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
     unlock-session {
@@ -168,6 +176,10 @@ unlock-session {
                                 display: none;
                             }
                         }
+                    }
+
+                    h6 {
+                        color: map-get($foreground, secondary-text);
                     }
                 }
             }

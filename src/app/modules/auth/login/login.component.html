@@ -1,4 +1,4 @@
-<div class="content-layout with-centered-content">
+<div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Card -->
     <asm-card class="modern">
@@ -15,8 +15,8 @@
             </div>
 
             <!-- Title -->
-            <div class="title">Log in to your account</div>
-            <div class="subtitle text-secondary">Welcome back!</div>
+            <h3>Log in to your account</h3>
+            <h6>Welcome back!</h6>
 
             <!-- Message -->
             <asm-message *ngIf="message"
@@ -67,7 +67,7 @@
                 </mat-form-field>
 
                 <!-- Forgot password link -->
-                <div class="forgot-password-link text-secondary">
+                <div class="forgot-password-link">
                     <a class="link"
                        [routerLink]="['/forgot-password']">Forgot password?</a>
                 </div>
@@ -88,7 +88,7 @@
 
                 <!-- Create account link -->
                 <div class="create-account-link">
-                    <span class="text-secondary">Need an account?</span>
+                    <span>Need an account?</span>
                     <a class="link"
                        [routerLink]="['/signup']">Create one here</a>
                 </div>

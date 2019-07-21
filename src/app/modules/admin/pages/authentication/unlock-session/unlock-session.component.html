@@ -1,8 +1,7 @@
-<div class="content-layout with-direction-column with-centered-content">
+<div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Card style selector - Remove this in production -->
-    <mat-form-field class="mb-32"
-                    [appearance]="'outline'">
+    <mat-form-field class="asm-mat" [appearance]="'standard'">
         <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
                     #cardStyle>
@@ -30,8 +29,8 @@
             </div>
 
             <!-- Title -->
-            <div class="title">Your session is locked!</div>
-            <div class="subtitle text-secondary">Enter your password to continue</div>
+            <h3>Your session is locked!</h3>
+            <h6>Enter your password to continue</h6>
 
             <!-- Message -->
             <asm-message *ngIf="message"

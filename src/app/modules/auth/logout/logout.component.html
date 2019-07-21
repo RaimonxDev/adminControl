@@ -1,4 +1,4 @@
-<div class="content-layout with-centered-content">
+<div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Card -->
     <asm-card class="classic">
@@ -15,8 +15,8 @@
             </div>
 
             <!-- Title -->
-            <div class="title">Successfully logged out!</div>
-            <div class="subtitle text-secondary">
+            <h3>Successfully logged out!</h3>
+            <h6>
 
                 <!-- Redirect countdown -->
                 <ng-container *ngIf="countdown > 0">
@@ -28,11 +28,11 @@
                     You are now being redirected...
                 </ng-container>
 
-            </div>
+            </h6>
 
             <!-- Login link -->
             <div class="login-link">
-                <span class="text-secondary">Go to</span>
+                <span>Go to</span>
                 <a class="link"
                    [routerLink]="['/login']">login</a>
             </div>

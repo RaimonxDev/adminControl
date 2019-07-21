@@ -1,8 +1,7 @@
-<div class="content-layout with-direction-column with-centered-content">
+<div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Card style selector - Remove this in production -->
-    <mat-form-field class="mb-32"
-                    [appearance]="'outline'">
+    <mat-form-field class="asm-mat" [appearance]="'standard'">
         <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
                     #cardStyle>
@@ -30,8 +29,8 @@
             </div>
 
             <!-- Title -->
-            <div class="title">Create your account</div>
-            <div class="subtitle text-secondary">Join us to enjoy Assembly</div>
+            <h3>Create your account</h3>
+            <h6>Join us to enjoy Assembly</h6>
 
             <!-- Message -->
             <asm-message *ngIf="message"
@@ -133,17 +132,17 @@
 
                 <!-- Login link -->
                 <div class="login-link">
-                    <span class="text-secondary">Already have an account?</span>
+                    <span>Already have an account?</span>
                     <a class="link"
                        [routerLink]="['/pages/authentication/login']">Log in</a>
                 </div>
 
                 <!-- Terms and privacy -->
                 <div class="terms-and-privacy">
-                    <span class="text-secondary">By clicking "<b>Create Account</b>" you agree to the</span>
+                    <span>By clicking "<b>Create Account</b>" you agree to the</span>
                     <a class="link"
                        [routerLink]="['./']">Terms of Service</a>
-                    <span class="text-secondary">and</span>
+                    <span>and</span>
                     <a class="link"
                        [routerLink]="['./']">Privacy Policy</a>.
                 </div>

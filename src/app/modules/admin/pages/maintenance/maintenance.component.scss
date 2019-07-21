@@ -2,23 +2,27 @@
 
 maintenance {
     display: flex;
-    padding: 32px;
 
-    .image {
-        max-width: 640px;
-        width: 100%;
-    }
+    .content-layout {
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
 
-    .title {
-        @extend %title-xl;
-        margin-top: 64px;
-        text-align: center;
-    }
+        .image {
+            max-height: 480px;
+            min-height: 0;
+        }
 
-    .subtitle {
-        @extend %title-xs;
-        margin-top: 12px;
-        text-align: center;
+        h1 {
+            margin: 96px 0 0 0;
+            text-align: center;
+        }
+
+        h6 {
+            margin: 12px 0 0 0;
+            font-weight: normal;
+            text-align: center;
+        }
     }
 }
 
@@ -31,8 +35,11 @@ maintenance {
 
     maintenance {
 
-        .subtitle {
-            color: map-get($foreground, secondary-text);
+        .content-layout {
+
+            h6 {
+                color: map-get($foreground, secondary-text);
+            }
         }
     }
 }

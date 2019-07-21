@@ -1,8 +1,7 @@
-<div class="content-layout with-direction-column with-centered-content">
+<div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Card style selector - Remove this in production -->
-    <mat-form-field class="mb-32"
-                    [appearance]="'outline'">
+    <mat-form-field class="asm-mat" [appearance]="'standard'">
         <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
                     #cardStyle>
@@ -30,8 +29,8 @@
             </div>
 
             <!-- Title -->
-            <div class="title">Log in to your account</div>
-            <div class="subtitle text-secondary">Welcome back!</div>
+            <h3>Log in to your account</h3>
+            <h6>Welcome back!</h6>
 
             <!-- Message -->
             <asm-message *ngIf="message"
@@ -102,7 +101,7 @@
 
                 <!-- Create account link -->
                 <div class="create-account-link">
-                    <span class="text-secondary">Need an account?</span>
+                    <span>Need an account?</span>
                     <a class="link"
                        [routerLink]="['/pages/authentication/signup']">Create one here</a>
                 </div>

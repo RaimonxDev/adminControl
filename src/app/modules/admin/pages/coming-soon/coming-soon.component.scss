@@ -3,8 +3,12 @@
 coming-soon {
 
     .content-layout {
+        align-items: center;
+        justify-content: center;
+        padding: 64px;
 
         asm-card {
+            margin: 64px;
 
             // Classic
             &.classic {
@@ -86,14 +90,17 @@ coming-soon {
                 order: 1;
                 width: 100%;
 
-                .title {
-                    @extend %title-base;
-                    margin-top: 64px;
+                .logo {
+                    width: 200px;
                 }
 
-                .subtitle {
-                    @extend %title-xs;
-                    margin-top: 8px;
+                h3 {
+                    margin: 64px 0 0 0;
+                }
+
+                h6 {
+                    margin: 4px 0 0 0;
+                    font-weight: normal;
                 }
 
                 asm-message {
@@ -117,7 +124,6 @@ coming-soon {
                         width: 100%;
                         margin-top: 24px;
                         font-size: 13px;
-                        font-weight: 500;
 
                         p:last-child {
                             margin-bottom: 0;
@@ -147,6 +153,7 @@ coming-soon {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
+    $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
     coming-soon {
@@ -173,6 +180,10 @@ coming-soon {
                             }
                         }
                     }
+                }
+
+                .footer {
+                    color: map-get($foreground, secondary-text);
                 }
             }
         }

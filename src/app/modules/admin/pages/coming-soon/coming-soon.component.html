@@ -1,8 +1,7 @@
-<div class="content-layout with-direction-column with-centered-content">
+<div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Card style selector - Remove this in production -->
-    <mat-form-field class="mb-64"
-                    [appearance]="'outline'">
+    <mat-form-field class="asm-mat" [appearance]="'standard'">
         <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
                     #cardStyle>
@@ -33,8 +32,8 @@
                 </div>
 
                 <!-- Title -->
-                <div class="title">Almost there!</div>
-                <div class="subtitle text-secondary">Do you want to be notified when we are ready? Register below so we can notify you about the launch!</div>
+                <h3>Almost there!</h3>
+                <h6>Do you want to be notified when we are ready? Register below so we can notify you about the launch!</h6>
 
                 <!-- Message -->
                 <asm-message *ngIf="message"
@@ -78,7 +77,7 @@
                     </button>
 
                     <!-- Footer -->
-                    <div class="footer text-secondary">
+                    <div class="footer">
                         <p>You are not joining to a newsletter!</p>
                         <p>We will only send one e-mail to above address when we launch and that's it!</p>
                     </div>
