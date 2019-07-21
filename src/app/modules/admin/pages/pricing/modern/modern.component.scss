@@ -337,105 +337,130 @@ pricing-modern {
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
+    $is-dark: map-get($theme, is-dark);
 
     pricing-modern {
 
-        .recurring-selector {
+        .background {
 
-            &.annual-billing {
+            svg {
 
-                span {
+                g {
 
-                    &:first-child {
-                        opacity: 0.5;
-                    }
-                }
-            }
-
-            &:not(.annual-billing) {
-
-                span {
-
-                    &:last-child {
-                        opacity: 0.5;
+                    g {
+                        @if ($is-dark) {
+                            fill: asm-color($asm-blue, 900);
+                        } @else {
+                            fill: asm-color($asm-blue, 300);
+                        }
                     }
                 }
             }
         }
 
-        .cards {
+        .container {
 
-            .card {
-                background: map-get($background, card);
+            .recurring-selector {
 
-                .tag {
-                    background: map-get($accent, default);
-                    color: map-get($accent, default-contrast);
+                &.annual-billing {
+
+                    span {
+
+                        &:first-child {
+                            opacity: 0.5;
+                        }
+                    }
                 }
 
-                .subtitle {
-                    color: map-get($foreground, secondary-text);
+                &:not(.annual-billing) {
+
+                    span {
+
+                        &:last-child {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+
+            .cards {
+
+                .card {
+                    background: map-get($background, card);
+
+                    .tag {
+                        background: map-get($accent, default);
+                        color: map-get($accent, default-contrast);
+                    }
+
+                    .subtitle {
+                        color: map-get($foreground, secondary-text);
+                    }
+
+                    .divider {
+                        background: map-get($primary, default);
+                    }
+
+                    .price-details {
+                        color: map-get($foreground, secondary-text);
+                    }
+
+                    .features {
+
+                        .feature {
+
+                            .mat-icon {
+                                color: asm-color($asm-green);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .features-section {
+
+                .title-container {
+
+                    .subtitle {
+                        color: map-get($foreground, secondary-text);
+                    }
                 }
 
-                .price-details {
-                    color: map-get($foreground, secondary-text);
-                }
-
-                .features {
+                .grid {
 
                     .feature {
 
-                        .mat-icon {
-                            color: asm-color($asm-green);
+                        .title-container {
+
+                            .mat-icon {
+                                background: map-get($primary, default);
+                                color: map-get($primary, default-contrast);
+                            }
+                        }
+
+                        .description {
+                            color: map-get($foreground, secondary-text);
                         }
                     }
                 }
             }
-        }
 
-        .features-section {
+            .faqs-section {
 
-            .title-container {
+                .title-container {
 
-                .subtitle {
-                    color: map-get($foreground, secondary-text);
+                    .subtitle {
+                        color: map-get($foreground, secondary-text);
+                    }
                 }
-            }
 
-            .grid {
+                .grid {
 
-                .feature {
+                    .column {
 
-                    .title-container {
-
-                        .mat-icon {
-                            background: map-get($primary, default);
-                            color: map-get($primary, default-contrast);
+                        .answer {
+                            color: map-get($foreground, secondary-text);
                         }
-                    }
-
-                    .description {
-                        color: map-get($foreground, secondary-text);
-                    }
-                }
-            }
-        }
-
-        .faqs-section {
-
-            .title-container {
-
-                .subtitle {
-                    color: map-get($foreground, secondary-text);
-                }
-            }
-
-            .grid {
-
-                .column {
-
-                    .answer {
-                        color: map-get($foreground, secondary-text);
                     }
                 }
             }

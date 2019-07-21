@@ -179,7 +179,8 @@ pre {
         bottom: 10%;
         left: -4px;
         z-index: -1;
-        background: #F7F49A;
+        background: asm-color($asm-yellow, 900);
+
         pointer-events: none;
     }
 }
@@ -253,6 +254,18 @@ pre {
     // -----------------------------------------------------------------------------------------------------
     // @ Helpers
     // -----------------------------------------------------------------------------------------------------
+
+    // Marked
+    .marked {
+
+        &:after {
+            @if ($is-dark) {
+                background: asm-color($asm-pink, 600);
+            } @else {
+                background: asm-color($asm-yellow, 200);
+            }
+        }
+    }
 
     // Link
     .link {

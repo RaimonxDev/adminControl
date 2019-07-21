@@ -117,6 +117,7 @@ pricing-simple {
                     &:nth-child(2) {
                         padding: 112px 64px;
                         z-index: 5;
+                        @include asm-elevation(4);
                     }
 
                     &:nth-child(3) {
@@ -360,99 +361,116 @@ pricing-simple {
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
+    $is-dark: map-get($theme, is-dark);
 
     pricing-simple {
 
-        .recurring-selector {
+        .background {
 
-            &.annual-billing {
+            svg {
 
-                span {
+                g {
 
-                    &:first-child {
-                        opacity: 0.5;
-                    }
-                }
-            }
-
-            &:not(.annual-billing) {
-
-                span {
-
-                    &:last-child {
-                        opacity: 0.5;
-                    }
-                }
-            }
-        }
-
-        .cards {
-
-            .card {
-                background: map-get($background, card);
-
-                .tag {
-                    background: map-get($accent, default);
-                    color: map-get($accent, default-contrast)
-                }
-
-                .subtitle {
-                    color: map-get($foreground, secondary-text);
-                }
-
-                .divider {
-                    background: map-get($primary, default);
-                }
-
-                .price-details {
-                    color: map-get($foreground, secondary-text);
-                }
-            }
-        }
-
-        .features-section {
-
-            .title-container {
-
-                .subtitle {
-                    color: map-get($foreground, secondary-text);
-                }
-            }
-
-            .grid {
-
-                .feature {
-
-                    .title-container {
-
-                        .mat-icon {
-                            background: map-get($primary, default);
-                            color: map-get($primary, default-contrast);
+                    g {
+                        @if ($is-dark) {
+                            fill: asm-color($asm-blue, 900);
+                        } @else {
+                            fill: asm-color($asm-blue, 300);
                         }
                     }
-
-                    .description {
-                        color: map-get($foreground, secondary-text);
-                    }
                 }
             }
         }
 
-        .faqs-section {
+        .container {
 
-            .title-container {
+            .recurring-selector {
 
-                .subtitle {
-                    color: map-get($foreground, secondary-text);
+                &.annual-billing {
+
+                    span {
+
+                        &:first-child {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+
+                &:not(.annual-billing) {
+
+                    span {
+
+                        &:last-child {
+                            opacity: 0.5;
+                        }
+                    }
                 }
             }
 
-            .grid {
+            .cards {
 
-                .column {
+                .card {
+                    background: map-get($background, card);
 
-                    .answer {
+                    .tag {
+                        background: map-get($accent, default);
+                        color: map-get($accent, default-contrast)
+                    }
+
+                    .subtitle {
                         color: map-get($foreground, secondary-text);
+                    }
+
+                    .price-details {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+            }
+
+            .features-section {
+
+                .title-container {
+
+                    .subtitle {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+
+                .grid {
+
+                    .feature {
+
+                        .title-container {
+
+                            .mat-icon {
+                                background: map-get($primary, default);
+                                color: map-get($primary, default-contrast);
+                            }
+                        }
+
+                        .description {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+                }
+            }
+
+            .faqs-section {
+
+                .title-container {
+
+                    .subtitle {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+
+                .grid {
+
+                    .column {
+
+                        .answer {
+                            color: map-get($foreground, secondary-text);
+                        }
                     }
                 }
             }
