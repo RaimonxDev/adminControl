@@ -9,10 +9,12 @@ tasks-list {
         .mat-drawer {
             min-width: 496px !important;
             max-width: 496px !important;
+            width: 496px !important;
 
             @include asm-media-breakpoint('lt-sm') {
                 min-width: 100% !important;
                 max-width: 100% !important;
+                width: 100% !important;
             }
         }
 
