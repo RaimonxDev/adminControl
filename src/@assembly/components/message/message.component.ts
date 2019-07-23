@@ -48,7 +48,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         // Set the defaults
         this.appearance = 'solid';
         this.dismissible = false;
-        this.dismissed = true;
+        this.dismissed = false;
         this.showIcon = true;
         this.type = 'primary';
     }
