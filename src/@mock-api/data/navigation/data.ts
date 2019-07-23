@@ -610,14 +610,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         }
     },
     {
-        id      : 'applications.help-center',
-        title   : 'Help center',
-        subtitle: 'Faqs, knowledge base & guides',
-        type    : 'basic',
-        icon    : 'help_outline',
-        link    : '/apps/help-center'
-    },
-    {
         id      : 'pages',
         title   : 'Pages',
         subtitle: 'Example & ready to use pages',
@@ -700,6 +692,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/pages/errors/500'
             }
         ]
+    },
+    {
+        id      : 'pages.help-center',
+        title   : 'Help center',
+        subtitle: 'FAQs, Knowledge base & Guides',
+        type    : 'basic',
+        icon    : 'help_outline',
+        link    : '/pages/help-center'
     },
     {
         id   : 'pages.maintenance',

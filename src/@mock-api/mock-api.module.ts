@@ -5,6 +5,7 @@ import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { MockAuthApi } from '@mock-api/data/auth';
 import { MockContactsApi } from '@mock-api/data/contacts';
 import { MockDocsApi } from '@mock-api/data/docs';
+import { MockHelpCenterApi } from '@mock-api/data/help-center';
 import { MockIconsApi } from '@mock-api/data/icons';
 import { MockMailboxApi } from '@mock-api/data/mailbox';
 import { MockNavigationApi } from '@mock-api/data/navigation';
@@ -30,6 +31,7 @@ export class AsmMockApiModule
      * @param {MockAuthApi} _mockAuthApi
      * @param {MockContactsApi} _mockContactsApi
      * @param {MockDocsApi} _mockDocsApi
+     * @param {MockHelpCenterApi} _mockHelpCenterApi
      * @param {MockIconsApi} _mockIconsApi
      * @param {MockMailboxApi} _mockMailboxApi
      * @param {MockNavigationApi} _mockNavigationApi
@@ -41,6 +43,7 @@ export class AsmMockApiModule
         private _mockAuthApi: MockAuthApi,
         private _mockContactsApi: MockContactsApi,
         private _mockDocsApi: MockDocsApi,
+        private _mockHelpCenterApi: MockHelpCenterApi,
         private _mockIconsApi: MockIconsApi,
         private _mockMailboxApi: MockMailboxApi,
         private _mockNavigationApi: MockNavigationApi,
@@ -52,6 +55,7 @@ export class AsmMockApiModule
         this._mockAuthApi.init();
         this._mockContactsApi.init();
         this._mockDocsApi.init();
+        this._mockHelpCenterApi.init();
         this._mockIconsApi.init();
         this._mockMailboxApi.init();
         this._mockNavigationApi.init();

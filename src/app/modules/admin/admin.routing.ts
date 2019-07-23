@@ -144,6 +144,13 @@ export const adminRoutes: Route[] = [
                         ]
                     },
 
+                    // Help Center
+                    {
+                        path        : 'help-center',
+                        loadChildren: () => import('./pages/help-center/help-center.module')
+                            .then(m => m.HelpCenterModule)
+                    },
+
                     // Maintenance
                     {
                         path        : 'maintenance',
