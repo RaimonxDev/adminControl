@@ -275,12 +275,12 @@ pre {
 
     // Breadcrumb
     .breadcrumb {
-        color: map-get($foreground, text);
 
         .path {
+            color: map-get($primary, default);
 
             &.current {
-                color: map-get($primary, default);
+                color: map-get($foreground, secondary-text);
             }
         }
 
