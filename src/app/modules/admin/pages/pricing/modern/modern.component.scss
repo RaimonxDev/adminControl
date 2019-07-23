@@ -14,23 +14,19 @@ pricing-modern {
         .background {
             position: absolute;
             top: 0;
-            right: 0;
             left: 0;
-            height: 752px;
+            width: 100%;
+            height: 891px;
             z-index: -1;
-
-            svg {
-                width: 100%;
-                height: 752px;
-            }
         }
 
-        .container {
+        .main {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
             max-width: 1200px;
+            padding: 0 !important;
 
             .header {
                 display: flex;
@@ -343,22 +339,16 @@ pricing-modern {
 
         .background {
 
-            svg {
-
-                g {
-
-                    g {
-                        @if ($is-dark) {
-                            fill: asm-color($asm-blue, 900);
-                        } @else {
-                            fill: asm-color($asm-blue, 300);
-                        }
-                    }
+            path {
+                @if ($is-dark) {
+                    fill: asm-dark-elevation(6);
+                } @else {
+                    fill: asm-color($asm-blue, 300);
                 }
             }
         }
 
-        .container {
+        .main {
 
             .recurring-selector {
 
