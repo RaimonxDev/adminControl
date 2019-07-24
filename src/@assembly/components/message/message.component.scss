@@ -62,7 +62,6 @@ asm-message {
             // Message
             .asm-message-message {
                 display: none;
-                letter-spacing: 0.025em;
 
                 &:not(:empty) {
                     display: block;
