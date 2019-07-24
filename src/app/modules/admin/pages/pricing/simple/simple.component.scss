@@ -41,7 +41,6 @@ pricing-simple {
                 }
 
                 h1 {
-                    font-weight: 700;
                     max-width: 600px;
                     text-align: center;
                     margin: 0;
@@ -50,7 +49,6 @@ pricing-simple {
                 h5 {
                     max-width: 480px;
                     margin: 32px 0 0 0;
-                    font-weight: normal;
                     text-align: center;
                 }
 
@@ -65,7 +63,7 @@ pricing-simple {
                     }
 
                     > span {
-                        font-weight: bold;
+                        font-weight: 700;
                         cursor: pointer;
                         user-select: none;
                     }
@@ -144,7 +142,7 @@ pricing-simple {
                     .title {
                         margin-bottom: 16px;
                         font-size: 20px;
-                        font-weight: bold;
+                        font-weight: 700;
                     }
 
                     .price {
@@ -161,12 +159,12 @@ pricing-simple {
 
                         .amount {
                             font-size: 64px;
-                            font-weight: bold;
+                            font-weight: 700;
                         }
 
                         .per {
                             font-size: 32px;
-                            font-weight: bold;
+                            font-weight: 700;
                             line-height: 1.25;
                             margin-left: 8px;
                         }
@@ -374,6 +372,13 @@ pricing-simple {
         }
 
         .main {
+
+            .header {
+
+                h5 {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
 
             .recurring-selector {
 

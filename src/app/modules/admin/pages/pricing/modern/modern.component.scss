@@ -40,7 +40,6 @@ pricing-modern {
                 }
 
                 h1 {
-                    font-weight: 700;
                     max-width: 600px;
                     text-align: center;
                     margin: 0;
@@ -49,7 +48,6 @@ pricing-modern {
                 h5 {
                     max-width: 480px;
                     margin: 32px 0 0 0;
-                    font-weight: normal;
                     text-align: center;
                 }
 
@@ -64,7 +62,7 @@ pricing-modern {
                     }
 
                     > span {
-                        font-weight: bold;
+                        font-weight: 700;
                         cursor: pointer;
                         user-select: none;
                     }
@@ -145,7 +143,7 @@ pricing-modern {
 
                         .amount {
                             font-size: 40px;
-                            font-weight: bold;
+                            font-weight: 700;
                             line-height: 1.25;
                         }
                     }
@@ -165,7 +163,7 @@ pricing-modern {
                         flex-direction: column;
 
                         .description {
-                            font-weight: bold;
+                            font-weight: 700;
                             margin-bottom: 8px;
                         }
 
@@ -349,6 +347,13 @@ pricing-modern {
         }
 
         .main {
+
+            .header {
+
+                h5 {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
 
             .recurring-selector {
 
