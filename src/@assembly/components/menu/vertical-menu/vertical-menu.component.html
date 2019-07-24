@@ -16,6 +16,10 @@
             <asm-vertical-menu-divider-item *ngIf="item.type === 'divider'"
                                             [item]="item"></asm-vertical-menu-divider-item>
 
+            <!-- Spacer -->
+            <asm-vertical-menu-spacer-item *ngIf="item.type === 'spacer'"
+                                            [item]="item"></asm-vertical-menu-spacer-item>
+
             <!-- Subheader -->
             <asm-vertical-menu-subheader-item *ngIf="item.type === 'subheader'"
                                               [item]="item"></asm-vertical-menu-subheader-item>

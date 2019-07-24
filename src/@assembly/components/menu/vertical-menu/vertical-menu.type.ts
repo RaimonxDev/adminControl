@@ -3,7 +3,7 @@ export interface AsmVerticalMenuItem
     id?: string;
     title?: string;
     subtitle?: string;
-    type: 'basic' | 'collapsable' | 'divider' | 'subheader';
+    type: 'basic' | 'collapsable' | 'divider' | 'spacer' | 'subheader';
     hidden?: boolean;
     link?: string;
     externalLink?: boolean;

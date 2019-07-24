@@ -19,6 +19,16 @@ asm-vertical-menu {
             flex: 1 1 auto;
             padding: 8px 0;
 
+            // Divider
+            > asm-vertical-menu-divider-item {
+                margin: 24px 0;
+            }
+
+            // Spacer
+            > asm-vertical-menu-spacer-item {
+                margin: 12px 0;
+            }
+
             // Subheader
             > asm-vertical-menu-subheader-item {
                 margin-top: 24px;
@@ -26,11 +36,6 @@ asm-vertical-menu {
                 &:first-child {
                     margin-top: 0;
                 }
-            }
-
-            // Divider
-            > asm-vertical-menu-divider-item {
-                margin: 24px 0;
             }
         }
     }
@@ -43,6 +48,7 @@ asm-vertical-menu {
     asm-vertical-menu-basic-item,
     asm-vertical-menu-collapsable-item,
     asm-vertical-menu-divider-item,
+    asm-vertical-menu-spacer-item,
     asm-vertical-menu-subheader-item {
         display: flex;
         flex-direction: column;
@@ -231,6 +237,15 @@ asm-vertical-menu {
         }
     }
 
+    // Spacer
+    asm-vertical-menu-spacer-item {
+        margin: 12px 0;
+
+        .asm-vertical-menu-spacer {
+
+        }
+    }
+
     // Subheader
     asm-vertical-menu-subheader-item {
 
@@ -331,6 +346,11 @@ asm-vertical-menu {
 
         // Divider
         asm-vertical-menu-divider-item {
+
+        }
+
+        // Spacer
+        asm-vertical-menu-spacer-item {
 
         }
 
