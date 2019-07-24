@@ -84,10 +84,10 @@ contacts-list {
                 }
 
                 .contacts-list {
-                    margin: 0 48px;
+                    margin: 0 24px;
 
                     @include asm-media-breakpoint('lt-sm') {
-                        margin: 0 40px;
+                        margin: 0 32px;
                     }
 
                     table {
@@ -310,6 +310,13 @@ contacts-list {
                         table {
                             background: transparent;
 
+                            th {
+
+                                &.mat-header-cell {
+                                    border: none;
+                                }
+                            }
+
                             tr.contact-row {
 
                                 &:hover,
@@ -341,6 +348,8 @@ contacts-list {
             }
 
             .mat-drawer {
+                border: none;
+
                 @if ($is-dark) {
                     background: map-get($background, background);
                 }

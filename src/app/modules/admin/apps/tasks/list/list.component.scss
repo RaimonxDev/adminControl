@@ -154,7 +154,7 @@ tasks-list {
 
                         &.type-section {
                             font-size: 20px;
-                            font-weight: 500;
+                            font-weight: 700;
 
                             .task-content {
                                 padding: 0 16px;
@@ -414,6 +414,8 @@ tasks-list {
             }
 
             .mat-drawer {
+                border: none;
+
                 @if ($is-dark) {
                     background: map-get($background, background);
                 }
