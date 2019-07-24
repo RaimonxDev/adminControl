@@ -226,8 +226,17 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     {
         this.menuData = [
             ...this._foldersMenuData,
+            {
+                type : 'spacer',
+            },
             ...this._filtersMenuData,
+            {
+                type : 'spacer',
+            },
             ...this._labelsMenuData,
+            {
+                type : 'spacer',
+            },
             ...this._otherMenuData
         ];
     }
