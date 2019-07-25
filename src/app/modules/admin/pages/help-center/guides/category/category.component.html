@@ -20,33 +20,21 @@
                 [routerLink]="['../']"
                 [color]="'primary'">
             <mat-icon>arrow_back</mat-icon>
-            <span>Back to Help Center</span>
+            <span>Back to Guides & Resources</span>
         </button>
-        <h1>Frequently Asked Questions</h1>
+        <h1>{{guideGroup.category.title}}</h1>
 
     </div>
 
     <!-- Main -->
     <div class="main">
 
-        <div class="faqs"
-             *ngFor="let faqGroup of faqGroups; trackBy: trackById">
+        <div class="guides">
 
-            <h3>{{faqGroup.category.title}}</h3>
-
-            <mat-accordion>
-
-                <mat-expansion-panel *ngFor="let faq of faqGroup.faqs; trackBy: trackById">
-
-                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                        <mat-panel-title>{{faq.question}}</mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    {{faq.answer}}
-
-                </mat-expansion-panel>
-
-            </mat-accordion>
+            <a class="link guide"
+               *ngFor="let guide of guideGroup.guides; trackBy: trackById"
+               [routerLink]="[guideGroup.category.slug, guide.slug]"
+               target="">{{guide.title}}</a>
 
         </div>
 

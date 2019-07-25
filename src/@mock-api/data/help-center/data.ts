@@ -26,7 +26,6 @@ export const faqCategories = [
         title: 'Support'
     }
 ];
-
 export const faqs = [
     // Most asked
     {
@@ -207,4 +206,162 @@ export const faqs = [
         question  : 'Responding to requests outside of support',
         answer    : 'Exercitation eu in officia lorem commodo pariatur pariatur nisi consectetur qui elit in aliquip et ullamco duis nostrud aute laborum laborum est dolor non qui amet deserunt ex et aliquip.\n\nProident consectetur eu amet minim labore anim ad non aute duis eiusmod sit ad elit magna do aliquip aliqua laborum dolor laboris ea irure duis mollit fugiat tempor eu est.'
     }
+];
+export const guideCategories = [
+    {
+        id   : '0ee72de7-49c0-4880-9e89-b72a4edd6a81',
+        slug : 'getting-started',
+        title: 'Getting Started'
+    },
+    {
+        id   : '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug : 'projects',
+        title: 'Projects'
+    },
+    {
+        id   : 'c88a1f54-360a-4b9b-a54b-2f92b7a1f63b',
+        slug : 'settings',
+        title: 'Settings'
+    },
+    {
+        id   : '7b25b38c-1ab3-4474-8569-65b3ea232add',
+        slug : 'payments',
+        title: 'Payments'
+    },
+    {
+        id   : '41fdf071-aec4-49de-9dd4-b4f746596928',
+        slug : 'your-account',
+        title: 'Your Account'
+    }
+];
+export const guides = [
+    // Getting started
+    {
+        id        : 'a008ffa3-7b3f-43be-8a8f-dbf5272ed2dd',
+        categoryId: '0ee72de7-49c0-4880-9e89-b72a4edd6a81',
+        slug      : 'what-is-this-app',
+        title     : 'What is this app?'
+    },
+    {
+        id        : '7643d388-12ab-4025-a2f1-5045ac7b1c4c',
+        categoryId: '0ee72de7-49c0-4880-9e89-b72a4edd6a81',
+        slug      : 'start-using-the-app',
+        title     : 'Start using the app'
+    },
+    {
+        id        : '1fecee67-c4b4-413a-b0f2-949dcab73249',
+        categoryId: '0ee72de7-49c0-4880-9e89-b72a4edd6a81',
+        slug      : 'signing-in-to-the-dashboard',
+        title     : 'Signing in to the dashboard'
+    },
+    {
+        id        : 'd2e2ea8f-5298-4ba2-898b-afc60c064bba',
+        categoryId: '0ee72de7-49c0-4880-9e89-b72a4edd6a81',
+        slug      : 'navigating-within-the-app',
+        title     : 'Navigating within the app'
+    },
+    // Projects
+    {
+        id        : 'f2592886-11b8-4b56-baab-96802c2ed93e',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'creating-a-project',
+        title     : 'Creating a project'
+    },
+    {
+        id        : '9ec3f4b9-a355-4f57-9e93-efa8611cc1c9',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'renaming-a-project',
+        title     : 'Renaming a project'
+    },
+    {
+        id        : '1bc6e7f9-b046-4f4f-9b18-741c9d5429f6',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'displaying-a-project',
+        title     : 'Displaying a project'
+    },
+    {
+        id        : 'a005d5f1-938d-45c5-8ed4-d0cf8d02e533',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'deleting-a-project',
+        title     : 'Deleting a project'
+    },
+    {
+        id        : '43837279-dce2-4dc0-beac-30b5ba829f14',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'changing-the-visibility-of-a-project',
+        title     : 'Changing the visibility of a project'
+    },
+    {
+        id        : '4cf5a435-eaa0-463c-8d2b-efde193c7fb3',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'adding-media-to-a-project',
+        title     : 'Adding media to a project'
+    },
+    {
+        id        : 'cd3fb87e-e138-4721-9e29-a5c751bfd949',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'removing-a-media-from-a-project',
+        title     : 'Removing a media from a project'
+    },
+    {
+        id        : 'f26205c6-882e-4713-b067-c73758b45551',
+        categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
+        slug      : 'cropping-a-media',
+        title     : 'Cropping a media'
+    }
+    // Settings
+    /*{
+        id: '1cbdeaeb-bbf1-4d04-b43d-f37b55e6a229'
+    },
+    {
+        id: '98de7d4a-2ca2-4d47-bbe6-083ed26467db'
+    },
+    {
+        id: '145f497c-1fdb-47b5-a6c1-31f856403571'
+    },
+    {
+        id: '0a007f59-a5ea-4875-991d-f22d6fd69898'
+    },
+    {
+        id: '4707c8eb-31f9-415c-bd07-86f226c75feb'
+    },
+    {
+        id: 'c771bf0a-1e0c-4b6d-af7e-189e10cc6fb8'
+    },
+    {
+        id: '3d7150d2-feb3-4f20-bd3f-8e525cef77a4'
+    },
+    {
+        id: '79239bc4-4fb5-428b-b30d-62c5289b061d'
+    },
+    {
+        id: '8d68c5e6-5404-450c-9d5f-d9800c164041'
+    },
+    {
+        id: '60df0d4c-dda1-439c-bd44-179c57a7597d'
+    },
+    {
+        id: '80ba5106-5f9c-4ed7-b8f3-8544035e3095'
+    },
+    {
+        id: 'db2e97a6-d657-4e9d-9b6c-5f213ea3301c'
+    },
+    {
+        id: '0a9c3321-1db3-42bc-92b6-7e257368123e'
+    },
+    {
+        id: '3374c887-2fb7-4223-9f40-7f2cbbf76795'
+    },
+    {
+        id: 'cc65f92a-7d46-4557-b15b-6f8f59a60576'
+    },
+    {
+        id: '7a809217-8b8c-4a42-886a-95f1571001a2'
+    },
+    {
+        id: '5cd7ecf0-efed-4955-b837-f6f306554a76'
+    },
+    {
+        id: '171683dd-9e59-4b1c-b7b7-5f442a220169'
+    }*/
 ];

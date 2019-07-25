@@ -2,17 +2,17 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-center.service';
-import { FaqGroup } from 'app/modules/admin/pages/help-center/help-center.type';
+import { GuideGroup } from 'app/modules/admin/pages/help-center/help-center.type';
 
 @Component({
-    selector     : 'help-center-faqs',
-    templateUrl  : './faqs.component.html',
-    styleUrls    : ['./faqs.component.scss'],
+    selector     : 'help-center-guides-home',
+    templateUrl  : './home.component.html',
+    styleUrls    : ['./home.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class HelpCenterFaqsComponent implements OnInit, OnDestroy
+export class HelpCenterGuidesHomeComponent implements OnInit, OnDestroy
 {
-    faqGroups: FaqGroup[];
+    guides: GuideGroup[];
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -39,11 +39,11 @@ export class HelpCenterFaqsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the FAQs
-        this._helpCenterService.faqs$
+        // Get the Guides
+        this._helpCenterService.guides$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((faqGroups) => {
-                this.faqGroups = faqGroups;
+            .subscribe((guides) => {
+                this.guides = guides;
             });
     }
 

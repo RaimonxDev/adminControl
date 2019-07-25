@@ -17,36 +17,41 @@
     <div class="header">
 
         <button mat-button
-                [routerLink]="['../']"
+                [routerLink]="['../../../']"
                 [color]="'primary'">
             <mat-icon>arrow_back</mat-icon>
             <span>Back to Help Center</span>
         </button>
-        <h1>Frequently Asked Questions</h1>
+        <h1>Guides & Resources</h1>
 
     </div>
 
     <!-- Main -->
     <div class="main">
 
-        <div class="faqs"
-             *ngFor="let faqGroup of faqGroups; trackBy: trackById">
+        <div class="guides">
 
-            <h3>{{faqGroup.category.title}}</h3>
+            <div class="category"
+                 *ngFor="let guideGroup of guides; trackBy: trackById">
 
-            <mat-accordion>
+                <a class="title"
+                   [routerLink]="[guideGroup.category.slug]">
+                    <h3>{{guideGroup.category.title}}</h3>
+                </a>
 
-                <mat-expansion-panel *ngFor="let faq of faqGroup.faqs; trackBy: trackById">
+                <a class="link guide"
+                   *ngFor="let guide of guideGroup.guides; trackBy: trackById"
+                   [routerLink]="[guideGroup.category.slug, guide.slug]"
+                   target="">{{guide.title}}</a>
 
-                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                        <mat-panel-title>{{faq.question}}</mat-panel-title>
-                    </mat-expansion-panel-header>
+                <a class="view-all"
+                   *ngIf="guideGroup.moreAvailable"
+                   [routerLink]="guideGroup.category.slug">
+                    <span>View All</span>
+                    <mat-icon>arrow_forward</mat-icon>
+                </a>
 
-                    {{faq.answer}}
-
-                </mat-expansion-panel>
-
-            </mat-accordion>
+            </div>
 
         </div>
 

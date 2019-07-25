@@ -1,6 +1,6 @@
 @import 'assembly';
 
-help-center-support {
+help-center-guides-category {
     display: flex;
     flex: 1 1 auto;
 
@@ -26,7 +26,7 @@ help-center-support {
             flex-direction: column;
             align-items: flex-start;
             width: 100%;
-            max-width: 640px;
+            max-width: 784px;
             margin-top: 64px;
 
             @include asm-media-breakpoint('lt-sm') {
@@ -57,10 +57,9 @@ help-center-support {
 
         .main {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
-            max-width: 640px;
+            max-width: 784px;
             margin-top: 80px;
             padding: 0 !important;
 
@@ -68,48 +67,12 @@ help-center-support {
                 margin-top: 64px;
             }
 
-            .card {
-                width: 100%;
-                padding: 40px 64px;
-                border-radius: 8px;
-                @include asm-elevation(2);
+            .guides {
+                display: flex;
+                flex-direction: column;
 
-                @include asm-media-breakpoint('lt-sm') {
-                    max-width: none;
-                    min-width: 0;
-                    width: 100%;
-                    padding: 32px 40px;
-                }
-
-                asm-message {
-
-                    + form {
-                        margin-top: 24px;
-                    }
-                }
-
-                form {
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-
-                    .mat-form-field {
-                        margin-bottom: 16px;
-
-                        &:last-child {
-                            margin-bottom: 0;
-                        }
-                    }
-
-                    .actions {
-                        display: flex;
-                        justify-content: center;
-                        margin: 24px 0 0 0;
-
-                        .clear-button {
-                            margin-right: 12px;
-                        }
-                    }
+                .guide {
+                    margin-bottom: 16px;
                 }
             }
         }
@@ -121,17 +84,17 @@ help-center-support {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
-    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
-    help-center-support {
+    help-center-guides-category {
 
         .background {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-dark-elevation(1);
+                    fill: asm-dark-elevation(6);
                 } @else {
                     fill: asm-color($asm-blue, 300);
                 }
@@ -140,8 +103,8 @@ help-center-support {
 
         .main {
 
-            .card {
-                background: map-get($background, card);
+            .guides {
+
             }
         }
     }
