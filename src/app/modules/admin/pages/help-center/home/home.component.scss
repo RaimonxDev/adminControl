@@ -46,21 +46,21 @@ help-center-home {
                 }
 
                 .search {
-                    margin: 48px 0 80px 0;
-                    max-width: 480px;
+                    margin-top: 56px;
+                    max-width: 600px;
                     width: 100%;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        margin-top: 48px;
+                    }
 
                     .mat-form-field {
                         width: 100%;
-
-                        .mat-form-field-flex {
-                            @include asm-elevation(1);
-                        }
                     }
                 }
 
                 h5 {
-                    margin: 0;
+                    margin: 64px 0 56px 0;
                     text-align: center;
                 }
 
@@ -68,7 +68,6 @@ help-center-home {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: center;
-                    margin-top: 48px;
 
                     .category {
                         display: flex;
@@ -99,6 +98,12 @@ help-center-home {
                         .title {
                             margin-top: 16px;
                             font-size: 16px;
+                            font-weight: 500;
+                        }
+
+                        .subtitle {
+                            margin-top: 8px;
+                            text-align: center
                         }
                     }
                 }
@@ -165,10 +170,14 @@ help-center-home {
 
                     .mat-form-field {
 
-                        .mat-form-field-flex {
+                        .mat-form-field-outline {
                             background: map-get($background, card);
                         }
                     }
+                }
+
+                h6 {
+                    color: map-get($foreground, secondary-text);
                 }
             }
 
@@ -185,6 +194,10 @@ help-center-home {
                         } @else {
                             background: map-get($primary, 100);
                         }
+                    }
+
+                    .subtitle {
+                        color: map-get($foreground, secondary-text);
                     }
                 }
             }
