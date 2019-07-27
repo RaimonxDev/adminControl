@@ -1,15 +1,15 @@
 @import 'assembly';
 
-help-center-guides-home {
+help-center-guides-guide {
     display: flex;
     flex: 1 1 auto;
 
     .content-layout {
-        padding: 0 32px;
         align-items: center;
+        padding: 0 64px;
 
         @include asm-media-breakpoint('lt-sm') {
-            padding: 0 16px;
+            padding: 0 32px;
         }
 
         .background {
@@ -60,58 +60,15 @@ help-center-guides-home {
             align-items: flex-start;
             width: 100%;
             max-width: 784px;
-            margin-top: 80px;
+            margin: 64px 0;
             padding: 0 !important;
 
-            @include asm-media-breakpoint('lt-sm') {
-                margin-top: 64px;
-            }
+            .guide {
 
-            .guides {
-                display: flex;
-                align-items: flex-start;
-                flex-wrap: wrap;
+                > * {
 
-                .category {
-                    display: flex;
-                    flex-direction: column;
-                    flex: 1 1 auto;
-                    width: 50%;
-                    max-width: 50%;
-                    min-width: 50%;
-                    margin-bottom: 80px;
-
-                    @include asm-media-breakpoint('lt-sm') {
-                        margin-bottom: 64px;
-                    }
-
-                    .title {
-
-                        h3 {
-                            margin: 0 0 16px 0;
-                        }
-
-                    }
-
-                    .guide {
-                        margin-bottom: 8px;
-                    }
-
-                    .view-all {
-                        display: flex;
-                        align-items: center;
-                        margin-top: 12px;
-                        height: 40px;
-                        min-height: 40px;
-
-                        span {
-                            font-weight: 500;
-                        }
-
-                        .mat-icon {
-                            @include asm-icon-size(18);
-                            margin-left: 8px;
-                        }
+                    &:first-child {
+                        margin-top: 0 !important;
                     }
                 }
             }
@@ -128,7 +85,7 @@ help-center-guides-home {
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
-    help-center-guides-home {
+    help-center-guides-guide {
 
         .background {
 
@@ -137,23 +94,6 @@ help-center-guides-home {
                     fill: asm-dark-elevation(6);
                 } @else {
                     fill: asm-color($asm-blue, 300);
-                }
-            }
-        }
-
-        .main {
-
-            .guides {
-
-                .category {
-
-                    .view-all {
-                        color: map-get($primary, default);
-
-                        .mat-icon {
-                            color: map-get($primary, default);
-                        }
-                    }
                 }
             }
         }

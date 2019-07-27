@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-center.service';
-import { FaqGroup, GuideGroup } from 'app/modules/admin/pages/help-center/help-center.type';
+import { FaqCategory, GuideCategory } from 'app/modules/admin/pages/help-center/help-center.type';
 
 @Injectable({
     providedIn: 'root'
 })
-export class HelpCenterHomeFaqsResolver implements Resolve<any>
+export class HelpCenterMostAskedFaqsResolver implements Resolve<any>
 {
     /**
      * Constructor
@@ -30,9 +30,9 @@ export class HelpCenterHomeFaqsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<FaqGroup[]>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<FaqCategory[]>
     {
-        return this._helpCenterService.getFaqsByCategory('slug', 'most-asked');
+        return this._helpCenterService.getFaqsByCategory('most-asked');
     }
 }
 
@@ -62,7 +62,7 @@ export class HelpCenterFaqsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<FaqGroup[]>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<FaqCategory[]>
     {
         return this._helpCenterService.getAllFaqs();
     }
@@ -71,7 +71,7 @@ export class HelpCenterFaqsResolver implements Resolve<any>
 @Injectable({
     providedIn: 'root'
 })
-export class HelpCenterGuidesHomeResolver implements Resolve<any>
+export class HelpCenterGuidesResolver implements Resolve<any>
 {
     /**
      * Constructor
@@ -94,7 +94,7 @@ export class HelpCenterGuidesHomeResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<GuideGroup[]>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<GuideCategory[]>
     {
         return this._helpCenterService.getAllGuides();
     }
@@ -126,8 +126,40 @@ export class HelpCenterGuidesCategoryResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<GuideGroup[]>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<GuideCategory[]>
     {
-        return this._helpCenterService.getGuidesByCategory('slug', route.paramMap.get('categorySlug'));
+        return this._helpCenterService.getGuidesByCategory(route.paramMap.get('categorySlug'));
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class HelpCenterGuidesGuideResolver implements Resolve<any>
+{
+    /**
+     * Constructor
+     *
+     * @param {HelpCenterService} _helpCenterService
+     */
+    constructor(
+        private _helpCenterService: HelpCenterService
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Resolver
+     *
+     * @param route
+     * @param state
+     */
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<GuideCategory>
+    {
+        return this._helpCenterService.getGuide(route.parent.paramMap.get('categorySlug'), route.paramMap.get('guideSlug'));
     }
 }

@@ -5,11 +5,11 @@ help-center-guides-category {
     flex: 1 1 auto;
 
     .content-layout {
-        padding: 0 32px;
         align-items: center;
+        padding: 0 64px;
 
         @include asm-media-breakpoint('lt-sm') {
-            padding: 0 16px;
+            padding: 0 32px;
         }
 
         .background {
@@ -60,19 +60,16 @@ help-center-guides-category {
             align-items: flex-start;
             width: 100%;
             max-width: 784px;
-            margin-top: 80px;
+            margin-top: 64px;
             padding: 0 !important;
-
-            @include asm-media-breakpoint('lt-sm') {
-                margin-top: 64px;
-            }
 
             .guides {
                 display: flex;
                 flex-direction: column;
 
                 .guide {
-                    margin-bottom: 16px;
+                    margin-bottom: 12px;
+                    font-size: 15px;
                 }
             }
         }

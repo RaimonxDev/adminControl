@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-center.service';
-import { GuideGroup } from 'app/modules/admin/pages/help-center/help-center.type';
+import { GuideCategory } from 'app/modules/admin/pages/help-center/help-center.type';
 
 @Component({
     selector     : 'help-center-guides-category',
@@ -12,7 +13,7 @@ import { GuideGroup } from 'app/modules/admin/pages/help-center/help-center.type
 })
 export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
 {
-    guideGroup: GuideGroup;
+    guideCategory: GuideCategory;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -20,10 +21,14 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {ActivatedRoute} _activatedRoute
      * @param {HelpCenterService} _helpCenterService
+     * @param {Router} _router
      */
     constructor(
-        private _helpCenterService: HelpCenterService
+        private _activatedRoute: ActivatedRoute,
+        private _helpCenterService: HelpCenterService,
+        private _router: Router
     )
     {
         // Set the private defaults
@@ -42,8 +47,8 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
         // Get the Guides
         this._helpCenterService.guides$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((guideGroups) => {
-                this.guideGroup = guideGroups[0];
+            .subscribe((guideCategories) => {
+                this.guideCategory = guideCategories[0];
             });
     }
 

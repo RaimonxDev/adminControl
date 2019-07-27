@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { faqCategories as faqCategoriesData, faqs as faqsData, guideCategories as guideCategoriesData, guides as guidesData } from '@mock-api/data/help-center/data';
+import { faqCategories as faqCategoriesData, faqs as faqsData, guideCategories as guideCategoriesData, guideContent as guideContentData, guides as guidesData } from '@mock-api/data/help-center/data';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +13,7 @@ export class MockHelpCenterApi
     private _faqs: any[];
     private _guideCategories: any[];
     private _guides: any[];
+    private _guideContent: string;
 
     /**
      * Constructor
@@ -28,6 +29,7 @@ export class MockHelpCenterApi
         this._faqs = faqsData;
         this._guideCategories = guideCategoriesData;
         this._guides = guidesData;
+        this._guideContent = guideContentData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -40,47 +42,33 @@ export class MockHelpCenterApi
     init(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ FAQ categories - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/apps/help-center/categories/faqs')
-            .reply(() => {
-
-                return [
-                    200,
-                    _.cloneDeep(this._faqCategories)
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
         // @ FAQs - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/apps/help-center/faqs')
             .reply((request) => {
 
-                // Get the field and value
-                const field = request.params.get('field');
-                const value = request.params.get('value');
+                // Get the category slug
+                const slug = request.params.get('slug');
 
                 // Prepare the results
                 const results = [];
 
-                // Get all FAQs
+                // Get FAQs
                 const faqs = _.cloneDeep(this._faqs);
 
-                // If field or value not provided...
-                if ( !field || !value )
-                {
-                    // Get the categories
-                    const categories = _.cloneDeep(this._faqCategories);
+                // Get FAQ Categories
+                const categories = _.cloneDeep(this._faqCategories);
 
+                // If slug is not provided...
+                if ( !slug )
+                {
                     // Go through each category and set the results
                     categories.forEach((category) => {
 
                         results.push(
                             {
-                                category,
+                                ...category,
                                 faqs: faqs.filter(faq => faq.categoryId === category.id)
                             }
                         );
@@ -89,16 +77,13 @@ export class MockHelpCenterApi
                 // Otherwise...
                 else
                 {
-                    // Get the FAQ categories
-                    const categories = _.cloneDeep(this._faqCategories);
-
-                    // Find the category by the field:value pair
-                    const category: any = categories.find(item => item[field] === value);
+                    // Find the category by the slug
+                    const category = categories.find(item => item.slug === slug);
 
                     // Set the results
                     results.push(
                         {
-                            category,
+                            ...category,
                             faqs: faqs.filter(faq => faq.categoryId === category.id)
                         }
                     );
@@ -111,28 +96,14 @@ export class MockHelpCenterApi
             });
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Guide categories - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/apps/help-center/categories/guides')
-            .reply(() => {
-
-                return [
-                    200,
-                    _.cloneDeep(this._guideCategories)
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
         // @ Guides - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
             .onGet('api/apps/help-center/guides')
             .reply((request) => {
 
-                // Get the field, value & limit
-                const field = request.params.get('field');
-                const value = request.params.get('value');
+                // Get the slug & limit
+                const slug = request.params.get('slug');
                 const limit = request.params.get('limit');
 
                 // Prepare the results
@@ -141,23 +112,24 @@ export class MockHelpCenterApi
                 // Get all Guides
                 const guides = _.cloneDeep(this._guides);
 
-                // If field or value not provided...
-                if ( limit && (!field || !value) )
+                // Get Guide categories
+                const categories = _.cloneDeep(this._guideCategories);
+
+                // If slug is not provided...
+                if ( !slug )
                 {
                     // Parse the limit as an integer
-                    const count = parseInt(limit, 10);
-
-                    // Get the categories
-                    const categories = _.cloneDeep(this._guideCategories);
+                    const limitNum = parseInt(limit, 10);
 
                     // Go through each category and set the results
                     categories.forEach((category) => {
 
                         results.push(
                             {
-                                category,
-                                guides       : guides.filter(guide => guide.categoryId === category.id).slice(0, count),
-                                moreAvailable: guides.filter(guide => guide.categoryId === category.id).length > count
+                                ...category,
+                                visibleGuides: limitNum,
+                                totalGuides  : guides.filter(guide => guide.categoryId === category.id).length,
+                                guides       : guides.filter(guide => guide.categoryId === category.id).slice(0, limitNum)
                             }
                         );
                     });
@@ -165,18 +137,14 @@ export class MockHelpCenterApi
                 // Otherwise...
                 else
                 {
-                    // Get the Guide categories
-                    const categories = _.cloneDeep(this._guideCategories);
-
-                    // Find the category by the field:value pair
-                    const category: any = categories.find(item => item[field] === value);
+                    // Find the category by the slug
+                    const category = categories.find(item => item.slug === slug);
 
                     // Set the results
                     results.push(
                         {
-                            category,
-                            guides       : guides.filter(guide => guide.categoryId === category.id),
-                            moreAvailable: false
+                            ...category,
+                            guides: guides.filter(guide => guide.categoryId === category.id)
                         }
                     );
                 }
@@ -184,6 +152,36 @@ export class MockHelpCenterApi
                 return [
                     200,
                     results
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Guide - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/help-center/guide')
+            .reply((request) => {
+
+                // Get the slugs
+                const categorySlug = request.params.get('categorySlug');
+                const guideSlug = request.params.get('guideSlug');
+
+                // Get all Guides and Guide Categories
+                const guides = _.cloneDeep(this._guides);
+                const categories = _.cloneDeep(this._guideCategories);
+
+                // Prepare the result
+                const result = {
+                    ...categories.find(category => category.slug === categorySlug),
+                    guides: [guides.find(guide => guide.slug === guideSlug)]
+                };
+
+                // Add the content to the guide
+                result.guides[0]['content'] = this._guideContent;
+
+                return [
+                    200,
+                    result
                 ];
             });
     }

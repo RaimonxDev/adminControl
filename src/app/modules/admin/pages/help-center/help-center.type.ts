@@ -3,6 +3,7 @@ export interface FaqCategory
     id: string;
     slug: string;
     title: string;
+    faqs?: Faq[];
 }
 
 export interface Faq
@@ -13,17 +14,14 @@ export interface Faq
     answer: string;
 }
 
-export interface FaqGroup
-{
-    category: FaqCategory;
-    faqs: Faq[];
-}
-
 export interface GuideCategory
 {
     id: string;
     slug: string;
     title: string;
+    totalGuides?: number;
+    visibleGuides?: number;
+    guides?: Guide[];
 }
 
 export interface Guide
@@ -32,12 +30,5 @@ export interface Guide
     categoryId: string;
     slug: string;
     title: string;
-    content: string;
-}
-
-export interface GuideGroup
-{
-    category: GuideCategory;
-    guides: Guide[];
-    moreAvailable: boolean;
+    content?: string;
 }

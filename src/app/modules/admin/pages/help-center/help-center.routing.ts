@@ -1,56 +1,63 @@
 import { Route } from '@angular/router';
-import { HelpCenterFaqsResolver, HelpCenterGuidesCategoryResolver, HelpCenterGuidesHomeResolver, HelpCenterHomeFaqsResolver } from 'app/modules/admin/pages/help-center/help-center.resolvers';
 import { HelpCenterComponent } from 'app/modules/admin/pages/help-center/help-center.component';
-import { HelpCenterHomeComponent } from 'app/modules/admin/pages/help-center/home/home.component';
 import { HelpCenterFaqsComponent } from 'app/modules/admin/pages/help-center/faqs/faqs.component';
 import { HelpCenterGuidesComponent } from 'app/modules/admin/pages/help-center/guides/guides.component';
-import { HelpCenterGuidesHomeComponent } from 'app/modules/admin/pages/help-center/guides/home/home.component';
 import { HelpCenterGuidesCategoryComponent } from 'app/modules/admin/pages/help-center/guides/category/category.component';
+import { HelpCenterGuidesGuideComponent } from 'app/modules/admin/pages/help-center/guides/guide/guide.component';
 import { HelpCenterSupportComponent } from 'app/modules/admin/pages/help-center/support/support.component';
+import { HelpCenterFaqsResolver, HelpCenterGuidesCategoryResolver, HelpCenterGuidesGuideResolver, HelpCenterGuidesResolver, HelpCenterMostAskedFaqsResolver } from 'app/modules/admin/pages/help-center/help-center.resolvers';
 
 export const helpCenterRoutes: Route[] = [
     {
         path     : '',
+        pathMatch: 'full',
         component: HelpCenterComponent,
-        children : [
+        resolve  : {
+            faqs: HelpCenterMostAskedFaqsResolver
+        }
+    },
+    {
+        path     : 'faqs',
+        component: HelpCenterFaqsComponent,
+        resolve  : {
+            faqs: HelpCenterFaqsResolver
+        }
+    },
+    {
+        path    : 'guides',
+        children: [
             {
                 path     : '',
-                component: HelpCenterHomeComponent,
-                resolve  : {
-                    homeFaqs: HelpCenterHomeFaqsResolver
-                }
-            },
-            {
-                path     : 'faqs',
-                component: HelpCenterFaqsComponent,
-                resolve  : {
-                    faqs: HelpCenterFaqsResolver
-                }
-            },
-            {
-                path     : 'guides',
+                pathMatch: 'full',
                 component: HelpCenterGuidesComponent,
-                children : [
+                resolve  : {
+                    guides: HelpCenterGuidesResolver
+                }
+            },
+            {
+                path    : ':categorySlug',
+                children: [
                     {
                         path     : '',
-                        component: HelpCenterGuidesHomeComponent,
-                        resolve  : {
-                            guides: HelpCenterGuidesHomeResolver
-                        }
-                    },
-                    {
-                        path     : ':categorySlug',
+                        pathMatch: 'full',
                         component: HelpCenterGuidesCategoryComponent,
                         resolve  : {
                             guides: HelpCenterGuidesCategoryResolver
                         }
+                    },
+                    {
+                        path     : ':guideSlug',
+                        component: HelpCenterGuidesGuideComponent,
+                        resolve  : {
+                            guide: HelpCenterGuidesGuideResolver
+                        }
                     }
                 ]
-            },
-            {
-                path     : 'support',
-                component: HelpCenterSupportComponent
             }
         ]
+    },
+    {
+        path     : 'support',
+        component: HelpCenterSupportComponent
     }
 ];

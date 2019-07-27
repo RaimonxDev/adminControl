@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { FaqGroup, GuideGroup } from 'app/modules/admin/pages/help-center/help-center.type';
+import { FaqCategory, Guide, GuideCategory } from 'app/modules/admin/pages/help-center/help-center.type';
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +10,9 @@ import { FaqGroup, GuideGroup } from 'app/modules/admin/pages/help-center/help-c
 export class HelpCenterService
 {
     // Private
-    private _faqs: BehaviorSubject<FaqGroup[] | null>;
-    private _guides: BehaviorSubject<GuideGroup[] | null>;
+    private _faqs: BehaviorSubject<FaqCategory[] | null>;
+    private _guides: BehaviorSubject<GuideCategory[] | null>;
+    private _guide: BehaviorSubject<Guide | null>;
 
     /**
      * Constructor
@@ -25,6 +26,7 @@ export class HelpCenterService
         // Set the private defaults
         this._faqs = new BehaviorSubject(null);
         this._guides = new BehaviorSubject(null);
+        this._guide = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -34,7 +36,7 @@ export class HelpCenterService
     /**
      * Getter for FAQs
      */
-    get faqs$(): Observable<FaqGroup[]>
+    get faqs$(): Observable<FaqCategory[]>
     {
         return this._faqs.asObservable();
     }
@@ -42,9 +44,17 @@ export class HelpCenterService
     /**
      * Getter for guides
      */
-    get guides$(): Observable<GuideGroup[]>
+    get guides$(): Observable<GuideCategory[]>
     {
         return this._guides.asObservable();
+    }
+
+    /**
+     * Getter for guide
+     */
+    get guide$(): Observable<GuideCategory>
+    {
+        return this._guide.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -54,9 +64,9 @@ export class HelpCenterService
     /**
      * Get all FAQs
      */
-    getAllFaqs(): Observable<FaqGroup[]>
+    getAllFaqs(): Observable<FaqCategory[]>
     {
-        return this._httpClient.get<FaqGroup[]>('api/apps/help-center/faqs').pipe(
+        return this._httpClient.get<FaqCategory[]>('api/apps/help-center/faqs').pipe(
             tap((response: any) => {
                 this._faqs.next(response);
             })
@@ -64,18 +74,14 @@ export class HelpCenterService
     }
 
     /**
-     * Get FAQs by category using a field:value pair
+     * Get FAQs by category using category slug
      *
-     * @param field
-     * @param value
+     * @param slug
      */
-    getFaqsByCategory(field, value): Observable<FaqGroup[]>
+    getFaqsByCategory(slug): Observable<FaqCategory[]>
     {
-        return this._httpClient.get<FaqGroup[]>('api/apps/help-center/faqs', {
-            params: {
-                field,
-                value
-            }
+        return this._httpClient.get<FaqCategory[]>('api/apps/help-center/faqs', {
+            params: {slug}
         }).pipe(
             tap((response: any) => {
                 this._faqs.next(response);
@@ -88,9 +94,9 @@ export class HelpCenterService
      *
      * @param limit
      */
-    getAllGuides(limit = '4'): Observable<GuideGroup[]>
+    getAllGuides(limit = '4'): Observable<GuideCategory[]>
     {
-        return this._httpClient.get<GuideGroup[]>('api/apps/help-center/guides', {
+        return this._httpClient.get<GuideCategory[]>('api/apps/help-center/guides', {
             params: {limit}
         }).pipe(
             tap((response: any) => {
@@ -100,21 +106,37 @@ export class HelpCenterService
     }
 
     /**
-     * Get guides by category using a field:value pair
+     * Get guides by category using category slug
      *
-     * @param field
-     * @param value
+     * @param slug
      */
-    getGuidesByCategory(field, value): Observable<GuideGroup[]>
+    getGuidesByCategory(slug): Observable<GuideCategory[]>
     {
-        return this._httpClient.get<GuideGroup[]>('api/apps/help-center/guides', {
-            params: {
-                field,
-                value
-            }
+        return this._httpClient.get<GuideCategory[]>('api/apps/help-center/guides', {
+            params: {slug}
         }).pipe(
             tap((response: any) => {
                 this._guides.next(response);
+            })
+        );
+    }
+
+    /**
+     * Get guide by category and guide slug
+     *
+     * @param categorySlug
+     * @param guideSlug
+     */
+    getGuide(categorySlug, guideSlug): Observable<GuideCategory>
+    {
+        return this._httpClient.get<GuideCategory>('api/apps/help-center/guide', {
+            params: {
+                categorySlug,
+                guideSlug
+            }
+        }).pipe(
+            tap((response: any) => {
+                this._guide.next(response);
             })
         );
     }

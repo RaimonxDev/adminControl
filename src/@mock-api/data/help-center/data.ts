@@ -308,60 +308,222 @@ export const guides = [
         categoryId: '07b8421f-20bf-45b6-90ee-169ebe3a5bcc',
         slug      : 'cropping-a-media',
         title     : 'Cropping a media'
-    }
+    },
     // Settings
-    /*{
-        id: '1cbdeaeb-bbf1-4d04-b43d-f37b55e6a229'
+    {
+        id        : '1cbdeaeb-bbf1-4d04-b43d-f37b55e6a229',
+        categoryId: 'c88a1f54-360a-4b9b-a54b-2f92b7a1f63b',
+        slug      : 'general-settings',
+        title     : 'General settings'
     },
     {
-        id: '98de7d4a-2ca2-4d47-bbe6-083ed26467db'
+        id        : '98de7d4a-2ca2-4d47-bbe6-083ed26467db',
+        categoryId: 'c88a1f54-360a-4b9b-a54b-2f92b7a1f63b',
+        slug      : 'project-settings',
+        title     : 'Project settings'
     },
     {
-        id: '145f497c-1fdb-47b5-a6c1-31f856403571'
+        id        : '145f497c-1fdb-47b5-a6c1-31f856403571',
+        categoryId: 'c88a1f54-360a-4b9b-a54b-2f92b7a1f63b',
+        slug      : 'media-settings',
+        title     : 'Media settings'
     },
     {
-        id: '0a007f59-a5ea-4875-991d-f22d6fd69898'
+        id        : '0a007f59-a5ea-4875-991d-f22d6fd69898',
+        categoryId: 'c88a1f54-360a-4b9b-a54b-2f92b7a1f63b',
+        slug      : 'domain-settings',
+        title     : 'Domain settings'
     },
     {
-        id: '4707c8eb-31f9-415c-bd07-86f226c75feb'
+        id        : '4707c8eb-31f9-415c-bd07-86f226c75feb',
+        categoryId: 'c88a1f54-360a-4b9b-a54b-2f92b7a1f63b',
+        slug      : 'privacy-settings',
+        title     : 'Privacy settings'
+    },
+    // Payments
+    {
+        id        : 'c771bf0a-1e0c-4b6d-af7e-189e10cc6fb8',
+        categoryId: '7b25b38c-1ab3-4474-8569-65b3ea232add',
+        slug      : 'subscriptions',
+        title     : 'Subscriptions'
     },
     {
-        id: 'c771bf0a-1e0c-4b6d-af7e-189e10cc6fb8'
+        id        : '3d7150d2-feb3-4f20-bd3f-8e525cef77a4',
+        categoryId: '7b25b38c-1ab3-4474-8569-65b3ea232add',
+        slug      : 'discounts',
+        title     : 'Discounts'
     },
     {
-        id: '3d7150d2-feb3-4f20-bd3f-8e525cef77a4'
+        id        : '79239bc4-4fb5-428b-b30d-62c5289b061d',
+        categoryId: '7b25b38c-1ab3-4474-8569-65b3ea232add',
+        slug      : 'payment-methods',
+        title     : 'Payment methods'
     },
     {
-        id: '79239bc4-4fb5-428b-b30d-62c5289b061d'
+        id        : '8d68c5e6-5404-450c-9d5f-d9800c164041',
+        categoryId: '7b25b38c-1ab3-4474-8569-65b3ea232add',
+        slug      : 'overdue-payments',
+        title     : 'Overdue payments'
+    },
+    // Your account
+    {
+        id        : '60df0d4c-dda1-439c-bd44-179c57a7597d',
+        categoryId: '41fdf071-aec4-49de-9dd4-b4f746596928',
+        slug      : 'changing-your-username',
+        title     : 'Changing your username'
     },
     {
-        id: '8d68c5e6-5404-450c-9d5f-d9800c164041'
+        id        : '0a9c3321-1db3-42bc-92b6-7e257368123e',
+        categoryId: '41fdf071-aec4-49de-9dd4-b4f746596928',
+        slug      : 'changing-your-email',
+        title     : 'Changing your email'
     },
     {
-        id: '60df0d4c-dda1-439c-bd44-179c57a7597d'
+        id        : '80ba5106-5f9c-4ed7-b8f3-8544035e3095',
+        categoryId: '41fdf071-aec4-49de-9dd4-b4f746596928',
+        slug      : 'changing-your-password',
+        title     : 'Changing your password'
     },
     {
-        id: '80ba5106-5f9c-4ed7-b8f3-8544035e3095'
+        id        : 'db2e97a6-d657-4e9d-9b6c-5f213ea3301c',
+        categoryId: '41fdf071-aec4-49de-9dd4-b4f746596928',
+        slug      : 'closing-your-account',
+        title     : 'Closing your account'
     },
     {
-        id: 'db2e97a6-d657-4e9d-9b6c-5f213ea3301c'
+        id        : '3374c887-2fb7-4223-9f40-7f2cbbf76795',
+        categoryId: '41fdf071-aec4-49de-9dd4-b4f746596928',
+        slug      : 'account-limits',
+        title     : 'Account limits'
     },
     {
-        id: '0a9c3321-1db3-42bc-92b6-7e257368123e'
-    },
-    {
-        id: '3374c887-2fb7-4223-9f40-7f2cbbf76795'
-    },
-    {
-        id: 'cc65f92a-7d46-4557-b15b-6f8f59a60576'
-    },
-    {
-        id: '7a809217-8b8c-4a42-886a-95f1571001a2'
-    },
-    {
-        id: '5cd7ecf0-efed-4955-b837-f6f306554a76'
-    },
-    {
-        id: '171683dd-9e59-4b1c-b7b7-5f442a220169'
-    }*/
+        id        : 'cc65f92a-7d46-4557-b15b-6f8f59a60576',
+        categoryId: '41fdf071-aec4-49de-9dd4-b4f746596928',
+        slug      : 'two-factor-authentication',
+        title     : 'Two factor authentication'
+    }
 ];
+
+// Since we only have one content for the demo, we will
+// use the following data on every request for every guide.
+export const guideContent = `
+<h2>Demo Content</h2>
+
+<p>
+    <strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit
+    amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+    pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
+    sagittis tempus lacus enim ac dui. <a href="#"
+                                          class="link">Donec non enim</a>
+    in turpis pulvinar facilisis. Ut felis.
+</p>
+
+<p>
+    Orci varius natoque penatibus et magnis dis <em>parturient montes</em>, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+    himenaeos. Curabitur vitae sagittis odio. <mark>Suspendisse</mark> ullamcorper nunc non pellentesque laoreet. Curabitur eu tortor id quam pretium mattis. Proin ut quam velit.
+</p>
+
+<h2>Header Level 2</h2>
+
+<img src="assets/images/ui/content-layouts/demo-content-1.jpg">
+<p class="text-secondary">
+    <em>Nullam sagittis nulla in diam finibus, sed pharetra velit vestibulum. Suspendisse euismod in urna eu posuere.</em>
+</p>
+
+<h3>Header Level 3</h3>
+
+<blockquote>
+    <p>
+        Blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur
+        massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
+    </p>
+    <footer>
+        Andrew Watkins
+    </footer>
+</blockquote>
+
+<ol>
+    <li>Ordered list</li>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+</ol>
+
+<h4>Header Level 4</h4>
+
+<ul>
+    <li>Unordered list</li>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+</ul>
+
+<pre><code>#header h1 a {{ '{' }}
+    display: block;
+    width: 300px;
+    height: 80px;
+    {{ '}' }}</code></pre>
+
+<h5>Header Level 5</h5>
+
+<dl>
+    <dt>Definition list</dt>
+    <dd>
+        Quisque sit amet risus enim. Aliquam sit amet interdum justo, at ultricies sapien. Suspendisse et semper urna, in gravida eros. Quisque id nibh iaculis, euismod urna sed,
+        egestas nisi. Donec eros metus, congue a imperdiet feugiat, sagittis nec ipsum. Quisque dapibus mollis felis non tristique.
+    </dd>
+
+    <dt>Definition list</dt>
+    <dd>
+        Ut auctor, metus sed dapibus tempus, urna diam auctor odio, in malesuada odio risus vitae nisi. Etiam blandit ante urna, vitae placerat massa mollis in. Duis nec urna ac
+        purus semper dictum ut eget justo. Aenean non sagittis augue. Sed venenatis rhoncus enim eget ornare. Donec viverra sed felis at venenatis. Mauris aliquam fringilla nulla,
+        sit amet congue felis dignissim at.
+    </dd>
+</dl>
+
+<h6>Header Level 6</h6>
+<table class="asm-table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Cost</th>
+            <th>Condition</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Beach ball</td>
+            <td>$4.00</td>
+            <td>New</td>
+        </tr>
+        <tr>
+            <td>Towel</td>
+            <td>$5.00</td>
+            <td>New</td>
+        </tr>
+        <tr>
+            <td>Frisbee</td>
+            <td>$2.00</td>
+            <td>Used</td>
+        </tr>
+        <tr>
+            <td>Sunscreen</td>
+            <td>$4.00</td>
+            <td>New</td>
+        </tr>
+        <tr>
+            <td>Cooler</td>
+            <td>$25.00</td>
+            <td>Used</td>
+        </tr>
+        <tr>
+            <td>Swim suit</td>
+            <td>$15.00</td>
+            <td>New</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Total</th>
+            <th colspan="2">$55.00</th>
+        </tr>
+    </tfoot>
+</table>`;

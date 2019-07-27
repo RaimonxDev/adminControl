@@ -17,27 +17,20 @@
     <div class="header">
 
         <a mat-button
-           [routerLink]="['../../../../']"
+           [routerLink]="['../']"
            [color]="'primary'">
             <mat-icon>arrow_back</mat-icon>
-            <span>Back to Guides & Resources</span>
+            <span>Back to {{guideCategory.title}}</span>
         </a>
-        <h1>{{guideCategory.title}}</h1>
+        <h1>{{guideCategory.guides[0].title}}</h1>
 
     </div>
 
     <!-- Main -->
     <div class="main">
 
-        <div class="guides">
-
-            <a class="link guide"
-               *ngFor="let guide of guideCategory.guides; trackBy: trackById"
-               [routerLink]="[guide.slug]">
-                {{guide.title}}
-            </a>
-
-        </div>
+        <div class="guide"
+             [innerHTML]="guideCategory.guides[0].content"></div>
 
     </div>
 

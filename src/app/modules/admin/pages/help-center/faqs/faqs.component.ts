@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-center.service';
-import { FaqGroup } from 'app/modules/admin/pages/help-center/help-center.type';
+import { FaqCategory } from 'app/modules/admin/pages/help-center/help-center.type';
 
 @Component({
     selector     : 'help-center-faqs',
@@ -12,7 +12,7 @@ import { FaqGroup } from 'app/modules/admin/pages/help-center/help-center.type';
 })
 export class HelpCenterFaqsComponent implements OnInit, OnDestroy
 {
-    faqGroups: FaqGroup[];
+    faqCategories: FaqCategory[];
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -42,8 +42,8 @@ export class HelpCenterFaqsComponent implements OnInit, OnDestroy
         // Get the FAQs
         this._helpCenterService.faqs$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((faqGroups) => {
-                this.faqGroups = faqGroups;
+            .subscribe((faqCategories) => {
+                this.faqCategories = faqCategories;
             });
     }
 
