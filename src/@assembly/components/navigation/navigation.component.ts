@@ -1,10 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { merge, Subject, Subscription } from 'rxjs';
-import { delay, filter, takeUntil } from 'rxjs/operators';
+import { delay, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
-import { AsmConfig } from '@assembly/types/config';
-import { AsmConfigService } from '@assembly/services/config/config.service';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.directive';
 import { AsmNavigationAppearance, AsmNavigationMode, AsmNavigationPosition } from '@assembly';
@@ -21,7 +19,6 @@ import { AsmNavigationAppearance, AsmNavigationMode, AsmNavigationPosition } fro
 export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 {
     activeAsideItemId: null | string;
-    asmConfig: AsmConfig;
     data: any[];
 
     // Auto collapse
@@ -56,7 +53,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      * Constructor
      *
      * @param {AnimationBuilder} _animationBuilder
-     * @param {AsmConfigService} _asmConfigService
      * @param {AsmNavigationService} _asmNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
@@ -64,7 +60,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
-        private _asmConfigService: AsmConfigService,
         private _asmNavigationService: AsmNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
@@ -383,18 +378,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
             });
-
-        // Subscribe to config changes
-        this._asmConfigService.onConfigChanged
-            .pipe(
-                filter((config) => config !== null),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe((config: AsmConfig) => {
-
-                // Update the asmConfig from the config
-                this.asmConfig = config;
-            });
     }
 
     /**
@@ -685,6 +668,9 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Show the aside overlay
         this._showAsideOverlay();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -697,6 +683,9 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Hide the aside overlay
         this._hideAsideOverlay();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**

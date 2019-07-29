@@ -190,8 +190,14 @@ layout[type="classy"] {
 
             // Footer
             > .footer {
-                background: map-get($background, card);
-                border-top: 1px solid map-get($foreground, divider);
+                @if ($is-dark) {
+                    background: asm-dark-elevation(1);
+                } @else {
+                    background: map-get($background, card);
+                    @include asm-elevation(1);
+                }
+
+                color: map-get($foreground, secondary-text);
             }
         }
     }

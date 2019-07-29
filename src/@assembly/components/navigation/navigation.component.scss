@@ -856,9 +856,8 @@ asm-navigation {
 
         // Aside wrapper
         .asm-navigation-aside-wrapper {
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
-            0 2px 12px 0 rgba(0, 0, 0, 0.05),
-            inset 1px 0 0 0 rgba(0, 0, 0, 0.12);
+            background: inherit;
+            box-shadow: inset 1px 0 0 0 rgba(map-get($asm-gray, 800), 0.12);
 
             // First item of the aside (header)
             > asm-navigation-aside-item {
@@ -949,13 +948,11 @@ asm-navigation {
         }
 
         // DARK THEME
-        .theme-dark {
+        &.theme-dark {
 
             // Aside wrapper
-            &.asm-navigation-aside-wrapper {
-                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
-                0 2px 12px 0 rgba(0, 0, 0, 0.05),
-                inset 1px 0 0 0 rgba(255, 255, 255, 0.06);
+            .asm-navigation-aside-wrapper {
+                box-shadow: inset 1px 0 0 0  rgba(map-get($asm-gray, 200), 0.12);
             }
 
             // Navigation items common

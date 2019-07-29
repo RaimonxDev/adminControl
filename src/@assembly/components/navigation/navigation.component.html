@@ -1,6 +1,5 @@
 <!-- WRAPPER -->
-<div class="asm-navigation-wrapper"
-     [ngClass]="asmConfig.layout.options.navigation.theme.background">
+<div class="asm-navigation-wrapper">
 
     <!-- NAVIGATION HEADER -->
     <div class="asm-navigation-header">
@@ -67,7 +66,6 @@
 <!-- ASIDE -->
 <div class="asm-navigation-aside-wrapper"
      *ngIf="activeAsideItemId"
-     [ngClass]="asmConfig.layout.options.navigation.theme.background"
      asmScrollbar
      [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}"
      [@fadeInLeft]="position === 'left'"

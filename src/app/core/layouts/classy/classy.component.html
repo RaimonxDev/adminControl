@@ -1,6 +1,5 @@
 <!-- Navigation -->
-<asm-navigation class="navigation"
-                *ngIf="!asmConfig.layout.options.navigation.hidden"
+<asm-navigation class="navigation bg-gray-800 theme-dark"
                 [name]="'leftNavigation'"
                 [appearance]="'classic'"
                 [mode]="isScreenSmall ? 'over' : 'side'"
@@ -37,8 +36,7 @@
 <div class="wrapper">
 
     <!-- Header -->
-    <div class="header"
-         *ngIf="!asmConfig.layout.options.header.hidden">
+    <div class="header">
 
         <button class="navigation-toggle-button"
                 mat-icon-button
@@ -97,11 +95,8 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer"
-         *ngIf="!asmConfig.layout.options.footer.hidden">
-
-        Footer
-
+    <div class="footer">
+        Assembly &copy; {{currentYear}}
     </div>
 
 </div>

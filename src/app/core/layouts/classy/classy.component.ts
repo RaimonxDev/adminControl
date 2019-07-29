@@ -1,8 +1,8 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
-import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { takeUntil } from 'rxjs/operators';
+import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -13,7 +13,6 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
-    asmConfig: AsmConfig;
     isScreenSmall: boolean;
     searchResults: any[] | null;
 
@@ -29,7 +28,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {AsmConfigService} _asmConfigService
      * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
@@ -37,7 +35,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      * @param {HttpClient} _httpClient
      */
     constructor(
-        private _asmConfigService: AsmConfigService,
         private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
@@ -49,7 +46,21 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
+        this.fixedHeader = false;
+        this.fixedFooter = false;
         this.searchResults = null;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for current year
+     */
+    get currentYear(): number
+    {
+        return new Date().getFullYear();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -63,46 +74,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     {
         // Set the current navigation
         this._asmNavigationService.setCurrentNavigation('default');
-
-        // Set the layout's default options
-        this._asmConfigService.defaultConfig = {
-            layout: {
-                options: {
-                    navigation: {
-                        hidden: false,
-                        theme : {
-                            background: 'bg-gray-800 theme-dark'
-                        }
-                    },
-                    header    : {
-                        hidden: false,
-                        fixed : false
-                    },
-                    footer    : {
-                        hidden: true,
-                        fixed : false
-                    }
-                }
-            }
-        };
-
-        // Subscribe to config changes
-        this._asmConfigService.onConfigChanged
-            .pipe(
-                filter((config) => config !== null),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe((config: AsmConfig) => {
-
-                // Update the asmConfig from the config
-                this.asmConfig = config;
-
-                // Update the fixedHeader property
-                this.fixedHeader = this.asmConfig.layout.options.header.fixed;
-
-                // Update the fixedFooter property
-                this.fixedFooter = this.asmConfig.layout.options.footer.fixed;
-            });
 
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange$
