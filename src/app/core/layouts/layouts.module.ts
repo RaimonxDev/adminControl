@@ -9,6 +9,7 @@ import { EmptyLayoutModule } from 'app/core/layouts/empty/empty.module';
 import { ModernLayoutModule } from 'app/core/layouts/modern/modern.module';
 import { ThinLayoutModule } from 'app/core/layouts/thin/thin.module';
 import { ThinLightLayoutModule } from 'app/core/layouts/thin-light/thin-light.module';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { ThinLightLayoutModule } from 'app/core/layouts/thin-light/thin-light.mo
         EmptyLayoutModule,
         ModernLayoutModule,
         ThinLayoutModule,
-        ThinLightLayoutModule
+        ThinLightLayoutModule,
+        SharedModule
     ],
     exports     : [
         BasicLayoutModule,

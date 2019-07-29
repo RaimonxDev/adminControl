@@ -7,6 +7,9 @@ export const adminRoutes: Route[] = [
     {
         path       : '',
         component  : LayoutsComponent,
+        data       : {
+            layout: 'classy'
+        },
         canActivate: [AuthGuard],
         resolve    : {
             admin: AdminResolver
@@ -16,8 +19,8 @@ export const adminRoutes: Route[] = [
             // Redirect / to /apps/dashboard
             {
                 path      : '',
-                redirectTo: 'apps/dashboard',
-                pathMatch : 'full'
+                pathMatch : 'full',
+                redirectTo: 'apps/dashboard'
             },
 
             // Apps
