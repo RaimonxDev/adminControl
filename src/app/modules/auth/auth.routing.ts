@@ -4,6 +4,7 @@ import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { EmptyLayoutComponent } from 'app/core/layouts/empty/empty.component';
 
 export const authRoutes: Route[] = [
+    // Confirmation required
     {
         path       : 'confirmation-required',
         component  : EmptyLayoutComponent,
@@ -16,6 +17,7 @@ export const authRoutes: Route[] = [
             }
         ]
     },
+    // Forgot password
     {
         path       : 'forgot-password',
         component  : EmptyLayoutComponent,
@@ -28,6 +30,7 @@ export const authRoutes: Route[] = [
             }
         ]
     },
+    // Login
     {
         path       : 'login',
         component  : EmptyLayoutComponent,
@@ -40,6 +43,7 @@ export const authRoutes: Route[] = [
             }
         ]
     },
+    // Logout
     {
         path       : 'logout',
         component  : EmptyLayoutComponent,
@@ -52,6 +56,7 @@ export const authRoutes: Route[] = [
             }
         ]
     },
+    // Reset password
     {
         path       : 'reset-password',
         component  : EmptyLayoutComponent,
@@ -64,6 +69,7 @@ export const authRoutes: Route[] = [
             }
         ]
     },
+    // Signup
     {
         path       : 'signup',
         component  : EmptyLayoutComponent,
@@ -76,6 +82,7 @@ export const authRoutes: Route[] = [
             }
         ]
     },
+    // Unlock session
     {
         path       : 'unlock-session',
         component  : EmptyLayoutComponent,

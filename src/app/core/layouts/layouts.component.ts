@@ -101,8 +101,6 @@ export class LayoutsComponent implements OnInit, OnDestroy
             {
                 // Set the layout
                 this.layout = path.routeConfig.data.layout;
-
-                console.log(this.layout);
             }
         });
     }
