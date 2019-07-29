@@ -877,7 +877,11 @@ textarea.mat-input-element {
         }
 
         .mat-form-field-underline {
-            background-color: asm-color($asm-gray, 400);
+            @if ($is-dark) {
+                background-color: asm-color($asm-gray, 600);
+            } @else {
+                background-color: asm-color($asm-gray, 400);
+            }
         }
     }
 
@@ -892,10 +896,18 @@ textarea.mat-input-element {
         }
 
         .mat-form-field-underline {
-            background-color: asm-color($asm-gray, 400);
+            @if ($is-dark) {
+                background-color: asm-color($asm-gray, 600);
+            } @else {
+                background-color: asm-color($asm-gray, 400);
+            }
 
             .mat-form-field-ripple {
-                background-color: asm-color($asm-gray, 400);
+                @if ($is-dark) {
+                    background-color: asm-color($asm-gray, 600);
+                } @else {
+                    background-color: asm-color($asm-gray, 400);
+                }
             }
         }
     }
@@ -906,7 +918,11 @@ textarea.mat-input-element {
     .mat-form-field.mat-form-field-appearance-outline {
 
         .mat-form-field-outline {
-            color: map-get($asm-gray, 400);
+            @if ($is-dark) {
+                color: map-get($asm-gray, 600);
+            } @else {
+                color: map-get($asm-gray, 400);
+            }
         }
 
         &:not(.mat-focused) .mat-form-field-label,
@@ -960,11 +976,19 @@ textarea.mat-input-element {
         .mat-form-field-underline {
 
             &:before {
-                background-color: asm-color($asm-gray, 400);
+                @if ($is-dark) {
+                    background-color: asm-color($asm-gray, 600);
+                } @else {
+                    background-color: asm-color($asm-gray, 400);
+                }
             }
 
             .mat-form-field-ripple {
-                background-color: asm-color($asm-gray, 400);
+                @if ($is-dark) {
+                    background-color: asm-color($asm-gray, 600);
+                } @else {
+                    background-color: asm-color($asm-gray, 400);
+                }
             }
         }
     }
