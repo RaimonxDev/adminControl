@@ -10,7 +10,6 @@ import { HelpCenterFaqsResolver, HelpCenterGuidesCategoryResolver, HelpCenterGui
 export const helpCenterRoutes: Route[] = [
     {
         path     : '',
-        pathMatch: 'full',
         component: HelpCenterComponent,
         resolve  : {
             faqs: HelpCenterMostAskedFaqsResolver
@@ -28,7 +27,6 @@ export const helpCenterRoutes: Route[] = [
         children: [
             {
                 path     : '',
-                pathMatch: 'full',
                 component: HelpCenterGuidesComponent,
                 resolve  : {
                     guides: HelpCenterGuidesResolver
@@ -39,7 +37,6 @@ export const helpCenterRoutes: Route[] = [
                 children: [
                     {
                         path     : '',
-                        pathMatch: 'full',
                         component: HelpCenterGuidesCategoryComponent,
                         resolve  : {
                             guides: HelpCenterGuidesCategoryResolver
