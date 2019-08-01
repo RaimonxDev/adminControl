@@ -871,35 +871,19 @@ textarea.mat-input-element {
     // ----------------------------------------------------
     .mat-form-field.mat-form-field-appearance-legacy {
 
-        &:not(.mat-focused) .mat-form-field-label,
+        &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
         .mat-hint {
             color: map-get($foreground, secondary-text);
         }
 
-        .mat-form-field-underline {
-            @if ($is-dark) {
-                background-color: asm-color($asm-gray, 600);
-            } @else {
-                background-color: asm-color($asm-gray, 400);
-            }
-        }
-    }
+        &:not(.mat-form-field-invalid) {
 
-    // ----------------------------------------------------
-    // Standard
-    // ----------------------------------------------------
-    .mat-form-field.mat-form-field-appearance-standard {
-
-        &:not(.mat-focused) .mat-form-field-label,
-        .mat-hint {
-            color: map-get($foreground, secondary-text);
-        }
-
-        .mat-form-field-underline {
-            @if ($is-dark) {
-                background-color: asm-color($asm-gray, 600);
-            } @else {
-                background-color: asm-color($asm-gray, 400);
+            .mat-form-field-underline {
+                @if ($is-dark) {
+                    background-color: asm-color($asm-gray, 600);
+                } @else {
+                    background-color: asm-color($asm-gray, 400);
+                }
             }
 
             .mat-form-field-ripple {
@@ -913,11 +897,41 @@ textarea.mat-input-element {
     }
 
     // ----------------------------------------------------
+    // Standard
+    // ----------------------------------------------------
+    .mat-form-field.mat-form-field-appearance-standard {
+
+        &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
+        .mat-hint {
+            color: map-get($foreground, secondary-text);
+        }
+
+        &:not(.mat-form-field-invalid) {
+
+            .mat-form-field-underline {
+                @if ($is-dark) {
+                    background-color: asm-color($asm-gray, 600);
+                } @else {
+                    background-color: asm-color($asm-gray, 400);
+                }
+
+                .mat-form-field-ripple {
+                    @if ($is-dark) {
+                        background-color: asm-color($asm-gray, 600);
+                    } @else {
+                        background-color: asm-color($asm-gray, 400);
+                    }
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
     // Outline
     // ----------------------------------------------------
     .mat-form-field.mat-form-field-appearance-outline {
 
-        .mat-form-field-outline {
+        &:not(.mat-form-field-invalid) .mat-form-field-outline {
             @if ($is-dark) {
                 color: map-get($asm-gray, 600);
             } @else {
@@ -925,7 +939,7 @@ textarea.mat-input-element {
             }
         }
 
-        &:not(.mat-focused) .mat-form-field-label,
+        &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
         .mat-hint {
             color: map-get($foreground, secondary-text);
         }
@@ -968,26 +982,29 @@ textarea.mat-input-element {
             }
         }
 
-        &:not(.mat-focused) .mat-form-field-label,
+        &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
         .mat-hint {
             color: map-get($foreground, secondary-text);
         }
 
-        .mat-form-field-underline {
+        &:not(.mat-form-field-invalid) {
 
-            &:before {
-                @if ($is-dark) {
-                    background-color: asm-color($asm-gray, 600);
-                } @else {
-                    background-color: asm-color($asm-gray, 400);
+            .mat-form-field-underline {
+
+                &:before {
+                    @if ($is-dark) {
+                        background-color: asm-color($asm-gray, 600);
+                    } @else {
+                        background-color: asm-color($asm-gray, 400);
+                    }
                 }
-            }
 
-            .mat-form-field-ripple {
-                @if ($is-dark) {
-                    background-color: asm-color($asm-gray, 600);
-                } @else {
-                    background-color: asm-color($asm-gray, 400);
+                .mat-form-field-ripple {
+                    @if ($is-dark) {
+                        background-color: asm-color($asm-gray, 600);
+                    } @else {
+                        background-color: asm-color($asm-gray, 400);
+                    }
                 }
             }
         }
