@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
+import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { contacts as contactsData, countries as countriesData, tags as tagsData } from '@mock-api/data/contacts/data';
-import { of } from 'rxjs';
-import { fromPromise } from 'rxjs/internal-compatibility';
-import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -369,7 +368,7 @@ export class MockContactsApi
                 // and return it as the new path of the uploaded image since
                 // the src attribute of the img tag works with both image urls
                 // and encoded images.
-                return fromPromise(readAsDataURL(avatar)).pipe(
+                return from(readAsDataURL(avatar)).pipe(
                     map((path) => {
 
                         // Find the contact and update it

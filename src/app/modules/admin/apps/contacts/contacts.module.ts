@@ -15,7 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MomentDateModule } from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import * as moment from 'moment';
 import { AsmLookUpByPipeModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
@@ -52,6 +52,7 @@ export const CUSTOM_DATE_FORMAT = {
         MatIconModule,
         MatInputModule,
         MatMenuModule,
+        MatMomentDateModule,
         MatProgressBarModule,
         MatRadioModule,
         MatRippleModule,
@@ -59,7 +60,6 @@ export const CUSTOM_DATE_FORMAT = {
         MatSidenavModule,
         MatTableModule,
         MatTooltipModule,
-        MomentDateModule,
         AsmLookUpByPipeModule,
         SharedModule
     ],
