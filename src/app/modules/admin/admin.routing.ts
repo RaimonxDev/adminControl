@@ -35,6 +35,13 @@ export const adminRoutes: Route[] = [
                             .then(m => m.DashboardModule)
                     },
 
+                    // Calendar
+                    {
+                        path        : 'calendar',
+                        loadChildren: () => import('./apps/calendar/calendar.module')
+                            .then(m => m.CalendarModule)
+                    },
+
                     // Mailbox
                     {
                         path        : 'mailbox',

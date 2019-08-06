@@ -1,0 +1,110 @@
+<div class="content-layout left-sidebar-fullheight-basic-content-scroll"
+     cdkScrollable>
+
+    <mat-drawer-container>
+
+        <!-- Drawer -->
+        <mat-drawer [autoFocus]="false"
+                    [mode]="drawerMode"
+                    [opened]="drawerOpened">
+
+            Sidebar
+
+        </mat-drawer>
+
+        <mat-drawer-content>
+
+            <!-- Main -->
+            <div class="main">
+
+                <button mat-flat-button
+                        [color]="'primary'"
+                        (click)="previous()">
+                    Previous
+                </button>
+
+                <button mat-flat-button
+                        (click)="today()">
+                    Today
+                </button>
+
+                <button mat-flat-button
+                        [color]="'primary'"
+                        (click)="next()">
+                    Next
+                </button>
+
+                <!--<mat-button-toggle-group [name]="'calendarView'"
+                                         [(value)]="view"
+                                         #calendarViewChanger="matButtonToggleGroup">
+                    <mat-button-toggle [value]="'month'">Month</mat-button-toggle>
+                    <mat-button-toggle [value]="'week'">Week</mat-button-toggle>
+                    <mat-button-toggle [value]="'day'">Day</mat-button-toggle>
+                </mat-button-toggle-group>-->
+
+                <!-- Month view -->
+                <full-calendar defaultView="dayGridMonth"
+                               [firstDay]="1"
+                               [fixedWeekCount]="false"
+                               [plugins]="calendarPlugins"
+                               (dateClick)="onDateClick($event)"
+                               (eventClick)="onEventClick($event)"
+                               [events]="events"
+                               #fullCalendar></full-calendar>
+
+                <!-- Month cell template -->
+
+                <!-- Event panel -->
+                <ng-template #eventPanel>
+
+                    <form [formGroup]="eventForm"
+                          novalidate>
+
+                        <mat-form-field class="asm-mat"
+                                        [appearance]="'standard'">
+                            <input matInput
+                                   [formControlName]="'title'"
+                                   [placeholder]="'Event title'">
+                            <mat-error>This field is required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput
+                                   [formControlName]="'start'"
+                                   [matDatepicker]="startDatePicker"
+                                   [placeholder]="'Choose a start date'">
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="startDatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #startDatePicker></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput
+                                   [formControlName]="'end'"
+                                   [matDatepicker]="endDatePicker"
+                                   [placeholder]="'Choose an end date'">
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="endDatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #endDatePicker></mat-datepicker>
+                        </mat-form-field>
+
+                        <button mat-flat-button
+                                [disabled]="eventForm.pristine || eventForm.invalid"
+                                [color]="'primary'"
+                                (click)="updateEvent()">
+                            Save
+                        </button>
+
+                    </form>
+
+                </ng-template>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>
+
+

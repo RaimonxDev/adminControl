@@ -3,6 +3,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AsmMockApiInterceptor } from '@mock-api/mock-api.interceptor';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { MockAuthApi } from '@mock-api/data/auth';
+import { MockCalendarApi } from '@mock-api/data/calendar';
 import { MockContactsApi } from '@mock-api/data/contacts';
 import { MockDocsApi } from '@mock-api/data/docs';
 import { MockHelpCenterApi } from '@mock-api/data/help-center';
@@ -29,6 +30,7 @@ export class AsmMockApiModule
      * Constructor
      *
      * @param {MockAuthApi} _mockAuthApi
+     * @param {MockCalendarApi} _mockCalendarApi
      * @param {MockContactsApi} _mockContactsApi
      * @param {MockDocsApi} _mockDocsApi
      * @param {MockHelpCenterApi} _mockHelpCenterApi
@@ -41,6 +43,7 @@ export class AsmMockApiModule
      */
     constructor(
         private _mockAuthApi: MockAuthApi,
+        private _mockCalendarApi: MockCalendarApi,
         private _mockContactsApi: MockContactsApi,
         private _mockDocsApi: MockDocsApi,
         private _mockHelpCenterApi: MockHelpCenterApi,
@@ -53,6 +56,7 @@ export class AsmMockApiModule
     )
     {
         this._mockAuthApi.init();
+        this._mockCalendarApi.init();
         this._mockContactsApi.init();
         this._mockDocsApi.init();
         this._mockHelpCenterApi.init();

@@ -1,0 +1,36 @@
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import 'assembly';
+
+calendar {
+
+}
+
+// Event panel
+.calendar-event-panel {
+    margin: 0 8px;
+    padding: 24px;
+    border-radius: 8px;
+    @include asm-elevation(3);
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+
+    calendar {
+
+    }
+
+    .calendar-event-panel {
+        background: map-get($background, card);
+    }
+}
