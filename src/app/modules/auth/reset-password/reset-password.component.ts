@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly';
+import { AsmAnimations, AsmValidators } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -55,7 +55,7 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
         // Create the form
         this.resetPasswordForm = this._formBuilder.group({
             password       : ['', Validators.required],
-            passwordConfirm: ['', [Validators.required, confirmPasswordValidator]]
+            passwordConfirm: ['', [Validators.required, AsmValidators.confirmPassword()]]
         });
 
         // Update the validity of the 'passwordConfirm' field
@@ -77,39 +77,3 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
         this._unsubscribeAll.complete();
     }
 }
-
-/**
- * Confirm password validator
- *
- * @param {AbstractControl} control
- * @returns {ValidationErrors | null}
- */
-export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-
-    if ( !control.parent || !control )
-    {
-        return null;
-    }
-
-    const password = control.parent.get('password');
-    const passwordConfirm = control.parent.get('passwordConfirm');
-
-    if ( !password || !passwordConfirm )
-    {
-        return null;
-    }
-
-    if ( passwordConfirm.value === '' )
-    {
-        return null;
-    }
-
-    if ( password.value === passwordConfirm.value )
-    {
-        return null;
-    }
-
-    return {
-        passwordsNotMatching: true
-    };
-};
