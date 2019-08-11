@@ -444,8 +444,8 @@ tasks-details {
                 }
 
                 .mat-button-focus-overlay {
-                    @if ($is-dark) {
-                        background: asm-dark-elevation(1);
+                    @if (not $is-dark) {
+                        background-color: asm-color($asm-gray, 200) !important;
                     }
                 }
 
@@ -494,6 +494,12 @@ tasks-details {
 
                 &.panel-opened {
                     background: map-get($background, hover);
+                }
+
+                .mat-button-focus-overlay {
+                    @if (not $is-dark) {
+                        background-color: asm-color($asm-gray, 200) !important;
+                    }
                 }
 
                 .due-date-icon {

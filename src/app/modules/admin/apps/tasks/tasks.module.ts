@@ -25,18 +25,6 @@ import { TasksComponent } from 'app/modules/admin/apps/tasks/tasks.component';
 import { TasksDetailsComponent } from 'app/modules/admin/apps/tasks/details/details.component';
 import { TasksListComponent } from 'app/modules/admin/apps/tasks/list/list.component';
 
-export const CUSTOM_DATE_FORMAT = {
-    parse  : {
-        dateInput: moment.ISO_8601
-    },
-    display: {
-        dateInput         : 'll',
-        monthYearLabel    : 'MMM YYYY',
-        dateA11yLabel     : 'LL',
-        monthYearA11yLabel: 'MMMM YYYY'
-    }
-};
-
 @NgModule({
     declarations: [
         TasksComponent,
@@ -55,20 +43,30 @@ export const CUSTOM_DATE_FORMAT = {
         MatIconModule,
         MatInputModule,
         MatMenuModule,
+        MatMomentDateModule,
         MatProgressBarModule,
         MatRadioModule,
         MatRippleModule,
         MatSelectModule,
         MatSidenavModule,
         MatTooltipModule,
-        MatMomentDateModule,
         AsmLookUpByPipeModule,
         SharedModule
     ],
     providers   : [
         {
             provide : MAT_DATE_FORMATS,
-            useValue: CUSTOM_DATE_FORMAT
+            useValue: {
+                parse  : {
+                    dateInput: moment.ISO_8601
+                },
+                display: {
+                    dateInput         : 'll',
+                    monthYearLabel    : 'MMM YYYY',
+                    dateA11yLabel     : 'LL',
+                    monthYearA11yLabel: 'MMMM YYYY'
+                }
+            }
         }
     ]
 })
