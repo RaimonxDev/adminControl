@@ -1,0 +1,35 @@
+<div class="month">
+    <div class="month-header">
+        <button class="previous-button"
+                mat-icon-button
+                (click)="prev()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <div class="month-label">{{month1Label}}</div>
+    </div>
+    <mat-month-view [(activeDate)]="monthView1ActiveDate"
+                    [dateFilter]="dateFilter()"
+                    [dateClass]="dateClass()"
+                    (selectedChange)="onSelectedChange($event)"
+                    #matMonthView1>
+    </mat-month-view>
+</div>
+
+<div class="separator"></div>
+
+<div class="month">
+    <div class="month-header">
+        <div class="month-label">{{month2Label}}</div>
+        <button class="next-button"
+                mat-icon-button
+                (click)="next()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+    <mat-month-view [(activeDate)]="monthView2ActiveDate"
+                    [dateFilter]="dateFilter()"
+                    [dateClass]="dateClass()"
+                    (selectedChange)="onSelectedChange($event)"
+                    #matMonthView2>
+    </mat-month-view>
+</div>

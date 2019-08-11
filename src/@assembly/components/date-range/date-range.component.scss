@@ -1,0 +1,249 @@
+@import 'assembly';
+
+// Variables
+$body-cell-padding: 2px;
+
+asm-date-range {
+    display: flex;
+    max-width: 578px;
+    border-radius: 4px;
+
+    .month {
+        max-width: 224px;
+        min-width: 224px;
+        width: 224px;
+        margin: 32px;
+
+        .month-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            min-height: 40px;
+            max-height: 40px;
+            margin-bottom: 16px;
+
+            .previous-button {
+                position: absolute;
+                left: 0;
+            }
+
+            .next-button {
+                position: absolute;
+                right: 0;
+            }
+
+            .month-label {
+                font-weight: 500;
+            }
+        }
+
+        mat-month-view {
+            display: flex;
+
+            .mat-calendar-table {
+                width: 100%;
+                border-collapse: collapse;
+
+                tbody {
+
+                    tr {
+
+                        &[aria-hidden=true] {
+                            display: none !important;
+                        }
+
+                        &:first-child {
+
+                            td:first-child {
+
+                                &[aria-hidden=true] {
+                                    visibility: hidden;
+                                    pointer-events: none;
+                                    opacity: 0;
+                                }
+                            }
+                        }
+
+                        td.mat-calendar-body-cell {
+                            width: 32px !important;
+                            height: 32px !important;
+                            padding: $body-cell-padding !important;
+
+                            &.asm-date-range {
+                                position: relative;
+
+                                &:before {
+                                    content: '';
+                                    position: absolute;
+                                    top: $body-cell-padding;
+                                    right: 0;
+                                    bottom: $body-cell-padding;
+                                    left: 0;
+                                }
+
+                                &.asm-date-range-start {
+
+                                    &:before {
+                                        left: $body-cell-padding;
+                                        border-radius: 999px 0 0 999px;
+                                    }
+
+                                    &.asm-date-range-end,
+                                    &:last-child {
+
+                                        &:before {
+                                            right: $body-cell-padding;
+                                            border-radius: 999px;
+                                        }
+                                    }
+                                }
+
+                                &.asm-date-range-end {
+
+                                    &:before {
+                                        right: $body-cell-padding;
+                                        border-radius: 0 999px 999px 0;
+                                    }
+
+                                    &:first-child {
+
+                                        &:before {
+                                            left: $body-cell-padding;
+                                            border-radius: 999px;
+                                        }
+                                    }
+                                }
+
+                                &:first-child {
+
+                                    &:before {
+                                        border-radius: 999px 0 0 999px;
+                                    }
+                                }
+
+                                &:last-child {
+
+                                    &:before {
+                                        border-radius: 0 999px 999px 0;
+                                    }
+                                }
+                            }
+
+                            .mat-calendar-body-cell-content {
+                                position: relative;
+                                top: 0;
+                                left: 0;
+                                width: 28px;
+                                height: 28px;
+                            }
+                        }
+
+                        td.mat-calendar-body-label {
+
+                            + td.mat-calendar-body-cell {
+
+                                &.asm-date-range {
+
+                                    &:before {
+                                        border-radius: 999px 0 0 999px;
+                                    }
+
+                                    &.asm-date-range-start {
+
+                                        &.asm-date-range-end {
+                                            border-radius: 999px;
+                                        }
+                                    }
+
+                                    &.asm-date-range-end {
+
+                                        &:before {
+                                            left: $body-cell-padding;
+                                            border-radius: 999px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .separator {
+        display: flex;
+        width: 2px;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+
+    asm-date-range {
+        background: map-get($background, card);
+        @include asm-elevation(2);
+
+        .month {
+
+            .month-header {
+
+                .month-label {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
+
+            mat-month-view {
+
+                .mat-calendar-table {
+
+                    tbody {
+
+                        tr {
+
+                            td,
+                            td:hover {
+
+                                &.asm-date-range {
+
+                                    &:before {
+                                        background-color: map-get($primary, 200);
+                                    }
+
+                                    .mat-calendar-body-cell-content {
+                                        background-color: transparent;
+                                    }
+                                }
+
+                                &.asm-date-range-start,
+                                &.asm-date-range-end {
+
+                                    .mat-calendar-body-cell-content {
+                                        background-color: map-get($primary, default);
+                                        color: map-get($primary, default-contrast);
+                                    }
+                                }
+
+                                .mat-calendar-body-today {
+                                    border: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .separator {
+            background: map-get($foreground, divider);
+        }
+    }
+}
