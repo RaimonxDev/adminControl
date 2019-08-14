@@ -5,163 +5,182 @@ $body-cell-padding: 2px;
 
 asm-date-range {
     display: flex;
-    max-width: 578px;
+    max-width: 458px;
     border-radius: 4px;
 
-    .month {
-        max-width: 224px;
-        min-width: 224px;
-        width: 224px;
-        margin: 32px;
+    .start,
+    .end {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 16px 8px 16px;
 
-        .month-header {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px;
-            min-height: 40px;
-            max-height: 40px;
-            margin-bottom: 16px;
+        .month {
+            max-width: 196px;
+            min-width: 196px;
+            width: 196px;
 
-            .previous-button {
-                position: absolute;
-                left: 0;
+            .month-header {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 32px;
+                margin-bottom: 16px;
+
+                .previous-button,
+                .next-button {
+                    position: absolute;
+                    width: 24px !important;
+                    height: 24px !important;
+                    min-height: 24px !important;
+                    max-height: 24px !important;
+                    line-height: 24px !important;
+
+                    .mat-icon {
+                        @include asm-icon-size(20);
+                    }
+                }
+
+                .previous-button {
+                    left: 0;
+                }
+
+                .next-button {
+                    right: 0;
+                }
+
+                .month-label {
+                    font-weight: 500;
+                }
             }
 
-            .next-button {
-                position: absolute;
-                right: 0;
-            }
+            mat-month-view {
+                display: flex;
+                min-height: 188px;
 
-            .month-label {
-                font-weight: 500;
-            }
-        }
+                .mat-calendar-table {
+                    width: 100%;
+                    border-collapse: collapse;
 
-        mat-month-view {
-            display: flex;
+                    tbody {
 
-            .mat-calendar-table {
-                width: 100%;
-                border-collapse: collapse;
+                        tr {
 
-                tbody {
-
-                    tr {
-
-                        &[aria-hidden=true] {
-                            display: none !important;
-                        }
-
-                        &:first-child {
-
-                            td:first-child {
-
-                                &[aria-hidden=true] {
-                                    visibility: hidden;
-                                    pointer-events: none;
-                                    opacity: 0;
-                                }
+                            &[aria-hidden=true] {
+                                display: none !important;
                             }
-                        }
 
-                        td.mat-calendar-body-cell {
-                            width: 32px !important;
-                            height: 32px !important;
-                            padding: $body-cell-padding !important;
+                            &:first-child {
 
-                            &.asm-date-range {
-                                position: relative;
+                                td:first-child {
 
-                                &:before {
-                                    content: '';
-                                    position: absolute;
-                                    top: $body-cell-padding;
-                                    right: 0;
-                                    bottom: $body-cell-padding;
-                                    left: 0;
-                                }
-
-                                &.asm-date-range-start {
-
-                                    &:before {
-                                        left: $body-cell-padding;
-                                        border-radius: 999px 0 0 999px;
-                                    }
-
-                                    &.asm-date-range-end,
-                                    &:last-child {
-
-                                        &:before {
-                                            right: $body-cell-padding;
-                                            border-radius: 999px;
-                                        }
-                                    }
-                                }
-
-                                &.asm-date-range-end {
-
-                                    &:before {
-                                        right: $body-cell-padding;
-                                        border-radius: 0 999px 999px 0;
-                                    }
-
-                                    &:first-child {
-
-                                        &:before {
-                                            left: $body-cell-padding;
-                                            border-radius: 999px;
-                                        }
-                                    }
-                                }
-
-                                &:first-child {
-
-                                    &:before {
-                                        border-radius: 999px 0 0 999px;
-                                    }
-                                }
-
-                                &:last-child {
-
-                                    &:before {
-                                        border-radius: 0 999px 999px 0;
+                                    &[aria-hidden=true] {
+                                        visibility: hidden;
+                                        pointer-events: none;
+                                        opacity: 0;
                                     }
                                 }
                             }
 
-                            .mat-calendar-body-cell-content {
-                                position: relative;
-                                top: 0;
-                                left: 0;
-                                width: 28px;
-                                height: 28px;
-                            }
-                        }
-
-                        td.mat-calendar-body-label {
-
-                            + td.mat-calendar-body-cell {
+                            td.mat-calendar-body-cell {
+                                width: 28px !important;
+                                height: 28px !important;
+                                padding: $body-cell-padding !important;
 
                                 &.asm-date-range {
+                                    position: relative;
 
                                     &:before {
-                                        border-radius: 999px 0 0 999px;
+                                        content: '';
+                                        position: absolute;
+                                        top: $body-cell-padding;
+                                        right: 0;
+                                        bottom: $body-cell-padding;
+                                        left: 0;
                                     }
 
                                     &.asm-date-range-start {
 
-                                        &.asm-date-range-end {
-                                            border-radius: 999px;
+                                        &:before {
+                                            left: $body-cell-padding;
+                                            border-radius: 999px 0 0 999px;
+                                        }
+
+                                        &.asm-date-range-end,
+                                        &:last-child {
+
+                                            &:before {
+                                                right: $body-cell-padding;
+                                                border-radius: 999px;
+                                            }
                                         }
                                     }
 
                                     &.asm-date-range-end {
 
                                         &:before {
-                                            left: $body-cell-padding;
-                                            border-radius: 999px;
+                                            right: $body-cell-padding;
+                                            border-radius: 0 999px 999px 0;
+                                        }
+
+                                        &:first-child {
+
+                                            &:before {
+                                                left: $body-cell-padding;
+                                                border-radius: 999px;
+                                            }
+                                        }
+                                    }
+
+                                    &:first-child {
+
+                                        &:before {
+                                            border-radius: 999px 0 0 999px;
+                                        }
+                                    }
+
+                                    &:last-child {
+
+                                        &:before {
+                                            border-radius: 0 999px 999px 0;
+                                        }
+                                    }
+                                }
+
+                                .mat-calendar-body-cell-content {
+                                    position: relative;
+                                    top: 0;
+                                    left: 0;
+                                    width: 24px;
+                                    height: 24px;
+                                    font-size: 12px;
+                                }
+                            }
+
+                            td.mat-calendar-body-label {
+
+                                + td.mat-calendar-body-cell {
+
+                                    &.asm-date-range {
+
+                                        &:before {
+                                            border-radius: 999px 0 0 999px;
+                                        }
+
+                                        &.asm-date-range-start {
+
+                                            &.asm-date-range-end {
+                                                border-radius: 999px;
+                                            }
+                                        }
+
+                                        &.asm-date-range-end {
+
+                                            &:before {
+                                                left: $body-cell-padding;
+                                                border-radius: 999px;
+                                            }
                                         }
                                     }
                                 }
@@ -169,6 +188,31 @@ asm-date-range {
                         }
                     }
                 }
+            }
+        }
+
+        .time {
+            width: 100%;
+            padding: 0 8px;
+        }
+    }
+
+    .start {
+
+        .month {
+
+            .month-label {
+                margin-left: 8px;
+            }
+        }
+    }
+
+    .end {
+
+        .month {
+
+            .month-label {
+                margin-right: 8px;
             }
         }
     }
@@ -192,48 +236,52 @@ asm-date-range {
         background: map-get($background, card);
         @include asm-elevation(2);
 
-        .month {
+        .start,
+        .end {
 
-            .month-header {
+            .month {
 
-                .month-label {
-                    color: map-get($foreground, secondary-text);
+                .month-header {
+
+                    .month-label {
+                        color: map-get($foreground, secondary-text);
+                    }
                 }
-            }
 
-            mat-month-view {
+                mat-month-view {
 
-                .mat-calendar-table {
+                    .mat-calendar-table {
 
-                    tbody {
+                        tbody {
 
-                        tr {
+                            tr {
 
-                            td,
-                            td:hover {
+                                td,
+                                td:hover {
 
-                                &.asm-date-range {
+                                    &.asm-date-range {
 
-                                    &:before {
-                                        background-color: map-get($primary, 200);
+                                        &:before {
+                                            background-color: map-get($primary, 200);
+                                        }
+
+                                        .mat-calendar-body-cell-content {
+                                            background-color: transparent;
+                                        }
                                     }
 
-                                    .mat-calendar-body-cell-content {
-                                        background-color: transparent;
+                                    &.asm-date-range-start,
+                                    &.asm-date-range-end {
+
+                                        .mat-calendar-body-cell-content {
+                                            background-color: map-get($primary, default);
+                                            color: map-get($primary, default-contrast);
+                                        }
                                     }
-                                }
 
-                                &.asm-date-range-start,
-                                &.asm-date-range-end {
-
-                                    .mat-calendar-body-cell-content {
-                                        background-color: map-get($primary, default);
-                                        color: map-get($primary, default-contrast);
+                                    .mat-calendar-body-today {
+                                        border: none;
                                     }
-                                }
-
-                                .mat-calendar-body-today {
-                                    border: none;
                                 }
                             }
                         }
