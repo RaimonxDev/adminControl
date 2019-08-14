@@ -10,9 +10,10 @@ export interface CalendarEvent
     calendar: Calendar;
     id: string;
     calendarId: string;
+    ruleId: string | null;
     title: string;
     description: string;
-    start?: number | Date | null;
-    end?: number | Date | null;
+    start?: string | null;
+    end?: string | null;
     allDay: boolean;
 }

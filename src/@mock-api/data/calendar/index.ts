@@ -87,32 +87,50 @@ export class MockCalendarApi
                 // Go through the recurring event rules
                 recurringEvents.forEach((recurringEvent) => {
 
-                    // Get the rule and event from recurring event
-                    const {rrule, ...event} = recurringEvent;
-
-                    // Set a ruleId on the event so we don't lose the event's origin rule
-                    event.ruleId = event.id;
-
-                    // Since we use the id as a ruleId, generate a new unique id for the event
-                    event.id = AsmMockApiUtils.guid();
-
-                    // Set the frequency correctly
-                    rrule.freq = RRule[rrule.freq];
-
-                    // Set the byweekday and wkst correctly if they are available
-                    if ( rrule.byweekday )
+                    // Skip this recurring event if the events are already
+                    // generated from it in between the start and end dates
+                    if ( recurringEvent.start && recurringEvent.end )
                     {
-                        rrule.byweekday = RRule[rrule.byweekday];
+                        if ( moment(recurringEvent.start).isSameOrBefore(start) && moment(recurringEvent.end).isSameOrAfter(end) )
+                        {
+                            return;
+                        }
                     }
 
-                    if ( rrule.wkst )
+                    // Prepare the new event
+                    const event = {
+
+                        // Set a ruleId on the event so we don't lose the event's origin rule
+                        ruleId: recurringEvent.id,
+
+                        // Get the rest of the data
+                        id         : null,
+                        calendarId : recurringEvent.calendarId,
+                        title      : recurringEvent.title,
+                        description: recurringEvent.description,
+                        start      : null,
+                        end        : null,
+                        allDay     : recurringEvent.allDay,
+                        editable   : recurringEvent.editable
+                    };
+
+                    // Set the frequency correctly
+                    recurringEvent.rrule.freq = RRule[recurringEvent.rrule.freq];
+
+                    // Set the byweekday and wkst correctly if they are available
+                    if ( recurringEvent.rrule.byweekday )
                     {
-                        rrule.wkst = RRule[rrule.wkst];
+                        recurringEvent.rrule.byweekday = RRule[recurringEvent.rrule.byweekday];
+                    }
+
+                    if ( recurringEvent.rrule.wkst )
+                    {
+                        recurringEvent.rrule.wkst = RRule[recurringEvent.rrule.wkst];
                     }
 
                     // Create the rule set using RRule
                     const rule = new RRule({
-                        ...rrule,
+                        ...recurringEvent.rrule,
                         dtstart: start.toDate(),
                         until  : end.toDate()
                     });
@@ -123,14 +141,31 @@ export class MockCalendarApi
                         // Clone the event
                         const newEvent = _.cloneDeep(event);
 
+                        // Since we use the recurring event's id as a ruleId, generate a new unique id for the event
+                        newEvent.id = AsmMockApiUtils.guid();
+
                         // Set the start date of the new event
                         newEvent.start = date.toISOString();
 
                         // Set the end date of the new event using the duration data
-                        newEvent.end = moment(date).add(moment.duration(event.duration)).toISOString();
+                        newEvent.end = moment(date).add(moment.duration(recurringEvent.duration)).toISOString();
 
                         // Push the new event to the results array
                         results.push(newEvent);
+
+                        // Also push the new event to the existing events array
+                        this._events.push(newEvent);
+
+                        // Update the recurring event's generatedEvents object if needed
+                        if ( !recurringEvent.generatedEvents.start || moment(recurringEvent.generatedEvents.start).isAfter(moment(newEvent.start)) )
+                        {
+                            recurringEvent.generatedEvents.start = newEvent.start;
+                        }
+
+                        if ( !recurringEvent.generatedEvents.end || moment(recurringEvent.generatedEvents.end).isBefore(moment(newEvent.end)) )
+                        {
+                            recurringEvent.generatedEvents.end = newEvent.end;
+                        }
                     });
                 });
 

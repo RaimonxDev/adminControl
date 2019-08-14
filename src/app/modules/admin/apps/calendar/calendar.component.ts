@@ -6,9 +6,11 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar as FullCalendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import momentPlugin from '@fullcalendar/moment';
 import rrulePlugin from '@fullcalendar/rrule';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Subject } from 'rxjs';
@@ -26,12 +28,12 @@ import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.servic
 export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 {
     calendars: Calendar[];
-    calendarPlugins = [dayGridPlugin, interactionPlugin, momentPlugin, rrulePlugin];
+    calendarPlugins: any;
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;
     eventForm: FormGroup;
     events: CalendarEvent[];
-    view: 'month' | 'week' | 'day';
+    view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth';
 
     // Private
     private _eventPanelOverlayRef: OverlayRef;
@@ -70,9 +72,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
+        this.calendarPlugins = [dayGridPlugin, interactionPlugin, listPlugin, momentPlugin, rrulePlugin, timeGridPlugin];
         this.drawerMode = 'side';
         this.drawerOpened = true;
-        this.view = 'month';
+        this.events = [];
+        this.view = 'dayGridMonth';
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -88,13 +92,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.eventForm = this._formBuilder.group({
             id         : [''],
             calendarId : [''],
+            ruleId     : [null],
             title      : ['', Validators.required],
             description: [''],
             start      : [null],
             end        : [null],
+            range      : [null],
             allDay     : [true],
-            rrule      : [{}],
-            duration   : [''],
             editable   : [true]
         });
 
@@ -129,7 +133,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 else
                 {
                     this.drawerMode = 'side';
-                    this.drawerOpened = true;
+                    this.drawerOpened = false;
                 }
             });
     }
@@ -208,14 +212,20 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             scrollStrategy  : this._overlay.scrollStrategies.reposition(),
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(calendarEvent.el)
-                                  .withFlexibleDimensions()
-                                  .withViewportMargin(0)
                                   .withPositions([
                                       {
                                           originX : 'start',
                                           originY : 'top',
                                           overlayX: 'end',
-                                          overlayY: 'top'
+                                          overlayY: 'top',
+                                          offsetX : -8
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'top',
+                                          offsetX : 8
                                       }
                                   ])
         });
@@ -230,9 +240,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             this._document.addEventListener('click', outsideClickHandler, {passive: true});
 
             // Find the event and update the form values with it
-            const event = this.events.find(item => item.id === calendarEvent.event.id);
-            console.log(event);
-            this.eventForm.patchValue(event);
+            this._handleCalendarEvent(calendarEvent);
         });
 
         // Subscribe to detachment
@@ -253,24 +261,62 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      */
     private _closeEventPanel(): void
     {
-        // If overlay exists and attached...
-        if ( this._eventPanelOverlayRef && this._eventPanelOverlayRef.hasAttached() )
-        {
-            // Detach it
-            this._eventPanelOverlayRef.detach();
-        }
-
         // If template portal exists and attached...
         if ( this._eventPanelTemplatePortal && this._eventPanelTemplatePortal.isAttached )
         {
             // Detach it
             this._eventPanelTemplatePortal.detach();
         }
+
+        // If overlay exists and attached...
+        if ( this._eventPanelOverlayRef && this._eventPanelOverlayRef.hasAttached() )
+        {
+            // Detach it
+            this._eventPanelOverlayRef.detach();
+        }
+    }
+
+    /**
+     * Handle the calendar event so we can show it on the event form
+     *
+     * @private
+     */
+    private _handleCalendarEvent(calendarEvent): void
+    {
+        // Find the event and clone it
+        const event: any = _.cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
+
+        // Create the range object for date range picker
+        event.range = {
+            start: moment(event.start).toISOString(),
+            end  : moment(event.end).toISOString()
+        };
+
+        // Fill the event form with the form event
+        this.eventForm.patchValue(event);
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Change the calendar view
+     *
+     * @param view
+     */
+    changeView(view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth'): void
+    {
+        // Store the view
+        this.view = view;
+
+        // If the FullCalendar API is available...
+        if ( this._fullCalendarApi )
+        {
+            // Set the view
+            this._fullCalendarApi.changeView(view);
+        }
+    }
 
     /**
      * Moves the calendar one stop back
@@ -337,8 +383,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Open the event panel
         this._openEventPanel(calendarEvent);
-
-        console.log(calendarEvent);
     }
 
     /**
@@ -346,17 +390,18 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      */
     updateEvent(): void
     {
-        // Get the event form value
-        const value = this.eventForm.value;
+        // Get the clone of the event form value
+        const event = _.clone(this.eventForm.value);
 
-        console.log(value);
+        // Set the start and end dates from range
+        event.start = event.range.start;
+        event.end = event.range.end;
 
         // Update the event on the server
-        this._calendarService.updateEvent(value.id, value).subscribe((updatedEvent) => {
+        this._calendarService.updateEvent(event.id, event).subscribe((updatedEvent) => {
 
-            // Find the event and reset the form with it
-            const event = this.events.find((item) => item.id === updatedEvent.id);
-            this.eventForm.reset(event);
+            // Reset the form with the updated event
+            this.eventForm.reset(updatedEvent);
         });
     }
 }

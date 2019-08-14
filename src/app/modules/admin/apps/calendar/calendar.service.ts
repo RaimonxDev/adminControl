@@ -87,8 +87,6 @@ export class CalendarService
             this._loadedEventsRange.end = end;
         }
 
-        console.log(this._loadedEventsRange);
-
         // Get the events
         return this._httpClient.get<CalendarEvent[]>('api/apps/calendar/events', {
             params: {

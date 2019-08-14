@@ -1,4 +1,4 @@
-<div class="content-layout left-sidebar-fullheight-basic-content-scroll"
+<div class="content-layout left-sidebar-fullheight-basic-inner-scroll"
      cdkScrollable>
 
     <mat-drawer-container>
@@ -17,6 +17,16 @@
             <!-- Main -->
             <div class="main">
 
+                <mat-button-toggle-group [name]="'view'"
+                                         (change)="changeView(viewChanger.value)"
+                                         [value]="view"
+                                         #viewChanger="matButtonToggleGroup">
+                    <mat-button-toggle [value]="'dayGridMonth'">Month</mat-button-toggle>
+                    <mat-button-toggle [value]="'timeGridWeek'">Week</mat-button-toggle>
+                    <mat-button-toggle [value]="'timeGridDay'">Day</mat-button-toggle>
+                    <mat-button-toggle [value]="'listMonth'">Schedule</mat-button-toggle>
+                </mat-button-toggle-group>
+
                 <button mat-flat-button
                         [color]="'primary'"
                         (click)="previous()">
@@ -34,25 +44,17 @@
                     Next
                 </button>
 
-                <!--<mat-button-toggle-group [name]="'calendarView'"
-                                         [(value)]="view"
-                                         #calendarViewChanger="matButtonToggleGroup">
-                    <mat-button-toggle [value]="'month'">Month</mat-button-toggle>
-                    <mat-button-toggle [value]="'week'">Week</mat-button-toggle>
-                    <mat-button-toggle [value]="'day'">Day</mat-button-toggle>
-                </mat-button-toggle-group>-->
-
                 <!-- Month view -->
-                <full-calendar defaultView="dayGridMonth"
+                <full-calendar [defaultView]="view"
+                               [events]="events"
                                [firstDay]="1"
                                [fixedWeekCount]="false"
+                               [height]="'parent'"
                                [plugins]="calendarPlugins"
+                               [windowResizeDelay]="15"
                                (dateClick)="onDateClick($event)"
                                (eventClick)="onEventClick($event)"
-                               [events]="events"
                                #fullCalendar></full-calendar>
-
-                <!-- Month cell template -->
 
                 <!-- Event panel -->
                 <ng-template #eventPanel>
@@ -68,25 +70,13 @@
                             <mat-error>This field is required</mat-error>
                         </mat-form-field>
 
-                        <mat-form-field>
-                            <input matInput
-                                   [formControlName]="'start'"
-                                   [matDatepicker]="startDatePicker"
-                                   [placeholder]="'Choose a start date'">
-                            <mat-datepicker-toggle matSuffix
-                                                   [for]="startDatePicker"></mat-datepicker-toggle>
-                            <mat-datepicker #startDatePicker></mat-datepicker>
-                        </mat-form-field>
+                        <asm-date-range [formControlName]="'range'"
+                                        [timeRange]="!eventForm.get('allDay').value"></asm-date-range>
 
-                        <mat-form-field>
-                            <input matInput
-                                   [formControlName]="'end'"
-                                   [matDatepicker]="endDatePicker"
-                                   [placeholder]="'Choose an end date'">
-                            <mat-datepicker-toggle matSuffix
-                                                   [for]="endDatePicker"></mat-datepicker-toggle>
-                            <mat-datepicker #endDatePicker></mat-datepicker>
-                        </mat-form-field>
+                        <mat-checkbox [formControlName]="'allDay'"
+                                      color="primary">
+                            All day
+                        </mat-checkbox>
 
                         <button mat-flat-button
                                 [disabled]="eventForm.pristine || eventForm.invalid"

@@ -16,6 +16,12 @@ export const adminRoutes: Route[] = [
         },
         children   : [
 
+            {
+                path        : 'angular-material-elements',
+                loadChildren: () => import('./angular-material-elements/angular-material-elements.module')
+                    .then(m => m.AngularMaterialElementsModule)
+            },
+
             // Redirect / to /apps/dashboard
             {
                 path      : '',
