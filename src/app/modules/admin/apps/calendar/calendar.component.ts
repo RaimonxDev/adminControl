@@ -117,6 +117,8 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 // Clone the events to change the object reference so
                 // that the FullCalendar can trigger a re-render.
                 this.events = _.cloneDeep(events);
+
+                console.log(this.events);
             });
 
         // Subscribe to media changes

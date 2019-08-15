@@ -87,14 +87,60 @@ export class MockCalendarApi
                 // Go through the recurring event rules
                 recurringEvents.forEach((recurringEvent) => {
 
-                    // Skip this recurring event if the events are already
-                    // generated from it in between the start and end dates
-                    if ( recurringEvent.start && recurringEvent.end )
+                    // Clone the event start and end dates so we can
+                    // modify them per recurring event if needed
+                    let eventStart = start.clone();
+                    let eventEnd = end.clone();
+
+                    // If we generated events before from this recurring event...
+                    if ( recurringEvent.generatedEvents.start && recurringEvent.generatedEvents.end )
                     {
-                        if ( moment(recurringEvent.start).isSameOrBefore(start) && moment(recurringEvent.end).isSameOrAfter(end) )
+                        // Return, if the given start and end dates are in between the generated events' start and end dates
+                        if ( moment(recurringEvent.generatedEvents.start).isSameOrBefore(eventStart) && moment(recurringEvent.generatedEvents.end).isSameOrAfter(eventEnd) )
                         {
                             return;
                         }
+
+                        // Push the start and end dates forward, if start date is after the generated events' start date
+                        // and the end date is after the generated events' end date
+                        if ( moment(recurringEvent.generatedEvents.start).isBefore(eventStart) && moment(recurringEvent.generatedEvents.end).isBefore(eventEnd) )
+                        {
+                            // Get the duration in between the event start and end dates
+                            const eventDuration = moment.duration(eventEnd.diff(eventStart));
+
+                            // Push the event start to the generated events' end date
+                            eventStart = moment(recurringEvent.generatedEvents.end);
+
+                            // Push the event end using the new event start and duration
+                            eventEnd = eventStart.clone().add(eventDuration);
+                        }
+
+                        // Pull the start and end dates backward, if start date is before the generated events' start date
+                        // and the end date is before the generated events' end date
+                        if ( moment(recurringEvent.generatedEvents.start).isAfter(eventStart) && moment(recurringEvent.generatedEvents.end).isAfter(eventEnd) )
+                        {
+                            // Get the duration in between the event start and end dates
+                            const eventDuration = moment.duration(eventEnd.diff(eventStart));
+
+                            // Pull the event end to the generated events' start date
+                            eventEnd = moment(recurringEvent.generatedEvents.start);
+
+                            // Pull the event start using the new event end and duration
+                            eventStart = eventEnd.clone().subtract(eventDuration);
+                        }
+                    }
+
+                    // Get the original recurring event and update the generatedEvents object if needed
+                    const originalRecurringEvent = this._recurringEvents.find((originalEvent) => originalEvent.id === recurringEvent.id);
+
+                    if ( !originalRecurringEvent.generatedEvents.start || moment(originalRecurringEvent.generatedEvents.start).isAfter(moment(eventStart)) )
+                    {
+                        originalRecurringEvent.generatedEvents.start = eventStart.clone().toISOString();
+                    }
+
+                    if ( !originalRecurringEvent.generatedEvents.end || moment(originalRecurringEvent.generatedEvents.end).isBefore(moment(eventEnd)) )
+                    {
+                        originalRecurringEvent.generatedEvents.end = eventEnd.clone().toISOString();
                     }
 
                     // Prepare the new event
@@ -131,8 +177,8 @@ export class MockCalendarApi
                     // Create the rule set using RRule
                     const rule = new RRule({
                         ...recurringEvent.rrule,
-                        dtstart: start.toDate(),
-                        until  : end.toDate()
+                        dtstart: eventStart.clone().toDate(),
+                        until  : eventEnd.clone().toDate()
                     });
 
                     // Generate recurring dates and loop through them
@@ -153,19 +199,8 @@ export class MockCalendarApi
                         // Push the new event to the results array
                         results.push(newEvent);
 
-                        // Also push the new event to the existing events array
+                        // Also push the new event to the original events array
                         this._events.push(newEvent);
-
-                        // Update the recurring event's generatedEvents object if needed
-                        if ( !recurringEvent.generatedEvents.start || moment(recurringEvent.generatedEvents.start).isAfter(moment(newEvent.start)) )
-                        {
-                            recurringEvent.generatedEvents.start = newEvent.start;
-                        }
-
-                        if ( !recurringEvent.generatedEvents.end || moment(recurringEvent.generatedEvents.end).isBefore(moment(newEvent.end)) )
-                        {
-                            recurringEvent.generatedEvents.end = newEvent.end;
-                        }
                     });
                 });
 
