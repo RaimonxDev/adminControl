@@ -1,0 +1,205 @@
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+
+// -----------------------------------------------------------------------------------------------------
+// @ FullCalendar default style overrides
+// -----------------------------------------------------------------------------------------------------
+
+.fc {
+
+    .fc-view-container {
+
+        // Day Grid - Month view
+        .fc-view.fc-dayGridMonth-view {
+
+            .fc-head {
+
+                > tr > .fc-head-container {
+                    border: none;
+
+                    .fc-row {
+
+                        .fc-day-header {
+
+                            span {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding-top: 8px;
+                                font-size: 12px;
+                                font-weight: 500;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .fc-body {
+
+                > tr > .fc-widget-content {
+                    border: none;
+
+                    .fc-day-grid {
+
+                        .fc-week {
+
+                            .fc-content-skeleton {
+
+                                .fc-day-top {
+                                    text-align: center;
+
+                                    &.fc-other-month {
+                                        opacity: 1;
+                                    }
+
+                                    .fc-day-number {
+                                        display: inline-flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        width: 22px;
+                                        height: 22px;
+                                        margin: 4px 0;
+                                        font-size: 12px;
+                                        border-radius: 50%;
+                                        float: none;
+                                    }
+                                }
+
+                                .fc-event-container {
+
+                                    .fc-day-grid-event {
+                                        display: flex;
+                                        align-items: center;
+                                        height: 22px;
+                                        min-height: 22px;
+                                        max-height: 22px;
+                                        margin: 0 6px 4px 6px;
+                                        padding: 0 8px;
+                                        font-size: 12px;
+                                        line-height: 1;
+                                        border-radius: 4px;
+                                        border: none;
+                                    }
+                                }
+                            }
+
+                            .fc-highlight-skeleton {
+
+                                .fc-highlight {
+                                    position: relative;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Day grid event - Dragging
+    .fc-day-grid-event {
+
+        &.fc-dragging,
+        &.fc-resizing {
+            display: flex;
+            align-items: center;
+            height: 22px;
+            min-height: 22px;
+            max-height: 22px;
+            margin: 0 6px 4px 6px;
+            padding: 0 8px;
+            font-size: 12px;
+            line-height: 1;
+            border-radius: 4px;
+            border: none;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+
+    .fc {
+
+        .fc-view-container {
+
+            // Day Grid - Month view
+            .fc-view.fc-dayGridMonth-view {
+
+                .fc-head {
+
+                    > tr > .fc-head-container {
+
+                        .fc-row {
+
+                            .fc-day-header {
+
+                                span {
+                                    color: map-get($foreground, secondary-text);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .fc-body {
+
+                    > tr > .fc-widget-content {
+
+                        .fc-day-grid {
+
+                            .fc-week {
+
+                                .fc-bg {
+
+                                    .fc-day {
+
+                                        &.fc-today {
+                                            background: none;
+                                        }
+                                    }
+                                }
+
+                                .fc-content-skeleton {
+
+                                    .fc-day-top {
+
+                                        &.fc-other-month {
+
+                                            .fc-day-number {
+                                                color: map-get($foreground, hint-text);
+                                            }
+                                        }
+
+                                        &.fc-today {
+
+                                            .fc-day-number {
+                                                background: map-get($primary, default);
+                                                color: map-get($primary, default-contrast);
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .fc-highlight-skeleton {
+
+                                    .fc-highlight {
+                                        background: asm-color($asm-gray, 100);
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
