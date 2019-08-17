@@ -844,9 +844,21 @@ textarea.mat-input-element {
     // Stroked buttons
     .mat-stroked-button {
 
-        // Enable stroke color on stroked buttons
+        // Border color
         &:not([disabled]) {
-            border-color: currentColor !important;
+            @if ($is-dark) {
+                border-color: map-get($asm-gray, 600);
+            } @else {
+                border-color: map-get($asm-gray, 400);
+            }
+        }
+
+        &[disabled] {
+            @if ($is-dark) {
+                border-color: map-get($asm-gray, 700);
+            } @else {
+                border-color: map-get($asm-gray, 300);
+            }
         }
     }
 
@@ -942,6 +954,14 @@ textarea.mat-input-element {
         &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
         .mat-hint {
             color: map-get($foreground, secondary-text);
+        }
+
+        &[disabled] .mat-form-field-outline * {
+            @if ($is-dark) {
+                color: map-get($asm-gray, 700) !important;
+            } @else {
+                color: map-get($asm-gray, 300) !important;
+            }
         }
     }
 
