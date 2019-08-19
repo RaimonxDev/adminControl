@@ -71,14 +71,14 @@ export class AdminResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-        return forkJoin(
+        return forkJoin([
             // Navigation data
             this._loadCompactNavigation(),
             this._loadDefaultNavigation(),
 
             // Shortcuts
             this._loadShortcuts()
-        ).pipe(
+        ]).pipe(
             map((data) => {
 
                 // Register the navigation data
