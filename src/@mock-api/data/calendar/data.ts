@@ -12,7 +12,7 @@ export const calendars = [
         id     : '5dab5f7b-757a-4467-ace1-305fe07b11fe',
         title  : 'Work',
         color  : '#9F7AEA',
-        visible: false
+        visible: true
     },
     {
         id     : '09887870-f85a-40eb-8171-1b13d7a7f529',
@@ -189,7 +189,7 @@ export const recurringEvents = [
     }
 ];
 export const settings = {
-    dateFormat : 'DD/MM/YYYY', // 31/12/2019
+    dateFormat : 'll', // Aug 20, 2019
     timeFormat : '24', // 24-hour format
     startWeekOn: 1 // Monday
 };

@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar as FullCalendar } from '@fullcalendar/core';
@@ -40,8 +40,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     viewTitle: string;
 
     // Private
-    private _eventPanelOverlayRef: OverlayRef;
-    private _eventPanelTemplatePortal: TemplatePortal;
     private _fullCalendarApi: FullCalendar;
     private _unsubscribeAll: Subject<any>;
 
@@ -202,12 +200,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
-
-        // Dispose the overlays if they are still on the DOM
-        if ( this._eventPanelOverlayRef )
-        {
-            this._eventPanelOverlayRef.dispose();
-        }
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -221,33 +213,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      */
     private _openEventPanel(calendarEvent): void
     {
-        // Outside click handler
-        const outsideClickHandler = (event) => {
-
-            // Return, if the overlay reference or overlay element doesn't exist
-            if ( !this._eventPanelOverlayRef || !this._eventPanelOverlayRef.overlayElement )
-            {
-                return;
-            }
-
-            // Return, if the overlay element contains the event target...
-            if ( this._eventPanelOverlayRef.overlayElement.contains(event.target) )
-            {
-                return;
-            }
-
-            // Close the event panel
-            this._closeEventPanel();
-        };
-
-        // Close the currently opened event panel if there is one
-        this._closeEventPanel();
-
         // Create the overlay
-        this._eventPanelOverlayRef = this._overlay.create({
+        const overlayRef = this._overlay.create({
             panelClass      : 'calendar-event-panel',
             backdropClass   : '',
-            hasBackdrop     : false,
+            hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.reposition(),
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(calendarEvent.el)
@@ -270,112 +240,51 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         });
 
         // Create a portal from the template
-        this._eventPanelTemplatePortal = new TemplatePortal(this._eventPanel, this._viewContainerRef);
+        const templatePortal = new TemplatePortal(this._eventPanel, this._viewContainerRef);
 
-        // Subscribe to attachment
-        this._eventPanelOverlayRef.attachments().subscribe(() => {
-
-            // Listen for document clicks
-            this._document.addEventListener('click', outsideClickHandler, {passive: true});
+        // Subscribe to attachments
+        overlayRef.attachments().subscribe(() => {
 
             // Find the event and update the form values with it
-            this._handleCalendarEvent(calendarEvent);
+            const event: any = _.cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
+
+            // Create the range object for date range picker
+            event.range = {
+                start: moment(event.start).toISOString(),
+                end  : moment(event.end).toISOString()
+            };
+
+            // Fill the event form with the form event
+            this.eventForm.patchValue(event);
         });
 
-        // Subscribe to detachment
-        this._eventPanelOverlayRef.detachments().subscribe(() => {
+        // On backdrop click
+        overlayRef.backdropClick().subscribe(() => {
 
-            // Remove document click listener for document clicks
-            this._document.removeEventListener('click', outsideClickHandler);
+            // If template portal exists and attached...
+            if ( templatePortal && templatePortal.isAttached )
+            {
+                // Detach it
+                templatePortal.detach();
+            }
+
+            // If overlay exists and attached...
+            if ( overlayRef && overlayRef.hasAttached() )
+            {
+                // Detach it
+                overlayRef.detach();
+                overlayRef.dispose();
+            }
+
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
         });
 
         // Attach the portal to the overlay
-        this._eventPanelOverlayRef.attach(this._eventPanelTemplatePortal);
+        overlayRef.attach(templatePortal);
 
         // Mark for check
         this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Close the event panel
-     *
-     * @private
-     */
-    private _closeEventPanel(): void
-    {
-        // If template portal exists and attached...
-        if ( this._eventPanelTemplatePortal && this._eventPanelTemplatePortal.isAttached )
-        {
-            // Detach it
-            this._eventPanelTemplatePortal.detach();
-        }
-
-        // If overlay exists and attached...
-        if ( this._eventPanelOverlayRef && this._eventPanelOverlayRef.hasAttached() )
-        {
-            // Detach it
-            this._eventPanelOverlayRef.detach();
-        }
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Handle the calendar event so we can show it on the event form
-     *
-     * @private
-     */
-    private _handleCalendarEvent(calendarEvent): void
-    {
-        // Find the event and clone it
-        const event: any = _.cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
-
-        // Create the range object for date range picker
-        event.range = {
-            start: moment(event.start).toISOString(),
-            end  : moment(event.end).toISOString()
-        };
-
-        // Fill the event form with the form event
-        this.eventForm.patchValue(event);
-    }
-
-    /**
-     * Update events visibility
-     */
-    private _updateEventsVisibility(): void
-    {
-        // Return if events empty
-        if ( !this.events || !this.events.length )
-        {
-            return;
-        }
-
-        // Clone the events so when we update the main
-        // events object, FullCalendar can detect the changes
-        const events = _.cloneDeep(this.events);
-
-        // Go through all calendars...
-        this.calendars.forEach((calendar) => {
-
-            // Go through calendar's events
-            events.filter((event) => event.calendarId === calendar.id).forEach((event) => {
-
-                // Add or remove 'hidden' class depending on the calendar's visibility
-                if ( calendar.visible )
-                {
-                    event.classNames = event.classNames.filter((className) => className !== 'hidden');
-                }
-                else
-                {
-                    event.classNames.push('hidden');
-                }
-            });
-        });
-
-        // Update the events
-        this.events = events;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -383,22 +292,18 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Toggles the calendar visibility
-     * Invisible calendar's events won't be rendered on the FullCalendar
+     * Get calendar by id
      *
-     * @param calendar
+     * @param id
      */
-    toggleCalendarVisibility(calendar): void
+    getCalendar(id): Calendar
     {
-        // Toggle the calendar's visibility
-        calendar.visible = !calendar.visible;
+        if ( !id )
+        {
+            return;
+        }
 
-        // Toggle the visibility
-        this._calendarService.updateCalendar(calendar.id, calendar).subscribe(() => {
-
-            // Update all events' visibility
-            this._updateEventsVisibility();
-        });
+        return this.calendars.find((calendar) => calendar.id === id);
     }
 
     /**
@@ -496,6 +401,38 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Open the event panel
         this._openEventPanel(calendarEvent);
+    }
+
+    /**
+     * On event render
+     *
+     * @param calendarEvent
+     */
+    onEventRender(calendarEvent): void
+    {
+        // Get event's calendar
+        const calendar = this.calendars.find((item) => item.id === calendarEvent.event.extendedProps.calendarId);
+
+        // Set the event's background color
+        calendarEvent.el.style.backgroundColor = calendar.color;
+
+        // Set the event's visibility
+        calendarEvent.el.style.display = calendar.visible ? 'flex' : 'none';
+    }
+
+    /**
+     * Update the calendar
+     *
+     * @param calendar
+     */
+    updateCalendar(calendar): void
+    {
+        // Update the calendar on the server
+        this._calendarService.updateCalendar(calendar.id, calendar).subscribe(() => {
+
+            // Re-render the events
+            this._fullCalendarApi.rerenderEvents();
+        });
     }
 
     /**

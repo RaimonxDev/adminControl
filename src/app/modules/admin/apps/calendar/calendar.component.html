@@ -11,8 +11,8 @@
             <div class="calendars">
                 <ng-container *ngFor="let calendar of calendars">
                     <mat-checkbox [value]="calendar.id"
-                                  [checked]="calendar.visible"
-                                  (change)="toggleCalendarVisibility(calendar)">
+                                  [(ngModel)]="calendar.visible"
+                                  (change)="updateCalendar(calendar)">
                         {{calendar.title}}
                     </mat-checkbox>
                 </ng-container>
@@ -83,6 +83,7 @@
                                    [handleWindowResize]="false"
                                    (dateClick)="onDateClick($event)"
                                    (eventClick)="onEventClick($event)"
+                                   (eventRender)="onEventRender($event)"
                                    #fullCalendar></full-calendar>
 
                 </div>
@@ -93,23 +94,79 @@
                     <form [formGroup]="eventForm"
                           novalidate>
 
-                        <mat-form-field class="title asm-mat asm-mat-no-label"
-                                        [appearance]="'standard'">
-                            <input matInput
-                                   [formControlName]="'title'"
-                                   [placeholder]="'Event title'">
-                            <mat-error>This field is required</mat-error>
-                        </mat-form-field>
+                        <div class="row title">
 
-                        <asm-date-range [formControlName]="'range'"
-                                        [timeRange]="!eventForm.get('allDay').value"
-                                        [timeFormat]="settings.timeFormat"></asm-date-range>
+                            <mat-icon>edit</mat-icon>
 
-                        <mat-checkbox class="all-day"
-                                      [color]="'primary'"
-                                      [formControlName]="'allDay'">
-                            All day
-                        </mat-checkbox>
+                            <mat-form-field class="field asm-mat asm-mat-no-label"
+                                            [appearance]="'standard'">
+                                <input matInput
+                                       [formControlName]="'title'"
+                                       [placeholder]="'Event title'">
+                                <mat-error>This field is required</mat-error>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div class="row dates">
+
+                            <mat-icon>date_range</mat-icon>
+
+                            <div class="field">
+
+                                <asm-date-range [formControlName]="'range'"
+                                                [dateFormat]="settings.dateFormat"
+                                                [timeRange]="!eventForm.get('allDay').value"
+                                                [timeFormat]="settings.timeFormat"></asm-date-range>
+
+                                <mat-checkbox [color]="'primary'"
+                                              [formControlName]="'allDay'">
+                                    All day
+                                </mat-checkbox>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row calendar">
+
+                            <mat-icon>event</mat-icon>
+
+                            <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
+                                            [appearance]="'fill'">
+                                <mat-select [formControlName]="'calendarId'"
+                                            [panelClass]="'calendar-event-form-calendar-selector'"
+                                            (change)="$event.stopImmediatePropagation()">
+                                    <mat-select-trigger>
+                                        <span class="calendar-color"
+                                              [style.backgroundColor]="getCalendar(eventForm.get('calendarId').value)?.color"></span>
+                                        <span class="calendar-title">{{getCalendar(eventForm.get('calendarId').value)?.title}}</span>
+                                    </mat-select-trigger>
+                                    <mat-option *ngFor="let calendar of calendars"
+                                                [value]="calendar.id">
+                                        <span class="calendar-color"
+                                              [style.backgroundColor]="calendar.color"></span>
+                                        <span class="calendar-title">{{calendar.title}}</span>
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div class="row description">
+
+                            <mat-icon>notes</mat-icon>
+
+                            <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
+                                            [appearance]="'fill'">
+                                <textarea matInput
+                                          cdkTextareaAutosize
+                                          [formControlName]="'description'"
+                                          [placeholder]="'Event description'">
+                                </textarea>
+                            </mat-form-field>
+
+                        </div>
 
                         <button class="save"
                                 mat-flat-button

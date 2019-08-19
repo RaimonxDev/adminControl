@@ -22,7 +22,7 @@ export interface CalendarEvent
 
 export interface CalendarSettings
 {
-    dateFormat: 'DD/MM/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD';
+    dateFormat: 'DD/MM/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD' | 'll';
     timeFormat: '12' | '24';
     startWeekOn: 6 | 0 | 1;
 }
