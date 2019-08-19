@@ -9,8 +9,8 @@
 @import 'utilities/theming';
 @import 'utilities/breakpoints';
 @import 'utilities/colors';
+@import 'utilities/elevations';
 @import 'utilities/icons';
-@import 'utilities/shadows';
 
 // 3. Themes definition file that includes $asm-themes map
 @import 'src/themes';
