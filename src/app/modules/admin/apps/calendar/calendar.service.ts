@@ -123,13 +123,13 @@ export class CalendarService
     getEvents(start, end, replace = false): Observable<CalendarEvent[]>
     {
         // Set the new start date for loaded events
-        if ( !this._loadedEventsRange.start || moment(start).isBefore(moment(this._loadedEventsRange.start)) )
+        if ( replace || !this._loadedEventsRange.start || moment(start).isBefore(moment(this._loadedEventsRange.start)) )
         {
             this._loadedEventsRange.start = start;
         }
 
         // Set the new end date for loaded events
-        if ( !this._loadedEventsRange.end || moment(end).isAfter(moment(this._loadedEventsRange.end)) )
+        if ( replace || !this._loadedEventsRange.end || moment(end).isAfter(moment(this._loadedEventsRange.end)) )
         {
             this._loadedEventsRange.end = end;
         }
