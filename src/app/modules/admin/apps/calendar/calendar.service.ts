@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import * as moment from 'moment';
-import { Calendar, CalendarEvent } from 'app/modules/admin/apps/calendar/calendar.type';
+import { Calendar, CalendarEvent, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
 
 @Injectable({
     providedIn: 'root'
@@ -15,6 +15,7 @@ export class CalendarService
     private _events: BehaviorSubject<CalendarEvent[] | null>;
     private _loadedEventsRange: { start: string, end: string };
     private readonly _numberOfDaysToPrefetch = 60;
+    private _settings: BehaviorSubject<CalendarSettings | null>;
 
     /**
      * Constructor
@@ -32,6 +33,7 @@ export class CalendarService
             start: '',
             end  : ''
         };
+        this._settings = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -54,6 +56,14 @@ export class CalendarService
         return this._events.asObservable();
     }
 
+    /**
+     * Getter for settings
+     */
+    get settings$(): Observable<CalendarSettings>
+    {
+        return this._settings.asObservable();
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -71,9 +81,46 @@ export class CalendarService
     }
 
     /**
-     * Get events
+     * Update calendar
+     *
+     * @param id
+     * @param calendar
      */
-    getEvents(start, end): Observable<CalendarEvent[]>
+    updateCalendar(id, calendar): Observable<Calendar>
+    {
+        return this.calendars$
+                   .pipe(
+                       take(1),
+                       switchMap(calendars => this._httpClient.patch<Calendar>('api/apps/calendar/calendars', {
+                           id,
+                           calendar
+                       }).pipe(
+                           map((updatedCalendar) => {
+
+                               // Find the index of the updated calendar
+                               const index = calendars.findIndex(item => item.id === id);
+
+                               // Update the calendar
+                               calendars[index] = updatedCalendar;
+
+                               // Update the calendars
+                               this._calendars.next(calendars);
+
+                               // Return the updated calendar
+                               return updatedCalendar;
+                           })
+                       ))
+                   );
+    }
+
+    /**
+     * Get events
+     *
+     * @param start
+     * @param end
+     * @param replace
+     */
+    getEvents(start, end, replace = false): Observable<CalendarEvent[]>
     {
         // Set the new start date for loaded events
         if ( !this._loadedEventsRange.start || moment(start).isBefore(moment(this._loadedEventsRange.start)) )
@@ -101,8 +148,18 @@ export class CalendarService
                     // If events is null, replace it with an empty array
                     events = events || [];
 
-                    // Execute the observable
-                    this._events.next([...events, ...response]);
+                    // If replace...
+                    if ( replace )
+                    {
+                        // Execute the observable with the response replacing the events object
+                        this._events.next(response);
+                    }
+                    // Otherwise...
+                    else
+                    {
+                        // Execute the observable by appending the response to the current events
+                        this._events.next([...events, ...response]);
+                    }
 
                     // Return the response
                     return response;
@@ -193,6 +250,41 @@ export class CalendarService
 
                                // Return the updated event
                                return updatedEvent;
+                           })
+                       ))
+                   );
+    }
+
+    /**
+     * Get settings
+     */
+    getSettings(): Observable<CalendarSettings>
+    {
+        return this._httpClient.get<CalendarSettings>('api/apps/calendar/settings').pipe(
+            tap((response) => {
+                this._settings.next(response);
+            })
+        );
+    }
+
+    /**
+     * Update settings
+     */
+    updateSettings(settings): Observable<CalendarSettings>
+    {
+        return this.events$
+                   .pipe(
+                       take(1),
+                       switchMap(events => this._httpClient.patch<CalendarSettings>('api/apps/calendar/settings', {
+                           settings
+                       }).pipe(
+                           map((updatedSettings) => {
+
+                               // Update the settings
+                               this._settings.next(settings);
+
+                               // Return the updated settings
+                               return updatedSettings;
                            })
                        ))
                    );

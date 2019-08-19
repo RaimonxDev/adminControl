@@ -3,19 +3,22 @@ import * as moment from 'moment';
 /* tslint:disable:max-line-length */
 export const calendars = [
     {
-        id   : '1a470c8e-40ed-4c2d-b590-a4f1f6ead6cc',
-        title: 'Personal',
-        color: 'blue'
+        id     : '1a470c8e-40ed-4c2d-b590-a4f1f6ead6cc',
+        title  : 'Personal',
+        color  : '#4299E1',
+        visible: true
     },
     {
-        id   : '5dab5f7b-757a-4467-ace1-305fe07b11fe',
-        title: 'Work',
-        color: 'purple'
+        id     : '5dab5f7b-757a-4467-ace1-305fe07b11fe',
+        title  : 'Work',
+        color  : '#9F7AEA',
+        visible: false
     },
     {
-        id   : '09887870-f85a-40eb-8171-1b13d7a7f529',
-        title: 'Appointments',
-        color: 'pink'
+        id     : '09887870-f85a-40eb-8171-1b13d7a7f529',
+        title  : 'Appointments',
+        color  : '#ED64A6',
+        visible: true
     }
 ];
 export const events = [
@@ -29,6 +32,7 @@ export const events = [
         start      : moment().hour(9).minute(0).second(0).toISOString(), // Today 09:00
         end        : moment().add(1, 'day').hour(14).minute(0).second(0).toISOString(), // Tomorrow 14:00
         allDay     : false,
+        classNames : [],
         editable   : true
     },
     {
@@ -40,6 +44,7 @@ export const events = [
         start      : moment().month(5).date(10).hour(18).minute(0).second(0).toISOString(), // 10th of the current month at 18:00
         end        : moment().month(5).date(10).hour(20).minute(0).second(0).toISOString(), // 10th of the current month at 20:00
         allDay     : false,
+        classNames : [],
         editable   : true
     },
     {
@@ -51,6 +56,7 @@ export const events = [
         start      : moment().date(21).hour(12).minute(0).second(0).toISOString(), // 21st of the current month at noon
         end        : moment().date(21).hour(14).minute(0).second(0).toISOString(), // 21st of the current month at 14:00
         allDay     : false,
+        classNames : [],
         editable   : true
     },
     // Work
@@ -63,6 +69,7 @@ export const events = [
         start      : moment().date(19).hour(15).minute(0).second(0).toISOString(), // 19th of the current month at 15:00
         end        : moment().date(19).hour(17).minute(30).second(0).toISOString(), // 19th of the current month at 17:30
         allDay     : false,
+        classNames : [],
         editable   : true
     },
     {
@@ -74,6 +81,7 @@ export const events = [
         start      : moment().date(8).hour(11).minute(30).second(0).toISOString(), // 8th of the current month at 11:30
         end        : moment().date(8).hour(12).minute(45).second(0).toISOString(), // 8th of the current month at 12:45
         allDay     : false,
+        classNames : [],
         editable   : true
     }
 ];
@@ -93,6 +101,7 @@ export const recurringEvents = [
             bymonthday: 8
         },
         duration       : null,
+        classNames     : [],
         editable       : true,
         generatedEvents: {
             start: null,
@@ -119,6 +128,7 @@ export const recurringEvents = [
             bysecond : 0
         },
         duration       : '01:30', // 1 hour 30 minutes
+        classNames     : [],
         editable       : true,
         generatedEvents: {
             start: null,
@@ -143,6 +153,7 @@ export const recurringEvents = [
             bysecond : 0
         },
         duration       : '02:00', // 2 hours
+        classNames     : [],
         editable       : true,
         generatedEvents: {
             start: null,
@@ -169,6 +180,7 @@ export const recurringEvents = [
             bysecond : 0
         },
         duration       : '02:30', // 2 hours 30 minutes
+        classNames     : [],
         editable       : true,
         generatedEvents: {
             start: null,
@@ -176,3 +188,8 @@ export const recurringEvents = [
         }
     }
 ];
+export const settings = {
+    dateFormat : 'DD/MM/YYYY', // 31/12/2019
+    timeFormat : '24', // 24-hour format
+    startWeekOn: 1 // Monday
+};

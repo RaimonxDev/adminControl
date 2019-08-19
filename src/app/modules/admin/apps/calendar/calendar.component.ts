@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
@@ -16,14 +16,15 @@ import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
-import { Calendar, CalendarEvent } from 'app/modules/admin/apps/calendar/calendar.type';
+import { Calendar, CalendarEvent, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 
 @Component({
-    selector     : 'calendar',
-    templateUrl  : './calendar.component.html',
-    styleUrls    : ['./calendar.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'calendar',
+    templateUrl    : './calendar.component.html',
+    styleUrls      : ['./calendar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation  : ViewEncapsulation.None
 })
 export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 {
@@ -32,8 +33,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;
     eventForm: FormGroup;
+    eventTimeFormat: any;
     events: CalendarEvent[];
+    settings: CalendarSettings;
     view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth';
+    viewTitle: string;
 
     // Private
     private _eventPanelOverlayRef: OverlayRef;
@@ -99,6 +103,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             end        : [null],
             range      : [null],
             allDay     : [true],
+            classNames : [[]],
             editable   : [true]
         });
 
@@ -106,7 +111,12 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this._calendarService.calendars$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((calendars) => {
+
+                // Store the calendars
                 this.calendars = calendars;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get events
@@ -118,7 +128,28 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 // that the FullCalendar can trigger a re-render.
                 this.events = _.cloneDeep(events);
 
-                console.log(this.events);
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
+
+        // Get settings
+        this._calendarService.settings$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((settings) => {
+
+                // Store the settings
+                this.settings = settings;
+
+                // Set the FullCalendar event time format based on the time format setting
+                this.eventTimeFormat = {
+                    hour    : settings.timeFormat === '12' ? 'numeric' : '2-digit',
+                    hour12  : settings.timeFormat === '12',
+                    minute  : '2-digit',
+                    meridiem: settings.timeFormat === '12' ? 'short' : false
+                };
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Subscribe to media changes
@@ -135,8 +166,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 else
                 {
                     this.drawerMode = 'side';
-                    this.drawerOpened = false;
+                    this.drawerOpened = true;
                 }
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
     }
 
@@ -148,13 +182,16 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get the full calendar API
         this._fullCalendarApi = this._fullCalendar.getApi();
 
+        // Get the current view's title
+        this.viewTitle = this._fullCalendarApi.view.title;
+
         // Get the view's current start and end dates, add/subtract
         // 60 days to create a ~150 days period to fetch the data for
         const start = moment(this._fullCalendarApi.view.currentStart).subtract(60, 'days').toISOString();
         const end = moment(this._fullCalendarApi.view.currentEnd).add(60, 'days').toISOString();
 
         // Get events
-        this._calendarService.getEvents(start, end).subscribe();
+        this._calendarService.getEvents(start, end, true).subscribe();
     }
 
     /**
@@ -254,6 +291,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Attach the portal to the overlay
         this._eventPanelOverlayRef.attach(this._eventPanelTemplatePortal);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -276,6 +316,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             // Detach it
             this._eventPanelOverlayRef.detach();
         }
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -298,9 +341,65 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.eventForm.patchValue(event);
     }
 
+    /**
+     * Update events visibility
+     */
+    private _updateEventsVisibility(): void
+    {
+        // Return if events empty
+        if ( !this.events || !this.events.length )
+        {
+            return;
+        }
+
+        // Clone the events so when we update the main
+        // events object, FullCalendar can detect the changes
+        const events = _.cloneDeep(this.events);
+
+        // Go through all calendars...
+        this.calendars.forEach((calendar) => {
+
+            // Go through calendar's events
+            events.filter((event) => event.calendarId === calendar.id).forEach((event) => {
+
+                // Add or remove 'hidden' class depending on the calendar's visibility
+                if ( calendar.visible )
+                {
+                    event.classNames = event.classNames.filter((className) => className !== 'hidden');
+                }
+                else
+                {
+                    event.classNames.push('hidden');
+                }
+            });
+        });
+
+        // Update the events
+        this.events = events;
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggles the calendar visibility
+     * Invisible calendar's events won't be rendered on the FullCalendar
+     *
+     * @param calendar
+     */
+    toggleCalendarVisibility(calendar): void
+    {
+        // Toggle the calendar's visibility
+        calendar.visible = !calendar.visible;
+
+        // Toggle the visibility
+        this._calendarService.updateCalendar(calendar.id, calendar).subscribe(() => {
+
+            // Update all events' visibility
+            this._updateEventsVisibility();
+        });
+    }
 
     /**
      * Change the calendar view
@@ -317,6 +416,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         {
             // Set the view
             this._fullCalendarApi.changeView(view);
+
+            // Update the view title
+            this.viewTitle = this._fullCalendarApi.view.title;
         }
     }
 
@@ -327,6 +429,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Go to previous stop
         this._fullCalendarApi.prev();
+
+        // Update the view title
+        this.viewTitle = this._fullCalendarApi.view.title;
 
         // Get the view's current start date
         const start = moment(this._fullCalendarApi.view.currentStart).toISOString();
@@ -342,6 +447,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Go to today
         this._fullCalendarApi.today();
+
+        // Update the view title
+        this.viewTitle = this._fullCalendarApi.view.title;
     }
 
     /**
@@ -351,6 +459,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Go to next stop
         this._fullCalendarApi.next();
+
+        // Update the view title
+        this.viewTitle = this._fullCalendarApi.view.title;
 
         // Get the view's current end date
         const end = moment(this._fullCalendarApi.view.currentEnd).toISOString();

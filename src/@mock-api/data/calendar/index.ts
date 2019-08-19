@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { RRule } from 'rrule';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { calendars as calendarsData, events as eventsData, recurringEvents as recurringEventsData } from '@mock-api/data/calendar/data';
+import { calendars as calendarsData, events as eventsData, recurringEvents as recurringEventsData, settings as settingsData } from '@mock-api/data/calendar/data';
 
 @Injectable({
     providedIn: 'root'
@@ -15,6 +15,7 @@ export class MockCalendarApi
     private _calendars: any[];
     private _events: any[];
     private _recurringEvents: any[];
+    private _settings: any;
 
     /**
      * Constructor
@@ -29,6 +30,7 @@ export class MockCalendarApi
         this._calendars = calendarsData;
         this._events = eventsData;
         this._recurringEvents = recurringEventsData;
+        this._settings = settingsData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -53,6 +55,39 @@ export class MockCalendarApi
                 return [
                     200,
                     calendars
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Calendars - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/apps/calendar/calendars')
+            .reply((request) => {
+
+                // Get the id and calendar
+                const id = request.body.id;
+                const calendar = _.cloneDeep(request.body.calendar);
+
+                // Prepare the updated calendar
+                let updatedCalendar = null;
+
+                // Find the calendar and update it
+                this._calendars.forEach((item, index, calendars) => {
+
+                    if ( item.id === id )
+                    {
+                        // Update the calendar
+                        calendars[index] = _.assign({}, calendars[index], calendar);
+
+                        // Store the updated calendar
+                        updatedCalendar = calendars[index];
+                    }
+                });
+
+                return [
+                    200,
+                    updatedCalendar
                 ];
             });
 
@@ -157,6 +192,7 @@ export class MockCalendarApi
                         start      : null,
                         end        : null,
                         allDay     : recurringEvent.allDay,
+                        classNames : recurringEvent.classNames,
                         editable   : recurringEvent.editable
                     };
 
@@ -240,6 +276,41 @@ export class MockCalendarApi
                 return [
                     200,
                     updatedEvent
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Settings - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/calendar/settings')
+            .reply(() => {
+
+                // Clone the settings
+                const settings = _.cloneDeep(this._settings);
+
+                return [
+                    200,
+                    settings
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Settings - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/apps/calendar/settings')
+            .reply((request) => {
+
+                // Get the settings
+                const settings = _.cloneDeep(request.body.settings);
+
+                // Store the updated settings
+                this._settings = settings;
+
+                return [
+                    200,
+                    settings
                 ];
             });
     }

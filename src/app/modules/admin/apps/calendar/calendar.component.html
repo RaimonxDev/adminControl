@@ -8,7 +8,15 @@
                     [mode]="drawerMode"
                     [opened]="drawerOpened">
 
-            Sidebar
+            <div class="calendars">
+                <ng-container *ngFor="let calendar of calendars">
+                    <mat-checkbox [value]="calendar.id"
+                                  [checked]="calendar.visible"
+                                  (change)="toggleCalendarVisibility(calendar)">
+                        {{calendar.title}}
+                    </mat-checkbox>
+                </ng-container>
+            </div>
 
         </mat-drawer>
 
@@ -17,44 +25,67 @@
             <!-- Main -->
             <div class="main">
 
-                <mat-button-toggle-group [name]="'view'"
-                                         (change)="changeView(viewChanger.value)"
-                                         [value]="view"
-                                         #viewChanger="matButtonToggleGroup">
-                    <mat-button-toggle [value]="'dayGridMonth'">Month</mat-button-toggle>
-                    <mat-button-toggle [value]="'timeGridWeek'">Week</mat-button-toggle>
-                    <mat-button-toggle [value]="'timeGridDay'">Day</mat-button-toggle>
-                    <mat-button-toggle [value]="'listMonth'">Schedule</mat-button-toggle>
-                </mat-button-toggle-group>
+                <div class="header">
 
-                <button mat-flat-button
-                        [color]="'primary'"
-                        (click)="previous()">
-                    Previous
-                </button>
+                    <button class="today"
+                            mat-stroked-button
+                            (click)="today()">
+                        Today
+                    </button>
 
-                <button mat-flat-button
-                        (click)="today()">
-                    Today
-                </button>
+                    <button class="previous"
+                            mat-icon-button
+                            (click)="previous()">
+                        <mat-icon>chevron_left</mat-icon>
+                    </button>
 
-                <button mat-flat-button
-                        [color]="'primary'"
-                        (click)="next()">
-                    Next
-                </button>
+                    <button class="next"
+                            mat-icon-button
+                            (click)="next()">
+                        <mat-icon>chevron_right</mat-icon>
+                    </button>
 
-                <!-- Month view -->
-                <full-calendar [defaultView]="view"
-                               [events]="events"
-                               [firstDay]="1"
-                               [fixedWeekCount]="false"
-                               [height]="'parent'"
-                               [plugins]="calendarPlugins"
-                               [windowResizeDelay]="15"
-                               (dateClick)="onDateClick($event)"
-                               (eventClick)="onEventClick($event)"
-                               #fullCalendar></full-calendar>
+                    <h4 class="title">
+                        {{viewTitle}}
+                    </h4>
+
+                    <a class="settings"
+                       [routerLink]="['settings']"
+                       mat-icon-button>
+                        <mat-icon>settings</mat-icon>
+                    </a>
+
+                    <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript view-changer"
+                                    [appearance]="'outline'">
+                        <mat-select (selectionChange)="changeView(viewChanger.value)"
+                                    [value]="view"
+                                    #viewChanger="matSelect">
+                            <mat-option [value]="'dayGridMonth'">Month</mat-option>
+                            <mat-option [value]="'timeGridWeek'">Week</mat-option>
+                            <mat-option [value]="'timeGridDay'">Day</mat-option>
+                            <mat-option [value]="'listMonth'">Schedule</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="calendar">
+
+                    <!-- Month view -->
+                    <full-calendar [defaultView]="view"
+                                   [events]="events"
+                                   [eventTimeFormat]="eventTimeFormat"
+                                   [firstDay]="settings.startWeekOn"
+                                   [fixedWeekCount]="false"
+                                   [header]="false"
+                                   [height]="'parent'"
+                                   [plugins]="calendarPlugins"
+                                   [handleWindowResize]="false"
+                                   (dateClick)="onDateClick($event)"
+                                   (eventClick)="onEventClick($event)"
+                                   #fullCalendar></full-calendar>
+
+                </div>
 
                 <!-- Event panel -->
                 <ng-template #eventPanel>
@@ -62,7 +93,7 @@
                     <form [formGroup]="eventForm"
                           novalidate>
 
-                        <mat-form-field class="asm-mat"
+                        <mat-form-field class="title asm-mat asm-mat-no-label"
                                         [appearance]="'standard'">
                             <input matInput
                                    [formControlName]="'title'"
@@ -71,14 +102,17 @@
                         </mat-form-field>
 
                         <asm-date-range [formControlName]="'range'"
-                                        [timeRange]="!eventForm.get('allDay').value"></asm-date-range>
+                                        [timeRange]="!eventForm.get('allDay').value"
+                                        [timeFormat]="settings.timeFormat"></asm-date-range>
 
-                        <mat-checkbox [formControlName]="'allDay'"
-                                      color="primary">
+                        <mat-checkbox class="all-day"
+                                      [color]="'primary'"
+                                      [formControlName]="'allDay'">
                             All day
                         </mat-checkbox>
 
-                        <button mat-flat-button
+                        <button class="save"
+                                mat-flat-button
                                 [disabled]="eventForm.pristine || eventForm.invalid"
                                 [color]="'primary'"
                                 (click)="updateEvent()">
