@@ -1,9 +1,12 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Overlay } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
 import { MatCalendarCellCssClasses, MatMonthView } from '@angular/material/datepicker';
 import { Subject } from 'rxjs';
 import * as moment from 'moment';
 import { Moment } from 'moment';
+import * as _ from 'lodash';
 
 @Component({
     selector     : 'asm-date-range',
@@ -34,12 +37,23 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     @HostBinding('class.asm-date-range')
     private _defaultClassNames;
 
-    @ViewChild('matMonthView1', {static: true})
+    @ViewChild('matMonthView1', {static: false})
     private _matMonthView1: MatMonthView<any>;
 
-    @ViewChild('matMonthView2', {static: true})
+    @ViewChild('matMonthView2', {static: false})
     private _matMonthView2: MatMonthView<any>;
 
+    @ViewChild('pickerPanelOrigin', {
+        static: false,
+        read  : ElementRef
+    })
+    private _pickerPanelOrigin: ElementRef;
+
+    @ViewChild('pickerPanel', {static: false})
+    private _pickerPanel: TemplateRef<any>;
+
+    private _appearance: 'standard' | 'outline' | 'fill';
+    private _dateFormat: string;
     private _onChange: (value: any) => void;
     private _onTouched: (value: any) => void;
     private _programmaticChange: boolean;
@@ -54,12 +68,16 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
      *
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
+     * @param {Overlay} _overlay
      * @param {Renderer2} _renderer2
+     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
-        private _renderer2: Renderer2
+        private _overlay: Overlay,
+        private _renderer2: Renderer2,
+        private _viewContainerRef: ViewContainerRef
     )
     {
         // Set the private defaults
@@ -76,10 +94,12 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
+        this.appearance = 'standard';
         this.activeDates = {
             month1: null,
             month2: null
         };
+        this.dateFormat = 'DD/MM/YYYY';
         this.rangeChanged = new EventEmitter();
         this.setWhichDate = 'start';
         this.timeFormat = '12';
@@ -94,12 +114,58 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter for timeFormat input
+     * Setter and getter for appearance input
      *
      * @param value
      */
     @Input()
-    set timeFormat(value: '12' | '24')
+    set appearance(value: 'standard' | 'outline' | 'fill')
+    {
+        // Return, if the values are the same
+        if ( this._appearance === value )
+        {
+            return;
+        }
+
+        // Store the value
+        this._appearance = value;
+    }
+
+    get appearance(): 'standard' | 'outline' | 'fill'
+    {
+        return this._appearance;
+    }
+
+    /**
+     * Setter and getter for dateFormat input
+     *
+     * @param value
+     */
+    @Input()
+    set dateFormat(value: string)
+    {
+        // Return, if the values are the same
+        if ( this._dateFormat === value )
+        {
+            return;
+        }
+
+        // Store the value
+        this._dateFormat = value;
+    }
+
+    get dateFormat(): string
+    {
+        return this._dateFormat;
+    }
+
+    /**
+     * Setter and getter for timeFormat input
+     *
+     * @param value
+     */
+    @Input()
+    set timeFormat(value: string)
     {
         // Return, if the values are the same
         if ( this._timeFormat === value )
@@ -109,6 +175,11 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
         // Set format based on the time format input
         this._timeFormat = value === '12' ? 'hh:mmA' : 'HH:mm';
+    }
+
+    get timeFormat(): string
+    {
+        return this._timeFormat;
     }
 
     /**
@@ -145,7 +216,7 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     }
 
     /**
-     * Setter for range input
+     * Setter and getter for range input
      *
      * @param value
      */
@@ -291,6 +362,21 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         this._programmaticChange = false;
     }
 
+    get range(): any
+    {
+        // Clone the range start and end
+        const start = this._range.start.clone();
+        const end = this._range.end.clone();
+
+        // Build and return the range object
+        return {
+            startDate: start.clone().format(this.dateFormat),
+            startTime: this.timeRange ? start.clone().format(this.timeFormat) : null,
+            endDate  : end.clone().format(this.dateFormat),
+            endTime  : this.timeRange ? end.clone().format(this.timeFormat) : null
+        };
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Control Value Accessor
     // -----------------------------------------------------------------------------------------------------
@@ -407,6 +493,67 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the picker panel
+     *
+     * @private
+     */
+    openPickerPanel(): void
+    {
+        // Create the overlay
+        const overlayRef = this._overlay.create({
+            panelClass      : 'asm-date-range-panel',
+            backdropClass   : '',
+            hasBackdrop     : true,
+            scrollStrategy  : this._overlay.scrollStrategies.reposition(),
+            positionStrategy: this._overlay.position()
+                                  .flexibleConnectedTo(this._pickerPanelOrigin)
+                                  .withPositions([
+                                      {
+                                          originX : 'start',
+                                          originY : 'bottom',
+                                          overlayX: 'start',
+                                          overlayY: 'top',
+                                          offsetX : -24,
+                                          offsetY : 8
+                                      },
+                                      {
+                                          originX : 'start',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'bottom',
+                                          offsetX : -24,
+                                          offsetY : -8
+                                      }
+                                  ])
+        });
+
+        // Create a portal from the template
+        const templatePortal = new TemplatePortal(this._pickerPanel, this._viewContainerRef);
+
+        // On backdrop click
+        overlayRef.backdropClick().subscribe(() => {
+
+            // If template portal exists and attached...
+            if ( templatePortal && templatePortal.isAttached )
+            {
+                // Detach it
+                templatePortal.detach();
+            }
+
+            // If overlay exists and attached...
+            if ( overlayRef && overlayRef.hasAttached() )
+            {
+                // Detach it
+                overlayRef.detach();
+                overlayRef.dispose();
+            }
+        });
+
+        // Attach the portal to the overlay
+        overlayRef.attach(templatePortal);
+    }
 
     /**
      * Get month label
