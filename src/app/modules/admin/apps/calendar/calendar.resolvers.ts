@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
-import { Calendar, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
+import { Calendar, CalendarSettings, CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 
 @Injectable({
     providedIn: 'root'
@@ -65,5 +65,37 @@ export class CalendarSettingsResolver implements Resolve<any>
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CalendarSettings>
     {
         return this._calendarService.getSettings();
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class CalendarWeekdaysResolver implements Resolve<any>
+{
+    /**
+     * Constructor
+     *
+     * @param {CalendarService} _calendarService
+     */
+    constructor(
+        private _calendarService: CalendarService
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Resolver
+     *
+     * @param route
+     * @param state
+     */
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CalendarWeekday>
+    {
+        return this._calendarService.getWeekdays();
     }
 }

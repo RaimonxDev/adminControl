@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import * as moment from 'moment';
-import { Calendar, CalendarEvent, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
+import { Calendar, CalendarEvent, CalendarSettings, CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +16,7 @@ export class CalendarService
     private _loadedEventsRange: { start: string, end: string };
     private readonly _numberOfDaysToPrefetch = 60;
     private _settings: BehaviorSubject<CalendarSettings | null>;
+    private _weekdays: BehaviorSubject<CalendarWeekday | null>;
 
     /**
      * Constructor
@@ -34,6 +35,7 @@ export class CalendarService
             end  : ''
         };
         this._settings = new BehaviorSubject(null);
+        this._weekdays = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -62,6 +64,14 @@ export class CalendarService
     get settings$(): Observable<CalendarSettings>
     {
         return this._settings.asObservable();
+    }
+
+    /**
+     * Getter for weekdays
+     */
+    get weekdays$(): Observable<CalendarWeekday>
+    {
+        return this._weekdays.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -289,4 +299,17 @@ export class CalendarService
                        ))
                    );
     }
+
+    /**
+     * Get weekdays
+     */
+    getWeekdays(): Observable<CalendarWeekday>
+    {
+        return this._httpClient.get<CalendarWeekday>('api/apps/calendar/weekdays').pipe(
+            tap((response) => {
+                this._weekdays.next(response);
+            })
+        );
+    }
+
 }

@@ -3,6 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { MatDialog } from '@angular/material/dialog';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar as FullCalendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -16,8 +17,9 @@ import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
-import { Calendar, CalendarEvent, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
+import { CalendarCustomRecurrenceComponent } from 'app/modules/admin/apps/calendar/custom-recurrence/custom-recurrence.component';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
+import { Calendar, CalendarEvent, CalendarSettings, CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 
 @Component({
     selector       : 'calendar',
@@ -38,6 +40,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     settings: CalendarSettings;
     view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth';
     viewTitle: string;
+    weekdays: CalendarWeekday;
 
     // Private
     private _fullCalendarApi: FullCalendar;
@@ -57,6 +60,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {Document} _document
      * @param {FormBuilder} _formBuilder
+     * @param {MatDialog} _matDialog
      * @param {Overlay} _overlay
      * @param {ViewContainerRef} _viewContainerRef
      */
@@ -66,6 +70,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: Document,
         private _formBuilder: FormBuilder,
+        private _matDialog: MatDialog,
         private _overlay: Overlay,
         private _viewContainerRef: ViewContainerRef
     )
@@ -82,6 +87,26 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for event's recurrence status
+     */
+    get recurrenceStatus(): string
+    {
+        // Get the recurrence rules from event form
+        const recurrenceRules = this.eventForm.get('recurrenceRules').value;
+
+        // Return false, if there is no recurrence on the event
+        if ( !recurrenceRules )
+        {
+            return 'no-recurrence';
+        }
+
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
 
@@ -92,17 +117,17 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Create the event form
         this.eventForm = this._formBuilder.group({
-            id         : [''],
-            calendarId : [''],
-            ruleId     : [null],
-            title      : ['', Validators.required],
-            description: [''],
-            start      : [null],
-            end        : [null],
-            range      : [null],
-            allDay     : [true],
-            classNames : [[]],
-            editable   : [true]
+            id             : [''],
+            calendarId     : [''],
+            ruleId         : [null],
+            title          : ['', Validators.required],
+            description    : [''],
+            start          : [null],
+            end            : [null],
+            range          : [null],
+            allDay         : [true],
+            recurrenceRules: [null],
+            editable       : [true]
         });
 
         // Get calendars
@@ -145,6 +170,18 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                     minute  : '2-digit',
                     meridiem: settings.timeFormat === '12' ? 'short' : false
                 };
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
+
+        // Get weekdays
+        this._calendarService.weekdays$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((weekdays) => {
+
+                // Store the weekdays
+                this.weekdays = weekdays;
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
@@ -230,11 +267,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                                           offsetX : -8
                                       },
                                       {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'top',
-                                          offsetX : 8
+                                          originX : 'start',
+                                          originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'bottom',
+                                          offsetX : -8
                                       }
                                   ])
         });
@@ -453,5 +490,26 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             // Reset the form with the updated event
             this.eventForm.reset(updatedEvent);
         });
+    }
+
+    /**
+     * Open custom recurrence panel
+     */
+    openCustomRecurrenceDialog(): void
+    {
+        // Open the dialog
+        const dialogRef = this._matDialog.open(CalendarCustomRecurrenceComponent, {
+            panelClass: 'calendar-event-custom-recurrence-dialog',
+            data      : {
+                event   : this.eventForm.value,
+                settings: this.settings,
+                weekdays: this.weekdays
+            }
+        });
+
+        dialogRef.afterClosed()
+                 .subscribe(result => {
+                     console.log('Compose dialog was closed!');
+                 });
     }
 }

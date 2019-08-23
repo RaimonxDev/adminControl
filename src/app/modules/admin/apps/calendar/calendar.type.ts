@@ -13,10 +13,11 @@ export interface CalendarEvent
     ruleId: string | null;
     title: string;
     description: string;
-    start?: string | null;
-    end?: string | null;
+    range: {
+        start: string | null;
+        end: string | null;
+    };
     allDay: boolean;
-    classNames: string[];
     editable: boolean;
 }
 
@@ -25,4 +26,11 @@ export interface CalendarSettings
     dateFormat: 'DD/MM/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD' | 'll';
     timeFormat: '12' | '24';
     startWeekOn: 6 | 0 | 1;
+}
+
+export interface CalendarWeekday
+{
+    abbr: string;
+    label: string;
+    value: string;
 }

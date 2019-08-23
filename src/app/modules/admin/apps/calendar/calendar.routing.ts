@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import { CalendarComponent } from 'app/modules/admin/apps/calendar/calendar.component';
 import { CalendarSettingsComponent } from 'app/modules/admin/apps/calendar/settings/settings.component';
-import { CalendarCalendarsResolver, CalendarSettingsResolver } from 'app/modules/admin/apps/calendar/calendar.resolvers';
+import { CalendarCalendarsResolver, CalendarSettingsResolver, CalendarWeekdaysResolver } from 'app/modules/admin/apps/calendar/calendar.resolvers';
 
 export const calendarRoutes: Route[] = [
     {
@@ -9,7 +9,8 @@ export const calendarRoutes: Route[] = [
         component: CalendarComponent,
         resolve  : {
             calendars: CalendarCalendarsResolver,
-            settings : CalendarSettingsResolver
+            settings : CalendarSettingsResolver,
+            weekdays : CalendarWeekdaysResolver
         }
     },
     {

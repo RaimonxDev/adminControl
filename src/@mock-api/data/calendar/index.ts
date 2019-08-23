@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { RRule } from 'rrule';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { calendars as calendarsData, events as eventsData, recurringEvents as recurringEventsData, settings as settingsData } from '@mock-api/data/calendar/data';
+import { calendars as calendarsData, events as eventsData, recurrenceRules as recurenceRulesData, settings as settingsData, weekdays as weekdaysData } from '@mock-api/data/calendar/data';
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +14,9 @@ export class MockCalendarApi
     // Private
     private _calendars: any[];
     private _events: any[];
-    private _recurringEvents: any[];
+    private _recurrenceRules: any[];
     private _settings: any;
+    private _weekdays: any;
 
     /**
      * Constructor
@@ -29,8 +30,9 @@ export class MockCalendarApi
         // Set the data
         this._calendars = calendarsData;
         this._events = eventsData;
-        this._recurringEvents = recurringEventsData;
+        this._recurrenceRules = recurenceRulesData;
         this._settings = settingsData;
+        this._weekdays = weekdaysData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -102,9 +104,9 @@ export class MockCalendarApi
                 const start = moment(request.params.get('start'));
                 const end = moment(request.params.get('end'));
 
-                // Clone the events and recurring events
+                // Clone the events and recurrence rules
                 const events = _.cloneDeep(this._events);
-                const recurringEvents = _.cloneDeep(this._recurringEvents);
+                const recurrenceRules = _.cloneDeep(this._recurrenceRules);
 
                 // Prepare the results
                 const results = [];
@@ -115,36 +117,43 @@ export class MockCalendarApi
                     // Only grab the event if it's within the range
                     if ( moment(event.start).isAfter(start) && moment(event.end).isBefore(end) )
                     {
+                        // If the event is generated from a rule, include that rule's 'rrule' object as recurrenceRule
+                        if ( event.ruleId )
+                        {
+                            event.recurrenceRules = this._recurrenceRules.find((recurringEvent) => recurringEvent.id === event.ruleId).rrule;
+                        }
+
+                        // Push the event into the results array
                         results.push(event);
                     }
                 });
 
-                // Go through the recurring event rules
-                recurringEvents.forEach((recurringEvent) => {
+                // Go through the recurrence rules...
+                recurrenceRules.forEach((recurrenceRule) => {
 
                     // Clone the event start and end dates so we can
                     // modify them per recurring event if needed
                     let eventStart = start.clone();
                     let eventEnd = end.clone();
 
-                    // If we generated events before from this recurring event...
-                    if ( recurringEvent.generatedEvents.start && recurringEvent.generatedEvents.end )
+                    // If we generated events from this recurring event...
+                    if ( recurrenceRule.generatedEvents.start && recurrenceRule.generatedEvents.end )
                     {
                         // Return, if the given start and end dates are in between the generated events' start and end dates
-                        if ( moment(recurringEvent.generatedEvents.start).isSameOrBefore(eventStart) && moment(recurringEvent.generatedEvents.end).isSameOrAfter(eventEnd) )
+                        if ( moment(recurrenceRule.generatedEvents.start).isSameOrBefore(eventStart) && moment(recurrenceRule.generatedEvents.end).isSameOrAfter(eventEnd) )
                         {
                             return;
                         }
 
                         // Push the start and end dates forward, if start date is after the generated events' start date
                         // and the end date is after the generated events' end date
-                        if ( moment(recurringEvent.generatedEvents.start).isBefore(eventStart) && moment(recurringEvent.generatedEvents.end).isBefore(eventEnd) )
+                        if ( moment(recurrenceRule.generatedEvents.start).isBefore(eventStart) && moment(recurrenceRule.generatedEvents.end).isBefore(eventEnd) )
                         {
                             // Get the duration in between the event start and end dates
                             const eventDuration = moment.duration(eventEnd.diff(eventStart));
 
                             // Push the event start to the generated events' end date
-                            eventStart = moment(recurringEvent.generatedEvents.end);
+                            eventStart = moment(recurrenceRule.generatedEvents.end);
 
                             // Push the event end using the new event start and duration
                             eventEnd = eventStart.clone().add(eventDuration);
@@ -152,13 +161,13 @@ export class MockCalendarApi
 
                         // Pull the start and end dates backward, if start date is before the generated events' start date
                         // and the end date is before the generated events' end date
-                        if ( moment(recurringEvent.generatedEvents.start).isAfter(eventStart) && moment(recurringEvent.generatedEvents.end).isAfter(eventEnd) )
+                        if ( moment(recurrenceRule.generatedEvents.start).isAfter(eventStart) && moment(recurrenceRule.generatedEvents.end).isAfter(eventEnd) )
                         {
                             // Get the duration in between the event start and end dates
                             const eventDuration = moment.duration(eventEnd.diff(eventStart));
 
                             // Pull the event end to the generated events' start date
-                            eventEnd = moment(recurringEvent.generatedEvents.start);
+                            eventEnd = moment(recurrenceRule.generatedEvents.start);
 
                             // Pull the event start using the new event end and duration
                             eventStart = eventEnd.clone().subtract(eventDuration);
@@ -166,7 +175,7 @@ export class MockCalendarApi
                     }
 
                     // Get the original recurring event and update the generatedEvents object if needed
-                    const originalRecurringEvent = this._recurringEvents.find((originalEvent) => originalEvent.id === recurringEvent.id);
+                    const originalRecurringEvent = this._recurrenceRules.find((originalEvent) => originalEvent.id === recurrenceRule.id);
 
                     if ( !originalRecurringEvent.generatedEvents.start || moment(originalRecurringEvent.generatedEvents.start).isAfter(moment(eventStart)) )
                     {
@@ -182,37 +191,40 @@ export class MockCalendarApi
                     const event = {
 
                         // Set a ruleId on the event so we don't lose the event's origin rule
-                        ruleId: recurringEvent.id,
+                        ruleId: recurrenceRule.id,
 
                         // Get the rest of the data
-                        id         : null,
-                        calendarId : recurringEvent.calendarId,
-                        title      : recurringEvent.title,
-                        description: recurringEvent.description,
-                        start      : null,
-                        end        : null,
-                        allDay     : recurringEvent.allDay,
-                        classNames : recurringEvent.classNames,
-                        editable   : recurringEvent.editable
+                        id             : null,
+                        calendarId     : recurrenceRule.calendarId,
+                        title          : recurrenceRule.title,
+                        description    : recurrenceRule.description,
+                        start          : null,
+                        end            : null,
+                        allDay         : recurrenceRule.allDay,
+                        classNames     : recurrenceRule.classNames,
+                        editable       : recurrenceRule.editable,
+                        recurrenceRules: _.cloneDeep(recurrenceRule.rrule)
                     };
 
                     // Set the frequency correctly
-                    recurringEvent.rrule.freq = RRule[recurringEvent.rrule.freq];
+                    recurrenceRule.rrule.freq = RRule[recurrenceRule.rrule.freq];
 
                     // Set the byweekday and wkst correctly if they are available
-                    if ( recurringEvent.rrule.byweekday )
+                    if ( recurrenceRule.rrule.byweekday )
                     {
-                        recurringEvent.rrule.byweekday = RRule[recurringEvent.rrule.byweekday];
+                        recurrenceRule.rrule.byweekday.forEach((value, index, array) => {
+                            array[index] = RRule[value];
+                        });
                     }
 
-                    if ( recurringEvent.rrule.wkst )
+                    if ( recurrenceRule.rrule.wkst )
                     {
-                        recurringEvent.rrule.wkst = RRule[recurringEvent.rrule.wkst];
+                        recurrenceRule.rrule.wkst = RRule[recurrenceRule.rrule.wkst];
                     }
 
                     // Create the rule set using RRule
                     const rule = new RRule({
-                        ...recurringEvent.rrule,
+                        ...recurrenceRule.rrule,
                         dtstart: eventStart.clone().toDate(),
                         until  : eventEnd.clone().toDate()
                     });
@@ -230,7 +242,7 @@ export class MockCalendarApi
                         newEvent.start = date.toISOString();
 
                         // Set the end date of the new event using the duration data
-                        newEvent.end = moment(date).add(moment.duration(recurringEvent.duration)).toISOString();
+                        newEvent.end = moment(date).add(moment.duration(recurrenceRule.duration)).toISOString();
 
                         // Push the new event to the results array
                         results.push(newEvent);
@@ -311,6 +323,22 @@ export class MockCalendarApi
                 return [
                     200,
                     settings
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Weekdays - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/calendar/weekdays')
+            .reply(() => {
+
+                // Clone the weekdays
+                const weekdays = _.cloneDeep(this._weekdays);
+
+                return [
+                    200,
+                    weekdays
                 ];
             });
     }

@@ -74,6 +74,7 @@
                     <!-- Month view -->
                     <full-calendar [defaultView]="view"
                                    [events]="events"
+                                   [eventLimit]="3"
                                    [eventTimeFormat]="eventTimeFormat"
                                    [firstDay]="settings.startWeekOn"
                                    [fixedWeekCount]="false"
@@ -94,6 +95,7 @@
                     <form [formGroup]="eventForm"
                           novalidate>
 
+                        <!-- Title -->
                         <div class="row title">
 
                             <mat-icon>edit</mat-icon>
@@ -108,6 +110,7 @@
 
                         </div>
 
+                        <!-- Dates -->
                         <div class="row dates">
 
                             <mat-icon>date_range</mat-icon>
@@ -128,6 +131,26 @@
 
                         </div>
 
+                        <!-- Recurrence -->
+                        <div class="row recurrence">
+
+                            <mat-icon class="mirror">cached</mat-icon>
+
+                            <div class="field"
+                                 (click)="openCustomRecurrenceDialog()"
+                                 #recurrencePanelOrigin>
+                                <div class="status"
+                                     [ngSwitch]="recurrenceStatus">
+                                    <span *ngSwitchCase="'no-recurrence'">Does not repeat</span>
+                                </div>
+                                <div class="mat-select-arrow-wrapper">
+                                    <div class="mat-select-arrow"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Calendar -->
                         <div class="row calendar">
 
                             <mat-icon>event</mat-icon>
@@ -135,7 +158,7 @@
                             <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                                             [appearance]="'fill'">
                                 <mat-select [formControlName]="'calendarId'"
-                                            [panelClass]="'calendar-event-form-calendar-selector'"
+                                            [panelClass]="'calendar-event-panel-calendar-selector'"
                                             (change)="$event.stopImmediatePropagation()">
                                     <mat-select-trigger>
                                         <span class="calendar-color"
@@ -153,6 +176,7 @@
 
                         </div>
 
+                        <!-- Description -->
                         <div class="row description">
 
                             <mat-icon>notes</mat-icon>
@@ -168,6 +192,7 @@
 
                         </div>
 
+                        <!-- Actions -->
                         <button class="save"
                                 mat-flat-button
                                 [disabled]="eventForm.pristine || eventForm.invalid"
