@@ -515,7 +515,6 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
                                           originY : 'bottom',
                                           overlayX: 'start',
                                           overlayY: 'top',
-                                          offsetX : -24,
                                           offsetY : 8
                                       },
                                       {
@@ -523,7 +522,6 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
                                           originY : 'top',
                                           overlayX: 'start',
                                           overlayY: 'bottom',
-                                          offsetX : -24,
                                           offsetY : -8
                                       }
                                   ])

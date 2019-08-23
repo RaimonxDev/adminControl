@@ -12,7 +12,7 @@
       novalidate>
 
     <!-- To -->
-    <mat-form-field class="to"
+    <mat-form-field class="to asm-mat asm-mat-no-underline"
                     [appearance]="'fill'">
         <mat-label>To</mat-label>
         <input matInput
@@ -33,7 +33,7 @@
     </mat-form-field>
 
     <!-- Cc -->
-    <mat-form-field class="cc"
+    <mat-form-field class="cc asm-mat asm-mat-no-underline"
                     *ngIf="copyFields.cc"
                     [appearance]="'fill'">
         <mat-label>Cc</mat-label>
@@ -42,7 +42,7 @@
     </mat-form-field>
 
     <!-- Bcc -->
-    <mat-form-field class="bcc"
+    <mat-form-field class="bcc asm-mat asm-mat-no-underline"
                     *ngIf="copyFields.bcc"
                     [appearance]="'fill'">
         <mat-label>Bcc</mat-label>
@@ -51,7 +51,7 @@
     </mat-form-field>
 
     <!-- Subject -->
-    <mat-form-field class="subject"
+    <mat-form-field class="subject asm-mat asm-mat-no-underline"
                     [appearance]="'fill'">
         <mat-label>Subject</mat-label>
         <input matInput
@@ -59,7 +59,7 @@
     </mat-form-field>
 
     <!-- Body -->
-    <mat-form-field class="body"
+    <mat-form-field class="body asm-mat asm-mat-no-underline"
                     [appearance]="'fill'">
         <mat-label>Message</mat-label>
         <textarea class="textarea"
@@ -117,6 +117,7 @@
             <button class="send-button"
                     mat-raised-button
                     [color]="'primary'"
+                    [disabled]="composeForm.pristine || composeForm.invalid"
                     (click)="send()">
                 <span>Send</span>
             </button>

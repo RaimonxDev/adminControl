@@ -227,15 +227,15 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         this.menuData = [
             ...this._foldersMenuData,
             {
-                type : 'spacer',
+                type: 'spacer'
             },
             ...this._filtersMenuData,
             {
-                type : 'spacer',
+                type: 'spacer'
             },
             ...this._labelsMenuData,
             {
-                type : 'spacer',
+                type: 'spacer'
             },
             ...this._otherMenuData
         ];
@@ -251,8 +251,9 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     openComposeDialog(): void
     {
         // Open the dialog
-        const dialogRef = this._matDialog.open(MailboxComposeComponent);
-        dialogRef.addPanelClass('mailbox-compose-dialog');
+        const dialogRef = this._matDialog.open(MailboxComposeComponent, {
+            panelClass: 'mailbox-compose-dialog'
+        });
 
         dialogRef.afterClosed()
                  .subscribe(result => {

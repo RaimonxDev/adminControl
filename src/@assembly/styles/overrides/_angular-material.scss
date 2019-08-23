@@ -93,6 +93,19 @@
 }
 
 // -----------------------------------------------------------------------------------------------------
+// @ Button Toggle
+// -----------------------------------------------------------------------------------------------------
+.mat-button-toggle-group {
+
+    &.mat-button-toggle-group-appearance-standard {
+
+        .mat-button-toggle + .mat-button-toggle {
+            background-clip: padding-box;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
 // @ Chip
 // -----------------------------------------------------------------------------------------------------
 .mat-chip {
@@ -493,11 +506,6 @@
                 .mat-form-field-suffix {
                     margin-left: 12px;
                 }
-
-                // Textarea
-                textarea {
-                    margin: 1.25em 0;
-                }
             }
 
             // Remove position absolute from the
@@ -563,6 +571,11 @@
                     .mat-form-field-infix {
                         border-top: 0;
                         padding: 0;
+
+                        // Textarea
+                        textarea {
+                            margin: 16px 0;
+                        }
 
                         .mat-form-field-label-wrapper {
                             display: none !important;
@@ -869,7 +882,6 @@ textarea.mat-input-element {
     // -----------------------------------------------------------------------------------------------------
     // @ Drawer
     // -----------------------------------------------------------------------------------------------------
-
     .mat-drawer-backdrop.mat-drawer-shown {
         @if ($is-dark) {
             background-color: asm-dark-elevation(4);

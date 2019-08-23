@@ -35,7 +35,7 @@ mailbox-compose {
         display: flex;
         flex: 1 1 auto;
         flex-direction: column;
-        padding: 16px 32px 32px 32px;
+        padding: 32px;
 
         .to {
 
@@ -70,6 +70,7 @@ mailbox-compose {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-top: 16px;
 
             .formatting {
                 margin-left: -12px;
@@ -123,12 +124,17 @@ mailbox-compose {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
-    $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
 
     mailbox-compose {
 
         .header {
-            background: map-get($background, background);
+            background: map-get($primary, default);
+            color: map-get($primary, default-contrast);
+
+            .mat-icon {
+                color: map-get($primary, default-contrast);
+            }
         }
     }
 }

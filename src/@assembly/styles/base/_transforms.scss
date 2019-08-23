@@ -1,0 +1,20 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Transforming helper classes
+// -----------------------------------------------------------------------------------------------------
+
+// Rotate
+@for $angle from 0 through 24 {
+
+    .rotate-#{$angle * 15} {
+        transform: rotate($angle * 15deg);
+    }
+
+    .rotate-cc-#{$angle * 15} {
+        transform: rotate(-$angle * 15deg);
+    }
+}
+
+// Mirror
+.mirror {
+    transform: scale(-1, 1);
+}
