@@ -115,11 +115,11 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
             }
         });
 
-        // If recurrence rules are available on the event a.k.a. if the event is
+        // If recurrence is available on the event a.k.a. if the event is
         // already a recurring event, patch the recurrence form with them
-        if ( this.data.event.recurrenceRules )
+        if ( this.data.event.recurrence )
         {
-            this.recurrenceForm.patchValue(this.data.event.recurrenceRules);
+            this.recurrenceForm.patchValue(this.data.event.recurrence);
         }
     }
 
@@ -144,26 +144,26 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
      */
     private _init(): void
     {
-        // Get the original recurrence rules
-        const recurrenceRules = this.data.event.recurrenceRules;
+        // Get the original recurrence
+        const recurrence = this.data.event.recurrence;
 
         // If recurrence rules are available on the
         // event a.k.a. if the event is a recurring event...
-        if ( recurrenceRules )
+        if ( recurrence )
         {
             // Check if recurrence happens on the nth weekday
-            if ( recurrenceRules.freq === 'MONTHLY' && recurrenceRules.byweekday && recurrenceRules.bysetpos )
+            if ( recurrence.freq === 'MONTHLY' && recurrence.byweekday && recurrence.bysetpos )
             {
                 this.monthlyRepeat = 'onNthWeekday';
             }
 
             // Check if until or count available
-            if ( recurrenceRules.until )
+            if ( recurrence.until )
             {
                 this.end = 'until';
             }
 
-            if ( recurrenceRules.count )
+            if ( recurrence.count )
             {
                 this.end = 'count';
             }
@@ -281,12 +281,29 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Save and close
+     * Done
      */
-    saveAndClose(): void
+    done(): void
     {
+        // Get the recurrence form values
+        const recurrenceForm = this.recurrenceForm.value;
+
+        // Prepare the base rules
+        let rules = {
+            freq    : recurrenceForm.freq,
+            interval: recurrenceForm.interval,
+            dtstart : recurrenceForm.dtstart
+        };
+
+        // Generate the rules that we will save to
+        // the database based on the frequency
+        if ( recurrenceForm.freq === 'DAILY' )
+        {
+
+        }
+
         // Close the dialog
-        this.matDialogRef.close();
+        // this.matDialogRef.close();
     }
 
     /**
@@ -294,6 +311,7 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
      */
     cancel(): void
     {
-
+        // Close the dialog
+        this.matDialogRef.close({canceled: true});
     }
 }

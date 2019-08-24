@@ -99,12 +99,20 @@
     </div>
 
     <!-- Actions -->
-    <button class="save"
-            mat-flat-button
-            [disabled]="recurrenceForm.pristine || recurrenceForm.invalid"
-            [color]="'primary'"
-            (click)="saveAndClose()">
-        Save
-    </button>
+    <div class="actions">
+        <button class="cancel"
+                mat-button
+                (click)="cancel()">
+            Cancel
+        </button>
+
+        <button class="save"
+                mat-button
+                [disabled]="recurrenceForm.invalid"
+                [color]="'primary'"
+                (click)="done()">
+            Done
+        </button>
+    </div>
 
 </form>

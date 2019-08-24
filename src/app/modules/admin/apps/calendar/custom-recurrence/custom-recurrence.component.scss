@@ -115,8 +115,10 @@ calendar-custom-recurrence {
             }
         }
 
-        .save {
-            margin-left: auto;
+        .actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
     }
 }

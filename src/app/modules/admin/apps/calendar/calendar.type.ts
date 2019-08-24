@@ -10,7 +10,7 @@ export interface CalendarEvent
 {
     id: string;
     calendarId: string;
-    ruleId: string | null;
+    recurringEventId: string | null;
     title: string;
     description: string;
     range: {
@@ -18,7 +18,7 @@ export interface CalendarEvent
         end: string | null;
     };
     allDay: boolean;
-    editable: boolean;
+    recurrence: string;
 }
 
 export interface CalendarSettings

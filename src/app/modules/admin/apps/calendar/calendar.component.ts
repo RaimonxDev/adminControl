@@ -95,11 +95,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      */
     get recurrenceStatus(): string
     {
-        // Get the recurrence rules from event form
-        const recurrenceRules = this.eventForm.get('recurrenceRules').value;
+        // Get the recurrence from event form
+        const recurrence = this.eventForm.get('recurrence').value;
 
-        // Return false, if there is no recurrence on the event
-        if ( !recurrenceRules )
+        // Return 'no-recurrence', if there is no recurrence on the event
+        if ( !recurrence )
         {
             return 'no-recurrence';
         }
@@ -117,17 +117,16 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Create the event form
         this.eventForm = this._formBuilder.group({
-            id             : [''],
-            calendarId     : [''],
-            ruleId         : [null],
-            title          : ['', Validators.required],
-            description    : [''],
-            start          : [null],
-            end            : [null],
-            range          : [null],
-            allDay         : [true],
-            recurrenceRules: [null],
-            editable       : [true]
+            id              : [''],
+            calendarId      : [''],
+            recurringEventId: [null],
+            title           : ['', Validators.required],
+            description     : [''],
+            start           : [null],
+            end             : [null],
+            range           : [null],
+            allDay          : [true],
+            recurrence      : [null]
         });
 
         // Get calendars
