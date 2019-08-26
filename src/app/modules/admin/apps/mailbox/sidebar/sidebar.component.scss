@@ -5,7 +5,7 @@ mailbox-sidebar {
     flex: 1 1 auto;
     flex-direction: column;
     height: 100%;
-    overflow-y: auto;
+    overflow: hidden auto;
     -webkit-overflow-scrolling: touch;
 
     .title {
