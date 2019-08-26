@@ -16,7 +16,7 @@ export class CalendarService
     private _loadedEventsRange: { start: string, end: string };
     private readonly _numberOfDaysToPrefetch = 60;
     private _settings: BehaviorSubject<CalendarSettings | null>;
-    private _weekdays: BehaviorSubject<CalendarWeekday | null>;
+    private _weekdays: BehaviorSubject<CalendarWeekday[] | null>;
 
     /**
      * Constructor
@@ -69,7 +69,7 @@ export class CalendarService
     /**
      * Getter for weekdays
      */
-    get weekdays$(): Observable<CalendarWeekday>
+    get weekdays$(): Observable<CalendarWeekday[]>
     {
         return this._weekdays.asObservable();
     }
@@ -293,6 +293,10 @@ export class CalendarService
                                // Update the settings
                                this._settings.next(settings);
 
+                               // Get weekdays again to get them in correct order
+                               // in case the startWeekOn setting changes
+                               this.getWeekdays().subscribe();
+
                                // Return the updated settings
                                return updatedSettings;
                            })
@@ -303,9 +307,9 @@ export class CalendarService
     /**
      * Get weekdays
      */
-    getWeekdays(): Observable<CalendarWeekday>
+    getWeekdays(): Observable<CalendarWeekday[]>
     {
-        return this._httpClient.get<CalendarWeekday>('api/apps/calendar/weekdays').pipe(
+        return this._httpClient.get<CalendarWeekday[]>('api/apps/calendar/weekdays').pipe(
             tap((response) => {
                 this._weekdays.next(response);
             })

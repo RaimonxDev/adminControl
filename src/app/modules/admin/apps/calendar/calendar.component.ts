@@ -500,9 +500,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         const dialogRef = this._matDialog.open(CalendarCustomRecurrenceComponent, {
             panelClass: 'calendar-event-custom-recurrence-dialog',
             data      : {
-                event   : this.eventForm.value,
-                settings: this.settings,
-                weekdays: this.weekdays
+                event   : this.eventForm.value
             }
         });
 

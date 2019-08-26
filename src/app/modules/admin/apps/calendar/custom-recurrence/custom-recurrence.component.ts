@@ -2,7 +2,9 @@ import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import * as moment from 'moment';
+import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 import { CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 
 @Component({
@@ -13,11 +15,9 @@ import { CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 })
 export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
 {
-    end: 'never' | 'until' | 'count';
-    monthlyRepeat: 'onMonthday' | 'onNthWeekday';
-    ordinalBysetpos: string;
+    nWeekdayTranscribed: string;
     recurrenceForm: FormGroup;
-    weekday: CalendarWeekday;
+    recurrenceFormValues: any;
     weekdays: CalendarWeekday[];
 
     // Private
@@ -28,23 +28,18 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
      *
      * @param {MatDialogRef} matDialogRef
      * @param {MAT_DIALOG_DATA} data
+     * @param {CalendarService} _calendarService
      * @param {FormBuilder} _formBuilder
      */
     constructor(
-        public matDialogRef: MatDialogRef<CalendarCustomRecurrenceComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
+        public matDialogRef: MatDialogRef<CalendarCustomRecurrenceComponent>,
+        private _calendarService: CalendarService,
         private _formBuilder: FormBuilder
     )
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.end = 'never';
-        this.monthlyRepeat = 'onMonthday';
-
-        // Initialize
-        this._init();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -56,71 +51,68 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get start date
-        const startDate = moment(this.data.event.start);
+        // Get weekdays
+        this._calendarService.weekdays$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((weekdays) => {
 
-        // Calculate the bysetpos
-        let bysetpos = 1;
-        while ( startDate.clone().isSame(startDate.clone().subtract(bysetpos, 'week'), 'month') )
-        {
-            bysetpos++;
-        }
+                // Store the weekdays
+                this.weekdays = weekdays;
+            });
 
-        // Calculate the ordinal bysetpos - We only need 5 of them, so we won't automate the process
-        const ordinalNumbers = {
-            1: 'first',
-            2: 'second',
-            3: 'third',
-            4: 'fourth',
-            5: 'fifth'
-        };
-        this.ordinalBysetpos = ordinalNumbers[bysetpos];
+        // Initialize
+        this._init();
 
         // Create the recurrence form
         this.recurrenceForm = this._formBuilder.group({
-            freq      : ['DAILY'],
-            interval  : [1, Validators.required],
-            dtstart   : [startDate.clone().toISOString()],
-            bymonth   : [startDate.clone().month() + 1],
-            bymonthday: [startDate.clone().date()],
-            byweekday : [startDate.clone().format('dd').toUpperCase()],
-            bysetpos  : [bysetpos],
-            until     : [null],
-            count     : [null]
+            freq    : [null],
+            interval: [null, Validators.required],
+            weekly  : this._formBuilder.group({
+                byDay: [[]]
+            }),
+            monthly : this._formBuilder.group({
+                repeatOn: [null], // date | nWeekday
+                date    : [null],
+                nWeekday: [null]
+            }),
+            end     : this._formBuilder.group({
+                type : [null], // never | until | count
+                until: [null],
+                count: [null]
+            })
         });
-
-        // Set end defaults for the first time
-        this._setEndDefaults(this.recurrenceForm.get('freq').value, this.recurrenceForm.get('dtstart').value);
 
         // Subscribe to 'freq' field value changes
         this.recurrenceForm.get('freq').valueChanges.subscribe((value) => {
 
-            // Set the end defaults
-            this._setEndDefaults(value, this.recurrenceForm.get('dtstart'));
+            // Set the end values
+            this._setEndValues(value);
         });
 
-        // Subscribe to 'byweekday' field value changes
-        this.recurrenceForm.get('byweekday').valueChanges.subscribe((value) => {
+        // Subscribe to 'weekly.byDay' field value changes
+        this.recurrenceForm.get('weekly.byDay').valueChanges.subscribe((value) => {
+
+            // Get the event's start date
+            const startDate = moment(this.data.event.start);
 
             // If nothing is selected, select the original value from
             // the event form to prevent an empty value on the field
             if ( !value || !value.length )
             {
                 // Get the day of event start date
-                const eventStartDay = startDate.clone().format('dd').toUpperCase();
+                const eventStartDay = startDate.format('dd').toUpperCase();
 
                 // Set the original value back without emitting a
                 // change event to prevent an infinite loop
-                this.recurrenceForm.get('byweekday').setValue([eventStartDay], {emitEvent: false});
+                this.recurrenceForm.get('weekly.byDay').setValue([eventStartDay], {emitEvent: false});
             }
         });
 
-        // If recurrence is available on the event a.k.a. if the event is
-        // already a recurring event, patch the recurrence form with them
-        if ( this.data.event.recurrence )
-        {
-            this.recurrenceForm.patchValue(this.data.event.recurrence);
-        }
+        // Patch the form with the values
+        this.recurrenceForm.patchValue(this.recurrenceFormValues);
+
+        // Set end values for the first time
+        this._setEndValues(this.recurrenceForm.get('freq').value);
     }
 
     /**
@@ -144,84 +136,103 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
      */
     private _init(): void
     {
-        // Get the original recurrence
-        const recurrence = this.data.event.recurrence;
+        // Get the event's start date
+        const startDate = moment(this.data.event.start);
 
-        // If recurrence rules are available on the
-        // event a.k.a. if the event is a recurring event...
-        if ( recurrence )
+        // Calculate the weekday
+        const weekday = moment(this.data.event.start).format('dd').toUpperCase();
+
+        // Calculate the nWeekday
+        let nWeekdayNo = 1;
+        while ( startDate.clone().isSame(startDate.clone().subtract(nWeekdayNo, 'week'), 'month') )
         {
-            // Check if recurrence happens on the nth weekday
-            if ( recurrence.freq === 'MONTHLY' && recurrence.byweekday && recurrence.bysetpos )
-            {
-                this.monthlyRepeat = 'onNthWeekday';
-            }
-
-            // Check if until or count available
-            if ( recurrence.until )
-            {
-                this.end = 'until';
-            }
-
-            if ( recurrence.count )
-            {
-                this.end = 'count';
-            }
+            nWeekdayNo++;
         }
+        const nWeekday = nWeekdayNo + weekday;
 
-        // Set the weekdays
-        this._setWeekdays();
+        // Prepare the ordinal numbers
+        const ordinalNumbers = {
+            1: 'first',
+            2: 'second',
+            3: 'third',
+            4: 'fourth',
+            5: 'fifth'
+        };
+
+        // Calculate the nWeekdayTranscribed
+        this.nWeekdayTranscribed = ordinalNumbers[nWeekday.slice(0, 1)] + ' ' + this.weekdays.find((item) => item.value === nWeekday.slice(-2)).label;
+
+        // Set the defaults on recurrence form values
+        this.recurrenceFormValues = {
+            freq    : 'DAILY',
+            interval: 1,
+            weekly  : {
+                byDay: weekday
+            },
+            monthly : {
+                repeatOn: 'date',
+                date    : moment(this.data.event.start).date(),
+                nWeekday: nWeekday
+            },
+            end     : {
+                type : 'never',
+                until: null,
+                count: null
+            }
+        };
+
+        // If recurrence rule string is available on the
+        // event meaning that the is a recurring one...
+        if ( this.data.event.recurrence )
+        {
+            // Parse the rules
+            const parsedRules: any = {};
+            this.data.event.recurrence.split(';').forEach((rule) => {
+                parsedRules[rule.split('=')[0]] = rule.split('=')[1];
+            });
+
+            // Overwrite the recurrence form values
+            this.recurrenceFormValues.freq = parsedRules.FREQ;
+            this.recurrenceFormValues.interval = parsedRules.INTERVAL;
+
+            if ( parsedRules.FREQ === 'WEEKLY' )
+            {
+                this.recurrenceFormValues.weekly.byDay = parsedRules.BYDAY.split(',');
+            }
+
+            if ( parsedRules.FREQ === 'MONTHLY' )
+            {
+                this.recurrenceFormValues.monthly.repeatOn = parsedRules.BYDAY ? 'nWeekday' : 'date';
+            }
+
+            this.recurrenceFormValues.end.type = parsedRules.UNTIL ? 'until' : (parsedRules.COUNT ? 'count' : 'never');
+            this.recurrenceFormValues.end.until = parsedRules.UNTIL || null;
+            this.recurrenceFormValues.end.count = parsedRules.COUNT || null;
+        }
     }
 
     /**
-     * Set the weekdays based on the
-     * week start day setting
-     *
-     * @private
-     */
-    private _setWeekdays(): void
-    {
-        // Setup weekdays
-        const weekdays = this.data.weekdays;
-
-        // Sunday
-        if ( this.data.settings.startWeekOn === 0 )
-        {
-            // Move the Sunday to the beginning
-            weekdays.unshift(weekdays.pop());
-        }
-
-        // Saturday
-        if ( this.data.settings.startWeekOn === 6 )
-        {
-            // Move the Sunday to the beginning
-            weekdays.unshift(weekdays.pop());
-
-            // Then move the Saturday to the beginning
-            weekdays.unshift(weekdays.pop());
-        }
-
-        // Set the weekdays
-        this.weekdays = weekdays;
-
-        // Also set the weekday based on the event's start date
-        this.weekday = this.weekdays.find((weekday) => weekday.value === moment(this.data.event.start).format('dd').toUpperCase());
-    }
-
-    /**
-     * Set the end defaults based on frequency
+     * Set the end value based on frequency
      *
      * @param freq
-     * @param startDate
      * @private
      */
-    private _setEndDefaults(freq, startDate): void
+    private _setEndValues(freq): void
     {
-        // Create a moment object from the start date
-        startDate = moment(startDate);
+        // Return if freq is not available
+        if ( !freq )
+        {
+            return;
+        }
+
+        // Get the event's start date
+        const startDate = moment(this.data.event.startDate);
+
+        // Get the end type
+        const endType = this.recurrenceForm.get('end.type').value;
 
         // If until is not selected
-        if ( this.end !== 'until' )
+        if ( endType !== 'until' )
         {
             let until;
 
@@ -247,11 +258,11 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
             }
 
             // Set the until
-            this.recurrenceForm.get('until').setValue(until);
+            this.recurrenceForm.get('end.until').setValue(until);
         }
 
         // If count is not selected...
-        if ( this.end !== 'count' )
+        if ( endType !== 'count' )
         {
             let count;
 
@@ -272,7 +283,7 @@ export class CalendarCustomRecurrenceComponent implements OnInit, OnDestroy
             }
 
             // Set the count
-            this.recurrenceForm.get('count').setValue(count);
+            this.recurrenceForm.get('end.count').setValue(count);
         }
     }
 

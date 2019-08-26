@@ -286,6 +286,23 @@ export class MockCalendarApi
                 // Clone the weekdays
                 const weekdays = _.cloneDeep(this._weekdays);
 
+                // If the startWeekOn setting is set to Sunday...
+                if ( this._settings.startWeekOn === 0 )
+                {
+                    // Move the Sunday to the beginning
+                    weekdays.unshift(weekdays.pop());
+                }
+
+                // If the startWeekOn is set to Saturday...
+                if ( this._settings.startWeekOn === 6 )
+                {
+                    // Move the Sunday to the beginning
+                    weekdays.unshift(weekdays.pop());
+
+                    // Then move the Saturday to the beginning
+                    weekdays.unshift(weekdays.pop());
+                }
+
                 return [
                     200,
                     weekdays

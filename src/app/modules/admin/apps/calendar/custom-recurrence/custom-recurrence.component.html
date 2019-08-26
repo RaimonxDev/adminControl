@@ -18,8 +18,7 @@
 
             <mat-form-field class="frequency asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                             [appearance]="'fill'">
-                <mat-select [formControlName]="'freq'"
-                            #freqSelector>
+                <mat-select [formControlName]="'freq'">
                     <mat-option [value]="'DAILY'">day(s)</mat-option>
                     <mat-option [value]="'WEEKLY'">week(s)</mat-option>
                     <mat-option [value]="'MONTHLY'">month(s)</mat-option>
@@ -31,10 +30,11 @@
 
     <!-- Weekly repeat options -->
     <div class="row weekly"
+         [formGroupName]="'weekly'"
          *ngIf="recurrenceForm.get('freq').value === 'WEEKLY'">
         <div class="label">Repeat on</div>
         <div class="field">
-            <mat-button-toggle-group [formControlName]="'byweekday'"
+            <mat-button-toggle-group [formControlName]="'byDay'"
                                      [multiple]="true">
                 <mat-button-toggle *ngFor="let weekday of weekdays"
                                    [disableRipple]="true"
@@ -48,26 +48,28 @@
 
     <!-- Monthly repeat options -->
     <div class="row monthly"
+         [formGroupName]="'monthly'"
          *ngIf="recurrenceForm.get('freq').value === 'MONTHLY'">
         <div class="label">Repeat on</div>
         <div class="field">
             <mat-form-field class="asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                             [appearance]="'fill'">
-                <mat-select [(value)]="monthlyRepeat">
-                    <mat-option [value]="'onMonthday'">Monthly on day {{recurrenceForm.get('bymonthday').value}}</mat-option>
-                    <mat-option [value]="'onNthWeekday'">Monthly on the {{ordinalBysetpos}} {{weekday.label}}</mat-option>
+                <mat-select [formControlName]="'repeatOn'">
+                    <mat-option [value]="'date'">Monthly on day {{recurrenceForm.get('monthly.date').value}}</mat-option>
+                    <mat-option [value]="'nWeekday'">Monthly on the {{nWeekdayTranscribed}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
     </div>
 
     <!-- Ends -->
-    <div class="row ends">
+    <div class="row ends"
+         [formGroupName]="'end'">
         <div class="label">Ends</div>
         <div class="field">
             <mat-form-field class="end-option asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                             [appearance]="'fill'">
-                <mat-select [(value)]="end">
+                <mat-select [formControlName]="'type'">
                     <mat-option [value]="'never'">Never</mat-option>
                     <mat-option [value]="'until'">On</mat-option>
                     <mat-option [value]="'count'">After</mat-option>
@@ -75,7 +77,7 @@
             </mat-form-field>
 
             <mat-form-field class="end-value until asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            *ngIf="end === 'until'"
+                            *ngIf="recurrenceForm.get('end.type').value === 'until'"
                             [appearance]="'fill'">
                 <input matInput
                        [matDatepicker]="untilDatePicker"
@@ -86,7 +88,7 @@
             </mat-form-field>
 
             <mat-form-field class="end-value count asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            *ngIf="end === 'count'"
+                            *ngIf="recurrenceForm.get('end.type').value === 'count'"
                             [appearance]="'fill'">
                 <input type="number"
                        matInput
