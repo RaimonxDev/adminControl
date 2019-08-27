@@ -19,18 +19,18 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { AsmDateRangeModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { CalendarComponent } from 'app/modules/admin/apps/calendar/calendar.component';
-import { CalendarCustomRecurrenceComponent } from 'app/modules/admin/apps/calendar/custom-recurrence/custom-recurrence.component';
+import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
 import { CalendarSettingsComponent } from 'app/modules/admin/apps/calendar/settings/settings.component';
 import { calendarRoutes } from 'app/modules/admin/apps/calendar/calendar.routing';
 
 @NgModule({
     declarations   : [
         CalendarComponent,
-        CalendarCustomRecurrenceComponent,
+        CalendarRecurrenceComponent,
         CalendarSettingsComponent
     ],
     entryComponents: [
-        CalendarCustomRecurrenceComponent
+        CalendarRecurrenceComponent
     ],
     imports        : [
         RouterModule.forChild(calendarRoutes),

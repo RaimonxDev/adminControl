@@ -138,14 +138,9 @@
                             <mat-icon class="mirror">cached</mat-icon>
 
                             <div class="field"
-                                 (click)="openCustomRecurrenceDialog()"
-                                 #recurrencePanelOrigin>
-                                <div class="status"
-                                     [ngSwitch]="recurrenceStatus">
-                                    <span *ngSwitchCase="'no-recurrence'">Does not repeat</span>
-                                </div>
-                                <div class="mat-select-arrow-wrapper">
-                                    <div class="mat-select-arrow"></div>
+                                 (click)="openRecurrenceDialog()">
+                                <div class="status">
+                                    {{recurrenceStatus || 'Does not repeat'}}
                                 </div>
                             </div>
 

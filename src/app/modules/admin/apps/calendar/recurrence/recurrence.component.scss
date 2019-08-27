@@ -1,6 +1,6 @@
 @import 'assembly';
 
-calendar-custom-recurrence {
+calendar-recurrence {
     display: flex;
     width: 320px;
     min-width: 320px;
@@ -123,7 +123,7 @@ calendar-custom-recurrence {
     }
 }
 
-.calendar-event-custom-recurrence-dialog {
+.calendar-event-recurrence-dialog {
 
     .mat-dialog-container {
         padding: 0 !important;
@@ -138,7 +138,7 @@ calendar-custom-recurrence {
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
 
-    calendar-custom-recurrence {
+    calendar-recurrence {
 
         form {
 

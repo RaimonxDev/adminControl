@@ -3,7 +3,6 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 import { RRule } from 'rrule';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { calendars as calendarsData, events as eventsData, recurringEvents as recurringEventsData, settings as settingsData, weekdays as weekdaysData } from '@mock-api/data/calendar/data';
 
 @Injectable({
