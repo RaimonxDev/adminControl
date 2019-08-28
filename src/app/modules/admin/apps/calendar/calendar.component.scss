@@ -159,7 +159,7 @@ calendar {
 // Event panel
 .calendar-event-panel {
     min-width: 512px;
-    padding: 40px 32px 32px 24px;
+    padding: 40px 32px 24px 24px;
     border-radius: 8px;
     @include asm-elevation(5);
 
@@ -184,7 +184,6 @@ calendar {
 
             &.title {
                 align-items: baseline;
-                margin-bottom: 16px;
 
                 input {
                     font-size: 22px;

@@ -1,10 +1,9 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSelectChange } from '@angular/material/select';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar as FullCalendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -15,13 +14,14 @@ import rrulePlugin from '@fullcalendar/rrule';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import { RRule } from 'rrule';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
+import { CalendarConfirmationComponent } from 'app/modules/admin/apps/calendar/confirmation/confirmation.component';
 import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 import { Calendar, CalendarEvent, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
-import { RRule } from 'rrule';
 
 @Component({
     selector       : 'calendar',
@@ -127,7 +127,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             id              : [''],
             calendarId      : [''],
             recurringEventId: [null],
-            title           : ['', Validators.required],
+            title           : [''],
             description     : [''],
             start           : [null],
             end             : [null],
@@ -281,12 +281,15 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
             // Create the range object for date range picker
             event.range = {
-                start: moment(event.start).toISOString(),
-                end  : moment(event.end).toISOString()
+                start: moment(event.start).toISOString(true),
+                end  : moment(event.end).toISOString(true)
             };
 
-            // Fill the event form with the form event
-            this.eventForm.patchValue(event);
+            // Reset the form and fill the event
+            this.eventForm.reset(event);
+
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
         });
 
         // On backdrop click
@@ -489,6 +492,12 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Set the event's visibility
         calendarEvent.el.style.display = calendar.visible ? 'flex' : 'none';
+
+        // Set the event's title to '(No title)' if event title is not available
+        if ( !calendarEvent.event.title )
+        {
+            calendarEvent.el.querySelector('.fc-title').innerText = '(No title)';
+        }
     }
 
     /**
@@ -513,16 +522,53 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Get the clone of the event form value
         const event = _.clone(this.eventForm.value);
+        const {range, ...eventWithoutRange} = event;
 
-        // Set the start and end dates from range
-        event.start = event.range.start;
-        event.end = event.range.end;
+        // Get the original event
+        const originalEvent = this.events.find(item => item.id === this.eventForm.get('id').value);
 
-        // Update the event on the server
-        this._calendarService.updateEvent(event.id, event).subscribe((updatedEvent) => {
+        // Return, if there are no changes made to the event
+        if ( _.isEqual(eventWithoutRange, originalEvent) )
+        {
+            return;
+        }
 
-            // Reset the form with the updated event
-            this.eventForm.reset(updatedEvent);
-        });
+        // If the event is an instance of a recurring event...
+        if ( this.eventForm.get('recurringEventId').value )
+        {
+            // Show the confirmation dialog with correct information
+            const dialogRef = this._matDialog.open(CalendarConfirmationComponent, {
+                panelClass: 'calendar-event-confirmation-dialog',
+                data      : {
+                    isRecurrenceModified: originalEvent.recurrence !== this.eventForm.get('recurrence').value
+                }
+            });
+
+            // After dialog closed
+            dialogRef.afterClosed().subscribe((result) => {
+
+                // Return, if canceled
+                if ( !result )
+                {
+                    return;
+                }
+
+                console.log(result);
+            });
+
+        }
+        else
+        {
+            // Set the start and end dates from range
+            event.start = event.range.start;
+            event.end = event.range.end;
+
+            // Update the event on the server
+            this._calendarService.updateEvent(event.id, event).subscribe((updatedEvent) => {
+
+                // Reset the form with the updated event
+                this.eventForm.reset(updatedEvent);
+            });
+        }
     }
 }

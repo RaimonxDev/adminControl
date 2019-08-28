@@ -160,19 +160,19 @@ export class MockCalendarApi
                     let rruleString = recurringEvent.recurrence;
 
                     // Add DTSTART to it
-                    rruleString = rruleString + ';DTSTART=' + moment(recurringEvent.start).format('YYYYMMDD[T]HHmmss[Z]');
+                    rruleString = rruleString + ';DTSTART=' + moment(recurringEvent.start).utc().format('YYYYMMDD[T]HHmmss[Z]');
 
                     // If rrule doesn't have UNTIL or COUNT, add the end date as UNTIL
                     if ( !parsedRules['UNTIL'] && !parsedRules['COUNT'] )
                     {
-                        rruleString = rruleString + ';UNTIL=' + end.clone().format('YYYYMMDD[T]HHmmss[Z]');
+                        rruleString = rruleString + ';UNTIL=' + end.clone().utc().format('YYYYMMDD[T]HHmmss[Z]');
                     }
 
                     // Generate recurring dates and loop through them
                     RRule.fromString(rruleString).all().forEach((date) => {
 
                         // Prepare the event id
-                        const instanceId = recurringEvent.id + '_' + moment(date).format('YYYYMMDD[T]HHmmss[Z]');
+                        const instanceId = recurringEvent.id + '_' + moment(date).utc().format('YYYYMMDD[T]HHmmss[Z]');
 
                         // Return, if we already generated an instance for this particular
                         // date by looking up the events with the instance id
@@ -188,10 +188,10 @@ export class MockCalendarApi
                         newEvent.id = instanceId;
 
                         // Set the start date of the new event
-                        newEvent.start = date.toISOString();
+                        newEvent.start = moment(date).toISOString(true);
 
                         // Set the end date of the new event using the duration data
-                        newEvent.end = moment(date).add(moment.duration(moment(recurringEvent.end).diff(moment(recurringEvent.start)))).toISOString();
+                        newEvent.end = moment(date).add(moment.duration(moment(recurringEvent.end).diff(moment(recurringEvent.start)))).toISOString(true);
 
                         // Push the new event to the results array
                         results.push(newEvent);

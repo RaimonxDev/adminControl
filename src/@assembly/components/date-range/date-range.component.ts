@@ -6,7 +6,6 @@ import { MatCalendarCellCssClasses, MatMonthView } from '@angular/material/datep
 import { Subject } from 'rxjs';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import * as _ from 'lodash';
 
 @Component({
     selector     : 'asm-date-range',
@@ -103,7 +102,6 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         this.rangeChanged = new EventEmitter();
         this.setWhichDate = 'start';
         this.timeFormat = '12';
-        this.timeRange = true;
 
         // Initialize the component
         this._init();
@@ -323,8 +321,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
         // Prepare another range object that holds the ISO formatted range dates
         const range = {
-            start: this._range.start.clone().toISOString(),
-            end  : this._range.end.clone().toISOString()
+            start: this._range.start.clone().toISOString(true),
+            end  : this._range.end.clone().toISOString(true)
         };
 
         // Emit the range changed event with the ISO range
@@ -452,17 +450,20 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
      */
     private _init(): void
     {
-        // Regular expression for time input validation
-
         // Start and end time form controls
         this.startTimeFormControl = new FormControl('', [Validators.pattern(this._timeRegExp)]);
         this.endTimeFormControl = new FormControl('', [Validators.pattern(this._timeRegExp)]);
 
         // Set the default range
+        this._programmaticChange = true;
         this.range = {
-            start: moment().startOf('day').toISOString(),
-            end  : moment().add(1, 'day').endOf('day').toISOString()
+            start: moment().startOf('day').toISOString(true),
+            end  : moment().add(1, 'day').endOf('day').toISOString(true)
         };
+
+        // Set the default time range
+        this._programmaticChange = true;
+        this.timeRange = true;
     }
 
     /**
@@ -624,8 +625,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     {
         // Create a new range object
         const newRange = {
-            start    : this._range.start.clone().toISOString(),
-            end      : this._range.end.clone().toISOString(),
+            start    : this._range.start.clone().toISOString(true),
+            end      : this._range.end.clone().toISOString(true),
             whichDate: null
         };
 
@@ -633,11 +634,11 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         // depending on which date we are setting
         if ( this.setWhichDate === 'start' )
         {
-            newRange.start = moment(newRange.start).year(date.year()).month(date.month()).date(date.date()).toISOString();
+            newRange.start = moment(newRange.start).year(date.year()).month(date.month()).date(date.date()).toISOString(true);
         }
         else
         {
-            newRange.end = moment(newRange.end).year(date.year()).month(date.month()).date(date.date()).toISOString();
+            newRange.end = moment(newRange.end).year(date.year()).month(date.month()).date(date.date()).toISOString(true);
         }
 
         // Append the which date to the new range object
@@ -707,8 +708,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
         // If everything is okay, set the new date
         this.range = {
-            start    : startDate.toISOString(),
-            end      : this._range.end.clone().toISOString(),
+            start    : startDate.toISOString(true),
+            end      : this._range.end.clone().toISOString(true),
             whichDate: 'start'
         };
     }
@@ -752,8 +753,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
         // If everything is okay, set the new date
         this.range = {
-            start    : this._range.start.clone().toISOString(),
-            end      : endDate.toISOString(),
+            start    : this._range.start.clone().toISOString(true),
+            end      : endDate.toISOString(true),
             whichDate: 'end'
         };
     }

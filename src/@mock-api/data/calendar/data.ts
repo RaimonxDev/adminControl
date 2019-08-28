@@ -29,8 +29,8 @@ export const events = [
         recurringEventId: null,
         title           : 'Portfolio Design',
         description     : '',
-        start           : moment().hour(9).minute(0).second(0).toISOString(), // Today 09:00
-        end             : moment().add(1, 'day').hour(14).minute(0).second(0).toISOString(), // Tomorrow 14:00
+        start           : moment().hour(9).minute(0).second(0).millisecond(0).toISOString(true), // Today 09:00
+        end             : moment().add(1, 'day').hour(14).minute(0).second(0).millisecond(0).toISOString(true), // Tomorrow 14:00
         allDay          : false,
         recurrence      : null
     },
@@ -40,8 +40,8 @@ export const events = [
         recurringEventId: null,
         title           : 'Dinner with Mom',
         description     : '',
-        start           : moment().date(10).hour(18).minute(0).second(0).toISOString(), // 10th of the current month at 18:00
-        end             : moment().date(10).hour(20).minute(0).second(0).toISOString(), // 10th of the current month at 20:00
+        start           : moment().date(10).hour(18).minute(0).second(0).millisecond(0).toISOString(true), // 10th of the current month at 18:00
+        end             : moment().date(10).hour(20).minute(0).second(0).millisecond(0).toISOString(true), // 10th of the current month at 20:00
         allDay          : false,
         recurrence      : null
     },
@@ -51,8 +51,8 @@ export const events = [
         recurringEventId: null,
         title           : 'Lunch with Becky',
         description     : '',
-        start           : moment().date(21).hour(12).minute(0).second(0).toISOString(), // 21st of the current month at noon
-        end             : moment().date(21).hour(14).minute(0).second(0).toISOString(), // 21st of the current month at 14:00
+        start           : moment().date(21).hour(12).minute(0).second(0).millisecond(0).toISOString(true), // 21st of the current month at noon
+        end             : moment().date(21).hour(14).minute(0).second(0).millisecond(0).toISOString(true), // 21st of the current month at 14:00
         allDay          : false,
         recurrence      : null
     },
@@ -63,8 +63,8 @@ export const events = [
         recurringEventId: null,
         title           : 'Design Review',
         description     : '',
-        start           : moment().date(19).hour(15).minute(0).second(0).toISOString(), // 19th of the current month at 15:00
-        end             : moment().date(19).hour(17).minute(30).second(0).toISOString(), // 19th of the current month at 17:30
+        start           : moment().date(19).hour(15).minute(0).second(0).millisecond(0).toISOString(true), // 19th of the current month at 15:00
+        end             : moment().date(19).hour(17).minute(30).second(0).millisecond(0).toISOString(true), // 19th of the current month at 17:30
         allDay          : false,
         recurrence      : null
     },
@@ -74,8 +74,8 @@ export const events = [
         recurringEventId: null,
         title           : 'Consulting',
         description     : '',
-        start           : moment().date(8).hour(11).minute(30).second(0).toISOString(), // 8th of the current month at 11:30
-        end             : moment().date(8).hour(12).minute(45).second(0).toISOString(), // 8th of the current month at 12:45
+        start           : moment().date(8).hour(11).minute(30).second(0).millisecond(0).toISOString(true), // 8th of the current month at 11:30
+        end             : moment().date(8).hour(12).minute(45).second(0).millisecond(0).toISOString(true), // 8th of the current month at 12:45
         allDay          : false,
         recurrence      : null
     }
@@ -87,8 +87,8 @@ export const recurringEvents = [
         calendarId : '1a470c8e-40ed-4c2d-b590-a4f1f6ead6cc',
         title      : 'Mom\'s Birthday',
         description: '',
-        start      : moment().date(8).startOf('day').toISOString(), // 8th of the current month at start of the day
-        end        : moment().date(8).endOf('day').toISOString(), // 8th of the current month at end of the day
+        start      : moment().date(8).startOf('day').toISOString(true), // 8th of the current month at start of the day
+        end        : moment().date(8).endOf('day').toISOString(true), // 8th of the current month at end of the day
         allDay     : true,
         recurrence : 'FREQ=YEARLY;INTERVAL=1'
     },
@@ -99,8 +99,8 @@ export const recurringEvents = [
         calendarId : '09887870-f85a-40eb-8171-1b13d7a7f529',
         title      : 'Doctor\'s Visit',
         description: '',
-        start      : moment().date(1).hour(10).minute(0).second(0).add((9 - moment().date(1).day()) % 7, 'day').toISOString(), // First Tuesday of the current month at 10:00
-        end        : moment().date(1).hour(11).minute(30).second(0).add((9 - moment().date(1).day()) % 7, 'day').toISOString(), // First Tuesday of the current month at 11:30
+        start      : moment().date(1).hour(10).minute(0).second(0).millisecond(0).add((9 - moment().date(1).day()) % 7, 'day').toISOString(true), // First Tuesday of the current month at 10:00
+        end        : moment().date(1).hour(11).minute(30).second(0).millisecond(0).add((9 - moment().date(1).day()) % 7, 'day').toISOString(true), // First Tuesday of the current month at 11:30
         allDay     : false,
         recurrence : 'FREQ=MONTHLY;INTERVAL=1;BYDAY=1TU'
     },
@@ -109,8 +109,8 @@ export const recurringEvents = [
         calendarId : '09887870-f85a-40eb-8171-1b13d7a7f529',
         title      : 'Therapy Session',
         description: '',
-        start      : moment().date(1).hour(13).minute(0).second(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(), // Second Saturday of the current month at 13:00
-        end        : moment().date(1).hour(15).minute(0).second(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(), // Second Saturday of the current month at 15:00
+        start      : moment().date(1).hour(13).minute(0).second(0).millisecond(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(true), // Second Saturday of the current month at 13:00
+        end        : moment().date(1).hour(15).minute(0).second(0).millisecond(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(true), // Second Saturday of the current month at 15:00
         allDay     : false,
         recurrence : 'FREQ=WEEKLY;INTERVAL=2;BYDAY=SA'
     },
@@ -121,8 +121,8 @@ export const recurringEvents = [
         calendarId : '5dab5f7b-757a-4467-ace1-305fe07b11fe',
         title      : 'Meeting',
         description: '',
-        start      : moment().date(1).hour(9).minute(0).second(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(), // Second Friday of the current month at 09:00
-        end        : moment().date(1).hour(11).minute(30).second(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(), // Second Friday of the current month at 11:30
+        start      : moment().date(1).hour(9).minute(0).second(0).millisecond(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(true), // Second Friday of the current month at 09:00
+        end        : moment().date(1).hour(11).minute(30).second(0).millisecond(0).add((6 - moment().date(1).day()) % 7, 'day').add(1, 'week').toISOString(true), // Second Friday of the current month at 11:30
         allDay     : false,
         recurrence : 'FREQ=WEEKLY;INTERVAL=2;BYDAY=FR'
     }

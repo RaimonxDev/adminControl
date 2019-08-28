@@ -1,0 +1,24 @@
+<form [formGroup]="confirmationForm"
+      novalidate>
+
+    <h4>Edit recurring event</h4>
+
+    <mat-radio-group [formControlName]="'which'">
+        <mat-radio-button [value]="'this'"
+                          *ngIf="!data.isRecurrenceModified">This event
+        </mat-radio-button>
+        <mat-radio-button [value]="'this-and-following'">This and following events</mat-radio-button>
+        <mat-radio-button [value]="'all'">All events</mat-radio-button>
+    </mat-radio-group>
+
+    <!-- Actions -->
+    <div class="actions">
+        <button class="save"
+                mat-button
+                [color]="'primary'"
+                (click)="done()">
+            Done
+        </button>
+    </div>
+
+</form>

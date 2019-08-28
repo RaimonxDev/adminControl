@@ -101,12 +101,11 @@
 
                             <mat-icon>edit</mat-icon>
 
-                            <mat-form-field class="field asm-mat asm-mat-no-label"
-                                            [appearance]="'standard'">
+                            <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
+                                            [appearance]="'fill'">
                                 <input matInput
                                        [formControlName]="'title'"
                                        [placeholder]="'Event title'">
-                                <mat-error>This field is required</mat-error>
                             </mat-form-field>
 
                         </div>
@@ -191,7 +190,6 @@
                         <!-- Actions -->
                         <button class="save"
                                 mat-flat-button
-                                [disabled]="eventForm.pristine || eventForm.invalid"
                                 [color]="'primary'"
                                 (click)="updateEvent()">
                             Save
