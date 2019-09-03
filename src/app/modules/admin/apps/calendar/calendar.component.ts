@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Overlay } from '@angular/cdk/overlay';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { MatDialog } from '@angular/material/dialog';
 import { FullCalendarComponent } from '@fullcalendar/angular';
@@ -44,6 +44,8 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     viewTitle: string;
 
     // Private
+    private _eventPanelOverlayRef: OverlayRef;
+    private _eventPanelTemplatePortal: TemplatePortal;
     private _fullCalendarApi: FullCalendar;
     private _unsubscribeAll: Subject<any>;
 
@@ -131,9 +133,48 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             description     : [''],
             start           : [null],
             end             : [null],
-            range           : [null],
+            range           : [{}],
             allDay          : [true],
             recurrence      : [null]
+        });
+
+        // Subscribe to 'start' field value changes
+        this.eventForm.get('start').valueChanges.subscribe((value) => {
+
+            // Get the current range value
+            const range = this.eventForm.get('range').value;
+
+            // Update the range value
+            this.eventForm.get('range').setValue({
+                ...range,
+                start: value
+            }, {emitEvent: false});
+        });
+
+        // Subscribe to 'end' field value changes
+        this.eventForm.get('end').valueChanges.subscribe((value) => {
+
+            // Get the current range value
+            const range = this.eventForm.get('range').value;
+
+            // Update the range value
+            this.eventForm.get('range').setValue({
+                ...range,
+                end: value
+            }, {emitEvent: false});
+        });
+
+        // Subscribe to 'range' field value changes
+        this.eventForm.get('range').valueChanges.subscribe((range) => {
+
+            if ( !range )
+            {
+                return;
+            }
+
+            // Set the 'start' and 'end' field values from the range
+            this.eventForm.get('start').setValue(range.start, {emitEvent: false});
+            this.eventForm.get('end').setValue(range.end, {emitEvent: false});
         });
 
         // Get calendars
@@ -245,7 +286,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     private _openEventPanel(calendarEvent): void
     {
         // Create the overlay
-        const overlayRef = this._overlay.create({
+        this._eventPanelOverlayRef = this._overlay.create({
             panelClass      : 'calendar-event-panel',
             backdropClass   : '',
             hasBackdrop     : true,
@@ -271,51 +312,43 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         });
 
         // Create a portal from the template
-        const templatePortal = new TemplatePortal(this._eventPanel, this._viewContainerRef);
+        this._eventPanelTemplatePortal = new TemplatePortal(this._eventPanel, this._viewContainerRef);
 
-        // Subscribe to attachments
-        overlayRef.attachments().subscribe(() => {
+        // On backdrop click...
+        this._eventPanelOverlayRef.backdropClick().subscribe(() => {
 
-            // Find the event and update the form values with it
-            const event: any = _.cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
-
-            // Create the range object for date range picker
-            event.range = {
-                start: moment(event.start).toISOString(true),
-                end  : moment(event.end).toISOString(true)
-            };
-
-            // Reset the form and fill the event
-            this.eventForm.reset(event);
-
-            // Mark for check
-            this._changeDetectorRef.markForCheck();
-        });
-
-        // On backdrop click
-        overlayRef.backdropClick().subscribe(() => {
-
-            // If template portal exists and attached...
-            if ( templatePortal && templatePortal.isAttached )
-            {
-                // Detach it
-                templatePortal.detach();
-            }
-
-            // If overlay exists and attached...
-            if ( overlayRef && overlayRef.hasAttached() )
-            {
-                // Detach it
-                overlayRef.detach();
-                overlayRef.dispose();
-            }
-
-            // Mark for check
-            this._changeDetectorRef.markForCheck();
+            // Close the event panel
+            this._closeEventPanel();
         });
 
         // Attach the portal to the overlay
-        overlayRef.attach(templatePortal);
+        this._eventPanelOverlayRef.attach(this._eventPanelTemplatePortal);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Close the event panel
+     *
+     * @private
+     */
+    private _closeEventPanel(): void
+    {
+        // If template portal exists and attached...
+        if ( this._eventPanelTemplatePortal && this._eventPanelTemplatePortal.isAttached )
+        {
+            // Detach it
+            this._eventPanelTemplatePortal.detach();
+        }
+
+        // If overlay exists and attached...
+        if ( this._eventPanelOverlayRef && this._eventPanelOverlayRef.hasAttached() )
+        {
+            // Detach it
+            this._eventPanelOverlayRef.detach();
+            this._eventPanelOverlayRef.dispose();
+        }
 
         // Mark for check
         this._changeDetectorRef.markForCheck();
@@ -469,9 +502,15 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      */
     onEventClick(calendarEvent): void
     {
-        // Do not propagate so that the document click won't be triggered
-        // which will close the event panel immediately after it's opened
-        calendarEvent.jsEvent.stopPropagation();
+        // Find the event with the clicked event's id
+        const event: any = _.cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
+
+        // Reset the form and fill the event
+        this.eventForm.reset();
+        this.eventForm.patchValue(event);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
 
         // Open the event panel
         this._openEventPanel(calendarEvent);
@@ -530,6 +569,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Return, if there are no changes made to the event
         if ( _.isEqual(eventWithoutRange, originalEvent) )
         {
+            // Close the event panel
+            this._closeEventPanel();
+
             return;
         }
 
@@ -556,18 +598,20 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 console.log(result);
             });
 
+            // Close the event panel
+            this._closeEventPanel();
         }
+        // If the event is a normal, non-recurring event...
         else
         {
-            // Set the start and end dates from range
-            event.start = event.range.start;
-            event.end = event.range.end;
-
             // Update the event on the server
             this._calendarService.updateEvent(event.id, event).subscribe((updatedEvent) => {
 
                 // Reset the form with the updated event
                 this.eventForm.reset(updatedEvent);
+
+                // Close the event panel
+                this._closeEventPanel();
             });
         }
     }

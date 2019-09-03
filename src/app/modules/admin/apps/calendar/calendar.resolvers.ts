@@ -94,7 +94,7 @@ export class CalendarWeekdaysResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CalendarWeekday>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CalendarWeekday[]>
     {
         return this._calendarService.getWeekdays();
     }
