@@ -197,10 +197,9 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         // Store the value
         this._timeRange = value;
 
-        // If the timeRange turned off...
+        // If the time range turned off...
         if ( !value )
         {
-            // Reset the range times
             this.range = {
                 start: this._range.start.clone().startOf('day'),
                 end  : this._range.end.clone().endOf('day')
@@ -234,27 +233,12 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
             return;
         }
 
-        // Check if the start and end values are ISO_8601 date string
-        if ( !moment(value.start, moment.ISO_8601).isValid() )
-        {
-            console.error('"start" value must be an ISO 8601 formatted date string!');
-
-            return;
-        }
-
-        if ( !moment(value.end, moment.ISO_8601).isValid() )
-        {
-            console.error('"end" value must be an ISO 8601 formatted date string!');
-
-            return;
-        }
-
         // Check if we are setting an individual date or both of them
         const whichDate = value.whichDate || null;
 
         // Get the start and end dates as moment
-        const start = moment(value.start, moment.ISO_8601);
-        const end = moment(value.end, moment.ISO_8601);
+        const start = moment(value.start);
+        const end = moment(value.end);
 
         // If we are only setting the start date...
         if ( whichDate === 'start' )
@@ -268,10 +252,10 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
                 // Set the end date to the start date but keep the end date's time
                 const endDate = start.clone().hours(this._range.end.hours()).minutes(this._range.end.minutes()).seconds(this._range.end.seconds());
 
-                // Test this new end date once more to see if it's ahead of the start date
+                // Test this new end date to see if it's ahead of the start date
                 if ( this._range.start.isBefore(endDate) )
                 {
-                    // If it's set the new end date
+                    // If it's, set the new end date
                     this._range.end = endDate;
                 }
                 else
@@ -294,10 +278,10 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
                 // Set the start date to the end date but keep the start date's time
                 const startDate = end.clone().hours(this._range.start.hours()).minutes(this._range.start.minutes()).seconds(this._range.start.seconds());
 
-                // Test this new end date once more to see if it's ahead of the start date
+                // Test this new end date to see if it's ahead of the start date
                 if ( this._range.end.isAfter(startDate) )
                 {
-                    // If it's set the new start date
+                    // If it's, set the new start date
                     this._range.start = startDate;
                 }
                 else
@@ -321,14 +305,14 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
         // Prepare another range object that holds the ISO formatted range dates
         const range = {
-            start: this._range.start.clone().toISOString(true),
-            end  : this._range.end.clone().toISOString(true)
+            start: this._range.start.clone().toISOString(),
+            end  : this._range.end.clone().toISOString()
         };
 
-        // Emit the range changed event with the ISO range
+        // Emit the range changed event with the range
         this.rangeChanged.emit(range);
 
-        // Update the model with the ISO range if the change was not a programmatic change
+        // Update the model with the range if the change was not a programmatic change
         // Because programmatic changes trigger writeValue which triggers onChange and onTouched
         // internally causing them to trigger twice which breaks the form's pristine and touched
         // statuses.
@@ -457,8 +441,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         // Set the default range
         this._programmaticChange = true;
         this.range = {
-            start: moment().startOf('day').toISOString(true),
-            end  : moment().add(1, 'day').endOf('day').toISOString(true)
+            start: moment().startOf('day').toISOString(),
+            end  : moment().add(1, 'day').endOf('day').toISOString()
         };
 
         // Set the default time range
@@ -625,8 +609,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     {
         // Create a new range object
         const newRange = {
-            start    : this._range.start.clone().toISOString(true),
-            end      : this._range.end.clone().toISOString(true),
+            start    : this._range.start.clone().toISOString(),
+            end      : this._range.end.clone().toISOString(),
             whichDate: null
         };
 
@@ -634,11 +618,11 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         // depending on which date we are setting
         if ( this.setWhichDate === 'start' )
         {
-            newRange.start = moment(newRange.start).year(date.year()).month(date.month()).date(date.date()).toISOString(true);
+            newRange.start = moment(newRange.start).year(date.year()).month(date.month()).date(date.date()).toISOString();
         }
         else
         {
-            newRange.end = moment(newRange.end).year(date.year()).month(date.month()).date(date.date()).toISOString(true);
+            newRange.end = moment(newRange.end).year(date.year()).month(date.month()).date(date.date()).toISOString();
         }
 
         // Append the which date to the new range object
@@ -708,8 +692,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
         // If everything is okay, set the new date
         this.range = {
-            start    : startDate.toISOString(true),
-            end      : this._range.end.clone().toISOString(true),
+            start    : startDate.toISOString(),
+            end      : this._range.end.clone().toISOString(),
             whichDate: 'start'
         };
     }
@@ -753,8 +737,8 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
         // If everything is okay, set the new date
         this.range = {
-            start    : this._range.start.clone().toISOString(true),
-            end      : endDate.toISOString(true),
+            start    : this._range.start.clone().toISOString(),
+            end      : endDate.toISOString(),
             whichDate: 'end'
         };
     }

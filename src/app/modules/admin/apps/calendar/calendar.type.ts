@@ -11,14 +11,21 @@ export interface CalendarEvent
     id: string;
     calendarId: string;
     recurringEventId: string | null;
+    isFirstInstance: boolean;
     title: string;
     description: string;
-    range: {
-        start: string | null;
-        end: string | null;
-    };
+    start: string | null;
+    end: string | null;
+    originalStart: string | null;
     allDay: boolean;
     recurrence: string;
+}
+
+export interface CalendarEventException
+{
+    id: string;
+    eventId: string;
+    exdate: string;
 }
 
 export interface CalendarSettings

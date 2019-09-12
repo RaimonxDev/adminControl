@@ -1,9 +1,9 @@
 import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import * as moment from 'moment';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 import { CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 
@@ -15,7 +15,7 @@ import { CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 })
 export class CalendarRecurrenceComponent implements OnInit, OnDestroy
 {
-    nWeekdayTranscribed: string;
+    nthWeekdayText: string;
     recurrenceForm: FormGroup;
     recurrenceFormValues: any;
     weekdays: CalendarWeekday[];
@@ -71,9 +71,9 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
                 byDay: [[]]
             }),
             monthly : this._formBuilder.group({
-                repeatOn: [null], // date | nWeekday
-                date    : [null],
-                nWeekday: [null]
+                repeatOn  : [null], // date | nthWeekday
+                date      : [null],
+                nthWeekday: [null]
             }),
             end     : this._formBuilder.group({
                 type : [null], // never | until | count
@@ -142,25 +142,24 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
         // Calculate the weekday
         const weekday = moment(this.data.event.start).format('dd').toUpperCase();
 
-        // Calculate the nWeekday
-        let nWeekdayNo = 1;
-        while ( startDate.clone().isSame(startDate.clone().subtract(nWeekdayNo, 'week'), 'month') )
+        // Calculate the nthWeekday
+        let nthWeekdayNo = 1;
+        while ( startDate.clone().isSame(startDate.clone().subtract(nthWeekdayNo, 'week'), 'month') )
         {
-            nWeekdayNo++;
+            nthWeekdayNo++;
         }
-        const nWeekday = nWeekdayNo + weekday;
+        const nthWeekday = nthWeekdayNo + weekday;
 
-        // Prepare the ordinal numbers
-        const ordinalNumbers = {
-            1: 'first',
-            2: 'second',
-            3: 'third',
-            4: 'fourth',
-            5: 'fifth'
+        // Calculate the nthWeekday as text
+        const ordinalNumberSuffixes = {
+            1: 'st',
+            2: 'nd',
+            3: 'rd',
+            4: 'th',
+            5: 'th'
         };
-
-        // Calculate the nWeekdayTranscribed
-        this.nWeekdayTranscribed = ordinalNumbers[nWeekday.slice(0, 1)] + ' ' + this.weekdays.find((item) => item.value === nWeekday.slice(-2)).label;
+        this.nthWeekdayText = nthWeekday.slice(0, 1) + ordinalNumberSuffixes[nthWeekday.slice(0, 1)] + ' ' +
+            this.weekdays.find((item) => item.value === nthWeekday.slice(-2)).label;
 
         // Set the defaults on recurrence form values
         this.recurrenceFormValues = {
@@ -170,9 +169,9 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
                 byDay: weekday
             },
             monthly : {
-                repeatOn: 'date',
-                date    : moment(this.data.event.start).date(),
-                nWeekday: nWeekday
+                repeatOn  : 'date',
+                date      : moment(this.data.event.start).date(),
+                nthWeekday: nthWeekday
             },
             end     : {
                 type : 'never',
@@ -202,7 +201,7 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
 
             if ( parsedRules.FREQ === 'MONTHLY' )
             {
-                this.recurrenceFormValues.monthly.repeatOn = parsedRules.BYDAY ? 'nWeekday' : 'date';
+                this.recurrenceFormValues.monthly.repeatOn = parsedRules.BYDAY ? 'nthWeekday' : 'date';
             }
 
             this.recurrenceFormValues.end.type = parsedRules.UNTIL ? 'until' : (parsedRules.COUNT ? 'count' : 'never');
@@ -303,9 +302,9 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
         const ruleArr = ['FREQ=' + recurrenceForm.freq, 'INTERVAL=' + recurrenceForm.interval];
 
         // If monthly on certain days...
-        if ( recurrenceForm.freq === 'MONTHLY' && recurrenceForm.monthly.repeatOn === 'nWeekday' )
+        if ( recurrenceForm.freq === 'MONTHLY' && recurrenceForm.monthly.repeatOn === 'nthWeekday' )
         {
-            ruleArr.push('BYDAY=' + recurrenceForm.monthly.nWeekday);
+            ruleArr.push('BYDAY=' + recurrenceForm.monthly.nthWeekday);
         }
 
         // If weekly...
@@ -326,7 +325,7 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
         // If one of the end options is selected...
         if ( recurrenceForm.end.type === 'until' )
         {
-            ruleArr.push('UNTIL=' + moment(recurrenceForm.end.until).startOf('day').format('YYYYMMDD[T]HHmmss[Z]'));
+            ruleArr.push('UNTIL=' + moment(recurrenceForm.end.until).endOf('day').utc().format('YYYYMMDD[T]HHmmss[Z]'));
         }
 
         if ( recurrenceForm.end.type === 'count' )

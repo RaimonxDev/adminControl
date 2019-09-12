@@ -159,98 +159,123 @@ calendar {
 // Event panel
 .calendar-event-panel {
     min-width: 512px;
-    padding: 40px 32px 24px 24px;
     border-radius: 8px;
     @include asm-elevation(5);
 
-    form {
+    // View mode
+    &.panel-mode-view {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        padding: 32px;
 
-        .row {
+        .actions {
             display: flex;
             align-items: center;
-            margin-bottom: 24px;
+            justify-content: flex-end;
 
             .mat-icon {
-                margin-right: 24px;
                 @include asm-icon-size(20);
-            }
-
-            .field {
-                flex: 1 1 auto;
-            }
-
-            &.title {
-                align-items: baseline;
-
-                input {
-                    font-size: 22px;
-                }
-            }
-
-            &.dates {
-
-                .field {
-                    display: flex;
-                    align-items: center;
-
-                    asm-date-range {
-                        margin-right: 24px;
-                    }
-                }
-            }
-
-            &.recurrence {
-
-                .field {
-                    display: flex;
-                    align-items: center;
-                    min-height: 48px;
-                    padding: 0 1.25em;
-                    border-radius: 6px;
-                    cursor: pointer;
-
-                    .status {
-                        flex: 1 1 auto;
-                    }
-                }
-            }
-
-            &.calendar {
-
-                mat-select-trigger {
-                    display: inline-flex;
-                    align-items: center;
-                    line-height: 1;
-
-                    .calendar-color {
-                        width: 12px;
-                        height: 12px;
-                        margin-right: 16px;
-                        border-radius: 50%;
-                    }
-                }
-            }
-
-            &.description {
-                align-items: flex-start;
-
-                .mat-icon {
-                    margin-top: 16px;
-                }
-
-                textarea {
-                    min-height: 96px;
-                    line-height: 1.5;
-                    overflow: hidden;
-                }
             }
         }
 
-        .save {
-            margin-left: auto;
+        .title {
+            margin: 0;
+        }
+    }
+
+    // Edit mode
+    &.panel-mode-edit {
+        padding: 40px 32px 24px 24px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 24px;
+
+                .mat-icon {
+                    margin-right: 24px;
+                    @include asm-icon-size(20);
+                }
+
+                .field {
+                    flex: 1 1 auto;
+                }
+
+                &.title {
+                    align-items: baseline;
+
+                    input {
+                        font-size: 22px;
+                    }
+                }
+
+                &.dates {
+
+                    .field {
+                        display: flex;
+                        align-items: center;
+
+                        asm-date-range {
+                            margin-right: 24px;
+                        }
+                    }
+                }
+
+                &.recurrence {
+
+                    .field {
+                        display: flex;
+                        align-items: center;
+                        min-height: 48px;
+                        padding: 0 1.25em;
+                        border-radius: 6px;
+                        cursor: pointer;
+
+                        .status {
+                            flex: 1 1 auto;
+                        }
+                    }
+                }
+
+                &.calendar {
+
+                    mat-select-trigger {
+                        display: inline-flex;
+                        align-items: center;
+                        line-height: 1;
+
+                        .calendar-color {
+                            width: 12px;
+                            height: 12px;
+                            margin-right: 16px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+
+                &.description {
+                    align-items: flex-start;
+
+                    .mat-icon {
+                        margin-top: 16px;
+                    }
+
+                    textarea {
+                        min-height: 96px;
+                        line-height: 1.5;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .save {
+                margin-left: auto;
+            }
         }
     }
 }

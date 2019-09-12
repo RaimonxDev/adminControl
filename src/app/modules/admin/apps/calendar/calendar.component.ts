@@ -18,7 +18,6 @@ import { RRule } from 'rrule';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
-import { CalendarConfirmationComponent } from 'app/modules/admin/apps/calendar/confirmation/confirmation.component';
 import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 import { Calendar, CalendarEvent, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
@@ -36,9 +35,12 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     calendarPlugins: any;
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;
+    event: CalendarEvent;
+    eventEditMode: 'single' | 'future' | 'all';
     eventForm: FormGroup;
     eventTimeFormat: any;
     events: CalendarEvent[];
+    panelMode: 'view' | 'edit';
     settings: CalendarSettings;
     view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth';
     viewTitle: string;
@@ -85,7 +87,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.calendarPlugins = [dayGridPlugin, interactionPlugin, listPlugin, momentPlugin, rrulePlugin, timeGridPlugin];
         this.drawerMode = 'side';
         this.drawerOpened = true;
+        this.eventEditMode = 'single';
         this.events = [];
+        this.panelMode = 'view';
         this.view = 'dayGridMonth';
     }
 
@@ -133,48 +137,53 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             description     : [''],
             start           : [null],
             end             : [null],
-            range           : [{}],
+            duration        : [null],
             allDay          : [true],
-            recurrence      : [null]
-        });
-
-        // Subscribe to 'start' field value changes
-        this.eventForm.get('start').valueChanges.subscribe((value) => {
-
-            // Get the current range value
-            const range = this.eventForm.get('range').value;
-
-            // Update the range value
-            this.eventForm.get('range').setValue({
-                ...range,
-                start: value
-            }, {emitEvent: false});
-        });
-
-        // Subscribe to 'end' field value changes
-        this.eventForm.get('end').valueChanges.subscribe((value) => {
-
-            // Get the current range value
-            const range = this.eventForm.get('range').value;
-
-            // Update the range value
-            this.eventForm.get('range').setValue({
-                ...range,
-                end: value
-            }, {emitEvent: false});
+            recurrence      : [null],
+            range           : [{}]
         });
 
         // Subscribe to 'range' field value changes
-        this.eventForm.get('range').valueChanges.subscribe((range) => {
+        this.eventForm.get('range').valueChanges.subscribe((value) => {
 
-            if ( !range )
+            if ( !value )
             {
                 return;
             }
 
-            // Set the 'start' and 'end' field values from the range
-            this.eventForm.get('start').setValue(range.start, {emitEvent: false});
-            this.eventForm.get('end').setValue(range.end, {emitEvent: false});
+            // Set the 'start' field value from the range
+            this.eventForm.get('start').setValue(value.start, {emitEvent: false});
+
+            // If this is a recurring event...
+            if ( this.eventForm.get('recurrence').value )
+            {
+                // Update the recurrence rules if needed
+                this._updateRecurrenceRule();
+
+                // Set the duration field
+                const duration = moment(value.end).diff(moment(value.start), 'minutes');
+                this.eventForm.get('duration').setValue(duration, {emitEvent: false});
+
+                // Update the end value
+                this._updateEndValue();
+            }
+            // Otherwise...
+            else
+            {
+                // Set the end field
+                this.eventForm.get('end').setValue(value.end, {emitEvent: false});
+            }
+        });
+
+        // Subscribe to 'recurrence' field changes
+        this.eventForm.get('recurrence').valueChanges.subscribe((value) => {
+
+            // If this is a recurring event...
+            if ( value )
+            {
+                // Update the end value
+                this._updateEndValue();
+            }
         });
 
         // Get calendars
@@ -257,11 +266,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Get the view's current start and end dates, add/subtract
         // 60 days to create a ~150 days period to fetch the data for
-        const start = moment(this._fullCalendarApi.view.currentStart).subtract(60, 'days').toISOString();
-        const end = moment(this._fullCalendarApi.view.currentEnd).add(60, 'days').toISOString();
+        const viewStart = moment(this._fullCalendarApi.view.currentStart).subtract(60, 'days');
+        const viewEnd = moment(this._fullCalendarApi.view.currentEnd).add(60, 'days');
 
         // Get events
-        this._calendarService.getEvents(start, end, true).subscribe();
+        this._calendarService.getEvents(viewStart, viewEnd, true).subscribe();
     }
 
     /**
@@ -287,13 +296,21 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Create the overlay
         this._eventPanelOverlayRef = this._overlay.create({
-            panelClass      : 'calendar-event-panel',
+            panelClass      : ['calendar-event-panel', 'panel-mode-view'],
             backdropClass   : '',
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.reposition(),
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(calendarEvent.el)
+                                  .withFlexibleDimensions()
                                   .withPositions([
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'top',
+                                          offsetX : 8
+                                      },
                                       {
                                           originX : 'start',
                                           originY : 'top',
@@ -307,6 +324,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                                           overlayX: 'end',
                                           overlayY: 'bottom',
                                           offsetX : -8
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'bottom',
+                                          overlayX: 'start',
+                                          overlayY: 'bottom',
+                                          offsetX : 8
                                       }
                                   ])
         });
@@ -350,8 +374,149 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             this._eventPanelOverlayRef.dispose();
         }
 
+        // Reset the panel and event edit modes
+        this.panelMode = 'view';
+        this.eventEditMode = 'single';
+
         // Mark for check
         this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Update the recurrence rule based on the event if needed
+     *
+     * @private
+     */
+    private _updateRecurrenceRule(): void
+    {
+        // Get the event
+        const event = this.eventForm.value;
+
+        // Return, if this is a non-recurring event
+        if ( !event.recurrence )
+        {
+            return;
+        }
+
+        // Parse the recurrence rule
+        const parsedRules = {};
+        event.recurrence.split(';').forEach((rule) => {
+
+            // Split the rule
+            const parsedRule = rule.split('=');
+
+            // Add the rule to the parsed rules
+            parsedRules[parsedRule[0]] = parsedRule[1];
+        });
+
+        // If there is a BYDAY rule, split that as well
+        if ( parsedRules['BYDAY'] )
+        {
+            parsedRules['BYDAY'] = parsedRules['BYDAY'].split(',');
+        }
+
+        // Do not update the recurrence rule if ...
+        // ... the frequency is DAILY,
+        // ... the frequency is WEEKLY and BYDAY has multiple values,
+        // ... the frequency is MONTHLY and there isn't a BYDAY rule,
+        // ... the frequency is YEARLY,
+        if ( parsedRules['FREQ'] === 'DAILY' ||
+            (parsedRules['FREQ'] === 'WEEKLY' && parsedRules['BYDAY'].length > 1) ||
+            (parsedRules['FREQ'] === 'MONTHLY' && !parsedRules['BYDAY']) ||
+            parsedRules['FREQ'] === 'YEARLY' )
+        {
+            return;
+        }
+
+        // If the frequency is WEEKLY, update the BYDAY value with the new one
+        if ( parsedRules['FREQ'] === 'WEEKLY' )
+        {
+            parsedRules['BYDAY'] = [moment(event.start).format('dd').toUpperCase()];
+        }
+
+        // If the frequency is MONTHLY, update the BYDAY value with the new one
+        if ( parsedRules['FREQ'] === 'MONTHLY' )
+        {
+            // Calculate the weekday
+            const weekday = moment(event.start).format('dd').toUpperCase();
+
+            // Calculate the nthWeekday
+            let nthWeekdayNo = 1;
+            while ( moment(event.start).isSame(moment(event.start).subtract(nthWeekdayNo, 'week'), 'month') )
+            {
+                nthWeekdayNo++;
+            }
+
+            // Set the BYDAY
+            parsedRules['BYDAY'] = [nthWeekdayNo + weekday];
+        }
+
+        // Generate the rule string from the parsed rules
+        const rules = [];
+        Object.keys(parsedRules).forEach((key) => {
+            rules.push(key + '=' + (Array.isArray(parsedRules[key]) ? parsedRules[key].join(',') : parsedRules[key]));
+        });
+        const rrule = rules.join(';');
+
+        // Update the recurrence rule
+        this.eventForm.get('recurrence').setValue(rrule);
+    }
+
+    /**
+     * Update the end value based on the recurrence and duration
+     *
+     * @private
+     */
+    private _updateEndValue(): void
+    {
+        // Get the event recurrence
+        const recurrence = this.eventForm.get('recurrence').value;
+
+        // Return, if this is a non-recurring event
+        if ( !recurrence )
+        {
+            return;
+        }
+
+        // Parse the recurrence rule
+        const parsedRules = {};
+        recurrence.split(';').forEach((rule) => {
+
+            // Split the rule
+            const parsedRule = rule.split('=');
+
+            // Add the rule to the parsed rules
+            parsedRules[parsedRule[0]] = parsedRule[1];
+        });
+
+        // If there is an UNTIL rule...
+        if ( parsedRules['UNTIL'] )
+        {
+            // Use that to set the end date
+            this.eventForm.get('end').setValue(parsedRules['UNTIL']);
+
+            // Return
+            return;
+        }
+
+        // If there is a COUNT rule...
+        if ( parsedRules['COUNT'] )
+        {
+            // Generate the RRule string
+            const rrule = 'DTSTART=' + moment(this.eventForm.get('start').value).utc().format('YYYYMMDD[T]HHmmss[Z]') + '\nRRULE:' + recurrence;
+
+            // Use RRule string to generate dates
+            const dates = RRule.fromString(rrule).all();
+
+            // Get the last date from dates array and set that as the end date
+            this.eventForm.get('end').setValue(moment(dates[dates.length - 1]).toISOString());
+
+            // Return
+            return;
+        }
+
+        // If there are no UNTIL or COUNT, set the end date to a fixed value
+        this.eventForm.get('end').setValue(moment().year(9999).endOf('year').toISOString());
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -380,22 +545,46 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 return;
             }
 
-            // Get the recurrence form field
-            const recurrenceField = this.eventForm.get('recurrence');
-
             // Only update the recurrence if it actually changed
-            if ( recurrenceField.value === result.recurrence )
+            if ( this.eventForm.get('recurrence').value === result.recurrence )
             {
                 return;
             }
 
             // Update the recurrence field
-            recurrenceField.setValue(result.recurrence);
-
-            // Set the field as dirty and touched
-            recurrenceField.markAsDirty();
-            recurrenceField.markAsTouched();
+            this.eventForm.get('recurrence').setValue(result.recurrence);
         });
+    }
+
+    /**
+     * Change the event panel mode between view and edit
+     * mode while setting the event edit mode
+     *
+     * @param panelMode
+     * @param eventEditMode
+     */
+    changeEventPanelMode(panelMode: 'view' | 'edit', eventEditMode: 'single' | 'future' | 'all' = 'single'): void
+    {
+        // Set the panel mode
+        this.panelMode = panelMode;
+
+        // Set the event edit mode
+        this.eventEditMode = eventEditMode;
+
+        // Update the panel class
+        if ( panelMode === 'view' )
+        {
+            this._eventPanelOverlayRef.removePanelClass('panel-mode-edit');
+            this._eventPanelOverlayRef.addPanelClass('panel-mode-view');
+        }
+        else
+        {
+            this._eventPanelOverlayRef.removePanelClass('panel-mode-view');
+            this._eventPanelOverlayRef.addPanelClass('panel-mode-edit');
+        }
+
+        // Update the panel position
+        this._eventPanelOverlayRef.updatePositionStrategy(this._overlay.position().global().centerHorizontally().centerVertically());
     }
 
     /**
@@ -446,7 +635,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.viewTitle = this._fullCalendarApi.view.title;
 
         // Get the view's current start date
-        const start = moment(this._fullCalendarApi.view.currentStart).toISOString();
+        const start = moment(this._fullCalendarApi.view.currentStart);
 
         // Prefetch past events
         this._calendarService.prefetchPastEvents(start).subscribe();
@@ -476,7 +665,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.viewTitle = this._fullCalendarApi.view.title;
 
         // Get the view's current end date
-        const end = moment(this._fullCalendarApi.view.currentEnd).toISOString();
+        const end = moment(this._fullCalendarApi.view.currentEnd);
 
         // Prefetch future events
         this._calendarService.prefetchFutureEvents(end).subscribe();
@@ -504,6 +693,31 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Find the event with the clicked event's id
         const event: any = _.cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
+
+        // Set the event
+        this.event = event;
+
+        // Prepare the end value
+        let end;
+
+        // If this is a recurring event...
+        if ( event.recuringEventId )
+        {
+            // Calculate the end value using the duration
+            end = moment(event.start).add(event.duration, 'minutes').toISOString();
+        }
+        // Otherwise...
+        else
+        {
+            // Set the end value from the end
+            end = event.end;
+        }
+
+        // Set the range on the event
+        event.range = {
+            start: event.start,
+            end
+        };
 
         // Reset the form and fill the event
         this.eventForm.reset();
@@ -564,51 +778,67 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         const {range, ...eventWithoutRange} = event;
 
         // Get the original event
-        const originalEvent = this.events.find(item => item.id === this.eventForm.get('id').value);
+        const originalEvent = this.events.find(item => item.id === event.id);
 
         // Return, if there are no changes made to the event
         if ( _.isEqual(eventWithoutRange, originalEvent) )
         {
             // Close the event panel
             this._closeEventPanel();
-
             return;
         }
 
-        // If the event is an instance of a recurring event...
-        if ( this.eventForm.get('recurringEventId').value )
+        // If the event is a recurring event...
+        if ( event.recurrence )
         {
-            // Show the confirmation dialog with correct information
-            const dialogRef = this._matDialog.open(CalendarConfirmationComponent, {
-                panelClass: 'calendar-event-confirmation-dialog',
-                data      : {
-                    isRecurrenceModified: originalEvent.recurrence !== this.eventForm.get('recurrence').value
-                }
+            // Update the recurring event on the server
+            this._calendarService.updateRecurringEvent(event, originalEvent, this.eventEditMode).subscribe(() => {
+
+                // Reload events
+                this._calendarService.reloadEvents().subscribe();
+
+                // Close the event panel
+                this._closeEventPanel();
             });
-
-            // After dialog closed
-            dialogRef.afterClosed().subscribe((result) => {
-
-                // Return, if canceled
-                if ( !result )
-                {
-                    return;
-                }
-
-                console.log(result);
-            });
-
-            // Close the event panel
-            this._closeEventPanel();
         }
-        // If the event is a normal, non-recurring event...
+        // If the event is a non-recurring, normal event...
         else
         {
             // Update the event on the server
-            this._calendarService.updateEvent(event.id, event).subscribe((updatedEvent) => {
+            this._calendarService.updateEvent(event.id, event).subscribe(() => {
 
-                // Reset the form with the updated event
-                this.eventForm.reset(updatedEvent);
+                // Close the event panel
+                this._closeEventPanel();
+            });
+        }
+    }
+
+    /**
+     * Delete the given event
+     *
+     * @param event
+     * @param mode
+     */
+    deleteEvent(event, mode = 'single'): void
+    {
+        // If the event is a recurring event...
+        if ( event.recurrence )
+        {
+            // Delete the recurring event on the server
+            this._calendarService.deleteRecurringEvent(event.recurringEventId, event.start, mode).subscribe(() => {
+
+                // Reload events
+                this._calendarService.reloadEvents().subscribe();
+
+                // Close the event panel
+                this._closeEventPanel();
+            });
+        }
+        // If the event is a non-recurring, normal event...
+        else
+        {
+            // Update the event on the server
+            this._calendarService.deleteEvent(event.id).subscribe(() => {
 
                 // Close the event panel
                 this._closeEventPanel();

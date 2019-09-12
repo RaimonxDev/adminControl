@@ -56,7 +56,7 @@
                             [appearance]="'fill'">
                 <mat-select [formControlName]="'repeatOn'">
                     <mat-option [value]="'date'">Monthly on day {{recurrenceForm.get('monthly.date').value}}</mat-option>
-                    <mat-option [value]="'nWeekday'">Monthly on the {{nWeekdayTranscribed}}</mat-option>
+                    <mat-option [value]="'nthWeekday'">Monthly on the {{nthWeekdayText}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

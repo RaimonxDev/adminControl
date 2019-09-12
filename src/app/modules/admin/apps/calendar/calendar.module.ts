@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -19,7 +20,6 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { AsmDateRangeModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { CalendarComponent } from 'app/modules/admin/apps/calendar/calendar.component';
-import { CalendarConfirmationComponent } from 'app/modules/admin/apps/calendar/confirmation/confirmation.component';
 import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
 import { CalendarSettingsComponent } from 'app/modules/admin/apps/calendar/settings/settings.component';
 import { calendarRoutes } from 'app/modules/admin/apps/calendar/calendar.routing';
@@ -27,12 +27,10 @@ import { calendarRoutes } from 'app/modules/admin/apps/calendar/calendar.routing
 @NgModule({
     declarations   : [
         CalendarComponent,
-        CalendarConfirmationComponent,
         CalendarRecurrenceComponent,
         CalendarSettingsComponent
     ],
     entryComponents: [
-        CalendarConfirmationComponent,
         CalendarRecurrenceComponent
     ],
     imports        : [
@@ -46,6 +44,7 @@ import { calendarRoutes } from 'app/modules/admin/apps/calendar/calendar.routing
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatMenuModule,
         MatMomentDateModule,
         MatRadioModule,
         MatSelectModule,

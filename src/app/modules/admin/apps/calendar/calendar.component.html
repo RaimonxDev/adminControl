@@ -93,109 +93,193 @@
                 <!-- Event panel -->
                 <ng-template #eventPanel>
 
-                    <form [formGroup]="eventForm"
-                          novalidate>
+                    <!-- Preview mode -->
+                    <ng-container *ngIf="panelMode === 'view'">
 
-                        <!-- Title -->
-                        <div class="row title">
+                        <div class="actions">
 
-                            <mat-icon>edit</mat-icon>
+                            <!-- Non-recurring event -->
+                            <ng-container *ngIf="!event.recurrence">
 
-                            <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                                            [appearance]="'fill'">
-                                <input matInput
-                                       [formControlName]="'title'"
-                                       [placeholder]="'Event title'">
-                            </mat-form-field>
+                                <!-- Edit -->
+                                <button mat-icon-button
+                                        (click)="changeEventPanelMode('edit', 'single')">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+
+                                <!-- Delete -->
+                                <button mat-icon-button
+                                        (click)="deleteEvent(event)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+
+                            </ng-container>
+
+                            <!-- Recurring event -->
+                            <ng-container *ngIf="event.recurrence">
+
+                                <!-- Edit -->
+                                <button mat-icon-button
+                                        [matMenuTriggerFor]="editMenu">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+
+                                <mat-menu #editMenu="matMenu">
+                                    <button mat-menu-item
+                                            (click)="changeEventPanelMode('edit', 'single')">
+                                        This event
+                                    </button>
+                                    <button mat-menu-item
+                                            *ngIf="!event.isFirstInstance"
+                                            (click)="changeEventPanelMode('edit', 'future')">
+                                        This and following events
+                                    </button>
+                                    <button mat-menu-item
+                                            (click)="changeEventPanelMode('edit', 'all')">
+                                        All events
+                                    </button>
+                                </mat-menu>
+
+                                <!-- Delete -->
+                                <button mat-icon-button
+                                        [matMenuTriggerFor]="deleteMenu">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+
+                                <mat-menu #deleteMenu="matMenu">
+                                    <button mat-menu-item
+                                            (click)="deleteEvent(event, 'single')">
+                                        This event
+                                    </button>
+                                    <button mat-menu-item
+                                            *ngIf="!event.isFirstInstance"
+                                            (click)="deleteEvent(event, 'future')">
+                                        This and following events
+                                    </button>
+                                    <button mat-menu-item
+                                            (click)="deleteEvent(event, 'all')">
+                                        All events
+                                    </button>
+                                </mat-menu>
+
+                            </ng-container>
 
                         </div>
 
-                        <!-- Dates -->
-                        <div class="row dates">
+                        <h4 class="title">{{event.title}}</h4>
 
-                            <mat-icon>date_range</mat-icon>
+                    </ng-container>
 
-                            <div class="field">
+                    <!-- Edit mode -->
+                    <ng-container *ngIf="panelMode === 'edit'">
 
-                                <asm-date-range [formControlName]="'range'"
-                                                [dateFormat]="settings.dateFormat"
-                                                [timeRange]="!eventForm.get('allDay').value"
-                                                [timeFormat]="settings.timeFormat"></asm-date-range>
+                        <form [formGroup]="eventForm"
+                              novalidate>
 
-                                <mat-checkbox [color]="'primary'"
-                                              [formControlName]="'allDay'">
-                                    All day
-                                </mat-checkbox>
+                            <!-- Title -->
+                            <div class="row title">
+
+                                <mat-icon>edit</mat-icon>
+
+                                <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
+                                                [appearance]="'fill'">
+                                    <input matInput
+                                           [formControlName]="'title'"
+                                           [placeholder]="'Event title'">
+                                </mat-form-field>
 
                             </div>
 
-                        </div>
+                            <!-- Dates -->
+                            <div class="row dates">
 
-                        <!-- Recurrence -->
-                        <div class="row recurrence">
+                                <mat-icon>date_range</mat-icon>
 
-                            <mat-icon class="mirror">cached</mat-icon>
+                                <div class="field">
 
-                            <div class="field"
-                                 (click)="openRecurrenceDialog()">
-                                <div class="status">
-                                    {{recurrenceStatus || 'Does not repeat'}}
+                                    <asm-date-range [formControlName]="'range'"
+                                                    [dateFormat]="settings.dateFormat"
+                                                    [timeRange]="!eventForm.get('allDay').value"
+                                                    [timeFormat]="settings.timeFormat"></asm-date-range>
+
+                                    <mat-checkbox [color]="'primary'"
+                                                  [formControlName]="'allDay'">
+                                        All day
+                                    </mat-checkbox>
+
                                 </div>
+
                             </div>
 
-                        </div>
+                            <!-- Recurrence -->
+                            <div class="row recurrence"
+                                 *ngIf="!event.recurrence || eventEditMode !== 'single'">
 
-                        <!-- Calendar -->
-                        <div class="row calendar">
+                                <mat-icon class="mirror">cached</mat-icon>
 
-                            <mat-icon>event</mat-icon>
+                                <div class="field"
+                                     (click)="openRecurrenceDialog()">
+                                    <div class="status">
+                                        {{recurrenceStatus || 'Does not repeat'}}
+                                    </div>
+                                </div>
 
-                            <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                                            [appearance]="'fill'">
-                                <mat-select [formControlName]="'calendarId'"
-                                            [panelClass]="'calendar-event-panel-calendar-selector'"
-                                            (change)="$event.stopImmediatePropagation()">
-                                    <mat-select-trigger>
-                                        <span class="calendar-color"
-                                              [style.backgroundColor]="getCalendar(eventForm.get('calendarId').value)?.color"></span>
-                                        <span class="calendar-title">{{getCalendar(eventForm.get('calendarId').value)?.title}}</span>
-                                    </mat-select-trigger>
-                                    <mat-option *ngFor="let calendar of calendars"
-                                                [value]="calendar.id">
-                                        <span class="calendar-color"
-                                              [style.backgroundColor]="calendar.color"></span>
-                                        <span class="calendar-title">{{calendar.title}}</span>
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                            </div>
 
-                        </div>
+                            <!-- Calendar -->
+                            <div class="row calendar">
 
-                        <!-- Description -->
-                        <div class="row description">
+                                <mat-icon>event</mat-icon>
 
-                            <mat-icon>notes</mat-icon>
+                                <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
+                                                [appearance]="'fill'">
+                                    <mat-select [formControlName]="'calendarId'"
+                                                [panelClass]="'calendar-event-panel-calendar-selector'"
+                                                (change)="$event.stopImmediatePropagation()">
+                                        <mat-select-trigger>
+                                            <span class="calendar-color"
+                                                  [style.backgroundColor]="getCalendar(eventForm.get('calendarId').value)?.color"></span>
+                                            <span class="calendar-title">{{getCalendar(eventForm.get('calendarId').value)?.title}}</span>
+                                        </mat-select-trigger>
+                                        <mat-option *ngFor="let calendar of calendars"
+                                                    [value]="calendar.id">
+                                            <span class="calendar-color"
+                                                  [style.backgroundColor]="calendar.color"></span>
+                                            <span class="calendar-title">{{calendar.title}}</span>
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
 
-                            <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                                            [appearance]="'fill'">
-                                <textarea matInput
-                                          cdkTextareaAutosize
-                                          [formControlName]="'description'"
-                                          [placeholder]="'Event description'">
-                                </textarea>
-                            </mat-form-field>
+                            </div>
 
-                        </div>
+                            <!-- Description -->
+                            <div class="row description">
 
-                        <!-- Actions -->
-                        <button class="save"
-                                mat-flat-button
-                                [color]="'primary'"
-                                (click)="updateEvent()">
-                            Save
-                        </button>
+                                <mat-icon>notes</mat-icon>
 
-                    </form>
+                                <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
+                                                [appearance]="'fill'">
+                                    <textarea matInput
+                                              cdkTextareaAutosize
+                                              [formControlName]="'description'"
+                                              [placeholder]="'Event description'">
+                                    </textarea>
+                                </mat-form-field>
+
+                            </div>
+
+                            <!-- Actions -->
+                            <button class="save"
+                                    mat-flat-button
+                                    type="button"
+                                    [color]="'primary'"
+                                    (click)="updateEvent()">
+                                Save
+                            </button>
+
+                        </form>
+
+                    </ng-container>
 
                 </ng-template>
 

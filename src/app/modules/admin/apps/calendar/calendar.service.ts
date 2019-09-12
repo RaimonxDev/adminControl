@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
-import * as moment from 'moment';
+import { default as moment, Moment } from 'moment';
 import { Calendar, CalendarEvent, CalendarSettings, CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class CalendarService
     // Private
     private _calendars: BehaviorSubject<Calendar[] | null>;
     private _events: BehaviorSubject<CalendarEvent[] | null>;
-    private _loadedEventsRange: { start: string, end: string };
+    private _loadedEventsRange: { start: Moment | null, end: Moment | null };
     private readonly _numberOfDaysToPrefetch = 60;
     private _settings: BehaviorSubject<CalendarSettings | null>;
     private _weekdays: BehaviorSubject<CalendarWeekday[] | null>;
@@ -31,8 +31,8 @@ export class CalendarService
         this._calendars = new BehaviorSubject(null);
         this._events = new BehaviorSubject(null);
         this._loadedEventsRange = {
-            start: '',
-            end  : ''
+            start: null,
+            end  : null
         };
         this._settings = new BehaviorSubject(null);
         this._weekdays = new BehaviorSubject(null);
@@ -98,29 +98,28 @@ export class CalendarService
      */
     updateCalendar(id, calendar): Observable<Calendar>
     {
-        return this.calendars$
-                   .pipe(
-                       take(1),
-                       switchMap(calendars => this._httpClient.patch<Calendar>('api/apps/calendar/calendars', {
-                           id,
-                           calendar
-                       }).pipe(
-                           map((updatedCalendar) => {
+        return this.calendars$.pipe(
+            take(1),
+            switchMap(calendars => this._httpClient.patch<Calendar>('api/apps/calendar/calendars', {
+                id,
+                calendar
+            }).pipe(
+                map((updatedCalendar) => {
 
-                               // Find the index of the updated calendar
-                               const index = calendars.findIndex(item => item.id === id);
+                    // Find the index of the updated calendar
+                    const index = calendars.findIndex(item => item.id === id);
 
-                               // Update the calendar
-                               calendars[index] = updatedCalendar;
+                    // Update the calendar
+                    calendars[index] = updatedCalendar;
 
-                               // Update the calendars
-                               this._calendars.next(calendars);
+                    // Update the calendars
+                    this._calendars.next(calendars);
 
-                               // Return the updated calendar
-                               return updatedCalendar;
-                           })
-                       ))
-                   );
+                    // Return the updated calendar
+                    return updatedCalendar;
+                })
+            ))
+        );
     }
 
     /**
@@ -130,16 +129,16 @@ export class CalendarService
      * @param end
      * @param replace
      */
-    getEvents(start, end, replace = false): Observable<CalendarEvent[]>
+    getEvents(start: Moment, end: Moment, replace = false): Observable<CalendarEvent[]>
     {
         // Set the new start date for loaded events
-        if ( replace || !this._loadedEventsRange.start || moment(start).isBefore(moment(this._loadedEventsRange.start)) )
+        if ( replace || !this._loadedEventsRange.start || start.isBefore(this._loadedEventsRange.start) )
         {
             this._loadedEventsRange.start = start;
         }
 
         // Set the new end date for loaded events
-        if ( replace || !this._loadedEventsRange.end || moment(end).isAfter(moment(this._loadedEventsRange.end)) )
+        if ( replace || !this._loadedEventsRange.end || end.isAfter(this._loadedEventsRange.end) )
         {
             this._loadedEventsRange.end = end;
         }
@@ -147,16 +146,13 @@ export class CalendarService
         // Get the events
         return this._httpClient.get<CalendarEvent[]>('api/apps/calendar/events', {
             params: {
-                start,
-                end
+                start: start.toISOString(true),
+                end  : end.toISOString(true)
             }
         }).pipe(
             switchMap(response => this._events.pipe(
                 take(1),
                 map((events) => {
-
-                    // If events is null, replace it with an empty array
-                    events = events || [];
 
                     // If replace...
                     if ( replace )
@@ -167,6 +163,9 @@ export class CalendarService
                     // Otherwise...
                     else
                     {
+                        // If events is null, replace it with an empty array
+                        events = events || [];
+
                         // Execute the observable by appending the response to the current events
                         this._events.next([...events, ...response]);
                     }
@@ -179,14 +178,37 @@ export class CalendarService
     }
 
     /**
+     * Reload events using the loaded events range
+     */
+    reloadEvents(): Observable<CalendarEvent[]>
+    {
+        // Get the events
+        return this._httpClient.get<CalendarEvent[]>('api/apps/calendar/events', {
+            params: {
+                start: this._loadedEventsRange.start.toISOString(),
+                end  : this._loadedEventsRange.end.toISOString()
+            }
+        }).pipe(
+            map((response) => {
+
+                // Execute the observable with the response replacing the events object
+                this._events.next(response);
+
+                // Return the response
+                return response;
+            })
+        );
+    }
+
+    /**
      * Prefetch future events
      *
      * @param end
      */
-    prefetchFutureEvents(end): Observable<CalendarEvent[]>
+    prefetchFutureEvents(end: Moment): Observable<CalendarEvent[]>
     {
         // Calculate the remaining prefetched days
-        const remainingDays = moment(this._loadedEventsRange.end).diff(moment(end), 'days');
+        const remainingDays = this._loadedEventsRange.end.diff(end, 'days');
 
         // Return, if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
@@ -198,8 +220,8 @@ export class CalendarService
         }
 
         // Figure out the start and end dates
-        const start = this._loadedEventsRange.end;
-        end = moment(this._loadedEventsRange.end).add(this._numberOfDaysToPrefetch - remainingDays, 'days').toISOString();
+        const start = this._loadedEventsRange.end.clone().add(1, 'day');
+        end = this._loadedEventsRange.end.clone().add(this._numberOfDaysToPrefetch - remainingDays, 'days');
 
         // Prefetch the events
         return this.getEvents(start, end);
@@ -210,10 +232,10 @@ export class CalendarService
      *
      * @param start
      */
-    prefetchPastEvents(start): Observable<CalendarEvent[]>
+    prefetchPastEvents(start: Moment): Observable<CalendarEvent[]>
     {
         // Calculate the remaining prefetched days
-        const remainingDays = moment(start).diff(moment(this._loadedEventsRange.start), 'days');
+        const remainingDays = start.diff(this._loadedEventsRange.start, 'days');
 
         // Return, if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
@@ -225,44 +247,105 @@ export class CalendarService
         }
 
         // Figure out the start and end dates
-        start = moment(this._loadedEventsRange.start).subtract(this._numberOfDaysToPrefetch - remainingDays, 'days').toISOString();
-        const end = this._loadedEventsRange.start;
+        start = this._loadedEventsRange.start.clone().subtract(this._numberOfDaysToPrefetch - remainingDays, 'days');
+        const end = this._loadedEventsRange.start.clone().subtract(1, 'day');
 
         // Prefetch the events
         return this.getEvents(start, end);
     }
 
     /**
-     * Update the event
+     * Update event
      *
      * @param id
      * @param event
      */
     updateEvent(id, event): Observable<CalendarEvent>
     {
-        return this.events$
-                   .pipe(
-                       take(1),
-                       switchMap(events => this._httpClient.patch<CalendarEvent>('api/apps/calendar/event', {
-                           id,
-                           event
-                       }).pipe(
-                           map((updatedEvent) => {
+        return this.events$.pipe(
+            take(1),
+            switchMap(events => this._httpClient.patch<CalendarEvent>('api/apps/calendar/event', {
+                id,
+                event
+            }).pipe(
+                map((updatedEvent) => {
 
-                               // Find the index of the updated event
-                               const index = events.findIndex(item => item.id === id);
+                    // Find the index of the updated event
+                    const index = events.findIndex(item => item.id === id);
 
-                               // Update the event
-                               events[index] = updatedEvent;
+                    // Update the event
+                    events[index] = updatedEvent;
 
-                               // Update the events
-                               this._events.next(events);
+                    // Update the events
+                    this._events.next(events);
 
-                               // Return the updated event
-                               return updatedEvent;
-                           })
-                       ))
-                   );
+                    // Return the updated event
+                    return updatedEvent;
+                })
+            ))
+        );
+    }
+
+    /**
+     * Update recurring event
+     *
+     * @param event
+     * @param originalEvent
+     * @param mode
+     */
+    updateRecurringEvent(event, originalEvent, mode): Observable<boolean>
+    {
+        return this._httpClient.patch<boolean>('api/apps/calendar/recurring-event', {
+            event,
+            originalEvent,
+            mode
+        });
+    }
+
+    /**
+     * Delete event
+     *
+     * @param id
+     */
+    deleteEvent(id): Observable<CalendarEvent>
+    {
+        return this.events$.pipe(
+            take(1),
+            switchMap(events => this._httpClient.delete<CalendarEvent>('api/apps/calendar/event', {params: {id}}).pipe(
+                map((isDeleted) => {
+
+                    // Find the index of the deleted event
+                    const index = events.findIndex(item => item.id === id);
+
+                    // Delete the event
+                    events.splice(index, 1);
+
+                    // Update the events
+                    this._events.next(events);
+
+                    // Return the deleted status
+                    return isDeleted;
+                })
+            ))
+        );
+    }
+
+    /**
+     * Delete recurring event
+     *
+     * @param id
+     * @param start
+     * @param mode
+     */
+    deleteRecurringEvent(id, start, mode): Observable<boolean>
+    {
+        return this._httpClient.delete<boolean>('api/apps/calendar/recurring-event', {
+            params: {
+                id,
+                start,
+                mode
+            }
+        });
     }
 
     /**
@@ -282,26 +365,25 @@ export class CalendarService
      */
     updateSettings(settings): Observable<CalendarSettings>
     {
-        return this.events$
-                   .pipe(
-                       take(1),
-                       switchMap(events => this._httpClient.patch<CalendarSettings>('api/apps/calendar/settings', {
-                           settings
-                       }).pipe(
-                           map((updatedSettings) => {
+        return this.events$.pipe(
+            take(1),
+            switchMap(events => this._httpClient.patch<CalendarSettings>('api/apps/calendar/settings', {
+                settings
+            }).pipe(
+                map((updatedSettings) => {
 
-                               // Update the settings
-                               this._settings.next(settings);
+                    // Update the settings
+                    this._settings.next(settings);
 
-                               // Get weekdays again to get them in correct order
-                               // in case the startWeekOn setting changes
-                               this.getWeekdays().subscribe();
+                    // Get weekdays again to get them in correct order
+                    // in case the startWeekOn setting changes
+                    this.getWeekdays().subscribe();
 
-                               // Return the updated settings
-                               return updatedSettings;
-                           })
-                       ))
-                   );
+                    // Return the updated settings
+                    return updatedSettings;
+                })
+            ))
+        );
     }
 
     /**
@@ -315,5 +397,4 @@ export class CalendarService
             })
         );
     }
-
 }
