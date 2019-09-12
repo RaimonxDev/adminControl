@@ -251,13 +251,8 @@ export class MockMailboxApi
                 const id = request.params.get('id');
 
                 // Find the label and delete it
-                this._labels.forEach((item, index) => {
-
-                    if ( item.id === id )
-                    {
-                        this._labels.splice(index, 1);
-                    }
-                });
+                const index = this._labels.findIndex((item) => item.id === id);
+                this._labels.splice(index, 1);
 
                 // Get all the mails that have the label
                 const mailsWithLabel = this._mails.filter((mail) => {
@@ -387,9 +382,7 @@ export class MockMailboxApi
                 const mails = _.cloneDeep(this._mails);
 
                 // Find the mail
-                const mail = mails.find((item) => {
-                    return item.id === id;
-                });
+                const mail = mails.find((item) => item.id === id);
 
                 return [
                     200,

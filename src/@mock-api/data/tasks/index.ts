@@ -115,13 +115,8 @@ export class MockTasksApi
                 const id = request.params.get('id');
 
                 // Find the tag and delete it
-                this._tags.forEach((item, index) => {
-
-                    if ( item.id === id )
-                    {
-                        this._tags.splice(index, 1);
-                    }
-                });
+                const index = this._tags.findIndex((item) => item.id === id);
+                this._tags.splice(index, 1);
 
                 // Get the tasks that have the tag
                 const tasksWithTag = this._tasks.filter(task => task.tags.indexOf(id) > -1);
@@ -148,9 +143,7 @@ export class MockTasksApi
                 const tasks = _.cloneDeep(this._tasks);
 
                 // Sort the tasks by order
-                tasks.sort((a, b) => {
-                    return a.order - b.order;
-                });
+                tasks.sort((a, b) => a.order - b.order);
 
                 return [
                     200,
@@ -244,9 +237,7 @@ export class MockTasksApi
                 const tasks = _.cloneDeep(this._tasks);
 
                 // Find the task
-                const task = tasks.find((item) => {
-                    return item.id === id;
-                });
+                const task = tasks.find((item) => item.id === id);
 
                 return [
                     200,
@@ -332,13 +323,8 @@ export class MockTasksApi
                 const id = request.params.get('id');
 
                 // Find the task and delete it
-                this._tasks.forEach((item, index) => {
-
-                    if ( item.id === id )
-                    {
-                        this._tasks.splice(index, 1);
-                    }
-                });
+                const index = this._tasks.findIndex((item) => item.id === id);
+                this._tasks.splice(index, 1);
 
                 return [
                     200,
