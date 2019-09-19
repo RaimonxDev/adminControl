@@ -96,77 +96,106 @@
                     <!-- Preview mode -->
                     <ng-container *ngIf="panelMode === 'view'">
 
-                        <div class="actions">
+                        <div class="row header">
 
-                            <!-- Non-recurring event -->
-                            <ng-container *ngIf="!event.recurrence">
+                            <mat-icon>info</mat-icon>
 
-                                <!-- Edit -->
-                                <button mat-icon-button
-                                        (click)="changeEventPanelMode('edit', 'single')">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
+                            <div class="row-content">
 
-                                <!-- Delete -->
-                                <button mat-icon-button
-                                        (click)="deleteEvent(event)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
+                                <div class="info">
+                                    <h3 class="title">{{event.title || '(No title)'}}</h3>
+                                    <div class="date">{{event.start | date:'EEEE, MMMM d'}}</div>
+                                    <div class="recurrence">{{recurrenceStatus}}</div>
+                                </div>
 
-                            </ng-container>
+                                <div class="actions">
 
-                            <!-- Recurring event -->
-                            <ng-container *ngIf="event.recurrence">
+                                    <!-- Non-recurring event -->
+                                    <ng-container *ngIf="!event.recurrence">
 
-                                <!-- Edit -->
-                                <button mat-icon-button
-                                        [matMenuTriggerFor]="editMenu">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
+                                        <!-- Edit -->
+                                        <button mat-icon-button
+                                                (click)="changeEventPanelMode('edit', 'single')">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
 
-                                <mat-menu #editMenu="matMenu">
-                                    <button mat-menu-item
-                                            (click)="changeEventPanelMode('edit', 'single')">
-                                        This event
-                                    </button>
-                                    <button mat-menu-item
-                                            *ngIf="!event.isFirstInstance"
-                                            (click)="changeEventPanelMode('edit', 'future')">
-                                        This and following events
-                                    </button>
-                                    <button mat-menu-item
-                                            (click)="changeEventPanelMode('edit', 'all')">
-                                        All events
-                                    </button>
-                                </mat-menu>
+                                        <!-- Delete -->
+                                        <button mat-icon-button
+                                                (click)="deleteEvent(event)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
 
-                                <!-- Delete -->
-                                <button mat-icon-button
-                                        [matMenuTriggerFor]="deleteMenu">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
+                                    </ng-container>
 
-                                <mat-menu #deleteMenu="matMenu">
-                                    <button mat-menu-item
-                                            (click)="deleteEvent(event, 'single')">
-                                        This event
-                                    </button>
-                                    <button mat-menu-item
-                                            *ngIf="!event.isFirstInstance"
-                                            (click)="deleteEvent(event, 'future')">
-                                        This and following events
-                                    </button>
-                                    <button mat-menu-item
-                                            (click)="deleteEvent(event, 'all')">
-                                        All events
-                                    </button>
-                                </mat-menu>
+                                    <!-- Recurring event -->
+                                    <ng-container *ngIf="event.recurrence">
 
-                            </ng-container>
+                                        <!-- Edit -->
+                                        <button mat-icon-button
+                                                [matMenuTriggerFor]="editMenu">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+
+                                        <mat-menu #editMenu="matMenu">
+                                            <button mat-menu-item
+                                                    (click)="changeEventPanelMode('edit', 'single')">
+                                                This event
+                                            </button>
+                                            <button mat-menu-item
+                                                    *ngIf="!event.isFirstInstance"
+                                                    (click)="changeEventPanelMode('edit', 'future')">
+                                                This and following events
+                                            </button>
+                                            <button mat-menu-item
+                                                    (click)="changeEventPanelMode('edit', 'all')">
+                                                All events
+                                            </button>
+                                        </mat-menu>
+
+                                        <!-- Delete -->
+                                        <button mat-icon-button
+                                                [matMenuTriggerFor]="deleteMenu">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+
+                                        <mat-menu #deleteMenu="matMenu">
+                                            <button mat-menu-item
+                                                    (click)="deleteEvent(event, 'single')">
+                                                This event
+                                            </button>
+                                            <button mat-menu-item
+                                                    *ngIf="!event.isFirstInstance"
+                                                    (click)="deleteEvent(event, 'future')">
+                                                This and following events
+                                            </button>
+                                            <button mat-menu-item
+                                                    (click)="deleteEvent(event, 'all')">
+                                                All events
+                                            </button>
+                                        </mat-menu>
+
+                                    </ng-container>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
-                        <h4 class="title">{{event.title || '(No title)'}}</h4>
+                        <div class="row description"
+                             *ngIf="event.description">
+                            <mat-icon>notes</mat-icon>
+                            <div class="row-content">{{event.description}}</div>
+                        </div>
+
+                        <div class="row calendar">
+                            <mat-icon>today</mat-icon>
+                            <div class="row-content">
+                                <div class="color"
+                                     [ngStyle]="{'backgroundColor': getCalendar(event.calendarId).color}"></div>
+                                <div class="title">{{getCalendar(event.calendarId).title}}</div>
+                            </div>
+                        </div>
 
                     </ng-container>
 

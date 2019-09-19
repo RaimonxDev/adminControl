@@ -38,7 +38,7 @@ export const events = [
         id         : '660f0dcd-48f8-4266-a89a-8ee0789c074a',
         calendarId : '1a470c8e-40ed-4c2d-b590-a4f1f6ead6cc',
         title      : 'Dinner with Mom',
-        description: '',
+        description: 'Do not forget to buy her lilacs!',
         start      : moment().date(10).hour(18).minute(0).second(0).millisecond(0).toISOString(), // 10th of the current month at 18:00
         end        : moment().date(10).hour(20).minute(0).second(0).millisecond(0).toISOString(), // 10th of the current month at 20:00
         duration   : null,
@@ -72,7 +72,7 @@ export const events = [
         id         : 'd2220429-9214-4c4b-9da6-f8da2fbfd507',
         calendarId : '09887870-f85a-40eb-8171-1b13d7a7f529',
         title      : 'Doctor\'s Visit',
-        description: '',
+        description: 'Measure blood pressure before leaving home',
         start      : moment().date(1).hour(10).minute(0).second(0).millisecond(0).add((9 - moment().date(1).day()) % 7, 'day').toISOString(), // First Tuesday of the current month at 10:00
         end        : moment().year(9999).endOf('year').toISOString(), // End of the times
         duration   : 90, // Minutes
@@ -106,7 +106,7 @@ export const events = [
         id         : 'f619eb76-c21b-4bb0-aeff-41e765cae290',
         calendarId : '5dab5f7b-757a-4467-ace1-305fe07b11fe',
         title      : 'Consulting',
-        description: '',
+        description: 'Sarah and Jessica will be joining the call',
         start      : moment().date(8).hour(11).minute(30).second(0).millisecond(0).toISOString(), // 8th of the current month at 11:30
         end        : moment().date(8).hour(12).minute(45).second(0).millisecond(0).toISOString(), // 8th of the current month at 12:45
         duration   : null,

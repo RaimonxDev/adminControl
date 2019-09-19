@@ -24,10 +24,15 @@ asm-date-range {
             line-height: 1;
 
             .date {
+                white-space: nowrap;
 
                 + .time {
                     margin-left: 8px;
                 }
+            }
+
+            .time {
+                white-space: nowrap;
             }
         }
 

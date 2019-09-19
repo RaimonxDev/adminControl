@@ -302,7 +302,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             scrollStrategy  : this._overlay.scrollStrategies.reposition(),
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(calendarEvent.el)
-                                  .withFlexibleDimensions()
+                                  .withFlexibleDimensions(false)
                                   .withPositions([
                                       {
                                           originX : 'end',
@@ -601,7 +601,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         }
 
         // Update the panel position
-        this._eventPanelOverlayRef.updatePositionStrategy(this._overlay.position().global().centerHorizontally().centerVertically());
+        setTimeout(() => {
+            this._eventPanelOverlayRef.updatePosition();
+        });
     }
 
     /**

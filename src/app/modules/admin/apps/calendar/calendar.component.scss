@@ -158,7 +158,8 @@ calendar {
 
 // Event panel
 .calendar-event-panel {
-    min-width: 520px;
+    min-width: 544px;
+    max-width: 544px;
     border-radius: 8px;
     @include asm-elevation(5);
 
@@ -168,18 +169,71 @@ calendar {
         flex-direction: column;
         padding: 32px;
 
-        .actions {
+        .row {
             display: flex;
-            align-items: center;
-            justify-content: flex-end;
+            margin-bottom: 24px;
 
-            .mat-icon {
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            > .mat-icon {
+                margin-right: 24px;
                 @include asm-icon-size(20);
             }
-        }
 
-        .title {
-            margin: 0;
+            .row-content {
+                flex: 1 1 auto;
+            }
+
+            &.header {
+
+                > .mat-icon {
+                    position: relative;
+                    top: 4px;
+                }
+
+                .row-content {
+                    display: flex;
+                    flex: 1 1 auto;
+                    justify-content: space-between;
+
+                    .info {
+
+                        .title {
+                            margin: 0 0 6px 0;
+                        }
+                    }
+
+                    .actions {
+                        position: relative;
+                        display: flex;
+                        top: -8px;
+                        right: -8px;
+                        margin-left: 8px;
+
+                        .mat-icon {
+                            @include asm-icon-size(20);
+                        }
+                    }
+                }
+            }
+
+            &.calendar {
+
+                .row-content {
+                    display: flex;
+                    align-items: center;
+
+                    .color {
+                        width: 8px;
+                        min-width: 8px;
+                        height: 8px;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                    }
+                }
+            }
         }
     }
 
@@ -325,15 +379,36 @@ calendar {
     .calendar-event-panel {
         background: map-get($background, card);
 
-        form {
+        &.panel-mode-view {
 
             .row {
 
-                &.recurrence {
+                &.header {
 
-                    .field {
-                        background: asm-color($asm-gray, 200);
-                        color: asm-contrast($asm-gray, 200);
+                    .info {
+
+                        .date,
+                        .recurrence {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.panel-mode-add,
+        &.panel-mode-edit {
+
+            form {
+
+                .row {
+
+                    &.recurrence {
+
+                        .field {
+                            background: asm-color($asm-gray, 200);
+                            color: asm-contrast($asm-gray, 200);
+                        }
                     }
                 }
             }
