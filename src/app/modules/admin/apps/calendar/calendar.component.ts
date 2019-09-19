@@ -40,7 +40,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     eventForm: FormGroup;
     eventTimeFormat: any;
     events: CalendarEvent[];
-    panelMode: 'view' | 'edit';
+    panelMode: 'view' | 'add' | 'edit';
     settings: CalendarSettings;
     view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth';
     viewTitle: string;
@@ -551,8 +551,18 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 return;
             }
 
-            // Update the recurrence field
-            this.eventForm.get('recurrence').setValue(result.recurrence);
+            // If returned value is 'cleared'...
+            if ( result.recurrence === 'cleared' )
+            {
+                // Clear the recurrence field if recurrence cleared
+                this.eventForm.get('recurrence').setValue(null);
+            }
+            // Otherwise...
+            else
+            {
+                // Update the recurrence field with the result
+                this.eventForm.get('recurrence').setValue(result.recurrence);
+            }
         });
     }
 
@@ -563,7 +573,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      * @param panelMode
      * @param eventEditMode
      */
-    changeEventPanelMode(panelMode: 'view' | 'edit', eventEditMode: 'single' | 'future' | 'all' = 'single'): void
+    changeEventPanelMode(panelMode: 'view' | 'add' | 'edit', eventEditMode: 'single' | 'future' | 'all' = 'single'): void
     {
         // Set the panel mode
         this.panelMode = panelMode;
@@ -574,12 +584,19 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Update the panel class
         if ( panelMode === 'view' )
         {
-            this._eventPanelOverlayRef.removePanelClass('panel-mode-edit');
+            this._eventPanelOverlayRef.removePanelClass(['panel-mode-add', 'panel-mode-edit']);
             this._eventPanelOverlayRef.addPanelClass('panel-mode-view');
         }
-        else
+
+        if ( panelMode === 'add' )
         {
-            this._eventPanelOverlayRef.removePanelClass('panel-mode-view');
+            this._eventPanelOverlayRef.removePanelClass(['panel-mode-edit', 'panel-mode-view']);
+            this._eventPanelOverlayRef.addPanelClass('panel-mode-add');
+        }
+
+        if ( panelMode === 'edit' )
+        {
+            this._eventPanelOverlayRef.removePanelClass(['panel-mode-add', 'panel-mode-view']);
             this._eventPanelOverlayRef.addPanelClass('panel-mode-edit');
         }
 
@@ -674,14 +691,44 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     /**
      * On date click
      *
-     * @param event
+     * @param calendarEvent
      */
-    onDateClick(event): void
+    onDateClick(calendarEvent): void
     {
-        // console.log(event);
+        // Prepare the event
+        const event = {
+            id              : null,
+            calendarId      : this.calendars[0].id,
+            recurringEventId: null,
+            isFirstInstance : false,
+            title           : '',
+            description     : '',
+            start           : moment(calendarEvent.date).startOf('day').toISOString(),
+            end             : moment(calendarEvent.date).endOf('day').toISOString(),
+            duration        : null,
+            allDay          : true,
+            recurrence      : null,
+            range           : {
+                start: moment(calendarEvent.date).startOf('day').toISOString(),
+                end  : moment(calendarEvent.date).endOf('day').toISOString()
+            }
+        };
 
-        // Close the event panel
-        // this._closeEventPanel();
+        // Set the event
+        this.event = event;
+
+        // Set the el on calendarEvent for consistency
+        calendarEvent.el = calendarEvent.dayEl;
+
+        // Reset the form and fill the event
+        this.eventForm.reset();
+        this.eventForm.patchValue(event);
+
+        // Open the event panel
+        this._openEventPanel(calendarEvent);
+
+        // Change the event panel mode
+        this.changeEventPanelMode('add');
     }
 
     /**
@@ -722,9 +769,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Reset the form and fill the event
         this.eventForm.reset();
         this.eventForm.patchValue(event);
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
 
         // Open the event panel
         this._openEventPanel(calendarEvent);
@@ -769,12 +813,41 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
+     * Add event
+     */
+    addEvent(): void
+    {
+        // Get the clone of the event form value
+        let newEvent = _.clone(this.eventForm.value);
+
+        // If the event is a recurring event...
+        if ( newEvent.recurrence )
+        {
+            // Set the event duration
+            newEvent.duration = moment(newEvent.range.end).diff(moment(newEvent.range.start), 'minutes');
+        }
+
+        // Modify the event before sending it to the server
+        newEvent = _.omit(newEvent, ['range', 'recurringEventId']);
+
+        // Add the event
+        this._calendarService.addEvent(newEvent).subscribe(() => {
+
+            // Reload events
+            this._calendarService.reloadEvents().subscribe();
+
+            // Close the event panel
+            this._closeEventPanel();
+        });
+    }
+
+    /**
      * Update the event
      */
     updateEvent(): void
     {
         // Get the clone of the event form value
-        const event = _.clone(this.eventForm.value);
+        let event = _.clone(this.eventForm.value);
         const {range, ...eventWithoutRange} = event;
 
         // Get the original event
@@ -785,11 +858,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         {
             // Close the event panel
             this._closeEventPanel();
+
+            // Return
             return;
         }
 
         // If the event is a recurring event...
-        if ( event.recurrence )
+        if ( event.recurrence && event.recurringEventId )
         {
             // Update the recurring event on the server
             this._calendarService.updateRecurringEvent(event, originalEvent, this.eventEditMode).subscribe(() => {
@@ -800,12 +875,62 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 // Close the event panel
                 this._closeEventPanel();
             });
+
+            // Return
+            return;
         }
-        // If the event is a non-recurring, normal event...
-        else
+
+        // If the event is a non-recurring event...
+        if ( !event.recurrence && !event.recurringEventId )
         {
             // Update the event on the server
             this._calendarService.updateEvent(event.id, event).subscribe(() => {
+
+                // Close the event panel
+                this._closeEventPanel();
+            });
+
+            // Return
+            return;
+        }
+
+        // If the event was a non-recurring event but now it will be a recurring event...
+        if ( event.recurrence && !event.recurringEventId )
+        {
+            // Set the event duration
+            event.duration = moment(event.range.end).diff(moment(event.range.start), 'minutes');
+
+            // Omit unnecessary fields
+            event = _.omit(event, ['range', 'recurringEventId']);
+
+            // Update the event on the server
+            this._calendarService.updateEvent(event.id, event).subscribe(() => {
+
+                // Reload events
+                this._calendarService.reloadEvents().subscribe();
+
+                // Close the event panel
+                this._closeEventPanel();
+            });
+
+            // Return
+            return;
+        }
+
+        // If the event was a recurring event but now it will be a non-recurring event...
+        if ( !event.recurrence && event.recurringEventId )
+        {
+            // Set the end date
+            event.end = moment(event.start).add(event.duration, 'minutes').toISOString();
+
+            // Set the duration as null
+            event.duration = null;
+
+            // Update the recurring event on the server
+            this._calendarService.updateRecurringEvent(event, originalEvent, this.eventEditMode).subscribe(() => {
+
+                // Reload events
+                this._calendarService.reloadEvents().subscribe();
 
                 // Close the event panel
                 this._closeEventPanel();

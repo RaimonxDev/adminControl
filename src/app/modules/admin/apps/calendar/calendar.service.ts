@@ -255,6 +255,30 @@ export class CalendarService
     }
 
     /**
+     * Add event
+     *
+     * @param event
+     */
+    addEvent(event): Observable<CalendarEvent>
+    {
+        return this.events$.pipe(
+            take(1),
+            switchMap(events => this._httpClient.put<CalendarEvent>('api/apps/calendar/event', {
+                event
+            }).pipe(
+                map((addedEvent) => {
+
+                    // Update the events
+                    this._events.next(events);
+
+                    // Return the added event
+                    return addedEvent;
+                })
+            ))
+        );
+    }
+
+    /**
      * Update event
      *
      * @param id

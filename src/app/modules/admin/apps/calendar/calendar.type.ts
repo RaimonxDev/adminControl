@@ -16,7 +16,6 @@ export interface CalendarEvent
     description: string;
     start: string | null;
     end: string | null;
-    originalStart: string | null;
     allDay: boolean;
     recurrence: string;
 }

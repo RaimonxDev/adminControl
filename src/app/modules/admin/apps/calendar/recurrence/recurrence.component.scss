@@ -119,6 +119,10 @@ calendar-recurrence {
             display: flex;
             align-items: center;
             justify-content: flex-end;
+
+            .clear {
+                margin-right: 8px;
+            }
         }
     }
 }

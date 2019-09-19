@@ -102,8 +102,14 @@
 
     <!-- Actions -->
     <div class="actions">
-        <button class="save"
+        <button class="clear"
                 mat-button
+                [color]="'primary'"
+                (click)="clear()">
+            Clear
+        </button>
+
+        <button mat-button
                 [disabled]="recurrenceForm.invalid"
                 [color]="'primary'"
                 (click)="done()">

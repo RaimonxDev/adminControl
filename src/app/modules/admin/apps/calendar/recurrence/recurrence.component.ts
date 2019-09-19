@@ -291,6 +291,15 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Clear
+     */
+    clear(): void
+    {
+        // Close the dialog
+        this.matDialogRef.close({recurrence: 'cleared'});
+    }
+
+    /**
      * Done
      */
     done(): void

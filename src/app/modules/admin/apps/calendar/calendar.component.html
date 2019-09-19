@@ -166,12 +166,12 @@
 
                         </div>
 
-                        <h4 class="title">{{event.title}}</h4>
+                        <h4 class="title">{{event.title || '(No title)'}}</h4>
 
                     </ng-container>
 
-                    <!-- Edit mode -->
-                    <ng-container *ngIf="panelMode === 'edit'">
+                    <!-- Add / Edit mode -->
+                    <ng-container *ngIf="panelMode === 'add' || panelMode === 'edit'">
 
                         <form [formGroup]="eventForm"
                               novalidate>
@@ -269,7 +269,17 @@
                             </div>
 
                             <!-- Actions -->
+                            <button class="add"
+                                    *ngIf="panelMode === 'add'"
+                                    mat-flat-button
+                                    type="button"
+                                    [color]="'primary'"
+                                    (click)="addEvent()">
+                                Add
+                            </button>
+
                             <button class="save"
+                                    *ngIf="panelMode === 'edit'"
                                     mat-flat-button
                                     type="button"
                                     [color]="'primary'"

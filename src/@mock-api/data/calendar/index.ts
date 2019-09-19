@@ -264,6 +264,28 @@ export class MockCalendarApi
             });
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Event - PUT
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPut('api/apps/calendar/event')
+            .reply((request) => {
+
+                // Get the event as the new event
+                const newEvent = _.cloneDeep(request.body.event);
+
+                // Add an id to the new event
+                newEvent.id = AsmMockApiUtils.guid();
+
+                // Unshift the new event
+                this._events.unshift(newEvent);
+
+                return [
+                    200,
+                    newEvent
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Event - PATCH
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -354,10 +376,21 @@ export class MockCalendarApi
                     if ( originalEvent.start === recurringEvent.start )
                     {
                         // Generate the rruleset
-                        const rruleset = this._generateRuleset(recurringEvent, moment(recurringEvent.start).utc()   , moment(recurringEvent.end).utc());
+                        const rruleset = this._generateRuleset(recurringEvent, moment(recurringEvent.start), moment(recurringEvent.end).utc());
+
+                        // Generate the dates using rruleset and get the 2nd date from start
+                        const ruleDate = moment(rruleset.all((date, i) => i < 2)[1]);
+
+                        // Subtract the UTC Offset from the rule date as we use local time for DTSTART.
+                        // The reason for this is simple; if we use UTC dates for DTSTART, RRule generated
+                        // dates can shift. Since we have to store the dates as UTC, we can figure out the
+                        // UTC value by simply subtracting the UTC Offset (minutes) from the rule date rather
+                        // than using UTC dates in the first place. This will ensure there will be no time/day
+                        // shift on generated rules since they will be generated based on the local time.
+                        ruleDate.subtract(ruleDate.utcOffset(), 'minutes');
 
                         // Update the recurring event's start date
-                        recurringEvent.start = moment(rruleset.all((date, i) => i < 2)[1]).toISOString();
+                        recurringEvent.start = ruleDate.toISOString();
                     }
                     // Otherwise...
                     else
@@ -444,10 +477,21 @@ export class MockCalendarApi
                     if ( event.start === recurringEvent.start )
                     {
                         // Generate the rruleset
-                        const rruleset = this._generateRuleset(recurringEvent, moment(recurringEvent.start).utc()   , moment(recurringEvent.end).utc());
+                        const rruleset = this._generateRuleset(recurringEvent, moment(recurringEvent.start), moment(recurringEvent.end).utc());
+
+                        // Generate the dates using rruleset and get the 2nd date from start
+                        const ruleDate = moment(rruleset.all((date, i) => i < 2)[1]);
+
+                        // Subtract the UTC Offset from the rule date as we use local time for DTSTART.
+                        // The reason for this is simple; if we use UTC dates for DTSTART, RRule generated
+                        // dates can shift. Since we have to store the dates as UTC, we can figure out the
+                        // UTC value by simply subtracting the UTC Offset (minutes) from the rule date rather
+                        // than using UTC dates in the first place. This will ensure there will be no time/day
+                        // shift on generated rules since they will be generated based on the local time.
+                        ruleDate.subtract(ruleDate.utcOffset(), 'minutes');
 
                         // Update the recurring event's start date
-                        recurringEvent.start = moment(rruleset.all((date, i) => i < 2)[1]).toISOString();
+                        recurringEvent.start = ruleDate.toISOString();
                     }
                     // Otherwise...
                     else
