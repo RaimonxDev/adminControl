@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { rrulestr } from 'rrule';
+import RRule, { RRuleSet, rrulestr } from 'rrule';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { calendars as calendarsData, events as eventsData, exceptions as exceptionsData, settings as settingsData, weekdays as weekdaysData } from '@mock-api/data/calendar/data';
@@ -33,6 +33,69 @@ export class MockCalendarApi
         this._exceptions = exceptionsData;
         this._settings = settingsData;
         this._weekdays = weekdaysData;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Generates an RRuleSet from given event
+     *
+     * @param event
+     * @param dtStart
+     * @param until
+     * @private
+     */
+    private _generateRuleset(event, dtStart, until): RRuleSet | RRule
+    {
+        // Parse the recurrence rules
+        const parsedRules = {};
+        event.recurrence.split(';').forEach((rule) => {
+
+            // Split the rule
+            const parsedRule = rule.split('=');
+
+            // Omit UNTIL or COUNT from the parsed rules since we only
+            // need them for calculating the event's end date. We will
+            // add an UNTIL later based on the above calculations.
+            if ( parsedRule[0] === 'UNTIL' || parsedRule[0] === 'COUNT' )
+            {
+                return;
+            }
+
+            // Add the rule to the parsed rules
+            parsedRules[parsedRule[0]] = parsedRule[1];
+        });
+
+        // Generate the rule array from the parsed rules
+        const rules = [];
+        Object.keys(parsedRules).forEach((key) => {
+            rules.push(key + '=' + parsedRules[key]);
+        });
+
+        // Prepare the ruleSet
+        const ruleSet = [];
+
+        // Add DTSTART
+        ruleSet.push('DTSTART:' + dtStart.format('YYYYMMDD[T]HHmmss[Z]'));
+
+        // Add RRULE
+        ruleSet.push('RRULE:' + rules.join(';') + ';UNTIL=' + until.format('YYYYMMDD[T]HHmmss[Z]'));
+
+        // Find and add any available exceptions to the rule
+        this._exceptions.forEach((item) => {
+
+            // If the item is an exception to this event...
+            if ( item.eventId === event.id )
+            {
+                // Add it as an EXDATE to the rrule
+                ruleSet.push('EXDATE:' + moment(item.exdate).format('YYYYMMDD[T]HHmmss[Z]'));
+            }
+        });
+
+        // Create an RRuleSet from the ruleSet array
+        return rrulestr(ruleSet.join('\n'), {forceset: true});
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -137,59 +200,11 @@ export class MockCalendarApi
                         }
 
                         // Set the DTSTART and UNTIL for RRule
-                        const dtStart = eventStart;
-                        const until = viewEnd.isBefore(eventEnd) ? viewEnd : eventEnd;
+                        const dtStart = eventStart.clone();
+                        const until = viewEnd.isBefore(eventEnd) ? viewEnd.clone().utc() : eventEnd.clone().utc();
 
-                        // Set the dtStart and until to UTC mode since we use RRule in UTC mode
-                        until.utc();
-
-                        // Parse the recurrence rules
-                        const parsedRules = {};
-                        event.recurrence.split(';').forEach((rule) => {
-
-                            // Split the rule
-                            const parsedRule = rule.split('=');
-
-                            // Omit UNTIL or COUNT from the parsed rules since we only
-                            // need them for calculating the event's end date. We will
-                            // add an UNTIL later based on the above calculations.
-                            if ( parsedRule[0] === 'UNTIL' || parsedRule[0] === 'COUNT' )
-                            {
-                                return;
-                            }
-
-                            // Add the rule to the parsed rules
-                            parsedRules[parsedRule[0]] = parsedRule[1];
-                        });
-
-                        // Generate the rule array from the parsed rules
-                        const rules = [];
-                        Object.keys(parsedRules).forEach((key) => {
-                            rules.push(key + '=' + parsedRules[key]);
-                        });
-
-                        // Prepare the ruleSet
-                        const ruleSet = [];
-
-                        // Add DTSTART
-                        ruleSet.push('DTSTART:' + dtStart.format('YYYYMMDD[T]HHmmss[Z]'));
-
-                        // Add RRULE
-                        ruleSet.push('RRULE:' + rules.join(';') + ';UNTIL=' + until.format('YYYYMMDD[T]HHmmss[Z]'));
-
-                        // Find and add any available exceptions to the rule
-                        this._exceptions.filter((item) => {
-
-                            // If the item is an exception to this event...
-                            if ( item.eventId === event.id )
-                            {
-                                // Add it as an EXDATE to the rrule
-                                ruleSet.push('EXDATE:' + moment(item.exdate).format('YYYYMMDD[T]HHmmss[Z]'));
-                            }
-                        });
-
-                        // Create an RRuleSet from the ruleSet array
-                        const rruleset = rrulestr(ruleSet.join('\n'), {forceset: true});
+                        // Create an RRuleSet
+                        const rruleset = this._generateRuleset(event, dtStart, until);
 
                         // Generate the recurring dates and loop through them
                         rruleset.all().forEach((date) => {
@@ -313,7 +328,10 @@ export class MockCalendarApi
                 const originalEvent = _.cloneDeep(request.body.originalEvent);
                 const mode = request.body.mode;
 
-                // Single - Create a non-recurring event and add an exception to the recurring event
+                // Find the original recurring event from db
+                const recurringEvent = this._events.find((item) => item.id === event.recurringEventId);
+
+                // Single
                 if ( mode === 'single' )
                 {
                     // Create a new event from the event while ignoring the range and recurringEventId
@@ -329,25 +347,35 @@ export class MockCalendarApi
                     newEvent.duration = null;
                     newEvent.recurrence = null;
 
-                    // Add a new exception for the recurring event that ignores this single event's start date
-                    this._exceptions.push({
-                        id     : AsmMockApiUtils.guid(),
-                        eventId: originalEvent.recurringEventId,
-                        exdate : moment(originalEvent.start).toISOString()
-                    });
-
                     // Push the new event to the events array
                     this._events.push(newEvent);
+
+                    // If this is the first instance of the recurring event...
+                    if ( originalEvent.start === recurringEvent.start )
+                    {
+                        // Generate the rruleset
+                        const rruleset = this._generateRuleset(recurringEvent, moment(recurringEvent.start).utc()   , moment(recurringEvent.end).utc());
+
+                        // Update the recurring event's start date
+                        recurringEvent.start = moment(rruleset.all((date, i) => i < 2)[1]).toISOString();
+                    }
+                    // Otherwise...
+                    else
+                    {
+                        // Add a new exception for the recurring event that ignores this single event's start date
+                        this._exceptions.push({
+                            id     : AsmMockApiUtils.guid(),
+                            eventId: originalEvent.recurringEventId,
+                            exdate : moment(originalEvent.start).toISOString()
+                        });
+                    }
                 }
 
-                // Future - Create a new recurring event and modify the original one to make it end at the end of the day before of the clicked date
+                // Future
                 if ( mode === 'future' )
                 {
-                    // Find the original recurring event from db
-                    const originalRecurringEvent = this._events.find((item) => item.id === event.recurringEventId);
-
                     // Update the end date
-                    originalRecurringEvent.end = moment(originalEvent.start).subtract(1, 'day').endOf('day').toISOString();
+                    recurringEvent.end = moment(originalEvent.start).subtract(1, 'day').endOf('day').toISOString();
 
                     // Parse the recurrence rules from the original event
                     const parsedRules = {};
@@ -357,7 +385,7 @@ export class MockCalendarApi
                     });
 
                     // Add/Update the UNTIL rule
-                    parsedRules['UNTIL'] = moment(originalRecurringEvent.end).utc().format('YYYYMMDD[T]HHmmss[Z]');
+                    parsedRules['UNTIL'] = moment(recurringEvent.end).utc().format('YYYYMMDD[T]HHmmss[Z]');
 
                     // Generate the rule string from the parsed rules
                     const rules = [];
@@ -367,7 +395,7 @@ export class MockCalendarApi
                     const rrule = rules.join(';');
 
                     // Update the recurrence on the original recurring event
-                    originalRecurringEvent.recurrence = rrule;
+                    recurringEvent.recurrence = rrule;
 
                     // Create a new event from the event while ignoring the recurringEventId
                     const {recurringEventId, ...newEvent} = event;
@@ -379,7 +407,7 @@ export class MockCalendarApi
                     this._events.push(newEvent);
                 }
 
-                // All - Update the recurring event
+                // All
                 if ( mode === 'all' )
                 {
                     // Find the event index
@@ -402,34 +430,46 @@ export class MockCalendarApi
             .onDelete('api/apps/calendar/recurring-event')
             .reply((request) => {
 
-                // Get the id and mode
-                const id = request.params.get('id');
-                const start = request.params.get('start');
+                // Get the event and mode
+                const event = JSON.parse(request.params.get('event'));
                 const mode = request.params.get('mode');
 
-                // Find the event
-                const event = this._events.find((item) => item.id === id);
+                // Find the recurring event
+                const recurringEvent = this._events.find((item) => item.id === event.recurringEventId);
 
-                // Single - Add an exception to the recurring event
+                // Single
                 if ( mode === 'single' )
                 {
-                    // Add a new exception for the recurring event that ignores this single event's start date
-                    this._exceptions.push({
-                        id     : AsmMockApiUtils.guid(),
-                        eventId: id,
-                        exdate : moment(start).toISOString()
-                    });
+                    // If this is the first instance of the recurring event...
+                    if ( event.start === recurringEvent.start )
+                    {
+                        // Generate the rruleset
+                        const rruleset = this._generateRuleset(recurringEvent, moment(recurringEvent.start).utc()   , moment(recurringEvent.end).utc());
+
+                        // Update the recurring event's start date
+                        recurringEvent.start = moment(rruleset.all((date, i) => i < 2)[1]).toISOString();
+                    }
+                    // Otherwise...
+                    else
+                    {
+                        // Add a new exception for the recurring event that ignores this single event's start date
+                        this._exceptions.push({
+                            id     : AsmMockApiUtils.guid(),
+                            eventId: event.recurringEventId,
+                            exdate : moment(event.start).toISOString()
+                        });
+                    }
                 }
 
-                // Future - Modify the event to make it end at the end of the day before of the clicked date
+                // Future
                 if ( mode === 'future' )
                 {
                     // Update the end date of the event
-                    event.end = moment(start).subtract(1, 'day').endOf('day').toISOString();
+                    recurringEvent.end = moment(event.start).subtract(1, 'day').endOf('day').toISOString();
 
                     // Parse the recurrence rules of the event
                     const parsedRules = {};
-                    event.recurrence.split(';').forEach((rule) => {
+                    recurringEvent.recurrence.split(';').forEach((rule) => {
                         const parsedRule = rule.split('=');
                         parsedRules[parsedRule[0]] = parsedRule[1];
                     });
@@ -445,14 +485,14 @@ export class MockCalendarApi
                     const rrule = rules.join(';');
 
                     // Update the recurrence of the event
-                    event.recurrence = rrule;
+                    recurringEvent.recurrence = rrule;
                 }
 
-                // All - Delete the recurring event
+                // All
                 if ( mode === 'all' )
                 {
                     // Find the event and delete it
-                    const index = this._events.findIndex((item) => item.id === id);
+                    const index = this._events.findIndex((item) => item.id === event.recurringEventId);
                     this._events.splice(index, 1);
                 }
 

@@ -819,13 +819,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      * @param event
      * @param mode
      */
-    deleteEvent(event, mode = 'single'): void
+    deleteEvent(event, mode: 'single' | 'future' | 'all' = 'single'): void
     {
         // If the event is a recurring event...
         if ( event.recurrence )
         {
             // Delete the recurring event on the server
-            this._calendarService.deleteRecurringEvent(event.recurringEventId, event.start, mode).subscribe(() => {
+            this._calendarService.deleteRecurringEvent(event, mode).subscribe(() => {
 
                 // Reload events
                 this._calendarService.reloadEvents().subscribe();

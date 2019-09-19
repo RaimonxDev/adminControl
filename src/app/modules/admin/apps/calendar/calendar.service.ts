@@ -333,16 +333,14 @@ export class CalendarService
     /**
      * Delete recurring event
      *
-     * @param id
-     * @param start
+     * @param event
      * @param mode
      */
-    deleteRecurringEvent(id, start, mode): Observable<boolean>
+    deleteRecurringEvent(event, mode): Observable<boolean>
     {
         return this._httpClient.delete<boolean>('api/apps/calendar/recurring-event', {
             params: {
-                id,
-                start,
+                event: JSON.stringify(event),
                 mode
             }
         });

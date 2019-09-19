@@ -125,13 +125,7 @@ export const events = [
         recurrence : 'FREQ=WEEKLY;INTERVAL=2;BYDAY=FR'
     }
 ];
-export const exceptions = [
-    {
-        id: '1',
-        eventId: 'd2220429-9214-4c4b-9da6-f8da2fbfd507---',
-        exdate: moment('20191001T0700Z').toISOString()
-    }
-];
+export const exceptions = [];
 export const settings = {
     dateFormat : 'll', // Aug 20, 2019
     timeFormat : '24', // 24-hour format
