@@ -293,55 +293,55 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'autocomplete',
                 title: 'Autocomplete',
                 type : 'basic',
-                link  : '/angular-material-elements/autocomplete'
+                link : '/angular-material-elements/autocomplete'
             },
             {
                 id   : 'checkbox',
                 title: 'Checkbox',
                 type : 'basic',
-                link  : '/angular-material-elements/checkbox'
+                link : '/angular-material-elements/checkbox'
             },
             {
                 id   : 'datepicker',
                 title: 'Datepicker',
                 type : 'basic',
-                link  : '/angular-material-elements/datepicker'
+                link : '/angular-material-elements/datepicker'
             },
             {
                 id   : 'form-field',
                 title: 'Form field',
                 type : 'basic',
-                link  : '/angular-material-elements/form-field'
+                link : '/angular-material-elements/form-field'
             },
             {
                 id   : 'input',
                 title: 'Input',
                 type : 'basic',
-                link  : '/angular-material-elements/input'
+                link : '/angular-material-elements/input'
             },
             {
                 id   : 'radio-button',
                 title: 'Radio button',
                 type : 'basic',
-                link  : '/angular-material-elements/radio-button'
+                link : '/angular-material-elements/radio-button'
             },
             {
                 id   : 'select',
                 title: 'Select',
                 type : 'basic',
-                link  : '/angular-material-elements/select'
+                link : '/angular-material-elements/select'
             },
             {
                 id   : 'slider',
                 title: 'Slider',
                 type : 'basic',
-                link  : '/angular-material-elements/slider'
+                link : '/angular-material-elements/slider'
             },
             {
                 id   : 'slide-toggle',
                 title: 'Slide toggle',
                 type : 'basic',
-                link  : '/angular-material-elements/slide-toggle'
+                link : '/angular-material-elements/slide-toggle'
             }
         ]
     },
@@ -355,19 +355,19 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'menu',
                 title: 'Menu',
                 type : 'basic',
-                link  : '/angular-material-elements/menu'
+                link : '/angular-material-elements/menu'
             },
             {
                 id   : 'sidenav',
                 title: 'Sidebar',
                 type : 'basic',
-                link  : '/angular-material-elements/sidenav'
+                link : '/angular-material-elements/sidenav'
             },
             {
                 id   : 'toolbar',
                 title: 'Toolbar',
                 type : 'basic',
-                link  : '/angular-material-elements/toolbar'
+                link : '/angular-material-elements/toolbar'
             }
         ]
     },
@@ -381,67 +381,67 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'badge',
                 title: 'Badge',
                 type : 'basic',
-                link  : '/angular-material-elements/badge'
+                link : '/angular-material-elements/badge'
             },
             {
                 id   : 'bottom-sheet',
                 title: 'Bottom Sheet',
                 type : 'basic',
-                link  : '/angular-material-elements/bottom-sheet'
+                link : '/angular-material-elements/bottom-sheet'
             },
             {
                 id   : 'card',
                 title: 'Card',
                 type : 'basic',
-                link  : '/angular-material-elements/card'
+                link : '/angular-material-elements/card'
             },
             {
                 id   : 'divider',
                 title: 'Divider',
                 type : 'basic',
-                link  : '/angular-material-elements/divider'
+                link : '/angular-material-elements/divider'
             },
             {
                 id   : 'elevation',
                 title: 'Elevation',
                 type : 'basic',
-                link  : '/angular-material-elements/elevation'
+                link : '/angular-material-elements/elevation'
             },
             {
                 id   : 'expansion-panel',
                 title: 'Expansion Panel',
                 type : 'basic',
-                link  : '/angular-material-elements/expansion-panel'
+                link : '/angular-material-elements/expansion-panel'
             },
             {
                 id   : 'grid-list',
                 title: 'Grid list',
                 type : 'basic',
-                link  : '/angular-material-elements/grid-list'
+                link : '/angular-material-elements/grid-list'
             },
             {
                 id   : 'list',
                 title: 'List',
                 type : 'basic',
-                link  : '/angular-material-elements/list'
+                link : '/angular-material-elements/list'
             },
             {
                 id   : 'stepper',
                 title: 'Stepper',
                 type : 'basic',
-                link  : '/angular-material-elements/stepper'
+                link : '/angular-material-elements/stepper'
             },
             {
                 id   : 'tabs',
                 title: 'Tabs',
                 type : 'basic',
-                link  : '/angular-material-elements/tabs'
+                link : '/angular-material-elements/tabs'
             },
             {
                 id   : 'tree',
                 title: 'Tree',
                 type : 'basic',
-                link  : '/angular-material-elements/tree'
+                link : '/angular-material-elements/tree'
             }
         ]
     },
@@ -455,43 +455,43 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'button',
                 title: 'Button',
                 type : 'basic',
-                link  : '/angular-material-elements/button'
+                link : '/angular-material-elements/button'
             },
             {
                 id   : 'button-toggle',
                 title: 'Button toggle',
                 type : 'basic',
-                link  : '/angular-material-elements/button-toggle'
+                link : '/angular-material-elements/button-toggle'
             },
             {
                 id   : 'chips',
                 title: 'Chips',
                 type : 'basic',
-                link  : '/angular-material-elements/chips'
+                link : '/angular-material-elements/chips'
             },
             {
                 id   : 'icon',
                 title: 'icon',
                 type : 'basic',
-                link  : '/angular-material-elements/icon'
+                link : '/angular-material-elements/icon'
             },
             {
                 id   : 'progress-spinner',
                 title: 'Progress spinner',
                 type : 'basic',
-                link  : '/angular-material-elements/progress-spinner'
+                link : '/angular-material-elements/progress-spinner'
             },
             {
                 id   : 'progress-bar',
                 title: 'Progress bar',
                 type : 'basic',
-                link  : '/angular-material-elements/progress-bar'
+                link : '/angular-material-elements/progress-bar'
             },
             {
                 id   : 'ripples',
                 title: 'Ripples',
                 type : 'basic',
-                link  : '/angular-material-elements/ripples'
+                link : '/angular-material-elements/ripples'
             }
         ]
     },
@@ -505,19 +505,19 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'dialog',
                 title: 'Dialog',
                 type : 'basic',
-                link  : '/angular-material-elements/dialog'
+                link : '/angular-material-elements/dialog'
             },
             {
                 id   : 'snackbar',
                 title: 'Snackbar',
                 type : 'basic',
-                link  : '/angular-material-elements/snackbar'
+                link : '/angular-material-elements/snackbar'
             },
             {
                 id   : 'tooltip',
                 title: 'Tooltip',
                 type : 'basic',
-                link  : '/angular-material-elements/tooltip'
+                link : '/angular-material-elements/tooltip'
             }
         ]
     },
@@ -531,19 +531,19 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'paginator',
                 title: 'Paginator',
                 type : 'basic',
-                link  : '/angular-material-elements/paginator'
+                link : '/angular-material-elements/paginator'
             },
             {
                 id   : 'sort-header',
                 title: 'Sort header',
                 type : 'basic',
-                link  : '/angular-material-elements/sort-header'
+                link : '/angular-material-elements/sort-header'
             },
             {
                 id   : 'table',
                 title: 'Table',
                 type : 'basic',
-                link  : '/angular-material-elements/table'
+                link : '/angular-material-elements/table'
             }
         ]
     },
@@ -790,18 +790,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'photo',
         children: [
             {
-                id   : 'ui-elements.icons.material-baseline',
-                title: 'Material baseline',
-                type : 'basic',
-                link : '/ui/icons/material-baseline'
-            },
-            {
-                id   : 'ui-elements.icons.material-outline',
-                title: 'Material outline',
-                type : 'basic',
-                link : '/ui/icons/material-outline'
-            },
-            {
                 id   : 'ui-elements.icons.dripicons',
                 title: 'Dripicons',
                 type : 'basic',
@@ -812,7 +800,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 title: 'Iconsmind',
                 type : 'basic',
                 link : '/ui/icons/iconsmind'
-            }
+            },
+            {
+                id   : 'ui-elements.icons.material-twotone',
+                title: 'Material Twotone',
+                type : 'basic',
+                link : '/ui/icons/material-twotone'
+            },
         ]
     },
     {

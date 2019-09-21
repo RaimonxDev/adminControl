@@ -60,10 +60,10 @@
 
                             <div class="icon-preview">
                                 <mat-icon [ngClass]="'icon-size-' + iconSizeInput.value"
-                                          [fontSet]="icons.fontSet">{{icon.ligature}}</mat-icon>
+                                          [svgIcon]="icons.namespace + ':' + icon"></mat-icon>
                             </div>
 
-                            <div class="icon-name">{{icon.name}}</div>
+                            <div class="icon-name">{{icon}}</div>
 
                         </div>
 

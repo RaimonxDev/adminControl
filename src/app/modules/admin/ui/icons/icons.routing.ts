@@ -4,9 +4,9 @@ import { IconsResolver } from 'app/modules/admin/ui/icons/icons.resolvers';
 
 export const iconRoutes: Route[] = [
     {
-        // Redirect /icons to /icons/material-outline
+        // Redirect /icons to /icons/material-twotone
         path      : 'icons',
-        redirectTo: 'icons/material-outline',
+        redirectTo: 'icons/material-twotone',
         pathMatch : 'full'
     },
     {

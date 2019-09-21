@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { dripicons, iconsmind, material } from '@mock-api/data/icons/data';
+import { dripicons, iconsmind, materialTwotone } from '@mock-api/data/icons/data';
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +10,8 @@ export class MockIconsApi
 {
     // Private Readonly
     private readonly _dripicons: any;
-    private readonly _material: any;
     private readonly _iconsmind: any;
+    private readonly _materialTwotone: any;
 
     /**
      * Constructor
@@ -24,8 +24,8 @@ export class MockIconsApi
     {
         // Set the data
         this._dripicons = dripicons;
-        this._material = material;
         this._iconsmind = iconsmind;
+        this._materialTwotone = materialTwotone;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -46,41 +46,9 @@ export class MockIconsApi
                 return [
                     200,
                     {
-                        fontSet: 'dripicons',
-                        name   : 'Dripicons',
-                        list   : _.cloneDeep(this._dripicons)
-                    }
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Material baseline icons - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/ui/icons/material-baseline')
-            .reply(() => {
-                return [
-                    200,
-                    {
-                        fontSet: 'material-baseline-icons',
-                        name   : 'Material Baseline',
-                        list   : _.cloneDeep(this._material)
-                    }
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Material outline icons - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/ui/icons/material-outline')
-            .reply(() => {
-                return [
-                    200,
-                    {
-                        fontSet: 'material-outline-icons',
-                        name   : 'Material Outline',
-                        list   : _.cloneDeep(this._material)
+                        namespace: 'dripicons',
+                        name     : 'Dripicons',
+                        list     : _.cloneDeep(this._dripicons)
                     }
                 ];
             });
@@ -94,9 +62,25 @@ export class MockIconsApi
                 return [
                     200,
                     {
-                        fontSet: 'iconsmind',
-                        name   : 'Iconsmind',
-                        list   : _.cloneDeep(this._iconsmind)
+                        namespace: 'iconsmind',
+                        name     : 'Iconsmind',
+                        list     : _.cloneDeep(this._iconsmind)
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Material twotone icons - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/ui/icons/material-twotone')
+            .reply(() => {
+                return [
+                    200,
+                    {
+                        namespace: '',
+                        name     : 'Material Twotone',
+                        list     : _.cloneDeep(this._materialTwotone)
                     }
                 ];
             });
