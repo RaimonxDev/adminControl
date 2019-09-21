@@ -41,7 +41,7 @@
         <button class="navigation-toggle-button"
                 mat-icon-button
                 (click)="toggleNavigation('leftNavigation')">
-            <mat-icon>menu</mat-icon>
+            <mat-icon [svgIcon]="'menu'"></mat-icon>
         </button>
 
         <asm-search [appearance]="'basic'"
@@ -56,9 +56,8 @@
 
                 <div class="asm-search-result-image">
                     <mat-icon class="icon-size-16"
-                              *ngIf="result.resultType === 'page'">
-                        insert_drive_file
-                    </mat-icon>
+                              *ngIf="result.resultType === 'page'"
+                              [svgIcon]="'insert_drive_file'"></mat-icon>
                     <img *ngIf="result.resultType ==='contact'"
                          [src]="result.image">
                 </div>
@@ -77,7 +76,7 @@
                            [subtitle]="'Shortcuts for links and functions'"
                            [addShortcutLabel]="'Add shortcut'"></asm-shortcuts>
 
-            <mat-icon>notifications</mat-icon>
+            <mat-icon [svgIcon]="'notifications'"></mat-icon>
 
         </div>
 

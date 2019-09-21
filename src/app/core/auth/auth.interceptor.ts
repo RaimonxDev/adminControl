@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor
      * @param {AuthService} _authService
      */
     constructor(
-        private _authService: AuthService,
+        private _authService: AuthService
     )
     {
     }

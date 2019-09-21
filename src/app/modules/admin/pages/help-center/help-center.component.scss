@@ -89,10 +89,13 @@ help-center {
                         }
 
                         .mat-icon {
-                            @include asm-icon-size(40);
                             width: 80px !important;
                             height: 80px !important;
                             border-radius: 50%;
+
+                            svg {
+                                @include asm-icon-size(40);
+                            }
                         }
 
                         .title {

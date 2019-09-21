@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { DashboardComponent } from 'app/modules/admin/apps/dashboard/dashboard.component';
 
 const routes: Route[] = [
@@ -16,7 +17,8 @@ const routes: Route[] = [
     ],
     imports     : [
         RouterModule.forChild(routes),
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
     ]
 })
 export class DashboardModule

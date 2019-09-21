@@ -6,7 +6,7 @@ asm-vertical-menu {
     flex: 1 1 auto;
     top: 0;
     width: 100%;
-    padding: 0 32px;
+    padding: 0 16px;
 
     // Wrapper
     .asm-vertical-menu-wrapper {
@@ -21,7 +21,7 @@ asm-vertical-menu {
 
             // Divider
             > asm-vertical-menu-divider-item {
-                margin: 24px 0;
+                margin: 24px 16px;
             }
 
             // Spacer
@@ -78,7 +78,7 @@ asm-vertical-menu {
 
                 .asm-vertical-menu-item-icon {
                     margin-right: 18px;
-                    user-select: none;
+                    @include asm-icon-size(20);
                 }
 
                 .asm-vertical-menu-item-title-wrapper {
@@ -320,12 +320,6 @@ asm-vertical-menu {
         asm-vertical-menu-collapsable-item {
 
             &.asm-vertical-menu-item-expanded {
-
-                @if ($is-dark) {
-                    background: asm-dark-elevation(1);
-                } @else {
-                    background: map-get($background, hover);
-                }
 
                 .asm-vertical-menu-item {
 

@@ -4,7 +4,7 @@
             mat-icon-button
             (click)="saveAndClose()"
             [tabIndex]="-1">
-        <mat-icon>close</mat-icon>
+        <mat-icon [svgIcon]="'close'"></mat-icon>
     </button>
 </div>
 
@@ -75,22 +75,22 @@
 
             <!-- Attach file -->
             <button mat-icon-button>
-                <mat-icon>attach_file</mat-icon>
+                <mat-icon [svgIcon]="'attach_file'"></mat-icon>
             </button>
 
             <!-- Insert link -->
             <button mat-icon-button>
-                <mat-icon>link</mat-icon>
+                <mat-icon [svgIcon]="'link'"></mat-icon>
             </button>
 
             <!-- Insert emoji -->
             <button mat-icon-button>
-                <mat-icon>insert_emoticon</mat-icon>
+                <mat-icon [svgIcon]="'insert_emoticon'"></mat-icon>
             </button>
 
             <!-- Insert image -->
             <button mat-icon-button>
-                <mat-icon>image</mat-icon>
+                <mat-icon [svgIcon]="'image'"></mat-icon>
             </button>
 
         </div>
@@ -101,7 +101,7 @@
             <button class="discard-button"
                     mat-button
                     (click)="discard()">
-                <mat-icon>delete</mat-icon>
+                <mat-icon [svgIcon]="'delete'"></mat-icon>
                 <span>Discard</span>
             </button>
 
@@ -109,7 +109,7 @@
             <button class="save-button"
                     mat-button
                     (click)="saveAsDraft()">
-                <mat-icon>save</mat-icon>
+                <mat-icon [svgIcon]="'save'"></mat-icon>
                 <span>Save as draft</span>
             </button>
 

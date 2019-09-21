@@ -11,12 +11,10 @@
              [ngClass]="{'asm-navigation-item-active': active}">
 
             <!-- Icon -->
-            <mat-icon class="asm-navigation-item-icon text-secondary icon-size-20"
+            <mat-icon class="asm-navigation-item-icon text-secondary"
                       [ngClass]="item.iconClassNames"
                       *ngIf="item.icon"
-                      [fontSet]="item.iconFontSet">
-                {{item.icon}}
-            </mat-icon>
+                      [svgIcon]="item.icon"></mat-icon>
 
             <!-- Title & Subtitle -->
             <div class="asm-navigation-item-title-wrapper">

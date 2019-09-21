@@ -13,7 +13,7 @@
                 <button class="sidebar-toggle"
                         mat-icon-button
                         (click)="mailboxComponent.drawer.toggle()">
-                    <mat-icon>menu</mat-icon>
+                    <mat-icon [svgIcon]="'menu'"></mat-icon>
                 </button>
 
                 <!-- Category name -->
@@ -38,7 +38,7 @@
                    mat-icon-button
                    [disabled]="pagination.currentPage === 1"
                    [routerLink]="['../' + (pagination.currentPage > 1 ? pagination.currentPage - 1 : 1 )]">
-                    <mat-icon>arrow_back_ios</mat-icon>
+                    <mat-icon [svgIcon]="'arrow_back_ios'"></mat-icon>
                 </a>
 
                 <!-- Next page button-->
@@ -46,7 +46,7 @@
                    mat-icon-button
                    [disabled]="pagination.currentPage === pagination.lastPage"
                    [routerLink]="['../' + (pagination.currentPage < pagination.lastPage ? pagination.currentPage + 1 : pagination.lastPage )]">
-                    <mat-icon>arrow_forward_ios</mat-icon>
+                    <mat-icon [svgIcon]="'arrow_forward_ios'"></mat-icon>
                 </a>
 
             </div>
@@ -101,9 +101,8 @@
 
                             <!-- Important indicator -->
                             <mat-icon class="important-indicator"
-                                      *ngIf="mail.important">
-                                label_important
-                            </mat-icon>
+                                      *ngIf="mail.important"
+                                      [svgIcon]="'label_important'"></mat-icon>
 
                             <!-- Date -->
                             <div class="date">
@@ -123,15 +122,13 @@
 
                                 <!-- Attachments indicator -->
                                 <mat-icon class="attachments-indicator"
-                                          *ngIf="mail.attachments && mail.attachments.length > 0">
-                                    attachment
-                                </mat-icon>
+                                          *ngIf="mail.attachments && mail.attachments.length > 0"
+                                          [svgIcon]="'attachment'"></mat-icon>
 
                                 <!-- Starred indicator -->
                                 <mat-icon class="starred-indicator"
-                                          *ngIf="mail.starred">
-                                    star
-                                </mat-icon>
+                                          *ngIf="mail.starred"
+                                          [svgIcon]="'star'"></mat-icon>
 
                             </div>
 
@@ -157,7 +154,7 @@
     <ng-template #noMails>
 
         <div class="no-mails">
-            <mat-icon [fontSet]="'iconsmind'">mail</mat-icon>
+            <mat-icon [svgIcon]="'mail'"></mat-icon>
             <h4>There are no e-mails</h4>
         </div>
 

@@ -37,7 +37,7 @@ export class ColorsComponent
             'blue',
             'indigo',
             'purple',
-            'pink',
+            'pink'
         ];
         this.hues = ['900', '800', '700', '600', '500', '400', '300', '200', '100'];
     }

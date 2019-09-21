@@ -70,12 +70,10 @@
     <ng-template #itemTemplate>
 
         <!-- Icon -->
-        <mat-icon class="asm-vertical-menu-item-icon icon-size-20"
+        <mat-icon class="asm-vertical-menu-item-icon"
                   [ngClass]="item.iconClassNames"
                   *ngIf="item.icon"
-                  [fontSet]="item.iconFontSet">
-            {{item.icon}}
-        </mat-icon>
+                  [svgIcon]="item.icon"></mat-icon>
 
         <!-- Title & Subtitle -->
         <div class="asm-vertical-menu-item-title-wrapper">

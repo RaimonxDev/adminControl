@@ -71,7 +71,7 @@ export class NavigationComponent
                                 [showTooltips]="false"
                                 [transparentOverlay]="false">
                 </asm-navigation>
-            `,
+            `
 
         };
     }

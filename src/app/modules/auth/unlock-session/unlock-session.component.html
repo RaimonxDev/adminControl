@@ -36,7 +36,8 @@
                     <input id="name"
                            matInput
                            [formControlName]="'name'">
-                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <mat-icon matSuffix
+                              [svgIcon]="'account_circle'"></mat-icon>
                 </mat-form-field>
 
                 <!-- Password field -->
@@ -52,8 +53,10 @@
                             (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
                             tabindex="-1"
                             matSuffix>
-                        <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
-                        <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'password'"
+                                  [svgIcon]="'visibility'"></mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'text'"
+                                  [svgIcon]="'visibility_off'"></mat-icon>
                     </button>
                     <mat-error>
                         Password is required

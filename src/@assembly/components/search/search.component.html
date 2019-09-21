@@ -3,7 +3,7 @@
         mat-icon-button
         *ngIf="appearance!== 'basic' && !opened"
         (click)="open()">
-    <mat-icon>search</mat-icon>
+    <mat-icon [svgIcon]="'search'"></mat-icon>
 </button>
 
 <!-- Search container -->
@@ -17,9 +17,8 @@
                     [appearance]="'fill'"
                     #searchInput>
         <mat-icon matPrefix
-                  *ngIf="appearance !== 'fullscreen'">
-            search
-        </mat-icon>
+                  *ngIf="appearance !== 'fullscreen'"
+                  [svgIcon]="'search'"></mat-icon>
         <input matInput
                [formControl]="searchControl"
                [placeholder]="placeholder"
@@ -54,7 +53,7 @@
             mat-icon-button
             *ngIf="appearance !== 'basic'"
             (click)="close()">
-        <mat-icon>close</mat-icon>
+        <mat-icon [svgIcon]="'close'"></mat-icon>
     </button>
 
 </div>

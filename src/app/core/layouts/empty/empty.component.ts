@@ -22,7 +22,7 @@ export class EmptyLayoutComponent implements OnInit, OnDestroy
      * @param {AsmConfigService} _asmConfigService
      */
     constructor(
-        private _asmConfigService: AsmConfigService,
+        private _asmConfigService: AsmConfigService
     )
     {
         // Set the private defaults
@@ -40,7 +40,7 @@ export class EmptyLayoutComponent implements OnInit, OnDestroy
     {
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
-            layout    : {
+            layout: {
                 options: {
                     navigation: {
                         hidden: false,

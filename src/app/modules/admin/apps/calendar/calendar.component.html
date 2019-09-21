@@ -36,13 +36,13 @@
                     <button class="previous"
                             mat-icon-button
                             (click)="previous()">
-                        <mat-icon>chevron_left</mat-icon>
+                        <mat-icon [svgIcon]="'chevron_left'"></mat-icon>
                     </button>
 
                     <button class="next"
                             mat-icon-button
                             (click)="next()">
-                        <mat-icon>chevron_right</mat-icon>
+                        <mat-icon [svgIcon]="'chevron_right'"></mat-icon>
                     </button>
 
                     <h4 class="title">
@@ -52,7 +52,7 @@
                     <a class="settings"
                        [routerLink]="['settings']"
                        mat-icon-button>
-                        <mat-icon>settings</mat-icon>
+                        <mat-icon [svgIcon]="'settings_applications'"></mat-icon>
                     </a>
 
                     <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript view-changer"
@@ -98,7 +98,7 @@
 
                         <div class="row header">
 
-                            <mat-icon>info</mat-icon>
+                            <mat-icon [svgIcon]="'info'"></mat-icon>
 
                             <div class="row-content">
 
@@ -116,13 +116,13 @@
                                         <!-- Edit -->
                                         <button mat-icon-button
                                                 (click)="changeEventPanelMode('edit', 'single')">
-                                            <mat-icon>edit</mat-icon>
+                                            <mat-icon [svgIcon]="'edit'"></mat-icon>
                                         </button>
 
                                         <!-- Delete -->
                                         <button mat-icon-button
                                                 (click)="deleteEvent(event)">
-                                            <mat-icon>delete</mat-icon>
+                                            <mat-icon [svgIcon]="'delete'"></mat-icon>
                                         </button>
 
                                     </ng-container>
@@ -133,7 +133,7 @@
                                         <!-- Edit -->
                                         <button mat-icon-button
                                                 [matMenuTriggerFor]="editMenu">
-                                            <mat-icon>edit</mat-icon>
+                                            <mat-icon [svgIcon]="'edit'"></mat-icon>
                                         </button>
 
                                         <mat-menu #editMenu="matMenu">
@@ -155,7 +155,7 @@
                                         <!-- Delete -->
                                         <button mat-icon-button
                                                 [matMenuTriggerFor]="deleteMenu">
-                                            <mat-icon>delete</mat-icon>
+                                            <mat-icon [svgIcon]="'delete'"></mat-icon>
                                         </button>
 
                                         <mat-menu #deleteMenu="matMenu">
@@ -184,12 +184,12 @@
 
                         <div class="row description"
                              *ngIf="event.description">
-                            <mat-icon>notes</mat-icon>
+                            <mat-icon [svgIcon]="'notes'"></mat-icon>
                             <div class="row-content">{{event.description}}</div>
                         </div>
 
                         <div class="row calendar">
-                            <mat-icon>today</mat-icon>
+                            <mat-icon [svgIcon]="'today'"></mat-icon>
                             <div class="row-content">
                                 <div class="color"
                                      [ngStyle]="{'backgroundColor': getCalendar(event.calendarId).color}"></div>
@@ -208,7 +208,7 @@
                             <!-- Title -->
                             <div class="row title">
 
-                                <mat-icon>edit</mat-icon>
+                                <mat-icon [svgIcon]="'edit'"></mat-icon>
 
                                 <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                                                 [appearance]="'fill'">
@@ -222,7 +222,7 @@
                             <!-- Dates -->
                             <div class="row dates">
 
-                                <mat-icon>date_range</mat-icon>
+                                <mat-icon [svgIcon]="'date_range'"></mat-icon>
 
                                 <div class="field">
 
@@ -244,7 +244,8 @@
                             <div class="row recurrence"
                                  *ngIf="!event.recurrence || eventEditMode !== 'single'">
 
-                                <mat-icon class="mirror">cached</mat-icon>
+                                <mat-icon class="mirror"
+                                          [svgIcon]="'cached'"></mat-icon>
 
                                 <div class="field"
                                      (click)="openRecurrenceDialog()">
@@ -258,7 +259,7 @@
                             <!-- Calendar -->
                             <div class="row calendar">
 
-                                <mat-icon>event</mat-icon>
+                                <mat-icon [svgIcon]="'event'"></mat-icon>
 
                                 <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                                                 [appearance]="'fill'">
@@ -284,7 +285,7 @@
                             <!-- Description -->
                             <div class="row description">
 
-                                <mat-icon>notes</mat-icon>
+                                <mat-icon [svgIcon]="'notes'"></mat-icon>
 
                                 <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
                                                 [appearance]="'fill'">

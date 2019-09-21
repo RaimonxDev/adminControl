@@ -558,7 +558,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         id   : 'applications.dashboard',
         title: 'Dashboard',
         type : 'basic',
-        icon : 'dashboards',
+        icon : 'dashboard',
         link : '/apps/dashboard'
     },
     {

@@ -42,7 +42,7 @@
                                 [color]="'primary'"
                                 (click)="createTask('task')"
                                 [matTooltip]="'Shortcut: Ctrl + /'">
-                            <mat-icon>add</mat-icon>
+                            <mat-icon [svgIcon]="'add'"></mat-icon>
                             <span>Add Task</span>
                         </button>
 
@@ -52,7 +52,7 @@
                                 [color]="'accent'"
                                 (click)="createTask('section')"
                                 [matTooltip]="'Shortcut: Ctrl + .'">
-                            <mat-icon>add</mat-icon>
+                            <mat-icon [svgIcon]="'add'"></mat-icon>
                             Add Section
                         </button>
 
@@ -66,7 +66,8 @@
                     <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript"
                                     [appearance]="'outline'">
 
-                        <mat-icon matPrefix>search</mat-icon>
+                        <mat-icon matPrefix
+                                  [svgIcon]="'search'"></mat-icon>
 
                         <input matInput
                                [formControl]="searchInputControl"
@@ -87,15 +88,17 @@
                             <mat-option [id]="task.id"
                                         *ngFor="let task of searchResults; trackBy: trackById"
                                         [routerLink]="[task.id]">
+
                                 <mat-icon [color]="'primary'"
-                                          *ngIf="task.completed">
-                                    check_circle
-                                </mat-icon>
-                                <mat-icon *ngIf="!task.completed">
-                                    radio_button_unchecked
-                                </mat-icon>
+                                          *ngIf="task.completed"
+                                          [svgIcon]="'check_circle'"></mat-icon>
+
+                                <mat-icon *ngIf="!task.completed"
+                                          [svgIcon]="'radio_button_unchecked'"></mat-icon>
+
                                 <div class="result-title"
                                      [innerHTML]="task.title"></div>
+
                             </mat-option>
 
                         </mat-autocomplete>
@@ -127,7 +130,7 @@
                                 <!-- Drag handle -->
                                 <div class="drag-handle"
                                      cdkDragHandle>
-                                    <mat-icon>drag_indicator</mat-icon>
+                                    <mat-icon [svgIcon]="'drag_indicator'"></mat-icon>
                                 </div>
 
                                 <!-- Complete task button -->
@@ -137,13 +140,11 @@
                                         mat-icon-button>
 
                                     <mat-icon [color]="'primary'"
-                                              *ngIf="task.completed">
-                                        check_circle
-                                    </mat-icon>
+                                              *ngIf="task.completed"
+                                              [svgIcon]="'check_circle'"></mat-icon>
 
-                                    <mat-icon *ngIf="!task.completed">
-                                        radio_button_unchecked
-                                    </mat-icon>
+                                    <mat-icon *ngIf="!task.completed"
+                                              [svgIcon]="'radio_button_unchecked'"></mat-icon>
 
                                 </button>
 
@@ -168,16 +169,14 @@
                                         <!-- Low -->
                                         <mat-icon class="low"
                                                   *ngIf="task.priority === 0"
-                                                  [title]="'Low'">
-                                            arrow_downward
-                                        </mat-icon>
+                                                  [svgIcon]="'arrow_downward'"
+                                                  [title]="'Low'"></mat-icon>
 
                                         <!-- High -->
                                         <mat-icon class="high"
                                                   *ngIf="task.priority === 2"
-                                                  [title]="'High'">
-                                            arrow_upward
-                                        </mat-icon>
+                                                  [svgIcon]="'arrow_upward'"
+                                                  [title]="'High'"></mat-icon>
 
                                     </div>
 

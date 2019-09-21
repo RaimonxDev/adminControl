@@ -9,6 +9,16 @@ layout[type="classy"] {
     // Navigation
     > .navigation {
 
+        &.theme-dark {
+
+            .asm-navigation-item {
+
+                .asm-navigation-item-icon {
+                    color: asm-color($asm-gray, 600);
+                }
+            }
+        }
+
         .asm-navigation-header {
 
             .logo {

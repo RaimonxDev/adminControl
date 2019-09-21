@@ -26,7 +26,8 @@
                                 [appearance]="'fill'">
                     <input matInput
                            [placeholder]="'Enter a question, topic or keyword'">
-                    <mat-icon matPrefix>search</mat-icon>
+                    <mat-icon matPrefix
+                              [svgIcon]="'search'"></mat-icon>
                 </mat-form-field>
             </div>
 
@@ -36,21 +37,21 @@
 
                 <a class="category"
                    [routerLink]="['faqs']">
-                    <mat-icon [fontSet]="'iconsmind'">speach_bubbledialog</mat-icon>
+                    <mat-icon [svgIcon]="'iconsmind:speach_bubbledialog'"></mat-icon>
                     <span class="title">FAQs</span>
                     <span class="subtitle">Frequently asked questions and answers</span>
                 </a>
 
                 <a class="category"
                    [routerLink]="['guides']">
-                    <mat-icon [fontSet]="'iconsmind'">book</mat-icon>
+                    <mat-icon [svgIcon]="'iconsmind:book'"></mat-icon>
                     <span class="title">Guides</span>
                     <span class="subtitle">Articles and resources to guide you</span>
                 </a>
 
                 <a class="category"
                    [routerLink]="['support']">
-                    <mat-icon [fontSet]="'iconsmind'">support</mat-icon>
+                    <mat-icon [svgIcon]="'iconsmind:support'"></mat-icon>
                     <span class="title">Support</span>
                     <span class="subtitle">Contact us for more detailed support</span>
                 </a>

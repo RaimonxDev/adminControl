@@ -10,14 +10,15 @@
             <!-- Mark as complete -->
             <span class="complete"
                   *ngIf="!taskForm.get('completed').value">
-                <mat-icon>radio_button_unchecked</mat-icon>
+                <mat-icon [svgIcon]="'radio_button_unchecked'"></mat-icon>
                 <span>MARK AS COMPLETE</span>
             </span>
 
             <!-- Mark as incomplete -->
             <span class="incomplete"
                   *ngIf="taskForm.get('completed').value">
-                <mat-icon [color]="'primary'">check_circle</mat-icon>
+                <mat-icon [color]="'primary'"
+                          [svgIcon]="'check_circle'"></mat-icon>
                 <span>MARK AS INCOMPLETE</span>
             </span>
 
@@ -27,13 +28,13 @@
         <button class="more-menu"
                 mat-icon-button
                 [matMenuTriggerFor]="moreMenu">
-            <mat-icon>more_vert</mat-icon>
+            <mat-icon [svgIcon]="'more_vert'"></mat-icon>
         </button>
 
         <mat-menu #moreMenu="matMenu">
             <button mat-menu-item
                     (click)="deleteTask()">
-                <mat-icon>delete</mat-icon>
+                <mat-icon [svgIcon]="'delete'"></mat-icon>
                 <span>Delete task</span>
             </button>
         </mat-menu>
@@ -41,7 +42,7 @@
         <!-- Close button -->
         <button mat-icon-button
                 [routerLink]="['../']">
-            <mat-icon>close</mat-icon>
+            <mat-icon [svgIcon]="'close'"></mat-icon>
         </button>
 
     </div>
@@ -74,12 +75,14 @@
              #tagsPanelOrigin>
 
             <ng-container *ngIf="task.tags.length">
-                <mat-icon class="edit-icon">edit</mat-icon>
+                <mat-icon class="edit-icon"
+                          [svgIcon]="'edit'"></mat-icon>
                 <span>Edit Tags</span>
             </ng-container>
 
             <ng-container *ngIf="!task.tags.length">
-                <mat-icon class="add-icon">add</mat-icon>
+                <mat-icon class="add-icon"
+                          [svgIcon]="'add'"></mat-icon>
                 <span>Add Tag</span>
             </ng-container>
 
@@ -91,7 +94,7 @@
                     <div class="tags-panel-header">
 
                         <div class="new-tag">
-                            <mat-icon>search</mat-icon>
+                            <mat-icon [svgIcon]="'search'"></mat-icon>
                             <input type="text"
                                    placeholder="Enter tag name"
                                    (input)="filterTags($event)"
@@ -103,8 +106,12 @@
                         <button class="toggle-edit-mode"
                                 mat-icon-button
                                 (click)="toggleTagsEditMode()">
-                            <mat-icon *ngIf="!tagsEditMode">edit</mat-icon>
-                            <mat-icon *ngIf="tagsEditMode">check</mat-icon>
+
+                            <mat-icon *ngIf="!tagsEditMode"
+                                      [svgIcon]="'edit'"></mat-icon>
+
+                            <mat-icon *ngIf="tagsEditMode"
+                                      [svgIcon]="'check'"></mat-icon>
                         </button>
 
                     </div>
@@ -127,7 +134,7 @@
                                  *ngFor="let tag of filteredTags; trackBy: trackById">
                                 <button mat-icon-button
                                         (click)="deleteTag(tag)">
-                                    <mat-icon>delete</mat-icon>
+                                    <mat-icon [svgIcon]="'delete'"></mat-icon>
                                 </button>
                                 <mat-form-field class="asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-hover-underline"
                                                 [appearance]="'standard'">
@@ -144,7 +151,7 @@
                          *ngIf="shouldShowCreateTagButton(newTagInput.value)"
                          (click)="createTag(newTagInput.value); newTagInput.value = ''"
                          matRipple>
-                        <mat-icon>add</mat-icon>
+                        <mat-icon [svgIcon]="'add'"></mat-icon>
                         <div>Create "<b>{{newTagInput.value}}</b>"</div>
                     </div>
 
@@ -165,19 +172,18 @@
                 (click)="openPriorityPanel()"
                 #priorityPanelOrigin>
 
-            <span class="priority-icon">
-                <mat-icon class="low"
-                          *ngIf="task.priority === 0">
-                    arrow_downward
-                </mat-icon>
-                <mat-icon class="normal"
-                          *ngIf="task.priority === 1">
-                    remove
-                </mat-icon>
-                <mat-icon class="high"
-                          *ngIf="task.priority === 2">
-                    arrow_upward
-                </mat-icon>
+            <span class="priority-icon"
+                  [ngClass]="{'low': task.priority === 0, 'normal': task.priority === 1, 'high': task.priority === 2}">
+
+                <mat-icon *ngIf="task.priority === 0"
+                          [svgIcon]="'arrow_downward'"></mat-icon>
+
+                <mat-icon *ngIf="task.priority === 1"
+                          [svgIcon]="'remove'"></mat-icon>
+
+                <mat-icon *ngIf="task.priority === 2"
+                          [svgIcon]="'arrow_upward'"></mat-icon>
+
             </span>
 
             <span class="priority-content">
@@ -212,19 +218,19 @@
                     <mat-radio-button class="low"
                                       [value]="0">
                         <span>Low</span>
-                        <mat-icon>arrow_downward</mat-icon>
+                        <mat-icon [svgIcon]="'arrow_downward'"></mat-icon>
                     </mat-radio-button>
 
                     <mat-radio-button class="normal"
                                       [value]="1">
                         <span>Normal</span>
-                        <mat-icon>remove</mat-icon>
+                        <mat-icon [svgIcon]="'remove'"></mat-icon>
                     </mat-radio-button>
 
                     <mat-radio-button class="high"
                                       [value]="2">
                         <span>High</span>
-                        <mat-icon>arrow_upward</mat-icon>
+                        <mat-icon [svgIcon]="'arrow_upward'"></mat-icon>
                     </mat-radio-button>
 
                 </mat-radio-group>
@@ -240,7 +246,9 @@
                 (click)="openDueDatePanel()"
                 #dueDatePanelOrigin>
 
-            <mat-icon class="due-date-icon">today</mat-icon>
+            <span class="due-date-icon">
+                <mat-icon [svgIcon]="'today'"></mat-icon>
+            </span>
 
             <span class="due-date-content">
                 <span class="due-date-title">Due date</span>
@@ -264,7 +272,7 @@
                 <button mat-stroked-button
                         *ngIf="taskForm.get('dueDate').value"
                         (click)="removeDueDate()">
-                    <mat-icon>remove_circle_outline</mat-icon>
+                    <mat-icon [svgIcon]="'remove_circle'"></mat-icon>
                     Remove due date
                 </button>
 

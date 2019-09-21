@@ -8,12 +8,10 @@
              (click)="toggleCollapsable()">
 
             <!-- Icon -->
-            <mat-icon class="asm-vertical-menu-item-icon icon-size-20"
+            <mat-icon class="asm-vertical-menu-item-icon"
                       [ngClass]="item.iconClassNames"
                       *ngIf="item.icon"
-                      [fontSet]="item.iconFontSet">
-                {{item.icon}}
-            </mat-icon>
+                      [svgIcon]="item.icon"></mat-icon>
 
             <!-- Title & Subtitle -->
             <div class="asm-vertical-menu-item-title-wrapper">
@@ -46,7 +44,8 @@
             </div>
 
             <!-- Arrow -->
-            <mat-icon class="asm-vertical-menu-item-arrow text-secondary icon-size-16">keyboard_arrow_down</mat-icon>
+            <mat-icon class="asm-vertical-menu-item-arrow text-secondary icon-size-16"
+                      [svgIcon]="'keyboard_arrow_down'"></mat-icon>
 
         </div>
 
@@ -64,19 +63,19 @@
 
             <!-- Collapsable -->
             <asm-vertical-menu-collapsable-item *ngIf="item.type === 'collapsable'"
-                                             [item]="item"></asm-vertical-menu-collapsable-item>
+                                                [item]="item"></asm-vertical-menu-collapsable-item>
 
             <!-- Divider -->
             <asm-vertical-menu-divider-item *ngIf="item.type === 'divider'"
-                                         [item]="item"></asm-vertical-menu-divider-item>
+                                            [item]="item"></asm-vertical-menu-divider-item>
 
             <!-- Spacer -->
             <asm-vertical-menu-spacer-item *ngIf="item.type === 'spacer'"
-                                         [item]="item"></asm-vertical-menu-spacer-item>
+                                           [item]="item"></asm-vertical-menu-spacer-item>
 
             <!-- Subheader -->
             <asm-vertical-menu-subheader-item *ngIf="item.type === 'subheader'"
-                                           [item]="item"></asm-vertical-menu-subheader-item>
+                                              [item]="item"></asm-vertical-menu-subheader-item>
 
         </ng-container>
 

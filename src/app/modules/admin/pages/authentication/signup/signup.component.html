@@ -1,7 +1,8 @@
 <div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- Card style selector - Remove this in production -->
-    <mat-form-field class="asm-mat" [appearance]="'standard'">
+    <mat-form-field class="asm-mat"
+                    [appearance]="'standard'">
         <mat-label>Card style</mat-label>
         <mat-select [value]="'classic'"
                     #cardStyle>
@@ -50,7 +51,8 @@
                     <input id="name"
                            matInput
                            [formControlName]="'name'">
-                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <mat-icon matSuffix
+                              [svgIcon]="'account_circle'"></mat-icon>
                     <mat-error *ngIf="signupForm.get('name').hasError('required')">
                         Name is required
                     </mat-error>
@@ -63,7 +65,8 @@
                     <input id="email"
                            matInput
                            [formControlName]="'email'">
-                    <mat-icon matSuffix>mail</mat-icon>
+                    <mat-icon matSuffix
+                              [svgIcon]="'mail'"></mat-icon>
                     <mat-error *ngIf="signupForm.get('email').hasError('required')">
                         Email is required
                     </mat-error>
@@ -85,8 +88,10 @@
                             (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
                             tabindex="-1"
                             matSuffix>
-                        <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
-                        <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'password'"
+                                  [svgIcon]="'visibility'"></mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'text'"
+                                  [svgIcon]="'visibility_off'"></mat-icon>
                     </button>
                     <mat-error>
                         Password is required
@@ -106,8 +111,10 @@
                             (click)="passwordConfirmField.type === 'password' ? passwordConfirmField.type = 'text' : passwordConfirmField.type = 'password'"
                             tabindex="-1"
                             matSuffix>
-                        <mat-icon *ngIf="passwordConfirmField.type === 'password'">visibility_on</mat-icon>
-                        <mat-icon *ngIf="passwordConfirmField.type === 'text'">visibility_off</mat-icon>
+                        <mat-icon *ngIf="passwordConfirmField.type === 'password'"
+                                  [svgIcon]="'visibility'"></mat-icon>
+                        <mat-icon *ngIf="passwordConfirmField.type === 'text'"
+                                  [svgIcon]="'visibility_off'"></mat-icon>
                     </button>
                     <mat-error *ngIf="signupForm.get('passwordConfirm').hasError('required')">
                         Password confirmation is required

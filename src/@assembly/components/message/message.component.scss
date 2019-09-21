@@ -19,8 +19,6 @@ asm-message {
                 display: none;
                 align-items: center;
                 justify-content: center;
-                width: 48px;
-                height: 48px;
                 border-radius: 50%;
 
                 &:not(:empty) {
@@ -169,14 +167,6 @@ asm-message {
                     .asm-message-icon {
                         color: map-get($primary, default);
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(map-get($primary, default), 0.12);
-                        }
-                    }
                 }
             }
 
@@ -189,14 +179,6 @@ asm-message {
                     .asm-message-title,
                     .asm-message-icon {
                         color: map-get($accent, default);
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(map-get($accent, default), 0.12);
-                        }
                     }
                 }
             }
@@ -211,14 +193,6 @@ asm-message {
                     .asm-message-icon {
                         color: map-get($warn, default);
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(map-get($warn, default), 0.12);
-                        }
-                    }
                 }
             }
 
@@ -231,14 +205,6 @@ asm-message {
                     .asm-message-title,
                     .asm-message-icon {
                         color: asm-color($asm-gray, 600);
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(asm-color($asm-gray, 600), 0.12);
-                        }
                     }
                 }
             }
@@ -253,14 +219,6 @@ asm-message {
                     .asm-message-icon {
                         color: #4299E1;
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#4299E1, 0.12);
-                        }
-                    }
                 }
             }
 
@@ -273,14 +231,6 @@ asm-message {
                     .asm-message-title,
                     .asm-message-icon {
                         color: #48BB78;
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#48BB78, 0.12);
-                        }
                     }
                 }
             }
@@ -295,14 +245,6 @@ asm-message {
                     .asm-message-icon {
                         color: #ED8936;
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#ED8936, 0.12);
-                        }
-                    }
                 }
             }
 
@@ -315,14 +257,6 @@ asm-message {
                     .asm-message-title,
                     .asm-message-icon {
                         color: #E53E3E;
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#E53E3E, 0.12);
-                        }
                     }
                 }
             }
@@ -337,14 +271,6 @@ asm-message {
                 .asm-message-container {
                     background: map-get($primary, default);
                     color: map-get($primary, default-contrast);
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(map-get($primary, default-contrast), 0.12);
-                        }
-                    }
                 }
             }
 
@@ -354,14 +280,6 @@ asm-message {
                 .asm-message-container {
                     background: map-get($accent, default);
                     color: map-get($accent, default-contrast);
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(map-get($accent, default-contrast), 0.12);
-                        }
-                    }
                 }
             }
 
@@ -371,14 +289,6 @@ asm-message {
                 .asm-message-container {
                     background: map-get($warn, default);
                     color: map-get($warn, default-contrast);
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(map-get($warn, default-contrast), 0.12);
-                        }
-                    }
                 }
             }
 
@@ -388,14 +298,6 @@ asm-message {
                 .asm-message-container {
                     background: asm-color($asm-gray, 500);
                     color: asm-color($asm-gray, 100);
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(asm-color($asm-gray, 100), 0.12);
-                        }
-                    }
                 }
             }
 
@@ -405,14 +307,6 @@ asm-message {
                 .asm-message-container {
                     background: #4299E1;
                     color: #EBF8FF;
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#EBF8FF, 0.12);
-                        }
-                    }
                 }
             }
 
@@ -422,14 +316,6 @@ asm-message {
                 .asm-message-container {
                     background: #48BB78;
                     color: #F0FFF4;
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#F0FFF4, 0.12);
-                        }
-                    }
                 }
             }
 
@@ -439,14 +325,6 @@ asm-message {
                 .asm-message-container {
                     background: #ED8936;
                     color: #FFFAF0;
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#FFFAF0, 0.12);
-                        }
-                    }
                 }
             }
 
@@ -456,14 +334,6 @@ asm-message {
                 .asm-message-container {
                     background: #E53E3E;
                     color: #FFF5F5;
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-                            background: rgba(#FFF5F5, 0.12);
-                        }
-                    }
                 }
             }
         }
@@ -484,19 +354,6 @@ asm-message {
                         background: map-get($primary, 100);
                         color: map-get($primary, 700);
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(map-get($primary, 400), 0.12);
-                            } @else {
-                                background: rgba(map-get($primary, 700), 0.12);
-                            }
-                        }
-                    }
                 }
             }
 
@@ -512,19 +369,6 @@ asm-message {
                     } @else {
                         background: map-get($accent, 100);
                         color: map-get($accent, 700);
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(map-get($accent, 400), 0.12);
-                            } @else {
-                                background: rgba(map-get($accent, 700), 0.12);
-                            }
-                        }
                     }
                 }
             }
@@ -542,19 +386,6 @@ asm-message {
                         background: map-get($warn, 100);
                         color: map-get($warn, 700);
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(map-get($warn, 400), 0.12);
-                            } @else {
-                                background: rgba(map-get($warn, 700), 0.12);
-                            }
-                        }
-                    }
                 }
             }
 
@@ -570,19 +401,6 @@ asm-message {
                     } @else {
                         background: asm-color($asm-gray, 100);
                         color: asm-color($asm-gray, 700);
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(asm-color($asm-gray, 400), 0.12);
-                            } @else {
-                                background: rgba(asm-color($asm-gray, 700), 0.12);
-                            }
-                        }
                     }
                 }
             }
@@ -600,19 +418,6 @@ asm-message {
                         background: #EBF8FF;
                         color: #2B6CB0;
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(#63B3ED, 0.12);
-                            } @else {
-                                background: rgba(#2B6CB0, 0.12);
-                            }
-                        }
-                    }
                 }
             }
 
@@ -628,19 +433,6 @@ asm-message {
                     } @else {
                         background: #F0FFF4;
                         color: #2F855A;
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(#68D391, 0.12);
-                            } @else {
-                                background: rgba(#2F855A, 0.12);
-                            }
-                        }
                     }
                 }
             }
@@ -658,19 +450,6 @@ asm-message {
                         background: #FFFAF0;
                         color: #C05621;
                     }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(#F6AD55, 0.12);
-                            } @else {
-                                background: rgba(#C05621, 0.12);
-                            }
-                        }
-                    }
                 }
             }
 
@@ -686,19 +465,6 @@ asm-message {
                     } @else {
                         background: #FFF5F5;
                         color: #C53030;
-                    }
-
-                    .asm-message-icon {
-
-                        .asm-message-default-icon,
-                        .asm-message-custom-icon {
-
-                            @if ($is-dark) {
-                                background: rgba(#FC8181, 0.12);
-                            } @else {
-                                background: rgba(#C53030, 0.12);
-                            }
-                        }
                     }
                 }
             }

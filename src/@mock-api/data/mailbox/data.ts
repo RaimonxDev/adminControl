@@ -24,7 +24,7 @@ export const folders = [
         id   : '0197c436-2ef3-424d-b546-8b7f49186e15',
         title: 'Spam',
         slug : 'spam',
-        icon : 'error_outline'
+        icon : 'error'
     },
     {
         id   : '2fa74637-d362-4fd2-9a88-f7195a88bdde',
@@ -38,7 +38,7 @@ export const filters = [
         id   : 'de1b41f6-6839-4f1b-9d2c-07e55f6f8f82',
         title: 'Starred',
         slug : 'starred',
-        icon : 'star_border'
+        icon : 'star'
     },
     {
         id   : '71bba1ec-a90e-4a71-9932-4bab0a99aa1c',

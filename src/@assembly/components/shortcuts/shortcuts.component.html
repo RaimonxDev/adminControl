@@ -3,7 +3,7 @@
         mat-icon-button
         (click)="openPanel()"
         #shortcutsOrigin>
-    <mat-icon>apps</mat-icon>
+    <mat-icon [svgIcon]="'apps'"></mat-icon>
 </button>
 
 <!-- Shortcuts panel -->
@@ -33,20 +33,20 @@
                 <button mat-icon-button
                         *ngIf="!editMode"
                         (click)="toggleEditMode();">
-                    <mat-icon class="icon-size-20">edit</mat-icon>
+                    <mat-icon [svgIcon]="'edit'"></mat-icon>
                 </button>
 
                 <button mat-icon-button
                         *ngIf="editMode && !formMode"
                         (click)="toggleEditMode();">
-                    <mat-icon class="icon-size-24">check</mat-icon>
+                    <mat-icon [svgIcon]="'check'"></mat-icon>
                 </button>
 
                 <!-- Save -->
                 <button mat-icon-button
                         *ngIf="formMode"
                         (click)="toggleFormMode();">
-                    <mat-icon class="icon-size-24">save</mat-icon>
+                    <mat-icon [svgIcon]="'save'"></mat-icon>
                 </button>
 
             </div>
@@ -67,13 +67,13 @@
 
                             <button class="asm-shortcuts-shortcut-edit-button"
                                     mat-mini-fab>
-                                <mat-icon class="icon-size-20">edit</mat-icon>
+                                <mat-icon [svgIcon]="'edit'"></mat-icon>
                             </button>
 
                             <button class="asm-shortcuts-shortcut-remove-button"
                                     mat-mini-fab
                                     [color]="'warn'">
-                                <mat-icon class="icon-size-20">delete</mat-icon>
+                                <mat-icon [svgIcon]="'delete'"></mat-icon>
                             </button>
 
                         </div>
@@ -98,7 +98,7 @@
 
                     <div class="asm-shortcuts-shortcut-icon">
                         <mat-icon [ngClass]="shortcut.iconClasses"
-                                  [fontSet]="shortcut.iconFontSet">{{shortcut.icon}}</mat-icon>
+                                  [svgIcon]="shortcut.icon"></mat-icon>
                     </div>
 
                     <div class="asm-shortcuts-shortcut-label"
@@ -113,10 +113,7 @@
                  *ngIf="editMode"
                  (click)="toggleFormMode()">
                 <div class="asm-shortcuts-shortcut-icon">
-                    <mat-icon class="icon-size-20"
-                              [fontSet]="'dripicons'">
-                        plus
-                    </mat-icon>
+                    <mat-icon [svgIcon]="'add_circle'"></mat-icon>
                 </div>
                 <div class="asm-shortcuts-shortcut-label">{{addShortcutLabel}}</div>
             </div>

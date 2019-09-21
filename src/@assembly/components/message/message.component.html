@@ -14,10 +14,31 @@
 
         <!-- Default icons -->
         <div class="asm-message-default-icon">
-            <mat-icon *ngIf="type === 'info'">info</mat-icon>
-            <mat-icon *ngIf="type === 'success'">check_circle</mat-icon>
-            <mat-icon *ngIf="type === 'warning'">error_outline</mat-icon>
-            <mat-icon *ngIf="type === 'error'">error_outline</mat-icon>
+
+            <mat-icon *ngIf="type === 'primary'"
+                      [svgIcon]="'check_circle'"></mat-icon>
+
+            <mat-icon *ngIf="type === 'accent'"
+                      [svgIcon]="'check_circle'"></mat-icon>
+
+            <mat-icon *ngIf="type === 'warn'"
+                      [svgIcon]="'warning'"></mat-icon>
+
+            <mat-icon *ngIf="type === 'basic'"
+                      [svgIcon]="'check_circle'"></mat-icon>
+
+            <mat-icon *ngIf="type === 'info'"
+                      [svgIcon]="'info'"></mat-icon>
+
+            <mat-icon *ngIf="type === 'success'"
+                      [svgIcon]="'check_circle'"></mat-icon>
+
+            <mat-icon *ngIf="type === 'warning'"
+                      [svgIcon]="'warning'"></mat-icon>
+
+            <mat-icon *ngIf="type === 'error'"
+                      [svgIcon]="'error'"></mat-icon>
+
         </div>
 
     </div>
@@ -40,7 +61,7 @@
             mat-icon-button
             *ngIf="dismissible"
             (click)="dismiss()">
-        <mat-icon>close</mat-icon>
+        <mat-icon [svgIcon]="'close'"></mat-icon>
     </button>
 
 </div>

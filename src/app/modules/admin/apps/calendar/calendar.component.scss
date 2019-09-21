@@ -179,7 +179,6 @@ calendar {
 
             > .mat-icon {
                 margin-right: 24px;
-                @include asm-icon-size(20);
             }
 
             .row-content {
@@ -211,10 +210,6 @@ calendar {
                         top: -8px;
                         right: -8px;
                         margin-left: 8px;
-
-                        .mat-icon {
-                            @include asm-icon-size(20);
-                        }
                     }
                 }
             }
@@ -254,7 +249,6 @@ calendar {
 
                 .mat-icon {
                     margin-right: 24px;
-                    @include asm-icon-size(20);
                 }
 
                 .field {

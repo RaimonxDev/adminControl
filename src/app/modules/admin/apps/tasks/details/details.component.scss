@@ -141,17 +141,14 @@ tasks-details {
                     align-items: center;
                     justify-content: center;
                     margin-right: 12px;
+                    width: 32px;
+                    height: 32px;
+                    min-width: 32px;
+                    min-height: 32px;
+                    border-radius: 4px;
 
                     .mat-icon {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        @include asm-icon-size(18);
-                        width: 32px;
-                        height: 32px;
-                        min-width: 32px;
-                        min-height: 32px;
-                        border-radius: 4px;
+                        @include asm-icon-size(20);
                     }
                 }
 
@@ -180,13 +177,16 @@ tasks-details {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    @include asm-icon-size(18);
                     width: 32px;
                     height: 32px;
                     min-width: 32px;
                     min-height: 32px;
                     margin-right: 12px;
                     border-radius: 4px;
+
+                    .mat-icon {
+                        @include asm-icon-size(20);
+                    }
                 }
 
                 .due-date-content {
@@ -451,33 +451,51 @@ tasks-details {
 
                 .priority-icon {
 
-                    .low {
+                    &.low {
                         @if ($is-dark) {
-                            color: asm-color($asm-green, 100);
                             background: asm-color($asm-green, 500);
                         } @else {
-                            color: asm-color($asm-green, 600);
                             background: asm-color($asm-green, 200);
                         }
-                    }
 
-                    .normal {
-                        @if ($is-dark) {
-                            background: asm-dark-elevation(4);
-                            color: asm-color($asm-gray, 500);
-                        } @else {
-                            background: asm-color($asm-gray, 200);
-                            color: asm-color($asm-gray, 600);
+                        .mat-icon {
+                            @if ($is-dark) {
+                                color: asm-color($asm-green, 100);
+                            } @else {
+                                color: asm-color($asm-green, 600);
+                            }
                         }
                     }
 
-                    .high {
+                    &.normal {
                         @if ($is-dark) {
-                            color: asm-color($asm-red, 100);
+                            background: asm-dark-elevation(4);
+                        } @else {
+                            background: asm-color($asm-gray, 200);
+                        }
+
+                        .mat-icon {
+                            @if ($is-dark) {
+                                color: asm-color($asm-gray, 500);
+                            } @else {
+                                color: asm-color($asm-gray, 600);
+                            }
+                        }
+                    }
+
+                    &.high {
+                        @if ($is-dark) {
                             background: asm-color($asm-red, 500);
                         } @else {
-                            color: asm-color($asm-red, 600);
                             background: asm-color($asm-red, 200);
+                        }
+
+                        .mat-icon {
+                            @if ($is-dark) {
+                                color: asm-color($asm-red, 100);
+                            } @else {
+                                color: asm-color($asm-red, 600);
+                            }
                         }
                     }
                 }
@@ -505,10 +523,16 @@ tasks-details {
                 .due-date-icon {
                     @if ($is-dark) {
                         background: asm-dark-elevation(4);
-                        color: asm-color($asm-gray, 500);
                     } @else {
                         background: asm-color($asm-gray, 200);
-                        color: asm-color($asm-gray, 600);
+                    }
+
+                    .mat-icon {
+                        @if ($is-dark) {
+                            color: asm-color($asm-gray, 500);
+                        } @else {
+                            color: asm-color($asm-gray, 600);
+                        }
                     }
                 }
 
@@ -516,11 +540,17 @@ tasks-details {
 
                     .due-date-icon {
                         @if ($is-dark) {
-                            color: asm-color($asm-green, 100);
                             background: asm-color($asm-green, 500);
                         } @else {
-                            color: asm-color($asm-green, 600);
                             background: asm-color($asm-green, 200);
+                        }
+
+                        .mat-icon {
+                            @if ($is-dark) {
+                                color: asm-color($asm-green, 100);
+                            } @else {
+                                color: asm-color($asm-green, 600);
+                            }
                         }
                     }
                 }
@@ -529,11 +559,17 @@ tasks-details {
 
                     .due-date-icon {
                         @if ($is-dark) {
-                            color: asm-color($asm-red, 100);
                             background: asm-color($asm-red, 500);
                         } @else {
-                            color: asm-color($asm-red, 600);
                             background: asm-color($asm-red, 200);
+                        }
+
+                        .mat-icon {
+                            @if ($is-dark) {
+                                color: asm-color($asm-red, 100);
+                            } @else {
+                                color: asm-color($asm-red, 600);
+                            }
                         }
                     }
                 }

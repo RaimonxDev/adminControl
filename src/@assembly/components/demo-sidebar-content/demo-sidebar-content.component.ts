@@ -22,22 +22,22 @@ export class AsmDemoSidebarContentComponent
             {
                 title: 'Create task',
                 type : 'basic',
-                icon : 'add_circle_outline'
+                icon : 'add_circle'
             },
             {
                 title: 'Create team',
                 type : 'basic',
-                icon : 'people_outline'
+                icon : 'people_alt'
             },
             {
                 title: 'Create project',
                 type : 'basic',
-                icon : 'work_outline'
+                icon : 'work'
             },
             {
                 title: 'Create user',
                 type : 'basic',
-                icon : 'person'
+                icon : 'person_outline'
             },
             {
                 title   : 'Assign user or team',
@@ -52,7 +52,7 @@ export class AsmDemoSidebarContentComponent
             {
                 title: 'All tasks',
                 type : 'basic',
-                icon : 'format_list_bulleted',
+                icon : 'list_alt',
                 badge: {
                     title     : '49',
                     background: '#E91E63',
@@ -62,7 +62,7 @@ export class AsmDemoSidebarContentComponent
             {
                 title: 'Ongoing tasks',
                 type : 'basic',
-                icon : 'play_circle_outline'
+                icon : 'play_circle_filled'
             },
             {
                 title: 'Completed tasks',
@@ -72,17 +72,17 @@ export class AsmDemoSidebarContentComponent
             {
                 title: 'Abandoned tasks',
                 type : 'basic',
-                icon : 'remove_circle_outline'
+                icon : 'remove_circle'
             },
             {
                 title: 'Assigned to me',
                 type : 'basic',
-                icon : 'person'
+                icon : 'person_outline'
             },
             {
                 title: 'Assigned to my team',
                 type : 'basic',
-                icon : 'people_outline'
+                icon : 'people_alt'
             },
             {
                 title: 'Settings',
@@ -91,7 +91,7 @@ export class AsmDemoSidebarContentComponent
             {
                 title   : 'General',
                 type    : 'collapsable',
-                icon    : 'settings',
+                icon    : 'settings_applications',
                 children: [
                     {
                         title: 'Tasks',
@@ -110,7 +110,7 @@ export class AsmDemoSidebarContentComponent
             {
                 title   : 'Account',
                 type    : 'collapsable',
-                icon    : 'settings',
+                icon    : 'account_circle',
                 children: [
                     {
                         title: 'Personal',

@@ -19,7 +19,7 @@
         <a mat-button
            [routerLink]="['../../../']"
            [color]="'primary'">
-            <mat-icon>arrow_back</mat-icon>
+            <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
             <span>Back to Help Center</span>
         </a>
         <h1>Guides & Resources</h1>
@@ -49,7 +49,7 @@
                    *ngIf="guideCategory.totalGuides > guideCategory.visibleGuides"
                    [routerLink]="guideCategory.slug">
                     <span>View All</span>
-                    <mat-icon>arrow_forward</mat-icon>
+                    <mat-icon [svgIcon]="'arrow_forward'"></mat-icon>
                 </a>
 
             </div>

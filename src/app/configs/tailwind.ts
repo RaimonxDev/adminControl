@@ -152,8 +152,8 @@ module.exports = {
 
         // Height
         height: {
-            'auto': 'auto',
-            'full': '100%',
+            'auto'  : 'auto',
+            'full'  : '100%',
             'screen': '100vh',
             'xs'    : '400px',
             'sm'    : '480px',

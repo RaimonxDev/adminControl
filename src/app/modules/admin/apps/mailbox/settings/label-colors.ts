@@ -8,5 +8,5 @@ export const labelColors = [
     'blue',
     'indigo',
     'purple',
-    'pink',
+    'pink'
 ];

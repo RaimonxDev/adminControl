@@ -36,7 +36,8 @@
                     <input id="email"
                            matInput
                            [formControlName]="'email'">
-                    <mat-icon matSuffix>mail</mat-icon>
+                    <mat-icon matSuffix
+                              [svgIcon]="'mail'"></mat-icon>
                     <mat-error *ngIf="loginForm.get('email').hasError('required')">
                         Email is required
                     </mat-error>
@@ -58,8 +59,10 @@
                             (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
                             tabindex="-1"
                             matSuffix>
-                        <mat-icon *ngIf="passwordField.type === 'password'">visibility_on</mat-icon>
-                        <mat-icon *ngIf="passwordField.type === 'text'">visibility_off</mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'password'"
+                                  [svgIcon]="'visibility'"></mat-icon>
+                        <mat-icon *ngIf="passwordField.type === 'text'"
+                                  [svgIcon]="'visibility_off'"></mat-icon>
                     </button>
                     <mat-error>
                         Password is required

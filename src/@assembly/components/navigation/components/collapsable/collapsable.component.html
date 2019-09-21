@@ -11,12 +11,10 @@
              (click)="toggleCollapsable()">
 
             <!-- Icon -->
-            <mat-icon class="asm-navigation-item-icon icon-size-20"
+            <mat-icon class="asm-navigation-item-icon"
                       [ngClass]="item.iconClassNames"
                       *ngIf="item.icon"
-                      [fontSet]="item.iconFontSet">
-                {{item.icon}}
-            </mat-icon>
+                      [svgIcon]="item.icon"></mat-icon>
 
             <!-- Title & Subtitle -->
             <div class="asm-navigation-item-title-wrapper">
@@ -49,7 +47,8 @@
             </div>
 
             <!-- Arrow -->
-            <mat-icon class="asm-navigation-item-arrow text-secondary icon-size-16">keyboard_arrow_down</mat-icon>
+            <mat-icon class="asm-navigation-item-arrow text-secondary icon-size-16"
+                      [svgIcon]="'keyboard_arrow_down'"></mat-icon>
 
         </div>
 

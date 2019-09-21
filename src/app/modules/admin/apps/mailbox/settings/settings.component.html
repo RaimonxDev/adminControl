@@ -14,9 +14,7 @@
                         [disableOptionCentering]="true">
                 <mat-select-trigger>
                     <mat-icon [ngClass]="'text-' + labelsForm.get('newLabel.color').value"
-                              [fontSet]="'material-baseline-icons'">
-                        label
-                    </mat-icon>
+                              [svgIcon]="'label'"></mat-icon>
                 </mat-select-trigger>
                 <div class="color-box-title">Label color</div>
                 <div class="color-box-container">
@@ -24,9 +22,8 @@
                                 [value]="color"
                                 #matOption="matOption">
                         <mat-icon [ngClass]="color"
-                                  *ngIf="matOption.selected">
-                            check
-                        </mat-icon>
+                                  *ngIf="matOption.selected"
+                                  [svgIcon]="'check'"></mat-icon>
                         <span class="color-box"
                               [ngClass]="color"></span>
                     </mat-option>
@@ -41,7 +38,7 @@
                         matSuffix
                         [disabled]="!labelsForm.get('newLabel').valid || !labelsForm.get('newLabel').dirty"
                         (click)="addLabel()">
-                    <mat-icon>add</mat-icon>
+                    <mat-icon [svgIcon]="'add'"></mat-icon>
                 </button>
             </mat-form-field>
 
@@ -61,9 +58,7 @@
                         [disableOptionCentering]="true">
                 <mat-select-trigger>
                     <mat-icon [ngClass]="'text-' + label.get('color').value"
-                              [fontSet]="'material-baseline-icons'">
-                        label
-                    </mat-icon>
+                              [svgIcon]="'label'"></mat-icon>
                 </mat-select-trigger>
                 <div class="color-box-title">Label color</div>
                 <div class="color-box-container">
@@ -71,9 +66,8 @@
                                 [value]="color"
                                 #matOption="matOption">
                         <mat-icon [ngClass]="color"
-                                  *ngIf="matOption.selected">
-                            check
-                        </mat-icon>
+                                  *ngIf="matOption.selected"
+                                  [svgIcon]="'check'"></mat-icon>
                         <span class="color-box"
                               [ngClass]="color"></span>
                     </mat-option>
@@ -87,7 +81,7 @@
                 <button mat-icon-button
                         matSuffix
                         (click)="deleteLabel(label.get('id').value)">
-                    <mat-icon>delete</mat-icon>
+                    <mat-icon [svgIcon]="'delete'"></mat-icon>
                 </button>
             </mat-form-field>
 

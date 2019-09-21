@@ -19,7 +19,7 @@
         <a mat-button
            [routerLink]="['../']"
            [color]="'primary'">
-            <mat-icon>arrow_back</mat-icon>
+            <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
             <span>Back to {{guideCategory.title}}</span>
         </a>
         <h1>{{guideCategory.guides[0].title}}</h1>

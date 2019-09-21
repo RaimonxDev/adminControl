@@ -29,7 +29,7 @@
                         mat-icon-button
                         (click)="prev()"
                         tabindex="1">
-                    <mat-icon>chevron_left</mat-icon>
+                    <mat-icon [svgIcon]="'chevron_left'"></mat-icon>
                 </button>
                 <div class="month-label">{{getMonthLabel(1)}}</div>
             </div>
@@ -66,7 +66,7 @@
                         mat-icon-button
                         (click)="next()"
                         tabindex="2">
-                    <mat-icon>chevron_right</mat-icon>
+                    <mat-icon [svgIcon]="'chevron_right'"></mat-icon>
                 </button>
             </div>
             <mat-month-view [(activeDate)]="activeDates.month2"

@@ -41,7 +41,7 @@
                                 mat-flat-button
                                 [color]="'primary'"
                                 (click)="createContact()">
-                            <mat-icon>add</mat-icon>
+                            <mat-icon [svgIcon]="'add'"></mat-icon>
                             <span>Add Contact</span>
                         </button>
 
@@ -54,7 +54,8 @@
 
                     <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript"
                                     [appearance]="'outline'">
-                        <mat-icon matPrefix>search</mat-icon>
+                        <mat-icon matPrefix
+                                  [svgIcon]="'search'"></mat-icon>
                         <input matInput
                                [formControl]="searchInputControl"
                                [autocomplete]="'off'"

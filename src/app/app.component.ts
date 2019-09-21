@@ -1,5 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Subject } from 'rxjs';
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy
      * @param {AsmNavigationService} _asmNavigationService
      * @param {AsmConfigService} _asmConfigService
      * @param {DOCUMENT} _document
+     * @param {DomSanitizer} _domSanitizer
      * @param {MatIconRegistry} _matIconRegistry
      * @param {Platform} _platform
      */
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy
         private _asmNavigationService: AsmNavigationService,
         private _asmConfigService: AsmConfigService,
         @Inject(DOCUMENT) private _document: any,
+        private _domSanitizer: DomSanitizer,
         private _matIconRegistry: MatIconRegistry,
         private _platform: Platform
     )
@@ -48,6 +51,17 @@ export class AppComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Register icon sets
+        this._matIconRegistry.addSvgIconSet(this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-twotone.svg'));
+        this._matIconRegistry.addSvgIconSetInNamespace('iconsmind', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/iconsmind.svg'));
+        this._matIconRegistry.addSvgIconSetInNamespace('dripicons', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/dripicons.svg'));
+
+        // Add 'is-mobile' class to the body if the platform is mobile
+        if ( this._platform.ANDROID || this._platform.IOS )
+        {
+            this._document.body.classList.add('is-mobile');
+        }
+
         // Subscribe to config changes
         this._asmConfigService.onConfigChanged
             .pipe(
@@ -76,15 +90,6 @@ export class AppComponent implements OnInit, OnDestroy
                     }
                 });
             });
-
-        // Add 'is-mobile' class to the body if the platform is mobile
-        if ( this._platform.ANDROID || this._platform.IOS )
-        {
-            this._document.body.classList.add('is-mobile');
-        }
-
-        // Change the default mat-icon font class
-        this._matIconRegistry.setDefaultFontSetClass('material-outline-icons');
     }
 
     /**
