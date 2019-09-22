@@ -1,7 +1,6 @@
 /**
  * Compress the import paths into a single path: @assembly
- * Angular Material uses a similar method. It will keep the
- * import paths clean and tidy.
+ * It will keep the import paths clean and tidy.
  */
 
 // Module

@@ -5,19 +5,19 @@ export const calendars = [
     {
         id     : '1a470c8e-40ed-4c2d-b590-a4f1f6ead6cc',
         title  : 'Personal',
-        color  : '#4299E1',
+        color  : 'teal',
         visible: true
     },
     {
         id     : '5dab5f7b-757a-4467-ace1-305fe07b11fe',
         title  : 'Work',
-        color  : '#9F7AEA',
+        color  : 'indigo',
         visible: true
     },
     {
         id     : '09887870-f85a-40eb-8171-1b13d7a7f529',
         title  : 'Appointments',
-        color  : '#ED64A6',
+        color  : 'pink',
         visible: true
     }
 ];

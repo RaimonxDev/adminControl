@@ -22,13 +22,15 @@ import { SharedModule } from 'app/shared/shared.module';
 import { CalendarComponent } from 'app/modules/admin/apps/calendar/calendar.component';
 import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
 import { CalendarSettingsComponent } from 'app/modules/admin/apps/calendar/settings/settings.component';
+import { CalendarSidebarComponent } from 'app/modules/admin/apps/calendar/sidebar/sidebar.component';
 import { calendarRoutes } from 'app/modules/admin/apps/calendar/calendar.routing';
 
 @NgModule({
     declarations   : [
         CalendarComponent,
         CalendarRecurrenceComponent,
-        CalendarSettingsComponent
+        CalendarSettingsComponent,
+        CalendarSidebarComponent
     ],
     entryComponents: [
         CalendarRecurrenceComponent

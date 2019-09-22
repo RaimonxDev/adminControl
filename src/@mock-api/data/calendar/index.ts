@@ -124,6 +124,28 @@ export class MockCalendarApi
             });
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Calendars - PUT
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPut('api/apps/calendar/calendars')
+            .reply((request) => {
+
+                // Get the calendar as the new calendar
+                const newCalendar = _.cloneDeep(request.body.calendar);
+
+                // Add an id to the new calendar
+                newCalendar.id = AsmMockApiUtils.guid();
+
+                // Push the new calendar
+                this._calendars.push(newCalendar);
+
+                return [
+                    200,
+                    newCalendar
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Calendars - PATCH
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -153,6 +175,29 @@ export class MockCalendarApi
                 return [
                     200,
                     updatedCalendar
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Calendars - DELETE
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onDelete('api/apps/calendar/calendars')
+            .reply((request) => {
+
+                // Get the id
+                const id = request.params.get('id');
+
+                // Find the calendar and delete it
+                const index = this._calendars.findIndex((calendar) => calendar.id === id);
+                this._calendars.splice(index, 1);
+
+                // Find the events that belong to the calendar and remove them as well
+                this._events = this._events.filter((event) => event.calendarId !== id);
+
+                return [
+                    200,
+                    true
                 ];
             });
 

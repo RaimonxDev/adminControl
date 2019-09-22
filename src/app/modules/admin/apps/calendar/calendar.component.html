@@ -8,15 +8,7 @@
                     [mode]="drawerMode"
                     [opened]="drawerOpened">
 
-            <div class="calendars">
-                <ng-container *ngFor="let calendar of calendars">
-                    <mat-checkbox [value]="calendar.id"
-                                  [(ngModel)]="calendar.visible"
-                                  (change)="updateCalendar(calendar)">
-                        {{calendar.title}}
-                    </mat-checkbox>
-                </ng-container>
-            </div>
+            <calendar-sidebar (calendarUpdated)="onCalendarUpdated($event)"></calendar-sidebar>
 
         </mat-drawer>
 
@@ -73,7 +65,6 @@
 
                     <!-- Month view -->
                     <full-calendar [defaultView]="view"
-                                   [editable]="true"
                                    [events]="events"
                                    [eventLimit]="3"
                                    [eventTimeFormat]="eventTimeFormat"
@@ -192,7 +183,7 @@
                             <mat-icon [svgIcon]="'today'"></mat-icon>
                             <div class="row-content">
                                 <div class="color"
-                                     [ngStyle]="{'backgroundColor': getCalendar(event.calendarId).color}"></div>
+                                     [ngClass]="getCalendar(event.calendarId).color"></div>
                                 <div class="title">{{getCalendar(event.calendarId).title}}</div>
                             </div>
                         </div>
@@ -268,13 +259,13 @@
                                                 (change)="$event.stopImmediatePropagation()">
                                         <mat-select-trigger>
                                             <span class="calendar-color"
-                                                  [style.backgroundColor]="getCalendar(eventForm.get('calendarId').value)?.color"></span>
+                                                  [ngClass]="getCalendar(eventForm.get('calendarId').value)?.color"></span>
                                             <span class="calendar-title">{{getCalendar(eventForm.get('calendarId').value)?.title}}</span>
                                         </mat-select-trigger>
                                         <mat-option *ngFor="let calendar of calendars"
                                                     [value]="calendar.id">
                                             <span class="calendar-color"
-                                                  [style.backgroundColor]="calendar.color"></span>
+                                                  [ngClass]="calendar.color"></span>
                                             <span class="calendar-title">{{calendar.title}}</span>
                                         </mat-option>
                                     </mat-select>

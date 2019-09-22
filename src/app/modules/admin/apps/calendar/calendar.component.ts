@@ -786,11 +786,15 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get event's calendar
         const calendar = this.calendars.find((item) => item.id === calendarEvent.event.extendedProps.calendarId);
 
-        // Set the event's background color
-        calendarEvent.el.style.backgroundColor = calendar.color;
+        // If the calendar exists...
+        if ( calendar )
+        {
+            // Set the color class of the event
+            calendarEvent.el.classList.add(calendar.color);
 
-        // Set the event's visibility
-        calendarEvent.el.style.display = calendar.visible ? 'flex' : 'none';
+            // Set the event's visibility
+            calendarEvent.el.style.display = calendar.visible ? 'flex' : 'none';
+        }
 
         // Set the event's title to '(No title)' if event title is not available
         if ( !calendarEvent.event.title )
@@ -800,18 +804,14 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Update the calendar
+     * On calendar updated
      *
      * @param calendar
      */
-    updateCalendar(calendar): void
+    onCalendarUpdated(calendar): void
     {
-        // Update the calendar on the server
-        this._calendarService.updateCalendar(calendar.id, calendar).subscribe(() => {
-
-            // Re-render the events
-            this._fullCalendarApi.rerenderEvents();
-        });
+        // Re-render the events
+        this._fullCalendarApi.rerenderEvents();
     }
 
     /**

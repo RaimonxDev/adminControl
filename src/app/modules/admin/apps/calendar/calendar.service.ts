@@ -91,6 +91,33 @@ export class CalendarService
     }
 
     /**
+     * Add calendar
+     *
+     * @param calendar
+     */
+    addCalendar(calendar): Observable<Calendar>
+    {
+        return this.calendars$.pipe(
+            take(1),
+            switchMap(calendars => this._httpClient.put<Calendar>('api/apps/calendar/calendars', {
+                calendar
+            }).pipe(
+                map((addedCalendar) => {
+
+                    // Add the calendar
+                    calendars.push(addedCalendar);
+
+                    // Update the calendars
+                    this._calendars.next(calendars);
+
+                    // Return the added calendar
+                    return addedCalendar;
+                })
+            ))
+        );
+    }
+
+    /**
      * Update calendar
      *
      * @param id
@@ -117,6 +144,42 @@ export class CalendarService
 
                     // Return the updated calendar
                     return updatedCalendar;
+                })
+            ))
+        );
+    }
+
+    /**
+     * Delete calendar
+     *
+     * @param id
+     */
+    deleteCalendar(id): Observable<any>
+    {
+        return this.calendars$.pipe(
+            take(1),
+            switchMap(calendars => this._httpClient.delete<Calendar>('api/apps/calendar/calendars', {
+                params: {id}
+            }).pipe(
+                map((isDeleted) => {
+
+                    // Find the index of the deleted calendar
+                    const index = calendars.findIndex(item => item.id === id);
+
+                    // Delete the calendar
+                    calendars.splice(index, 1);
+
+                    // Update the calendars
+                    this._calendars.next(calendars);
+
+                    // Remove the events belong to deleted calendar
+                    const events = this._events.value.filter((event) => event.calendarId !== id);
+
+                    // Update the events
+                    this._events.next(events);
+
+                    // Return the deleted status
+                    return isDeleted;
                 })
             ))
         );
