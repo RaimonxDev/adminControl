@@ -6,7 +6,8 @@
         <!-- Drawer -->
         <mat-drawer [autoFocus]="false"
                     [mode]="drawerMode"
-                    [opened]="drawerOpened">
+                    [opened]="drawerOpened"
+                    #drawer>
 
             <calendar-sidebar (calendarUpdated)="onCalendarUpdated($event)"></calendar-sidebar>
 
@@ -18,6 +19,12 @@
             <div class="main">
 
                 <div class="header">
+
+                    <button class="drawer-toggle"
+                            mat-icon-button
+                            (click)="toggleDrawer()">
+                        <mat-icon [svgIcon]="'menu'"></mat-icon>
+                    </button>
 
                     <button class="today"
                             mat-stroked-button

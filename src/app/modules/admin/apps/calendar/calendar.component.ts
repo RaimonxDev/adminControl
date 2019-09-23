@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar as FullCalendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -58,6 +59,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     @ViewChild('fullCalendar', {static: false})
     private _fullCalendar: FullCalendarComponent;
 
+    @ViewChild('drawer', {static: false})
+    private _drawer: MatDrawer;
+
     /**
      * Constructor
      *
@@ -91,7 +95,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.eventEditMode = 'single';
         this.events = [];
         this.panelMode = 'view';
-        this.view = 'listYear';
+        this.view = 'dayGridMonth';
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -554,6 +558,15 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle Drawer
+     */
+    toggleDrawer(): void
+    {
+        // Toggle the drawer
+        this._drawer.toggle();
+    }
 
     /**
      * Open recurrence panel
