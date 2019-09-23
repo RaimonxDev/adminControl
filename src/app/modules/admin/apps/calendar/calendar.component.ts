@@ -831,43 +831,50 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get event's calendar
         const calendar = this.calendars.find((item) => item.id === calendarEvent.event.extendedProps.calendarId);
 
-        // If the calendar exists...
-        if ( calendar )
+        // Return, if the calendar doesn't exist...
+        if ( !calendar )
         {
-            // If current view is year list...
-            if ( this._fullCalendarApi.view.type === 'listYear' )
-            {
+            return;
+        }
 
-                // Create a new 'fc-list-item-date' node
-                const fcListItemDate1 = `<td class="fc-list-item-date">
+        // If current view is year list...
+        if ( this.view === 'listYear' )
+        {
+            // Create a new 'fc-list-item-date' node
+            const fcListItemDate1 = `<td class="fc-list-item-date">
                                             <span>
                                                 <span>${moment(calendarEvent.event.start).format('D')}</span>
                                                 <span>${moment(calendarEvent.event.start).format('MMM')}, ${moment(calendarEvent.event.start).format('ddd')}</span>
                                             </span>
                                         </td>`;
 
-                // Insert the 'fc-list-item-date' into the calendar event element
-                calendarEvent.el.insertAdjacentHTML('afterbegin', fcListItemDate1);
+            // Insert the 'fc-list-item-date' into the calendar event element
+            calendarEvent.el.insertAdjacentHTML('afterbegin', fcListItemDate1);
 
-                // Set the color class of the event dot
-                calendarEvent.el.getElementsByClassName('fc-event-dot')[0].classList.add(calendar.color);
-            }
-            // If current view is not month list...
-            else
+            // Set the color class of the event dot
+            calendarEvent.el.getElementsByClassName('fc-event-dot')[0].classList.add(calendar.color);
+
+            // Set the event's title to '(No title)' if event title is not available
+            if ( !calendarEvent.event.title )
             {
-                // Set the color class of the event
-                calendarEvent.el.classList.add(calendar.color);
+                calendarEvent.el.querySelector('.fc-list-item-title').innerText = '(No title)';
             }
-
-            // Set the event's visibility
-            calendarEvent.el.style.display = calendar.visible ? 'flex' : 'none';
         }
-
-        // Set the event's title to '(No title)' if event title is not available
-        if ( !calendarEvent.event.title )
+        // If current view is not month list...
+        else
         {
-            calendarEvent.el.querySelector('.fc-title').innerText = '(No title)';
+            // Set the color class of the event
+            calendarEvent.el.classList.add(calendar.color);
+
+            // Set the event's title to '(No title)' if event title is not available
+            if ( !calendarEvent.event.title )
+            {
+                calendarEvent.el.querySelector('.fc-title').innerText = '(No title)';
+            }
         }
+
+        // Set the event's visibility
+        calendarEvent.el.style.display = calendar.visible ? 'flex' : 'none';
     }
 
     /**

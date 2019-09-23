@@ -52,9 +52,14 @@ calendar-settings {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
 
     calendar-settings {
-        background: map-get($background, card);
+        @if ($is-dark) {
+            background: asm-color($asm-gray, 900);
+        } @else {
+            background: map-get($background, card);
+        }
 
         .main {
 

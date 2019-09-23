@@ -272,6 +272,7 @@ asm-date-range {
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
 
     asm-date-range {
 
@@ -279,8 +280,11 @@ asm-date-range {
 
             .start,
             .end {
-                background: asm-color($asm-gray, 200);
-                color: asm-contrast($asm-gray, 200);
+                @if ($is-dark) {
+                    background: asm-dark-elevation(1);
+                } @else {
+                    background: asm-color($asm-gray, 200);
+                }
             }
         }
     }

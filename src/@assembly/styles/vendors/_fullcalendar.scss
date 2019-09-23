@@ -85,12 +85,68 @@
                                         cursor: pointer;
                                     }
                                 }
+
+                                .fc-more {
+                                    padding: 0 6px;
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                }
                             }
 
                             .fc-highlight-skeleton {
 
                                 .fc-highlight {
                                     position: relative;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .fc-popover {
+
+                &.fc-more-popover {
+                    border: none;
+                    border-radius: 4px;
+                    @include asm-elevation(5);
+
+                    .fc-header {
+                        height: 32px;
+                        min-height: 32px;
+                        max-height: 32px;
+                        padding: 0 8px;
+
+                        .fc-title {
+                            margin: 0;
+                            padding: 0;
+                            font-size: 12px;
+                        }
+                    }
+
+                    .fc-body {
+                        max-height: 160px;
+                        overflow: hidden auto;
+
+                        .fc-event-container {
+                            padding: 8px;
+
+                            .fc-day-grid-event {
+                                display: flex;
+                                align-items: center;
+                                height: 22px;
+                                min-height: 22px;
+                                max-height: 22px;
+                                margin: 0 0 6px 0;
+                                padding: 0 8px;
+                                font-size: 12px;
+                                line-height: 1;
+                                border-radius: 4px;
+                                border: none;
+                                cursor: pointer;
+
+                                &:last-child {
+                                    margin-bottom: 0;
                                 }
                             }
                         }
@@ -574,6 +630,10 @@
                                             }
                                         }
                                     }
+
+                                    .fc-more {
+                                        color: map-get($foreground, secondary-text);
+                                    }
                                 }
 
                                 .fc-highlight-skeleton {
@@ -584,6 +644,17 @@
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+
+                .fc-popover {
+                    background: map-get($background, card);
+
+                    &.fc-more-popover {
+
+                        .fc-header {
+                            background: map-get($background, hover);
                         }
                     }
                 }

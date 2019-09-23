@@ -121,6 +121,37 @@ calendar {
                                                         flex: 1 1 auto;
                                                         overflow: hidden scroll !important;
                                                         height: auto !important;
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // Day grid - Month view
+                                &.fc-dayGridMonth-view {
+
+                                    > table {
+
+                                        > tbody {
+
+                                            > tr {
+
+                                                > td {
+
+                                                    .fc-scroller {
+                                                        display: flex;
+
+                                                        > .fc-day-grid {
+                                                            display: flex;
+                                                            flex-direction: column;
+
+                                                            > .fc-row {
+                                                                flex: 1 0 0;
+                                                                height: auto !important;
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -345,9 +376,14 @@ calendar {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
 
     calendar {
-        background: map-get($background, card);
+        @if ($is-dark) {
+            background: asm-color($asm-gray, 900);
+        } @else {
+            background: map-get($background, card);
+        }
 
         .mat-drawer-container {
             background: transparent;
@@ -392,8 +428,11 @@ calendar {
                     &.recurrence {
 
                         .field {
-                            background: asm-color($asm-gray, 200);
-                            color: asm-contrast($asm-gray, 200);
+                            @if ($is-dark) {
+                                background: asm-dark-elevation(1);
+                            } @else {
+                                background: asm-color($asm-gray, 200);
+                            }
                         }
                     }
                 }
