@@ -42,7 +42,8 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     events: CalendarEvent[];
     panelMode: 'view' | 'add' | 'edit';
     settings: CalendarSettings;
-    view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth';
+    view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listYear';
+    views: any;
     viewTitle: string;
 
     // Private
@@ -90,7 +91,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.eventEditMode = 'single';
         this.events = [];
         this.panelMode = 'view';
-        this.view = 'dayGridMonth';
+        this.view = 'listYear';
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -251,6 +252,37 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
             });
+
+        // Build the view specific FullCalendar options
+        this.views = {
+            dayGridMonth: {
+                eventLimit     : 3,
+                eventTimeFormat: this.eventTimeFormat,
+                fixedWeekCount : false
+            },
+            timeGrid    : {
+                allDayText        : '',
+                columnHeaderFormat: {
+                    weekday   : 'short',
+                    day       : 'numeric',
+                    omitCommas: true
+                },
+                columnHeaderHtml  : (date) => {
+                    return `<span class="fc-weekday">${moment(date).format('ddd')}</span>
+                            <span class="fc-date">${moment(date).format('D')}</span>`;
+                },
+                slotDuration      : '01:00:00',
+                slotLabelFormat   : this.eventTimeFormat
+            },
+            timeGridWeek: {},
+            timeGridDay : {},
+            listYear    : {
+                allDayText      : 'All day',
+                eventTimeFormat : this.eventTimeFormat,
+                listDayFormat   : false,
+                listDayAltFormat: false
+            }
+        };
     }
 
     /**
@@ -626,7 +658,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param view
      */
-    changeView(view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listMonth'): void
+    changeView(view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listYear'): void
     {
         // Store the view
         this.view = view;
@@ -789,8 +821,30 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // If the calendar exists...
         if ( calendar )
         {
-            // Set the color class of the event
-            calendarEvent.el.classList.add(calendar.color);
+            // If current view is year list...
+            if ( this._fullCalendarApi.view.type === 'listYear' )
+            {
+
+                // Create a new 'fc-list-item-date' node
+                const fcListItemDate1 = `<td class="fc-list-item-date">
+                                            <span>
+                                                <span>${moment(calendarEvent.event.start).format('D')}</span>
+                                                <span>${moment(calendarEvent.event.start).format('MMM')}, ${moment(calendarEvent.event.start).format('ddd')}</span>
+                                            </span>
+                                        </td>`;
+
+                // Insert the 'fc-list-item-date' into the calendar event element
+                calendarEvent.el.insertAdjacentHTML('afterbegin', fcListItemDate1);
+
+                // Set the color class of the event dot
+                calendarEvent.el.getElementsByClassName('fc-event-dot')[0].classList.add(calendar.color);
+            }
+            // If current view is not month list...
+            else
+            {
+                // Set the color class of the event
+                calendarEvent.el.classList.add(calendar.color);
+            }
 
             // Set the event's visibility
             calendarEvent.el.style.display = calendar.visible ? 'flex' : 'none';

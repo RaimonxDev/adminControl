@@ -49,7 +49,8 @@
                     </mat-select>
                 </mat-form-field>
 
-                <button mat-button
+                <button mat-flat-button
+                        [color]="'primary'"
                         [disabled]="settingsForm.invalid || settingsForm.pristine"
                         (click)="updateSettings()">
                     Save

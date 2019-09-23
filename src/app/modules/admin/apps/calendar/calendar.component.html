@@ -55,7 +55,7 @@
                             <mat-option [value]="'dayGridMonth'">Month</mat-option>
                             <mat-option [value]="'timeGridWeek'">Week</mat-option>
                             <mat-option [value]="'timeGridDay'">Day</mat-option>
-                            <mat-option [value]="'listMonth'">Schedule</mat-option>
+                            <mat-option [value]="'listYear'">Schedule</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -63,17 +63,15 @@
 
                 <div class="calendar">
 
-                    <!-- Month view -->
+                    <!-- FullCalendar -->
                     <full-calendar [defaultView]="view"
                                    [events]="events"
-                                   [eventLimit]="3"
-                                   [eventTimeFormat]="eventTimeFormat"
                                    [firstDay]="settings.startWeekOn"
-                                   [fixedWeekCount]="false"
+                                   [handleWindowResize]="false"
                                    [header]="false"
                                    [height]="'parent'"
                                    [plugins]="calendarPlugins"
-                                   [handleWindowResize]="false"
+                                   [views]="views"
                                    (dateClick)="onDateClick($event)"
                                    (eventClick)="onEventClick($event)"
                                    (eventRender)="onEventRender($event)"

@@ -118,33 +118,15 @@ calendar {
                                     }
                                 }
 
-                                // Day grid - Month view
-                                &.fc-dayGridMonth-view {
+                                // List - Year view
+                                &.fc-listYear-view {
+                                    width: 100%;
+                                    height: 100%;
 
-                                    > table {
-
-                                        > tbody {
-
-                                            > tr {
-
-                                                > td {
-
-                                                    .fc-scroller {
-                                                        display: flex;
-
-                                                        > .fc-day-grid {
-                                                            display: flex;
-                                                            flex-direction: column;
-
-                                                            > .fc-row {
-                                                                flex: 1 0 0;
-                                                                height: auto !important;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
+                                    .fc-scroller {
+                                        width: 100%;
+                                        height: 100% !important;
+                                        overflow: hidden auto !important;
                                     }
                                 }
                             }

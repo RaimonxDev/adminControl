@@ -30,6 +30,17 @@ calendar-settings {
         .settings {
             display: flex;
             flex: 1 1 auto;
+            padding: 32px;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .mat-flat-button {
+                    margin-top: 32px;
+                }
+            }
         }
     }
 }
