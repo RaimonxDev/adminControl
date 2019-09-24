@@ -725,6 +725,18 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 title: 'Simple',
                 type : 'basic',
                 link : '/pages/pricing/simple'
+            },
+            {
+                id   : 'pages.pricing.single',
+                title: 'Single',
+                type : 'basic',
+                link : '/pages/pricing/single'
+            },
+            {
+                id   : 'pages.pricing.table',
+                title: 'Table',
+                type : 'basic',
+                link : '/pages/pricing/table'
             }
         ]
     },

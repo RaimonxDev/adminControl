@@ -187,6 +187,16 @@ export const adminRoutes: Route[] = [
                                 path        : 'simple',
                                 loadChildren: () => import('./pages/pricing/simple/simple.module')
                                     .then(m => m.PricingSimpleModule)
+                            },
+                            {
+                                path        : 'single',
+                                loadChildren: () => import('./pages/pricing/single/single.module')
+                                    .then(m => m.PricingSingleModule)
+                            },
+                            {
+                                path        : 'table',
+                                loadChildren: () => import('./pages/pricing/table/table.module')
+                                    .then(m => m.PricingTableModule)
                             }
                         ]
                     }
