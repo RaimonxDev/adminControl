@@ -262,9 +262,12 @@ pricing-simple {
                                 justify-content: center;
                                 border-radius: 50%;
                                 margin-bottom: 24px;
-                                @include asm-icon-size(22);
                                 width: 48px !important;
                                 height: 48px !important;
+
+                                svg {
+                                    @include asm-icon-size(24);
+                                }
                             }
 
                             div {
