@@ -53,7 +53,7 @@ pricing-single {
                 }
             }
 
-            .single {
+            .cards {
                 position: relative;
                 display: flex;
                 justify-content: center;
@@ -390,7 +390,7 @@ pricing-single {
                 }
             }
 
-            .single {
+            .cards {
 
                 .card {
                     background: map-get($background, card);
@@ -422,8 +422,11 @@ pricing-single {
                     }
 
                     .pricing {
-                        background: asm-color($asm-gray, 200);
-                        color: asm-contrast($asm-gray, 200);
+                        @if ($is-dark) {
+                            background: asm-dark-elevation(3);
+                        } @else {
+                            background: asm-color($asm-gray, 200);
+                        }
                     }
                 }
             }

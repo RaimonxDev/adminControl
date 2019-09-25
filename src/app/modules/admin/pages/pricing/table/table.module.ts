@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SharedModule } from 'app/shared/shared.module';
@@ -14,6 +15,7 @@ import { pricingTableRoutes } from 'app/modules/admin/pages/pricing/table/table.
     imports     : [
         RouterModule.forChild(pricingTableRoutes),
         MatButtonModule,
+        MatButtonToggleModule,
         MatIconModule,
         MatSlideToggleModule,
         SharedModule

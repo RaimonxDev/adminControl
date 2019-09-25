@@ -140,33 +140,27 @@ pricing-simple {
                     }
 
                     .title {
-                        margin-bottom: 16px;
+                        margin-bottom: 12px;
                         font-size: 20px;
                         font-weight: 700;
                     }
 
                     .price {
+                        display: flex;
+                        align-items: baseline;
                         white-space: nowrap;
-
-                        .currency {
-                            position: relative;
-                            top: -2px;
-                            margin-right: 6px;
-                            font-size: 32px;
-                            font-weight: 400;
-                            line-height: 1.25;
-                        }
+                        margin-bottom: 4px;
 
                         .amount {
-                            font-size: 64px;
+                            font-size: 42px;
                             font-weight: 700;
                         }
 
                         .per {
-                            font-size: 32px;
-                            font-weight: 700;
+                            font-size: 24px;
+                            font-weight: 400;
                             line-height: 1.25;
-                            margin-left: 8px;
+                            margin-left: 6px;
                         }
                     }
 
@@ -418,6 +412,13 @@ pricing-simple {
 
                     .subtitle {
                         color: map-get($foreground, secondary-text);
+                    }
+
+                    .price {
+
+                        .per {
+                            color: map-get($foreground, secondary-text);
+                        }
                     }
 
                     .price-details {

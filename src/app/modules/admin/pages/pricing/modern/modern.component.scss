@@ -131,14 +131,14 @@ pricing-modern {
                     }
 
                     .price {
+                        display: flex;
+                        align-items: baseline;
                         white-space: nowrap;
 
                         .currency {
-                            position: relative;
-                            top: -2px;
                             font-size: 20px;
                             font-weight: normal;
-                            margin-right: 4px;
+                            margin-right: 8px;
                         }
 
                         .amount {

@@ -24,10 +24,10 @@
 
             <div class="recurring-selector"
                  [ngClass]="{'annual-billing' : annualBilling}">
-                <span (click)="annualBilling = false">MONTHLY</span>
+                <span (click)="annualBilling = false">Monthly</span>
                 <mat-slide-toggle [(ngModel)]="annualBilling"
                                   [color]="'primary'"></mat-slide-toggle>
-                <span (click)="annualBilling = true">YEARLY</span>
+                <span (click)="annualBilling = true">Annual</span>
             </div>
 
         </div>
@@ -41,12 +41,11 @@
                 <div class="title">PERSONAL</div>
 
                 <div class="price">
-                    <span class="currency">$</span>
                     <span class="amount">
-                        <ng-container *ngIf="annualBilling">6</ng-container>
-                        <ng-container *ngIf="!annualBilling">9</ng-container>
+                        <ng-container *ngIf="annualBilling">$6</ng-container>
+                        <ng-container *ngIf="!annualBilling">$9</ng-container>
                     </span>
-                    <span class="per">/ mo</span>
+                    <span class="per">/ month</span>
                 </div>
 
                 <div class="price-details">
@@ -88,7 +87,7 @@
                 <button class="cta-button"
                         mat-stroked-button
                         [color]="'primary'">
-                    BUY
+                    BUY PERSONAL
                 </button>
 
             </div>
@@ -101,12 +100,11 @@
                 <div class="title">PREMIUM</div>
 
                 <div class="price">
-                    <span class="currency">$</span>
                     <span class="amount">
-                        <ng-container *ngIf="annualBilling">12</ng-container>
-                        <ng-container *ngIf="!annualBilling">15</ng-container>
+                        <ng-container *ngIf="annualBilling">$12</ng-container>
+                        <ng-container *ngIf="!annualBilling">$15</ng-container>
                     </span>
-                    <span class="per">/ mo</span>
+                    <span class="per">/ month</span>
                 </div>
 
                 <div class="price-details">
@@ -148,7 +146,7 @@
                 <button class="cta-button"
                         mat-raised-button
                         [color]="'primary'">
-                    BUY
+                    BUY PREMIUM
                 </button>
 
             </div>
@@ -159,12 +157,11 @@
                 <div class="title">ENTERPRISE</div>
 
                 <div class="price">
-                    <span class="currency">$</span>
                     <span class="amount">
-                        <ng-container *ngIf="annualBilling">49</ng-container>
-                        <ng-container *ngIf="!annualBilling">69</ng-container>
+                        <ng-container *ngIf="annualBilling">$49</ng-container>
+                        <ng-container *ngIf="!annualBilling">$69</ng-container>
                     </span>
-                    <span class="per">/ mo</span>
+                    <span class="per">/ month</span>
                 </div>
 
                 <div class="price-details">
@@ -206,7 +203,7 @@
                 <button class="cta-button"
                         mat-stroked-button
                         [color]="'primary'">
-                    BUY
+                    BUY ENTERPRISE
                 </button>
 
             </div>

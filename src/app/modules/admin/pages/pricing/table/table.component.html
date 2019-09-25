@@ -24,193 +24,249 @@
 
             <div class="recurring-selector"
                  [ngClass]="{'annual-billing' : annualBilling}">
-                <span (click)="annualBilling = false">MONTHLY</span>
+                <span (click)="annualBilling = false">Monthly</span>
                 <mat-slide-toggle [(ngModel)]="annualBilling"
                                   [color]="'primary'"></mat-slide-toggle>
-                <span (click)="annualBilling = true">YEARLY</span>
+                <span (click)="annualBilling = true">Annual</span>
             </div>
 
         </div>
 
-        <!-- Table -->
-
-
         <!-- Cards -->
         <div class="cards">
 
-            <!-- Card 1 -->
+            <mat-button-toggle-group class="tiers-selector"
+                                     [name]="'tiers'"
+                                     [(ngModel)]="selectedTier">
+                <mat-button-toggle [value]="'personal'">Personal</mat-button-toggle>
+                <mat-button-toggle [value]="'premium'">Premium</mat-button-toggle>
+                <mat-button-toggle [value]="'enterprise'">Enterprise</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <!-- Card -->
             <div class="card">
 
-                <div class="title">PERSONAL</div>
+                <div class="price-table"
+                     [ngClass]="selectedTier">
 
-                <div class="price">
-                    <span class="currency">$</span>
-                    <span class="amount">
-                        <ng-container *ngIf="annualBilling">6</ng-container>
-                        <ng-container *ngIf="!annualBilling">9</ng-container>
-                    </span>
-                    <span class="per">/ mo</span>
+                    <div class="head">
+
+                        <div class="row">
+
+                            <div class="col"></div>
+
+                            <div class="col">
+                                <div class="title">Personal</div>
+                                <div class="price">
+                                    <span class="currency">USD</span>
+                                    <span class="amount">
+                                        <ng-container *ngIf="annualBilling">$6</ng-container>
+                                        <ng-container *ngIf="!annualBilling">$9</ng-container>
+                                    </span>
+                                    <span class="per">/ mo</span>
+                                </div>
+                                <div class="price-details">
+                                    <ng-container *ngIf="annualBilling">
+                                        <span>billed annually</span>
+                                        <span>or <b>$9.00</b> billed monthly</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="!annualBilling">
+                                        <span>billed monthly</span>
+                                        <span>or <b>$6.00</b> billed annually</span>
+                                    </ng-container>
+                                </div>
+                                <button class="cta-button"
+                                        mat-stroked-button
+                                        [color]="'primary'">
+                                    Buy Personal
+                                </button>
+                            </div>
+
+                            <div class="col">
+                                <div class="tag">POPULAR</div>
+                                <div class="title">Premium</div>
+                                <div class="price">
+                                    <span class="currency">USD</span>
+                                    <span class="amount">
+                                        <ng-container *ngIf="annualBilling">$12</ng-container>
+                                        <ng-container *ngIf="!annualBilling">$15</ng-container>
+                                    </span>
+                                    <span class="per">/ mo</span>
+                                </div>
+                                <div class="price-details">
+                                    <ng-container *ngIf="annualBilling">
+                                        <span>billed annually</span>
+                                        <span>or <b>$15.00</b> billed monthly</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="!annualBilling">
+                                        <span>billed monthly</span>
+                                        <span>or <b>$12.00</b> billed annually</span>
+                                    </ng-container>
+                                </div>
+                                <button class="cta-button"
+                                        mat-flat-button
+                                        [color]="'primary'">
+                                    Buy Premium
+                                </button>
+                            </div>
+
+                            <div class="col">
+                                <div class="title">Enterprise</div>
+                                <div class="price">
+                                    <span class="currency">USD</span>
+                                    <span class="amount">
+                                        <ng-container *ngIf="annualBilling">$49</ng-container>
+                                        <ng-container *ngIf="!annualBilling">$69</ng-container>
+                                    </span>
+                                    <span class="per">/ mo</span>
+                                </div>
+                                <div class="price-details">
+                                    <ng-container *ngIf="annualBilling">
+                                        <span>billed annually</span>
+                                        <span>or <b>$69.00</b> billed monthly</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="!annualBilling">
+                                        <span>billed monthly</span>
+                                        <span>or <b>$49.00</b> billed annually</span>
+                                    </ng-container>
+                                </div>
+                                <button class="cta-button"
+                                        mat-stroked-button
+                                        [color]="'primary'">
+                                    Buy Enterprise
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="body">
+
+                        <div class="row section">
+                            <div class="col">FEATURES</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Unlimited projects</div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Unlimited storage</div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Custom domain support</div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'remove'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Dedicated hardware</div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'remove'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'remove'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                        </div>
+
+                        <div class="row section">
+                            <div class="col">PAYMENTS</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Fraud analysis</div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                            <div class="col">
+                                <mat-icon [svgIcon]="'check'"></mat-icon>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Rates for in-house payment systems</div>
+                            <div class="col">2.9% + 30&cent;</div>
+                            <div class="col">2.6% + 30&cent;</div>
+                            <div class="col">2.4% + 30&cent;</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Additional fees using other payment systems</div>
+                            <div class="col">2%</div>
+                            <div class="col">1%</div>
+                            <div class="col">0.5%</div>
+                        </div>
+
+                    </div>
+
+                    <div class="foot">
+
+                        <div class="row">
+
+                            <div class="col"></div>
+
+                            <div class="col">
+                                <button class="cta-button"
+                                        mat-stroked-button
+                                        [color]="'primary'">
+                                    Buy Personal
+                                </button>
+                            </div>
+
+                            <div class="col">
+                                <button class="cta-button"
+                                        mat-flat-button
+                                        [color]="'primary'">
+                                    Buy Premium
+                                </button>
+                            </div>
+
+                            <div class="col">
+                                <button class="cta-button"
+                                        mat-stroked-button
+                                        [color]="'primary'">
+                                    Buy Enterprise
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-
-                <div class="price-details">
-                    <ng-container *ngIf="annualBilling">
-                        <span>billed annually</span>
-                        <span>or <b>$9.00</b> billed monthly</span>
-                    </ng-container>
-
-                    <ng-container *ngIf="!annualBilling">
-                        <span>billed monthly</span>
-                        <span>or <b>$6.00</b> billed annually</span>
-                    </ng-container>
-                </div>
-
-                <div class="features">
-
-                    <div class="feature">
-                        <span><b>10</b> projects</span>
-                    </div>
-
-                    <div class="feature">
-                        <span><b>5GB</b> storage</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>Analytics</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>Free mobile app</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>Access to support forums</span>
-                    </div>
-
-                </div>
-
-                <button class="cta-button"
-                        mat-stroked-button
-                        [color]="'primary'">
-                    BUY
-                </button>
-
-            </div>
-
-            <!-- Card 2 -->
-            <div class="card">
-
-                <div class="tag">POPULAR</div>
-
-                <div class="title">PREMIUM</div>
-
-                <div class="price">
-                    <span class="currency">$</span>
-                    <span class="amount">
-                        <ng-container *ngIf="annualBilling">12</ng-container>
-                        <ng-container *ngIf="!annualBilling">15</ng-container>
-                    </span>
-                    <span class="per">/ mo</span>
-                </div>
-
-                <div class="price-details">
-                    <ng-container *ngIf="annualBilling">
-                        <span>billed annually</span>
-                        <span>or <b>$15.00</b> billed monthly</span>
-                    </ng-container>
-
-                    <ng-container *ngIf="!annualBilling">
-                        <span>billed monthly</span>
-                        <span>or <b>$12.00</b> billed annually</span>
-                    </ng-container>
-                </div>
-
-                <div class="features">
-
-                    <div class="feature">
-                        <span><b>Unlimited</b> projects</span>
-                    </div>
-
-                    <div class="feature">
-                        <span><b>Unlimited</b> storage</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>Custom domain support</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>Bulk editing</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>12 / 5 support</span>
-                    </div>
-
-                </div>
-
-                <button class="cta-button"
-                        mat-raised-button
-                        [color]="'primary'">
-                    BUY
-                </button>
-
-            </div>
-
-            <!-- Card 3 -->
-            <div class="card">
-
-                <div class="title">ENTERPRISE</div>
-
-                <div class="price">
-                    <span class="currency">$</span>
-                    <span class="amount">
-                        <ng-container *ngIf="annualBilling">49</ng-container>
-                        <ng-container *ngIf="!annualBilling">69</ng-container>
-                    </span>
-                    <span class="per">/ mo</span>
-                </div>
-
-                <div class="price-details">
-                    <ng-container *ngIf="annualBilling">
-                        <span>billed annually</span>
-                        <span>or <b>$69.00</b> billed monthly</span>
-                    </ng-container>
-
-                    <ng-container *ngIf="!annualBilling">
-                        <span>billed monthly</span>
-                        <span>or <b>$49.00</b> billed annually</span>
-                    </ng-container>
-                </div>
-
-                <div class="features">
-
-                    <div class="feature">
-                        <span><b>Dedicated</b> hardware</span>
-                    </div>
-
-                    <div class="feature">
-                        <span><b>%99.9 uptime</b> guarantee</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>Advanced analytics</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>3rd party integrations</span>
-                    </div>
-
-                    <div class="feature">
-                        <span>24 / 7 support</span>
-                    </div>
-
-                </div>
-
-                <button class="cta-button"
-                        mat-stroked-button
-                        [color]="'primary'">
-                    BUY
-                </button>
 
             </div>
 
