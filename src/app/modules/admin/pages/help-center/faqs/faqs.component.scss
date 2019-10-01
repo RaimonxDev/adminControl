@@ -82,6 +82,16 @@ help-center-faqs {
 
                 .mat-accordion {
                     max-width: 784px;
+
+                    .mat-expansion-panel {
+
+                        .mat-expansion-panel-header {
+
+                            .mat-expansion-panel-header-title {
+                                line-height: 1;
+                            }
+                        }
+                    }
                 }
             }
         }

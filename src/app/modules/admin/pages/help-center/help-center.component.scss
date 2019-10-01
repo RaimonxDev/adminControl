@@ -19,6 +19,10 @@ help-center {
             width: 100%;
             height: 891px;
             z-index: -1;
+
+            path {
+                opacity: 0.1;
+            }
         }
 
         .main {

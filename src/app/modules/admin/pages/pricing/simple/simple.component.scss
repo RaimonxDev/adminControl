@@ -19,6 +19,10 @@ pricing-simple {
             width: 100%;
             height: 891px;
             z-index: -1;
+
+            path {
+                opacity: 0.1;
+            }
         }
 
         .main {
@@ -130,8 +134,8 @@ pricing-simple {
                     .tag {
                         position: absolute;
                         top: -16px;
-                        left: calc(50% - 64px);
-                        width: 128px;
+                        left: calc(50% - 80px);
+                        width: 160px;
                         height: 32px;
                         line-height: 32px;
                         font-weight: 500;
@@ -193,7 +197,8 @@ pricing-simple {
                     }
 
                     .cta-button {
-                        min-width: 128px;
+                        min-width: 180px;
+                        width: 100%;
                     }
                 }
             }
