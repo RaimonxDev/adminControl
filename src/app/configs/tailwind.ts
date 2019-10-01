@@ -5,13 +5,28 @@ const spacing = (() => {
 
     // Create the object and add some values by hand
     const obj = {
-        px: '1px',
-        0 : '0',
-        4 : '4px',
-        8 : '8px',
-        12: '12px',
-        16: '16px',
-        20: '20px'
+        0   : '0',
+        4   : '4px',
+        8   : '8px',
+        12  : '12px',
+        16  : '16px',
+        20  : '20px',
+        240 : '240px',
+        256 : '256px',
+        320 : '320px',
+        400 : '400px',
+        480 : '480px',
+        512 : '512px',
+        600 : '600px',
+        640 : '640px',
+        800 : '800px',
+        960 : '960px',
+        1120: '1120px',
+        1280: '1280px',
+        1440: '1440px',
+        1600: '1600px',
+        1920: '1920px',
+        full: '100%'
     };
 
     // Loop and add specified values to the object
@@ -135,108 +150,42 @@ module.exports = {
             '9/12'  : '75%',
             '10/12' : '83.33333%',
             '11/12' : '91.66667%',
-            'full'  : '100%',
             'screen': '100vw',
-            'xs'    : '400px',
-            'sm'    : '480px',
-            'md'    : '600px',
-            'lg'    : '800px',
-            'xl'    : '960px',
-            '2xl'   : '1120px',
-            '3xl'   : '1280px',
-            '4xl'   : '1440px',
-            '5xl'   : '1600px',
-            '6xl'   : '1920px',
             ...spacing
         },
 
         // Height
         height: {
-            'auto'  : 'auto',
-            'full'  : '100%',
-            'screen': '100vh',
-            'xs'    : '400px',
-            'sm'    : '480px',
-            'md'    : '600px',
-            'lg'    : '800px',
-            'xl'    : '960px',
-            '2xl'   : '1120px',
-            '3xl'   : '1280px',
-            '4xl'   : '1440px',
-            '5xl'   : '1600px',
-            '6xl'   : '1920px',
+            auto  : 'auto',
+            screen: '100vh',
             ...spacing
         },
 
         // Min width
         minWidth: {
-            'auto'  : 'auto',
-            'xs'    : '400px',
-            'sm'    : '480px',
-            'md'    : '600px',
-            'lg'    : '800px',
-            'xl'    : '960px',
-            '2xl'   : '1120px',
-            '3xl'   : '1280px',
-            '4xl'   : '1440px',
-            '5xl'   : '1600px',
-            '6xl'   : '1920px',
-            'full'  : '100%',
-            'screen': '100vw',
+            auto  : 'auto',
+            screen: '100vw',
             ...spacing
         },
 
         // Min height
         minHeight: {
-            'auto'  : 'auto',
-            'xs'    : '400px',
-            'sm'    : '480px',
-            'md'    : '600px',
-            'lg'    : '800px',
-            'xl'    : '960px',
-            '2xl'   : '1120px',
-            '3xl'   : '1280px',
-            '4xl'   : '1440px',
-            '5xl'   : '1600px',
-            '6xl'   : '1920px',
-            'full'  : '100%',
-            'screen': '100vh',
+            auto  : 'auto',
+            screen: '100vh',
             ...spacing
         },
 
         // Max width
         maxWidth: {
-            'none'  : 'none',
-            'xs'    : '400px',
-            'sm'    : '480px',
-            'md'    : '600px',
-            'lg'    : '800px',
-            'xl'    : '960px',
-            '2xl'   : '1120px',
-            '3xl'   : '1280px',
-            '4xl'   : '1440px',
-            '5xl'   : '1600px',
-            '6xl'   : '1920px',
-            'full'  : '100%',
-            'screen': '100vw',
+            none  : 'none',
+            screen: '100vw',
             ...spacing
         },
 
         // Max height
         maxHeight: {
-            'none'  : 'none',
-            'xs'    : '400px',
-            'sm'    : '480px',
-            'md'    : '600px',
-            'lg'    : '800px',
-            'xl'    : '960px',
-            '2xl'   : '1120px',
-            '3xl'   : '1280px',
-            '4xl'   : '1440px',
-            '5xl'   : '1600px',
-            '6xl'   : '1920px',
-            'full'  : '100%',
-            'screen': '100vh',
+            none  : 'none',
+            screen: '100vh',
             ...spacing
         },
 

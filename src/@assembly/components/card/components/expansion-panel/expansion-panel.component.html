@@ -1,10 +1,11 @@
 <!-- Content -->
-<div class="asm-card-panel-content">
+<div class="asm-card-expansion-panel-content">
     <ng-content select="[asmCardContent]"></ng-content>
 </div>
 
 <!-- Details -->
-<div class="asm-card-panel-details"
-     *ngIf="showDetails">
+<div class="asm-card-expansion-panel-details"
+     *ngIf="expanded"
+     [@expandCollapse]>
     <ng-content select="[asmCardDetails]"></ng-content>
 </div>
