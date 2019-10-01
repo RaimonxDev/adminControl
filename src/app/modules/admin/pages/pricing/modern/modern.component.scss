@@ -435,8 +435,8 @@ pricing-modern {
                         .title-container {
 
                             .mat-icon {
-                                background: map-get($primary, default);
-                                color: map-get($primary, default-contrast);
+                                background: map-get($accent, default);
+                                color: map-get($accent, default-contrast);
                             }
                         }
 
