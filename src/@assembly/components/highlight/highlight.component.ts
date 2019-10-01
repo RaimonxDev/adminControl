@@ -11,7 +11,7 @@ import { AsmHighlightService } from '@assembly/components/highlight/highlight.se
 export class AsmHighlightComponent implements AfterViewInit
 {
     // Code element
-    @ViewChild('code', {static: false})
+    @ViewChild('code', {static: true})
     codeElementRef: ElementRef;
 
     // Private

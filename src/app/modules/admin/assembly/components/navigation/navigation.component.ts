@@ -20,7 +20,7 @@ export class NavigationComponent
 
             // language=TypeScript
             storingNavData: `
-                // Get navigation data from a database or a file
+                // Get navigation data from a database or from a file
                 const navigationData = {...};
 
                 // Store navigation data as the 'default' navigation
@@ -35,7 +35,7 @@ export class NavigationComponent
 
             // language=TypeScript
             storingMultipleNavData: `
-                // Get navigation data from a database or a file
+                // Get navigation data from a database or from a file
                 const adminNavigationData = {...};
                 const userNavigationData = {...};
 
