@@ -64,14 +64,9 @@ pricing-single {
                 z-index: 10;
                 width: 100%;
 
-                .card {
-                    position: relative;
-                    display: flex;
+                asm-card {
                     flex: 1 0 auto;
-                    border-radius: 8px;
                     max-width: 960px;
-                    overflow: hidden;
-                    @include asm-elevation(2);
 
                     @include asm-media-breakpoint('lt-lg') {
                         flex-direction: column;
@@ -396,8 +391,7 @@ pricing-single {
 
             .cards {
 
-                .card {
-                    background: map-get($background, card);
+                asm-card {
 
                     .info {
 

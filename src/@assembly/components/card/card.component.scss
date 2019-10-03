@@ -5,7 +5,7 @@ asm-card {
     display: flex;
     border-radius: 8px;
     overflow: hidden;
-    @include asm-elevation(1);
+    @include asm-elevation(2);
 }
 
 // -----------------------------------------------------------------------------------------------------

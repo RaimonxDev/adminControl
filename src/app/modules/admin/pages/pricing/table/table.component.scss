@@ -105,13 +105,10 @@ pricing-table {
                     }
                 }
 
-                .card {
-                    position: relative;
-                    display: flex;
+                asm-card {
                     flex: 1 0 auto;
                     width: 100%;
-                    border-radius: 8px;
-                    @include asm-elevation(2);
+                    overflow: visible;
 
                     @include asm-media-breakpoint('lt-lg') {
                         flex-direction: column;
@@ -515,8 +512,7 @@ pricing-table {
                     background: map-get($background, card);
                 }
 
-                .card {
-                    background: map-get($background, card);
+                asm-card {
 
                     .price-table {
 

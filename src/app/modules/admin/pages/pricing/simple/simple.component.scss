@@ -89,9 +89,7 @@ pricing-simple {
                     align-items: center;
                 }
 
-                .card {
-                    position: relative;
-                    display: flex;
+                asm-card {
                     flex-direction: column;
                     flex: 1 0 auto;
                     align-items: center;
@@ -99,8 +97,6 @@ pricing-simple {
                     padding: 64px;
                     z-index: 1;
                     overflow: visible;
-                    border-radius: 8px;
-                    @include asm-elevation(2);
 
                     &:nth-child(1),
                     &:nth-child(3) {
@@ -407,8 +403,7 @@ pricing-simple {
 
             .cards {
 
-                .card {
-                    background: map-get($background, card);
+                asm-card {
 
                     .tag {
                         background: map-get($accent, default);

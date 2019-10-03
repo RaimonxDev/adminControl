@@ -87,13 +87,16 @@ export class LayoutsComponent implements OnInit, OnDestroy
         // The reason we do this is that there might be empty grouping
         // paths or componentless routes along the path. Because of that,
         // we cannot just assume that the layout configuration will be
-        // in the last path's config or first path's config.
+        // in the last path's config or in the first path's config.
         //
         // So, we get all the paths that matched starting from root all
         // the way to the current activated route, walk through them one
-        // by one and change the layout as we find layout config. This way
-        // layout configuration can live anywhere within the path and we
-        // won't miss it.
+        // by one and change the layout as we find the layout config. This
+        // way layout configuration can live anywhere within the path and
+        // we won't miss it.
+        //
+        // Also, this will allow overriding the layout in any time so we
+        // can have different layouts for different routes.
         paths.forEach((path) => {
 
             // Check if there is a 'layout' data

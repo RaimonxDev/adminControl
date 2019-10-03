@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AsmCardModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { PricingTableComponent } from 'app/modules/admin/pages/pricing/table/table.component';
 import { pricingTableRoutes } from 'app/modules/admin/pages/pricing/table/table.routing';
@@ -12,13 +13,14 @@ import { pricingTableRoutes } from 'app/modules/admin/pages/pricing/table/table.
     declarations: [
         PricingTableComponent
     ],
-    imports     : [
+    imports: [
         RouterModule.forChild(pricingTableRoutes),
         MatButtonModule,
         MatButtonToggleModule,
         MatIconModule,
         MatSlideToggleModule,
-        SharedModule
+        AsmCardModule,
+        SharedModule,
     ]
 })
 export class PricingTableModule
