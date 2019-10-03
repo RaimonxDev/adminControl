@@ -3,8 +3,8 @@
     <!-- Card -->
     <asm-card class="modern">
 
-        <!-- Primary content area -->
-        <div class="primary-content">
+        <!-- Form area -->
+        <div class="form">
 
             <!-- Logo -->
             <div class="logo">
@@ -63,8 +63,8 @@
                     </mat-error>
                 </mat-form-field>
 
-                <!-- Unlock button -->
-                <button class="unlock-button asm-mat-button-large"
+                <!-- Submit button -->
+                <button class="submit-button asm-mat-button-large"
                         mat-raised-button
                         [color]="'primary'"
                         [disabled]="unlockSessionForm.disabled || unlockSessionForm.invalid">
@@ -76,8 +76,8 @@
                                  [diameter]="24"></asm-spinner>
                 </button>
 
-                <!-- Logout link -->
-                <div class="logout-link">
+                <!-- Footer link -->
+                <div class="footer-link">
                     <a class="link"
                        [routerLink]="['/logout']">I'm not {{name}}</a>
                 </div>
@@ -86,8 +86,8 @@
 
         </div>
 
-        <!-- Secondary content area -->
-        <div class="secondary-content"></div>
+        <!-- Content area -->
+        <div class="content"></div>
 
     </asm-card>
 

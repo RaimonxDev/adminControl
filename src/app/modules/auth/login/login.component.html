@@ -3,8 +3,8 @@
     <!-- Card -->
     <asm-card class="modern">
 
-        <!-- Primary content area -->
-        <div class="primary-content">
+        <!-- Form area -->
+        <div class="form">
 
             <!-- Logo -->
             <div class="logo">
@@ -69,14 +69,14 @@
                     </mat-error>
                 </mat-form-field>
 
-                <!-- Forgot password link -->
-                <div class="forgot-password-link">
+                <!-- Field link -->
+                <div class="field-link">
                     <a class="link"
                        [routerLink]="['/forgot-password']">Forgot password?</a>
                 </div>
 
-                <!-- Login button -->
-                <button class="login-button asm-mat-button-large"
+                <!-- Submit button -->
+                <button class="submit-button asm-mat-button-large"
                         mat-raised-button
                         [color]="'primary'"
                         [disabled]="loginForm.disabled || loginForm.invalid"
@@ -89,8 +89,8 @@
                                  [diameter]="24"></asm-spinner>
                 </button>
 
-                <!-- Create account link -->
-                <div class="create-account-link">
+                <!-- Footer link -->
+                <div class="footer-link">
                     <span>Need an account?</span>
                     <a class="link"
                        [routerLink]="['/signup']">Create one here</a>
@@ -100,8 +100,8 @@
 
         </div>
 
-        <!-- Secondary content area -->
-        <div class="secondary-content"></div>
+        <!-- Content area -->
+        <div class="content"></div>
 
     </asm-card>
 

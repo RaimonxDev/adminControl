@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { interval, Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { filter, take, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector     : 'logout',
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit, OnDestroy
 {
+    cardStyle: string;
     countdown: number;
     countdownMapping: any;
 
@@ -20,9 +21,11 @@ export class LogoutComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {ActivatedRoute} _activatedRoute
      * @param {Router} _router
      */
     constructor(
+        private _activatedRoute: ActivatedRoute,
         private _router: Router
     )
     {
@@ -63,6 +66,18 @@ export class LogoutComponent implements OnInit, OnDestroy
                 () => {
                 }
             );
+
+        // Set the card style for the first time
+        this._setCardStyle();
+
+        // Register to the NavigationEnd event
+        this._router.events
+            .pipe(filter((event) => event instanceof NavigationEnd))
+            .subscribe(() => {
+
+                // Set the card style
+                this._setCardStyle();
+            });
     }
 
     /**
@@ -73,5 +88,28 @@ export class LogoutComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the card style from the url
+     * Demonstration purposes only!
+     *
+     * @private
+     */
+    private _setCardStyle(): void
+    {
+        // Get the current route
+        let route = this._activatedRoute;
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Set the card style from the path
+        this.cardStyle = route.snapshot.url[0].path;
     }
 }

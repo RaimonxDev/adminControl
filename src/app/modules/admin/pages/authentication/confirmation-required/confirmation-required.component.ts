@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly';
 
 @Component({
@@ -10,12 +12,19 @@ import { AsmAnimations } from '@assembly';
 })
 export class ConfirmationRequiredComponent implements OnInit
 {
+    cardStyle: string;
     email: string;
 
     /**
      * Constructor
+     *
+     * @param {ActivatedRoute} _activatedRoute
+     * @param {Router} _router
      */
-    constructor()
+    constructor(
+        private _activatedRoute: ActivatedRoute,
+        private _router: Router
+    )
     {
     }
 
@@ -30,5 +39,41 @@ export class ConfirmationRequiredComponent implements OnInit
     {
         // Get the user's email
         this.email = 'watkins.andrew@company.com';
+
+        // Set the card style for the first time
+        this._setCardStyle();
+
+        // Register to the NavigationEnd event
+        this._router.events
+            .pipe(filter((event) => event instanceof NavigationEnd))
+            .subscribe(() => {
+
+                // Set the card style
+                this._setCardStyle();
+            });
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the card style from the url
+     * Demonstration purposes only!
+     *
+     * @private
+     */
+    private _setCardStyle(): void
+    {
+        // Get the current route
+        let route = this._activatedRoute;
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Set the card style from the path
+        this.cardStyle = route.snapshot.url[0].path;
+    }
+
 }

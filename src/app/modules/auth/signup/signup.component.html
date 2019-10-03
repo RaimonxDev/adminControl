@@ -3,8 +3,8 @@
     <!-- Card -->
     <asm-card class="modern">
 
-        <!-- Primary content area -->
-        <div class="primary-content">
+        <!-- Form area -->
+        <div class="form">
 
             <!-- Logo -->
             <div class="logo">
@@ -109,8 +109,8 @@
                     </mat-error>
                 </mat-form-field>
 
-                <!-- Sign up button -->
-                <button class="signup-button asm-mat-button-large"
+                <!-- Submit button -->
+                <button class="submit-button asm-mat-button-large"
                         mat-raised-button
                         [color]="'primary'"
                         [disabled]="signupForm.disabled || signupForm.invalid">
@@ -122,8 +122,8 @@
                                  [diameter]="24"></asm-spinner>
                 </button>
 
-                <!-- Login link -->
-                <div class="login-link">
+                <!-- Footer link -->
+                <div class="footer-link">
                     <span>Already have an account?</span>
                     <a class="link"
                        [routerLink]="['/login']">Log in</a>
@@ -143,8 +143,8 @@
 
         </div>
 
-        <!-- Secondary content area -->
-        <div class="secondary-content"></div>
+        <!-- Content area -->
+        <div class="content"></div>
 
     </asm-card>
 

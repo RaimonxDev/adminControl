@@ -623,55 +623,310 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'lock',
         children: [
             {
-                id   : 'pages.authentication.login',
-                title: 'Login',
-                type : 'basic',
-                link : '/pages/authentication/login'
+                id      : 'pages.authentication.login',
+                title   : 'Login',
+                type    : 'collapsable',
+                children: [
+                    {
+                        id   : 'pages.authentication.login.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/login/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.login.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/login/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.login.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/login/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.login.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/login/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.login.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/login/fullscreen-alt'
+                    }
+                ]
             },
             {
-                id   : 'pages.authentication.signup',
-                title: 'Sign up',
-                type : 'basic',
-                link : '/pages/authentication/signup'
+                id      : 'pages.authentication.signup',
+                title   : 'Sign up',
+                type    : 'collapsable',
+                link    : '/pages/authentication/signup',
+                children: [
+                    {
+                        id   : 'pages.authentication.signup.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/signup/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.signup.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/signup/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.signup.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/signup/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.signup.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/signup/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.signup.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/signup/fullscreen-alt'
+                    }
+                ]
             },
             {
-                id   : 'pages.authentication.forgot-password',
-                title: 'Forgot password',
-                type : 'basic',
-                link : '/pages/authentication/forgot-password'
+                id      : 'pages.authentication.forgot-password',
+                title   : 'Forgot password',
+                type    : 'collapsable',
+                link    : '/pages/authentication/forgot-password',
+                children: [
+                    {
+                        id   : 'pages.authentication.forgot-password.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/forgot-password/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.forgot-password.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/forgot-password/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.forgot-password.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/forgot-password/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.forgot-password.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/forgot-password/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.forgot-password.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/forgot-password/fullscreen-alt'
+                    }
+                ]
             },
             {
-                id   : 'pages.authentication.reset-password',
-                title: 'Reset password',
-                type : 'basic',
-                link : '/pages/authentication/reset-password'
+                id      : 'pages.authentication.reset-password',
+                title   : 'Reset password',
+                type    : 'collapsable',
+                link    : '/pages/authentication/reset-password',
+                children: [
+                    {
+                        id   : 'pages.authentication.reset-password.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/reset-password/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.reset-password.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/reset-password/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.reset-password.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/reset-password/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.reset-password.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/reset-password/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.reset-password.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/reset-password/fullscreen-alt'
+                    }
+                ]
             },
             {
-                id   : 'pages.authentication.logout',
-                title: 'Logout',
-                type : 'basic',
-                link : '/pages/authentication/logout'
+                id      : 'pages.authentication.logout',
+                title   : 'Logout',
+                type    : 'collapsable',
+                link    : '/pages/authentication/logout',
+                children: [
+                    {
+                        id   : 'pages.authentication.logout.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/logout/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.logout.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/logout/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.logout.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/logout/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.logout.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/logout/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.logout.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/logout/fullscreen-alt'
+                    }
+                ]
             },
             {
-                id   : 'pages.authentication.unlock-session',
-                title: 'Unlock session',
-                type : 'basic',
-                link : '/pages/authentication/unlock-session'
+                id      : 'pages.authentication.unlock-session',
+                title   : 'Unlock session',
+                type    : 'collapsable',
+                link    : '/pages/authentication/unlock-session',
+                children: [
+                    {
+                        id   : 'pages.authentication.unlock-session.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/unlock-session/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.unlock-session.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/unlock-session/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.unlock-session.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/unlock-session/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.unlock-session.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/unlock-session/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.unlock-session.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/unlock-session/fullscreen-alt'
+                    }
+                ]
             },
             {
-                id   : 'pages.authentication.confirmation-required',
-                title: 'Confirmation required',
-                type : 'basic',
-                link : '/pages/authentication/confirmation-required'
+                id      : 'pages.authentication.confirmation-required',
+                title   : 'Confirmation required',
+                type    : 'collapsable',
+                link    : '/pages/authentication/confirmation-required',
+                children: [
+                    {
+                        id   : 'pages.authentication.confirmation-required.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/confirmation-required/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.confirmation-required.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/confirmation-required/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.confirmation-required.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/confirmation-required/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.confirmation-required.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/confirmation-required/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.confirmation-required.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/confirmation-required/fullscreen-alt'
+                    }
+                ]
             }
         ]
     },
     {
         id   : 'pages.coming-soon',
         title: 'Coming soon',
-        type : 'basic',
+        type : 'collapsable',
         icon : 'hourglass_empty',
-        link : '/pages/coming-soon'
+        link : '/pages/coming-soon',
+        children: [
+            {
+                id   : 'pages.coming-soon.classic',
+                title: 'Classic',
+                type : 'basic',
+                link : '/pages/coming-soon/classic'
+            },
+            {
+                id   : 'pages.coming-soon.modern',
+                title: 'Modern',
+                type : 'basic',
+                link : '/pages/coming-soon/modern'
+            },
+            {
+                id   : 'pages.coming-soon.modern-alt',
+                title: 'Modern Alt.',
+                type : 'basic',
+                link : '/pages/coming-soon/modern-alt'
+            },
+            {
+                id   : 'pages.coming-soon.fullscreen',
+                title: 'Fullscreen',
+                type : 'basic',
+                link : '/pages/coming-soon/fullscreen'
+            },
+            {
+                id   : 'pages.coming-soon.fullscreen-alt',
+                title: 'Fullscreen Alt.',
+                type : 'basic',
+                link : '/pages/coming-soon/fullscreen-alt'
+            }
+        ]
     },
     {
         id      : 'pages.errors',
@@ -818,7 +1073,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 title: 'Material Twotone',
                 type : 'basic',
                 link : '/ui/icons/material-twotone'
-            },
+            }
         ]
     },
     {

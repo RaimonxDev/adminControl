@@ -1,25 +1,11 @@
 <div class="content-layout fullwidth-basic-normal-scroll">
 
-    <!-- Card style selector - Remove this in production -->
-    <mat-form-field class="asm-mat"
-                    [appearance]="'standard'">
-        <mat-label>Card style</mat-label>
-        <mat-select [value]="'classic'"
-                    #cardStyle>
-            <mat-option [value]="'classic'">Classic</mat-option>
-            <mat-option [value]="'modern'">Modern</mat-option>
-            <mat-option [value]="'modern-relaxed'">Modern Relaxed</mat-option>
-            <mat-option [value]="'modern flipped'">Modern (Flipped)</mat-option>
-            <mat-option [value]="'modern-relaxed flipped'">Modern Relaxed (Flipped)</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <!-- / Card style selector -->
+    <!-- Auth card - cardStyle can be 'classic', 'modern', 'modern-alt', 'fullscreen', 'fullscreen-alt' -->
+    <asm-card class="auth"
+              [ngClass]="cardStyle">
 
-    <!-- Card - Can be 'classic', 'modern', 'modern-relaxed', 'modern flipped', 'modern-relaxed flipped' -->
-    <asm-card [ngClass]="cardStyle.value">
-
-        <!-- Primary content area -->
-        <div class="primary-content">
+        <!-- Form area -->
+        <div class="form">
 
             <!-- Logo -->
             <div class="logo">
@@ -30,23 +16,23 @@
             </div>
 
             <!-- Title -->
-            <h3>Successfully logged out!</h3>
+            <h3>You've been successfully logged out!</h3>
             <h6>
 
                 <!-- Redirect countdown -->
                 <ng-container *ngIf="countdown > 0">
-                    You will be redirected after {{countdown | i18nPlural: countdownMapping }}.
+                    Redirecting in {{countdown | i18nPlural: countdownMapping }}
                 </ng-container>
 
                 <!-- Redirect message -->
                 <ng-container *ngIf="countdown === 0">
-                    You are now being redirected...
+                    You are now being redirected!
                 </ng-container>
 
             </h6>
 
-            <!-- Login link -->
-            <div class="login-link">
+            <!-- Footer link -->
+            <div class="footer-link">
                 <span>Go to</span>
                 <a class="link"
                    [routerLink]="['/pages/authentication/login']">login</a>
@@ -54,8 +40,8 @@
 
         </div>
 
-        <!-- Secondary content area -->
-        <div class="secondary-content"></div>
+        <!-- Content area -->
+        <div class="content"></div>
 
     </asm-card>
 
