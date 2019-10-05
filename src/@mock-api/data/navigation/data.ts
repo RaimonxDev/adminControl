@@ -1069,6 +1069,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/ui/icons/iconsmind'
             },
             {
+                id   : 'ui-elements.icons.material-outline',
+                title: 'Material Outline',
+                type : 'basic',
+                link : '/ui/icons/material-outline'
+            },
+            {
                 id   : 'ui-elements.icons.material-twotone',
                 title: 'Material Twotone',
                 type : 'basic',

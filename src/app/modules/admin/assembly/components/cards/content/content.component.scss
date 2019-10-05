@@ -8,11 +8,7 @@ cards-content {
         align-items: flex-start;
 
         asm-card {
-            margin: 32px;
-
-            @include asm-media-breakpoint('lt-sm') {
-                margin: 16px;
-            }
+            margin: 16px;
         }
     }
 }

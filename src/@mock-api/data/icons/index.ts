@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { dripicons, iconsmind, materialTwotone } from '@mock-api/data/icons/data';
+import { dripicons, iconsmind, material } from '@mock-api/data/icons/data';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +11,7 @@ export class MockIconsApi
     // Private Readonly
     private readonly _dripicons: any;
     private readonly _iconsmind: any;
-    private readonly _materialTwotone: any;
+    private readonly _material: any;
 
     /**
      * Constructor
@@ -25,7 +25,7 @@ export class MockIconsApi
         // Set the data
         this._dripicons = dripicons;
         this._iconsmind = iconsmind;
-        this._materialTwotone = materialTwotone;
+        this._material = material;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -70,6 +70,22 @@ export class MockIconsApi
             });
 
         // -----------------------------------------------------------------------------------------------------
+        // @ Material outline icons - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/ui/icons/material-outline')
+            .reply(() => {
+                return [
+                    200,
+                    {
+                        namespace: 'mat-outline',
+                        name     : 'Material Outline',
+                        list     : _.cloneDeep(this._material)
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
         // @ Material twotone icons - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
@@ -80,7 +96,7 @@ export class MockIconsApi
                     {
                         namespace: '',
                         name     : 'Material Twotone',
-                        list     : _.cloneDeep(this._materialTwotone)
+                        list     : _.cloneDeep(this._material)
                     }
                 ];
             });

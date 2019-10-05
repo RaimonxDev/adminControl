@@ -1,5 +1,5 @@
 /* tslint:disable:max-line-length */
-export const materialTwotone = [
+export const material = [
     '3d_rotation',
     '4k',
     '360',
