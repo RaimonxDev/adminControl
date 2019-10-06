@@ -1102,19 +1102,18 @@
                             mat-button
                             [color]="'primary'"
                             [routerLink]="['./']">
-                        Add to Cart
+                        <mat-icon class="icon-size-20"
+                                  svgIcon="shopping_cart"></mat-icon>
+                        <span class="ml-4">Add to Cart</span>
                     </button>
-                    <button class="px-12 mr-4"
-                            mat-button
-                            [color]="'accent'"
-                            [routerLink]="['./']">
-                        Favorite
+                    <button class="mr-4 ml-auto"
+                            mat-icon-button>
+                        <mat-icon class="icon-size-20"
+                                  svgIcon="favorite"></mat-icon>
                     </button>
-                    <button class="px-12"
-                            mat-button
-                            [color]="'accent'"
-                            [routerLink]="['./']">
-                        Compare
+                    <button mat-icon-button>
+                        <mat-icon class="icon-size-20"
+                                  svgIcon="compare_arrows"></mat-icon>
                     </button>
                 </div>
             </div>
@@ -1133,24 +1132,32 @@
                 <div class="text-md text-secondary mt-24">
                     White sneakers are made of natural, biodegradable material. This feature alione makes them extremely nature friendly.
                 </div>
-                <div class="flex items-center mt-24 gt-sm:mt-auto -mx-12">
+                <div class="flex items-center text-md mt-24">
+                    <span class="text-secondary whitespace-no-wrap mr-12">Select a size:</span>
+                    <span class="mr-8">39</span>
+                    <span class="mr-8">40</span>
+                    <span class="mr-8">41</span>
+                    <span class="font-bold text-primary mr-8">42</span>
+                    <span class="mr-8">43</span>
+                </div>
+                <hr class="w-full border-b mt-24 mb-16">
+                <div class="flex items-center gt-sm:mt-auto -mx-12">
                     <button class="px-12 mr-4"
                             mat-button
                             [color]="'primary'"
                             [routerLink]="['./']">
-                        Add to Cart
+                        <mat-icon class="icon-size-20"
+                                  svgIcon="shopping_cart"></mat-icon>
+                        <span class="ml-4">Add to Cart</span>
                     </button>
-                    <button class="px-12 mr-4"
-                            mat-button
-                            [color]="'accent'"
-                            [routerLink]="['./']">
-                        Favorite
+                    <button class="mr-4 ml-auto"
+                            mat-icon-button>
+                        <mat-icon class="icon-size-20"
+                                  svgIcon="favorite"></mat-icon>
                     </button>
-                    <button class="px-12"
-                            mat-button
-                            [color]="'accent'"
-                            [routerLink]="['./']">
-                        Compare
+                    <button mat-icon-button>
+                        <mat-icon class="icon-size-20"
+                                  svgIcon="compare_arrows"></mat-icon>
                     </button>
                 </div>
             </div>
