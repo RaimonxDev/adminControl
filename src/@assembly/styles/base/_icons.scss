@@ -15,6 +15,10 @@ mat-icon,
 
         &.icon-size-#{$size * 2} {
             @include asm-icon-size($size * 2);
+
+            svg {
+                @include asm-icon-size($size * 2);
+            }
         }
     }
 
@@ -28,6 +32,10 @@ mat-icon,
 
                 &.#{$alias}icon-size-#{$size * 2} {
                     @include asm-icon-size($size * 2, true);
+
+                    svg {
+                        @include asm-icon-size($size * 2, true);
+                    }
                 }
             }
         }

@@ -136,7 +136,8 @@ module.exports = {
             '4xl' : '32px',
             '5xl' : '36px',
             '6xl' : '40px',
-            '7xl' : '48px'
+            '7xl' : '48px',
+            '8xl' : '64px'
         },
 
         // Border radius
@@ -236,7 +237,6 @@ module.exports = {
         boxShadow      : false,
         container      : false,
         float          : false,
-        inset          : false,
         tableLayout    : false,
         textColor      : false
     },

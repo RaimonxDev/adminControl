@@ -11003,6 +11003,72 @@
   position: sticky !important
 }
 
+.inset-0 {
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important
+}
+
+.inset-auto {
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important
+}
+
+.inset-y-0 {
+  top: 0 !important;
+  bottom: 0 !important
+}
+
+.inset-x-0 {
+  right: 0 !important;
+  left: 0 !important
+}
+
+.inset-y-auto {
+  top: auto !important;
+  bottom: auto !important
+}
+
+.inset-x-auto {
+  right: auto !important;
+  left: auto !important
+}
+
+.top-0 {
+  top: 0 !important
+}
+
+.right-0 {
+  right: 0 !important
+}
+
+.bottom-0 {
+  bottom: 0 !important
+}
+
+.left-0 {
+  left: 0 !important
+}
+
+.top-auto {
+  top: auto !important
+}
+
+.right-auto {
+  right: auto !important
+}
+
+.bottom-auto {
+  bottom: auto !important
+}
+
+.left-auto {
+  left: auto !important
+}
+
 .resize-none {
   resize: none !important
 }
@@ -11089,6 +11155,10 @@
 
 .text-7xl {
   font-size: 48px !important
+}
+
+.text-8xl {
+  font-size: 64px !important
 }
 
 .italic {
@@ -22574,6 +22644,72 @@
     position: sticky !important
   }
 
+  .xs\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .xs\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .xs\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .xs\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .xs\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .xs\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .xs\:top-0 {
+    top: 0 !important
+  }
+
+  .xs\:right-0 {
+    right: 0 !important
+  }
+
+  .xs\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .xs\:left-0 {
+    left: 0 !important
+  }
+
+  .xs\:top-auto {
+    top: auto !important
+  }
+
+  .xs\:right-auto {
+    right: auto !important
+  }
+
+  .xs\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .xs\:left-auto {
+    left: auto !important
+  }
+
   .xs\:fill-current {
     fill: currentColor !important
   }
@@ -22644,6 +22780,10 @@
 
   .xs\:text-7xl {
     font-size: 48px !important
+  }
+
+  .xs\:text-8xl {
+    font-size: 64px !important
   }
 
   .xs\:italic {
@@ -34120,6 +34260,72 @@
     position: sticky !important
   }
 
+  .sm\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .sm\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .sm\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .sm\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .sm\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .sm\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .sm\:top-0 {
+    top: 0 !important
+  }
+
+  .sm\:right-0 {
+    right: 0 !important
+  }
+
+  .sm\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .sm\:left-0 {
+    left: 0 !important
+  }
+
+  .sm\:top-auto {
+    top: auto !important
+  }
+
+  .sm\:right-auto {
+    right: auto !important
+  }
+
+  .sm\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .sm\:left-auto {
+    left: auto !important
+  }
+
   .sm\:fill-current {
     fill: currentColor !important
   }
@@ -34190,6 +34396,10 @@
 
   .sm\:text-7xl {
     font-size: 48px !important
+  }
+
+  .sm\:text-8xl {
+    font-size: 64px !important
   }
 
   .sm\:italic {
@@ -45666,6 +45876,72 @@
     position: sticky !important
   }
 
+  .md\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .md\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .md\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .md\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .md\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .md\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .md\:top-0 {
+    top: 0 !important
+  }
+
+  .md\:right-0 {
+    right: 0 !important
+  }
+
+  .md\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .md\:left-0 {
+    left: 0 !important
+  }
+
+  .md\:top-auto {
+    top: auto !important
+  }
+
+  .md\:right-auto {
+    right: auto !important
+  }
+
+  .md\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .md\:left-auto {
+    left: auto !important
+  }
+
   .md\:fill-current {
     fill: currentColor !important
   }
@@ -45736,6 +46012,10 @@
 
   .md\:text-7xl {
     font-size: 48px !important
+  }
+
+  .md\:text-8xl {
+    font-size: 64px !important
   }
 
   .md\:italic {
@@ -57212,6 +57492,72 @@
     position: sticky !important
   }
 
+  .lg\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .lg\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .lg\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .lg\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .lg\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .lg\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .lg\:top-0 {
+    top: 0 !important
+  }
+
+  .lg\:right-0 {
+    right: 0 !important
+  }
+
+  .lg\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .lg\:left-0 {
+    left: 0 !important
+  }
+
+  .lg\:top-auto {
+    top: auto !important
+  }
+
+  .lg\:right-auto {
+    right: auto !important
+  }
+
+  .lg\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .lg\:left-auto {
+    left: auto !important
+  }
+
   .lg\:fill-current {
     fill: currentColor !important
   }
@@ -57282,6 +57628,10 @@
 
   .lg\:text-7xl {
     font-size: 48px !important
+  }
+
+  .lg\:text-8xl {
+    font-size: 64px !important
   }
 
   .lg\:italic {
@@ -68758,6 +69108,72 @@
     position: sticky !important
   }
 
+  .xl\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .xl\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .xl\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .xl\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .xl\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .xl\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .xl\:top-0 {
+    top: 0 !important
+  }
+
+  .xl\:right-0 {
+    right: 0 !important
+  }
+
+  .xl\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .xl\:left-0 {
+    left: 0 !important
+  }
+
+  .xl\:top-auto {
+    top: auto !important
+  }
+
+  .xl\:right-auto {
+    right: auto !important
+  }
+
+  .xl\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .xl\:left-auto {
+    left: auto !important
+  }
+
   .xl\:fill-current {
     fill: currentColor !important
   }
@@ -68828,6 +69244,10 @@
 
   .xl\:text-7xl {
     font-size: 48px !important
+  }
+
+  .xl\:text-8xl {
+    font-size: 64px !important
   }
 
   .xl\:italic {
@@ -80304,6 +80724,72 @@
     position: sticky !important
   }
 
+  .lt-sm\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-sm\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .lt-sm\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .lt-sm\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-sm\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .lt-sm\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .lt-sm\:top-0 {
+    top: 0 !important
+  }
+
+  .lt-sm\:right-0 {
+    right: 0 !important
+  }
+
+  .lt-sm\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .lt-sm\:left-0 {
+    left: 0 !important
+  }
+
+  .lt-sm\:top-auto {
+    top: auto !important
+  }
+
+  .lt-sm\:right-auto {
+    right: auto !important
+  }
+
+  .lt-sm\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .lt-sm\:left-auto {
+    left: auto !important
+  }
+
   .lt-sm\:fill-current {
     fill: currentColor !important
   }
@@ -80374,6 +80860,10 @@
 
   .lt-sm\:text-7xl {
     font-size: 48px !important
+  }
+
+  .lt-sm\:text-8xl {
+    font-size: 64px !important
   }
 
   .lt-sm\:italic {
@@ -91850,6 +92340,72 @@
     position: sticky !important
   }
 
+  .lt-md\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-md\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .lt-md\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .lt-md\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-md\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .lt-md\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .lt-md\:top-0 {
+    top: 0 !important
+  }
+
+  .lt-md\:right-0 {
+    right: 0 !important
+  }
+
+  .lt-md\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .lt-md\:left-0 {
+    left: 0 !important
+  }
+
+  .lt-md\:top-auto {
+    top: auto !important
+  }
+
+  .lt-md\:right-auto {
+    right: auto !important
+  }
+
+  .lt-md\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .lt-md\:left-auto {
+    left: auto !important
+  }
+
   .lt-md\:fill-current {
     fill: currentColor !important
   }
@@ -91920,6 +92476,10 @@
 
   .lt-md\:text-7xl {
     font-size: 48px !important
+  }
+
+  .lt-md\:text-8xl {
+    font-size: 64px !important
   }
 
   .lt-md\:italic {
@@ -103396,6 +103956,72 @@
     position: sticky !important
   }
 
+  .lt-lg\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-lg\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .lt-lg\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .lt-lg\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-lg\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .lt-lg\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .lt-lg\:top-0 {
+    top: 0 !important
+  }
+
+  .lt-lg\:right-0 {
+    right: 0 !important
+  }
+
+  .lt-lg\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .lt-lg\:left-0 {
+    left: 0 !important
+  }
+
+  .lt-lg\:top-auto {
+    top: auto !important
+  }
+
+  .lt-lg\:right-auto {
+    right: auto !important
+  }
+
+  .lt-lg\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .lt-lg\:left-auto {
+    left: auto !important
+  }
+
   .lt-lg\:fill-current {
     fill: currentColor !important
   }
@@ -103466,6 +104092,10 @@
 
   .lt-lg\:text-7xl {
     font-size: 48px !important
+  }
+
+  .lt-lg\:text-8xl {
+    font-size: 64px !important
   }
 
   .lt-lg\:italic {
@@ -114942,6 +115572,72 @@
     position: sticky !important
   }
 
+  .lt-xl\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-xl\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .lt-xl\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .lt-xl\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .lt-xl\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .lt-xl\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .lt-xl\:top-0 {
+    top: 0 !important
+  }
+
+  .lt-xl\:right-0 {
+    right: 0 !important
+  }
+
+  .lt-xl\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .lt-xl\:left-0 {
+    left: 0 !important
+  }
+
+  .lt-xl\:top-auto {
+    top: auto !important
+  }
+
+  .lt-xl\:right-auto {
+    right: auto !important
+  }
+
+  .lt-xl\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .lt-xl\:left-auto {
+    left: auto !important
+  }
+
   .lt-xl\:fill-current {
     fill: currentColor !important
   }
@@ -115012,6 +115708,10 @@
 
   .lt-xl\:text-7xl {
     font-size: 48px !important
+  }
+
+  .lt-xl\:text-8xl {
+    font-size: 64px !important
   }
 
   .lt-xl\:italic {
@@ -126488,6 +127188,72 @@
     position: sticky !important
   }
 
+  .gt-xs\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-xs\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .gt-xs\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .gt-xs\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-xs\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .gt-xs\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .gt-xs\:top-0 {
+    top: 0 !important
+  }
+
+  .gt-xs\:right-0 {
+    right: 0 !important
+  }
+
+  .gt-xs\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .gt-xs\:left-0 {
+    left: 0 !important
+  }
+
+  .gt-xs\:top-auto {
+    top: auto !important
+  }
+
+  .gt-xs\:right-auto {
+    right: auto !important
+  }
+
+  .gt-xs\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .gt-xs\:left-auto {
+    left: auto !important
+  }
+
   .gt-xs\:fill-current {
     fill: currentColor !important
   }
@@ -126558,6 +127324,10 @@
 
   .gt-xs\:text-7xl {
     font-size: 48px !important
+  }
+
+  .gt-xs\:text-8xl {
+    font-size: 64px !important
   }
 
   .gt-xs\:italic {
@@ -138034,6 +138804,72 @@
     position: sticky !important
   }
 
+  .gt-sm\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-sm\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .gt-sm\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .gt-sm\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-sm\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .gt-sm\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .gt-sm\:top-0 {
+    top: 0 !important
+  }
+
+  .gt-sm\:right-0 {
+    right: 0 !important
+  }
+
+  .gt-sm\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .gt-sm\:left-0 {
+    left: 0 !important
+  }
+
+  .gt-sm\:top-auto {
+    top: auto !important
+  }
+
+  .gt-sm\:right-auto {
+    right: auto !important
+  }
+
+  .gt-sm\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .gt-sm\:left-auto {
+    left: auto !important
+  }
+
   .gt-sm\:fill-current {
     fill: currentColor !important
   }
@@ -138104,6 +138940,10 @@
 
   .gt-sm\:text-7xl {
     font-size: 48px !important
+  }
+
+  .gt-sm\:text-8xl {
+    font-size: 64px !important
   }
 
   .gt-sm\:italic {
@@ -149580,6 +150420,72 @@
     position: sticky !important
   }
 
+  .gt-md\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-md\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .gt-md\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .gt-md\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-md\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .gt-md\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .gt-md\:top-0 {
+    top: 0 !important
+  }
+
+  .gt-md\:right-0 {
+    right: 0 !important
+  }
+
+  .gt-md\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .gt-md\:left-0 {
+    left: 0 !important
+  }
+
+  .gt-md\:top-auto {
+    top: auto !important
+  }
+
+  .gt-md\:right-auto {
+    right: auto !important
+  }
+
+  .gt-md\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .gt-md\:left-auto {
+    left: auto !important
+  }
+
   .gt-md\:fill-current {
     fill: currentColor !important
   }
@@ -149650,6 +150556,10 @@
 
   .gt-md\:text-7xl {
     font-size: 48px !important
+  }
+
+  .gt-md\:text-8xl {
+    font-size: 64px !important
   }
 
   .gt-md\:italic {
@@ -161126,6 +162036,72 @@
     position: sticky !important
   }
 
+  .gt-lg\:inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-lg\:inset-auto {
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important
+  }
+
+  .gt-lg\:inset-y-0 {
+    top: 0 !important;
+    bottom: 0 !important
+  }
+
+  .gt-lg\:inset-x-0 {
+    right: 0 !important;
+    left: 0 !important
+  }
+
+  .gt-lg\:inset-y-auto {
+    top: auto !important;
+    bottom: auto !important
+  }
+
+  .gt-lg\:inset-x-auto {
+    right: auto !important;
+    left: auto !important
+  }
+
+  .gt-lg\:top-0 {
+    top: 0 !important
+  }
+
+  .gt-lg\:right-0 {
+    right: 0 !important
+  }
+
+  .gt-lg\:bottom-0 {
+    bottom: 0 !important
+  }
+
+  .gt-lg\:left-0 {
+    left: 0 !important
+  }
+
+  .gt-lg\:top-auto {
+    top: auto !important
+  }
+
+  .gt-lg\:right-auto {
+    right: auto !important
+  }
+
+  .gt-lg\:bottom-auto {
+    bottom: auto !important
+  }
+
+  .gt-lg\:left-auto {
+    left: auto !important
+  }
+
   .gt-lg\:fill-current {
     fill: currentColor !important
   }
@@ -161196,6 +162172,10 @@
 
   .gt-lg\:text-7xl {
     font-size: 48px !important
+  }
+
+  .gt-lg\:text-8xl {
+    font-size: 64px !important
   }
 
   .gt-lg\:italic {

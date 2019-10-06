@@ -6,6 +6,7 @@ cards-content {
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
+        max-width: 1600px;
 
         asm-card {
             margin: 16px;
