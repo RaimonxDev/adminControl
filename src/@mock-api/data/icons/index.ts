@@ -78,7 +78,7 @@ export class MockIconsApi
                 return [
                     200,
                     {
-                        namespace: 'mat-outline',
+                        namespace: 'mat_outline',
                         name     : 'Material Outline',
                         list     : _.cloneDeep(this._material)
                     }

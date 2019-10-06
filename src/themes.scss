@@ -19,7 +19,7 @@ $asm-themes: (
 
     // Default theme (Light)
     'asm-theme-default': asm-light-theme(
-            mat-palette($asm-indigo, A100),
+            mat-palette($asm-indigo),
             mat-palette($asm-gray, 800),
             mat-palette($asm-red, 700)
     ),

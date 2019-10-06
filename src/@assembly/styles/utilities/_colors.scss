@@ -39,10 +39,6 @@ $asm-white: (
     700: white,
     800: white,
     900: white,
-    A100: white,
-    A200: white,
-    A400: white,
-    A700: white,
     contrast: (
         50: #1A202C, // Gray 900
         100: #1A202C, // Gray 900
@@ -54,10 +50,6 @@ $asm-white: (
         700: #1A202C, // Gray 900
         800: #1A202C, // Gray 900
         900: #1A202C, // Gray 900
-        A100: #1A202C, // Gray 900
-        A200: #1A202C, // Gray 900
-        A400: #1A202C, // Gray 900
-        A700: #1A202C // Gray 900
     )
 );
 
@@ -232,7 +224,6 @@ $asm-indigo: (
     700: #4C51BF,
     800: #434190,
     900: #3C366B,
-    A100: #304FFE,
     contrast: (
         100: #3C366B, // Indigo 900
         200: #3C366B, // Indigo 900
@@ -243,7 +234,6 @@ $asm-indigo: (
         700: #EBF4FF, // Indigo 100
         800: #EBF4FF, // Indigo 100
         900: #EBF4FF, // Indigo 100
-        A100: #EBF4FF, // Indigo 100
     )
 );
 
@@ -564,12 +554,28 @@ $asm-palettes: (
         // and if it's, generate the color classes using Angular Material generated palette
         @if (map-get($palette, 'default') != null and map-get($palette, 'default-contrast') != null) {
 
-            // Get the color and the contrasting color for the selected default hue
-            $color: map-get($palette, 'default');
-            $contrast: map-get($palette, 'default-contrast');
+            // Get each hue value
+            @each $hue in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
 
-            // Generate color classes
-            @include _generate-color-classes($palette-name, $color, $contrast, '');
+                // Get color and contrast
+                $color: map-get($palette, $hue);
+                $contrast: map-get($palette, '#{$hue}-contrast');
+
+                // If both color and its contrasting color exist, generate the color classes...
+                @if ($color != null and $contrast != null) {
+
+                    // Generate color classes
+                    @include _generate-color-classes($palette-name, $color, $contrast, '-#{$hue}');
+
+                    // If the hue equals to 500, generate color classes one more time,
+                    // but without the hue value suffix
+                    @if ($hue == 500) {
+
+                        // Generate color classes
+                        @include _generate-color-classes($palette-name, $color, $contrast, '');
+                    }
+                }
+            }
 
         } @else {
 
