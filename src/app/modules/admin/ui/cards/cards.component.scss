@@ -1,0 +1,57 @@
+@import 'assembly';
+
+cards {
+
+    .main {
+
+        .filters {
+            margin-bottom: 64px;
+
+            .mat-button-toggle-group {
+                flex-wrap: wrap;
+                width: 100%;
+
+                .mat-button-toggle {
+                    flex: 1 1 auto;
+                }
+            }
+        }
+
+        .content {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 0 -16px;
+            max-width: 1600px;
+
+            asm-card {
+                margin: 16px;
+            }
+        }
+
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $foreground: map-get($theme, foreground);
+
+    cards {
+
+        .main {
+
+            .filters {
+
+                .mat-button-toggle-group {
+
+                    .mat-button-toggle {
+                        border: 1px solid map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+}

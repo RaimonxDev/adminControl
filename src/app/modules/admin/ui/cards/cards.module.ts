@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AsmCardModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { CardsContentComponent } from 'app/modules/admin/assembly/components/cards/content/content.component';
-import { cardsContentRoutes } from 'app/modules/admin/assembly/components/cards/content/content.routing';
+import { CardsComponent } from 'app/modules/admin/ui/cards/cards.component';
+import { cardsRoutes } from 'app/modules/admin/ui/cards/cards.routing';
 
 @NgModule({
     declarations: [
-        CardsContentComponent
+        CardsComponent
     ],
     imports     : [
-        RouterModule.forChild(cardsContentRoutes),
+        RouterModule.forChild(cardsRoutes),
         MatButtonModule,
+        MatButtonToggleModule,
         MatCheckboxModule,
         MatIconModule,
         MatMenuModule,
@@ -25,6 +27,6 @@ import { cardsContentRoutes } from 'app/modules/admin/assembly/components/cards/
         SharedModule
     ]
 })
-export class CardsContentModule
+export class CardsModule
 {
 }

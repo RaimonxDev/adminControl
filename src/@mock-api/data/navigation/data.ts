@@ -890,11 +890,11 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id   : 'pages.coming-soon',
-        title: 'Coming soon',
-        type : 'collapsable',
-        icon : 'hourglass_empty',
-        link : '/pages/coming-soon',
+        id      : 'pages.coming-soon',
+        title   : 'Coming soon',
+        type    : 'collapsable',
+        icon    : 'hourglass_empty',
+        link    : '/pages/coming-soon',
         children: [
             {
                 id   : 'pages.coming-soon.classic',
@@ -1015,6 +1015,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type : 'basic',
         icon : 'layers',
         link : '/ui/angular-material'
+    },
+    {
+        id   : 'ui-elements.cards',
+        title: 'Cards',
+        type : 'basic',
+        icon : 'web_asset',
+        link : '/ui/cards'
     },
     {
         id   : 'ui-elements.colors',
@@ -1273,20 +1280,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type : 'basic',
         icon : 'movie_creation',
         link : '/assembly/components/animations'
-    },
-    {
-        id      : 'assembly.cards',
-        title   : 'Cards',
-        type    : 'collapsable',
-        icon    : 'web_asset',
-        children: [
-            {
-                id   : 'assembly.cards.content',
-                title: 'Content',
-                type : 'basic',
-                link : '/assembly/components/cards/content'
-            }
-        ]
     },
     {
         id   : 'assembly.messages',

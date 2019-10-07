@@ -215,6 +215,13 @@ export const adminRoutes: Route[] = [
                             .then(m => m.AngularMaterialModule)
                     },
 
+                    // Cards
+                    {
+                        path        : 'cards',
+                        loadChildren: () => import('app/modules/admin/ui/cards/cards.module')
+                            .then(m => m.CardsModule)
+                    },
+
                     // Colors
                     {
                         path        : 'colors',
@@ -445,18 +452,6 @@ export const adminRoutes: Route[] = [
                                 path        : 'animations',
                                 loadChildren: () => import('./assembly/components/animations/animations.module')
                                     .then(m => m.AnimationsModule)
-                            },
-
-                            // Cards
-                            {
-                                path    : 'cards',
-                                children: [
-                                    {
-                                        path        : 'content',
-                                        loadChildren: () => import('./assembly/components/cards/content/content.module')
-                                            .then(m => m.CardsContentModule)
-                                    }
-                                ]
                             },
 
                             // Messages

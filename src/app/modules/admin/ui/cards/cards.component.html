@@ -1,0 +1,1284 @@
+<div class="content-layout fullwidth-standard-normal-scroll">
+
+    <div class="header">
+
+        <div class="container">
+
+            <div class="breadcrumb">
+                <span class="path">UI ELEMENTS</span>
+                <span class="separator">/</span>
+                <span class="path current">CARDS</span>
+            </div>
+            <h1>CARDS</h1>
+
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="filters">
+
+            <mat-button-toggle-group [(ngModel)]="selectedFilter"
+                                     (change)="onFilterChange($event)">
+                <mat-button-toggle *ngFor="let filter of filters"
+                                   [value]="filter">
+                    <span>{{filter | titlecase}}</span>
+                    <span class="text-sm font-bold tracking-tight text-secondary ml-4">({{numberOfCards[filter]}})</span>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+
+        </div>
+
+        <div class="content">
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/01-320x200.jpg">
+                <div class="m-32">
+                    <div class="text-2xl font-bold leading-tight">Most beautiful and quite places to see</div>
+                    <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/02-320x200.jpg">
+                <div class="m-32">
+                    <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
+                    <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                    <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/03-320x200.jpg">
+                <div class="m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Most beautiful and quite places to see</div>
+                    <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/04-320x200.jpg">
+                <div class="m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
+                    <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                    <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/05-320x200.jpg">
+                <div class="m-32 mb-16">
+
+                    <asm-card-expansion-panel #asmCardExpansionPanel>
+
+                        <ng-container asmCardContent>
+
+                            <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
+                            <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                            <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                            <div class="mt-12 -mx-12">
+                                <button class="px-12"
+                                        mat-button
+                                        [color]="'primary'"
+                                        (click)="asmCardExpansionPanel.toggle()">
+                                    <span class="mr-4">Details</span>
+                                    <mat-icon class="icon-size-16"
+                                              *ngIf="!asmCardExpansionPanel.expanded"
+                                              [svgIcon]="'expand_more'"></mat-icon>
+                                    <mat-icon class="icon-size-16"
+                                              *ngIf="asmCardExpansionPanel.expanded"
+                                              [svgIcon]="'expand_less'"></mat-icon>
+                                </button>
+                            </div>
+
+                        </ng-container>
+
+                        <ng-container asmCardDetails>
+
+                            <div class="py-16">
+                                <div class="flex items-baseline">
+                                    <div class="mr-8">Open now:</div>
+                                    <div class="text-secondary">08:00AM - 09:00PM</div>
+                                </div>
+                                <div class="flex items-baseline mt-4">
+                                    <div class="mr-8">Entrance fee:</div>
+                                    <div class="text-secondary">$20 (USD)</div>
+                                </div>
+                            </div>
+
+                        </ng-container>
+
+                    </asm-card-expansion-panel>
+
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/03-320x200.jpg">
+                <div class="m-32">
+                    <div class="text-md font-bold leading-none tracking-wide text-primary mb-4">TRAVEL</div>
+                    <div class="text-2xl font-bold leading-tight">Most beautiful and quite places to see</div>
+                    <div class="flex items-center mt-24">
+                        <img class="w-40 h-40 rounded-full"
+                             src="assets/images/cards/avatar-400x400.jpg">
+                        <div class="flex flex-col ml-12">
+                            <span class="font-medium leading-none">Galen Lewis</span>
+                            <span class="text-sm text-secondary leading-none mt-4">23 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/06-320x200.jpg">
+                <div class="m-32 text-2xl font-bold leading-tight">Most beautiful and quite places to see</div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/07-320x200.jpg">
+                <div class="m-32">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/08-320x200.jpg">
+                <div class="m-32">
+                    <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
+                    <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/09-320x200.jpg">
+                <div class="m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Most beautiful and quite places to see</div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <img class="object-cover"
+                     src="assets/images/cards/10-320x200.jpg">
+                <div class="m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
+                    <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+                <div class="m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Most beautiful and quite places to see</div>
+                    <div class="mt-16">
+                        From rocky mountains to crystal clear lakes, these are the places you must see and enjoy.
+                        In summers you can bring your food and have a little picnic on top of the amazing grasslands.
+                        In winters you can still enjoy them but with couple of inches snow on top of those grasslands.
+                    </div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 filter-article">
+                <div class="text-2xl font-bold leading-tight">Most beautiful and quite places to see</div>
+                <div class="mt-16">
+                    From rocky mountains to crystal clear lakes, these are the places you must see and enjoy.
+                    In summers you can bring your food and have a little picnic on top of the amazing grasslands.
+                    In winters you can still enjoy them but with couple of inches snow on top of those grasslands.
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 filter-article">
+                <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
+                <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                <div class="mt-16">
+                    From rocky mountains to crystal clear lakes, these are the places you must see and enjoy.
+                    In summers you can bring your food and have a little picnic on top of the amazing grasslands.
+                    In winters you can still enjoy them but with couple of inches snow on top of those grasslands.
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pb-16 filter-article">
+                <div class="flex items-center">
+                    <img class="w-80 rounded-8 object-cover"
+                         src="assets/images/cards/13-160x160.jpg">
+                    <div class="flex flex-col ml-24">
+                        <div class="text-2xl font-bold leading-tight">Mountain tops</div>
+                        <div class="text-secondary text-md">Travel locations</div>
+                    </div>
+                </div>
+                <div class="mt-24">From rocky mountains to crystal clear lakes, these are the places you must see and enjoy.</div>
+                <div class="mt-12 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Read More
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pb-16 filter-article">
+                <div class="flex items-center justify-between">
+                    <div class="flex flex-col mr-24">
+                        <div class="text-2xl font-bold leading-tight">Mountain tops</div>
+                        <div class="text-secondary text-md">Travel locations</div>
+                    </div>
+                    <img class="w-80 rounded-8 object-cover"
+                         src="assets/images/cards/13-160x160.jpg">
+                </div>
+                <div class="mt-24">From rocky mountains to crystal clear lakes, these are the places you must see and enjoy.</div>
+                <div class="mt-12 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Read More
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row max-w-320 gt-sm:max-w-640 w-full filter-article">
+                <img class="w-320 gt-sm:w-256 object-cover"
+                     src="assets/images/cards/11-512x512.jpg">
+                <div class="flex flex-col flex-auto m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Mountain tops and clear lakes</div>
+                    <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                    <div class="mt-16">
+                        From rocky mountains to crystal clear lakes, these are the places you must see and enjoy.
+                        You can bring your own food and have a little picnic on top of the amazing grasslands.
+                    </div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row max-w-320 gt-sm:max-w-640 w-full filter-article">
+                <div class="flex flex-col flex-auto m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Mountain tops and clear lakes</div>
+                    <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                    <div class="mt-16">
+                        From rocky mountains to crystal clear lakes, these are the places you must see and enjoy.
+                        You can bring your own food and have a little picnic on top of the amazing grasslands.
+                    </div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+                <img class="w-320 gt-sm:w-256 object-cover"
+                     src="assets/images/cards/12-512x512.jpg">
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-listing">
+                <img class="object-cover"
+                     src="assets/images/cards/coffee-shop-01-320x200.jpg">
+                <div class="m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Puzzles Coffee Shop</div>
+                    <div class="flex items-center leading-none mt-8 -ml-4">
+                        <div class="flex items-center">
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star_half"></mat-icon>
+                        </div>
+                        <div class="text-secondary ml-8">4.5</div>
+                        <div class="text-secondary mx-8">&bull;</div>
+                        <div class="text-secondary">98 reviews</div>
+                    </div>
+                    <div class="mt-24">
+                        Puzzles coffee shop is one of the finest coffee shops in central downtown in New York.
+                        It's quiet; far away from busy streets and never ending constructions.
+                    </div>
+                    <div class="flex items-center mt-12 -mx-12">
+                        <button class="px-12 mr-4"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Location
+                        </button>
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Reviews
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pb-16 filter-listing">
+                <div class="text-2xl font-bold leading-tight">Puzzles Coffee Shop</div>
+                <div class="flex items-center leading-none mt-8 -ml-4">
+                    <div class="flex items-center">
+                        <mat-icon class="text-orange icon-size-20"
+                                  svgIcon="mat_outline:star"></mat-icon>
+                        <mat-icon class="text-orange icon-size-20"
+                                  svgIcon="mat_outline:star"></mat-icon>
+                        <mat-icon class="text-orange icon-size-20"
+                                  svgIcon="mat_outline:star"></mat-icon>
+                        <mat-icon class="text-orange icon-size-20"
+                                  svgIcon="mat_outline:star"></mat-icon>
+                        <mat-icon class="text-orange icon-size-20"
+                                  svgIcon="mat_outline:star_half"></mat-icon>
+                    </div>
+                    <div class="text-secondary ml-8">4.5</div>
+                    <div class="text-secondary mx-8">&bull;</div>
+                    <div class="text-secondary">98 reviews</div>
+                </div>
+                <div class="mt-24">
+                    Puzzles coffee shop is one of the finest coffee shops in central downtown in New York. It's quiet; far away from busy streets and never ending constructions.
+                </div>
+                <div class="flex items-center mt-12 -mx-12">
+                    <button class="px-12 mr-4"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Location
+                    </button>
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Reviews
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row max-w-320 gt-sm:max-w-640 w-full filter-listing">
+                <img class="w-320 gt-sm:w-256 object-cover"
+                     src="assets/images/cards/coffee-shop-02-512x512.jpg">
+                <div class="flex flex-col flex-auto m-32 mb-16">
+                    <div class="text-2xl font-bold leading-tight">Puzzles Coffee Shop</div>
+                    <div class="flex items-center leading-none mt-8 -ml-4">
+                        <div class="flex items-center">
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star_half"></mat-icon>
+                        </div>
+                        <div class="text-secondary ml-8">4.5</div>
+                        <div class="text-secondary mx-8">&bull;</div>
+                        <div class="text-secondary">98 reviews</div>
+                    </div>
+                    <div class="mt-24">
+                        Puzzles coffee shop is one of the finest coffee shops in central downtown in New York.
+                        It's quiet; far away from busy streets and never ending constructions.
+                    </div>
+                    <div class="flex items-center mt-12 -mx-12">
+                        <button class="px-12 mr-4"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Location
+                        </button>
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Reviews
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row justify-between max-w-320 gt-sm:max-w-640 w-full p-32 pb-16 filter-listing">
+                <div class="flex flex-col flex-auto order-2 gt-sm:order-1">
+                    <div class="text-2xl font-bold leading-tight">Puzzles Coffee Shop</div>
+                    <div class="flex items-center leading-none mt-8 -ml-4">
+                        <div class="flex items-center">
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star"></mat-icon>
+                            <mat-icon class="text-orange icon-size-20"
+                                      svgIcon="mat_outline:star_half"></mat-icon>
+                        </div>
+                        <div class="text-secondary ml-8">4.5</div>
+                        <div class="text-secondary mx-8">&bull;</div>
+                        <div class="text-secondary">98 reviews</div>
+                    </div>
+                    <div class="mt-24">
+                        <div class="flex flex-wrap items-center text-secondary my-4">
+                            <span>$$</span>
+                            <span class="mx-8">&bull;</span>
+                            <span class="whitespace-no-wrap">Arabian, Brazilian, Colombian</span>
+                        </div>
+                        <div class="flex items-center text-secondary my-4">
+                            <span>774 Riverview St.</span>
+                        </div>
+                        <div class="flex flex-wrap items-center text-secondary my-4">
+                            <span>Open</span>
+                            <span class="mx-8">&bull;</span>
+                            <span class="whitespace-no-wrap">07:00AM Weekdays</span>
+                            <span class="mx-8">&bull;</span>
+                            <span class="whitespace-no-wrap">10:00AM Weekends</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-12 -mx-12">
+                        <button class="px-12 mr-4"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Location
+                        </button>
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Reviews
+                        </button>
+                    </div>
+                </div>
+                <img class="order-1 gt-sm:order-2 w-full gt-sm:w-160 gt-sm:ml-24 mb-32 gt-sm:mb-16 rounded-8 object-cover"
+                     src="assets/images/cards/coffee-shop-03-320x320.jpg">
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pb-16 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Shopping List</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="card22Menu">
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="more_vert"></mat-icon>
+                        </button>
+                        <mat-menu #card22Menu="matMenu">
+                            <button mat-menu-item>Mark all as done</button>
+                            <button mat-menu-item>Mark all as undone</button>
+                            <button mat-menu-item>Remove list</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-12">
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Tomatoes
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        Milk
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Eggs
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        Bread
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Coffee
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        Olives
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        Sour Cream
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Peanut Butter
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Strawberry Jam
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Cheese
+                    </mat-checkbox>
+                </div>
+                <div class="flex items-center mt-12 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Add Item
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Today's Tasks</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="card22Menu">
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="more_vert"></mat-icon>
+                        </button>
+                        <mat-menu #card22Menu="matMenu">
+                            <button mat-menu-item>Mark all as done</button>
+                            <button mat-menu-item>Mark all as undone</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex items-center mt-24">
+                    <span class="w-12 h-12 border-2 border-blue rounded-full mr-12"></span>
+                    <span class="font-medium text-secondary">USER INTERFACE (5)</span>
+                </div>
+                <div class="flex flex-col mt-8 ml-24">
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Design user profile
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        Design dashboard
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Create auth flow prototype
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        Re-design auth pages
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Design landing page
+                    </mat-checkbox>
+                </div>
+                <div class="flex items-center mt-32">
+                    <span class="w-12 h-12 border-2 border-green rounded-full mr-12"></span>
+                    <span class="font-medium text-secondary">DESIGN SYSTEM (3)</span>
+                </div>
+                <div class="flex flex-col mt-8 ml-24">
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        Refine basic elements
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary"
+                                  [checked]="true">
+                        List all the re-usable elements
+                    </mat-checkbox>
+                    <mat-checkbox class="my-4"
+                                  color="primary">
+                        Add standard form elements
+                    </mat-checkbox>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Daily Schedule</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="card23Menu">
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="more_vert"></mat-icon>
+                        </button>
+                        <mat-menu #card23Menu="matMenu">
+                            <button mat-menu-item>View weekly</button>
+                            <button mat-menu-item>View monthly</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col my-8">
+                    <div class="my-8">
+                        <div>Code review</div>
+                        <div class="text-secondary text-md">11:00 AM</div>
+                    </div>
+                    <div class="my-8">
+                        <div>Lunch with Sam</div>
+                        <div class="text-secondary text-md">12:30 PM</div>
+                    </div>
+                    <div class="my-8">
+                        <div>Presentation of weekly usage and analytics report</div>
+                        <div class="text-secondary text-md">01:45 PM</div>
+                    </div>
+                    <div class="my-8">
+                        <div>Meeting with new interns</div>
+                        <div class="text-secondary text-md">02:30 PM</div>
+                    </div>
+                    <div class="my-8">
+                        <div>Coffee break & John's birthday</div>
+                        <div class="text-secondary text-md">03:30 PM</div>
+                    </div>
+                    <div class="my-8">
+                        <div>Dinner with wife and kids</div>
+                        <div class="text-secondary text-md">07:30 PM</div>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pb-16 filter-list">
+                <div class="text-2xl font-bold leading-tight">Customer Reviews</div>
+                <div class="text-secondary text-md mt-4">
+                    <b>4.74</b> average based on <b>508</b> reviews
+                </div>
+                <div class="flex flex-col mt-16">
+                    <div class="flex items-center my-8">
+                        <div class="max-w-48 w-full whitespace-no-wrap">5 star</div>
+                        <mat-progress-bar class="my-8"
+                                          [value]="87"></mat-progress-bar>
+                        <div class="max-w-40 w-full text-right">87%</div>
+                    </div>
+                    <div class="flex items-center my-8">
+                        <div class="max-w-48 w-full whitespace-no-wrap">4 star</div>
+                        <mat-progress-bar class="my-8"
+                                          [value]="7"></mat-progress-bar>
+                        <div class="max-w-40 w-full text-right">7%</div>
+                    </div>
+                    <div class="flex items-center my-8">
+                        <div class="max-w-48 w-full whitespace-no-wrap">3 star</div>
+                        <mat-progress-bar class="my-8"
+                                          [value]="1"></mat-progress-bar>
+                        <div class="max-w-40 w-full text-right">1%</div>
+                    </div>
+                    <div class="flex items-center my-8">
+                        <div class="max-w-48 w-full whitespace-no-wrap">2 star</div>
+                        <mat-progress-bar class="my-8"
+                                          [value]="1"></mat-progress-bar>
+                        <div class="max-w-40 w-full text-right">1%</div>
+                    </div>
+                    <div class="flex items-center my-8">
+                        <div class="max-w-48 w-full whitespace-no-wrap">1 star</div>
+                        <mat-progress-bar class="my-8"
+                                          [value]="2"></mat-progress-bar>
+                        <div class="max-w-40 w-full text-right">2%</div>
+                    </div>
+                </div>
+                <div class="flex items-center -mx-12 mt-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Review this product
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-listing">
+                <img class="object-cover"
+                     src="assets/images/cards/mansion-01-320x200.jpg">
+                <div class="m-32 mb-16">
+                    <div class="flex justify-between">
+                        <div class="flex flex-col">
+                            <div class="text-secondary text-md">FURNISHED MANSION</div>
+                            <div class="text-2xl font-bold leading-tight mt-4">USD $24.000.000</div>
+                        </div>
+                        <button class="-mt-8 -mr-8"
+                                mat-icon-button>
+                            <mat-icon class="text-red icon-size-20"
+                                      svgIcon="mat_outline:favorite"></mat-icon>
+                        </button>
+                    </div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12 mr-4"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Details
+                        </button>
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            See on map
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-listing">
+                <img class="object-cover"
+                     src="assets/images/cards/mansion-01-320x200.jpg">
+                <div class="m-32 mb-16">
+                    <div class="flex justify-between">
+                        <div class="flex flex-col">
+                            <div class="text-secondary text-md">FURNISHED MANSION</div>
+                            <div class="text-2xl font-bold leading-tight mt-4">USD $24.000.000</div>
+                            <div class="text-secondary text-md mt-4">1 E. Pumpkin Hill Drive</div>
+                        </div>
+                        <button class="-mt-8 -mr-8"
+                                mat-icon-button>
+                            <mat-icon class="text-secondary icon-size-20"
+                                      svgIcon="mat_outline:favorite_border"></mat-icon>
+                        </button>
+                    </div>
+                    <hr class="border-b my-16">
+                    <div class="flex flex-wrap text-md">
+                        <span class="whitespace-no-wrap"><b>10</b> bedrooms</span>
+                        <span class="text-secondary mx-8">&bull;</span>
+                        <span class="whitespace-no-wrap"><b>4</b> bathrooms</span>
+                        <span class="text-secondary mx-8">&bull;</span>
+                        <span class="whitespace-no-wrap"><b>21k</b> sqft.</span>
+                    </div>
+                    <hr class="border-b my-16">
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12 mr-4"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Details
+                        </button>
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            See on map
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col items-center max-w-320 w-full p-40 filter-info">
+                <div class="flex items-center justify-center p-20 bg-indigo-100 rounded-full">
+                    <mat-icon class="icon-size-40 text-indigo"
+                              svgIcon="dripicons:headset"></mat-icon>
+                </div>
+                <div class="text-2xl font-bold leading-tight text-center mt-24">Support</div>
+                <div class="text-center text-secondary mt-12">Contact support to learn more about our products and get professional help</div>
+                <button class="px-24 mt-32"
+                        mat-flat-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                    Contact Now
+                </button>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col items-center max-w-320 w-full p-40 filter-info">
+                <mat-icon class="icon-size-40 text-red mt-8"
+                          svgIcon="dripicons:rocket"></mat-icon>
+                <div class="text-2xl font-bold leading-tight text-center mt-32">Branding & Product Design</div>
+                <div class="text-center text-secondary mt-4 mb-32">Brand strategy, purpose, and product positioning</div>
+                <div class="flex items-center">
+                    <img class="w-32 h-32 rounded-full"
+                         src="assets/images/avatars/female-02.jpg">
+                    <img class="w-32 h-32 rounded-full -ml-8"
+                         src="assets/images/avatars/female-04.jpg">
+                    <img class="w-32 h-32 rounded-full -ml-8"
+                         src="assets/images/avatars/male-09.jpg">
+                    <img class="w-32 h-32 rounded-full -ml-8"
+                         src="assets/images/avatars/male-07.jpg">
+                    <img class="w-32 h-32 rounded-full -ml-8"
+                         src="assets/images/avatars/female-12.jpg">
+                </div>
+                <div class="text-sm font-bold text-secondary mt-8">+13 more</div>
+                <button class="px-24 mt-32"
+                        mat-flat-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                    View Project
+                </button>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-400 w-full p-32 filter-pricing">
+                <div class="text-4xl font-bold leading-tight">Personal</div>
+                <div class="text-lg text-secondary mt-8">Perfect for an individual or a small team starting to get bigger</div>
+                <div class="w-32 h-4 my-40 bg-indigo rounded-full"></div>
+                <div class="flex items-baseline leading-tight">
+                    <span class="text-2xl mr-8">USD</span>
+                    <span class="text-6xl font-bold">$6.00</span>
+                </div>
+                <div class="flex flex-col text-secondary mt-8">
+                    <span>billed annually</span>
+                    <span>or <b>$9.00</b> billed monthly</span>
+                </div>
+                <button class="w-full mt-40 mb-48"
+                        mat-stroked-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                    Get Started
+                </button>
+                <div class="flex flex-col">
+                    <span class="font-bold">All core features, including</span>
+                    <div class="flex items-center mt-16">
+                        <mat-icon class="text-green icon-size-20 mr-8"
+                                  svgIcon="check"></mat-icon>
+                        <span><b>10</b> projects</span>
+                    </div>
+                    <div class="flex items-center mt-8">
+                        <mat-icon class="text-green icon-size-20 mr-8"
+                                  svgIcon="check"></mat-icon>
+                        <span><b>5GB</b> storage</span>
+                    </div>
+                    <div class="flex items-center mt-8">
+                        <mat-icon class="text-green icon-size-20 mr-8"
+                                  svgIcon="check"></mat-icon>
+                        <span>Analytics</span>
+                    </div>
+                    <div class="flex items-center mt-8">
+                        <mat-icon class="text-green icon-size-20 mr-8"
+                                  svgIcon="check"></mat-icon>
+                        <span>Free mobile app</span>
+                    </div>
+                    <div class="flex items-center mt-8">
+                        <mat-icon class="text-green icon-size-20 mr-8"
+                                  svgIcon="check"></mat-icon>
+                        <span>Access to support forums</span>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col items-center max-w-320 w-full p-32 filter-pricing">
+                <div class="text-2xl font-bold leading-tight mb-12">PERSONAL</div>
+                <div class="flex items-baseline mb-4">
+                    <span class="text-6xl font-bold">$6</span>
+                    <span class="text-3xl text-secondary ml-4">/ month</span>
+                </div>
+                <div class="flex flex-col items-center text-secondary">
+                    <span>billed annually</span>
+                    <span>or <b>$9.00</b> billed monthly</span>
+                </div>
+                <div class="flex flex-col items-center my-40">
+                    <span class="mt-8"><b>10</b> projects</span>
+                    <span class="mt-8"><b>5GB</b> storage</span>
+                    <span class="mt-8">Analytics</span>
+                    <span class="mt-8">Free mobile app</span>
+                    <span class="mt-8">Access to support forums</span>
+                </div>
+                <button class="w-full"
+                        mat-stroked-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                    Select this plan
+                </button>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-md:flex-row max-w-320 gt-md:max-w-800 w-full filter-pricing">
+                <div class="flex flex-col p-32">
+                    <div class="text-2xl font-bold leading-tight mb-16">Lifetime Membership</div>
+                    <div class="text-secondary">
+                        Learn from like-minded individuals which are eager to make a living building stuff on the web. Pay once and get lifetime access to the community.
+                    </div>
+                    <div class="flex items-center mt-40 mb-24">
+                        <div class="font-medium text-secondary">INCLUDED FEATURES</div>
+                        <div class="flex flex-auto border-b-2 ml-8"></div>
+                    </div>
+                    <div class="flex flex-col gt-md:flex-row justify-between">
+                        <div class="flex flex-col mb-16 gt-md:mb-0">
+                            <div class="flex items-center mb-16">
+                                <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
+                                          svgIcon="check"></mat-icon>
+                                <span>Private forum access</span>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
+                                          svgIcon="check"></mat-icon>
+                                <span>Member resources</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex items-center mb-16">
+                                <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
+                                          svgIcon="check"></mat-icon>
+                                <span>Access to annual online conference</span>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
+                                          svgIcon="check"></mat-icon>
+                                <span>Official member shirt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center px-40 gt-md:px-64 py-40 bg-hover">
+                    <div class="flex items-baseline">
+                        <span class="text-4xl">$</span>
+                        <span class="text-8xl font-bold tracking-tight mx-8">599</span>
+                        <span class="text-lg font-bold">USD</span>
+                    </div>
+                    <div class="flex flex-col text-center leading-tight">
+                        <span>No monthly subscription,</span>
+                        <span>you only pay once.</span>
+                    </div>
+                    <button class="w-full mt-32 gt-md:mt-auto"
+                            mat-flat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        Get Started
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center max-w-320 w-full p-24 filter-notification">
+                <mat-icon class="icon-size-48 mr-24"
+                          svgIcon="iconsmind:mail"></mat-icon>
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">1 new mail</div>
+                    <div class="text-md text-secondary">Mailbox</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center justify-between max-w-320 w-full p-24 filter-notification">
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">New message</div>
+                    <div class="text-md text-secondary">from John Balista</div>
+                </div>
+                <mat-icon class="icon-size-48 ml-24"
+                          svgIcon="iconsmind:speach_bubbles"></mat-icon>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex max-w-320 w-full filter-notification">
+                <img class="w-96 h-120 object-cover"
+                     src="assets/images/cards/product-01-224x256.jpg">
+                <div class="flex flex-col flex-auto justify-center p-24">
+                    <div class="text-lg font-medium leading-tight">Lavender Bouquet</div>
+                    <div class="text-md text-secondary">USD $5</div>
+                    <div class="text-md text-green mt-12">5 left in stock</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex justify-between max-w-320 w-full filter-notification">
+                <div class="flex flex-col flex-auto justify-center p-24">
+                    <div class="text-lg font-medium leading-tight">Lavender Bouquet</div>
+                    <div class="text-md text-secondary">USD $5</div>
+                    <div class="text-md text-green mt-12">5 left in stock</div>
+                </div>
+                <img class="w-96 h-120 object-cover"
+                     src="assets/images/cards/product-01-224x256.jpg">
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-shopping">
+                <div class="relative">
+                    <div class="absolute flex flex-col top-0 right-0 p-12">
+                        <button mat-icon-button>
+                            <mat-icon class="icon-size-20 text-white"
+                                      svgIcon="mat_outline:favorite_border"></mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-size-20 text-white"
+                                      svgIcon="mat_outline:compare_arrows"></mat-icon>
+                        </button>
+                    </div>
+                    <img class="object-cover"
+                         src="assets/images/cards/sneakers-01-320x200.jpg">
+                </div>
+                <div class="m-32 mb-0">
+                    <div class="flex flex-col">
+                        <div class="text-2xl leading-tight">Black sneakers with white stripes</div>
+                        <div class="text-3xl font-bold mt-8">$240.00</div>
+                    </div>
+                    <hr class="border-b my-24">
+                    <div class="flex items-center text-md">
+                        <span class="text-secondary whitespace-no-wrap mr-12">Select a size:</span>
+                        <span class="mr-8">39</span>
+                        <span class="mr-8">40</span>
+                        <span class="mr-8">41</span>
+                        <span class="font-bold text-primary mr-8">42</span>
+                        <span class="mr-8">43</span>
+                    </div>
+                    <div class="mt-24 -mx-32">
+                        <button class="w-full rounded-t-none"
+                                mat-flat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row max-w-320 gt-sm:max-w-640 w-full filter-shopping">
+                <img class="w-320 gt-sm:w-240 object-cover"
+                     src="assets/images/cards/sneakers-02-448x560.jpg">
+                <div class="flex flex-col flex-auto m-32 mb-16">
+                    <div class="text-2xl leading-tight">Grey sneakers with white stripes</div>
+                    <div class="text-md font-medium text-secondary mt-4">ALIDAS</div>
+                    <div class="text-3xl font-bold mt-16">$240.00</div>
+                    <div class="flex items-center text-md mt-24">
+                        <span class="text-secondary whitespace-no-wrap mr-12">Select a size:</span>
+                        <span class="mr-8">39</span>
+                        <span class="mr-8">40</span>
+                        <span class="mr-8">41</span>
+                        <span class="font-bold text-primary mr-8">42</span>
+                        <span class="mr-8">43</span>
+                    </div>
+                    <hr class="w-full border-b mt-24 gt-sm:mt-auto mb-16">
+                    <div class="flex items-center -mx-12">
+                        <button class="px-12 mr-4"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="shopping_cart"></mat-icon>
+                            <span class="ml-4">Add to Cart</span>
+                        </button>
+                        <button class="mr-4 ml-auto"
+                                mat-icon-button>
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="favorite"></mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="compare_arrows"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row max-w-320 gt-sm:max-w-640 w-full filter-shopping">
+                <img class="w-320 gt-sm:w-240 object-cover"
+                     src="assets/images/cards/sneakers-03-448x560.jpg">
+                <div class="flex flex-col flex-auto m-32 mb-16">
+                    <div class="flex flex-col gt-sm:flex-row items-baseline justify-between">
+                        <div class="text-2xl leading-tight">White sneakers with red stripes</div>
+                        <div class="text-3xl font-bold mt-16 gt-sm:mt-0 gt-sm:ml-24">$240.00</div>
+                    </div>
+                    <div class="text-md text-secondary mt-24">
+                        White sneakers are made of natural, biodegradable material. This feature alione makes them extremely nature friendly.
+                    </div>
+                    <div class="flex items-center text-md mt-24">
+                        <span class="text-secondary whitespace-no-wrap mr-12">Select a size:</span>
+                        <span class="mr-8">39</span>
+                        <span class="mr-8">40</span>
+                        <span class="mr-8">41</span>
+                        <span class="font-bold text-primary mr-8">42</span>
+                        <span class="mr-8">43</span>
+                    </div>
+                    <hr class="w-full border-b mt-24 mb-16">
+                    <div class="flex items-center gt-sm:mt-auto -mx-12">
+                        <button class="px-12 mr-4"
+                                mat-button
+                                [color]="'primary'"
+                                [routerLink]="['./']">
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="shopping_cart"></mat-icon>
+                            <span class="ml-4">Add to Cart</span>
+                        </button>
+                        <button class="mr-4 ml-auto"
+                                mat-icon-button>
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="favorite"></mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-size-20"
+                                      svgIcon="compare_arrows"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="relative flex flex-col max-w-320 w-full p-32 filter-testimonial">
+                <span class="absolute top-0 left-0 text-9xl font-serif text-primary leading-none mt-32 ml-32">“</span>
+                <div class="text-lg italic leading-relaxed mt-16">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Puzzles coffee shop is one of the finest coffee shops in central downtown in New York.
+                    It's quiet; far away from busy streets and never ending constructions.
+                </div>
+                <div class="text-md font-medium text-primary mt-16">
+                    &#8212; Melissa Morillo, Comtent
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-testimonial">
+                <div class="text-lg italic leading-relaxed p-32">
+                    Puzzles coffee shop is one of the finest coffee shops in central downtown in New York.
+                    It's quiet; far away from busy streets and never ending constructions.
+                </div>
+                <div class="flex flex-col items-center text-md font-medium primary px-32 py-24 mt-16">
+                    <span class="relative -mt-56 mb-16 p-4 bg-card rounded-full">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/cards/avatar-400x400.jpg">
+                    </span>
+                    <span class="text-md">MELISSA MORILLO</span>
+                    <span class="text-sm text-secondary">COMTENT</span>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row max-w-320 gt-sm:max-w-640 w-full filter-testimonial">
+                <img class="w-320 gt-sm:w-128 object-cover"
+                     src="assets/images/cards/avatar-400x400.jpg">
+                <div class="flex flex-col flex-auto m-32">
+                    <div class="text-lg italic leading-relaxed">
+                        Puzzles coffee shop is one of the finest coffee shops in central downtown in New York.
+                        It's quiet; far away from busy streets and never ending constructions.
+                    </div>
+                    <div class="text-md font-medium text-primary mt-16">
+                        &#8212; Melissa Morillo, Comtent
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col gt-sm:flex-row items-center justify-between max-w-320 gt-sm:max-w-640 w-full p-32 filter-testimonial">
+                <img class="w-120 h-full gt-sm:mr-32 mb-32 gt-sm:mb-0 rounded-full object-cover"
+                     src="assets/images/cards/avatar-400x400.jpg">
+                <div class="flex flex-col flex-auto justify-center">
+                    <div class="text-lg italic leading-relaxed">
+                        Puzzles coffee shop is one of the finest coffee shops in central downtown in New York.
+                        It's quiet; far away from busy streets and never ending constructions.
+                    </div>
+                    <div class="text-md font-medium text-primary mt-16">
+                        &#8212; Melissa Morillo, Comtent
+                    </div>
+                </div>
+            </asm-card>
+
+        </div>
+
+    </div>
+
+</div>
