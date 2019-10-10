@@ -29,9 +29,9 @@ export class CardsComponent implements AfterViewInit
     )
     {
         // Set the defaults
-        this.filters = ['all', 'article', 'listing', 'list', 'info', 'shopping', 'pricing', 'notification', 'testimonial'];
+        this.filters = ['all', 'article', 'listing', 'list', 'info', 'shopping', 'pricing', 'notification', 'testimonial', 'post'];
         this.numberOfCards = {};
-        this.selectedFilter = 'all';
+        this.selectedFilter = 'post';
     }
 
     // -----------------------------------------------------------------------------------------------------

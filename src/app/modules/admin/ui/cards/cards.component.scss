@@ -4,15 +4,34 @@ cards {
 
     .main {
 
+        @include asm-media-breakpoint('xs') {
+            padding: 16px !important;
+        }
+
         .filters {
             margin-bottom: 64px;
 
             .mat-button-toggle-group {
                 flex-wrap: wrap;
-                width: 100%;
+                border: none;
 
                 .mat-button-toggle {
-                    flex: 1 1 auto;
+                    border: none;
+                    margin: 4px;
+                    border-radius: 4px;
+
+                    .mat-button-toggle-label-content {
+                        padding: 0 16px;
+
+                        .filter-title {
+                            margin-right: 6px;
+                        }
+
+                        .filter-number {
+                            font-size: 12px;
+                            font-weight: 700;
+                        }
+                    }
                 }
             }
         }
@@ -48,7 +67,13 @@ cards {
                 .mat-button-toggle-group {
 
                     .mat-button-toggle {
-                        border: 1px solid map-get($foreground, divider);
+
+                        .mat-button-toggle-label-content {
+
+                            .filter-number {
+                                color: map-get($foreground, secondary-text);
+                            }
+                        }
                     }
                 }
             }

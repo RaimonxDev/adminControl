@@ -23,14 +23,15 @@
                                      (change)="onFilterChange($event)">
                 <mat-button-toggle *ngFor="let filter of filters"
                                    [value]="filter">
-                    <span>{{filter | titlecase}}</span>
-                    <span class="text-sm font-bold tracking-tight text-secondary ml-4">({{numberOfCards[filter]}})</span>
+                    <span class="filter-title">{{filter | titlecase}}</span>
+                    <span class="filter-number">({{numberOfCards[filter]}})</span>
                 </mat-button-toggle>
             </mat-button-toggle-group>
 
         </div>
 
         <div class="content">
+
 
             <!-- Card -->
             <asm-card class="flex flex-col max-w-320 w-full filter-article">
@@ -95,53 +96,42 @@
 
 
             <!-- Card -->
-            <asm-card class="flex flex-col max-w-320 w-full filter-article">
+            <asm-card class="flex flex-col max-w-320 w-full filter-article"
+                      #asmCard01>
                 <img class="object-cover"
                      src="assets/images/cards/05-320x200.jpg">
                 <div class="m-32 mb-16">
-
-                    <asm-card-expansion-panel #asmCardExpansionPanel>
-
-                        <ng-container asmCardContent>
-
-                            <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
-                            <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
-                            <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
-                            <div class="mt-12 -mx-12">
-                                <button class="px-12"
-                                        mat-button
-                                        [color]="'primary'"
-                                        (click)="asmCardExpansionPanel.toggle()">
-                                    <span class="mr-4">Details</span>
-                                    <mat-icon class="icon-size-16"
-                                              *ngIf="!asmCardExpansionPanel.expanded"
-                                              [svgIcon]="'expand_more'"></mat-icon>
-                                    <mat-icon class="icon-size-16"
-                                              *ngIf="asmCardExpansionPanel.expanded"
-                                              [svgIcon]="'expand_less'"></mat-icon>
-                                </button>
-                            </div>
-
-                        </ng-container>
-
-                        <ng-container asmCardDetails>
-
-                            <div class="py-16">
-                                <div class="flex items-baseline">
-                                    <div class="mr-8">Open now:</div>
-                                    <div class="text-secondary">08:00AM - 09:00PM</div>
-                                </div>
-                                <div class="flex items-baseline mt-4">
-                                    <div class="mr-8">Entrance fee:</div>
-                                    <div class="text-secondary">$20 (USD)</div>
-                                </div>
-                            </div>
-
-                        </ng-container>
-
-                    </asm-card-expansion-panel>
-
+                    <div class="text-2xl font-bold leading-tight">Rocky mountain tops</div>
+                    <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
+                    <div class="mt-16">From rocky mountains to crystal clear lakes, there are the places you must see and enjoy.</div>
+                    <div class="mt-12 -mx-12">
+                        <button class="px-12"
+                                mat-button
+                                [color]="'primary'"
+                                (click)="asmCard01.toggleExpanded()">
+                            <span class="mr-4">Details</span>
+                            <mat-icon class="icon-size-16"
+                                      *ngIf="!asmCard01.expanded"
+                                      [svgIcon]="'expand_more'"></mat-icon>
+                            <mat-icon class="icon-size-16"
+                                      *ngIf="asmCard01.expanded"
+                                      [svgIcon]="'expand_less'"></mat-icon>
+                        </button>
+                    </div>
                 </div>
+
+                <ng-container asmCardExpansion>
+                    <div class="m-32 mt-0">
+                        <div class="flex items-baseline">
+                            <div class="mr-8">Open now:</div>
+                            <div class="text-secondary">08:00AM - 09:00PM</div>
+                        </div>
+                        <div class="flex items-baseline mt-4">
+                            <div class="mr-8">Entrance fee:</div>
+                            <div class="text-secondary">$20 (USD)</div>
+                        </div>
+                    </div>
+                </ng-container>
             </asm-card>
 
 
@@ -341,7 +331,7 @@
 
             <!-- Card -->
             <asm-card class="flex flex-col gt-sm:flex-row max-w-320 gt-sm:max-w-640 w-full filter-article">
-                <div class="flex flex-col flex-auto m-32 mb-16">
+                <div class="flex flex-col flex-auto order-2 gt-sm:order-1 m-32 mb-16">
                     <div class="text-2xl font-bold leading-tight">Mountain tops and clear lakes</div>
                     <div class="text-secondary text-md mt-4">Updated with 20 new locations</div>
                     <div class="mt-16">
@@ -357,7 +347,7 @@
                         </button>
                     </div>
                 </div>
-                <img class="w-320 gt-sm:w-256 object-cover"
+                <img class="w-320 gt-sm:w-256 order-1 gt-sm:order-2 object-cover"
                      src="assets/images/cards/12-512x512.jpg">
             </asm-card>
 
@@ -371,15 +361,15 @@
                     <div class="flex items-center leading-none mt-8 -ml-4">
                         <div class="flex items-center">
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star_half"></mat-icon>
+                                      [svgIcon]="'mat_outline:star_half'"></mat-icon>
                         </div>
                         <div class="text-secondary ml-8">4.5</div>
                         <div class="text-secondary mx-8">&bull;</div>
@@ -413,15 +403,15 @@
                 <div class="flex items-center leading-none mt-8 -ml-4">
                     <div class="flex items-center">
                         <mat-icon class="text-orange icon-size-20"
-                                  svgIcon="mat_outline:star"></mat-icon>
+                                  [svgIcon]="'mat_outline:star'"></mat-icon>
                         <mat-icon class="text-orange icon-size-20"
-                                  svgIcon="mat_outline:star"></mat-icon>
+                                  [svgIcon]="'mat_outline:star'"></mat-icon>
                         <mat-icon class="text-orange icon-size-20"
-                                  svgIcon="mat_outline:star"></mat-icon>
+                                  [svgIcon]="'mat_outline:star'"></mat-icon>
                         <mat-icon class="text-orange icon-size-20"
-                                  svgIcon="mat_outline:star"></mat-icon>
+                                  [svgIcon]="'mat_outline:star'"></mat-icon>
                         <mat-icon class="text-orange icon-size-20"
-                                  svgIcon="mat_outline:star_half"></mat-icon>
+                                  [svgIcon]="'mat_outline:star_half'"></mat-icon>
                     </div>
                     <div class="text-secondary ml-8">4.5</div>
                     <div class="text-secondary mx-8">&bull;</div>
@@ -456,15 +446,15 @@
                     <div class="flex items-center leading-none mt-8 -ml-4">
                         <div class="flex items-center">
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star_half"></mat-icon>
+                                      [svgIcon]="'mat_outline:star_half'"></mat-icon>
                         </div>
                         <div class="text-secondary ml-8">4.5</div>
                         <div class="text-secondary mx-8">&bull;</div>
@@ -499,15 +489,15 @@
                     <div class="flex items-center leading-none mt-8 -ml-4">
                         <div class="flex items-center">
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star"></mat-icon>
+                                      [svgIcon]="'mat_outline:star'"></mat-icon>
                             <mat-icon class="text-orange icon-size-20"
-                                      svgIcon="mat_outline:star_half"></mat-icon>
+                                      [svgIcon]="'mat_outline:star_half'"></mat-icon>
                         </div>
                         <div class="text-secondary ml-8">4.5</div>
                         <div class="text-secondary mx-8">&bull;</div>
@@ -558,7 +548,7 @@
                         <button mat-icon-button
                                 [matMenuTriggerFor]="card22Menu">
                             <mat-icon class="icon-size-20"
-                                      svgIcon="more_vert"></mat-icon>
+                                      [svgIcon]="'more_vert'"></mat-icon>
                         </button>
                         <mat-menu #card22Menu="matMenu">
                             <button mat-menu-item>Mark all as done</button>
@@ -632,7 +622,7 @@
                         <button mat-icon-button
                                 [matMenuTriggerFor]="card22Menu">
                             <mat-icon class="icon-size-20"
-                                      svgIcon="more_vert"></mat-icon>
+                                      [svgIcon]="'more_vert'"></mat-icon>
                         </button>
                         <mat-menu #card22Menu="matMenu">
                             <button mat-menu-item>Mark all as done</button>
@@ -699,7 +689,7 @@
                         <button mat-icon-button
                                 [matMenuTriggerFor]="card23Menu">
                             <mat-icon class="icon-size-20"
-                                      svgIcon="more_vert"></mat-icon>
+                                      [svgIcon]="'more_vert'"></mat-icon>
                         </button>
                         <mat-menu #card23Menu="matMenu">
                             <button mat-menu-item>View weekly</button>
@@ -798,7 +788,7 @@
                         <button class="-mt-8 -mr-8"
                                 mat-icon-button>
                             <mat-icon class="text-red icon-size-20"
-                                      svgIcon="mat_outline:favorite"></mat-icon>
+                                      [svgIcon]="'mat_outline:favorite'"></mat-icon>
                         </button>
                     </div>
                     <div class="mt-12 -mx-12">
@@ -833,7 +823,7 @@
                         <button class="-mt-8 -mr-8"
                                 mat-icon-button>
                             <mat-icon class="text-secondary icon-size-20"
-                                      svgIcon="mat_outline:favorite_border"></mat-icon>
+                                      [svgIcon]="'mat_outline:favorite_border'"></mat-icon>
                         </button>
                     </div>
                     <hr class="border-b my-16">
@@ -867,7 +857,7 @@
             <asm-card class="flex flex-col items-center max-w-320 w-full p-40 filter-info">
                 <div class="flex items-center justify-center p-20 bg-indigo-100 rounded-full">
                     <mat-icon class="icon-size-40 text-indigo"
-                              svgIcon="dripicons:headset"></mat-icon>
+                              [svgIcon]="'dripicons:headset'"></mat-icon>
                 </div>
                 <div class="text-2xl font-bold leading-tight text-center mt-24">Support</div>
                 <div class="text-center text-secondary mt-12">Contact support to learn more about our products and get professional help</div>
@@ -883,7 +873,7 @@
             <!-- Card -->
             <asm-card class="flex flex-col items-center max-w-320 w-full p-40 filter-info">
                 <mat-icon class="icon-size-40 text-red mt-8"
-                          svgIcon="dripicons:rocket"></mat-icon>
+                          [svgIcon]="'dripicons:rocket'"></mat-icon>
                 <div class="text-2xl font-bold leading-tight text-center mt-32">Branding & Product Design</div>
                 <div class="text-center text-secondary mt-4 mb-32">Brand strategy, purpose, and product positioning</div>
                 <div class="flex items-center">
@@ -931,27 +921,27 @@
                     <span class="font-bold">All core features, including</span>
                     <div class="flex items-center mt-16">
                         <mat-icon class="text-green icon-size-20 mr-8"
-                                  svgIcon="check"></mat-icon>
+                                  [svgIcon]="'check'"></mat-icon>
                         <span><b>10</b> projects</span>
                     </div>
                     <div class="flex items-center mt-8">
                         <mat-icon class="text-green icon-size-20 mr-8"
-                                  svgIcon="check"></mat-icon>
+                                  [svgIcon]="'check'"></mat-icon>
                         <span><b>5GB</b> storage</span>
                     </div>
                     <div class="flex items-center mt-8">
                         <mat-icon class="text-green icon-size-20 mr-8"
-                                  svgIcon="check"></mat-icon>
+                                  [svgIcon]="'check'"></mat-icon>
                         <span>Analytics</span>
                     </div>
                     <div class="flex items-center mt-8">
                         <mat-icon class="text-green icon-size-20 mr-8"
-                                  svgIcon="check"></mat-icon>
+                                  [svgIcon]="'check'"></mat-icon>
                         <span>Free mobile app</span>
                     </div>
                     <div class="flex items-center mt-8">
                         <mat-icon class="text-green icon-size-20 mr-8"
-                                  svgIcon="check"></mat-icon>
+                                  [svgIcon]="'check'"></mat-icon>
                         <span>Access to support forums</span>
                     </div>
                 </div>
@@ -1000,24 +990,24 @@
                         <div class="flex flex-col mb-16 gt-md:mb-0">
                             <div class="flex items-center mb-16">
                                 <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
-                                          svgIcon="check"></mat-icon>
+                                          [svgIcon]="'check'"></mat-icon>
                                 <span>Private forum access</span>
                             </div>
                             <div class="flex items-center">
                                 <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
-                                          svgIcon="check"></mat-icon>
+                                          [svgIcon]="'check'"></mat-icon>
                                 <span>Member resources</span>
                             </div>
                         </div>
                         <div class="flex flex-col">
                             <div class="flex items-center mb-16">
                                 <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
-                                          svgIcon="check"></mat-icon>
+                                          [svgIcon]="'check'"></mat-icon>
                                 <span>Access to annual online conference</span>
                             </div>
                             <div class="flex items-center">
                                 <mat-icon class="w-16 h-16 icon-size-12 rounded-full gray-600 mr-8"
-                                          svgIcon="check"></mat-icon>
+                                          [svgIcon]="'check'"></mat-icon>
                                 <span>Official member shirt</span>
                             </div>
                         </div>
@@ -1046,7 +1036,7 @@
             <!-- Card -->
             <asm-card class="flex items-center max-w-320 w-full p-24 filter-notification">
                 <mat-icon class="icon-size-48 mr-24"
-                          svgIcon="iconsmind:mail"></mat-icon>
+                          [svgIcon]="'iconsmind:mail'"></mat-icon>
                 <div class="flex flex-col">
                     <div class="text-2xl font-bold leading-tight">1 new mail</div>
                     <div class="text-md text-secondary">Mailbox</div>
@@ -1061,7 +1051,7 @@
                     <div class="text-md text-secondary">from John Balista</div>
                 </div>
                 <mat-icon class="icon-size-48 ml-24"
-                          svgIcon="iconsmind:speach_bubbles"></mat-icon>
+                          [svgIcon]="'iconsmind:speach_bubbles'"></mat-icon>
             </asm-card>
 
 
@@ -1095,11 +1085,11 @@
                     <div class="absolute flex flex-col top-0 right-0 p-12">
                         <button mat-icon-button>
                             <mat-icon class="icon-size-20 text-white"
-                                      svgIcon="mat_outline:favorite_border"></mat-icon>
+                                      [svgIcon]="'mat_outline:favorite_border'"></mat-icon>
                         </button>
                         <button mat-icon-button>
                             <mat-icon class="icon-size-20 text-white"
-                                      svgIcon="mat_outline:compare_arrows"></mat-icon>
+                                      [svgIcon]="'mat_outline:compare_arrows'"></mat-icon>
                         </button>
                     </div>
                     <img class="object-cover"
@@ -1154,17 +1144,17 @@
                                 [color]="'primary'"
                                 [routerLink]="['./']">
                             <mat-icon class="icon-size-20"
-                                      svgIcon="shopping_cart"></mat-icon>
+                                      [svgIcon]="'shopping_cart'"></mat-icon>
                             <span class="ml-4">Add to Cart</span>
                         </button>
                         <button class="mr-4 ml-auto"
                                 mat-icon-button>
                             <mat-icon class="icon-size-20"
-                                      svgIcon="favorite"></mat-icon>
+                                      [svgIcon]="'favorite'"></mat-icon>
                         </button>
                         <button mat-icon-button>
                             <mat-icon class="icon-size-20"
-                                      svgIcon="compare_arrows"></mat-icon>
+                                      [svgIcon]="'compare_arrows'"></mat-icon>
                         </button>
                     </div>
                 </div>
@@ -1198,17 +1188,17 @@
                                 [color]="'primary'"
                                 [routerLink]="['./']">
                             <mat-icon class="icon-size-20"
-                                      svgIcon="shopping_cart"></mat-icon>
+                                      [svgIcon]="'shopping_cart'"></mat-icon>
                             <span class="ml-4">Add to Cart</span>
                         </button>
                         <button class="mr-4 ml-auto"
                                 mat-icon-button>
                             <mat-icon class="icon-size-20"
-                                      svgIcon="favorite"></mat-icon>
+                                      [svgIcon]="'favorite'"></mat-icon>
                         </button>
                         <button mat-icon-button>
                             <mat-icon class="icon-size-20"
-                                      svgIcon="compare_arrows"></mat-icon>
+                                      [svgIcon]="'compare_arrows'"></mat-icon>
                         </button>
                     </div>
                 </div>
@@ -1275,6 +1265,430 @@
                         &#8212; Melissa Morillo, Comtent
                     </div>
                 </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-560 w-full p-24 gt-xs:p-32 pb-24 filter-post">
+                <div class="text-lg font-medium">Create Post</div>
+                <div class="flex flex-col gt-xs:flex-row items-start mt-32">
+                    <div class="flex items-center mb-24 gt-xs:mb-0">
+                        <img class="w-48 min-w-48 h-48 rounded-full mr-16"
+                             src="assets/images/avatars/andrew-watkins.jpg">
+                        <div class="gt-xs:hidden">Andrew Watkins</div>
+                    </div>
+                    <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline w-full"
+                                    [appearance]="'fill'">
+                        <textarea class="text-lg leading-normal my-8"
+                                  matInput
+                                  cdkTextareaAutosize
+                                  placeholder="What's on your mind?"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="flex items-center mt-32 -mx-12">
+                    <button class="px-12 mr-4"
+                            mat-button
+                            [routerLink]="['./']">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'insert_photo'"></mat-icon>
+                        <span>Photo / Video</span>
+                    </button>
+                    <button class="px-12 mr-4 hidden gt-xs:inline-flex"
+                            mat-button
+                            [routerLink]="['./']">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'account_circle'"></mat-icon>
+                        <span>Tag Friends</span>
+                    </button>
+                    <button class="px-12 mr-4 hidden gt-xs:inline-flex"
+                            mat-button
+                            [routerLink]="['./']">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'emoji_emotions'"></mat-icon>
+                        <span>Feeling</span>
+                    </button>
+                    <button class="px-12"
+                            mat-button
+                            [matMenuTriggerFor]="postCardMenu01">
+                        <mat-icon class="icon-size-20"
+                                  [svgIcon]="'more_horiz'"></mat-icon>
+                    </button>
+                    <mat-menu #postCardMenu01="matMenu">
+                        <button class="gt-xs:hidden"
+                                mat-menu-item
+                                [routerLink]="['./']">
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'account_circle'"></mat-icon>
+                                <span>Tag Friends</span>
+                            </div>
+                        </button>
+                        <button class="gt-xs:hidden"
+                                mat-menu-item
+                                [routerLink]="['./']">
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'emoji_emotions'"></mat-icon>
+                                <span>Feeling</span>
+                            </div>
+                        </button>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'live_tv'"></mat-icon>
+                                <span>Live</span>
+                            </div>
+                        </button>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'gif'"></mat-icon>
+                                <span>Gif</span>
+                            </div>
+                        </button>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'room'"></mat-icon>
+                                <span>Check in</span>
+                            </div>
+                        </button>
+                    </mat-menu>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-560 w-full filter-post"
+                      #asmCard02>
+                <div class="flex items-center mx-24 gt-xs:mx-32 my-16">
+                    <img class="w-40 h-40 rounded-full mr-16"
+                         src="assets/images/avatars/female-01.jpg">
+                    <div class="flex flex-col">
+                        <span class="font-medium leading-none">Caroline Lundu</span>
+                        <span class="text-sm text-secondary leading-none mt-4">29 minutes ago</span>
+                    </div>
+                    <button class="ml-auto -mr-8"
+                            mat-icon-button
+                            [matMenuTriggerFor]="postCardMenu02">
+                        <mat-icon class="icon-size-20"
+                                  [svgIcon]="'more_vert'"></mat-icon>
+                    </button>
+                    <mat-menu #postCardMenu02="matMenu">
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'save'"></mat-icon>
+                                <span>Save post</span>
+                            </div>
+                        </button>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'visibility_off'"></mat-icon>
+                                <span>Hide post</span>
+                            </div>
+                        </button>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'access_time'"></mat-icon>
+                                <span>Snooze for 30 days</span>
+                            </div>
+                        </button>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'remove_circle'"></mat-icon>
+                                <span>Hide all</span>
+                            </div>
+                        </button>
+                        <mat-divider class="my-8"></mat-divider>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'report'"></mat-icon>
+                                <span>Report post</span>
+                            </div>
+                        </button>
+                        <button mat-menu-item>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-20 mr-12"
+                                          [svgIcon]="'notifications_active'"></mat-icon>
+                                <span>Turn on notifications for this post</span>
+                            </div>
+                        </button>
+                    </mat-menu>
+                </div>
+                <div class="relative">
+                    <img class="h-320 object-cover"
+                         src="assets/images/cards/14-640x480.jpg">
+                    <mat-icon class="absolute bottom-0 left-0 w-32 h-32 icon-size-20 gray-700 rounded-full cursor-pointer m-16"
+                              [svgIcon]="'room'"
+                              [matTooltip]="'Barmouth / UK'"
+                              [matTooltipPosition]="'right'"></mat-icon>
+                </div>
+                <div class="mx-24 gt-xs:mx-32 mt-24 mb-16">
+                    Look at that sky! I so want to be there.. Can we arrange a trip? Is that a possibility? Please!!!
+                </div>
+                <div class="flex items-center mx-8 gt-xs:mx-16">
+                    <button class="px-12 mr-4"
+                            mat-button
+                            [routerLink]="['./']">
+                        <mat-icon class="icon-size-20 text-red mr-8"
+                                  [svgIcon]="'mat_outline:favorite'"></mat-icon>
+                        <span>Unlike</span>
+                    </button>
+                    <button class="px-12 mr-4"
+                            mat-button
+                            [routerLink]="['./']">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'mode_comment'"></mat-icon>
+                        <span>Comment</span>
+                    </button>
+                    <button class="px-12 mr-4"
+                            mat-button
+                            [routerLink]="['./']">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'share'"></mat-icon>
+                        <span>Share</span>
+                    </button>
+                </div>
+                <hr class="border-b mx-24 gt-xs:mx-32 mt-16 mb-24">
+                <div class="flex flex-col gt-xs:flex-row gt-xs:items-center mx-24 gt-xs:mx-32 mb-24">
+                    <div class="flex items-center">
+                        <div class="bg-card rounded-full">
+                            <img class="w-24 h-24 m-2 rounded-full"
+                                 src="assets/images/avatars/female-02.jpg">
+                        </div>
+                        <div class="bg-card rounded-full -ml-12">
+                            <img class="w-24 h-24 m-2 rounded-full"
+                                 src="assets/images/avatars/female-04.jpg">
+                        </div>
+                        <div class="bg-card rounded-full -ml-12">
+                            <img class="w-24 h-24 m-2 rounded-full"
+                                 src="assets/images/avatars/male-09.jpg">
+                        </div>
+                        <div class="bg-card rounded-full -ml-12">
+                            <img class="w-24 h-24 m-2 rounded-full"
+                                 src="assets/images/avatars/male-07.jpg">
+                        </div>
+                        <div class="text-md tracking-tight ml-12">You and 24 more liked this</div>
+                    </div>
+                    <div class="hidden gt-xs:flex flex-auto"></div>
+                    <div class="flex items-center mt-24 gt-xs:mt-0 -mx-8 gt-xs:-mx-0">
+                        <button class="px-12 mr-4"
+                                mat-button>
+                            4 shares
+                        </button>
+                        <button class="px-12 -mr-16"
+                                mat-button
+                                (click)="asmCard02.toggleExpanded()">
+                            <span class="mr-4">5 Comments</span>
+                            <mat-icon class="icon-size-16"
+                                      *ngIf="!asmCard02.expanded"
+                                      [svgIcon]="'expand_more'"></mat-icon>
+                            <mat-icon class="icon-size-16"
+                                      *ngIf="asmCard02.expanded"
+                                      [svgIcon]="'expand_less'"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <ng-container asmCardExpansion>
+                    <hr class="border-b m-0">
+                    <div class="flex flex-col mx-16 gt-xs:mx-32 mt-24 mb-4">
+                        <div class="flex items-start">
+                            <img class="w-48 h-48 rounded-full mr-20"
+                                 src="assets/images/avatars/andrew-watkins.jpg">
+                            <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline w-full"
+                                            [appearance]="'fill'">
+                                <textarea class="leading-normal my-8"
+                                          matInput
+                                          cdkTextareaAutosize
+                                          placeholder="Write a comment..."></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="flex items-center mt-4 ml-auto -mr-12">
+                            <button mat-icon-button>
+                                <mat-icon [svgIcon]="'gif'"></mat-icon>
+                            </button>
+                            <button mat-icon-button>
+                                <mat-icon class="icon-size-16"
+                                          [svgIcon]="'emoji_emotions'"></mat-icon>
+                            </button>
+                            <button mat-icon-button>
+                                <mat-icon class="icon-size-16"
+                                          [svgIcon]="'insert_photo'"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <hr class="border-b m-0">
+                    <div class="max-h-480 overflow-y-auto">
+                        <div class="relative flex flex-col mx-16 gt-xs:mx-32 my-24">
+                            <div class="flex items-start">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/male-05.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Rutherford Brannan</b> Oh, I’m in.. Let’s arrange a trip for the next weekend if you want!
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Hide replies</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>17 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32 ml-48">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/female-01.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Caroline Lundu</b> Yes!! Let's talk about it on lunch!
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>15 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32 ml-48">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/female-08.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Barbara Cotilla</b> Count me in !!!
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>12 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/male-11.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Alan Marti</b> The color of the sky doesn’t look natural at all, do you really think this is natural? I’d say Photoshop!
+                                        Your trip isn't going to worth it since you won't be seeing this exact sky.
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Hide replies</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>24 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32 ml-48">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/female-01.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Caroline Lundu</b> Hey, Alan! You must be fun at parties!
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>22 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32 ml-48">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/male-11.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Alan Marti</b> Caroline, I'm telling the truth, and if you cannot stand the truth, maybe we shouldn't be friends anymore...
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>20 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32 ml-48">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/female-01.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Caroline Lundu</b> Dude! Relax! I'm just messing with you...
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>18 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32 ml-48">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/male-11.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Alan Marti</b> Sorry! I had a bad morning, let's talk about this in couple hours, I need to relax a bit :(
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>16 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start mt-32">
+                                <img class="w-32 h-32 rounded-full mr-16"
+                                     src="assets/images/avatars/female-05.jpg">
+                                <div class="flex flex-col mt-2">
+                                    <span>
+                                        <b>Marleah Eagleston</b> Count me in, too!
+                                    </span>
+                                    <div class="flex items-center text-sm text-secondary mt-8">
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Like</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Reply</a>
+                                        <a class="mr-8 hover:underline"
+                                           [routerLink]="'./'">Hide replies</a>
+                                        <span class="mr-8">&bull;</span>
+                                        <span>34 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
             </asm-card>
 
         </div>
