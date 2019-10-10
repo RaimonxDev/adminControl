@@ -1,14 +1,18 @@
 import { Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
+import { AsmAnimations } from '@assembly/animations/public-api';
 
 @Component({
     selector     : 'asm-card',
     templateUrl  : './card.component.html',
     styleUrls    : ['./card.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    animations   : AsmAnimations,
     exportAs     : 'asmCard'
 })
 export class AsmCardComponent
 {
+    expanded: boolean;
+
     // Private
     private _flippable: boolean;
 
@@ -24,6 +28,7 @@ export class AsmCardComponent
     )
     {
         // Set the defaults
+        this.expanded = false;
         this.flippable = false;
     }
 
@@ -64,4 +69,31 @@ export class AsmCardComponent
         return this._flippable;
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Expand the details
+     */
+    expand(): void
+    {
+        this.expanded = true;
+    }
+
+    /**
+     * Collapse the details
+     */
+    collapse(): void
+    {
+        this.expanded = false;
+    }
+
+    /**
+     * Toggle the expand/collapse status
+     */
+    toggleExpanded(): void
+    {
+        this.expanded = !this.expanded;
+    }
 }

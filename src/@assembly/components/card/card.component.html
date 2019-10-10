@@ -15,5 +15,15 @@
 
 <!-- Normal card -->
 <ng-container *ngIf="!flippable">
+
+    <!-- Content -->
     <ng-content></ng-content>
+
+    <!-- Expansion -->
+    <div class="asm-card-expansion"
+         *ngIf="expanded"
+         [@expandCollapse]>
+        <ng-content select="[asmCardExpansion]"></ng-content>
+    </div>
+
 </ng-container>
