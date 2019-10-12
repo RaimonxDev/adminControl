@@ -541,16 +541,249 @@
 
 
             <!-- Card -->
-            <asm-card class="flex flex-col max-w-320 w-full p-32 pb-16 filter-list">
+            <asm-card class="flex flex-col max-w-320 w-full px-32 pt-24 pb-16 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">News</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="listCard01Menu">
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'more_vert'"></mat-icon>
+                        </button>
+                        <mat-menu #listCard01Menu="matMenu">
+                            <button mat-menu-item>Mark all as read</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-20">
+                    <div class="flex">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'notifications'"></mat-icon>
+                        <div><b>20% OFF</b> in your favorite hats shop on next Friday.</div>
+                    </div>
+                    <div class="flex mt-20">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'notifications'"></mat-icon>
+                        <div>Upcoming meetups within 20 miles.
+                            <a class="text-secondary whitespace-no-wrap hover:underline"
+                               [routerLink]="['./']">See details</a>
+                        </div>
+                    </div>
+                    <div class="flex mt-20">
+                        <mat-icon class="icon-size-20 mr-8"
+                                  [svgIcon]="'notifications'"></mat-icon>
+                        <div>Concerts from your favorite bands available within 100 miles.
+                            <a class="text-secondary whitespace-no-wrap hover:underline"
+                               [routerLink]="['./']">See details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center mt-16 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        See all news
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full px-32 pt-24 pb-16 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Groups</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="listCard02Menu">
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'more_vert'"></mat-icon>
+                        </button>
+                        <mat-menu #listCard02Menu="matMenu">
+                            <button mat-menu-item>Search for groups</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-20">
+                    <div class="flex items-center">
+                        <img class="w-56 h-56 mr-16 rounded-4 object-cover"
+                             src="assets/images/cards/coffee-shop-01-320x200.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">The Port Cafe</div>
+                            <div class="text-md truncate leading-none mt-4">Best cafe of the downtown New York</div>
+                            <div class="text-md leading-none text-secondary mt-8">1.2k followers</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-24">
+                        <img class="w-56 h-56 mr-16 rounded-4 object-cover"
+                             src="assets/images/cards/coffee-shop-02-512x512.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Design House LLC.</div>
+                            <div class="text-md truncate leading-none mt-4">UI/UX, brand and product design</div>
+                            <div class="text-md leading-none text-secondary mt-8">957 followers</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-24">
+                        <img class="w-56 h-56 mr-16 rounded-4 object-cover"
+                             src="assets/images/cards/coffee-shop-03-320x320.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Crax Laser Tag</div>
+                            <div class="text-md truncate leading-none mt-4">30% off with group of 6 people</div>
+                            <div class="text-md leading-none text-secondary mt-8">342 followers</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-24">
+                        <img class="w-56 h-56 mr-16 rounded-4 object-cover"
+                             src="assets/images/cards/sneakers-01-320x200.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Roadster Clothing Inc.</div>
+                            <div class="text-md truncate leading-none mt-4">$25 off on orders $500 and over</div>
+                            <div class="text-md leading-none text-secondary mt-8">4.7k followers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center mt-24 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        See all groups
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full px-32 pt-24 pb-16 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Friend Suggestions</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="listCard03Menu">
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'more_vert'"></mat-icon>
+                        </button>
+                        <mat-menu #listCard03Menu="matMenu">
+                            <button mat-menu-item>Find friends</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-20">
+                    <div class="flex items-center">
+                        <img class="w-56 h-56 mr-16 rounded-full"
+                             src="assets/images/avatars/female-01.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Amelia Edwards</div>
+                            <div class="text-md leading-none text-secondary mt-4">3 mutual friends</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-24">
+                        <img class="w-56 h-56 mr-16 rounded-full"
+                             src="assets/images/avatars/male-05.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Lew Silverton</div>
+                            <div class="text-md leading-none text-secondary mt-4">3 mutual friends</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-24">
+                        <img class="w-56 h-56 mr-16 rounded-full"
+                             src="assets/images/avatars/female-05.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Leanne Simpson</div>
+                            <div class="text-md leading-none text-secondary mt-4">Went to same high school</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-24">
+                        <img class="w-56 h-56 mr-16 rounded-full"
+                             src="assets/images/avatars/female-11.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Cecilia Pozo</div>
+                            <div class="text-md leading-none text-secondary mt-4">Went to same college</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center mt-24 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        See all suggestions
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full px-32 pt-24 pb-16 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Activity Feed</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="listCard04Menu">
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'more_vert'"></mat-icon>
+                        </button>
+                        <mat-menu #listCard04Menu="matMenu">
+                            <button mat-menu-item>Clear activities</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-20">
+                    <div class="flex">
+                        <img class="w-40 h-40 mr-16 rounded-full"
+                             src="assets/images/avatars/female-01.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">Amelia Edwards commented on John Silverton's photo</div>
+                            <div class="text-md leading-none text-secondary mt-8">4 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="flex mt-32">
+                        <img class="w-40 h-40 mr-16 rounded-full"
+                             src="assets/images/avatars/male-01.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">Lew Silverton changed his profile photo</div>
+                            <div class="text-md leading-none text-secondary mt-8">25 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="flex mt-32">
+                        <img class="w-40 h-40 mr-16 rounded-full"
+                             src="assets/images/avatars/male-15.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">Andrew Watkins liked your photo</div>
+                            <div class="text-md leading-none text-secondary mt-8">3 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="flex mt-32">
+                        <img class="w-40 h-40 mr-16 rounded-full"
+                             src="assets/images/avatars/female-15.jpg">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">Marleah Eagleston commented on John Silverton's photo</div>
+                            <div class="text-md leading-none text-secondary mt-8">Yesterday</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center mt-24 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        See entire activity feed
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full px-32 pt-24 pb-16 filter-list">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">Shopping List</div>
                     <div class="-mr-12">
                         <button mat-icon-button
-                                [matMenuTriggerFor]="card22Menu">
+                                [matMenuTriggerFor]="listCard05Menu">
                             <mat-icon class="icon-size-20"
                                       [svgIcon]="'more_vert'"></mat-icon>
                         </button>
-                        <mat-menu #card22Menu="matMenu">
+                        <mat-menu #listCard05Menu="matMenu">
                             <button mat-menu-item>Mark all as done</button>
                             <button mat-menu-item>Mark all as undone</button>
                             <button mat-menu-item>Remove list</button>
@@ -608,23 +841,23 @@
                             mat-button
                             [color]="'primary'"
                             [routerLink]="['./']">
-                        Add Item
+                        Add item
                     </button>
                 </div>
             </asm-card>
 
 
             <!-- Card -->
-            <asm-card class="flex flex-col max-w-320 w-full p-32 filter-list">
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pt-24 filter-list">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">Today's Tasks</div>
                     <div class="-mr-12">
                         <button mat-icon-button
-                                [matMenuTriggerFor]="card22Menu">
+                                [matMenuTriggerFor]="listCard06Menu">
                             <mat-icon class="icon-size-20"
                                       [svgIcon]="'more_vert'"></mat-icon>
                         </button>
-                        <mat-menu #card22Menu="matMenu">
+                        <mat-menu #listCard06Menu="matMenu">
                             <button mat-menu-item>Mark all as done</button>
                             <button mat-menu-item>Mark all as undone</button>
                         </mat-menu>
@@ -682,16 +915,16 @@
 
 
             <!-- Card -->
-            <asm-card class="flex flex-col max-w-320 w-full p-32 filter-list">
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pt-24 filter-list">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">Daily Schedule</div>
                     <div class="-mr-12">
                         <button mat-icon-button
-                                [matMenuTriggerFor]="card23Menu">
+                                [matMenuTriggerFor]="listCard07Menu">
                             <mat-icon class="icon-size-20"
                                       [svgIcon]="'more_vert'"></mat-icon>
                         </button>
-                        <mat-menu #card23Menu="matMenu">
+                        <mat-menu #listCard07Menu="matMenu">
                             <button mat-menu-item>View weekly</button>
                             <button mat-menu-item>View monthly</button>
                         </mat-menu>
@@ -727,7 +960,7 @@
 
 
             <!-- Card -->
-            <asm-card class="flex flex-col max-w-320 w-full p-32 pb-16 filter-list">
+            <asm-card class="flex flex-col max-w-320 w-full p-32 pt-24 pb-16 filter-list">
                 <div class="text-2xl font-bold leading-tight">Customer Reviews</div>
                 <div class="text-secondary text-md mt-4">
                     <b>4.74</b> average based on <b>508</b> reviews
@@ -770,6 +1003,143 @@
                             [color]="'primary'"
                             [routerLink]="['./']">
                         Review this product
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full px-32 pt-24 pb-16 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Followers</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="listCard08Menu">
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'more_vert'"></mat-icon>
+                        </button>
+                        <mat-menu #listCard08Menu="matMenu">
+                            <button mat-menu-item>Find friends</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex justify-between mt-24">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-01.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-01.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-02.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-02.jpg">
+                    </div>
+                    <div class="flex justify-between mt-12">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-03.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-04.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-03.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-04.jpg">
+                    </div>
+                    <div class="flex justify-between mt-12">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-05.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-06.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-05.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-06.jpg">
+                    </div>
+                    <div class="flex justify-between mt-12">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-07.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-07.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/male-08.jpg">
+                        <img class="w-56 h-56 rounded-full"
+                             src="assets/images/avatars/female-08.jpg">
+                    </div>
+                </div>
+                <div class="flex items-center mt-24 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        See all followers
+                    </button>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full px-32 pt-24 pb-16 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold leading-tight">Gallery</div>
+                    <div class="-mr-12">
+                        <button mat-icon-button
+                                [matMenuTriggerFor]="listCard09Menu">
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'more_vert'"></mat-icon>
+                        </button>
+                        <mat-menu #listCard09Menu="matMenu">
+                            <button mat-menu-item>Add image</button>
+                            <button mat-menu-item>Add video</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex justify-between mt-24">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/14-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/15-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/16-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/17-640x480.jpg">
+                    </div>
+                    <div class="flex justify-between mt-12">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/18-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/19-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/20-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/21-640x480.jpg">
+                    </div>
+                    <div class="flex justify-between mt-12">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/22-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/23-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/24-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/25-640x480.jpg">
+                    </div>
+                    <div class="flex justify-between mt-12">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/26-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/27-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/28-640x480.jpg">
+                        <img class="w-56 h-56 rounded-4 object-cover"
+                             src="assets/images/cards/29-640x480.jpg">
+                    </div>
+                </div>
+                <div class="flex items-center mt-24 -mx-12">
+                    <button class="px-12"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                        See entire gallery
                     </button>
                 </div>
             </asm-card>
@@ -854,7 +1224,7 @@
 
 
             <!-- Card -->
-            <asm-card class="flex flex-col items-center max-w-320 w-full p-40 filter-info">
+            <asm-card class="flex flex-col items-center max-w-320 w-full p-32 filter-info">
                 <div class="flex items-center justify-center p-20 bg-indigo-100 rounded-full">
                     <mat-icon class="icon-size-40 text-indigo"
                               [svgIcon]="'dripicons:headset'"></mat-icon>
@@ -871,7 +1241,7 @@
 
 
             <!-- Card -->
-            <asm-card class="flex flex-col items-center max-w-320 w-full p-40 filter-info">
+            <asm-card class="flex flex-col items-center max-w-320 w-full p-32 filter-info">
                 <mat-icon class="icon-size-40 text-red mt-8"
                           [svgIcon]="'dripicons:rocket'"></mat-icon>
                 <div class="text-2xl font-bold leading-tight text-center mt-32">Branding & Product Design</div>
@@ -895,6 +1265,214 @@
                         [routerLink]="['./']">
                     View Project
                 </button>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col items-center max-w-320 w-full p-32 pb-24 filter-info">
+                <img class="w-128 h-128 rounded-full"
+                     src="assets/images/avatars/male-04.jpg">
+                <div class="text-2xl font-bold leading-tight text-center mt-32">Andrew Watkins</div>
+                <div class="text-secondary leading-tight text-center mt-4">London, UK</div>
+                <hr class="w-full border-t mt-32 mb-0">
+                <div class="w-full flex items-center justify-between my-16 px-8">
+                    <div class="flex flex-col items-center">
+                        <span class="font-bold">1.2k</span>
+                        <span class="text-sm font-medium text-secondary">POSTS</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="font-bold">200k</span>
+                        <span class="text-sm font-medium text-secondary">FOLLOWERS</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="font-bold">1.2k</span>
+                        <span class="text-sm font-medium text-secondary">FOLLOWING</span>
+                    </div>
+                </div>
+                <hr class="w-full border-t mt-0 mb-32">
+                <div class="text-center text-secondary">I’m a friendly kitchen assistant who suffers from a severe phobia of buttons</div>
+                <button class="px-24 mt-16"
+                        mat-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                    More about Andrew
+                </button>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full p-32 filter-info">
+                <div class="text-2xl font-bold leading-tight">About Me</div>
+                <div class="mt-16">
+                    I’m a friendly kitchen assistant who suffers from a severe phobia of buttons.
+                    <br><br>
+                    Brother of Elijah Jay Watkins, who has phobia of buttons and trust issues.
+                </div>
+                <hr class="w-full border-t my-24">
+                <div class="flex flex-col">
+                    <div class="flex items-center">
+                        <mat-icon class="icon-size-20 mr-12"
+                                  [svgIcon]="'room'"></mat-icon>
+                        <span class="leading-none">London, UK</span>
+                    </div>
+                    <div class="flex items-center mt-16">
+                        <mat-icon class="icon-size-20 mr-12"
+                                  [svgIcon]="'work'"></mat-icon>
+                        <span class="leading-none">ACME Corp. Lead UX Designer</span>
+                    </div>
+                    <div class="flex items-center mt-16">
+                        <mat-icon class="icon-size-20 mr-12"
+                                  [svgIcon]="'cake'"></mat-icon>
+                        <span class="leading-none">April, 24</span>
+                    </div>
+                </div>
+                <button class="px-24 mt-32"
+                        mat-flat-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                    See complete bio
+                </button>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-320 w-full filter-info">
+                <div class="flex h-128">
+                    <img class="object-cover"
+                         src="assets/images/cards/coffee-shop-01-320x200.jpg">
+                </div>
+                <div class="flex px-32">
+                    <div class="p-4 bg-card rounded-full -mt-48">
+                        <img class="w-96 h-96 rounded-full"
+                             src="assets/images/avatars/male-04.jpg">
+                    </div>
+                </div>
+                <div class="flex flex-col px-32 pt-16 pb-24">
+                    <div class="flex items-center justify-between">
+                        <div class="mr-16">
+                            <div class="text-2xl font-bold leading-tight">Andrew Watkins</div>
+                            <div class="text-secondary leading-tight mt-4">London, UK</div>
+                        </div>
+                        <button mat-icon-button>
+                            <mat-icon class="w-40 h-40 icon-size-20 border rounded-full"
+                                      [svgIcon]="'person_add'"></mat-icon>
+                        </button>
+                    </div>
+                    <hr class="w-full border-t my-24">
+                    <div class="flex items-center justify-between">
+                        <div class="text-md font-medium text-secondary mr-12">4 mutual friends</div>
+                        <div class="flex items-center">
+                            <div class="bg-card rounded-full">
+                                <img class="w-24 h-24 m-2 rounded-full"
+                                     src="assets/images/avatars/female-02.jpg">
+                            </div>
+                            <div class="bg-card rounded-full -ml-12">
+                                <img class="w-24 h-24 m-2 rounded-full"
+                                     src="assets/images/avatars/female-04.jpg">
+                            </div>
+                            <div class="bg-card rounded-full -ml-12">
+                                <img class="w-24 h-24 m-2 rounded-full"
+                                     src="assets/images/avatars/male-09.jpg">
+                            </div>
+                            <div class="bg-card rounded-full -ml-12">
+                                <img class="w-24 h-24 m-2 rounded-full"
+                                     src="assets/images/avatars/male-07.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center max-w-320 w-full p-24 filter-info">
+                <img class="w-80 h-80 mr-24 rounded-full"
+                     src="assets/images/avatars/male-04.jpg">
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">Andrew Watkins</div>
+                    <div class="text-md text-secondary">London, UK</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center justify-between max-w-320 w-full p-24 filter-info">
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">Andrew Watkins</div>
+                    <div class="text-md text-secondary">London, UK</div>
+                </div>
+                <img class="w-80 h-80 ml-24 rounded-full"
+                     src="assets/images/avatars/male-04.jpg">
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center max-w-320 w-full p-24 filter-info">
+                <img class="w-64 h-64 mr-24 rounded-full"
+                     src="assets/images/avatars/male-04.jpg">
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">Andrew Watkins</div>
+                    <div class="text-md leading-tight text-primary">Head of HR Department</div>
+                    <div class="text-md text-secondary mt-8">watkins.andrew@company.com</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center justify-between max-w-320 w-full p-24 filter-info">
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">Andrew Watkins</div>
+                    <div class="text-md leading-tight text-primary">Head of HR Department</div>
+                    <div class="text-md text-secondary mt-8">watkins.andrew@company.com</div>
+                </div>
+                <img class="w-64 h-64 ml-24 rounded-full"
+                     src="assets/images/avatars/male-04.jpg">
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center max-w-320 w-full p-24 filter-info">
+                <mat-icon class="icon-size-48 mr-24"
+                          [svgIcon]="'iconsmind:mail'"></mat-icon>
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">1 new mail</div>
+                    <div class="text-md text-secondary">Mailbox</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex items-center justify-between max-w-320 w-full p-24 filter-info">
+                <div class="flex flex-col">
+                    <div class="text-2xl font-bold leading-tight">New message</div>
+                    <div class="text-md text-secondary">from John Balista</div>
+                </div>
+                <mat-icon class="icon-size-48 ml-24"
+                          [svgIcon]="'iconsmind:speach_bubbles'"></mat-icon>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex max-w-320 w-full filter-info">
+                <img class="w-96 h-120 object-cover"
+                     src="assets/images/cards/product-01-224x256.jpg">
+                <div class="flex flex-col flex-auto justify-center p-24">
+                    <div class="text-lg font-medium leading-tight">Lavender Bouquet</div>
+                    <div class="text-md text-secondary">USD $5</div>
+                    <div class="text-md text-green mt-12">5 left in stock</div>
+                </div>
+            </asm-card>
+
+
+            <!-- Card -->
+            <asm-card class="flex justify-between max-w-320 w-full filter-info">
+                <div class="flex flex-col flex-auto justify-center p-24">
+                    <div class="text-lg font-medium leading-tight">Lavender Bouquet</div>
+                    <div class="text-md text-secondary">USD $5</div>
+                    <div class="text-md text-green mt-12">5 left in stock</div>
+                </div>
+                <img class="w-96 h-120 object-cover"
+                     src="assets/images/cards/product-01-224x256.jpg">
             </asm-card>
 
 
@@ -1030,52 +1608,6 @@
                         Get Started
                     </button>
                 </div>
-            </asm-card>
-
-
-            <!-- Card -->
-            <asm-card class="flex items-center max-w-320 w-full p-24 filter-notification">
-                <mat-icon class="icon-size-48 mr-24"
-                          [svgIcon]="'iconsmind:mail'"></mat-icon>
-                <div class="flex flex-col">
-                    <div class="text-2xl font-bold leading-tight">1 new mail</div>
-                    <div class="text-md text-secondary">Mailbox</div>
-                </div>
-            </asm-card>
-
-
-            <!-- Card -->
-            <asm-card class="flex items-center justify-between max-w-320 w-full p-24 filter-notification">
-                <div class="flex flex-col">
-                    <div class="text-2xl font-bold leading-tight">New message</div>
-                    <div class="text-md text-secondary">from John Balista</div>
-                </div>
-                <mat-icon class="icon-size-48 ml-24"
-                          [svgIcon]="'iconsmind:speach_bubbles'"></mat-icon>
-            </asm-card>
-
-
-            <!-- Card -->
-            <asm-card class="flex max-w-320 w-full filter-notification">
-                <img class="w-96 h-120 object-cover"
-                     src="assets/images/cards/product-01-224x256.jpg">
-                <div class="flex flex-col flex-auto justify-center p-24">
-                    <div class="text-lg font-medium leading-tight">Lavender Bouquet</div>
-                    <div class="text-md text-secondary">USD $5</div>
-                    <div class="text-md text-green mt-12">5 left in stock</div>
-                </div>
-            </asm-card>
-
-
-            <!-- Card -->
-            <asm-card class="flex justify-between max-w-320 w-full filter-notification">
-                <div class="flex flex-col flex-auto justify-center p-24">
-                    <div class="text-lg font-medium leading-tight">Lavender Bouquet</div>
-                    <div class="text-md text-secondary">USD $5</div>
-                    <div class="text-md text-green mt-12">5 left in stock</div>
-                </div>
-                <img class="w-96 h-120 object-cover"
-                     src="assets/images/cards/product-01-224x256.jpg">
             </asm-card>
 
 
@@ -1497,7 +2029,7 @@
 
                 <ng-container asmCardExpansion>
                     <hr class="border-b m-0">
-                    <div class="flex flex-col mx-16 gt-xs:mx-32 mt-24 mb-4">
+                    <div class="flex flex-col mx-16 gt-xs:mx-32 mt-24 mb-12">
                         <div class="flex items-start">
                             <img class="w-48 h-48 rounded-full mr-20"
                                  src="assets/images/avatars/andrew-watkins.jpg">
@@ -1509,7 +2041,7 @@
                                           placeholder="Write a comment..."></textarea>
                             </mat-form-field>
                         </div>
-                        <div class="flex items-center mt-4 ml-auto -mr-12">
+                        <div class="flex items-center mt-12 ml-auto -mr-12">
                             <button mat-icon-button>
                                 <mat-icon [svgIcon]="'gif'"></mat-icon>
                             </button>
@@ -1523,7 +2055,7 @@
                             </button>
                         </div>
                     </div>
-                    <hr class="border-b m-0">
+                    <hr class="border-b mx-16 gt-xs:mx-32 my-0">
                     <div class="max-h-480 overflow-y-auto">
                         <div class="relative flex flex-col mx-16 gt-xs:mx-32 my-24">
                             <div class="flex items-start">
@@ -2815,6 +3347,199 @@
                 </div>
             </asm-card>
 
+
+            <!-- Card -->
+            <asm-card class="flex flex-col max-w-560 w-full filter-post">
+                <div class="flex flex-col mx-16 gt-xs:mx-32 mt-24 mb-12">
+                    <div class="flex items-start">
+                        <img class="w-48 h-48 rounded-full mr-20"
+                             src="assets/images/avatars/andrew-watkins.jpg">
+                        <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline w-full"
+                                        [appearance]="'fill'">
+                            <textarea class="leading-normal my-8"
+                                      matInput
+                                      cdkTextareaAutosize
+                                      placeholder="Write a comment..."></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex items-center mt-12 ml-auto -mr-12">
+                        <button mat-icon-button>
+                            <mat-icon [svgIcon]="'gif'"></mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-size-16"
+                                      [svgIcon]="'emoji_emotions'"></mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-size-16"
+                                      [svgIcon]="'insert_photo'"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <hr class="border-b mx-16 gt-xs:mx-32 my-0">
+                <div class="max-h-480 overflow-y-auto">
+                    <div class="relative flex flex-col mx-16 gt-xs:mx-32 my-24">
+                        <div class="flex items-start">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/male-05.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Rutherford Brannan</b> Oh, I’m in.. Let’s arrange a trip for the next weekend if you want!
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Hide replies</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>17 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32 ml-48">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/female-01.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Caroline Lundu</b> Yes!! Let's talk about it on lunch!
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>15 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32 ml-48">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/female-08.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Barbara Cotilla</b> Count me in !!!
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>12 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/male-11.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Alan Marti</b> The color of the sky doesn’t look natural at all, do you really think this is natural? I’d say Photoshop!
+                                    Your trip isn't going to worth it since you won't be seeing this exact sky.
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Hide replies</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>24 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32 ml-48">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/female-01.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Caroline Lundu</b> Hey, Alan! You must be fun at parties!
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>22 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32 ml-48">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/male-11.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Alan Marti</b> Caroline, I'm telling the truth, and if you cannot stand the truth, maybe we shouldn't be friends anymore...
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>20 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32 ml-48">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/female-01.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Caroline Lundu</b> Dude! Relax! I'm just messing with you...
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>18 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32 ml-48">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/male-11.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Alan Marti</b> Sorry! I had a bad morning, let's talk about this in couple hours, I need to relax a bit :(
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>16 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-32">
+                            <img class="w-32 h-32 rounded-full mr-16"
+                                 src="assets/images/avatars/female-05.jpg">
+                            <div class="flex flex-col mt-2">
+                                <span>
+                                    <b>Marleah Eagleston</b> Count me in, too!
+                                </span>
+                                <div class="flex items-center text-sm text-secondary mt-8">
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Like</a>
+                                    <a class="mr-8 hover:underline"
+                                       [routerLink]="'./'">Reply</a>
+                                    <span class="mr-8">&bull;</span>
+                                    <span>34 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </asm-card>
         </div>
 
     </div>

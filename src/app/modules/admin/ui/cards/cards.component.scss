@@ -11,6 +11,10 @@ cards {
         .filters {
             margin-bottom: 64px;
 
+            @include asm-media-breakpoint('xs') {
+                margin-bottom: 24px;
+            }
+
             .mat-button-toggle-group {
                 flex-wrap: wrap;
                 border: none;
