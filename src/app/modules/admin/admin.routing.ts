@@ -199,7 +199,14 @@ export const adminRoutes: Route[] = [
                                     .then(m => m.PricingTableModule)
                             }
                         ]
-                    }
+                    },
+
+                    // Profile
+                    {
+                        path        : 'profile',
+                        loadChildren: () => import('./pages/profile/profile.module')
+                            .then(m => m.ProfileModule)
+                    },
                 ]
             },
 
