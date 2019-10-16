@@ -72,11 +72,8 @@ pre[class*='language-'] {
                 color: #50FA7B;
             }
 
-            .hljs-string,
             .hljs-meta,
-            .hljs-name,
             .hljs-type,
-            .hljs-attr,
             .hljs-symbol,
             .hljs-bullet,
             .hljs-addition,
@@ -84,6 +81,18 @@ pre[class*='language-'] {
             .hljs-template-tag,
             .hljs-template-variable {
                 color: #F1FA8C;
+            }
+
+            .hljs-name {
+                color: #80DEEA;
+            }
+
+            .hljs-attr {
+                color: #E1BEE7;
+            }
+
+            .hljs-string {
+                color: #A5D6A7;
             }
 
             .hljs-comment,
@@ -135,7 +144,7 @@ pre[class*='language-'] {
             }
 
             .hljs-name {
-                color: #85879E;
+                color: #7986CB;
             }
 
             .hljs-tag {
@@ -174,7 +183,7 @@ pre[class*='language-'] {
             .hljs-selector-attr,
             .hljs-selector-pseudo,
             .hljs-number {
-                color: #986801;
+                color: #BA68C8;
             }
 
             .hljs-symbol,

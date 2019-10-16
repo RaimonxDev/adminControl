@@ -1,0 +1,106 @@
+@import 'assembly';
+
+angular-material-component-api {
+
+    .docs-api-class-name {
+        margin-top: 28px;
+        margin-bottom: 0;
+        display: block;
+        font-weight: bold;
+        font-size: 20px;
+        background: none;
+
+        code {
+            background: none;
+        }
+    }
+
+    .docs-api-h3 {
+
+    }
+
+    .docs-api-h5 {
+        margin: 24px 0;
+        font-weight: 500;
+    }
+
+    .docs-api-method-name-cell,
+    .docs-api-method-description-cell,
+    .docs-api-class-export-label,
+    .docs-api-directive-selectors,
+    .docs-api-class-description,
+    .docs-api-class-export-name {
+        font-size: 13px;
+    }
+
+    .docs-api-class-description {
+        line-height: 24px;
+    }
+
+    .docs-api-property-type {
+        font-weight: bold;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .docs-api-class-selector-name,
+    .docs-api-class-export-name {
+        padding: 3px 7px;
+        font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    table {
+        margin-bottom: 32px;
+        border-collapse: collapse;
+        @include asm-elevation(1);
+
+        tr {
+
+            td {
+                border-width: 1px;
+                border-style: solid;
+                padding: 16px;
+
+                &:first-child {
+                    border-left-width: 0;
+                }
+
+                &:last-child {
+                    border-right-width: 0;
+                }
+
+                &.docs-api-properties-name-cell {
+                    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                }
+
+                p {
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+
+    angular-material-component-api {
+
+        table {
+            background: map-get($background, card);
+        }
+
+        .docs-api-class-selector-name,
+        .docs-api-class-export-name {
+            background: map-get($background, hover);
+        }
+    }
+}

@@ -1,0 +1,75 @@
+@import 'assembly';
+
+angular-material-example-viewer {
+    display: block;
+    margin: 20px 0;
+    border-radius: 4px;
+    @include asm-elevation(1);
+
+    .docs-example-viewer-wrapper {
+
+        h3 {
+            margin-top: 10px;
+        }
+
+        .docs-example-viewer-title {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+
+            .docs-example-viewer-title-spacer {
+                flex: 1 1 auto;
+            }
+        }
+
+        .docs-example-viewer-source {
+
+            .docs-example-source-wrapper {
+                border-bottom-width: 2px;
+                border-bottom-style: solid;
+
+                .docs-example-source {
+                    min-height: 150px;
+                    border-radius: 0;
+                }
+            }
+        }
+
+        .docs-example-viewer-body {
+            padding: 30px;
+        }
+    }
+
+    .mat-card {
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none !important;
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+
+    angular-material-example-viewer {
+        background: map-get($background, card);
+
+        .docs-example-viewer-source {
+
+            .docs-example-source-wrapper {
+
+                .docs-example-source {
+                    background: none;
+                }
+            }
+        }
+    }
+}

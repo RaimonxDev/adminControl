@@ -284,270 +284,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },*/
     {
-        id      : 'form-controls',
-        title   : 'Form Controls',
-        type    : 'collapsable',
-        icon    : 'layers',
-        children: [
-            {
-                id   : 'autocomplete',
-                title: 'Autocomplete',
-                type : 'basic',
-                link : '/angular-material-elements/autocomplete'
-            },
-            {
-                id   : 'checkbox',
-                title: 'Checkbox',
-                type : 'basic',
-                link : '/angular-material-elements/checkbox'
-            },
-            {
-                id   : 'datepicker',
-                title: 'Datepicker',
-                type : 'basic',
-                link : '/angular-material-elements/datepicker'
-            },
-            {
-                id   : 'form-field',
-                title: 'Form field',
-                type : 'basic',
-                link : '/angular-material-elements/form-field'
-            },
-            {
-                id   : 'input',
-                title: 'Input',
-                type : 'basic',
-                link : '/angular-material-elements/input'
-            },
-            {
-                id   : 'radio-button',
-                title: 'Radio button',
-                type : 'basic',
-                link : '/angular-material-elements/radio-button'
-            },
-            {
-                id   : 'select',
-                title: 'Select',
-                type : 'basic',
-                link : '/angular-material-elements/select'
-            },
-            {
-                id   : 'slider',
-                title: 'Slider',
-                type : 'basic',
-                link : '/angular-material-elements/slider'
-            },
-            {
-                id   : 'slide-toggle',
-                title: 'Slide toggle',
-                type : 'basic',
-                link : '/angular-material-elements/slide-toggle'
-            }
-        ]
-    },
-    {
-        id      : 'navigation',
-        title   : 'Navigation',
-        type    : 'collapsable',
-        icon    : 'layers',
-        children: [
-            {
-                id   : 'menu',
-                title: 'Menu',
-                type : 'basic',
-                link : '/angular-material-elements/menu'
-            },
-            {
-                id   : 'sidenav',
-                title: 'Sidebar',
-                type : 'basic',
-                link : '/angular-material-elements/sidenav'
-            },
-            {
-                id   : 'toolbar',
-                title: 'Toolbar',
-                type : 'basic',
-                link : '/angular-material-elements/toolbar'
-            }
-        ]
-    },
-    {
-        id      : 'layout',
-        title   : 'Layout',
-        type    : 'collapsable',
-        icon    : 'layers',
-        children: [
-            {
-                id   : 'badge',
-                title: 'Badge',
-                type : 'basic',
-                link : '/angular-material-elements/badge'
-            },
-            {
-                id   : 'bottom-sheet',
-                title: 'Bottom Sheet',
-                type : 'basic',
-                link : '/angular-material-elements/bottom-sheet'
-            },
-            {
-                id   : 'card',
-                title: 'Card',
-                type : 'basic',
-                link : '/angular-material-elements/card'
-            },
-            {
-                id   : 'divider',
-                title: 'Divider',
-                type : 'basic',
-                link : '/angular-material-elements/divider'
-            },
-            {
-                id   : 'elevation',
-                title: 'Elevation',
-                type : 'basic',
-                link : '/angular-material-elements/elevation'
-            },
-            {
-                id   : 'expansion-panel',
-                title: 'Expansion Panel',
-                type : 'basic',
-                link : '/angular-material-elements/expansion-panel'
-            },
-            {
-                id   : 'grid-list',
-                title: 'Grid list',
-                type : 'basic',
-                link : '/angular-material-elements/grid-list'
-            },
-            {
-                id   : 'list',
-                title: 'List',
-                type : 'basic',
-                link : '/angular-material-elements/list'
-            },
-            {
-                id   : 'stepper',
-                title: 'Stepper',
-                type : 'basic',
-                link : '/angular-material-elements/stepper'
-            },
-            {
-                id   : 'tabs',
-                title: 'Tabs',
-                type : 'basic',
-                link : '/angular-material-elements/tabs'
-            },
-            {
-                id   : 'tree',
-                title: 'Tree',
-                type : 'basic',
-                link : '/angular-material-elements/tree'
-            }
-        ]
-    },
-    {
-        id      : 'buttons-indicators',
-        title   : 'Buttons & Indicators',
-        type    : 'collapsable',
-        icon    : 'layers',
-        children: [
-            {
-                id   : 'button',
-                title: 'Button',
-                type : 'basic',
-                link : '/angular-material-elements/button'
-            },
-            {
-                id   : 'button-toggle',
-                title: 'Button toggle',
-                type : 'basic',
-                link : '/angular-material-elements/button-toggle'
-            },
-            {
-                id   : 'chips',
-                title: 'Chips',
-                type : 'basic',
-                link : '/angular-material-elements/chips'
-            },
-            {
-                id   : 'icon',
-                title: 'icon',
-                type : 'basic',
-                link : '/angular-material-elements/icon'
-            },
-            {
-                id   : 'progress-spinner',
-                title: 'Progress spinner',
-                type : 'basic',
-                link : '/angular-material-elements/progress-spinner'
-            },
-            {
-                id   : 'progress-bar',
-                title: 'Progress bar',
-                type : 'basic',
-                link : '/angular-material-elements/progress-bar'
-            },
-            {
-                id   : 'ripples',
-                title: 'Ripples',
-                type : 'basic',
-                link : '/angular-material-elements/ripples'
-            }
-        ]
-    },
-    {
-        id      : 'popups-modals',
-        title   : 'Popups & Modals',
-        type    : 'collapsable',
-        icon    : 'layers',
-        children: [
-            {
-                id   : 'dialog',
-                title: 'Dialog',
-                type : 'basic',
-                link : '/angular-material-elements/dialog'
-            },
-            {
-                id   : 'snackbar',
-                title: 'Snackbar',
-                type : 'basic',
-                link : '/angular-material-elements/snackbar'
-            },
-            {
-                id   : 'tooltip',
-                title: 'Tooltip',
-                type : 'basic',
-                link : '/angular-material-elements/tooltip'
-            }
-        ]
-    },
-    {
-        id      : 'data-table',
-        title   : 'Data table',
-        type    : 'collapsable',
-        icon    : 'layers',
-        children: [
-            {
-                id   : 'paginator',
-                title: 'Paginator',
-                type : 'basic',
-                link : '/angular-material-elements/paginator'
-            },
-            {
-                id   : 'sort-header',
-                title: 'Sort header',
-                type : 'basic',
-                link : '/angular-material-elements/sort-header'
-            },
-            {
-                id   : 'table',
-                title: 'Table',
-                type : 'basic',
-                link : '/angular-material-elements/table'
-            }
-        ]
-    },
-    {
         id      : 'applications',
         title   : 'Applications',
         subtitle: 'Example & ready to use apps',
@@ -1010,11 +746,241 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'web'
     },
     {
-        id   : 'ui-elements.angular-material',
-        title: 'Angular Material',
-        type : 'basic',
-        icon : 'layers',
-        link : '/ui/angular-material'
+        id      : 'ui-elements.angular-material',
+        title   : 'Angular Material',
+        type    : 'collapsable',
+        icon    : 'layers',
+        children: [
+            {
+                id   : 'ui-element.angular-material.overview',
+                title: 'Overview',
+                type : 'basic',
+                link : '/ui/angular-material/overview'
+            },
+            {
+                id      : 'ui-element.angular-material.components',
+                title   : 'Components',
+                type    : 'collapsable',
+                children: [
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.autocomplete',
+                        title: 'Autocomplete',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/autocomplete'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.badge',
+                        title: 'Badge',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/badge'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.bottom-sheet',
+                        title: 'Bottom sheet',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/bottom-sheet'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.buttons-indicators.button',
+                        title: 'Button',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/button'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.buttons-indicators.button-toggle',
+                        title: 'Button toggle',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/button-toggle'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.card',
+                        title: 'Card',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/card'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.checkbox',
+                        title: 'Checkbox',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/checkbox'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.buttons-indicators.chips',
+                        title: 'Chips',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/chips'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.datepicker',
+                        title: 'Datepicker',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/datepicker'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.popups-modals.dialog',
+                        title: 'Dialog',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/dialog'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.divider',
+                        title: 'Divider',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/divider'
+                    },
+                    /*{
+                        id   : 'ui-element.angular-material.components.layout.elevation',
+                        title: 'Elevation',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/elevation'
+                    },*/
+                    {
+                        id   : 'ui-element.angular-material.components.layout.expansion-panel',
+                        title: 'Expansion panel',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/expansion'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.form-field',
+                        title: 'Form field',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/form-field'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.grid-list',
+                        title: 'Grid list',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/grid-list'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.buttons-indicators.icon',
+                        title: 'Icon',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/icon'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.input',
+                        title: 'Input',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/input'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.list',
+                        title: 'List',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/list'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.navigation.menu',
+                        title: 'Menu',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/menu'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.buttons-indicators.progress-bar',
+                        title: 'Progress bar',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/progress-bar'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.buttons-indicators.progress-spinner',
+                        title: 'Progress spinner',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/progress-spinner'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.radio-button',
+                        title: 'Radio button',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/radio'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.buttons-indicators.ripples',
+                        title: 'Ripples',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/ripple'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.select',
+                        title: 'Select',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/select'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.navigation.sidenav',
+                        title: 'Sidebar',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/sidenav'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.slider',
+                        title: 'Slider',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/slider'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.form-controls.slide-toggle',
+                        title: 'Slide toggle',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/slide-toggle'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.popups-modals.snackbar',
+                        title: 'Snackbar',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/snack-bar'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.stepper',
+                        title: 'Stepper',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/stepper'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.data-table.table',
+                        title: 'Table',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/table'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.data-table.paginator',
+                        title: 'Table - Paginator',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/paginator'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.data-table.sort-header',
+                        title: 'Table - Sort header',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/sort'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.tabs',
+                        title: 'Tabs',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/tabs'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.navigation.toolbar',
+                        title: 'Toolbar',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/toolbar'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.popups-modals.tooltip',
+                        title: 'Tooltip',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/tooltip'
+                    },
+                    {
+                        id   : 'ui-element.angular-material.components.layout.tree',
+                        title: 'Tree',
+                        type : 'basic',
+                        link : '/ui/angular-material/components/tree'
+                    }
+                ]
+            }
+        ]
     },
     {
         id   : 'ui-elements.cards',

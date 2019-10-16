@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector     : 'colors',
+    selector     : 'angular-material',
     templateUrl  : './angular-material.component.html',
     styleUrls    : ['./angular-material.component.scss'],
     encapsulation: ViewEncapsulation.None

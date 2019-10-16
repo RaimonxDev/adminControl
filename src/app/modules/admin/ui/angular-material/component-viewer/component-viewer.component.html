@@ -1,0 +1,50 @@
+<div class="content-layout fullwidth-standard-normal-scroll docs">
+
+    <div class="header">
+
+        <div class="container">
+
+            <div class="breadcrumb">
+                <span class="path">UI ELEMENTS</span>
+                <span class="separator">/</span>
+                <span class="path current">ANGULAR MATERIAL</span>
+                <span class="separator">/</span>
+                <span class="path current">COMPONENTS</span>
+            </div>
+            <h1>{{componentDocItem.name}}</h1>
+
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="container">
+
+            <nav mat-tab-nav-bar>
+                <a mat-tab-link
+                   [routerLink]="['overview']"
+                   routerLinkActive
+                   [active]="rla1.isActive"
+                   #rla1="routerLinkActive">OVERVIEW</a>
+
+                <a mat-tab-link
+                   [routerLink]="['api']"
+                   routerLinkActive
+                   [active]="rla2.isActive"
+                   #rla2="routerLinkActive">API</a>
+
+                <a mat-tab-link
+                   [routerLink]="['examples']"
+                   routerLinkActive
+                   [active]="rla3.isActive"
+                   #rla3="routerLinkActive">EXAMPLES</a>
+            </nav>
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </div>
+
+</div>
