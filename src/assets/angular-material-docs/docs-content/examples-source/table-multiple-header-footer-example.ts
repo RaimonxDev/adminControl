@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Transaction} from '../table-footer-row/table-footer-row-example';
+// import {Transaction} from '../table-footer-row/table-footer-row-example';
 
 export interface Transaction {
   item: string;
