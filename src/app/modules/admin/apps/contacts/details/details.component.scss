@@ -287,8 +287,9 @@ contacts-details {
 
                     + .mat-form-field {
                         flex: 1 1 auto;
-                        margin-left: 24px;
-                        max-width: 96px;
+                        padding-left: 16px;
+                        max-width: 120px;
+                        width: 100%;
                     }
                 }
             }
@@ -347,6 +348,7 @@ contacts-details {
                 width: 100%;
 
                 .email {
+                    position: relative;
                     align-items: baseline;
 
                     &:hover {
@@ -370,17 +372,20 @@ contacts-details {
 
                         + .mat-form-field {
                             flex: 1 1 auto;
-                            margin-left: 24px;
-                            max-width: 96px;
+                            padding-left: 16px;
+                            max-width: 120px;
+                            width: 100%;
                         }
                     }
 
                     .actions {
+                        position: absolute;
                         display: flex;
                         align-items: center;
+                        right: -80px;
                         width: 80px;
                         padding: 0 8px;
-                        margin-right: -80px;
+                        margin-top: 10px;
 
                         .add-email-field,
                         .remove-email-field {
@@ -482,6 +487,7 @@ contacts-details {
                 width: 100%;
 
                 .phone-number {
+                    position: relative;
                     align-items: baseline;
 
                     &:hover {
@@ -523,17 +529,20 @@ contacts-details {
 
                         + .mat-form-field {
                             flex: 1 1 auto;
-                            margin-left: 24px;
-                            max-width: 96px;
+                            padding-left: 16px;
+                            max-width: 120px;
+                            width: 100%;
                         }
                     }
 
                     .actions {
+                        position: absolute;
                         display: flex;
                         align-items: center;
+                        right: -80px;
                         width: 80px;
                         padding: 0 8px;
-                        margin-right: -80px;
+                        margin-top: 10px;
 
                         .add-phone-number-field,
                         .remove-phone-number-field {

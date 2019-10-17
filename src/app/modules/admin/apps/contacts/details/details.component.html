@@ -80,8 +80,8 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="name edit asm-mat asm-mat-no-subscript"
-                            [appearance]="'standard'">
+            <mat-form-field class="name edit asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                            [appearance]="'fill'">
                 <mat-label>Name</mat-label>
                 <input matInput
                        [formControlName]="'name'"
@@ -228,15 +228,15 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="asm-mat asm-mat-no-subscript"
-                            [appearance]="'standard'">
+            <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                            [appearance]="'fill'">
                 <mat-label>Job title</mat-label>
                 <input matInput
                        [formControlName]="'title'">
             </mat-form-field>
 
-            <mat-form-field class="asm-mat asm-mat-no-subscript"
-                            [appearance]="'standard'">
+            <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                            [appearance]="'fill'">
                 <mat-label>Company</mat-label>
                 <input matInput
                        [formControlName]="'company'"
@@ -283,16 +283,16 @@
             <div class="email"
                  *ngFor="let email of contactForm.get('emails').controls; let i = index; let last = last; trackBy: trackById">
 
-                <mat-form-field class="asm-mat asm-mat-no-subscript"
-                                [appearance]="'standard'">
+                <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                                [appearance]="'fill'">
                     <mat-label>Email</mat-label>
                     <input matInput
                            [formControl]="email.get('email')"
                            [spellcheck]="false">
                 </mat-form-field>
 
-                <mat-form-field class="asm-mat asm-mat-no-subscript"
-                                [appearance]="'standard'">
+                <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                                [appearance]="'fill'">
                     <mat-label>Label</mat-label>
                     <input matInput
                            [formControl]="email.get('label')">
@@ -359,8 +359,8 @@
             <div class="phone-number"
                  *ngFor="let phoneNumber of contactForm.get('phoneNumbers').controls; let i = index; let last = last; trackBy: trackById">
 
-                <mat-form-field class="asm-mat asm-mat-no-subscript"
-                                [appearance]="'standard'">
+                <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                                [appearance]="'fill'">
                     <mat-label>Phone</mat-label>
                     <input matInput
                            [formControl]="phoneNumber.get('number')">
@@ -381,8 +381,8 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="asm-mat asm-mat-no-subscript"
-                                [appearance]="'standard'">
+                <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                                [appearance]="'fill'">
                     <mat-label>Label</mat-label>
                     <input matInput
                            [formControl]="phoneNumber.get('label')">
@@ -430,8 +430,8 @@
         <!-- Edit -->
         <div class="edit"
              *ngIf="editMode">
-            <mat-form-field class="asm-mat asm-mat-no-subscript"
-                            [appearance]="'standard'">
+            <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                            [appearance]="'fill'">
                 <mat-label>Address</mat-label>
                 <input matInput
                        [formControlName]="'address'"
@@ -459,8 +459,8 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="asm-mat asm-mat-no-subscript"
-                            [appearance]="'standard'">
+            <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                            [appearance]="'fill'">
                 <mat-label>Birthday</mat-label>
                 <input matInput
                        [matDatepicker]="birthdayDatepicker"
@@ -493,10 +493,12 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="asm-mat asm-mat-no-subscript"
-                            [appearance]="'standard'">
+            <mat-form-field class="asm-mat asm-mat-no-subscript asm-mat-no-underline"
+                            [appearance]="'fill'">
                 <mat-label>Notes</mat-label>
                 <textarea matInput
+                          cdkTextareaAutosize
+                          cdkAutosizeMaxRows="10"
                           [formControlName]="'notes'"
                           [spellcheck]="false"></textarea>
             </mat-form-field>
