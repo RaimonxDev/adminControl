@@ -983,6 +983,20 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
+        id   : 'ui-elements.third-party',
+        title: 'Third party',
+        type : 'collapsable',
+        icon : 'settings_input_component',
+        children: [
+            {
+                id   : 'ui-elements.third-party.quill-editor',
+                title: 'Quill editor',
+                type : 'basic',
+                link : '/ui/third-party/quill-editor',
+            }
+        ]
+    },
+    {
         id   : 'ui-elements.cards',
         title: 'Cards',
         type : 'basic',
@@ -995,65 +1009,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type : 'basic',
         icon : 'color_lens',
         link : '/ui/colors'
-    },
-    {
-        id   : 'ui-elements.forms',
-        title: 'Forms',
-        type : 'basic',
-        icon : 'ballot',
-        link : '/ui/forms'
-    },
-    {
-        id      : 'ui-elements.helper-classes',
-        title   : 'Helper classes',
-        type    : 'collapsable',
-        icon    : 'help_outline',
-        children: [
-            {
-                id   : 'ui-elements.helper-classes.assembly',
-                title: 'Assembly',
-                type : 'basic',
-                link : '/ui/helper-classes/assembly'
-            },
-            {
-                id   : 'ui-elements.helper-classes.tailwindcss',
-                title: 'TailwindCSS',
-                type : 'basic',
-                link : '/ui/helper-classes/tailwindcss'
-            }
-        ]
-    },
-    {
-        id      : 'ui-elements.icons',
-        title   : 'Icons',
-        type    : 'collapsable',
-        icon    : 'photo',
-        children: [
-            {
-                id   : 'ui-elements.icons.dripicons',
-                title: 'Dripicons',
-                type : 'basic',
-                link : '/ui/icons/dripicons'
-            },
-            {
-                id   : 'ui-elements.icons.iconsmind',
-                title: 'Iconsmind',
-                type : 'basic',
-                link : '/ui/icons/iconsmind'
-            },
-            {
-                id   : 'ui-elements.icons.material-outline',
-                title: 'Material Outline',
-                type : 'basic',
-                link : '/ui/icons/material-outline'
-            },
-            {
-                id   : 'ui-elements.icons.material-twotone',
-                title: 'Material Twotone',
-                type : 'basic',
-                link : '/ui/icons/material-twotone'
-            }
-        ]
     },
     {
         id      : 'ui-elements.content-layouts',
@@ -1224,6 +1179,65 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         ]
                     }
                 ]
+            }
+        ]
+    },
+    {
+        id   : 'ui-elements.form-layouts',
+        title: 'Form layouts',
+        type : 'basic',
+        icon : 'ballot',
+        link : '/ui/form-layouts'
+    },
+    {
+        id      : 'ui-elements.helper-classes',
+        title   : 'Helper classes',
+        type    : 'collapsable',
+        icon    : 'help_outline',
+        children: [
+            {
+                id   : 'ui-elements.helper-classes.assembly',
+                title: 'Assembly',
+                type : 'basic',
+                link : '/ui/helper-classes/assembly'
+            },
+            {
+                id   : 'ui-elements.helper-classes.tailwindcss',
+                title: 'TailwindCSS',
+                type : 'basic',
+                link : '/ui/helper-classes/tailwindcss'
+            }
+        ]
+    },
+    {
+        id      : 'ui-elements.icons',
+        title   : 'Icons',
+        type    : 'collapsable',
+        icon    : 'photo',
+        children: [
+            {
+                id   : 'ui-elements.icons.dripicons',
+                title: 'Dripicons',
+                type : 'basic',
+                link : '/ui/icons/dripicons'
+            },
+            {
+                id   : 'ui-elements.icons.iconsmind',
+                title: 'Iconsmind',
+                type : 'basic',
+                link : '/ui/icons/iconsmind'
+            },
+            {
+                id   : 'ui-elements.icons.material-outline',
+                title: 'Material Outline',
+                type : 'basic',
+                link : '/ui/icons/material-outline'
+            },
+            {
+                id   : 'ui-elements.icons.material-twotone',
+                title: 'Material Twotone',
+                type : 'basic',
+                link : '/ui/icons/material-twotone'
             }
         ]
     },
