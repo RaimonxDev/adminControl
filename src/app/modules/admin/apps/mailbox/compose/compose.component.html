@@ -12,8 +12,7 @@
       novalidate>
 
     <!-- To -->
-    <mat-form-field class="to asm-mat asm-mat-no-underline"
-                    [appearance]="'fill'">
+    <mat-form-field class="to">
         <mat-label>To</mat-label>
         <input matInput
                [formControlName]="'to'">
@@ -33,41 +32,31 @@
     </mat-form-field>
 
     <!-- Cc -->
-    <mat-form-field class="cc asm-mat asm-mat-no-underline"
-                    *ngIf="copyFields.cc"
-                    [appearance]="'fill'">
+    <mat-form-field class="cc"
+                    *ngIf="copyFields.cc">
         <mat-label>Cc</mat-label>
         <input matInput
                [formControlName]="'cc'">
     </mat-form-field>
 
     <!-- Bcc -->
-    <mat-form-field class="bcc asm-mat asm-mat-no-underline"
-                    *ngIf="copyFields.bcc"
-                    [appearance]="'fill'">
+    <mat-form-field class="bcc"
+                    *ngIf="copyFields.bcc">
         <mat-label>Bcc</mat-label>
         <input matInput
                [formControlName]="'bcc'">
     </mat-form-field>
 
     <!-- Subject -->
-    <mat-form-field class="subject asm-mat asm-mat-no-underline"
-                    [appearance]="'fill'">
+    <mat-form-field class="subject">
         <mat-label>Subject</mat-label>
         <input matInput
                [formControlName]="'subject'">
     </mat-form-field>
 
     <!-- Body -->
-    <mat-form-field class="body asm-mat asm-mat-no-underline"
-                    [appearance]="'fill'">
-        <mat-label>Message</mat-label>
-        <textarea class="textarea"
-                  matInput
-                  [formControlName]="'body'"
-                  [placeholder]="'Type your message here'"
-                  [rows]="16"></textarea>
-    </mat-form-field>
+    <quill-editor [formControlName]="'body'"
+                  [modules]="quillModules"></quill-editor>
 
     <div class="actions">
 

@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { QuillModule } from 'ngx-quill';
 import { AsmLookUpByPipeModule, AsmScrollbarModule, AsmVerticalMenuModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
@@ -46,6 +47,7 @@ import { mailboxRoutes } from 'app/modules/admin/apps/mailbox/mailbox.routing';
         MatProgressBarModule,
         MatSelectModule,
         MatSidenavModule,
+        QuillModule.forRoot(),
         AsmLookUpByPipeModule,
         AsmScrollbarModule,
         AsmVerticalMenuModule,

@@ -4,7 +4,9 @@ mailbox-compose {
     display: flex;
     flex-direction: column;
     min-width: 640px;
+    max-width: 960px;
     width: 100%;
+    max-height: 80vh;
 
     @include asm-media-breakpoint('lt-md') {
         min-width: 0;
@@ -36,6 +38,7 @@ mailbox-compose {
         flex: 1 1 auto;
         flex-direction: column;
         padding: 32px;
+        overflow-y: auto;
 
         .to {
 
@@ -58,22 +61,24 @@ mailbox-compose {
             }
         }
 
-        .body {
-
-            textarea {
-                min-height: 80px;
-                max-height: 280px;
-            }
-        }
-
         .actions {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 16px;
+            margin-top: 32px;
+
+            @include asm-media-breakpoint('lt-md') {
+                flex-direction: column;
+                align-items: flex-end;
+                margin-top: 16px;
+            }
 
             .formatting {
                 margin-left: -12px;
+
+                @include asm-media-breakpoint('lt-md') {
+                    margin: 0 -12px 12px 0;
+                }
 
                 button {
 
@@ -91,10 +96,22 @@ mailbox-compose {
 
                     &.discard-button {
                         margin-right: 8px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            span {
+                                display: none;
+                            }
+                        }
                     }
 
                     &.save-button {
                         margin-right: 16px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            span {
+                                display: none;
+                            }
+                        }
                     }
 
                     &.send-button {
@@ -105,6 +122,10 @@ mailbox-compose {
                     .mat-icon {
                         @include asm-icon-size(20);
                         margin-right: 8px;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            margin-right: 0;
+                        }
                     }
                 }
             }

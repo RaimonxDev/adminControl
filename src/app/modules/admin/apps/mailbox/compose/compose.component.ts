@@ -12,6 +12,7 @@ export class MailboxComposeComponent implements OnInit
 {
     composeForm: FormGroup;
     copyFields: { cc: boolean, bcc: boolean };
+    quillModules: any;
 
     /**
      * Constructor
@@ -28,6 +29,20 @@ export class MailboxComposeComponent implements OnInit
         this.copyFields = {
             cc : false,
             bcc: false
+        };
+
+        this.quillModules = {
+            toolbar: [
+                [{font: []}],
+                [{size: ['small', false, 'large', 'huge']}],
+                ['bold', 'italic', 'underline'],
+                [{color: []}, {background: []}],
+                [{align: []}],
+                [{list: 'ordered'}, {list: 'bullet'}],
+                [{indent: '-1'}, {indent: '+1'}],
+                ['blockquote', 'code-block', 'strike'],
+                ['clean']
+            ]
         };
     }
 

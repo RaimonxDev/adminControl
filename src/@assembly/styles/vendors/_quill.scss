@@ -1,0 +1,117 @@
+@import '~quill/dist/quill.snow.css';
+
+// -----------------------------------------------------------------------------------------------------
+// @ Quill editor default style overrides
+// -----------------------------------------------------------------------------------------------------
+
+.ql-toolbar {
+    border-width: 2px !important;
+    border-radius: 6px 6px 0 0;
+    padding: 0 !important;
+
+    .ql-formats {
+        margin: 8px !important;
+    }
+
+    .ql-picker {
+
+        &.ql-expanded {
+
+            .ql-picker-options {
+                z-index: 10 !important;
+            }
+        }
+    }
+}
+
+.ql-container {
+    border-width: 2px !important;
+
+    .ql-editor {
+        min-height: 160px;
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    .ql-toolbar {
+        @if ($is-dark) {
+            background: asm-dark-elevation(1);
+        } @else {
+            background: asm-color($asm-gray, 200);
+        }
+        border-color: map-get($foreground, divider);
+
+        .ql-picker {
+
+            &.ql-expanded {
+
+                .ql-picker-label {
+                    border-color: map-get($foreground, divider);
+                }
+
+                .ql-picker-options {
+                    background: map-get($background, card);
+                    border-color: map-get($foreground, divider);
+                }
+            }
+
+            .ql-picker-label {
+                color: map-get($foreground, text);
+            }
+
+            .ql-picker-options {
+
+                .ql-picker-item {
+                    color: map-get($foreground, text);
+                }
+            }
+        }
+
+        .ql-stroke,
+        .ql-stroke-mitter {
+            stroke: map-get($foreground, icon);
+        }
+
+        .ql-fill {
+            fill: map-get($foreground, icon);
+        }
+
+        button:hover,
+        button:focus,
+        button.ql-active,
+        .ql-picker-label:hover,
+        .ql-picker-label.ql-active,
+        .ql-picker-item:hover,
+        .ql-picker-item.ql-selected {
+            color: map-get($primary, default) !important;
+
+            .ql-stroke,
+            .ql-stroke-mitter {
+                stroke: map-get($primary, default) !important;
+            }
+
+            .ql-fill {
+                fill: map-get($primary, default) !important;
+            }
+        }
+    }
+
+    .ql-container {
+        border-color: map-get($foreground, divider);
+
+        .ql-editor.ql-blank::before {
+            color: map-get($foreground, hint-text);
+        }
+    }
+
+}
