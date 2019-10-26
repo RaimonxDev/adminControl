@@ -412,6 +412,13 @@ export const adminRoutes: Route[] = [
                         ]
                     },
 
+                    // Form layouts
+                    {
+                        path        : 'form-layouts',
+                        loadChildren: () => import('app/modules/admin/ui/form-layouts/form-layouts.module')
+                            .then(m => m.FormLayoutsModule)
+                    },
+
                     // Helper classes
                     {
                         path      : 'helper-classes',

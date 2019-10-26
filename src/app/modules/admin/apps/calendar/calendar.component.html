@@ -54,8 +54,7 @@
                         <mat-icon [svgIcon]="'settings_applications'"></mat-icon>
                     </a>
 
-                    <mat-form-field class="asm-mat asm-mat-dense asm-mat-no-label asm-mat-no-subscript view-changer"
-                                    [appearance]="'outline'">
+                    <mat-form-field class="asm-mat-dense asm-mat-no-subscript view-changer">
                         <mat-select (selectionChange)="changeView(viewChanger.value)"
                                     [value]="view"
                                     #viewChanger="matSelect">
@@ -206,8 +205,7 @@
 
                                 <mat-icon [svgIcon]="'edit'"></mat-icon>
 
-                                <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                                                [appearance]="'fill'">
+                                <mat-form-field class="field asm-mat-no-subscript">
                                     <input matInput
                                            [formControlName]="'title'"
                                            [placeholder]="'Event title'">
@@ -257,8 +255,7 @@
 
                                 <mat-icon [svgIcon]="'event'"></mat-icon>
 
-                                <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                                                [appearance]="'fill'">
+                                <mat-form-field class="field asm-mat-no-subscript">
                                     <mat-select [formControlName]="'calendarId'"
                                                 [panelClass]="'calendar-event-panel-calendar-selector'"
                                                 (change)="$event.stopImmediatePropagation()">
@@ -283,8 +280,7 @@
 
                                 <mat-icon [svgIcon]="'notes'"></mat-icon>
 
-                                <mat-form-field class="field asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                                                [appearance]="'fill'">
+                                <mat-form-field class="field asm-mat-no-subscript">
                                     <textarea matInput
                                               cdkTextareaAutosize
                                               [formControlName]="'description'"

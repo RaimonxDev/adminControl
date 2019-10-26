@@ -42,7 +42,7 @@
             <form [formGroup]="supportForm"
                   novalidate>
 
-                <mat-form-field [appearance]="'standard'">
+                <mat-form-field>
                     <mat-label>Your name</mat-label>
                     <input matInput
                            [formControlName]="'name'"
@@ -52,7 +52,7 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field [appearance]="'standard'">
+                <mat-form-field>
                     <mat-label>Your e-mail address</mat-label>
                     <input matInput
                            [formControlName]="'email'"
@@ -65,7 +65,7 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field [appearance]="'standard'">
+                <mat-form-field>
                     <mat-label>In a few words, tell us what your enquiry is about</mat-label>
                     <input matInput
                            [formControlName]="'subject'"
@@ -75,11 +75,11 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field [appearance]="'standard'">
+                <mat-form-field>
                     <mat-label>Provide a detailed description</mat-label>
                     <textarea matInput
                               [cdkTextareaAutosize]
-                              [cdkAutosizeMinRows]="1"
+                              [cdkAutosizeMinRows]="2"
                               [cdkAutosizeMaxRows]="5"
                               [formControlName]="'message'"
                               [required]="true"></textarea>

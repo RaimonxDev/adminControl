@@ -42,16 +42,14 @@
             </mat-month-view>
         </div>
 
-        <mat-form-field class="time start-time asm-mat"
-                        *ngIf="timeRange"
-                        [appearance]="'standard'">
+        <mat-form-field class="asm-mat-no-subscript time start-time"
+                        *ngIf="timeRange">
             <input matInput
                    [autocomplete]="'off'"
                    [formControl]="startTimeFormControl"
                    (blur)="updateStartTime($event)"
                    tabindex="3">
             <mat-label>Start time</mat-label>
-            <mat-error>Invalid time</mat-error>
         </mat-form-field>
 
     </div>
@@ -78,15 +76,13 @@
             </mat-month-view>
         </div>
 
-        <mat-form-field class="time end-time asm-mat"
-                        *ngIf="timeRange"
-                        [appearance]="'standard'">
+        <mat-form-field class="asm-mat-no-subscript time end-time"
+                        *ngIf="timeRange">
             <input matInput
                    [formControl]="endTimeFormControl"
                    (blur)="updateEndTime($event)"
                    tabindex="4">
             <mat-label>End time</mat-label>
-            <mat-error>Invalid time</mat-error>
         </mat-form-field>
 
     </div>

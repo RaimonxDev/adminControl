@@ -62,10 +62,6 @@ contacts-details {
                 top: auto;
                 right: auto;
             }
-
-            .mat-icon {
-                @include asm-icon-size(20);
-            }
         }
 
         > .avatar-and-name {
@@ -180,11 +176,6 @@ contacts-details {
 
                     .mat-form-field-flex {
                         padding-top: 0;
-
-                        input {
-                            font-size: 32px;
-                            font-weight: 700;
-                        }
                     }
                 }
             }
@@ -247,16 +238,11 @@ contacts-details {
 
         > .job {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin-top: 32px;
-
-            &.editing {
-                align-items: baseline;
-            }
 
             .icon {
                 margin: 0 30px 0 -50px;
-                @include asm-icon-size(20);
             }
 
             .view {
@@ -301,12 +287,14 @@ contacts-details {
             margin-top: 32px;
 
             &.editing {
-                align-items: baseline;
+
+                .icon {
+                    margin-top: 16px;
+                }
             }
 
             .icon {
                 margin: 0 30px 0 -50px;
-                @include asm-icon-size(20);
             }
 
             .email {
@@ -349,7 +337,6 @@ contacts-details {
 
                 .email {
                     position: relative;
-                    align-items: baseline;
 
                     &:hover {
 
@@ -422,12 +409,14 @@ contacts-details {
             margin-top: 32px;
 
             &.editing {
-                align-items: baseline;
+
+                .icon {
+                    margin-top: 16px;
+                }
             }
 
             .icon {
                 margin: 0 30px 0 -50px;
-                @include asm-icon-size(20);
             }
 
             .phone-number {
@@ -488,7 +477,6 @@ contacts-details {
 
                 .phone-number {
                     position: relative;
-                    align-items: baseline;
 
                     &:hover {
 
@@ -575,16 +563,11 @@ contacts-details {
 
         > .address {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin-top: 32px;
-
-            &.editing {
-                align-items: baseline;
-            }
 
             .icon {
                 margin: 0 30px 0 -50px;
-                @include asm-icon-size(20);
             }
 
             .view {
@@ -608,13 +591,8 @@ contacts-details {
             align-items: center;
             margin-top: 32px;
 
-            &.editing {
-                align-items: baseline;
-            }
-
             .icon {
                 margin: 0 30px 0 -50px;
-                @include asm-icon-size(20);
             }
 
             .view {
@@ -642,13 +620,12 @@ contacts-details {
             &.editing {
 
                 .icon {
-                    margin-top: 24px;
+                    margin-top: 16px;
                 }
             }
 
             .icon {
                 margin: 0 30px 0 -50px;
-                @include asm-icon-size(20);
             }
 
             .view {
@@ -669,11 +646,8 @@ contacts-details {
                     width: 100%;
 
                     textarea {
-                        margin: 0;
-                        padding: 0;
-                        overflow: hidden;
                         white-space: pre-line;
-                        line-height: 1.8;
+                        line-height: 1.7 !important;
                     }
                 }
             }
@@ -729,6 +703,10 @@ contacts-details {
 
         &:not(:empty) {
             padding: 8px 0;
+
+            &.editing {
+                padding: 16px 0;
+            }
         }
 
         .mat-checkbox {
@@ -752,6 +730,11 @@ contacts-details {
         .tag-edit {
             display: flex;
             align-items: center;
+            margin-bottom: 16px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
 
             .mat-icon-button {
                 margin-left: 4px;
@@ -762,9 +745,8 @@ contacts-details {
             }
 
             .mat-form-field {
-                top: 1px;
                 min-width: 0;
-                margin-right: 16px;
+                margin: 0 16px;
             }
         }
     }

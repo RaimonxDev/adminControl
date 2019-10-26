@@ -7,7 +7,8 @@ $typography: mat-typography-config(
     $font-family: 'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     $title: mat-typography-level(20px, 32px, 600),
     $body-2: mat-typography-level(14px, 24px, 600),
-    $button: mat-typography-level(14px, 14px, 500)
+    $button: mat-typography-level(14px, 14px, 500),
+    $input: mat-typography-level(14px, 1, 400)
 );
 
 // Setup the typography

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
@@ -32,14 +33,20 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     private _tagsPanelOverlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('tagsPanelOrigin', {static: false})
-    private _tagsPanelOrigin: ElementRef;
+    @ViewChild('avatar', {static: false})
+    private _avatar: ElementRef;
+
+    @ViewChild('notes', {
+        static: false,
+        read  : CdkTextareaAutosize
+    })
+    private _notesCdkTextareaAutosize: CdkTextareaAutosize;
 
     @ViewChild('tagsPanel', {static: false})
     private _tagsPanel: TemplateRef<any>;
 
-    @ViewChild('avatar', {static: false})
-    private _avatar: ElementRef;
+    @ViewChild('tagsPanelOrigin', {static: false})
+    private _tagsPanelOrigin: ElementRef;
 
     /**
      * Constructor
@@ -252,6 +259,14 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     toggleEditMode(): void
     {
         this.editMode = !this.editMode;
+
+        // Force resize the text area
+        setTimeout(() => {
+            if ( this._notesCdkTextareaAutosize )
+            {
+                this._notesCdkTextareaAutosize.resizeToFitContent(true);
+            }
+        });
     }
 
     /**

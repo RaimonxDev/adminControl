@@ -7,8 +7,7 @@
     <div class="row interval-frequency">
         <div class="label">Repeat every</div>
         <div class="field">
-            <mat-form-field class="interval asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            [appearance]="'fill'">
+            <mat-form-field class="interval asm-mat-no-subscript">
                 <input type="number"
                        matInput
                        [autocomplete]="'off'"
@@ -16,8 +15,7 @@
                        [min]="1">
             </mat-form-field>
 
-            <mat-form-field class="frequency asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            [appearance]="'fill'">
+            <mat-form-field class="frequency asm-mat-no-subscript">
                 <mat-select [formControlName]="'freq'">
                     <mat-option [value]="'DAILY'">day(s)</mat-option>
                     <mat-option [value]="'WEEKLY'">week(s)</mat-option>
@@ -52,8 +50,7 @@
          *ngIf="recurrenceForm.get('freq').value === 'MONTHLY'">
         <div class="label">Repeat on</div>
         <div class="field">
-            <mat-form-field class="asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            [appearance]="'fill'">
+            <mat-form-field class="asm-mat-no-subscript">
                 <mat-select [formControlName]="'repeatOn'">
                     <mat-option [value]="'date'">Monthly on day {{recurrenceForm.get('monthly.date').value}}</mat-option>
                     <mat-option [value]="'nthWeekday'">Monthly on the {{nthWeekdayText}}</mat-option>
@@ -67,8 +64,7 @@
          [formGroupName]="'end'">
         <div class="label">Ends</div>
         <div class="field">
-            <mat-form-field class="end-option asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            [appearance]="'fill'">
+            <mat-form-field class="end-option asm-mat-no-subscript">
                 <mat-select [formControlName]="'type'">
                     <mat-option [value]="'never'">Never</mat-option>
                     <mat-option [value]="'until'">On</mat-option>
@@ -76,9 +72,8 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="end-value until asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            *ngIf="recurrenceForm.get('end.type').value === 'until'"
-                            [appearance]="'fill'">
+            <mat-form-field class="end-value until asm-mat-no-subscript"
+                            *ngIf="recurrenceForm.get('end.type').value === 'until'">
                 <input matInput
                        [matDatepicker]="untilDatePicker"
                        [formControlName]="'until'">
@@ -87,9 +82,8 @@
                 <mat-datepicker #untilDatePicker></mat-datepicker>
             </mat-form-field>
 
-            <mat-form-field class="end-value count asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                            *ngIf="recurrenceForm.get('end.type').value === 'count'"
-                            [appearance]="'fill'">
+            <mat-form-field class="end-value count asm-mat-no-subscript"
+                            *ngIf="recurrenceForm.get('end.type').value === 'count'">
                 <input type="number"
                        matInput
                        [autocomplete]="'off'"

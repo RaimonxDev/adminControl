@@ -185,17 +185,6 @@ mailbox-details {
                 .toggle-starred,
                 .toggle-labels {
                     margin-right: 8px;
-
-                    .mat-icon {
-                        @include asm-icon-size(20);
-                    }
-                }
-
-                .other-actions {
-
-                    .mat-icon {
-                        @include asm-icon-size(20);
-                    }
                 }
             }
         }
@@ -220,7 +209,6 @@ mailbox-details {
 
                 .mat-icon {
                     margin-right: 8px;
-                    @include asm-icon-size(20);
                 }
 
                 div {
@@ -231,12 +219,12 @@ mailbox-details {
 
             .files {
                 display: flex;
-                flex-direction: column;
+                flex-wrap: wrap;
 
                 .file {
                     display: flex;
                     align-items: center;
-                    margin-top: 24px;
+                    margin: 24px 24px 0 0;
 
                     &:last-child {
                         margin-right: 0;
@@ -308,7 +296,7 @@ mailbox-details {
 
                 .mat-icon {
                     margin-right: 8px;
-                    @include asm-icon-size(16);
+                    @include asm-icon-size(20);
                 }
             }
         }
@@ -327,6 +315,7 @@ mailbox-details {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                margin-top: 32px;
 
                 .formatting {
 

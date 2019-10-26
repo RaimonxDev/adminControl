@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AssemblyHelperClassesComponent implements OnInit
 {
     demoForm: FormGroup;
+    formFieldHelpers: string[];
 
     /**
      * Constructor
@@ -20,6 +21,8 @@ export class AssemblyHelperClassesComponent implements OnInit
         private _formBuilder: FormBuilder
     )
     {
+        // Set the default
+        this.formFieldHelpers = [''];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -36,5 +39,17 @@ export class AssemblyHelperClassesComponent implements OnInit
             fieldInput : ['Demo value', [Validators.required]],
             fieldSelect: ['', [Validators.required]]
         });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Get the form field helpers as string
+     */
+    getFormFieldHelpersAsString(): string
+    {
+        return this.formFieldHelpers.join(' ');
     }
 }

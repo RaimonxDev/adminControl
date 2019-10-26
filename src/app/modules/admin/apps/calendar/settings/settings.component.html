@@ -22,7 +22,7 @@
             <form [formGroup]="settingsForm"
                   novalidate>
 
-                <mat-form-field [appearance]="'standard'">
+                <mat-form-field>
                     <mat-label>Date format</mat-label>
                     <mat-select [formControlName]="'dateFormat'">
                         <mat-option [value]="'ll'">Aug 20, {{year}}</mat-option>
@@ -32,7 +32,7 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field [appearance]="'standard'">
+                <mat-form-field>
                     <mat-label>Time format</mat-label>
                     <mat-select [formControlName]="'timeFormat'">
                         <mat-option [value]="'12'">1:00pm</mat-option>
@@ -40,7 +40,7 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field [appearance]="'standard'">
+                <mat-form-field>
                     <mat-label>Start week on</mat-label>
                     <mat-select [formControlName]="'startWeekOn'">
                         <mat-option [value]="6">Saturday</mat-option>

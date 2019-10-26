@@ -51,12 +51,12 @@
 
     <!-- Title -->
     <div class="title">
-        <mat-form-field class="asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-hover-underline"
-                        [appearance]="'standard'">
+        <mat-form-field class="asm-mat-no-subscript">
+            <mat-label>{{task.type === 'task' ? 'Task title' : 'Section title'}}</mat-label>
             <textarea matInput
-                      cdkTextareaAutosize
                       [formControlName]="'title'"
-                      [placeholder]="task.type === 'task' ? 'Task title' : 'Section title'"
+                      cdkTextareaAutosize
+                      [cdkAutosizeMinRows]="2"
                       [spellcheck]="false"
                       #titleField></textarea>
         </mat-form-field>
@@ -132,15 +132,15 @@
                         <ng-container *ngIf="tagsEditMode">
                             <div class="tag-edit"
                                  *ngFor="let tag of filteredTags; trackBy: trackById">
-                                <button mat-icon-button
-                                        (click)="deleteTag(tag)">
-                                    <mat-icon [svgIcon]="'delete'"></mat-icon>
-                                </button>
-                                <mat-form-field class="asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-hover-underline"
-                                                [appearance]="'standard'">
+                                <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
                                     <input matInput
                                            [value]="tag.title"
                                            (input)="updateTagTitle(tag, $event)">
+                                    <button mat-icon-button
+                                            (click)="deleteTag(tag)"
+                                            matSuffix>
+                                        <mat-icon [svgIcon]="'delete'"></mat-icon>
+                                    </button>
                                 </mat-form-field>
                             </div>
                         </ng-container>
@@ -285,12 +285,12 @@
     <!-- Notes -->
     <div class="notes">
 
-        <mat-form-field class="asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-hover-underline"
-                        [appearance]="'standard'">
+        <mat-form-field class="asm-mat-no-subscript">
+            <mat-label>Notes</mat-label>
             <textarea matInput
-                      cdkTextareaAutosize
                       [formControlName]="'notes'"
-                      [placeholder]="'Notes'"
+                      cdkTextareaAutosize
+                      [cdkAutosizeMinRows]="2"
                       [spellcheck]="false"></textarea>
         </mat-form-field>
 

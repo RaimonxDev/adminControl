@@ -61,8 +61,6 @@ tasks-details {
                 textarea {
                     margin: 0;
                     padding: 0;
-                    font-size: 28px;
-                    font-weight: 700;
                     line-height: 1.25;
                     overflow: hidden;
                 }
@@ -128,7 +126,7 @@ tasks-details {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            margin: 32px -16px 0 -8px;
+            margin: 16px -16px 0 -8px;
 
             .priority {
                 min-height: 48px;
@@ -272,6 +270,10 @@ tasks-details {
 
         &:not(:empty) {
             padding: 8px 0;
+
+            &.editing {
+                padding: 16px 0;
+            }
         }
 
         .mat-checkbox {
@@ -295,6 +297,11 @@ tasks-details {
         .tag-edit {
             display: flex;
             align-items: center;
+            margin-bottom: 16px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
 
             .mat-icon-button {
                 margin-left: 4px;
@@ -305,9 +312,8 @@ tasks-details {
             }
 
             .mat-form-field {
-                top: 1px;
                 min-width: 0;
-                margin-right: 16px;
+                margin: 0 16px;
             }
         }
     }

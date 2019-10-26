@@ -116,314 +116,41 @@
 // @ Form fields
 // -----------------------------------------------------------------------------------------------------
 
-// ----------------------------------------------------
-// Global
-// ----------------------------------------------------
+// Assembly only uses 'fill' style form fields and therefore
+// only provides fixes and tweaks for that style
+.mat-form-field.mat-form-field-appearance-fill {
 
-// Add and min-width and min-height to prefix and suffix
-// areas for better scaling and alignment
-.mat-form-field {
-
-    .mat-form-field-prefix,
-    .mat-form-field-suffix {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        .mat-icon-button {
-            min-width: 40px;
-            min-height: 40px;
-        }
-
-        .mat-icon {
-            font-size: 20px !important;
-        }
-    }
-
-    .mat-form-field-prefix {
-
-        .mat-icon-button {
-            margin-left: -8px;
-        }
-    }
-
-    .mat-form-field-suffix {
-
-        .mat-icon-button {
-            margin-right: -8px;
-        }
-    }
-}
-
-// ----------------------------------------------------
-// Legacy
-// ----------------------------------------------------
-.mat-form-field.mat-form-field-appearance-legacy {
-
-}
-
-// ----------------------------------------------------
-// Standard
-// ----------------------------------------------------
-.mat-form-field.mat-form-field-appearance-standard {
-
-}
-
-// Simplifies the form field to make it suitable
-// for smaller spaces and non-form usages
-.asm-mat {
-
-    &.mat-form-field.mat-form-field-appearance-standard {
+    // Adjustments for no mat-label
+    &:not(.mat-form-field-has-label) {
 
         .mat-form-field-wrapper {
-
-            // Remove position absolute from the
-            // underline to make things easier
-            .mat-form-field-underline {
-                position: relative;
-                bottom: 0;
-            }
-        }
-
-        // Makes mat-select usable as prefix
-        // and suffix by default
-        .mat-form-field-prefix,
-        .mat-form-field-suffix {
-
-            > .mat-select {
-                display: flex;
-                align-items: center;
-                margin-right: 8px;
-
-                .mat-select-trigger {
-                    display: flex;
-                    align-items: center;
-
-                    .mat-select-value {
-                        display: flex;
-                        max-width: none;
-                    }
-
-                    .mat-select-arrow-wrapper {
-                        display: flex;
-                        transform: none;
-                        margin-left: 8px;
-                    }
-                }
-            }
-        }
-    }
-
-    // Disables the floating label
-    &.asm-mat-no-label {
-
-        &.mat-form-field.mat-form-field-appearance-standard {
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-flex {
-                    padding-top: 0;
-
-                    .mat-form-field-infix {
-                        border-top: 0;
-
-                        .mat-form-field-label-wrapper {
-                            display: none !important;
-                        }
-                    }
-                }
-            }
-
-            // Select
-            .mat-select {
-
-                .mat-select-arrow-wrapper {
-                    transform: translateY(0);
-                }
-            }
-        }
-    }
-
-    // Removes subscript space
-    &.asm-mat-no-subscript,
-    &.asm-mat-no-hint,
-    &.asm-mat-no-error {
-
-        &.mat-form-field.mat-form-field-appearance-standard {
-
-            .mat-form-field-wrapper {
-                padding-bottom: 0;
-
-                .mat-form-field-subscript-wrapper {
-                    display: none !important;
-                }
-            }
-        }
-    }
-
-    // Removes underline
-    &.asm-mat-no-underline {
-
-        &.mat-form-field.mat-form-field-appearance-standard {
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-underline {
-                    display: none !important;
-                }
-            }
-        }
-    }
-
-    // Shows the underline only on hover and focused
-    &.asm-mat-hover-underline {
-
-        &.mat-form-field.mat-form-field-appearance-standard {
-
-            &:hover,
-            &.mat-focused {
-
-                .mat-form-field-wrapper {
-
-                    .mat-form-field-underline {
-                        opacity: 1;
-                    }
-                }
-            }
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-underline {
-                    transition: opacity 125ms cubic-bezier(0.4, 0.0, 0.2, 1);
-                    opacity: 0;
-                }
-            }
-        }
-    }
-}
-
-// ----------------------------------------------------
-// Outline
-// ----------------------------------------------------
-
-// Simplifies the form field to make it suitable
-// for smaller spaces and non-form usages
-.asm-mat {
-
-    &.mat-form-field.mat-form-field-appearance-outline {
-
-        .mat-form-field-wrapper {
-            margin: 0;
-            padding-top: 1.34375em;
 
             .mat-form-field-flex {
-                align-items: center;
-                min-height: 48px;
-                padding: 0 1.25em;
-                margin-top: 0;
 
-                // Prefix & Suffix
-                .mat-form-field-prefix,
-                .mat-form-field-suffix {
-                    top: 0;
-
-                    .mat-icon {
-                        font-size: 24px;
-                        line-height: normal;
-                    }
-                }
-
-                // Outline
-                .mat-form-field-outline {
-                    top: 0;
-                    overflow: visible;
-
-                    .mat-form-field-outline-start,
-                    .mat-form-field-outline-gap,
-                    .mat-form-field-outline-end {
-                        border-width: 1px
-                    }
-                }
-
-                // Infix
                 .mat-form-field-infix {
-                    border-top: none;
-                    padding: 0 8px;
-                    line-height: normal;
+
+                    [matInputPrefix],
+                    [matInputSuffix] {
+                        margin-top: 0;
+                        opacity: 1 !important;
+                    }
 
                     .mat-input-element {
-                        line-height: normal;
                         margin-top: 0;
+                        transform: none !important;
                     }
 
-                    .mat-form-field-label-wrapper {
-                        top: 0;
-                        padding: 0 8px;
-                        overflow: visible;
-
-                        .mat-form-field-label {
-                            top: 0;
-                            margin-top: 0;
-                            padding: 0 8px;
-                            line-height: normal;
-                        }
+                    // Textarea
+                    textarea {
+                        margin: 12px 0 !important;
+                        min-height: 48px !important;
                     }
 
                     // Select
                     .mat-select {
 
-                        .mat-select-trigger {
-                            display: flex;
-                            flex: 1;
-                            width: 100%;
-                            align-items: center;
-                            justify-content: space-between;
-
-                            .mat-select-value {
-                                display: flex;
-                                flex: 1;
-                                max-width: none;
-                                line-height: normal;
-                            }
-
-                            .mat-select-arrow-wrapper {
-                                display: flex;
-                                transform: translateY(25%);
-                            }
-                        }
-                    }
-                }
-            }
-
-            .mat-form-field-subscript-wrapper {
-                padding: 0 16px;
-            }
-        }
-    }
-
-    // Rounded
-    &.asm-mat-rounded {
-
-        &.mat-form-field.mat-form-field-appearance-outline {
-
-            &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
-            &.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-                transform: translateY(-2.39373em) scale(0.8);
-            }
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-flex {
-                    padding: 0 16px;
-
-                    .mat-form-field-outline {
-                        border: 1px solid;
-                        border-radius: 999px;
-
-                        .mat-form-field-outline-start,
-                        .mat-form-field-outline-gap,
-                        .mat-form-field-outline-end {
-                            display: none !important
+                        .mat-select-value {
+                            top: 0 !important;
                         }
                     }
                 }
@@ -431,115 +158,278 @@
         }
     }
 
-    // Disables the floating label
-    &.asm-mat-no-label {
+    // Fix the arrow for native select
+    &.mat-form-field-type-mat-native-select {
 
-        &.mat-form-field.mat-form-field-appearance-outline {
+        .mat-form-field-infix {
 
-            .mat-form-field-wrapper {
-
-                .mat-form-field-flex {
-
-                    .mat-form-field-infix {
-
-                        .mat-form-field-label-wrapper {
-                            display: none !important;
-                        }
-                    }
-                }
+            &:after {
+                margin-top: -3px;
             }
         }
     }
 
-    // Removes subscript space
-    &.asm-mat-no-subscript,
-    &.asm-mat-no-hint,
-    &.asm-mat-no-error {
-
-        &.mat-form-field.mat-form-field-appearance-outline {
-
-            .mat-form-field-wrapper {
-                padding-bottom: 0;
-
-                .mat-form-field-subscript-wrapper {
-                    display: none !important;
-                    height: 0 !important;
-                }
-            }
-        }
-    }
-
-    // Makes the form field denser by removing
-    // the extra padding around
-    &.asm-mat-dense {
-
-        &.mat-form-field.mat-form-field-appearance-outline {
-
-            .mat-form-field-wrapper {
-                padding-top: 0;
-            }
-        }
-    }
-}
-
-// ----------------------------------------------------
-// Fill
-// ----------------------------------------------------
-
-// Simplifies the form field to make it suitable
-// for smaller spaces and non-form usages
-.asm-mat {
-
-    &.mat-form-field.mat-form-field-appearance-fill {
+    // Show input prefix and suffix on label float
+    &.mat-form-field-should-float {
 
         .mat-form-field-wrapper {
 
             .mat-form-field-flex {
-                align-items: center;
-                min-height: 48px;
-                border-radius: 6px;
-                padding: 0.75em 1.25em 0 1.25em;
 
-                .mat-form-field-prefix {
+                .mat-form-field-infix {
+
+                    [matInputPrefix],
+                    [matInputSuffix] {
+                        opacity: 1;
+                        transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                    }
+                }
+            }
+        }
+    }
+
+    // Default style tweaks and enhancements
+    .mat-form-field-wrapper {
+        margin-bottom: 12px;
+
+        .mat-form-field-flex {
+            display: flex;
+            align-items: stretch;
+            min-height: 3.5em;
+            border-radius: 4px;
+            padding: 0 1em;
+            border-width: 2px;
+            border-style: solid;
+
+            .mat-form-field-prefix {
+
+                .mat-icon {
                     margin-right: 12px;
                 }
+            }
 
-                .mat-form-field-suffix {
+            .mat-form-field-suffix {
+
+                .mat-icon {
                     margin-left: 12px;
                 }
             }
 
-            // Remove position absolute from the
-            // underline to make things easier
-            .mat-form-field-underline {
-                position: relative;
-                bottom: 0;
-            }
-        }
-
-        // Makes mat-select usable as prefix
-        // and suffix by default
-        .mat-form-field-prefix,
-        .mat-form-field-suffix {
-
-            > .mat-select {
-                display: flex;
+            .mat-form-field-prefix,
+            .mat-form-field-suffix {
+                display: inline-flex;
                 align-items: center;
+                justify-content: center;
 
-                .mat-select-trigger {
+                * {
+                    min-height: 16px;
+                    line-height: normal;
+                }
+
+                .mat-icon-button {
+                    width: 40px;
+                    min-width: 40px;
+                    height: 40px;
+                    min-height: 40px;
+                }
+
+                // Remove the margins from the mat-icon
+                // if it's inside a button
+                .mat-button,
+                .mat-raised-button,
+                .mat-icon-button,
+                .mat-stroked-button,
+                .mat-flat-button,
+                .mat-fab,
+                .mat-mini-fab {
+
+                    .mat-icon {
+                        margin: 0 !important;
+                    }
+                }
+
+                // Make mat-select usable as
+                // prefix and suffix
+                .mat-select {
                     display: flex;
                     align-items: center;
 
-                    .mat-select-value {
+                    .mat-select-trigger {
                         display: flex;
-                        max-width: none;
+                        align-items: center;
+
+                        .mat-select-value {
+                            display: flex;
+                            max-width: none;
+
+                            mat-select-trigger {
+
+                                .mat-icon {
+                                    margin: 0 !important;
+                                }
+                            }
+                        }
+
+                        .mat-select-arrow-wrapper {
+                            display: flex;
+                            align-items: center;
+                            transform: none;
+                            margin-left: 8px;
+
+                            .mat-select-arrow {
+                                min-height: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .mat-form-field-prefix {
+
+                .mat-icon-button {
+                    margin: 0 4px 0 -8px;
+                }
+
+                .mat-select {
+                    margin-right: 12px;
+                }
+            }
+
+            .mat-form-field-suffix {
+
+                .mat-icon-button {
+                    margin: 0 -8px 0 4px;
+                }
+
+                .mat-select {
+                    margin-left: 12px;
+                }
+            }
+
+            .mat-form-field-infix {
+                display: flex;
+                align-items: center;
+                min-height: 48px;
+                padding: 0;
+                border: 0;
+
+                [matInputPrefix],
+                [matInputSuffix] {
+                    display: flex;
+                    align-items: center;
+                    min-height: 16px;
+                    margin-top: 0;
+                    opacity: 0;
+                    line-height: normal;
+                    transform: translateY(0.6em);
+                }
+
+                [matInputPrefix] {
+                    order: 1;
+                }
+
+                [matInputSuffix] {
+                    order: 3;
+                }
+
+                .mat-input-element {
+                    order: 2;
+                    min-height: 16px;
+                    margin-top: 0;
+                    line-height: normal;
+                    transform: translateY(0.6em);
+                }
+
+                // Textarea
+                textarea.mat-input-element {
+                    display: flex;
+                    align-self: stretch;
+                    min-height: 0;
+                    margin: 1.7em 0 0.5em 0;
+                    padding: 4px 0;
+                    transform: none;
+                    line-height: 1.5;
+
+                    + .mat-form-field-label-wrapper {
+                        top: 1.28571em;
+                        transform: none;
+                    }
+                }
+
+                // Select
+                .mat-select {
+
+                    .mat-select-placeholder {
+                        min-height: 16px;
+                        line-height: normal;
+                    }
+
+                    .mat-select-value {
+                        position: relative;
+                        top: 8px;
+                        min-height: 16px;
+                        line-height: normal;
                     }
 
                     .mat-select-arrow-wrapper {
-                        display: flex;
-                        transform: none;
-                        margin-left: 8px;
+                        transform: translateY(0);
+
+                        .mat-select-arrow {
+                            margin: 0 0 0 8px;
+                        }
                     }
+                }
+
+                // Chips
+                .mat-chip-list {
+                    width: 100%;
+
+                    .mat-chip-input {
+                        margin: 0 0 0 8px;
+                    }
+                }
+
+                .mat-form-field-label-wrapper {
+                    top: 50%;
+                    transform: translateY(-50%);
+                    height: auto;
+                    padding-top: 0;
+                    overflow: visible;
+
+                    .mat-form-field-label {
+                        position: relative;
+                        top: 0;
+                        min-height: 16px;
+                        margin-top: 0;
+                        line-height: normal;
+                    }
+                }
+            }
+        }
+
+        // Remove the underline
+        .mat-form-field-underline {
+            display: none;
+        }
+
+        // Subscript tweaks
+        .mat-form-field-subscript-wrapper {
+            padding: 0 16px;
+        }
+    }
+
+    // Removes subscript space
+    &.asm-mat-no-subscript {
+
+        &.mat-form-field.mat-form-field-appearance-fill {
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0;
+                margin-bottom: 0;
+
+                .mat-form-field-subscript-wrapper {
+                    display: none !important;
+                    height: 0 !important;
                 }
             }
         }
@@ -553,75 +443,50 @@
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
-                    border-radius: 999px;
+                    border-radius: 28px;
                 }
             }
         }
     }
 
-    // Disables the floating label
-    &.asm-mat-no-label {
+    // Dense
+    &.asm-mat-dense {
 
         &.mat-form-field.mat-form-field-appearance-fill {
 
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
-                    padding-top: 0;
+                    min-height: 2em;
+
+                    .mat-form-field-prefix,
+                    .mat-form-field-suffix {
+
+                        .mat-icon-button {
+                            width: 32px;
+                            min-width: 32px;
+                            height: 32px;
+                            min-height: 32px;
+                        }
+                    }
 
                     .mat-form-field-infix {
-                        border-top: 0;
-                        padding: 0;
-
-                        // Textarea
-                        textarea {
-                            margin: 16px 0;
-                        }
-
-                        .mat-form-field-label-wrapper {
-                            display: none !important;
-                        }
+                        min-height: 40px;
                     }
                 }
             }
-
-            // Select
-            .mat-select {
-
-                .mat-select-arrow-wrapper {
-                    transform: translateY(0);
-                }
-            }
         }
-    }
 
-    // Removes subscript space
-    &.asm-mat-no-subscript,
-    &.asm-mat-no-hint,
-    &.asm-mat-no-error {
+        // Rounded
+        &.asm-mat-rounded {
 
-        &.mat-form-field.mat-form-field-appearance-fill {
+            &.mat-form-field.mat-form-field-appearance-fill {
 
-            .mat-form-field-wrapper {
-                padding-bottom: 0;
+                .mat-form-field-wrapper {
 
-                .mat-form-field-subscript-wrapper {
-                    display: none !important;
-                    height: 0 !important;
-                }
-            }
-        }
-    }
-
-    // Removes underline
-    &.asm-mat-no-underline {
-
-        &.mat-form-field.mat-form-field-appearance-fill {
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-underline {
-                    display: none !important;
+                    .mat-form-field-flex {
+                        border-radius: 20px;
+                    }
                 }
             }
         }
@@ -669,6 +534,7 @@ textarea.mat-input-element {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
     // -----------------------------------------------------------------------------------------------------
@@ -895,153 +761,56 @@ textarea.mat-input-element {
     // @ Form fields
     // -----------------------------------------------------------------------------------------------------
 
-    // ----------------------------------------------------
-    // Legacy
-    // ----------------------------------------------------
-    .mat-form-field.mat-form-field-appearance-legacy {
-
-        &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
-        .mat-hint {
-            color: map-get($foreground, secondary-text);
-        }
-
-        &:not(.mat-form-field-invalid) {
-
-            .mat-form-field-underline {
-                @if ($is-dark) {
-                    background-color: asm-color($asm-gray, 600);
-                } @else {
-                    background-color: asm-color($asm-gray, 400);
-                }
-            }
-
-            .mat-form-field-ripple {
-                @if ($is-dark) {
-                    background-color: asm-color($asm-gray, 600);
-                } @else {
-                    background-color: asm-color($asm-gray, 400);
-                }
-            }
-        }
-    }
-
-    // ----------------------------------------------------
-    // Standard
-    // ----------------------------------------------------
-    .mat-form-field.mat-form-field-appearance-standard {
-
-        &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
-        .mat-hint {
-            color: map-get($foreground, secondary-text);
-        }
-
-        &:not(.mat-form-field-invalid) {
-
-            .mat-form-field-underline {
-                @if ($is-dark) {
-                    background-color: asm-color($asm-gray, 600);
-                } @else {
-                    background-color: asm-color($asm-gray, 400);
-                }
-
-                .mat-form-field-ripple {
-                    @if ($is-dark) {
-                        background-color: asm-color($asm-gray, 600);
-                    } @else {
-                        background-color: asm-color($asm-gray, 400);
-                    }
-                }
-            }
-        }
-    }
-
-    // ----------------------------------------------------
-    // Outline
-    // ----------------------------------------------------
-    .mat-form-field.mat-form-field-appearance-outline {
-
-        &:not(.mat-form-field-invalid) .mat-form-field-outline {
-            @if ($is-dark) {
-                color: map-get($asm-gray, 600);
-            } @else {
-                color: map-get($asm-gray, 400);
-            }
-        }
-
-        &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
-        .mat-hint {
-            color: map-get($foreground, secondary-text);
-        }
-
-        &[disabled] .mat-form-field-outline * {
-            @if ($is-dark) {
-                color: map-get($asm-gray, 700) !important;
-            } @else {
-                color: map-get($asm-gray, 300) !important;
-            }
-        }
-    }
-
-    .asm-mat {
-
-        // Shows the underline only on hover and focused
-        &.asm-mat-hover-underline {
-
-            &.mat-form-field.mat-form-field-appearance-standard {
-
-                &:not(.mat-focused) {
-
-                    .mat-form-field-wrapper {
-
-                        .mat-form-field-underline {
-                            background-color: map-get($foreground, divider);
-
-                            .mat-form-field-ripple {
-                                background-color: transparent;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // ----------------------------------------------------
-    // Fill
-    // ----------------------------------------------------
     .mat-form-field.mat-form-field-appearance-fill {
 
-        .mat-form-field-flex {
-            @if ($is-dark) {
-                background: asm-dark-elevation(1);
-            } @else {
-                background: asm-color($asm-gray, 200);
-            }
-        }
-
         &:not(.mat-focused):not(.mat-form-field-invalid) .mat-form-field-label,
         .mat-hint {
             color: map-get($foreground, secondary-text);
         }
 
-        &:not(.mat-form-field-invalid) {
+        &.mat-focused {
 
-            .mat-form-field-underline {
+            .mat-form-field-wrapper {
 
-                &:before {
-                    @if ($is-dark) {
-                        background-color: asm-color($asm-gray, 600);
-                    } @else {
-                        background-color: asm-color($asm-gray, 400);
-                    }
+                .mat-form-field-flex {
+                    background-color: map-get($background, card);
+                    border-color: map-get($primary, default);
+                }
+            }
+        }
+
+        .mat-form-field-wrapper {
+
+            .mat-form-field-flex {
+                @if ($is-dark) {
+                    background-color: asm-dark-elevation(1);
+                } @else {
+                    background-color: asm-color($asm-gray, 100);
+                }
+                border-color: asm-color($asm-gray, 300);
+
+                .mat-form-field-prefix,
+                .mat-form-field-suffix {
+                    color: map-get($foreground, secondary-text);
                 }
 
-                .mat-form-field-ripple {
-                    @if ($is-dark) {
-                        background-color: asm-color($asm-gray, 600);
-                    } @else {
-                        background-color: asm-color($asm-gray, 400);
+                .mat-form-field-infix {
+
+                    [matInputPrefix],
+                    [matInputSuffix] {
+                        color: map-get($foreground, secondary-text);
                     }
+                }
+            }
+        }
+
+        // Outline
+        &.asm-mat-outline {
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-flex {
+                    background-color: map-get($background, card);
                 }
             }
         }
@@ -1066,6 +835,17 @@ textarea.mat-input-element {
         }
 
         &:-ms-input-placeholder {
+            color: map-get($foreground, secondary-text);
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Select
+    // -----------------------------------------------------------------------------------------------------
+    .mat-select {
+
+        // Placeholder color
+        .mat-select-placeholder {
             color: map-get($foreground, secondary-text);
         }
     }

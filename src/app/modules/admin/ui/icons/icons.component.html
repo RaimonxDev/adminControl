@@ -27,16 +27,14 @@
 
             <div class="icons-header">
 
-                <mat-form-field class="icons-filter-input asm-mat"
-                                [appearance]="'outline'">
+                <mat-form-field class="icons-filter-input">
                     <mat-label>Search an icon</mat-label>
                     <input matInput
                            [attr.autocomplete]="'off'"
                            (input)="filterIcons($event)">
                 </mat-form-field>
 
-                <mat-form-field class="icons-size-input asm-mat"
-                                [appearance]="'outline'">
+                <mat-form-field class="icons-size-input">
                     <mat-label>Icon size</mat-label>
                     <mat-select [formControl]="iconSizeInput">
                         <mat-option [value]="'16'">16</mat-option>

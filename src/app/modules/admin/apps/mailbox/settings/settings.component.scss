@@ -16,19 +16,10 @@ mailbox-settings {
     }
 
     .label-color-selector {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         height: 32px;
         width: 32px;
-        margin-right: 4px;
-
-        .mat-icon {
-            @include asm-icon-size(20);
-        }
 
         .mat-select-value {
-            max-width: none;
 
             mat-select-trigger {
                 display: flex;
@@ -36,11 +27,15 @@ mailbox-settings {
                 justify-content: center;
                 width: 32px;
                 height: 32px;
+
+                .mat-icon {
+                    @include asm-icon-size(20);
+                }
             }
         }
 
         .mat-select-arrow-wrapper {
-            display: none;
+            display: none !important;
         }
     }
 

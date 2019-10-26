@@ -9,9 +9,9 @@ asm-date-range {
     .range {
         display: flex;
         align-items: center;
-        height: 48px;
-        min-height: 48px;
-        max-height: 48px;
+        height: 56px;
+        min-height: 56px;
+        max-height: 56px;
         cursor: pointer;
 
         .start,
@@ -50,12 +50,11 @@ asm-date-range {
     .end {
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         .month {
-            max-width: 212px;
-            min-width: 212px;
-            width: 212px;
+            max-width: 196px;
+            min-width: 196px;
+            width: 196px;
 
             .month-header {
                 position: relative;
@@ -230,36 +229,31 @@ asm-date-range {
 
         .time {
             width: 100%;
+            max-width: 196px;
         }
     }
 
     .start {
+        align-items: flex-start;
+        margin-right: 20px;
 
         .month {
-            padding-right: 16px;
 
             .month-label {
                 margin-left: 8px;
             }
         }
-
-        .time {
-            padding: 0 24px 0 8px;
-        }
     }
 
     .end {
+        align-items: flex-end;
+        margin-left: 20px;
 
         .month {
-            padding-left: 16px;
 
             .month-label {
                 margin-right: 8px;
             }
-        }
-
-        .time {
-            padding: 0 8px 0 24px;
         }
     }
 }
@@ -285,6 +279,7 @@ asm-date-range {
                 } @else {
                     background: asm-color($asm-gray, 200);
                 }
+                box-shadow: inset 0 0 0 2px map-get($foreground, divider);
             }
         }
     }

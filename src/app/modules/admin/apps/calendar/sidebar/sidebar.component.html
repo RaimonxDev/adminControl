@@ -43,33 +43,33 @@
 
     <div class="row">
 
-        <mat-select class="calendar-color-selector"
-                    [(value)]="calendar.color"
-                    [panelClass]="'calendar-sidebar-calendar-edit-panel-color-select-panel'"
-                    [disableOptionCentering]="true">
-            <mat-select-trigger>
-                <mat-icon [ngClass]="'text-' + calendar.color"
-                          [svgIcon]="'color_lens'"></mat-icon>
-            </mat-select-trigger>
-            <div class="color-box-title">Calendar color</div>
-            <div class="color-box-container">
-                <mat-option *ngFor="let color of calendarColors"
-                            [value]="color"
-                            #matOption="matOption">
-                    <mat-icon [ngClass]="color"
-                              *ngIf="matOption.selected"
-                              [svgIcon]="'check'"></mat-icon>
-                    <span class="color-box"
-                          [ngClass]="color"></span>
-                </mat-option>
-            </div>
-        </mat-select>
-
-        <mat-form-field class="asm-mat asm-mat-no-label asm-mat-no-subscript asm-mat-no-underline"
-                        [appearance]="'fill'">
+        <mat-form-field class="asm-mat-no-subscript">
             <input matInput
                    [(ngModel)]="calendar.title"
+                   [placeholder]="'Title'"
                    required>
+            <mat-select class="calendar-color-selector"
+                        [(value)]="calendar.color"
+                        [panelClass]="'calendar-sidebar-calendar-edit-panel-color-select-panel'"
+                        [disableOptionCentering]="true"
+                        matPrefix>
+                <mat-select-trigger>
+                    <mat-icon [ngClass]="'text-' + calendar.color"
+                              [svgIcon]="'color_lens'"></mat-icon>
+                </mat-select-trigger>
+                <div class="color-box-title">Calendar color</div>
+                <div class="color-box-container">
+                    <mat-option *ngFor="let color of calendarColors"
+                                [value]="color"
+                                #matOption="matOption">
+                        <mat-icon [ngClass]="color"
+                                  *ngIf="matOption.selected"
+                                  [svgIcon]="'check'"></mat-icon>
+                        <span class="color-box"
+                              [ngClass]="color"></span>
+                    </mat-option>
+                </div>
+            </mat-select>
         </mat-form-field>
 
     </div>
