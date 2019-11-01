@@ -5,6 +5,7 @@
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
 
     // Base color and background
     & {
@@ -31,7 +32,12 @@
     }
 
     .mat-icon {
-        color: map-get($foreground, icon);
+
+        @if ($is-dark) {
+            color: map-get($foreground, secondary-text);
+        } @else {
+            color: map-get($foreground, icon);
+        }
     }
 
     .text-secondary {

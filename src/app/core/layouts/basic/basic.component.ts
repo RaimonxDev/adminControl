@@ -56,13 +56,13 @@ export class BasicLayoutComponent implements OnInit, OnDestroy
 
         // Set the layout's default options
         this._asmConfigService.defaultConfig = {
-            colorTheme: 'theme-blue-grey',
+            colorTheme: 'asm-theme-light',
             layout    : {
                 options: {
                     navigation: {
                         hidden: false,
                         theme : {
-                            background: 'blue-grey-50 light-theme'
+                            // background: 'grey-50 theme-light'
                         }
                     },
                     header    : {

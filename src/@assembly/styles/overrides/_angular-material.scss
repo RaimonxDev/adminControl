@@ -198,7 +198,7 @@
             min-height: 3.5em;
             border-radius: 4px;
             padding: 0 1em;
-            border-width: 2px;
+            border-width: 1px;
             border-style: solid;
 
             .mat-form-field-prefix {
@@ -310,6 +310,7 @@
                 display: flex;
                 align-items: center;
                 min-height: 48px;
+                width: 88px;
                 padding: 0;
                 border: 0;
 
@@ -415,6 +416,25 @@
         // Subscript tweaks
         .mat-form-field-subscript-wrapper {
             padding: 0 16px;
+        }
+    }
+
+    // Adds better alignment for textarea inputs
+    &.asm-mat-textarea {
+
+        &.mat-form-field.mat-form-field-appearance-fill {
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-flex {
+
+                    .mat-form-field-prefix,
+                    .mat-form-field-suffix {
+                        align-items: flex-start;
+                        padding: 1em 0;
+                    }
+                }
+            }
         }
     }
 
@@ -784,10 +804,11 @@ textarea.mat-input-element {
             .mat-form-field-flex {
                 @if ($is-dark) {
                     background-color: asm-dark-elevation(1);
+                    border-color: asm-color($asm-gray, 600);
                 } @else {
                     background-color: asm-color($asm-gray, 100);
+                    border-color: asm-color($asm-gray, 400);
                 }
-                border-color: asm-color($asm-gray, 300);
 
                 .mat-form-field-prefix,
                 .mat-form-field-suffix {
@@ -800,17 +821,6 @@ textarea.mat-input-element {
                     [matInputSuffix] {
                         color: map-get($foreground, secondary-text);
                     }
-                }
-            }
-        }
-
-        // Outline
-        &.asm-mat-outline {
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-flex {
-                    background-color: map-get($background, card);
                 }
             }
         }

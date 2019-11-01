@@ -41,30 +41,64 @@ layout[type="classy"] {
 
                 .user {
                     display: flex;
-                    flex-direction: column;
                     align-items: center;
-                    margin: 40px 32px;
+                    padding: 32px 0 36px 0;
+                    margin: 0 24px 0 32px;
+                    border-bottom-width: 1px;
 
-                    .user-image {
-                        overflow: hidden;
-                        width: 96px;
-                        height: 96px;
-                        border-radius: 50%;
-                        border: 6px solid;
-                    }
+                    .image {
+                        position: relative;
 
-                    .user-info {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        margin-top: 24px;
-
-                        .user-name {
-
+                        img {
+                            width: 48px;
+                            min-width: 48px;
+                            height: 48px;
+                            min-height: 48px;
+                            border-radius: 50%;
                         }
 
-                        .user-email {
-                            margin-top: 4px;
+                        .status {
+                            position: absolute;
+                            right: 1px;
+                            bottom: -1px;
+                            width: 14px;
+                            height: 14px;
+                            border-radius: 50%;
+                            border-width: 2px;
+                        }
+                    }
+
+                    .info {
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 16px;
+                        overflow: hidden;
+
+                        .name,
+                        .plan {
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            line-height: 1;
+                        }
+
+                        .name {
+                            font-weight: 500;
+                        }
+
+                        .plan {
+                            margin-top: 6px;
+                        }
+                    }
+
+                    .actions {
+                        margin: 0 -12px 0 auto;
+
+                        .mat-icon-button {
+
+                            .mat-icon {
+                                @include asm-icon-size(20);
+                            }
                         }
                     }
                 }
@@ -176,8 +210,29 @@ layout[type="classy"] {
 
                         .user {
 
-                            .user-image {
-                                border-color: rgba(255, 255, 255, 0.12);
+                            .image {
+
+                                .status {
+
+                                    &.available {
+                                        background: #68D391;
+                                    }
+
+                                    &.away {
+                                        background: #F6AD55;
+                                    }
+
+                                    &.busy {
+                                        background: #FC8181;
+                                    }
+                                }
+                            }
+
+                            .info {
+
+                                .plan {
+                                    color: map-get($foreground, secondary-text);
+                                }
                             }
                         }
                     }

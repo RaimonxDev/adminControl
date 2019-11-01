@@ -17,13 +17,37 @@
 
         <div class="user">
 
-            <div class="user-image">
+            <div class="image">
                 <img src="assets/images/avatars/andrew-watkins.jpg">
+                <div class="status available border-gray-800"></div>
             </div>
 
-            <div class="user-info">
-                <div class="user-name">Andrew Watkins</div>
-                <div class="user-email text-hint">watkins.andrew@company.com</div>
+            <div class="info">
+                <div class="name">Andrew Watkins</div>
+                <div class="plan">Enterprise Plan</div>
+            </div>
+
+            <div class="actions">
+                <button mat-icon-button
+                        [matMenuTriggerFor]="userActions">
+                    <mat-icon [svgIcon]="'keyboard_arrow_down'"></mat-icon>
+                </button>
+
+                <mat-menu #userActions="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon [svgIcon]="'account_circle'"></mat-icon>
+                        <span>Profile</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon [svgIcon]="'settings_applications'"></mat-icon>
+                        <span>Settings</span>
+                    </button>
+                    <mat-divider class="my-8"></mat-divider>
+                    <button mat-menu-item>
+                        <mat-icon [svgIcon]="'power_settings_new'"></mat-icon>
+                        <span>Logout</span>
+                    </button>
+                </mat-menu>
             </div>
 
         </div>

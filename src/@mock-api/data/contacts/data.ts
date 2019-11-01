@@ -1847,7 +1847,7 @@ export const contacts = [
     },
     {
         id          : '22f18d47-ff8d-440e-888d-a1747c093052',
-        avatar      : 'assets/images/avatars/female-07.jpg',
+        avatar      : 'assets/images/avatars/female-12.jpg',
         name        : 'Aimee Harding',
         emails      : [
             {

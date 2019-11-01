@@ -17,8 +17,8 @@ $asm-themes: (
     // @ User themes - Add/Remove/Modify these for your own likings and needs
     // -----------------------------------------------------------------------------------------------------
 
-    // Default theme (Light)
-    'asm-theme-default': asm-light-theme(
+    // Light theme
+    'asm-theme-light': asm-light-theme(
             mat-palette($asm-indigo),
             mat-palette($asm-gray, 800),
             mat-palette($asm-red, 700)

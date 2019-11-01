@@ -31,7 +31,7 @@ export class AsmConfigService
         this._onDefaultConfigChanged = new BehaviorSubject(null);
 
         this._defaultConfig = {
-            colorTheme      : 'asm-theme-default',
+            colorTheme      : 'asm-theme-light',
             customScrollbars: true,
             layout          : {}
         };

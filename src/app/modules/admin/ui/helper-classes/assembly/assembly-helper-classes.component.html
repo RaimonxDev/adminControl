@@ -37,24 +37,34 @@
                                                             [routerLink]="['./ui/form-layouts']">Form Layouts</a> examples.
             </p>
 
+            <h3>Required helpers</h3>
+
+            <ul>
+                <li>
+                    <b>Textarea</b> (<code>asm-mat-textarea</code>) helper is required if you are using a textarea as your input. Since Angular Material doesn't differentiate
+                    a textarea from a normal input while using them with <b>mat-form-field</b>, this helper class is required for <b>textarea</b> inputs to look good and
+                    consistent.
+                </li>
+            </ul>
+
             <h3>Optional helpers</h3>
 
             <ul>
                 <li>
-                    <b>Dense</b> helper provides set of adjustments to make the fields denser. Dense fields are suitable for non-form usages and places where there isn't much
-                    space to work with such as small dialogs, menus, popovers and etc.
+                    <b>Dense</b> (<code>asm-mat-dense</code>) helper provides set of adjustments to make the fields denser. Dense fields are suitable for non-form usages and places
+                    where there isn't much space to work with such as small dialogs, menus, popovers and etc.
                 </li>
                 <li>
-                    <b>Rounded</b> helper provides set of adjustments to make the fields look fully rounded.
+                    <b>Rounded</b> (<code>asm-mat-rounded</code>) helper provides set of adjustments to make the fields look fully rounded.
                 </li>
                 <li>
-                    <b>No subscript</b> helper provides set of adjustments to remove the bottom spacing where <em>hint</em> and <em>error</em> messages placed. This helper is
-                    particularly useful to align the field easily if you don't need to show error messages or hint text. For example a search bar in the toolbar uses this helper
-                    to fit the field to the toolbar without having an extra bottom spacing.
+                    <b>No subscript</b> (<code>asm-mat-no-subscript</code>) helper provides set of adjustments to remove the bottom spacing where <em>hint</em> and <em>error</em>
+                    messages placed. This helper is particularly useful to align the field easily if you don't need to show error messages or hint text. For example a search bar in
+                    the toolbar uses this helper to fit the field to the toolbar without having an extra bottom spacing.
                 </li>
                 <li>
-                    <b>Outline</b> helper provides set of adjustments to make the field look like Material's <em>Outline</em> appearance except the top border aligned floating
-                    label.
+                    <b>Outline</b> (<code>asm-mat-outline</code>) helper provides set of adjustments to make the field look like Material's <em>Outline</em> appearance except the
+                    top border aligned floating label.
                 </li>
             </ul>
 
@@ -159,7 +169,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <mat-label>Textarea</mat-label>
                             <textarea matInput></textarea>
@@ -167,7 +177,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <mat-label>Textarea with Prefix & Suffix</mat-label>
                             <textarea matInput></textarea>
@@ -179,7 +189,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <mat-label>Textarea with Autosize</mat-label>
                             <textarea matInput
@@ -189,7 +199,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <mat-label>Textarea with Autosize, Prefix & Suffix</mat-label>
                             <textarea matInput
@@ -391,7 +401,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
                                       [placeholder]="'Textarea'"></textarea>
@@ -399,7 +409,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
                                       [placeholder]="'Textarea with Prefix & Suffix'"></textarea>
@@ -411,7 +421,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
                                       cdkTextareaAutosize
@@ -421,7 +431,7 @@
                     </div>
 
                     <div class="flex">
-                        <mat-form-field class="flex-auto"
+                        <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
                                       cdkTextareaAutosize
