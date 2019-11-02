@@ -2,7 +2,6 @@
 
 asm-search {
     display: flex;
-    background: inherit;
 
     // Basic appearance
     &.asm-search-appearance-basic {
@@ -25,7 +24,7 @@ asm-search {
         }
     }
 
-    // Bar & Fullscreen appearance
+    // Bar appearance
     &.asm-search-appearance-bar {
 
         .asm-search-container {
@@ -37,8 +36,7 @@ asm-search {
             right: 0;
             bottom: 0;
             left: 0;
-            margin: 0 24px;
-            background: inherit;
+            z-index: 99;
 
             .asm-search-input {
                 flex: 1 0 auto;
@@ -49,12 +47,9 @@ asm-search {
 
                     .mat-form-field-flex {
                         height: 100%;
-                        padding-right: 40px;
-
-                        // Remove the border
-                        .mat-form-field-outline {
-                            border: none !important;
-                        }
+                        padding: 0 80px 0 40px;
+                        border: none;
+                        border-radius: 0 !important;
                     }
                 }
             }
@@ -62,7 +57,7 @@ asm-search {
             .asm-search-toggle-close {
                 position: absolute;
                 top: 50%;
-                right: 0;
+                right: 40px;
                 margin-top: -20px;
                 min-width: 40px;
                 width: 40px;
@@ -283,6 +278,24 @@ asm-search {
         // Basic appearance
         &.asm-search-appearance-basic {
             background: transparent;
+        }
+
+        // Bar appearance
+        &.asm-search-appearance-bar {
+
+            .asm-search-container {
+                background: map-get($background, card);
+
+                .asm-search-input {
+
+                    .mat-form-field-wrapper {
+
+                        .mat-form-field-flex {
+                            background: transparent;
+                        }
+                    }
+                }
+            }
         }
 
         // Fullscreen appearance

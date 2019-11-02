@@ -19,7 +19,7 @@ layout[type="classy"] {
             }
         }
 
-        .asm-navigation-header {
+        .asm-navigation-content-top {
 
             .logo {
                 display: flex;
@@ -27,80 +27,10 @@ layout[type="classy"] {
                 height: 80px;
                 min-height: 80px;
                 max-height: 80px;
-                padding: 0 32px;
+                padding: 24px 32px 0 32px;
 
                 img {
                     max-width: 163px;
-                }
-            }
-        }
-
-        .asm-navigation-content {
-
-            .asm-navigation-content-top {
-
-                .user {
-                    display: flex;
-                    align-items: center;
-                    padding: 32px 0 36px 0;
-                    margin: 0 24px 0 32px;
-                    border-bottom-width: 1px;
-
-                    .image {
-                        position: relative;
-
-                        img {
-                            width: 48px;
-                            min-width: 48px;
-                            height: 48px;
-                            min-height: 48px;
-                            border-radius: 50%;
-                        }
-
-                        .status {
-                            position: absolute;
-                            right: 1px;
-                            bottom: -1px;
-                            width: 14px;
-                            height: 14px;
-                            border-radius: 50%;
-                            border-width: 2px;
-                        }
-                    }
-
-                    .info {
-                        display: flex;
-                        flex-direction: column;
-                        margin-left: 16px;
-                        overflow: hidden;
-
-                        .name,
-                        .plan {
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
-                            overflow: hidden;
-                            line-height: 1;
-                        }
-
-                        .name {
-                            font-weight: 500;
-                        }
-
-                        .plan {
-                            margin-top: 6px;
-                        }
-                    }
-
-                    .actions {
-                        margin: 0 -12px 0 auto;
-
-                        .mat-icon-button {
-
-                            .mat-icon {
-                                @include asm-icon-size(20);
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -119,13 +49,89 @@ layout[type="classy"] {
             display: flex;
             flex: 1 1 auto;
             align-items: center;
-            justify-content: space-between;
             width: 100%;
             height: 80px;
             max-height: 80px;
             min-height: 80px;
             padding: 0 24px;
             z-index: 49;
+
+            asm-search {
+                margin: 0 8px 0 auto;
+            }
+
+            asm-shortcuts {
+                margin-right: 8px;
+            }
+
+            .notifications {
+                position: relative;
+                margin-right: 4px;
+
+                .dot {
+                    position: absolute;
+                    right: 10px;
+                    top: 7px;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    z-index: 5;
+                    pointer-events: none;
+                }
+            }
+
+            .user {
+                height: 48px;
+                min-height: 48px;
+                max-height: 48px;
+
+                .avatar {
+                    position: relative;
+
+                    img {
+                        width: 32px;
+                        min-width: 32px;
+                        height: 32px;
+                        min-height: 32px;
+                        border-radius: 50%;
+                    }
+
+                    .status {
+                        position: absolute;
+                        right: -2px;
+                        bottom: -3px;
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        border-width: 2px;
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    align-items: center;
+                    margin-left: 12px;
+                    overflow: hidden;
+
+                    .name {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        line-height: 1;
+                    }
+
+                    .menu {
+                        margin-left: 4px;
+                        height: 20px;
+                        min-height: 20px;
+                        max-height: 20px;
+
+                        .mat-icon {
+                            @include asm-icon-size(20);
+                        }
+                    }
+                }
+            }
         }
 
         // Content
@@ -188,57 +194,10 @@ layout[type="classy"] {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
     layout[type='classy'] {
-
-        // Navigation
-        > .navigation {
-
-            .asm-navigation-wrapper {
-
-                .asm-navigation-header {
-
-                    .logo {
-                        background-color: rgba(0, 0, 0, 0.12);
-                    }
-                }
-
-                .asm-navigation-content {
-
-                    .asm-navigation-content-top {
-
-                        .user {
-
-                            .image {
-
-                                .status {
-
-                                    &.available {
-                                        background: #68D391;
-                                    }
-
-                                    &.away {
-                                        background: #F6AD55;
-                                    }
-
-                                    &.busy {
-                                        background: #FC8181;
-                                    }
-                                }
-                            }
-
-                            .info {
-
-                                .plan {
-                                    color: map-get($foreground, secondary-text);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         // Wrapper
         > .wrapper {
@@ -250,6 +209,36 @@ layout[type="classy"] {
                 } @else {
                     background: map-get($background, card);
                     @include asm-elevation(1);
+                }
+
+                .notifications {
+
+                    .dot {
+                        background: asm-color($asm-red, 600);
+                        color: map-get($primary, default-contrast);
+                    }
+                }
+
+                .user {
+
+                    .avatar {
+
+                        .status {
+                            border-color: map-get($background, card);
+
+                            &.available {
+                                background: #68D391;
+                            }
+
+                            &.away {
+                                background: #F6AD55;
+                            }
+
+                            &.busy {
+                                background: #FC8181;
+                            }
+                        }
+                    }
                 }
             }
 
