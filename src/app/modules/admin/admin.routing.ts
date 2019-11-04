@@ -212,8 +212,8 @@ export const adminRoutes: Route[] = [
                     // Angular Material
                     {
                         path        : 'angular-material',
-                        loadChildren: () => import('./ui/angular-material/angular-material.module')
-                            .then(m => m.AngularMaterialModule)
+                        loadChildren: () => import('app/modules/admin/ui/material-components/material-components.module')
+                            .then(m => m.MaterialComponentsModule)
                     },
 
                     // Cards

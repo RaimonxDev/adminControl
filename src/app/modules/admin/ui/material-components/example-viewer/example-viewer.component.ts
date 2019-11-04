@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EXAMPLE_COMPONENTS } from 'app/modules/admin/ui/angular-material/example.module';
+import { EXAMPLE_COMPONENTS } from 'app/modules/admin/ui/material-components/example.module';
 
 /** Regular expression that matches a file name and its extension */
 const fileExtensionRegex = /(.*)\.(\w+)/;
@@ -15,12 +15,12 @@ export interface LiveExample
 }
 
 @Component({
-    selector     : 'angular-material-example-viewer',
+    selector     : 'material-components-example-viewer',
     templateUrl  : './example-viewer.component.html',
     styleUrls    : ['./example-viewer.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AngularMaterialExampleViewerComponent
+export class MaterialComponentsExampleViewerComponent
 {
     /** Component portal for the currently displayed example. */
     selectedPortal: ComponentPortal<any>;

@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { DocItem, DocumentationItems } from 'app/modules/admin/ui/angular-material/doc-items';
+import { DocItem, DocumentationItems } from 'app/modules/admin/ui/material-components/doc-items';
 
 @Component({
-    selector     : 'angular-material-component-viewer',
+    selector     : 'material-components-component-viewer',
     templateUrl  : './component-viewer.component.html',
     styleUrls    : ['./component-viewer.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AngularMaterialComponentViewerComponent implements OnInit
+export class MaterialComponentsComponentViewerComponent implements OnInit
 {
     componentDocItem: DocItem;
     componentId: string;
@@ -69,37 +69,37 @@ export class AngularMaterialComponentViewerComponent implements OnInit
 }
 
 @Component({
-    selector     : 'angular-material-component-overview',
+    selector     : 'material-components-component-overview',
     templateUrl  : './component-overview.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class AngularMaterialComponentOverviewComponent
+export class MaterialComponentsComponentOverviewComponent
 {
     /**
      * Constructor
      *
-     * @param {AngularMaterialComponentViewerComponent} componentViewer
+     * @param {MaterialComponentsComponentViewerComponent} componentViewer
      */
-    constructor(public componentViewer: AngularMaterialComponentViewerComponent)
+    constructor(public componentViewer: MaterialComponentsComponentViewerComponent)
     {
     }
 }
 
 @Component({
-    selector     : 'angular-material-component-api',
+    selector     : 'material-components-component-api',
     templateUrl  : './component-api.component.html',
     styleUrls    : ['./component-api.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AngularMaterialComponentApiComponent extends AngularMaterialComponentOverviewComponent
+export class MaterialComponentsComponentApiComponent extends MaterialComponentsComponentOverviewComponent
 {
 }
 
 @Component({
-    selector     : 'angular-material-component-examples',
+    selector     : 'material-components-component-examples',
     templateUrl  : './component-examples.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class AngularMaterialComponentExamplesComponent extends AngularMaterialComponentOverviewComponent
+export class MaterialComponentsComponentExamplesComponent extends MaterialComponentsComponentOverviewComponent
 {
 }

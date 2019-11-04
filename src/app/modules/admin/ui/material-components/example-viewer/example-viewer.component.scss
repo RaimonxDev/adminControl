@@ -1,6 +1,6 @@
 @import 'assembly';
 
-angular-material-example-viewer {
+material-components-example-viewer {
     display: block;
     margin: 20px 0;
     border-radius: 4px;
@@ -59,7 +59,7 @@ angular-material-example-viewer {
 
     $background: map-get($theme, background);
 
-    angular-material-example-viewer {
+    material-components-example-viewer {
         background: map-get($background, card);
 
         .docs-example-viewer-source {

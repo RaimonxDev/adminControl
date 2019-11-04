@@ -1,6 +1,6 @@
 @import 'assembly';
 
-angular-material-component-api {
+material-components-component-api {
 
     .docs-api-class-name {
         margin-top: 28px;
@@ -92,7 +92,7 @@ angular-material-component-api {
 
     $background: map-get($theme, background);
 
-    angular-material-component-api {
+    material-components-component-api {
 
         table {
             background: map-get($background, card);

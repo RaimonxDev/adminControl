@@ -17,13 +17,13 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { AngularMaterialExampleViewerComponent } from 'app/modules/admin/ui/angular-material/example-viewer/example-viewer.component';
+import { MaterialComponentsExampleViewerComponent } from 'app/modules/admin/ui/material-components/example-viewer/example-viewer.component';
 
 @Component({
-    selector: 'angular-material-doc-viewer',
+    selector: 'material-components-doc-viewer',
     template: 'Loading document...'
 })
-export class AngularMaterialDocViewerComponent implements OnDestroy
+export class MaterialComponentsDocViewerComponent implements OnDestroy
 {
     private _portalHosts: DomPortalHost[] = [];
     private _documentFetchSubscription: Subscription;
@@ -85,7 +85,7 @@ export class AngularMaterialDocViewerComponent implements OnDestroy
         this._elementRef.nativeElement.innerHTML = rawDocument;
         this.textContent = this._elementRef.nativeElement.textContent;
 
-        this._loadComponents('material-docs-example', AngularMaterialExampleViewerComponent);
+        this._loadComponents('material-docs-example', MaterialComponentsExampleViewerComponent);
         // this._loadComponents('header-link', HeaderLink);
 
         // Resolving and creating components dynamically in Angular happens synchronously, but since
@@ -117,7 +117,7 @@ export class AngularMaterialDocViewerComponent implements OnDestroy
             const exampleViewer = portalHost.attach(examplePortal);
             if ( example !== null )
             {
-                (exampleViewer.instance as AngularMaterialExampleViewerComponent).example = example;
+                (exampleViewer.instance as MaterialComponentsExampleViewerComponent).example = example;
             }
 
             this._portalHosts.push(portalHost);

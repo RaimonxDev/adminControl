@@ -1,8 +1,8 @@
 import { Route } from '@angular/router';
-import { AngularMaterialComponent } from 'app/modules/admin/ui/angular-material/angular-material.component';
-import { AngularMaterialComponentApiComponent, AngularMaterialComponentExamplesComponent, AngularMaterialComponentOverviewComponent, AngularMaterialComponentViewerComponent } from 'app/modules/admin/ui/angular-material/component-viewer/component-viewer.component';
+import { MaterialComponentsComponent } from 'app/modules/admin/ui/material-components/material-components.component';
+import { MaterialComponentsComponentApiComponent, MaterialComponentsComponentExamplesComponent, MaterialComponentsComponentOverviewComponent, MaterialComponentsComponentViewerComponent } from 'app/modules/admin/ui/material-components/component-viewer/component-viewer.component';
 
-export const angularMaterialRoutes: Route[] = [
+export const materialComponentsRoutes: Route[] = [
     {
         path      : '',
         pathMatch : 'full',
@@ -10,14 +10,14 @@ export const angularMaterialRoutes: Route[] = [
     },
     {
         path     : 'overview',
-        component: AngularMaterialComponent
+        component: MaterialComponentsComponent
     },
     {
         path    : 'components',
         children: [
             {
                 path     : ':id',
-                component: AngularMaterialComponentViewerComponent,
+                component: MaterialComponentsComponentViewerComponent,
                 children : [
                     {
                         path      : '',
@@ -26,15 +26,15 @@ export const angularMaterialRoutes: Route[] = [
                     },
                     {
                         path     : 'overview',
-                        component: AngularMaterialComponentOverviewComponent
+                        component: MaterialComponentsComponentOverviewComponent
                     },
                     {
                         path     : 'api',
-                        component: AngularMaterialComponentApiComponent
+                        component: MaterialComponentsComponentApiComponent
                     },
                     {
                         path     : 'examples',
-                        component: AngularMaterialComponentExamplesComponent
+                        component: MaterialComponentsComponentExamplesComponent
                     }
                 ]
             }

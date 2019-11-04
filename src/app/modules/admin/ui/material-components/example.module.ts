@@ -1851,6 +1851,6 @@ export const EXAMPLE_LIST = [
     entryComponents: EXAMPLE_LIST,
     exports        : EXAMPLE_LIST
 })
-export class ExampleModule
+export class MaterialComponentsExampleModule
 {
 }
