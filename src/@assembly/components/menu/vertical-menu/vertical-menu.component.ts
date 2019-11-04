@@ -53,11 +53,11 @@ export class AsmVerticalMenuComponent implements OnInit
     /**
      * Track by function for ngFor loops
      *
-     * @param item
      * @param index
+     * @param item
      */
-    trackById(item, index): number
+    trackById(index, item): number
     {
-        return index;
+        return item.id || index;
     }
 }

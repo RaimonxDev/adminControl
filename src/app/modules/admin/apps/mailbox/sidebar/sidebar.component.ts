@@ -120,6 +120,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
             // Generate menu item for the folder
             const menuItem: AsmVerticalMenuItem = {
+                id   : folder.id,
                 title: folder.title,
                 type : 'basic',
                 icon : folder.icon,
@@ -160,6 +161,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
             // Generate menu item for the filter
             this._filtersMenuData.push({
+                id   : filter.id,
                 title: filter.title,
                 type : 'basic',
                 icon : filter.icon,
@@ -186,6 +188,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
             // Generate menu item for the label
             this._labelsMenuData.push({
+                id            : label.id,
                 title         : label.title,
                 type          : 'basic',
                 icon          : 'label',

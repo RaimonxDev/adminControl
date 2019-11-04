@@ -202,12 +202,13 @@ export class MailboxListComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Track by function for ngFor loop
+     * Track by function for ngFor loops
      *
+     * @param index
      * @param item
      */
-    trackById(item): number
+    trackById(index, item): number
     {
-        return item.id;
+        return item.id || index;
     }
 }

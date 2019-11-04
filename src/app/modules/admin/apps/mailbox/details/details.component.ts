@@ -307,16 +307,6 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Track by function for ngFor loop
-     *
-     * @param item
-     */
-    trackById(item): number
-    {
-        return item.id;
-    }
-
-    /**
      * Open info details panel
      */
     openInfoDetailsPanel(): void
@@ -382,5 +372,16 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
                 templatePortal.detach();
             }
         });
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackById(index, item): number
+    {
+        return item.id || index;
     }
 }

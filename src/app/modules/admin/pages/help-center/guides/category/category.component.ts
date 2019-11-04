@@ -69,10 +69,11 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
     /**
      * Track by function for ngFor loops
      *
+     * @param index
      * @param item
      */
-    trackById(item): string
+    trackById(index, item): number
     {
-        return item.id;
+        return item.id || index;
     }
 }
