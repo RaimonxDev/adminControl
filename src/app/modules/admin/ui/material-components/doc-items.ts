@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 
+export interface AdditionalApiDoc
+{
+    name: string;
+    path: string;
+}
+
 export interface DocItem
 {
     id: string;
@@ -7,6 +13,7 @@ export interface DocItem
     summary?: string;
     packageName?: string;
     examples?: string[];
+    additionalApiDocs?: AdditionalApiDoc[];
 }
 
 export interface DocCategory
@@ -49,23 +56,35 @@ const DOCS: { [key: string]: DocCategory[] } = {
             summary: 'Controls that collect and validate user input.',
             items  : [
                 {
-                    id      : 'autocomplete',
-                    name    : 'Autocomplete',
-                    summary : 'Suggests relevant options as the user types.',
-                    examples: [
+                    id               : 'autocomplete',
+                    name             : 'Autocomplete',
+                    summary          : 'Suggests relevant options as the user types.',
+                    examples         : [
                         'autocomplete-overview',
                         'autocomplete-simple',
                         'autocomplete-display',
                         'autocomplete-filter',
                         'autocomplete-optgroup',
                         'autocomplete-auto-active-first-option'
+                    ],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-autocomplete-testing.html'
+                        }
                     ]
                 },
                 {
-                    id      : 'checkbox',
-                    name    : 'Checkbox',
-                    summary : 'Captures boolean input with an optional indeterminate mode.',
-                    examples: ['checkbox-configurable']
+                    id               : 'checkbox',
+                    name             : 'Checkbox',
+                    summary          : 'Captures boolean input with an optional indeterminate mode.',
+                    examples         : ['checkbox-configurable'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-checkbox-testing.html'
+                        }
+                    ]
                 },
                 {
                     id      : 'datepicker',
@@ -118,10 +137,16 @@ const DOCS: { [key: string]: DocCategory[] } = {
                     ]
                 },
                 {
-                    id      : 'radio',
-                    name    : 'Radio button',
-                    summary : 'Allows the user to select one option from a group.',
-                    examples: ['radio-ng-model']
+                    id               : 'radio',
+                    name             : 'Radio button',
+                    summary          : 'Allows the user to select one option from a group.',
+                    examples         : ['radio-ng-model'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-radio-testing.html'
+                        }
+                    ]
                 },
                 {
                     id      : 'select',
@@ -143,16 +168,28 @@ const DOCS: { [key: string]: DocCategory[] } = {
                     ]
                 },
                 {
-                    id      : 'slider',
-                    name    : 'Slider',
-                    summary : 'Allows the user to input a value by dragging along a slider.',
-                    examples: ['slider-configurable']
+                    id               : 'slider',
+                    name             : 'Slider',
+                    summary          : 'Allows the user to input a value by dragging along a slider.',
+                    examples         : ['slider-configurable'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-slider-testing.html'
+                        }
+                    ]
                 },
                 {
-                    id      : 'slide-toggle',
-                    name    : 'Slide toggle',
-                    summary : 'Captures boolean values as a clickable and draggable switch.',
-                    examples: ['slide-toggle-configurable']
+                    id               : 'slide-toggle',
+                    name             : 'Slide toggle',
+                    summary          : 'Captures boolean values as a clickable and draggable switch.',
+                    examples         : ['slide-toggle-configurable'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-slide-toggle-testing.html'
+                        }
+                    ]
                 }
             ]
         },
@@ -162,20 +199,26 @@ const DOCS: { [key: string]: DocCategory[] } = {
             summary: 'Menus, sidenavs and toolbars that organise your content.',
             items  : [
                 {
-                    id      : 'menu',
-                    name    : 'Menu',
-                    summary : 'A floating panel of nestable options.',
-                    examples: [
+                    id               : 'menu',
+                    name             : 'Menu',
+                    summary          : 'A floating panel of nestable options.',
+                    examples         : [
                         'menu-overview',
                         'menu-icons',
                         'nested-menu'
+                    ],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-menu-testing.html'
+                        }
                     ]
                 },
                 {
-                    id      : 'sidenav',
-                    name    : 'Sidenav',
-                    summary : 'A container for content that is fixed to one side of the screen.',
-                    examples: [
+                    id               : 'sidenav',
+                    name             : 'Sidenav',
+                    summary          : 'A container for content that is fixed to one side of the screen.',
+                    examples         : [
                         'sidenav-overview',
                         'sidenav-drawer-overview',
                         'sidenav-position',
@@ -185,6 +228,12 @@ const DOCS: { [key: string]: DocCategory[] } = {
                         'sidenav-autosize',
                         'sidenav-fixed',
                         'sidenav-responsive'
+                    ],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-sidenav-testing.html'
+                        }
                     ]
                 },
                 {
@@ -237,10 +286,10 @@ const DOCS: { [key: string]: DocCategory[] } = {
                     examples: ['stepper-overview']
                 },
                 {
-                    id      : 'tabs',
-                    name    : 'Tabs',
-                    summary : 'Only presents one view at a time from a provided set of views.',
-                    examples: [
+                    id               : 'tabs',
+                    name             : 'Tabs',
+                    summary          : 'Only presents one view at a time from a provided set of views.',
+                    examples         : [
                         'tab-group-basic',
                         'tab-group-custom-label',
                         'tab-group-dynamic-height',
@@ -251,6 +300,12 @@ const DOCS: { [key: string]: DocCategory[] } = {
                         'tab-group-theme',
                         'tab-group-async',
                         'tab-nav-bar-basic'
+                    ],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-tabs-testing.html'
+                        }
                     ]
                 },
                 {
@@ -273,10 +328,16 @@ const DOCS: { [key: string]: DocCategory[] } = {
             summary: 'Buttons, toggles, status and progress indicators.',
             items  : [
                 {
-                    id      : 'button',
-                    name    : 'Button',
-                    summary : 'An interactive button with a range of presentation options.',
-                    examples: ['button-types']
+                    id               : 'button',
+                    name             : 'Button',
+                    summary          : 'An interactive button with a range of presentation options.',
+                    examples         : ['button-types'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-button-testing.html'
+                        }
+                    ]
                 },
                 {
                     id      : 'button-toggle',
@@ -308,16 +369,28 @@ const DOCS: { [key: string]: DocCategory[] } = {
                     examples: ['icon-svg']
                 },
                 {
-                    id      : 'progress-spinner',
-                    name    : 'Progress spinner',
-                    summary : 'A circular progress indicator.',
-                    examples: ['progress-spinner-configurable']
+                    id               : 'progress-spinner',
+                    name             : 'Progress spinner',
+                    summary          : 'A circular progress indicator.',
+                    examples         : ['progress-spinner-configurable'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-progress-spinner-testing.html'
+                        }
+                    ]
                 },
                 {
-                    id      : 'progress-bar',
-                    name    : 'Progress bar',
-                    summary : 'A linear progress indicator.',
-                    examples: ['progress-bar-configurable']
+                    id               : 'progress-bar',
+                    name             : 'Progress bar',
+                    summary          : 'A linear progress indicator.',
+                    examples         : ['progress-bar-configurable'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-progress-bar-testing.html'
+                        }
+                    ]
                 },
                 {
                     id      : 'ripple',
@@ -339,16 +412,28 @@ const DOCS: { [key: string]: DocCategory[] } = {
                     examples: ['bottom-sheet-overview']
                 },
                 {
-                    id      : 'dialog',
-                    name    : 'Dialog',
-                    summary : 'A configurable modal that displays dynamic content.',
-                    examples: ['dialog-overview']
+                    id               : 'dialog',
+                    name             : 'Dialog',
+                    summary          : 'A configurable modal that displays dynamic content.',
+                    examples         : ['dialog-overview'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-dialog-testing.html'
+                        }
+                    ]
                 },
                 {
-                    id      : 'snack-bar',
-                    name    : 'Snackbar',
-                    summary : 'Displays short actionable messages as an uninvasive alert.',
-                    examples: ['snack-bar-component']
+                    id               : 'snack-bar',
+                    name             : 'Snackbar',
+                    summary          : 'Displays short actionable messages as an uninvasive alert.',
+                    examples         : ['snack-bar-component'],
+                    additionalApiDocs: [
+                        {
+                            name: 'Testing',
+                            path: 'material-snack-bar-testing.html'
+                        }
+                    ]
                 },
                 {
                     id      : 'tooltip',
@@ -428,6 +513,14 @@ const DOCS: { [key: string]: DocCategory[] } = {
                     name    : 'Bidirectionality',
                     summary : 'Utilities to respond to changes in LTR/RTL layout direction.',
                     examples: []
+                },
+                {
+                    id      : 'clipboard',
+                    name    : 'Clipboard',
+                    summary : 'Helpers for working with the system clipboard.',
+                    examples: [
+                        'cdk-clipboard-overview'
+                    ]
                 },
                 {
                     id      : 'drag-drop',
