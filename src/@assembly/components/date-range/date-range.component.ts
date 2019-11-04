@@ -36,19 +36,16 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     @HostBinding('class.asm-date-range')
     private _defaultClassNames;
 
-    @ViewChild('matMonthView1', {static: false})
+    @ViewChild('matMonthView1')
     private _matMonthView1: MatMonthView<any>;
 
-    @ViewChild('matMonthView2', {static: false})
+    @ViewChild('matMonthView2')
     private _matMonthView2: MatMonthView<any>;
 
-    @ViewChild('pickerPanelOrigin', {
-        static: false,
-        read  : ElementRef
-    })
+    @ViewChild('pickerPanelOrigin', {read: ElementRef})
     private _pickerPanelOrigin: ElementRef;
 
-    @ViewChild('pickerPanel', {static: false})
+    @ViewChild('pickerPanel')
     private _pickerPanel: TemplateRef<any>;
 
     private _appearance: 'standard' | 'outline' | 'fill';

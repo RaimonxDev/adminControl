@@ -12,7 +12,7 @@ import { AsmMediaWatcherService } from '@assembly';
 })
 export class MailboxComponent implements OnInit, OnDestroy
 {
-    @ViewChild('drawer', {static: false})
+    @ViewChild('drawer')
     drawer: MatDrawer;
 
     drawerMode: 'over' | 'side';

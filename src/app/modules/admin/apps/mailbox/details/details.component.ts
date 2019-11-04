@@ -24,10 +24,10 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     private _overlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('infoDetailsPanelOrigin', {static: false})
+    @ViewChild('infoDetailsPanelOrigin')
     private _infoDetailsPanelOrigin: MatButton;
 
-    @ViewChild('infoDetailsPanel', {static: false})
+    @ViewChild('infoDetailsPanel')
     private _infoDetailsPanel: TemplateRef<any>;
 
     /**

@@ -28,7 +28,7 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
     private _editPanelTemplatePortal: TemplatePortal;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('editPanel', {static: false})
+    @ViewChild('editPanel')
     private _editPanel: TemplateRef<any>;
 
     /**

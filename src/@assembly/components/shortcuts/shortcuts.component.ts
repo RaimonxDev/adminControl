@@ -41,10 +41,10 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
     private _overlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('shortcutsOrigin', {static: false})
+    @ViewChild('shortcutsOrigin')
     private _shortcutsOrigin: MatButton;
 
-    @ViewChild('shortcutsPanel', {static: false})
+    @ViewChild('shortcutsPanel')
     private _shortcutsPanel: TemplateRef<any>;
 
     /**

@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
+import { MatDrawer } from '@angular/material/sidenav';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar as FullCalendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -53,13 +53,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     private _fullCalendarApi: FullCalendar;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('eventPanel', {static: false})
+    @ViewChild('eventPanel')
     private _eventPanel: TemplateRef<any>;
 
-    @ViewChild('fullCalendar', {static: false})
+    @ViewChild('fullCalendar')
     private _fullCalendar: FullCalendarComponent;
 
-    @ViewChild('drawer', {static: false})
+    @ViewChild('drawer')
     private _drawer: MatDrawer;
 
     /**

@@ -37,25 +37,25 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     private _tagsPanelOverlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('dueDatePanelOrigin', {static: false})
+    @ViewChild('dueDatePanelOrigin')
     private _dueDatePanelOrigin: MatButton;
 
-    @ViewChild('dueDatePanel', {static: false})
+    @ViewChild('dueDatePanel')
     private _dueDatePanel: TemplateRef<any>;
 
-    @ViewChild('priorityPanelOrigin', {static: false})
+    @ViewChild('priorityPanelOrigin')
     private _priorityPanelOrigin: MatButton;
 
-    @ViewChild('priorityPanel', {static: false})
+    @ViewChild('priorityPanel')
     private _priorityPanel: TemplateRef<any>;
 
-    @ViewChild('tagsPanelOrigin', {static: false})
+    @ViewChild('tagsPanelOrigin')
     private _tagsPanelOrigin: ElementRef;
 
-    @ViewChild('tagsPanel', {static: false})
+    @ViewChild('tagsPanel')
     private _tagsPanel: TemplateRef<any>;
 
-    @ViewChild('titleField', {static: false})
+    @ViewChild('titleField')
     private _titleField: ElementRef;
 
     /**

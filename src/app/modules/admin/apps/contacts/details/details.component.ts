@@ -33,19 +33,16 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     private _tagsPanelOverlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any>;
 
-    @ViewChild('avatar', {static: false})
+    @ViewChild('avatar')
     private _avatar: ElementRef;
 
-    @ViewChild('notes', {
-        static: false,
-        read  : CdkTextareaAutosize
-    })
+    @ViewChild('notes', {read: CdkTextareaAutosize})
     private _notesCdkTextareaAutosize: CdkTextareaAutosize;
 
-    @ViewChild('tagsPanel', {static: false})
+    @ViewChild('tagsPanel')
     private _tagsPanel: TemplateRef<any>;
 
-    @ViewChild('tagsPanelOrigin', {static: false})
+    @ViewChild('tagsPanelOrigin')
     private _tagsPanelOrigin: ElementRef;
 
     /**

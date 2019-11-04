@@ -18,7 +18,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     searchControl: FormControl;
 
     // Result template
-    @ContentChild(TemplateRef, {static: false})
+    @ContentChild(TemplateRef)
     resultTemplate: TemplateRef<any>;
 
     // Debounce
@@ -178,7 +178,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
      *
      * @param value
      */
-    @ViewChild('searchInput', {static: false})
+    @ViewChild('searchInput')
     set searchInput(value: MatFormField)
     {
         // Return if the appearance is basic, since we don't want

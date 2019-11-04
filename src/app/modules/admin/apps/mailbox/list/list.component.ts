@@ -19,7 +19,7 @@ export class MailboxListComponent implements OnInit, OnDestroy
     pagination: any;
     selectedMail: any;
 
-    @ViewChild('mailList', {static: false})
+    @ViewChild('mailList')
     mailList: ElementRef;
 
     // Private
