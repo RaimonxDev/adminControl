@@ -56,17 +56,27 @@ layout[type="classy"] {
             padding: 0 24px;
             z-index: 49;
 
-            asm-search {
-                margin: 0 8px 0 auto;
+            .spacer {
+                display: flex;
+                flex: 1 1 auto;
+                height: 1px;
+            }
+
+            .navigation-toggle-button {
+                margin-right: 8px;
             }
 
             asm-shortcuts {
                 margin-right: 8px;
             }
 
+            asm-search {
+
+            }
+
             .notifications {
                 position: relative;
-                margin-right: 4px;
+                margin-right: 8px;
 
                 .dot {
                     position: absolute;

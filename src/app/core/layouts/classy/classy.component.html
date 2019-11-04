@@ -26,6 +26,11 @@
             <mat-icon [svgIcon]="'menu'"></mat-icon>
         </button>
 
+        <!-- Shortcuts -->
+        <asm-shortcuts [title]="'Quick Access'"
+                       [subtitle]="'Shortcuts for links and functions'"
+                       [addShortcutLabel]="'Add shortcut'"></asm-shortcuts>
+
         <!-- Search -->
         <asm-search [appearance]="'bar'"
                     [fullscreenTitle]="'Search...'"
@@ -53,10 +58,8 @@
 
         </asm-search>
 
-        <!-- Shortcuts -->
-        <asm-shortcuts [title]="'Quick Access'"
-                       [subtitle]="'Shortcuts for links and functions'"
-                       [addShortcutLabel]="'Add shortcut'"></asm-shortcuts>
+        <!-- Spacer -->
+        <div class="spacer"></div>
 
         <!-- Notifications -->
         <div class="notifications">
