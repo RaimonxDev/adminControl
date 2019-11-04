@@ -1,0 +1,549 @@
+<div class="content-layout fullwidth-standard-normal-scroll docs">
+
+    <div class="header">
+
+        <div class="container">
+
+            <div class="breadcrumb">
+                <span class="path">UI ELEMENTS</span>
+                <span class="separator">/</span>
+                <span class="path">HELPER CLASSES</span>
+                <span class="separator">/</span>
+                <span class="path current">ASSEMBLY</span>
+            </div>
+            <h1>Assembly helper classes</h1>
+
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="container">
+
+            <!-- Form field helpers -->
+            <h2>Form field helpers</h2>
+            <p>
+                Following helper classes modify Angular Material's core <b>fill</b> form field appearance to make it more consistent and correctly aligned. You can experiment with
+                the <em>helper classes</em> to see how they affect the fields.
+            </p>
+            <p>
+                We don't recommend using other (<em>standard or outline</em>) field appearances as they do not offer the best look and user experience, so to be as consistent as
+                possible, always use the <b>fill</b> appearance which is the default appearance for the form fields in Assembly.
+            </p>
+            <p>
+                To see how we use Assembly form field helper
+                classes correctly and efficiently, check <a class="link"
+                                                            [routerLink]="['./ui/form-layouts']">Form Layouts</a> examples.
+            </p>
+
+            <h3>Required helpers</h3>
+
+            <ul>
+                <li>
+                    <b>Textarea</b> (<code>asm-mat-textarea</code>) helper is required if you are using a textarea as your input. Since Angular Material doesn't differentiate
+                    a textarea from a normal input while using them with <b>mat-form-field</b>, this helper class is required for <b>textarea</b> inputs to look good and
+                    consistent.
+                </li>
+            </ul>
+
+            <h3>Optional helpers</h3>
+
+            <ul>
+                <li>
+                    <b>Dense</b> (<code>asm-mat-dense</code>) helper provides set of adjustments to make the fields denser. Dense fields are suitable for non-form usages and places
+                    where there isn't much space to work with such as small dialogs, menus, popovers and etc.
+                </li>
+                <li>
+                    <b>Rounded</b> (<code>asm-mat-rounded</code>) helper provides set of adjustments to make the fields look fully rounded.
+                </li>
+                <li>
+                    <b>No subscript</b> (<code>asm-mat-no-subscript</code>) helper provides set of adjustments to remove the bottom spacing where <em>hint</em> and <em>error</em>
+                    messages placed. This helper is particularly useful to align the field easily if you don't need to show error messages or hint text. For example a search bar in
+                    the toolbar uses this helper to fit the field to the toolbar without having an extra bottom spacing.
+                </li>
+                <li>
+                    <b>Outline</b> (<code>asm-mat-outline</code>) helper provides set of adjustments to make the field look like Material's <em>Outline</em> appearance except the
+                    top border aligned floating label.
+                </li>
+            </ul>
+
+            <h3>Usage</h3>
+            <p>
+                <code>&lt;mat-form-field class="{{getFormFieldHelpersAsString()}}"&gt;...&lt;mat-form-field&gt;</code>
+            </p>
+
+            <h3>With mat-label</h3>
+
+            <p>
+                <mat-button-toggle-group [(ngModel)]="formFieldHelpers"
+                                         multiple>
+                    <mat-button-toggle [value]="'asm-mat-dense'">Dense</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-rounded'">Rounded</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-no-subscript'">No subscript</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-outline'">Outline</mat-button-toggle>
+                </mat-button-toggle-group>
+            </p>
+
+            <asm-card class="flex flex-col w-full max-w-720 mt-32 p-32">
+
+                <form novalidate>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>MMMMMMMM</mat-label>
+                            <input matInput>
+                            <mat-hint>This is a hint text</mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Input with Prefix & Suffix</mat-label>
+                            <input matInput>
+                            <span matInputPrefix>$</span>
+                            <span matInputSuffix>.00</span>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Input with mat-icon-button as Prefix & Suffix</mat-label>
+                            <input matInput>
+                            <button mat-icon-button
+                                    matPrefix>
+                                <mat-icon [svgIcon]="'3d_rotation'"></mat-icon>
+                            </button>
+                            <button mat-icon-button
+                                    matSuffix>
+                                <mat-icon [svgIcon]="'visibility_off'"></mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Input with Text Prefix & Text Suffix</mat-label>
+                            <input matInput>
+                            <span matInputPrefix>$</span>
+                            <span matInputSuffix>.00</span>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Input with Text Prefix & Text Suffix</mat-label>
+                            <input class="text-right"
+                                   matInput>
+                            <span matInputPrefix>$</span>
+                            <span matInputSuffix>.00</span>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Input with mat-select as Prefix & Suffix</mat-label>
+                            <input matInput>
+                            <mat-select [value]="'EU'"
+                                        matPrefix>
+                                <mat-option [value]="'EU'">EU</mat-option>
+                                <mat-option [value]="'US'">US</mat-option>
+                            </mat-select>
+                            <mat-select [value]="'kg'"
+                                        matSuffix>
+                                <mat-option [value]="'kg'">kg</mat-option>
+                                <mat-option [value]="'gr'">gr</mat-option>
+                                <mat-option [value]="'oz'">oz</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Textarea</mat-label>
+                            <textarea matInput></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Textarea with Prefix & Suffix</mat-label>
+                            <textarea matInput></textarea>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Textarea with Autosize</mat-label>
+                            <textarea matInput
+                                      cdkTextareaAutosize
+                                      [cdkAutosizeMinRows]="2"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Textarea with Autosize, Prefix & Suffix</mat-label>
+                            <textarea matInput
+                                      cdkTextareaAutosize
+                                      [cdkAutosizeMinRows]="2"></textarea>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex flex-col gt-xs:flex-row">
+                        <mat-form-field class="flex-auto gt-xs:pr-12"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Select with Prefix</mat-label>
+                            <mat-select>
+                                <mat-option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</mat-option>
+                                <mat-option value="select1-2">Select 1-2</mat-option>
+                                <mat-option value="select1-3">Select 1-3</mat-option>
+                            </mat-select>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'room'"></mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="flex-auto gt-xs:pl-12"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Select with Suffix</mat-label>
+                            <mat-select>
+                                <mat-option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</mat-option>
+                                <mat-option value="select2-2">Select 2-2</mat-option>
+                                <mat-option value="select2-3">Select 2-3</mat-option>
+                            </mat-select>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'language'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex flex-col gt-xs:flex-row">
+                        <mat-form-field class="flex-auto gt-xs:pr-12"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Native select with Prefix</mat-label>
+                            <select matNativeControl>
+                                <option value=""></option>
+                                <option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</option>
+                                <option value="select1-2">Select 1-2</option>
+                                <option value="select1-3">Select 1-3</option>
+                            </select>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'room'"></mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="flex-auto gt-xs:pl-12"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Native select with Suffix</mat-label>
+                            <select matNativeControl>
+                                <option value=""></option>
+                                <option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</option>
+                                <option value="select2-2">Select 2-2</option>
+                                <option value="select2-3">Select 2-3</option>
+                            </select>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'language'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-chip-list #chipList01>
+                                <mat-chip [removable]="true"
+                                          [selectable]="true">
+                                    Lemon
+                                    <mat-icon matChipRemove
+                                              [svgIcon]="'remove_circle'"></mat-icon>
+                                </mat-chip>
+                                <mat-chip [removable]="true"
+                                          [selectable]="true">
+                                    Lime
+                                    <mat-icon matChipRemove
+                                              [svgIcon]="'remove_circle'"></mat-icon>
+                                </mat-chip>
+                                <mat-chip [removable]="true"
+                                          [selectable]="true">
+                                    Apple
+                                    <mat-icon matChipRemove
+                                              [svgIcon]="'remove_circle'"></mat-icon>
+                                </mat-chip>
+                                <input [placeholder]="'New fruit...'"
+                                       [matChipInputFor]="chipList01">
+                            </mat-chip-list>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput
+                                   [matDatepicker]="picker1">
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                </form>
+
+            </asm-card>
+
+            <h3>Without mat-label</h3>
+
+            <p>
+                <mat-button-toggle-group [(ngModel)]="formFieldHelpers"
+                                         multiple>
+                    <mat-button-toggle [value]="'asm-mat-dense'">Dense</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-rounded'">Rounded</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-no-subscript'">No subscript</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-outline'">Outline</mat-button-toggle>
+                </mat-button-toggle-group>
+            </p>
+
+            <asm-card class="flex flex-col w-full max-w-720 mt-32 p-32">
+
+                <form novalidate>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <input matInput
+                                   [placeholder]="'Input'">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <input matInput
+                                   [placeholder]="'Input with Prefix & Suffix'">
+                            <mat-icon matPrefix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <input matInput
+                                   [placeholder]="'Input with mat-icon-button as Prefix & Suffix'">
+                            <button mat-icon-button
+                                    matPrefix>
+                                <mat-icon [svgIcon]="'3d_rotation'"></mat-icon>
+                            </button>
+                            <button mat-icon-button
+                                    matSuffix>
+                                <mat-icon [svgIcon]="'visibility_off'"></mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <input matInput
+                                   [placeholder]="'Input with Text Prefix & Text Suffix'">
+                            <span matPrefix>$</span>
+                            <span matSuffix>.00</span>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <input class="text-right"
+                                   matInput
+                                   [placeholder]="'Input with Text Prefix & Text Suffix'">
+                            <span matPrefix>$</span>
+                            <span matSuffix>.00</span>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <input matInput
+                                   [placeholder]="'Input with mat-select as Prefix & Suffix'">
+                            <mat-select [value]="'EU'"
+                                        matPrefix>
+                                <mat-option [value]="'EU'">EU</mat-option>
+                                <mat-option [value]="'US'">US</mat-option>
+                            </mat-select>
+                            <mat-select [value]="'kg'"
+                                        matSuffix>
+                                <mat-option [value]="'kg'">kg</mat-option>
+                                <mat-option [value]="'gr'">gr</mat-option>
+                                <mat-option [value]="'oz'">oz</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <textarea matInput
+                                      [placeholder]="'Textarea'"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <textarea matInput
+                                      [placeholder]="'Textarea with Prefix & Suffix'"></textarea>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <textarea matInput
+                                      cdkTextareaAutosize
+                                      [cdkAutosizeMinRows]="2"
+                                      [placeholder]="'Textarea with Autosize'"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="asm-mat-textarea flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <textarea matInput
+                                      cdkTextareaAutosize
+                                      [cdkAutosizeMinRows]="2"
+                                      [placeholder]="'Textarea with Autosize, Prefix & Suffix'"></textarea>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'account_circle'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex flex-col gt-xs:flex-row">
+                        <mat-form-field class="flex-auto gt-xs:pr-12"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-select [placeholder]="'Select with Prefix'">
+                                <mat-option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</mat-option>
+                                <mat-option value="select1-2">Select 1-2</mat-option>
+                                <mat-option value="select1-3">Select 1-3</mat-option>
+                            </mat-select>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'room'"></mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="flex-auto gt-xs:pl-12"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-select [placeholder]="'Select with Suffix'">
+                                <mat-option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</mat-option>
+                                <mat-option value="select2-2">Select 2-2</mat-option>
+                                <mat-option value="select2-3">Select 2-3</mat-option>
+                            </mat-select>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'language'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex flex-col gt-xs:flex-row">
+                        <mat-form-field class="flex-auto gt-xs:pr-12"
+                                        [ngClass]="formFieldHelpers">
+                            <select matNativeControl
+                                    [placeholder]="'Native select with Prefix'">
+                                <option value=""></option>
+                                <option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</option>
+                                <option value="select1-2">Select 1-2</option>
+                                <option value="select1-3">Select 1-3</option>
+                            </select>
+                            <mat-icon matPrefix
+                                      [svgIcon]="'room'"></mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="flex-auto gt-xs:pl-12"
+                                        [ngClass]="formFieldHelpers">
+                            <select matNativeControl
+                                    [placeholder]="'Native select with Suffix'">
+                                <option value=""></option>
+                                <option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</option>
+                                <option value="select2-2">Select 2-2</option>
+                                <option value="select2-3">Select 2-3</option>
+                            </select>
+                            <mat-icon matSuffix
+                                      [svgIcon]="'language'"></mat-icon>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <mat-chip-list #chipList02>
+                                <mat-chip [removable]="true"
+                                          [selectable]="true">
+                                    Lemon
+                                    <mat-icon matChipRemove
+                                              [svgIcon]="'remove_circle'"></mat-icon>
+                                </mat-chip>
+                                <mat-chip [removable]="true"
+                                          [selectable]="true">
+                                    Lime
+                                    <mat-icon matChipRemove
+                                              [svgIcon]="'remove_circle'"></mat-icon>
+                                </mat-chip>
+                                <mat-chip [removable]="true"
+                                          [selectable]="true">
+                                    Apple
+                                    <mat-icon matChipRemove
+                                              [svgIcon]="'remove_circle'"></mat-icon>
+                                </mat-chip>
+                                <input [placeholder]="'New fruit...'"
+                                       [matChipInputFor]="chipList02">
+                            </mat-chip-list>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto"
+                                        [ngClass]="formFieldHelpers">
+                            <input matInput
+                                   [matDatepicker]="picker2"
+                                   [placeholder]="'Choose a date'">
+                            <mat-datepicker-toggle matSuffix
+                                                   [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                </form>
+
+            </asm-card>
+
+
+            <!-- Icon size helpers -->
+            <h2>Icon size helpers</h2>
+
+        </div>
+
+    </div>
+
+</div>
