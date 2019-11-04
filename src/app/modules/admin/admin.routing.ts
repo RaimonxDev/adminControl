@@ -33,6 +33,7 @@ export const adminRoutes: Route[] = [{
         // Pages
         {path: 'pages', children: [
 
+            // Authentication
             {path: 'authentication', children: [
 
                 {path: 'confirmation-required', loadChildren: () => import('./pages/authentication/confirmation-required/confirmation-required.module').then(m => m.ConfirmationRequiredModule)},
@@ -44,17 +45,22 @@ export const adminRoutes: Route[] = [{
                 {path: 'unlock-session', loadChildren: () => import('./pages/authentication/unlock-session/unlock-session.module').then(m => m.UnlockSessionModule)}
             ]},
 
+            // Coming soon
             {path: 'coming-soon', loadChildren: () => import('./pages/coming-soon/coming-soon.module').then(m => m.ComingSoonModule)},
 
+            // Errors
             {path: 'errors', children: [
                 {path: '404', loadChildren: () => import('./pages/errors/error-404/error-404.module').then(m => m.Error404Module)},
                 {path: '500', loadChildren: () => import('./pages/errors/error-500/error-500.module').then(m => m.Error500Module)}
             ]},
 
+            // Help center
             {path: 'help-center', loadChildren: () => import('./pages/help-center/help-center.module').then(m => m.HelpCenterModule)},
 
+            // Maintenance
             {path: 'maintenance', loadChildren: () => import('./pages/maintenance/maintenance.module').then(m => m.MaintenanceModule)},
 
+            // Pricing
             {path: 'pricing', children: [
                 {path: 'modern', loadChildren: () => import('./pages/pricing/modern/modern.module').then(m => m.PricingModernModule)},
                 {path: 'simple', loadChildren: () => import('./pages/pricing/simple/simple.module').then(m => m.PricingSimpleModule)},
@@ -62,20 +68,26 @@ export const adminRoutes: Route[] = [{
                 {path: 'table', loadChildren: () => import('./pages/pricing/table/table.module').then(m => m.PricingTableModule)}
             ]},
 
+            // Profile
             {path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule)},
         ]},
 
-        // User Interface
+        // User interface
         {path: 'ui', children: [
 
-            {path: 'angular-material', loadChildren: () => import('./ui/material-components/material-components.module').then(m => m.MaterialComponentsModule)},
+            // Material components
+            {path: 'material-components', loadChildren: () => import('./ui/material-components/material-components.module').then(m => m.MaterialComponentsModule)},
 
+            // Cards
             {path: 'cards', loadChildren: () => import('app/modules/admin/ui/cards/cards.module').then(m => m.CardsModule)},
 
+            // Colors
             {path: 'colors', loadChildren: () => import('./ui/colors/colors.module').then(m => m.ColorsModule)},
 
+            // Content layouts
             {path: 'content-layouts', children: [
 
+                // Fullwidth
                 {path: 'fullwidth', children: [
 
                     {path: 'basic', loadChildren: () => import('./ui/content-layouts/fullwidth/basic/basic.module').then(m => m.FullwidthBasicModule)},
@@ -84,6 +96,7 @@ export const adminRoutes: Route[] = [{
                     {path: 'tabs-navigation', loadChildren: () => import('./ui/content-layouts/fullwidth/tabs-navigation/tabs-navigation.module').then(m => m.FullwidthTabsNavigationModule)}
                 ]},
 
+                // Left sidebar
                 {path: 'left-sidebar', children: [
 
                     {path: 'fullheight', children: [
@@ -102,6 +115,7 @@ export const adminRoutes: Route[] = [{
                     ]}
                 ]},
 
+                // Right sidebar
                 {path: 'right-sidebar', children: [
 
                     {path: 'fullheight', children: [
@@ -121,21 +135,25 @@ export const adminRoutes: Route[] = [{
                 ]}
             ]},
 
+            // Forms
             {path: 'forms', children: [
                 {path: 'fields', loadChildren: () => import('./ui/forms/fields/fields.module').then(m => m.FormsFieldsModule)},
                 {path: 'layouts', loadChildren: () => import('./ui/forms/layouts/layouts.module').then(m => m.FormsLayoutsModule)}
             ]},
 
+            // Helper classes
             {path: 'helper-classes', children: [
                 {path: 'assembly', loadChildren: () => import('./ui/helper-classes/assembly/assembly-helper-classes.module').then(m => m.AssemblyHelperClassesModule)}
             ]},
 
+            // Icons
             {path: 'icons', loadChildren: () => import('./ui/icons/icons.module').then(m => m.IconsModule)}
         ]},
 
         // Assembly
         {path: 'assembly', children: [
 
+            // Components
             {path: 'components', children: [
                 {path: 'animations', loadChildren: () => import('./assembly/components/animations/animations.module').then(m => m.AnimationsModule)},
                 {path: 'messages', loadChildren: () => import('./assembly/components/messages/messages.module').then(m => m.MessagesModule)},
@@ -143,6 +161,7 @@ export const adminRoutes: Route[] = [{
             ]}
         ]},
 
+        // Docs
         {path: 'docs', loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule)},
 
         // 404
