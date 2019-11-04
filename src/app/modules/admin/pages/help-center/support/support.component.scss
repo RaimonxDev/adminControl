@@ -93,6 +93,11 @@ help-center-support {
                     flex-direction: column;
                     width: 100%;
 
+                    .label {
+                        font-weight: 500;
+                        margin-bottom: 4px;
+                    }
+
                     .actions {
                         display: flex;
                         justify-content: center;

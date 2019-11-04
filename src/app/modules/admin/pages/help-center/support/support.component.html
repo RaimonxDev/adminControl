@@ -42,41 +42,41 @@
             <form [formGroup]="supportForm"
                   novalidate>
 
+                <div class="label">Your name</div>
                 <mat-form-field>
-                    <mat-label>Your name</mat-label>
                     <input matInput
                            [formControlName]="'name'"
                            [required]="true">
                     <mat-error *ngIf="supportForm.get('name').hasError('required')">
-                        This field is required
+                        Required
                     </mat-error>
                 </mat-form-field>
 
+                <div class="label">Your e-mail address</div>
                 <mat-form-field>
-                    <mat-label>Your e-mail address</mat-label>
                     <input matInput
                            [formControlName]="'email'"
                            [required]="true">
                     <mat-error *ngIf="supportForm.get('email').hasError('required')">
-                        This field is required
+                        Required
                     </mat-error>
                     <mat-error *ngIf="supportForm.get('email').hasError('email')">
-                        Please enter a valid email address
+                        Enter a valid email address
                     </mat-error>
                 </mat-form-field>
 
+                <div class="label">In a few words, tell us what your enquiry is about</div>
                 <mat-form-field>
-                    <mat-label>In a few words, tell us what your enquiry is about</mat-label>
                     <input matInput
                            [formControlName]="'subject'"
                            [required]="true">
                     <mat-error *ngIf="supportForm.get('subject').hasError('required')">
-                        This field is required
+                        Required
                     </mat-error>
                 </mat-form-field>
 
+                <div class="label">Provide a detailed description</div>
                 <mat-form-field class="asm-mat-textarea">
-                    <mat-label>Provide a detailed description</mat-label>
                     <textarea matInput
                               [cdkTextareaAutosize]
                               [cdkAutosizeMinRows]="5"
@@ -84,7 +84,7 @@
                               [formControlName]="'message'"
                               [required]="true"></textarea>
                     <mat-error *ngIf="supportForm.get('message').hasError('required')">
-                        This field is required
+                        Required
                     </mat-error>
                 </mat-form-field>
 

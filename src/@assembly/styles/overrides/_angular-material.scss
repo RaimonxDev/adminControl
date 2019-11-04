@@ -415,7 +415,7 @@
 
         // Subscript tweaks
         .mat-form-field-subscript-wrapper {
-            padding: 0 16px;
+            padding: 0;
         }
     }
 
@@ -555,6 +555,7 @@ textarea.mat-input-element {
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
+    $warn: map-get($theme, warn);
     $is-dark: map-get($theme, is-dark);
 
     // -----------------------------------------------------------------------------------------------------
@@ -788,6 +789,16 @@ textarea.mat-input-element {
             color: map-get($foreground, secondary-text);
         }
 
+        &.mat-form-field-invalid {
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-flex {
+                    border-color: map-get($warn, default);
+                }
+            }
+        }
+
         &.mat-focused {
 
             .mat-form-field-wrapper {
@@ -846,6 +857,29 @@ textarea.mat-input-element {
 
         &:-ms-input-placeholder {
             color: map-get($foreground, secondary-text);
+        }
+    }
+
+    .mat-form-field-invalid {
+
+        .mat-input-element {
+
+            // Placeholder color (error)
+            &::placeholder {
+                color: map-get($warn, default);
+            }
+
+            &::-moz-placeholder {
+                color: map-get($warn, default);
+            }
+
+            &::-webkit-input-placeholder {
+                color: map-get($warn, default);
+            }
+
+            &:-ms-input-placeholder {
+                color: map-get($warn, default);
+            }
         }
     }
 
