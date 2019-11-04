@@ -89,7 +89,7 @@ export class MaterialComponentsExampleViewerComponent
 
     private resolveHighlightedExampleFile(fileName: string): string
     {
-        return `assets/angular-material-docs/docs-content/examples-highlighted/${fileName}`;
+        return `assets/material-components-docs/docs-content/examples-highlighted/${fileName}`;
     }
 
     private _generateExampleTabs(): void
