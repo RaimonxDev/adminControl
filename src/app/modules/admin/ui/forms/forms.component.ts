@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector       : 'form-layouts',
-    templateUrl    : './form-layouts.component.html',
-    styleUrls      : ['./form-layouts.component.scss'],
+    selector       : 'forms',
+    templateUrl    : './forms.component.html',
+    styleUrls      : ['./forms.component.scss'],
     encapsulation  : ViewEncapsulation.None
 })
-export class FormLayoutsComponent
+export class FormsComponent
 {
     formFieldAppearance: 'standard' | 'fill' | 'outline';
 

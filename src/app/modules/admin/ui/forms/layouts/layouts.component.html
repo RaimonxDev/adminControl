@@ -1,0 +1,991 @@
+<div class="content-layout fullwidth-standard-normal-scroll docs">
+
+    <div class="header">
+
+        <div class="container">
+
+            <div class="breadcrumb">
+                <span class="path">UI ELEMENTS</span>
+                <span class="separator">/</span>
+                <span class="path">FORMS</span>
+                <span class="separator">/</span>
+                <span class="path current">LAYOUTS</span>
+            </div>
+            <h1>Form Layouts</h1>
+
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="container mb-32">
+            <p>
+                Forms are one of the most important and most used components of any web application. Below, you can find lots of ready to use form layout examples which you can
+                modify for your needs and immediately start coding your logic.
+            </p>
+            <p>
+                These examples use <a class="link"
+                                      href="https://tailwindcss.com/"
+                                      target="_blank">TailwindCSS</a> helper classes. We strongly recommend you to use <b>TailwindCSS</b> to build your form layouts. This not only
+                allows an extreme flexibility on your forms but it also saves time since forms are more generic components and they don't necessarily require explicit id/class
+                naming on the form itself or on structural elements when using them with Angular because of how Angular handles the forms.
+            </p>
+            <p>
+                These examples are also use Assembly's default <b>Fill</b> form field appearance and form field helper classes. To learn more about the available helper classes,
+                check out the <a class="link"
+                                 [routerLink]="['/ui/helper-classes/assembly']">Assembly Helper Classes</a> page.
+            </p>
+
+            <!-- Sectioned form with dividers -->
+            <div class="mt-64">
+                <h3 class="my-0">Sectioned form with dividers</h3>
+                <p class="mt-8 mb-40">
+                    This sectioned form example uses dividers to separate the different sections of the form. Form fields uses <em>placeholders</em> and don't have separate labels
+                    for more compact look.
+                </p>
+                <asm-card class="flex flex-col p-32 pb-20 pt-40">
+
+                    <form novalidate>
+
+                        <h5 class="my-0">Basic information</h5>
+                        <p class="text-secondary mt-0 mb-24">
+                            Set your login preferences, help us personalize your experience and make big account changes here
+                        </p>
+
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'Email Address'">
+                                <mat-icon matPrefix
+                                          [svgIcon]="'mail'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex flex-col gt-xs:flex-row">
+                            <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <mat-select [placeholder]="'Country / Region'">
+                                    <mat-option value="country-1">Country 1</mat-option>
+                                    <mat-option value="country-2">Country 2</mat-option>
+                                    <mat-option value="country-3">Country 3</mat-option>
+                                </mat-select>
+                                <mat-icon matPrefix
+                                          [svgIcon]="'room'"></mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <mat-select [placeholder]="'Language'">
+                                    <mat-option value="language-1">Language 1</mat-option>
+                                    <mat-option value="language-2">Language 2</mat-option>
+                                    <mat-option value="language-3">Language 3</mat-option>
+                                </mat-select>
+                                <mat-icon matPrefix
+                                          [svgIcon]="'language'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <mat-divider class="mt-24 mb-40"></mat-divider>
+
+                        <h5 class="my-0">Profile</h5>
+                        <p class="text-secondary mt-0 mb-24">
+                            People on this application will get to know you with this information
+                        </p>
+
+                        <div class="flex flex-col gt-xs:flex-row">
+                            <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <input matInput
+                                       [placeholder]="'First name'">
+                                <mat-icon matPrefix
+                                          [svgIcon]="'account_circle'"></mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <input matInput
+                                       [placeholder]="'Last name'">
+                                <mat-icon matPrefix
+                                          [svgIcon]="'account_circle'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'Username'">
+                                <span matPrefix>www.example.com/</span>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <mat-form-field class="asm-mat-textarea flex-auto">
+                                <textarea matInput
+                                          [placeholder]="'About'"
+                                          [rows]="3"></textarea>
+                                <mat-icon matPrefix
+                                          [svgIcon]="'notes'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <mat-divider class="mt-24 mb-40"></mat-divider>
+
+                        <h5 class="my-0">Notifications</h5>
+                        <p class="text-secondary mt-0 mb-24">
+                            People on this application will get to know you with this information
+                        </p>
+
+                        <div class="flex flex-col gt-sm:flex-row">
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-8">By Email</span>
+                                <div class="flex flex-col">
+                                    <mat-checkbox class="mb-4"
+                                                  [checked]="true"
+                                                  [color]="'primary'">
+                                        Company News
+                                    </mat-checkbox>
+                                    <mat-checkbox class="mb-4"
+                                                  [color]="'primary'">
+                                        Featured Products
+                                    </mat-checkbox>
+                                    <mat-checkbox [checked]="true"
+                                                  [color]="'primary'">
+                                        Messages
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-80">
+                                <span class="font-medium mb-8">Push Notifications</span>
+                                <mat-radio-group class="flex flex-col"
+                                                 [color]="'primary'"
+                                                 [value]="'just-good'">
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'everything'">
+                                        Everything
+                                    </mat-radio-button>
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'just-good'">
+                                        Just the good stuff
+                                    </mat-radio-button>
+                                    <mat-radio-button [value]="'no-push'">
+                                        No push notifications
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-end border-t -mx-32 mt-32 px-32 pt-20">
+                            <button mat-button>
+                                Cancel
+                            </button>
+                            <button class="px-24 ml-12"
+                                    mat-flat-button
+                                    [color]="'primary'">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+
+                </asm-card>
+            </div>
+
+            <!-- Sectioned form with dividers #2 -->
+            <div class="mt-128">
+                <h3 class="my-0">Sectioned form with dividers #2</h3>
+                <p class="mt-8 mb-40">
+                    This sectioned form example uses dividers to separate the different sections of the form, section title and description is horizontally aligned with the section
+                    fields. Form fields uses <em>mat-label</em> to have separate, floating labels.
+                </p>
+                <asm-card class="flex flex-col p-32 pb-20 pt-40">
+
+                    <form novalidate>
+
+                        <div class="flex flex-col gt-xs:flex-row gt-xs:items-start">
+
+                            <div class="gt-xs:max-w-320 gt-xs:pr-48">
+                                <h5 class="my-0">Basic information</h5>
+                                <p class="text-secondary mt-0 mb-24">
+                                    Set your login preferences, help us personalize your experience and make big account changes here
+                                </p>
+                            </div>
+
+                            <div class="flex-auto min-w-256">
+                                <div class="flex">
+                                    <mat-form-field class="flex-auto">
+                                        <mat-label>Email Address</mat-label>
+                                        <input matInput>
+                                        <mat-icon matPrefix
+                                                  [svgIcon]="'mail'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="flex">
+                                    <mat-form-field class="flex-auto">
+                                        <mat-label>Country / Region</mat-label>
+                                        <mat-select>
+                                            <mat-option value="country-1">Country 1</mat-option>
+                                            <mat-option value="country-2">Country 2</mat-option>
+                                            <mat-option value="country-3">Country 3</mat-option>
+                                        </mat-select>
+                                        <mat-icon matPrefix
+                                                  [svgIcon]="'room'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="flex">
+                                    <mat-form-field class="flex-auto">
+                                        <mat-label>Language</mat-label>
+                                        <mat-select>
+                                            <mat-option value="language-1">Language 1</mat-option>
+                                            <mat-option value="language-2">Language 2</mat-option>
+                                            <mat-option value="language-3">Language 3</mat-option>
+                                        </mat-select>
+                                        <mat-icon matPrefix
+                                                  [svgIcon]="'language'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <mat-divider class="mt-16 mb-48"></mat-divider>
+
+                        <div class="flex flex-col gt-xs:flex-row gt-xs:items-start">
+
+                            <div class="gt-xs:max-w-320 gt-xs:pr-48">
+                                <h5 class="my-0">Profile</h5>
+                                <p class="text-secondary mt-0 mb-24">
+                                    People on this application will get to know you with this information
+                                </p>
+                            </div>
+
+                            <div class="flex-auto min-w-256">
+                                <div class="flex">
+                                    <mat-form-field class="flex-auto">
+                                        <mat-label>First name</mat-label>
+                                        <input matInput>
+                                        <mat-icon matPrefix
+                                                  [svgIcon]="'account_circle'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="flex">
+                                    <mat-form-field class="flex-auto">
+                                        <mat-label>Last name</mat-label>
+                                        <input matInput>
+                                        <mat-icon matPrefix
+                                                  [svgIcon]="'account_circle'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="flex">
+                                    <mat-form-field class="flex-auto">
+                                        <input matInput
+                                               [placeholder]="'username'">
+                                        <span matPrefix>www.example.com/</span>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="flex">
+                                    <mat-form-field class="asm-mat-textarea flex-auto">
+                                        <mat-label>About</mat-label>
+                                        <textarea matInput
+                                                  [rows]="3"></textarea>
+                                        <mat-icon matPrefix
+                                                  [svgIcon]="'notes'"></mat-icon>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <mat-divider class="mt-16 mb-48"></mat-divider>
+
+                        <div class="flex flex-col gt-xs:flex-row gt-xs:items-start">
+
+                            <div class="gt-xs:max-w-320 gt-xs:pr-48">
+                                <h5 class="my-0">Notifications</h5>
+                                <p class="text-secondary mt-0 mb-24">
+                                    People on this application will get to know you with this information
+                                </p>
+                            </div>
+
+                            <div class="flex-auto min-w-256">
+                                <div class="flex flex-col">
+                                    <span class="font-medium mb-8">By Email</span>
+                                    <div class="flex flex-col">
+                                        <mat-checkbox class="mb-4"
+                                                      [checked]="true"
+                                                      [color]="'primary'">
+                                            Company News
+                                        </mat-checkbox>
+                                        <mat-checkbox class="mb-4"
+                                                      [color]="'primary'">
+                                            Featured Products
+                                        </mat-checkbox>
+                                        <mat-checkbox [checked]="true"
+                                                      [color]="'primary'">
+                                            Messages
+                                        </mat-checkbox>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col mt-32">
+                                    <span class="font-medium mb-8">Push Notifications</span>
+                                    <mat-radio-group class="flex flex-col"
+                                                     [color]="'primary'"
+                                                     [value]="'just-good'">
+                                        <mat-radio-button class="mb-8"
+                                                          [value]="'everything'">
+                                            Everything
+                                        </mat-radio-button>
+                                        <mat-radio-button class="mb-8"
+                                                          [value]="'just-good'">
+                                            Just the good stuff
+                                        </mat-radio-button>
+                                        <mat-radio-button [value]="'no-push'">
+                                            No push notifications
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex items-center justify-end border-t -mx-32 mt-32 px-32 pt-20">
+                            <button mat-button>
+                                Cancel
+                            </button>
+                            <button class="px-24 ml-12"
+                                    mat-flat-button
+                                    [color]="'primary'">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+
+                </asm-card>
+            </div>
+
+            <!-- Sectioned form with dividers #3 -->
+            <div class="mt-128">
+                <h3 class="my-0">Sectioned form with dividers #3</h3>
+                <p class="mt-8 mb-40">
+                    This sectioned form example uses dividers and colors to separate the different sections of the form. Form fields have <em>separate labels</em>,<em>dense</em>
+                    style and they are aligned horizontally with their fields.
+                </p>
+                <asm-card class="flex flex-col">
+
+                    <form novalidate>
+
+                        <div class="bg-gray-100 p-32 border-b">
+                            <h5 class="my-0">Basic information</h5>
+                            <p class="text-secondary mt-0">Set your login preferences, help us personalize your experience and make big account changes here</p>
+                        </div>
+
+                        <div class="p-32 pb-8">
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Email Address</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Country / Region</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <mat-select>
+                                        <mat-option value="country-1">Country 1</mat-option>
+                                        <mat-option value="country-2">Country 2</mat-option>
+                                        <mat-option value="country-3">Country 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Language</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <mat-select>
+                                        <mat-option value="language-1">Language 1</mat-option>
+                                        <mat-option value="language-2">Language 2</mat-option>
+                                        <mat-option value="language-3">Language 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-100 mt-16 p-32 border-t border-b">
+                            <h5 class="my-0">Profile</h5>
+                            <p class="text-secondary mt-0">People on this application will get to know you with this information</p>
+                        </div>
+
+                        <div class="p-32 pb-8">
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">First name</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Last name</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Username</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                    <span matPrefix>www.example.com/</span>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">About</span>
+                                <mat-form-field class="asm-mat-textarea flex-auto">
+                                    <textarea matInput
+                                              [rows]="3"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+
+                        <div class="bg-gray-100 mt-16 p-32 border-t border-b">
+                            <h5 class="my-0">Notifications</h5>
+                            <p class="text-secondary mt-0">People on this application will get to know you with this information</p>
+                        </div>
+
+                        <div class="p-32">
+                            <div class="flex flex-col gt-xs:flex-row">
+                                <span class="font-medium mb-8 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">By Email</span>
+                                <div class="flex flex-col">
+                                    <mat-checkbox class="mb-4"
+                                                  [checked]="true"
+                                                  [color]="'primary'">
+                                        Company News
+                                    </mat-checkbox>
+                                    <mat-checkbox class="mb-4"
+                                                  [color]="'primary'">
+                                        Featured Products
+                                    </mat-checkbox>
+                                    <mat-checkbox [checked]="true"
+                                                  [color]="'primary'">
+                                        Messages
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gt-xs:flex-row mt-32">
+                                <span class="font-medium mb-8 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Push Notifications</span>
+                                <mat-radio-group class="flex flex-col"
+                                                 [color]="'primary'"
+                                                 [value]="'just-good'">
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'everything'">
+                                        Everything
+                                    </mat-radio-button>
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'just-good'">
+                                        Just the good stuff
+                                    </mat-radio-button>
+                                    <mat-radio-button [value]="'no-push'">
+                                        No push notifications
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+
+                        </div>
+
+                        <div class="flex items-center justify-end px-32 py-20 border-t">
+                            <button mat-button>
+                                Cancel
+                            </button>
+                            <button class="px-24 ml-12"
+                                    mat-flat-button
+                                    [color]="'primary'">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+
+                </asm-card>
+
+            </div>
+
+            <!-- Sectioned form with separate cards -->
+            <div class="mt-128">
+                <h3 class="my-0">Sectioned form with separate cards</h3>
+                <p class="mt-8 mb-40">
+                    This sectioned form example uses cards to separate the sections of the form. This kind of form layouts are more suitable for <em>Settings</em> or similar pages.
+                </p>
+                <form novalidate>
+
+                    <asm-card class="flex flex-col mt-32 p-32 pb-20">
+
+                        <h5 class="my-0">Basic information</h5>
+                        <p class="text-secondary mt-0 mb-24">
+                            Set your login preferences, help us personalize your experience and make big account changes here
+                        </p>
+
+                        <mat-divider class="mt-8 mb-40"></mat-divider>
+
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'Email Address'">
+                                <mat-icon matPrefix
+                                          [svgIcon]="'mail'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex flex-col gt-xs:flex-row">
+                            <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <mat-select [placeholder]="'Country / Region'">
+                                    <mat-option value="country-1">Country 1</mat-option>
+                                    <mat-option value="country-2">Country 2</mat-option>
+                                    <mat-option value="country-3">Country 3</mat-option>
+                                </mat-select>
+                                <mat-icon matPrefix
+                                          [svgIcon]="'room'"></mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <mat-select [placeholder]="'Language'">
+                                    <mat-option value="language-1">Language 1</mat-option>
+                                    <mat-option value="language-2">Language 2</mat-option>
+                                    <mat-option value="language-3">Language 3</mat-option>
+                                </mat-select>
+                                <mat-icon matPrefix
+                                          [svgIcon]="'language'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                    </asm-card>
+
+                    <asm-card class="flex flex-col mt-32 p-32 pb-20">
+
+                        <h5 class="my-0">Profile</h5>
+                        <p class="text-secondary mt-0 mb-24">
+                            People on this application will get to know you with this information
+                        </p>
+
+                        <mat-divider class="mt-8 mb-40"></mat-divider>
+
+                        <div class="flex flex-col gt-xs:flex-row">
+                            <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <input matInput
+                                       [placeholder]="'First name'">
+                                <mat-icon matPrefix
+                                          [svgIcon]="'account_circle'"></mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <input matInput
+                                       [placeholder]="'Last name'">
+                                <mat-icon matPrefix
+                                          [svgIcon]="'account_circle'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'Username'">
+                                <span matPrefix>www.example.com/</span>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <mat-form-field class="asm-mat-textarea flex-auto">
+                                <textarea matInput
+                                          [placeholder]="'About'"
+                                          [rows]="3"></textarea>
+                                <mat-icon matPrefix
+                                          [svgIcon]="'notes'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                    </asm-card>
+
+                    <asm-card class="flex flex-col mt-32 p-32">
+
+                        <h5 class="my-0">Notifications</h5>
+                        <p class="text-secondary mt-0 mb-24">
+                            People on this application will get to know you with this information
+                        </p>
+
+                        <mat-divider class="mt-8 mb-40"></mat-divider>
+
+                        <div class="flex flex-col gt-sm:flex-row">
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-8">By Email</span>
+                                <div class="flex flex-col">
+                                    <mat-checkbox class="mb-4"
+                                                  [checked]="true"
+                                                  [color]="'primary'">
+                                        Company News
+                                    </mat-checkbox>
+                                    <mat-checkbox class="mb-4"
+                                                  [color]="'primary'">
+                                        Featured Products
+                                    </mat-checkbox>
+                                    <mat-checkbox [checked]="true"
+                                                  [color]="'primary'">
+                                        Messages
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-80">
+                                <span class="font-medium mb-8">Push Notifications</span>
+                                <mat-radio-group class="flex flex-col"
+                                                 [color]="'primary'"
+                                                 [value]="'just-good'">
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'everything'">
+                                        Everything
+                                    </mat-radio-button>
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'just-good'">
+                                        Just the good stuff
+                                    </mat-radio-button>
+                                    <mat-radio-button [value]="'no-push'">
+                                        No push notifications
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+
+                    </asm-card>
+
+                    <div class="flex items-center justify-end mt-40">
+                        <button mat-button>
+                            Cancel
+                        </button>
+                        <button class="px-24 ml-12"
+                                mat-flat-button
+                                [color]="'primary'">
+                            Save
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Sectioned form with separate cards #2 -->
+            <div class="mt-128">
+                <h3 class="my-0">Sectioned form with separate cards #2</h3>
+                <p class="mt-8 mb-40">
+                    This sectioned form example uses cards and whitespace to separate the different sections of the form, section title and description is horizontally aligned with
+                    the section fields. Form fields have <em>separate labels</em> and <em>dense</em> style.
+                </p>
+                <form novalidate>
+
+                    <div class="flex flex-col gt-xs:flex-row gt-xs:items-start">
+
+                        <div class="gt-xs:max-w-256 gt-xs:pr-48">
+                            <h5 class="my-0">Basic information</h5>
+                            <p class="text-secondary mt-0 mb-24">
+                                Set your login preferences, help us personalize your experience and make big account changes here
+                            </p>
+                        </div>
+
+                        <asm-card class="flex flex-col flex-auto p-32 pb-2">
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-4">Email Address</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-4">Country / Region</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <mat-select>
+                                        <mat-option value="country-1">Country 1</mat-option>
+                                        <mat-option value="country-2">Country 2</mat-option>
+                                        <mat-option value="country-3">Country 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-4">Language</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <mat-select>
+                                        <mat-option value="language-1">Language 1</mat-option>
+                                        <mat-option value="language-2">Language 2</mat-option>
+                                        <mat-option value="language-3">Language 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </asm-card>
+
+                    </div>
+
+                    <div class="flex flex-col mt-32 gt-xs:flex-row gt-xs:items-start">
+
+                        <div class="gt-xs:max-w-256 gt-xs:pr-48">
+                            <h5 class="my-0">Profile</h5>
+                            <p class="text-secondary mt-0 mb-24">
+                                People on this application will get to know you with this information
+                            </p>
+                        </div>
+
+                        <asm-card class="flex flex-col flex-auto p-32 pb-2">
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-4">First name</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-4">Last name</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-4">Username</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                    <span matPrefix>www.example.com/</span>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-4">About</span>
+                                <mat-form-field class="asm-mat-textarea flex-auto">
+                                    <textarea matInput
+                                              [rows]="3"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </asm-card>
+
+                    </div>
+
+                    <div class="flex flex-col mt-32 gt-xs:flex-row gt-xs:items-start">
+
+                        <div class="gt-xs:max-w-256 gt-xs:pr-48">
+                            <h5 class="my-0">Notifications</h5>
+                            <p class="text-secondary mt-0 mb-24">
+                                People on this application will get to know you with this information
+                            </p>
+                        </div>
+
+                        <asm-card class="flex flex-col flex-auto p-32">
+                            <div class="flex flex-col">
+                                <span class="font-medium mb-8">By Email</span>
+                                <div class="flex flex-col">
+                                    <mat-checkbox class="mb-4"
+                                                  [checked]="true"
+                                                  [color]="'primary'">
+                                        Company News
+                                    </mat-checkbox>
+                                    <mat-checkbox class="mb-4"
+                                                  [color]="'primary'">
+                                        Featured Products
+                                    </mat-checkbox>
+                                    <mat-checkbox [checked]="true"
+                                                  [color]="'primary'">
+                                        Messages
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="flex flex-col mt-32">
+                                <span class="font-medium mb-8">Push Notifications</span>
+                                <mat-radio-group class="flex flex-col"
+                                                 [color]="'primary'"
+                                                 [value]="'just-good'">
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'everything'">
+                                        Everything
+                                    </mat-radio-button>
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'just-good'">
+                                        Just the good stuff
+                                    </mat-radio-button>
+                                    <mat-radio-button [value]="'no-push'">
+                                        No push notifications
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </asm-card>
+
+                    </div>
+
+                    <div class="flex items-center justify-end mt-40">
+                        <button mat-button>
+                            Cancel
+                        </button>
+                        <button class="px-24 ml-12"
+                                mat-flat-button
+                                [color]="'primary'">
+                            Save
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Sectioned form with separate cards #3 -->
+            <div class="mt-128">
+                <h3 class="my-0">Sectioned form with separate cards #3</h3>
+                <p class="mt-8 mb-40">
+                    This sectioned form example uses cards and whitespace to separate the different sections of the form, section title and description is horizontally aligned with
+                    the section fields. Form fields have <em>separate labels</em> and <em>dense</em> style.
+                </p>
+                <form novalidate>
+
+                    <asm-card class="flex flex-col mt-32">
+
+                        <div class="p-32 bg-gray-100">
+                            <h5 class="my-0">Basic information</h5>
+                            <p class="text-secondary mt-0">Set your login preferences, help us personalize your experience and make big account changes here</p>
+                        </div>
+
+                        <mat-divider></mat-divider>
+
+                        <div class="p-32 pb-8">
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Email Address</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Country / Region</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <mat-select>
+                                        <mat-option value="country-1">Country 1</mat-option>
+                                        <mat-option value="country-2">Country 2</mat-option>
+                                        <mat-option value="country-3">Country 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Language</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <mat-select>
+                                        <mat-option value="language-1">Language 1</mat-option>
+                                        <mat-option value="language-2">Language 2</mat-option>
+                                        <mat-option value="language-3">Language 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </asm-card>
+
+                    <asm-card class="flex flex-col flex-auto mt-32">
+
+                        <div class="p-32 bg-gray-100">
+                            <h5 class="my-0">Profile</h5>
+                            <p class="text-secondary mt-0">People on this application will get to know you with this information</p>
+                        </div>
+
+                        <mat-divider></mat-divider>
+
+                        <div class="p-32 pb-8">
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">First name</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Last name</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Username</span>
+                                <mat-form-field class="asm-mat-dense flex-auto">
+                                    <input matInput>
+                                    <span matPrefix>www.example.com/</span>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
+                                <span class="font-medium mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">About</span>
+                                <mat-form-field class="asm-mat-textarea flex-auto">
+                                    <textarea matInput
+                                              [rows]="3"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </asm-card>
+
+                    <asm-card class="flex flex-col flex-auto mt-32">
+
+                        <div class="p-32 bg-gray-100">
+                            <h5 class="my-0">Notifications</h5>
+                            <p class="text-secondary mt-0">People on this application will get to know you with this information</p>
+                        </div>
+
+                        <mat-divider></mat-divider>
+
+                        <div class="p-32">
+                            <div class="flex flex-col gt-xs:flex-row">
+                                <span class="font-medium mb-8 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">By Email</span>
+                                <div class="flex flex-col">
+                                    <mat-checkbox class="mb-4"
+                                                  [checked]="true"
+                                                  [color]="'primary'">
+                                        Company News
+                                    </mat-checkbox>
+                                    <mat-checkbox class="mb-4"
+                                                  [color]="'primary'">
+                                        Featured Products
+                                    </mat-checkbox>
+                                    <mat-checkbox [checked]="true"
+                                                  [color]="'primary'">
+                                        Messages
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gt-xs:flex-row mt-32">
+                                <span class="font-medium mb-8 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Push Notifications</span>
+                                <mat-radio-group class="flex flex-col"
+                                                 [color]="'primary'"
+                                                 [value]="'just-good'">
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'everything'">
+                                        Everything
+                                    </mat-radio-button>
+                                    <mat-radio-button class="mb-8"
+                                                      [value]="'just-good'">
+                                        Just the good stuff
+                                    </mat-radio-button>
+                                    <mat-radio-button [value]="'no-push'">
+                                        No push notifications
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+
+                        </div>
+
+                    </asm-card>
+
+                    <div class="flex items-center justify-end mt-40">
+                        <button mat-button>
+                            Cancel
+                        </button>
+                        <button class="px-24 ml-12"
+                                mat-flat-button
+                                [color]="'primary'">
+                            Save
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

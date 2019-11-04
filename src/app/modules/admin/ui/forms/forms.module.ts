@@ -11,15 +11,19 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { AsmCardModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { FormLayoutsComponent } from 'app/modules/admin/ui/form-layouts/form-layouts.component';
-import { formLayoutsRoutes } from 'app/modules/admin/ui/form-layouts/form-layouts.routing';
+import { FormsComponent } from 'app/modules/admin/ui/forms/forms.component';
+import { FormsFieldsComponent } from 'app/modules/admin/ui/forms/fields/fields.component';
+import { FormsLayoutsComponent } from 'app/modules/admin/ui/forms/layouts/layouts.component';
+import { formsRoutes } from 'app/modules/admin/ui/forms/forms.routing';
 
 @NgModule({
     declarations: [
-        FormLayoutsComponent
+        FormsComponent,
+        FormsFieldsComponent,
+        FormsLayoutsComponent
     ],
     imports     : [
-        RouterModule.forChild(formLayoutsRoutes),
+        RouterModule.forChild(formsRoutes),
         MatButtonModule,
         MatCheckboxModule,
         MatDividerModule,
@@ -33,6 +37,6 @@ import { formLayoutsRoutes } from 'app/modules/admin/ui/form-layouts/form-layout
         SharedModule
     ]
 })
-export class FormLayoutsModule
+export class FormsModule
 {
 }

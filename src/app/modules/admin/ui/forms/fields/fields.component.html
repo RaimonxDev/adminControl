@@ -1,0 +1,245 @@
+<div class="content-layout fullwidth-standard-normal-scroll docs">
+
+    <div class="header">
+
+        <div class="container">
+
+            <div class="breadcrumb">
+                <span class="path">UI ELEMENTS</span>
+                <span class="separator">/</span>
+                <span class="path">FORMS</span>
+                <span class="separator">/</span>
+                <span class="path current">FIELDS</span>
+            </div>
+            <h1>Form Fields</h1>
+
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="container mb-32">
+            <p>
+                By default, Assembly uses the <b>Fill</b> style form fields and apply numerous of tweaks on top of it to make it cleaner, better aligned and consistent across the
+                app. We strongly recommend that you use the <b>Fill</b> style with Assembly.
+            </p>
+            <p>
+                These examples use <a class="link"
+                                      href="https://tailwindcss.com/"
+                                      target="_blank">TailwindCSS</a> helper classes. We strongly recommend you to use <b>TailwindCSS</b> to build your form layouts. This not only
+                allows an extreme flexibility on your forms but it also saves time since forms are more generic components and they don't necessarily require explicit id/class
+                naming on the form itself or on structural elements when using them with Angular because of how Angular handles the forms.
+            </p>
+            <p>
+                To learn more about the available helper classes for <b>Fill</b> field style, check out the <a class="link"
+                                                                                                               [routerLink]="['/ui/helper-classes/assembly']">Assembly Helper
+                Classes</a> page.
+            </p>
+
+            <!-- Appearances -->
+            <div class="mt-48">
+
+                <h3 class="my-0">Appearances</h3>
+                <p class="mt-8 mb-24">
+                    Here's a very simple form layout to showcase the form field appearances. You can change the appearance using the below menu to test all Material Design field
+                    appearances. This example is for showcasing purposes, we still recommend using <b>Fill</b> style with Assembly for maximum stability and consistency.
+                </p>
+
+                <button class="mb-8"
+                        mat-flat-button
+                        [color]="'primary'"
+                        [matMenuTriggerFor]="appearanceMenu">
+                    <span class="ml-8">Field appearance: {{formFieldAppearance | titlecase}}</span>
+                    <mat-icon class="icon-size-18 ml-12"
+                              [svgIcon]="'keyboard_arrow_down'"></mat-icon>
+                </button>
+                <mat-menu #appearanceMenu>
+                    <button mat-menu-item
+                            (click)="formFieldAppearance = 'standard'">
+                        <span>Standard</span>
+                        <mat-icon class="ml-24 mr-0 icon-size-18"
+                                  *ngIf="formFieldAppearance === 'standard'"
+                                  [svgIcon]="'check'"></mat-icon>
+                    </button>
+                    <button mat-menu-item
+                            (click)="formFieldAppearance = 'fill'">
+                        <span>Fill</span>
+                        <mat-icon class="ml-24 mr-0 icon-size-18"
+                                  *ngIf="formFieldAppearance === 'fill'"
+                                  [svgIcon]="'check'"></mat-icon>
+                    </button>
+                    <button mat-menu-item
+                            (click)="formFieldAppearance = 'outline'">
+                        <span>Outline</span>
+                        <mat-icon class="ml-24 mr-0 icon-size-18"
+                                  *ngIf="formFieldAppearance === 'outline'"
+                                  [svgIcon]="'check'"></mat-icon>
+                    </button>
+                </mat-menu>
+
+                <asm-card class="flex flex-col mt-32 p-32 pb-20">
+
+                    <form class="mt-8"
+                          novalidate>
+
+                        <div class="flex flex-col gt-xs:flex-row">
+                            <mat-form-field class="flex-auto gt-xs:pr-12"
+                                            [appearance]="formFieldAppearance">
+                                <mat-label>First name</mat-label>
+                                <input matInput>
+                                <mat-icon matSuffix
+                                          [svgIcon]="'account_circle'"></mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-12"
+                                            [appearance]="formFieldAppearance">
+                                <mat-label>Last name</mat-label>
+                                <input matInput>
+                                <mat-icon matSuffix
+                                          [svgIcon]="'account_circle'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <mat-form-field class="asm-mat-textarea flex-auto"
+                                            [appearance]="formFieldAppearance">
+                                <mat-label>Address</mat-label>
+                                <textarea matInput
+                                          cdkTextareaAutosize
+                                          cdkAutosizeMinRows="3"></textarea>
+                                <mat-icon matSuffix
+                                          [svgIcon]="'room'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex flex-col gt-md:flex-row">
+                            <mat-form-field class="flex-auto gt-md:pr-12"
+                                            [appearance]="formFieldAppearance">
+                                <mat-label>City</mat-label>
+                                <input matInput>
+                                <mat-icon matSuffix
+                                          [svgIcon]="'landscape'"></mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-md:pl-12"
+                                            [appearance]="formFieldAppearance">
+                                <mat-label>State</mat-label>
+                                <input matInput>
+                                <mat-icon matSuffix
+                                          [svgIcon]="'landscape'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <mat-form-field class="flex-auto"
+                                            [appearance]="formFieldAppearance">
+                                <mat-label>Postal code</mat-label>
+                                <input matInput
+                                       maxlength="5"
+                                       #postalCode>
+                                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                                <mat-icon matSuffix
+                                          [svgIcon]="'mail'"></mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex items-center justify-end border-t -mx-32 mt-20 px-32 pt-20">
+                            <button mat-button>
+                                Cancel
+                            </button>
+                            <button class="px-24 ml-12"
+                                    mat-flat-button
+                                    [color]="'primary'">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+
+                </asm-card>
+
+            </div>
+
+            <!-- Label positions -->
+            <div class="mt-128">
+
+                <h3 class="my-0">Label positions</h3>
+                <p class="mt-8 mb-40">
+                    Following form contains different examples to showcase the possible label positions for the default (<b>fill</b>) form field appearance. All fields are normal
+                    <em>inputs</em> but all label positions can be applied to other input types such as <em>Textarea</em>, <em>Select</em>, <em>Chips</em> etc.
+                </p>
+
+                <asm-card class="flex flex-col mt-32 p-32 pb-20">
+
+                    <form class="mt-8"
+                          novalidate>
+
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Floating label</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'Placeholder only'">
+                            </mat-form-field>
+                        </div>
+
+                        <mat-divider class="mt-24 mb-40"></mat-divider>
+
+                        <div class="flex flex-col">
+                            <span class="font-medium mb-4">Label on top</span>
+                            <mat-form-field class="flex-auto">
+                                <input matInput>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <span class="font-medium mb-4">Label on top</span>
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'with optional placeholder'">
+                            </mat-form-field>
+                        </div>
+
+                        <mat-divider class="mt-24 mb-48"></mat-divider>
+
+                        <div class="flex items-baseline">
+                            <span class="font-medium mr-16">Label on side</span>
+                            <mat-form-field class="flex-auto">
+                                <input matInput>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex items-baseline">
+                            <span class="font-medium mr-16">Label on side</span>
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'with optional placeholder'">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex items-center justify-end border-t -mx-32 mt-20 px-32 pt-20">
+                            <button mat-button>
+                                Cancel
+                            </button>
+                            <button class="px-24 ml-12"
+                                    mat-flat-button
+                                    [color]="'primary'">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+
+                </asm-card>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

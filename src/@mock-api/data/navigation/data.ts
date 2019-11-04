@@ -983,16 +983,16 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id   : 'ui-elements.third-party',
-        title: 'Third party',
-        type : 'collapsable',
-        icon : 'settings_input_component',
+        id      : 'ui-elements.third-party',
+        title   : 'Third party',
+        type    : 'collapsable',
+        icon    : 'settings_input_component',
         children: [
             {
                 id   : 'ui-elements.third-party.quill-editor',
                 title: 'Quill editor',
                 type : 'basic',
-                link : '/ui/third-party/quill-editor',
+                link : '/ui/third-party/quill-editor'
             }
         ]
     },
@@ -1183,11 +1183,30 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id   : 'ui-elements.form-layouts',
-        title: 'Form layouts',
-        type : 'basic',
-        icon : 'ballot',
-        link : '/ui/form-layouts'
+        id      : 'ui-elements.forms',
+        title   : 'Forms',
+        type    : 'collapsable',
+        icon    : 'ballot',
+        children: [
+            {
+                id   : 'ui-elements.forms.fields',
+                title: 'Fields',
+                type : 'basic',
+                link : '/ui/forms/fields'
+            },
+            {
+                id   : 'ui-elements.forms.layouts',
+                title: 'Layouts',
+                type : 'basic',
+                link : '/ui/forms/layouts'
+            },
+            {
+                id   : 'ui-elements.forms.wizards',
+                title: 'Wizards',
+                type : 'basic',
+                link : '/ui/forms/wizards'
+            }
+        ]
     },
     {
         id      : 'ui-elements.helper-classes',

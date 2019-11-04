@@ -200,7 +200,7 @@ export const adminRoutes: Route[] = [
                         path        : 'profile',
                         loadChildren: () => import('./pages/profile/profile.module')
                             .then(m => m.ProfileModule)
-                    },
+                    }
                 ]
             },
 
@@ -412,11 +412,11 @@ export const adminRoutes: Route[] = [
                         ]
                     },
 
-                    // Form layouts
+                    // Forms
                     {
-                        path        : 'form-layouts',
-                        loadChildren: () => import('app/modules/admin/ui/form-layouts/form-layouts.module')
-                            .then(m => m.FormLayoutsModule)
+                        path        : 'forms',
+                        loadChildren: () => import('app/modules/admin/ui/forms/forms.module')
+                            .then(m => m.FormsModule)
                     },
 
                     // Helper classes
