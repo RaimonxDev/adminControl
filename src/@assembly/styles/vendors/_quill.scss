@@ -5,7 +5,6 @@
 // -----------------------------------------------------------------------------------------------------
 
 .ql-toolbar {
-    border-width: 2px !important;
     border-radius: 6px 6px 0 0;
     padding: 0 !important;
 
@@ -25,7 +24,6 @@
 }
 
 .ql-container {
-    border-width: 2px !important;
 
     .ql-editor {
         min-height: 160px;
@@ -46,22 +44,31 @@
     .ql-toolbar {
         @if ($is-dark) {
             background: asm-dark-elevation(1);
+            border-color: asm-color($asm-gray, 600);
         } @else {
             background: asm-color($asm-gray, 200);
+            border-color: asm-color($asm-gray, 400);
         }
-        border-color: map-get($foreground, divider);
 
         .ql-picker {
 
             &.ql-expanded {
 
                 .ql-picker-label {
-                    border-color: map-get($foreground, divider);
+                    @if ($is-dark) {
+                        border-color: asm-color($asm-gray, 600);
+                    } @else {
+                        border-color: asm-color($asm-gray, 400);
+                    }
                 }
 
                 .ql-picker-options {
+                    @if ($is-dark) {
+                        border-color: asm-color($asm-gray, 600);
+                    } @else {
+                        border-color: asm-color($asm-gray, 400);
+                    }
                     background: map-get($background, card);
-                    border-color: map-get($foreground, divider);
                 }
             }
 
@@ -107,10 +114,26 @@
     }
 
     .ql-container {
-        border-color: map-get($foreground, divider);
+        @if ($is-dark) {
+            border-color: asm-color($asm-gray, 600);
+        } @else {
+            border-color: asm-color($asm-gray, 400);
+        }
 
-        .ql-editor.ql-blank::before {
-            color: map-get($foreground, hint-text);
+        .ql-editor {
+            @if ($is-dark) {
+                background-color: asm-dark-elevation(1);
+            } @else {
+                background-color: asm-color($asm-gray, 100);
+            }
+
+            &:focus {
+                background-color: map-get($background, card);
+            }
+
+            &.ql-blank::before {
+                color: map-get($foreground, hint-text);
+            }
         }
     }
 
