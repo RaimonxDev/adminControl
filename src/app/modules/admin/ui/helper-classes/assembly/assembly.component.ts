@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector     : 'assembly-helper-classes',
-    templateUrl  : './tailwindcss.component.html',
-    styleUrls    : ['./tailwindcss.component.scss'],
+    templateUrl  : './assembly.component.html',
+    styleUrls    : ['./assembly.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TailwindcssComponent implements OnInit
+export class AssemblyHelperClassesComponent implements OnInit
 {
     demoForm: FormGroup;
     formFieldHelpers: string[];

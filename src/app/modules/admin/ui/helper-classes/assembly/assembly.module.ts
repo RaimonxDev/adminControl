@@ -13,8 +13,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSelectModule } from '@angular/material/select';
 import { AsmCardModule, AsmHighlightModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { AssemblyHelperClassesComponent } from 'app/modules/admin/ui/helper-classes/assembly/assembly-helper-classes.component';
-import { assemblyHelperClassesRoutes } from 'app/modules/admin/ui/helper-classes/assembly/assembly-helper-classes.routing';
+import { AssemblyHelperClassesComponent } from 'app/modules/admin/ui/helper-classes/assembly/assembly.component';
+import { assemblyHelperClassesRoutes } from 'app/modules/admin/ui/helper-classes/assembly/assembly.routing';
 
 @NgModule({
     declarations: [
@@ -38,6 +38,6 @@ import { assemblyHelperClassesRoutes } from 'app/modules/admin/ui/helper-classes
         SharedModule
     ]
 })
-export class TailwindcssModule
+export class AssemblyHelperClassesModule
 {
 }

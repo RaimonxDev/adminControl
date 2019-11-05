@@ -143,7 +143,8 @@ export const adminRoutes: Route[] = [{
 
             // Helper classes
             {path: 'helper-classes', children: [
-                {path: 'assembly', loadChildren: () => import('./ui/helper-classes/assembly/assembly-helper-classes.module').then(m => m.AssemblyHelperClassesModule)}
+                {path: 'assembly', loadChildren: () => import('app/modules/admin/ui/helper-classes/assembly/assembly.module').then(m => m.AssemblyHelperClassesModule)},
+                {path: 'tailwindcss', loadChildren: () => import('app/modules/admin/ui/helper-classes/tailwind/tailwind.module').then(m => m.TailwindModule)}
             ]},
 
             // Icons
