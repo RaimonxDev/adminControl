@@ -35,6 +35,11 @@
                 ids and classes but they can be easily improved and modified using Tailwind. If you choose to use Tailwind as your main styling framework and don't want to use
                 traditional ids and classes for styling, you can always create apps and pages and use the helper classes from Tailwind to style them.
             </p>
+            <p>
+                You can also choose to use Tailwind as a helper classes utility rather than your main style framework. Basically, you would still create id/class based styles
+                for complex styling and layouts and use only certain parts of the Tailwind to modify your styles, like quickly adding <b>margin</b> and <b>padding</b> to the
+                elements, or <b>showing</b> and/or <b>hiding</b> them based on breakpoints to create better mobile/table layouts without writing media queries all the time.
+            </p>
 
             <!-- Configuration -->
             <h2>Configuration</h2>
@@ -46,15 +51,15 @@
                 configured the Tailwind using that file with the current breakpoints of the Assembly, more sizing options and couple other useful utilities.
             </p>
             <p>
-                The generated scss file is located at the <code>/src/tailwind.scss</code> and it's being included as a main style file in the building process using
+                The generated scss file is located at the <code>/src/tailwind.scss</code> and it's being included as one of the main style files in the building process using
                 <code>angular.json</code> configuration.
             </p>
 
-            <!-- Modifying the Tailwind configuration -->
-            <h2>Modifying the Tailwind configuration</h2>
+            <!-- Building Tailwind -->
+            <h2>Building Tailwind</h2>
             <p>
                 If you modify the Tailwind configuration file to generate more classes or to simply edit the existing ones, you have to run the
-                <code class="whitespace-no-wrap">npm run tw:build</code> command to update the scss file with the new/modified styles. The Tailwind configuration file is not
+                <code class="whitespace-no-wrap">npm run tw:build</code> command to build a new scss file with the new/modified styles. The Tailwind configuration file is not
                 being watched by AngularCLI so any changes on that file <b>won't</b> trigger the Tailwind's building process automatically.
             </p>
 

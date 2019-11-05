@@ -47,7 +47,7 @@
 /// @param {String} $elevation - The amount of the elevation that the element will have
 /// @param {Boolean} $important - Whether to add an !important tag to the shadow rule
 ///
-@function asm-dark-elevation($elevation) {
+@function asm-dark-elevation($elevation, $important: false) {
 
     // Elevations map
     $elevations: (
@@ -72,5 +72,5 @@
     }
 
     // Return the background color
-    @return rgba(255, 255, 255, $opacity);
+    @return rgba(255, 255, 255, $opacity) if($important, !important, null);
 }

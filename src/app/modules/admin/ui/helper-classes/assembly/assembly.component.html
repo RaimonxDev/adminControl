@@ -541,6 +541,149 @@
 
             <!-- Icon size helpers -->
             <h2>Icon size helpers</h2>
+            <p>
+                Assembly provides <em>helper classes</em> and an <em>SCSS mixin</em> to quickly change the icon size on <code>mat-icon</code> elements. Helper classes and the mixin
+                support both icon fonts and svg icons.
+            </p>
+
+            <h3>Helpers</h3>
+            <ul>
+                <li>
+                    <code>icon-size-[SIZE]</code>: <b>SIZE</b> parameter can be between <b>4</b> and <b>256</b> with the increments of <b>4</b> (4, 8, 12, 16, 20 ... 256).
+                </li>
+            </ul>
+
+            <h3>Mixin</h3>
+            <p>
+                To change the icon size directly from the SCSS files, you can use the <code>@include asm-icon-size($size)</code> mixin. It has the same <b>$size</b> parameter rule
+                as the helper class.
+            </p>
+
+
+            <!-- Breakpoint mixin -->
+            <h2>Breakpoint mixin</h2>
+            <p>
+                Assembly provides an <em>SCSS mixin</em> to quickly wrap the styles in a media query that's compatible with the Assembly's current set of breakpoints.
+            </p>
+
+            <h3>Mixin</h3>
+            <p>
+                Use the <code>@include asm-media-breakpoint($breakpoint)</code> mixin to add a media rule that wraps the code inside it:
+            </p>
+            <!-- @formatter:off -->
+            <asm-highlight [lang]="'css'">
+                <textarea>
+                    @include asm-media-breakpoint('lt-md') {
+                        top: 0;
+                        height: 100vh;
+                        min-height: 100vh;
+                        max-height: 100vh;
+                    }
+                </textarea>
+            </asm-highlight>
+            <!-- @formatter:on -->
+            <p>
+                will result with the following code:
+            </p>
+            <!-- @formatter:off -->
+            <asm-highlight [lang]="'css'">
+                <textarea>
+                    @media (max-width: 959px) {
+                        top: 0;
+                        height: 100vh;
+                        min-height: 100vh;
+                        max-height: 100vh;
+                    }
+                </textarea>
+            </asm-highlight>
+            <!-- @formatter:on -->
+
+            <h3>Available breakpoints</h3>
+            <p>
+                All available breakpoints and their widths can be seen and modified in <code>/src/@assembly/styles/utilities/_breakpoints.scss</code> file.
+            </p>
+
+
+            <!-- Elevation mixin -->
+            <h2>Elevation mixin (for Light themes)</h2>
+            <p>
+                Assembly provides an <em>SCSS mixin</em> to quickly add an elevation to the elements.
+            </p>
+
+            <h3>Mixin</h3>
+            <p>
+                Use the <code>@include asm-elevation($elevation, $important, $color)</code> mixin to add an elevation based on box-shadow.
+            </p>
+            <!-- @formatter:off -->
+            <asm-highlight [lang]="'css'">
+                <textarea>
+                    asm-card {
+                        @include asm-elevation(2);
+                    }
+                </textarea>
+            </asm-highlight>
+            <!-- @formatter:on -->
+            <p>
+                will result with the following code:
+            </p>
+            <!-- @formatter:off -->
+            <asm-highlight [lang]="'css'">
+                <textarea>
+                    asm-card {
+                        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                    }
+                </textarea>
+            </asm-highlight>
+            <!-- @formatter:on -->
+
+            <h3>Parameters</h3>
+            <ul>
+                <li>
+                    <code>$elevation</code>: Available elevation values are: 0, 1, 2, 3, 4, 5.
+                </li>
+                <li>
+                    <code>$important</code>: If <b>true</b>, the box-shadow rule will be appended with an <b>!important</b> tag.
+                </li>
+                <li>
+                    <code>$color</code>: Color of the shadow, can be any valid SCSS color.
+                </li>
+            </ul>
+
+
+            <!-- Elevation function -->
+            <h2>Elevation function (for Dark themes)</h2>
+            <p>
+                Assembly provides an <em>SCSS function</em> to quickly add an elevation to the elements.
+            </p>
+
+            <h3>Mixin</h3>
+            <p>
+                Use the <code>asm-dark-elevation($elevation, $important)</code> function to add an elevation based on a color. This elevation type is used on dark themes where
+                box shadows are not clearly visible.
+            </p>
+            <!-- @formatter:off -->
+            <asm-highlight [lang]="'css'">
+                <textarea>
+                    asm-card {
+                        @if ($is-dark) {
+                            background: asm-dark-elevation(1);
+                        } @else {
+                            background: map-get($background, card);
+                        }
+                    }
+                </textarea>
+            </asm-highlight>
+            <!-- @formatter:on -->
+
+            <h3>Parameters</h3>
+            <ul>
+                <li>
+                    <code>$elevation</code>: Available elevation values are: 0, 1, 2, 3, 4, 6, 8, 12, 16, 24.
+                </li>
+                <li>
+                    <code>$important</code>: If <b>true</b>, the rule will be appended with an <b>!important</b> tag.
+                </li>
+            </ul>
 
         </div>
 
