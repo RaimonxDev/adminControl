@@ -141,6 +141,10 @@ layout[type="classy"] {
                     margin-left: 12px;
                     overflow: hidden;
 
+                    @include asm-media-breakpoint('xs') {
+                        display: none;
+                    }
+
                     .name {
                         white-space: nowrap;
                         text-overflow: ellipsis;
