@@ -523,6 +523,38 @@
 }
 
 // -----------------------------------------------------------------------------------------------------
+// @ Inputs
+// -----------------------------------------------------------------------------------------------------
+.mat-input-element {
+
+    &::placeholder {
+        transition: none !important;
+    }
+
+    &::-moz-placeholder {
+        transition: none !important;
+    }
+
+    &::-webkit-input-placeholder {
+        transition: none !important;
+    }
+
+    &:-ms-input-placeholder {
+        transition: none !important;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Select
+// -----------------------------------------------------------------------------------------------------
+.mat-select {
+
+    .mat-select-placeholder {
+        transition: none !important;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
 // @ Stepper
 // -----------------------------------------------------------------------------------------------------
 .mat-step-icon {
@@ -799,12 +831,23 @@ textarea.mat-input-element {
             }
         }
 
+        // Background color on focused field
         &.mat-focused {
 
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
                     background-color: map-get($background, card);
+                }
+            }
+        }
+
+        // Border color on focused field
+        &.mat-focused:not(.mat-form-field-invalid) {
+
+            .mat-form-field-wrapper {
+
+                .mat-form-field-flex {
                     border-color: map-get($primary, default);
                 }
             }
