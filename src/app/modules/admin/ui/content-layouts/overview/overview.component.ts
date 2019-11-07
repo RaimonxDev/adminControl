@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector     : 'tailwind',
-    templateUrl  : './tailwind.component.html',
-    styleUrls    : ['./tailwind.component.scss'],
+    selector     : 'content-layouts',
+    templateUrl  : './overview.component.html',
+    styleUrls    : ['./overview.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TailwindComponent
+export class ContentLayoutsComponent
 {
     /**
      * Constructor

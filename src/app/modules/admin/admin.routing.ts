@@ -87,6 +87,9 @@ export const adminRoutes: Route[] = [{
             // Content layouts
             {path: 'content-layouts', children: [
 
+                // Overview
+                {path: 'overview', loadChildren: () => import('./ui/content-layouts/overview/overview.module').then(m => m.ContentLayoutsModule)},
+
                 // Fullwidth
                 {path: 'fullwidth', children: [
 

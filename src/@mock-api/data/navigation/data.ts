@@ -1209,22 +1209,22 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id      : 'ui-elements.helper-classes',
-        title   : 'Helper classes',
+        id      : 'ui-elements.helpers',
+        title   : 'Helpers',
         type    : 'collapsable',
         icon    : 'help_outline',
         children: [
             {
-                id   : 'ui-elements.helper-classes.assembly',
+                id   : 'ui-elements.helpers.assembly',
                 title: 'Assembly',
                 type : 'basic',
-                link : '/ui/helper-classes/assembly'
+                link : '/ui/helpers/assembly'
             },
             {
-                id   : 'ui-elements.helper-classes.tailwindcss',
+                id   : 'ui-elements.helpers.tailwindcss',
                 title: 'TailwindCSS',
                 type : 'basic',
-                link : '/ui/helper-classes/tailwindcss'
+                link : '/ui/helpers/tailwindcss'
             }
         ]
     },
