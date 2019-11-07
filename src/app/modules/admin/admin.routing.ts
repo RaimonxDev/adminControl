@@ -138,7 +138,8 @@ export const adminRoutes: Route[] = [{
             // Forms
             {path: 'forms', children: [
                 {path: 'fields', loadChildren: () => import('./ui/forms/fields/fields.module').then(m => m.FormsFieldsModule)},
-                {path: 'layouts', loadChildren: () => import('./ui/forms/layouts/layouts.module').then(m => m.FormsLayoutsModule)}
+                {path: 'layouts', loadChildren: () => import('./ui/forms/layouts/layouts.module').then(m => m.FormsLayoutsModule)},
+                {path: 'wizards', loadChildren: () => import('./ui/forms/wizards/wizards.module').then(m => m.FormsWizardsModule)}
             ]},
 
             // Helper classes
