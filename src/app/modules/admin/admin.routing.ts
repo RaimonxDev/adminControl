@@ -142,10 +142,10 @@ export const adminRoutes: Route[] = [{
                 {path: 'wizards', loadChildren: () => import('./ui/forms/wizards/wizards.module').then(m => m.FormsWizardsModule)}
             ]},
 
-            // Helper classes
-            {path: 'helper-classes', children: [
-                {path: 'assembly', loadChildren: () => import('app/modules/admin/ui/helper-classes/assembly/assembly.module').then(m => m.AssemblyHelperClassesModule)},
-                {path: 'tailwindcss', loadChildren: () => import('app/modules/admin/ui/helper-classes/tailwind/tailwind.module').then(m => m.TailwindModule)}
+            // Helpers
+            {path: 'helpers', children: [
+                {path: 'assembly', loadChildren: () => import('app/modules/admin/ui/helpers/assembly/assembly.module').then(m => m.AssemblyHelpersModule)},
+                {path: 'tailwindcss', loadChildren: () => import('app/modules/admin/ui/helpers/tailwind/tailwind.module').then(m => m.TailwindModule)}
             ]},
 
             // Icons

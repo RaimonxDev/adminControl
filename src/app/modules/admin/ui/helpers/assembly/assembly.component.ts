@@ -2,12 +2,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector     : 'assembly-helper-classes',
+    selector     : 'assembly-helpers',
     templateUrl  : './assembly.component.html',
     styleUrls    : ['./assembly.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AssemblyHelperClassesComponent implements OnInit
+export class AssemblyHelpersComponent implements OnInit
 {
     demoForm: FormGroup;
     formFieldHelpers: string[];
