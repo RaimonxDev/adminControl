@@ -66,7 +66,7 @@ export class MockSearchResultsApi
 
                 // Filter the contacts
                 const contactsResults = _.cloneDeep(this._contacts).filter((user) => {
-                    return (user.firstName.toLowerCase().includes(query) || user.lastName.toLowerCase().includes(query));
+                    return user.name.toLowerCase().includes(query);
                 });
 
                 // Create the results array
@@ -101,7 +101,7 @@ export class MockSearchResultsApi
                     contactsResults.forEach((result) => {
 
                         // Normalize
-                        result.title = result.firstName + ' ' + result.lastName;
+                        result.title = result.name;
                         result.resultType = 'contact';
 
                         // Make the found chars bold

@@ -25,10 +25,6 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     @Input()
     debounce: number;
 
-    // Fullscreen title
-    @Input()
-    fullscreenTitle: string;
-
     // Min. length
     @Input()
     minLength: number;
@@ -46,7 +42,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     search: EventEmitter<any>;
 
     // Private
-    private _appearance: 'basic' | 'bar' | 'fullscreen';
+    private _appearance: 'basic' | 'bar';
     private _opened: boolean;
     private _results: any[] | null;
     private _unsubscribeAll: Subject<any>;
@@ -85,7 +81,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
      * @param value
      */
     @Input()
-    set appearance(value: 'basic' | 'bar' | 'fullscreen')
+    set appearance(value: 'basic' | 'bar')
     {
         // If the value is the same, return...
         if ( this._appearance === value )
@@ -111,7 +107,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
     }
 
-    get appearance(): 'basic' | 'bar' | 'fullscreen'
+    get appearance(): 'basic' | 'bar'
     {
         return this._appearance;
     }
@@ -262,8 +258,8 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     onKeydown(event): void
     {
         // Listen for escape to close the search
-        // if the appearance is 'bar' or 'fullscreen'
-        if ( this.appearance === 'bar' || this.appearance === 'fullscreen' )
+        // if the appearance is 'bar'
+        if ( this.appearance === 'bar')
         {
             // Escape
             if ( event.keyCode === 27 )
@@ -276,7 +272,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
 
     /**
      * Open the search
-     * Used in 'bar' and 'fullscreen'
+     * Used in 'bar'
      */
     open(): void
     {
@@ -292,7 +288,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
 
     /**
      * Close the search
-     * * Used in 'bar' and 'fullscreen'
+     * * Used in 'bar'
      */
     close(): void
     {

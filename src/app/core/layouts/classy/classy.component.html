@@ -33,7 +33,6 @@
 
         <!-- Search -->
         <asm-search [appearance]="'bar'"
-                    [fullscreenTitle]="'Search...'"
                     [results]="searchResults"
                     [minLength]="2"
                     [noResultsText]="'No results found!'"
@@ -46,8 +45,13 @@
                     <mat-icon class="icon-size-16"
                               *ngIf="result.resultType === 'page'"
                               [svgIcon]="'insert_drive_file'"></mat-icon>
-                    <img *ngIf="result.resultType ==='contact'"
-                         [src]="result.image">
+                    <ng-container *ngIf="result.resultType === 'contact'">
+                        <img *ngIf="result.avatar"
+                             [src]="result.avatar">
+                        <mat-icon class="icon-size-20"
+                                  *ngIf="!result.avatar"
+                                  [svgIcon]="'account_circle'"></mat-icon>
+                    </ng-container>
                 </div>
 
                 <div class="asm-search-result-title"

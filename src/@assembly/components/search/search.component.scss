@@ -66,81 +66,11 @@ asm-search {
             }
         }
     }
-
-    // Fullscreen appearance
-    &.asm-search-appearance-fullscreen {
-        z-index: 99;
-
-        .asm-search-container {
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            flex: 1 0 auto;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            padding: 120px 72px 72px 72px;
-            z-index: 999;
-
-            .asm-search-input {
-                flex: 1 0 auto;
-                font-size: 32px;
-                font-weight: 300;
-                width: 100%;
-
-                .mat-form-field-wrapper {
-                    padding: 0 16px 16px 16px;
-                    border-bottom: 1px solid;
-
-                    .mat-form-field-flex {
-                        padding: 0;
-
-                        .mat-form-field-infix {
-                            padding: 0;
-
-                            .mat-input-element {
-                                letter-spacing: -0.035em;
-                            }
-                        }
-
-                        // Remove the border
-                        .mat-form-field-outline {
-                            border: none !important;
-                        }
-
-                        .mat-form-field-prefix {
-
-                            .mat-icon {
-                                @include asm-icon-size(32);
-                            }
-                        }
-                    }
-                }
-            }
-
-            .asm-search-toggle-close {
-                position: absolute;
-                top: 40px;
-                right: 40px;
-                min-width: 40px;
-                width: 40px;
-                min-height: 40px;
-                height: 40px;
-
-                .mat-icon {
-                    @include asm-icon-size(40);
-                }
-            }
-        }
-    }
 }
 
 // Search results panel
 .asm-search-results {
     max-height: 512px !important;
-    margin-top: 12px;
     border-radius: 4px;
 
     // Fullscreen appearance
@@ -160,6 +90,7 @@ asm-search {
             .mat-optgroup-label {
                 font-size: 15px;
                 padding: 0 4px !important;
+                font-weight: 500;
             }
 
             .mat-option {
@@ -293,22 +224,6 @@ asm-search {
                         .mat-form-field-flex {
                             background: transparent;
                         }
-                    }
-                }
-            }
-        }
-
-        // Fullscreen appearance
-        &.asm-search-appearance-fullscreen {
-            color: map-get($foreground, text);
-
-            .asm-search-container {
-                background: transparentize(map-get($background, card), 0.05);
-
-                .asm-search-input {
-
-                    .mat-form-field-wrapper {
-                        border-bottom-color: map-get($foreground, divider);
                     }
                 }
             }

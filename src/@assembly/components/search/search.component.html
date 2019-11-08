@@ -1,14 +1,14 @@
-<!-- Open button, 'bar' and 'fullscreen' only -->
+<!-- Open button, 'bar' only -->
 <button class="asm-search-toggle-open"
         mat-icon-button
-        *ngIf="appearance!== 'basic' && !opened"
+        *ngIf="appearance === 'bar' && !opened"
         (click)="open()">
     <mat-icon [svgIcon]="'search'"></mat-icon>
 </button>
 
 <!-- Search container -->
 <div class="asm-search-container"
-     *ngIf="appearance === 'basic' || (appearance !== 'basic' && opened)"
+     *ngIf="appearance === 'basic' || (appearance === 'bar' && opened)"
      [@.disabled]="appearance === 'basic'"
      @slideInTop
      @slideOutTop>
@@ -16,7 +16,6 @@
     <mat-form-field class="asm-search-input asm-mat-dense asm-mat-rounded asm-mat-no-subscript"
                     #searchInput>
         <mat-icon matPrefix
-                  *ngIf="appearance !== 'fullscreen'"
                   [svgIcon]="'search'"></mat-icon>
         <input matInput
                [formControl]="searchControl"
@@ -47,10 +46,10 @@
 
     </mat-autocomplete>
 
-    <!-- Close button, 'bar' and 'fullscreen' only -->
+    <!-- Close button, 'bar' only -->
     <button class="asm-search-toggle-close"
             mat-icon-button
-            *ngIf="appearance !== 'basic'"
+            *ngIf="appearance === 'bar'"
             (click)="close()">
         <mat-icon [svgIcon]="'close'"></mat-icon>
     </button>
