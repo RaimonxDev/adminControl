@@ -14,61 +14,55 @@ asm-shortcuts {
     max-height: calc(100vh - 80px);
     @include mat-elevation(6);
 
-    .asm-shortcuts-panel-header {
+    .header {
         display: flex;
         align-items: center;
         padding: 32px 24px 32px 32px;
 
-        .asm-shortcuts-panel-header-left {
+        .left {
             display: flex;
             flex: 1;
             flex-direction: column;
             justify-content: center;
+
+            .title {
+                font-size: 20px;
+            }
+
+            .subtitle {
+
+            }
         }
 
-        .asm-shortcuts-panel-header-right {
-            max-width: 40px;
-            min-width: 40px;
-            width: 40px;
+        .right {
+            display: flex;
+            align-items: center;
             margin-left: 16px;
-        }
-
-        .asm-shortcuts-panel-title {
-            font-size: 20px;
-        }
-
-        .asm-shortcuts-panel-subtitle {
-
         }
     }
 
-    .asm-shortcuts-panel-content {
+    .content {
         position: relative;
         display: flex;
         flex-wrap: wrap;
         padding: 0;
 
-        // Edit mode
-        &.asm-shortcuts-edit-mode {
+        // Modify mode
+        &.mode-modify {
 
-            .asm-shortcuts-shortcut {
+            .shortcut {
 
-                &:hover {
+                .edit-shortcut {
+                    display: flex !important;
+                }
 
-                    .asm-shortcuts-shortcut-overlay {
-                        opacity: 1;
-                        pointer-events: auto;
-                    }
+                a {
+                    pointer-events: none;
                 }
             }
         }
 
-        // Form mode
-        &.asm-shortcuts-form-mode {
-            min-height: 538px;
-        }
-
-        .asm-shortcuts-shortcut {
+        .shortcut {
             position: relative;
             display: flex;
             flex-direction: column;
@@ -84,53 +78,15 @@ asm-shortcuts {
                 border-right: none;
             }
 
-            &.asm-shortcuts-add-button {
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-
-                .asm-shortcuts-shortcut-icon {
-                    border: 2px dashed;
-                }
-            }
-
-            .asm-shortcuts-shortcut-overlay {
+            .edit-shortcut {
+                display: none !important;
                 position: absolute;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                top: 8px;
+                right: 8px;
+                z-index: 99;
 
-                .asm-shortcuts-shortcut-overlay-buttons {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    .asm-shortcuts-shortcut-edit-button,
-                    .asm-shortcuts-shortcut-remove-button {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 40px;
-                        height: 40px;
-                        box-shadow: none;
-                        border: 1px solid;
-
-                        .mat-button-wrapper {
-                            padding: 0;
-                            line-height: 1;
-                        }
-                    }
-
-                    .asm-shortcuts-shortcut-remove-button {
-                        margin-left: 8px;
-                    }
+                .mat-icon {
+                    @include asm-icon-size(16);
                 }
             }
 
@@ -142,34 +98,37 @@ asm-shortcuts {
                 width: 100%;
                 height: 100%;
                 text-decoration: none;
-            }
 
-            .asm-shortcuts-shortcut-icon {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 48px;
-                height: 48px;
-                margin-bottom: 12px;
-                border-radius: 50%;
-            }
+                .mat-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 12px;
+                }
 
-            .asm-shortcuts-shortcut-label {
-                font-weight: 500;
-                text-align: center;
+                .label {
+                    font-weight: 500;
+                    text-align: center;
+                }
             }
         }
 
-        .asm-shortcuts-form {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 32px;
+        // Form
+        form {
+            margin: 32px;
 
             .mat-form-field {
                 width: 100%;
+            }
+
+            .actions {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                .delete {
+                    margin-right: 8px;
+                }
             }
         }
     }
@@ -193,92 +152,45 @@ asm-shortcuts {
     .asm-shortcuts-panel {
         background: map-get($background, card);
 
-        .asm-shortcuts-panel-header {
-            background: linear-gradient(0deg, map-get($primary, 400) 0%, map-get($primary, 700) 100%);
+        .header {
+            background: map-get($primary, 500);
             color: map-get($primary, default-contrast);
 
-            .asm-shortcuts-panel-header-left {
+            .left {
 
-                .asm-shortcuts-panel-subtitle {
+                .subtitle {
                     color: rgba(map-get($primary, default-contrast), 0.7);
                 }
             }
 
-            .asm-shortcuts-panel-header-right {
+            .right {
 
                 .mat-icon {
-                    // If the default contrast of the primary color is white...
-                    @if (rgba(map-get($primary, default-contrast), 1) == rgba(255,255,255,1)) {
-                        color: rgba(255, 255, 255, 0.7);
-                    } @else {
-                        color: rgba(0, 0, 0, 0.54);
-                    }
+                    color: currentColor;
                 }
             }
         }
 
-        .asm-shortcuts-panel-content {
+        .content {
 
-            .asm-shortcuts-shortcut {
+            .shortcut {
                 border-color: transparentize(map-get($foreground, divider), 0.06);
 
                 &:hover {
-                    background: map-get($background, hover);
-                }
-
-                &.asm-shortcuts-add-button {
-
-                    .asm-shortcuts-shortcut-icon {
-                        background: transparent;
-                        border-color: map-get($primary, default);
-                    }
-
-                    .asm-shortcuts-shortcut-label {
-                        color: map-get($foreground, hint-text);
-                    }
-                }
-
-                .asm-shortcuts-shortcut-overlay {
-                    @if ($is-dark) {
-                        background: rgba(0, 0, 0, 0.85);
-                    } @else {
-                        background: rgba(255, 255, 255, 0.95);
-                    }
-
-                    .asm-shortcuts-shortcut-edit-button,
-                    .asm-shortcuts-shortcut-remove-button {
-                        background: white;
-                        border-color: map-get($foreground, divider);
-                    }
-
-                    .asm-shortcuts-shortcut-edit-button {
-                        color: rgba(0, 0, 0, 0.54)
-                    }
-
-                    .asm-shortcuts-shortcut-remove-button {
-                        color: red;
-                    }
+                    background: asm-color($asm-gray, 200);
                 }
 
                 a {
                     color: map-get($foreground, text);
-                }
-
-                .asm-shortcuts-shortcut-label {
-                    color: map-get($foreground, secondary-text);
-                }
-
-                .asm-shortcuts-shortcut-icon {
-                    background: map-get($primary, 100);
 
                     .mat-icon {
                         color: map-get($primary, default);
                     }
-                }
-            }
 
-            .asm-shortcuts-form {
-                background: map-get($background, card);
+                    .label {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
             }
         }
     }

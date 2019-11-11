@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AsmShortcut } from '@assembly/components/shortcuts/shortcut.type';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -8,16 +10,19 @@ import { AsmShortcut } from '@assembly/components/shortcuts/shortcut.type';
 export class AsmShortcutsService
 {
     // Private
-    private _shortcuts: AsmShortcut[];
-    private _onStored: BehaviorSubject<any>;
+    private _shortcuts: BehaviorSubject<AsmShortcut[] | null>;
 
     /**
      * Constructor
+     *
+     * @param {HttpClient} _httpClient
      */
-    constructor()
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
         // Set the private defaults
-        this._onStored = new BehaviorSubject(null);
+        this._shortcuts = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -25,13 +30,11 @@ export class AsmShortcutsService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for onStored
-     *
-     * @returns {Observable<any>}
+     * Getter for shortcuts
      */
-    get onStored(): Observable<any>
+    get shortcuts$(): Observable<AsmShortcut[]>
     {
-        return this._onStored.asObservable();
+        return this._shortcuts.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -39,30 +42,81 @@ export class AsmShortcutsService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Store the shortcuts
-     *
-     * @param shortcuts
+     * Load shortcuts
      */
-    storeShortcuts(shortcuts): void
+    loadShortcuts(shortcuts: AsmShortcut[]): Observable<AsmShortcut[]>
     {
-        // Store the shortcuts
-        this._shortcuts = shortcuts;
+        // Load the shortcuts
+        this._shortcuts.next(shortcuts);
 
-        // Execute the observable
-        this._onStored.next(shortcuts);
+        // Return the shortcuts
+        return this.shortcuts$;
     }
 
     /**
-     * Get shortcuts
+     * Create a shortcut
+     *
+     * @param newShortcut
      */
-    getShortcuts(): any[]
+    createShortcut(newShortcut: AsmShortcut): void
     {
-        return this._shortcuts;
+        this.shortcuts$
+            .pipe(
+                take(1),
+                map((shortcuts) => {
+
+                    // Update the shortcuts with the new shortcut
+                    this._shortcuts.next([...shortcuts, newShortcut]);
+                })
+            ).subscribe();
     }
 
-    addShorcut(): void
+    /**
+     * Update the given shortcut
+     *
+     * @param updatedShortcut
+     */
+    updateShortcut(updatedShortcut: AsmShortcut): void
     {
+        this.shortcuts$
+            .pipe(
+                take(1),
+                map((shortcuts) => {
 
+                    // Find the index of the updated shortcut
+                    const index = shortcuts.findIndex(item => item.id === updatedShortcut.id);
+
+                    // Update the shortcut
+                    shortcuts[index] = updatedShortcut;
+
+                    // Update the shortcuts
+                    this._shortcuts.next(shortcuts);
+                })
+            ).subscribe();
+    }
+
+    /**
+     * Delete the given shortcut
+     *
+     * @param deletedShortcut
+     */
+    deleteShortcut(deletedShortcut: AsmShortcut): void
+    {
+        this.shortcuts$
+            .pipe(
+                take(1),
+                map((shortcuts) => {
+
+                    // Find the index of the updated shortcut
+                    const index = shortcuts.findIndex(item => item.id === deletedShortcut.id);
+
+                    // Delete the shortcut
+                    shortcuts.splice(index, 1);
+
+                    // Update the shortcuts
+                    this._shortcuts.next(shortcuts);
+                })
+            ).subscribe();
     }
 
 }

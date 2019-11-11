@@ -86,7 +86,7 @@ export class AdminResolver implements Resolve<any>
                 this._asmNavigationService.storeNavigation('default', data[1].navigation);
 
                 // Store the shortcuts
-                this._asmShortcutsService.storeShortcuts(data[2].shortcuts);
+                this._asmShortcutsService.loadShortcuts(data[2].shortcuts);
             })
         );
     }

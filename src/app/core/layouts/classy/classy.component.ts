@@ -2,7 +2,7 @@ import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@a
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService, AsmShortcut, AsmShortcutsService } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -31,6 +31,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
+     * @param {AsmShortcutsService} _asmShortcutsService
      * @param {AuthService} _authService
      * @param {HttpClient} _httpClient
      */
@@ -38,6 +39,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
+        private _asmShortcutsService: AsmShortcutsService,
         private _authService: AuthService,
         private _httpClient: HttpClient
     )
@@ -117,6 +119,52 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         this._httpClient.post('api/search', {query: value})
             .subscribe((response: any) => {
                 this.searchResults = response.results;
+            });
+    }
+
+    /**
+     * On shortcut save
+     *
+     * @param shortcut
+     */
+    onShortcutSave(shortcut: AsmShortcut): void
+    {
+        // If the shortcut has an id, update it...
+        if ( shortcut.id )
+        {
+            this._httpClient.patch<AsmShortcut>('api/shortcuts', {
+                id: shortcut.id,
+                shortcut
+            }).subscribe((updatedShortcut) => {
+
+                // Update the shortcut
+                this._asmShortcutsService.updateShortcut(updatedShortcut);
+            });
+        }
+        // Otherwise create it..
+        else
+        {
+            this._httpClient.put<AsmShortcut>('api/shortcuts', {shortcut})
+                .subscribe((newShortcut) => {
+
+                    // Create the shortcut
+                    this._asmShortcutsService.createShortcut(newShortcut);
+                });
+        }
+    }
+
+    /**
+     * On shortcut delete
+     *
+     * @param shortcut
+     */
+    onShortcutDelete(shortcut: AsmShortcut): void
+    {
+        this._httpClient.delete<AsmShortcut>('api/shortcuts', {params: {id: shortcut.id}})
+            .subscribe((deletedShortcut) => {
+
+                // Delete the shortcut
+                this._asmShortcutsService.deleteShortcut(deletedShortcut);
             });
     }
 

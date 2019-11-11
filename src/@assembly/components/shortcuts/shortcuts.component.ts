@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -20,6 +20,7 @@ import { AsmShortcutsService } from '@assembly/components/shortcuts/shortcuts.se
 })
 export class AsmShortcutsComponent implements OnInit, OnDestroy
 {
+    mode: 'view' | 'modify' | 'add' | 'edit';
     shortcuts: AsmShortcut[];
     shortcutForm: FormGroup;
 
@@ -31,13 +32,15 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
     @Input()
     subtitle: string;
 
-    // Add shortcut label
-    @Input()
-    addShortcutLabel: string;
+    // On save
+    @Output()
+    readonly save: EventEmitter<AsmShortcut>;
+
+    // On delete
+    @Output()
+    readonly delete: EventEmitter<AsmShortcut>;
 
     // Private
-    private _editMode: boolean;
-    private _formMode: boolean;
     private _overlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any>;
 
@@ -65,29 +68,12 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
     )
     {
         // Set the private defaults
-        this._editMode = false;
-        this._formMode = false;
         this._unsubscribeAll = new Subject();
-    }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Getter for edit mode
-     */
-    get editMode(): boolean
-    {
-        return this._editMode;
-    }
-
-    /**
-     * Getter for form mode
-     */
-    get formMode(): boolean
-    {
-        return this._formMode;
+        // Set the defaults
+        this.delete = new EventEmitter<AsmShortcut>();
+        this.mode = 'view';
+        this.save = new EventEmitter<AsmShortcut>();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -99,8 +85,17 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to shortcuts service
-        this._asmShortcutsService.onStored
+        // Initialize the form
+        this.shortcutForm = this._formBuilder.group({
+            id         : [null],
+            label      : ['Alarm', Validators.required],
+            icon       : ['dripicons:alarm', Validators.required],
+            iconClasses: [''],
+            link       : ['https://www.google.com', Validators.required]
+        });
+
+        // Get the shortcuts
+        this._asmShortcutsService.shortcuts$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((shortcuts) => {
 
@@ -110,15 +105,6 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
             });
-
-        // Initialize the form
-        this.shortcutForm = this._formBuilder.group({
-            label      : ['', Validators.required],
-            icon       : ['', Validators.required],
-            iconFontSet: [''],
-            iconClasses: [''],
-            link       : ['', Validators.required]
-        });
     }
 
     /**
@@ -203,40 +189,71 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
                 templatePortal.detach();
             }
 
-            // Toggle off the the edit and form mode
-            this._editMode = false;
-            this._formMode = false;
+            // Make sure to start in 'view' mode
+            this.mode = 'view';
         });
     }
 
     /**
-     * Toggle edit mode
+     * Change the mode
      */
-    toggleEditMode(): void
+    changeMode(mode): void
     {
-        this._editMode = !this._editMode;
-
-        // Turning off the edit mode also
-        // turns off the form mode
-        if ( !this._editMode )
-        {
-            this._formMode = false;
-        }
+        // Change the mode
+        this.mode = mode;
     }
 
     /**
-     * Toggle the form mode
+     * Prepare for a new shortcut
      */
-    toggleFormMode(): void
+    newShortcut(): void
     {
-        this._formMode = !this._formMode;
+        // Reset the form
+        this.shortcutForm.reset();
+
+        // Enter the add mode
+        this.mode = 'add';
     }
 
     /**
-     * Save the shortcut
+     * Edit a shortcut
      */
-    save(): void
+    editShortcut(shortcut): void
     {
+        // Reset the form with the shortcut
+        this.shortcutForm.reset(shortcut);
 
+        // Enter the edit mode
+        this.mode = 'edit';
+    }
+
+    /**
+     * Save shortcut
+     */
+    saveShortcut(): void
+    {
+        // Get the data from the form
+        const shortcut = this.shortcutForm.value;
+
+        // Trigger the save
+        this.save.next(shortcut);
+
+        // Go back the modify mode
+        this.mode = 'modify';
+    }
+
+    /**
+     * Delete shortcut
+     */
+    deleteShortcut(): void
+    {
+        // Get the data from the form
+        const shortcut = this.shortcutForm.value;
+
+        // Trigger the delete
+        this.delete.next(shortcut);
+
+        // Go back the modify mode
+        this.mode = 'modify';
     }
 }

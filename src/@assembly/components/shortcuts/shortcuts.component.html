@@ -11,163 +11,138 @@
 
     <div class="asm-shortcuts-panel">
 
-        <div class="asm-shortcuts-panel-header">
+        <div class="header">
 
-            <div class="asm-shortcuts-panel-header-left">
-
-                <div class="asm-shortcuts-panel-title"
+            <div class="left">
+                <div class="title"
                      *ngIf="title">
                     {{title}}
                 </div>
-
-                <div class="asm-shortcuts-panel-subtitle"
+                <div class="subtitle"
                      *ngIf="subtitle">
                     {{subtitle}}
                 </div>
-
             </div>
 
-            <div class="asm-shortcuts-panel-header-right">
+            <div class="right">
 
-                <!-- Toggle edit mode -->
-                <button mat-icon-button
-                        *ngIf="!editMode"
-                        (click)="toggleEditMode();">
-                    <mat-icon [svgIcon]="'edit'"></mat-icon>
-                </button>
+                <!-- View mode -->
+                <ng-container *ngIf="mode === 'view'">
 
-                <button mat-icon-button
-                        *ngIf="editMode && !formMode"
-                        (click)="toggleEditMode();">
-                    <mat-icon [svgIcon]="'check'"></mat-icon>
-                </button>
+                    <!-- Enter edit mode -->
+                    <button mat-icon-button
+                            (click)="changeMode('modify')">
+                        <mat-icon [svgIcon]="'edit'"></mat-icon>
+                    </button>
 
-                <!-- Save -->
-                <button mat-icon-button
-                        *ngIf="formMode"
-                        (click)="toggleFormMode();">
-                    <mat-icon [svgIcon]="'save'"></mat-icon>
-                </button>
+                    <!-- New shortcut -->
+                    <button mat-icon-button
+                            (click)="newShortcut()">
+                        <mat-icon [svgIcon]="'add_circle'"></mat-icon>
+                    </button>
+
+                </ng-container>
+
+                <!-- Edit mode -->
+                <ng-container *ngIf="mode === 'modify'">
+
+                    <!-- Enter view mode -->
+                    <button mat-icon-button
+                            (click)="changeMode('view')">
+                        <mat-icon [svgIcon]="'check'"></mat-icon>
+                    </button>
+
+                </ng-container>
 
             </div>
 
         </div>
 
-        <div class="asm-shortcuts-panel-content"
-             [ngClass]="{'asm-shortcuts-edit-mode': editMode, 'asm-shortcuts-form-mode': formMode}">
+        <div class="content"
+             [ngClass]="'mode-' + mode">
 
-            <!-- Shortcuts -->
-            <ng-container *ngFor="let shortcut of shortcuts">
+            <!-- View mode -->
+            <ng-container *ngIf="mode === 'view' || mode === 'modify'">
 
-                <div class="asm-shortcuts-shortcut">
+                <!-- Shortcuts -->
+                <ng-container *ngFor="let shortcut of shortcuts">
 
-                    <div class="asm-shortcuts-shortcut-overlay">
+                    <div class="shortcut">
 
-                        <div class="asm-shortcuts-shortcut-overlay-buttons">
+                        <button class="edit-shortcut"
+                                mat-icon-button
+                                (click)="editShortcut(shortcut)">
+                            <mat-icon [svgIcon]="'edit'"></mat-icon>
+                        </button>
 
-                            <button class="asm-shortcuts-shortcut-edit-button"
-                                    mat-mini-fab>
-                                <mat-icon [svgIcon]="'edit'"></mat-icon>
-                            </button>
+                        <a [href]="shortcut.link">
+                            <mat-icon [ngClass]="shortcut.iconClasses"
+                                      [svgIcon]="shortcut.icon"></mat-icon>
 
-                            <button class="asm-shortcuts-shortcut-remove-button"
-                                    mat-mini-fab
-                                    [color]="'warn'">
-                                <mat-icon [svgIcon]="'delete'"></mat-icon>
-                            </button>
-
-                        </div>
+                            <div class="label"
+                                 [ngClass]="shortcut.labelClasses">{{shortcut.label}}</div>
+                        </a>
 
                     </div>
 
-                    <a *ngIf="shortcut.link.startsWith('http')"
-                       [href]="shortcut.link"
-                       [target]="'_blank'">
-                        <ng-container *ngTemplateOutlet="shortcutTemplate"></ng-container>
-                    </a>
-
-                    <a *ngIf="!shortcut.link.startsWith('http')"
-                       [routerLink]="shortcut.link">
-                        <ng-container *ngTemplateOutlet="shortcutTemplate"></ng-container>
-                    </a>
-
-                </div>
-
-                <!-- Shortcut template -->
-                <ng-template #shortcutTemplate>
-
-                    <div class="asm-shortcuts-shortcut-icon">
-                        <mat-icon [ngClass]="shortcut.iconClasses"
-                                  [svgIcon]="shortcut.icon"></mat-icon>
-                    </div>
-
-                    <div class="asm-shortcuts-shortcut-label"
-                         [ngClass]="shortcut.labelClasses">{{shortcut.label}}</div>
-
-                </ng-template>
+                </ng-container>
 
             </ng-container>
 
-            <!-- Add shortcut button -->
-            <div class="asm-shortcuts-shortcut asm-shortcuts-add-button"
-                 *ngIf="editMode"
-                 (click)="toggleFormMode()">
-                <div class="asm-shortcuts-shortcut-icon">
-                    <mat-icon [svgIcon]="'add_circle'"></mat-icon>
-                </div>
-                <div class="asm-shortcuts-shortcut-label">{{addShortcutLabel}}</div>
-            </div>
+            <!-- Form mode -->
+            <ng-container *ngIf="mode === 'add' || mode === 'edit'">
 
-            <!-- Form Mode -->
-            <ng-container *ngIf="editMode && formMode">
+                <form [formGroup]="shortcutForm">
 
-                <div class="asm-shortcuts-form">
+                    <mat-form-field>
+                        <input matInput
+                               [formControlName]="'label'"
+                               required>
+                        <mat-label>Label</mat-label>
+                    </mat-form-field>
 
-                    <form [formGroup]="shortcutForm">
+                    <mat-form-field>
+                        <input matInput
+                               [formControlName]="'icon'"
+                               required>
+                        <mat-label>Icon</mat-label>
+                    </mat-form-field>
 
-                        <mat-form-field>
-                            <input matInput
-                                   [formControlName]="'label'"
-                                   required>
-                            <mat-label>Label</mat-label>
-                        </mat-form-field>
+                    <mat-form-field>
+                        <input matInput
+                               [formControlName]="'iconClasses'">
+                        <mat-label>Icon classes</mat-label>
+                    </mat-form-field>
 
-                        <mat-form-field>
-                            <input matInput
-                                   [formControlName]="'icon'"
-                                   required>
-                            <mat-label>Icon</mat-label>
-                        </mat-form-field>
+                    <mat-form-field>
+                        <input matInput
+                               [formControlName]="'link'"
+                               required>
+                        <mat-label>Link</mat-label>
+                    </mat-form-field>
 
-                        <mat-form-field>
-                            <input matInput
-                                   [formControlName]="'iconFontSet'">
-                            <mat-label>Icon font set</mat-label>
-                        </mat-form-field>
+                    <div class="actions">
 
-                        <mat-form-field>
-                            <input matInput
-                                   [formControlName]="'iconClasses'">
-                            <mat-label>Icon classes</mat-label>
-                        </mat-form-field>
-
-                        <mat-form-field>
-                            <input matInput
-                                   [formControlName]="'link'"
-                                   required>
-                            <mat-label>Link</mat-label>
-                        </mat-form-field>
-
-                        <button mat-raised-button
-                                [color]="'primary'"
-                                [disabled]="!shortcutForm.valid"
-                                (click)="save()">
-                            Save
+                        <button class="delete"
+                                *ngIf="mode === 'edit'"
+                                mat-flat-button
+                                type="button"
+                                (click)="deleteShortcut()">
+                            Delete
                         </button>
 
-                    </form>
+                        <button mat-flat-button
+                                [color]="'primary'"
+                                [disabled]="!shortcutForm.valid"
+                                type="button"
+                                (click)="saveShortcut()">
+                            <ng-container *ngIf="mode === 'add'">Add</ng-container>
+                            <ng-container *ngIf="mode === 'edit'">Update</ng-container>
+                        </button>
 
-                </div>
+                    </div>
+
+                </form>
 
             </ng-container>
 

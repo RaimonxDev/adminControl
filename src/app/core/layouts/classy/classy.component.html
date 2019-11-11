@@ -29,7 +29,8 @@
         <!-- Shortcuts -->
         <asm-shortcuts [title]="'Quick Access'"
                        [subtitle]="'Shortcuts for links and functions'"
-                       [addShortcutLabel]="'Add shortcut'"></asm-shortcuts>
+                       (save)="onShortcutSave($event)"
+                       (delete)="onShortcutDelete($event)"></asm-shortcuts>
 
         <!-- Search -->
         <asm-search [appearance]="'bar'"
