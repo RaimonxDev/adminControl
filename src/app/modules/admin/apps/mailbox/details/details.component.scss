@@ -4,52 +4,69 @@ mailbox-details {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    padding: 40px 32px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
 
     > .header {
+        position: relative;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         width: 100%;
-        padding-bottom: 40px;
-        border-bottom: 1px solid;
+        z-index: 10;
 
-        .back-button {
-            display: none !important;
-            margin: 0 24px 0 -12px;
+        .toolbar {
+            display: flex;
+            align-items: center;
+            min-height: 64px;
+            padding: 0 40px;
+            border-bottom-width: 1px;
 
-            @include asm-media-breakpoint('lt-lg') {
-                display: inline-block !important;
+            .back-button {
+                display: none !important;
+                margin: 0 20px 0 -12px;
+
+                @include asm-media-breakpoint('lt-lg') {
+                    display: inline-block !important;
+                }
             }
+
+            .toggle-labels {
+                margin: 0 8px 0 -12px;
+            }
+
+            .toggle-important,
+            .toggle-starred {
+                margin-right: 8px;
+            }
+
         }
 
-        .subject-and-labels {
+        .subject {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 20px 40px;
 
-            .subject {
-                margin: 0;
+            h2 {
+                margin: 4px 16px 4px 0;
+                font-size: 20px;
+                font-weight: 500;
             }
 
             .labels {
                 display: flex;
+                flex-wrap: wrap;
                 align-items: center;
                 justify-content: flex-start;
-                margin-top: 16px;
+                margin: 0 -4px;
 
                 .label {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
                     height: 20px;
                     padding: 0 10px;
-                    margin-right: 8px;
+                    margin: 4px;
                     border-radius: 10px;
                     font-size: 11px;
-                    font-weight: 700;
-                    line-height: 1;
+                    font-weight: 500;
+                    line-height: 21px;
                     white-space: nowrap;
                     text-transform: uppercase;
                 }
@@ -57,30 +74,26 @@ mailbox-details {
         }
     }
 
-    .thread {
+    .threads {
         display: flex;
-        flex: 0 0 auto;
         flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        margin-top: 40px;
+        flex: 1 1 auto;
+        padding: 16px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
 
-        .header {
+        .thread {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
             width: 100%;
+            padding: 24px 24px 8px 24px;
+            border-radius: 8px;
 
-            @include asm-media-breakpoint('(max-width:799px), (min-width:960px) and (max-width: 1103px), (min-width:1280px) and (max-width: 1519px)') {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .from-to-info {
+            .header {
                 display: flex;
                 align-items: center;
-                min-width: 0;
-                max-width: 100%;
+                width: 100%;
 
                 .avatar {
                     position: relative;
@@ -172,174 +185,157 @@ mailbox-details {
                 }
             }
 
-            .action-buttons {
+            .content {
                 display: flex;
-                align-items: center;
-                margin-left: 24px;
-
-                @include asm-media-breakpoint('(max-width:799px), (min-width:960px) and (max-width: 1103px), (min-width:1280px) and (max-width: 1519px)') {
-                    margin: 24px 0 0 -12px
-                }
-
-                .toggle-important,
-                .toggle-starred,
-                .toggle-labels {
-                    margin-right: 8px;
-                }
-            }
-        }
-
-        .content {
-            display: flex;
-            margin-top: 32px;
-            white-space: pre-line;
-            font-size: 15px;
-            line-height: 1.8;
-        }
-
-        .attachments {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-
-            .title {
-                display: flex;
-                align-items: center;
-                margin-top: 64px;
-
-                .mat-icon {
-                    margin-right: 8px;
-                }
-
-                div {
-                    font-size: 15px;
-                    font-weight: 500;
-                }
+                margin-top: 32px;
+                white-space: pre-line;
+                line-height: 1.8;
             }
 
-            .files {
+            .attachments {
                 display: flex;
-                flex-wrap: wrap;
+                flex-direction: column;
+                width: 100%;
 
-                .file {
+                .title {
                     display: flex;
                     align-items: center;
-                    margin: 24px 24px 0 0;
+                    margin-top: 48px;
 
-                    &:last-child {
-                        margin-right: 0;
+                    .mat-icon {
+                        margin-right: 8px;
                     }
 
-                    .preview-image {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 4px;
+                    div {
+                        font-size: 15px;
+                        font-weight: 500;
                     }
+                }
 
-                    .preview-file {
+                .files {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    .file {
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        border-radius: 4px;
-                        width: 40px;
-                        height: 40px;
-
-                        .file-type {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            font-size: 12px;
-                            font-weight: 500;
-                        }
-                    }
-
-                    .file-info {
-                        margin-left: 16px;
-
-                        .file-name {
-                            font-size: 13px;
-                            font-weight: 500;
-                            overflow: hidden;
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
-                        }
-
-                        .file-size {
-                            font-size: 13px;
-                            overflow: hidden;
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
-                        }
-                    }
-                }
-            }
-        }
-
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            margin-top: 72px;
-
-            .mat-stroked-button {
-                margin: 0 16px 16px 0;
-
-                &:last-child {
-                    margin-right: 0;
-                }
-
-                > span {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .mat-icon {
-                    margin-right: 8px;
-                    @include asm-icon-size(20);
-                }
-            }
-        }
-
-        .reply-form {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin-top: 64px;
-
-            .textarea {
-                min-height: 80px;
-            }
-
-            .actions {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-top: 32px;
-
-                .formatting {
-
-                    button {
-
-                        .mat-icon {
-                            @include asm-icon-size(20);
-                        }
-                    }
-                }
-
-                .reply-form-buttons {
-                    display: flex;
-                    align-items: center;
-
-                    button {
-                        margin-right: 8px;
+                        margin: 24px 24px 0 0;
 
                         &:last-child {
                             margin-right: 0;
                         }
 
-                        &.send-button {
-                            min-width: 96px;
+                        .preview-image {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 4px;
+                        }
+
+                        .preview-file {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 4px;
+                            width: 40px;
+                            height: 40px;
+
+                            .file-type {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .file-info {
+                            margin-left: 16px;
+
+                            .file-name {
+                                font-size: 13px;
+                                font-weight: 500;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+
+                            .file-size {
+                                font-size: 13px;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .buttons {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                margin-top: 64px;
+
+                .mat-stroked-button {
+                    margin: 0 16px 16px 0;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    > span {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .mat-icon {
+                        margin-right: 8px;
+                        @include asm-icon-size(20);
+                    }
+                }
+            }
+
+            .reply-form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin: 64px 0 16px 0;
+
+                .textarea {
+                    min-height: 80px;
+                }
+
+                .actions {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 32px;
+
+                    .formatting {
+
+                        button {
+
+                            .mat-icon {
+                                @include asm-icon-size(20);
+                            }
+                        }
+                    }
+
+                    .reply-form-buttons {
+                        display: flex;
+                        align-items: center;
+
+                        button {
+                            margin-right: 8px;
+
+                            &:last-child {
+                                margin-right: 0;
+                            }
+
+                            &.send-button {
+                                min-width: 96px;
+                            }
                         }
                     }
                 }
@@ -447,80 +443,99 @@ mailbox-details {
         }
 
         > .header {
-            border-bottom-color: map-get($foreground, divider);
-        }
-
-        .thread {
-
-            .header {
-
-                .from-to-info {
-
-                    .info {
-
-                        .to {
-                            color: map-get($foreground, secondary-text);
-                        }
-                    }
-                }
-
-                .action-buttons {
-
-                    .toggle-important {
-
-                        .important {
-                            @if ($is-dark) {
-                                color: asm-color($asm-red, 600);
-                            } @else {
-                                color: asm-color($asm-red);
-                            }
-                        }
-
-                        .not-important {
-                            color: map-get($foreground, secondary-text);
-                        }
-                    }
-
-                    .toggle-starred {
-
-                        .starred {
-                            @if ($is-dark) {
-                                color: asm-color($asm-orange, 400);
-                            } @else {
-                                color: asm-color($asm-orange);
-                            }
-                        }
-
-                        .not-starred {
-                            color: map-get($foreground, secondary-text);
-                        }
-                    }
-                }
+            @if ($is-dark) {
+                border-bottom-width: 1px;
+            } @else {
+                @include asm-elevation(2);
             }
 
-            .attachments {
+            .toolbar {
+                @if (not $is-dark) {
+                    background: asm-color($asm-gray, 100);
+                }
 
-                .title {
+                .toggle-important {
 
-                    .mat-icon {
+                    .important {
+                        @if ($is-dark) {
+                            color: asm-color($asm-red, 600);
+                        } @else {
+                            color: asm-color($asm-red);
+                        }
+                    }
+
+                    .not-important {
                         color: map-get($foreground, secondary-text);
                     }
                 }
 
-                .file {
+                .toggle-starred {
 
-                    .preview-file {
-                        background-color: map-get($primary, 100);
-
-                        .file-type {
-                            color: map-get($primary, default);
+                    .starred {
+                        @if ($is-dark) {
+                            color: asm-color($asm-orange, 400);
+                        } @else {
+                            color: asm-color($asm-orange);
                         }
                     }
 
-                    .file-info {
+                    .not-starred {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+            }
+        }
 
-                        .file-size {
+        .threads {
+            @if (not $is-dark) {
+                background: asm-color($asm-gray, 200);
+            }
+
+            .thread {
+                @if ($is-dark) {
+                    background: asm-dark-elevation(2);
+                } @else {
+                    background: map-get($background, card);
+                    @include asm-elevation(1);
+                }
+
+                .header {
+
+                    .from-to-info {
+
+                        .info {
+
+                            .to {
+                                color: map-get($foreground, secondary-text);
+                            }
+                        }
+                    }
+                }
+
+                .attachments {
+
+                    .title {
+
+                        .mat-icon {
                             color: map-get($foreground, secondary-text);
+                        }
+                    }
+
+                    .file {
+
+                        .preview-file {
+                            background-color: map-get($primary, 100);
+
+                            .file-type {
+                                color: map-get($primary, default);
+                            }
+                        }
+
+                        .file-info {
+
+                            .file-size {
+                                color: map-get($foreground, secondary-text);
+                            }
                         }
                     }
                 }

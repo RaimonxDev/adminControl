@@ -3,20 +3,111 @@
     <!-- Header -->
     <div class="header">
 
-        <!-- Back button -->
-        <a class="back-button"
-           mat-icon-button
-           [routerLink]="['./']">
-            <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
-        </a>
+        <!-- Toolbar -->
+        <div class="toolbar">
 
-        <!-- Subject & labels -->
-        <div class="subject-and-labels">
+            <!-- Back button -->
+            <a class="back-button"
+               mat-icon-button
+               [routerLink]="['./']">
+                <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+            </a>
 
-            <!-- Subject -->
-            <h2 class="subject">
-                {{mail.subject}}
-            </h2>
+            <!-- Toggle labels button & menu -->
+            <button class="toggle-labels"
+                    mat-icon-button
+                    [matMenuTriggerFor]="toggleLabelMenu">
+                <mat-icon [svgIcon]="'label'"></mat-icon>
+            </button>
+            <mat-menu class="mailbox-details-toggle-label-menu-panel"
+                      #toggleLabelMenu="matMenu">
+                <div mat-menu-item
+                     *ngFor="let label of labels; trackBy: trackById">
+                    <mat-checkbox (change)="toggleLabel(label)"
+                                  [color]="'primary'"
+                                  [checked]="mail.labels.includes(label.id)"
+                                  [disableRipple]="true">
+                        {{label.title}}
+                    </mat-checkbox>
+                </div>
+            </mat-menu>
+
+            <!-- Toggle important button -->
+            <button class="toggle-important"
+                    mat-icon-button
+                    (click)="toggleImportant()">
+
+                <mat-icon class="important"
+                          *ngIf="mail.important"
+                          [svgIcon]="'label_important'"></mat-icon>
+
+                <mat-icon class="not-important"
+                          *ngIf="!mail.important"
+                          [svgIcon]="'label_important'"></mat-icon>
+            </button>
+
+            <!-- Toggle starred button -->
+            <button class="toggle-starred"
+                    mat-icon-button
+                    (click)="toggleStar()">
+
+                <mat-icon class="starred"
+                          *ngIf="mail.starred"
+                          [svgIcon]="'star'"></mat-icon>
+
+                <mat-icon class="not-starred"
+                          *ngIf="!mail.starred"
+                          [svgIcon]="'star'"></mat-icon>
+            </button>
+
+            <!-- Other actions button & menu -->
+            <button class="other-actions"
+                    mat-icon-button
+                    [matMenuTriggerFor]="mailMenu">
+                <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+            </button>
+            <mat-menu #mailMenu="matMenu">
+                <!-- Mark as read / unread -->
+                <button mat-menu-item
+                        *ngIf="mail.unread"
+                        (click)="toggleUnread(false)">
+                    <mat-icon [svgIcon]="'mail'"></mat-icon>
+                    <span>Mark as read</span>
+                </button>
+                <button mat-menu-item
+                        *ngIf="!mail.unread"
+                        (click)="toggleUnread(true)">
+                    <mat-icon [svgIcon]="'mail'"></mat-icon>
+                    <span>Mark as unread</span>
+                </button>
+                <!-- Marks as spam / not span-->
+                <button mat-menu-item
+                        *ngIf="getCurrentFolder() !== 'spam' && getCurrentFolder() !== 'drafts'"
+                        (click)="moveToFolder('spam')">
+                    <mat-icon [svgIcon]="'error'"></mat-icon>
+                    <span>Spam</span>
+                </button>
+                <button mat-menu-item
+                        *ngIf="getCurrentFolder() === 'spam'"
+                        (click)="moveToFolder('inbox')">
+                    <mat-icon [svgIcon]="'inbox'"></mat-icon>
+                    <span>Not spam</span>
+                </button>
+                <!-- Delete -->
+                <button mat-menu-item
+                        *ngIf="getCurrentFolder() !== 'trash'"
+                        (click)="moveToFolder('trash')">
+                    <mat-icon [svgIcon]="'delete'"></mat-icon>
+                    <span>Delete</span>
+                </button>
+            </mat-menu>
+
+        </div>
+
+        <!-- Subject -->
+        <div class="subject">
+
+            <h2>{{mail.subject}}</h2>
 
             <!-- Labels -->
             <div class="labels"
@@ -29,19 +120,18 @@
                 </div>
 
             </div>
-
         </div>
 
     </div>
 
-    <!-- Thread -->
-    <div class="thread">
+    <!-- Threads -->
+    <div class="threads">
 
-        <!-- Thread header -->
-        <div class="header">
+        <!-- Thread -->
+        <div class="thread">
 
-            <!-- Thread header left -->
-            <div class="from-to-info">
+            <!-- Thread header -->
+            <div class="header">
 
                 <!-- Sender avatar -->
                 <div class="avatar">
@@ -132,141 +222,47 @@
 
             </div>
 
-            <!-- Action buttons -->
-            <div class="action-buttons">
-
-                <!-- Toggle important button -->
-                <button class="toggle-important"
-                        mat-icon-button
-                        (click)="toggleImportant()">
-
-                    <mat-icon class="important"
-                              *ngIf="mail.important"
-                              [svgIcon]="'label_important'"></mat-icon>
-
-                    <mat-icon class="not-important"
-                              *ngIf="!mail.important"
-                              [svgIcon]="'label_important'"></mat-icon>
-                </button>
-
-                <!-- Toggle starred button -->
-                <button class="toggle-starred"
-                        mat-icon-button
-                        (click)="toggleStar()">
-
-                    <mat-icon class="starred"
-                              *ngIf="mail.starred"
-                              [svgIcon]="'star'"></mat-icon>
-
-                    <mat-icon class="not-starred"
-                              *ngIf="!mail.starred"
-                              [svgIcon]="'star'"></mat-icon>
-                </button>
-
-                <!-- Toggle labels button & menu -->
-                <button class="toggle-labels"
-                        mat-icon-button
-                        [matMenuTriggerFor]="toggleLabelMenu">
-                    <mat-icon [svgIcon]="'label'"></mat-icon>
-                </button>
-                <mat-menu class="mailbox-details-toggle-label-menu-panel"
-                          #toggleLabelMenu="matMenu">
-                    <div mat-menu-item
-                         *ngFor="let label of labels; trackBy: trackById">
-                        <mat-checkbox (change)="toggleLabel(label)"
-                                      [color]="'primary'"
-                                      [checked]="mail.labels.includes(label.id)"
-                                      [disableRipple]="true">
-                            {{label.title}}
-                        </mat-checkbox>
-                    </div>
-                </mat-menu>
-
-                <!-- Other actions button & menu -->
-                <button class="other-actions"
-                        mat-icon-button
-                        [matMenuTriggerFor]="mailMenu">
-                    <mat-icon [svgIcon]="'more_vert'"></mat-icon>
-                </button>
-                <mat-menu #mailMenu="matMenu">
-                    <!-- Mark as read / unread -->
-                    <button mat-menu-item
-                            *ngIf="mail.unread"
-                            (click)="toggleUnread(false)">
-                        <mat-icon [svgIcon]="'mail'"></mat-icon>
-                        <span>Mark as read</span>
-                    </button>
-                    <button mat-menu-item
-                            *ngIf="!mail.unread"
-                            (click)="toggleUnread(true)">
-                        <mat-icon [svgIcon]="'mail'"></mat-icon>
-                        <span>Mark as unread</span>
-                    </button>
-                    <!-- Marks as spam / not span-->
-                    <button mat-menu-item
-                            *ngIf="getCurrentFolder() !== 'spam' && getCurrentFolder() !== 'drafts'"
-                            (click)="moveToFolder('spam')">
-                        <mat-icon [svgIcon]="'error'"></mat-icon>
-                        <span>Spam</span>
-                    </button>
-                    <button mat-menu-item
-                            *ngIf="getCurrentFolder() === 'spam'"
-                            (click)="moveToFolder('inbox')">
-                        <mat-icon [svgIcon]="'inbox'"></mat-icon>
-                        <span>Not spam</span>
-                    </button>
-                    <!-- Delete -->
-                    <button mat-menu-item
-                            *ngIf="getCurrentFolder() !== 'trash'"
-                            (click)="moveToFolder('trash')">
-                        <mat-icon [svgIcon]="'delete'"></mat-icon>
-                        <span>Delete</span>
-                    </button>
-                </mat-menu>
-
+            <!-- Content -->
+            <div class="content"
+                 [innerHTML]="mail.content">
             </div>
 
-        </div>
+            <!-- Attachments -->
+            <ng-container *ngIf="mail.attachments && mail.attachments.length > 0">
 
-        <!-- Content -->
-        <div class="content"
-             [innerHTML]="mail.content">
-        </div>
+                <div class="attachments">
 
-        <!-- Attachments -->
-        <ng-container *ngIf="mail.attachments && mail.attachments.length > 0">
+                    <div class="title">
+                        <mat-icon [svgIcon]="'attachment'"></mat-icon>
+                        <div>{{mail.attachments.length}} Attachments</div>
+                    </div>
 
-            <div class="attachments">
+                    <div class="files">
 
-                <div class="title">
-                    <mat-icon [svgIcon]="'attachment'"></mat-icon>
-                    <div>{{mail.attachments.length}} Attachments</div>
-                </div>
+                        <div class="file"
+                             *ngFor="let attachment of mail.attachments">
 
-                <div class="files">
+                            <img class="preview-image"
+                                 *ngIf="attachment.type.startsWith('image/')"
+                                 [src]="'assets/images/apps/mailbox/' + attachment.preview">
 
-                    <div class="file"
-                         *ngFor="let attachment of mail.attachments">
-
-                        <img class="preview-image"
-                             *ngIf="attachment.type.startsWith('image/')"
-                             [src]="'assets/images/apps/mailbox/' + attachment.preview">
-
-                        <div class="preview-file"
-                             *ngIf="attachment.type.startsWith('application/')">
-                            <div class="file-type">{{attachment.type.split('/')[1].trim().toUpperCase()}}</div>
-                        </div>
-
-                        <div class="file-info">
-
-                            <div class="file-name"
-                                 [title]="attachment.name">
-                                {{attachment.name}}
+                            <div class="preview-file"
+                                 *ngIf="attachment.type.startsWith('application/')">
+                                <div class="file-type">{{attachment.type.split('/')[1].trim().toUpperCase()}}</div>
                             </div>
 
-                            <div class="file-size"
-                                 [title]="attachment.size">
-                                {{attachment.size / 1000 | number:'1.0-2'}} KB
+                            <div class="file-info">
+
+                                <div class="file-name"
+                                     [title]="attachment.name">
+                                    {{attachment.name}}
+                                </div>
+
+                                <div class="file-size"
+                                     [title]="attachment.size">
+                                    {{attachment.size / 1000 | number:'1.0-2'}} KB
+                                </div>
+
                             </div>
 
                         </div>
@@ -275,94 +271,94 @@
 
                 </div>
 
+            </ng-container>
+
+            <!-- Buttons -->
+            <div class="buttons"
+                 *ngIf="!replyFormActive">
+
+                <!-- Reply -->
+                <button mat-stroked-button
+                        [color]="'primary'"
+                        (click)="reply()">
+                    <mat-icon [svgIcon]="'reply'"></mat-icon>
+                    <span>Reply</span>
+                </button>
+
+                <!-- Reply all -->
+                <button mat-stroked-button
+                        [color]="'primary'"
+                        (click)="replyAll()">
+                    <mat-icon [svgIcon]="'reply_all'"></mat-icon>
+                    <span>Reply All</span>
+                </button>
+
+                <!-- Forward -->
+                <button mat-stroked-button
+                        [color]="'primary'"
+                        (click)="forward()">
+                    <mat-icon [color]="'primary'"
+                              [svgIcon]="'forward'"></mat-icon>
+                    <span>Forward</span>
+                </button>
+
             </div>
 
-        </ng-container>
+            <!-- Reply form -->
+            <div class="reply-form"
+                 *ngIf="replyFormActive"
+                 #replyForm>
 
-        <!-- Buttons -->
-        <div class="buttons"
-             *ngIf="!replyFormActive">
+                <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
+                    <textarea class="textarea"
+                              matInput
+                              [placeholder]="'Type your reply here'"
+                              [rows]="4"></textarea>
+                </mat-form-field>
 
-            <!-- Reply -->
-            <button mat-stroked-button
-                    [color]="'primary'"
-                    (click)="reply()">
-                <mat-icon [svgIcon]="'reply'"></mat-icon>
-                <span>Reply</span>
-            </button>
+                <div class="actions">
 
-            <!-- Reply all -->
-            <button mat-stroked-button
-                    [color]="'primary'"
-                    (click)="replyAll()">
-                <mat-icon [svgIcon]="'reply_all'"></mat-icon>
-                <span>Reply All</span>
-            </button>
+                    <div class="formatting">
 
-            <!-- Forward -->
-            <button mat-stroked-button
-                    [color]="'primary'"
-                    (click)="forward()">
-                <mat-icon [color]="'primary'"
-                          [svgIcon]="'forward'"></mat-icon>
-                <span>Forward</span>
-            </button>
+                        <!-- Attach file -->
+                        <button mat-icon-button>
+                            <mat-icon [svgIcon]="'attach_file'"></mat-icon>
+                        </button>
 
-        </div>
+                        <!-- Insert link -->
+                        <button mat-icon-button>
+                            <mat-icon [svgIcon]="'link'"></mat-icon>
+                        </button>
 
-        <!-- Reply form -->
-        <div class="reply-form"
-             *ngIf="replyFormActive"
-             #replyForm>
+                        <!-- Insert emoji -->
+                        <button mat-icon-button>
+                            <mat-icon [svgIcon]="'insert_emoticon'"></mat-icon>
+                        </button>
 
-            <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
-                <textarea class="textarea"
-                          matInput
-                          [placeholder]="'Type your reply here'"
-                          [rows]="4"></textarea>
-            </mat-form-field>
+                        <!-- Insert image -->
+                        <button mat-icon-button>
+                            <mat-icon [svgIcon]="'image'"></mat-icon>
+                        </button>
 
-            <div class="actions">
+                    </div>
 
-                <div class="formatting">
+                    <div class="reply-form-buttons">
 
-                    <!-- Attach file -->
-                    <button mat-icon-button>
-                        <mat-icon [svgIcon]="'attach_file'"></mat-icon>
-                    </button>
+                        <!-- Discard -->
+                        <button mat-flat-button
+                                (click)="discard()">
+                            <span>Discard</span>
+                        </button>
 
-                    <!-- Insert link -->
-                    <button mat-icon-button>
-                        <mat-icon [svgIcon]="'link'"></mat-icon>
-                    </button>
+                        <!-- Send -->
+                        <button class="send-button"
+                                mat-raised-button
+                                [color]="'primary'"
+                                (click)="send()">
+                            <span>Send</span>
+                        </button>
 
-                    <!-- Insert emoji -->
-                    <button mat-icon-button>
-                        <mat-icon [svgIcon]="'insert_emoticon'"></mat-icon>
-                    </button>
-
-                    <!-- Insert image -->
-                    <button mat-icon-button>
-                        <mat-icon [svgIcon]="'image'"></mat-icon>
-                    </button>
-
-                </div>
-
-                <div class="reply-form-buttons">
-
-                    <!-- Discard -->
-                    <button mat-flat-button
-                            (click)="discard()">
-                        <span>Discard</span>
-                    </button>
-
-                    <!-- Send -->
-                    <button class="send-button"
-                            mat-raised-button
-                            [color]="'primary'"
-                            (click)="send()">
-                        <span>Send</span>
-                    </button>
+                    </div>
 
                 </div>
 
@@ -378,7 +374,7 @@
 <ng-template #selectMailToRead>
 
     <div class="select-mail-to-read">
-        <mat-icon [svgIcon]="'mail'"></mat-icon>
+        <mat-icon [svgIcon]="'iconsmind:mailbox_empty'"></mat-icon>
         <h4>Select a mail to read</h4>
     </div>
 

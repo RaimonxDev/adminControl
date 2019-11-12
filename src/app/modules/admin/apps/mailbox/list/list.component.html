@@ -1,5 +1,5 @@
 <div class="list-wrapper"
-     [ngClass]="{'mail-selected': selectedMail && selectedMail.id}">
+     [ngClass]="{'mail-selected': selectedMail && selectedMail.id, 'no-mails': !mails || mails.length === 0}">
 
     <ng-container *ngIf="mails && mails.length > 0; else noMails">
 
@@ -65,15 +65,6 @@
             <!-- Mail list item loop -->
             <ng-container *ngFor="let mail of mails; let i = index; trackBy: trackById">
 
-                <!-- Mail list item group -->
-                <ng-container *ngIf="mailListGroupLabel(i)">
-
-                    <div class="item-group">
-                        {{mailListGroupLabel(i)}}
-                    </div>
-
-                </ng-container>
-
                 <!-- Mail list item -->
                 <a class="item"
                    [ngClass]="{'selected': (selectedMail && selectedMail.id === mail.id), 'unread': mail.unread}"
@@ -82,17 +73,8 @@
 
                     <div class="item-content">
 
-                        <!-- Unread indicator -->
-                        <div class="unread-indicator"
-                             *ngIf="mail.unread"></div>
-
                         <!-- Info -->
                         <div class="info">
-
-                            <!-- Avatar -->
-                            <div class="avatar">
-                                <img [src]="mail.from.avatar">
-                            </div>
 
                             <!-- Sender name -->
                             <div class="name">
@@ -106,7 +88,7 @@
 
                             <!-- Date -->
                             <div class="date">
-                                {{mail.date | date:'hh:mm a'}}
+                                {{mail.date | date:'LLL dd'}}
                             </div>
 
                         </div>
@@ -154,7 +136,7 @@
     <ng-template #noMails>
 
         <div class="no-mails">
-            <mat-icon [svgIcon]="'mail'"></mat-icon>
+            <mat-icon [svgIcon]="'iconsmind:mailbox_empty'"></mat-icon>
             <h4>There are no e-mails</h4>
         </div>
 
@@ -163,4 +145,4 @@
 </div>
 
 <!-- Mail details -->
-<router-outlet></router-outlet>
+<router-outlet *ngIf="mails && mails.length > 0"></router-outlet>

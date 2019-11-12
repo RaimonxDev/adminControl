@@ -10,10 +10,10 @@ mailbox-list {
         display: flex;
         flex: 0 1 auto;
         flex-direction: column;
-        padding: 24px 32px 0 32px;
-        width: 416px;
-        min-width: 416px;
-        max-width: 416px;
+        width: 360px;
+        min-width: 360px;
+        max-width: 360px;
+        border-right-width: 1px;
 
         @include asm-media-breakpoint('lt-lg') {
             width: 100%;
@@ -44,14 +44,21 @@ mailbox-list {
             }
         }
 
+        &.no-mails {
+            width: 100%;
+            min-width: 100%;
+            max-width: none;
+            border-right-width: 0;
+        }
+
         > .header {
             position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid;
-            min-height: 80px;
-            height: 80px;
+            border-bottom-width: 1px;
+            min-height: 64px;
+            height: 64px;
             padding: 0 8px 0 16px;
             z-index: 9;
 
@@ -111,47 +118,13 @@ mailbox-list {
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
 
-            .item-group {
-                display: flex;
-                align-items: center;
-                margin: 0 24px 16px 24px;
-                padding-top: 40px;
-                font-size: 12px;
-                font-weight: 500;
-                line-height: 1;
-                letter-spacing: 0.075em;
-                text-transform: uppercase;
-
-                + .item {
-
-                    .item-content {
-                        box-shadow: none !important;
-                    }
-                }
-            }
-
             .item {
                 position: relative;
                 display: flex;
-                padding: 0 24px 24px 24px;
+                border-top-width: 1px;
 
-                &.selected {
-                    border-radius: 4px;
-
-                    .item-content {
-                        box-shadow: none !important;
-                    }
-
-                    + .item {
-
-                        .item-content {
-                            box-shadow: none !important;
-                        }
-                    }
-
-                    + .item-group {
-                        box-shadow: none !important;
-                    }
+                &:first-child {
+                    border-top-width: 0 !important;
                 }
 
                 .item-content {
@@ -160,16 +133,8 @@ mailbox-list {
                     align-items: flex-start;
                     justify-content: flex-start;
                     width: 100%;
-                    padding-top: 24px;
-
-                    .unread-indicator {
-                        position: absolute;
-                        left: 10px;
-                        top: 37px;
-                        width: 6px;
-                        height: 6px;
-                        border-radius: 50%;
-                    }
+                    padding: 24px 16px 24px 20px;
+                    border-left-width: 4px;
 
                     .info {
                         display: flex;
@@ -201,7 +166,7 @@ mailbox-list {
                         }
 
                         .name {
-                            margin: 0 8px 0 12px;
+                            margin-right: 8px;
                             font-size: 15px;
                             font-weight: 500;
                             white-space: nowrap;
@@ -216,7 +181,7 @@ mailbox-list {
 
                         .date {
                             margin-left: auto;
-                            font-size: 12px;
+                            font-size: 13px;
                             white-space: nowrap;
                             text-align: right;
                         }
@@ -226,10 +191,9 @@ mailbox-list {
                         display: flex;
                         align-items: center;
                         width: 100%;
-                        margin-top: 16px;
+                        margin-top: 4px;
 
                         span {
-                            font-weight: 500;
                             overflow: hidden;
                             text-overflow: ellipsis;
                             white-space: nowrap;
@@ -307,7 +271,9 @@ mailbox-list {
         .list-wrapper {
 
             > .header {
-                border-bottom-color: map-get($foreground, divider);
+                @if (not $is-dark) {
+                    background: asm-color($asm-gray, 100);
+                }
 
                 .pagination {
 
@@ -322,39 +288,39 @@ mailbox-list {
 
             .list {
 
-                .item-group {
-                    color: map-get($foreground, secondary-text);
-
-                    &:not(:first-child) {
-                        @if ($is-dark) {
-                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 800);
-                        } @else {
-                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 300);
-                        }
-                    }
-                }
-
                 .item {
 
+                    &:hover:not(.selected) {
+
+                        .item-content {
+                            @if ($is-dark) {
+                                background: asm-dark-elevation(1);
+                            } @else {
+                                background: asm-color($asm-gray, 100);
+                            }
+                        }
+                    }
+
                     &.selected {
-                        @if ($is-dark) {
-                            background: asm-dark-elevation(1);
-                        } @else {
-                            background: map-get($primary, 100);
+
+                        .item-content {
+                            @if ($is-dark) {
+                                background: asm-dark-elevation(1);
+                            } @else {
+                                background: map-get($primary, 100);
+                            }
+                        }
+                    }
+
+                    &.unread {
+
+                        .item-content {
+                            border-left-color: map-get($primary, default);
                         }
                     }
 
                     .item-content {
-
-                        @if ($is-dark) {
-                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 800);
-                        } @else {
-                            box-shadow: inset 0 1px 0 0 asm-color($asm-gray, 300);
-                        }
-
-                        .unread-indicator {
-                            background: map-get($primary, default);
-                        }
+                        border-left-color: transparent;
 
                         .avatar {
 
