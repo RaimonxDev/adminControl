@@ -288,7 +288,7 @@ layout[type="classy"] {
                     background: asm-dark-elevation(1);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation(1);
+                    border-top-width: 1px;
                 }
 
                 color: map-get($foreground, secondary-text);
