@@ -247,17 +247,21 @@ asm-vertical-menu {
     // Subheader
     asm-vertical-menu-subheader-item {
 
-        .asm-vertical-menu-item {
+        .asm-vertical-menu-item-wrapper {
 
-            .asm-vertical-menu-item-badge,
-            .asm-vertical-menu-item-icon {
-                display: none !important;
-            }
+            .asm-vertical-menu-item {
+                min-height: 0;
 
-            .asm-vertical-menu-item-title {
-                font-size: 12px;
-                font-weight: 500;
-                text-transform: uppercase;
+                .asm-vertical-menu-item-badge,
+                .asm-vertical-menu-item-icon {
+                    display: none !important;
+                }
+
+                .asm-vertical-menu-item-title {
+                    font-size: 12px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
             }
         }
     }
