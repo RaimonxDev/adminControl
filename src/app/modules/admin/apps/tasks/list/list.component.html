@@ -133,6 +133,11 @@
 
                                     </div>
 
+                                    <div class="due-date"
+                                         *ngIf="task.type === 'task'">
+                                        {{task.dueDate | date:'LLL dd'}}
+                                    </div>
+
                                 </a>
 
                             </div>
