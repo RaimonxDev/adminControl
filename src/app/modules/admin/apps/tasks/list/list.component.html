@@ -60,52 +60,6 @@
 
                 </div>
 
-                <!-- Search -->
-                <div class="search">
-
-                    <mat-form-field class="asm-mat-no-subscript">
-
-                        <mat-icon matPrefix
-                                  [svgIcon]="'search'"></mat-icon>
-
-                        <input matInput
-                               [formControl]="searchInputControl"
-                               [matAutocomplete]="searchAutocomplete"
-                               [autocomplete]="'off'"
-                               [placeholder]="'Search tasks'"
-                               #searchInput>
-
-                        <mat-autocomplete class="tasks-list-search-results-panel"
-                                          (optionSelected)="this.goToTask($event.option.id)"
-                                          #searchAutocomplete="matAutocomplete">
-
-                            <mat-optgroup class="no-results"
-                                          *ngIf="searchResults && !searchResults.length">
-                                <mat-option>No tasks found for <b>'{{searchInput.value}}'</b></mat-option>
-                            </mat-optgroup>
-
-                            <mat-option [id]="task.id"
-                                        *ngFor="let task of searchResults; trackBy: trackById"
-                                        [routerLink]="[task.id]">
-
-                                <mat-icon [color]="'primary'"
-                                          *ngIf="task.completed"
-                                          [svgIcon]="'check_circle'"></mat-icon>
-
-                                <mat-icon *ngIf="!task.completed"
-                                          [svgIcon]="'radio_button_unchecked'"></mat-icon>
-
-                                <div class="result-title"
-                                     [innerHTML]="task.title"></div>
-
-                            </mat-option>
-
-                        </mat-autocomplete>
-
-                    </mat-form-field>
-
-                </div>
-
                 <!-- Tasks list -->
                 <div class="tasks-list"
                      cdkDropList
@@ -140,10 +94,10 @@
 
                                     <mat-icon [color]="'primary'"
                                               *ngIf="task.completed"
-                                              [svgIcon]="'check_circle'"></mat-icon>
+                                              [svgIcon]="'check_box'"></mat-icon>
 
                                     <mat-icon *ngIf="!task.completed"
-                                              [svgIcon]="'radio_button_unchecked'"></mat-icon>
+                                              [svgIcon]="'check_box_outline_blank'"></mat-icon>
 
                                 </button>
 

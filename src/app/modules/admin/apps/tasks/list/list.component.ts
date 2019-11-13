@@ -1,11 +1,10 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Subject } from 'rxjs';
-import { debounceTime, filter, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
@@ -22,8 +21,6 @@ export class TasksListComponent implements OnInit, OnDestroy
     matDrawer: MatDrawer;
 
     drawerMode: 'side' | 'over';
-    searchInputControl: FormControl;
-    searchResults: Task[] | null;
     selectedTask: Task;
     tags: Tag[];
     tasks: Task[];
@@ -55,7 +52,6 @@ export class TasksListComponent implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.searchInputControl = new FormControl();
         this.tasksCount = {
             completed : 0,
             incomplete: 0,
@@ -104,22 +100,6 @@ export class TasksListComponent implements OnInit, OnDestroy
             .subscribe((task) => {
                 this.selectedTask = task;
             });
-
-        // Subscribe to search input field value changes
-        this.searchInputControl.valueChanges
-            .pipe(
-                debounceTime(300),
-                takeUntil(this._unsubscribeAll),
-                switchMap((query) => {
-
-                    // Search
-                    return this._tasksService.searchTasks(query);
-                }),
-                tap((results) => {
-                    this.searchResults = results;
-                })
-            )
-            .subscribe();
 
         // Subscribe to media query change
         this._asmMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')

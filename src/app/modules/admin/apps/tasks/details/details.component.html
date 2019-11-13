@@ -10,7 +10,7 @@
             <!-- Mark as complete -->
             <span class="complete"
                   *ngIf="!taskForm.get('completed').value">
-                <mat-icon [svgIcon]="'radio_button_unchecked'"></mat-icon>
+                <mat-icon [svgIcon]="'check_box_outline_blank'"></mat-icon>
                 <span>MARK AS COMPLETE</span>
             </span>
 
@@ -18,7 +18,7 @@
             <span class="incomplete"
                   *ngIf="taskForm.get('completed').value">
                 <mat-icon [color]="'primary'"
-                          [svgIcon]="'check_circle'"></mat-icon>
+                          [svgIcon]="'check_box'"></mat-icon>
                 <span>MARK AS INCOMPLETE</span>
             </span>
 
@@ -51,12 +51,11 @@
 
     <!-- Title -->
     <div class="title">
+        <div class="label">{{task.type === 'task' ? 'Task title' : 'Section title'}}</div>
         <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
-            <mat-label>{{task.type === 'task' ? 'Task title' : 'Section title'}}</mat-label>
             <textarea matInput
                       [formControlName]="'title'"
                       cdkTextareaAutosize
-                      [cdkAutosizeMinRows]="2"
                       [spellcheck]="false"
                       #titleField></textarea>
         </mat-form-field>
@@ -64,100 +63,104 @@
 
     <!-- Tags -->
     <div class="tags">
+        <div class="label">Tags</div>
+        <div class="tag-wrapper">
 
-        <div class="tag"
-             *ngFor="let tag of (task.tags | lookUpBy:'id':tags); trackBy: trackById">
-            <span class="tag-title">{{tag.title}}</span>
-        </div>
+            <div class="tag"
+                 *ngFor="let tag of (task.tags | lookUpBy:'id':tags); trackBy: trackById">
+                <span class="tag-title">{{tag.title}}</span>
+            </div>
 
-        <div class="edit-tags"
-             (click)="openTagsPanel()"
-             #tagsPanelOrigin>
+            <div class="edit-tags"
+                 (click)="openTagsPanel()"
+                 #tagsPanelOrigin>
 
-            <ng-container *ngIf="task.tags.length">
-                <mat-icon class="edit-icon"
-                          [svgIcon]="'edit'"></mat-icon>
-                <span>Edit Tags</span>
-            </ng-container>
+                <ng-container *ngIf="task.tags.length">
+                    <mat-icon class="edit-icon"
+                              [svgIcon]="'edit'"></mat-icon>
+                    <span>Edit Tags</span>
+                </ng-container>
 
-            <ng-container *ngIf="!task.tags.length">
-                <mat-icon class="add-icon"
-                          [svgIcon]="'add'"></mat-icon>
-                <span>Add Tag</span>
-            </ng-container>
+                <ng-container *ngIf="!task.tags.length">
+                    <mat-icon class="add-icon"
+                              [svgIcon]="'add'"></mat-icon>
+                    <span>Add Tag</span>
+                </ng-container>
 
-            <!-- Tags panel -->
-            <ng-template #tagsPanel>
+                <!-- Tags panel -->
+                <ng-template #tagsPanel>
 
-                <div class="tasks-details-tags-panel">
+                    <div class="tasks-details-tags-panel">
 
-                    <div class="tags-panel-header">
+                        <div class="tags-panel-header">
 
-                        <div class="new-tag">
-                            <mat-icon [svgIcon]="'search'"></mat-icon>
-                            <input type="text"
-                                   placeholder="Enter tag name"
-                                   (input)="filterTags($event)"
-                                   (keydown)="filterTagsInputKeyDown($event)"
-                                   [maxLength]="50"
-                                   #newTagInput>
+                            <div class="new-tag">
+                                <mat-icon [svgIcon]="'search'"></mat-icon>
+                                <input type="text"
+                                       placeholder="Enter tag name"
+                                       (input)="filterTags($event)"
+                                       (keydown)="filterTagsInputKeyDown($event)"
+                                       [maxLength]="50"
+                                       #newTagInput>
+                            </div>
+
+                            <button class="toggle-edit-mode"
+                                    mat-icon-button
+                                    (click)="toggleTagsEditMode()">
+
+                                <mat-icon *ngIf="!tagsEditMode"
+                                          [svgIcon]="'edit'"></mat-icon>
+
+                                <mat-icon *ngIf="tagsEditMode"
+                                          [svgIcon]="'check'"></mat-icon>
+                            </button>
+
                         </div>
 
-                        <button class="toggle-edit-mode"
-                                mat-icon-button
-                                (click)="toggleTagsEditMode()">
+                        <div class="available-tags">
 
-                            <mat-icon *ngIf="!tagsEditMode"
-                                      [svgIcon]="'edit'"></mat-icon>
+                            <!-- Tags -->
+                            <ng-container *ngIf="!tagsEditMode">
+                                <mat-checkbox *ngFor="let tag of filteredTags; trackBy: trackById"
+                                              [color]="'primary'"
+                                              [checked]="task.tags.includes(tag.id)"
+                                              (change)="toggleTaskTag(tag, $event)">
+                                    {{tag.title}}
+                                </mat-checkbox>
+                            </ng-container>
 
-                            <mat-icon *ngIf="tagsEditMode"
-                                      [svgIcon]="'check'"></mat-icon>
-                        </button>
+                            <!-- Tags editing -->
+                            <ng-container *ngIf="tagsEditMode">
+                                <div class="tag-edit"
+                                     *ngFor="let tag of filteredTags; trackBy: trackById">
+                                    <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
+                                        <input matInput
+                                               [value]="tag.title"
+                                               (input)="updateTagTitle(tag, $event)">
+                                        <button mat-icon-button
+                                                (click)="deleteTag(tag)"
+                                                matSuffix>
+                                            <mat-icon [svgIcon]="'delete'"></mat-icon>
+                                        </button>
+                                    </mat-form-field>
+                                </div>
+                            </ng-container>
 
-                    </div>
+                        </div>
 
-                    <div class="available-tags">
-
-                        <!-- Tags -->
-                        <ng-container *ngIf="!tagsEditMode">
-                            <mat-checkbox *ngFor="let tag of filteredTags; trackBy: trackById"
-                                          [color]="'primary'"
-                                          [checked]="task.tags.includes(tag.id)"
-                                          (change)="toggleTaskTag(tag, $event)">
-                                {{tag.title}}
-                            </mat-checkbox>
-                        </ng-container>
-
-                        <!-- Tags editing -->
-                        <ng-container *ngIf="tagsEditMode">
-                            <div class="tag-edit"
-                                 *ngFor="let tag of filteredTags; trackBy: trackById">
-                                <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
-                                    <input matInput
-                                           [value]="tag.title"
-                                           (input)="updateTagTitle(tag, $event)">
-                                    <button mat-icon-button
-                                            (click)="deleteTag(tag)"
-                                            matSuffix>
-                                        <mat-icon [svgIcon]="'delete'"></mat-icon>
-                                    </button>
-                                </mat-form-field>
-                            </div>
-                        </ng-container>
+                        <div class="create-tag"
+                             *ngIf="shouldShowCreateTagButton(newTagInput.value)"
+                             (click)="createTag(newTagInput.value); newTagInput.value = ''"
+                             matRipple>
+                            <mat-icon [svgIcon]="'add'"></mat-icon>
+                            <div>Create "<b>{{newTagInput.value}}</b>"</div>
+                        </div>
 
                     </div>
 
-                    <div class="create-tag"
-                         *ngIf="shouldShowCreateTagButton(newTagInput.value)"
-                         (click)="createTag(newTagInput.value); newTagInput.value = ''"
-                         matRipple>
-                        <mat-icon [svgIcon]="'add'"></mat-icon>
-                        <div>Create "<b>{{newTagInput.value}}</b>"</div>
-                    </div>
+                </ng-template>
 
-                </div>
-
-            </ng-template>
+            </div>
 
         </div>
 
@@ -284,16 +287,14 @@
 
     <!-- Notes -->
     <div class="notes">
-
+        <div class="label">Notes</div>
         <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
-            <mat-label>Notes</mat-label>
             <textarea matInput
                       [formControlName]="'notes'"
                       cdkTextareaAutosize
                       [cdkAutosizeMinRows]="2"
                       [spellcheck]="false"></textarea>
         </mat-form-field>
-
     </div>
 
 </form>

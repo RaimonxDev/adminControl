@@ -4,13 +4,14 @@ tasks-details {
     display: flex;
     flex: 1 1 auto;
     height: 100%;
+    border-left-width: 1px;
 
     form {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
         height: 100%;
-        padding: 72px 48px 64px 48px;
+        padding: 52px 48px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
@@ -21,9 +22,10 @@ tasks-details {
         .header {
             display: flex;
             align-items: center;
-            margin: 0 -12px 0 -18px;
+            margin: 0 -12px 0 -16px;
 
             .mark-as-button {
+                padding: 0 16px 0 12px;
 
                 .complete,
                 .incomplete {
@@ -33,7 +35,6 @@ tasks-details {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(20);
                     }
 
                     span {
@@ -49,11 +50,16 @@ tasks-details {
             }
 
             + .mat-divider {
-                margin: 24px 0;
+                margin: 24px 0 32px 0;
             }
         }
 
         .title {
+
+            .label {
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
 
             .mat-form-field {
                 width: 100%;
@@ -68,56 +74,64 @@ tasks-details {
         }
 
         .tags {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: flex-start;
             margin-top: 16px;
 
-            .tag,
-            .edit-tags {
+            .label {
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
+
+            .tag-wrapper {
                 display: flex;
+                flex-wrap: wrap;
                 align-items: center;
-                justify-content: center;
-                height: 22px;
-                min-height: 22px;
-                line-height: 1 !important;
-                padding: 0 12px;
-                margin: 0 12px 12px 0;
-                border-radius: 4px;
-            }
+                justify-content: flex-start;
 
-            .tag {
-
-                .tag-title {
-                    font-size: 11px;
-                    font-weight: 500;
-                    white-space: nowrap;
-                    text-transform: uppercase;
+                .tag,
+                .edit-tags {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 22px;
+                    min-height: 22px;
+                    line-height: 1 !important;
+                    padding: 0 12px;
+                    margin: 0 12px 12px 0;
+                    border-radius: 4px;
                 }
-            }
 
-            .edit-tags {
-                cursor: pointer;
-                padding: 0 12px 0 8px;
+                .tag {
 
-                .mat-icon {
-
-                    &.add-icon {
-                        @include asm-icon-size(16);
-                        margin-right: 4px;
-                    }
-
-                    &.edit-icon {
-                        @include asm-icon-size(14);
-                        margin-right: 6px;
+                    .tag-title {
+                        font-size: 11px;
+                        font-weight: 500;
+                        white-space: nowrap;
+                        text-transform: uppercase;
                     }
                 }
 
-                span {
-                    font-size: 11px;
-                    font-weight: 500;
-                    white-space: nowrap;
+                .edit-tags {
+                    cursor: pointer;
+                    padding: 0 12px 0 8px;
+
+                    .mat-icon {
+
+                        &.add-icon {
+                            @include asm-icon-size(16);
+                            margin-right: 4px;
+                        }
+
+                        &.edit-icon {
+                            @include asm-icon-size(14);
+                            margin-right: 6px;
+                        }
+                    }
+
+                    span {
+                        font-size: 11px;
+                        font-weight: 500;
+                        white-space: nowrap;
+                    }
                 }
             }
         }
@@ -204,11 +218,15 @@ tasks-details {
         }
 
         .notes {
-            margin: 0 -12px 40px -12px;
+            margin-bottom: 40px;
+
+            .label {
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
 
             .mat-form-field {
                 width: 100%;
-                padding: 4px 12px;
 
                 textarea {
                     margin: 0;
@@ -423,21 +441,24 @@ tasks-details {
 
             .tags {
 
-                .tag,
-                .edit-tags {
-                    @if ($is-dark) {
-                        background: asm-dark-elevation(4);
-                        color: asm-color($asm-gray, 500);
-                    } @else {
-                        background: asm-color($asm-gray, 200);
-                        color: asm-color($asm-gray, 600);
-                    }
+                .tag-wrapper {
 
-                    .mat-icon {
+                    .tag,
+                    .edit-tags {
                         @if ($is-dark) {
+                            background: asm-dark-elevation(4);
                             color: asm-color($asm-gray, 500);
                         } @else {
+                            background: asm-color($asm-gray, 200);
                             color: asm-color($asm-gray, 600);
+                        }
+
+                        .mat-icon {
+                            @if ($is-dark) {
+                                color: asm-color($asm-gray, 500);
+                            } @else {
+                                color: asm-color($asm-gray, 600);
+                            }
                         }
                     }
                 }
