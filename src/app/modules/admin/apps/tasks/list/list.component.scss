@@ -60,6 +60,7 @@ tasks-list {
 
                         .add-task,
                         .add-section {
+                            padding: 0 20px 0 16px;
 
                             @include asm-media-breakpoint('lt-sm') {
                                 margin-top: 24px;
@@ -68,10 +69,6 @@ tasks-list {
                             .mat-icon {
                                 margin-right: 8px;
                                 @include asm-icon-size(20);
-
-                                + span {
-                                    margin-right: 6px;
-                                }
                             }
                         }
 
