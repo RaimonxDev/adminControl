@@ -194,11 +194,10 @@
         .mat-form-field-flex {
             display: flex;
             align-items: stretch;
-            min-height: 3.5em;
+            min-height: 3.4285714286em;
             border-radius: 4px;
             padding: 0 1em;
             border-width: 1px;
-            border-style: solid;
 
             .mat-form-field-prefix {
 
@@ -308,7 +307,6 @@
             .mat-form-field-infix {
                 display: flex;
                 align-items: center;
-                min-height: 48px;
                 width: 88px;
                 padding: 0;
                 border: 0;
@@ -358,17 +356,35 @@
 
                 // Select
                 .mat-select {
+                    display: inline-flex;
 
                     .mat-select-placeholder {
                         min-height: 16px;
                         line-height: normal;
                     }
 
-                    .mat-select-value {
-                        position: relative;
-                        top: 8px;
-                        min-height: 16px;
-                        line-height: normal;
+                    .mat-select-trigger {
+                        display: inline-flex;
+                        align-items: center;
+                        width: 100%;
+
+                        .mat-select-value {
+                            display: flex;
+                            position: relative;
+                            top: 8px;
+                            max-width: none;
+                            line-height: normal;
+
+                            .mat-select-value-text {
+                                display: inline-flex;
+
+                                > * {
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                }
+                            }
+                        }
                     }
 
                     .mat-select-arrow-wrapper {
