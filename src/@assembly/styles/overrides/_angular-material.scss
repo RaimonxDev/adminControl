@@ -231,8 +231,8 @@
                     min-height: 40px;
                 }
 
-                // Remove the margins from the mat-icon
-                // if it's inside a button
+                // Remove the margins from the mat-icon if it's inside a button
+                // Force the icon size to 24
                 .mat-button,
                 .mat-raised-button,
                 .mat-icon-button,
@@ -243,7 +243,13 @@
 
                     .mat-icon {
                         margin: 0 !important;
+                        @include asm-icon-size(24);
                     }
+                }
+
+                // Datepicker default icon size
+                .mat-datepicker-toggle-default-icon {
+                    @include asm-icon-size(24);
                 }
 
                 // Make mat-select usable as
