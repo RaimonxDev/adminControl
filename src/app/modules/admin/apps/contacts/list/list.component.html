@@ -28,7 +28,12 @@
                         <h1>Contacts</h1>
 
                         <div class="contacts-count">
-                            {{contactsCount}} contacts
+                            {{contactsCount}}
+                            {{contactsCount | i18nPlural: {
+                            '=0'   : 'contact',
+                            '=1'   : 'contact',
+                            'other': 'contacts'
+                        } }}
                         </div>
 
                     </div>
@@ -36,30 +41,30 @@
                     <!-- Main actions -->
                     <div class="main-actions">
 
+                        <!-- Search -->
+                        <div class="search">
+
+                            <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
+                                <mat-icon matPrefix
+                                          [svgIcon]="'search'"></mat-icon>
+                                <input matInput
+                                       [formControl]="searchInputControl"
+                                       [autocomplete]="'off'"
+                                       [placeholder]="'Search contacts'">
+                            </mat-form-field>
+
+                        </div>
+
                         <!-- Add contact button -->
                         <button class="add-contact"
                                 mat-flat-button
                                 [color]="'primary'"
                                 (click)="createContact()">
                             <mat-icon [svgIcon]="'add'"></mat-icon>
-                            <span>Add Contact</span>
+                            Add
                         </button>
 
                     </div>
-
-                </div>
-
-                <!-- Search -->
-                <div class="search">
-
-                    <mat-form-field class="asm-mat-no-subscript">
-                        <mat-icon matPrefix
-                                  [svgIcon]="'search'"></mat-icon>
-                        <input matInput
-                               [formControl]="searchInputControl"
-                               [autocomplete]="'off'"
-                               [placeholder]="'Search contacts'">
-                    </mat-form-field>
 
                 </div>
 
