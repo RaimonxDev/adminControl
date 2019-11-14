@@ -117,7 +117,8 @@
 
                         </div>
 
-                        <div class="available-tags">
+                        <div class="available-tags"
+                             [ngClass]="{'editing': tagsEditMode}">
 
                             <!-- Tags -->
                             <ng-container *ngIf="!tagsEditMode">
@@ -172,33 +173,29 @@
         <!-- Priority -->
         <div class="priority">
             <div class="label">Priority</div>
-            <button mat-button
+            <button [ngClass]="{'low': task.priority === 0, 'normal': task.priority === 1, 'high': task.priority === 2}"
+                    mat-button
                     (click)="openPriorityPanel()"
                     #priorityPanelOrigin>
 
-                <span class="icon"
-                      [ngClass]="{'low': task.priority === 0, 'normal': task.priority === 1, 'high': task.priority === 2}">
-                    <mat-icon *ngIf="task.priority === 0"
-                              [svgIcon]="'arrow_downward'"></mat-icon>
-                    <mat-icon *ngIf="task.priority === 1"
-                              [svgIcon]="'remove'"></mat-icon>
-                    <mat-icon *ngIf="task.priority === 2"
-                              [svgIcon]="'arrow_upward'"></mat-icon>
-                </span>
+                <mat-icon *ngIf="task.priority === 0"
+                          [svgIcon]="'arrow_downward'"></mat-icon>
+                <mat-icon *ngIf="task.priority === 1"
+                          [svgIcon]="'remove'"></mat-icon>
+                <mat-icon *ngIf="task.priority === 2"
+                          [svgIcon]="'arrow_upward'"></mat-icon>
 
-                <span class="content">
-                    <span class="low"
-                          *ngIf="task.priority === 0">
-                        Low
-                    </span>
-                    <span class="normal"
-                          *ngIf="task.priority === 1">
-                        Normal
-                    </span>
-                    <span class="high"
-                          *ngIf="task.priority === 2">
-                        High
-                    </span>
+                <span class="low"
+                      *ngIf="task.priority === 0">
+                    Low
+                </span>
+                <span class="normal"
+                      *ngIf="task.priority === 1">
+                    Normal
+                </span>
+                <span class="high"
+                      *ngIf="task.priority === 2">
+                    High
                 </span>
 
             </button>
@@ -245,14 +242,10 @@
                     (click)="openDueDatePanel()"
                     #dueDatePanelOrigin>
 
-                <span class="icon">
-                    <mat-icon [svgIcon]="'today'"></mat-icon>
-                </span>
+                <mat-icon [svgIcon]="'today'"></mat-icon>
 
-                <span class="content">
-                    <span *ngIf="task.dueDate">{{task.dueDate | date:'longDate'}}</span>
-                    <span *ngIf="!task.dueDate">Not set</span>
-                </span>
+                <span *ngIf="task.dueDate">{{task.dueDate | date:'longDate'}}</span>
+                <span *ngIf="!task.dueDate">Not set</span>
 
             </button>
         </div>

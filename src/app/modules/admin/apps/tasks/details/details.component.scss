@@ -147,37 +147,17 @@ tasks-details {
 
                 .label {
                     font-weight: 500;
+                    margin-bottom: 8px;
                 }
 
                 .mat-button {
-                    min-height: 48px;
-                    max-height: 48px;
-                    margin-left: -8px;
-                    padding: 0 16px 0 8px;
+                    min-height: 32px;
+                    max-height: 32px;
+                    padding: 0 12px 0 10px;
 
-                    .icon {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin-right: 12px;
-                        width: 28px;
-                        height: 28px;
-                        min-width: 28px;
-                        min-height: 28px;
-                        border-radius: 4px;
-
-                        .mat-icon {
-                            @include asm-icon-size(16);
-                        }
-                    }
-
-                    .content {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        font-weight: 500;
-                        line-height: normal;
-                        white-space: nowrap;
+                    .mat-icon {
+                        margin-right: 8px;
+                        @include asm-icon-size(16);
                     }
                 }
             }
@@ -186,38 +166,18 @@ tasks-details {
 
                 .label {
                     font-weight: 500;
+                    margin-bottom: 8px;
                 }
 
                 .mat-button {
-                    min-height: 48px;
-                    max-height: 48px;
-                    margin-left: -8px;
-                    padding: 0 16px 0 8px;
+                    min-height: 32px;
+                    max-height: 32px;
+                    padding: 0 12px 0 10px;
 
-                    .icon {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 28px;
-                        height: 28px;
-                        min-width: 28px;
-                        min-height: 28px;
-                        margin-right: 12px;
-                        border-radius: 4px;
-
-                        .mat-icon {
-                            @include asm-icon-size(16);
-                        }
+                    .mat-icon {
+                        margin-right: 8px;
+                        @include asm-icon-size(16);
                     }
-                }
-
-                .content {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    font-weight: 500;
-                    line-height: normal;
-                    white-space: nowrap;
                 }
             }
         }
@@ -335,8 +295,8 @@ tasks-details {
             }
 
             .mat-form-field {
-                min-width: 0;
-                margin: 0 16px;
+                width: 100%;
+                padding: 0 16px;
             }
         }
     }
@@ -477,20 +437,13 @@ tasks-details {
                         background: map-get($background, hover);
                     }
 
-                    .mat-button-focus-overlay {
-                        @if (not $is-dark) {
-                            background-color: asm-color($asm-gray, 200) !important;
-                        }
-                    }
-                }
-
-                .icon {
-
                     &.low {
                         @if ($is-dark) {
                             background: asm-color($asm-green, 500);
+                            color: asm-color($asm-green, 100);
                         } @else {
                             background: asm-color($asm-green, 200);
+                            color: asm-color($asm-green, 600);
                         }
 
                         .mat-icon {
@@ -500,13 +453,23 @@ tasks-details {
                                 color: asm-color($asm-green, 600);
                             }
                         }
+
+                        .mat-button-focus-overlay {
+                            @if ($is-dark) {
+                                background: asm-color($asm-green, 400) !important;
+                            } @else {
+                                background: asm-color($asm-green, 300) !important;
+                            }
+                        }
                     }
 
                     &.normal {
                         @if ($is-dark) {
                             background: asm-dark-elevation(4);
+                            color: asm-color($asm-gray, 500);
                         } @else {
                             background: asm-color($asm-gray, 200);
+                            color: asm-color($asm-gray, 600);
                         }
 
                         .mat-icon {
@@ -516,13 +479,23 @@ tasks-details {
                                 color: asm-color($asm-gray, 600);
                             }
                         }
+
+                        .mat-button-focus-overlay {
+                            @if ($is-dark) {
+                                background: asm-dark-elevation(3) !important;
+                            } @else {
+                                background: asm-color($asm-gray, 300) !important;
+                            }
+                        }
                     }
 
                     &.high {
                         @if ($is-dark) {
                             background: asm-color($asm-red, 500);
+                            color: asm-color($asm-red, 100);
                         } @else {
                             background: asm-color($asm-red, 200);
+                            color: asm-color($asm-red, 600);
                         }
 
                         .mat-icon {
@@ -530,6 +503,14 @@ tasks-details {
                                 color: asm-color($asm-red, 100);
                             } @else {
                                 color: asm-color($asm-red, 600);
+                            }
+                        }
+
+                        .mat-button-focus-overlay {
+                            @if ($is-dark) {
+                                background: asm-color($asm-red, 400) !important;
+                            } @else {
+                                background: asm-color($asm-red, 300) !important;
                             }
                         }
                     }
@@ -544,62 +525,78 @@ tasks-details {
                         background: map-get($background, hover);
                     }
 
-                    .mat-button-focus-overlay {
-                        @if (not $is-dark) {
-                            background-color: asm-color($asm-gray, 200) !important;
+                    @if ($is-dark) {
+                        background: asm-dark-elevation(4);
+                        color: asm-color($asm-gray, 500);
+                    } @else {
+                        background: asm-color($asm-gray, 200);
+                        color: asm-color($asm-gray, 600);
+                    }
+
+                    .mat-icon {
+                        @if ($is-dark) {
+                            color: asm-color($asm-gray, 500);
+                        } @else {
+                            color: asm-color($asm-gray, 600);
                         }
                     }
 
-                    .icon {
+                    .mat-button-focus-overlay {
                         @if ($is-dark) {
-                            background: asm-dark-elevation(4);
+                            background: asm-dark-elevation(3) !important;
                         } @else {
-                            background: asm-color($asm-gray, 200);
-                        }
-
-                        .mat-icon {
-                            @if ($is-dark) {
-                                color: asm-color($asm-gray, 500);
-                            } @else {
-                                color: asm-color($asm-gray, 600);
-                            }
+                            background: asm-color($asm-gray, 300) !important;
                         }
                     }
 
                     &.due-set {
+                        @if ($is-dark) {
+                            background: asm-color($asm-green, 500);
+                            color: asm-color($asm-green, 100);
+                        } @else {
+                            background: asm-color($asm-green, 200);
+                            color: asm-color($asm-green, 600);
+                        }
 
-                        .icon {
+                        .mat-icon {
                             @if ($is-dark) {
-                                background: asm-color($asm-green, 500);
+                                color: asm-color($asm-green, 100);
                             } @else {
-                                background: asm-color($asm-green, 200);
+                                color: asm-color($asm-green, 600);
                             }
+                        }
 
-                            .mat-icon {
-                                @if ($is-dark) {
-                                    color: asm-color($asm-green, 100);
-                                } @else {
-                                    color: asm-color($asm-green, 600);
-                                }
+                        .mat-button-focus-overlay {
+                            @if ($is-dark) {
+                                background: asm-color($asm-green, 400) !important;
+                            } @else {
+                                background: asm-color($asm-green, 300) !important;
                             }
                         }
                     }
 
                     &.overdue {
+                        @if ($is-dark) {
+                            background: asm-color($asm-red, 500);
+                            color: asm-color($asm-red, 100);
+                        } @else {
+                            background: asm-color($asm-red, 200);
+                            color: asm-color($asm-red, 600);
+                        }
 
-                        .icon {
+                        .mat-icon {
                             @if ($is-dark) {
-                                background: asm-color($asm-red, 500);
+                                color: asm-color($asm-red, 100);
                             } @else {
-                                background: asm-color($asm-red, 200);
+                                color: asm-color($asm-red, 600);
                             }
+                        }
 
-                            .mat-icon {
-                                @if ($is-dark) {
-                                    color: asm-color($asm-red, 100);
-                                } @else {
-                                    color: asm-color($asm-red, 600);
-                                }
+                        .mat-button-focus-overlay {
+                            @if ($is-dark) {
+                                background: asm-color($asm-red, 400) !important;
+                            } @else {
+                                background: asm-color($asm-red, 300) !important;
                             }
                         }
                     }
