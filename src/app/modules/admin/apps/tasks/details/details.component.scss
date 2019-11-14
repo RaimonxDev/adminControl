@@ -74,7 +74,7 @@ tasks-details {
         }
 
         .tags {
-            margin-top: 16px;
+            margin-top: 24px;
 
             .label {
                 margin-bottom: 8px;
@@ -136,89 +136,94 @@ tasks-details {
             }
         }
 
-        .details {
+        .priority-and-due-date {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            margin: 16px -16px 0 -8px;
+            margin-top: 24px;
 
             .priority {
-                min-height: 48px;
-                max-height: 48px;
-                margin: 0 24px 32px 0;
-                padding: 0 24px 0 8px;
+                margin-right: 24px;
 
-                .priority-icon {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-right: 12px;
-                    width: 32px;
-                    height: 32px;
-                    min-width: 32px;
-                    min-height: 32px;
-                    border-radius: 4px;
-
-                    .mat-icon {
-                        @include asm-icon-size(20);
-                    }
+                .label {
+                    font-weight: 500;
                 }
 
-                .priority-content {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    font-weight: 500;
-                    line-height: normal;
-                    white-space: nowrap;
+                .mat-button {
+                    min-height: 48px;
+                    max-height: 48px;
+                    margin-left: -8px;
+                    padding: 0 16px 0 8px;
 
-                    .priority-title {
-                        margin-bottom: 1px;
-                        font-size: 12px;
+                    .icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 12px;
+                        width: 28px;
+                        height: 28px;
+                        min-width: 28px;
+                        min-height: 28px;
+                        border-radius: 4px;
+
+                        .mat-icon {
+                            @include asm-icon-size(16);
+                        }
+                    }
+
+                    .content {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        font-weight: 500;
+                        line-height: normal;
+                        white-space: nowrap;
                     }
                 }
             }
 
             .due-date {
-                min-height: 48px;
-                max-height: 48px;
-                margin: 0 48px 32px 0;
-                padding: 0 24px 0 8px;
 
-                .due-date-icon {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 32px;
-                    height: 32px;
-                    min-width: 32px;
-                    min-height: 32px;
-                    margin-right: 12px;
-                    border-radius: 4px;
+                .label {
+                    font-weight: 500;
+                }
 
-                    .mat-icon {
-                        @include asm-icon-size(20);
+                .mat-button {
+                    min-height: 48px;
+                    max-height: 48px;
+                    margin-left: -8px;
+                    padding: 0 16px 0 8px;
+
+                    .icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 28px;
+                        height: 28px;
+                        min-width: 28px;
+                        min-height: 28px;
+                        margin-right: 12px;
+                        border-radius: 4px;
+
+                        .mat-icon {
+                            @include asm-icon-size(16);
+                        }
                     }
                 }
 
-                .due-date-content {
+                .content {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     font-weight: 500;
                     line-height: normal;
                     white-space: nowrap;
-
-                    .due-date-title {
-                        margin-bottom: 1px;
-                        font-size: 12px;
-                    }
                 }
             }
         }
 
         .notes {
-            margin-bottom: 40px;
+            margin-top: 24px;
 
             .label {
                 margin-bottom: 8px;
@@ -466,17 +471,20 @@ tasks-details {
 
             .priority {
 
-                &.panel-opened {
-                    background: map-get($background, hover);
-                }
+                .mat-button {
 
-                .mat-button-focus-overlay {
-                    @if (not $is-dark) {
-                        background-color: asm-color($asm-gray, 200) !important;
+                    &.panel-opened {
+                        background: map-get($background, hover);
+                    }
+
+                    .mat-button-focus-overlay {
+                        @if (not $is-dark) {
+                            background-color: asm-color($asm-gray, 200) !important;
+                        }
                     }
                 }
 
-                .priority-icon {
+                .icon {
 
                     &.low {
                         @if ($is-dark) {
@@ -526,85 +534,74 @@ tasks-details {
                         }
                     }
                 }
-
-                .priority-content {
-
-                    .priority-title {
-                        color: map-get($foreground, secondary-text);
-                    }
-                }
             }
 
             .due-date {
 
-                &.panel-opened {
-                    background: map-get($background, hover);
-                }
+                .mat-button {
 
-                .mat-button-focus-overlay {
-                    @if (not $is-dark) {
-                        background-color: asm-color($asm-gray, 200) !important;
-                    }
-                }
-
-                .due-date-icon {
-                    @if ($is-dark) {
-                        background: asm-dark-elevation(4);
-                    } @else {
-                        background: asm-color($asm-gray, 200);
+                    &.panel-opened {
+                        background: map-get($background, hover);
                     }
 
-                    .mat-icon {
-                        @if ($is-dark) {
-                            color: asm-color($asm-gray, 500);
-                        } @else {
-                            color: asm-color($asm-gray, 600);
+                    .mat-button-focus-overlay {
+                        @if (not $is-dark) {
+                            background-color: asm-color($asm-gray, 200) !important;
                         }
                     }
-                }
 
-                &.due-set {
-
-                    .due-date-icon {
+                    .icon {
                         @if ($is-dark) {
-                            background: asm-color($asm-green, 500);
+                            background: asm-dark-elevation(4);
                         } @else {
-                            background: asm-color($asm-green, 200);
+                            background: asm-color($asm-gray, 200);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color($asm-green, 100);
+                                color: asm-color($asm-gray, 500);
                             } @else {
-                                color: asm-color($asm-green, 600);
+                                color: asm-color($asm-gray, 600);
                             }
                         }
                     }
-                }
 
-                &.overdue {
+                    &.due-set {
 
-                    .due-date-icon {
-                        @if ($is-dark) {
-                            background: asm-color($asm-red, 500);
-                        } @else {
-                            background: asm-color($asm-red, 200);
-                        }
-
-                        .mat-icon {
+                        .icon {
                             @if ($is-dark) {
-                                color: asm-color($asm-red, 100);
+                                background: asm-color($asm-green, 500);
                             } @else {
-                                color: asm-color($asm-red, 600);
+                                background: asm-color($asm-green, 200);
+                            }
+
+                            .mat-icon {
+                                @if ($is-dark) {
+                                    color: asm-color($asm-green, 100);
+                                } @else {
+                                    color: asm-color($asm-green, 600);
+                                }
                             }
                         }
                     }
-                }
 
-                .due-date-content {
+                    &.overdue {
 
-                    .due-date-title {
-                        color: map-get($foreground, secondary-text);
+                        .icon {
+                            @if ($is-dark) {
+                                background: asm-color($asm-red, 500);
+                            } @else {
+                                background: asm-color($asm-red, 200);
+                            }
+
+                            .mat-icon {
+                                @if ($is-dark) {
+                                    color: asm-color($asm-red, 100);
+                                } @else {
+                                    color: asm-color($asm-red, 600);
+                                }
+                            }
+                        }
                     }
                 }
             }
