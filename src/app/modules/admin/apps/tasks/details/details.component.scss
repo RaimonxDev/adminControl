@@ -74,7 +74,7 @@ tasks-details {
         }
 
         .tags {
-            margin-top: 24px;
+            margin-top: 32px;
 
             .label {
                 margin-bottom: 8px;
@@ -86,51 +86,36 @@ tasks-details {
                 flex-wrap: wrap;
                 align-items: center;
                 justify-content: flex-start;
+                margin: -6px;
 
-                .tag,
-                .edit-tags {
+                .tag {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    height: 22px;
-                    min-height: 22px;
+                    height: 32px;
+                    min-height: 32px;
                     line-height: 1 !important;
                     padding: 0 12px;
-                    margin: 0 12px 12px 0;
+                    margin: 6px;
                     border-radius: 4px;
-                }
-
-                .tag {
 
                     .tag-title {
-                        font-size: 11px;
+                        font-size: 12px;
                         font-weight: 500;
                         white-space: nowrap;
                         text-transform: uppercase;
                     }
                 }
 
-                .edit-tags {
-                    cursor: pointer;
-                    padding: 0 12px 0 8px;
+                .mat-button {
+                    min-height: 32px;
+                    max-height: 32px;
+                    padding: 0 12px 0 10px;
+                    margin: 6px;
 
                     .mat-icon {
-
-                        &.add-icon {
-                            @include asm-icon-size(16);
-                            margin-right: 4px;
-                        }
-
-                        &.edit-icon {
-                            @include asm-icon-size(14);
-                            margin-right: 6px;
-                        }
-                    }
-
-                    span {
-                        font-size: 11px;
-                        font-weight: 500;
-                        white-space: nowrap;
+                        margin-right: 8px;
+                        @include asm-icon-size(16);
                     }
                 }
             }
@@ -140,7 +125,7 @@ tasks-details {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            margin-top: 24px;
+            margin-top: 32px;
 
             .priority {
                 margin-right: 24px;
@@ -183,7 +168,7 @@ tasks-details {
         }
 
         .notes {
-            margin-top: 24px;
+            margin-top: 32px;
 
             .label {
                 margin-bottom: 8px;
@@ -408,8 +393,7 @@ tasks-details {
 
                 .tag-wrapper {
 
-                    .tag,
-                    .edit-tags {
+                    .tag {
                         @if ($is-dark) {
                             background: asm-dark-elevation(4);
                             color: asm-color($asm-gray, 500);
@@ -426,16 +410,39 @@ tasks-details {
                             }
                         }
                     }
+
+                    .mat-button {
+
+                        @if ($is-dark) {
+                            background: asm-dark-elevation(4);
+                            color: asm-color($asm-gray, 500);
+                        } @else {
+                            background: asm-color($asm-gray, 200);
+                            color: asm-color($asm-gray, 600);
+                        }
+
+                        .mat-icon {
+                            @if ($is-dark) {
+                                color: asm-color($asm-gray, 500);
+                            } @else {
+                                color: asm-color($asm-gray, 600);
+                            }
+                        }
+
+                        .mat-button-focus-overlay {
+                            @if ($is-dark) {
+                                background: asm-dark-elevation(3) !important;
+                            } @else {
+                                background: asm-color($asm-gray, 300) !important;
+                            }
+                        }
+                    }
                 }
             }
 
             .priority {
 
                 .mat-button {
-
-                    &.panel-opened {
-                        background: map-get($background, hover);
-                    }
 
                     &.low {
                         @if ($is-dark) {
@@ -520,10 +527,6 @@ tasks-details {
             .due-date {
 
                 .mat-button {
-
-                    &.panel-opened {
-                        background: map-get($background, hover);
-                    }
 
                     @if ($is-dark) {
                         background: asm-dark-elevation(4);

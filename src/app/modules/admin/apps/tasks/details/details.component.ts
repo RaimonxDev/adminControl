@@ -50,7 +50,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     private _priorityPanel: TemplateRef<any>;
 
     @ViewChild('tagsPanelOrigin')
-    private _tagsPanelOrigin: ElementRef;
+    private _tagsPanelOrigin: MatButton;
 
     @ViewChild('tagsPanel')
     private _tagsPanel: TemplateRef<any>;
@@ -252,7 +252,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._tagsPanelOrigin.nativeElement)
+                                  .flexibleConnectedTo(this._tagsPanelOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
@@ -269,9 +269,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         // Subscribe to the attachments observable
         this._tagsPanelOverlayRef.attachments().subscribe(() => {
 
-            // Add a class to the origin
-            this._renderer2.addClass(this._tagsPanelOrigin.nativeElement, 'panel-opened');
-
             // Focus to the search input once the overlay has been attached
             this._tagsPanelOverlayRef.overlayElement.querySelector('input').focus();
         });
@@ -284,9 +281,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Subscribe to the backdrop click
         this._tagsPanelOverlayRef.backdropClick().subscribe(() => {
-
-            // Remove the class from the origin
-            this._renderer2.removeClass(this._tagsPanelOrigin.nativeElement, 'panel-opened');
 
             // If overlay exists and attached...
             if ( this._tagsPanelOverlayRef && this._tagsPanelOverlayRef.hasAttached() )
@@ -505,13 +499,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                                   ])
         });
 
-        // Subscribe to the attachments observable
-        this._priorityPanelOverlayRef.attachments().subscribe(() => {
-
-            // Add a class to the origin
-            this._renderer2.addClass(this._priorityPanelOrigin._elementRef.nativeElement, 'panel-opened');
-        });
-
         // Create a portal from the template
         this._priorityPanelTemplatePortal = new TemplatePortal(this._priorityPanel, this._viewContainerRef);
 
@@ -531,9 +518,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      */
     closePriorityPanel(): void
     {
-        // Remove the class from the origin
-        this._renderer2.removeClass(this._priorityPanelOrigin._elementRef.nativeElement, 'panel-opened');
-
         // If overlay exists and attached...
         if ( this._priorityPanelOverlayRef && this._priorityPanelOverlayRef.hasAttached() )
         {
@@ -580,13 +564,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                                   ])
         });
 
-        // Subscribe to the attachments observable
-        this._dueDatePanelOverlayRef.attachments().subscribe(() => {
-
-            // Add a class to the origin
-            this._renderer2.addClass(this._dueDatePanelOrigin._elementRef.nativeElement, 'panel-opened');
-        });
-
         // Create a portal from the template
         this._dueDatePanelTemplatePortal = new TemplatePortal(this._dueDatePanel, this._viewContainerRef);
 
@@ -606,9 +583,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      */
     closeDueDatePanel(): void
     {
-        // Remove the class from the origin
-        this._renderer2.removeClass(this._dueDatePanelOrigin._elementRef.nativeElement, 'panel-opened');
-
         // If overlay exists and attached...
         if ( this._dueDatePanelOverlayRef && this._dueDatePanelOverlayRef.hasAttached() )
         {
