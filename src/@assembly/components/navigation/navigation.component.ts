@@ -390,7 +390,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 
             // Scroll to the active element
             setTimeout(() => {
-                asmScrollbarDirective.scrollToElement('.asm-navigation-item-active', -120);
+                asmScrollbarDirective.scrollToElement('.asm-navigation-item-active', -120, true);
             });
         });
     }

@@ -331,9 +331,9 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      * @param {number} offset
      * @param {number} speed
      */
-    scrollToTop(offset?: number, speed?: number): void
+    scrollToTop(offset: number = 0, speed?: number): void
     {
-        this.animateScrolling('scrollTop', (offset || 0), speed);
+        this.animateScrolling('scrollTop', offset, speed);
     }
 
     /**
@@ -342,9 +342,9 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      * @param {number} offset
      * @param {number} speed
      */
-    scrollToLeft(offset?: number, speed?: number): void
+    scrollToLeft(offset: number = 0, speed?: number): void
     {
-        this.animateScrolling('scrollLeft', (offset || 0), speed);
+        this.animateScrolling('scrollLeft', offset, speed);
     }
 
     /**
@@ -353,10 +353,10 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      * @param {number} offset
      * @param {number} speed
      */
-    scrollToRight(offset?: number, speed?: number): void
+    scrollToRight(offset: number = 0, speed?: number): void
     {
         const left = this._elementRef.nativeElement.scrollWidth - this._elementRef.nativeElement.clientWidth;
-        this.animateScrolling('scrollLeft', left - (offset || 0), speed);
+        this.animateScrolling('scrollLeft', left - offset, speed);
     }
 
     /**
@@ -365,20 +365,21 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      * @param {number} offset
      * @param {number} speed
      */
-    scrollToBottom(offset?: number, speed?: number): void
+    scrollToBottom(offset: number = 0, speed?: number): void
     {
         const top = this._elementRef.nativeElement.scrollHeight - this._elementRef.nativeElement.clientHeight;
-        this.animateScrolling('scrollTop', top - (offset || 0), speed);
+        this.animateScrolling('scrollTop', top - offset, speed);
     }
 
     /**
      * Scroll to element
      *
-     * @param qs
-     * @param offset
-     * @param speed
+     * @param {string} qs
+     * @param {number} offset
+     * @param {boolean} ignoreVisible If true, scrollToElement won't happen if element is already inside the current viewport
+     * @param {number} speed
      */
-    scrollToElement(qs: string, offset?: number, speed?: number): void
+    scrollToElement(qs: string, offset: number = 0, ignoreVisible: boolean = false, speed?: number): void
     {
         const element = this._elementRef.nativeElement.querySelector(qs);
 
@@ -392,18 +393,28 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
 
         if ( this._elementRef.nativeElement.classList.contains('ps--active-x') )
         {
+            if ( ignoreVisible && elementPos.right <= (scrollerPos.right - Math.abs(offset)) )
+            {
+                return;
+            }
+
             const currentPos = this._elementRef.nativeElement['scrollLeft'];
             const position = elementPos.left - scrollerPos.left + currentPos;
 
-            this.animateScrolling('scrollLeft', position + (offset || 0), speed);
+            this.animateScrolling('scrollLeft', position + offset, speed);
         }
 
         if ( this._elementRef.nativeElement.classList.contains('ps--active-y') )
         {
+            if ( ignoreVisible && elementPos.bottom <= (scrollerPos.bottom - Math.abs(offset)) )
+            {
+                return;
+            }
+
             const currentPos = this._elementRef.nativeElement['scrollTop'];
             const position = elementPos.top - scrollerPos.top + currentPos;
 
-            this.animateScrolling('scrollTop', position + (offset || 0), speed);
+            this.animateScrolling('scrollTop', position + offset, speed);
         }
     }
 
