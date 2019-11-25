@@ -102,11 +102,23 @@
                             <mat-icon [svgIcon]="'edit'"></mat-icon>
                         </button>
 
-                        <a [href]="shortcut.link">
+                        <!-- Normal links -->
+                        <a *ngIf="!shortcut.useRouter"
+                           [href]="shortcut.link">
+                            <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+                        </a>
+
+                        <!-- Router links -->
+                        <a *ngIf="shortcut.useRouter"
+                           [routerLink]="createRouteFromLink(shortcut.link)">
+                            <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+                        </a>
+
+                        <ng-template #linkContent>
                             <mat-icon [svgIcon]="shortcut.icon"></mat-icon>
                             <div class="label">{{shortcut.label}}</div>
                             <div class="description">{{shortcut.description}}</div>
-                        </a>
+                        </ng-template>
 
                     </div>
 
@@ -145,6 +157,11 @@
                                required>
                         <mat-label>Link</mat-label>
                     </mat-form-field>
+
+                    <mat-slide-toggle [color]="'primary'"
+                                      [formControlName]="'useRouter'">
+                        Use router for the link
+                    </mat-slide-toggle>
 
                     <div class="actions">
 

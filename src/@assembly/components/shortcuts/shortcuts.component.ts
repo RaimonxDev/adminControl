@@ -91,7 +91,8 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
             label      : ['', Validators.required],
             description: [''],
             icon       : ['', Validators.required],
-            link       : ['', Validators.required]
+            link       : ['', Validators.required],
+            useRouter  : ['', Validators.required]
         });
 
         // Get the shortcuts
@@ -127,6 +128,22 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * Create route from given link
+     */
+    createRouteFromLink(link): string[]
+    {
+        // Split the link and add a leading slash
+        const route = link.split('/');
+        route.unshift('/');
+
+        // Return the route
+        return route;
+    }
+
+    /**
+     * Open the shortcuts panel
+     */
     openPanel(): void
     {
         // Create the overlay

@@ -75,7 +75,7 @@ asm-shortcuts {
             display: flex;
             flex-direction: column;
             width: 50%;
-            padding: 32px 0;
+            padding: 24px 0;
             overflow: hidden;
             background: transparent;
             border-radius: 4px;
@@ -142,6 +142,7 @@ asm-shortcuts {
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
+                margin-top: 32px;
 
                 .delete {
                     margin-right: 8px;
@@ -172,6 +173,14 @@ asm-shortcuts {
     // Shortcuts panel
     .asm-shortcuts-panel {
         background: map-get($background, card);
+
+        .header {
+            @if ($is-dark) {
+                background: asm-dark-elevation(1);
+            } @else {
+                background: asm-color($asm-gray, 100);
+            }
+        }
 
         .content {
 

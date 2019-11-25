@@ -4,5 +4,6 @@ export interface AsmShortcut
     label: string;
     description?: string;
     icon: string;
-    link: string;
+    link: string | string[];
+    useRouter: boolean;
 }
