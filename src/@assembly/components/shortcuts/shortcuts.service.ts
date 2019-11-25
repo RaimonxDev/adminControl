@@ -44,7 +44,7 @@ export class AsmShortcutsService
     /**
      * Load shortcuts
      */
-    loadShortcuts(shortcuts: AsmShortcut[]): Observable<AsmShortcut[]>
+    load(shortcuts: AsmShortcut[]): Observable<AsmShortcut[]>
     {
         // Load the shortcuts
         this._shortcuts.next(shortcuts);
@@ -58,7 +58,7 @@ export class AsmShortcutsService
      *
      * @param newShortcut
      */
-    createShortcut(newShortcut: AsmShortcut): void
+    create(newShortcut: AsmShortcut): void
     {
         this.shortcuts$
             .pipe(
@@ -76,7 +76,7 @@ export class AsmShortcutsService
      *
      * @param updatedShortcut
      */
-    updateShortcut(updatedShortcut: AsmShortcut): void
+    update(updatedShortcut: AsmShortcut): void
     {
         this.shortcuts$
             .pipe(
@@ -100,14 +100,14 @@ export class AsmShortcutsService
      *
      * @param deletedShortcut
      */
-    deleteShortcut(deletedShortcut: AsmShortcut): void
+    delete(deletedShortcut: AsmShortcut): void
     {
         this.shortcuts$
             .pipe(
                 take(1),
                 map((shortcuts) => {
 
-                    // Find the index of the updated shortcut
+                    // Find the index of the deleted shortcut
                     const index = shortcuts.findIndex(item => item.id === deletedShortcut.id);
 
                     // Delete the shortcut

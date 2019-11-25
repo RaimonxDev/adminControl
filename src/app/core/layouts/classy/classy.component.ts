@@ -138,7 +138,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
             }).subscribe((updatedShortcut) => {
 
                 // Update the shortcut
-                this._asmShortcutsService.updateShortcut(updatedShortcut);
+                this._asmShortcutsService.update(updatedShortcut);
             });
         }
         // Otherwise create it..
@@ -148,7 +148,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
                 .subscribe((newShortcut) => {
 
                     // Create the shortcut
-                    this._asmShortcutsService.createShortcut(newShortcut);
+                    this._asmShortcutsService.create(newShortcut);
                 });
         }
     }
@@ -164,7 +164,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
             .subscribe((deletedShortcut) => {
 
                 // Delete the shortcut
-                this._asmShortcutsService.deleteShortcut(deletedShortcut);
+                this._asmShortcutsService.delete(deletedShortcut);
             });
     }
 
