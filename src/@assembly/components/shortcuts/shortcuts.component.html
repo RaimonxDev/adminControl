@@ -29,27 +29,54 @@
                 <!-- View mode -->
                 <ng-container *ngIf="mode === 'view'">
 
-                    <!-- Enter edit mode -->
+                    <!-- Enter 'modify' mode -->
                     <button mat-icon-button
-                            (click)="changeMode('modify')">
+                            (click)="changeMode('modify')"
+                            [matTooltip]="'Edit shortcuts'">
                         <mat-icon [svgIcon]="'edit'"></mat-icon>
                     </button>
 
-                    <!-- New shortcut -->
+                    <!-- Enter 'add' mode -->
                     <button mat-icon-button
-                            (click)="newShortcut()">
+                            (click)="newShortcut()"
+                            [matTooltip]="'Add shortcut'">
                         <mat-icon [svgIcon]="'add_circle'"></mat-icon>
                     </button>
 
                 </ng-container>
 
-                <!-- Edit mode -->
+                <!-- Modify mode -->
                 <ng-container *ngIf="mode === 'modify'">
 
-                    <!-- Enter view mode -->
+                    <!-- Enter 'view' mode -->
+                    <button mat-icon-button
+                            (click)="changeMode('view')"
+                            [matTooltip]="'Cancel'">
+                        <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+                    </button>
+
+                </ng-container>
+
+                <!-- Add mode -->
+                <ng-container *ngIf="mode === 'add'">
+
+                    <!-- Enter 'view' mode -->
                     <button mat-icon-button
                             (click)="changeMode('view')">
-                        <mat-icon [svgIcon]="'check'"></mat-icon>
+                        <mat-icon [svgIcon]="'arrow_back'"
+                                  [matTooltip]="'Cancel'"></mat-icon>
+                    </button>
+
+                </ng-container>
+
+                <!-- Edit mode -->
+                <ng-container *ngIf="mode === 'edit'">
+
+                    <!-- Enter 'modify' mode -->
+                    <button mat-icon-button
+                            (click)="changeMode('modify')">
+                        <mat-icon [svgIcon]="'arrow_back'"
+                                  [matTooltip]="'Cancel'"></mat-icon>
                     </button>
 
                 </ng-container>
@@ -76,11 +103,9 @@
                         </button>
 
                         <a [href]="shortcut.link">
-                            <mat-icon [ngClass]="shortcut.iconClasses"
-                                      [svgIcon]="shortcut.icon"></mat-icon>
-
-                            <div class="label"
-                                 [ngClass]="shortcut.labelClasses">{{shortcut.label}}</div>
+                            <mat-icon [svgIcon]="shortcut.icon"></mat-icon>
+                            <div class="label">{{shortcut.label}}</div>
+                            <div class="description">{{shortcut.description}}</div>
                         </a>
 
                     </div>
@@ -103,15 +128,15 @@
 
                     <mat-form-field>
                         <input matInput
-                               [formControlName]="'icon'"
-                               required>
-                        <mat-label>Icon</mat-label>
+                               [formControlName]="'description'">
+                        <mat-label>Description</mat-label>
                     </mat-form-field>
 
                     <mat-form-field>
                         <input matInput
-                               [formControlName]="'iconClasses'">
-                        <mat-label>Icon classes</mat-label>
+                               [formControlName]="'icon'"
+                               required>
+                        <mat-label>Icon</mat-label>
                     </mat-form-field>
 
                     <mat-form-field>

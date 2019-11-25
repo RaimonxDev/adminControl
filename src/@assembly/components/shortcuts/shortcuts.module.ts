@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { AsmShortcutsComponent } from '@assembly/components/shortcuts/shortcuts.component';
@@ -22,6 +23,7 @@ import { AsmShortcutsComponent } from '@assembly/components/shortcuts/shortcuts.
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatTooltipModule,
         OverlayModule,
         PortalModule
     ],

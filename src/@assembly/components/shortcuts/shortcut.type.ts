@@ -2,7 +2,7 @@ export interface AsmShortcut
 {
     id: string;
     label: string;
+    description?: string;
     icon: string;
-    iconClasses?: string;
     link: string;
 }

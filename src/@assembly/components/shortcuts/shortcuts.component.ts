@@ -88,10 +88,10 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
         // Initialize the form
         this.shortcutForm = this._formBuilder.group({
             id         : [null],
-            label      : ['Alarm', Validators.required],
-            icon       : ['dripicons:alarm', Validators.required],
-            iconClasses: [''],
-            link       : ['https://www.google.com', Validators.required]
+            label      : ['', Validators.required],
+            description: [''],
+            icon       : ['', Validators.required],
+            link       : ['', Validators.required]
         });
 
         // Get the shortcuts
