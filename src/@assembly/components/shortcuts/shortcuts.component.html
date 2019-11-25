@@ -32,7 +32,7 @@
                     <!-- Enter 'modify' mode -->
                     <button mat-icon-button
                             (click)="changeMode('modify')"
-                            [matTooltip]="'Edit shortcuts'">
+                            [matTooltip]="'Enter edit mode'">
                         <mat-icon [svgIcon]="'edit'"></mat-icon>
                     </button>
 
@@ -51,7 +51,7 @@
                     <!-- Enter 'view' mode -->
                     <button mat-icon-button
                             (click)="changeMode('view')"
-                            [matTooltip]="'Cancel'">
+                            [matTooltip]="'Exit edit mode'">
                         <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
                     </button>
 
@@ -96,11 +96,9 @@
 
                     <div class="shortcut">
 
-                        <button class="edit-shortcut"
-                                mat-icon-button
-                                (click)="editShortcut(shortcut)">
-                            <mat-icon [svgIcon]="'edit'"></mat-icon>
-                        </button>
+                        <div class="edit-shortcut"
+                             (click)="editShortcut(shortcut)">
+                        </div>
 
                         <!-- Normal links -->
                         <a *ngIf="!shortcut.useRouter"
@@ -115,7 +113,13 @@
                         </a>
 
                         <ng-template #linkContent>
-                            <mat-icon [svgIcon]="shortcut.icon"></mat-icon>
+                            <div class="icon">
+                                <mat-icon class="edit-icon"
+                                          *ngIf="mode === 'modify'"
+                                          [svgIcon]="'edit'"></mat-icon>
+                                <mat-icon class="link-icon"
+                                          [svgIcon]="shortcut.icon"></mat-icon>
+                            </div>
                             <div class="label">{{shortcut.label}}</div>
                             <div class="description">{{shortcut.description}}</div>
                         </ng-template>
