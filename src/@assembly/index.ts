@@ -22,7 +22,6 @@ export * from './components/spinner/public-api';
 export * from './components/theme-configurator/public-api';
 
 // Directives
-export * from './directives/registry/public-api';
 export * from './directives/scrollbar/public-api';
 
 // Services
