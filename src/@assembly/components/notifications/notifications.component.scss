@@ -91,6 +91,13 @@ asm-notifications {
 
                 .actions {
 
+                    .indicator {
+
+                        .read {
+                            opacity: 1;
+                        }
+                    }
+
                     .remove {
                         opacity: 1;
                     }
@@ -165,6 +172,10 @@ asm-notifications {
                         min-height: 8px;
                         max-height: 8px;
                         border-radius: 50%;
+                    }
+
+                    .read {
+                        opacity: 0;
                     }
                 }
 
@@ -286,9 +297,9 @@ asm-notifications {
 
                         .read {
                             @if ($is-dark) {
-                                background: asm-color($asm-gray, 700);
+                                background: asm-color($asm-gray, 600);
                             } @else {
-                                background: asm-color($asm-gray, 300);
+                                background: asm-color($asm-gray, 500);
                             }
                         }
                     }
