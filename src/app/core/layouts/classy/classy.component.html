@@ -66,6 +66,14 @@
         <!-- Spacer -->
         <div class="spacer"></div>
 
+        <!-- Cart -->
+        <div class="cart">
+            <div class="dot"></div>
+            <button mat-icon-button>
+                <mat-icon [svgIcon]="'shopping_cart'"></mat-icon>
+            </button>
+        </div>
+
         <!-- Messages -->
         <div class="messages">
             <div class="dot"></div>
@@ -75,12 +83,11 @@
         </div>
 
         <!-- Notifications -->
-        <div class="notifications">
-            <div class="dot"></div>
-            <button mat-icon-button>
-                <mat-icon [svgIcon]="'notifications'"></mat-icon>
-            </button>
-        </div>
+        <asm-notifications [title]="'Notifications'"
+                           [markAsRead]="'Mark all as read'"
+                           (markedAllAsRead)="onNotificationsMarkedAllAsRead()"
+                           (itemReadStatusChange)="onNotificationItemReadStatusChange($event)"
+                           (itemRemoved)="onNotificationItemRemoved($event)"></asm-notifications>
 
         <!-- User -->
         <button class="user"

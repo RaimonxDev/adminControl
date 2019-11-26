@@ -1,0 +1,299 @@
+@import 'assembly';
+
+asm-notifications {
+    display: flex;
+    align-items: center;
+
+    .asm-notifications-toggle {
+        position: relative;
+
+        .dot {
+            position: absolute;
+            right: 1px;
+            top: -1px;
+            width: 10px;
+            height: 10px;
+            border-width: 2px;
+            border-radius: 50%;
+            z-index: 5;
+            pointer-events: none;
+        }
+    }
+}
+
+// Notifications panel
+.asm-notifications-panel {
+    max-width: 400px !important;
+    min-width: 400px !important;
+    border-radius: 6px !important;
+    overflow-y: auto;
+    max-height: calc(100vh - 80px);
+    @include mat-elevation(6);
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px 24px;
+        border-bottom-width: 1px;
+
+        .title {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 500;
+
+            .unread-count {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 30px;
+                height: 20px;
+                min-height: 20px;
+                max-height: 20px;
+                margin-left: 8px;
+                padding: 0 6px;
+                border-radius: 999px;
+                font-size: 12px;
+            }
+        }
+
+        .mark-all-as-read {
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        max-height: 480px;
+        overflow-y: auto;
+
+        .notification {
+            display: flex;
+            padding: 24px 16px 24px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            border-bottom-width: 1px;
+
+            &:last-child {
+                border-bottom-width: 0;
+            }
+
+            &:hover {
+
+                .actions {
+
+                    .remove {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .icon,
+            .image {
+                min-width: 32px;
+                width: 32px;
+                min-height: 32px;
+                height: 32px;
+                border-radius: 50%;
+                margin-right: 16px;
+            }
+
+            .icon {
+                padding: 6px;
+            }
+
+            .image {
+                overflow: hidden;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .notification-content {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+
+                .title {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-weight: bold;
+                }
+
+                .description {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+                .time {
+                    margin-top: 8px;
+                    font-size: 12px;
+                    line-height: 1;
+                }
+            }
+
+            .actions {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                margin-left: 8px;
+
+                .indicator {
+                    width: 24px;
+                    height: 24px;
+                    min-height: 24px;
+                    line-height: 24px !important;
+
+                    .read,
+                    .unread {
+                        width: 8px;
+                        min-width: 8px;
+                        max-width: 8px;
+                        height: 8px;
+                        min-height: 8px;
+                        max-height: 8px;
+                        border-radius: 50%;
+                    }
+                }
+
+                .remove {
+                    width: 24px;
+                    height: 24px;
+                    min-height: 24px;
+                    line-height: 24px !important;
+                    opacity: 0;
+
+                    .mat-icon {
+                        @include asm-icon-size(16);
+                    }
+                }
+            }
+        }
+
+        .no-notifications {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 96px 24px;
+
+            .mat-icon {
+                @include asm-icon-size(64);
+            }
+
+            span {
+                margin-top: 24px;
+                font-size: 16px
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    asm-notifications {
+
+        .asm-notifications-toggle {
+
+            .dot {
+                background: asm-color($asm-red, 600);
+                border-color: map-get($background, card);
+            }
+        }
+    }
+
+    // Notifications panel
+    .asm-notifications-panel {
+        background: map-get($background, card);
+
+        .header {
+            @if ($is-dark) {
+                background: asm-dark-elevation(1);
+            } @else {
+                background: asm-color($asm-gray, 100);
+            }
+
+            .title {
+
+                .unread-count {
+                    background: map-get($primary, default);
+                    color: map-get($primary, default-contrast);
+                }
+            }
+
+            .mark-all-as-read {
+                color: map-get($primary, default);
+            }
+        }
+
+        .content {
+
+
+            .notification {
+
+                &:hover {
+                    @if ($is-dark) {
+                        background: asm-dark-elevation(1) !important;
+                    } @else {
+                        background: asm-color($asm-gray, 100) !important;
+                    }
+                }
+
+                .icon {
+                    @if ($is-dark) {
+                        background: asm-dark-elevation(1);
+                        color: map-get($primary, default);
+                    } @else {
+                        background: asm-color($asm-gray, 200);
+                        color: asm-color($asm-gray, 700);
+                    }
+                }
+
+                .notification-content {
+
+                    .time {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+
+                .actions {
+
+                    .indicator {
+
+                        .unread {
+                            background: asm-color($asm-red, 600);
+                        }
+
+                        .read {
+                            @if ($is-dark) {
+                                background: asm-color($asm-gray, 700);
+                            } @else {
+                                background: asm-color($asm-gray, 300);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ import { MockHelpCenterApi } from '@mock-api/data/help-center';
 import { MockIconsApi } from '@mock-api/data/icons';
 import { MockMailboxApi } from '@mock-api/data/mailbox';
 import { MockNavigationApi } from '@mock-api/data/navigation';
+import { MockNotificationsApi } from '@mock-api/data/notifications';
 import { MockSearchResultsApi } from '@mock-api/data/search';
 import { MockShortcutsApi } from '@mock-api/data/shortcuts';
 import { MockTasksApi } from '@mock-api/data/tasks';
@@ -37,6 +38,7 @@ export class AsmMockApiModule
      * @param {MockIconsApi} _mockIconsApi
      * @param {MockMailboxApi} _mockMailboxApi
      * @param {MockNavigationApi} _mockNavigationApi
+     * @param {MockNotificationsApi} _mockNotificationsApi
      * @param {MockSearchResultsApi} _mockSearchResultsApi
      * @param {MockShortcutsApi} _mockShortcutsApi
      * @param {MockTasksApi} _mockTasksApi
@@ -50,6 +52,7 @@ export class AsmMockApiModule
         private _mockIconsApi: MockIconsApi,
         private _mockMailboxApi: MockMailboxApi,
         private _mockNavigationApi: MockNavigationApi,
+        private _mockNotificationsApi: MockNotificationsApi,
         private _mockSearchResultsApi: MockSearchResultsApi,
         private _mockShortcutsApi: MockShortcutsApi,
         private _mockTasksApi: MockTasksApi
@@ -63,6 +66,7 @@ export class AsmMockApiModule
         this._mockIconsApi.init();
         this._mockMailboxApi.init();
         this._mockNavigationApi.init();
+        this._mockNotificationsApi.init();
         this._mockSearchResultsApi.init();
         this._mockShortcutsApi.init();
         this._mockTasksApi.init();

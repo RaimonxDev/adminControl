@@ -2,7 +2,7 @@ import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@a
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService, AsmShortcut, AsmShortcutsService } from '@assembly';
+import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService, AsmNotification, AsmNotificationsService, AsmShortcut, AsmShortcutsService } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -31,6 +31,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
+     * @param {AsmNotificationsService} _asmNotificationsService
      * @param {AsmShortcutsService} _asmShortcutsService
      * @param {AuthService} _authService
      * @param {HttpClient} _httpClient
@@ -39,6 +40,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
+        private _asmNotificationsService: AsmNotificationsService,
         private _asmShortcutsService: AsmShortcutsService,
         private _authService: AuthService,
         private _httpClient: HttpClient
@@ -107,6 +109,49 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     logout(): void
     {
         this._authService.logout();
+    }
+
+    /**
+     * On all notifications marked as read
+     */
+    onNotificationsMarkedAllAsRead(): void
+    {
+        this._httpClient.post('api/notifications/mark-all-as-read', {})
+            .subscribe(() => {
+
+                // Mark all notifications as read
+                this._asmNotificationsService.markAllAsRead();
+            });
+    }
+
+    /**
+     * On single notification item read status change
+     *
+     * @param notification
+     */
+    onNotificationItemReadStatusChange(notification: AsmNotification): void
+    {
+        this._httpClient.post('api/notifications/toggle-read-status', {notification})
+            .subscribe(() => {
+
+                // Toggle the notification's read status
+                this._asmNotificationsService.toggleReadStatus(notification);
+            });
+    }
+
+    /**
+     * On single notification item removed
+     *
+     * @param notification
+     */
+    onNotificationItemRemoved(notification: AsmNotification): void
+    {
+        this._httpClient.delete('api/notifications', {params: {id: notification.id}})
+            .subscribe(() => {
+
+                // Remove the notification
+                this._asmNotificationsService.delete(notification);
+            });
     }
 
     /**

@@ -74,6 +74,23 @@ layout[type="classy"] {
 
             }
 
+            .cart {
+                position: relative;
+                margin-right: 8px;
+
+                .dot {
+                    position: absolute;
+                    right: 6px;
+                    top: 6px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    border-width: 2px;
+                    z-index: 5;
+                    pointer-events: none;
+                }
+            }
+
             .messages {
                 position: relative;
                 margin-right: 8px;
@@ -91,21 +108,8 @@ layout[type="classy"] {
                 }
             }
 
-            .notifications {
-                position: relative;
+            asm-notifications {
                 margin-right: 8px;
-
-                .dot {
-                    position: absolute;
-                    right: 9px;
-                    top: 6px;
-                    width: 10px;
-                    height: 10px;
-                    border-width: 2px;
-                    border-radius: 50%;
-                    z-index: 5;
-                    pointer-events: none;
-                }
             }
 
             .user {
@@ -243,18 +247,18 @@ layout[type="classy"] {
                     @include asm-elevation(1);
                 }
 
-                .messages {
+                .cart {
 
                     .dot {
-                        background: asm-color($asm-blue, 600);
+                        background: asm-color($asm-purple, 600);
                         border-color: map-get($background, card);
                     }
                 }
 
-                .notifications {
+                .messages {
 
                     .dot {
-                        background: asm-color($asm-red, 600);
+                        background: asm-color($asm-blue, 600);
                         border-color: map-get($background, card);
                     }
                 }

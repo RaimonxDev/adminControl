@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { AsmDrawerModule, AsmNavigationModule, AsmSearchModule, AsmShortcutsModule, AsmThemeConfiguratorModule } from '@assembly';
+import { AsmDrawerModule, AsmNavigationModule, AsmNotificationsModule, AsmSearchModule, AsmShortcutsModule, AsmThemeConfiguratorModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component';
 
@@ -22,6 +22,7 @@ import { ClassyLayoutComponent } from 'app/core/layouts/classy/classy.component'
         MatMenuModule,
         AsmDrawerModule,
         AsmNavigationModule,
+        AsmNotificationsModule,
         AsmSearchModule,
         AsmShortcutsModule,
         AsmThemeConfiguratorModule,
