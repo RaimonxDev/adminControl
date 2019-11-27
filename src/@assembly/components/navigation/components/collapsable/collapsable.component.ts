@@ -162,11 +162,8 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
             this._asmNavigationService.onItemDeleted
         ).pipe(
             takeUntil(this._unsubscribeAll),
-            filter((item) => {
-
-                // Only react if the changed item equals to this item
-                return item && this.item.id === item.id;
-            })
+            // Only react if the changed item equals to this item
+            filter((item) => item && this.item.id === item.id)
         ).subscribe(() => {
 
             // Apply the changes
