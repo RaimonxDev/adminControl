@@ -20,10 +20,10 @@ export const shortcuts: AsmShortcut[] = [
     },
     {
         id         : '2496f42e-2f25-4e34-83d5-3ff9568fd984',
-        label      : 'About',
-        description: 'Who we are?',
+        label      : 'Help center',
+        description: 'FAQs and guides',
         icon       : 'info',
-        link       : 'apps/dashboard',
+        link       : 'pages/help-center',
         useRouter  : true
     },
     {
@@ -43,10 +43,34 @@ export const shortcuts: AsmShortcut[] = [
         useRouter  : true
     },
     {
+        id         : '2daac375-a2f7-4393-b4d7-ce6061628b66',
+        label      : 'Mailbox',
+        description: '5 new e-mails',
+        icon       : 'mail',
+        link       : 'apps/mailbox',
+        useRouter  : true
+    },
+    {
+        id         : '56a0a561-17e7-40b3-bd75-0b6cef230b7e',
+        label      : 'Tasks',
+        description: '12 unfinished tasks',
+        icon       : 'mail',
+        link       : 'apps/tasks',
+        useRouter  : true
+    },
+    {
         id         : 'f5daf93e-b6f3-4199-8a0c-b951e92a6cb8',
-        label      : 'Notifications',
-        description: 'List all notifications',
-        icon       : 'notifications',
+        label      : 'Contacts',
+        description: 'List all contacts',
+        icon       : 'account_box',
+        link       : 'apps/contacts',
+        useRouter  : true
+    },
+    {
+        id         : '0a240ab8-e19d-4503-bf68-20013030d526',
+        label      : 'Reload',
+        description: 'Restart the app',
+        icon       : 'refresh',
         link       : 'apps/dashboard',
         useRouter  : false
     }

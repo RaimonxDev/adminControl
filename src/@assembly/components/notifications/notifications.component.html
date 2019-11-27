@@ -15,13 +15,17 @@
 
         <div class="header">
 
+            <div class="header-icon">
+                <mat-icon [svgIcon]="'notifications'"></mat-icon>
+                <div class="unread-count"
+                      *ngIf="unreadNotificationsCount > 0">
+                    {{unreadNotificationsCount}}
+                </div>
+            </div>
+
             <div class="title"
                  *ngIf="title">
                 {{title}}
-                <span class="unread-count"
-                      *ngIf="unreadNotificationsCount > 0">
-                    {{unreadNotificationsCount}}
-                </span>
             </div>
 
             <div class="mark-all-as-read"

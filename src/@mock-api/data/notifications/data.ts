@@ -6,7 +6,7 @@ export const notifications: AsmNotification[] = [
     {
         id         : '493190c9-5b61-4912-afe5-78c21f1044d7',
         icon       : 'check_circle',
-        title      : 'Daily challenge',
+        title      : 'Daily challenges',
         description: 'Your submission has been accepted',
         time       : moment().subtract(25, 'minutes').toISOString(), // 25 minutes ago
         read       : false
@@ -14,7 +14,7 @@ export const notifications: AsmNotification[] = [
     {
         id         : '6e3e97e5-effc-4fb7-b730-52a151f0b641',
         image      : 'assets/images/avatars/male-04.jpg',
-        description: '<span  class="link">Leo Gill</span> added you to <span  class="link">Top Secret Project</span> group and assigned you as an admin',
+        description: '<span  class="link">Leo Gill</span> added you to <span  class="link">Top Secret Project</span> group and assigned you as a <em>Project Manager</em>',
         time       : moment().subtract(50, 'minutes').toISOString(), // 50 minutes ago
         read       : true
     },
@@ -22,7 +22,7 @@ export const notifications: AsmNotification[] = [
         id         : 'b91ccb58-b06c-413b-b389-87010e03a120',
         icon       : 'mail',
         title      : 'Mailbox',
-        description: 'You have 7 unread e-mails',
+        description: 'You have 15 unread mails across 3 mailboxes',
         time       : moment().subtract(3, 'hours').toISOString(), // 3 hours ago
         read       : false
     },
@@ -52,13 +52,14 @@ export const notifications: AsmNotification[] = [
         id         : 'b85c2338-cc98-4140-bbf8-c226ce4e395e',
         icon       : 'mail',
         title      : 'Mailbox',
-        description: 'You have 3 new e-mails',
+        description: 'You have 3 new mails',
         time       : moment().subtract(1, 'day').toISOString(), // 1 day ago
         read       : true
     },
     {
         id         : '8f8e1bf9-4661-4939-9e43-390957b60f42',
         icon       : 'check_circle',
+        title      : 'Daily challenges',
         description: 'Your submission has been accepted and you are ready to sign-up for the final assigment which will be ready in 2 days',
         time       : moment().subtract(3, 'days').toISOString(), // 3 days ago
         read       : true

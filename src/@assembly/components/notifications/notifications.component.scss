@@ -23,44 +23,61 @@ asm-notifications {
 
 // Notifications panel
 .asm-notifications-panel {
-    max-width: 400px !important;
-    min-width: 400px !important;
-    border-radius: 6px !important;
-    overflow-y: auto;
+    max-width: 416px !important;
+    min-width: 416px !important;
+    border-radius: 6px;
     max-height: calc(100vh - 80px);
-    @include mat-elevation(6);
+    overflow-y: auto;
+    @include asm-elevation(3);
 
     .header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 32px 24px;
+        height: 120px;
+        min-height: 120px;
+        max-height: 120px;
+        padding: 0 24px;
         border-bottom-width: 1px;
+
+        .header-icon {
+            position: relative;
+            display: flex;
+            margin-right: 16px;
+
+            .mat-icon {
+                width: 40px;
+                min-width: 40px;
+                height: 40px;
+                min-height: 40px;
+                line-height: 40px !important;
+                padding: 8px;
+                border-radius: 10px;
+            }
+
+            .unread-count {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                right: -6px;
+                top: -6px;
+                padding: 2px 6px;
+                border-radius: 10px;
+                font-size: 10px;
+                font-weight: bold;
+            }
+        }
 
         .title {
             display: flex;
             align-items: center;
             font-size: 18px;
             font-weight: 500;
-
-            .unread-count {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-width: 30px;
-                height: 20px;
-                min-height: 20px;
-                max-height: 20px;
-                margin-left: 8px;
-                padding: 0 6px;
-                border-radius: 999px;
-                font-size: 12px;
-            }
         }
 
         .mark-all-as-read {
+            margin-left: auto;
             font-size: 13px;
-            font-weight: 500;
             cursor: pointer;
 
             &:hover {
@@ -134,7 +151,8 @@ asm-notifications {
                     -webkit-line-clamp: 1;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
-                    font-weight: bold;
+                    font-weight: 500;
+                    font-size: 15px;
                 }
 
                 .description {
@@ -238,27 +256,37 @@ asm-notifications {
         background: map-get($background, card);
 
         .header {
+
             @if ($is-dark) {
                 background: asm-dark-elevation(1);
             } @else {
-                background: asm-color($asm-gray, 100);
+                background: asm-color($asm-gray, 800);
+                color: asm-contrast($asm-gray, 800);
+            }
+
+            .header-icon {
+
+                .mat-icon {
+                    background: map-get($primary, default) !important;
+                    color: map-get($primary, default-contrast) !important;
+                }
+
+                .unread-count {
+                    background: white;
+                    color: map-get($primary, default);
+                }
             }
 
             .title {
 
-                .unread-count {
-                    background: map-get($primary, default);
-                    color: map-get($primary, default-contrast);
-                }
             }
 
             .mark-all-as-read {
-                color: map-get($primary, default);
+                color: map-get($asm-gray, 500);
             }
         }
 
         .content {
-
 
             .notification {
 
@@ -271,12 +299,12 @@ asm-notifications {
                 }
 
                 .icon {
+                    color: map-get($primary, default);
+
                     @if ($is-dark) {
                         background: asm-dark-elevation(1);
-                        color: map-get($primary, default);
                     } @else {
-                        background: asm-color($asm-gray, 200);
-                        color: asm-color($asm-gray, 700);
+                        background: map-get($primary, 100);
                     }
                 }
 

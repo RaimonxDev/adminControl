@@ -148,6 +148,7 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
     {
         // Create the overlay
         this._overlayRef = this._overlay.create({
+            backdropClass   : '',
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()

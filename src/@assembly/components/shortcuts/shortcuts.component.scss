@@ -7,18 +7,34 @@ asm-shortcuts {
 
 // Shortcuts panel
 .asm-shortcuts-panel {
-    max-width: 400px !important;
-    min-width: 400px !important;
-    border-radius: 6px !important;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 416px !important;
+    min-width: 416px !important;
+    border-radius: 6px;
     max-height: calc(100vh - 80px);
-    @include mat-elevation(6);
+    overflow: hidden;
+    @include asm-elevation(5);
 
     .header {
         display: flex;
         align-items: center;
-        padding: 32px 24px 32px 32px;
+        height: 144px;
+        min-height: 144px;
+        max-height: 144px;
+        padding: 0 24px 0 32px;
         border-bottom-width: 1px;
+
+        > .mat-icon {
+            width: 40px;
+            min-width: 40px;
+            height: 40px;
+            min-height: 40px;
+            line-height: 40px !important;
+            padding: 8px;
+            border-radius: 10px;
+            margin-right: 16px;
+        }
 
         .left {
             display: flex;
@@ -29,10 +45,12 @@ asm-shortcuts {
             .title {
                 font-size: 20px;
                 font-weight: bold;
+                line-height: 1;
             }
 
             .subtitle {
-
+                margin-top: 4px;
+                line-height: 1;
             }
         }
 
@@ -46,14 +64,11 @@ asm-shortcuts {
     .content {
         position: relative;
         display: flex;
+        flex: 1 1 auto;
         flex-wrap: wrap;
         padding: 0;
-
-        // View and modify modes
-        &.mode-view,
-        &.mode-modify {
-            padding: 24px;
-        }
+        margin-bottom: -1px;
+        overflow-y: auto;
 
         // Modify mode
         &.mode-modify {
@@ -94,8 +109,13 @@ asm-shortcuts {
             flex-direction: column;
             width: 50%;
             overflow: hidden;
-            border-radius: 4px;
+            border-right-width: 1px;
+            border-bottom-width: 1px;
             transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            &:nth-child(2n) {
+                border-right-width: 0;
+            }
 
             .edit-shortcut {
                 position: absolute;
@@ -157,11 +177,13 @@ asm-shortcuts {
                 }
 
                 .label {
+                    font-size: 15px;
                     font-weight: 500;
                     text-align: center;
                 }
 
                 .description {
+                    font-size: 13px;
                     text-align: center;
                 }
             }
@@ -212,10 +234,22 @@ asm-shortcuts {
         background: map-get($background, card);
 
         .header {
+
             @if ($is-dark) {
                 background: asm-dark-elevation(1);
             } @else {
-                background: asm-color($asm-gray, 100);
+                background: asm-color($asm-gray, 800);
+                color: asm-contrast($asm-gray, 800);
+            }
+
+            .header-icon {
+                background: map-get($primary, default) !important;
+                color: map-get($primary, default-contrast) !important;
+            }
+
+            .subtitle,
+            .mat-icon {
+                color: map-get($asm-gray, 500);
             }
         }
 
@@ -230,7 +264,7 @@ asm-shortcuts {
                         @if ($is-dark) {
                             background: asm-dark-elevation(1);
                         } @else {
-                            background: asm-color($asm-gray, 200);
+                            background: asm-color($asm-gray, 100);
                         }
                     }
                 }
@@ -258,8 +292,13 @@ asm-shortcuts {
                         }
 
                         .link-icon {
-                            background: map-get($primary, default);
-                            color: map-get($primary, default-contrast);
+                            color: map-get($primary, default);
+
+                            @if ($is-dark) {
+                                background: asm-dark-elevation(2);
+                            } @else {
+                                background: map-get($primary, 100);
+                            }
                         }
                     }
 
