@@ -253,7 +253,7 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
         // Get the data from the form
         const shortcut = this.shortcutForm.value;
 
-        // Trigger the save
+        // Trigger the save event
         this.save.next(shortcut);
 
         // Go back the modify mode
@@ -268,7 +268,7 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
         // Get the data from the form
         const shortcut = this.shortcutForm.value;
 
-        // Trigger the delete
+        // Trigger the delete event
         this.delete.next(shortcut);
 
         // Go back the modify mode

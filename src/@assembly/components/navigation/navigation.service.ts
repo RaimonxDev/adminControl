@@ -456,9 +456,6 @@ export class AsmNavigationService
         // Delete the item
         parent.splice(parent.indexOf(item), 1);
 
-        console.log(item);
-        console.log(deletedItem);
-
         // Execute the observable
         this._onItemDeleted.next(deletedItem);
     }
