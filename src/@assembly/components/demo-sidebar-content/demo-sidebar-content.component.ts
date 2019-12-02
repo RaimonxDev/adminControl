@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AsmVerticalMenuItem } from '@assembly';
+import { AsmNavigationItem } from '@assembly';
 
 @Component({
     selector   : 'asm-demo-sidebar-content',
@@ -8,7 +8,7 @@ import { AsmVerticalMenuItem } from '@assembly';
 })
 export class AsmDemoSidebarContentComponent
 {
-    menuData: AsmVerticalMenuItem[];
+    menuData: AsmNavigationItem[];
 
     constructor()
     {
@@ -54,9 +54,8 @@ export class AsmDemoSidebarContentComponent
                 type : 'basic',
                 icon : 'list_alt',
                 badge: {
-                    title     : '49',
-                    background: '#E91E63',
-                    color     : '#FFFFFF'
+                    title: '49',
+                    style: 'rounded'
                 }
             },
             {

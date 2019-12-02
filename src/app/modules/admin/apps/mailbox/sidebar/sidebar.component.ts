@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmVerticalMenuItem } from '@assembly';
+import { AsmNavigationItem } from '@assembly';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
 
@@ -17,13 +17,13 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     filters: any[];
     folders: any[];
     labels: any[];
-    menuData: AsmVerticalMenuItem[];
+    menuData: AsmNavigationItem[];
 
     // Private
-    private _filtersMenuData: AsmVerticalMenuItem[];
-    private _foldersMenuData: AsmVerticalMenuItem[];
-    private _labelsMenuData: AsmVerticalMenuItem[];
-    private _otherMenuData: AsmVerticalMenuItem[];
+    private _filtersMenuData: AsmNavigationItem[];
+    private _foldersMenuData: AsmNavigationItem[];
+    private _labelsMenuData: AsmNavigationItem[];
+    private _otherMenuData: AsmNavigationItem[];
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -119,7 +119,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         this.folders.forEach((folder) => {
 
             // Generate menu item for the folder
-            const menuItem: AsmVerticalMenuItem = {
+            const menuItem: AsmNavigationItem = {
                 id   : folder.id,
                 title: folder.title,
                 type : 'basic',

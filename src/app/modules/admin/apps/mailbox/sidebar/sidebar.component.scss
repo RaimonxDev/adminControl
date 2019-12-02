@@ -14,7 +14,7 @@ mailbox-sidebar {
     }
 
     .compose-button {
-        margin: 0 32px 40px 32px;
+        margin: 0 32px;
 
         .mat-icon {
             @include asm-icon-size(18);
@@ -35,43 +35,6 @@ mailbox-sidebar {
     mailbox-sidebar {
         @if ($is-dark) {
             background: asm-color($asm-gray, 900);
-        }
-
-        asm-vertical-menu {
-
-            // Active item bg
-            .asm-vertical-menu-item.asm-vertical-menu-item-active {
-                @if ($is-dark) {
-                    background: asm-dark-elevation(1) !important;
-                } @else {
-                    background: map-get($primary, 100) !important;
-                }
-            }
-
-            // Hovered item bg
-            asm-vertical-menu-basic-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active),
-            asm-vertical-menu asm-vertical-menu-collapsable-item > .asm-vertical-menu-item-wrapper .asm-vertical-menu-item:hover:not(.asm-vertical-menu-item-active) {
-                @if ($is-dark) {
-                    background: asm-dark-elevation(1) !important;
-                } @else {
-                    background: map-get($primary, 100) !important;
-                }
-            }
-
-            // Subheader text color
-            asm-vertical-menu-subheader-item .asm-vertical-menu-item-wrapper .asm-vertical-menu-item .asm-vertical-menu-item-title {
-                color: asm-color($asm-gray, 600) !important;
-            }
-
-            // Badge color and bg
-            .asm-vertical-menu-item-badge .asm-vertical-menu-item-badge-content {
-                @if ($is-dark) {
-                    background: asm-dark-elevation(1) !important;
-                } @else {
-                    background: map-get($primary, 100) !important;
-                }
-                color: map-get($foreground, secondary-text);
-            }
         }
     }
 }

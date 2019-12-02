@@ -88,9 +88,16 @@ export class TasksListComponent implements OnInit, OnDestroy
 
                 // Update the count on the navigation
                 setTimeout(() => {
-                    this._asmNavigationService.updateItem('applications.tasks', {
-                        subtitle: this.tasksCount.incomplete + ' remaining tasks'
-                    });
+
+                    // Get the component -> navigation data -> item
+                    const mainNavigation = this._asmNavigationService.getComponent('mainNavigation').data;
+                    const menuItem = this._asmNavigationService.getItem('applications.tasks', mainNavigation);
+
+                    // Update the subtitle of the item
+                    menuItem.subtitle = this.tasksCount.incomplete + ' remaining tasks';
+
+                    // Refresh the navigation
+                    this._asmNavigationService.refreshNavigation('mainNavigation');
                 });
             });
 

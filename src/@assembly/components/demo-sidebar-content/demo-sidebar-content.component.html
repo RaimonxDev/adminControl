@@ -5,7 +5,12 @@
 
 <!-- Fixed demo sidebar -->
 <h3 class="mx-32 mt-0 mb-16">Demo Sidebar</h3>
-<asm-vertical-menu [data]="menuData"></asm-vertical-menu>
+<asm-navigation [appearance]="'modern'"
+                [data]="menuData"
+                [inner]="true"
+                [mode]="'side'"
+                [name]="'demo-sidebar-navigation'"
+                [opened]="true"></asm-navigation>
 
 <!-- Storage -->
 <div class="flex items-center mt-8 mr-24 ml-32">

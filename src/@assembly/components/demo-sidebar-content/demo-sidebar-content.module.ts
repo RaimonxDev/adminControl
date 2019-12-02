@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { AsmVerticalMenuModule } from '@assembly/components/menu/vertical-menu/vertical-menu.module';
+import { AsmNavigationModule } from '@assembly/components/navigation/navigation.module';
 import { AsmDemoSidebarContentComponent } from '@assembly/components/demo-sidebar-content/demo-sidebar-content.component';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { AsmDemoSidebarContentComponent } from '@assembly/components/demo-sideba
         RouterModule.forChild([]),
         MatIconModule,
         MatProgressBarModule,
-        AsmVerticalMenuModule
+        AsmNavigationModule
     ],
     exports     : [
         AsmDemoSidebarContentComponent
