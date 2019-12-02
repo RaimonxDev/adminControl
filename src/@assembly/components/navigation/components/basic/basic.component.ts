@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
@@ -16,6 +17,10 @@ export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
     // Item
     @Input()
     item: AsmNavigationItem;
+
+    // Name
+    @Input()
+    name: string;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -46,6 +51,16 @@ export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
     {
         // Get the showTooltips option
         this.showTooltips = this._asmNavigationService.showTooltips;
+
+        // Subscribe to onRefresh
+        this._asmNavigationService.onRefresh.pipe(
+            takeUntil(this._unsubscribeAll),
+            filter((name) => name && this.name === name)
+        ).subscribe(() => {
+
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+        });
     }
 
     /**

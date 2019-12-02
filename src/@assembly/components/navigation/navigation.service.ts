@@ -14,11 +14,13 @@ export class AsmNavigationService
     onModeChanged: BehaviorSubject<AsmNavigationMode | null>;
     onOpenedChanged: BehaviorSubject<boolean | '' | null>;
     onPositionChanged: BehaviorSubject<AsmNavigationPosition | null>;
+    onRefresh: BehaviorSubject<string | null>;
     onCollapsableItemCollapsed: BehaviorSubject<AsmNavigationItem | null>;
     onCollapsableItemExpanded: BehaviorSubject<AsmNavigationItem | null>;
 
     // Private
     private _componentRegistry: Map<string, AsmNavigationComponent>;
+    private _navigationStore: Map<string, AsmNavigationItem[]>;
 
     /**
      * Constructor
@@ -27,12 +29,14 @@ export class AsmNavigationService
     {
         // Set the private defaults
         this._componentRegistry = new Map<string, AsmNavigationComponent>();
+        this._navigationStore = new Map<string, any>();
 
         // Set the defaults
         this.onAppearanceChanged = new BehaviorSubject(null);
         this.onModeChanged = new BehaviorSubject(null);
         this.onOpenedChanged = new BehaviorSubject(null);
         this.onPositionChanged = new BehaviorSubject(null);
+        this.onRefresh = new BehaviorSubject(null);
         this.onCollapsableItemCollapsed = new BehaviorSubject(null);
         this.onCollapsableItemExpanded = new BehaviorSubject(null);
     }
@@ -73,6 +77,57 @@ export class AsmNavigationService
     }
 
     /**
+     * Store the given navigation with the given key
+     *
+     * @param key
+     * @param navigation
+     */
+    storeNavigation(key: string, navigation: AsmNavigationItem[]): void
+    {
+        // Add to the store
+        this._navigationStore.set(key, navigation);
+    }
+
+    /**
+     * Get navigation from storage by key
+     *
+     * @param key
+     * @returns {any}
+     */
+    getNavigation(key: string): AsmNavigationItem[]
+    {
+        return this._navigationStore.get(key);
+    }
+
+    /**
+     * Delete the navigation from the storage
+     *
+     * @param key
+     */
+    deleteNavigation(key: string): void
+    {
+        // Check if the navigation exists
+        if ( !this._navigationStore.has(key) )
+        {
+            console.warn(`Navigation with the key '${key}' does not exist in the store.`);
+        }
+
+        // Delete from the storage
+        this._navigationStore.delete(key);
+    }
+
+    /**
+     * Refresh the navigation with the given name
+     *
+     * @param name
+     */
+    refreshNavigation(name: string): void
+    {
+        // Execute the observable
+        this.onRefresh.next(name);
+    }
+
+    /**
      * Utility function that returns a flattened
      * version of the given navigation array
      *
@@ -110,7 +165,7 @@ export class AsmNavigationService
      * @param id
      * @param navigation
      */
-    getItem(id: string, navigation: AsmNavigationItem[]): AsmNavigationItem | false
+    getItem(id: string, navigation: AsmNavigationItem[]): AsmNavigationItem | null
     {
         for ( const item of navigation )
         {
@@ -130,7 +185,7 @@ export class AsmNavigationService
             }
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -145,7 +200,7 @@ export class AsmNavigationService
         id: string,
         navigation: AsmNavigationItem[],
         parent: AsmNavigationItem[] | AsmNavigationItem
-    ): AsmNavigationItem[] | AsmNavigationItem | false
+    ): AsmNavigationItem[] | AsmNavigationItem | null
     {
         for ( const item of navigation )
         {
@@ -165,6 +220,6 @@ export class AsmNavigationService
             }
         }
 
-        return false;
+        return null;
     }
 }

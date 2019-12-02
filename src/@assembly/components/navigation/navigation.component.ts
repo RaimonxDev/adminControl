@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { merge, Subject, Subscription } from 'rxjs';
-import { delay, takeUntil } from 'rxjs/operators';
+import { delay, filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
@@ -19,7 +19,6 @@ import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.
 export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 {
     activeAsideItemId: null | string;
-    navigationData: AsmNavigationItem[];
 
     // Auto collapse
     @Input()
@@ -38,6 +37,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     private _asideOverlay: HTMLElement | null;
     private _asmScrollbarDirectives: QueryList<AsmScrollbarDirective>;
     private _asmScrollbarDirectivesSubscription: Subscription;
+    private _data: AsmNavigationItem[];
     private _inner: boolean;
     private _mode: AsmNavigationMode;
     private _opened: boolean | '';
@@ -171,7 +171,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     set data(value: AsmNavigationItem[])
     {
         // Store the data
-        this.navigationData = value;
+        this._data = value;
 
         // Mark for check
         this._changeDetectorRef.markForCheck();
@@ -179,7 +179,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 
     get data(): AsmNavigationItem[]
     {
-        return this.navigationData;
+        return this._data;
     }
 
     /**
@@ -415,6 +415,16 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         // Store options on the service
         this._asmNavigationService.autoCollapse = this.autoCollapse;
         this._asmNavigationService.showTooltips = this.showTooltips;
+
+        // Subscribe to onRefresh
+        this._asmNavigationService.onRefresh.pipe(
+            takeUntil(this._unsubscribeAll),
+            filter((name) => name && this.name === name)
+        ).subscribe(() => {
+
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+        });
     }
 
     /**
@@ -651,6 +661,14 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Refresh the component to apply the changes
+     */
+    refresh(): void
+    {
+        this._changeDetectorRef.markForCheck();
+    }
 
     /**
      * Open the navigation

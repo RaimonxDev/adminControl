@@ -29,6 +29,10 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
     @HostBinding('class.asm-navigation-item-expanded')
     isExpanded: boolean;
 
+    // Name
+    @Input()
+    name: string;
+
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -157,6 +161,16 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
 
         // Get the showTooltips option
         this.showTooltips = this._asmNavigationService.showTooltips;
+
+        // Subscribe to onRefresh
+        this._asmNavigationService.onRefresh.pipe(
+            takeUntil(this._unsubscribeAll),
+            filter((name) => name && this.name === name)
+        ).subscribe(() => {
+
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+        });
     }
 
     /**

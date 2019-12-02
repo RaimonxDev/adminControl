@@ -18,30 +18,35 @@
         </div>
 
         <!-- NAVIGATION ITEMS -->
-        <ng-container *ngFor="let item of navigationData; trackBy: trackById">
+        <ng-container *ngFor="let item of data; trackBy: trackById">
 
             <!-- Aside -->
             <asm-navigation-aside-item *ngIf="item.type === 'aside'"
                                        [item]="item"
+                                       [name]="name"
                                        [skipChildren]="true"
                                        [active]="item.id === activeAsideItemId"
                                        (click)="toggleAside(item.id)"></asm-navigation-aside-item>
 
             <!-- Basic -->
             <asm-navigation-basic-item *ngIf="item.type === 'basic'"
-                                       [item]="item"></asm-navigation-basic-item>
+                                       [item]="item"
+                                       [name]="name"></asm-navigation-basic-item>
 
             <!-- Collapsable -->
             <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
-                                             [item]="item"></asm-navigation-collapsable-item>
+                                             [item]="item"
+                                             [name]="name"></asm-navigation-collapsable-item>
 
             <!-- Divider -->
             <asm-navigation-divider-item *ngIf="item.type === 'divider'"
-                                         [item]="item"></asm-navigation-divider-item>
+                                         [item]="item"
+                                         [name]="name"></asm-navigation-divider-item>
 
             <!-- Subheader -->
             <asm-navigation-subheader-item *ngIf="item.type === 'subheader'"
-                                           [item]="item"></asm-navigation-subheader-item>
+                                           [item]="item"
+                                           [name]="name"></asm-navigation-subheader-item>
 
         </ng-container>
         <!-- / NAVIGATION ITEMS -->
@@ -74,11 +79,12 @@
      [@fadeOutRight]="position === 'right'">
 
     <!-- NAVIGATION ITEMS -->
-    <ng-container *ngFor="let item of navigationData; trackBy: trackById">
+    <ng-container *ngFor="let item of data; trackBy: trackById">
 
         <!-- Aside -->
         <asm-navigation-aside-item *ngIf="item.type === 'aside' && item.id === activeAsideItemId"
-                                   [item]="item"></asm-navigation-aside-item>
+                                   [item]="item"
+                                   [name]="name"></asm-navigation-aside-item>
 
     </ng-container>
     <!-- / NAVIGATION ITEMS -->

@@ -62,19 +62,23 @@
 
             <!-- Basic -->
             <asm-navigation-basic-item *ngIf="item.type === 'basic'"
-                                       [item]="item"></asm-navigation-basic-item>
+                                       [item]="item"
+                                       [name]="name"></asm-navigation-basic-item>
 
             <!-- Collapsable -->
             <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
-                                             [item]="item"></asm-navigation-collapsable-item>
+                                             [item]="item"
+                                             [name]="name"></asm-navigation-collapsable-item>
 
             <!-- Divider -->
             <asm-navigation-divider-item *ngIf="item.type === 'divider'"
-                                         [item]="item"></asm-navigation-divider-item>
+                                         [item]="item"
+                                         [name]="name"></asm-navigation-divider-item>
 
             <!-- Subheader -->
             <asm-navigation-subheader-item *ngIf="item.type === 'subheader'"
-                                           [item]="item"></asm-navigation-subheader-item>
+                                           [item]="item"
+                                           [name]="name"></asm-navigation-subheader-item>
 
         </ng-container>
 
