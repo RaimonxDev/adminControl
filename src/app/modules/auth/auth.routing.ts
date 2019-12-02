@@ -1,13 +1,13 @@
 import { Route } from '@angular/router';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
-import { LayoutsComponent } from 'app/core/layouts/layouts.component';
+import { MainComponent } from 'app/core/main/main.component';
 
 export const authRoutes: Route[] = [
     // Confirmation required
     {
         path       : 'confirmation-required',
-        component  : LayoutsComponent,
+        component  : MainComponent,
         data       : {
             layout: 'empty'
         },
@@ -23,7 +23,7 @@ export const authRoutes: Route[] = [
     // Forgot password
     {
         path       : 'forgot-password',
-        component  : LayoutsComponent,
+        component  : MainComponent,
         data       : {
             layout: 'empty'
         },
@@ -39,7 +39,7 @@ export const authRoutes: Route[] = [
     // Login
     {
         path       : 'login',
-        component  : LayoutsComponent,
+        component  : MainComponent,
         data       : {
             layout: 'empty'
         },
@@ -55,7 +55,7 @@ export const authRoutes: Route[] = [
     // Logout
     {
         path       : 'logout',
-        component  : LayoutsComponent,
+        component  : MainComponent,
         data       : {
             layout: 'empty'
         },
@@ -71,7 +71,7 @@ export const authRoutes: Route[] = [
     // Reset password
     {
         path       : 'reset-password',
-        component  : LayoutsComponent,
+        component  : MainComponent,
         data       : {
             layout: 'empty'
         },
@@ -87,7 +87,7 @@ export const authRoutes: Route[] = [
     // Signup
     {
         path       : 'signup',
-        component  : LayoutsComponent,
+        component  : MainComponent,
         data       : {
             layout: 'empty'
         },
@@ -103,7 +103,7 @@ export const authRoutes: Route[] = [
     // Unlock session
     {
         path       : 'unlock-session',
-        component  : LayoutsComponent,
+        component  : MainComponent,
         data       : {
             layout: 'empty'
         },
