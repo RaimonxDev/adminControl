@@ -10,7 +10,7 @@
     <!-- NAVIGATION CONTENT -->
     <div class="asm-navigation-content"
          asmScrollbar
-         [asmScrollbarOptions]="{wheelPropagation: false, suppressScrollX: true}">
+         [asmScrollbarOptions]="{wheelPropagation: inner, suppressScrollX: true}">
 
         <!-- Content Top -->
         <div class="asm-navigation-content-top">
@@ -18,7 +18,7 @@
         </div>
 
         <!-- NAVIGATION ITEMS -->
-        <ng-container *ngFor="let item of data; trackBy: trackById">
+        <ng-container *ngFor="let item of navigationData; trackBy: trackById">
 
             <!-- Aside -->
             <asm-navigation-aside-item *ngIf="item.type === 'aside'"
@@ -74,7 +74,7 @@
      [@fadeOutRight]="position === 'right'">
 
     <!-- NAVIGATION ITEMS -->
-    <ng-container *ngFor="let item of data; trackBy: trackById">
+    <ng-container *ngFor="let item of navigationData; trackBy: trackById">
 
         <!-- Aside -->
         <asm-navigation-aside-item *ngIf="item.type === 'aside' && item.id === activeAsideItemId"

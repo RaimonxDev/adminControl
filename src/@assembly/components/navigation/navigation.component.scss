@@ -136,6 +136,11 @@ asm-navigation {
             > asm-navigation-divider-item {
                 margin: 24px 0;
             }
+
+            // Spacer
+            > asm-navigation-spacer-item {
+                margin: 8px 0;
+            }
         }
 
         // Footer
@@ -204,6 +209,7 @@ asm-navigation {
     asm-navigation-basic-item,
     asm-navigation-collapsable-item,
     asm-navigation-divider-item,
+    asm-navigation-spacer-item,
     asm-navigation-subheader-item {
         display: flex;
         flex-direction: column;
@@ -238,7 +244,6 @@ asm-navigation {
 
                     .asm-navigation-item-subtitle {
                         font-size: 12px;
-                        margin-top: 2px;
                     }
                 }
 
@@ -395,6 +400,11 @@ asm-navigation {
         }
     }
 
+    // Spacer
+    asm-navigation-spacer-item {
+        margin: 12px 0;
+    }
+
     // Subheader
     asm-navigation-subheader-item {
 
@@ -409,6 +419,29 @@ asm-navigation {
                 font-size: 12px;
                 font-weight: 500;
                 text-transform: uppercase;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [inner]
+    // -----------------------------------------------------------------------------------------------------
+    &.asm-navigation-inner {
+        position: relative;
+        width: auto;
+        min-width: 0;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        box-shadow: none;
+
+        .asm-navigation-wrapper {
+            position: relative;
+            overflow: visible;
+
+            .asm-navigation-content {
+                overflow: visible !important;
             }
         }
     }
@@ -681,6 +714,71 @@ asm-navigation {
 
             .asm-navigation-aside-wrapper {
                 left: 280px;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [appearance] Modern
+    // -----------------------------------------------------------------------------------------------------
+    &.asm-navigation-appearance-modern {
+        padding: 0 16px;
+
+        // Navigation items common
+        asm-navigation-aside-item,
+        asm-navigation-basic-item,
+        asm-navigation-collapsable-item,
+        asm-navigation-divider-item,
+        asm-navigation-spacer-item,
+        asm-navigation-subheader-item {
+
+            .asm-navigation-item-wrapper {
+
+                .asm-navigation-item {
+                    margin: 4px 0;
+                    padding: 0 16px;
+                    border-radius: 8px;
+
+                    .asm-navigation-item-icon {
+                        @include asm-icon-size(24);
+                    }
+                }
+            }
+        }
+
+        // Collapsable
+        asm-navigation-collapsable-item {
+
+            // 1st level
+            .asm-navigation-item-children {
+
+                .asm-navigation-item {
+                    padding-left: 60px;
+                }
+
+                // 2nd level
+                .asm-navigation-item-children {
+
+                    .asm-navigation-item {
+                        padding-left: 76px;
+                    }
+
+                    // 3rd level
+                    .asm-navigation-item-children {
+
+                        .asm-navigation-item {
+                            padding-left: 92px;
+                        }
+
+                        // 4th level
+                        .asm-navigation-item-children {
+
+                            .asm-navigation-item {
+                                padding-left: 108px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -1106,6 +1204,83 @@ asm-navigation {
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Modern
+        // -----------------------------------------------------------------------------------------------------
+        &.asm-navigation-appearance-modern {
+
+            .asm-navigation-item {
+
+                &.asm-navigation-item-active {
+                    box-shadow: none;
+
+                    @if ($is-dark) {
+                        background: asm-dark-elevation(1);
+                    } @else {
+                        background: map-get($primary, 100);
+                    }
+                }
+
+                // Badge
+                .asm-navigation-item-badge {
+
+                    .asm-navigation-item-badge-content {
+                        color: map-get($foreground, secondary-text);
+
+                        @if ($is-dark) {
+                            background: asm-dark-elevation(1);
+                        } @else {
+                            background: map-get($primary, 100);
+                        }
+                    }
+                }
+            }
+
+            // Aside, Basic, Collapsable
+            asm-navigation-aside-item,
+            asm-navigation-basic-item,
+            asm-navigation-collapsable-item {
+
+                > .asm-navigation-item-wrapper {
+
+                    .asm-navigation-item {
+
+                        &:hover:not(.asm-navigation-item-active) {
+
+                            @if ($is-dark) {
+                                background: asm-dark-elevation(1);
+                            } @else {
+                                background: map-get($primary, 100);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Collapsable
+            asm-navigation-collapsable-item {
+
+                &.asm-navigation-item-expanded {
+                    background: transparent;
+
+                    asm-navigation-collapsable-item {
+                        background: transparent;
+                    }
+                }
+            }
+
+            // Subheader
+            asm-navigation-subheader-item {
+
+                .asm-navigation-item {
+
+                    .asm-navigation-item-title {
+                        color: asm-color($asm-gray, 600);
                     }
                 }
             }

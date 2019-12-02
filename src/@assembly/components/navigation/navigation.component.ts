@@ -3,9 +3,9 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { merge, Subject, Subscription } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
+import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.directive';
-import { AsmNavigationAppearance, AsmNavigationMode, AsmNavigationPosition } from '@assembly';
 
 @Component({
     selector       : 'asm-navigation',
@@ -19,7 +19,7 @@ import { AsmNavigationAppearance, AsmNavigationMode, AsmNavigationPosition } fro
 export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 {
     activeAsideItemId: null | string;
-    data: any[];
+    navigationData: AsmNavigationItem[];
 
     // Auto collapse
     @Input()
@@ -34,15 +34,16 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     showTooltips: boolean;
 
     // Private
-    private _appearance: 'classic' | 'compact' | 'dense' | 'thin';
+    private _appearance: AsmNavigationAppearance;
     private _asideOverlay: HTMLElement | null;
     private _asmScrollbarDirectives: QueryList<AsmScrollbarDirective>;
     private _asmScrollbarDirectivesSubscription: Subscription;
-    private _mode: 'over' | 'side';
+    private _inner: boolean;
+    private _mode: AsmNavigationMode;
     private _opened: boolean | '';
     private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
-    private _position: 'left' | 'right';
+    private _position: AsmNavigationPosition;
     private _transparentOverlay: boolean | '';
     private _unsubscribeAll: Subject<any>;
 
@@ -76,6 +77,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this.activeAsideItemId = null;
         this.appearance = 'classic';
         this.autoCollapse = true;
+        this.inner = false;
         this.mode = 'side';
         this.opened = false;
         this.position = 'left';
@@ -160,6 +162,57 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
                         asmScrollbarDirective.update();
                     });
                 });
+    }
+
+    /**
+     * Setter & getter for data
+     */
+    @Input()
+    set data(value: AsmNavigationItem[])
+    {
+        // Store the data
+        this.navigationData = value;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    get data(): AsmNavigationItem[]
+    {
+        return this.navigationData;
+    }
+
+    /**
+     * Setter & getter for inner
+     *
+     * @param value
+     */
+    @Input()
+    set inner(value: boolean)
+    {
+        // If the value is the same, return...
+        if ( this._inner === value )
+        {
+            return;
+        }
+
+        // Set the naked value
+        this._inner = value;
+
+        // Update the class
+        if ( this.inner )
+        {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-navigation-inner');
+        }
+        else
+        {
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-navigation-inner');
+        }
+    }
+
+    get inner(): boolean
+    {
+        return this._inner;
     }
 
     /**
@@ -256,7 +309,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
             }
         }
 
-        // Update
         if ( this.opened )
         {
             // Update styles and classes
@@ -363,21 +415,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         // Store options on the service
         this._asmNavigationService.autoCollapse = this.autoCollapse;
         this._asmNavigationService.showTooltips = this.showTooltips;
-
-        // Load the navigation either from the input or from the service
-        this.data = this._asmNavigationService.getCurrentNavigation();
-
-        // Subscribe to the current navigation changes
-        this._asmNavigationService.onCurrentChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-
-                // Load the navigation
-                this.data = this._asmNavigationService.getCurrentNavigation();
-
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
     }
 
     /**

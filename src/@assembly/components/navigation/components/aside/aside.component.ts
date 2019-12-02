@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { merge, Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
@@ -58,24 +57,6 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
     {
         // Get the showTooltips option
         this.showTooltips = this._asmNavigationService.showTooltips;
-
-        // Subscribe to item changes
-        merge(
-            this._asmNavigationService.onItemAdded,
-            this._asmNavigationService.onItemUpdated,
-            this._asmNavigationService.onItemDeleted
-        ).pipe(
-            takeUntil(this._unsubscribeAll),
-            filter((item) => {
-
-                // Only react if the changed item equals to this item
-                return item && this.item.id === item.id;
-            })
-        ).subscribe(() => {
-
-            // Apply the changes
-            this._changeDetectorRef.markForCheck();
-        });
     }
 
     /**
