@@ -82,7 +82,15 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
     {
         // Subscribe to the resolved route data
         this._activatedRoute.data.subscribe((data: Data) => {
+
+            // Store the data
             this.data = data.admin;
+
+            // Load the notifications for the first time
+            this._asmNotificationsService.store(this.data.notifications);
+
+            // Load the shortcuts for the first time
+            this._asmShortcutsService.store(this.data.shortcuts);
         });
 
         // Subscribe to media changes
@@ -125,23 +133,23 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
         this._httpClient.post('api/notifications/mark-all-as-read', {})
             .subscribe(() => {
 
-                // Mark all notifications as read
+                // Mark all as read
                 this._asmNotificationsService.markAllAsRead();
             });
     }
 
     /**
-     * On single notification item read status change
+     * On single notification item change
      *
      * @param notification
      */
-    onNotificationItemReadStatusChange(notification: AsmNotification): void
+    onNotificationItemChange(notification: AsmNotification): void
     {
         this._httpClient.post('api/notifications/toggle-read-status', {notification})
             .subscribe(() => {
 
-                // Toggle the notification's read status
-                this._asmNotificationsService.toggleReadStatus(notification);
+                // Update the notification
+                this._asmNotificationsService.update(notification);
             });
     }
 

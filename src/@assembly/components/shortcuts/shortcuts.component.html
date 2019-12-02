@@ -17,13 +17,11 @@
                       [svgIcon]="'apps'"></mat-icon>
 
             <div class="left">
-                <div class="title"
-                     *ngIf="title">
-                    {{title}}
+                <div class="title">
+                    <ng-content select="[asmShortcutsTitle]"></ng-content>
                 </div>
-                <div class="subtitle"
-                     *ngIf="subtitle">
-                    {{subtitle}}
+                <div class="subtitle">
+                    <ng-content select="[asmShortcutsSubtitle]"></ng-content>
                 </div>
             </div>
 

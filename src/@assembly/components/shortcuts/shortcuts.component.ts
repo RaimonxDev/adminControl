@@ -24,14 +24,6 @@ export class AsmShortcutsComponent implements OnInit, OnDestroy
     shortcuts: AsmShortcut[];
     shortcutForm: FormGroup;
 
-    // Title
-    @Input()
-    title: string;
-
-    // Subtitle
-    @Input()
-    subtitle: string;
-
     // On save
     @Output()
     readonly save: EventEmitter<AsmShortcut>;

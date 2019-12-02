@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { AsmNotification } from '@assembly/components/notifications/notifications.type';
-import { filter, map, take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -42,11 +42,11 @@ export class AsmNotificationsService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Bulk load notifications
+     * Store notifications (bulk load)
      *
      * @param notifications
      */
-    load(notifications: AsmNotification[]): Observable<AsmNotification[]>
+    store(notifications: AsmNotification[]): Observable<AsmNotification[]>
     {
         // Load the notifications
         this._notifications.next(notifications);
@@ -56,11 +56,11 @@ export class AsmNotificationsService
     }
 
     /**
-     * Push single notification into notifications array
+     * Create a single notification
      *
      * @param notification
      */
-    push(notification: AsmNotification): void
+    create(notification: AsmNotification): void
     {
         // Get the current notifications array
         const currentNotifications = this._notifications.value;
@@ -70,6 +70,52 @@ export class AsmNotificationsService
 
         // Execute the observable
         this._notifications.next(currentNotifications);
+    }
+
+    /**
+     * Update the notification
+     *
+     * @param notification
+     */
+    update(notification: AsmNotification): void
+    {
+        this.notifications$
+            .pipe(
+                take(1),
+                map((notifications) => {
+
+                    // Find the index of the given notification and update it
+                    const index = notifications.findIndex(item => item.id === notification.id);
+                    notifications[index] = notification;
+
+                    // Update the notifications
+                    this._notifications.next(notifications);
+                })
+            ).subscribe();
+    }
+
+    /**
+     * Delete the given notification
+     *
+     * @param notification
+     */
+    delete(notification: AsmNotification): void
+    {
+        this.notifications$
+            .pipe(
+                take(1),
+                map((notifications) => {
+
+                    // Find the index of the deleted notification
+                    const index = notifications.findIndex(item => item.id === notification.id);
+
+                    // Delete the notification
+                    notifications.splice(index, 1);
+
+                    // Update the notifications
+                    this._notifications.next(notifications);
+                })
+            ).subscribe();
     }
 
     /**
@@ -86,54 +132,6 @@ export class AsmNotificationsService
                     notifications.forEach((notification, index) => {
                         notifications[index].read = true;
                     });
-
-                    // Update the notifications
-                    this._notifications.next(notifications);
-                })
-            ).subscribe();
-    }
-
-    /**
-     * Toggle the read status of the given notification
-     *
-     * @param notification
-     */
-    toggleReadStatus(notification: AsmNotification): void
-    {
-        this.notifications$
-            .pipe(
-                take(1),
-                map((notifications) => {
-
-                    // Find the index of the given notification
-                    const index = notifications.findIndex(item => item.id === notification.id);
-
-                    // Mark as read
-                    notifications[index].read = notification.read;
-
-                    // Update the notifications
-                    this._notifications.next(notifications);
-                })
-            ).subscribe();
-    }
-
-    /**
-     * Delete the given notification
-     *
-     * @param deletedNotification
-     */
-    delete(deletedNotification: AsmNotification): void
-    {
-        this.notifications$
-            .pipe(
-                take(1),
-                map((notifications) => {
-
-                    // Find the index of the deleted notification
-                    const index = notifications.findIndex(item => item.id === deletedNotification.id);
-
-                    // Delete the notification
-                    notifications.splice(index, 1);
 
                     // Update the notifications
                     this._notifications.next(notifications);

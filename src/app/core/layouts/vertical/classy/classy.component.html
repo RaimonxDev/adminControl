@@ -28,10 +28,11 @@
         </button>
 
         <!-- Shortcuts -->
-        <asm-shortcuts [title]="'Quick Access'"
-                       [subtitle]="'Shortcuts for apps and links'"
-                       (save)="onShortcutSave($event)"
-                       (delete)="onShortcutDelete($event)"></asm-shortcuts>
+        <asm-shortcuts (save)="onShortcutSave($event)"
+                       (delete)="onShortcutDelete($event)">
+            <span asmShortcutsTitle>Quick Access</span>
+            <span asmShortcutsSubtitle>Shortcuts for apps and links</span>
+        </asm-shortcuts>
 
         <!-- Search -->
         <asm-search [appearance]="'bar'"
@@ -84,11 +85,12 @@
         </div>
 
         <!-- Notifications -->
-        <asm-notifications [title]="'Notifications'"
-                           [markAsRead]="'Mark all as read'"
-                           (markedAllAsRead)="onNotificationsMarkedAllAsRead()"
-                           (itemReadStatusChange)="onNotificationItemReadStatusChange($event)"
-                           (itemRemoved)="onNotificationItemRemoved($event)"></asm-notifications>
+        <asm-notifications (itemChange)="onNotificationItemChange($event)"
+                           (itemRemoved)="onNotificationItemRemoved($event)"
+                           (markedAllAsRead)="onNotificationsMarkedAllAsRead()">
+            <span asmNotificationsTitle>Notifications</span>
+            <span asmNotificationsMarkAsRead>Mark all as read</span>
+        </asm-notifications>
 
         <!-- User -->
         <button class="user"

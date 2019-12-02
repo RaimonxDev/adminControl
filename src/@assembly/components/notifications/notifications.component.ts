@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { MatButton } from '@angular/material/button';
-import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmNotification } from '@assembly/components/notifications/notifications.type';
 import { AsmNotificationsService } from '@assembly/components/notifications/notifications.service';
@@ -21,21 +21,13 @@ export class AsmNotificationsComponent implements OnInit, OnDestroy
 {
     notifications: AsmNotification[];
 
-    // Title
-    @Input()
-    title: string;
-
-    // Mark as read
-    @Input()
-    markAsRead: string;
-
     // On all notifications marked as read
     @Output()
     readonly markedAllAsRead: EventEmitter<AsmNotification[]>;
 
-    // On single notification item read status changed
+    // On single notification item changed
     @Output()
-    readonly itemReadStatusChange: EventEmitter<AsmNotification>;
+    readonly itemChange: EventEmitter<AsmNotification>;
 
     // On single notification item removed
     @Output()
@@ -71,7 +63,7 @@ export class AsmNotificationsComponent implements OnInit, OnDestroy
 
         // Set the defaults
         this.markedAllAsRead = new EventEmitter<AsmNotification[]>();
-        this.itemReadStatusChange = new EventEmitter<AsmNotification>();
+        this.itemChange = new EventEmitter<AsmNotification>();
         this.itemRemoved = new EventEmitter<AsmNotification>();
     }
 
@@ -133,19 +125,6 @@ export class AsmNotificationsComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Create route from given link
-     */
-    createRouteFromLink(link): string[]
-    {
-        // Split the link and add a leading slash
-        const route = link.split('/');
-        route.unshift('/');
-
-        // Return the route
-        return route;
-    }
 
     /**
      * Open the notifications panel
@@ -233,7 +212,7 @@ export class AsmNotificationsComponent implements OnInit, OnDestroy
         notification.read = !notification.read;
 
         // Trigger the event
-        this.itemReadStatusChange.emit(notification);
+        this.itemChange.emit(notification);
     }
 
     /**

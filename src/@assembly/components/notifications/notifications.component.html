@@ -23,15 +23,13 @@
                 </div>
             </div>
 
-            <div class="title"
-                 *ngIf="title">
-                {{title}}
+            <div class="title">
+                <ng-content select="[asmNotificationsTitle]"></ng-content>
             </div>
 
             <div class="mark-all-as-read"
-                 *ngIf="markAsRead"
                  (click)="markAllAsRead()">
-                {{markAsRead}}
+                <ng-content select="[asmNotificationsMarkAsRead]"></ng-content>
             </div>
 
         </div>

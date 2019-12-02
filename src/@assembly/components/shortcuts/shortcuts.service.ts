@@ -42,9 +42,11 @@ export class AsmShortcutsService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Load shortcuts
+     * Store shortcuts (bulk load)
+     *
+     * @param shortcuts
      */
-    load(shortcuts: AsmShortcut[]): Observable<AsmShortcut[]>
+    store(shortcuts: AsmShortcut[]): Observable<AsmShortcut[]>
     {
         // Load the shortcuts
         this._shortcuts.next(shortcuts);
