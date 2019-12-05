@@ -17,7 +17,8 @@ import { AsmConfig, AsmConfigService } from '@assembly';
 export class MainComponent implements OnInit, OnDestroy
 {
     asmConfig: AsmConfig;
-    layout: 'basic' | 'classic' | 'classy' | 'compact' | 'dense' | 'empty' | 'modern' | 'thin' | 'thin-light';
+    layout: 'basic-vertical' | 'classic-vertical' | 'classy-vertical' | 'compact-vertical' | 'dense-vertical' | 'modern-vertical' | 'thin-vertical' | 'thin-light-vertical' |
+        'empty';
 
     // Private
     private _unsubscribeAll: Subject<any>;

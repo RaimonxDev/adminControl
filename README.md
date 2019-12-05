@@ -1,6 +1,6 @@
 # Assembly
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-rc.5.
 
 ## Development server
 

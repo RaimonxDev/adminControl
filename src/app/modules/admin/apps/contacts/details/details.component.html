@@ -279,7 +279,7 @@
              *ngIf="editMode">
 
             <div class="email"
-                 *ngFor="let email of contactForm.get('emails').controls; let i = index; let last = last; trackBy: trackById">
+                 *ngFor="let email of contactForm.get('emails')['controls']; let i = index; let last = last; trackBy: trackById">
 
                 <mat-form-field class="asm-mat-no-subscript">
                     <mat-label>Email</mat-label>
@@ -353,7 +353,7 @@
              *ngIf="editMode">
 
             <div class="phone-number"
-                 *ngFor="let phoneNumber of contactForm.get('phoneNumbers').controls; let i = index; let last = last; trackBy: trackById">
+                 *ngFor="let phoneNumber of contactForm.get('phoneNumbers')['controls']; let i = index; let last = last; trackBy: trackById">
 
                 <mat-form-field class="asm-mat-no-subscript">
                     <mat-label>Phone</mat-label>

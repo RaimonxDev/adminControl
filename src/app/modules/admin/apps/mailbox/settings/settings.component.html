@@ -50,7 +50,7 @@
          [formArrayName]="'labels'">
 
         <div class="label"
-             *ngFor="let label of labelsForm.get('labels').controls">
+             *ngFor="let label of labelsForm.get('labels')['controls']">
 
             <mat-form-field>
                 <mat-label>Label</mat-label>

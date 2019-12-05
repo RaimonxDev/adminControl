@@ -12,7 +12,7 @@ export interface Task
     notes: string;
     completed: boolean;
     dueDate: string | null;
-    priority: 1 | 2 | 3;
+    priority: 0 | 1 | 2;
     tags: string[];
     order: number;
 }

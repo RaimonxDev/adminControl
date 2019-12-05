@@ -1,3 +1,7 @@
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Vertical Layouts -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
 <!-- Basic -->
 <ng-container *ngIf="layout === 'basic-vertical'">
     <layout type="basic-vertical"></layout>
@@ -23,11 +27,6 @@
     <layout type="dense-vertical"></layout>
 </ng-container>
 
-<!-- Empty -->
-<ng-container *ngIf="layout === 'empty'">
-    <layout type="empty"></layout>
-</ng-container>
-
 <!-- Modern -->
 <ng-container *ngIf="layout === 'modern-vertical'">
     <layout type="modern-vertical"></layout>
@@ -41,4 +40,12 @@
 <!-- Thin light -->
 <ng-container *ngIf="layout === 'thin-light-vertical'">
     <layout type="thin-light-vertical"></layout>
+</ng-container>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Empty Layout -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<ng-container *ngIf="layout === 'empty'">
+    <layout type="empty"></layout>
 </ng-container>
