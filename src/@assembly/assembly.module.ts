@@ -5,25 +5,25 @@ import { AsmMediaWatcherModule } from '@assembly/services/media-watcher/public-a
 import { AsmSplashScreenModule } from '@assembly/services/splash-screen/public-api';
 
 @NgModule({
-    imports: [
+    imports  : [
         AsmConfigModule,
         AsmMediaWatcherModule,
         AsmSplashScreenModule
     ],
-    exports: [
+    exports  : [
         AsmConfigModule,
         AsmMediaWatcherModule,
         AsmSplashScreenModule
     ],
-    providers   : [
+    providers: [
         {
             // Use the 'fill' appearance on form fields by default
             provide : MAT_FORM_FIELD_DEFAULT_OPTIONS,
             useValue: {
-                appearance        : 'fill'
+                appearance: 'fill'
             }
         }
-    ],
+    ]
 })
 export class AsmCoreModule
 {

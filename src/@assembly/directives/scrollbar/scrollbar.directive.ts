@@ -15,7 +15,8 @@ import { ScrollbarGeometry, ScrollbarPosition } from './scrolbar.interfaces';
 import * as _ from 'lodash';
 
 @Directive({
-    selector: '[asmScrollbar]'
+    selector: '[asmScrollbar]',
+    exportAs: 'asmScrollbar'
 })
 export class AsmScrollbarDirective implements OnInit, OnDestroy
 {

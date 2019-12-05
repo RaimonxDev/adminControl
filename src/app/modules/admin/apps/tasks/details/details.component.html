@@ -54,8 +54,8 @@
         <div class="label">{{task.type === 'task' ? 'Task title' : 'Section title'}}</div>
         <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
             <textarea matInput
+                      asmAutogrow
                       [formControlName]="'title'"
-                      cdkTextareaAutosize
                       [spellcheck]="false"
                       #titleField></textarea>
         </mat-form-field>
@@ -277,9 +277,8 @@
         <div class="label">Notes</div>
         <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
             <textarea matInput
+                      asmAutogrow
                       [formControlName]="'notes'"
-                      cdkTextareaAutosize
-                      [cdkAutosizeMinRows]="2"
                       [spellcheck]="false"></textarea>
         </mat-form-field>
     </div>
