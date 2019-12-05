@@ -133,26 +133,22 @@
 
             <mat-menu class="user-status-menu"
                       #userStatus="matMenu">
-                <button [ngClass]="{'mat-menu-item-highlighted': user.status === 'online'}"
-                        mat-menu-item
+                <button mat-menu-item
                         (click)="updateUserStatus('online')">
                     <span class="status online"></span>
                     <span>Online</span>
                 </button>
-                <button [ngClass]="{'mat-menu-item-highlighted': user.status === 'away'}"
-                        mat-menu-item
+                <button mat-menu-item
                         (click)="updateUserStatus('away')">
                     <span class="status away"></span>
                     <span>Away</span>
                 </button>
-                <button [ngClass]="{'mat-menu-item-highlighted': user.status === 'busy'}"
-                        mat-menu-item
+                <button mat-menu-item
                         (click)="updateUserStatus('busy')">
                     <span class="status busy"></span>
                     <span>Busy</span>
                 </button>
-                <button [ngClass]="{'mat-menu-item-highlighted': user.status === 'not-visible'}"
-                        mat-menu-item
+                <button mat-menu-item
                         (click)="updateUserStatus('not-visible')">
                     <span class="status not-visible"></span>
                     <span>Invisible</span>
