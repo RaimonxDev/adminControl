@@ -25,23 +25,13 @@ export class AdminResolver implements Resolve<any>
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Load compact navigation data
+     * Load navigation data
      *
      * @private
      */
-    private _loadCompactNavigation(): Observable<any>
+    private _loadNavigation(): Observable<any>
     {
-        return this._httpClient.get('api/navigation/compact');
-    }
-
-    /**
-     * Load default navigation data
-     *
-     * @private
-     */
-    private _loadDefaultNavigation(): Observable<any>
-    {
-        return this._httpClient.get('api/navigation/default');
+        return this._httpClient.get('api/navigation');
     }
 
     /**
@@ -79,8 +69,7 @@ export class AdminResolver implements Resolve<any>
         return forkJoin([
 
             // Navigation data
-            this._loadCompactNavigation(),
-            this._loadDefaultNavigation(),
+            this._loadNavigation(),
 
             // Notifications
             this._loadNotifications(),
@@ -91,10 +80,12 @@ export class AdminResolver implements Resolve<any>
             map((data) => {
 
                 return {
-                    compactNavigation: data[0].navigation,
-                    defaultNavigation: data[1].navigation,
-                    notifications    : data[2].notifications,
-                    shortcuts        : data[3].shortcuts
+                    navigation   : {
+                        compact: data[0].compact,
+                        default: data[0].default
+                    },
+                    notifications: data[1].notifications,
+                    shortcuts    : data[2].shortcuts
                 };
             })
         );

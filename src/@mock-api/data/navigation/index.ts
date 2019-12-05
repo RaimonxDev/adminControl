@@ -23,8 +23,8 @@ export class MockNavigationApi
     )
     {
         // Set the data
-        this._defaultNavigation = defaultNavigation;
         this._compactNavigation = compactNavigation;
+        this._defaultNavigation = defaultNavigation;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -37,29 +37,16 @@ export class MockNavigationApi
     init(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ Default navigation - GET
+        // @ Navigation - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/navigation/default')
+            .onGet('api/navigation')
             .reply(() => {
                 return [
                     200,
                     {
-                        navigation: _.cloneDeep(this._defaultNavigation)
-                    }
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Compact navigation - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
-            .onGet('api/navigation/compact')
-            .reply(() => {
-                return [
-                    200,
-                    {
-                        navigation: _.cloneDeep(this._compactNavigation)
+                        compact: _.cloneDeep(this._compactNavigation),
+                        default: _.cloneDeep(this._defaultNavigation)
                     }
                 ];
             });
