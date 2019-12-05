@@ -22,7 +22,7 @@
         <div class="container mb-32">
             <p>
                 By default, Assembly uses the <b>Fill</b> style form fields and apply numerous of tweaks on top of it to make it cleaner, better aligned and consistent across the
-                app. We strongly recommend that you use the <b>Fill</b> style with Assembly.
+                app. We absolutely do NOT recommend using any other Angular Material form field style other than <b>Fill</b>.
             </p>
             <p>
                 These examples use <a class="link"
@@ -37,61 +37,26 @@
                 Classes</a> page.
             </p>
 
-            <!-- Appearances -->
+            <!-- Appearance -->
             <div class="mt-48">
 
-                <h3 class="my-0">Appearances</h3>
+                <h3 class="my-0">Appearance</h3>
                 <p class="mt-8 mb-24">
-                    Here's a very simple form layout to showcase the form field appearances. You can change the appearance using the below menu to test all Material Design field
-                    appearances. This example is for showcasing purposes, we still recommend using <b>Fill</b> style with Assembly for maximum stability and consistency.
+                    Here's a very simple form layout to showcase the <b>Fill</b> form field appearance.
                 </p>
-
-                <button class="mb-8"
-                        mat-flat-button
-                        [color]="'primary'"
-                        [matMenuTriggerFor]="appearanceMenu">
-                    <span class="ml-8">Field appearance: {{formFieldAppearance | titlecase}}</span>
-                    <mat-icon class="icon-size-18 ml-12"
-                              [svgIcon]="'keyboard_arrow_down'"></mat-icon>
-                </button>
-                <mat-menu #appearanceMenu>
-                    <button mat-menu-item
-                            (click)="formFieldAppearance = 'standard'">
-                        <span>Standard</span>
-                        <mat-icon class="ml-24 mr-0 icon-size-18"
-                                  *ngIf="formFieldAppearance === 'standard'"
-                                  [svgIcon]="'check'"></mat-icon>
-                    </button>
-                    <button mat-menu-item
-                            (click)="formFieldAppearance = 'fill'">
-                        <span>Fill</span>
-                        <mat-icon class="ml-24 mr-0 icon-size-18"
-                                  *ngIf="formFieldAppearance === 'fill'"
-                                  [svgIcon]="'check'"></mat-icon>
-                    </button>
-                    <button mat-menu-item
-                            (click)="formFieldAppearance = 'outline'">
-                        <span>Outline</span>
-                        <mat-icon class="ml-24 mr-0 icon-size-18"
-                                  *ngIf="formFieldAppearance === 'outline'"
-                                  [svgIcon]="'check'"></mat-icon>
-                    </button>
-                </mat-menu>
 
                 <asm-card class="flex flex-col mt-32 p-32 pb-20">
 
                     <form class="mt-8">
 
                         <div class="flex flex-col gt-xs:flex-row">
-                            <mat-form-field class="flex-auto gt-xs:pr-12"
-                                            [appearance]="formFieldAppearance">
+                            <mat-form-field class="flex-auto gt-xs:pr-12">
                                 <mat-label>First name</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
                                           [svgIcon]="'account_circle'"></mat-icon>
                             </mat-form-field>
-                            <mat-form-field class="flex-auto gt-xs:pl-12"
-                                            [appearance]="formFieldAppearance">
+                            <mat-form-field class="flex-auto gt-xs:pl-12">
                                 <mat-label>Last name</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
@@ -100,8 +65,7 @@
                         </div>
 
                         <div class="flex">
-                            <mat-form-field class="asm-mat-textarea flex-auto"
-                                            [appearance]="formFieldAppearance">
+                            <mat-form-field class="asm-mat-textarea flex-auto">
                                 <mat-label>Address</mat-label>
                                 <textarea matInput
                                           cdkTextareaAutosize
@@ -112,15 +76,13 @@
                         </div>
 
                         <div class="flex flex-col gt-md:flex-row">
-                            <mat-form-field class="flex-auto gt-md:pr-12"
-                                            [appearance]="formFieldAppearance">
+                            <mat-form-field class="flex-auto gt-md:pr-12">
                                 <mat-label>City</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
                                           [svgIcon]="'landscape'"></mat-icon>
                             </mat-form-field>
-                            <mat-form-field class="flex-auto gt-md:pl-12"
-                                            [appearance]="formFieldAppearance">
+                            <mat-form-field class="flex-auto gt-md:pl-12">
                                 <mat-label>State</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
@@ -129,8 +91,7 @@
                         </div>
 
                         <div class="flex">
-                            <mat-form-field class="flex-auto"
-                                            [appearance]="formFieldAppearance">
+                            <mat-form-field class="flex-auto">
                                 <mat-label>Postal code</mat-label>
                                 <input matInput
                                        maxlength="5"
