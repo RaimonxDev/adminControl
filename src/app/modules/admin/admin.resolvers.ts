@@ -54,6 +54,16 @@ export class AdminResolver implements Resolve<any>
         return this._httpClient.get('api/shortcuts');
     }
 
+    /**
+     * Load user
+     *
+     * @private
+     */
+    private _loadUser(): Observable<any>
+    {
+        return this._httpClient.get('api/user');
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -75,7 +85,10 @@ export class AdminResolver implements Resolve<any>
             this._loadNotifications(),
 
             // Shortcuts
-            this._loadShortcuts()
+            this._loadShortcuts(),
+
+            // User
+            this._loadUser()
         ]).pipe(
             map((data) => {
 
@@ -85,7 +98,8 @@ export class AdminResolver implements Resolve<any>
                         default: data[0].default
                     },
                     notifications: data[1].notifications,
-                    shortcuts    : data[2].shortcuts
+                    shortcuts    : data[2].shortcuts,
+                    user         : data[3].user
                 };
             })
         );

@@ -14,6 +14,7 @@ import { MockNotificationsApi } from '@mock-api/data/notifications';
 import { MockSearchResultsApi } from '@mock-api/data/search';
 import { MockShortcutsApi } from '@mock-api/data/shortcuts';
 import { MockTasksApi } from '@mock-api/data/tasks';
+import { MockUserApi } from '@mock-api/data/user';
 
 @NgModule({
     providers: [
@@ -42,6 +43,7 @@ export class AsmMockApiModule
      * @param {MockSearchResultsApi} _mockSearchResultsApi
      * @param {MockShortcutsApi} _mockShortcutsApi
      * @param {MockTasksApi} _mockTasksApi
+     * @param {MockUserApi} _mockUserApi
      */
     constructor(
         private _mockAuthApi: MockAuthApi,
@@ -55,7 +57,8 @@ export class AsmMockApiModule
         private _mockNotificationsApi: MockNotificationsApi,
         private _mockSearchResultsApi: MockSearchResultsApi,
         private _mockShortcutsApi: MockShortcutsApi,
-        private _mockTasksApi: MockTasksApi
+        private _mockTasksApi: MockTasksApi,
+        private _mockUserApi: MockUserApi
     )
     {
         this._mockAuthApi.init();
@@ -70,5 +73,6 @@ export class AsmMockApiModule
         this._mockSearchResultsApi.init();
         this._mockShortcutsApi.init();
         this._mockTasksApi.init();
+        this._mockUserApi.init();
     }
 }

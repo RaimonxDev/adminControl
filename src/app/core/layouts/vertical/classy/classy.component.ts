@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService, AsmNotification, AsmNotificationsService, AsmShortcut, AsmShortcutsService } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
     selector     : 'layout[type="classy-vertical"]',
@@ -17,6 +18,7 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
     data: any;
     isScreenSmall: boolean;
     searchResults: any[] | null;
+    user: any;
 
     @HostBinding('class.fixed-header')
     fixedHeader: boolean;
@@ -38,6 +40,7 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
      * @param {AsmShortcutsService} _asmShortcutsService
      * @param {AuthService} _authService
      * @param {HttpClient} _httpClient
+     * @param {UserService}_userService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -47,7 +50,8 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
         private _asmNotificationsService: AsmNotificationsService,
         private _asmShortcutsService: AsmShortcutsService,
         private _authService: AuthService,
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _userService: UserService
     )
     {
         // Set the private defaults
@@ -80,6 +84,13 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // User
+        this._userService.user$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((user) => {
+                this.user = user;
+            });
+
         // Subscribe to the resolved route data
         this._activatedRoute.data.subscribe((data: Data) => {
 
@@ -91,6 +102,9 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
 
             // Load the shortcuts for the first time
             this._asmShortcutsService.store(this.data.shortcuts);
+
+            // Store the user data on user service
+            this._userService.user = this.data.user;
         });
 
         // Subscribe to media changes
@@ -259,5 +273,19 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
             // Toggle the opened status
             navigation.toggle();
         }
+    }
+
+    /**
+     * Update the user status
+     *
+     * @param status
+     */
+    updateUserStatus(status): void
+    {
+        // Update the user data
+        this.user.status = status;
+
+        // Update the user on the server
+        this._userService.update(this.user);
     }
 }
