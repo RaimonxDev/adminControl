@@ -28,16 +28,16 @@ export class AuthService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter and setter for access token
+     * Setter and getter for access token
      */
-    get accessToken(): string
-    {
-        return localStorage.getItem('accessToken');
-    }
-
     set accessToken(token: string)
     {
         localStorage.setItem('accessToken', token);
+    }
+
+    get accessToken(): string
+    {
+        return localStorage.getItem('accessToken');
     }
 
     // -----------------------------------------------------------------------------------------------------
