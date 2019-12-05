@@ -67,9 +67,9 @@ export class AsmAutogrowDirective implements OnInit, OnDestroy
         this._renderer2.setStyle(this._elementRef.nativeElement, 'resize', 'none');
         this._renderer2.setStyle(this._elementRef.nativeElement, 'overflow', 'hidden');
 
-        // Run the _onInput once to set the height for the first time
+        // Set the height for the first time
         setTimeout(() => {
-            this._onInput();
+            this._resize();
         });
     }
 
@@ -88,12 +88,13 @@ export class AsmAutogrowDirective implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Resize on input
+     * Resize on 'input' and 'ngModelChange' events
      *
      * @private
      */
     @HostListener('input')
-    private _onInput(): void
+    @HostListener('ngModelChange')
+    private _resize(): void
     {
         // Set the height to 'auto' so we can correctly read the scrollHeight
         this._renderer2.setStyle(this._elementRef.nativeElement, 'height', 'auto');

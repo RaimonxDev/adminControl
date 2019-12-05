@@ -147,7 +147,10 @@
                     </ng-container>
 
                     <ng-template #noTasks>
-                        <div class="no-tasks">There are no tasks!</div>
+                        <div class="no-tasks">
+                            <mat-icon [svgIcon]="'iconsmind:bulleted_list'"></mat-icon>
+                            <h4>Add a task to start planning!</h4>
+                        </div>
                     </ng-template>
 
                 </div>

@@ -1,14 +1,23 @@
 @import 'assembly';
 
+$custom-font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 // -----------------------------------------------------------------------------------------------------
-// @ Adjust Angular Material typography
+// @ Global typography
+// -----------------------------------------------------------------------------------------------------
+body {
+    font-family: $custom-font-family;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Angular Material typography
 // -----------------------------------------------------------------------------------------------------
 $typography: mat-typography-config(
-    $font-family: 'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    $font-family: $custom-font-family,
     $title: mat-typography-level(20px, 32px, 600),
-    $body-2: mat-typography-level(14px, 24px, 600),
-    $button: mat-typography-level(14px, 14px, 500),
-    $input: mat-typography-level(14px, 1, 400)
+    $body-2: mat-typography-level(1rem, 24px, 600),
+    $button: mat-typography-level(1rem, 14px, 500),
+    $input: mat-typography-level(1rem, 1, 400)
 );
 
 // Setup the typography

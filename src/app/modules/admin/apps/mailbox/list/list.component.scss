@@ -367,6 +367,9 @@ mailbox-list {
             }
 
             .no-mails {
+                @if (not $is-dark) {
+                    background: asm-color($asm-gray, 200);
+                }
 
                 .mat-icon {
                     color: map-get($foreground, secondary-text);
