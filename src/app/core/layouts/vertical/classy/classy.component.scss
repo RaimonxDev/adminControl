@@ -7,7 +7,7 @@ layout[type="classy-vertical"] {
     width: 100%;
 
     // Navigation
-    > .navigation {
+    asm-navigation {
 
         &.theme-dark {
 
@@ -245,7 +245,6 @@ layout[type="classy-vertical"] {
 
     layout[type='classy-vertical'] {
 
-        // Wrapper
         > .wrapper {
 
             // Header
