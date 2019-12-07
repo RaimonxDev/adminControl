@@ -1,7 +1,7 @@
 <div class="asm-message-container"
-     *ngIf="!dismissible || dismissible && !dismissed"
-     [@fadeIn]="dismissible"
-     [@fadeOut]="dismissible">
+     *ngIf="!dismissed"
+     [@fadeIn]
+     [@fadeOut]>
 
     <!-- Icon -->
     <div class="asm-message-icon"
@@ -59,7 +59,6 @@
     <!-- Dismiss button -->
     <button class="asm-message-dismiss-button"
             mat-icon-button
-            *ngIf="dismissible"
             (click)="dismiss()">
         <mat-icon [svgIcon]="'close'"></mat-icon>
     </button>

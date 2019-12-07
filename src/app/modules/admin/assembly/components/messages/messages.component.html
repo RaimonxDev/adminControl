@@ -44,7 +44,7 @@
                 Appearance
             </h2>
             <p>
-                Message boxes have 2 different built-in appearances to choose from. You can
+                Message boxes have 3 different built-in appearances to choose from. You can
                 use them as they are or modify them for your own needs and likings.
             </p>
 
@@ -59,53 +59,57 @@
 
                     <mat-tab label="Preview">
 
-                        <!-- Primary -->
-                        <asm-message [type]="'primary'">
-                            <span asmMessageTitle>Primary message</span>
-                            Thank you for joining our newsletter
-                        </asm-message>
+                        <ng-template matTabContent>
 
-                        <!-- Accent -->
-                        <asm-message [type]="'accent'">
-                            <span asmMessageTitle>Accent message</span>
-                            Your changes has been saved
-                        </asm-message>
+                            <!-- Primary -->
+                            <asm-message [type]="'primary'">
+                                <span asmMessageTitle>Primary message</span>
+                                Thank you for joining our newsletter
+                            </asm-message>
 
-                        <!-- Warn -->
-                        <asm-message [type]="'warn'">
-                            <span asmMessageTitle>Warn message</span>
-                            Fill all required fields to proceed next step
-                        </asm-message>
+                            <!-- Accent -->
+                            <asm-message [type]="'accent'">
+                                <span asmMessageTitle>Accent message</span>
+                                Your changes has been saved
+                            </asm-message>
 
-                        <!-- Basic -->
-                        <asm-message [type]="'basic'">
-                            <span asmMessageTitle>Basic message</span>
-                            You have 3 new notifications
-                        </asm-message>
+                            <!-- Warn -->
+                            <asm-message [type]="'warn'">
+                                <span asmMessageTitle>Warn message</span>
+                                Fill all required fields to proceed next step
+                            </asm-message>
 
-                        <!-- Info -->
-                        <asm-message [type]="'info'">
-                            <span asmMessageTitle>Info message</span>
-                            This is a message with an 'info' level severity
-                        </asm-message>
+                            <!-- Basic -->
+                            <asm-message [type]="'basic'">
+                                <span asmMessageTitle>Basic message</span>
+                                You have 3 new notifications
+                            </asm-message>
 
-                        <!-- Success -->
-                        <asm-message [type]="'success'">
-                            <span asmMessageTitle>Success message</span>
-                            This is a message with an 'success' level severity
-                        </asm-message>
+                            <!-- Info -->
+                            <asm-message [type]="'info'">
+                                <span asmMessageTitle>Info message</span>
+                                This is a message with an 'info' level severity
+                            </asm-message>
 
-                        <!-- Warning -->
-                        <asm-message [type]="'warning'">
-                            <span asmMessageTitle>Warning message</span>
-                            This is a message with an 'warning' level severity
-                        </asm-message>
+                            <!-- Success -->
+                            <asm-message [type]="'success'">
+                                <span asmMessageTitle>Success message</span>
+                                This is a message with an 'success' level severity
+                            </asm-message>
 
-                        <!-- Error -->
-                        <asm-message [type]="'error'">
-                            <span asmMessageTitle>Error message</span>
-                            This is a message with an 'error' level severity
-                        </asm-message>
+                            <!-- Warning -->
+                            <asm-message [type]="'warning'">
+                                <span asmMessageTitle>Warning message</span>
+                                This is a message with an 'warning' level severity
+                            </asm-message>
+
+                            <!-- Error -->
+                            <asm-message [type]="'error'">
+                                <span asmMessageTitle>Error message</span>
+                                This is a message with an 'error' level severity
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -182,61 +186,65 @@
 
                     <mat-tab label="Preview">
 
-                        <!-- Primary -->
-                        <asm-message [type]="'primary'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Primary message</span>
-                            Thank you for joining our newsletter
-                        </asm-message>
+                        <ng-template matTabContent>
 
-                        <!-- Accent -->
-                        <asm-message [type]="'accent'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Accent message</span>
-                            Your changes has been saved
-                        </asm-message>
+                            <!-- Primary -->
+                            <asm-message [type]="'primary'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Primary message</span>
+                                Thank you for joining our newsletter
+                            </asm-message>
 
-                        <!-- Warn -->
-                        <asm-message [type]="'warn'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Warn message</span>
-                            Fill all required fields to proceed next step
-                        </asm-message>
+                            <!-- Accent -->
+                            <asm-message [type]="'accent'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Accent message</span>
+                                Your changes has been saved
+                            </asm-message>
 
-                        <!-- Basic -->
-                        <asm-message [type]="'basic'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Basic message</span>
-                            You have 3 new notifications
-                        </asm-message>
+                            <!-- Warn -->
+                            <asm-message [type]="'warn'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Warn message</span>
+                                Fill all required fields to proceed next step
+                            </asm-message>
 
-                        <!-- Info -->
-                        <asm-message [type]="'info'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Info message</span>
-                            This is a message with an 'info' level severity
-                        </asm-message>
+                            <!-- Basic -->
+                            <asm-message [type]="'basic'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Basic message</span>
+                                You have 3 new notifications
+                            </asm-message>
 
-                        <!-- Success -->
-                        <asm-message [type]="'success'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Success message</span>
-                            This is a message with an 'success' level severity
-                        </asm-message>
+                            <!-- Info -->
+                            <asm-message [type]="'info'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Info message</span>
+                                This is a message with an 'info' level severity
+                            </asm-message>
 
-                        <!-- Warning -->
-                        <asm-message [type]="'warning'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Warning message</span>
-                            This is a message with an 'warning' level severity
-                        </asm-message>
+                            <!-- Success -->
+                            <asm-message [type]="'success'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Success message</span>
+                                This is a message with an 'success' level severity
+                            </asm-message>
 
-                        <!-- Error -->
-                        <asm-message [type]="'error'"
-                                     [appearance]="'outline'">
-                            <span asmMessageTitle>Error message</span>
-                            This is a message with an 'error' level severity
-                        </asm-message>
+                            <!-- Warning -->
+                            <asm-message [type]="'warning'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Warning message</span>
+                                This is a message with an 'warning' level severity
+                            </asm-message>
+
+                            <!-- Error -->
+                            <asm-message [type]="'error'"
+                                         [appearance]="'outline'">
+                                <span asmMessageTitle>Error message</span>
+                                This is a message with an 'error' level severity
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -321,61 +329,65 @@
 
                     <mat-tab label="Preview">
 
-                        <!-- Primary -->
-                        <asm-message [type]="'primary'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Primary message</span>
-                            Thank you for joining our newsletter
-                        </asm-message>
+                        <ng-template matTabContent>
 
-                        <!-- Accent -->
-                        <asm-message [type]="'accent'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Accent message</span>
-                            Your changes has been saved
-                        </asm-message>
+                            <!-- Primary -->
+                            <asm-message [type]="'primary'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Primary message</span>
+                                Thank you for joining our newsletter
+                            </asm-message>
 
-                        <!-- Warn -->
-                        <asm-message [type]="'warn'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Warn message</span>
-                            Fill all required fields to proceed next step
-                        </asm-message>
+                            <!-- Accent -->
+                            <asm-message [type]="'accent'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Accent message</span>
+                                Your changes has been saved
+                            </asm-message>
 
-                        <!-- Basic -->
-                        <asm-message [type]="'basic'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Basic message</span>
-                            You have 3 new notifications
-                        </asm-message>
+                            <!-- Warn -->
+                            <asm-message [type]="'warn'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Warn message</span>
+                                Fill all required fields to proceed next step
+                            </asm-message>
 
-                        <!-- Info -->
-                        <asm-message [type]="'info'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Info message</span>
-                            This is a message with an 'info' level severity
-                        </asm-message>
+                            <!-- Basic -->
+                            <asm-message [type]="'basic'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Basic message</span>
+                                You have 3 new notifications
+                            </asm-message>
 
-                        <!-- Success -->
-                        <asm-message [type]="'success'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Success message</span>
-                            This is a message with an 'success' level severity
-                        </asm-message>
+                            <!-- Info -->
+                            <asm-message [type]="'info'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Info message</span>
+                                This is a message with an 'info' level severity
+                            </asm-message>
 
-                        <!-- Warning -->
-                        <asm-message [type]="'warning'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Warning message</span>
-                            This is a message with an 'warning' level severity
-                        </asm-message>
+                            <!-- Success -->
+                            <asm-message [type]="'success'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Success message</span>
+                                This is a message with an 'success' level severity
+                            </asm-message>
 
-                        <!-- Error -->
-                        <asm-message [type]="'error'"
-                                     [appearance]="'border'">
-                            <span asmMessageTitle>Error message</span>
-                            This is a message with an 'error' level severity
-                        </asm-message>
+                            <!-- Warning -->
+                            <asm-message [type]="'warning'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Warning message</span>
+                                This is a message with an 'warning' level severity
+                            </asm-message>
+
+                            <!-- Error -->
+                            <asm-message [type]="'error'"
+                                         [appearance]="'border'">
+                                <span asmMessageTitle>Error message</span>
+                                This is a message with an 'error' level severity
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -467,21 +479,25 @@
 
                     <mat-tab label="Preview">
 
-                        <asm-message [appearance]="'outline'"
-                                     [type]="'info'">
-                            <span asmMessageTitle>Message title</span>
-                            This is the message content
-                        </asm-message>
+                        <ng-template matTabContent>
 
-                        <asm-message [appearance]="'outline'"
-                                     [type]="'info'">
-                            <span asmMessageTitle>Message title without any content</span>
-                        </asm-message>
+                            <asm-message [appearance]="'outline'"
+                                         [type]="'info'">
+                                <span asmMessageTitle>Message title</span>
+                                This is the message content
+                            </asm-message>
 
-                        <asm-message [appearance]="'outline'"
-                                     [type]="'info'">
-                            Simple message without a title
-                        </asm-message>
+                            <asm-message [appearance]="'outline'"
+                                         [type]="'info'">
+                                <span asmMessageTitle>Message title without any content</span>
+                            </asm-message>
+
+                            <asm-message [appearance]="'outline'"
+                                         [type]="'info'">
+                                Simple message without a title
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -535,11 +551,15 @@
 
                     <mat-tab label="Preview">
 
-                        <asm-message [appearance]="'outline'"
-                                     [type]="'success'"
-                                     [showIcon]="false">
-                            Success message with no icon
-                        </asm-message>
+                        <ng-template matTabContent>
+
+                            <asm-message [appearance]="'outline'"
+                                         [type]="'success'"
+                                         [showIcon]="false">
+                                Success message with no icon
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -583,12 +603,16 @@
 
                     <mat-tab label="Preview">
 
-                        <asm-message [appearance]="'outline'"
-                                     [type]="'info'">
-                            <mat-icon asmMessageIcon
-                                      [svgIcon]="'notifications'"></mat-icon>
-                            Info message with a custom icon
-                        </asm-message>
+                        <ng-template matTabContent>
+
+                            <asm-message [appearance]="'outline'"
+                                         [type]="'info'">
+                                <mat-icon asmMessageIcon
+                                          [svgIcon]="'notifications'"></mat-icon>
+                                Info message with a custom icon
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -618,7 +642,9 @@
                 Dismissible messages
             </h2>
             <p>
-                Dismissible messages can be removed from the view by clicking their <b>X</b> button.
+                Dismissible messages can be removed from the view by clicking their <b>X</b> button. In order to get the dismiss button visible, the <code>[dismissed]</code> input
+                must be explicitly set either to <code>true</code> or <code>false</code>. Setting the <code>[dismissed]</code> input to <code>null</code> or simply removing it from
+                the element will remove the <b>X</b> button.
             </p>
 
             <div class="example-viewer">
@@ -636,22 +662,24 @@
 
                     <mat-tab label="Preview">
 
-                        <asm-message [appearance]="'outline'"
-                                     [dismissible]="true"
-                                     [dismissed]="false"
-                                     [name]="'dismissibleMessageBoxExample1Box1'"
-                                     [type]="'success'">
-                            Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
-                        </asm-message>
+                        <ng-template matTabContent>
 
-                        <asm-message [appearance]="'outline'"
-                                     [dismissible]="true"
-                                     [dismissed]="false"
-                                     [name]="'dismissibleMessageBoxExample1Box2'"
-                                     [type]="'info'">
-                            This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed by
-                            clicking the <b>close</b> button.
-                        </asm-message>
+                            <asm-message [appearance]="'outline'"
+                                         [dismissed]="false"
+                                         [name]="'dismissibleMessageBoxExample1Box1'"
+                                         [type]="'success'">
+                                Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
+                            </asm-message>
+
+                            <asm-message [appearance]="'outline'"
+                                         [dismissed]="false"
+                                         [name]="'dismissibleMessageBoxExample1Box2'"
+                                         [type]="'info'">
+                                This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed by
+                                clicking the <b>close</b> button.
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -661,7 +689,6 @@
                             <textarea>
 
                                 <asm-message [appearance]="'outline'"
-                                             [dismissible]="true"
                                              [dismissed]="false"
                                              [name]="'dismissibleMessageBoxExample1Box1'"
                                              [type]="'success'">
@@ -669,7 +696,6 @@
                                 </asm-message>
 
                                 <asm-message [appearance]="'outline'"
-                                             [dismissible]="true"
                                              [dismissed]="false"
                                              [name]="'dismissibleMessageBoxExample1Box2'"
                                              [type]="'info'">
@@ -717,22 +743,24 @@
 
                     <mat-tab label="Preview">
 
-                        <asm-message [appearance]="'outline'"
-                                     [dismissible]="true"
-                                     [dismissed]="false"
-                                     [name]="'dismissibleMessageBoxExample2Box1'"
-                                     [type]="'success'">
-                            Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
-                        </asm-message>
+                        <ng-template matTabContent>
 
-                        <asm-message [appearance]="'outline'"
-                                     [dismissible]="true"
-                                     [dismissed]="false"
-                                     [name]="'dismissibleMessageBoxExample2Box2'"
-                                     [type]="'info'">
-                            This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed by
-                            clicking the <b>close</b> button.
-                        </asm-message>
+                            <asm-message [appearance]="'outline'"
+                                         [dismissed]="false"
+                                         [name]="'dismissibleMessageBoxExample2Box1'"
+                                         [type]="'success'">
+                                Your subscription model is successfully upgraded to the <b>Lifetime Pro</b>.
+                            </asm-message>
+
+                            <asm-message [appearance]="'outline'"
+                                         [dismissed]="false"
+                                         [name]="'dismissibleMessageBoxExample2Box2'"
+                                         [type]="'info'">
+                                This one has a lot of text so you can see how the text is going to be displayed. Also this is a dismissible message box which can be dismissed by
+                                clicking the <b>close</b> button.
+                            </asm-message>
+
+                        </ng-template>
 
                     </mat-tab>
 
@@ -742,7 +770,6 @@
                             <textarea>
 
                                 <asm-message [appearance]="'outline'"
-                                             [dismissible]="true"
                                              [dismissed]="false"
                                              [name]="'dismissibleMessageBoxExample2Box1'"
                                              [type]="'success'">
@@ -750,7 +777,6 @@
                                 </asm-message>
 
                                 <asm-message [appearance]="'outline'"
-                                             [dismissible]="true"
                                              [dismissed]="false"
                                              [name]="'dismissibleMessageBoxExample2Box2'"
                                              [type]="'info'">

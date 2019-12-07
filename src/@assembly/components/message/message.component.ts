@@ -21,8 +21,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
 
     // Private
     private _appearance: 'border' | 'solid' | 'outline';
-    private _dismissible: boolean;
-    private _dismissed: boolean;
+    private _dismissed: null | boolean;
     private _showIcon: boolean;
     private _type: 'primary' | 'accent' | 'warn' | 'basic' | 'info' | 'success' | 'warning' | 'error';
     private _unsubscribeAll: Subject<any>;
@@ -47,8 +46,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
 
         // Set the defaults
         this.appearance = 'solid';
-        this.dismissible = false;
-        this.dismissed = false;
+        this.dismissed = null;
         this.showIcon = true;
         this.type = 'primary';
     }
@@ -85,45 +83,12 @@ export class AsmMessageComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Setter and getter for dismissible
-     *
-     * @param value
-     */
-    @Input()
-    set dismissible(value: boolean)
-    {
-        // If the value is the same, return...
-        if ( this._dismissible === value )
-        {
-            return;
-        }
-
-        // Update the class name
-        if ( value )
-        {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-dismissible');
-        }
-        else
-        {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-dismissible');
-        }
-
-        // Store the value
-        this._dismissible = value;
-    }
-
-    get dismissible(): boolean
-    {
-        return this._dismissible;
-    }
-
-    /**
      * Setter and getter for dismissed
      *
      * @param value
      */
     @Input()
-    set dismissed(value: boolean)
+    set dismissed(value: null | boolean)
     {
         // If the value is the same, return...
         if ( this._dismissed === value )
@@ -132,12 +97,18 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         }
 
         // Update the class name
-        if ( value )
+        if ( value === null )
         {
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-dismissible');
+        }
+        else if ( value === false )
+        {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-dismissible');
             this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-dismissed');
         }
         else
         {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-dismissible');
             this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-dismissed');
         }
 
@@ -145,7 +116,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         this._dismissed = value;
     }
 
-    get dismissed(): boolean
+    get dismissed(): null | boolean
     {
         return this._dismissed;
     }
