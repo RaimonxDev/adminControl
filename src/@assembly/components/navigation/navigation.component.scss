@@ -1069,6 +1069,10 @@ asm-navigation {
                 &.asm-navigation-item-active {
                     background: rgba(0, 0, 0, 0.12);
                 }
+
+                .asm-navigation-item-icon {
+                    color: asm-color($asm-gray, 600);
+                }
             }
 
             // Aside, Basic, Collapsable

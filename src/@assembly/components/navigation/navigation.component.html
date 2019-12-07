@@ -1,23 +1,21 @@
-<!-- WRAPPER -->
 <div class="asm-navigation-wrapper">
 
-    <!-- NAVIGATION HEADER -->
+    <!-- Header -->
     <div class="asm-navigation-header">
         <ng-content select="[asmNavigationHeader]"></ng-content>
     </div>
-    <!-- / NAVIGATION HEADER -->
 
-    <!-- NAVIGATION CONTENT -->
+    <!-- Content -->
     <div class="asm-navigation-content"
          asmScrollbar
          [asmScrollbarOptions]="{wheelPropagation: inner, suppressScrollX: true}">
 
-        <!-- Content Top -->
-        <div class="asm-navigation-content-top">
-            <ng-content select="[asmNavigationContentTop]"></ng-content>
+        <!-- Content header -->
+        <div class="asm-navigation-content-header">
+            <ng-content select="[asmNavigationContentHeader]"></ng-content>
         </div>
 
-        <!-- NAVIGATION ITEMS -->
+        <!-- Items -->
         <ng-container *ngFor="let item of data; trackBy: trackById">
 
             <!-- Aside -->
@@ -49,26 +47,22 @@
                                            [name]="name"></asm-navigation-subheader-item>
 
         </ng-container>
-        <!-- / NAVIGATION ITEMS -->
 
-        <!-- Content Bottom -->
-        <div class="asm-navigation-content-bottom">
-            <ng-content select="[asmNavigationContentBottom]"></ng-content>
+        <!-- Content footer -->
+        <div class="asm-navigation-content-footer">
+            <ng-content select="[asmNavigationContentFooter]"></ng-content>
         </div>
 
     </div>
-    <!-- / NAVIGATION CONTENT -->
 
-    <!-- NAVIGATION FOOTER -->
+    <!-- Footer -->
     <div class="asm-navigation-footer">
         <ng-content select="[asmNavigationFooter]"></ng-content>
     </div>
-    <!-- / NAVIGATION FOOTER -->
 
 </div>
-<!-- / WRAPPER -->
 
-<!-- ASIDE -->
+<!-- Aside -->
 <div class="asm-navigation-aside-wrapper"
      *ngIf="activeAsideItemId"
      asmScrollbar
@@ -78,7 +72,7 @@
      [@fadeOutLeft]="position === 'left'"
      [@fadeOutRight]="position === 'right'">
 
-    <!-- NAVIGATION ITEMS -->
+    <!-- Items -->
     <ng-container *ngFor="let item of data; trackBy: trackById">
 
         <!-- Aside -->
@@ -87,7 +81,5 @@
                                    [name]="name"></asm-navigation-aside-item>
 
     </ng-container>
-    <!-- / NAVIGATION ITEMS -->
 
 </div>
-<!-- / ASIDE -->

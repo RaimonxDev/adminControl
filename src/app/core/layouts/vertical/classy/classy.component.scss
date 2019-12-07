@@ -6,44 +6,25 @@ layout[type="classy-vertical"] {
     flex: 1 1 auto;
     width: 100%;
 
-    // Navigation
-    asm-navigation {
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 80px;
+        min-height: 80px;
+        max-height: 80px;
+        padding: 24px 32px 0 32px;
 
-        &.theme-dark {
-
-            .asm-navigation-item {
-
-                .asm-navigation-item-icon {
-                    color: asm-color($asm-gray, 600);
-                }
-            }
-        }
-
-        .asm-navigation-content-top {
-
-            .logo {
-                display: flex;
-                align-items: center;
-                height: 80px;
-                min-height: 80px;
-                max-height: 80px;
-                padding: 24px 32px 0 32px;
-
-                img {
-                    max-width: 163px;
-                }
-            }
+        img {
+            max-width: 163px;
         }
     }
 
-    // Wrapper
     > .wrapper {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
         min-width: 0;
 
-        // Header
         > .header {
             position: relative;
             display: flex;
@@ -170,7 +151,6 @@ layout[type="classy-vertical"] {
             }
         }
 
-        // Content
         > .content {
             display: flex;
             flex-direction: column;
@@ -183,7 +163,6 @@ layout[type="classy-vertical"] {
             }
         }
 
-        // Footer
         > .footer {
             display: flex;
             flex: 1 1 auto;
@@ -198,7 +177,6 @@ layout[type="classy-vertical"] {
         }
     }
 
-    // Fixed header
     &.fixed-header {
 
         > .wrapper {
@@ -210,7 +188,6 @@ layout[type="classy-vertical"] {
         }
     }
 
-    // Fixed footer
     &.fixed-footer {
 
         > .wrapper {
@@ -247,7 +224,6 @@ layout[type="classy-vertical"] {
 
         > .wrapper {
 
-            // Header
             > .header {
                 @if ($is-dark) {
                     background: asm-dark-elevation(1);
@@ -299,7 +275,6 @@ layout[type="classy-vertical"] {
                 }
             }
 
-            // Footer
             > .footer {
                 @if ($is-dark) {
                     background: asm-dark-elevation(1);
