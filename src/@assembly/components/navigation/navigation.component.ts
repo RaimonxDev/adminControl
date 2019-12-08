@@ -37,9 +37,9 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     private _asideOverlay: HTMLElement | null;
     private _asmScrollbarDirectives: QueryList<AsmScrollbarDirective>;
     private _asmScrollbarDirectivesSubscription: Subscription;
-    private _data: AsmNavigationItem[];
     private _inner: boolean;
     private _mode: AsmNavigationMode;
+    private _navigation: AsmNavigationItem[];
     private _opened: boolean | '';
     private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
@@ -168,18 +168,18 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      * Setter & getter for data
      */
     @Input()
-    set data(value: AsmNavigationItem[])
+    set navigation(value: AsmNavigationItem[])
     {
         // Store the data
-        this._data = value;
+        this._navigation = value;
 
         // Mark for check
         this._changeDetectorRef.markForCheck();
     }
 
-    get data(): AsmNavigationItem[]
+    get navigation(): AsmNavigationItem[]
     {
-        return this._data;
+        return this._navigation;
     }
 
     /**

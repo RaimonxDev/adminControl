@@ -9,6 +9,7 @@ import { MockDocsApi } from '@mock-api/data/docs';
 import { MockHelpCenterApi } from '@mock-api/data/help-center';
 import { MockIconsApi } from '@mock-api/data/icons';
 import { MockMailboxApi } from '@mock-api/data/mailbox';
+import { MockMessagesApi } from '@mock-api/data/messages';
 import { MockNavigationApi } from '@mock-api/data/navigation';
 import { MockNotificationsApi } from '@mock-api/data/notifications';
 import { MockSearchResultsApi } from '@mock-api/data/search';
@@ -38,6 +39,7 @@ export class AsmMockApiModule
      * @param {MockHelpCenterApi} _mockHelpCenterApi
      * @param {MockIconsApi} _mockIconsApi
      * @param {MockMailboxApi} _mockMailboxApi
+     * @param {MockMessagesApi} _mockMessagesApi
      * @param {MockNavigationApi} _mockNavigationApi
      * @param {MockNotificationsApi} _mockNotificationsApi
      * @param {MockSearchResultsApi} _mockSearchResultsApi
@@ -53,6 +55,7 @@ export class AsmMockApiModule
         private _mockHelpCenterApi: MockHelpCenterApi,
         private _mockIconsApi: MockIconsApi,
         private _mockMailboxApi: MockMailboxApi,
+        private _mockMessagesApi: MockMessagesApi,
         private _mockNavigationApi: MockNavigationApi,
         private _mockNotificationsApi: MockNotificationsApi,
         private _mockSearchResultsApi: MockSearchResultsApi,
@@ -68,6 +71,7 @@ export class AsmMockApiModule
         this._mockHelpCenterApi.init();
         this._mockIconsApi.init();
         this._mockMailboxApi.init();
+        this._mockMessagesApi.init();
         this._mockNavigationApi.init();
         this._mockNotificationsApi.init();
         this._mockSearchResultsApi.init();

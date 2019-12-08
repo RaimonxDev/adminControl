@@ -1,8 +1,8 @@
-import { AsmNotification } from '@assembly';
 import * as moment from 'moment';
+import { Notification } from 'app/core/main/common/notifications/notifications.type';
 
 /* tslint:disable:max-line-length */
-export const notifications: AsmNotification[] = [
+export const notifications: Notification[] = [
     {
         id         : '493190c9-5b61-4912-afe5-78c21f1044d7',
         icon       : 'check_circle',

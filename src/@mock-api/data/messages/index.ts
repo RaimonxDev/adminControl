@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
-import { notifications as notificationsData } from '@mock-api/data/notifications/data';
+import { messages as messagesData } from '@mock-api/data/messages/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockNotificationsApi
+export class MockMessagesApi
 {
     // Private
-    private _notifications: any;
+    private _messages: any;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ export class MockNotificationsApi
     )
     {
         // Set the data
-        this._notifications = notificationsData;
+        this._messages = messagesData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -35,99 +35,99 @@ export class MockNotificationsApi
     init(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ Notifications - GET
+        // @ Messages - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/notifications')
+            .onGet('api/messages')
             .reply(() => {
                 return [
                     200,
                     {
-                        notifications: _.cloneDeep(this._notifications)
+                        messages: _.cloneDeep(this._messages)
                     }
                 ];
             });
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Notifications - PUT
+        // @ Messages - PUT
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onPut('api/notifications')
+            .onPut('api/messages')
             .reply((request) => {
 
-                // Get the notification
-                const newNotification = _.cloneDeep(request.body.notification);
+                // Get the message
+                const newMessage = _.cloneDeep(request.body.message);
 
                 // Generate a new GUID
-                newNotification.id = AsmMockApiUtils.guid();
+                newMessage.id = AsmMockApiUtils.guid();
 
-                // Unshift the new notification
-                this._notifications.unshift(newNotification);
+                // Unshift the new message
+                this._messages.unshift(newMessage);
 
                 return [
                     200,
-                    newNotification
+                    newMessage
                 ];
             });
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Notifications - PATCH
+        // @ Messages - PATCH
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onPatch('api/notifications')
+            .onPatch('api/messages')
             .reply((request) => {
 
-                // Get the id and notification
+                // Get the id and message
                 const id = request.body.id;
-                const notification = _.cloneDeep(request.body.notification);
+                const message = _.cloneDeep(request.body.message);
 
-                // Prepare the updated notification
-                let updatedNotification = null;
+                // Prepare the updated message
+                let updatedMessage = null;
 
-                // Find the notification and update it
-                this._notifications.forEach((item, index, notifications) => {
+                // Find the message and update it
+                this._messages.forEach((item, index, messages) => {
 
                     if ( item.id === id )
                     {
-                        // Update the notification
-                        notifications[index] = _.assign({}, notifications[index], notification);
+                        // Update the message
+                        messages[index] = _.assign({}, messages[index], message);
 
-                        // Store the updated notification
-                        updatedNotification = notifications[index];
+                        // Store the updated message
+                        updatedMessage = messages[index];
                     }
                 });
 
                 return [
                     200,
-                    updatedNotification
+                    updatedMessage
                 ];
             });
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Notifications - DELETE
+        // @ Messages - DELETE
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onDelete('api/notifications')
+            .onDelete('api/messages')
             .reply((request) => {
 
                 // Get the id
                 const id = request.params.get('id');
 
-                // Prepare the deleted notification
-                let deletedNotification = null;
+                // Prepare the deleted message
+                let deletedMessage = null;
 
-                // Find the notification
-                const index = this._notifications.findIndex((item) => item.id === id);
+                // Find the message
+                const index = this._messages.findIndex((item) => item.id === id);
 
-                // Store the deleted notification
-                deletedNotification = _.cloneDeep(this._notifications[index]);
+                // Store the deleted message
+                deletedMessage = _.cloneDeep(this._messages[index]);
 
-                // Delete the notification
-                this._notifications.splice(index, 1);
+                // Delete the message
+                this._messages.splice(index, 1);
 
                 return [
                     200,
-                    deletedNotification
+                    deletedMessage
                 ];
             });
 
@@ -135,15 +135,15 @@ export class MockNotificationsApi
         // @ Mark all as read - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/notifications/mark-all-as-read')
+            .onGet('api/messages/mark-all-as-read')
             .reply(() => {
 
-                // Go through all notifications
-                this._notifications.forEach((item, index, notifications) => {
+                // Go through all messages
+                this._messages.forEach((item, index, messages) => {
 
                     // Mark it as read
-                    notifications[index].read = true;
-                    notifications[index].seen = true;
+                    messages[index].read = true;
+                    messages[index].seen = true;
                 });
 
                 return [
@@ -156,31 +156,31 @@ export class MockNotificationsApi
         // @ Toggle read status - POST
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onPost('api/notifications/toggle-read-status')
+            .onPost('api/messages/toggle-read-status')
             .reply((request) => {
 
-                // Get the notification
-                const notification = _.cloneDeep(request.body.notification);
+                // Get the message
+                const message = _.cloneDeep(request.body.message);
 
-                // Prepare the updated notification
-                let updatedNotification = null;
+                // Prepare the updated message
+                let updatedMessage = null;
 
-                // Find the notification and update it
-                this._notifications.forEach((item, index, notifications) => {
+                // Find the message and update it
+                this._messages.forEach((item, index, messages) => {
 
-                    if ( item.id === notification.id )
+                    if ( item.id === message.id )
                     {
-                        // Update the notification
-                        notifications[index].read = notification.read;
+                        // Update the message
+                        messages[index].read = message.read;
 
-                        // Store the updated notification
-                        updatedNotification = notifications[index];
+                        // Store the updated message
+                        updatedMessage = messages[index];
                     }
                 });
 
                 return [
                     200,
-                    updatedNotification
+                    updatedMessage
                 ];
             });
     }

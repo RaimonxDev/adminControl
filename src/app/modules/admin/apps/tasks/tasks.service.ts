@@ -103,29 +103,28 @@ export class TasksService
      */
     updateTag(id, tag): Observable<Tag>
     {
-        return this.tags$
-                   .pipe(
-                       take(1),
-                       switchMap(tags => this._httpClient.patch<Tag>('api/apps/tasks/tag', {
-                           id,
-                           tag
-                       }).pipe(
-                           map((updatedTag) => {
+        return this.tags$.pipe(
+            take(1),
+            switchMap(tags => this._httpClient.patch<Tag>('api/apps/tasks/tag', {
+                id,
+                tag
+            }).pipe(
+                map((updatedTag) => {
 
-                               // Find the index of the updated tag
-                               const index = tags.findIndex(item => item.id === id);
+                    // Find the index of the updated tag
+                    const index = tags.findIndex(item => item.id === id);
 
-                               // Update the tag
-                               tags[index] = updatedTag;
+                    // Update the tag
+                    tags[index] = updatedTag;
 
-                               // Update the tags
-                               this._tags.next(tags);
+                    // Update the tags
+                    this._tags.next(tags);
 
-                               // Return the updated tag
-                               return updatedTag;
-                           })
-                       ))
-                   );
+                    // Return the updated tag
+                    return updatedTag;
+                })
+            ))
+        );
     }
 
     /**

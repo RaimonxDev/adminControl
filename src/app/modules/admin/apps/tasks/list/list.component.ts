@@ -90,7 +90,7 @@ export class TasksListComponent implements OnInit, OnDestroy
                 setTimeout(() => {
 
                     // Get the component -> navigation data -> item
-                    const mainNavigation = this._asmNavigationService.getComponent('mainNavigation').data;
+                    const mainNavigation = this._asmNavigationService.getComponent('mainNavigation').navigation;
                     const menuItem = this._asmNavigationService.getItem('applications.tasks', mainNavigation);
 
                     // Update the subtitle of the item

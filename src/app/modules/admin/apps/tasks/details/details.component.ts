@@ -360,7 +360,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         if ( isTagApplied )
         {
             // Remove the tag from the task
-            this.removeTagFromTask(tag);
+            this.deleteTagFromTask(tag);
         }
         else
         {
@@ -433,11 +433,11 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Remove tag from the task
+     * Delete tag from the task
      *
      * @param tag
      */
-    removeTagFromTask(tag): void
+    deleteTagFromTask(tag): void
     {
         // Remove the tag
         this.task.tags.splice(this.task.tags.findIndex(item => item === tag.id), 1);
@@ -460,7 +460,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         }
         else
         {
-            this.removeTagFromTask(tag);
+            this.deleteTagFromTask(tag);
         }
     }
 

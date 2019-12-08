@@ -7,11 +7,11 @@ import { MainComponent } from 'app/core/main/main.component';
 // tslint:disable:max-line-length
 export const adminRoutes: Route[] = [{
     path       : '',
+    canActivate: [AuthGuard],
     component  : MainComponent,
     data       : {
         layout: 'classy-vertical'
     },
-    canActivate: [AuthGuard],
     resolve    : {
         admin: AdminResolver,
     },

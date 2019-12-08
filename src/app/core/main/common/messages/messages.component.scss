@@ -1,0 +1,343 @@
+@import 'assembly';
+
+messages {
+    display: flex;
+    align-items: center;
+
+    .messages-toggle {
+        position: relative;
+
+        .dot {
+            position: absolute;
+            right: -2px;
+            top: -1px;
+            width: 10px;
+            height: 10px;
+            border-width: 2px;
+            border-radius: 50%;
+            z-index: 5;
+            pointer-events: none;
+        }
+    }
+}
+
+// Messages panel
+.messages-panel {
+    max-width: 416px !important;
+    min-width: 416px !important;
+    border-radius: 6px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    @include asm-elevation(3);
+
+    .header {
+        display: flex;
+        align-items: center;
+        height: 120px;
+        min-height: 120px;
+        max-height: 120px;
+        padding: 0 24px;
+        border-bottom-width: 1px;
+
+        .header-icon {
+            position: relative;
+            display: flex;
+            margin-right: 16px;
+
+            .mat-icon {
+                width: 40px;
+                min-width: 40px;
+                height: 40px;
+                min-height: 40px;
+                line-height: 40px !important;
+                padding: 8px;
+                border-radius: 10px;
+            }
+
+            .unread-count {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                right: -6px;
+                top: -6px;
+                padding: 2px 6px;
+                border-radius: 10px;
+                font-size: 10px;
+                font-weight: bold;
+            }
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .mark-all-as-read {
+            margin-left: auto;
+            font-size: 13px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        max-height: 480px;
+        overflow-y: auto;
+
+        .message {
+            display: flex;
+            padding: 20px 16px 20px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            border-bottom-width: 1px;
+
+            &:last-child {
+                border-bottom-width: 0;
+            }
+
+            &:hover {
+
+                .actions {
+
+                    .indicator {
+
+                        .read {
+                            opacity: 1;
+                        }
+                    }
+
+                    .remove {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            a {
+                display: flex;
+                flex: 1 1 auto;
+
+                .icon,
+                .image {
+                    min-width: 32px;
+                    width: 32px;
+                    min-height: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    margin-right: 16px;
+                }
+
+                .icon {
+                    padding: 6px;
+                }
+
+                .image {
+                    overflow: hidden;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                .message-content {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    .title {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        font-weight: 500;
+                        font-size: 15px;
+                    }
+
+                    .description {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+
+                    .time {
+                        margin-top: 8px;
+                        font-size: 12px;
+                        line-height: 1;
+                    }
+                }
+            }
+
+            .actions {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                margin-left: 8px;
+
+                .indicator {
+                    width: 24px;
+                    height: 24px;
+                    min-height: 24px;
+                    line-height: 24px !important;
+
+                    .read,
+                    .unread {
+                        width: 8px;
+                        min-width: 8px;
+                        max-width: 8px;
+                        height: 8px;
+                        min-height: 8px;
+                        max-height: 8px;
+                        border-radius: 50%;
+                    }
+
+                    .read {
+                        opacity: 0;
+                    }
+                }
+
+                .remove {
+                    width: 24px;
+                    height: 24px;
+                    min-height: 24px;
+                    line-height: 24px !important;
+                    opacity: 0;
+
+                    .mat-icon {
+                        @include asm-icon-size(16);
+                    }
+                }
+            }
+        }
+
+        .empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 96px 24px;
+
+            .mat-icon {
+                @include asm-icon-size(64);
+
+                + * {
+                    margin-top: 16px;
+                    font-size: 16px
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    messages {
+
+        .messages-toggle {
+
+            .dot {
+                background: asm-color($asm-blue, 600);
+                border-color: map-get($background, card);
+            }
+        }
+    }
+
+    // Messages panel
+    .messages-panel {
+        background: map-get($background, card);
+
+        .header {
+
+            @if ($is-dark) {
+                background: asm-dark-elevation(1);
+            } @else {
+                background: asm-color($asm-gray, 800);
+                color: asm-contrast($asm-gray, 800);
+            }
+
+            .header-icon {
+
+                .mat-icon {
+                    background: map-get($primary, default) !important;
+                    color: map-get($primary, default-contrast) !important;
+                }
+
+                .unread-count {
+                    background: white;
+                    color: map-get($primary, default);
+                }
+            }
+
+            .title {
+
+            }
+
+            .mark-all-as-read {
+                color: map-get($asm-gray, 500);
+            }
+        }
+
+        .content {
+
+            .message {
+
+                &:hover {
+                    @if ($is-dark) {
+                        background: asm-dark-elevation(1) !important;
+                    } @else {
+                        background: asm-color($asm-gray, 100) !important;
+                    }
+                }
+
+                .icon {
+                    color: map-get($primary, default);
+
+                    @if ($is-dark) {
+                        background: asm-dark-elevation(1);
+                    } @else {
+                        background: map-get($primary, 100);
+                    }
+                }
+
+                .message-content {
+
+                    .time {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+
+                .actions {
+
+                    .indicator {
+
+                        .unread {
+                            background: asm-color($asm-blue, 600);
+                        }
+
+                        .read {
+                            @if ($is-dark) {
+                                background: asm-color($asm-gray, 600);
+                            } @else {
+                                background: asm-color($asm-gray, 500);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

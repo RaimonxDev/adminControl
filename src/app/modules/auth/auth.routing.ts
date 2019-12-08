@@ -7,11 +7,11 @@ export const authRoutes: Route[] = [
     // Confirmation required
     {
         path       : 'confirmation-required',
+        canActivate: [NoAuthGuard],
         component  : MainComponent,
         data       : {
             layout: 'empty'
         },
-        canActivate: [NoAuthGuard],
         children   : [
             {
                 path        : '',

@@ -1,7 +1,8 @@
-import { AsmShortcut } from '@assembly';
+import { Shortcut } from 'app/core/main/common/shortcuts/shortcuts.type';
 
 /* tslint:disable:max-line-length */
-export const shortcuts: AsmShortcut[] = [
+
+export const shortcuts: Shortcut[] = [
     {
         id         : 'a1ae91d3-e2cb-459b-9be9-a184694f548b',
         label      : 'Changelog',

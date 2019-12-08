@@ -1,18 +1,18 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { AuthModule } from 'app/core/auth/auth.module';
-import { LayoutsModule } from 'app/core/layouts/layouts.module';
 import { MainModule } from 'app/core/main/main.module';
+import { UserModule } from 'app/core/user/user.module';
 
 @NgModule({
     imports: [
         AuthModule,
-        LayoutsModule,
-        MainModule
+        MainModule,
+        UserModule
     ],
     exports: [
         AuthModule,
-        LayoutsModule,
-        MainModule
+        MainModule,
+        UserModule
     ]
 })
 export class CoreModule

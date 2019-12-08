@@ -25,6 +25,16 @@ export class AdminResolver implements Resolve<any>
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Load messages
+     *
+     * @private
+     */
+    private _loadMessages(): Observable<any>
+    {
+        return this._httpClient.get('api/messages');
+    }
+
+    /**
      * Load navigation data
      *
      * @private
@@ -78,6 +88,9 @@ export class AdminResolver implements Resolve<any>
     {
         return forkJoin([
 
+            // Messages
+            this._loadMessages(),
+
             // Navigation data
             this._loadNavigation(),
 
@@ -93,13 +106,14 @@ export class AdminResolver implements Resolve<any>
             map((data) => {
 
                 return {
+                    messages     : data[0].messages,
                     navigation   : {
-                        compact: data[0].compact,
-                        default: data[0].default
+                        compact: data[1].compact,
+                        default: data[1].default
                     },
-                    notifications: data[1].notifications,
-                    shortcuts    : data[2].shortcuts,
-                    user         : data[3].user
+                    notifications: data[2].notifications,
+                    shortcuts    : data[3].shortcuts,
+                    user         : data[4].user
                 };
             })
         );
