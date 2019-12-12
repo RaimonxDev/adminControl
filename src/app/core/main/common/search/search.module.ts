@@ -1,30 +1,30 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { AsmSearchComponent } from '@assembly/components/search/search.component';
+import { SharedModule } from 'app/shared/shared.module';
+import { SearchComponent } from 'app/core/main/common/search/search.component';
 
 @NgModule({
     declarations: [
-        AsmSearchComponent
+        SearchComponent
     ],
     imports     : [
-        CommonModule,
-        ReactiveFormsModule,
+        RouterModule.forChild([]),
         MatAutocompleteModule,
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
-        MatInputModule
+        MatInputModule,
+        SharedModule
     ],
     exports     : [
-        AsmSearchComponent
+        SearchComponent
     ]
 })
-export class AsmSearchModule
+export class SearchModule
 {
 }

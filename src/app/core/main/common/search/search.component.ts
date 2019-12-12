@@ -1,20 +1,22 @@
 import { Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
-import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 
 @Component({
-    selector     : 'asm-search',
+    selector     : 'search',
     templateUrl  : './search.component.html',
     styleUrls    : ['./search.component.scss'],
     encapsulation: ViewEncapsulation.None,
     exportAs     : 'asmSearch',
     animations   : AsmAnimations
 })
-export class AsmSearchComponent implements OnInit, OnDestroy
+export class SearchComponent implements OnInit, OnDestroy
 {
+    results: any[] | null;
     searchControl: FormControl;
 
     // Result template
@@ -44,30 +46,30 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     // Private
     private _appearance: 'basic' | 'bar';
     private _opened: boolean;
-    private _results: any[] | null;
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
      * @param {ElementRef} _elementRef
+     * @param {HttpClient} _httpClient
      * @param {Renderer2} _renderer2
      */
     constructor(
         private _elementRef: ElementRef,
+        private _httpClient: HttpClient,
         private _renderer2: Renderer2
     )
     {
         // Set the private defaults
-        this._results = null;
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
         this.appearance = 'basic';
         this.debounce = this.debounce || 300;
-        this.minLength = this.minLength || 3;
+        this.minLength = this.minLength || 2;
         this.opened = false;
-        this.search = new EventEmitter();
+        this.results = null;
         this.searchControl = new FormControl();
     }
 
@@ -96,14 +98,14 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         let appearanceClassName;
 
         // Remove the previous appearance class
-        appearanceClassName = 'asm-search-appearance-' + this.appearance;
+        appearanceClassName = 'search-appearance-' + this.appearance;
         this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
 
         // Store the appearance
         this._appearance = value;
 
         // Add the new appearance class
-        appearanceClassName = 'asm-search-appearance-' + this.appearance;
+        appearanceClassName = 'search-appearance-' + this.appearance;
         this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
     }
 
@@ -132,41 +134,18 @@ export class AsmSearchComponent implements OnInit, OnDestroy
         if ( value )
         {
             // Add opened class
-            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-search-opened');
+            this._renderer2.addClass(this._elementRef.nativeElement, 'search-opened');
         }
         else
         {
             // Remove opened class
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-search-opened');
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'search-opened');
         }
     }
 
     get opened(): boolean
     {
         return this._opened;
-    }
-
-    /**
-     * Setter and getter for results
-     *
-     * @param value
-     */
-    @Input()
-    set results(value: any[] | null)
-    {
-        // If the value is the same, return...
-        if ( this._results === value )
-        {
-            return;
-        }
-
-        // Store the results
-        this._results = value;
-    }
-
-    get results(): any[] | null
-    {
-        return this._results;
     }
 
     /**
@@ -232,7 +211,10 @@ export class AsmSearchComponent implements OnInit, OnDestroy
                 })
             )
             .subscribe((value) => {
-                this.search.emit(value);
+                this._httpClient.post('api/search', {query: value})
+                    .subscribe((response: any) => {
+                        this.results = response.results;
+                    });
             });
     }
 
@@ -259,7 +241,7 @@ export class AsmSearchComponent implements OnInit, OnDestroy
     {
         // Listen for escape to close the search
         // if the appearance is 'bar'
-        if ( this.appearance === 'bar')
+        if ( this.appearance === 'bar' )
         {
             // Escape
             if ( event.keyCode === 27 )

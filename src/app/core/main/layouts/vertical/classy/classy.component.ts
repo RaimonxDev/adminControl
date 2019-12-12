@@ -1,5 +1,4 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -17,7 +16,6 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
 {
     data: any;
     isScreenSmall: boolean;
-    searchResults: any[] | null;
     user: any;
 
     @HostBinding('class.fixed-header')
@@ -37,7 +35,6 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
      * @param {AuthService} _authService
-     * @param {HttpClient} _httpClient
      * @param {UserService}_userService
      */
     constructor(
@@ -46,7 +43,6 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
         private _authService: AuthService,
-        private _httpClient: HttpClient,
         private _userService: UserService
     )
     {
@@ -56,7 +52,6 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
         // Set the defaults
         this.fixedHeader = false;
         this.fixedFooter = false;
-        this.searchResults = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -127,19 +122,6 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
     logout(): void
     {
         this._authService.logout();
-    }
-
-    /**
-     * On search
-     *
-     * @param value
-     */
-    onSearch(value): void
-    {
-        this._httpClient.post('api/search', {query: value})
-            .subscribe((response: any) => {
-                this.searchResults = response.results;
-            });
     }
 
     /**

@@ -87,11 +87,8 @@ export class MockSearchResultsApi
                         result.title = result.title.replace(re, '<mark>$1</mark>');
                     });
 
-                    // Add the results to the results object
-                    results.push({
-                        label  : 'Pages',
-                        results: navigationResults
-                    });
+                    // Add the results
+                    results.push(...navigationResults);
                 }
 
                 // If there are contacts results...
@@ -107,13 +104,13 @@ export class MockSearchResultsApi
                         // Make the found chars bold
                         const re = new RegExp('(' + query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + ')', 'ig');
                         result.title = result.title.replace(re, '<mark>$1</mark>');
+
+                        // Add a link
+                        result.link = '/apps/contacts/' + result.id;
                     });
 
                     // Add the results to the results object
-                    results.push({
-                        label  : 'Contacts',
-                        results: contactsResults
-                    });
+                    results.push(...contactsResults);
                 }
 
                 // Return the results
