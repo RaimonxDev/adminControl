@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 
 @Injectable({
@@ -8,16 +7,6 @@ import { AsmNavigationComponent } from '@assembly/components/navigation/navigati
 })
 export class AsmNavigationService
 {
-    autoCollapse: boolean;
-    showTooltips: boolean;
-    onAppearanceChanged: BehaviorSubject<AsmNavigationAppearance | null>;
-    onModeChanged: BehaviorSubject<AsmNavigationMode | null>;
-    onOpenedChanged: BehaviorSubject<boolean | '' | null>;
-    onPositionChanged: BehaviorSubject<AsmNavigationPosition | null>;
-    onRefresh: BehaviorSubject<string | null>;
-    onCollapsableItemCollapsed: BehaviorSubject<AsmNavigationItem | null>;
-    onCollapsableItemExpanded: BehaviorSubject<AsmNavigationItem | null>;
-
     // Private
     private _componentRegistry: Map<string, AsmNavigationComponent>;
     private _navigationStore: Map<string, AsmNavigationItem[]>;
@@ -30,15 +19,6 @@ export class AsmNavigationService
         // Set the private defaults
         this._componentRegistry = new Map<string, AsmNavigationComponent>();
         this._navigationStore = new Map<string, any>();
-
-        // Set the defaults
-        this.onAppearanceChanged = new BehaviorSubject(null);
-        this.onModeChanged = new BehaviorSubject(null);
-        this.onOpenedChanged = new BehaviorSubject(null);
-        this.onPositionChanged = new BehaviorSubject(null);
-        this.onRefresh = new BehaviorSubject(null);
-        this.onCollapsableItemCollapsed = new BehaviorSubject(null);
-        this.onCollapsableItemExpanded = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -114,17 +94,6 @@ export class AsmNavigationService
 
         // Delete from the storage
         this._navigationStore.delete(key);
-    }
-
-    /**
-     * Refresh the navigation with the given name
-     *
-     * @param name
-     */
-    refreshNavigation(name: string): void
-    {
-        // Execute the observable
-        this.onRefresh.next(name);
     }
 
     /**

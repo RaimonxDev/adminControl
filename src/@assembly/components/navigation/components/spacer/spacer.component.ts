@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { filter, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 
@@ -21,6 +22,7 @@ export class AsmNavigationSpacerItemComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
+    private _asmNavigationComponent: AsmNavigationComponent;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -47,10 +49,12 @@ export class AsmNavigationSpacerItemComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to onRefresh
-        this._asmNavigationService.onRefresh.pipe(
-            takeUntil(this._unsubscribeAll),
-            filter((name) => name && this.name === name)
+        // Get the parent navigation component
+        this._asmNavigationComponent = this._asmNavigationService.getComponent(this.name);
+
+        // Subscribe to onRefreshed on the navigation component
+        this._asmNavigationComponent.onRefreshed.pipe(
+            takeUntil(this._unsubscribeAll)
         ).subscribe(() => {
 
             // Mark for check

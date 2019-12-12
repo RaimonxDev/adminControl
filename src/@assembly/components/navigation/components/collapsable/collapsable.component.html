@@ -63,12 +63,15 @@
             <!-- Basic -->
             <asm-navigation-basic-item *ngIf="item.type === 'basic'"
                                        [item]="item"
-                                       [name]="name"></asm-navigation-basic-item>
+                                       [name]="name"
+                                       [showTooltips]="showTooltips"></asm-navigation-basic-item>
 
             <!-- Collapsable -->
             <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
                                              [item]="item"
-                                             [name]="name"></asm-navigation-collapsable-item>
+                                             [name]="name"
+                                             [autoCollapse]="autoCollapse"
+                                             [showTooltips]="showTooltips"></asm-navigation-collapsable-item>
 
             <!-- Divider -->
             <asm-navigation-divider-item *ngIf="item.type === 'divider'"

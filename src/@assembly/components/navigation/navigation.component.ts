@@ -1,7 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { merge, Subject, Subscription } from 'rxjs';
-import { delay, filter, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, merge, Subject, Subscription } from 'rxjs';
+import { delay, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.type';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
@@ -19,6 +19,9 @@ import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.
 export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 {
     activeAsideItemId: null | string;
+    onCollapsableItemCollapsed: BehaviorSubject<AsmNavigationItem | null>;
+    onCollapsableItemExpanded: BehaviorSubject<AsmNavigationItem | null>;
+    onRefreshed: BehaviorSubject<boolean | null>;
 
     // Auto collapse
     @Input()
@@ -31,6 +34,22 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     // Show tooltips
     @Input()
     showTooltips: boolean;
+
+    // On appearance changed
+    @Output()
+    readonly appearanceChanged: EventEmitter<AsmNavigationAppearance>;
+
+    // On mode changed
+    @Output()
+    readonly modeChanged: EventEmitter<AsmNavigationMode>;
+
+    // On opened changed
+    @Output()
+    readonly openedChanged: EventEmitter<boolean | ''>;
+
+    // On position changed
+    @Output()
+    readonly positionChanged: EventEmitter<AsmNavigationPosition>;
 
     // Private
     private _appearance: AsmNavigationAppearance;
@@ -74,6 +93,15 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
+        this.appearanceChanged = new EventEmitter<AsmNavigationAppearance>();
+        this.modeChanged = new EventEmitter<AsmNavigationMode>();
+        this.openedChanged = new EventEmitter<boolean | ''>();
+        this.positionChanged = new EventEmitter<AsmNavigationPosition>();
+
+        this.onCollapsableItemCollapsed = new BehaviorSubject(null);
+        this.onCollapsableItemExpanded = new BehaviorSubject(null);
+        this.onRefreshed = new BehaviorSubject(null);
+
         this.activeAsideItemId = null;
         this.appearance = 'classic';
         this.autoCollapse = true;
@@ -81,6 +109,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this.mode = 'side';
         this.opened = false;
         this.position = 'left';
+        this.showTooltips = false;
         this.transparentOverlay = false;
     }
 
@@ -116,7 +145,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
 
         // Execute the observable
-        this._asmNavigationService.onAppearanceChanged.next(this.appearance);
+        this.appearanceChanged.next(this.appearance);
     }
 
     get appearance(): AsmNavigationAppearance
@@ -148,8 +177,8 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         // Update the scrollbars on collapsable items' collapse/expand
         this._asmScrollbarDirectivesSubscription =
             merge(
-                this._asmNavigationService.onCollapsableItemCollapsed,
-                this._asmNavigationService.onCollapsableItemExpanded
+                this.onCollapsableItemCollapsed,
+                this.onCollapsableItemExpanded
             )
                 .pipe(
                     takeUntil(this._unsubscribeAll),
@@ -236,7 +265,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
             this._hideOverlay();
 
             // Execute the observable
-            this._asmNavigationService.onModeChanged.next(value);
+            this.modeChanged.next(value);
         }
 
         // If the mode changes to the 'side' from the 'over'...
@@ -246,7 +275,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
             this.closeAside();
 
             // Execute the observable
-            this._asmNavigationService.onModeChanged.next(value);
+            this.modeChanged.next(value);
         }
 
         let modeClassName;
@@ -263,7 +292,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._renderer2.addClass(this._elementRef.nativeElement, modeClassName);
 
         // Execute the observable
-        this._asmNavigationService.onModeChanged.next(this.mode);
+        this.modeChanged.next(this.mode);
     }
 
     get mode(): AsmNavigationMode
@@ -323,7 +352,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         }
 
         // Execute the observable
-        this._asmNavigationService.onOpenedChanged.next(this.opened);
+        this.openedChanged.next(this.opened);
     }
 
     get opened(): boolean | ''
@@ -359,7 +388,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._renderer2.addClass(this._elementRef.nativeElement, positionClassName);
 
         // Execute the observable
-        this._asmNavigationService.onPositionChanged.next(this.position);
+        this.positionChanged.next(this.position);
     }
 
     get position(): AsmNavigationPosition
@@ -411,20 +440,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Register the navigation component
         this._asmNavigationService.registerComponent(this.name, this);
-
-        // Store options on the service
-        this._asmNavigationService.autoCollapse = this.autoCollapse;
-        this._asmNavigationService.showTooltips = this.showTooltips;
-
-        // Subscribe to onRefresh
-        this._asmNavigationService.onRefresh.pipe(
-            takeUntil(this._unsubscribeAll),
-            filter((name) => name && this.name === name)
-        ).subscribe(() => {
-
-            // Mark for check
-            this._changeDetectorRef.markForCheck();
-        });
     }
 
     /**
@@ -667,7 +682,11 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      */
     refresh(): void
     {
+        // Mark for check
         this._changeDetectorRef.markForCheck();
+
+        // Execute the observable
+        this.onRefreshed.next(true);
     }
 
     /**

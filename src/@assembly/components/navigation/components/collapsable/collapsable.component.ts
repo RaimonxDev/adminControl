@@ -3,8 +3,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
-import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
 
 @Component({
     selector       : 'asm-navigation-collapsable-item',
@@ -15,7 +16,9 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 })
 export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
 {
-    showTooltips: boolean;
+    // Auto collapse
+    @Input()
+    autoCollapse: boolean;
 
     // Item
     @Input()
@@ -33,7 +36,12 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
     @Input()
     name: string;
 
+    // Show tooltips
+    @Input()
+    showTooltips: boolean;
+
     // Private
+    private _asmNavigationComponent: AsmNavigationComponent;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -66,6 +74,9 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Get the parent navigation component
+        this._asmNavigationComponent = this._asmNavigationService.getComponent(this.name);
+
         // If the item has a children that has a matching url with the current url, expand...
         if ( this._hasCurrentUrlInChildren(this.item, this._router.url) )
         {
@@ -75,14 +86,14 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         else
         {
             // If the autoCollapse is on, collapse...
-            if ( this._asmNavigationService.autoCollapse )
+            if ( this.autoCollapse )
             {
                 this.collapse();
             }
         }
 
         // Listen for the onCollapsableItemCollapsed from the service
-        this._asmNavigationService.onCollapsableItemCollapsed
+        this._asmNavigationComponent.onCollapsableItemCollapsed
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((collapsedItem) => {
 
@@ -100,9 +111,9 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
             });
 
         // Listen for the onCollapsableItemExpanded from the service if the autoCollapse is on
-        if ( this._asmNavigationService.autoCollapse )
+        if ( this.autoCollapse )
         {
-            this._asmNavigationService.onCollapsableItemExpanded
+            this._asmNavigationComponent.onCollapsableItemExpanded
                 .pipe(takeUntil(this._unsubscribeAll))
                 .subscribe((expandedItem) => {
 
@@ -152,20 +163,16 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
                 else
                 {
                     // If the autoCollapse is on, collapse...
-                    if ( this._asmNavigationService.autoCollapse )
+                    if ( this.autoCollapse )
                     {
                         this.collapse();
                     }
                 }
             });
 
-        // Get the showTooltips option
-        this.showTooltips = this._asmNavigationService.showTooltips;
-
-        // Subscribe to onRefresh
-        this._asmNavigationService.onRefresh.pipe(
-            takeUntil(this._unsubscribeAll),
-            filter((name) => name && this.name === name)
+        // Subscribe to onRefreshed on the navigation component
+        this._asmNavigationComponent.onRefreshed.pipe(
+            takeUntil(this._unsubscribeAll)
         ).subscribe(() => {
 
             // Mark for check
@@ -294,7 +301,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         this._changeDetectorRef.markForCheck();
 
         // Execute the observable
-        this._asmNavigationService.onCollapsableItemCollapsed.next(this.item);
+        this._asmNavigationComponent.onCollapsableItemCollapsed.next(this.item);
     }
 
     /**
@@ -316,7 +323,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
         this._changeDetectorRef.markForCheck();
 
         // Execute the observable
-        this._asmNavigationService.onCollapsableItemExpanded.next(this.item);
+        this._asmNavigationComponent.onCollapsableItemExpanded.next(this.item);
     }
 
     /**

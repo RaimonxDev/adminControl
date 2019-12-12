@@ -11,7 +11,6 @@ import { AsmNavigationSpacerItemComponent } from '@assembly/components/navigatio
 import { AsmNavigationSubheaderItemComponent } from '@assembly/components/navigation/components/subheader/subheader.component';
 import { AsmNavigationAsideItemComponent } from '@assembly/components/navigation/components/aside/aside.component';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
-import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 
 @NgModule({
     declarations: [
@@ -22,9 +21,6 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
         AsmNavigationSubheaderItemComponent,
         AsmNavigationAsideItemComponent,
         AsmNavigationComponent
-    ],
-    providers   : [
-        AsmNavigationService
     ],
     imports     : [
         CommonModule,
