@@ -109,6 +109,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((contacts) => {
                 this.contacts = contacts;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the contact
@@ -210,6 +213,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((codes) => {
                 this.countries = codes;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the tags
@@ -218,6 +224,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
             .subscribe((tags) => {
                 this.tags = tags;
                 this.filteredTags = tags;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
     }
 
@@ -329,6 +338,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
                     this._router.navigate(['../'], {relativeTo: route});
                 }
             });
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -540,11 +552,10 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
         // Update the tag on the server
         this._contactsService.updateTag(tag.id, tag)
             .pipe(debounceTime(300))
-            .subscribe(() => {
+            .subscribe();
 
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -555,12 +566,10 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     deleteTag(tag): void
     {
         // Delete the tag from the server
-        this._contactsService.deleteTag(tag.id)
-            .subscribe(() => {
+        this._contactsService.deleteTag(tag.id).subscribe();
 
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -638,6 +647,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Add the email form group to the emails form array
         (this.contactForm.get('emails') as FormArray).push(emailFormGroup);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -663,6 +675,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Remove the email field
         emailsFormArray.removeAt(index);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -679,6 +694,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Add the phone number form group to the phoneNumbers form array
         (this.contactForm.get('phoneNumbers') as FormArray).push(phoneNumberFormGroup);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -705,6 +723,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Remove the phone number field
         phoneNumbersFormArray.removeAt(index);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**

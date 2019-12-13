@@ -77,6 +77,9 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
                 // Update the counts
                 this.contactsCount = contacts.length;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the contact
@@ -86,6 +89,9 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
                 // Update the selected contact
                 this.selectedContact = contact;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the countries
@@ -95,6 +101,9 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
                 // Update the countries
                 this.countries = countries;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Subscribe to search input field value changes
