@@ -687,10 +687,36 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'pages.help-center',
         title   : 'Help center',
-        subtitle: 'FAQs, Knowledge base & Guides',
-        type    : 'basic',
+        type    : 'collapsable',
         icon    : 'help_outline',
-        link    : '/pages/help-center'
+        link    : '/pages/help-center',
+        children: [
+            {
+                id        : 'pages.help-center.home',
+                title     : 'Home',
+                type      : 'basic',
+                link      : '/pages/help-center',
+                exactMatch: true
+            },
+            {
+                id   : 'pages.help-center.faqs',
+                title: 'FAQs',
+                type : 'basic',
+                link : '/pages/help-center/faqs'
+            },
+            {
+                id   : 'pages.help-center.guides',
+                title: 'Guides',
+                type : 'basic',
+                link : '/pages/help-center/guides'
+            },
+            {
+                id   : 'pages.help-center.support',
+                title: 'Support',
+                type : 'basic',
+                link : '/pages/help-center/support'
+            }
+        ]
     },
     {
         id   : 'pages.maintenance',
