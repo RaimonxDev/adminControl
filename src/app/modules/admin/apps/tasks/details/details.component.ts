@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -15,10 +15,11 @@ import { TasksListComponent } from 'app/modules/admin/apps/tasks/list/list.compo
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
 @Component({
-    selector     : 'tasks-details',
-    templateUrl  : './details.component.html',
-    styleUrls    : ['./details.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'tasks-details',
+    templateUrl    : './details.component.html',
+    styleUrls      : ['./details.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 {
@@ -62,6 +63,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {FormBuilder} _formBuilder
      * @param {Renderer2} _renderer2
      * @param {Router} _router
@@ -72,6 +74,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _changeDetectorRef: ChangeDetectorRef,
         private _formBuilder: FormBuilder,
         private _renderer2: Renderer2,
         private _router: Router,
@@ -119,6 +122,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             .subscribe((tags) => {
                 this.tags = tags;
                 this.filteredTags = tags;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the tasks
@@ -126,6 +132,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((tasks) => {
                 this.tasks = tasks;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the task
@@ -138,6 +147,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
                 // Patch values to the form from the task
                 this.taskForm.patchValue(task, {emitEvent: false});
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Update task when there is a value change on the task form
@@ -155,6 +167,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
                 // Update the task on the server
                 this._tasksService.updateTask(value.id, value).subscribe();
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Listen for NavigationEnd event to focus on the title field
@@ -404,6 +419,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         this._tasksService.updateTag(tag.id, tag)
             .pipe(debounceTime(300))
             .subscribe();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -414,8 +432,10 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     deleteTag(tag): void
     {
         // Delete the tag from the server
-        this._tasksService.deleteTag(tag.id)
-            .subscribe();
+        this._tasksService.deleteTag(tag.id).subscribe();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -430,6 +450,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Update the task form
         this.taskForm.get('tags').patchValue(this.task.tags);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -444,6 +467,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Update the task form
         this.taskForm.get('tags').patchValue(this.task.tags);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -531,6 +557,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             // Detach it
             this._priorityPanelTemplatePortal.detach();
         }
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -596,6 +625,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             // Detach it
             this._dueDatePanelTemplatePortal.detach();
         }
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -679,6 +711,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                     this._router.navigate(['../'], {relativeTo: route});
                 }
             });
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**

@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -10,10 +10,11 @@ import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
 @Component({
-    selector     : 'tasks-list',
-    templateUrl  : './list.component.html',
-    styleUrls    : ['./list.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'tasks-list',
+    templateUrl    : './list.component.html',
+    styleUrls      : ['./list.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {
@@ -35,6 +36,7 @@ export class TasksListComponent implements OnInit, OnDestroy
      * @param {ActivatedRoute} _activatedRoute
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {DOCUMENT} _document
      * @param {Router} _router
      * @param {TasksService} _tasksService
@@ -43,6 +45,7 @@ export class TasksListComponent implements OnInit, OnDestroy
         private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
+        private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router,
         private _tasksService: TasksService
@@ -73,6 +76,9 @@ export class TasksListComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((tags) => {
                 this.tags = tags;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the tasks
@@ -85,6 +91,9 @@ export class TasksListComponent implements OnInit, OnDestroy
                 this.tasksCount.total = this.tasks.filter(task => task.type === 'task').length;
                 this.tasksCount.completed = this.tasks.filter(task => task.type === 'task' && task.completed).length;
                 this.tasksCount.incomplete = this.tasksCount.total - this.tasksCount.completed;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
 
                 // Update the count on the navigation
                 setTimeout(() => {
@@ -107,6 +116,9 @@ export class TasksListComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((task) => {
                 this.selectedTask = task;
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Subscribe to media query change
@@ -116,6 +128,9 @@ export class TasksListComponent implements OnInit, OnDestroy
 
                 // Calculate the drawer mode
                 this.drawerMode = matches ? 'side' : 'over';
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Listen for shortcuts
@@ -173,6 +188,9 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Go to task
         this._router.navigate(['../', id], {relativeTo: route});
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -189,6 +207,9 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Go to the parent route
         this._router.navigate(['../'], {relativeTo: route});
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -219,6 +240,9 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Update the task on the server
         this._tasksService.updateTask(task.id, task).subscribe();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -233,6 +257,9 @@ export class TasksListComponent implements OnInit, OnDestroy
 
         // Save the new order
         this._tasksService.updateTasksOrders(event.container.data).subscribe();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
