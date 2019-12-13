@@ -32,8 +32,7 @@
     </div>
 
     <!-- Avatar and Name -->
-    <div class="avatar-and-name"
-         [ngClass]="{'editing': editMode}">
+    <div class="avatar-and-name">
 
         <div class="avatar">
 
@@ -204,7 +203,6 @@
     <!-- Job -->
     <div class="job"
          *ngIf="contact.job.title || contact.job.company || editMode"
-         [ngClass]="{'editing': editMode}"
          [formGroupName]="'job'">
 
         <mat-icon class="icon"
@@ -247,8 +245,7 @@
 
     <!-- Emails -->
     <div class="emails"
-         *ngIf="contact.emails.length || editMode"
-         [ngClass]="{'editing': editMode}">
+         *ngIf="contact.emails.length || editMode">
 
         <mat-icon class="icon"
                   [svgIcon]="'email'"></mat-icon>
@@ -409,8 +406,7 @@
 
     <!-- Address -->
     <div class="address"
-         *ngIf="contact.address || editMode"
-         [ngClass]="{'editing': editMode}">
+         *ngIf="contact.address || editMode">
 
         <mat-icon class="icon"
                   [svgIcon]="'room'"></mat-icon>
@@ -436,8 +432,7 @@
 
     <!-- Birthday -->
     <div class="birthday"
-         *ngIf="contact.birthday || editMode"
-         [ngClass]="{'editing': editMode}">
+         *ngIf="contact.birthday || editMode">
 
         <mat-icon class="icon"
                   [svgIcon]="'cake'"></mat-icon>
@@ -469,8 +464,7 @@
 
     <!-- Notes -->
     <div class="notes"
-         *ngIf="contact.notes || editMode"
-         [ngClass]="{'editing': editMode}">
+         *ngIf="contact.notes || editMode">
 
         <mat-icon class="icon"
                   [svgIcon]="'notes'"></mat-icon>
