@@ -17,7 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import * as moment from 'moment';
-import { AsmLookUpByPipeModule } from '@assembly';
+import { AsmAutogrowModule, AsmLookUpByPipeModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { contactsRoutes } from 'app/modules/admin/apps/contacts/contacts.routing';
 import { ContactsComponent } from 'app/modules/admin/apps/contacts/contacts.component';
@@ -48,6 +48,7 @@ import { ContactsListComponent } from 'app/modules/admin/apps/contacts/list/list
         MatSidenavModule,
         MatTableModule,
         MatTooltipModule,
+        AsmAutogrowModule,
         AsmLookUpByPipeModule,
         SharedModule
     ],

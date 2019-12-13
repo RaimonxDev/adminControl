@@ -1,9 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
@@ -13,10 +12,11 @@ import { ContactsListComponent } from 'app/modules/admin/apps/contacts/list/list
 import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.service';
 
 @Component({
-    selector     : 'contacts-details',
-    templateUrl  : './details.component.html',
-    styleUrls    : ['./details.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'contacts-details',
+    templateUrl    : './details.component.html',
+    styleUrls      : ['./details.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactsDetailsComponent implements OnInit, OnDestroy
 {
@@ -36,9 +36,6 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     @ViewChild('avatar')
     private _avatar: ElementRef;
 
-    @ViewChild('notes', {read: CdkTextareaAutosize})
-    private _notesCdkTextareaAutosize: CdkTextareaAutosize;
-
     @ViewChild('tagsPanel')
     private _tagsPanel: TemplateRef<any>;
 
@@ -49,6 +46,7 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ContactsListComponent} _contactsListComponent
      * @param {ContactsService} _contactsService
      * @param {FormBuilder} _formBuilder
@@ -59,6 +57,7 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _changeDetectorRef: ChangeDetectorRef,
         private _contactsListComponent: ContactsListComponent,
         private _contactsService: ContactsService,
         private _formBuilder: FormBuilder,
@@ -201,6 +200,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
                 {
                     this.toggleEditMode();
                 }
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Get the country telephone codes
@@ -257,13 +259,8 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     {
         this.editMode = !this.editMode;
 
-        // Force resize the text area
-        setTimeout(() => {
-            if ( this._notesCdkTextareaAutosize )
-            {
-                this._notesCdkTextareaAutosize.resizeToFitContent(true);
-            }
-        });
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -543,7 +540,11 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
         // Update the tag on the server
         this._contactsService.updateTag(tag.id, tag)
             .pipe(debounceTime(300))
-            .subscribe();
+            .subscribe(() => {
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
     }
 
     /**
@@ -555,7 +556,11 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     {
         // Delete the tag from the server
         this._contactsService.deleteTag(tag.id)
-            .subscribe();
+            .subscribe(() => {
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
     }
 
     /**
@@ -570,6 +575,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Update the contact form
         this.contactForm.get('tags').patchValue(this.contact.tags);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -584,6 +592,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Update the contact form
         this.contactForm.get('tags').patchValue(this.contact.tags);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**

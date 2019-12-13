@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
@@ -10,10 +10,11 @@ import { Contact, Country } from 'app/modules/admin/apps/contacts/contacts.type'
 import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.service';
 
 @Component({
-    selector     : 'contacts-list',
-    templateUrl  : './list.component.html',
-    styleUrls    : ['./list.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector       : 'contacts-list',
+    templateUrl    : './list.component.html',
+    styleUrls      : ['./list.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactsListComponent implements OnInit, OnDestroy
 {
@@ -36,6 +37,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
      *
      * @param {ActivatedRoute} _activatedRoute
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ContactsService} _contactsService
      * @param {DOCUMENT} _document
      * @param {Router} _router
@@ -43,6 +45,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
+        private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router,
         private _contactsService: ContactsService
@@ -159,6 +162,9 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
         // Go to contact
         this._router.navigate(['../', id], {relativeTo: route});
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -175,6 +181,9 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
         // Go to the parent route
         this._router.navigate(['../'], {relativeTo: route});
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
