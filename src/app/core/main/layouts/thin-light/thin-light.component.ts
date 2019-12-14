@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
-import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { takeUntil } from 'rxjs/operators';
+import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 
 @Component({
     selector     : 'layout[type="thin-light"]',
@@ -11,7 +11,6 @@ import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, 
 })
 export class ThinLightVerticalLayoutComponent implements OnInit, OnDestroy
 {
-    asmConfig: AsmConfig;
     isScreenSmall: boolean;
 
     @HostBinding('class.fixed-header')
@@ -26,14 +25,10 @@ export class ThinLightVerticalLayoutComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {AsmConfigService} _asmConfigService
-     * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
      */
     constructor(
-        private _asmConfigService: AsmConfigService,
-        private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService
     )
@@ -51,51 +46,6 @@ export class ThinLightVerticalLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Set the current navigation
-        // this._asmNavigationService.setCurrentNavigation('default');
-
-        // Set the layout's default options
-        this._asmConfigService.defaultConfig = {
-            colorTheme: 'theme-blue-grey',
-            layout    : {
-                options: {
-                    navigation: {
-                        hidden: false,
-                        theme : {
-                            background: 'white light-theme'
-                        }
-                    },
-                    header    : {
-                        background: 'white light-theme',
-                        hidden    : false
-                    },
-                    footer    : {
-                        background: 'white light-theme',
-                        hidden    : false,
-                        fixed     : false
-                    }
-                }
-            }
-        };
-
-        // Subscribe to config changes
-        this._asmConfigService.onConfigChanged
-            .pipe(
-                filter((config) => config !== null),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe((config: AsmConfig) => {
-
-                // Update the asmConfig from the config
-                this.asmConfig = config;
-
-                // Update the fixedHeader property
-                this.fixedHeader = this.asmConfig.layout.options.header.fixed;
-
-                // Update the fixedFooter property
-                this.fixedFooter = this.asmConfig.layout.options.footer.fixed;
-            });
-
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -119,23 +69,6 @@ export class ThinLightVerticalLayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Toggle drawer
-     *
-     * @param key
-     */
-    toggleDrawer(key): void
-    {
-        // Get the drawer
-        const drawer = this._asmDrawerService.get(key);
-
-        if ( drawer )
-        {
-            // Toggle the opened status
-            drawer.toggle();
-        }
-    }
 
     /**
      * Toggle navigation

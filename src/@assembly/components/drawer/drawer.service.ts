@@ -7,7 +7,7 @@ import { AsmDrawerComponent } from '@assembly/components/drawer/drawer.component
 export class AsmDrawerService
 {
     // Private
-    private _registry: Map<string, AsmDrawerComponent>;
+    private _componentRegistry: Map<string, AsmDrawerComponent>;
 
     /**
      * Constructor
@@ -15,7 +15,7 @@ export class AsmDrawerService
     constructor()
     {
         // Set the defaults
-        this._registry = new Map<string, AsmDrawerComponent>();
+        this._componentRegistry = new Map<string, AsmDrawerComponent>();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -23,33 +23,33 @@ export class AsmDrawerService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register drawer
+     * Register drawer component
      *
-     * @param key
-     * @param drawer
+     * @param name
+     * @param component
      */
-    register(key, drawer): void
+    registerComponent(name: string, component: AsmDrawerComponent): void
     {
-        this._registry.set(key, drawer);
+        this._componentRegistry.set(name, component);
     }
 
     /**
-     * Deregister drawer
+     * Deregister drawer component
      *
-     * @param key
+     * @param name
      */
-    deregister(key): void
+    deregisterComponent(name: string): void
     {
-        this._registry.delete(key);
+        this._componentRegistry.delete(name);
     }
 
     /**
-     * Get drawer
+     * Get drawer component from the registry
      *
-     * @param key
+     * @param name
      */
-    get(key): AsmDrawerComponent
+    getComponent(name: string): AsmDrawerComponent
     {
-        return this._registry.get(key);
+        return this._componentRegistry.get(name);
     }
 }

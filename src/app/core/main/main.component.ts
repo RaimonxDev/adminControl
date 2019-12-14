@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -6,7 +6,8 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AsmConfig, AsmConfigService } from '@assembly';
+import { AsmDrawerService } from '@assembly';
+import { ConfigService } from 'app/core/config/config.service';
 
 @Component({
     selector     : 'main',
@@ -16,9 +17,7 @@ import { AsmConfig, AsmConfigService } from '@assembly';
 })
 export class MainComponent implements OnInit, OnDestroy
 {
-    asmConfig: AsmConfig;
-    layout: 'basic' | 'classic' | 'classy' | 'compact' | 'dense' | 'modern' | 'thin' | 'thin-light' |
-        'empty';
+    layout: 'basic' | 'classic' | 'classy' | 'compact' | 'dense' | 'modern' | 'thin' | 'thin-light' | 'empty';
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -27,21 +26,25 @@ export class MainComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {AsmConfigService} _asmConfigService
+     * @param {AsmDrawerService} _asmDrawerService
+     * @param {ConfigService} _configService
      * @param {DOCUMENT} _document
      * @param {DomSanitizer} _domSanitizer
      * @param {MatIconRegistry} _matIconRegistry
+     * @param {Renderer2} _renderer2
      * @param {Router} _router
      * @param {Platform} _platform
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _asmConfigService: AsmConfigService,
+        private _asmDrawerService: AsmDrawerService,
         @Inject(DOCUMENT) private _document: any,
         private _domSanitizer: DomSanitizer,
         private _matIconRegistry: MatIconRegistry,
         private _platform: Platform,
-        private _router: Router
+        private _renderer2: Renderer2,
+        private _router: Router,
+        private _configService: ConfigService
     )
     {
         // Set the private defaults
@@ -81,24 +84,20 @@ export class MainComponent implements OnInit, OnDestroy
         }
 
         // Subscribe to config changes
-        this._asmConfigService.onConfigChanged
+        this._configService.onConfigChanged
             .pipe(
                 filter((config) => config !== null),
                 takeUntil(this._unsubscribeAll)
             )
-            .subscribe((config: AsmConfig) => {
+            .subscribe((config) => {
 
-                // Update the asmConfig from the config
-                this.asmConfig = config;
-
-                // Loop through body class names
+                // Update the selected theme class name on body
+                const themeName = 'asm-theme-' + config.theme;
                 this._document.body.classList.forEach((className) => {
-
-                    // Find the one that starts with 'asm-theme-' and update it if it's changed
-                    if ( className.startsWith('asm-theme-') && className !== this.asmConfig.colorTheme )
+                    if ( className.startsWith('asm-theme-') && className !== themeName )
                     {
                         this._document.body.classList.remove(className);
-                        this._document.body.classList.add(this.asmConfig.colorTheme);
+                        this._document.body.classList.add(themeName);
                         return;
                     }
                 });
@@ -159,5 +158,26 @@ export class MainComponent implements OnInit, OnDestroy
                 this.layout = path.routeConfig.data.layout;
             }
         });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle drawer
+     *
+     * @param key
+     */
+    toggleDrawer(key): void
+    {
+        // Get the drawer
+        const drawer = this._asmDrawerService.getComponent(key);
+
+        if ( drawer )
+        {
+            // Toggle the opened status
+            drawer.toggle();
+        }
     }
 }

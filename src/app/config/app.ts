@@ -7,5 +7,6 @@
  * 'ConfigService'.
  */
 export const appConfig = {
+    theme : 'light',
     layout: 'classy'
 };

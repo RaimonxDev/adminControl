@@ -16,14 +16,12 @@ export * from './components/highlight/public-api';
 export * from './components/message/public-api';
 export * from './components/navigation/public-api';
 export * from './components/spinner/public-api';
-export * from './components/theme-configurator/public-api';
 
 // Directives
 export * from './directives/autogrow/public-api';
 export * from './directives/scrollbar/public-api';
 
 // Services
-export * from './services/config/public-api';
 export * from './services/media-watcher/public-api';
 export * from './services/splash-screen/public-api';
 

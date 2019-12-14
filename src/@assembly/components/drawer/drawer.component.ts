@@ -1,6 +1,5 @@
-import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 
 @Component({
@@ -17,15 +16,24 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _overlay: HTMLElement | null;
     private _mode: 'over' | 'side';
     private _opened: boolean | '';
+    private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
     private _position: 'left' | 'right';
-    private _onModeChanged: BehaviorSubject<'over' | 'side' | null>;
-    private _onOpenedChanged: BehaviorSubject<boolean | '' | null>;
-    private _onPositionChanged: BehaviorSubject<'left' | 'right' | null>;
     private _transparentOverlay: boolean | '';
+
+    // On mode changed
+    @Output()
+    readonly modeChanged: EventEmitter<'over' | 'side'>;
+
+    // On opened changed
+    @Output()
+    readonly openedChanged: EventEmitter<boolean | ''>;
+
+    // On position changed
+    @Output()
+    readonly positionChanged: EventEmitter<'left' | 'right'>;
 
     @HostBinding('class.asm-drawer-animations-enabled')
     private _animationsEnabled: boolean;
@@ -47,12 +55,13 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._animationsEnabled = false;
-        this._onModeChanged = new BehaviorSubject(null);
-        this._onOpenedChanged = new BehaviorSubject(null);
-        this._onPositionChanged = new BehaviorSubject(null);
         this._overlay = null;
 
         // Set the defaults
+        this.modeChanged = new EventEmitter<'over' | 'side'>();
+        this.openedChanged = new EventEmitter<boolean | ''>();
+        this.positionChanged = new EventEmitter<'left' | 'right'>();
+
         this.mode = 'side';
         this.opened = false;
         this.position = 'left';
@@ -98,7 +107,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this._renderer2.addClass(this._elementRef.nativeElement, modeClassName);
 
         // Execute the observable
-        this._onModeChanged.next(this.mode);
+        this.modeChanged.next(this.mode);
     }
 
     get mode(): 'over' | 'side'
@@ -157,7 +166,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         }
 
         // Execute the observable
-        this._onOpenedChanged.next(this.opened);
+        this.openedChanged.next(this.opened);
     }
 
     get opened(): boolean | ''
@@ -193,7 +202,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this._renderer2.addClass(this._elementRef.nativeElement, positionClassName);
 
         // Execute the observable
-        this._onPositionChanged.next(this.position);
+        this.positionChanged.next(this.position);
     }
 
     get position(): 'left' | 'right'
@@ -234,30 +243,6 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         return this._transparentOverlay;
     }
 
-    /**
-     * Getter for onModeChanged
-     */
-    get onModeChanged(): Observable<'over' | 'side' | null>
-    {
-        return this._onModeChanged.asObservable();
-    }
-
-    /**
-     * Getter for onOpenedChanged
-     */
-    get onOpenedChanged(): Observable<boolean | '' | null>
-    {
-        return this._onOpenedChanged.asObservable();
-    }
-
-    /**
-     * Getter for onPositionChanged
-     */
-    get onPositionChanged(): Observable<'left' | 'right' | null>
-    {
-        return this._onPositionChanged.asObservable();
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
@@ -268,7 +253,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Register the drawer
-        this._asmDrawerService.register(this.name, this);
+        this._asmDrawerService.registerComponent(this.name, this);
     }
 
     /**
@@ -277,7 +262,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     ngOnDestroy(): void
     {
         // Deregister the drawer from the registry
-        this._asmDrawerService.deregister(this.name);
+        this._asmDrawerService.deregisterComponent(this.name);
     }
 
     // -----------------------------------------------------------------------------------------------------
