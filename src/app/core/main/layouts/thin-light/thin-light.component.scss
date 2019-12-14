@@ -1,0 +1,180 @@
+@import 'src/@assembly/styles/assembly';
+
+layout[type="thin-light"] {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+
+    // Navigation
+    > .navigation {
+
+        .asm-navigation-header {
+
+            .logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 80px;
+                min-height: 80px;
+                max-height: 80px;
+
+                .logo-image {
+                    width: 24px;
+                    min-width: 24px;
+                    max-width: 24px;
+                }
+            }
+        }
+
+        &.asm-navigation-appearance-thin {
+
+            asm-navigation-aside-item,
+            asm-navigation-basic-item,
+            asm-navigation-collapsable-item {
+
+                .asm-navigation-item {
+                    margin: 0 12px;
+                    border-radius: 4px;
+
+                    &:before {
+                        display: none !important;
+                    }
+
+                    .asm-navigation-item-badge {
+
+                        .asm-navigation-item-badge-indicator {
+                            left: 32px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Container
+    > .container {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        width: 100%;
+
+        // Header
+        > .header {
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            height: 80px;
+            max-height: 80px;
+            min-height: 80px;
+            padding: 0 24px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
+            0 2px 12px 0 rgba(0, 0, 0, 0.05);
+            z-index: 49;
+        }
+
+        // Content
+        > .content {
+            display: flex;
+            flex: 1 1 auto;
+
+            > *:not(router-outlet) {
+                position: relative;
+                display: flex;
+                flex: 1 0 auto;
+                flex-wrap: wrap;
+                width: 100%;
+                min-width: 100%;
+            }
+        }
+
+        // Footer
+        > .footer {
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            height: 80px;
+            max-height: 80px;
+            min-height: 80px;
+            padding: 0 24px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
+            0 2px 12px 0 rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    // Fixed header
+    &.fixed-header {
+
+        > .container {
+
+            > .header {
+                position: sticky;
+                bottom: 0;
+            }
+        }
+    }
+
+    // Fixed footer
+    &.fixed-footer {
+
+        > .container {
+
+            > .footer {
+                position: sticky;
+                bottom: 0;
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $primary: map-get($theme, primary);
+
+    layout[type="thin-light"] {
+
+        // Navigation
+        > .navigation {
+
+            .asm-navigation-header {
+
+                .logo {
+                    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.12);
+                }
+            }
+
+            &.asm-navigation-appearance-thin {
+
+                asm-navigation-aside-item,
+                asm-navigation-basic-item,
+                asm-navigation-collapsable-item {
+
+                    .asm-navigation-item {
+
+                        &.asm-navigation-item-active {
+                            box-shadow: none !important;
+                            background: map-get($primary, default);
+
+                            .asm-navigation-item-title,
+                            .asm-navigation-item-subtitle,
+                            .asm-navigation-item-icon {
+                                color: map-get($primary, default-contrast) !important;
+                            }
+
+                            .asm-navigation-item-subtitle {
+                                opacity: 0.7;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
