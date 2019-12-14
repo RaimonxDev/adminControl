@@ -1,6 +1,6 @@
 @import 'assembly';
 
-layout[type="modern-vertical"] {
+layout[type="vertical-modern"] {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -145,7 +145,7 @@ layout[type="modern-vertical"] {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
-    layout[type="modern-vertical"] {
+    layout[type="vertical-modern"] {
 
     }
 }

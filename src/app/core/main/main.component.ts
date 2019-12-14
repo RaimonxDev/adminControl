@@ -17,7 +17,7 @@ import { AsmConfig, AsmConfigService } from '@assembly';
 export class MainComponent implements OnInit, OnDestroy
 {
     asmConfig: AsmConfig;
-    layout: 'basic-vertical' | 'classic-vertical' | 'classy-vertical' | 'compact-vertical' | 'dense-vertical' | 'modern-vertical' | 'thin-vertical' | 'thin-light-vertical' |
+    layout: 'vertical-basic' | 'vertical-classic' | 'vertical-classy' | 'vertical-compact' | 'vertical-dense' | 'vertical-modern' | 'vertical-thin' | 'vertical-thin-light' |
         'empty';
 
     // Private
@@ -145,7 +145,7 @@ export class MainComponent implements OnInit, OnDestroy
         // So, we get all the paths that matched starting from root all
         // the way to the current activated route, walk through them one
         // by one and change the layout as we find the layout config. This
-        // way layout configuration can live anywhere within the path and
+        // way, layout configuration can live anywhere within the path and
         // we won't miss it.
         //
         // Also, this will allow overriding the layout in any time so we

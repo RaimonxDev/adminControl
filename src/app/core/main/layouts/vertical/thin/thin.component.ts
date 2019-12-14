@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfig, AsmConfigService, AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 
 @Component({
-    selector     : 'layout[type="thin-vertical"]',
+    selector     : 'layout[type="vertical-thin"]',
     templateUrl  : './thin.component.html',
     styleUrls    : ['./thin.component.scss'],
     encapsulation: ViewEncapsulation.None

@@ -1,6 +1,6 @@
 @import 'assembly';
 
-layout[type="classy-vertical"] {
+layout[type="vertical-classy"] {
     position: relative;
     display: flex;
     flex: 1 1 auto;
@@ -182,7 +182,7 @@ layout[type="classy-vertical"] {
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
-    layout[type='classy-vertical'] {
+    layout[type='vertical-classy'] {
 
         > .wrapper {
 

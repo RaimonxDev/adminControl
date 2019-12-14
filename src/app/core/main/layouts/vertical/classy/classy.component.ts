@@ -7,7 +7,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 import { UserService } from 'app/core/user/user.service';
 
 @Component({
-    selector     : 'layout[type="classy-vertical"]',
+    selector     : 'layout[type="vertical-classy"]',
     templateUrl  : './classy.component.html',
     styleUrls    : ['./classy.component.scss'],
     encapsulation: ViewEncapsulation.None

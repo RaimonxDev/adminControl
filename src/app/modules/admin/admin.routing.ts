@@ -10,7 +10,7 @@ export const adminRoutes: Route[] = [{
     canActivate: [AuthGuard],
     component  : MainComponent,
     data       : {
-        layout: 'classy-vertical'
+        layout: 'vertical-classy'
     },
     resolve    : {
         admin: AdminResolver,

@@ -1,6 +1,6 @@
 @import 'assembly';
 
-layout[type="thin-vertical"] {
+layout[type="vertical-thin"] {
     position: relative;
     display: flex;
     flex: 1 1 auto;
@@ -113,7 +113,7 @@ layout[type="thin-vertical"] {
 
     $primary: map-get($theme, primary);
 
-    layout[type="thin-vertical"] {
+    layout[type="vertical-thin"] {
 
         // Navigation
         > .navigation {

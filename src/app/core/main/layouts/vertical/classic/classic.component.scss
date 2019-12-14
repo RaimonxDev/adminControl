@@ -1,6 +1,6 @@
 @import 'assembly';
 
-layout[type="classic-vertical"] {
+layout[type="vertical-classic"] {
     position: relative;
     display: flex;
     flex: 1 1 auto;
@@ -119,7 +119,7 @@ layout[type="classic-vertical"] {
 
     $background: map-get($theme, background);
 
-    layout[type="classic-vertical"] {
+    layout[type="vertical-classic"] {
 
         // Navigation
         > .navigation {
