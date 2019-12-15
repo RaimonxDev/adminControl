@@ -1,7 +1,9 @@
 import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
     selector     : 'layout[type="basic"]',
@@ -11,7 +13,9 @@ import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 })
 export class BasicVerticalLayoutComponent implements OnInit, OnDestroy
 {
+    data: any;
     isScreenSmall: boolean;
+    user: any;
 
     @HostBinding('class.fixed-header')
     fixedHeader: boolean;
@@ -25,16 +29,40 @@ export class BasicVerticalLayoutComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {ActivatedRoute} _activatedRoute
+     * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
+     * @param {Router} _router
+     * @param {UserService}_userService
      */
     constructor(
+        private _activatedRoute: ActivatedRoute,
+        private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
-        private _asmNavigationService: AsmNavigationService
+        private _asmNavigationService: AsmNavigationService,
+        private _router: Router,
+        private _userService: UserService
     )
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.fixedHeader = false;
+        this.fixedFooter = false;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for current year
+     */
+    get currentYear(): number
+    {
+        return new Date().getFullYear();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -46,6 +74,23 @@ export class BasicVerticalLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // User
+        this._userService.user$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((user) => {
+                this.user = user;
+            });
+
+        // Subscribe to the resolved route data
+        this._activatedRoute.data.subscribe((data: Data) => {
+
+            // Store the data
+            this.data = data.admin;
+
+            // Store the user data on user service
+            this._userService.user = this.data.user;
+        });
+
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -71,6 +116,23 @@ export class BasicVerticalLayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Toggle drawer
+     *
+     * @param key
+     */
+    toggleDrawer(key): void
+    {
+        // Get the drawer
+        const drawer = this._asmDrawerService.getComponent(key);
+
+        if ( drawer )
+        {
+            // Toggle the opened status
+            drawer.toggle();
+        }
+    }
+
+    /**
      * Toggle navigation
      *
      * @param key
@@ -85,5 +147,27 @@ export class BasicVerticalLayoutComponent implements OnInit, OnDestroy
             // Toggle the opened status
             navigation.toggle();
         }
+    }
+
+    /**
+     * Logout
+     */
+    logout(): void
+    {
+        this._router.navigate(['/logout']);
+    }
+
+    /**
+     * Update the user status
+     *
+     * @param status
+     */
+    updateUserStatus(status): void
+    {
+        // Update the user data
+        this.user.status = status;
+
+        // Update the user on the server
+        this._userService.update(this.user);
     }
 }

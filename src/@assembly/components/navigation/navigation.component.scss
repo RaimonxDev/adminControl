@@ -118,7 +118,6 @@ asm-navigation {
         // Content
         .asm-navigation-content {
             flex: 1 1 auto;
-            padding: 8px 0;
             overflow-x: hidden;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
@@ -237,7 +236,6 @@ asm-navigation {
 
                 .asm-navigation-item-icon {
                     margin-right: 18px;
-                    @include asm-icon-size(20);
                 }
 
                 .asm-navigation-item-title-wrapper {

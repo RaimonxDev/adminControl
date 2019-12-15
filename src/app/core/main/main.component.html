@@ -42,11 +42,6 @@
 <!-- Configurator -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
-<button mat-icon-button
-        (click)="toggleDrawer('configuratorDrawer')">
-    <mat-icon [svgIcon]="'color_lens'"></mat-icon>
-</button>
-
 <asm-drawer [name]="'configuratorDrawer'"
             [position]="'right'"
             [mode]="'side'">
@@ -59,7 +54,9 @@
             <mat-radio-button [value]="'light'">Light</mat-radio-button>
             <mat-radio-button [value]="'dark'">Dark</mat-radio-button>
         </mat-radio-group>
+    </fieldset>
 
+    <fieldset>
         <legend>Layout</legend>
         <mat-radio-group [color]="'primary'"
                          [value]="layout"

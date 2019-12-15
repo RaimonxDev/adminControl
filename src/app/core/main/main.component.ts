@@ -179,23 +179,6 @@ export class MainComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Toggle drawer
-     *
-     * @param key
-     */
-    toggleDrawer(key): void
-    {
-        // Get the drawer
-        const drawer = this._asmDrawerService.getComponent(key);
-
-        if ( drawer )
-        {
-            // Toggle the opened status
-            drawer.toggle();
-        }
-    }
-
-    /**
      * Set the default layout on the config
      *
      * @param change

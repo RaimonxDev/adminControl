@@ -1,9 +1,8 @@
-import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
-import { AuthService } from 'app/core/auth/auth.service';
+import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { UserService } from 'app/core/user/user.service';
 
 @Component({
@@ -18,12 +17,6 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
     isScreenSmall: boolean;
     user: any;
 
-    @HostBinding('class.fixed-header')
-    fixedHeader: boolean;
-
-    @HostBinding('class.fixed-footer')
-    fixedFooter: boolean;
-
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -31,37 +24,23 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
-     * @param {AuthService} _authService
+     * @param {Router} _router
      * @param {UserService}_userService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
-        private _authService: AuthService,
+        private _router: Router,
         private _userService: UserService
     )
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.fixedHeader = false;
-        this.fixedFooter = false;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Getter for current year
-     */
-    get currentYear(): number
-    {
-        return new Date().getFullYear();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -115,11 +94,20 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Logout
+     * Toggle drawer
+     *
+     * @param key
      */
-    logout(): void
+    toggleDrawer(key): void
     {
-        this._authService.logout();
+        // Get the drawer
+        const drawer = this._asmDrawerService.getComponent(key);
+
+        if ( drawer )
+        {
+            // Toggle the opened status
+            drawer.toggle();
+        }
     }
 
     /**
@@ -137,6 +125,14 @@ export class ClassyVerticalLayoutComponent implements OnInit, OnDestroy
             // Toggle the opened status
             navigation.toggle();
         }
+    }
+
+    /**
+     * Logout
+     */
+    logout(): void
+    {
+        this._router.navigate(['/logout']);
     }
 
     /**

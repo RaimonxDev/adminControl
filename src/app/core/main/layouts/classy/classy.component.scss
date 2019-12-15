@@ -6,13 +6,92 @@ layout[type="classy"] {
     flex: 1 1 auto;
     width: 100%;
 
+    .actions {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 16px;
+
+        .spacer {
+            display: flex;
+            flex: 1 1 auto;
+            height: 1px;
+        }
+    }
+
+    .user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 16px 32px;
+
+        .avatar {
+            position: relative;
+
+            img {
+                width: 96px;
+                min-width: 96px;
+                height: 96px;
+                min-height: 96px;
+                border-radius: 50%;
+            }
+
+            .status {
+                position: absolute;
+                right: 6px;
+                bottom: 0;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                border-width: 3px;
+            }
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-width: 0;
+            margin-top: 24px;
+
+            .name,
+            .email {
+                width: 100%;
+                min-width: 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-align: center;
+                line-height: normal;
+            }
+
+            .email {
+                margin-top: 2px;
+            }
+
+            .menu {
+                margin-left: auto;
+
+                .mat-icon {
+                    @include asm-icon-size(20);
+                }
+            }
+        }
+    }
+
     .logo {
         display: flex;
         align-items: center;
         height: 80px;
         min-height: 80px;
         max-height: 80px;
-        padding: 24px 32px 0 32px;
+        padding: 0 32px;
+        margin-left: 16px;
+        opacity: 0.12;
 
         img {
             max-width: 163px;
@@ -25,92 +104,11 @@ layout[type="classy"] {
         flex: 1 1 auto;
         min-width: 0;
 
-        > .header {
-            position: relative;
-            display: flex;
-            flex: 1 1 auto;
-            align-items: center;
-            width: 100%;
-            height: 80px;
-            max-height: 80px;
-            min-height: 80px;
-            padding: 0 24px;
-            z-index: 49;
-
-            .spacer {
-                display: flex;
-                flex: 1 1 auto;
-                height: 1px;
-            }
-
-            .navigation-toggle-button {
-                margin-right: 8px;
-            }
-
-            shortcuts {
-                margin-right: 8px;
-            }
-
-            messages {
-                margin-right: 8px;
-            }
-
-            .user {
-                height: 48px;
-                min-height: 48px;
-                max-height: 48px;
-
-                .avatar {
-                    position: relative;
-
-                    img {
-                        width: 32px;
-                        min-width: 32px;
-                        height: 32px;
-                        min-height: 32px;
-                        border-radius: 50%;
-                    }
-
-                    .status {
-                        position: absolute;
-                        right: -2px;
-                        bottom: -3px;
-                        width: 12px;
-                        height: 12px;
-                        border-radius: 50%;
-                        border-width: 2px;
-                    }
-                }
-
-                .info {
-                    display: flex;
-                    align-items: center;
-                    margin-left: 12px;
-                    overflow: hidden;
-
-                    @include asm-media-breakpoint('xs') {
-                        display: none;
-                    }
-
-                    .name {
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        line-height: 1;
-                    }
-
-                    .menu {
-                        margin-left: 4px;
-                        height: 20px;
-                        min-height: 20px;
-                        max-height: 20px;
-
-                        .mat-icon {
-                            @include asm-icon-size(20);
-                        }
-                    }
-                }
-            }
+        .navigation-toggle-button {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 45;
         }
 
         > .content {
@@ -122,41 +120,6 @@ layout[type="classy"] {
                 position: relative;
                 display: flex;
                 flex: 1 1 auto;
-            }
-        }
-
-        > .footer {
-            display: flex;
-            flex: 1 1 auto;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-            height: 80px;
-            max-height: 80px;
-            min-height: 80px;
-            padding: 0 24px;
-            z-index: 49;
-        }
-    }
-
-    &.fixed-header {
-
-        > .wrapper {
-
-            > .header {
-                position: sticky;
-                top: 0;
-            }
-        }
-    }
-
-    &.fixed-footer {
-
-        > .wrapper {
-
-            > .footer {
-                position: sticky;
-                bottom: 0;
             }
         }
     }
@@ -184,52 +147,55 @@ layout[type="classy"] {
 
     layout[type='classy'] {
 
-        > .wrapper {
+        asm-navigation {
+            @if ($is-dark) {
+                box-shadow: inset -1px 0 0 0 map-get($foreground, divider);
+            }
 
-            > .header {
-                @if ($is-dark) {
-                    background: asm-dark-elevation(1);
-                } @else {
-                    background: map-get($background, card);
-                    @include asm-elevation(1);
-                }
+            asm-navigation-subheader-item {
 
-                .user {
+                .asm-navigation-item {
 
-                    .avatar {
-
-                        .status {
-                            border-color: map-get($background, card);
-
-                            &.online {
-                                background: asm-color($asm-green, 500);
-                            }
-
-                            &.away {
-                                background: asm-color($asm-orange, 500);
-                            }
-
-                            &.busy {
-                                background: asm-color($asm-red, 500);
-                            }
-
-                            &.not-visible {
-                                background: asm-color($asm-gray, 500);
-                            }
-                        }
+                    .asm-navigation-item-title {
+                        color: map-get($primary, 400);
                     }
                 }
             }
+        }
 
-            > .footer {
-                @if ($is-dark) {
-                    background: asm-dark-elevation(1);
-                } @else {
-                    background: map-get($background, card);
-                    border-top-width: 1px;
+        .user {
+
+            .avatar {
+
+                .status {
+
+                    &.online {
+                        background: asm-color($asm-green, 500);
+                    }
+
+                    &.away {
+                        background: asm-color($asm-orange, 500);
+                    }
+
+                    &.busy {
+                        background: asm-color($asm-red, 500);
+                    }
+
+                    &.not-visible {
+                        background: asm-color($asm-gray, 500);
+                    }
                 }
+            }
+        }
 
-                color: map-get($foreground, secondary-text);
+        > .wrapper {
+
+            .navigation-toggle-button {
+                background: map-get($primary, default);
+
+                .mat-icon {
+                    color: map-get($primary, default-contrast);
+                }
             }
         }
     }
