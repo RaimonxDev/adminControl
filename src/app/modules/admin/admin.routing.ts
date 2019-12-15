@@ -9,9 +9,6 @@ export const adminRoutes: Route[] = [{
     path       : '',
     canActivate: [AuthGuard],
     component  : MainComponent,
-    data       : {
-        layout: 'classy'
-    },
     resolve    : {
         admin: AdminResolver,
     },

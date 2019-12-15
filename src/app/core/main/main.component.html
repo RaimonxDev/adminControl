@@ -3,7 +3,7 @@
         type="empty"></layout>
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- Vertical layouts -->
+<!-- Layouts with vertical navigation -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
 <!-- Basic -->
@@ -49,7 +49,32 @@
 
 <asm-drawer [name]="'configuratorDrawer'"
             [position]="'right'"
-            [mode]="'over'">
+            [mode]="'side'">
+    <!-- Layout -->
+    <fieldset>
+        <legend>Theme</legend>
+        <mat-radio-group [color]="'primary'"
+                         [value]="theme"
+                         (change)="setDefaultTheme($event)">
+            <mat-radio-button [value]="'light'">Light</mat-radio-button>
+            <mat-radio-button [value]="'dark'">Dark</mat-radio-button>
+        </mat-radio-group>
+
+        <legend>Layout</legend>
+        <mat-radio-group [color]="'primary'"
+                         [value]="layout"
+                         (change)="setDefaultLayout($event)">
+            <mat-radio-button [value]="'basic'">Basic</mat-radio-button>
+            <mat-radio-button [value]="'classic'">Classic</mat-radio-button>
+            <mat-radio-button [value]="'classy'">Classy</mat-radio-button>
+            <mat-radio-button [value]="'compact'">Compact</mat-radio-button>
+            <mat-radio-button [value]="'dense'">Dense</mat-radio-button>
+            <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
+            <mat-radio-button [value]="'modern'">Modern</mat-radio-button>
+            <mat-radio-button [value]="'thin'">Thin</mat-radio-button>
+            <mat-radio-button [value]="'thin-light'">Thin (Light)</mat-radio-button>
+        </mat-radio-group>
+    </fieldset>
 
 </asm-drawer>
 

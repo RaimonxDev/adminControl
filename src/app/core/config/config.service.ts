@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as _ from 'lodash';
-import { appConfig } from 'app/config/app';
+import { AppConfig, appConfig } from 'app/config/app';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +9,7 @@ import { appConfig } from 'app/config/app';
 export class ConfigService
 {
     // Private
-    private _config: any;
+    private _config: AppConfig;
     private _onConfigChanged: BehaviorSubject<any>;
 
     /**
@@ -58,15 +58,14 @@ export class ConfigService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Resets the config to the given value
+     * Resets the config to the default
      *
-     * @param value
      * @param emitEvent
      */
-    reset(value: {} = {}, emitEvent: boolean = false): void
+    reset(emitEvent: boolean = false): void
     {
         // Set the config
-        this._config = value;
+        this._config = appConfig;
 
         // Execute the observable if emitEvent is true
         if ( emitEvent )

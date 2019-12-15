@@ -4,9 +4,12 @@ import { Platform } from '@angular/cdk/platform';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
+import { MatRadioChange } from '@angular/material/radio';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmDrawerService } from '@assembly';
+import { AppConfig, Theme } from 'app/config/app';
+import { Layout } from 'app/core/main/layouts/layouts.types';
 import { ConfigService } from 'app/core/config/config.service';
 
 @Component({
@@ -17,7 +20,9 @@ import { ConfigService } from 'app/core/config/config.service';
 })
 export class MainComponent implements OnInit, OnDestroy
 {
-    layout: 'basic' | 'classic' | 'classy' | 'compact' | 'dense' | 'modern' | 'thin' | 'thin-light' | 'empty';
+    config: AppConfig;
+    layout: Layout;
+    theme: Theme;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -38,13 +43,13 @@ export class MainComponent implements OnInit, OnDestroy
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _asmDrawerService: AsmDrawerService,
+        private _configService: ConfigService,
         @Inject(DOCUMENT) private _document: any,
         private _domSanitizer: DomSanitizer,
         private _matIconRegistry: MatIconRegistry,
         private _platform: Platform,
         private _renderer2: Renderer2,
-        private _router: Router,
-        private _configService: ConfigService
+        private _router: Router
     )
     {
         // Set the private defaults
@@ -60,29 +65,6 @@ export class MainComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Set the layout for the first time
-        this._setLayout();
-
-        // Subscribe to NavigationEnd event to set the layout on route changes
-        this._router.events.pipe(
-            filter(event => event instanceof NavigationEnd),
-            takeUntil(this._unsubscribeAll)
-        ).subscribe(() => {
-            this._setLayout();
-        });
-
-        // Register icon sets
-        this._matIconRegistry.addSvgIconSet(this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-twotone.svg'));
-        this._matIconRegistry.addSvgIconSetInNamespace('mat_outline', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-outline.svg'));
-        this._matIconRegistry.addSvgIconSetInNamespace('iconsmind', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/iconsmind.svg'));
-        this._matIconRegistry.addSvgIconSetInNamespace('dripicons', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/dripicons.svg'));
-
-        // Add 'is-mobile' class to the body if the platform is mobile
-        if ( this._platform.ANDROID || this._platform.IOS )
-        {
-            this._document.body.classList.add('is-mobile');
-        }
-
         // Subscribe to config changes
         this._configService.onConfigChanged
             .pipe(
@@ -90,6 +72,12 @@ export class MainComponent implements OnInit, OnDestroy
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe((config) => {
+
+                // Store the config
+                this.config = config;
+
+                // Store the theme
+                this.theme = config.theme;
 
                 // Update the selected theme class name on body
                 const themeName = 'asm-theme-' + config.theme;
@@ -101,7 +89,30 @@ export class MainComponent implements OnInit, OnDestroy
                         return;
                     }
                 });
+
+                // Update the layout
+                this._updateLayout();
             });
+
+        // Subscribe to NavigationEnd event to update the layout on route changes
+        this._router.events.pipe(
+            filter(event => event instanceof NavigationEnd),
+            takeUntil(this._unsubscribeAll)
+        ).subscribe(() => {
+            this._updateLayout();
+        });
+
+        // Add 'is-mobile' class to the body if the platform is mobile
+        if ( this._platform.ANDROID || this._platform.IOS )
+        {
+            this._document.body.classList.add('is-mobile');
+        }
+
+        // Register icon sets
+        this._matIconRegistry.addSvgIconSet(this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-twotone.svg'));
+        this._matIconRegistry.addSvgIconSetInNamespace('mat_outline', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/material-outline.svg'));
+        this._matIconRegistry.addSvgIconSetInNamespace('iconsmind', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/iconsmind.svg'));
+        this._matIconRegistry.addSvgIconSetInNamespace('dripicons', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/dripicons.svg'));
     }
 
     /**
@@ -119,10 +130,13 @@ export class MainComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Set the layout
+     * Update the selected layout
      */
-    private _setLayout(): void
+    private _updateLayout(): void
     {
+        // Set the default layout from the config
+        this.layout = this.config.layout;
+
         // Get the current activated route
         let route = this._activatedRoute;
         while ( route.firstChild )
@@ -179,5 +193,25 @@ export class MainComponent implements OnInit, OnDestroy
             // Toggle the opened status
             drawer.toggle();
         }
+    }
+
+    /**
+     * Set the default layout on the config
+     *
+     * @param change
+     */
+    setDefaultLayout(change: MatRadioChange): void
+    {
+        this._configService.config = {layout: change.value};
+    }
+
+    /**
+     * Set the default theme on the config
+     *
+     * @param change
+     */
+    setDefaultTheme(change: MatRadioChange): void
+    {
+        this._configService.config = {theme: change.value};
     }
 }
