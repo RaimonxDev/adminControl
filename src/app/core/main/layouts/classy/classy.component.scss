@@ -6,7 +6,7 @@ layout[type="classy"] {
     flex: 1 1 auto;
     width: 100%;
 
-    asm-navigation {
+    > asm-navigation {
 
         .asm-navigation-content-header {
 
@@ -156,10 +156,7 @@ layout[type="classy"] {
 
     layout[type='classy'] {
 
-        asm-navigation {
-            @if ($is-dark) {
-                box-shadow: inset -1px 0 0 0 map-get($foreground, divider);
-            }
+        > asm-navigation {
 
             .asm-navigation-content-header {
 

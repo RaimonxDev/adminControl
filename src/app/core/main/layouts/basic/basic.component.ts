@@ -11,7 +11,7 @@ import { UserService } from 'app/core/user/user.service';
     styleUrls    : ['./basic.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class BasicVerticalLayoutComponent implements OnInit, OnDestroy
+export class BasicLayoutComponent implements OnInit, OnDestroy
 {
     data: any;
     isScreenSmall: boolean;

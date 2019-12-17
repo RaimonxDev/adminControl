@@ -1427,7 +1427,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'navigation-features',
         title   : 'Navigation features',
-        subtitle: 'Collapsable levels & Badge styles',
+        subtitle: 'Collapsable levels & badge styles',
         type    : 'subheader'
     },
     {
@@ -1539,44 +1539,44 @@ export const defaultNavigation: AsmNavigationItem[] = [
 export const compactNavigation: AsmNavigationItem[] = [
     {
         id      : 'applications',
-        title   : 'Applications',
+        title   : 'Apps',
         type    : 'aside',
-        icon    : 'iconsmind:optimization',
+        icon    : 'dripicons:view_apps',
         children: []
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'aside',
-        icon    : 'iconsmind:files',
+        icon    : 'dripicons:document_new',
         children: []
     },
     {
         id      : 'ui-elements',
-        title   : 'UI Elements',
+        title   : 'User Interface',
         type    : 'aside',
-        icon    : 'iconsmind:check',
+        icon    : 'dripicons:checklist',
         children: []
     },
     {
         id      : 'assembly',
         title   : 'Assembly',
         type    : 'aside',
-        icon    : 'iconsmind:check',
+        icon    : 'dripicons:rocket',
         children: []
     },
     {
         id      : 'documentation',
         title   : 'Documentation',
         type    : 'aside',
-        icon    : 'iconsmind:book',
+        icon    : 'dripicons:help',
         children: []
     },
     {
         id      : 'navigation-features',
-        title   : 'Navigation Features',
+        title   : 'Navigation',
         type    : 'aside',
-        icon    : 'iconsmind:book',
+        icon    : 'dripicons:menu',
         children: []
     }
 ];

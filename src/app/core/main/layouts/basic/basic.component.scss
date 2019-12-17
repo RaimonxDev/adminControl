@@ -6,7 +6,7 @@ layout[type="basic"] {
     flex: 1 1 auto;
     width: 100%;
 
-    asm-navigation {
+    > asm-navigation {
 
         .asm-navigation-header {
 
@@ -195,9 +195,12 @@ layout[type="basic"] {
 
     layout[type="basic"] {
 
-        asm-navigation {
-            background: map-get($background, card);
-            box-shadow: inset -1px 0 0 0 map-get($foreground, divider);
+        > asm-navigation {
+            @if ($is-dark) {
+                background: asm-color($asm-gray, 900);
+            } @else {
+                background: map-get($background, card);
+            }
 
             .asm-navigation-header {
 
@@ -219,18 +222,6 @@ layout[type="basic"] {
                 }
             }
 
-            .asm-navigation-item {
-
-                &:hover:not(.asm-navigation-item-active) {
-                    box-shadow: inset -1px 0 0 0 map-get($foreground, divider);
-                }
-
-                &.asm-navigation-item-active {
-                    box-shadow: inset 3px 0 0 0 map-get($primary, 600),
-                    inset -1px 0 0 0 map-get($foreground, divider);
-                }
-            }
-
             asm-navigation-subheader-item {
 
                 .asm-navigation-item {
@@ -245,11 +236,10 @@ layout[type="basic"] {
         > .wrapper {
 
             > .header {
-                box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 @if (not $is-dark) {
                     background: map-get($background, card);
-                    box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 }
+                box-shadow: 0 1px 0 0 map-get($foreground, divider);
 
                 .user {
 
@@ -280,8 +270,9 @@ layout[type="basic"] {
 
             > .footer {
                 @if (not $is-dark) {
-                    border-top-width: 1px;
+                    background: map-get($background, card);
                 }
+                box-shadow: 0 -1px 0 0 map-get($foreground, divider);
                 color: map-get($foreground, secondary-text);
             }
         }

@@ -6,7 +6,7 @@ layout[type="classic"] {
     flex: 1 1 auto;
     width: 100%;
 
-    asm-navigation {
+    > asm-navigation {
 
         .asm-navigation-content-header {
 
@@ -194,7 +194,7 @@ layout[type="classic"] {
 
     layout[type='classic'] {
 
-        asm-navigation {
+        > asm-navigation {
 
             asm-navigation-subheader-item {
 
@@ -211,7 +211,7 @@ layout[type="classic"] {
 
             > .header {
                 @if ($is-dark) {
-                    background: asm-dark-elevation(1);
+                    box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 } @else {
                     background: map-get($background, card);
                     @include asm-elevation(1);
@@ -245,12 +245,11 @@ layout[type="classic"] {
             }
 
             > .footer {
-                @if ($is-dark) {
-                    background: asm-dark-elevation(1);
-                } @else {
+                @if (not $is-dark) {
                     background: map-get($background, card);
-                    border-top-width: 1px;
+                    @include asm-elevation(1);
                 }
+                box-shadow: 0 -1px 0 0 map-get($foreground, divider);
                 color: map-get($foreground, secondary-text);
             }
         }
