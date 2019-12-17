@@ -11,7 +11,7 @@ shortcuts {
     flex-direction: column;
     max-width: 416px !important;
     min-width: 416px !important;
-    border-radius: 6px;
+    border-radius: 8px;
     max-height: calc(100vh - 80px);
     overflow: hidden;
     @include asm-elevation(5);
@@ -249,7 +249,6 @@ shortcuts {
 
     // Shortcuts panel
     .shortcuts-panel {
-        background: map-get($background, card);
 
         .header {
 
@@ -272,6 +271,7 @@ shortcuts {
         }
 
         .content {
+            background: map-get($background, card);
 
             // Non-modify mode
             &:not(.mode-modify) {

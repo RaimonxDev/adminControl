@@ -25,7 +25,7 @@ notifications {
 .notifications-panel {
     max-width: 416px !important;
     min-width: 416px !important;
-    border-radius: 6px;
+    border-radius: 8px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     @include asm-elevation(3);
@@ -259,7 +259,6 @@ notifications {
 
     // Notifications panel
     .notifications-panel {
-        background: map-get($background, card);
 
         .header {
 
@@ -293,6 +292,7 @@ notifications {
         }
 
         .content {
+            background: map-get($background, card);
 
             .notification {
 

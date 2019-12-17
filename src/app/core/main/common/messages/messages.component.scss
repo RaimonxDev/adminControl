@@ -25,7 +25,7 @@ messages {
 .messages-panel {
     max-width: 416px !important;
     min-width: 416px !important;
-    border-radius: 6px;
+    border-radius: 8px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     @include asm-elevation(3);
@@ -258,7 +258,6 @@ messages {
 
     // Messages panel
     .messages-panel {
-        background: map-get($background, card);
 
         .header {
 
@@ -292,6 +291,7 @@ messages {
         }
 
         .content {
+            background: map-get($background, card);
 
             .message {
 
