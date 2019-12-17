@@ -42,6 +42,19 @@ export class MockNavigationApi
         this._asmMockApiService
             .onGet('api/navigation')
             .reply(() => {
+
+                // Fill compact navigation's aside item's children using the default navigation
+                this._compactNavigation.forEach((compactNavigationItem) => {
+
+                    this._defaultNavigation.forEach((defaultNavigationItem) => {
+
+                        if ( defaultNavigationItem.id === compactNavigationItem.id || defaultNavigationItem.id.startsWith(compactNavigationItem.id) )
+                        {
+                            compactNavigationItem.children.push(_.cloneDeep(defaultNavigationItem));
+                        }
+                    });
+                });
+
                 return [
                     200,
                     {
