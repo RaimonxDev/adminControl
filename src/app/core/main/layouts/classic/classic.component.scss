@@ -6,16 +6,22 @@ layout[type="classic"] {
     flex: 1 1 auto;
     width: 100%;
 
-    .logo {
-        display: flex;
-        align-items: center;
-        height: 80px;
-        min-height: 80px;
-        max-height: 80px;
-        padding: 24px 32px 0 32px;
+    asm-navigation {
 
-        img {
-            max-width: 163px;
+        .asm-navigation-content-header {
+
+            .logo {
+                display: flex;
+                align-items: center;
+                height: 80px;
+                min-height: 80px;
+                max-height: 80px;
+                padding: 24px 32px 0 32px;
+
+                img {
+                    max-width: 163px;
+                }
+            }
         }
     }
 

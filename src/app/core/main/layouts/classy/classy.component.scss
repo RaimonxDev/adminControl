@@ -6,95 +6,104 @@ layout[type="classy"] {
     flex: 1 1 auto;
     width: 100%;
 
-    .actions {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        padding: 16px;
+    asm-navigation {
 
-        .spacer {
-            display: flex;
-            flex: 1 1 auto;
-            height: 1px;
-        }
-    }
+        .asm-navigation-content-header {
 
-    .user {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        padding: 16px 32px;
-
-        .avatar {
-            position: relative;
-
-            img {
-                width: 96px;
-                min-width: 96px;
-                height: 96px;
-                min-height: 96px;
-                border-radius: 50%;
-            }
-
-            .status {
-                position: absolute;
-                right: 6px;
-                bottom: 0;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border-width: 3px;
-            }
-        }
-
-        .info {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 auto;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            min-width: 0;
-            margin-top: 24px;
-
-            .name,
-            .email {
+            .actions {
+                display: flex;
+                align-items: center;
                 width: 100%;
-                min-width: 0;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                text-align: center;
-                line-height: normal;
+                padding: 16px;
+
+                .spacer {
+                    display: flex;
+                    flex: 1 1 auto;
+                    height: 1px;
+                }
             }
 
-            .email {
-                margin-top: 2px;
-            }
+            .user {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 16px 32px;
 
-            .menu {
-                margin-left: auto;
+                .avatar {
+                    position: relative;
 
-                .mat-icon {
-                    @include asm-icon-size(20);
+                    img {
+                        width: 96px;
+                        min-width: 96px;
+                        height: 96px;
+                        min-height: 96px;
+                        border-radius: 50%;
+                    }
+
+                    .status {
+                        position: absolute;
+                        right: 6px;
+                        bottom: 0;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border-width: 3px;
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    min-width: 0;
+                    margin-top: 24px;
+
+                    .name,
+                    .email {
+                        width: 100%;
+                        min-width: 0;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        text-align: center;
+                        line-height: normal;
+                    }
+
+                    .email {
+                        margin-top: 2px;
+                    }
+
+                    .menu {
+                        margin-left: auto;
+
+                        .mat-icon {
+                            @include asm-icon-size(20);
+                        }
+                    }
                 }
             }
         }
-    }
 
-    .logo {
-        display: flex;
-        align-items: center;
-        height: 80px;
-        min-height: 80px;
-        max-height: 80px;
-        padding: 0 32px;
-        margin-left: 16px;
-        opacity: 0.12;
+        .asm-navigation-content-footer {
 
-        img {
-            max-width: 163px;
+            .logo {
+                display: flex;
+                align-items: center;
+                height: 80px;
+                min-height: 80px;
+                max-height: 80px;
+                padding: 0 32px;
+                margin-left: 16px;
+                opacity: 0.12;
+
+                img {
+                    max-width: 163px;
+                }
+            }
         }
     }
 
@@ -152,37 +161,40 @@ layout[type="classy"] {
                 box-shadow: inset -1px 0 0 0 map-get($foreground, divider);
             }
 
+            .asm-navigation-content-header {
+
+                .user {
+
+                    .avatar {
+
+                        .status {
+
+                            &.online {
+                                background: asm-color($asm-green, 500);
+                            }
+
+                            &.away {
+                                background: asm-color($asm-orange, 500);
+                            }
+
+                            &.busy {
+                                background: asm-color($asm-red, 500);
+                            }
+
+                            &.not-visible {
+                                background: asm-color($asm-gray, 500);
+                            }
+                        }
+                    }
+                }
+            }
+
             asm-navigation-subheader-item {
 
                 .asm-navigation-item {
 
                     .asm-navigation-item-title {
                         color: map-get($primary, 400);
-                    }
-                }
-            }
-        }
-
-        .user {
-
-            .avatar {
-
-                .status {
-
-                    &.online {
-                        background: asm-color($asm-green, 500);
-                    }
-
-                    &.away {
-                        background: asm-color($asm-orange, 500);
-                    }
-
-                    &.busy {
-                        background: asm-color($asm-red, 500);
-                    }
-
-                    &.not-visible {
-                        background: asm-color($asm-gray, 500);
                     }
                 }
             }

@@ -6,17 +6,23 @@ layout[type="basic"] {
     flex: 1 1 auto;
     width: 100%;
 
-    .logo {
-        display: flex;
-        align-items: center;
-        height: 81px;
-        min-height: 81px;
-        max-height: 81px;
-        padding: 0 32px;
-        border-bottom-width: 1px;
+    asm-navigation {
 
-        img {
-            max-width: 163px;
+        .asm-navigation-header {
+
+            .logo {
+                display: flex;
+                align-items: center;
+                height: 81px;
+                min-height: 81px;
+                max-height: 81px;
+                padding: 0 32px;
+                border-bottom-width: 1px;
+
+                img {
+                    max-width: 163px;
+                }
+            }
         }
     }
 
@@ -193,6 +199,26 @@ layout[type="basic"] {
             background: map-get($background, card);
             box-shadow: inset -1px 0 0 0 map-get($foreground, divider);
 
+            .asm-navigation-header {
+
+                .logo {
+
+                    .logo-dark {
+
+                        @if ($is-dark) {
+                            display: none;
+                        }
+                    }
+
+                    .logo-light {
+
+                        @if (not $is-dark) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
             .asm-navigation-item {
 
                 &:hover:not(.asm-navigation-item-active) {
@@ -212,23 +238,6 @@ layout[type="basic"] {
                     .asm-navigation-item-title {
                         color: map-get($primary, 600);
                     }
-                }
-            }
-        }
-
-        .logo {
-
-            .logo-dark {
-
-                @if ($is-dark) {
-                    display: none;
-                }
-            }
-
-            .logo-light {
-
-                @if (not $is-dark) {
-                    display: none;
                 }
             }
         }
