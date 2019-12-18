@@ -200,20 +200,6 @@ layout[type="thin"] {
             } @else {
                 background: map-get($background, card);
             }
-
-            asm-navigation-subheader-item {
-
-                .asm-navigation-item {
-
-                    .asm-navigation-item-title {
-                        @if ($is-dark) {
-                            color: map-get($primary, 400);
-                        } @else {
-                            color: map-get($primary, 600);
-                        }
-                    }
-                }
-            }
         }
 
         > .wrapper {
