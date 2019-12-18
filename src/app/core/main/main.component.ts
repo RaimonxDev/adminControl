@@ -134,9 +134,6 @@ export class MainComponent implements OnInit, OnDestroy
      */
     private _updateLayout(): void
     {
-        // Set the default layout from the config
-        this.layout = this.config.layout;
-
         // Get the current activated route
         let route = this._activatedRoute;
         while ( route.firstChild )
@@ -144,10 +141,18 @@ export class MainComponent implements OnInit, OnDestroy
             route = route.firstChild;
         }
 
-        // Get the array of paths from root
-        const paths = route.pathFromRoot;
+        // 1. Set the layout from the config
+        this.layout = this.config.layout;
 
-        // Iterate through the paths and change the layout as we find
+        // 2. Get the query parameter from the current route and
+        // set the layout and save the layout to the config
+        const layoutFromQueryParam = (route.snapshot.queryParamMap.get('layout') as Layout);
+        if ( layoutFromQueryParam )
+        {
+            this.config.layout = this.layout = layoutFromQueryParam;
+        }
+
+        // 3. Iterate through the paths and change the layout as we find
         // a config for it.
         //
         // The reason we do this is that there might be empty grouping
@@ -163,6 +168,7 @@ export class MainComponent implements OnInit, OnDestroy
         //
         // Also, this will allow overriding the layout in any time so we
         // can have different layouts for different routes.
+        const paths = route.pathFromRoot;
         paths.forEach((path) => {
 
             // Check if there is a 'layout' data
