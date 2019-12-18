@@ -49,7 +49,7 @@ mailbox-details {
             h2 {
                 margin: 4px 16px 4px 0;
                 font-size: 20px;
-                font-weight: 500;
+                font-weight: 600;
             }
 
             .labels {
@@ -65,7 +65,7 @@ mailbox-details {
                     margin: 4px;
                     border-radius: 10px;
                     font-size: 11px;
-                    font-weight: 500;
+                    font-weight: 600;
                     line-height: 21px;
                     white-space: nowrap;
                     text-transform: uppercase;
@@ -124,7 +124,7 @@ mailbox-details {
 
                     .from {
                         font-size: 15px;
-                        font-weight: 500;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
@@ -141,7 +141,7 @@ mailbox-details {
 
                         .me-label {
                             margin-right: 4px;
-                            font-weight: 500;
+                            font-weight: 600;
                         }
 
                         .others {
@@ -152,18 +152,18 @@ mailbox-details {
 
                             .count {
                                 margin-right: 4px;
-                                font-weight: 500;
+                                font-weight: 600;
                             }
 
                             .label {
                                 margin-right: 4px;
-                                font-weight: 500;
+                                font-weight: 600;
                             }
                         }
 
                         .person {
                             display: flex;
-                            font-weight: 500;
+                            font-weight: 600;
 
                             .comma {
                                 margin-right: 4px;
@@ -207,8 +207,7 @@ mailbox-details {
                     }
 
                     div {
-                        font-size: 15px;
-                        font-weight: 500;
+                        font-weight: 600;
                     }
                 }
 
@@ -244,7 +243,7 @@ mailbox-details {
                                 align-items: center;
                                 justify-content: center;
                                 font-size: 12px;
-                                font-weight: 500;
+                                font-weight: 600;
                             }
                         }
 
@@ -253,7 +252,7 @@ mailbox-details {
 
                             .file-name {
                                 font-size: 13px;
-                                font-weight: 500;
+                                font-weight: 600;
                                 overflow: hidden;
                                 white-space: nowrap;
                                 text-overflow: ellipsis;
@@ -406,7 +405,7 @@ mailbox-details {
                     padding-bottom: 6px;
 
                     &.title {
-                        font-weight: 500;
+                        font-weight: 600;
                         text-align: right;
                         padding-right: 8px;
                     }

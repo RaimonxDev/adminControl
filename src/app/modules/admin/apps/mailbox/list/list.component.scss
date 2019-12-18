@@ -75,7 +75,7 @@ mailbox-list {
                 }
 
                 .category {
-                    font-weight: 500;
+                    font-weight: 600;
                     text-transform: uppercase;
                 }
             }
@@ -89,6 +89,7 @@ mailbox-list {
                     align-items: center;
                     margin-right: 16px;
                     font-size: 13px;
+                    font-weight: 500;
 
                     .separator {
                         margin: 0 4px;
@@ -167,8 +168,7 @@ mailbox-list {
 
                         .name {
                             margin-right: 8px;
-                            font-size: 15px;
-                            font-weight: 500;
+                            font-weight: 600;
                             white-space: nowrap;
                             text-overflow: ellipsis;
                             overflow: hidden;
