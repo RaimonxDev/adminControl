@@ -9,9 +9,9 @@ asm-date-range {
     .range {
         display: flex;
         align-items: center;
-        height: 48px;
-        min-height: 48px;
-        max-height: 48px;
+        height: 56px;
+        min-height: 56px;
+        max-height: 56px;
         cursor: pointer;
 
         .start,
@@ -88,7 +88,7 @@ asm-date-range {
                 }
 
                 .month-label {
-                    font-weight: 600;
+                    font-weight: 500;
                 }
             }
 
