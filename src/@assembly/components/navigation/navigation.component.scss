@@ -271,14 +271,6 @@ asm-navigation {
                             background-color: transparent !important;
                         }
                     }
-
-                    .asm-navigation-item-badge-indicator {
-                        position: absolute;
-                        display: none;
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                    }
                 }
             }
         }
@@ -539,16 +531,16 @@ asm-navigation {
     &.asm-navigation-appearance-dense {
 
         &:not(.asm-navigation-mode-over) {
-            width: 80px;
-            min-width: 80px;
-            max-width: 80px;
+            width: 88px;
+            min-width: 88px;
+            max-width: 88px;
 
             // Left positioned
             &.asm-navigation-position-left {
 
                 // Side mode
                 &.asm-navigation-mode-side {
-                    margin-left: -80px;
+                    margin-left: -88px;
                 }
 
                 // Opened
@@ -562,7 +554,7 @@ asm-navigation {
 
                 // Side mode
                 &.asm-navigation-mode-side {
-                    margin-right: -80px;
+                    margin-right: -88px;
                 }
 
                 // Opened
@@ -573,7 +565,7 @@ asm-navigation {
                 // Aside wrapper
                 .asm-navigation-aside-wrapper {
                     left: auto;
-                    right: 80px;
+                    right: 88px;
                 }
 
                 &.asm-navigation-hover {
@@ -598,12 +590,13 @@ asm-navigation {
                 asm-navigation-subheader-item {
 
                     .asm-navigation-item {
+                        width: 280px;
+                        min-width: 280px;
+                        max-width: 280px;
 
                         .asm-navigation-item-arrow,
                         .asm-navigation-item-badge,
-                        .asm-navigation-item-title,
-                        .asm-navigation-item-subtitle {
-                            white-space: nowrap;
+                        .asm-navigation-item-title-wrapper {
                             transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
                         }
                     }
@@ -619,29 +612,19 @@ asm-navigation {
                 // Content
                 .asm-navigation-content {
 
-                    asm-navigation-aside-item,
-                    asm-navigation-basic-item,
-                    asm-navigation-collapsable-item,
-                    asm-navigation-subheader-item {
+                    .asm-navigation-item {
+                        padding: 14px 32px;
 
-                        .asm-navigation-item {
+                        .asm-navigation-item-arrow,
+                        .asm-navigation-item-badge,
+                        .asm-navigation-item-title-wrapper {
+                            white-space: nowrap;
+                        }
 
-                            .asm-navigation-item-arrow,
-                            .asm-navigation-item-badge-content,
-                            .asm-navigation-item-title,
-                            .asm-navigation-item-subtitle {
-                                opacity: 0;
-                            }
-
-                            .asm-navigation-item-badge {
-
-                                .asm-navigation-item-badge-indicator {
-                                    position: absolute;
-                                    display: block;
-                                    top: 16px;
-                                    left: 44px;
-                                }
-                            }
+                        .asm-navigation-item-arrow,
+                        .asm-navigation-item-badge-content,
+                        .asm-navigation-item-title-wrapper {
+                            opacity: 0;
                         }
                     }
 
@@ -655,15 +638,13 @@ asm-navigation {
                     asm-navigation-subheader-item {
 
                         .asm-navigation-item {
-                            padding: 0 32px;
 
                             &:before {
                                 content: '';
                                 position: absolute;
-                                top: 12px;
-                                width: 16px;
-                                height: 2px;
-                                border-top: 2px solid;
+                                top: 20px;
+                                width: 23px;
+                                border-top-width: 2px;
                             }
                         }
                     }
@@ -681,8 +662,6 @@ asm-navigation {
 
             .asm-navigation-wrapper {
                 width: 280px;
-                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05),
-                0 2px 12px 0 rgba(0, 0, 0, 0.05);
             }
 
             .asm-navigation-aside-wrapper {
@@ -824,13 +803,6 @@ asm-navigation {
 
                         .asm-navigation-item-badge {
                             margin-left: 0;
-
-                            .asm-navigation-item-badge-indicator {
-                                position: absolute;
-                                display: block;
-                                top: 16px;
-                                left: 44px;
-                            }
                         }
                     }
                 }
@@ -1123,47 +1095,11 @@ asm-navigation {
                     .asm-navigation-item {
 
                         &.asm-navigation-item-active {
+                            box-shadow: none !important;
 
                             .asm-navigation-item-title,
                             .asm-navigation-item-icon {
                                 color: map-get($primary, default) !important;
-                            }
-                        }
-                    }
-                }
-            }
-
-            &:not(.asm-navigation-hover):not(.asm-navigation-mode-over) {
-
-                // Wrapper
-                .asm-navigation-wrapper {
-
-                    .asm-navigation-content {
-
-                        asm-navigation-subheader-item {
-
-                            .asm-navigation-item {
-
-                                &:before {
-                                    border-top-color: rgba(0, 0, 0, 0.12);
-                                }
-                            }
-                        }
-                    }
-
-                    // Dark background
-                    &.asm-navigation-dark-background {
-
-                        .asm-navigation-content {
-
-                            asm-navigation-subheader-item {
-
-                                .asm-navigation-item {
-
-                                    &:before {
-                                        border-top-color: rgba(255, 255, 255, 0.12);
-                                    }
-                                }
                             }
                         }
                     }
