@@ -1541,42 +1541,42 @@ export const compactNavigation: AsmNavigationItem[] = [
         id      : 'applications',
         title   : 'Apps',
         type    : 'aside',
-        icon    : 'dripicons:view_apps',
+        icon    : 'apps',
         children: []
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'aside',
-        icon    : 'dripicons:document_new',
+        icon    : 'description',
         children: []
     },
     {
         id      : 'ui-elements',
         title   : 'User Interface',
         type    : 'aside',
-        icon    : 'dripicons:checklist',
+        icon    : 'list_alt',
         children: []
     },
     {
         id      : 'assembly',
         title   : 'Assembly',
         type    : 'aside',
-        icon    : 'dripicons:rocket',
+        icon    : 'change_history',
         children: []
     },
     {
         id      : 'documentation',
         title   : 'Documentation',
         type    : 'aside',
-        icon    : 'dripicons:help',
+        icon    : 'help',
         children: []
     },
     {
         id      : 'navigation-features',
         title   : 'Navigation',
         type    : 'aside',
-        icon    : 'dripicons:menu',
+        icon    : 'menu',
         children: []
     }
 ];

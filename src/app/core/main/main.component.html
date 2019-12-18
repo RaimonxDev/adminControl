@@ -26,17 +26,9 @@
 <layout *ngIf="layout === 'dense'"
         type="dense"></layout>
 
-<!-- Modern -->
-<layout *ngIf="layout === 'modern'"
-        type="modern"></layout>
-
 <!-- Thin -->
 <layout *ngIf="layout === 'thin'"
         type="thin"></layout>
-
-<!-- Thin light -->
-<layout *ngIf="layout === 'thin-light'"
-        type="thin-light"></layout>
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
 <!-- Configurator -->
@@ -67,9 +59,7 @@
             <mat-radio-button [value]="'compact'">Compact</mat-radio-button>
             <mat-radio-button [value]="'dense'">Dense</mat-radio-button>
             <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
-            <mat-radio-button [value]="'modern'">Modern</mat-radio-button>
             <mat-radio-button [value]="'thin'">Thin</mat-radio-button>
-            <mat-radio-button [value]="'thin-light'">Thin (Light)</mat-radio-button>
         </mat-radio-group>
     </fieldset>
 

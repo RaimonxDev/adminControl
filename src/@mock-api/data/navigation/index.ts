@@ -44,15 +44,18 @@ export class MockNavigationApi
             .reply(() => {
 
                 // Fill compact navigation's aside item's children using the default navigation
-                this._compactNavigation.forEach((compactNavigationItem) => {
+                this._compactNavigation.forEach((compactNavItem) => {
 
-                    this._defaultNavigation.forEach((defaultNavigationItem) => {
+                    if ( compactNavItem.type === 'aside' )
+                    {
+                        this._defaultNavigation.forEach((defaultNavItem) => {
 
-                        if ( defaultNavigationItem.id === compactNavigationItem.id || defaultNavigationItem.id.startsWith(compactNavigationItem.id) )
-                        {
-                            compactNavigationItem.children.push(_.cloneDeep(defaultNavigationItem));
-                        }
-                    });
+                            if ( defaultNavItem.id === compactNavItem.id || defaultNavItem.id.startsWith(compactNavItem.id) )
+                            {
+                                compactNavItem.children.push(_.cloneDeep(defaultNavItem));
+                            }
+                        });
+                    }
                 });
 
                 return [

@@ -5,9 +5,7 @@ import { ClassicLayoutModule } from 'app/core/main/layouts/classic/classic.modul
 import { ClassyLayoutModule } from 'app/core/main/layouts/classy/classy.module';
 import { CompactLayoutModule } from 'app/core/main/layouts/compact/compact.module';
 import { DenseLayoutModule } from 'app/core/main/layouts/dense/dense.module';
-import { ModernVerticalLayoutModule } from 'app/core/main/layouts/modern/modern.module';
-import { ThinVerticalLayoutModule } from 'app/core/main/layouts/thin/thin.module';
-import { ThinVerticalLightLayoutModule } from 'app/core/main/layouts/thin-light/thin-light.module';
+import { ThinLayoutModule } from 'app/core/main/layouts/thin/thin.module';
 
 @NgModule({
     imports: [
@@ -17,9 +15,7 @@ import { ThinVerticalLightLayoutModule } from 'app/core/main/layouts/thin-light/
         ClassyLayoutModule,
         CompactLayoutModule,
         DenseLayoutModule,
-        ModernVerticalLayoutModule,
-        ThinVerticalLayoutModule,
-        ThinVerticalLightLayoutModule
+        ThinLayoutModule
     ],
     exports: [
         EmptyLayoutModule,
@@ -28,9 +24,7 @@ import { ThinVerticalLightLayoutModule } from 'app/core/main/layouts/thin-light/
         ClassyLayoutModule,
         CompactLayoutModule,
         DenseLayoutModule,
-        ModernVerticalLayoutModule,
-        ThinVerticalLayoutModule,
-        ThinVerticalLightLayoutModule
+        ThinLayoutModule
     ]
 })
 export class LayoutsModule
