@@ -4,7 +4,7 @@ import { BasicLayoutModule } from 'app/core/main/layouts/basic/basic.module';
 import { ClassicLayoutModule } from 'app/core/main/layouts/classic/classic.module';
 import { ClassyLayoutModule } from 'app/core/main/layouts/classy/classy.module';
 import { CompactLayoutModule } from 'app/core/main/layouts/compact/compact.module';
-import { DenseVerticalLayoutModule } from 'app/core/main/layouts/dense/dense.module';
+import { DenseLayoutModule } from 'app/core/main/layouts/dense/dense.module';
 import { ModernVerticalLayoutModule } from 'app/core/main/layouts/modern/modern.module';
 import { ThinVerticalLayoutModule } from 'app/core/main/layouts/thin/thin.module';
 import { ThinVerticalLightLayoutModule } from 'app/core/main/layouts/thin-light/thin-light.module';
@@ -16,7 +16,7 @@ import { ThinVerticalLightLayoutModule } from 'app/core/main/layouts/thin-light/
         ClassicLayoutModule,
         ClassyLayoutModule,
         CompactLayoutModule,
-        DenseVerticalLayoutModule,
+        DenseLayoutModule,
         ModernVerticalLayoutModule,
         ThinVerticalLayoutModule,
         ThinVerticalLightLayoutModule
@@ -27,7 +27,7 @@ import { ThinVerticalLightLayoutModule } from 'app/core/main/layouts/thin-light/
         ClassicLayoutModule,
         ClassyLayoutModule,
         CompactLayoutModule,
-        DenseVerticalLayoutModule,
+        DenseLayoutModule,
         ModernVerticalLayoutModule,
         ThinVerticalLayoutModule,
         ThinVerticalLightLayoutModule
