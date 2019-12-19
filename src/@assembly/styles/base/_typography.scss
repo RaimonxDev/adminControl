@@ -67,12 +67,13 @@ a {
 // Abbr
 abbr {
     cursor: help;
-    border-bottom: 1px dotted;
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
 }
 
 // Blockquote
 blockquote {
-    border-left: 3px solid;
+    border-left-width: 3px;
     font-style: italic;
     margin: 1em 0;
     padding-left: 16px;
@@ -86,8 +87,8 @@ blockquote {
     }
 
     &.reverse {
-        border-left: none;
-        border-right: 3px solid;
+        border-left-width: 0;
+        border-right-width: 3px;
         text-align: right;
         padding-left: 0;
         padding-right: 16px;
@@ -134,13 +135,13 @@ fieldset {
     padding-block-start: 0;
     padding-block-end: 0;
     width: 100%;
-    border: 1px solid;
+    border-width: 1px;
     border-radius: 4px;
     padding: 24px;
 
     legend {
-        padding: 0 8px;
-        margin-left: -8px;
+        padding: 0 6px;
+        margin-left: -6px;
     }
 }
 
@@ -222,20 +223,6 @@ pre {
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
-    // Abbr
-    abbr {
-        border-bottom-color: map-get($foreground, secondary-text);
-    }
-
-    // Blockquote
-    blockquote {
-        border-left-color: map-get($foreground, divider);
-
-        &.reverse {
-            border-right-color: map-get($foreground, divider);
-        }
-    }
-
     // Code
     code:not([class*='language-']) {
 
@@ -246,11 +233,6 @@ pre {
             color: #748DB9;
             background: #E2E8EF;
         }
-    }
-
-    // Fieldset
-    fieldset {
-        border-color: map-get($foreground, divider);
     }
 
     // -----------------------------------------------------------------------------------------------------
