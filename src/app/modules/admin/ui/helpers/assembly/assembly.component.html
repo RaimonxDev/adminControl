@@ -92,7 +92,7 @@
                     <div class="flex">
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>MMMMMMMM</mat-label>
+                            <mat-label>Input</mat-label>
                             <input matInput>
                             <mat-hint>This is a hint text</mat-hint>
                         </mat-form-field>
@@ -193,8 +193,7 @@
                                         [ngClass]="formFieldHelpers">
                             <mat-label>Textarea with Autosize</mat-label>
                             <textarea matInput
-                                      cdkTextareaAutosize
-                                      [cdkAutosizeMinRows]="2"></textarea>
+                                      asmAutogrow></textarea>
                         </mat-form-field>
                     </div>
 
@@ -203,8 +202,7 @@
                                         [ngClass]="formFieldHelpers">
                             <mat-label>Textarea with Autosize, Prefix & Suffix</mat-label>
                             <textarea matInput
-                                      cdkTextareaAutosize
-                                      [cdkAutosizeMinRows]="2"></textarea>
+                                      asmAutogrow></textarea>
                             <mat-icon matPrefix
                                       [svgIcon]="'account_circle'"></mat-icon>
                             <mat-icon matSuffix
@@ -423,8 +421,7 @@
                         <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
-                                      cdkTextareaAutosize
-                                      [cdkAutosizeMinRows]="2"
+                                      asmAutogrow
                                       [placeholder]="'Textarea with Autosize'"></textarea>
                         </mat-form-field>
                     </div>
@@ -433,8 +430,7 @@
                         <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
-                                      cdkTextareaAutosize
-                                      [cdkAutosizeMinRows]="2"
+                                      asmAutogrow
                                       [placeholder]="'Textarea with Autosize, Prefix & Suffix'"></textarea>
                             <mat-icon matPrefix
                                       [svgIcon]="'account_circle'"></mat-icon>
