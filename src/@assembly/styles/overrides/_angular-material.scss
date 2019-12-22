@@ -142,7 +142,7 @@
 
                     // Textarea
                     textarea {
-                        margin: 12px 0 !important;
+                        margin: 10px 0 !important;
                     }
 
                     // Select
@@ -156,6 +156,18 @@
             }
         }
     }
+
+    // Floating mat-label
+    &.mat-form-field-has-label.mat-form-field-can-float.mat-form-field-should-float {
+
+        .mat-form-field-label-wrapper {
+
+            .mat-form-field-label {
+                transform: translateY(-7px) scale(0.7857142857) !important;
+            }
+        }
+    }
+
 
     // Fix the arrow for native select
     &.mat-form-field-type-mat-native-select {
@@ -194,9 +206,9 @@
         .mat-form-field-flex {
             display: flex;
             align-items: stretch;
-            min-height: 4em;
-            border-radius: 4px;
-            padding: 0 1em;
+            min-height: 48px;
+            border-radius: 5px;
+            padding: 0 16px;
             border-width: 1px;
 
             .mat-form-field-prefix {
@@ -218,11 +230,6 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-
-                * {
-                    min-height: 16px;
-                    line-height: normal;
-                }
 
                 .mat-icon-button {
                     width: 40px;
@@ -278,7 +285,7 @@
                             display: flex;
                             align-items: center;
                             transform: none;
-                            margin-left: 8px;
+                            margin-left: 4px;
 
                             .mat-select-arrow {
                                 min-height: 0;
@@ -295,7 +302,7 @@
                 }
 
                 .mat-select {
-                    margin-right: 12px;
+                    margin-right: 10px;
                 }
             }
 
@@ -306,7 +313,7 @@
                 }
 
                 .mat-select {
-                    margin-left: 12px;
+                    margin-left: 10px;
                 }
             }
 
@@ -321,11 +328,9 @@
                 [matInputSuffix] {
                     display: flex;
                     align-items: center;
-                    min-height: 16px;
                     margin-top: 0;
                     opacity: 0;
-                    line-height: normal;
-                    transform: translateY(0.6em);
+                    transform: translateY(8px);
                 }
 
                 [matInputPrefix] {
@@ -338,24 +343,21 @@
 
                 .mat-input-element {
                     order: 2;
-                    min-height: 16px;
                     margin-top: 0;
-                    line-height: normal;
-                    transform: translateY(0.6em);
+                    transform: translateY(8px);
                 }
 
                 // Textarea
                 textarea.mat-input-element {
                     display: flex;
                     align-self: stretch;
-                    min-height: 0;
-                    margin: 1.7em 0 0.5em 0;
-                    padding: 4px 0;
+                    min-height: 36px;
+                    margin: 18px 0 10px 0;
+                    padding: 4px 6px 4px 0;
                     transform: none;
-                    line-height: 1.5;
 
                     + .mat-form-field-label-wrapper {
-                        top: 1.28571em;
+                        top: 14px;
                         transform: none;
                     }
                 }
@@ -363,11 +365,6 @@
                 // Select
                 .mat-select {
                     display: inline-flex;
-
-                    .mat-select-placeholder {
-                        min-height: 16px;
-                        line-height: normal;
-                    }
 
                     .mat-select-trigger {
                         display: inline-flex;
@@ -379,7 +376,6 @@
                             position: relative;
                             top: 8px;
                             max-width: none;
-                            line-height: normal;
 
                             .mat-select-value-text {
                                 display: inline-flex;
@@ -405,6 +401,7 @@
                 // Chips
                 .mat-chip-list {
                     width: 100%;
+                    margin: 0 -8px;
 
                     .mat-chip-input {
                         margin: 0 0 0 8px;
@@ -421,9 +418,7 @@
                     .mat-form-field-label {
                         position: relative;
                         top: 0;
-                        min-height: 16px;
                         margin-top: 0;
-                        line-height: normal;
                     }
                 }
             }
@@ -448,11 +443,19 @@
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
+                    padding: 0 10px 0 16px;
 
                     .mat-form-field-prefix,
                     .mat-form-field-suffix {
                         align-items: flex-start;
-                        padding: 1em 0;
+                    }
+
+                    .mat-form-field-prefix {
+                        padding: 11px 0;
+                    }
+
+                    .mat-form-field-suffix {
+                        padding: 11px 6px 10px 0;
                     }
                 }
             }

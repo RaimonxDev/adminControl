@@ -17,7 +17,7 @@ $typography: mat-typography-config(
     $title: mat-typography-level(20px, 32px, 600),
     $body-2: mat-typography-level(1rem, 24px, 600),
     $button: mat-typography-level(1rem, 14px, 500),
-    $input: mat-typography-level(1rem, 1, 400)
+    $input: mat-typography-level(14px, 1.2857142857, 400) // line-height: 20px
 );
 
 // Setup the typography
