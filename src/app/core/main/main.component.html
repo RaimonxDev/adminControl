@@ -34,34 +34,47 @@
 <!-- Configurator -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
-<asm-drawer [name]="'configuratorDrawer'"
+<asm-drawer class="configuration-drawer"
+            [name]="'configuratorDrawer'"
             [position]="'right'"
             [mode]="'over'">
-    <!-- Layout -->
-    <fieldset>
-        <legend>Theme</legend>
-        <mat-radio-group [color]="'primary'"
-                         [value]="theme"
-                         (change)="setDefaultTheme($event)">
-            <mat-radio-button [value]="'light'">Light</mat-radio-button>
-            <mat-radio-button [value]="'dark'">Dark</mat-radio-button>
-        </mat-radio-group>
-    </fieldset>
 
-    <fieldset>
-        <legend>Layout</legend>
-        <mat-radio-group [color]="'primary'"
-                         [value]="layout"
-                         (change)="setDefaultLayout($event)">
-            <mat-radio-button [value]="'basic'">Basic</mat-radio-button>
-            <mat-radio-button [value]="'classic'">Classic</mat-radio-button>
-            <mat-radio-button [value]="'classy'">Classy</mat-radio-button>
-            <mat-radio-button [value]="'compact'">Compact</mat-radio-button>
-            <mat-radio-button [value]="'dense'">Dense</mat-radio-button>
-            <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
-            <mat-radio-button [value]="'thin'">Thin</mat-radio-button>
-        </mat-radio-group>
-    </fieldset>
+    <div class="flex flex-col w-full">
+
+        <div class="flex flex-row items-center gray-800 p-24">
+            <mat-icon class="mr-12"
+                      [svgIcon]="'color_lens'"></mat-icon>
+            <div class="text-2xl">Configuration</div>
+        </div>
+
+        <div class="flex flex-col p-24">
+
+            <!-- Dark theme -->
+            <mat-slide-toggle class="mt-8 mb-32"
+                              [checked]="theme === 'dark'"
+                              (change)="setDefaultTheme($event)"
+                              [color]="'primary'">
+                Dark theme
+            </mat-slide-toggle>
+
+            <!-- Layout -->
+            <div class="font-medium mb-8">Layout:</div>
+            <mat-radio-group class="flex flex-col mb-8"
+                             [color]="'primary'"
+                             [value]="layout"
+                             (change)="setDefaultLayout($event)">
+                <mat-radio-button [value]="'basic'">Basic</mat-radio-button>
+                <mat-radio-button [value]="'classic'">Classic</mat-radio-button>
+                <mat-radio-button [value]="'classy'">Classy</mat-radio-button>
+                <mat-radio-button [value]="'compact'">Compact</mat-radio-button>
+                <mat-radio-button [value]="'dense'">Dense</mat-radio-button>
+                <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
+                <mat-radio-button [value]="'thin'">Thin</mat-radio-button>
+            </mat-radio-group>
+
+        </div>
+
+    </div>
 
 </asm-drawer>
 

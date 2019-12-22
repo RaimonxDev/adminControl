@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatRadioChange } from '@angular/material/radio';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmDrawerService } from '@assembly';
@@ -199,8 +200,8 @@ export class MainComponent implements OnInit, OnDestroy
      *
      * @param change
      */
-    setDefaultTheme(change: MatRadioChange): void
+    setDefaultTheme(change: MatSlideToggleChange): void
     {
-        this._configService.config = {theme: change.value};
+        this._configService.config = {theme: change.checked ? 'dark' : 'light'};
     }
 }
