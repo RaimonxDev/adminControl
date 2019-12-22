@@ -100,7 +100,7 @@ export class AsmAutogrowDirective implements OnInit, OnDestroy
         this._renderer2.setStyle(this._elementRef.nativeElement, 'height', 'auto');
 
         // Get the scrollHeight and subtract the vertical padding
-        const scrollHeight = this._elementRef.nativeElement.scrollHeight - this.padding + 'px';
-        this._renderer2.setStyle(this._elementRef.nativeElement, 'height', scrollHeight);
+        const height = this._elementRef.nativeElement.scrollHeight - this.padding + 'px';
+        this._renderer2.setStyle(this._elementRef.nativeElement, 'height', height);
     }
 }
