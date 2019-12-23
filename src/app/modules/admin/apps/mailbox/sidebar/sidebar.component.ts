@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmNavigationItem } from '@assembly';
+import { AsmNavigationItem, AsmNavigationService } from '@assembly';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
 
@@ -29,10 +29,12 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {AsmNavigationService} _asmNavigationService
      * @param {MailboxService} _mailboxService
      * @param {MatDialog} _matDialog
      */
     constructor(
+        private _asmNavigationService: AsmNavigationService,
         private _mailboxService: MailboxService,
         private _matDialog: MatDialog
     )
@@ -75,6 +77,9 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
                 // Generate menu links
                 this._generateFoldersMenuLinks();
+
+                // Update navigation badge
+                this._updateNavigationBadge(folders);
             });
 
         // Labels
@@ -253,6 +258,30 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             },
             ...this._otherMenuData
         ];
+    }
+
+    /**
+     * Update the navigation badge using the
+     * unread count of the inbox folder
+     *
+     * @param folders
+     * @private
+     */
+    private _updateNavigationBadge(folders): void
+    {
+        // Get the inbox folder
+        const inboxFolder = this.folders.find((folder) => folder.slug === 'inbox');
+
+        // Get the component -> navigation data -> item
+        const mainNavigationComponent = this._asmNavigationService.getComponent('mainNavigation');
+        const mainNavigation = mainNavigationComponent.navigation;
+        const menuItem = this._asmNavigationService.getItem('applications.mailbox', mainNavigation);
+
+        // Update the badge title of the item
+        menuItem.badge.title = inboxFolder.count;
+
+        // Refresh the navigation
+        mainNavigationComponent.refresh();
     }
 
     // -----------------------------------------------------------------------------------------------------

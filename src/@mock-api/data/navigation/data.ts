@@ -312,7 +312,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon : 'email',
         link : '/apps/mailbox',
         badge: {
-            title     : '25',
+            title     : '27',
             style     : 'rounded',
             background: '#E91E63',
             color     : '#FFFFFF'
