@@ -22,6 +22,6 @@ export interface AsmNavigationItem
     children?: AsmNavigationItem[];
 }
 
-export type AsmNavigationAppearance = 'classic' | 'compact' | 'dense' | 'modern' | 'thin';
+export type AsmNavigationAppearance = 'classic' | 'compact' | 'dense' | 'thin';
 export type AsmNavigationMode = 'over' | 'side';
 export type AsmNavigationPosition = 'left' | 'right';

@@ -326,13 +326,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
         link : '/apps/tasks'
     },
     {
-        id   : 'applications.notes',
-        title: 'Notes',
-        type : 'basic',
-        icon : 'note',
-        link : '/apps/notes'
-    },
-    {
         id   : 'applications.contacts',
         title: 'Contacts',
         type : 'basic',
