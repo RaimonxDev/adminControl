@@ -67,7 +67,7 @@ pricing-simple {
                     }
 
                     > span {
-                        font-weight: 700;
+                        font-weight: 600;
                         cursor: pointer;
                         user-select: none;
                     }
@@ -153,7 +153,7 @@ pricing-simple {
 
                         .amount {
                             font-size: 42px;
-                            font-weight: 700;
+                            font-weight: 600;
                         }
 
                         .per {
@@ -267,7 +267,7 @@ pricing-simple {
 
                             div {
                                 font-size: 16px;
-                                font-weight: 500;
+                                font-weight: 600;
                             }
                         }
 
@@ -326,9 +326,9 @@ pricing-simple {
                         max-width: 480px;
 
                         .question {
-                            font-size: 16px;
-                            font-weight: 500;
                             margin: 48px 0 8px 0;
+                            font-size: 16px;
+                            font-weight: 600;
 
                             &:first-of-type {
                                 margin-top: 0;

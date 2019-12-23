@@ -105,7 +105,7 @@ help-center {
                         .title {
                             margin-top: 24px;
                             font-size: 16px;
-                            font-weight: 500;
+                            font-weight: 600;
                         }
 
                         .subtitle {
@@ -141,6 +141,17 @@ help-center {
                 .mat-accordion {
                     margin-top: 64px;
                     max-width: 784px;
+
+                    .mat-expansion-panel {
+
+                        .mat-expansion-panel-header {
+
+                            .mat-expansion-panel-header-title {
+                                line-height: 1;
+                                font-weight: 500;
+                            }
+                        }
+                    }
                 }
             }
         }
