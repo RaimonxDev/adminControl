@@ -11,7 +11,7 @@ contacts-details {
         display: flex;
         flex: 1 1 auto;
         flex-direction: column;
-        padding: 64px 64px 64px 80px;
+        padding: 56px 64px 64px 80px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
@@ -20,7 +20,7 @@ contacts-details {
         }
 
         &.edit-mode {
-            padding: 64px 96px 64px 80px;
+            padding: 56px 96px 64px 80px;
 
             @include asm-media-breakpoint('lt-sm') {
                 padding: 40px 96px 40px 80px;
@@ -62,8 +62,8 @@ contacts-details {
             position: absolute;
             display: flex;
             align-items: center;
-            top: 64px;
-            right: 48px;
+            top: 32px;
+            right: 32px;
 
             @include asm-media-breakpoint('(max-width: 480px)') {
                 position: relative;
@@ -622,7 +622,7 @@ contacts-details {
 
                 div {
                     white-space: pre-line;
-                    line-height: 1.8;
+                    line-height: 1.7;
                 }
             }
 

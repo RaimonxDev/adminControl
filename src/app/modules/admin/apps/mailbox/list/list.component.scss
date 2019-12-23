@@ -67,7 +67,7 @@ mailbox-list {
                 align-items: center;
 
                 .sidebar-toggle {
-                    margin-right: 12px;
+                    margin-right: 8px;
 
                     .mat-icon {
                         @include asm-icon-size(24);
@@ -75,7 +75,7 @@ mailbox-list {
                 }
 
                 .category {
-                    font-weight: 500;
+                    font-weight: 600;
                     text-transform: uppercase;
                 }
             }
@@ -98,6 +98,11 @@ mailbox-list {
 
                 .previous-page,
                 .next-page {
+                    width: 32px;
+                    min-width: 32px;
+                    height: 32px;
+                    min-height: 32px;
+                    line-height: 32px !important;
 
                     .mat-icon {
                         @include asm-icon-size(16);
@@ -143,32 +148,9 @@ mailbox-list {
                         width: 100%;
                         line-height: normal;
 
-                        .avatar {
-                            position: relative;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: 32px;
-                            min-width: 32px;
-                            height: 32px;
-                            min-height: 32px;
-                            border-radius: 50%;
-                            overflow: hidden;
-
-                            &:before {
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                right: 0;
-                                bottom: 0;
-                                left: 0;
-                                border-radius: 50%;
-                            }
-                        }
-
                         .name {
                             margin-right: 8px;
-                            font-weight: 500;
+                            font-weight: 600;
                             white-space: nowrap;
                             text-overflow: ellipsis;
                             overflow: hidden;

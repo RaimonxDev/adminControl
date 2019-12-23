@@ -4,27 +4,50 @@
     <!-- Actions -->
     <div class="actions">
 
-        <!-- Edit & Save buttons -->
+        <!-- Edit button -->
         <button mat-icon-button
                 *ngIf="!editMode"
-                (click)="toggleEditMode()">
-            <mat-icon [svgIcon]="'edit'"></mat-icon>
+                [matMenuTriggerFor]="actionsMenu">
+            <mat-icon [svgIcon]="'more_vert'"></mat-icon>
         </button>
+        <mat-menu class="mailbox-details-toggle-label-menu-panel"
+                  #actionsMenu="matMenu">
+            <button mat-menu-item
+                    *ngIf="!editMode"
+                    (click)="toggleEditMode(true)">
+                <mat-icon [svgIcon]="'edit'"></mat-icon>
+                <span>Edit contact</span>
+            </button>
+        </mat-menu>
 
+        <!-- Save button -->
         <button mat-icon-button
                 *ngIf="editMode"
+                [matTooltip]="'Save'"
                 (click)="updateContact()">
-            <mat-icon [svgIcon]="'check'"></mat-icon>
+            <mat-icon [svgIcon]="'save'"></mat-icon>
+        </button>
+
+        <!-- Cancel button -->
+        <button mat-icon-button
+                *ngIf="editMode"
+                [matTooltip]="'Cancel'"
+                (click)="toggleEditMode(false)">
+            <mat-icon [svgIcon]="'cancel'"></mat-icon>
         </button>
 
         <!-- Delete button -->
         <button mat-icon-button
+                *ngIf="editMode"
+                [matTooltip]="'Delete'"
                 (click)="deleteContact()">
             <mat-icon [svgIcon]="'delete'"></mat-icon>
         </button>
 
         <!-- Close button -->
         <button mat-icon-button
+                *ngIf="!editMode"
+                [matTooltip]="'Close'"
                 [routerLink]="['../']">
             <mat-icon [svgIcon]="'close'"></mat-icon>
         </button>
@@ -42,8 +65,8 @@
                        type="file"
                        [multiple]="false"
                        [accept]="'image/jpeg, image/png'"
-                       (change)="uploadAvatar(fileInput.files)"
-                       #fileInput>
+                       (change)="uploadAvatar(avatarFileInput.files)"
+                       #avatarFileInput>
                 <label for="avatar-file-input"
                        matRipple>
                     <mat-icon [svgIcon]="'photo_camera'"></mat-icon>

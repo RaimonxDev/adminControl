@@ -125,6 +125,9 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
                 // Calculate the drawer mode
                 this.drawerMode = matches ? 'side' : 'over';
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
             });
 
         // Listen for shortcuts

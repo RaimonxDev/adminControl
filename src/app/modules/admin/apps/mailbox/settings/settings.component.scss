@@ -63,10 +63,6 @@ mailbox-settings {
                 justify-content: center;
                 width: 32px;
                 height: 32px;
-
-                .mat-icon {
-                    @include asm-icon-size(20);
-                }
             }
         }
 

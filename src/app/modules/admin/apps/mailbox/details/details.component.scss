@@ -17,7 +17,7 @@ mailbox-details {
             display: flex;
             align-items: center;
             min-height: 64px;
-            padding: 0 40px;
+            padding: 0 24px;
             border-bottom-width: 1px;
 
             .back-button {
@@ -40,16 +40,17 @@ mailbox-details {
 
         }
 
-        .subject {
+        .info {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            padding: 20px 40px;
+            padding: 20px 24px;
 
-            h2 {
+            .subject {
+                display: flex;
+                flex: 1 1 auto;
                 margin: 4px 16px 4px 0;
                 font-size: 20px;
-                font-weight: 500;
             }
 
             .labels {
@@ -78,7 +79,7 @@ mailbox-details {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
-        padding: 16px;
+        padding: 12px;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
@@ -124,7 +125,7 @@ mailbox-details {
 
                     .from {
                         font-size: 15px;
-                        font-weight: 500;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
@@ -141,7 +142,7 @@ mailbox-details {
 
                         .me-label {
                             margin-right: 4px;
-                            font-weight: 500;
+                            font-weight: 600;
                         }
 
                         .others {
@@ -152,22 +153,12 @@ mailbox-details {
 
                             .count {
                                 margin-right: 4px;
-                                font-weight: 500;
+                                font-weight: 600;
                             }
 
                             .label {
                                 margin-right: 4px;
-                                font-weight: 500;
-                            }
-                        }
-
-                        .person {
-                            display: flex;
-                            font-weight: 500;
-
-                            .comma {
-                                margin-right: 4px;
-                                font-weight: 700;
+                                font-weight: 600;
                             }
                         }
 
@@ -189,7 +180,7 @@ mailbox-details {
                 display: flex;
                 margin-top: 32px;
                 white-space: pre-line;
-                line-height: 1.8;
+                line-height: 1.7;
             }
 
             .attachments {
@@ -207,7 +198,7 @@ mailbox-details {
                     }
 
                     div {
-                        font-weight: 500;
+                        font-weight: 600;
                     }
                 }
 

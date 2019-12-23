@@ -28,8 +28,7 @@ contacts-list {
                     display: flex;
                     flex: 1 1 auto;
                     align-items: center;
-                    margin: 0 40px;
-                    padding: 40px 0;
+                    padding: 40px;
                     border-bottom-width: 1px;
 
                     @include asm-media-breakpoint('lt-sm') {
@@ -48,6 +47,11 @@ contacts-list {
                             margin: 0;
                             line-height: 1;
                         }
+                    }
+
+                    .contacts-count {
+                        margin-left: 2px;
+                        font-weight: 500;
                     }
 
                     .main-actions {
@@ -89,25 +93,20 @@ contacts-list {
                 }
 
                 .contacts-list {
-                    margin: 24px 16px 0 16px;
-
-                    @include asm-media-breakpoint('lt-sm') {
-                        margin: 0 32px;
-                    }
 
                     table {
                         width: 100%;
-
-                        td.mat-cell:first-of-type,
-                        td.mat-footer-cell:first-of-type,
-                        th.mat-header-cell:first-of-type {
-
-                            @include asm-media-breakpoint('lt-sm') {
-                                padding: 0 8px;
-                            }
-                        }
+                        table-layout: fixed;
 
                         th {
+
+                            &:first-child {
+                                padding-left: 96px;
+                            }
+
+                            &:last-child {
+                                padding-right: 40px;
+                            }
 
                             &.mat-column-email {
 
@@ -124,6 +123,7 @@ contacts-list {
                             }
 
                             &.mat-column-job {
+                                max-width: 240px;
 
                                 @include asm-media-breakpoint('lt-lg') {
                                     display: none;
@@ -137,18 +137,17 @@ contacts-list {
 
                             td {
                                 line-height: 1;
-                                border-bottom: none;
+                                border-bottom-width: 1px;
 
                                 &:first-child {
-                                    border-radius: 8px 0 0 8px;
+                                    padding-left: 40px;
                                 }
 
                                 &:last-child {
-                                    border-radius: 0 8px 8px 0;
+                                    padding-right: 40px;
                                 }
 
                                 &.mat-column-name {
-                                    padding-right: 16px;
                                     max-width: 240px;
 
                                     .name-content {
@@ -222,7 +221,6 @@ contacts-list {
                                 }
 
                                 &.mat-column-job {
-                                    padding-right: 16px;
                                     max-width: 160px;
                                     overflow: hidden;
                                     white-space: nowrap;
@@ -316,10 +314,7 @@ contacts-list {
                             background: transparent;
 
                             th {
-
-                                &.mat-header-cell {
-                                    border: none;
-                                }
+                                background: asm-color($asm-gray, 100);
                             }
 
                             tr.contact-row {

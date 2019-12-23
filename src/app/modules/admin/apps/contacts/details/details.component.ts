@@ -36,6 +36,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     @ViewChild('avatar')
     private _avatar: ElementRef;
 
+    @ViewChild('avatarFileInput')
+    private _avatarFileInput: ElementRef;
+
     @ViewChild('tagsPanel')
     private _tagsPanel: TemplateRef<any>;
 
@@ -197,12 +200,8 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
                     (this.contactForm.get('phoneNumbers') as FormArray).push(phoneNumbersFormGroup);
                 });
 
-                // HACK - Go into the edit mode if the contact name equals to 'New Contact'
-                // FIXME: Separate the edit mode using the '/edit' route
-                if ( contact.name === 'New Contact' )
-                {
-                    this.toggleEditMode();
-                }
+                // Toggle the edit mode off
+                this.toggleEditMode(false);
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
@@ -263,10 +262,19 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
     /**
      * Toggle edit mode
+     *
+     * @param editMode
      */
-    toggleEditMode(): void
+    toggleEditMode(editMode: boolean | null = null): void
     {
-        this.editMode = !this.editMode;
+        if ( editMode === null )
+        {
+            this.editMode = !this.editMode;
+        }
+        else
+        {
+            this.editMode = editMode;
+        }
 
         // Mark for check
         this._changeDetectorRef.markForCheck();
@@ -293,7 +301,7 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
         this._contactsService.updateContact(contact.id, contact).subscribe(() => {
 
             // Toggle the edit mode off
-            this.toggleEditMode();
+            this.toggleEditMode(false);
         });
     }
 
@@ -337,6 +345,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
                 {
                     this._router.navigate(['../'], {relativeTo: route});
                 }
+
+                // Toggle the edit mode off
+                this.toggleEditMode(false);
             });
 
         // Mark for check
@@ -346,18 +357,18 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     /**
      * Upload avatar
      *
-     * @param files
+     * @param fileList
      */
-    uploadAvatar(files: FileList): void
+    uploadAvatar(fileList: FileList): void
     {
         // Return if canceled
-        if ( !files.length )
+        if ( !fileList.length )
         {
             return;
         }
 
         const allowedTypes = ['image/jpeg', 'image/png'];
-        const file = files[0];
+        const file = fileList[0];
 
         // Return if the file is not allowed
         if ( !allowedTypes.includes(file.type) )
@@ -379,6 +390,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
         // Set the avatar as null
         avatarFormControl.setValue(null);
+
+        // Set the file input value as null
+        this._avatarFileInput.nativeElement.value = null;
 
         // Update the contact
         this.contact.avatar = null;
