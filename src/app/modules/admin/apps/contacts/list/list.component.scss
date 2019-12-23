@@ -235,10 +235,13 @@ contacts-list {
                     }
 
                     .no-contacts {
-                        padding: 0 48px;
-                        height: 64px;
-                        line-height: 64px;
-                        font-size: 16px;
+                        padding: 64px;
+                        font-size: 24px;
+                        text-align: center;
+
+                        @include asm-media-breakpoint('lt-sm') {
+                            padding: 32px;
+                        }
                     }
                 }
             }

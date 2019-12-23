@@ -23,6 +23,7 @@
         <!-- Save button -->
         <button mat-icon-button
                 *ngIf="editMode"
+                [disabled]="contactForm.invalid"
                 [matTooltip]="'Save'"
                 (click)="updateContact()">
             <mat-icon [svgIcon]="'save'"></mat-icon>

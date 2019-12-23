@@ -46,9 +46,9 @@ export class ContactsListComponent implements OnInit, OnDestroy
         private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _changeDetectorRef: ChangeDetectorRef,
+        private _contactsService: ContactsService,
         @Inject(DOCUMENT) private _document: any,
-        private _router: Router,
-        private _contactsService: ContactsService
+        private _router: Router
     )
     {
         // Set the private defaults
