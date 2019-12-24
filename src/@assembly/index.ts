@@ -34,6 +34,3 @@ export * from './validators/public-api';
 
 // Animations
 export * from './animations/public-api';
-
-// Types
-export * from './types/public-api';
