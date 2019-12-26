@@ -4,7 +4,7 @@
 
         <!-- Last payment -->
         <div class="flex flex-row w-1/2 pr-16">
-            <div class="flex flex-col flex-auto px-24 py-16 bg-card rounded-4 border-l-4 shadow-md"
+            <div class="flex flex-col flex-auto p-24 bg-card rounded-4 border-l-4 shadow-md"
                  [ngClass]="{'border-green': data.lastPayment.status === 'paid', 'border-orange': data.lastPayment.status === 'pending'}">
                 <div class="flex flex-row items-baseline">
                     <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Last Payment</div>
@@ -32,7 +32,7 @@
 
         <!-- Next payment -->
         <div class="flex flex-row w-1/2 pl-16">
-            <div class="flex flex-col flex-auto px-24 py-16 bg-card rounded-4 border-l-4 shadow-md"
+            <div class="flex flex-col flex-auto p-24 bg-card rounded-4 border-l-4 shadow-md"
                  [ngClass]="{'border-green': data.nextPayment.status === 'paid', 'border-orange': data.nextPayment.status === 'pending'}">
                 <div class="flex flex-row items-baseline">
                     <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Next Payment</div>
@@ -66,15 +66,22 @@
 
             <!-- Total orders -->
             <div class="flex flex-col bg-card shadow-md rounded-4">
-                <div class="flex flex-col px-24 py-16">
-                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Total Orders</div>
-                    <div class="flex flex-row items-baseline mt-16">
-                        <div class="font-semibold text-4xl mr-8">{{data.totalOrders.amount}}</div>
-                        <div class="font-semibold text-md text-blue">orders</div>
+                <div class="flex flex-col p-24 pb-0">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Total Orders</div>
+                        <div class="font-medium text-sm text-hint">30 days</div>
                     </div>
-                    <div class="font-medium text-sm text-secondary leading-none mt-4">Since {{data.totalOrders.since}}</div>
+                    <div class="font-semibold text-6xl mt-16">{{data.totalOrders.amount}}</div>
+                    <div class="flex items-center">
+                        <mat-icon class="mr-4 text-green"
+                                  [svgIcon]="'trending_up'"></mat-icon>
+                        <div class="font-medium text-sm text-secondary leading-none">
+                            <span class="text-green">24%</span>
+                            more orders
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-auto items-end">
+                <div class="flex flex-auto">
                     <apx-chart class="w-full h-200"
                                [chart]="totalOrdersChart.chart"
                                [series]="totalOrdersChart.series"
@@ -89,14 +96,15 @@
 
             <!-- Total revenue -->
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
-                <div class="flex flex-col px-24 py-16">
+                <div class="flex flex-col p-24 pb-4">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Total Revenue</div>
-                        <div class="font-medium text-sm text-blue">{{data.totalRevenue.start}} - {{data.totalRevenue.end}}</div>
+                        <div class="font-medium text-sm text-hint">{{data.totalRevenue.start}} - {{data.totalRevenue.end}}</div>
                     </div>
+                    <div class="font-semibold text-3xl mt-16">{{data.totalRevenue.amount}}</div>
                 </div>
-                <div class="flex flex-auto px-12 pb-8">
-                    <apx-chart class="w-full h-280 text-primary"
+                <div class="flex flex-auto px-12 pb-4">
+                    <apx-chart class="w-full h-240"
                                [chart]="totalRevenueChart.chart"
                                [dataLabels]="totalRevenueChart.dataLabels"
                                [grid]="totalRevenueChart.grid"

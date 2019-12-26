@@ -138,8 +138,9 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
             },
             grid      : {
                 padding: {
-                    left : 10,
-                    right: 32
+                    right : 32,
+                    bottom: 0,
+                    left  : 10
                 }
             },
             markers   : {
