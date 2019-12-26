@@ -82,9 +82,9 @@
 
     // Large button
     &.asm-mat-button-large {
-        height: 48px;
-        min-height: 48px;
-        max-height: 48px;
+        height: 56px;
+        min-height: 56px;
+        max-height: 56px;
     }
 }
 
@@ -142,7 +142,7 @@
 
                     // Textarea
                     textarea {
-                        margin: 10px 0 !important;
+                        margin: 14px 0 !important;
                     }
 
                     // Select
@@ -163,7 +163,7 @@
         .mat-form-field-label-wrapper {
 
             .mat-form-field-label {
-                transform: translateY(-7px) scale(0.7857142857) !important;
+                transform: translateY(-8px) scale(0.7857142857) !important;
             }
         }
     }
@@ -206,7 +206,7 @@
         .mat-form-field-flex {
             display: flex;
             align-items: stretch;
-            min-height: 48px;
+            min-height: 56px;
             border-radius: 5px;
             padding: 0 16px;
             border-width: 1px;
@@ -330,7 +330,7 @@
                     align-items: center;
                     margin-top: 0;
                     opacity: 0;
-                    transform: translateY(8px);
+                    transform: translateY(9px);
                 }
 
                 [matInputPrefix] {
@@ -344,7 +344,7 @@
                 .mat-input-element {
                     order: 2;
                     margin-top: 0;
-                    transform: translateY(8px);
+                    transform: translateY(9px);
                 }
 
                 // Textarea
@@ -352,12 +352,12 @@
                     display: flex;
                     align-self: stretch;
                     min-height: 36px;
-                    margin: 18px 0 10px 0;
+                    margin: 23px 0 5px 0;
                     padding: 4px 6px 4px 0;
                     transform: none;
 
                     + .mat-form-field-label-wrapper {
-                        top: 14px;
+                        top: 18px;
                         transform: none;
                     }
                 }
@@ -451,11 +451,11 @@
                     }
 
                     .mat-form-field-prefix {
-                        padding: 11px 0;
+                        padding: 15px 0 0 0;
                     }
 
                     .mat-form-field-suffix {
-                        padding: 11px 6px 10px 0;
+                        padding: 15px 6px 0 0;
                     }
                 }
             }
@@ -498,25 +498,32 @@
 
         &.mat-form-field.mat-form-field-appearance-fill {
 
+            // Adjustments for no mat-label
+            &:not(.mat-form-field-has-label) {
+
+                .mat-form-field-wrapper {
+
+                    .mat-form-field-flex {
+                        min-height: 40px;
+
+                        .mat-form-field-prefix,
+                        .mat-form-field-suffix {
+
+                            .mat-icon-button {
+                                width: 32px;
+                                min-width: 32px;
+                                height: 32px;
+                                min-height: 32px;
+                            }
+                        }
+                    }
+                }
+            }
+
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
-                    min-height: 40px;
-
-                    .mat-form-field-prefix,
-                    .mat-form-field-suffix {
-
-                        .mat-icon-button {
-                            width: 32px;
-                            min-width: 32px;
-                            height: 32px;
-                            min-height: 32px;
-                        }
-                    }
-
-                    .mat-form-field-infix {
-                        min-height: 40px;
-                    }
+                    min-height: 52px;
                 }
             }
         }
@@ -529,7 +536,7 @@
                 .mat-form-field-wrapper {
 
                     .mat-form-field-flex {
-                        border-radius: 20px;
+                        border-radius: 999px;
                     }
                 }
             }

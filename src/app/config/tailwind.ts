@@ -240,8 +240,6 @@ module.exports = {
     // Core plugins
     corePlugins: {
         backgroundColor: false,
-        borderColor    : false,
-        boxShadow      : false,
         container      : false,
         float          : false,
         tableLayout    : false,
