@@ -14,13 +14,18 @@ export const adminRoutes: Route[] = [{
     },
     children   : [
 
-        // Redirect / to /apps/dashboard
-        {path: '', pathMatch : 'full', redirectTo: 'apps/dashboard'},
+        // Redirect / to /apps/dashboard/sales
+        {path: '', pathMatch : 'full', redirectTo: 'apps/dashboard/sales'},
 
         // Apps
         {path: 'apps', children: [
 
-            {path: 'dashboard', loadChildren: () => import('./apps/dashboard/dashboard.module').then(m => m.DashboardModule)},
+            // Dashboards
+            {path: 'dashboard', children: [
+
+                {path: 'sales', loadChildren: () => import('./apps/dashboard/sales/sales.module').then(m => m.DashboardSalesModule)},
+            ]},
+
             {path: 'calendar', loadChildren: () => import('./apps/calendar/calendar.module').then(m => m.CalendarModule)},
             {path: 'mailbox', loadChildren: () => import('./apps/mailbox/mailbox.module').then(m => m.MailboxModule)},
             {path: 'tasks', loadChildren: () => import('./apps/tasks/tasks.module').then(m => m.TasksModule)},

@@ -291,11 +291,18 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'apps'
     },
     {
-        id   : 'applications.dashboard',
-        title: 'Dashboard',
-        type : 'basic',
-        icon : 'dashboard',
-        link : '/apps/dashboard'
+        id      : 'applications.dashboard',
+        title   : 'Dashboard',
+        type    : 'collapsable',
+        icon    : 'dashboard',
+        children: [
+            {
+                id   : 'applications.dashboard.sales',
+                title: 'Sales',
+                type : 'basic',
+                link : '/apps/dashboard/sales'
+            }
+        ]
     },
     {
         id      : 'applications.calendar',

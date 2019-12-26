@@ -1,0 +1,116 @@
+<div class="flex flex-col w-full">
+
+    <div class="flex flex-row">
+
+        <!-- Last payment -->
+        <div class="flex flex-row w-1/2 pr-16">
+            <div class="flex flex-col flex-auto px-24 py-16 bg-card rounded-4 border-l-4 shadow-md"
+                 [ngClass]="{'border-green': data.lastPayment.status === 'paid', 'border-orange': data.lastPayment.status === 'pending'}">
+                <div class="flex flex-row items-baseline">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Last Payment</div>
+                    <div class="font-medium text-sm"
+                         [ngClass]="{'text-green': data.lastPayment.status === 'paid', 'text-orange': data.lastPayment.status === 'pending'}">
+                        {{data.lastPayment.date}}
+                    </div>
+                </div>
+                <div class="flex flex-row justify-between mt-16">
+                    <div class="flex flex-col mr-8">
+                        <div class="font-semibold text-3xl">{{data.lastPayment.products}}</div>
+                        <div class="font-medium text-sm text-hint leading-none mt-4">Products Cost</div>
+                    </div>
+                    <div class="flex flex-col mx-8">
+                        <div class="font-semibold text-3xl">{{data.lastPayment.shipping}}</div>
+                        <div class="font-medium text-sm text-hint leading-none mt-4">Shipping Cost</div>
+                    </div>
+                    <div class="flex flex-col ml-8">
+                        <div class="font-semibold text-3xl">{{data.lastPayment.total}}</div>
+                        <div class="font-medium text-sm text-hint leading-none mt-4">Total Cost</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next payment -->
+        <div class="flex flex-row w-1/2 pl-16">
+            <div class="flex flex-col flex-auto px-24 py-16 bg-card rounded-4 border-l-4 shadow-md"
+                 [ngClass]="{'border-green': data.nextPayment.status === 'paid', 'border-orange': data.nextPayment.status === 'pending'}">
+                <div class="flex flex-row items-baseline">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Next Payment</div>
+                    <div class="font-medium text-sm"
+                         [ngClass]="{'text-green': data.nextPayment.status === 'paid', 'text-orange': data.nextPayment.status === 'pending'}">
+                        {{data.nextPayment.date}}
+                    </div>
+                </div>
+                <div class="flex flex-row justify-between mt-16">
+                    <div class="flex flex-col mr-8">
+                        <div class="font-semibold text-3xl">{{data.nextPayment.products}}</div>
+                        <div class="font-medium text-sm text-hint leading-none mt-4">Products Cost</div>
+                    </div>
+                    <div class="flex flex-col mx-8">
+                        <div class="font-semibold text-3xl">{{data.nextPayment.shipping}}</div>
+                        <div class="font-medium text-sm text-hint leading-none mt-4">Shipping Cost</div>
+                    </div>
+                    <div class="flex flex-col ml-8">
+                        <div class="font-semibold text-3xl">{{data.nextPayment.total}}</div>
+                        <div class="font-medium text-sm text-hint leading-none mt-4">Total Cost</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex flex-row mt-32">
+
+        <div class="flex w-1/4 pr-16">
+
+            <!-- Total orders -->
+            <div class="flex flex-col bg-card shadow-md rounded-4">
+                <div class="flex flex-col px-24 py-16">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Total Orders</div>
+                    <div class="flex flex-row items-baseline mt-16">
+                        <div class="font-semibold text-4xl mr-8">{{data.totalOrders.amount}}</div>
+                        <div class="font-semibold text-md text-blue">orders</div>
+                    </div>
+                    <div class="font-medium text-sm text-secondary leading-none mt-4">Since {{data.totalOrders.since}}</div>
+                </div>
+                <div class="flex flex-auto items-end">
+                    <apx-chart class="w-full h-200"
+                               [chart]="totalOrdersChart.chart"
+                               [series]="totalOrdersChart.series"
+                               [xaxis]="totalOrdersChart.xaxis"
+                               #totalProductsChartComponent></apx-chart>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex w-3/4 pl-16">
+
+            <!-- Total revenue -->
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
+                <div class="flex flex-col px-24 py-16">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Total Revenue</div>
+                        <div class="font-medium text-sm text-blue">{{data.totalRevenue.start}} - {{data.totalRevenue.end}}</div>
+                    </div>
+                </div>
+                <div class="flex flex-auto px-12 pb-8">
+                    <apx-chart class="w-full h-280 text-primary"
+                               [chart]="totalRevenueChart.chart"
+                               [dataLabels]="totalRevenueChart.dataLabels"
+                               [grid]="totalRevenueChart.grid"
+                               [markers]="totalRevenueChart.markers"
+                               [series]="totalRevenueChart.series"
+                               [tooltip]="totalRevenueChart.tooltip"
+                               [xaxis]="totalRevenueChart.xaxis"
+                               [yaxis]="totalRevenueChart.yaxis"
+                               #totalRevenueChartComponent></apx-chart>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
