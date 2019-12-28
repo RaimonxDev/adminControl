@@ -1,3 +1,5 @@
+const {colors} = require('tailwindcss/defaultTheme');
+
 /**
  * Generate spacing object
  */
@@ -225,27 +227,309 @@ module.exports = {
             70 : '0.70',
             84 : '0.84',
             100: '1'
+        },
+
+        // Contrasting colors for the default colors
+        contrastColors: {
+            black : colors.white,
+            white : colors.gray['800'],
+            gray  : {
+                100    : colors.gray['900'],
+                200    : colors.gray['900'],
+                300    : colors.gray['900'],
+                400    : colors.gray['900'],
+                500    : colors.gray['900'],
+                600    : colors.gray['100'],
+                700    : colors.gray['100'],
+                800    : colors.gray['100'],
+                900    : colors.gray['100'],
+                default: colors.gray['900']
+            },
+            red   : {
+                100    : colors.red['900'],
+                200    : colors.red['900'],
+                300    : colors.red['900'],
+                400    : colors.red['900'],
+                500    : colors.red['900'],
+                600    : colors.red['100'],
+                700    : colors.red['100'],
+                800    : colors.red['100'],
+                900    : colors.red['100'],
+                default: colors.red['900']
+            },
+            orange: {
+                100    : colors.orange['900'],
+                200    : colors.orange['900'],
+                300    : colors.orange['900'],
+                400    : colors.orange['900'],
+                500    : colors.orange['900'],
+                600    : colors.orange['100'],
+                700    : colors.orange['100'],
+                800    : colors.orange['100'],
+                900    : colors.orange['100'],
+                default: colors.orange['900']
+            },
+            yellow: {
+                100    : colors.yellow['900'],
+                200    : colors.yellow['900'],
+                300    : colors.yellow['900'],
+                400    : colors.yellow['900'],
+                500    : colors.yellow['900'],
+                600    : colors.yellow['100'],
+                700    : colors.yellow['100'],
+                800    : colors.yellow['100'],
+                900    : colors.yellow['100'],
+                default: colors.yellow['900']
+            },
+            green : {
+                100    : colors.green['900'],
+                200    : colors.green['900'],
+                300    : colors.green['900'],
+                400    : colors.green['900'],
+                500    : colors.green['100'],
+                600    : colors.green['100'],
+                700    : colors.green['100'],
+                800    : colors.green['100'],
+                900    : colors.green['100'],
+                default: colors.green['100']
+            },
+            teal  : {
+                100    : colors.teal['900'],
+                200    : colors.teal['900'],
+                300    : colors.teal['900'],
+                400    : colors.teal['900'],
+                500    : colors.teal['100'],
+                600    : colors.teal['100'],
+                700    : colors.teal['100'],
+                800    : colors.teal['100'],
+                900    : colors.teal['100'],
+                default: colors.teal['100']
+            },
+            blue  : {
+                100    : colors.blue['900'],
+                200    : colors.blue['900'],
+                300    : colors.blue['900'],
+                400    : colors.blue['900'],
+                500    : colors.blue['100'],
+                600    : colors.blue['100'],
+                700    : colors.blue['100'],
+                800    : colors.blue['100'],
+                900    : colors.blue['100'],
+                default: colors.blue['100']
+            },
+            indigo: {
+                100    : colors.indigo['900'],
+                200    : colors.indigo['900'],
+                300    : colors.indigo['900'],
+                400    : colors.indigo['900'],
+                500    : colors.indigo['100'],
+                600    : colors.indigo['100'],
+                700    : colors.indigo['100'],
+                800    : colors.indigo['100'],
+                900    : colors.indigo['100'],
+                default: colors.indigo['100']
+            },
+            purple: {
+                100    : colors.purple['900'],
+                200    : colors.purple['900'],
+                300    : colors.purple['900'],
+                400    : colors.purple['900'],
+                500    : colors.purple['100'],
+                600    : colors.purple['100'],
+                700    : colors.purple['100'],
+                800    : colors.purple['100'],
+                900    : colors.purple['100'],
+                default: colors.purple['100']
+            },
+            pink  : {
+                100    : colors.pink['900'],
+                200    : colors.pink['900'],
+                300    : colors.pink['900'],
+                400    : colors.pink['900'],
+                500    : colors.pink['100'],
+                600    : colors.pink['100'],
+                700    : colors.pink['100'],
+                800    : colors.pink['100'],
+                900    : colors.pink['100'],
+                default: colors.pink['100']
+            }
+        },
+
+        // Extensions
+        extend: {
+
+            // Extend the colors to add 'default' values that uses the hue 500.
+            // This will generate utilities like 'text-indigo' or 'bg-red',
+            // which will be defaulted to the hue 500 of that color palette.
+            colors: {
+                gray  : {
+                    ...colors.gray,
+                    default: colors.gray['500']
+                },
+                red   : {
+                    ...colors.red,
+                    default: colors.red['500']
+                },
+                orange: {
+                    ...colors.orange,
+                    default: colors.orange['500']
+                },
+                yellow: {
+                    ...colors.yellow,
+                    default: colors.yellow['500']
+                },
+                green : {
+                    ...colors.green,
+                    default: colors.green['500']
+                },
+                teal  : {
+                    ...colors.teal,
+                    default: colors.teal['500']
+                },
+                blue  : {
+                    ...colors.blue,
+                    default: colors.blue['500']
+                },
+                indigo: {
+                    ...colors.indigo,
+                    default: colors.indigo['500']
+                },
+                purple: {
+                    ...colors.purple,
+                    default: colors.purple['500']
+                },
+                pink  : {
+                    ...colors.pink,
+                    default: colors.pink['500']
+                }
+            }
         }
     },
 
     // Variants
     variants: {
-        cursor       : [],
-        fontFamily   : [],
-        fontWeight   : ['responsive'],
-        resize       : [],
-        fontSmoothing: []
+        backgroundColor: [],
+        cursor         : [],
+        fontFamily     : [],
+        fontSmoothing  : [],
+        fontWeight     : ['responsive'],
+        resize         : [],
+        textColor      : []
     },
 
     // Core plugins
     corePlugins: {
-        backgroundColor: false,
-        container      : false,
-        float          : false,
-        tableLayout    : false,
-        textColor      : false
+        container       : false,
+        float           : false,
+        tableLayout     : false,
+        placeholderColor: false
     },
 
     // Custom plugins
-    plugins: []
+    plugins: [
+
+        // Component: Adds colors as CSS variables to the :root
+        ({addComponents, theme}) => {
+
+            const colorVars = {};
+
+            Object.keys(theme('colors')).forEach(color => {
+
+                if ( !!theme('colors.' + color) && theme('colors.' + color).constructor === Object )
+                {
+                    Object.keys(theme('colors.' + color)).forEach(hue => {
+                        const hueLabel = hue === 'default' ? '' : '-' + hue;
+                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
+                        colorVars['--color-' + color + hueLabel] = theme('colors.' + color + hueValue);
+                    });
+                }
+                else
+                {
+                    colorVars['--color-' + color] = theme('colors.' + color);
+                }
+            });
+
+            addComponents({
+                ':root': {
+                    ...colorVars
+                }
+            });
+        },
+
+        // Component: Adds color contrasts as CSS variables to the :root
+        ({addComponents, theme}) => {
+
+            const colorVars = {};
+
+            Object.keys(theme('contrastColors')).forEach(color => {
+
+                if ( !!theme('contrastColors.' + color) && theme('contrastColors.' + color).constructor === Object )
+                {
+                    Object.keys(theme('contrastColors.' + color)).forEach(hue => {
+                        const hueLabel = hue === 'default' ? '' : '-' + hue;
+                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
+                        colorVars['--contrast-' + color + hueLabel] = theme('contrastColors.' + color + hueValue);
+                    });
+                }
+                else
+                {
+                    colorVars['--contrast-' + color] = theme('contrastColors.' + color);
+                }
+            });
+
+            addComponents({
+                ':root': {
+                    ...colorVars
+                }
+            });
+        },
+
+        // Component: Adds a component that combines both background and its contrasting color
+        // with modified utility classes such as 'text-secondary' or 'mat-icon'
+        ({addComponents, theme}) => {
+
+            const combinedColors = {};
+            const generateCombinedColorRules = (color, hueLabel, hueValue) => {
+                combinedColors['.' + color + hueLabel] = {
+                    'backgroundColor'                                         : theme('colors.' + color + hueValue) + '!important',
+                    'color'                                                   : theme('contrastColors.' + color + hueValue) + '!important',
+                    '.mat-icon'                                               : {
+                        color: theme('contrastColors.' + color + hueValue) + '!important'
+                    },
+                    '&.text-secondary, .text-secondary'                       : {
+                        color: 'rgba(' + theme('contrastColors.' + color + hueValue) + ', 0.7) !important'
+                    },
+                    '&.text-hint, .text-hint, &.text-disabled, .text-disabled': {
+                        color: 'rgba(' + theme('contrastColors.' + color + hueValue) + ', 0.38) !important'
+                    },
+                    '&.divider, .divider'                                     : {
+                        color: 'rgba(' + theme('contrastColors.' + color + hueValue) + ', 0.12) !important'
+                    }
+                };
+            };
+
+            Object.keys(theme('colors')).forEach(color => {
+
+                if ( !!theme('colors.' + color) && theme('colors.' + color).constructor === Object )
+                {
+                    Object.keys(theme('colors.' + color)).forEach(hue => {
+                        const hueLabel = hue === 'default' ? '' : '-' + hue;
+                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
+                        generateCombinedColorRules(color, hueLabel, hueValue);
+                    });
+                }
+                else
+                {
+                    if ( color === 'transparent' )
+                    {
+                        return;
+                    }
+
+                    generateCombinedColorRules(color, '', '');
+                }
+            });
+
+            addComponents(combinedColors);
+        }
+    ]
 };
