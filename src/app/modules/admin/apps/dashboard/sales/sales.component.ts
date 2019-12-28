@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
 import { DashboardSalesService } from 'app/modules/admin/apps/dashboard/sales/sales.service';
@@ -14,6 +14,7 @@ import { DashboardSalesService } from 'app/modules/admin/apps/dashboard/sales/sa
 export class DashboardSalesComponent implements OnInit, OnDestroy
 {
     data: any;
+    recentOrdersTableColumns: string[];
     totalRevenueChart: ApexOptions;
     totalOrdersChart: ApexOptions;
 
@@ -37,6 +38,9 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        // Set the defaults
+        this.recentOrdersTableColumns = ['orderId', 'productName', 'amount', 'status', 'customer', 'date'];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -183,4 +187,18 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
         };
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackById(index, item): number
+    {
+        return item.id || index;
+    }
 }
