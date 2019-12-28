@@ -200,8 +200,6 @@ export class ContactsListComponent implements OnInit, OnDestroy
 
     /**
      * Create contact
-     *
-     * @param type
      */
     createContact(): void
     {
