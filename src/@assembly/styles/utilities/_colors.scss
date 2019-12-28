@@ -508,34 +508,19 @@ $asm-palettes: (
 
     // Border color
     .border-#{$color-name}#{$hue-value} {
-        border-top-color: $color !important;
-        border-right-color: $color !important;
-        border-bottom-color: $color !important;
-        border-left-color: $color !important;
+        border-color: $color !important;
     }
 
-    // Border color on hover
     .hover\:border-#{$color-name}#{$hue-value}:hover {
-        border-top-color: $color !important;
-        border-right-color: $color !important;
-        border-bottom-color: $color !important;
-        border-left-color: $color !important;
+        border-color: $color !important;
     }
 
-    // Border color on focus
     .focus\:border-#{$color-name}#{$hue-value}:focus {
-        border-top-color: $color !important;
-        border-right-color: $color !important;
-        border-bottom-color: $color !important;
-        border-left-color: $color !important;
+        border-color: $color !important;
     }
 
-    // Border color on active
     .active\:border-#{$color-name}#{$hue-value}:active {
-        border-top-color: $color !important;
-        border-right-color: $color !important;
-        border-bottom-color: $color !important;
-        border-left-color: $color !important;
+        border-color: $color !important;
     }
 }
 

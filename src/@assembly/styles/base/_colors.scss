@@ -17,10 +17,7 @@
     *,
     *::before,
     *::after {
-        border-top-color: map-get($foreground, divider);
-        border-right-color: map-get($foreground, divider);
-        border-bottom-color: map-get($foreground, divider);
-        border-left-color: map-get($foreground, divider);
+        border-color: map-get($foreground, divider);
     }
 
     // Force the disabled colors on disabled elements
@@ -38,6 +35,10 @@
         } @else {
             color: map-get($foreground, icon);
         }
+    }
+
+    .text-base {
+        color: map-get($foreground, text);
     }
 
     .text-secondary {
