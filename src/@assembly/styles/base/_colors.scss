@@ -71,8 +71,3 @@
         background: map-get($background, hover);
     }
 }
-
-// -----------------------------------------------------------------------------------------------------
-// @ Generate Assembly color classes from assembly color palettes
-// -----------------------------------------------------------------------------------------------------
-@include asm-color-classes($asm-palettes);

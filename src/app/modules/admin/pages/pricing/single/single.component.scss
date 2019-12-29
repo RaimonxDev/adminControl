@@ -374,9 +374,9 @@ pricing-single {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-dark-elevation(6);
+                    fill: asm-color('gray', 800);
                 } @else {
-                    fill: asm-color($asm-blue, 300);
+                    fill: asm-color('blue', 300);
                 }
             }
         }
@@ -422,9 +422,9 @@ pricing-single {
 
                     .pricing {
                         @if ($is-dark) {
-                            background: asm-dark-elevation(3);
+                            @include asm-dark-elevation(3);
                         } @else {
-                            background: asm-color($asm-gray, 200);
+                            background: asm-color('gray', 200);
                         }
                     }
                 }

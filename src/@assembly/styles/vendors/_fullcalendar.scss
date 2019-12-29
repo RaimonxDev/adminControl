@@ -108,7 +108,7 @@
                 &.fc-more-popover {
                     border: none;
                     border-radius: 4px;
-                    @include asm-elevation(5);
+                    @include asm-elevation('2xl');
 
                     .fc-header {
                         height: 32px;
@@ -638,7 +638,7 @@
                                 .fc-highlight-skeleton {
 
                                     .fc-highlight {
-                                        background: asm-color($asm-gray, 100);
+                                        background: asm-color('gray', 100);
                                         opacity: 1;
                                     }
                                 }

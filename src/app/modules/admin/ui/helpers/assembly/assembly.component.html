@@ -616,8 +616,8 @@
             <asm-highlight [lang]="'css'">
                 <textarea>
                     .some-element {
-                        background: asm-color($asm-red, 500);
-                        color: asm-contrast($asm-red, 500);
+                        background: asm-color('red', 500);
+                        color: asm-contrast('red', 500);
                     }
                 </textarea>
             </asm-highlight>
@@ -650,7 +650,7 @@
             <asm-highlight [lang]="'css'">
                 <textarea>
                     asm-card {
-                        @include asm-elevation(2);
+                        @include asm-elevation('md');
                     }
                 </textarea>
             </asm-highlight>

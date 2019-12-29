@@ -52,7 +52,7 @@ material-components-component-api {
     table {
         margin-bottom: 32px;
         border-collapse: collapse;
-        @include asm-elevation(1);
+        @include asm-elevation();
 
         tr {
 

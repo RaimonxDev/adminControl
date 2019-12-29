@@ -383,7 +383,7 @@ mailbox-details {
     font-size: 13px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    @include asm-elevation(2);
+    @include asm-elevation('md');
 
     table {
 
@@ -436,21 +436,21 @@ mailbox-details {
             @if ($is-dark) {
                 border-bottom-width: 1px;
             } @else {
-                @include asm-elevation(2);
+                @include asm-elevation('md');
             }
 
             .toolbar {
                 @if (not $is-dark) {
-                    background: asm-color($asm-gray, 100);
+                    background: asm-color('gray', 100);
                 }
 
                 .toggle-important {
 
                     .important {
                         @if ($is-dark) {
-                            color: asm-color($asm-red, 600);
+                            color: asm-color('red', 600);
                         } @else {
-                            color: asm-color($asm-red);
+                            color: asm-color('red', 500);
                         }
                     }
 
@@ -463,9 +463,9 @@ mailbox-details {
 
                     .starred {
                         @if ($is-dark) {
-                            color: asm-color($asm-orange, 400);
+                            color: asm-color('orange', 400);
                         } @else {
-                            color: asm-color($asm-orange);
+                            color: asm-color('orange', 500);
                         }
                     }
 
@@ -478,15 +478,15 @@ mailbox-details {
 
         .threads {
             @if (not $is-dark) {
-                background: asm-color($asm-gray, 200);
+                background: asm-color('gray', 200);
             }
 
             .thread {
                 @if ($is-dark) {
-                    background: asm-dark-elevation(2);
+                    @include asm-dark-elevation(2);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation(1);
+                    @include asm-elevation();
                 }
 
                 .header {
@@ -534,7 +534,7 @@ mailbox-details {
 
         .select-mail-to-read {
             @if (not $is-dark) {
-                background: asm-color($asm-gray, 200);
+                background: asm-color('gray', 200);
             }
 
             .mat-icon {

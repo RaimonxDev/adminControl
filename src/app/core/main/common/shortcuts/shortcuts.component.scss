@@ -14,7 +14,7 @@ shortcuts {
     border-radius: 8px;
     max-height: calc(100vh - 80px);
     overflow: hidden;
-    @include asm-elevation(5);
+    @include asm-elevation('2xl');
 
     .header {
         display: flex;
@@ -253,10 +253,10 @@ shortcuts {
         .header {
 
             @if ($is-dark) {
-                background: asm-dark-elevation(1);
+                @include asm-dark-elevation();
             } @else {
-                background: asm-color($asm-gray, 800);
-                color: asm-contrast($asm-gray, 800);
+                background: asm-color('gray', 800);
+                color: asm-contrast('gray', 800);
             }
 
             .header-icon {
@@ -266,7 +266,7 @@ shortcuts {
 
             .subtitle,
             .mat-icon {
-                color: map-get($asm-gray, 500);
+                color: asm-color('gray', 500);
             }
         }
 
@@ -280,9 +280,9 @@ shortcuts {
 
                     &:hover {
                         @if ($is-dark) {
-                            background: asm-dark-elevation(1);
+                            @include asm-dark-elevation();
                         } @else {
-                            background: asm-color($asm-gray, 100);
+                            background: asm-color('gray', 100);
                         }
                     }
                 }
@@ -302,10 +302,10 @@ shortcuts {
 
                         .edit-icon {
                             @if ($is-dark) {
-                                background: asm-dark-elevation(6);
+                                @include asm-dark-elevation(6);
                             } @else {
-                                background: asm-color($asm-gray, 800);
-                                color: asm-contrast($asm-gray, 800);
+                                background: asm-color('gray', 800);
+                                color: asm-contrast('gray', 800);
                             }
                         }
 
@@ -313,7 +313,7 @@ shortcuts {
                             color: map-get($primary, default);
 
                             @if ($is-dark) {
-                                background: asm-dark-elevation(2);
+                                @include asm-dark-elevation(2);
                             } @else {
                                 background: map-get($primary, 100);
                             }

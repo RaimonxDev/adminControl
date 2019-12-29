@@ -14,7 +14,7 @@
         margin-bottom: 24px;
         border-radius: 8px !important;
         transition: box-shadow 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-        @include asm-elevation(1, true);
+        @include asm-elevation('default', true);
 
         &:last-child {
             margin-bottom: 0;
@@ -22,7 +22,7 @@
 
         &.mat-expanded,
         &:hover {
-            @include asm-elevation(3, true);
+            @include asm-elevation('lg', true);
         }
 
         .mat-expansion-panel-header {
@@ -707,9 +707,9 @@ textarea.mat-input-element {
         // Add hover and focus style on all buttons
         .mat-button-focus-overlay {
             @if ($is-dark) {
-                background-color: asm-dark-elevation(1);
+                @include asm-dark-elevation();
             } @else {
-                background-color: rgba(asm-color($asm-gray, 500), 0.2);
+                background-color: rgba(asm-color('gray', 500), 0.2);
             }
         }
 
@@ -772,9 +772,9 @@ textarea.mat-input-element {
         // Add hover and focus styles
         .mat-button-focus-overlay {
             @if ($is-dark) {
-                background-color: asm-dark-elevation(1) !important;
+                @include asm-dark-elevation(1, true);
             } @else {
-                background-color: rgba(asm-color($asm-gray, 500), 0.2) !important;
+                background-color: rgba(asm-color('gray', 500), 0.2) !important;
             }
         }
 
@@ -843,17 +843,17 @@ textarea.mat-input-element {
         // Border color
         &:not([disabled]) {
             @if ($is-dark) {
-                border-color: map-get($asm-gray, 600);
+                border-color: asm-color('gray', 600);
             } @else {
-                border-color: map-get($asm-gray, 400);
+                border-color: asm-color('gray', 400);
             }
         }
 
         &[disabled] {
             @if ($is-dark) {
-                border-color: map-get($asm-gray, 700);
+                border-color: asm-color('gray', 700);
             } @else {
-                border-color: map-get($asm-gray, 300);
+                border-color: asm-color('gray', 300);
             }
         }
     }
@@ -863,9 +863,9 @@ textarea.mat-input-element {
     // -----------------------------------------------------------------------------------------------------
     .mat-drawer-backdrop.mat-drawer-shown {
         @if ($is-dark) {
-            background-color: asm-dark-elevation(4);
+            @include asm-dark-elevation(4);
         } @else {
-            background-color: rgba(asm-color($asm-gray, 900), 0.6);
+            background-color: rgba(asm-color('gray', 900), 0.6);
         }
     }
 
@@ -916,11 +916,11 @@ textarea.mat-input-element {
 
             .mat-form-field-flex {
                 @if ($is-dark) {
-                    background-color: asm-dark-elevation(1);
-                    border-color: asm-color($asm-gray, 600);
+                    @include asm-dark-elevation();
+                    border-color: asm-color('gray', 600);
                 } @else {
-                    background-color: asm-color($asm-gray, 100);
-                    border-color: asm-color($asm-gray, 400);
+                    background-color: asm-color('gray', 100);
+                    border-color: asm-color('gray', 400);
                 }
 
                 .mat-form-field-prefix,

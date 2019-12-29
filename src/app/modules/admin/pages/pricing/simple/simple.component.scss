@@ -112,7 +112,7 @@ pricing-simple {
                     &:nth-child(2) {
                         padding: 112px 64px;
                         z-index: 5;
-                        @include asm-elevation(4);
+                        @include asm-elevation('xl');
                     }
 
                     &:nth-child(3) {
@@ -362,9 +362,9 @@ pricing-simple {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-dark-elevation(6);
+                    fill: asm-color('gray', 800);
                 } @else {
-                    fill: asm-color($asm-blue, 300);
+                    fill: asm-color('blue', 300);
                 }
             }
         }

@@ -10,8 +10,7 @@
                 [matMenuTriggerFor]="actionsMenu">
             <mat-icon [svgIcon]="'more_vert'"></mat-icon>
         </button>
-        <mat-menu class="mailbox-details-toggle-label-menu-panel"
-                  #actionsMenu="matMenu">
+        <mat-menu #actionsMenu="matMenu">
             <button mat-menu-item
                     *ngIf="!editMode"
                     (click)="toggleEditMode(true)">

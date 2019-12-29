@@ -91,7 +91,7 @@ asm-message {
             overflow: hidden;
             border-left: 6px solid;
             border-radius: 4px;
-            @include asm-elevation(1);
+            @include asm-elevation();
         }
     }
 
@@ -199,11 +199,11 @@ asm-message {
             &.asm-message-type-basic {
 
                 .asm-message-container {
-                    border-left-color: asm-color($asm-gray, 600);
+                    border-left-color: asm-color('gray', 600);
 
                     .asm-message-title,
                     .asm-message-icon {
-                        color: asm-color($asm-gray, 600);
+                        color: asm-color('gray', 600);
                     }
                 }
             }
@@ -295,8 +295,8 @@ asm-message {
             &.asm-message-type-basic {
 
                 .asm-message-container {
-                    background: asm-color($asm-gray, 500);
-                    color: asm-color($asm-gray, 100);
+                    background: asm-color('gray', 500);
+                    color: asm-color('gray', 100);
                 }
             }
 
@@ -392,14 +392,14 @@ asm-message {
             &.asm-message-type-basic {
 
                 .asm-message-container {
-                    box-shadow: inset 0 0 0 1px asm-color($asm-gray, 400);
+                    box-shadow: inset 0 0 0 1px asm-color('gray', 400);
 
                     @if ($is-dark) {
                         background: transparent;
-                        color: asm-color($asm-gray, 400);
+                        color: asm-color('gray', 400);
                     } @else {
-                        background: asm-color($asm-gray, 100);
-                        color: asm-color($asm-gray, 700);
+                        background: asm-color('gray', 100);
+                        color: asm-color('gray', 700);
                     }
                 }
             }

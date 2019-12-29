@@ -92,7 +92,7 @@ pricing-table {
                     margin-bottom: 32px;
                     border-radius: 8px;
                     border: none;
-                    @include asm-elevation(2);
+                    @include asm-elevation('md');
 
                     @include asm-media-breakpoint('lt-lg') {
                         display: flex;
@@ -467,9 +467,9 @@ pricing-table {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-dark-elevation(6);
+                    fill: asm-color('gray', 800);
                 } @else {
-                    fill: asm-color($asm-blue, 300);
+                    fill: asm-color('blue', 300);
                 }
             }
         }
@@ -520,9 +520,9 @@ pricing-table {
 
                             &.section {
                                 @if ($is-dark) {
-                                    background: asm-dark-elevation(1);
+                                    @include asm-dark-elevation();
                                 } @else {
-                                    background: asm-color($asm-gray, 100);
+                                    background: asm-color('gray', 100);
                                 }
                             }
                         }

@@ -10,7 +10,7 @@ profile {
             flex-direction: column;
             padding: 0 !important;
             border-bottom: none !important;
-            @include asm-elevation(1);
+            @include asm-elevation();
 
             .cover {
 

@@ -28,7 +28,7 @@ messages {
     border-radius: 8px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
-    @include asm-elevation(3);
+    @include asm-elevation('lg');
 
     .header {
         display: flex;
@@ -250,7 +250,7 @@ messages {
         .messages-toggle {
 
             .dot {
-                background: asm-color($asm-blue, 600);
+                background: asm-color('blue', 600);
                 border-color: map-get($background, card);
             }
         }
@@ -262,10 +262,10 @@ messages {
         .header {
 
             @if ($is-dark) {
-                background: asm-dark-elevation(1);
+                @include asm-dark-elevation();
             } @else {
-                background: asm-color($asm-gray, 800);
-                color: asm-contrast($asm-gray, 800);
+                background: asm-color('gray', 800);
+                color: asm-contrast('gray', 800);
             }
 
             .header-icon {
@@ -286,7 +286,7 @@ messages {
             }
 
             .mark-all-as-read {
-                color: map-get($asm-gray, 500);
+                color: asm-color('gray', 500);
             }
         }
 
@@ -297,9 +297,9 @@ messages {
 
                 &:hover {
                     @if ($is-dark) {
-                        background: asm-dark-elevation(1) !important;
+                        @include asm-dark-elevation(1, true);
                     } @else {
-                        background: asm-color($asm-gray, 100) !important;
+                        background: asm-color('gray', 100) !important;
                     }
                 }
 
@@ -307,7 +307,7 @@ messages {
                     color: map-get($primary, default);
 
                     @if ($is-dark) {
-                        background: asm-dark-elevation(1);
+                        @include asm-dark-elevation();
                     } @else {
                         background: map-get($primary, 100);
                     }
@@ -325,14 +325,14 @@ messages {
                     .indicator {
 
                         .unread {
-                            background: asm-color($asm-blue, 600);
+                            background: asm-color('blue', 600);
                         }
 
                         .read {
                             @if ($is-dark) {
-                                background: asm-color($asm-gray, 600);
+                                background: asm-color('gray', 600);
                             } @else {
-                                background: asm-color($asm-gray, 500);
+                                background: asm-color('gray', 500);
                             }
                         }
                     }

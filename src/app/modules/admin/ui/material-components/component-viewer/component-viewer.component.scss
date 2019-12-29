@@ -11,7 +11,7 @@ material-components-component-viewer {
         margin: 8px 0 32px 0;
         padding: 32px;
         border-radius: 4px;
-        @include asm-elevation(1);
+        @include asm-elevation();
     }
 }
 

@@ -184,7 +184,7 @@ calendar {
     min-width: 544px;
     max-width: 544px;
     border-radius: 8px;
-    @include asm-elevation(5);
+    @include asm-elevation('2xl');
 
     // View mode
     &.panel-mode-view {
@@ -374,7 +374,7 @@ calendar {
 
     calendar {
         @if ($is-dark) {
-            background: asm-color($asm-gray, 900);
+            background: asm-color('gray', 900);
         } @else {
             background: map-get($background, card);
         }
@@ -423,11 +423,11 @@ calendar {
 
                         .field {
                             @if ($is-dark) {
-                                background-color: asm-dark-elevation(1);
-                                border-color: asm-color($asm-gray, 600);
+                                @include asm-dark-elevation();
+                                border-color: asm-color('gray', 600);
                             } @else {
-                                background-color: asm-color($asm-gray, 100);
-                                border-color: asm-color($asm-gray, 400);
+                                background-color: asm-color('gray', 100);
+                                border-color: asm-color('gray', 400);
                             }
                         }
                     }

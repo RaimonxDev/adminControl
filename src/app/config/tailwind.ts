@@ -409,6 +409,7 @@ module.exports = {
     // Variants
     variants: {
         backgroundColor: [],
+        borderColor    : [],
         cursor         : [],
         fontFamily     : [],
         fontSmoothing  : [],
@@ -428,64 +429,8 @@ module.exports = {
     // Custom plugins
     plugins: [
 
-        // Component: Adds colors as CSS variables to the :root
-        ({addComponents, theme}) => {
-
-            const colorVars = {};
-
-            Object.keys(theme('colors')).forEach(color => {
-
-                if ( !!theme('colors.' + color) && theme('colors.' + color).constructor === Object )
-                {
-                    Object.keys(theme('colors.' + color)).forEach(hue => {
-                        const hueLabel = hue === 'default' ? '' : '-' + hue;
-                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
-                        colorVars['--color-' + color + hueLabel] = theme('colors.' + color + hueValue);
-                    });
-                }
-                else
-                {
-                    colorVars['--color-' + color] = theme('colors.' + color);
-                }
-            });
-
-            addComponents({
-                ':root': {
-                    ...colorVars
-                }
-            });
-        },
-
-        // Component: Adds color contrasts as CSS variables to the :root
-        ({addComponents, theme}) => {
-
-            const colorVars = {};
-
-            Object.keys(theme('contrastColors')).forEach(color => {
-
-                if ( !!theme('contrastColors.' + color) && theme('contrastColors.' + color).constructor === Object )
-                {
-                    Object.keys(theme('contrastColors.' + color)).forEach(hue => {
-                        const hueLabel = hue === 'default' ? '' : '-' + hue;
-                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
-                        colorVars['--contrast-' + color + hueLabel] = theme('contrastColors.' + color + hueValue);
-                    });
-                }
-                else
-                {
-                    colorVars['--contrast-' + color] = theme('contrastColors.' + color);
-                }
-            });
-
-            addComponents({
-                ':root': {
-                    ...colorVars
-                }
-            });
-        },
-
         // Component: Adds a component that combines both background and its contrasting color
-        // with modified utility classes such as 'text-secondary' or 'mat-icon'
+        // with modified utility classes such as 'text-secondary' and 'mat-icon'
         ({addComponents, theme}) => {
 
             const combinedColors = {};

@@ -167,19 +167,19 @@ layout[type="classy"] {
                         .status {
 
                             &.online {
-                                background: asm-color($asm-green, 500);
+                                background: asm-color('green', 500);
                             }
 
                             &.away {
-                                background: asm-color($asm-orange, 500);
+                                background: asm-color('orange', 500);
                             }
 
                             &.busy {
-                                background: asm-color($asm-red, 500);
+                                background: asm-color('red', 500);
                             }
 
                             &.not-visible {
-                                background: asm-color($asm-gray, 500);
+                                background: asm-color('gray', 500);
                             }
                         }
                     }
@@ -204,19 +204,19 @@ layout[type="classy"] {
         .status {
 
             &.online {
-                background: asm-color($asm-green, 500);
+                background: asm-color('green', 500);
             }
 
             &.away {
-                background: asm-color($asm-orange, 500);
+                background: asm-color('orange', 500);
             }
 
             &.busy {
-                background: asm-color($asm-red, 500);
+                background: asm-color('red', 500);
             }
 
             &.not-visible {
-                background: asm-color($asm-gray, 500);
+                background: asm-color('gray', 500);
             }
         }
     }

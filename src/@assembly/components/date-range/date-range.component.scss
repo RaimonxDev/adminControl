@@ -276,11 +276,11 @@ asm-date-range {
             .start,
             .end {
                 @if ($is-dark) {
-                    background-color: asm-dark-elevation(1);
-                    border-color: asm-color($asm-gray, 600);
+                    @include asm-dark-elevation();
+                    border-color: asm-color('gray', 600);
                 } @else {
-                    background-color: asm-color($asm-gray, 100);
-                    border-color: asm-color($asm-gray, 400);
+                    background-color: asm-color('gray', 100);
+                    border-color: asm-color('gray', 400);
                 }
             }
         }
@@ -288,7 +288,7 @@ asm-date-range {
 
     .asm-date-range-panel {
         background: map-get($background, card);
-        @include asm-elevation(5);
+        @include asm-elevation('2xl');
 
         .start,
         .end {

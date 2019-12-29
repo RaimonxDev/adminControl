@@ -650,7 +650,7 @@ contacts-details {
     margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
-    @include asm-elevation(2);
+    @include asm-elevation('md');
 
     .tags-panel-header {
         display: flex;
@@ -767,7 +767,7 @@ contacts-details {
     max-width: 320px;
     border-radius: 4px;
     border: 1px solid;
-    @include asm-elevation(2);
+    @include asm-elevation('md');
 
     @include asm-media-breakpoint('lt-sm') {
         min-width: 280px;
@@ -871,17 +871,17 @@ contacts-details {
                             &:hover,
                             &:focus {
                                 @if ($is-dark) {
-                                    background-color: asm-dark-elevation(1);
+                                    background-color: asm-color('gray', 800);
                                 } @else {
-                                    background-color: rgba(asm-color($asm-gray, 500), 0.2);
+                                    background-color: rgba(asm-color('gray', 500), 0.2);
                                 }
                             }
                         }
                     }
 
                     .no-avatar {
-                        background: asm-color($asm-gray, 300);
-                        color: asm-color($asm-gray, 700);
+                        background: asm-color('gray', 300);
+                        color: asm-color('gray', 700);
                     }
                 }
             }
@@ -890,16 +890,16 @@ contacts-details {
 
                 .tag,
                 .edit-tags {
-                    color: asm-color($asm-gray, 600);
+                    color: asm-color('gray', 600);
 
                     .mat-icon {
-                        color: asm-color($asm-gray, 600);
+                        color: asm-color('gray', 600);
                     }
 
                     @if ($is-dark) {
                         background: map-get($background, background);
                     } @else {
-                        background: asm-color($asm-gray, 200);
+                        background: asm-color('gray', 200);
                     }
                 }
             }

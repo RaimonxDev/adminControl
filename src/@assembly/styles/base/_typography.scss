@@ -182,7 +182,7 @@ pre {
         bottom: 10%;
         left: -4px;
         z-index: -1;
-        background: asm-color($asm-yellow, 900);
+        background: asm-color('yellow', 900);
 
         pointer-events: none;
     }
@@ -244,9 +244,9 @@ pre {
 
         &:after {
             @if ($is-dark) {
-                background: asm-color($asm-pink, 600);
+                background: asm-color('pink', 600);
             } @else {
-                background: asm-color($asm-yellow, 200);
+                background: asm-color('yellow', 200);
             }
         }
     }

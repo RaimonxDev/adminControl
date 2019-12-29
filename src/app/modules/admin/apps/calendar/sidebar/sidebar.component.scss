@@ -88,7 +88,7 @@ calendar-sidebar {
     max-width: 320px;
     border-radius: 8px;
     padding: 32px 32px 32px 24px;
-    @include asm-elevation(5);
+    @include asm-elevation('2xl');
 
     .title {
         margin: 0 0 32px 0;
@@ -205,7 +205,7 @@ calendar-sidebar {
 
     calendar-sidebar {
         @if ($is-dark) {
-            background: asm-color($asm-gray, 900);
+            background: asm-color('gray', 900);
         }
     }
 

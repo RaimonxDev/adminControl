@@ -62,13 +62,13 @@ animations {
     animations {
 
         .info {
-            background: asm-color($asm-gray);
+            background: asm-color('gray', 500);
             color: map-get($foreground, secondary-text);
         }
 
         .animated-box {
             background: map-get($primary, default);
-            @include asm-elevation(2);
+            @include asm-elevation('md');
 
             .animated-box-content {
                 color: map-get($primary, default-contrast);

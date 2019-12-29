@@ -322,9 +322,9 @@ tasks-list {
 
                             &.type-section {
                                 @if ($is-dark) {
-                                    background: asm-dark-elevation(1);
+                                    @include asm-dark-elevation();
                                 } @else {
-                                    background: asm-color($asm-gray, 100);
+                                    background: asm-color('gray', 100);
                                 }
                             }
 
@@ -357,17 +357,17 @@ tasks-list {
 
                                         .low {
                                             @if ($is-dark) {
-                                                color: asm-color($asm-green, 400);
+                                                color: asm-color('green', 400);
                                             } @else {
-                                                color: asm-color($asm-green, 600);
+                                                color: asm-color('green', 600);
                                             }
                                         }
 
                                         .high {
                                             @if ($is-dark) {
-                                                color: asm-color($asm-red, 400);
+                                                color: asm-color('red', 400);
                                             } @else {
-                                                color: asm-color($asm-red, 600);
+                                                color: asm-color('red', 600);
                                             }
                                         }
                                     }
@@ -381,7 +381,7 @@ tasks-list {
 
                         .no-tasks {
                             @if (not $is-dark) {
-                                background: asm-color($asm-gray, 200);
+                                background: asm-color('gray', 200);
                             }
 
                             .mat-icon {

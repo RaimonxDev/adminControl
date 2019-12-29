@@ -43,11 +43,11 @@
 
     .ql-toolbar {
         @if ($is-dark) {
-            background: asm-dark-elevation(1);
-            border-color: asm-color($asm-gray, 600);
+            @include asm-dark-elevation();
+            border-color: asm-color('gray', 600);
         } @else {
-            background: asm-color($asm-gray, 200);
-            border-color: asm-color($asm-gray, 400);
+            background: asm-color('gray', 200);
+            border-color: asm-color('gray', 400);
         }
 
         .ql-picker {
@@ -56,17 +56,17 @@
 
                 .ql-picker-label {
                     @if ($is-dark) {
-                        border-color: asm-color($asm-gray, 600);
+                        border-color: asm-color('gray', 600);
                     } @else {
-                        border-color: asm-color($asm-gray, 400);
+                        border-color: asm-color('gray', 400);
                     }
                 }
 
                 .ql-picker-options {
                     @if ($is-dark) {
-                        border-color: asm-color($asm-gray, 600);
+                        border-color: asm-color('gray', 600);
                     } @else {
-                        border-color: asm-color($asm-gray, 400);
+                        border-color: asm-color('gray', 400);
                     }
                     background: map-get($background, card);
                 }
@@ -115,16 +115,16 @@
 
     .ql-container {
         @if ($is-dark) {
-            border-color: asm-color($asm-gray, 600);
+            border-color: asm-color('gray', 600);
         } @else {
-            border-color: asm-color($asm-gray, 400);
+            border-color: asm-color('gray', 400);
         }
 
         .ql-editor {
             @if ($is-dark) {
-                background-color: asm-dark-elevation(1);
+                @include asm-dark-elevation();
             } @else {
-                background-color: asm-color($asm-gray, 100);
+                background-color: asm-color('gray', 100);
             }
 
             &:focus {

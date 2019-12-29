@@ -884,7 +884,7 @@ asm-navigation {
                 }
 
                 .asm-navigation-item-icon {
-                    color: asm-color($asm-gray, 600);
+                    color: asm-color('gray', 600);
                 }
             }
 
@@ -918,7 +918,7 @@ asm-navigation {
 
             // Divider
             asm-navigation-divider-item {
-                color: rgba(asm-color($asm-gray, 200), 0.12)
+                color: rgba(asm-color('gray', 200), 0.12)
             }
 
             // Subheader

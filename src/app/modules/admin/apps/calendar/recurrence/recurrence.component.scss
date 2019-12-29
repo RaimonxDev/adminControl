@@ -7,7 +7,7 @@ calendar-recurrence {
     max-width: 320px;
     padding: 32px 24px;
     border-radius: 8px;
-    @include asm-elevation(5);
+    @include asm-elevation('2xl');
 
     form {
         display: flex;
@@ -159,8 +159,8 @@ calendar-recurrence {
                         .mat-button-toggle-group {
 
                             .mat-button-toggle {
-                                background: asm-color($asm-gray, 200);
-                                color: asm-contrast($asm-gray, 200);
+                                background: asm-color('gray', 200);
+                                color: asm-contrast('gray', 200);
 
                                 &.mat-button-toggle-checked {
                                     background: map-get($primary, default);

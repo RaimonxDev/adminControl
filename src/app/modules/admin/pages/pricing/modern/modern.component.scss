@@ -342,9 +342,9 @@ pricing-modern {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-dark-elevation(6);
+                    fill: asm-color('gray', 800);
                 } @else {
-                    fill: asm-color($asm-blue, 300);
+                    fill: asm-color('blue', 300);
                 }
             }
         }
@@ -407,7 +407,7 @@ pricing-modern {
                         .feature {
 
                             .mat-icon {
-                                color: asm-color($asm-green);
+                                color: asm-color('green', 500);
                             }
                         }
                     }

@@ -80,7 +80,7 @@
             margin: 32px 0;
             border-radius: 4px;
             overflow: hidden;
-            @include asm-elevation(1);
+            @include asm-elevation();
 
             .title {
                 display: flex;
@@ -147,7 +147,7 @@
 
             &.with-background {
                 border-radius: 4px;
-                @include asm-elevation(1);
+                @include asm-elevation();
 
                 table {
 
@@ -300,13 +300,12 @@
                 mat-tab-group {
 
                     .mat-tab-header {
+                        border-color: map-get($foreground, divider);
 
                         @if ($is-dark) {
                             background: map-get($background, card);
-                            border-color: map-get($foreground, divider);
                         } @else {
-                            background: asm-color($asm-gray, 100);
-                            border-color: transparentize(map-get($foreground, divider), 0.09)
+                            background: asm-color('gray', 100);
                         }
                     }
 
@@ -355,7 +354,7 @@
 
                                 .label {
                                     color: map-get($foreground, secondary-text);
-                                    background: asm-color($asm-gray, 300);
+                                    background: asm-color('gray', 300);
                                 }
                             }
                         }

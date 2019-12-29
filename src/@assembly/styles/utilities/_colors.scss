@@ -1,21 +1,32 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Color palettes and Variables
+// @ Color palettes
 // -----------------------------------------------------------------------------------------------------
 
-///
-/// Color palettes based on Tailwind
-///
-$asm-black: (
-    100: black,
-    200: black,
-    300: black,
-    400: black,
-    500: black,
-    600: black,
-    700: black,
-    800: black,
-    900: black,
-    contrast: (
+$asm-colors: (
+    'black': (
+        100: black,
+        200: black,
+        300: black,
+        400: black,
+        500: black,
+        600: black,
+        700: black,
+        800: black,
+        900: black,
+        contrast: (
+            100: white,
+            200: white,
+            300: white,
+            400: white,
+            500: white,
+            600: white,
+            700: white,
+            800: white,
+            900: white,
+        )
+    ),
+    'white': (
+        50: white,
         100: white,
         200: white,
         300: white,
@@ -25,282 +36,314 @@ $asm-black: (
         700: white,
         800: white,
         900: white,
+        contrast: (
+            50: #1A202C, // Gray 900
+            100: #1A202C, // Gray 900
+            200: #1A202C, // Gray 900
+            300: #1A202C, // Gray 900
+            400: #1A202C, // Gray 900
+            500: #1A202C, // Gray 900
+            600: #1A202C, // Gray 900
+            700: #1A202C, // Gray 900
+            800: #1A202C, // Gray 900
+            900: #1A202C, // Gray 900
+        )
+    ),
+    'gray': (
+        100: #F7FAFC,
+        200: #EDF2F7,
+        300: #E2E8F0,
+        400: #CBD5E0,
+        500: #A0AEC0,
+        600: #718096,
+        700: #4A5568,
+        800: #2D3748,
+        900: #1A202C,
+        contrast: (
+            100: #1A202C, // Gray 900
+            200: #1A202C, // Gray 900
+            300: #1A202C, // Gray 900
+            400: #1A202C, // Gray 900
+            500: #1A202C, // Gray 900
+            600: #F7FAFC, // Gray 100
+            700: #F7FAFC, // Gray 100
+            800: #F7FAFC, // Gray 100
+            900: #F7FAFC, // Gray 100
+        )
+    ),
+    'red': (
+        100: #FFF5F5,
+        200: #FED7D7,
+        300: #FEB2B2,
+        400: #FC8181,
+        500: #F56565,
+        600: #E53E3E,
+        700: #C53030,
+        800: #9B2C2C,
+        900: #742A2A,
+        contrast: (
+            100: #742A2A, // Red 900
+            200: #742A2A, // Red 900
+            300: #742A2A, // Red 900
+            400: #742A2A, // Red 900
+            500: #742A2A, // Red 900
+            600: #FFF5F5, // Red 100
+            700: #FFF5F5, // Red 100
+            800: #FFF5F5, // Red 100
+            900: #FFF5F5, // Red 100
+        )
+    ),
+    'orange': (
+        100: #FFFAF0,
+        200: #FEEBC8,
+        300: #FBD38D,
+        400: #F6AD55,
+        500: #ED8936,
+        600: #DD6B20,
+        700: #C05621,
+        800: #9C4221,
+        900: #7B341E,
+        contrast: (
+            100: #7B341E, // Orange 900
+            200: #7B341E, // Orange 900
+            300: #7B341E, // Orange 900
+            400: #7B341E, // Orange 900
+            500: #7B341E, // Orange 900
+            600: #FFFAF0, // Orange 100
+            700: #FFFAF0, // Orange 100
+            800: #FFFAF0, // Orange 100
+            900: #FFFAF0, // Orange 100
+        )
+    ),
+    'yellow': (
+        100: #FFFFF0,
+        200: #FEFCBF,
+        300: #FAF089,
+        400: #F6E05E,
+        500: #ECC94B,
+        600: #D69E2E,
+        700: #B7791F,
+        800: #975A16,
+        900: #744210,
+        contrast: (
+            100: #744210, // Yellow 900
+            200: #744210, // Yellow 900
+            300: #744210, // Yellow 900
+            400: #744210, // Yellow 900
+            500: #744210, // Yellow 900
+            600: #FFFFF0, // Yellow 100
+            700: #FFFFF0, // Yellow 100
+            800: #FFFFF0, // Yellow 100
+            900: #FFFFF0, // Yellow 100
+        )
+    ),
+    'green': (
+        100: #F0FFF4,
+        200: #C6F6D5,
+        300: #9AE6B4,
+        400: #68D391,
+        500: #48BB78,
+        600: #38A169,
+        700: #2F855A,
+        800: #276749,
+        900: #22543D,
+        contrast: (
+            100: #22543D, // Green 900
+            200: #22543D, // Green 900
+            300: #22543D, // Green 900
+            400: #22543D, // Green 900
+            500: #F0FFF4, // Green 100
+            600: #F0FFF4, // Green 100
+            700: #F0FFF4, // Green 100
+            800: #F0FFF4, // Green 100
+            900: #F0FFF4, // Green 100
+        )
+    ),
+    'teal': (
+        100: #E6FFFA,
+        200: #B2F5EA,
+        300: #81E6D9,
+        400: #4FD1C5,
+        500: #38B2AC,
+        600: #319795,
+        700: #2C7A7B,
+        800: #285E61,
+        900: #234E52,
+        contrast: (
+            100: #234E52, // Teal 900
+            200: #234E52, // Teal 900
+            300: #234E52, // Teal 900
+            400: #234E52, // Teal 900
+            500: #E6FFFA, // Teal 100
+            600: #E6FFFA, // Teal 100
+            700: #E6FFFA, // Teal 100
+            800: #E6FFFA, // Teal 100
+            900: #E6FFFA, // Teal 100
+        )
+    ),
+    'blue': (
+        100: #EBF8FF,
+        200: #BEE3F8,
+        300: #90CDF4,
+        400: #63B3ED,
+        500: #4299E1,
+        600: #3182CE,
+        700: #2B6CB0,
+        800: #2C5282,
+        900: #2A4365,
+        contrast: (
+            100: #2A4365, // Blue 900
+            200: #2A4365, // Blue 900
+            300: #2A4365, // Blue 900
+            400: #2A4365, // Blue 900
+            500: #EBF8FF, // Blue 100
+            600: #EBF8FF, // Blue 100
+            700: #EBF8FF, // Blue 100
+            800: #EBF8FF, // Blue 100
+            900: #EBF8FF, // Blue 100
+        )
+    ),
+    'indigo': (
+        100: #EBF4FF,
+        200: #C3DAFE,
+        300: #A3BFFA,
+        400: #7F9CF5,
+        500: #667EEA,
+        600: #5A67D8,
+        700: #4C51BF,
+        800: #434190,
+        900: #3C366B,
+        contrast: (
+            100: #3C366B, // Indigo 900
+            200: #3C366B, // Indigo 900
+            300: #3C366B, // Indigo 900
+            400: #3C366B, // Indigo 900
+            500: #EBF4FF, // Indigo 100
+            600: #EBF4FF, // Indigo 100
+            700: #EBF4FF, // Indigo 100
+            800: #EBF4FF, // Indigo 100
+            900: #EBF4FF, // Indigo 100
+        )
+    ),
+    'purple': (
+        100: #FAF5FF,
+        200: #E9D8FD,
+        300: #D6BCFA,
+        400: #B794F4,
+        500: #9F7AEA,
+        600: #805AD5,
+        700: #6B46C1,
+        800: #553C9A,
+        900: #44337A,
+        contrast: (
+            100: #44337A, // Purple 900
+            200: #44337A, // Purple 900
+            300: #44337A, // Purple 900
+            400: #44337A, // Purple 900
+            500: #FAF5FF, // Purple 100
+            600: #FAF5FF, // Purple 100
+            700: #FAF5FF, // Purple 100
+            800: #FAF5FF, // Purple 100
+            900: #FAF5FF, // Purple 100
+        )
+    ),
+    'pink': (
+        100: #FFF5F7,
+        200: #FED7E2,
+        300: #FBB6CE,
+        400: #F687B3,
+        500: #ED64A6,
+        600: #D53F8C,
+        700: #B83280,
+        800: #97266D,
+        900: #702459,
+        contrast: (
+            100: #702459, // Pink 900
+            200: #702459, // Pink 900
+            300: #702459, // Pink 900
+            400: #702459, // Pink 900
+            500: #FFF5F7, // Pink 100
+            600: #FFF5F7, // Pink 100
+            700: #FFF5F7, // Pink 100
+            800: #FFF5F7, // Pink 100
+            900: #FFF5F7, // Pink 100
+        )
     )
-);
-
-$asm-white: (
-    50: white,
-    100: white,
-    200: white,
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-    contrast: (
-        50: #1A202C, // Gray 900
-        100: #1A202C, // Gray 900
-        200: #1A202C, // Gray 900
-        300: #1A202C, // Gray 900
-        400: #1A202C, // Gray 900
-        500: #1A202C, // Gray 900
-        600: #1A202C, // Gray 900
-        700: #1A202C, // Gray 900
-        800: #1A202C, // Gray 900
-        900: #1A202C, // Gray 900
-    )
-);
-
-$asm-gray: (
-    100: #F7FAFC,
-    200: #EDF2F7,
-    300: #E2E8F0,
-    400: #CBD5E0,
-    500: #A0AEC0,
-    600: #718096,
-    700: #4A5568,
-    800: #2D3748,
-    900: #1A202C,
-    contrast: (
-        100: #1A202C, // Gray 900
-        200: #1A202C, // Gray 900
-        300: #1A202C, // Gray 900
-        400: #1A202C, // Gray 900
-        500: #1A202C, // Gray 900
-        600: #F7FAFC, // Gray 100
-        700: #F7FAFC, // Gray 100
-        800: #F7FAFC, // Gray 100
-        900: #F7FAFC, // Gray 100
-    )
-);
-
-$asm-red: (
-    100: #FFF5F5,
-    200: #FED7D7,
-    300: #FEB2B2,
-    400: #FC8181,
-    500: #F56565,
-    600: #E53E3E,
-    700: #C53030,
-    800: #9B2C2C,
-    900: #742A2A,
-    contrast: (
-        100: #742A2A, // Red 900
-        200: #742A2A, // Red 900
-        300: #742A2A, // Red 900
-        400: #742A2A, // Red 900
-        500: #742A2A, // Red 900
-        600: #FFF5F5, // Red 100
-        700: #FFF5F5, // Red 100
-        800: #FFF5F5, // Red 100
-        900: #FFF5F5, // Red 100
-    )
-);
-
-$asm-orange: (
-    100: #FFFAF0,
-    200: #FEEBC8,
-    300: #FBD38D,
-    400: #F6AD55,
-    500: #ED8936,
-    600: #DD6B20,
-    700: #C05621,
-    800: #9C4221,
-    900: #7B341E,
-    contrast: (
-        100: #7B341E, // Orange 900
-        200: #7B341E, // Orange 900
-        300: #7B341E, // Orange 900
-        400: #7B341E, // Orange 900
-        500: #7B341E, // Orange 900
-        600: #FFFAF0, // Orange 100
-        700: #FFFAF0, // Orange 100
-        800: #FFFAF0, // Orange 100
-        900: #FFFAF0, // Orange 100
-    )
-);
-
-$asm-yellow: (
-    100: #FFFFF0,
-    200: #FEFCBF,
-    300: #FAF089,
-    400: #F6E05E,
-    500: #ECC94B,
-    600: #D69E2E,
-    700: #B7791F,
-    800: #975A16,
-    900: #744210,
-    contrast: (
-        100: #744210, // Yellow 900
-        200: #744210, // Yellow 900
-        300: #744210, // Yellow 900
-        400: #744210, // Yellow 900
-        500: #744210, // Yellow 900
-        600: #FFFFF0, // Yellow 100
-        700: #FFFFF0, // Yellow 100
-        800: #FFFFF0, // Yellow 100
-        900: #FFFFF0, // Yellow 100
-    )
-);
-
-$asm-green: (
-    100: #F0FFF4,
-    200: #C6F6D5,
-    300: #9AE6B4,
-    400: #68D391,
-    500: #48BB78,
-    600: #38A169,
-    700: #2F855A,
-    800: #276749,
-    900: #22543D,
-    contrast: (
-        100: #22543D, // Green 900
-        200: #22543D, // Green 900
-        300: #22543D, // Green 900
-        400: #22543D, // Green 900
-        500: #F0FFF4, // Green 100
-        600: #F0FFF4, // Green 100
-        700: #F0FFF4, // Green 100
-        800: #F0FFF4, // Green 100
-        900: #F0FFF4, // Green 100
-    )
-);
-
-$asm-teal: (
-    100: #E6FFFA,
-    200: #B2F5EA,
-    300: #81E6D9,
-    400: #4FD1C5,
-    500: #38B2AC,
-    600: #319795,
-    700: #2C7A7B,
-    800: #285E61,
-    900: #234E52,
-    contrast: (
-        100: #234E52, // Teal 900
-        200: #234E52, // Teal 900
-        300: #234E52, // Teal 900
-        400: #234E52, // Teal 900
-        500: #E6FFFA, // Teal 100
-        600: #E6FFFA, // Teal 100
-        700: #E6FFFA, // Teal 100
-        800: #E6FFFA, // Teal 100
-        900: #E6FFFA, // Teal 100
-    )
-);
-
-$asm-blue: (
-    100: #EBF8FF,
-    200: #BEE3F8,
-    300: #90CDF4,
-    400: #63B3ED,
-    500: #4299E1,
-    600: #3182CE,
-    700: #2B6CB0,
-    800: #2C5282,
-    900: #2A4365,
-    contrast: (
-        100: #2A4365, // Blue 900
-        200: #2A4365, // Blue 900
-        300: #2A4365, // Blue 900
-        400: #2A4365, // Blue 900
-        500: #EBF8FF, // Blue 100
-        600: #EBF8FF, // Blue 100
-        700: #EBF8FF, // Blue 100
-        800: #EBF8FF, // Blue 100
-        900: #EBF8FF, // Blue 100
-    )
-);
-
-$asm-indigo: (
-    100: #EBF4FF,
-    200: #C3DAFE,
-    300: #A3BFFA,
-    400: #7F9CF5,
-    500: #667EEA,
-    600: #5A67D8,
-    700: #4C51BF,
-    800: #434190,
-    900: #3C366B,
-    contrast: (
-        100: #3C366B, // Indigo 900
-        200: #3C366B, // Indigo 900
-        300: #3C366B, // Indigo 900
-        400: #3C366B, // Indigo 900
-        500: #EBF4FF, // Indigo 100
-        600: #EBF4FF, // Indigo 100
-        700: #EBF4FF, // Indigo 100
-        800: #EBF4FF, // Indigo 100
-        900: #EBF4FF, // Indigo 100
-    )
-);
-
-$asm-purple: (
-    100: #FAF5FF,
-    200: #E9D8FD,
-    300: #D6BCFA,
-    400: #B794F4,
-    500: #9F7AEA,
-    600: #805AD5,
-    700: #6B46C1,
-    800: #553C9A,
-    900: #44337A,
-    contrast: (
-        100: #44337A, // Purple 900
-        200: #44337A, // Purple 900
-        300: #44337A, // Purple 900
-        400: #44337A, // Purple 900
-        500: #FAF5FF, // Purple 100
-        600: #FAF5FF, // Purple 100
-        700: #FAF5FF, // Purple 100
-        800: #FAF5FF, // Purple 100
-        900: #FAF5FF, // Purple 100
-    )
-);
-
-$asm-pink: (
-    100: #FFF5F7,
-    200: #FED7E2,
-    300: #FBB6CE,
-    400: #F687B3,
-    500: #ED64A6,
-    600: #D53F8C,
-    700: #B83280,
-    800: #97266D,
-    900: #702459,
-    contrast: (
-        100: #702459, // Pink 900
-        200: #702459, // Pink 900
-        300: #702459, // Pink 900
-        400: #702459, // Pink 900
-        500: #FFF5F7, // Pink 100
-        600: #FFF5F7, // Pink 100
-        700: #FFF5F7, // Pink 100
-        800: #FFF5F7, // Pink 100
-        900: #FFF5F7, // Pink 100
-    )
-);
-
-$asm-palettes: (
-    'black': $asm-black,
-    'white': $asm-white,
-    'gray': $asm-gray,
-    'red': $asm-red,
-    'orange': $asm-orange,
-    'yellow': $asm-yellow,
-    'green': $asm-green,
-    'teal': $asm-teal,
-    'blue': $asm-blue,
-    'indigo': $asm-indigo,
-    'purple': $asm-purple,
-    'pink': $asm-pink,
 );
 
 // -----------------------------------------------------------------------------------------------------
 // @ Functions
 // -----------------------------------------------------------------------------------------------------
+
+///
+/// Get color from assembly color maps
+///
+/// @access public
+/// @param {String} $color - Desired color
+/// @param {String|Number} $hue - Desired hue
+/// @param {Number} $opacity - Desired opacity
+///
+@function asm-color($color, $hue: 500, $opacity: 1) {
+
+    // Get the color palette
+    $palette: map-get($asm-colors, $color);
+
+    // Make sure the palette is available
+    @if ($palette == null) {
+        @error "Color '#{$color}' is not available!";
+    }
+
+    // Get the color
+    $color: map-get($palette, $hue);
+
+    // Make sure the hue is available
+    @if ($color == null) {
+        @error "Hue '#{$hue}' is not available!";
+    }
+
+    // Apply the opacity if possible
+    @if (type-of($color) == color) {
+        $color: rgba($color, $opacity);
+    }
+
+    // Return the color
+    @return $color;
+}
+
+///
+/// Get contrast color from assembly color maps
+///
+/// @access public
+/// @param {String} $contrast - Desired contrast
+/// @param {String|Number} $hue - Desired hue
+/// @param {Number} $opacity - Desired opacity
+///
+@function asm-contrast($contrast, $hue: 500, $opacity: 1) {
+
+    // Get the color palette
+    $palette: map-get($asm-colors, $contrast);
+
+    // Make sure the palette is available
+    @if ($palette == null) {
+        @error "Contrast '#{$contrast}' is not available!";
+    }
+
+    // Get the contrast
+    $contrast: map-get(map-get($palette, contrast), $hue);
+
+    // Make sure the hue is available
+    @if ($contrast == null) {
+        @error "Hue '#{$hue}' is not available!";
+    }
+
+    // Apply the opacity if possible
+    @if (type-of($contrast) == color) {
+        $color: rgba($contrast, $opacity);
+    }
+
+    // Return the contrast
+    @return $contrast;
+}
 
 ///
 /// Modify the Angular Material theme object to soften foreground colors
@@ -318,45 +361,45 @@ $asm-palettes: (
     // Angular Material's mat-xxx-theme-foreground map
     $foreground: (
         base: if($is-dark, white, black),
-        text: if($is-dark, white, map-get($asm-gray, 800)),
-        secondary-text: if($is-dark, map-get($asm-gray, 500), map-get($asm-gray, 600)),
-        hint-text: if($is-dark, map-get($asm-gray, 600), map-get($asm-gray, 500)),
-        disabled: if($is-dark, map-get($asm-gray, 700), map-get($asm-gray, 500)),
-        disabled-button: if($is-dark, map-get($asm-gray, 800), map-get($asm-gray, 500)),
-        disabled-text: if($is-dark, map-get($asm-gray, 700), map-get($asm-gray, 500)),
-        divider: if($is-dark, rgba(map-get($asm-gray, 200), 0.12), map-get($asm-gray, 300)),
-        dividers: if($is-dark, rgba(map-get($asm-gray, 200), 0.12), map-get($asm-gray, 300)),
+        text: if($is-dark, white, asm-color('gray', 800)),
+        secondary-text: if($is-dark, asm-color('gray', 500), asm-color('gray', 600)),
+        hint-text: if($is-dark, asm-color('gray', 600), asm-color('gray', 500)),
+        disabled: if($is-dark, asm-color('gray', 700), asm-color('gray', 500)),
+        disabled-button: if($is-dark, asm-color('gray', 800), asm-color('gray', 500)),
+        disabled-text: if($is-dark, asm-color('gray', 700), asm-color('gray', 500)),
+        divider: if($is-dark, rgba(asm-color('gray', 200), 0.12), asm-color('gray', 300)),
+        dividers: if($is-dark, rgba(asm-color('gray', 200), 0.12), asm-color('gray', 300)),
         elevation: black,
-        icon: if($is-dark, map-get($asm-gray, 100), map-get($asm-gray, 600)),
-        icons: if($is-dark, map-get($asm-gray, 100), map-get($asm-gray, 600)),
-        slider-min: if($is-dark, white, map-get($asm-gray, 800)),
-        slider-off: if($is-dark, map-get($asm-gray, 600), map-get($asm-gray, 400)),
-        slider-off-active: if($is-dark, map-get($asm-gray, 500), map-get($asm-gray, 500)),
+        icon: if($is-dark, asm-color('gray', 100), asm-color('gray', 600)),
+        icons: if($is-dark, asm-color('gray', 100), asm-color('gray', 600)),
+        slider-min: if($is-dark, white, asm-color('gray', 800)),
+        slider-off: if($is-dark, asm-color('gray', 600), asm-color('gray', 400)),
+        slider-off-active: if($is-dark, asm-color('gray', 500), asm-color('gray', 500)),
     );
 
     // Generate the modified background palette based on
     // Angular Material's mat-xxx-theme-background map
     $background: (
-        status-bar: if($is-dark, map-get($asm-gray, 900), map-get($asm-gray, 400)),
-        app-bar: if($is-dark, map-get($asm-gray, 900), white),
-        background: if($is-dark, map-get($asm-gray, 900), map-get($asm-gray, 200)),
-        hover: if($is-dark, rgba(255, 255, 255, 0.05), rgba(map-get($asm-gray, 600), 0.12)),
-        card: if($is-dark, map-get($asm-gray, 800), white),
-        dialog: if($is-dark, map-get($asm-gray, 800), white),
-        disabled-button: if($is-dark, rgba(map-get($asm-gray, 900), 0.38), rgba(map-get($asm-gray, 500), 0.38)),
-        raised-button: if($is-dark, map-get($asm-gray, 900), white),
-        focused-button: if($is-dark, map-get($asm-gray, 300), map-get($asm-gray, 600)),
-        selected-button: if($is-dark, rgba(255, 255, 255, 0.05), map-get($asm-gray, 300)),
-        selected-disabled-button: if($is-dark, map-get($asm-gray, 800), map-get($asm-gray, 300)),
-        disabled-button-toggle: if($is-dark, map-get($asm-gray, 900), map-get($asm-gray, 400)),
-        unselected-chip: if($is-dark, map-get($asm-gray, 700), map-get($asm-gray, 300)),
-        disabled-list-option: if($is-dark, map-get($asm-gray, 300), map-get($asm-gray, 400)),
+        status-bar: if($is-dark, asm-color('gray', 900), asm-color('gray', 400)),
+        app-bar: if($is-dark, asm-color('gray', 900), white),
+        background: if($is-dark, asm-color('gray', 900), asm-color('gray', 200)),
+        hover: if($is-dark, rgba(255, 255, 255, 0.05), rgba(asm-color('gray', 600), 0.12)),
+        card: if($is-dark, asm-color('gray', 800), white),
+        dialog: if($is-dark, asm-color('gray', 800), white),
+        disabled-button: if($is-dark, rgba(asm-color('gray', 900), 0.38), rgba(asm-color('gray', 500), 0.38)),
+        raised-button: if($is-dark, asm-color('gray', 900), white),
+        focused-button: if($is-dark, asm-color('gray', 300), asm-color('gray', 600)),
+        selected-button: if($is-dark, rgba(255, 255, 255, 0.05), asm-color('gray', 300)),
+        selected-disabled-button: if($is-dark, asm-color('gray', 800), asm-color('gray', 300)),
+        disabled-button-toggle: if($is-dark, asm-color('gray', 900), asm-color('gray', 400)),
+        unselected-chip: if($is-dark, asm-color('gray', 700), asm-color('gray', 300)),
+        disabled-list-option: if($is-dark, asm-color('gray', 300), asm-color('gray', 400)),
     );
 
     // Store the modified theme.
     //
     // Since modifications only being done on 'foreground'
-    // and 'background' palettes add them from above but
+    // and 'background' palettes, add them from above but
     // keep everything else original
     $modified-theme: (
         primary: map-get($theme, primary),
@@ -408,47 +451,17 @@ $asm-palettes: (
 }
 
 ///
-/// Get color from assembly color maps
+/// Generate an Angular Material compatible palette
 ///
 /// @access public
-/// @param {Map} $palette - Desired palette
-/// @param {String|Number} $hue - Desired hue
-/// @param {Number} $opacity - Desired opacity
+/// @param {Map} $palette - Name of the palette
+/// @param {Map} $default - Default hue
+/// @param {Map} $lighter - Lighter hue
+/// @param {Map} $darker - Darker hue
+/// @param {Map} $text - Text color
 ///
-@function asm-color($palette, $hue: 500, $opacity: 1) {
-
-    // Get the color
-    $color: map-get($palette, $hue);
-
-    // Apply the opacity if possible
-    @if (type-of($color) == color) {
-        $color: rgba($color, $opacity);
-    }
-
-    // Return the color
-    @return $color;
-}
-
-///
-/// Get contrast color from assembly color maps
-///
-/// @access public
-/// @param {Map} $palette - Desired palette
-/// @param {String|Number} $hue - Desired hue
-/// @param {Number} $opacity - Desired opacity
-///
-@function asm-contrast($palette, $hue: 500, $opacity: 1) {
-
-    // Get the contrasting color
-    $color: map-get(map-get($palette, contrast), $hue);
-
-    // Apply the opacity if possible
-    @if (type-of($color) == color) {
-        $color: rgba($color, $opacity);
-    }
-
-    // Return the color
-    @return $color;
+@function asm-palette($palette, $default: 500, $lighter: 100, $darker: 700, $text: $default) {
+    @return mat-palette(map-get($asm-colors, $palette), $default, $lighter, $darker, $text);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -525,7 +538,7 @@ $asm-palettes: (
 }
 
 ///
-/// Generate helper classes for colors
+/// Generate helper classes for 'primary', 'accent' and 'warn' colors
 ///
 /// @access public
 /// @param {Map} $palettes - Palettes to generate classes for
@@ -535,58 +548,25 @@ $asm-palettes: (
     // Go through each palette
     @each $palette-name, $palette in $palettes {
 
-        // Test the palette if it's an Angular Material generated palette, like primary, accent and warn,
-        // and if it's, generate the color classes using Angular Material generated palette
-        @if (map-get($palette, 'default') != null and map-get($palette, 'default-contrast') != null) {
+        // Get each hue value
+        @each $hue in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
 
-            // Get each hue value
-            @each $hue in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
+            // Get color and contrast
+            $color: map-get($palette, $hue);
+            $contrast: map-get($palette, '#{$hue}-contrast');
 
-                // Get color and contrast
-                $color: map-get($palette, $hue);
-                $contrast: map-get($palette, '#{$hue}-contrast');
+            // If both color and its contrasting color exist, generate the color classes...
+            @if ($color != null and $contrast != null) {
 
-                // If both color and its contrasting color exist, generate the color classes...
-                @if ($color != null and $contrast != null) {
+                // Generate color classes
+                @include _generate-color-classes($palette-name, $color, $contrast, '-#{$hue}');
 
-                    // Generate color classes
-                    @include _generate-color-classes($palette-name, $color, $contrast, '-#{$hue}');
-
-                    // If the hue equals to 500, generate color classes one more time,
-                    // but without the hue value suffix
-                    @if ($hue == 500) {
-
-                        // Generate color classes
-                        @include _generate-color-classes($palette-name, $color, $contrast, '');
-                    }
-                }
-            }
-
-        } @else {
-
-            // Extract the contrast map and remove if from the palette
-            $contrasts: map-get($palette, 'contrast');
-            $palette: map-remove($palette, 'contrast');
-
-            // Go through each hue-color
-            @each $hue, $color in $palette {
-
-                // Get the contrasting color of the current hue
-                $contrast: map-get($contrasts, $hue);
-
-                // If both color and its contrasting color exist, generate the color classes...
-                @if ($color != null and $contrast != null) {
+                // If the hue equals to 500, generate color classes one more time,
+                // but without the hue value suffix
+                @if ($hue == 500) {
 
                     // Generate color classes
-                    @include _generate-color-classes($palette-name, $color, $contrast, '-#{$hue}');
-
-                    // If the hue equals to 500, generate color classes one more time,
-                    // but without the hue value suffix
-                    @if ($hue == 500) {
-
-                        // Generate color classes
-                        @include _generate-color-classes($palette-name, $color, $contrast, '');
-                    }
+                    @include _generate-color-classes($palette-name, $color, $contrast, '');
                 }
             }
         }

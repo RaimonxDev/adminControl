@@ -317,7 +317,7 @@ contacts-list {
                             background: transparent;
 
                             th {
-                                background: asm-color($asm-gray, 100);
+                                background: asm-color('gray', 100);
                             }
 
                             tr.contact-row {
@@ -325,7 +325,7 @@ contacts-list {
                                 &:hover,
                                 &.selected {
                                     @if ($is-dark) {
-                                        background: asm-dark-elevation(1);
+                                        @include asm-dark-elevation();
                                     } @else {
                                         background: map-get($primary, 100);
                                     }
@@ -338,8 +338,8 @@ contacts-list {
                                         .avatar {
 
                                             > span {
-                                                background: asm-color($asm-gray, 300);
-                                                color: asm-color($asm-gray, 700);
+                                                background: asm-color('gray', 300);
+                                                color: asm-color('gray', 700);
                                             }
                                         }
                                     }

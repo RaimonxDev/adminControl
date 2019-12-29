@@ -196,7 +196,7 @@ layout[type="thin"] {
 
         > asm-navigation {
             @if ($is-dark) {
-                background: asm-color($asm-gray, 900);
+                background: asm-color('gray', 900);
             } @else {
                 background: map-get($background, card);
             }
@@ -209,7 +209,7 @@ layout[type="thin"] {
                     box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation(1);
+                    @include asm-elevation();
                 }
 
                 .user {
@@ -220,19 +220,19 @@ layout[type="thin"] {
                             border-color: map-get($background, card);
 
                             &.online {
-                                background: asm-color($asm-green, 500);
+                                background: asm-color('green', 500);
                             }
 
                             &.away {
-                                background: asm-color($asm-orange, 500);
+                                background: asm-color('orange', 500);
                             }
 
                             &.busy {
-                                background: asm-color($asm-red, 500);
+                                background: asm-color('red', 500);
                             }
 
                             &.not-visible {
-                                background: asm-color($asm-gray, 500);
+                                background: asm-color('gray', 500);
                             }
                         }
                     }
@@ -242,7 +242,7 @@ layout[type="thin"] {
             > .footer {
                 @if (not $is-dark) {
                     background: map-get($background, card);
-                    @include asm-elevation(1);
+                    @include asm-elevation();
                 }
                 box-shadow: 0 -1px 0 0 map-get($foreground, divider);
                 color: map-get($foreground, secondary-text);
@@ -255,19 +255,19 @@ layout[type="thin"] {
         .status {
 
             &.online {
-                background: asm-color($asm-green, 500);
+                background: asm-color('green', 500);
             }
 
             &.away {
-                background: asm-color($asm-orange, 500);
+                background: asm-color('orange', 500);
             }
 
             &.busy {
-                background: asm-color($asm-red, 500);
+                background: asm-color('red', 500);
             }
 
             &.not-visible {
-                background: asm-color($asm-gray, 500);
+                background: asm-color('gray', 500);
             }
         }
     }

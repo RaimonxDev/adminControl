@@ -4,7 +4,7 @@ material-components-example-viewer {
     display: block;
     margin: 20px 0;
     border-radius: 4px;
-    @include asm-elevation(1);
+    @include asm-elevation();
 
     .docs-example-viewer-wrapper {
 

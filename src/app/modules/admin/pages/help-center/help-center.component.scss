@@ -86,10 +86,10 @@ help-center {
                         margin: 16px;
                         border-radius: 8px;
                         transition: box-shadow 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-                        @include asm-elevation(1);
+                        @include asm-elevation();
 
                         &:hover {
-                            @include asm-elevation(3);
+                            @include asm-elevation('lg');
                         }
 
                         .mat-icon {
@@ -174,9 +174,9 @@ help-center {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-dark-elevation(6);
+                    fill: asm-color('gray', 800);
                 } @else {
-                    fill: asm-color($asm-blue, 300);
+                    fill: asm-color('blue', 300);
                 }
             }
         }
@@ -209,7 +209,7 @@ help-center {
                         color: map-get($primary, default);
 
                         @if ($is-dark) {
-                            background: asm-dark-elevation(2);
+                            @include asm-dark-elevation(2);
                         } @else {
                             background: map-get($primary, 100);
                         }
