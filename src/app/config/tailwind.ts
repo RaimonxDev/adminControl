@@ -422,12 +422,39 @@ module.exports = {
     corePlugins: {
         container       : false,
         float           : false,
-        tableLayout     : false,
         placeholderColor: false
     },
 
     // Custom plugins
     plugins: [
+
+        // Utilities: Adds utility classes for contrasting colors of the default colors
+        // such as 'text-contrast-red-200' and 'bg-contrast-blue'.
+        ({addUtilities, theme}) => {
+
+            const contrastColors = {};
+
+            Object.keys(theme('contrastColors')).forEach(contrast => {
+
+                if ( !!theme('contrastColors.' + contrast) && theme('contrastColors.' + contrast).constructor === Object )
+                {
+                    Object.keys(theme('contrastColors.' + contrast)).forEach(hue => {
+                        const hueLabel = hue === 'default' ? '' : '-' + hue;
+                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
+
+                        contrastColors['.text-contrast-' + contrast + hueLabel] = {color: theme('contrastColors.' + contrast + hueValue)};
+                        contrastColors['.bg-contrast-' + contrast + hueLabel] = {backgroundColor: theme('contrastColors.' + contrast + hueValue)};
+                    });
+                }
+                else
+                {
+                    contrastColors['.text-contrast-' + contrast] = {color: theme('contrastColors.' + contrast)};
+                    contrastColors['.bg-contrast-' + contrast] = {backgroundColor: theme('contrastColors.' + contrast)};
+                }
+            });
+
+            addUtilities(contrastColors);
+        },
 
         // Component: Adds a component that combines both background and its contrasting color
         // with modified utility classes such as 'text-secondary' and 'mat-icon'

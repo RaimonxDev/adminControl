@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
 import { DashboardSalesService } from 'app/modules/admin/apps/dashboard/sales/sales.service';
@@ -11,9 +13,10 @@ import { DashboardSalesService } from 'app/modules/admin/apps/dashboard/sales/sa
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardSalesComponent implements OnInit, OnDestroy
+export class DashboardSalesComponent implements OnInit, AfterViewInit, OnDestroy
 {
     data: any;
+    recentOrdersDataSource: MatTableDataSource<any>;
     recentOrdersTableColumns: string[];
     totalRevenueChart: ApexOptions;
     totalOrdersChart: ApexOptions;
@@ -23,6 +26,9 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
 
     @ViewChild('totalProductsChartComponent')
     totalOrdersChartComponent: ChartComponent;
+
+    @ViewChild('recentOrdersTable', {read: MatSort})
+    recentOrdersTableMatSort: MatSort;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -40,7 +46,8 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.recentOrdersTableColumns = ['orderId', 'productName', 'amount', 'status', 'customer', 'date'];
+        this.recentOrdersDataSource = new MatTableDataSource();
+        this.recentOrdersTableColumns = ['orderId', 'date', 'customer', 'product', 'amount', 'status'];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -60,9 +67,21 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
                 // Store the data
                 this.data = data;
 
+                // Store the table data
+                this.recentOrdersDataSource.data = data.recentOrders;
+
                 // Prepare the chart data
                 this._prepareChartData();
             });
+    }
+
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
+    {
+        // Make the recent orders data source sortable
+        this.recentOrdersDataSource.sort = this.recentOrdersTableMatSort;
     }
 
     /**
@@ -100,6 +119,7 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
                     }
                 },
                 fontFamily: 'inherit',
+                foreColor : 'inherit',
                 height    : '100%',
                 type      : 'area',
                 sparkline : {
@@ -128,6 +148,7 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
                     }
                 },
                 fontFamily: 'inherit',
+                foreColor : 'inherit',
                 height    : '100%',
                 type      : 'area',
                 toolbar   : {
@@ -142,9 +163,15 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
             },
             grid      : {
                 padding: {
+                    top   : 0,
                     right : 32,
                     bottom: 0,
                     left  : 10
+                },
+                yaxis  : {
+                    lines: {
+                        show: false
+                    }
                 }
             },
             markers   : {
@@ -169,18 +196,29 @@ export class DashboardSalesComponent implements OnInit, OnDestroy
             xaxis     : {
                 type      : 'category',
                 categories: this.data.totalRevenue.labels,
-                axisBorder: {
-                    show: false
+                labels    : {
+                    style: {
+                        colors: 'currentColor'
+                    }
                 },
                 tooltip   : {
                     enabled: false
                 }
             },
             yaxis     : {
+                axisBorder: {
+                    show: true
+                },
+                axisTicks : {
+                    show: true
+                },
                 tickAmount: 3,
                 labels    : {
                     formatter: (val, index) => {
                         return '$' + (val / 1000).toFixed(1) + 'k';
+                    },
+                    style    : {
+                        color: 'currentColor'
                     }
                 }
             }
