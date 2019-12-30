@@ -108,7 +108,6 @@
                                [chart]="totalRevenueChart.chart"
                                [dataLabels]="totalRevenueChart.dataLabels"
                                [grid]="totalRevenueChart.grid"
-                               [markers]="totalRevenueChart.markers"
                                [series]="totalRevenueChart.series"
                                [tooltip]="totalRevenueChart.tooltip"
                                [xaxis]="totalRevenueChart.xaxis"
@@ -226,11 +225,26 @@
                 </td>
             </ng-container>
 
+            <!-- Disclaimer column -->
+            <ng-container matColumnDef="recentOrdersTableFooter">
+                <td class="px-12"
+                    mat-footer-cell
+                    *matFooterCellDef
+                    colspan="6">
+                    <button mat-button
+                            [color]="'primary'">
+                        Show more orders
+                    </button>
+                </td>
+            </ng-container>
+
             <tr mat-header-row
                 *matHeaderRowDef="recentOrdersTableColumns"></tr>
             <tr class="order-row h-64"
                 mat-row
                 *matRowDef="let row; columns: recentOrdersTableColumns;"></tr>
+            <tr class="h-64" mat-footer-row
+                *matFooterRowDef="['recentOrdersTableFooter']"></tr>
 
         </table>
 

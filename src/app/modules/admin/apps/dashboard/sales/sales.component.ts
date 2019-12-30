@@ -174,12 +174,6 @@ export class DashboardSalesComponent implements OnInit, AfterViewInit, OnDestroy
                     }
                 }
             },
-            markers   : {
-                size : 4,
-                hover: {
-                    size: 6
-                }
-            },
             series    : [
                 {
                     name: 'Total Revenue',

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -14,6 +15,7 @@ import { DashboardSalesComponent } from 'app/modules/admin/apps/dashboard/sales/
     ],
     imports     : [
         RouterModule.forChild(dashboardSalesRoutes),
+        MatButtonModule,
         MatIconModule,
         MatTableModule,
         MatSortModule,
