@@ -61,6 +61,8 @@ messages {
                 justify-content: center;
                 right: -6px;
                 top: -6px;
+                min-width: 19px;
+                min-height: 19px;
                 padding: 2px 6px;
                 border-radius: 10px;
                 font-size: 10px;
@@ -155,7 +157,7 @@ messages {
                         -webkit-line-clamp: 1;
                         -webkit-box-orient: vertical;
                         overflow: hidden;
-                        font-weight: 500;
+                        font-weight: 600;
                         font-size: 15px;
                     }
 
