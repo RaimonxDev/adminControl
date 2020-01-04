@@ -43,7 +43,7 @@
 
     .ql-toolbar {
         @if ($is-dark) {
-            @include asm-dark-elevation();
+            background-color: rgba(0, 0, 0, 0.05);
             border-color: asm-color('gray', 600);
         } @else {
             background: asm-color('gray', 200);
@@ -122,7 +122,7 @@
 
         .ql-editor {
             @if ($is-dark) {
-                @include asm-dark-elevation();
+                background-color: rgba(0, 0, 0, 0.05);
             } @else {
                 background-color: asm-color('gray', 100);
             }

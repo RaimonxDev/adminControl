@@ -396,7 +396,7 @@ tasks-details {
 
                     .tag {
                         @if ($is-dark) {
-                            @include asm-dark-elevation(4);
+                            background: rgba(0, 0, 0, 0.09);
                             color: asm-color('gray', 500);
                         } @else {
                             background: asm-color('gray', 200);
@@ -415,7 +415,7 @@ tasks-details {
                     .mat-button {
 
                         @if ($is-dark) {
-                            @include asm-dark-elevation(4);
+                            background: rgba(0, 0, 0, 0.09);
                             color: asm-color('gray', 500);
                         } @else {
                             background: asm-color('gray', 200);
@@ -432,7 +432,7 @@ tasks-details {
 
                         .mat-button-focus-overlay {
                             @if ($is-dark) {
-                                @include asm-dark-elevation(3, true);
+                                background: rgba(0, 0, 0, 0.08) !important;
                             } @else {
                                 background: asm-color('gray', 300) !important;
                             }
@@ -473,7 +473,7 @@ tasks-details {
 
                     &.normal {
                         @if ($is-dark) {
-                            @include asm-dark-elevation(4);
+                            background: rgba(0, 0, 0, 0.09);
                             color: asm-color('gray', 500);
                         } @else {
                             background: asm-color('gray', 200);
@@ -490,7 +490,7 @@ tasks-details {
 
                         .mat-button-focus-overlay {
                             @if ($is-dark) {
-                                @include asm-dark-elevation(3, true);
+                                background: rgba(0, 0, 0, 0.08) !important;
                             } @else {
                                 background: asm-color('gray', 300) !important;
                             }
@@ -530,7 +530,7 @@ tasks-details {
                 .mat-button {
 
                     @if ($is-dark) {
-                        @include asm-dark-elevation(4);
+                        background: rgba(0, 0, 0, 0.09);
                         color: asm-color('gray', 500);
                     } @else {
                         background: asm-color('gray', 200);
@@ -547,7 +547,7 @@ tasks-details {
 
                     .mat-button-focus-overlay {
                         @if ($is-dark) {
-                            @include asm-dark-elevation(3, true);
+                            background: rgba(0, 0, 0, 0.08) !important;
                         } @else {
                             background: asm-color('gray', 300) !important;
                         }

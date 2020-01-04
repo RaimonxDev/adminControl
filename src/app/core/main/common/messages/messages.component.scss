@@ -264,7 +264,7 @@ messages {
         .header {
 
             @if ($is-dark) {
-                @include asm-dark-elevation();
+                background: rgba(0, 0, 0, 0.05);
             } @else {
                 background: asm-color('gray', 800);
                 color: asm-contrast('gray', 800);
@@ -299,7 +299,7 @@ messages {
 
                 &:hover {
                     @if ($is-dark) {
-                        @include asm-dark-elevation(1, true);
+                        background: rgba(0, 0, 0, 0.05) !important;
                     } @else {
                         background: asm-color('gray', 100) !important;
                     }
@@ -309,7 +309,7 @@ messages {
                     color: map-get($primary, default);
 
                     @if ($is-dark) {
-                        @include asm-dark-elevation();
+                        background: rgba(0, 0, 0, 0.05);
                     } @else {
                         background: map-get($primary, 100);
                     }

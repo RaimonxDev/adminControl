@@ -322,7 +322,7 @@ tasks-list {
 
                             &.type-section {
                                 @if ($is-dark) {
-                                    @include asm-dark-elevation();
+                                    background: rgba(0, 0, 0, 0.05);
                                 } @else {
                                     background: asm-color('gray', 100);
                                 }

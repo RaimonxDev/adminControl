@@ -707,7 +707,7 @@ textarea.mat-input-element {
         // Add hover and focus style on all buttons
         .mat-button-focus-overlay {
             @if ($is-dark) {
-                @include asm-dark-elevation();
+                background-color: rgba(0, 0, 0, 0.05);
             } @else {
                 background-color: rgba(asm-color('gray', 500), 0.2);
             }
@@ -772,7 +772,7 @@ textarea.mat-input-element {
         // Add hover and focus styles
         .mat-button-focus-overlay {
             @if ($is-dark) {
-                @include asm-dark-elevation(1, true);
+                background-color: rgba(0, 0, 0, 0.05) !important;
             } @else {
                 background-color: rgba(asm-color('gray', 500), 0.2) !important;
             }
@@ -862,11 +862,7 @@ textarea.mat-input-element {
     // @ Drawer
     // -----------------------------------------------------------------------------------------------------
     .mat-drawer-backdrop.mat-drawer-shown {
-        @if ($is-dark) {
-            @include asm-dark-elevation(4);
-        } @else {
-            background-color: rgba(asm-color('gray', 900), 0.6);
-        }
+        background-color: rgba(0, 0, 0, 0.6);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -916,7 +912,7 @@ textarea.mat-input-element {
 
             .mat-form-field-flex {
                 @if ($is-dark) {
-                    @include asm-dark-elevation();
+                    background-color: rgba(0, 0, 0, 0.05);
                     border-color: asm-color('gray', 600);
                 } @else {
                     background-color: asm-color('gray', 100);

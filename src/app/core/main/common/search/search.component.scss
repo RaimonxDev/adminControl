@@ -289,7 +289,7 @@ search {
 
                     .image {
                         @if ($is-dark) {
-                            @include asm-dark-elevation();
+                            background: rgba(0, 0, 0, 0.05);
                         } @else {
                             background: map-get($primary, 100);
                         }

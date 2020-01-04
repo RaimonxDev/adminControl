@@ -276,7 +276,7 @@ mailbox-list {
 
                         .item-content {
                             @if ($is-dark) {
-                                @include asm-dark-elevation();
+                                background: rgba(0, 0, 0, 0.05);
                             } @else {
                                 background: asm-color('gray', 100);
                             }
@@ -287,7 +287,7 @@ mailbox-list {
 
                         .item-content {
                             @if ($is-dark) {
-                                @include asm-dark-elevation();
+                                background: rgba(0, 0, 0, 0.05);
                             } @else {
                                 background: map-get($primary, 100);
                             }
