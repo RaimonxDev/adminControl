@@ -23,6 +23,7 @@ export const adminRoutes: Route[] = [{
             // Dashboards
             {path: 'dashboard', children: [
 
+                {path: 'analytics', loadChildren: () => import('./apps/dashboard/analytics/analytics.module').then(m => m.DashboardAnalyticsModule)},
                 {path: 'sales', loadChildren: () => import('./apps/dashboard/sales/sales.module').then(m => m.DashboardSalesModule)},
             ]},
 

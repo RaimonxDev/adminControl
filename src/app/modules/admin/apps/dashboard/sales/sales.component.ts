@@ -18,14 +18,14 @@ export class DashboardSalesComponent implements OnInit, AfterViewInit, OnDestroy
     data: any;
     recentOrdersDataSource: MatTableDataSource<any>;
     recentOrdersTableColumns: string[];
-    totalRevenueChart: ApexOptions;
     totalOrdersChart: ApexOptions;
+    totalRevenueChart: ApexOptions;
+
+    @ViewChild('totalOrdersChartComponent')
+    totalOrdersChartComponent: ChartComponent;
 
     @ViewChild('totalRevenueChartComponent')
     totalRevenueChartComponent: ChartComponent;
-
-    @ViewChild('totalProductsChartComponent')
-    totalOrdersChartComponent: ChartComponent;
 
     @ViewChild('recentOrdersTable', {read: MatSort})
     recentOrdersTableMatSort: MatSort;
@@ -109,9 +109,9 @@ export class DashboardSalesComponent implements OnInit, AfterViewInit, OnDestroy
      */
     private _prepareChartData(): void
     {
-        // Prepare total orders chart
+        // Total orders
         this.totalOrdersChart = {
-            chart : {
+            chart  : {
                 animations: {
                     speed           : 400,
                     animateGradually: {
@@ -126,19 +126,22 @@ export class DashboardSalesComponent implements OnInit, AfterViewInit, OnDestroy
                     enabled: true
                 }
             },
-            series: [
+            series : [
                 {
                     name: 'Total Orders',
                     data: this.data.totalOrders.data
                 }
             ],
-            xaxis : {
+            tooltip: {
+                theme: 'dark'
+            },
+            xaxis  : {
                 type      : 'category',
                 categories: this.data.totalOrders.labels
             }
         };
 
-        // Prepare total revenue chart
+        // Total revenue
         this.totalRevenueChart = {
             chart     : {
                 animations: {
@@ -164,7 +167,7 @@ export class DashboardSalesComponent implements OnInit, AfterViewInit, OnDestroy
             grid      : {
                 padding: {
                     top   : 0,
-                    right : 32,
+                    right : 24,
                     bottom: 0,
                     left  : 10
                 },
@@ -180,8 +183,12 @@ export class DashboardSalesComponent implements OnInit, AfterViewInit, OnDestroy
                     data: this.data.totalRevenue.data
                 }
             ],
+            theme     : {
+                palette: 'palette2'
+            },
             tooltip   : {
-                y: {
+                theme: 'dark',
+                y    : {
                     formatter: (val) => {
                         return '$' + val.toFixed(2);
                     }

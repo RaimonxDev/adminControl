@@ -28,8 +28,8 @@ export const sales = {
     },
     totalRevenue: {
         amount: '$25,019.51',
-        start : moment().subtract(1, 'week').format('LL'),
-        end   : moment().format('LL'),
+        start : moment().subtract(8, 'days').format('LL'),
+        end   : moment().subtract(1, 'day').format('LL'),
         data  : [2771.42, 2991.21, 3471.16, 3681.88, 2971.32, 3203.96, 2754.43, 3174.13],
         labels: [
             moment().subtract(8, 'day').format('DD MMM'),

@@ -1,15 +1,15 @@
 <div class="flex flex-col w-full">
 
-    <div class="flex flex-row">
+    <div class="flex flex-row -mx-16">
 
         <!-- Last payment -->
-        <div class="flex flex-row w-1/2 pr-16">
+        <div class="flex flex-row w-1/2 px-16">
             <div class="flex flex-col flex-auto p-24 bg-card rounded-4 border-l-4 shadow-md"
-                 [ngClass]="{'border-green': data.lastPayment.status === 'paid', 'border-orange': data.lastPayment.status === 'pending'}">
+                 [ngClass]="{'border-green': data.lastPayment.status === 'paid', 'border-red': data.lastPayment.status === 'pending'}">
                 <div class="flex flex-row items-baseline">
                     <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Last Payment</div>
                     <div class="font-medium text-sm"
-                         [ngClass]="{'text-green': data.lastPayment.status === 'paid', 'text-orange': data.lastPayment.status === 'pending'}">
+                         [ngClass]="{'text-green': data.lastPayment.status === 'paid', 'text-red': data.lastPayment.status === 'pending'}">
                         {{data.lastPayment.date}}
                     </div>
                 </div>
@@ -31,13 +31,13 @@
         </div>
 
         <!-- Next payment -->
-        <div class="flex flex-row w-1/2 pl-16">
+        <div class="flex flex-row w-1/2 px-16">
             <div class="flex flex-col flex-auto p-24 bg-card rounded-4 border-l-4 shadow-md"
-                 [ngClass]="{'border-green': data.nextPayment.status === 'paid', 'border-orange': data.nextPayment.status === 'pending'}">
+                 [ngClass]="{'border-green': data.nextPayment.status === 'paid', 'border-red': data.nextPayment.status === 'pending'}">
                 <div class="flex flex-row items-baseline">
                     <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Next Payment</div>
                     <div class="font-medium text-sm"
-                         [ngClass]="{'text-green': data.nextPayment.status === 'paid', 'text-orange': data.nextPayment.status === 'pending'}">
+                         [ngClass]="{'text-green': data.nextPayment.status === 'paid', 'text-red': data.nextPayment.status === 'pending'}">
                         {{data.nextPayment.date}}
                     </div>
                 </div>
@@ -60,18 +60,17 @@
 
     </div>
 
-    <div class="flex flex-row mt-32">
+    <div class="flex flex-row mt-32 -mx-16">
 
-        <div class="flex w-1/4 pr-16">
-
-            <!-- Total orders -->
-            <div class="flex flex-col bg-card shadow-md rounded-4">
-                <div class="flex flex-col p-24 pb-0">
+        <!-- Total orders -->
+        <div class="flex w-1/4 px-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
+                <div class="flex flex-col p-24 pb-8">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Total Orders</div>
                         <div class="font-medium text-sm text-hint">30 days</div>
                     </div>
-                    <div class="font-semibold text-6xl mt-16">{{data.totalOrders.amount}}</div>
+                    <div class="font-semibold text-5xl mt-16">{{data.totalOrders.amount}}</div>
                     <div class="flex items-center">
                         <mat-icon class="mr-4 text-green"
                                   [svgIcon]="'trending_up'"></mat-icon>
@@ -81,172 +80,196 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-auto">
+                <div class="flex flex-auto items-end">
                     <apx-chart class="w-full h-200"
                                [chart]="totalOrdersChart.chart"
                                [series]="totalOrdersChart.series"
+                               [tooltip]="totalOrdersChart.tooltip"
                                [xaxis]="totalOrdersChart.xaxis"
-                               #totalProductsChartComponent></apx-chart>
+                               #totalOrdersChartComponent></apx-chart>
                 </div>
             </div>
-
         </div>
 
-        <div class="flex w-3/4 pl-16">
-
-            <!-- Total revenue -->
+        <!-- Total revenue -->
+        <div class="flex w-3/4 px-16">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
-                <div class="flex flex-col p-24 pb-4">
+                <div class="flex flex-col p-24 pb-8">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Total Revenue</div>
                         <div class="font-medium text-sm text-hint">{{data.totalRevenue.start}} - {{data.totalRevenue.end}}</div>
                     </div>
-                    <div class="font-semibold text-3xl mt-16">{{data.totalRevenue.amount}}</div>
+                    <div class="font-semibold text-5xl mt-16">{{data.totalRevenue.amount}}</div>
+                    <div class="flex items-center">
+                        <mat-icon class="mr-4 text-green"
+                                  [svgIcon]="'trending_up'"></mat-icon>
+                        <div class="font-medium text-sm text-secondary leading-none">
+                            <span class="text-green">12%</span>
+                            growth compared to previous week
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-auto px-12 pb-4">
-                    <apx-chart class="w-full h-240"
+                <div class="flex flex-auto items-end px-12 pb-8">
+                    <apx-chart class="w-full h-200"
                                [chart]="totalRevenueChart.chart"
                                [dataLabels]="totalRevenueChart.dataLabels"
                                [grid]="totalRevenueChart.grid"
                                [series]="totalRevenueChart.series"
+                               [theme]="totalRevenueChart.theme"
                                [tooltip]="totalRevenueChart.tooltip"
                                [xaxis]="totalRevenueChart.xaxis"
                                [yaxis]="totalRevenueChart.yaxis"
                                #totalRevenueChartComponent></apx-chart>
                 </div>
             </div>
-
         </div>
 
     </div>
 
-    <div class="flex flex-auto mt-32 bg-card shadow-md rounded-4 overflow-hidden">
+    <div class="flex flex-row mt-32 -mx-16">
 
         <!-- Recent orders -->
-        <table class="w-full"
-               mat-table
-               matSort
-               [dataSource]="recentOrdersDataSource"
-               [trackBy]="trackById"
-               #recentOrdersTable>
+        <div class="flex w-full px-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4 overflow-hidden">
+                <div class="flex items-center justify-between p-24">
+                    <div>
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Last 10 orders</div>
+                        <div class="text-sm text-hint">3 pending orders, 1 delivered order</div>
+                    </div>
+                    <div class="font-medium text-sm text-hint">30 days</div>
+                </div>
+                <table class="w-full"
+                       mat-table
+                       matSort
+                       [dataSource]="recentOrdersDataSource"
+                       [trackBy]="trackById"
+                       #recentOrdersTable>
 
-            <!-- Order ID -->
-            <ng-container matColumnDef="orderId">
-                <th mat-header-cell
-                    mat-sort-header
-                    *matHeaderCellDef>
-                    Order ID
-                </th>
-                <td mat-cell
-                    *matCellDef="let order">
-                    <span class="font-medium text-sm text-secondary">
-                        {{order.orderId}}
-                    </span>
-                </td>
-            </ng-container>
+                    <!-- Order ID -->
+                    <ng-container matColumnDef="orderId">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            *matHeaderCellDef>
+                            Order ID
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let order">
+                            <span class="font-medium text-sm text-secondary">
+                                {{order.orderId}}
+                            </span>
+                        </td>
+                    </ng-container>
 
-            <!-- Date -->
-            <ng-container matColumnDef="date">
-                <th mat-header-cell
-                    mat-sort-header
-                    *matHeaderCellDef>
-                    Date
-                </th>
-                <td mat-cell
-                    *matCellDef="let order">
-                    {{order.date | date:'MMM dd, y'}}
-                </td>
-            </ng-container>
+                    <!-- Date -->
+                    <ng-container matColumnDef="date">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            *matHeaderCellDef>
+                            Date
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let order">
+                            {{order.date | date:'MMM dd, y'}}
+                        </td>
+                    </ng-container>
 
-            <!-- Customer -->
-            <ng-container matColumnDef="customer">
-                <th mat-header-cell
-                    mat-sort-header
-                    *matHeaderCellDef>
-                    Customer
-                </th>
-                <td mat-cell
-                    *matCellDef="let order">
-                    {{order.customer}}
-                </td>
-            </ng-container>
+                    <!-- Customer -->
+                    <ng-container matColumnDef="customer">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            *matHeaderCellDef>
+                            Customer
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let order">
+                            {{order.customer}}
+                        </td>
+                    </ng-container>
 
-            <!-- Product -->
-            <ng-container matColumnDef="product">
-                <th mat-header-cell
-                    mat-sort-header
-                    *matHeaderCellDef>
-                    Product
-                </th>
-                <td mat-cell
-                    *matCellDef="let order">
-                    {{order.product}}
-                </td>
-            </ng-container>
+                    <!-- Product -->
+                    <ng-container matColumnDef="product">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            *matHeaderCellDef>
+                            Product
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let order">
+                            {{order.product}}
+                        </td>
+                    </ng-container>
 
-            <!-- Amount -->
-            <ng-container matColumnDef="amount">
-                <th mat-header-cell
-                    mat-sort-header
-                    *matHeaderCellDef>
-                    Amount
-                </th>
-                <td mat-cell
-                    *matCellDef="let order">
-                    <span class="font-medium pr-24">
-                        {{order.amount | currency}}
-                    </span>
-                </td>
-            </ng-container>
+                    <!-- Amount -->
+                    <ng-container matColumnDef="amount">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            *matHeaderCellDef>
+                            Amount
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let order">
+                            <span class="font-medium pr-24">
+                                {{order.amount | currency}}
+                            </span>
+                        </td>
+                    </ng-container>
 
-            <!-- Status -->
-            <ng-container matColumnDef="status">
-                <th mat-header-cell
-                    mat-sort-header
-                    *matHeaderCellDef>
-                    Status
-                </th>
-                <td mat-cell
-                    *matCellDef="let order">
-                    <span class="inline-flex items-center font-bold text-xs px-8 py-2 rounded-full tracking-wide uppercase"
-                          [ngClass]="{'red-200': order.status === 'pending',
+                    <!-- Status -->
+                    <ng-container matColumnDef="status">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            *matHeaderCellDef>
+                            Status
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let order">
+                            <span class="inline-flex items-center font-bold text-xs px-8 py-2 rounded-full tracking-wide uppercase"
+                                  [ngClass]="{'red-200': order.status === 'pending',
                                       'blue-200': order.status === 'paid',
                                       'purple-200': order.status === 'confirmed',
                                       'teal-200': order.status === 'shipped',
                                       'green-200': order.status === 'delivered'}">
-                        <span class="w-8 h-8 rounded-full mr-8"
-                              [ngClass]="{'bg-red': order.status === 'pending',
+                                <span class="w-8 h-8 rounded-full mr-8"
+                                      [ngClass]="{'bg-red': order.status === 'pending',
                                       'bg-blue': order.status === 'paid',
                                       'bg-purple': order.status === 'confirmed',
                                       'bg-teal': order.status === 'shipped',
                                       'bg-green': order.status === 'delivered'}"></span>
-                        <span class="leading-relaxed pr-2">{{order.status}}</span>
-                    </span>
-                </td>
-            </ng-container>
+                                <span class="leading-relaxed pr-2">{{order.status}}</span>
+                            </span>
+                        </td>
+                    </ng-container>
 
-            <!-- Disclaimer column -->
-            <ng-container matColumnDef="recentOrdersTableFooter">
-                <td class="px-12"
-                    mat-footer-cell
-                    *matFooterCellDef
-                    colspan="6">
-                    <button mat-button
-                            [color]="'primary'">
-                        Show more orders
-                    </button>
-                </td>
-            </ng-container>
+                    <!-- Footer -->
+                    <ng-container matColumnDef="recentOrdersTableFooter">
+                        <td class="px-12 border-none"
+                            mat-footer-cell
+                            *matFooterCellDef
+                            colspan="6">
+                            <button mat-button
+                                    [color]="'primary'">
+                                Show more orders
+                            </button>
+                        </td>
+                    </ng-container>
 
-            <tr mat-header-row
-                *matHeaderRowDef="recentOrdersTableColumns"></tr>
-            <tr class="order-row h-64"
-                mat-row
-                *matRowDef="let row; columns: recentOrdersTableColumns;"></tr>
-            <tr class="h-64" mat-footer-row
-                *matFooterRowDef="['recentOrdersTableFooter']"></tr>
-
-        </table>
+                    <tr mat-header-row
+                        *matHeaderRowDef="recentOrdersTableColumns"></tr>
+                    <tr class="order-row h-64"
+                        mat-row
+                        *matRowDef="let row; columns: recentOrdersTableColumns;"></tr>
+                    <tr class="h-64"
+                        mat-footer-row
+                        *matFooterRowDef="['recentOrdersTableFooter']"></tr>
+                </table>
+            </div>
+        </div>
 
     </div>
 

@@ -297,6 +297,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'dashboard',
         children: [
             {
+                id   : 'applications.dashboard.analytics',
+                title: 'Analytics',
+                type : 'basic',
+                link : '/apps/dashboard/analytics'
+            },
+            {
                 id   : 'applications.dashboard.sales',
                 title: 'Sales',
                 type : 'basic',

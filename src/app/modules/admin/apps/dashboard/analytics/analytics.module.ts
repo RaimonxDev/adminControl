@@ -6,15 +6,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SharedModule } from 'app/shared/shared.module';
-import { DashboardSalesComponent } from 'app/modules/admin/apps/dashboard/sales/sales.component';
-import { dashboardSalesRoutes } from 'app/modules/admin/apps/dashboard/sales/sales.routing';
+import { DashboardAnalyticsComponent } from 'app/modules/admin/apps/dashboard/analytics/analytics.component';
+import { dashboardAnalyticsRoutes } from 'app/modules/admin/apps/dashboard/analytics/analytics.routing';
 
 @NgModule({
     declarations: [
-        DashboardSalesComponent
+        DashboardAnalyticsComponent
     ],
     imports     : [
-        RouterModule.forChild(dashboardSalesRoutes),
+        RouterModule.forChild(dashboardAnalyticsRoutes),
         MatButtonModule,
         MatIconModule,
         MatTableModule,
@@ -23,6 +23,6 @@ import { dashboardSalesRoutes } from 'app/modules/admin/apps/dashboard/sales/sal
         SharedModule
     ]
 })
-export class DashboardSalesModule
+export class DashboardAnalyticsModule
 {
 }

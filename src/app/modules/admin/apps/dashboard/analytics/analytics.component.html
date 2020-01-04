@@ -1,0 +1,243 @@
+<div class="flex flex-col w-full">
+
+    <div class="flex flex-row mt-32 -mx-16">
+
+        <!-- Total visits -->
+        <div class="flex w-1/4 px-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
+                <div class="flex flex-col p-24 pb-8">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Total Visits</div>
+                        <div class="font-medium text-sm text-hint">30 days</div>
+                    </div>
+                    <div class="font-semibold text-5xl mt-16">{{data.totalVisits.amount}}</div>
+                    <div class="flex items-center">
+                        <mat-icon class="mr-4 text-green"
+                                  [svgIcon]="'trending_up'"></mat-icon>
+                        <div class="font-medium text-sm text-secondary leading-none">
+                            <span class="text-green">24%</span>
+                            more visits
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-auto items-end">
+                    <apx-chart class="w-full h-200"
+                               [chart]="totalVisitsChart.chart"
+                               [series]="totalVisitsChart.series"
+                               [tooltip]="totalVisitsChart.tooltip"
+                               [xaxis]="totalVisitsChart.xaxis"
+                               [yaxis]="totalVisitsChart.yaxis"
+                               #totalVisitsChartComponent></apx-chart>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversion rate -->
+        <div class="flex w-2/4 px-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
+                <div class="flex flex-col p-24 pb-8">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Conversion Rate</div>
+                        <div class="font-medium text-sm text-hint">{{data.conversionRate.start}} - {{data.conversionRate.end}}</div>
+                    </div>
+                    <div class="font-semibold text-5xl mt-16">{{data.conversionRate.amount}}</div>
+                    <div class="flex items-center">
+                        <mat-icon class="mr-4 text-green"
+                                  [svgIcon]="'trending_up'"></mat-icon>
+                        <div class="font-medium text-sm text-secondary leading-none">
+                            <span class="text-green">90%</span>
+                            growth compared to previous year
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-auto items-end px-12 pb-8">
+                    <apx-chart class="w-full h-200"
+                               [chart]="conversionRateChart.chart"
+                               [dataLabels]="conversionRateChart.dataLabels"
+                               [grid]="conversionRateChart.grid"
+                               [plotOptions]="conversionRateChart.plotOptions"
+                               [series]="conversionRateChart.series"
+                               [theme]="conversionRateChart.theme"
+                               [tooltip]="conversionRateChart.tooltip"
+                               [xaxis]="conversionRateChart.xaxis"
+                               [yaxis]="conversionRateChart.yaxis"
+                               #conversionRateChartComponent></apx-chart>
+                </div>
+            </div>
+        </div>
+
+        <!-- Purchases -->
+        <div class="flex w-1/4 px-16 theme-dark bg-transparent">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
+                <div class="flex flex-col p-24 pb-8">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Purchases</div>
+                        <div class="font-medium text-sm text-hint">30 days</div>
+                    </div>
+                    <div class="font-semibold text-5xl mt-16">{{data.purchases.amount}}</div>
+                    <div class="flex items-center">
+                        <mat-icon class="mr-4 text-red"
+                                  [svgIcon]="'trending_down'"></mat-icon>
+                        <div class="font-medium text-sm text-secondary leading-none">
+                            <span class="text-red">2%</span>
+                            less purchase
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-auto items-end">
+                    <apx-chart class="w-full h-200"
+                               [chart]="purchasesChart.chart"
+                               [series]="purchasesChart.series"
+                               [theme]="purchasesChart.theme"
+                               [tooltip]="purchasesChart.tooltip"
+                               [xaxis]="purchasesChart.xaxis"
+                               [yaxis]="purchasesChart.yaxis"
+                               #purchasesChartComponent></apx-chart>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex flex-row mt-32 -mx-16">
+
+        <!-- Searches table -->
+        <div class="flex w-2/4 px-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4 overflow-hidden">
+                <div class="flex items-center justify-between p-24">
+                    <div>
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Top 10 searches & revenues</div>
+                        <div class="text-sm text-hint">2 searches went up on the list, 3 searches held their positions</div>
+                    </div>
+                    <div class="font-medium text-sm text-hint">30 days</div>
+                </div>
+                <table class="w-full bg-transparent"
+                       mat-table
+                       matSort
+                       [dataSource]="searchesDataSource"
+                       [trackBy]="trackById"
+                       #searchesTable>
+
+                    <!-- Search -->
+                    <ng-container matColumnDef="search">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            *matHeaderCellDef>
+                            Search
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let search">
+                            <span class="flex items-center leading-none">
+                                <span class="mr-12">
+                                    <mat-icon class="text-green icon-size-16"
+                                              *ngIf="search.position==='up'"
+                                              [svgIcon]="'arrow_upward'">
+                                    </mat-icon>
+                                    <mat-icon class="text-red icon-size-16"
+                                              *ngIf="search.position==='down'"
+                                              [svgIcon]="'arrow_downward'">
+                                    </mat-icon>
+                                    <mat-icon class="text-secondary icon-size-16"
+                                              *ngIf="search.position==='no-change'"
+                                              [svgIcon]="'remove'">
+                                    </mat-icon>
+                                </span>
+                                <span>
+                                    {{search.search}}
+                                </span>
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- Count -->
+                    <ng-container matColumnDef="count">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            [arrowPosition]="'before'"
+                            *matHeaderCellDef>
+                            Count
+                        </th>
+                        <td class="text-right"
+                            mat-cell
+                            *matCellDef="let search">
+                            {{search.count}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Revenue -->
+                    <ng-container matColumnDef="revenue">
+                        <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                            mat-header-cell
+                            mat-sort-header
+                            [arrowPosition]="'before'"
+                            *matHeaderCellDef>
+                            Revenue
+                        </th>
+                        <td class="text-right pl-24"
+                            mat-cell
+                            *matCellDef="let search">
+                            {{search.revenue | currency}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Footer -->
+                    <ng-container matColumnDef="searchesTableFooter">
+                        <td class="px-12 border-none"
+                            mat-footer-cell
+                            *matFooterCellDef
+                            colspan="6">
+                            <button mat-button
+                                    [color]="'primary'">
+                                Show more searches
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row
+                        *matHeaderRowDef="searchesTableColumns"></tr>
+                    <tr class="search-row h-64"
+                        mat-row
+                        *matRowDef="let row; columns: searchesTableColumns;"></tr>
+                    <tr class="h-64"
+                        mat-footer-row
+                        *matFooterRowDef="['searchesTableFooter']"></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Unique visitors -->
+        <div class="flex w-1/4 px-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-4">
+                <div class="flex flex-col p-24 pb-8">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Unique Visitors</div>
+                        <div class="font-medium text-sm text-hint">30 days</div>
+                    </div>
+                    <div class="font-semibold text-5xl mt-16">{{data.uniqueVisitors.amount}}</div>
+                    <div class="flex items-center">
+                        <mat-icon class="mr-4 text-green"
+                                  [svgIcon]="'trending_up'"></mat-icon>
+                        <div class="font-medium text-sm text-secondary leading-none">
+                            <span class="text-green">4%</span>
+                            more unique visitors
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-auto items-end">
+                    <apx-chart class="w-full h-200"
+                               [chart]="uniqueVisitorsChart.chart"
+                               [series]="uniqueVisitorsChart.series"
+                               [theme]="uniqueVisitorsChart.theme"
+                               [tooltip]="uniqueVisitorsChart.tooltip"
+                               [xaxis]="uniqueVisitorsChart.xaxis"
+                               [yaxis]="uniqueVisitorsChart.yaxis"
+                               #uniqueVisitorsChartComponent></apx-chart>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
