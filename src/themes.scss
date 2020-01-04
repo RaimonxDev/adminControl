@@ -1,3 +1,5 @@
+// @formatter:off
+
 // -----------------------------------------------------------------------------------------------------
 // @ Assembly themes map. Do NOT rename the '$asm-themes' variable!!!
 //   This file meant to be imported more than once by @assembly, do NOT put anything heavy here!
@@ -20,18 +22,18 @@ $asm-themes: (
     // @ User themes - Add/Remove/Modify these for your own likings and needs
     // -----------------------------------------------------------------------------------------------------
 
-    // Light theme
-    'asm-theme-light': asm-light-theme(
-            asm-palette('indigo'),
-            asm-palette('gray', 800),
-            asm-palette('red', 700)
-    ),
-
     // Dark theme
     'asm-theme-dark': asm-dark-theme(
             asm-palette('teal'),
             asm-palette('pink', 500),
             asm-palette('red', 400)
+    ),
+
+    // Light theme
+    'asm-theme-light': asm-light-theme(
+            asm-palette('indigo'),
+            asm-palette('gray', 800),
+            asm-palette('red', 700)
     ),
 
     // -----------------------------------------------------------------------------------------------------
@@ -43,6 +45,11 @@ $asm-themes: (
     //   to the toolbar will apply a light color to every element that stays inside it without needing any
     //   extra work. Without the '.theme-dark' class, adding just a dark background color won't make the
     //   toolbar elements light colored automatically, which will break the styling of the toolbar.
+    //
+    // @ Important note: '.theme-light' classes will always override '.theme-dark' classes because how CSS
+    //   works. Since 'theme-light' definition comes after the 'theme-dark' definition, CSS classes and
+    //   helpers will also be generated with that order which will cause that behavior. To overcome this
+    //   issue, never nest '.theme-light' and '.theme-dark' classes. Make sure to use them as siblings.
     // -----------------------------------------------------------------------------------------------------
 
     // Dark theme - DO NOT REMOVE

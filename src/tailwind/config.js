@@ -1,5 +1,8 @@
 const {colors} = require('tailwindcss/defaultTheme');
 
+const {exportBoxShadow, exportColors, exportScreens, themeDark, themeLight} = require('./plugins/variants');
+const {colorCombinations, colorContrasts} = require('./plugins/utilities');
+
 /**
  * Generate spacing object
  */
@@ -85,46 +88,59 @@ module.exports = {
 
         // Screens
         screens: {
+            // XSmall
             'xs'   : {
                 min: '0',
                 max: '599px'
             },
+            // Small
             'sm'   : {
                 min: '600px',
                 max: '959px'
             },
+            // Medium
             'md'   : {
                 min: '960px',
                 max: '1279px'
             },
+            // Large
             'lg'   : {
                 min: '1280px',
                 max: '1919px'
             },
+            // XLarge
             'xl'   : {
                 min: '1920px'
             },
+            // Less than Small
             'lt-sm': {
                 max: '599px'
             },
+            // Less than Medium
             'lt-md': {
                 max: '959px'
             },
+            // Less than Large
             'lt-lg': {
                 max: '1279px'
             },
+            // Less than XLarge
             'lt-xl': {
                 max: '1919px'
             },
+            // Greater than XSmall
             'gt-xs': {
                 min: '600px'
             },
+            // Greater than Small
             'gt-sm': {
                 min: '960px'
             },
+            // Greater than Medium
             'gt-md': {
                 min: '1280px'
             },
+            // Greater than Large
             'gt-lg': {
                 min: '1920px'
             }
@@ -230,7 +246,7 @@ module.exports = {
         },
 
         // Contrasting colors for the default colors
-        contrastColors: {
+        colorContrasts: {
             black : colors.white,
             white : colors.gray['800'],
             gray  : {
@@ -408,14 +424,15 @@ module.exports = {
 
     // Variants
     variants: {
-        backgroundColor: [],
-        borderColor    : [],
-        cursor         : [],
-        fontFamily     : [],
-        fontSmoothing  : [],
-        fontWeight     : ['responsive'],
-        resize         : [],
-        textColor      : []
+        backgroundColor  : ['dark', 'light'],
+        borderColor      : ['dark', 'light'],
+        colorCombinations: ['dark', 'light'],
+        cursor           : [],
+        fontFamily       : [],
+        fontSmoothing    : [],
+        fontWeight       : ['responsive'],
+        resize           : [],
+        textColor        : ['dark', 'light']
     },
 
     // Core plugins
@@ -428,80 +445,15 @@ module.exports = {
     // Custom plugins
     plugins: [
 
-        // Utilities: Adds utility classes for contrasting colors of the default colors
-        // such as 'text-contrast-red-200' and 'bg-contrast-blue'.
-        ({addUtilities, theme}) => {
+        // Variants
+        exportBoxShadow(),
+        exportColors(),
+        exportScreens(),
+        themeDark(),
+        themeLight(),
 
-            const contrastColors = {};
-
-            Object.keys(theme('contrastColors')).forEach(contrast => {
-
-                if ( !!theme('contrastColors.' + contrast) && theme('contrastColors.' + contrast).constructor === Object )
-                {
-                    Object.keys(theme('contrastColors.' + contrast)).forEach(hue => {
-                        const hueLabel = hue === 'default' ? '' : '-' + hue;
-                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
-
-                        contrastColors['.text-contrast-' + contrast + hueLabel] = {color: theme('contrastColors.' + contrast + hueValue)};
-                        contrastColors['.bg-contrast-' + contrast + hueLabel] = {backgroundColor: theme('contrastColors.' + contrast + hueValue)};
-                    });
-                }
-                else
-                {
-                    contrastColors['.text-contrast-' + contrast] = {color: theme('contrastColors.' + contrast)};
-                    contrastColors['.bg-contrast-' + contrast] = {backgroundColor: theme('contrastColors.' + contrast)};
-                }
-            });
-
-            addUtilities(contrastColors);
-        },
-
-        // Component: Adds a component that combines both background and its contrasting color
-        // with modified utility classes such as 'text-secondary' and 'mat-icon'
-        ({addComponents, theme}) => {
-
-            const combinedColors = {};
-            const generateCombinedColorRules = (color, hueLabel, hueValue) => {
-                combinedColors['.' + color + hueLabel] = {
-                    'backgroundColor'                                         : theme('colors.' + color + hueValue) + '!important',
-                    'color'                                                   : theme('contrastColors.' + color + hueValue) + '!important',
-                    '.mat-icon'                                               : {
-                        color: theme('contrastColors.' + color + hueValue) + '!important'
-                    },
-                    '&.text-secondary, .text-secondary'                       : {
-                        color: 'rgba(' + theme('contrastColors.' + color + hueValue) + ', 0.7) !important'
-                    },
-                    '&.text-hint, .text-hint, &.text-disabled, .text-disabled': {
-                        color: 'rgba(' + theme('contrastColors.' + color + hueValue) + ', 0.38) !important'
-                    },
-                    '&.divider, .divider'                                     : {
-                        color: 'rgba(' + theme('contrastColors.' + color + hueValue) + ', 0.12) !important'
-                    }
-                };
-            };
-
-            Object.keys(theme('colors')).forEach(color => {
-
-                if ( !!theme('colors.' + color) && theme('colors.' + color).constructor === Object )
-                {
-                    Object.keys(theme('colors.' + color)).forEach(hue => {
-                        const hueLabel = hue === 'default' ? '' : '-' + hue;
-                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
-                        generateCombinedColorRules(color, hueLabel, hueValue);
-                    });
-                }
-                else
-                {
-                    if ( color === 'transparent' )
-                    {
-                        return;
-                    }
-
-                    generateCombinedColorRules(color, '', '');
-                }
-            });
-
-            addComponents(combinedColors);
-        }
+        // Utilities
+        colorCombinations(),
+        colorContrasts()
     ]
 };
