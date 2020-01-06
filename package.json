@@ -13,7 +13,7 @@
         "e2e": "ng e2e",
         "tw:build": "npm run tw:build:main && npm run tw:build:variants",
         "tw:build:main": "./node_modules/.bin/tailwind build src/tailwind/main.css -c src/tailwind/config.js -o src/tailwind.scss",
-        "tw:build:variants": "./node_modules/.bin/tailwind build src/tailwind/variants.css -c src/tailwind/config.js -o src/@assembly/styles/utilities/_tailwind.scss",
+        "tw:build:variants": "./node_modules/.bin/tailwind build src/tailwind/export.css -c src/tailwind/config.js -o src/@assembly/styles/utilities/_tailwind.scss",
         "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
     },
     "private": true,

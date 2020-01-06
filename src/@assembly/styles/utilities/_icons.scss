@@ -10,7 +10,6 @@
 /// @param {Boolean} $important - Set the '!important' tag on the rules
 ///
 @mixin asm-icon-size($size, $important: false) {
-
     font-size: #{($size) + 'px'} if($important, !important, null);
     width: #{($size) + 'px'} if($important, !important, null);
     height: #{($size) + 'px'} if($important, !important, null);

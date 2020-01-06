@@ -1,47 +1,47 @@
+const _ = require('lodash');
+
 module.exports = {
 
     /**
      * Adds utility classes for contrasting colors such as
      * 'text-red-200-contrast' and 'bg-blue-contrast'
      */
-    colorContrasts: () => {
+    colorContrastsUtilities: () => {
 
-        const isObject = (obj) => !!obj && obj.constructor === Object;
+        return ({addUtilities, theme, e}) => {
 
-        return ({addUtilities, theme}) => {
+            const utilities = _.map(theme('colorContrasts'), (value, colorName) => {
 
-            const contrasts = {};
-
-            Object.keys(theme('colorContrasts')).forEach(contrast => {
-
-                if ( isObject(theme('colorContrasts.' + contrast)) )
+                if ( _.isObject(value) )
                 {
-                    Object.keys(theme('colorContrasts.' + contrast)).forEach(hue => {
-                        const hueLabel = hue === 'default' ? '' : '-' + hue;
-                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
+                    return _.map(value, (color, hueName) => {
 
-                        contrasts['.text-' + contrast + hueLabel + '-contrast'] = {
-                            color: theme('colorContrasts.' + contrast + hueValue)
-                        };
+                        hueName = hueName === 'default' ? '' : `-${hueName}`;
 
-                        contrasts['.bg-' + contrast + hueLabel + '-contrast'] = {
-                            backgroundColor: theme('colorContrasts.' + contrast + hueValue)
-                        };
+                        return {
+                            [`.${e(`text-${colorName}${hueName}-contrast`)}`]: {
+                                color: color
+                            },
+                            [`.${e(`bg-${colorName}${hueName}-contrast`)}`]  : {
+                                backgroundColor: color
+                            }
+                        }
                     });
                 }
                 else
                 {
-                    contrasts['.text-' + contrast + '-contrast'] = {
-                        color: theme('colorContrasts.' + contrast)
-                    };
-
-                    contrasts['.bg-' + contrast + '-contrast'] = {
-                        backgroundColor: theme('colorContrasts.' + contrast)
-                    };
+                    return {
+                        [`.${e(`text-${colorName}-contrast`)}`]: {
+                            color: value
+                        },
+                        [`.${e(`bg-${colorName}-contrast`)}`]  : {
+                            backgroundColor: value
+                        }
+                    }
                 }
             });
 
-            addUtilities(contrasts);
+            addUtilities(utilities);
         }
     },
 
@@ -50,62 +50,120 @@ module.exports = {
      * for Tailwind colors. Also adds basic utilities for the combined colors
      * so we can do things like '.teal.text-secondary' or '.red .text-hint' etc.
      */
-    colorCombinations: () => {
+    colorCombinationsUtilities: () => {
 
-        const isObject = (obj) => !!obj && obj.constructor === Object;
+        return ({addUtilities, theme, variants, e}) => {
 
-        return ({addUtilities, theme, variants}) => {
+            const generateCombinedColorRules = (colorName, hueName, color) => {
 
-            const combinedColors = {};
-            const generateCombinedColorRules = (color, hueLabel, hueValue) => {
+                const contrastColor = theme(`colorContrasts.${colorName}${hueName ? `.${hueName}` : ``}`);
 
-                const themeColor = theme('colors.' + color + hueValue);
-                const themeContrastColor = theme('colorContrasts.' + color + hueValue);
+                return {
+                    [`.${e(`${colorName}${hueName && hueName !== 'default' ? `-${hueName}` : ``}`)}`]: {
+                        backgroundColor: `${color} !important`,
+                        color          : `${contrastColor} !important`,
 
-                combinedColors['.' + color + hueLabel] = {
-                    'backgroundColor': themeColor + '!important',
-                    'color'          : themeContrastColor + '!important',
+                        [`&.mat-icon, .mat-icon`]: {
+                            color: `${contrastColor} !important`
+                        },
 
-                    '&.mat-icon, .mat-icon': {
-                        color: themeContrastColor + '!important'
-                    },
+                        [`&.text-secondary, .text-secondary`]: {
+                            color: `rgba(${contrastColor}, 0.7) !important`
+                        },
 
-                    '&.text-secondary, .text-secondary': {
-                        color: 'rgba(' + themeContrastColor + ', 0.7) !important'
-                    },
+                        [`&.text-hint, .text-hint, &.text-disabled, .text-disabled`]: {
+                            color: `rgba(${contrastColor}, 0.38) !important`
+                        },
 
-                    '&.text-hint, .text-hint, &.text-disabled, .text-disabled': {
-                        color: 'rgba(' + themeContrastColor + ', 0.38) !important'
-                    },
-
-                    '&.divider, .divider': {
-                        color: 'rgba(' + themeContrastColor + ', 0.12) !important'
+                        [`&.divider, .divider`]: {
+                            color: `rgba(${contrastColor}, 0.12) !important`
+                        }
                     }
-                };
+                }
             };
 
-            Object.keys(theme('colors')).forEach(color => {
+            const utilities = _.map(theme('colors'), (value, colorName) => {
 
-                if ( isObject(theme('colors.' + color)) )
+                if ( _.isObject(value) )
                 {
-                    Object.keys(theme('colors.' + color)).forEach(hue => {
-                        const hueLabel = hue === 'default' ? '' : '-' + hue;
-                        const hueValue = hue === 'default' ? '.500' : '.' + hue;
-                        generateCombinedColorRules(color, hueLabel, hueValue);
+                    return _.map(value, (color, hueName) => {
+                        return generateCombinedColorRules(colorName, hueName, color);
                     });
                 }
                 else
                 {
-                    if ( color === 'transparent' )
+                    if ( colorName === 'transparent' )
                     {
                         return;
                     }
 
-                    generateCombinedColorRules(color, '', '');
+                    return generateCombinedColorRules(colorName, '', value);
                 }
             });
 
-            addUtilities(combinedColors, variants('colorCombinations'));
+            addUtilities(utilities, variants('colorCombinations'));
         };
+    },
+
+    /**
+     * Adds utility classes for .mat-icon size
+     */
+    iconSizeUtilities: () => {
+
+        return ({addUtilities, theme, variants, e}) => {
+
+            const utilities = _.map(theme('iconSize'), (value, key) => {
+
+                return {
+                    [`.${e(`icon-size-${key}`)}`]: {
+                        width     : value,
+                        height    : value,
+                        minWidth  : value,
+                        minHeight : value,
+                        fontSize  : value,
+                        lineHeight: value
+                    }
+                }
+            });
+
+            addUtilities(utilities, variants('iconSize'));
+        }
+    },
+
+    /**
+     * Adds utility classes for mirroring
+     */
+    mirrorUtilities: () => {
+
+        return ({addUtilities, theme, variants, e}) => {
+
+            const utilities = {
+                [`.mirror`]: {
+                    transform: `scale(-1, 1)`
+                }
+            };
+
+            addUtilities(utilities, variants('mirror'));
+        }
+    },
+
+    /**
+     * Adds utility classes for rotating
+     */
+    rotateUtilities: () => {
+
+        return ({addUtilities, theme, variants, e}) => {
+
+            const utilities = _.map(theme('rotate'), (value, key) => {
+
+                return {
+                    [`.${e(`rotate-${key}`)}`]: {
+                        transform: `rotate(${value})`
+                    }
+                }
+            });
+
+            addUtilities(utilities, variants('rotate'));
+        }
     }
 };

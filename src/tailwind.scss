@@ -20395,6 +20395,181 @@
   background-color: #fff5f7 !important;
 }
 
+.icon-size-12 {
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  font-size: 12px !important;
+  line-height: 12px !important;
+}
+
+.icon-size-14 {
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+  font-size: 14px !important;
+  line-height: 14px !important;
+}
+
+.icon-size-16 {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  font-size: 16px !important;
+  line-height: 16px !important;
+}
+
+.icon-size-18 {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  font-size: 18px !important;
+  line-height: 18px !important;
+}
+
+.icon-size-20 {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
+}
+
+.icon-size-24 {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  font-size: 24px !important;
+  line-height: 24px !important;
+}
+
+.icon-size-32 {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  font-size: 32px !important;
+  line-height: 32px !important;
+}
+
+.icon-size-40 {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  font-size: 40px !important;
+  line-height: 40px !important;
+}
+
+.icon-size-48 {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  font-size: 48px !important;
+  line-height: 48px !important;
+}
+
+.icon-size-56 {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  font-size: 56px !important;
+  line-height: 56px !important;
+}
+
+.icon-size-64 {
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  font-size: 64px !important;
+  line-height: 64px !important;
+}
+
+.icon-size-72 {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  min-height: 72px !important;
+  font-size: 72px !important;
+  line-height: 72px !important;
+}
+
+.icon-size-80 {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
+  font-size: 80px !important;
+  line-height: 80px !important;
+}
+
+.icon-size-88 {
+  width: 88px !important;
+  height: 88px !important;
+  min-width: 88px !important;
+  min-height: 88px !important;
+  font-size: 88px !important;
+  line-height: 88px !important;
+}
+
+.icon-size-96 {
+  width: 96px !important;
+  height: 96px !important;
+  min-width: 96px !important;
+  min-height: 96px !important;
+  font-size: 96px !important;
+  line-height: 96px !important;
+}
+
+.mirror {
+  -webkit-transform: scale(-1, 1) !important;
+          transform: scale(-1, 1) !important;
+}
+
+.rotate-15 {
+  -webkit-transform: rotate(15deg) !important;
+          transform: rotate(15deg) !important;
+}
+
+.rotate-30 {
+  -webkit-transform: rotate(30deg) !important;
+          transform: rotate(30deg) !important;
+}
+
+.rotate-45 {
+  -webkit-transform: rotate(45deg) !important;
+          transform: rotate(45deg) !important;
+}
+
+.rotate-60 {
+  -webkit-transform: rotate(60deg) !important;
+          transform: rotate(60deg) !important;
+}
+
+.rotate-90 {
+  -webkit-transform: rotate(90deg) !important;
+          transform: rotate(90deg) !important;
+}
+
+.rotate-180 {
+  -webkit-transform: rotate(180deg) !important;
+          transform: rotate(180deg) !important;
+}
+
+.rotate-270 {
+  -webkit-transform: rotate(270deg) !important;
+          transform: rotate(270deg) !important;
+}
+
 /* ----------------------------------------------------------------------------------------------------- */
 
 /* Use custom @variant directives here to build them.
@@ -29766,6 +29941,141 @@
   .xs\:-z-1 {
     z-index: -1 !important;
   }
+
+  .xs\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .xs\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .xs\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .xs\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .xs\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .xs\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .xs\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .xs\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .xs\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .xs\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .xs\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .xs\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .xs\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .xs\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .xs\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
+  }
 }
 
 @media (min-width: 600px) and (max-width: 959px) {
@@ -39127,6 +39437,141 @@
 
   .sm\:-z-1 {
     z-index: -1 !important;
+  }
+
+  .sm\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .sm\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .sm\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .sm\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .sm\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .sm\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .sm\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .sm\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .sm\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .sm\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .sm\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .sm\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .sm\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .sm\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .sm\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
   }
 }
 
@@ -48490,6 +48935,141 @@
   .md\:-z-1 {
     z-index: -1 !important;
   }
+
+  .md\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .md\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .md\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .md\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .md\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .md\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .md\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .md\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .md\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .md\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .md\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .md\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .md\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .md\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .md\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
+  }
 }
 
 @media (min-width: 1280px) and (max-width: 1919px) {
@@ -57851,6 +58431,141 @@
 
   .lg\:-z-1 {
     z-index: -1 !important;
+  }
+
+  .lg\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .lg\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .lg\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .lg\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .lg\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .lg\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .lg\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .lg\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .lg\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .lg\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .lg\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .lg\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .lg\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .lg\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .lg\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
   }
 }
 
@@ -67214,6 +67929,141 @@
   .xl\:-z-1 {
     z-index: -1 !important;
   }
+
+  .xl\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .xl\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .xl\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .xl\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .xl\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .xl\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .xl\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .xl\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .xl\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .xl\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .xl\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .xl\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .xl\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .xl\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .xl\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
+  }
 }
 
 @media (max-width: 599px) {
@@ -76575,6 +77425,141 @@
 
   .lt-sm\:-z-1 {
     z-index: -1 !important;
+  }
+
+  .lt-sm\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .lt-sm\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .lt-sm\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .lt-sm\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .lt-sm\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .lt-sm\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .lt-sm\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .lt-sm\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .lt-sm\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .lt-sm\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .lt-sm\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .lt-sm\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .lt-sm\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .lt-sm\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .lt-sm\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
   }
 }
 
@@ -85938,6 +86923,141 @@
   .lt-md\:-z-1 {
     z-index: -1 !important;
   }
+
+  .lt-md\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .lt-md\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .lt-md\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .lt-md\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .lt-md\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .lt-md\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .lt-md\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .lt-md\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .lt-md\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .lt-md\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .lt-md\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .lt-md\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .lt-md\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .lt-md\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .lt-md\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
+  }
 }
 
 @media (max-width: 1279px) {
@@ -95299,6 +96419,141 @@
 
   .lt-lg\:-z-1 {
     z-index: -1 !important;
+  }
+
+  .lt-lg\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .lt-lg\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .lt-lg\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .lt-lg\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .lt-lg\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .lt-lg\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .lt-lg\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .lt-lg\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .lt-lg\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .lt-lg\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .lt-lg\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .lt-lg\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .lt-lg\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .lt-lg\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .lt-lg\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
   }
 }
 
@@ -104662,6 +105917,141 @@
   .lt-xl\:-z-1 {
     z-index: -1 !important;
   }
+
+  .lt-xl\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .lt-xl\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .lt-xl\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .lt-xl\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .lt-xl\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .lt-xl\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .lt-xl\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .lt-xl\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .lt-xl\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .lt-xl\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .lt-xl\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .lt-xl\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .lt-xl\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .lt-xl\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .lt-xl\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
+  }
 }
 
 @media (min-width: 600px) {
@@ -114023,6 +115413,141 @@
 
   .gt-xs\:-z-1 {
     z-index: -1 !important;
+  }
+
+  .gt-xs\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .gt-xs\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .gt-xs\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .gt-xs\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .gt-xs\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .gt-xs\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .gt-xs\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .gt-xs\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .gt-xs\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .gt-xs\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .gt-xs\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .gt-xs\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .gt-xs\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .gt-xs\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .gt-xs\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
   }
 }
 
@@ -123386,6 +124911,141 @@
   .gt-sm\:-z-1 {
     z-index: -1 !important;
   }
+
+  .gt-sm\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .gt-sm\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .gt-sm\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .gt-sm\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .gt-sm\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .gt-sm\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .gt-sm\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .gt-sm\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .gt-sm\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .gt-sm\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .gt-sm\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .gt-sm\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .gt-sm\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .gt-sm\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .gt-sm\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -132748,6 +134408,141 @@
   .gt-md\:-z-1 {
     z-index: -1 !important;
   }
+
+  .gt-md\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .gt-md\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .gt-md\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .gt-md\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .gt-md\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .gt-md\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .gt-md\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .gt-md\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .gt-md\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .gt-md\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .gt-md\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .gt-md\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .gt-md\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .gt-md\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .gt-md\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
+  }
 }
 
 @media (min-width: 1920px) {
@@ -142109,5 +143904,140 @@
 
   .gt-lg\:-z-1 {
     z-index: -1 !important;
+  }
+
+  .gt-lg\:icon-size-12 {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .gt-lg\:icon-size-14 {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  .gt-lg\:icon-size-16 {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
+  }
+
+  .gt-lg\:icon-size-18 {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    font-size: 18px !important;
+    line-height: 18px !important;
+  }
+
+  .gt-lg\:icon-size-20 {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+
+  .gt-lg\:icon-size-24 {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+
+  .gt-lg\:icon-size-32 {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+
+  .gt-lg\:icon-size-40 {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .gt-lg\:icon-size-48 {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .gt-lg\:icon-size-56 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+  }
+
+  .gt-lg\:icon-size-64 {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    font-size: 64px !important;
+    line-height: 64px !important;
+  }
+
+  .gt-lg\:icon-size-72 {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px !important;
+    min-height: 72px !important;
+    font-size: 72px !important;
+    line-height: 72px !important;
+  }
+
+  .gt-lg\:icon-size-80 {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    font-size: 80px !important;
+    line-height: 80px !important;
+  }
+
+  .gt-lg\:icon-size-88 {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    font-size: 88px !important;
+    line-height: 88px !important;
+  }
+
+  .gt-lg\:icon-size-96 {
+    width: 96px !important;
+    height: 96px !important;
+    min-width: 96px !important;
+    min-height: 96px !important;
+    font-size: 96px !important;
+    line-height: 96px !important;
   }
 }

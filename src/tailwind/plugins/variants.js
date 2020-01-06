@@ -141,7 +141,7 @@ module.exports = {
     /**
      * Adds 'dark' variant
      */
-    themeDark: () => {
+    themeDarkVariant: () => {
 
         return ({addVariant, e, theme}) => {
 
@@ -158,7 +158,7 @@ module.exports = {
     /**
      * Adds 'light' variant
      */
-    themeLight: () => {
+    themeLightVariant: () => {
 
         return ({addVariant, e, theme}) => {
 

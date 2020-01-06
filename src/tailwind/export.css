@@ -9,7 +9,7 @@
  * by adding 'import "assembly"' in any scss file.
  *
  * If you have your own Tailwind variants, do NOT use this file to
- * generate them. Add them at the end of the 'tailwind.main.scss' file.
+ * generate them. Add them to the './main.css' file.
  */
 
 @variants exportBoxShadow, exportColors, exportScreens {}

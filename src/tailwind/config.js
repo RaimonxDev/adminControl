@@ -1,79 +1,7 @@
 const {colors} = require('tailwindcss/defaultTheme');
-
-const {exportBoxShadow, exportColors, exportScreens, themeDark, themeLight} = require('./plugins/variants');
-const {colorCombinations, colorContrasts} = require('./plugins/utilities');
-
-/**
- * Generate spacing object
- */
-const spacing = (() => {
-
-    // Create the object and add some values by hand
-    const obj = {
-        '0'    : '0',
-        '2'    : '2px',
-        '4'    : '4px',
-        '8'    : '8px',
-        '12'   : '12px',
-        '16'   : '16px',
-        '20'   : '20px',
-        '160'  : '160px',
-        '200'  : '200px',
-        '240'  : '240px',
-        '256'  : '256px',
-        '280'  : '280px',
-        '320'  : '320px',
-        '400'  : '400px',
-        '480'  : '480px',
-        '512'  : '512px',
-        '560'  : '560px',
-        '600'  : '600px',
-        '640'  : '640px',
-        '720'  : '720px',
-        '800'  : '800px',
-        '960'  : '960px',
-        '1120' : '1120px',
-        '1280' : '1280px',
-        '1440' : '1440px',
-        '1600' : '1600px',
-        '1920' : '1920px',
-        '1/2'  : '50%',
-        '1/3'  : '33.33333%',
-        '2/3'  : '66.66667%',
-        '1/4'  : '25%',
-        '2/4'  : '50%',
-        '3/4'  : '75%',
-        '1/5'  : '20%',
-        '2/5'  : '40%',
-        '3/5'  : '60%',
-        '4/5'  : '80%',
-        '1/6'  : '16.66667%',
-        '2/6'  : '33.33333%',
-        '3/6'  : '50%',
-        '4/6'  : '66.66667%',
-        '5/6'  : '83.33333%',
-        '1/12' : '8.33333%',
-        '2/12' : '16.66667%',
-        '3/12' : '25%',
-        '4/12' : '33.33333%',
-        '5/12' : '41.66667%',
-        '6/12' : '50%',
-        '7/12' : '58.33333%',
-        '8/12' : '66.66667%',
-        '9/12' : '75%',
-        '10/12': '83.33333%',
-        '11/12': '91.66667%',
-        'full' : '100%'
-    };
-
-    // Loop and add specified values to the object
-    for ( let i = 24; i <= 128; i += 8 )
-    {
-        obj[i + ''] = i + 'px';
-    }
-
-    return obj;
-})();
+const {exportBoxShadow, exportColors, exportScreens, themeDarkVariant, themeLightVariant} = require('./plugins/variants');
+const {colorCombinationsUtilities, colorContrastsUtilities, iconSizeUtilities, mirrorUtilities, rotateUtilities} = require('./plugins/utilities');
+const spacing = require('./utils/spacing')();
 
 module.exports = {
 
@@ -82,12 +10,10 @@ module.exports = {
 
     // Theme
     theme: {
-
-        // Spacing
-        spacing,
-
-        // Screens
-        screens: {
+        spacing     : {
+            ...spacing
+        },
+        screens     : {
             // XSmall
             'xs'   : {
                 min: '0',
@@ -145,9 +71,7 @@ module.exports = {
                 min: '1920px'
             }
         },
-
-        // Font size
-        fontSize: {
+        fontSize    : {
             'xs'  : '10px',
             'sm'  : '12px',
             'md'  : '13px',
@@ -164,8 +88,6 @@ module.exports = {
             '9xl' : '96px',
             '10xl': '128px'
         },
-
-        // Border radius
         borderRadius: {
             default: '8px',
             none   : '0',
@@ -173,49 +95,35 @@ module.exports = {
             8      : '8px',
             full   : '9999px'
         },
-
-        // Width
-        width: {
+        width       : {
             auto  : 'auto',
             screen: '100vw',
             ...spacing
         },
-
-        // Height
-        height: {
+        height      : {
             auto  : 'auto',
             screen: '100vh',
             ...spacing
         },
-
-        // Min width
-        minWidth: {
+        minWidth    : {
             screen: '100vw',
             ...spacing
         },
-
-        // Min height
-        minHeight: {
+        minHeight   : {
             screen: '100vh',
             ...spacing
         },
-
-        // Max width
-        maxWidth: {
+        maxWidth    : {
             none  : 'none',
             screen: '100vw',
             ...spacing
         },
-
-        // Max height
-        maxHeight: {
+        maxHeight   : {
             none  : 'none',
             screen: '100vh',
             ...spacing
         },
-
-        // zIndex
-        zIndex: {
+        zIndex      : {
             'auto' : 'auto',
             '-1'   : -1,
             '0'    : 0,
@@ -233,9 +141,7 @@ module.exports = {
             '9999' : 9999,
             '99999': 99999
         },
-
-        // Opacity
-        opacity: {
+        opacity     : {
             0  : '0',
             12 : '0.12',
             38 : '0.38',
@@ -244,6 +150,8 @@ module.exports = {
             84 : '0.84',
             100: '1'
         },
+
+        // CUSTOM UTILITIES
 
         // Contrasting colors for the default colors
         colorContrasts: {
@@ -371,6 +279,36 @@ module.exports = {
             }
         },
 
+        // Rotate utilities
+        rotate: {
+            15 : '15deg',
+            30 : '30deg',
+            45 : '45deg',
+            60 : '60deg',
+            90 : '90deg',
+            180: '180deg',
+            270: '270deg'
+        },
+
+        // .icon-size-... utilities for sizing .mat-icon
+        iconSize: {
+            12: '12px',
+            14: '14px',
+            16: '16px',
+            18: '18px',
+            20: '20px',
+            24: '24px',
+            32: '32px',
+            40: '40px',
+            48: '48px',
+            56: '56px',
+            64: '64px',
+            72: '72px',
+            80: '80px',
+            88: '88px',
+            96: '96px',
+        },
+
         // Extensions
         extend: {
 
@@ -431,6 +369,7 @@ module.exports = {
         fontFamily       : [],
         fontSmoothing    : [],
         fontWeight       : ['responsive'],
+        iconSize         : ['responsive'],
         resize           : [],
         textColor        : ['dark', 'light']
     },
@@ -445,15 +384,20 @@ module.exports = {
     // Custom plugins
     plugins: [
 
-        // Variants
+        // Exporter variants
         exportBoxShadow(),
         exportColors(),
         exportScreens(),
-        themeDark(),
-        themeLight(),
+
+        // Variants
+        themeDarkVariant(),
+        themeLightVariant(),
 
         // Utilities
-        colorCombinations(),
-        colorContrasts()
+        colorCombinationsUtilities(),
+        colorContrastsUtilities(),
+        iconSizeUtilities(),
+        mirrorUtilities(),
+        rotateUtilities()
     ]
 };
