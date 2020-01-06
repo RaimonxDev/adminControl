@@ -306,7 +306,7 @@ module.exports = {
             72: '72px',
             80: '80px',
             88: '88px',
-            96: '96px',
+            96: '96px'
         },
 
         // Extensions
@@ -364,6 +364,7 @@ module.exports = {
     variants: {
         backgroundColor  : ['dark', 'light'],
         borderColor      : ['dark', 'light'],
+        borderWidth      : ['responsive', 'first', 'last'],
         colorCombinations: ['dark', 'light'],
         cursor           : [],
         fontFamily       : [],
