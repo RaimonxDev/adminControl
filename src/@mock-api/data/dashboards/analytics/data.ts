@@ -2,20 +2,50 @@ import * as moment from 'moment';
 
 /* tslint:disable:max-line-length */
 export const analytics = {
-    totalVisits   : {
-        amount: '62k',
-        data  : [15521, 15519, 15522, 15521],
-        labels: [
-            moment().subtract(4, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(4, 'weeks').endOf('week').format('DD MMM'),
-            moment().subtract(3, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(3, 'weeks').endOf('week').format('DD MMM'),
-            moment().subtract(2, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(2, 'weeks').endOf('week').format('DD MMM'),
-            moment().subtract(1, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(1, 'weeks').endOf('week').format('DD MMM')
+    browsers       : {
+        amount: 46085,
+        series: [
+            {
+                name: 'Chrome',
+                data: [22939]
+            },
+            {
+                name: 'Firefox',
+                data: [12102]
+            },
+            {
+                name: 'Safari',
+                data: [8483]
+            },
+            {
+                name: 'Others',
+                data: [2561]
+            }
+        ]
+    },
+    channels      : {
+        amount: 46085,
+        series: [
+            {
+                name: 'Direct',
+                data: [27755]
+            },
+            {
+                name: 'Search',
+                data: [9839]
+            },
+            {
+                name: 'Referrals',
+                data: [5942]
+            },
+            {
+                name: 'Social',
+                data: [2549]
+            }
         ]
     },
     conversionRate: {
-        amount: '2.5%',
-        start : moment().subtract(13, 'months').format('LL'),
-        end   : moment().subtract(1, 'month').format('LL'),
+        amount: 2.5,
         data  : [1.7, 1.2, 1.6, 1.8, 1.3, 1.9, 4.3, 3.3, 4.2, 2.1, 1.6, 1.8, 2.1],
         labels: [
             moment().subtract(13, 'months').format('MMM'),
@@ -33,9 +63,40 @@ export const analytics = {
             moment().subtract(1, 'months').format('MMM')
         ]
     },
+    devices       : {
+        amount: 46085,
+        series: [
+            {
+                name: 'Desktop',
+                data: [26939]
+            },
+            {
+                name: 'Mobile',
+                data: [14102]
+            },
+            {
+                name: 'Tablet',
+                data: [4483]
+            },
+            {
+                name: 'Others',
+                data: [561]
+            }
+        ]
+    },
     purchases     : {
-        amount: '26.1k',
-        data  : [6541, 6539, 6542, 6541],
+        amount: 17663,
+        data  : [4541, 4677, 4322, 4123],
+        labels: [
+            moment().subtract(4, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(4, 'weeks').endOf('week').format('DD MMM'),
+            moment().subtract(3, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(3, 'weeks').endOf('week').format('DD MMM'),
+            moment().subtract(2, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(2, 'weeks').endOf('week').format('DD MMM'),
+            moment().subtract(1, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(1, 'weeks').endOf('week').format('DD MMM')
+        ]
+    },
+    totalVisits   : {
+        amount: 62083,
+        data  : [15521, 15519, 15522, 15521],
         labels: [
             moment().subtract(4, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(4, 'weeks').endOf('week').format('DD MMM'),
             moment().subtract(3, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(3, 'weeks').endOf('week').format('DD MMM'),
@@ -44,13 +105,16 @@ export const analytics = {
         ]
     },
     uniqueVisitors: {
-        amount: '26.1k',
-        data  : [6541, 6539, 6542, 6541],
+        amount: 46085,
+        data  : [6677, 6541, 6623, 6542, 6501, 6612, 6589],
         labels: [
-            moment().subtract(4, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(4, 'weeks').endOf('week').format('DD MMM'),
-            moment().subtract(3, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(3, 'weeks').endOf('week').format('DD MMM'),
-            moment().subtract(2, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(2, 'weeks').endOf('week').format('DD MMM'),
-            moment().subtract(1, 'weeks').startOf('week').format('DD MMM') + ' - ' + moment().subtract(1, 'weeks').endOf('week').format('DD MMM')
+            moment().subtract(7, 'days').format('DD MMM'),
+            moment().subtract(6, 'days').format('DD MMM'),
+            moment().subtract(5, 'days').format('DD MMM'),
+            moment().subtract(4, 'days').format('DD MMM'),
+            moment().subtract(3, 'days').format('DD MMM'),
+            moment().subtract(2, 'days').format('DD MMM'),
+            moment().subtract(1, 'days').format('DD MMM')
         ]
     },
     searches      : [

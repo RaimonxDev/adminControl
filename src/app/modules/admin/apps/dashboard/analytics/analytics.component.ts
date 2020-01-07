@@ -18,16 +18,28 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
     data: any;
     searchesDataSource: MatTableDataSource<any>;
     searchesTableColumns: string[];
-    conversionRateChart: ApexOptions;
-    purchasesChart: ApexOptions;
-    totalVisitsChart: ApexOptions;
-    uniqueVisitorsChart: ApexOptions;
+    browsersOptions: ApexOptions;
+    channelsOptions: ApexOptions;
+    conversionRateOptions: ApexOptions;
+    devicesOptions: ApexOptions;
+    purchasesOptions: ApexOptions;
+    totalVisitsOptions: ApexOptions;
+    uniqueVisitorsOptions: ApexOptions;
 
     @ViewChild('searchesTable', {read: MatSort})
     searchesTableMatSort: MatSort;
 
+    @ViewChild('browsersChartComponent')
+    browsersChartComponent: ChartComponent;
+
+    @ViewChild('channelsChartComponent')
+    channelsChartComponent: ChartComponent;
+
     @ViewChild('conversionRateChartComponent')
     conversionRateChartComponent: ChartComponent;
+
+    @ViewChild('devicesChartComponent')
+    devicesChartComponent: ChartComponent;
 
     @ViewChild('purchasesChartComponent')
     purchasesChartComponent: ChartComponent;
@@ -98,7 +110,10 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
     ngOnDestroy(): void
     {
         // Explicitly call destroy on charts to prevent memory leaks
+        this.browsersChartComponent.destroy();
         this.conversionRateChartComponent.destroy();
+        this.channelsChartComponent.destroy();
+        this.devicesChartComponent.destroy();
         this.purchasesChartComponent.destroy();
         this.totalVisitsChartComponent.destroy();
         this.uniqueVisitorsChartComponent.destroy();
@@ -119,8 +134,116 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
      */
     private _prepareChartData(): void
     {
+        // Browsers
+        this.browsersOptions = {
+            chart      : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                height    : '100%',
+                type      : 'bar',
+                stacked   : true,
+                stackType : '100%',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors     : [
+                '#B83280',
+                '#D53F8C',
+                '#ED64A6',
+                '#F687B3'
+            ],
+            plotOptions: {
+                bar: {
+                    barHeight : '100%',
+                    horizontal: true
+                }
+            },
+            series     : this.data.browsers.series,
+            states     : {
+                hover: {
+                    filter: {
+                        type: 'none'
+                    }
+                }
+            },
+            tooltip    : {
+                theme: 'dark',
+                x    : {
+                    show: false
+                }
+            },
+            yaxis      : {
+                labels: {
+                    formatter: (val) => {
+                        return val.toString();
+                    }
+                }
+            }
+        };
+
+        // Channels
+        this.channelsOptions = {
+            chart      : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                height    : '100%',
+                type      : 'bar',
+                stacked   : true,
+                stackType : '100%',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors     : [
+                '#6B46C1',
+                '#805AD5',
+                '#9F7AEA',
+                '#B794F4'
+            ],
+            plotOptions: {
+                bar: {
+                    barHeight : '100%',
+                    horizontal: true
+                }
+            },
+            series     : this.data.channels.series,
+            states     : {
+                hover: {
+                    filter: {
+                        type: 'none'
+                    }
+                }
+            },
+            tooltip    : {
+                theme: 'dark',
+                x    : {
+                    show: false
+                }
+            },
+            yaxis      : {
+                labels: {
+                    formatter: (val) => {
+                        return val.toString();
+                    }
+                }
+            }
+        };
+
         // Conversion rate
-        this.conversionRateChart = {
+        this.conversionRateOptions = {
             chart      : {
                 animations: {
                     speed           : 400,
@@ -139,6 +262,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                     enabled: false
                 }
             },
+            colors     : ['#5A67D8'],
             dataLabels : {
                 enabled: false
             },
@@ -155,7 +279,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
             },
             plotOptions: {
                 bar: {
-                    columnWidth: '40%'
+                    columnWidth: '55%'
                 }
             },
             series     : [
@@ -164,9 +288,6 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                     data: this.data.conversionRate.data
                 }
             ],
-            theme      : {
-                palette: 'palette2'
-            },
             tooltip    : {
                 theme: 'dark',
                 y    : {
@@ -205,8 +326,62 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
             }
         };
 
+        // Devices
+        this.devicesOptions = {
+            chart      : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                height    : '100%',
+                type      : 'bar',
+                stacked   : true,
+                stackType : '100%',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors     : [
+                '#2C7A7B',
+                '#319795',
+                '#38B2AC',
+                '#4FD1C5'
+            ],
+            plotOptions: {
+                bar: {
+                    barHeight : '100%',
+                    horizontal: true
+                }
+            },
+            series     : this.data.devices.series,
+            states     : {
+                hover: {
+                    filter: {
+                        type: 'none'
+                    }
+                }
+            },
+            tooltip    : {
+                theme: 'dark',
+                x    : {
+                    show: false
+                }
+            },
+            yaxis      : {
+                labels: {
+                    formatter: (val) => {
+                        return val.toString();
+                    }
+                }
+            }
+        };
+
         // Purchases
-        this.purchasesChart = {
+        this.purchasesOptions = {
             chart  : {
                 animations: {
                     speed           : 400,
@@ -222,6 +397,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                     enabled: true
                 }
             },
+            colors : ['#4FD1C5'],
             series : [
                 {
                     name: 'Purchases',
@@ -230,9 +406,6 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
             ],
             tooltip: {
                 theme: 'dark'
-            },
-            theme  : {
-                palette: 'palette4'
             },
             xaxis  : {
                 type      : 'category',
@@ -248,7 +421,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
         };
 
         // Total visits
-        this.totalVisitsChart = {
+        this.totalVisitsOptions = {
             chart  : {
                 animations: {
                     speed           : 400,
@@ -264,6 +437,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                     enabled: true
                 }
             },
+            colors : ['#3182CE'],
             series : [
                 {
                     name: 'Total Visits',
@@ -287,7 +461,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
         };
 
         // Unique visitors
-        this.uniqueVisitorsChart = {
+        this.uniqueVisitorsOptions = {
             chart  : {
                 animations: {
                     speed           : 400,
@@ -303,21 +477,19 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                     enabled: true
                 }
             },
+            colors : ['#48BB78'],
             series : [
                 {
-                    name: 'Total Visits',
-                    data: this.data.totalVisits.data
+                    name: 'Unique Visitors',
+                    data: this.data.uniqueVisitors.data
                 }
             ],
             tooltip: {
                 theme: 'dark'
             },
-            theme  : {
-                palette: 'palette4'
-            },
             xaxis  : {
                 type      : 'category',
-                categories: this.data.totalVisits.labels
+                categories: this.data.uniqueVisitors.labels
             },
             yaxis  : {
                 labels: {

@@ -121,7 +121,15 @@ module.exports = {
                         minWidth  : value,
                         minHeight : value,
                         fontSize  : value,
-                        lineHeight: value
+                        lineHeight: value,
+                        [`svg`]   : {
+                            width     : value,
+                            height    : value,
+                            minWidth  : value,
+                            minHeight : value,
+                            fontSize  : value,
+                            lineHeight: value
+                        }
                     }
                 }
             });

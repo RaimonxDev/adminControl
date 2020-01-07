@@ -1,7 +1,7 @@
 const {colors} = require('tailwindcss/defaultTheme');
 const {exportBoxShadow, exportColors, exportScreens, themeDarkVariant, themeLightVariant} = require('./plugins/variants');
 const {colorCombinationsUtilities, colorContrastsUtilities, iconSizeUtilities, mirrorUtilities, rotateUtilities} = require('./plugins/utilities');
-const spacing = require('./utils/spacing')();
+const utils = require('./utils');
 
 module.exports = {
 
@@ -11,7 +11,7 @@ module.exports = {
     // Theme
     theme: {
         spacing     : {
-            ...spacing
+            ...utils.spacing()
         },
         screens     : {
             // XSmall
@@ -98,30 +98,30 @@ module.exports = {
         width       : {
             auto  : 'auto',
             screen: '100vw',
-            ...spacing
+            ...utils.sizes()
         },
         height      : {
             auto  : 'auto',
             screen: '100vh',
-            ...spacing
+            ...utils.sizes()
         },
         minWidth    : {
             screen: '100vw',
-            ...spacing
+            ...utils.sizes()
         },
         minHeight   : {
             screen: '100vh',
-            ...spacing
+            ...utils.sizes()
         },
         maxWidth    : {
             none  : 'none',
             screen: '100vw',
-            ...spacing
+            ...utils.sizes()
         },
         maxHeight   : {
             none  : 'none',
             screen: '100vh',
-            ...spacing
+            ...utils.sizes()
         },
         zIndex      : {
             'auto' : 'auto',
