@@ -608,9 +608,41 @@
 // @ Select
 // -----------------------------------------------------------------------------------------------------
 .mat-select {
+    display: inline-flex;
 
     .mat-select-placeholder {
         transition: none !important;
+    }
+
+    .mat-select-trigger {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        height: auto;
+
+        .mat-select-value {
+            display: flex;
+            position: relative;
+            max-width: none;
+
+            .mat-select-value-text {
+                display: inline-flex;
+
+                > * {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+
+    .mat-select-arrow-wrapper {
+        transform: translateY(0);
+
+        .mat-select-arrow {
+            margin: 0 0 0 8px;
+        }
     }
 }
 

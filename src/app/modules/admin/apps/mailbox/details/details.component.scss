@@ -12,6 +12,7 @@ mailbox-details {
         flex-direction: column;
         width: 100%;
         z-index: 10;
+        border-bottom-width: 1px;
 
         .toolbar {
             display: flex;
@@ -89,6 +90,7 @@ mailbox-details {
             align-items: flex-start;
             width: 100%;
             padding: 32px 24px 12px 24px;
+            border-width: 1px;
             border-radius: 8px;
 
             .header {
@@ -433,11 +435,6 @@ mailbox-details {
         }
 
         > .header {
-            @if ($is-dark) {
-                border-bottom-width: 1px;
-            } @else {
-                @include asm-elevation('md');
-            }
 
             .toolbar {
                 @if (not $is-dark) {
@@ -483,10 +480,9 @@ mailbox-details {
 
             .thread {
                 @if ($is-dark) {
-                    background: rgba(0, 0, 0, 0.07);
+                    background: rgba(0, 0, 0, 0.09);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation();
                 }
 
                 .header {
