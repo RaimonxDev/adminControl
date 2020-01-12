@@ -2,15 +2,185 @@
 
     <div class="flex flex-wrap w-full max-w-1280">
 
+        <div class="flex items-center justify-between w-full mt-16 mb-40 px-16 xs:mb-16">
+            <div class="mr-24">
+                <h2 class="m-0">Analytics</h2>
+                <div class="text-secondary">Monitor key metrics, check reporting and review insights</div>
+            </div>
+            <div class="flex items-center">
+
+                <!-- Action buttons -->
+                <button class="xs:hidden"
+                        mat-stroked-button>
+                    <mat-icon class="icon-size-20"
+                              [svgIcon]="'save'"></mat-icon>
+                    <span class="ml-8">Export</span>
+                </button>
+                <button class="ml-8 xs:hidden"
+                        mat-stroked-button>
+                    <mat-icon class="icon-size-20"
+                              [svgIcon]="'share'"></mat-icon>
+                    <span class="ml-8">Share</span>
+                </button>
+                <button class="ml-8 xs:hidden"
+                        mat-stroked-button>
+                    <mat-icon class="icon-size-20 rotate-90 mirror"
+                              [svgIcon]="'tune'"></mat-icon>
+                    <span class="ml-8">Settings</span>
+                </button>
+
+                <!-- Actions menu (visible on xs) -->
+                <div class="hidden xs:flex">
+                    <button [matMenuTriggerFor]="actionsMenu"
+                            mat-icon-button>
+                        <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+                    </button>
+                    <mat-menu #actionsMenu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'save'"></mat-icon>
+                            <span class="ml-8">Export</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon class="icon-size-20"
+                                      [svgIcon]="'share'"></mat-icon>
+                            <span class="ml-8">Share</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon class="icon-size-20 rotate-90 mirror"
+                                      [svgIcon]="'tune'"></mat-icon>
+                            <span class="ml-8">Settings</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+
+        <!-- Average purchase value -->
+        <div class="flex flex-auto w-1/3 min-w-320 h-188 p-16">
+            <div class="flex flex-col flex-auto p-16 pl-24 bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Avg. purchase value</div>
+                    <div>
+                        <button class="h-32 min-h-32 px-8"
+                                mat-button
+                                [matMenuTriggerFor]="avgPurchaseValueMenu">
+                            <span class="font-medium text-sm text-hint">30 days</span>
+                        </button>
+                        <mat-menu #avgPurchaseValueMenu="matMenu">
+                            <button mat-menu-item>30 days</button>
+                            <button mat-menu-item>3 months</button>
+                            <button mat-menu-item>9 months</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-auto justify-between mt-4">
+                    <div class="font-semibold text-5xl tracking-tighter leading-none">{{data.averagePurchaseValue.amount | currency}}</div>
+                    <div class="flex mr-8">
+                        <apx-chart class="w-full h-32"
+                                   [chart]="averagePurchaseValueOptions.chart"
+                                   [colors]="averagePurchaseValueOptions.colors"
+                                   [fill]="averagePurchaseValueOptions.fill"
+                                   [series]="averagePurchaseValueOptions.series"
+                                   [stroke]="averagePurchaseValueOptions.stroke"
+                                   [tooltip]="averagePurchaseValueOptions.tooltip"
+                                   [xaxis]="averagePurchaseValueOptions.xaxis"
+                                   #averagePurchaseValueChartComponent></apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unique purchases -->
+        <div class="flex flex-auto w-1/3 min-w-320 h-188 p-16">
+            <div class="flex flex-col flex-auto p-16 pl-24 bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Unique purchases</div>
+                    <div>
+                        <button class="h-32 min-h-32 px-8"
+                                mat-button
+                                [matMenuTriggerFor]="uniquePurchasesMenu">
+                            <span class="font-medium text-sm text-hint">30 days</span>
+                        </button>
+                        <mat-menu #uniquePurchasesMenu="matMenu">
+                            <button mat-menu-item>30 days</button>
+                            <button mat-menu-item>3 months</button>
+                            <button mat-menu-item>9 months</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-auto justify-between mt-4">
+                    <div class="font-semibold text-5xl tracking-tighter leading-none">{{data.uniquePurchases.amount | number: '1.0-0'}}</div>
+                    <div class="flex mr-8">
+                        <apx-chart class="w-full h-32"
+                                   [chart]="uniquePurchasesOptions.chart"
+                                   [colors]="uniquePurchasesOptions.colors"
+                                   [fill]="uniquePurchasesOptions.fill"
+                                   [series]="uniquePurchasesOptions.series"
+                                   [stroke]="uniquePurchasesOptions.stroke"
+                                   [tooltip]="uniquePurchasesOptions.tooltip"
+                                   [xaxis]="uniquePurchasesOptions.xaxis"
+                                   #uniquePurchasesChartComponent></apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Refunds -->
+        <div class="flex flex-auto w-1/3 min-w-320 h-188 p-16">
+            <div class="flex flex-col flex-auto p-16 pl-24 bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Refunds</div>
+                    <div>
+                        <button class="h-32 min-h-32 px-8"
+                                mat-button
+                                [matMenuTriggerFor]="refundsMenu">
+                            <span class="font-medium text-sm text-hint">30 days</span>
+                        </button>
+                        <mat-menu #refundsMenu="matMenu">
+                            <button mat-menu-item>30 days</button>
+                            <button mat-menu-item>3 months</button>
+                            <button mat-menu-item>9 months</button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-auto justify-between mt-4">
+                    <div class="font-semibold text-5xl tracking-tighter leading-none">{{data.refunds.amount | currency}}</div>
+                    <div class="flex mr-8">
+                        <apx-chart class="w-full h-32"
+                                   [chart]="refundsOptions.chart"
+                                   [colors]="refundsOptions.colors"
+                                   [fill]="refundsOptions.fill"
+                                   [series]="refundsOptions.series"
+                                   [stroke]="refundsOptions.stroke"
+                                   [tooltip]="refundsOptions.tooltip"
+                                   [xaxis]="refundsOptions.xaxis"
+                                   #refundsChartComponent></apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Total visits -->
-        <div class="flex flex-auto w-320 h-400 p-16">
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex flex-col p-24 pb-8">
+                <div class="flex flex-col p-16 pl-24">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Total Visits</div>
-                        <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">30 days</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="totalVisitsMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #totalVisitsMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
                     </div>
-                    <div class="font-semibold text-5xl mt-16">{{data.totalVisits.amount / 1000 | number:'1.1-1'}}k</div>
+                    <div class="mt-16 font-semibold text-5xl tracking-tighter">{{data.totalVisits.amount | number:'1.0-0'}}</div>
                     <div class="flex items-center">
                         <mat-icon class="mr-4 text-green"
                                   [svgIcon]="'trending_up'"></mat-icon>
@@ -35,14 +205,25 @@
         </div>
 
         <!-- Purchases -->
-        <div class="flex flex-auto w-320 h-400 p-16 theme-dark bg-transparent">
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16 theme-dark bg-transparent">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex flex-col p-24 pb-8">
+                <div class="flex flex-col p-16 pl-24">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Purchases</div>
-                        <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">30 days</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="purchasesMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #purchasesMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
                     </div>
-                    <div class="font-semibold text-5xl mt-16">{{data.purchases.amount / 1000 | number:'1.1-1'}}k</div>
+                    <div class="mt-16 font-semibold text-5xl tracking-tighter">{{data.purchases.amount | number:'1.0-0'}}</div>
                     <div class="flex items-center">
                         <mat-icon class="mr-4 text-red"
                                   [svgIcon]="'trending_down'"></mat-icon>
@@ -65,53 +246,227 @@
             </div>
         </div>
 
-        <!-- Conversion rate -->
-        <div class="flex flex-auto w-640 h-400 p-16">
+        <!-- Growth rate -->
+        <div class="flex flex-auto w-2/4 min-w-320 h-400 p-16">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex flex-col p-24 pb-8">
+                <div class="flex flex-col p-16 pl-24 pb-0">
                     <div class="flex items-center justify-between">
-                        <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Conversion Rate</div>
-                        <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">1 year</div>
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Growth Rate</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="growthRateMenu">
+                                <span class="font-medium text-sm text-hint">12 months</span>
+                            </button>
+                            <mat-menu #growthRateMenu="matMenu">
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>6 months</button>
+                                <button mat-menu-item>9 months</button>
+                                <button mat-menu-item>12 months</button>
+                            </mat-menu>
+                        </div>
                     </div>
-                    <div class="font-semibold text-5xl mt-16">{{data.conversionRate.amount}}%</div>
-                    <div class="flex items-center">
-                        <mat-icon class="mr-4 text-green"
-                                  [svgIcon]="'trending_up'"></mat-icon>
-                        <div class="font-medium text-sm text-secondary leading-none">
-                            <span class="text-green">90%</span>
-                            growth compared to previous year
+                    <div class="flex items-start mt-24 mr-8">
+                        <div class="flex flex-col">
+                            <div class="font-semibold text-5xl tracking-tighter lt-md:text-3xl">{{data.growthRate.amount}}%</div>
+                            <div class="font-medium text-sm text-secondary leading-none">Average Monthly Growth</div>
+                        </div>
+                        <div class="flex flex-col ml-64 lt-md:ml-32">
+                            <div class="font-semibold text-5xl tracking-tighter lt-md:text-3xl">{{data.growthRate.mrr | currency}}</div>
+                            <div class="font-medium text-sm text-secondary leading-none">Average MRR</div>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-auto items-end px-12 pb-8">
+                <div class="flex flex-auto items-end">
                     <apx-chart class="w-full h-200"
-                               [chart]="conversionRateOptions.chart"
-                               [colors]="conversionRateOptions.colors"
-                               [dataLabels]="conversionRateOptions.dataLabels"
-                               [grid]="conversionRateOptions.grid"
-                               [plotOptions]="conversionRateOptions.plotOptions"
-                               [series]="conversionRateOptions.series"
-                               [tooltip]="conversionRateOptions.tooltip"
-                               [xaxis]="conversionRateOptions.xaxis"
-                               [yaxis]="conversionRateOptions.yaxis"
-                               #conversionRateChartComponent></apx-chart>
+                               [chart]="growthRateOptions.chart"
+                               [colors]="growthRateOptions.colors"
+                               [fill]="growthRateOptions.fill"
+                               [series]="growthRateOptions.series"
+                               [stroke]="growthRateOptions.stroke"
+                               [tooltip]="growthRateOptions.tooltip"
+                               [xaxis]="growthRateOptions.xaxis"
+                               #growthRateChartComponent></apx-chart>
                 </div>
             </div>
         </div>
 
-        <h3 class="w-full px-16">
-            Unique Visitors
-        </h3>
+        <!-- Channels -->
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex flex-col p-16 pl-24">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Channels</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="channelsMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #channelsMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="mt-24 font-semibold text-2xl leading-tight">
+                        <span class="text-purple-600">Direct</span>
+                        is the most popular channel
+                    </div>
+                </div>
+                <div class="flex flex-auto items-center px-24">
+                    <apx-chart class="w-full h-12"
+                               [chart]="channelsOptions.chart"
+                               [colors]="channelsOptions.colors"
+                               [grid]="channelsOptions.grid"
+                               [plotOptions]="channelsOptions.plotOptions"
+                               [series]="channelsOptions.series"
+                               [states]="channelsOptions.states"
+                               [tooltip]="channelsOptions.tooltip"
+                               [xaxis]="channelsOptions.xaxis"
+                               [yaxis]="channelsOptions.yaxis"
+                               #channelsChartComponent></apx-chart>
+                </div>
+                <div class="flex flex-col flex-auto justify-end text-md px-24 pb-12">
+                    <div class="flex items-center justify-between py-12 border-b last:border-b-0"
+                         *ngFor="let dataset of data.channels.series; let i = index">
+                        <div class="flex items-center w-1/3">
+                            <div class="flex-shrink-0 w-8 h-8 mr-12 rounded-full"
+                                 [style.backgroundColor]="channelsOptions.colors[i]"></div>
+                            <div class="truncate">{{dataset.name}}</div>
+                        </div>
+                        <div class="w-1/3 font-medium text-right">{{dataset.data[0] | number:'1.0-0'}}</div>
+                        <div class="w-1/3 text-right text-secondary">{{dataset.data[0] * 100 / data.channels.amount | number:'1.0-0'}}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Devices -->
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex flex-col p-16 pl-24">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Devices</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="devicesMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #devicesMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="mt-24 font-semibold text-2xl leading-tight">
+                        <span class="text-teal-600">Desktop</span>
+                        is the most popular device
+                    </div>
+                </div>
+                <div class="flex flex-auto items-center px-24">
+                    <apx-chart class="w-full h-12"
+                               [chart]="devicesOptions.chart"
+                               [colors]="devicesOptions.colors"
+                               [grid]="devicesOptions.grid"
+                               [plotOptions]="devicesOptions.plotOptions"
+                               [series]="devicesOptions.series"
+                               [states]="devicesOptions.states"
+                               [tooltip]="devicesOptions.tooltip"
+                               [xaxis]="devicesOptions.xaxis"
+                               [yaxis]="devicesOptions.yaxis"
+                               #devicesChartComponent></apx-chart>
+                </div>
+                <div class="flex flex-col flex-auto justify-end text-md px-24 pb-12">
+                    <div class="flex items-center justify-between py-12 border-b last:border-b-0"
+                         *ngFor="let dataset of data.devices.series; let i = index">
+                        <div class="flex items-center w-1/3">
+                            <div class="flex-shrink-0 w-8 h-8 mr-12 rounded-full"
+                                 [style.backgroundColor]="devicesOptions.colors[i]"></div>
+                            <div class="truncate">{{dataset.name}}</div>
+                        </div>
+                        <div class="w-1/3 font-medium text-right">{{dataset.data[0] | number:'1.0-0'}}</div>
+                        <div class="w-1/3 text-right text-secondary">{{dataset.data[0] * 100 / data.devices.amount | number:'1.0-0'}}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browsers -->
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex flex-col p-16 pl-24">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Browsers</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="browsersMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #browsersMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="mt-24 font-semibold text-2xl leading-tight">
+                        <span class="text-pink-600">Chrome</span>
+                        is the most popular browser
+                    </div>
+                </div>
+                <div class="flex flex-auto items-center px-24">
+                    <apx-chart class="w-full h-12"
+                               [chart]="browsersOptions.chart"
+                               [colors]="browsersOptions.colors"
+                               [grid]="browsersOptions.grid"
+                               [plotOptions]="browsersOptions.plotOptions"
+                               [series]="browsersOptions.series"
+                               [states]="browsersOptions.states"
+                               [tooltip]="browsersOptions.tooltip"
+                               [xaxis]="browsersOptions.xaxis"
+                               [yaxis]="browsersOptions.yaxis"
+                               #browsersChartComponent></apx-chart>
+                </div>
+                <div class="flex flex-col flex-auto justify-end text-md px-24 pb-12">
+                    <div class="flex items-center justify-between py-12 border-b last:border-b-0"
+                         *ngFor="let dataset of data.browsers.series; let i = index">
+                        <div class="flex items-center w-1/3">
+                            <div class="flex-shrink-0 w-8 h-8 mr-12 rounded-full"
+                                 [style.backgroundColor]="browsersOptions.colors[i]"></div>
+                            <div class="truncate">{{dataset.name}}</div>
+                        </div>
+                        <div class="w-1/3 font-medium text-right">{{dataset.data[0] | number:'1.0-0'}}</div>
+                        <div class="w-1/3 text-right text-secondary">{{dataset.data[0] * 100 / data.browsers.amount | number:'1.0-0'}}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Unique visitors -->
-        <div class="flex flex-auto w-320 h-400 p-16">
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex flex-col p-24 pb-8">
+                <div class="flex flex-col p-16 pl-24">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Unique Visitors</div>
-                        <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">30 days</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="uniqueVisitorsMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #uniqueVisitorsMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
                     </div>
-                    <div class="font-semibold text-5xl mt-16">{{data.uniqueVisitors.amount / 1000 | number:'1.1-1'}}k</div>
+                    <div class="mt-16 font-semibold text-5xl tracking-tighter">{{data.uniqueVisitors.amount | number:'1.0-0'}}</div>
                     <div class="flex items-center">
                         <mat-icon class="mr-4 text-green"
                                   [svgIcon]="'trending_up'"></mat-icon>
@@ -134,234 +489,444 @@
             </div>
         </div>
 
-        <!-- Channels -->
-        <div class="flex flex-auto w-320 h-400 p-16">
-            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex flex-col p-24 pb-16">
-                    <div class="flex items-center justify-between">
-                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Channels</div>
-                        <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">30 days</div>
-                    </div>
-                    <div class="mt-32 font-semibold text-2xl leading-tight">
-                        <span class="text-purple-600">Direct</span>
-                        is the most popular channel
+        <div class="flex flex-col w-full mt-40 mb-12 px-16">
+            <h3 class="m-0">Payments</h3>
+            <div class="text-secondary">Monitor last and next payments and their statuses</div>
+        </div>
+
+        <!-- Last payment -->
+        <div class="flex flex-auto w-1/2 min-w-320 p-16">
+            <div class="flex flex-col flex-auto p-24 pb-12 bg-card border-green rounded-4 border-l-4 shadow-md">
+                <div class="flex flex-col">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Last Payment</div>
+                    <div class="text-green font-medium text-sm">
+                        Paid on {{data.lastPayment.date}}
                     </div>
                 </div>
-                <div class="flex flex-auto items-center px-24">
-                    <apx-chart class="w-full h-12"
-                               [chart]="channelsOptions.chart"
-                               [colors]="channelsOptions.colors"
-                               [grid]="channelsOptions.grid"
-                               [plotOptions]="channelsOptions.plotOptions"
-                               [series]="channelsOptions.series"
-                               [states]="channelsOptions.states"
-                               [tooltip]="channelsOptions.tooltip"
-                               [xaxis]="channelsOptions.xaxis"
-                               [yaxis]="channelsOptions.yaxis"
-                               #channelsChartComponent></apx-chart>
-                </div>
-                <div class="flex flex-col flex-auto justify-end text-md px-24 pb-16">
-                    <div class="flex items-center justify-between py-12 border-b last:border-b-0 leading-none"
-                         *ngFor="let dataset of data.channels.series; let i = index">
-                        <div class="flex items-center w-1/3">
-                            <div class="w-8 h-8 mr-12 rounded-full"
-                                 [ngStyle]="{backgroundColor: channelsChartComponent.colors[i]}"></div>
-                            <div>{{dataset.name}}</div>
-                        </div>
-                        <div class="w-1/3 font-medium text-right">{{dataset.data[0]}}</div>
-                        <div class="w-1/3 text-right text-secondary">{{dataset.data[0] * 100 / data.channels.amount | number:'1.0-0'}}%</div>
+                <div class="flex flex-row flex-wrap mt-16 -mx-24">
+                    <div class="flex flex-col mx-24 my-12 xs:w-full">
+                        <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Products Cost</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.products | currency}}</div>
+                    </div>
+                    <div class="flex flex-col mx-24 my-12 xs:w-full">
+                        <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Shipping Cost</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.shipping | currency}}</div>
+                    </div>
+                    <div class="flex flex-col mx-24 my-12 xs:w-full">
+                        <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Total Cost</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.total | currency}}</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Devices -->
-        <div class="flex flex-auto w-320 h-400 p-16">
-            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex flex-col p-24 pb-16">
-                    <div class="flex items-center justify-between">
-                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Devices</div>
-                        <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">30 days</div>
-                    </div>
-                    <div class="mt-32 font-semibold text-2xl leading-tight">
-                        <span class="text-teal-600">Desktop</span>
-                        is the most popular device
+        <!-- Next payment -->
+        <div class="flex flex-auto w-1/2 min-w-320 p-16">
+            <div class="flex flex-col flex-auto p-24 pb-12 bg-card border-red rounded-4 border-l-4 shadow-md">
+                <div class="flex flex-col">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Last Payment</div>
+                    <div class="text-red font-medium text-sm">
+                        Must be paid before {{data.nextPayment.date}}
                     </div>
                 </div>
-                <div class="flex flex-auto items-center px-24">
-                    <apx-chart class="w-full h-12"
-                               [chart]="devicesOptions.chart"
-                               [colors]="devicesOptions.colors"
-                               [grid]="devicesOptions.grid"
-                               [plotOptions]="devicesOptions.plotOptions"
-                               [series]="devicesOptions.series"
-                               [states]="devicesOptions.states"
-                               [tooltip]="devicesOptions.tooltip"
-                               [xaxis]="devicesOptions.xaxis"
-                               [yaxis]="devicesOptions.yaxis"
-                               #devicesChartComponent></apx-chart>
-                </div>
-                <div class="flex flex-col flex-auto justify-end text-md px-24 pb-16">
-                    <div class="flex items-center justify-between py-12 border-b last:border-b-0 leading-none"
-                         *ngFor="let dataset of data.devices.series; let i = index">
-                        <div class="flex items-center w-1/3">
-                            <div class="w-8 h-8 mr-12 rounded-full"
-                                 [ngStyle]="{backgroundColor: devicesChartComponent.colors[i]}"></div>
-                            <div>{{dataset.name}}</div>
-                        </div>
-                        <div class="w-1/3 font-medium text-right">{{dataset.data[0]}}</div>
-                        <div class="w-1/3 text-right text-secondary">{{dataset.data[0] * 100 / data.devices.amount | number:'1.0-0'}}%</div>
+                <div class="flex flex-row flex-wrap mt-16 -mx-24">
+                    <div class="flex flex-col mx-24 my-12 xs:w-full">
+                        <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Products Cost</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.products | currency}}</div>
+                    </div>
+                    <div class="flex flex-col mx-24 my-12 xs:w-full">
+                        <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Shipping Cost</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.shipping | currency}}</div>
+                    </div>
+                    <div class="flex flex-col mx-24 my-12 xs:w-full">
+                        <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Total Cost</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.total | currency}}</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Browsers -->
-        <div class="flex flex-auto w-320 h-400 p-16">
+        <div class="flex flex-col w-full mt-40 mb-12 px-16">
+            <h3 class="m-0">Audience</h3>
+            <div class="text-secondary">Demographic properties of your user base</div>
+        </div>
+
+        <!-- New vs. returning -->
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex flex-col p-24 pb-16">
+                <div class="flex flex-col p-16 pl-24">
                     <div class="flex items-center justify-between">
-                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Browsers</div>
-                        <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">30 days</div>
-                    </div>
-                    <div class="mt-32 font-semibold text-2xl leading-tight">
-                        <span class="text-pink-600">Chrome</span>
-                        is the most used browser
-                    </div>
-                </div>
-                <div class="flex flex-auto items-center px-24">
-                    <apx-chart class="w-full h-12"
-                               [chart]="browsersOptions.chart"
-                               [colors]="browsersOptions.colors"
-                               [grid]="browsersOptions.grid"
-                               [plotOptions]="browsersOptions.plotOptions"
-                               [series]="browsersOptions.series"
-                               [states]="browsersOptions.states"
-                               [tooltip]="browsersOptions.tooltip"
-                               [xaxis]="browsersOptions.xaxis"
-                               [yaxis]="browsersOptions.yaxis"
-                               #browsersChartComponent></apx-chart>
-                </div>
-                <div class="flex flex-col flex-auto justify-end text-md px-24 pb-16">
-                    <div class="flex items-center justify-between py-12 border-b last:border-b-0 leading-none"
-                         *ngFor="let dataset of data.browsers.series; let i = index">
-                        <div class="flex items-center w-1/3">
-                            <div class="w-8 h-8 mr-12 rounded-full"
-                                 [ngStyle]="{backgroundColor: browsersChartComponent.colors[i]}"></div>
-                            <div>{{dataset.name}}</div>
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">New vs. Returning</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="newVsReturningMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #newVsReturningMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
                         </div>
-                        <div class="w-1/3 font-medium text-right">{{dataset.data[0]}}</div>
-                        <div class="w-1/3 text-right text-secondary">{{dataset.data[0] * 100 / data.browsers.amount | number:'1.0-0'}}%</div>
+                    </div>
+                </div>
+                <div class="flex flex-auto px-24">
+                    <apx-chart class="flex items-center justify-center w-full h-full"
+                               [chart]="newVsReturningOptions.chart"
+                               [colors]="newVsReturningOptions.colors"
+                               [labels]="newVsReturningOptions.labels"
+                               [plotOptions]="newVsReturningOptions.plotOptions"
+                               [series]="newVsReturningOptions.series"
+                               [states]="newVsReturningOptions.states"
+                               [tooltip]="newVsReturningOptions.tooltip"
+                               #newVsReturningChartComponent></apx-chart>
+                </div>
+                <div class="flex flex-col justify-end text-md px-24 pb-12">
+                    <div class="flex items-center justify-between py-12 border-b last:border-b-0"
+                         *ngFor="let dataset of data.newVsReturning.series; let i = index">
+                        <div class="flex items-center w-1/3">
+                            <div class="flex-shrink-0 w-8 h-8 mr-12 rounded-full"
+                                 [style.backgroundColor]="newVsReturningOptions.colors[i]"></div>
+                            <div class="truncate">{{data.newVsReturning.labels[i]}}</div>
+                        </div>
+                        <div class="w-1/3 font-medium text-right">{{data.uniqueVisitors.amount * dataset / 100 | number:'1.0-0'}}</div>
+                        <div class="w-1/3 text-right text-secondary">{{dataset}}%</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h3 class="w-full px-16">Searches vs. Revenue</h3>
-
-        <!-- Searches table -->
-        <div class="flex flex-auto w-640 p-16 overflow-hidden">
+        <!-- Gender -->
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
-                <div class="flex items-center justify-between p-24">
-                    <div>
-                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Top 10 searches & revenues</div>
-                        <div class="text-sm text-hint">2 searches went up on the list, 3 searches held their positions</div>
+                <div class="flex flex-col p-16 pl-24">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Gender</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="genderMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #genderMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
                     </div>
-                    <div class="ml-24 font-medium text-sm text-hint whitespace-no-wrap">30 days</div>
+                </div>
+                <div class="flex flex-auto px-24">
+                    <apx-chart class="flex items-center justify-center w-full h-full"
+                               [chart]="genderOptions.chart"
+                               [colors]="genderOptions.colors"
+                               [labels]="genderOptions.labels"
+                               [plotOptions]="genderOptions.plotOptions"
+                               [series]="genderOptions.series"
+                               [states]="genderOptions.states"
+                               [tooltip]="genderOptions.tooltip"
+                               #genderChartComponent></apx-chart>
+                </div>
+                <div class="flex flex-col justify-end text-md px-24 pb-12">
+                    <div class="flex items-center justify-between py-12 border-b last:border-b-0"
+                         *ngFor="let dataset of data.gender.series; let i = index">
+                        <div class="flex items-center w-1/3">
+                            <div class="flex-shrink-0 w-8 h-8 mr-12 rounded-full"
+                                 [style.backgroundColor]="genderOptions.colors[i]"></div>
+                            <div class="truncate">{{data.gender.labels[i]}}</div>
+                        </div>
+                        <div class="w-1/3 font-medium text-right">{{data.uniqueVisitors.amount * dataset / 100 | number:'1.0-0'}}</div>
+                        <div class="w-1/3 text-right text-secondary">{{dataset}}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Age -->
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex flex-col p-16 pl-24">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Age</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="ageMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #ageMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-auto px-24">
+                    <apx-chart class="flex items-center justify-center w-full h-full"
+                               [chart]="ageOptions.chart"
+                               [colors]="ageOptions.colors"
+                               [labels]="ageOptions.labels"
+                               [plotOptions]="ageOptions.plotOptions"
+                               [series]="ageOptions.series"
+                               [states]="ageOptions.states"
+                               [tooltip]="ageOptions.tooltip"
+                               #ageChartComponent></apx-chart>
+                </div>
+                <div class="flex flex-col justify-end text-md px-24 pb-12">
+                    <div class="flex items-center justify-between py-12 border-b last:border-b-0"
+                         *ngFor="let dataset of data.age.series; let i = index">
+                        <div class="flex items-center w-1/3">
+                            <div class="flex-shrink-0 w-8 h-8 mr-12 rounded-full"
+                                 [style.backgroundColor]="ageOptions.colors[i]"></div>
+                            <div class="truncate">{{data.age.labels[i]}}</div>
+                        </div>
+                        <div class="w-1/3 font-medium text-right">{{data.uniqueVisitors.amount * dataset / 100 | number:'1.0-0'}}</div>
+                        <div class="w-1/3 text-right text-secondary">{{dataset}}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language -->
+        <div class="flex flex-auto w-1/4 min-w-320 h-400 p-16">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="flex flex-col p-16 pl-24">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-md text-secondary uppercase tracking-wider">Language</div>
+                        <div>
+                            <button class="h-32 min-h-32 px-8"
+                                    mat-button
+                                    [matMenuTriggerFor]="languageMenu">
+                                <span class="font-medium text-sm text-hint">30 days</span>
+                            </button>
+                            <mat-menu #languageMenu="matMenu">
+                                <button mat-menu-item>30 days</button>
+                                <button mat-menu-item>3 months</button>
+                                <button mat-menu-item>9 months</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-auto px-24">
+                    <apx-chart class="flex items-center justify-center w-full h-full"
+                               [chart]="languageOptions.chart"
+                               [colors]="languageOptions.colors"
+                               [labels]="languageOptions.labels"
+                               [plotOptions]="languageOptions.plotOptions"
+                               [series]="languageOptions.series"
+                               [states]="languageOptions.states"
+                               [tooltip]="languageOptions.tooltip"
+                               #languageChartComponent></apx-chart>
+                </div>
+                <div class="flex flex-col justify-end text-md px-24 pb-12">
+                    <div class="flex items-center justify-between py-12 border-b last:border-b-0"
+                         *ngFor="let dataset of data.language.series; let i = index">
+                        <div class="flex items-center w-1/3">
+                            <div class="flex-shrink-0 w-8 h-8 mr-12 rounded-full"
+                                 [style.backgroundColor]="languageOptions.colors[i]"></div>
+                            <div class="truncate">{{data.language.labels[i]}}</div>
+                        </div>
+                        <div class="w-1/3 font-medium text-right">{{data.uniqueVisitors.amount * dataset / 100 | number:'1.0-0'}}</div>
+                        <div class="w-1/3 text-right text-secondary">{{dataset}}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-full mt-40 mb-12 px-16">
+            <h3 class="m-0">Orders</h3>
+            <div class="text-secondary">Monitor orders, today's revenue, taxes should be paid and the today's profit</div>
+        </div>
+
+        <!-- Recent orders table -->
+        <div class="flex flex-auto w-full p-16 overflow-hidden">
+            <div class="flex flex-col flex-auto bg-card shadow-md rounded-8 overflow-hidden">
+                <div class="p-24 pb-8">
+                    <div class="font-bold text-md text-secondary uppercase tracking-wider">Last 10 orders</div>
+                    <div class="text-sm text-hint">3 pending, 1 delivered order</div>
+                </div>
+                <div class="flex items-center flex-wrap -mx-8 mb-16">
+                    <div class="flex items-center mx-32 my-16">
+                        <div class="flex items-center justify-center w-48 h-48 rounded-4 blue">
+                            <mat-icon class="icon-size-32"
+                                      [svgIcon]="'bar_chart'"></mat-icon>
+                        </div>
+                        <div class="ml-16 leading-none">
+                            <div class="font-bold text-xs text-hint uppercase tracking-wider">Today's revenue</div>
+                            <div class="mt-8 font-medium text-2xl">{{data.recentOrdersStats.todaysRevenue | currency}}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mx-32 my-16">
+                        <div class="flex items-center justify-center w-48 h-48 rounded-4 pink">
+                            <mat-icon class="icon-size-32"
+                                      [svgIcon]="'bar_chart'"></mat-icon>
+                        </div>
+                        <div class="ml-16 leading-none">
+                            <div class="font-bold text-xs text-hint uppercase tracking-wider">Taxes</div>
+                            <div class="mt-8 font-medium text-2xl">-{{data.recentOrdersStats.taxes | currency}}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mx-32 my-16">
+                        <div class="flex items-center justify-center w-48 h-48 rounded-4 teal">
+                            <mat-icon class="icon-size-32"
+                                      [svgIcon]="'bar_chart'"></mat-icon>
+                        </div>
+                        <div class="ml-16 leading-none">
+                            <div class="font-bold text-xs text-hint uppercase tracking-wider">Today's profit</div>
+                            <div class="mt-8 font-medium text-2xl">{{data.recentOrdersStats.todaysProfit | currency}}</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="overflow-auto">
                     <table class="w-full bg-transparent"
                            mat-table
                            matSort
-                           [dataSource]="searchesDataSource"
+                           [dataSource]="recentOrdersDataSource"
                            [trackBy]="trackById"
-                           #searchesTable>
+                           #recentOrdersTable>
 
-                        <!-- Search -->
-                        <ng-container matColumnDef="search">
+                        <!-- Order ID -->
+                        <ng-container matColumnDef="orderId">
                             <th class="bg-gray-100 dark:bg-gray-700 border-t"
                                 mat-header-cell
                                 mat-sort-header
                                 *matHeaderCellDef>
-                                Search
+                                <span class="whitespace-no-wrap">
+                                    Order ID
+                                </span>
                             </th>
                             <td mat-cell
-                                *matCellDef="let search">
-                                <span class="flex items-center whitespace-no-wrap leading-none">
-                                    <span class="mr-12">
-                                        <mat-icon class="text-green icon-size-16"
-                                                  *ngIf="search.position==='up'"
-                                                  [svgIcon]="'arrow_upward'">
-                                        </mat-icon>
-                                        <mat-icon class="text-red icon-size-16"
-                                                  *ngIf="search.position==='down'"
-                                                  [svgIcon]="'arrow_downward'">
-                                        </mat-icon>
-                                        <mat-icon class="text-secondary icon-size-16"
-                                                  *ngIf="search.position==='no-change'"
-                                                  [svgIcon]="'remove'">
-                                        </mat-icon>
-                                    </span>
-                                    <span>
-                                        {{search.search}}
-                                    </span>
+                                *matCellDef="let order">
+                                <span class="pr-24 font-medium text-sm text-secondary whitespace-no-wrap">
+                                    {{order.orderId}}
                                 </span>
                             </td>
                         </ng-container>
 
-                        <!-- Count -->
-                        <ng-container matColumnDef="count">
+                        <!-- Date -->
+                        <ng-container matColumnDef="date">
                             <th class="bg-gray-100 dark:bg-gray-700 border-t"
                                 mat-header-cell
                                 mat-sort-header
-                                [arrowPosition]="'before'"
                                 *matHeaderCellDef>
-                                Count
+                                <span class="whitespace-no-wrap">
+                                    Date
+                                </span>
                             </th>
-                            <td class="text-right"
-                                mat-cell
-                                *matCellDef="let search">
-                                {{search.count}}
+                            <td mat-cell
+                                *matCellDef="let order">
+                                <span class="pr-24 whitespace-no-wrap">
+                                    {{order.date | date:'MMM dd, y'}}
+                                </span>
                             </td>
                         </ng-container>
 
-                        <!-- Revenue -->
-                        <ng-container matColumnDef="revenue">
+                        <!-- Customer -->
+                        <ng-container matColumnDef="customer">
                             <th class="bg-gray-100 dark:bg-gray-700 border-t"
                                 mat-header-cell
                                 mat-sort-header
-                                [arrowPosition]="'before'"
                                 *matHeaderCellDef>
-                                Revenue
+                                <span class="whitespace-no-wrap">
+                                    Customer
+                                </span>
                             </th>
-                            <td class="text-right pl-24"
-                                mat-cell
-                                *matCellDef="let search">
-                                {{search.revenue | currency}}
+                            <td mat-cell
+                                *matCellDef="let order">
+                                <span class="pr-24 whitespace-no-wrap">
+                                    {{order.customer}}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Product -->
+                        <ng-container matColumnDef="product">
+                            <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef>
+                                <span class="whitespace-no-wrap">
+                                    Product
+                                </span>
+                            </th>
+                            <td mat-cell
+                                *matCellDef="let order">
+                                <span class="pr-24 whitespace-no-wrap">
+                                    {{order.product}}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Amount -->
+                        <ng-container matColumnDef="amount">
+                            <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef>
+                                <span class="whitespace-no-wrap">
+                                    Amount
+                                </span>
+                            </th>
+                            <td mat-cell
+                                *matCellDef="let order">
+                                <span class="pr-24 font-medium whitespace-no-wrap">
+                                    {{order.amount | currency}}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Status -->
+                        <ng-container matColumnDef="status">
+                            <th class="bg-gray-100 dark:bg-gray-700 border-t"
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef>
+                                <span class="whitespace-no-wrap">
+                                    Status
+                                </span>
+                            </th>
+                            <td mat-cell
+                                *matCellDef="let order">
+                                <span class="inline-flex items-center font-bold text-xs px-8 py-2 rounded-full tracking-wide uppercase"
+                                      [ngClass]="{'red-200': order.status === 'pending',
+                                      'blue-200': order.status === 'paid',
+                                      'purple-200': order.status === 'confirmed',
+                                      'teal-200': order.status === 'shipped',
+                                      'green-200': order.status === 'delivered'}">
+                                    <span class="w-8 h-8 rounded-full mr-8"
+                                          [ngClass]="{'bg-red': order.status === 'pending',
+                                      'bg-blue': order.status === 'paid',
+                                      'bg-purple': order.status === 'confirmed',
+                                      'bg-teal': order.status === 'shipped',
+                                      'bg-green': order.status === 'delivered'}"></span>
+                                    <span class="pr-2 leading-relaxed whitespace-no-wrap">{{order.status}}</span>
+                                </span>
                             </td>
                         </ng-container>
 
                         <!-- Footer -->
-                        <ng-container matColumnDef="searchesTableFooter">
+                        <ng-container matColumnDef="recentOrdersTableFooter">
                             <td class="px-12 border-none"
                                 mat-footer-cell
                                 *matFooterCellDef
                                 colspan="6">
                                 <button mat-button
                                         [color]="'primary'">
-                                    Show more searches
+                                    Show more orders
                                 </button>
                             </td>
                         </ng-container>
 
                         <tr mat-header-row
-                            *matHeaderRowDef="searchesTableColumns"></tr>
-                        <tr class="search-row h-64"
+                            *matHeaderRowDef="recentOrdersTableColumns"></tr>
+                        <tr class="order-row h-64"
                             mat-row
-                            *matRowDef="let row; columns: searchesTableColumns;"></tr>
+                            *matRowDef="let row; columns: recentOrdersTableColumns;"></tr>
                         <tr class="h-64"
                             mat-footer-row
-                            *matFooterRowDef="['searchesTableFooter']"></tr>
+                            *matFooterRowDef="['recentOrdersTableFooter']"></tr>
                     </table>
                 </div>
             </div>

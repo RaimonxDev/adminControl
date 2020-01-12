@@ -16,18 +16,32 @@ import { DashboardAnalyticsService } from 'app/modules/admin/apps/dashboard/anal
 export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDestroy
 {
     data: any;
-    searchesDataSource: MatTableDataSource<any>;
-    searchesTableColumns: string[];
+    range: string;
+    recentOrdersDataSource: MatTableDataSource<any>;
+    recentOrdersTableColumns: string[];
+    ageOptions: ApexOptions;
+    averagePurchaseValueOptions: ApexOptions;
     browsersOptions: ApexOptions;
     channelsOptions: ApexOptions;
-    conversionRateOptions: ApexOptions;
     devicesOptions: ApexOptions;
+    genderOptions: ApexOptions;
+    growthRateOptions: ApexOptions;
+    languageOptions: ApexOptions;
+    newVsReturningOptions: ApexOptions;
     purchasesOptions: ApexOptions;
+    refundsOptions: ApexOptions;
     totalVisitsOptions: ApexOptions;
     uniqueVisitorsOptions: ApexOptions;
+    uniquePurchasesOptions: ApexOptions;
 
-    @ViewChild('searchesTable', {read: MatSort})
-    searchesTableMatSort: MatSort;
+    @ViewChild('recentOrdersTable', {read: MatSort})
+    recentOrdersTableMatSort: MatSort;
+
+    @ViewChild('ageChartComponent')
+    ageChartComponent: ChartComponent;
+
+    @ViewChild('averagePurchaseValueChartComponent')
+    averagePurchaseValueChartComponent: ChartComponent;
 
     @ViewChild('browsersChartComponent')
     browsersChartComponent: ChartComponent;
@@ -35,17 +49,32 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
     @ViewChild('channelsChartComponent')
     channelsChartComponent: ChartComponent;
 
-    @ViewChild('conversionRateChartComponent')
-    conversionRateChartComponent: ChartComponent;
-
     @ViewChild('devicesChartComponent')
     devicesChartComponent: ChartComponent;
+
+    @ViewChild('genderChartComponent')
+    genderChartComponent: ChartComponent;
+
+    @ViewChild('growthRateChartComponent')
+    growthRateChartComponent: ChartComponent;
+
+    @ViewChild('languageChartComponent')
+    languageChartComponent: ChartComponent;
+
+    @ViewChild('newVsReturningChartComponent')
+    newVsReturningChartComponent: ChartComponent;
 
     @ViewChild('purchasesChartComponent')
     purchasesChartComponent: ChartComponent;
 
+    @ViewChild('refundsChartComponent')
+    refundsChartComponent: ChartComponent;
+
     @ViewChild('totalVisitsChartComponent')
     totalVisitsChartComponent: ChartComponent;
+
+    @ViewChild('uniquePurchasesChartComponent')
+    uniquePurchasesChartComponent: ChartComponent;
 
     @ViewChild('uniqueVisitorsChartComponent')
     uniqueVisitorsChartComponent: ChartComponent;
@@ -66,8 +95,9 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.searchesDataSource = new MatTableDataSource();
-        this.searchesTableColumns = ['search', 'count', 'revenue'];
+        this.range = '30days';
+        this.recentOrdersDataSource = new MatTableDataSource();
+        this.recentOrdersTableColumns = ['orderId', 'date', 'customer', 'product', 'amount', 'status'];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -88,7 +118,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                 this.data = data;
 
                 // Store the table data
-                this.searchesDataSource.data = data.searches;
+                this.recentOrdersDataSource.data = data.recentOrders;
 
                 // Prepare the chart data
                 this._prepareChartData();
@@ -100,8 +130,8 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
      */
     ngAfterViewInit(): void
     {
-        // Make the recent orders data source sortable
-        this.searchesDataSource.sort = this.searchesTableMatSort;
+        // Make the data source sortable
+        this.recentOrdersDataSource.sort = this.recentOrdersTableMatSort;
     }
 
     /**
@@ -110,12 +140,19 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
     ngOnDestroy(): void
     {
         // Explicitly call destroy on charts to prevent memory leaks
+        this.averagePurchaseValueChartComponent.destroy();
+        this.ageChartComponent.destroy();
         this.browsersChartComponent.destroy();
-        this.conversionRateChartComponent.destroy();
+        this.growthRateChartComponent.destroy();
         this.channelsChartComponent.destroy();
         this.devicesChartComponent.destroy();
+        this.genderChartComponent.destroy();
+        this.languageChartComponent.destroy();
+        this.newVsReturningChartComponent.destroy();
         this.purchasesChartComponent.destroy();
+        this.refundsChartComponent.destroy();
         this.totalVisitsChartComponent.destroy();
+        this.uniquePurchasesChartComponent.destroy();
         this.uniqueVisitorsChartComponent.destroy();
 
         // Unsubscribe from all subscriptions
@@ -134,6 +171,97 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
      */
     private _prepareChartData(): void
     {
+        // Age
+        this.ageOptions = {
+            chart      : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                height    : '100%',
+                type      : 'donut',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors     : ['#DD6B20', '#F6AD55'],
+            labels     : this.data.age.labels,
+            plotOptions: {
+                pie: {
+                    expandOnClick: false,
+                    donut        : {
+                        size: '70%'
+                    }
+                }
+            },
+            series     : this.data.age.series,
+            states     : {
+                hover : {
+                    filter: {
+                        type: 'none'
+                    }
+                },
+                active: {
+                    filter: {
+                        type: 'none'
+                    }
+                }
+            },
+            tooltip    : {
+                enabled        : true,
+                fillSeriesColor: false,
+                theme          : 'dark',
+                custom         : ({seriesIndex, w}) => {
+                    return `<div class="flex items-center h-32 min-h-32 max-h-32 px-12">
+                                <div class="w-12 h-12 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
+                                <div class="ml-8 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
+                                <div class="ml-8 text-md font-bold leading-none">${w.config.series[seriesIndex]}%</div>
+                            </div>`;
+                }
+            }
+        };
+
+        // Average purchase value
+        this.averagePurchaseValueOptions = {
+            chart  : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                width     : '100%',
+                height    : '100%',
+                type      : 'line',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors : ['#A0AEC0'],
+            series : [
+                {
+                    name: 'Average Purchase Value',
+                    data: this.data.averagePurchaseValue.data
+                }
+            ],
+            stroke : {
+                curve: 'straight',
+                width: 2
+            },
+            tooltip: {
+                enabled: false
+            },
+            xaxis  : {
+                type: 'numeric'
+            }
+        };
+
         // Browsers
         this.browsersOptions = {
             chart      : {
@@ -174,9 +302,16 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                 }
             },
             tooltip    : {
-                theme: 'dark',
-                x    : {
+                theme : 'dark',
+                x     : {
                     show: false
+                },
+                custom: ({seriesIndex, w}) => {
+                    return `<div class="flex items-center h-32 min-h-32 max-h-32 px-12">
+                                <div class="w-12 h-12 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
+                                <div class="ml-8 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
+                                <div class="ml-8 text-md font-bold leading-none">${w.config.series[seriesIndex].data[0]}</div>
+                            </div>`;
                 }
             },
             yaxis      : {
@@ -228,99 +363,22 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                 }
             },
             tooltip    : {
-                theme: 'dark',
-                x    : {
+                theme : 'dark',
+                x     : {
                     show: false
+                },
+                custom: ({seriesIndex, w}) => {
+                    return `<div class="flex items-center h-32 min-h-32 max-h-32 px-12">
+                                <div class="w-12 h-12 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
+                                <div class="ml-8 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
+                                <div class="ml-8 text-md font-bold leading-none">${w.config.series[seriesIndex].data[0]}</div>
+                            </div>`;
                 }
             },
             yaxis      : {
                 labels: {
                     formatter: (val) => {
                         return val.toString();
-                    }
-                }
-            }
-        };
-
-        // Conversion rate
-        this.conversionRateOptions = {
-            chart      : {
-                animations: {
-                    speed           : 400,
-                    animateGradually: {
-                        enabled: false
-                    }
-                },
-                fontFamily: 'inherit',
-                foreColor : 'inherit',
-                height    : '100%',
-                type      : 'bar',
-                toolbar   : {
-                    show: false
-                },
-                zoom      : {
-                    enabled: false
-                }
-            },
-            colors     : ['#5A67D8'],
-            dataLabels : {
-                enabled: false
-            },
-            grid       : {
-                padding: {
-                    top   : 0,
-                    bottom: 0
-                },
-                yaxis  : {
-                    lines: {
-                        show: false
-                    }
-                }
-            },
-            plotOptions: {
-                bar: {
-                    columnWidth: '55%'
-                }
-            },
-            series     : [
-                {
-                    name: 'Conversion Rate',
-                    data: this.data.conversionRate.data
-                }
-            ],
-            tooltip    : {
-                theme: 'dark',
-                y    : {
-                    formatter: (val) => {
-                        return val.toFixed(2) + '%';
-                    }
-                }
-            },
-            xaxis      : {
-                type      : 'category',
-                categories: this.data.conversionRate.labels,
-                labels    : {
-                    style: {
-                        colors: 'currentColor'
-                    }
-                },
-                tooltip   : {
-                    enabled: false
-                }
-            },
-            yaxis      : {
-                axisBorder: {
-                    show: true
-                },
-                axisTicks : {
-                    show: true
-                },
-                labels    : {
-                    formatter: (val, index) => {
-                        return val.toFixed(1) + '%';
-                    },
-                    style    : {
-                        color: 'currentColor'
                     }
                 }
             }
@@ -366,9 +424,16 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                 }
             },
             tooltip    : {
-                theme: 'dark',
-                x    : {
+                theme : 'dark',
+                x     : {
                     show: false
+                },
+                custom: ({seriesIndex, w}) => {
+                    return `<div class="flex items-center h-32 min-h-32 max-h-32 px-12">
+                                <div class="w-12 h-12 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
+                                <div class="ml-8 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
+                                <div class="ml-8 text-md font-bold leading-none">${w.config.series[seriesIndex].data[0]}</div>
+                            </div>`;
                 }
             },
             yaxis      : {
@@ -376,6 +441,208 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                     formatter: (val) => {
                         return val.toString();
                     }
+                }
+            }
+        };
+
+        // Gender
+        this.genderOptions = {
+            chart      : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                height    : '100%',
+                type      : 'donut',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors     : ['#319795', '#4FD1C5'],
+            labels     : this.data.gender.labels,
+            plotOptions: {
+                pie: {
+                    expandOnClick: false,
+                    donut        : {
+                        size: '70%'
+                    }
+                }
+            },
+            series     : this.data.gender.series,
+            states     : {
+                hover : {
+                    filter: {
+                        type: 'none'
+                    }
+                },
+                active: {
+                    filter: {
+                        type: 'none'
+                    }
+                }
+            },
+            tooltip    : {
+                enabled        : true,
+                fillSeriesColor: false,
+                theme          : 'dark',
+                custom         : ({seriesIndex, w}) => {
+                    return `<div class="flex items-center h-32 min-h-32 max-h-32 px-12">
+                                <div class="w-12 h-12 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
+                                <div class="ml-8 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
+                                <div class="ml-8 text-md font-bold leading-none">${w.config.series[seriesIndex]}%</div>
+                            </div>`;
+                }
+            }
+        };
+
+        // Growth rate
+        this.growthRateOptions = {
+            chart  : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                width     : '100%',
+                height    : '100%',
+                type      : 'area',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors : ['#A3BFFA', '#667EEA'],
+            series : this.data.growthRate.series,
+            stroke : {
+                curve: 'straight',
+                width: 2
+            },
+            tooltip: {
+                theme: 'dark',
+                x    : {
+                    format: 'MMM dd, yyyy'
+                },
+                y    : {
+                    formatter: (value) => {
+                        return value + '%';
+                    }
+                }
+            },
+            xaxis  : {
+                type: 'datetime'
+            }
+        };
+
+        // Language
+        this.languageOptions = {
+            chart      : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                height    : '100%',
+                type      : 'donut',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors     : ['#805AD5', '#B794F4'],
+            labels     : this.data.language.labels,
+            plotOptions: {
+                pie: {
+                    expandOnClick: false,
+                    donut        : {
+                        size: '70%'
+                    }
+                }
+            },
+            series     : this.data.language.series,
+            states     : {
+                hover : {
+                    filter: {
+                        type: 'none'
+                    }
+                },
+                active: {
+                    filter: {
+                        type: 'none'
+                    }
+                }
+            },
+            tooltip    : {
+                enabled        : true,
+                fillSeriesColor: false,
+                theme          : 'dark',
+                custom         : ({seriesIndex, w}) => {
+                    return `<div class="flex items-center h-32 min-h-32 max-h-32 px-12">
+                                <div class="w-12 h-12 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
+                                <div class="ml-8 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
+                                <div class="ml-8 text-md font-bold leading-none">${w.config.series[seriesIndex]}%</div>
+                            </div>`;
+                }
+            }
+        };
+
+        // New vs. returning
+        this.newVsReturningOptions = {
+            chart      : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                height    : '100%',
+                type      : 'donut',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors     : ['#3182CE', '#63B3ED'],
+            labels     : this.data.newVsReturning.labels,
+            plotOptions: {
+                pie: {
+                    expandOnClick: false,
+                    donut        : {
+                        size: '70%'
+                    }
+                }
+            },
+            series     : this.data.newVsReturning.series,
+            states     : {
+                hover : {
+                    filter: {
+                        type: 'none'
+                    }
+                },
+                active: {
+                    filter: {
+                        type: 'none'
+                    }
+                }
+            },
+            tooltip    : {
+                enabled        : true,
+                fillSeriesColor: false,
+                theme          : 'dark',
+                custom         : ({seriesIndex, w}) => {
+                    return `<div class="flex items-center h-32 min-h-32 max-h-32 px-12">
+                                <div class="w-12 h-12 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
+                                <div class="ml-8 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
+                                <div class="ml-8 text-md font-bold leading-none">${w.config.series[seriesIndex]}%</div>
+                            </div>`;
                 }
             }
         };
@@ -420,6 +687,43 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
             }
         };
 
+        // Refunds
+        this.refundsOptions = {
+            chart  : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                width     : '100%',
+                height    : '100%',
+                type      : 'line',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors : ['#A0AEC0'],
+            series : [
+                {
+                    name: 'Refunds',
+                    data: this.data.refunds.data
+                }
+            ],
+            stroke : {
+                curve: 'straight',
+                width: 2
+            },
+            tooltip: {
+                enabled: false
+            },
+            xaxis  : {
+                type: 'numeric'
+            }
+        };
+
         // Total visits
         this.totalVisitsOptions = {
             chart  : {
@@ -457,6 +761,43 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                         return val.toString();
                     }
                 }
+            }
+        };
+
+        // Unique purchases
+        this.uniquePurchasesOptions = {
+            chart  : {
+                animations: {
+                    speed           : 400,
+                    animateGradually: {
+                        enabled: false
+                    }
+                },
+                fontFamily: 'inherit',
+                foreColor : 'inherit',
+                width     : '100%',
+                height    : '100%',
+                type      : 'line',
+                sparkline : {
+                    enabled: true
+                }
+            },
+            colors : ['#A0AEC0'],
+            series : [
+                {
+                    name: 'Unique Purchases',
+                    data: this.data.uniquePurchases.data
+                }
+            ],
+            stroke : {
+                curve: 'straight',
+                width: 2
+            },
+            tooltip: {
+                enabled: false
+            },
+            xaxis  : {
+                type: 'numeric'
             }
         };
 

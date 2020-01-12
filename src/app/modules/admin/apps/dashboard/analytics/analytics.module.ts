@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -17,8 +18,9 @@ import { dashboardAnalyticsRoutes } from 'app/modules/admin/apps/dashboard/analy
         RouterModule.forChild(dashboardAnalyticsRoutes),
         MatButtonModule,
         MatIconModule,
-        MatTableModule,
+        MatMenuModule,
         MatSortModule,
+        MatTableModule,
         NgApexchartsModule,
         SharedModule
     ]
