@@ -11,9 +11,9 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "tw:build": "npm run tw:build:main && npm run tw:build:variants",
-        "tw:build:main": "./node_modules/.bin/tailwind build src/tailwind/main.css -c src/tailwind/config.js -o src/tailwind.scss",
-        "tw:build:variants": "./node_modules/.bin/tailwind build src/tailwind/export.css -c src/tailwind/config.js -o src/@assembly/styles/utilities/_tailwind.scss",
+        "tw": "npm run tw:build && npm run tw:export",
+        "tw:build": "./node_modules/.bin/tailwind build src/tailwind/main.css -c src/tailwind/config.js -o src/tailwind.scss",
+        "tw:export": "./node_modules/.bin/tailwind build src/tailwind/export.css -c src/tailwind/config.js -o src/@assembly/styles/utilities/_tailwind.scss",
         "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
     },
     "private": true,
@@ -74,7 +74,7 @@
         "karma-jasmine": "2.0.1",
         "karma-jasmine-html-reporter": "1.4.2",
         "protractor": "5.4.2",
-        "tailwindcss": "1.1.4",
+        "tailwindcss": "1.2.0-canary.5",
         "ts-node": "8.3.0",
         "tslint": "5.18.0",
         "typescript": "3.6.4"

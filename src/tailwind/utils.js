@@ -23,7 +23,7 @@ module.exports = {
     },
 
     /**
-     * Generates values for height and width
+     * Generates values for width and height
      */
     sizes: () => {
 
