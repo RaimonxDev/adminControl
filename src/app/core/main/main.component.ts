@@ -68,10 +68,7 @@ export class MainComponent implements OnInit, OnDestroy
     {
         // Subscribe to config changes
         this._configService.config$
-            .pipe(
-                filter((config) => config !== null),
-                takeUntil(this._unsubscribeAll)
-            )
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
 
                 // Store the config
