@@ -52,7 +52,7 @@
             <!-- Dark theme -->
             <mat-slide-toggle class="mt-8 mb-32"
                               [checked]="theme === 'dark'"
-                              (change)="setDefaultTheme($event)"
+                              (change)="setTheme($event)"
                               [color]="'primary'">
                 Dark theme
             </mat-slide-toggle>
@@ -62,7 +62,7 @@
             <mat-radio-group class="flex flex-col mb-8"
                              [color]="'primary'"
                              [value]="layout"
-                             (change)="setDefaultLayout($event)">
+                             (change)="setLayout($event)">
                 <mat-radio-button [value]="'basic'">Basic</mat-radio-button>
                 <mat-radio-button [value]="'classic'">Classic</mat-radio-button>
                 <mat-radio-button [value]="'classy'">Classy</mat-radio-button>

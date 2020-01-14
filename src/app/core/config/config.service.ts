@@ -9,8 +9,7 @@ import { AppConfig, appConfig } from 'app/config/app';
 export class ConfigService
 {
     // Private
-    private _config: AppConfig;
-    private _onConfigChanged: BehaviorSubject<any>;
+    private _config: BehaviorSubject<AppConfig>;
 
     /**
      * Constructor
@@ -18,10 +17,7 @@ export class ConfigService
     constructor()
     {
         // Set the private defaults
-        this._onConfigChanged = new BehaviorSubject(null);
-
-        // Set the defaults
-        this.config = appConfig;
+        this._config = new BehaviorSubject(appConfig);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -31,26 +27,18 @@ export class ConfigService
     /**
      * Setter and getter for config
      */
-    set config(value)
+    set config(value: any)
     {
         // Merge the new config over to the current config
-        this._config = _.merge({}, this._config, value);
+        const config = _.merge({}, this._config.getValue(), value);
 
         // Execute the observable
-        this._onConfigChanged.next(this._config);
+        this._config.next(config);
     }
 
-    get config(): any | Observable<any>
+    get config$(): Observable<AppConfig>
     {
-        return this._config;
-    }
-
-    /**
-     * Getter for onConfigChanged
-     */
-    get onConfigChanged(): Observable<any>
-    {
-        return this._onConfigChanged.asObservable();
+        return this._config.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -59,19 +47,11 @@ export class ConfigService
 
     /**
      * Resets the config to the default
-     *
-     * @param emitEvent
      */
-    reset(emitEvent: boolean = false): void
+    reset(): void
     {
         // Set the config
-        this._config = appConfig;
-
-        // Execute the observable if emitEvent is true
-        if ( emitEvent )
-        {
-            this._onConfigChanged.next(this._config);
-        }
+        this._config.next(appConfig);
     }
 }
 

@@ -67,7 +67,7 @@ export class MainComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to config changes
-        this._configService.onConfigChanged
+        this._configService.config$
             .pipe(
                 filter((config) => config !== null),
                 takeUntil(this._unsubscribeAll)
@@ -186,21 +186,21 @@ export class MainComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Set the default layout on the config
+     * Set the layout on the config
      *
      * @param change
      */
-    setDefaultLayout(change: MatRadioChange): void
+    setLayout(change: MatRadioChange): void
     {
         this._configService.config = {layout: change.value};
     }
 
     /**
-     * Set the default theme on the config
+     * Set the theme on the config
      *
      * @param change
      */
-    setDefaultTheme(change: MatSlideToggleChange): void
+    setTheme(change: MatSlideToggleChange): void
     {
         this._configService.config = {theme: change.checked ? 'dark' : 'light'};
     }
