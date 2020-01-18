@@ -3,7 +3,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ApexOptions, ChartComponent } from 'ng-apexcharts';
+import { ApexOptions } from 'ng-apexcharts';
 import { DashboardAnalyticsService } from 'app/modules/admin/apps/dashboard/analytics/analytics.service';
 
 @Component({
@@ -36,48 +36,6 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
 
     @ViewChild('recentOrdersTable', {read: MatSort})
     recentOrdersTableMatSort: MatSort;
-
-    @ViewChild('ageChartComponent')
-    ageChartComponent: ChartComponent;
-
-    @ViewChild('averagePurchaseValueChartComponent')
-    averagePurchaseValueChartComponent: ChartComponent;
-
-    @ViewChild('browsersChartComponent')
-    browsersChartComponent: ChartComponent;
-
-    @ViewChild('channelsChartComponent')
-    channelsChartComponent: ChartComponent;
-
-    @ViewChild('devicesChartComponent')
-    devicesChartComponent: ChartComponent;
-
-    @ViewChild('genderChartComponent')
-    genderChartComponent: ChartComponent;
-
-    @ViewChild('growthRateChartComponent')
-    growthRateChartComponent: ChartComponent;
-
-    @ViewChild('languageChartComponent')
-    languageChartComponent: ChartComponent;
-
-    @ViewChild('newVsReturningChartComponent')
-    newVsReturningChartComponent: ChartComponent;
-
-    @ViewChild('purchasesChartComponent')
-    purchasesChartComponent: ChartComponent;
-
-    @ViewChild('refundsChartComponent')
-    refundsChartComponent: ChartComponent;
-
-    @ViewChild('totalVisitsChartComponent')
-    totalVisitsChartComponent: ChartComponent;
-
-    @ViewChild('uniquePurchasesChartComponent')
-    uniquePurchasesChartComponent: ChartComponent;
-
-    @ViewChild('uniqueVisitorsChartComponent')
-    uniqueVisitorsChartComponent: ChartComponent;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -139,22 +97,6 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
      */
     ngOnDestroy(): void
     {
-        // Explicitly call destroy on charts to prevent memory leaks
-        this.averagePurchaseValueChartComponent.destroy();
-        this.ageChartComponent.destroy();
-        this.browsersChartComponent.destroy();
-        this.growthRateChartComponent.destroy();
-        this.channelsChartComponent.destroy();
-        this.devicesChartComponent.destroy();
-        this.genderChartComponent.destroy();
-        this.languageChartComponent.destroy();
-        this.newVsReturningChartComponent.destroy();
-        this.purchasesChartComponent.destroy();
-        this.refundsChartComponent.destroy();
-        this.totalVisitsChartComponent.destroy();
-        this.uniquePurchasesChartComponent.destroy();
-        this.uniqueVisitorsChartComponent.destroy();
-
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();

@@ -14,8 +14,8 @@ export const adminRoutes: Route[] = [{
     },
     children   : [
 
-        // Redirect / to /apps/dashboard/sales
-        {path: '', pathMatch : 'full', redirectTo: 'apps/dashboard/sales'},
+        // Redirect / to /apps/dashboard/analytics
+        {path: '', pathMatch : 'full', redirectTo: 'apps/dashboard/analytics'},
 
         // Apps
         {path: 'apps', children: [
@@ -24,7 +24,7 @@ export const adminRoutes: Route[] = [{
             {path: 'dashboard', children: [
 
                 {path: 'analytics', loadChildren: () => import('./apps/dashboard/analytics/analytics.module').then(m => m.DashboardAnalyticsModule)},
-                {path: 'sales', loadChildren: () => import('./apps/dashboard/sales/sales.module').then(m => m.DashboardSalesModule)},
+                {path: 'cryptocurrency', loadChildren: () => import('app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.module').then(m => m.DashboardCryptocurrencyModule)},
             ]},
 
             {path: 'calendar', loadChildren: () => import('./apps/calendar/calendar.module').then(m => m.CalendarModule)},

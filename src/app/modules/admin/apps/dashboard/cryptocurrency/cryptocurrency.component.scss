@@ -1,0 +1,51 @@
+@import 'assembly';
+
+dashboard-cryptocurrency {
+
+    .buy-sell-toggle {
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0;
+
+        .mat-button-toggle {
+
+            + .mat-button-toggle {
+                border-left: none !important;
+            }
+        }
+
+        .mat-button-toggle-button {
+
+            .mat-button-toggle-label-content {
+                line-height: 48px;
+                font-size: 13px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme() {
+
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+
+    dashboard-cryptocurrency {
+
+        .buy-sell-toggle {
+
+            .mat-button-toggle {
+                color: map-get($foreground, secondary-text);
+                background: transparent;
+
+                &.mat-button-toggle-checked {
+                    color: map-get($primary, default);
+                    box-shadow: inset 0 -2px 0 map-get($primary, default);
+                }
+            }
+        }
+    }
+}

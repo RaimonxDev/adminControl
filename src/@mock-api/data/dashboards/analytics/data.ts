@@ -171,10 +171,6 @@ export const analytics = {
                         y: 45.63
                     },
                     {
-                        x: moment().subtract(12, 'months').day(30).toDate(),
-                        y: 44.66
-                    },
-                    {
                         x: moment().subtract(11, 'months').day(1).toDate(),
                         y: 38.20
                     },
@@ -213,10 +209,6 @@ export const analytics = {
                     {
                         x: moment().subtract(11, 'months').day(28).toDate(),
                         y: 42.98
-                    },
-                    {
-                        x: moment().subtract(11, 'months').day(30).toDate(),
-                        y: 46.36
                     },
                     {
                         x: moment().subtract(10, 'months').day(1).toDate(),
@@ -259,10 +251,6 @@ export const analytics = {
                         y: 35.86
                     },
                     {
-                        x: moment().subtract(10, 'months').day(30).toDate(),
-                        y: 37.60
-                    },
-                    {
                         x: moment().subtract(9, 'months').day(1).toDate(),
                         y: 39.65
                     },
@@ -301,10 +289,6 @@ export const analytics = {
                     {
                         x: moment().subtract(9, 'months').day(28).toDate(),
                         y: 31.50
-                    },
-                    {
-                        x: moment().subtract(9, 'months').day(30).toDate(),
-                        y: 31.81
                     },
                     {
                         x: moment().subtract(8, 'months').day(1).toDate(),
@@ -347,10 +331,6 @@ export const analytics = {
                         y: 39.18
                     },
                     {
-                        x: moment().subtract(8, 'months').day(30).toDate(),
-                        y: 41.37
-                    },
-                    {
                         x: moment().subtract(7, 'months').day(1).toDate(),
                         y: 41.45
                     },
@@ -389,10 +369,6 @@ export const analytics = {
                     {
                         x: moment().subtract(7, 'months').day(28).toDate(),
                         y: 41.81
-                    },
-                    {
-                        x: moment().subtract(7, 'months').day(30).toDate(),
-                        y: 44.82
                     },
                     {
                         x: moment().subtract(6, 'months').day(1).toDate(),
@@ -435,10 +411,6 @@ export const analytics = {
                         y: 56.60
                     },
                     {
-                        x: moment().subtract(6, 'months').day(30).toDate(),
-                        y: 60.26
-                    },
-                    {
                         x: moment().subtract(5, 'months').day(1).toDate(),
                         y: 58.36
                     },
@@ -477,10 +449,6 @@ export const analytics = {
                     {
                         x: moment().subtract(5, 'months').day(28).toDate(),
                         y: 56.48
-                    },
-                    {
-                        x: moment().subtract(5, 'months').day(30).toDate(),
-                        y: 55.10
                     },
                     {
                         x: moment().subtract(4, 'months').day(1).toDate(),
@@ -523,10 +491,6 @@ export const analytics = {
                         y: 48.22
                     },
                     {
-                        x: moment().subtract(4, 'months').day(30).toDate(),
-                        y: 43.30
-                    },
-                    {
                         x: moment().subtract(3, 'months').day(1).toDate(),
                         y: 45.82
                     },
@@ -565,10 +529,6 @@ export const analytics = {
                     {
                         x: moment().subtract(3, 'months').day(28).toDate(),
                         y: 37.80
-                    },
-                    {
-                        x: moment().subtract(3, 'months').day(30).toDate(),
-                        y: 39.29
                     },
                     {
                         x: moment().subtract(2, 'months').day(1).toDate(),
@@ -611,10 +571,6 @@ export const analytics = {
                         y: 35.09
                     },
                     {
-                        x: moment().subtract(2, 'months').day(30).toDate(),
-                        y: 33.11
-                    },
-                    {
                         x: moment().subtract(1, 'months').day(1).toDate(),
                         y: 31.87
                     },
@@ -653,10 +609,6 @@ export const analytics = {
                     {
                         x: moment().subtract(1, 'months').day(28).toDate(),
                         y: 35.98
-                    },
-                    {
-                        x: moment().subtract(1, 'months').day(30).toDate(),
-                        y: 38.12
                     }
                 ]
             },
@@ -704,10 +656,6 @@ export const analytics = {
                         y: 18.46
                     },
                     {
-                        x: moment().subtract(12, 'months').day(30).toDate(),
-                        y: 19.66
-                    },
-                    {
                         x: moment().subtract(11, 'months').day(1).toDate(),
                         y: 18.04
                     },
@@ -746,10 +694,6 @@ export const analytics = {
                     {
                         x: moment().subtract(11, 'months').day(28).toDate(),
                         y: 15.22
-                    },
-                    {
-                        x: moment().subtract(11, 'months').day(30).toDate(),
-                        y: 18.01
                     },
                     {
                         x: moment().subtract(10, 'months').day(1).toDate(),
@@ -792,10 +736,6 @@ export const analytics = {
                         y: 22.89
                     },
                     {
-                        x: moment().subtract(10, 'months').day(30).toDate(),
-                        y: 26.57
-                    },
-                    {
                         x: moment().subtract(9, 'months').day(1).toDate(),
                         y: 28.04
                     },
@@ -834,10 +774,6 @@ export const analytics = {
                     {
                         x: moment().subtract(9, 'months').day(28).toDate(),
                         y: 16.13
-                    },
-                    {
-                        x: moment().subtract(9, 'months').day(30).toDate(),
-                        y: 12.95
                     },
                     {
                         x: moment().subtract(8, 'months').day(1).toDate(),
@@ -880,10 +816,6 @@ export const analytics = {
                         y: 17.09
                     },
                     {
-                        x: moment().subtract(8, 'months').day(30).toDate(),
-                        y: 19.32
-                    },
-                    {
                         x: moment().subtract(7, 'months').day(1).toDate(),
                         y: 18.31
                     },
@@ -922,10 +854,6 @@ export const analytics = {
                     {
                         x: moment().subtract(7, 'months').day(28).toDate(),
                         y: 22.87
-                    },
-                    {
-                        x: moment().subtract(7, 'months').day(30).toDate(),
-                        y: 22.26
                     },
                     {
                         x: moment().subtract(6, 'months').day(1).toDate(),
@@ -968,10 +896,6 @@ export const analytics = {
                         y: 28.84
                     },
                     {
-                        x: moment().subtract(6, 'months').day(30).toDate(),
-                        y: 29.09
-                    },
-                    {
                         x: moment().subtract(5, 'months').day(1).toDate(),
                         y: 27.71
                     },
@@ -1010,10 +934,6 @@ export const analytics = {
                     {
                         x: moment().subtract(5, 'months').day(28).toDate(),
                         y: 21.71
-                    },
-                    {
-                        x: moment().subtract(5, 'months').day(30).toDate(),
-                        y: 26.48
                     },
                     {
                         x: moment().subtract(4, 'months').day(1).toDate(),
@@ -1056,10 +976,6 @@ export const analytics = {
                         y: 25.72
                     },
                     {
-                        x: moment().subtract(4, 'months').day(30).toDate(),
-                        y: 28.27
-                    },
-                    {
                         x: moment().subtract(3, 'months').day(1).toDate(),
                         y: 27.89
                     },
@@ -1098,10 +1014,6 @@ export const analytics = {
                     {
                         x: moment().subtract(3, 'months').day(28).toDate(),
                         y: 28.85
-                    },
-                    {
-                        x: moment().subtract(3, 'months').day(30).toDate(),
-                        y: 29.63
                     },
                     {
                         x: moment().subtract(2, 'months').day(1).toDate(),
@@ -1144,10 +1056,6 @@ export const analytics = {
                         y: 11.36
                     },
                     {
-                        x: moment().subtract(2, 'months').day(30).toDate(),
-                        y: 14.21
-                    },
-                    {
                         x: moment().subtract(1, 'months').day(1).toDate(),
                         y: 11.60
                     },
@@ -1186,10 +1094,6 @@ export const analytics = {
                     {
                         x: moment().subtract(1, 'months').day(28).toDate(),
                         y: 17.67
-                    },
-                    {
-                        x: moment().subtract(1, 'months').day(30).toDate(),
-                        y: 14.80
                     }
                 ]
             }

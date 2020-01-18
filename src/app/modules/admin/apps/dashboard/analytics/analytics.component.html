@@ -74,19 +74,16 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="flex flex-col flex-auto justify-between mt-4">
-                    <div class="font-semibold text-5xl tracking-tighter leading-none">{{data.averagePurchaseValue.amount | currency}}</div>
-                    <div class="flex mr-8">
-                        <apx-chart class="w-full h-32"
-                                   [chart]="averagePurchaseValueOptions.chart"
-                                   [colors]="averagePurchaseValueOptions.colors"
-                                   [fill]="averagePurchaseValueOptions.fill"
-                                   [series]="averagePurchaseValueOptions.series"
-                                   [stroke]="averagePurchaseValueOptions.stroke"
-                                   [tooltip]="averagePurchaseValueOptions.tooltip"
-                                   [xaxis]="averagePurchaseValueOptions.xaxis"
-                                   #averagePurchaseValueChartComponent></apx-chart>
-                    </div>
+                <div class="mt-4 font-semibold text-5xl tracking-tighter leading-none">{{data.averagePurchaseValue.amount | currency:'USD'}}</div>
+                <div class="flex flex-auto items-end mr-8">
+                    <apx-chart class="w-full h-32"
+                               [chart]="averagePurchaseValueOptions.chart"
+                               [colors]="averagePurchaseValueOptions.colors"
+                               [fill]="averagePurchaseValueOptions.fill"
+                               [series]="averagePurchaseValueOptions.series"
+                               [stroke]="averagePurchaseValueOptions.stroke"
+                               [tooltip]="averagePurchaseValueOptions.tooltip"
+                               [xaxis]="averagePurchaseValueOptions.xaxis"></apx-chart>
                 </div>
             </div>
         </div>
@@ -109,19 +106,16 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="flex flex-col flex-auto justify-between mt-4">
-                    <div class="font-semibold text-5xl tracking-tighter leading-none">{{data.uniquePurchases.amount | number: '1.0-0'}}</div>
-                    <div class="flex mr-8">
-                        <apx-chart class="w-full h-32"
-                                   [chart]="uniquePurchasesOptions.chart"
-                                   [colors]="uniquePurchasesOptions.colors"
-                                   [fill]="uniquePurchasesOptions.fill"
-                                   [series]="uniquePurchasesOptions.series"
-                                   [stroke]="uniquePurchasesOptions.stroke"
-                                   [tooltip]="uniquePurchasesOptions.tooltip"
-                                   [xaxis]="uniquePurchasesOptions.xaxis"
-                                   #uniquePurchasesChartComponent></apx-chart>
-                    </div>
+                <div class="mt-4 font-semibold text-5xl tracking-tighter leading-none">{{data.uniquePurchases.amount | number: '1.0-0'}}</div>
+                <div class="flex flex-auto items-end mr-8">
+                    <apx-chart class="w-full h-32"
+                               [chart]="uniquePurchasesOptions.chart"
+                               [colors]="uniquePurchasesOptions.colors"
+                               [fill]="uniquePurchasesOptions.fill"
+                               [series]="uniquePurchasesOptions.series"
+                               [stroke]="uniquePurchasesOptions.stroke"
+                               [tooltip]="uniquePurchasesOptions.tooltip"
+                               [xaxis]="uniquePurchasesOptions.xaxis"></apx-chart>
                 </div>
             </div>
         </div>
@@ -144,19 +138,16 @@
                         </mat-menu>
                     </div>
                 </div>
-                <div class="flex flex-col flex-auto justify-between mt-4">
-                    <div class="font-semibold text-5xl tracking-tighter leading-none">{{data.refunds.amount | currency}}</div>
-                    <div class="flex mr-8">
-                        <apx-chart class="w-full h-32"
-                                   [chart]="refundsOptions.chart"
-                                   [colors]="refundsOptions.colors"
-                                   [fill]="refundsOptions.fill"
-                                   [series]="refundsOptions.series"
-                                   [stroke]="refundsOptions.stroke"
-                                   [tooltip]="refundsOptions.tooltip"
-                                   [xaxis]="refundsOptions.xaxis"
-                                   #refundsChartComponent></apx-chart>
-                    </div>
+                <div class="mt-4 font-semibold text-5xl tracking-tighter leading-none">{{data.refunds.amount | currency:'USD'}}</div>
+                <div class="flex flex-auto items-end mr-8">
+                    <apx-chart class="w-full h-32"
+                               [chart]="refundsOptions.chart"
+                               [colors]="refundsOptions.colors"
+                               [fill]="refundsOptions.fill"
+                               [series]="refundsOptions.series"
+                               [stroke]="refundsOptions.stroke"
+                               [tooltip]="refundsOptions.tooltip"
+                               [xaxis]="refundsOptions.xaxis"></apx-chart>
                 </div>
             </div>
         </div>
@@ -198,8 +189,7 @@
                                [series]="totalVisitsOptions.series"
                                [tooltip]="totalVisitsOptions.tooltip"
                                [xaxis]="totalVisitsOptions.xaxis"
-                               [yaxis]="totalVisitsOptions.yaxis"
-                               #totalVisitsChartComponent></apx-chart>
+                               [yaxis]="totalVisitsOptions.yaxis"></apx-chart>
                 </div>
             </div>
         </div>
@@ -240,8 +230,7 @@
                                [series]="purchasesOptions.series"
                                [tooltip]="purchasesOptions.tooltip"
                                [xaxis]="purchasesOptions.xaxis"
-                               [yaxis]="purchasesOptions.yaxis"
-                               #purchasesChartComponent></apx-chart>
+                               [yaxis]="purchasesOptions.yaxis"></apx-chart>
                 </div>
             </div>
         </div>
@@ -249,7 +238,7 @@
         <!-- Growth rate -->
         <div class="flex flex-auto w-2/4 min-w-320 h-400 p-16">
             <div class="flex flex-col flex-auto bg-card shadow-md rounded-4 overflow-hidden">
-                <div class="flex flex-col p-16 pl-24 pb-0">
+                <div class="flex flex-col p-16 pl-24">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider mr-16">Growth Rate</div>
                         <div>
@@ -272,21 +261,20 @@
                             <div class="font-medium text-sm text-secondary leading-none">Average Monthly Growth</div>
                         </div>
                         <div class="flex flex-col ml-64 lt-md:ml-32">
-                            <div class="font-semibold text-5xl tracking-tighter lt-md:text-3xl">{{data.growthRate.mrr | currency}}</div>
+                            <div class="font-semibold text-5xl tracking-tighter lt-md:text-3xl">{{data.growthRate.mrr | currency:'USD'}}</div>
                             <div class="font-medium text-sm text-secondary leading-none">Average MRR</div>
                         </div>
                     </div>
                 </div>
                 <div class="flex flex-auto items-end">
-                    <apx-chart class="w-full h-200"
+                    <apx-chart class="w-full h-full"
                                [chart]="growthRateOptions.chart"
                                [colors]="growthRateOptions.colors"
                                [fill]="growthRateOptions.fill"
                                [series]="growthRateOptions.series"
                                [stroke]="growthRateOptions.stroke"
                                [tooltip]="growthRateOptions.tooltip"
-                               [xaxis]="growthRateOptions.xaxis"
-                               #growthRateChartComponent></apx-chart>
+                               [xaxis]="growthRateOptions.xaxis"></apx-chart>
                 </div>
             </div>
         </div>
@@ -325,8 +313,7 @@
                                [states]="channelsOptions.states"
                                [tooltip]="channelsOptions.tooltip"
                                [xaxis]="channelsOptions.xaxis"
-                               [yaxis]="channelsOptions.yaxis"
-                               #channelsChartComponent></apx-chart>
+                               [yaxis]="channelsOptions.yaxis"></apx-chart>
                 </div>
                 <div class="flex flex-col flex-auto justify-end text-md px-24 pb-12">
                     <div class="flex items-center justify-between py-12 border-b last:border-b-0"
@@ -377,8 +364,7 @@
                                [states]="devicesOptions.states"
                                [tooltip]="devicesOptions.tooltip"
                                [xaxis]="devicesOptions.xaxis"
-                               [yaxis]="devicesOptions.yaxis"
-                               #devicesChartComponent></apx-chart>
+                               [yaxis]="devicesOptions.yaxis"></apx-chart>
                 </div>
                 <div class="flex flex-col flex-auto justify-end text-md px-24 pb-12">
                     <div class="flex items-center justify-between py-12 border-b last:border-b-0"
@@ -429,8 +415,7 @@
                                [states]="browsersOptions.states"
                                [tooltip]="browsersOptions.tooltip"
                                [xaxis]="browsersOptions.xaxis"
-                               [yaxis]="browsersOptions.yaxis"
-                               #browsersChartComponent></apx-chart>
+                               [yaxis]="browsersOptions.yaxis"></apx-chart>
                 </div>
                 <div class="flex flex-col flex-auto justify-end text-md px-24 pb-12">
                     <div class="flex items-center justify-between py-12 border-b last:border-b-0"
@@ -483,8 +468,7 @@
                                [series]="uniqueVisitorsOptions.series"
                                [tooltip]="uniqueVisitorsOptions.tooltip"
                                [xaxis]="uniqueVisitorsOptions.xaxis"
-                               [yaxis]="uniqueVisitorsOptions.yaxis"
-                               #uniqueVisitorsChartComponent></apx-chart>
+                               [yaxis]="uniqueVisitorsOptions.yaxis"></apx-chart>
                 </div>
             </div>
         </div>
@@ -506,15 +490,15 @@
                 <div class="flex flex-row flex-wrap mt-16 -mx-24">
                     <div class="flex flex-col mx-24 my-12 xs:w-full">
                         <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Products Cost</div>
-                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.products | currency}}</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.products | currency:'USD'}}</div>
                     </div>
                     <div class="flex flex-col mx-24 my-12 xs:w-full">
                         <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Shipping Cost</div>
-                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.shipping | currency}}</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.shipping | currency:'USD'}}</div>
                     </div>
                     <div class="flex flex-col mx-24 my-12 xs:w-full">
                         <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Total Cost</div>
-                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.total | currency}}</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.lastPayment.total | currency:'USD'}}</div>
                     </div>
                 </div>
             </div>
@@ -532,15 +516,15 @@
                 <div class="flex flex-row flex-wrap mt-16 -mx-24">
                     <div class="flex flex-col mx-24 my-12 xs:w-full">
                         <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Products Cost</div>
-                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.products | currency}}</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.products | currency:'USD'}}</div>
                     </div>
                     <div class="flex flex-col mx-24 my-12 xs:w-full">
                         <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Shipping Cost</div>
-                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.shipping | currency}}</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.shipping | currency:'USD'}}</div>
                     </div>
                     <div class="flex flex-col mx-24 my-12 xs:w-full">
                         <div class="font-bold text-xs text-hint uppercase tracking-wider leading-none">Total Cost</div>
-                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.total | currency}}</div>
+                        <div class="mt-8 font-medium text-3xl leading-none">{{data.nextPayment.total | currency:'USD'}}</div>
                     </div>
                 </div>
             </div>
@@ -579,8 +563,7 @@
                                [plotOptions]="newVsReturningOptions.plotOptions"
                                [series]="newVsReturningOptions.series"
                                [states]="newVsReturningOptions.states"
-                               [tooltip]="newVsReturningOptions.tooltip"
-                               #newVsReturningChartComponent></apx-chart>
+                               [tooltip]="newVsReturningOptions.tooltip"></apx-chart>
                 </div>
                 <div class="flex flex-col justify-end text-md px-24 pb-12">
                     <div class="flex items-center justify-between py-12 border-b last:border-b-0"
@@ -625,8 +608,7 @@
                                [plotOptions]="genderOptions.plotOptions"
                                [series]="genderOptions.series"
                                [states]="genderOptions.states"
-                               [tooltip]="genderOptions.tooltip"
-                               #genderChartComponent></apx-chart>
+                               [tooltip]="genderOptions.tooltip"></apx-chart>
                 </div>
                 <div class="flex flex-col justify-end text-md px-24 pb-12">
                     <div class="flex items-center justify-between py-12 border-b last:border-b-0"
@@ -671,8 +653,7 @@
                                [plotOptions]="ageOptions.plotOptions"
                                [series]="ageOptions.series"
                                [states]="ageOptions.states"
-                               [tooltip]="ageOptions.tooltip"
-                               #ageChartComponent></apx-chart>
+                               [tooltip]="ageOptions.tooltip"></apx-chart>
                 </div>
                 <div class="flex flex-col justify-end text-md px-24 pb-12">
                     <div class="flex items-center justify-between py-12 border-b last:border-b-0"
@@ -717,8 +698,7 @@
                                [plotOptions]="languageOptions.plotOptions"
                                [series]="languageOptions.series"
                                [states]="languageOptions.states"
-                               [tooltip]="languageOptions.tooltip"
-                               #languageChartComponent></apx-chart>
+                               [tooltip]="languageOptions.tooltip"></apx-chart>
                 </div>
                 <div class="flex flex-col justify-end text-md px-24 pb-12">
                     <div class="flex items-center justify-between py-12 border-b last:border-b-0"
@@ -755,7 +735,7 @@
                         </div>
                         <div class="ml-16 leading-none">
                             <div class="font-bold text-xs text-hint uppercase tracking-wider">Today's revenue</div>
-                            <div class="mt-8 font-medium text-2xl">{{data.recentOrdersStats.todaysRevenue | currency}}</div>
+                            <div class="mt-8 font-medium text-2xl">{{data.recentOrdersStats.todaysRevenue | currency:'USD'}}</div>
                         </div>
                     </div>
                     <div class="flex items-center mx-32 my-16">
@@ -765,7 +745,7 @@
                         </div>
                         <div class="ml-16 leading-none">
                             <div class="font-bold text-xs text-hint uppercase tracking-wider">Taxes</div>
-                            <div class="mt-8 font-medium text-2xl">-{{data.recentOrdersStats.taxes | currency}}</div>
+                            <div class="mt-8 font-medium text-2xl">-{{data.recentOrdersStats.taxes | currency:'USD'}}</div>
                         </div>
                     </div>
                     <div class="flex items-center mx-32 my-16">
@@ -775,7 +755,7 @@
                         </div>
                         <div class="ml-16 leading-none">
                             <div class="font-bold text-xs text-hint uppercase tracking-wider">Today's profit</div>
-                            <div class="mt-8 font-medium text-2xl">{{data.recentOrdersStats.todaysProfit | currency}}</div>
+                            <div class="mt-8 font-medium text-2xl">{{data.recentOrdersStats.todaysProfit | currency:'USD'}}</div>
                         </div>
                     </div>
                 </div>
@@ -872,7 +852,7 @@
                             <td mat-cell
                                 *matCellDef="let order">
                                 <span class="pr-24 font-medium whitespace-no-wrap">
-                                    {{order.amount | currency}}
+                                    {{order.amount | currency:'USD'}}
                                 </span>
                             </td>
                         </ng-container>

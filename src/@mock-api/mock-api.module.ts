@@ -6,7 +6,7 @@ import { MockAuthApi } from '@mock-api/data/auth';
 import { MockCalendarApi } from '@mock-api/data/calendar';
 import { MockContactsApi } from '@mock-api/data/contacts';
 import { MockDashboardAnalyticsApi } from '@mock-api/data/dashboards/analytics';
-import { MockDashboardSalesApi } from '@mock-api/data/dashboards/sales';
+import { MockDashboardCryptocurrencyApi } from '@mock-api/data/dashboards/cryptocurrency';
 import { MockDocsApi } from '@mock-api/data/docs';
 import { MockHelpCenterApi } from '@mock-api/data/help-center';
 import { MockIconsApi } from '@mock-api/data/icons';
@@ -56,7 +56,7 @@ export class AsmMockApiModule
         private _mockCalendarApi: MockCalendarApi,
         private _mockContactsApi: MockContactsApi,
         private _mockDashboardAnalyticsApi: MockDashboardAnalyticsApi,
-        private _mockDashboardSalesApi: MockDashboardSalesApi,
+        private _mockDashboardCryptocurrencyApi: MockDashboardCryptocurrencyApi,
         private _mockDocsApi: MockDocsApi,
         private _mockHelpCenterApi: MockHelpCenterApi,
         private _mockIconsApi: MockIconsApi,
@@ -74,7 +74,7 @@ export class AsmMockApiModule
         this._mockCalendarApi.init();
         this._mockContactsApi.init();
         this._mockDashboardAnalyticsApi.init();
-        this._mockDashboardSalesApi.init();
+        this._mockDashboardCryptocurrencyApi.init();
         this._mockDocsApi.init();
         this._mockHelpCenterApi.init();
         this._mockIconsApi.init();

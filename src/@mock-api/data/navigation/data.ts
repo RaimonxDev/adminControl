@@ -303,10 +303,10 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/apps/dashboard/analytics'
             },
             {
-                id   : 'applications.dashboard.sales',
-                title: 'Sales',
+                id   : 'applications.dashboard.cryptocurrency',
+                title: 'Cryptocurrency',
                 type : 'basic',
-                link : '/apps/dashboard/sales'
+                link : '/apps/dashboard/cryptocurrency'
             }
         ]
     },

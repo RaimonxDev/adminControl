@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { sales as salesData } from '@mock-api/data/dashboards/sales/data';
+import { cryptocurrency as cryptocurrencyData } from '@mock-api/data/dashboards/cryptocurrency/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockDashboardSalesApi
+export class MockDashboardCryptocurrencyApi
 {
     // Private
-    private _sales: any;
+    private _cryptocurrency: any;
 
     /**
      * Constructor
@@ -21,7 +21,7 @@ export class MockDashboardSalesApi
     )
     {
         // Set the data
-        this._sales = salesData;
+        this._cryptocurrency = cryptocurrencyData;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -34,15 +34,15 @@ export class MockDashboardSalesApi
     init(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ Sales - GET
+        // @ Cryptocurrency - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/dashboard/sales')
+            .onGet('api/dashboard/cryptocurrency')
             .reply(() => {
 
                 return [
                     200,
-                    _.cloneDeep(this._sales)
+                    _.cloneDeep(this._cryptocurrency)
                 ];
             });
     }
