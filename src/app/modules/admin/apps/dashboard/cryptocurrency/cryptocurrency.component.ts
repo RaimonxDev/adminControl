@@ -247,7 +247,7 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
                 },
                 width     : '100%',
                 height    : '100%',
-                type      : 'area',
+                type      : 'line',
                 sparkline : {
                     enabled: true
                 }
