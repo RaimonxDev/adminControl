@@ -70,4 +70,94 @@
     .bg-hover {
         background: map-get($background, hover);
     }
+
+    // Dark - light variants
+    @if ($is-dark) {
+
+        &.dark\:text-normal,
+        .dark\:text-normal {
+            color: map-get($foreground, text);
+        }
+
+        &.dark\:text-secondary,
+        .dark\:text-secondary {
+            color: map-get($foreground, secondary-text);
+        }
+
+        &.dark\:text-hint,
+        .dark\:text-hint {
+            color: map-get($foreground, hint-text);
+        }
+
+        &.dark\:text-disabled,
+        .dark\:text-disabled {
+            color: map-get($foreground, disabled-text);
+        }
+
+        &.dark\:text-divider,
+        .dark\:text-divider {
+            color: map-get($foreground, divider);
+        }
+
+        &.dark\:bg-base,
+        .dark\:bg-base {
+            background: map-get($background, background);
+        }
+
+        &.dark\:bg-dialog,
+        .dark\:bg-dialog,
+        &.dark\:bg-card,
+        .dark\:bg-card {
+            background: map-get($background, card);
+        }
+
+        &.dark\:bg-hover,
+        .dark\:bg-hover {
+            background: map-get($background, hover);
+        }
+
+    } @else {
+
+        &.light\:text-normal,
+        .light\:text-normal {
+            color: map-get($foreground, text);
+        }
+
+        &.light\:text-secondary,
+        .light\:text-secondary {
+            color: map-get($foreground, secondary-text);
+        }
+
+        &.light\:text-hint,
+        .light\:text-hint {
+            color: map-get($foreground, hint-text);
+        }
+
+        &.light\:text-disabled,
+        .light\:text-disabled {
+            color: map-get($foreground, disabled-text);
+        }
+
+        &.light\:text-divider,
+        .light\:text-divider {
+            color: map-get($foreground, divider);
+        }
+
+        &.light\:bg-base,
+        .light\:bg-base {
+            background: map-get($background, background);
+        }
+
+        &.light\:bg-dialog,
+        .light\:bg-dialog,
+        &.light\:bg-card,
+        .light\:bg-card {
+            background: map-get($background, card);
+        }
+
+        &.light\:bg-hover,
+        .light\:bg-hover {
+            background: map-get($background, hover);
+        }
+    }
 }

@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------------------------------
 code[class*='language-'],
 pre[class*='language-'] {
-    font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+    font-family: $asm-font-mono;
     font-size: 14px;
     line-height: 1.6;
     border-radius: 4px;

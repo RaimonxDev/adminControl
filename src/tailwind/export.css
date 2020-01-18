@@ -12,4 +12,4 @@
  * generate them. Add them to the './main.css' file.
  */
 
-@variants exportBoxShadow, exportColors, exportScreens {}
+@variants exportBoxShadow, exportColors, exportFontFamily, exportScreens {}

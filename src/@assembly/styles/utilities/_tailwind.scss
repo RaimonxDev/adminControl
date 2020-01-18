@@ -291,6 +291,12 @@ $asm-colors: (
 ),
  ) !default;
 
+$asm-font-sans: Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !default;
+
+$asm-font-serif: Georgia,Cambria,"Times New Roman",Times,serif !default;
+
+$asm-font-mono: "IBM Plex Mono",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace !default;
+
 $asm-breakpoints: (
   xs: '(min-width: 0) and (max-width: 599px)',
  sm: '(min-width: 600px) and (max-width: 959px)',

@@ -11,25 +11,26 @@ module.exports = plugin(({addUtilities, variants, theme, e}) => {
         const generateCombinedColorRules = (colorName, hueName, color) => {
 
             const contrastColor = theme(`colorContrasts.${colorName}${hueName ? `.${hueName}` : ``}`);
+            const selector = `${colorName}${hueName && hueName !== 'default' ? `-${hueName}` : ``}`;
 
             return {
-                [`.${e(`${colorName}${hueName && hueName !== 'default' ? `-${hueName}` : ``}`)}`]: {
+                [`.${e(selector)}`]: {
                     backgroundColor: `${color} !important`,
                     color          : `${contrastColor} !important`,
 
-                    [`&.mat-icon, .mat-icon`]: {
+                    '&.mat-icon, .mat-icon': {
                         color: `${contrastColor} !important`
                     },
 
-                    [`&.text-secondary, .text-secondary`]: {
+                    '&.text-secondary, .text-secondary': {
                         color: `rgba(${contrastColor}, 0.7) !important`
                     },
 
-                    [`&.text-hint, .text-hint, &.text-disabled, .text-disabled`]: {
+                    '&.text-hint, .text-hint, &.text-disabled, .text-disabled': {
                         color: `rgba(${contrastColor}, 0.38) !important`
                     },
 
-                    [`&.divider, .divider`]: {
+                    '&.divider, .divider': {
                         color: `rgba(${contrastColor}, 0.12) !important`
                     }
                 }
@@ -59,7 +60,7 @@ module.exports = plugin(({addUtilities, variants, theme, e}) => {
     },
     {
         variants: {
-            colorCombinations: ['dark', 'light']
+            colorCombinations: []
         }
     }
 );

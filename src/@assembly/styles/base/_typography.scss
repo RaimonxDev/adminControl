@@ -8,6 +8,10 @@ html, body {
     -moz-osx-font-smoothing: auto;
 }
 
+body {
+    font-family: $asm-font-sans;
+}
+
 // Headings
 h1, h2, h3, h4, h5, h6 {
     margin: 1.25em 0 0.5em 0;
@@ -102,7 +106,7 @@ blockquote {
 
 // Code
 code:not([class*='language-']) {
-    font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+    font-family: $asm-font-mono;
     font-size: 13px;
     padding: 3px 7px;
     border-radius: 3px;

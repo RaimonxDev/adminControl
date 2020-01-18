@@ -179,6 +179,14 @@ module.exports = {
                 }
             },
 
+            flex: {
+                '0': '0 0 auto'
+            },
+
+            fontFamily: {
+                mono: ['"IBM Plex Mono"', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace']
+            },
+
             rotate: {
                 '-270': '270deg',
                 '15'  : '15deg',
@@ -203,8 +211,8 @@ module.exports = {
 
     // Variants
     variants: {
-        backgroundColor         : ['dark', 'light'],
-        borderColor             : ['dark', 'light'],
+        backgroundColor         : ['dark-light'],
+        borderColor             : ['dark-light'],
         borderWidth             : ['responsive', 'first', 'last'],
         cursor                  : [],
         fontFamily              : [],
@@ -212,15 +220,14 @@ module.exports = {
         fontWeight              : ['responsive'],
         iconSize                : ['responsive'],
         resize                  : [],
-        textColor               : ['dark', 'light'],
+        textColor               : ['dark-light'],
         scale                   : [],
         rotate                  : [],
         translate               : [],
         skew                    : [],
         transitionProperty      : [],
         transitionTimingFunction: [],
-        transitionDuration      : [],
-        transitionDelay         : []
+        transitionDuration      : []
     },
 
     // Core plugins
@@ -237,11 +244,11 @@ module.exports = {
         // Exporter variants
         require('./plugins/variants/export-box-shadow'),
         require('./plugins/variants/export-colors'),
+        require('./plugins/variants/export-font-family'),
         require('./plugins/variants/export-screens'),
 
         // Variants
-        require('./plugins/variants/theme-dark'),
-        require('./plugins/variants/theme-light'),
+        require('./plugins/variants/dark-light'),
 
         // Utilities
         require('./plugins/utilities/color-contrasts'),
