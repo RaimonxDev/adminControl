@@ -1,9 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import * as _ from 'lodash';
+import * as moment from 'moment';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
+import { AsmMediaWatcherService } from '@assembly';
 import { ConfigService } from 'app/core/config/config.service';
 import { AppConfig } from 'app/config/app';
 import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.service';
@@ -15,17 +16,14 @@ import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, OnDestroy
+export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
 {
     appConfig: AppConfig;
-    data: any;
-    recentOrdersDataSource: MatTableDataSource<any>;
-    recentOrdersTableColumns: string[];
     btcOptions: ApexOptions;
+    data: any;
+    drawerMode: 'over' | 'side';
+    drawerOpened: boolean;
     watchlistChartOptions: ApexOptions;
-
-    @ViewChild('recentOrdersTable', {read: MatSort})
-    recentOrdersTableMatSort: MatSort;
 
     @ViewChild('btcChartComponent')
     btcChartComponent: ChartComponent;
@@ -36,11 +34,15 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
     /**
      * Constructor
      *
+     * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {DashboardCryptocurrencyService} _dashboardCryptocurrencyService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ConfigService} _configService
      */
     constructor(
+        private _asmMediaWatcherService: AsmMediaWatcherService,
         private _dashboardCryptocurrencyService: DashboardCryptocurrencyService,
+        private _changeDetectorRef: ChangeDetectorRef,
         private _configService: ConfigService
     )
     {
@@ -48,8 +50,8 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.recentOrdersDataSource = new MatTableDataSource();
-        this.recentOrdersTableColumns = ['orderId', 'date', 'customer', 'product', 'amount', 'status'];
+        this.drawerMode = 'side';
+        this.drawerOpened = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -61,6 +63,27 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
      */
     ngOnInit(): void
     {
+        // Subscribe to media changes
+        this._asmMediaWatcherService.onMediaChange$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((matchingAliases) => {
+
+                // Set the drawerMode and drawerOpened if 'lt-lg' breakpoint is active
+                if ( matchingAliases.includes('lt-lg') )
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
+                }
+                else
+                {
+                    this.drawerMode = 'side';
+                    this.drawerOpened = true;
+                }
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
+
         // Get the app config
         this._configService.config$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -72,11 +95,26 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
                 // Update the chart options
                 if ( this.btcChartComponent )
                 {
-                    this.btcChartComponent.updateOptions({
-                        grid: {
-                            borderColor: (config.theme === 'dark' ? 'rgba(237, 242, 247, 0.12)' : '#E2E8F0')
+                    this.btcChartComponent.updateOptions(_.merge(this.btcOptions, {
+                        grid : {
+                            borderColor: this._getBorderColor()
+                        },
+                        xaxis: {
+                            axisTicks : {
+                                color: this._getBorderColor()
+                            },
+                            crosshairs: {
+                                fill: {
+                                    color: this._getBorderColor()
+                                }
+                            }
+                        },
+                        yaxis: {
+                            axisTicks: {
+                                color: this._getBorderColor()
+                            }
                         }
-                    });
+                    }));
                 }
             });
 
@@ -88,21 +126,9 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
                 // Store the data
                 this.data = data;
 
-                // Store the table data
-                // this.recentOrdersDataSource.data = data.recentOrders;
-
                 // Prepare the chart data
                 this._prepareChartData();
             });
-    }
-
-    /**
-     * After view init
-     */
-    ngAfterViewInit(): void
-    {
-        // Make the data source sortable
-        // this.recentOrdersDataSource.sort = this.recentOrdersTableMatSort;
     }
 
     /**
@@ -118,6 +144,11 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
+
+    private _getBorderColor(): string
+    {
+        return this.appConfig.theme === 'dark' ? 'rgba(237, 242, 247, 0.12)' : '#CBD5E0';
+    }
 
     /**
      * Prepare the chart data from the data
@@ -149,18 +180,18 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
                 enabled: false
             },
             grid      : {
-                borderColor    : (this.appConfig.theme === 'dark' ? 'rgba(237, 242, 247, 0.12)' : '#E2E8F0'),
+                borderColor    : this._getBorderColor(),
                 position       : 'back',
                 show           : true,
                 strokeDashArray: 6,
                 xaxis          : {
                     lines: {
-                        show: false
+                        show: true
                     }
                 },
                 yaxis          : {
                     lines: {
-                        show: false
+                        show: true
                     }
                 }
             },
@@ -169,17 +200,12 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
             },
             series    : this.data.btc.price.series,
             stroke    : {
-                width: 3,
-                curve: 'smooth'
+                width: 2,
+                curve: 'straight'
             },
             tooltip   : {
                 shared: true,
                 theme : 'dark',
-                x     : {
-                    formatter: (seriesIndex) => {
-                        return this.data.btc.price.series[0].data[seriesIndex - 1].x;
-                    }
-                },
                 y     : {
                     formatter: (value) => {
                         return '$' + value.toFixed(2);
@@ -187,15 +213,25 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
                 }
             },
             xaxis     : {
-                type      : 'category',
+                type      : 'numeric',
                 crosshairs: {
-                    show  : true,
-                    stroke: {
-                        dashArray: 0
-                    }
+                    show    : true,
+                    position: 'back',
+                    fill    : {
+                        type : 'color',
+                        color: this._getBorderColor()
+                    },
+                    width   : 3,
+                    stroke  : {
+                        dashArray: 0,
+                        width    : 0
+                    },
+                    opacity : 0.9
                 },
+                tickAmount: 8,
                 axisTicks : {
-                    show: false
+                    show : true,
+                    color: this._getBorderColor()
                 },
                 axisBorder: {
                     show: false
@@ -210,7 +246,7 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
                     minHeight            : 40,
                     hideOverlappingLabels: true,
                     formatter            : (value) => {
-                        return (value && value.split(':')[1][1] === '0' ? value : '');
+                        return moment().subtract(Math.abs(parseInt(value, 10)), 'minutes').format('HH:mm');
                     },
                     style                : {
                         colors: 'currentColor'
@@ -220,18 +256,17 @@ export class DashboardCryptocurrencyComponent implements OnInit, AfterViewInit, 
             yaxis     : {
                 axisTicks     : {
                     show : true,
-                    color: (this.appConfig.theme === 'dark' ? 'rgba(237, 242, 247, 0.12)' : '#E2E8F0')
+                    color: this._getBorderColor()
                 },
                 axisBorder    : {
-                    show : true,
-                    color: (this.appConfig.theme === 'dark' ? 'rgba(237, 242, 247, 0.12)' : '#E2E8F0')
+                    show: false
                 },
                 forceNiceScale: true,
                 labels        : {
+                    minWidth : 40,
                     formatter: (value, index) => {
                         return '$' + value.toFixed(0);
                     },
-                    minWidth : 40,
                     style    : {
                         color: 'currentColor'
                     }

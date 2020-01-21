@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -28,6 +29,7 @@ import { dashboardCryptocurrencyRoutes } from 'app/modules/admin/apps/dashboard/
         MatInputModule,
         MatMenuModule,
         MatSelectModule,
+        MatSidenavModule,
         MatSortModule,
         MatTableModule,
         MatTabsModule,

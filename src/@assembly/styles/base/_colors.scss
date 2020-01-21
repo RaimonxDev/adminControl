@@ -10,7 +10,7 @@
     // Base color and background
     & {
         color: map-get($foreground, text);
-        background: map-get($background, background);
+        background-color: map-get($background, background);
     }
 
     // Base border color for all elements
@@ -59,16 +59,16 @@
 
     // Background colors
     .bg-base {
-        background: map-get($background, background);
+        background-color: map-get($background, background);
     }
 
     .bg-dialog,
     .bg-card {
-        background: map-get($background, card);
+        background-color: map-get($background, card);
     }
 
     .bg-hover {
-        background: map-get($background, hover);
+        background-color: map-get($background, hover);
     }
 
     // Dark - light variants
@@ -101,19 +101,19 @@
 
         &.dark\:bg-base,
         .dark\:bg-base {
-            background: map-get($background, background);
+            background-color: map-get($background, background);
         }
 
         &.dark\:bg-dialog,
         .dark\:bg-dialog,
         &.dark\:bg-card,
         .dark\:bg-card {
-            background: map-get($background, card);
+            background-color: map-get($background, card);
         }
 
         &.dark\:bg-hover,
         .dark\:bg-hover {
-            background: map-get($background, hover);
+            background-color: map-get($background, hover);
         }
 
     } @else {
@@ -145,19 +145,19 @@
 
         &.light\:bg-base,
         .light\:bg-base {
-            background: map-get($background, background);
+            background-color: map-get($background, background);
         }
 
         &.light\:bg-dialog,
         .light\:bg-dialog,
         &.light\:bg-card,
         .light\:bg-card {
-            background: map-get($background, card);
+            background-color: map-get($background, card);
         }
 
         &.light\:bg-hover,
         .light\:bg-hover {
-            background: map-get($background, hover);
+            background-color: map-get($background, hover);
         }
     }
 }
