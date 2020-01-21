@@ -3,7 +3,7 @@ const postcss = require('postcss');
 const _ = require('lodash');
 
 /**
- * Exports color configuration as an SCSS map
+ * Exports 'colors' configuration as an SCSS map
  */
 module.exports = plugin(({addVariant, theme}) => {
 

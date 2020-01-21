@@ -49,6 +49,10 @@ layout[type="dense"] {
 
             .navigation-appearance-toggle-button {
                 margin-right: 8px;
+
+                @include asm-media-breakpoint('lt-md') {
+                    display: none !important;
+                }
             }
 
             .spacer {

@@ -62,7 +62,7 @@ export class LeftSidebarFullheightTabsNavigationComponent implements OnInit, OnD
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((matchingAliases) => {
+            .subscribe(({matchingAliases}) => {
 
                 // Set the drawerMode and drawerOpened if 'lt-lg' breakpoint is active
                 if ( matchingAliases.includes('lt-lg') )

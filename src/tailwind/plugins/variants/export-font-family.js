@@ -3,7 +3,7 @@ const postcss = require('postcss');
 const _ = require('lodash');
 
 /**
- * Exports fontFamily configuration as an SCSS map
+ * Exports 'fontFamily' configuration as an SCSS map
  */
 module.exports = plugin(({addVariant, theme}) => {
 

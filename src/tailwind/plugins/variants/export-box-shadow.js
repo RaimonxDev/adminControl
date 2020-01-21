@@ -3,7 +3,7 @@ const postcss = require('postcss');
 const _ = require('lodash');
 
 /**
- * Exports boxShadow configuration as an SCSS map
+ * Exports 'boxShadow' configuration as an SCSS map
  */
 module.exports = plugin(({addVariant, theme}) => {
 

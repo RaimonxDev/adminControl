@@ -121,10 +121,10 @@ export class ContactsListComponent implements OnInit, OnDestroy
         // Subscribe to media query change
         this._asmMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((matches) => {
+            .subscribe((state) => {
 
                 // Calculate the drawer mode
-                this.drawerMode = matches ? 'side' : 'over';
+                this.drawerMode = state.matches ? 'side' : 'over';
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();

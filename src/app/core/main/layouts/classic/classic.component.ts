@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { UserService } from 'app/core/user/user.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
     selector     : 'layout[type="classic"]',
@@ -42,7 +43,8 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
         private _router: Router,
-        private _userService: UserService
+        private _userService: UserService,
+        private _breakpointObserver: BreakpointObserver
     )
     {
         // Set the private defaults
@@ -94,7 +96,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((matchingAliases) => {
+            .subscribe(({matchingAliases}) => {
 
                 // Check if the breakpoint is 'lt-md'
                 this.isScreenSmall = matchingAliases.includes('lt-md');

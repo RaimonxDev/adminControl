@@ -72,7 +72,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         // Subscribe to media changes
         this._asmMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((matchingAliases) => {
+            .subscribe(({matchingAliases}) => {
 
                 // Check if the breakpoint is 'lt-md'
                 this.isScreenSmall = matchingAliases.includes('lt-md');
