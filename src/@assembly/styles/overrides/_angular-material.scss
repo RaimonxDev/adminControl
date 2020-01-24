@@ -545,6 +545,63 @@
     }
 }
 
+// mat-form-field within a label tag
+label.asm-mat-label {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    font-weight: 600;
+
+    > span {
+        position: relative;
+        margin-bottom: 4px;
+        order: 1;
+    }
+
+    > .mat-form-field.mat-form-field-appearance-fill {
+        order: 2;
+    }
+
+    &.asm-start,
+    &.asm-end {
+
+        @include asm-media-breakpoint('gt-xs') {
+            flex-direction: row;
+            align-items: baseline;
+        }
+    }
+
+    &.asm-start {
+
+        > span {
+
+            @include asm-media-breakpoint('gt-xs') {
+                margin-bottom: 0;
+                margin-right: 16px;
+            }
+        }
+    }
+
+    &.asm-end {
+
+        > span {
+
+            @include asm-media-breakpoint('gt-xs') {
+                order: 2;
+                margin-bottom: 0;
+                margin-left: 16px;
+            }
+        }
+
+        > .mat-form-field.mat-form-field-appearance-fill {
+
+            @include asm-media-breakpoint('gt-xs') {
+                order: 1;
+            }
+        }
+    }
+}
+
 // -----------------------------------------------------------------------------------------------------
 // @ Icon
 // -----------------------------------------------------------------------------------------------------

@@ -149,7 +149,7 @@
                                     </mat-checkbox>
                                 </div>
                             </div>
-                            <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-80">
+                            <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-64">
                                 <span class="font-semibold mb-8">Push Notifications</span>
                                 <mat-radio-group class="flex flex-col"
                                                  [color]="'primary'"
@@ -380,15 +380,15 @@
                         </div>
 
                         <div class="p-32 pb-8">
-                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
-                                <span class="font-semibold mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Email Address</span>
+                            <label class="asm-mat-label asm-start">
+                                <span class="gt-xs:min-w-128 gt-xs:text-right">Email Address</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
-                                <span class="font-semibold mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Country / Region</span>
+                            <label class="asm-mat-label asm-start">
+                                <span class="gt-xs:min-w-128 gt-xs:text-right">Country / Region</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <mat-select>
                                         <mat-option value="country-1">Country 1</mat-option>
@@ -396,10 +396,10 @@
                                         <mat-option value="country-3">Country 3</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
-                                <span class="font-semibold mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Language</span>
+                            <label class="asm-mat-label asm-start">
+                                <span class="gt-xs:min-w-128 gt-xs:text-right">Language</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <mat-select>
                                         <mat-option value="language-1">Language 1</mat-option>
@@ -407,7 +407,7 @@
                                         <mat-option value="language-3">Language 3</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                            </div>
+                            </label>
                         </div>
 
                         <div class="bg-gray-100 mt-16 p-32 border-t border-b">
@@ -416,35 +416,35 @@
                         </div>
 
                         <div class="p-32 pb-8">
-                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
-                                <span class="font-semibold mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">First name</span>
+                            <label class="asm-mat-label asm-start">
+                                <span class="gt-xs:min-w-128 gt-xs:text-right">First name</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
-                                <span class="font-semibold mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Last name</span>
+                            <label class="asm-mat-label asm-start">
+                                <span class="gt-xs:min-w-128 gt-xs:text-right">Last name</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
-                                <span class="font-semibold mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">Username</span>
+                            <label class="asm-mat-label asm-start">
+                                <span class="gt-xs:text-right gt-xs:min-w-128">Username</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                     <span matPrefix>www.example.com/</span>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col gt-xs:flex-row gt-xs:items-baseline">
-                                <span class="font-semibold mb-4 gt-xs:text-right gt-xs:min-w-128 gt-xs:mr-16 gt-xs:mb-0">About</span>
+                            <label class="asm-mat-label asm-start">
+                                <span class="gt-xs:min-w-128 gt-xs:text-right">About</span>
                                 <mat-form-field class="asm-mat-textarea flex-auto">
                                     <textarea matInput
                                               [rows]="3"></textarea>
                                 </mat-form-field>
-                            </div>
+                            </label>
                         </div>
 
 
@@ -631,7 +631,7 @@
                                     </mat-checkbox>
                                 </div>
                             </div>
-                            <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-80">
+                            <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-64">
                                 <span class="font-semibold mb-8">Push Notifications</span>
                                 <mat-radio-group class="flex flex-col"
                                                  [color]="'primary'"
@@ -686,15 +686,15 @@
                         </div>
 
                         <asm-card class="flex flex-col flex-auto p-32 pb-2">
-                            <div class="flex flex-col">
-                                <span class="font-semibold mb-4">Email Address</span>
+                            <label class="asm-mat-label">
+                                <span>Email Address</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <span class="font-semibold mb-4">Country / Region</span>
+                            <label class="asm-mat-label">
+                                <span>Country / Region</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <mat-select>
                                         <mat-option value="country-1">Country 1</mat-option>
@@ -702,10 +702,10 @@
                                         <mat-option value="country-3">Country 3</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <span class="font-semibold mb-4">Language</span>
+                            <label class="asm-mat-label">
+                                <span>Language</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <mat-select>
                                         <mat-option value="language-1">Language 1</mat-option>
@@ -713,7 +713,7 @@
                                         <mat-option value="language-3">Language 3</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                            </div>
+                            </label>
                         </asm-card>
 
                     </div>
@@ -728,35 +728,35 @@
                         </div>
 
                         <asm-card class="flex flex-col flex-auto p-32 pb-2">
-                            <div class="flex flex-col">
-                                <span class="font-semibold mb-4">First name</span>
+                            <label class="asm-mat-label">
+                                <span>First name</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <span class="font-semibold mb-4">Last name</span>
+                            <label class="asm-mat-label">
+                                <span>Last name</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <span class="font-semibold mb-4">Username</span>
+                            <label class="asm-mat-label">
+                                <span>Username</span>
                                 <mat-form-field class="asm-mat-dense flex-auto">
                                     <input matInput>
                                     <span matPrefix>www.example.com/</span>
                                 </mat-form-field>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <span class="font-semibold mb-4">About</span>
+                            <label class="asm-mat-label">
+                                <span>About</span>
                                 <mat-form-field class="asm-mat-textarea flex-auto">
                                     <textarea matInput
                                               [rows]="3"></textarea>
                                 </mat-form-field>
-                            </div>
+                            </label>
                         </asm-card>
 
                     </div>

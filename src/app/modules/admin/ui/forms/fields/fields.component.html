@@ -120,7 +120,7 @@
             </div>
 
             <!-- Label positions -->
-            <div class="mt-96">
+            <div class="mt-64">
 
                 <h3 class="my-0">Label positions</h3>
                 <p class="mt-8 mb-40">
@@ -132,53 +132,66 @@
 
                     <form class="mt-8">
 
-                        <div class="flex">
-                            <mat-form-field class="flex-auto">
-                                <mat-label>Floating label</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                        </div>
+                        <mat-form-field class="w-full">
+                            <mat-label>Floating label</mat-label>
+                            <input matInput>
+                        </mat-form-field>
 
-                        <div class="flex">
-                            <mat-form-field class="flex-auto">
-                                <input matInput
-                                       [placeholder]="'Placeholder only'">
-                            </mat-form-field>
-                        </div>
+                        <mat-form-field class="w-full">
+                            <input matInput
+                                   [placeholder]="'Placeholder only'">
+                        </mat-form-field>
 
                         <mat-divider class="mt-24 mb-40"></mat-divider>
 
-                        <div class="flex flex-col">
-                            <span class="font-semibold mb-4">Label on top</span>
+                        <label class="asm-mat-label">
+                            <span>Label on top</span>
                             <mat-form-field class="flex-auto">
                                 <input matInput>
                             </mat-form-field>
-                        </div>
+                        </label>
 
-                        <div class="flex flex-col">
-                            <span class="font-semibold mb-4">Label on top</span>
+                        <label class="asm-mat-label">
+                            <span>Label on top</span>
                             <mat-form-field class="flex-auto">
                                 <input matInput
                                        [placeholder]="'with optional placeholder'">
                             </mat-form-field>
-                        </div>
+                        </label>
 
                         <mat-divider class="mt-24 mb-48"></mat-divider>
 
-                        <div class="flex items-baseline">
-                            <span class="font-semibold mr-16">Label on side</span>
+                        <label class="asm-mat-label asm-start">
+                            <span>Label on start</span>
                             <mat-form-field class="flex-auto">
                                 <input matInput>
                             </mat-form-field>
-                        </div>
+                        </label>
 
-                        <div class="flex items-baseline">
-                            <span class="font-semibold mr-16">Label on side</span>
+                        <label class="asm-mat-label asm-start">
+                            <span>Label on start</span>
                             <mat-form-field class="flex-auto">
                                 <input matInput
                                        [placeholder]="'with optional placeholder'">
                             </mat-form-field>
-                        </div>
+                        </label>
+
+                        <mat-divider class="mt-24 mb-40"></mat-divider>
+
+                        <label class="asm-mat-label asm-end">
+                            <span>Label on end</span>
+                            <mat-form-field class="flex-auto">
+                                <input matInput>
+                            </mat-form-field>
+                        </label>
+
+                        <label class="asm-mat-label asm-end">
+                            <span>Label on end</span>
+                            <mat-form-field class="flex-auto">
+                                <input matInput
+                                       [placeholder]="'with optional placeholder'">
+                            </mat-form-field>
+                        </label>
 
                         <div class="flex items-center justify-end border-t -mx-32 mt-20 px-32 pt-20">
                             <button mat-button>

@@ -9,10 +9,7 @@ module.exports = plugin(({addVariant, theme}) => {
 
     const variant = ({container}) => {
 
-        let map = '';
-
         _.forEach(theme('fontFamily'), (value, key) => {
-            // map = `${map} '${key}': '${theme('boxShadow.' + key)}',\n`;
 
             container.append(
                 postcss.decl({

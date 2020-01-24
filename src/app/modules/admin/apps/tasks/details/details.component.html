@@ -51,14 +51,16 @@
 
     <!-- Title -->
     <div class="title">
-        <div class="label">{{task.type === 'task' ? 'Task title' : 'Section title'}}</div>
-        <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
-            <textarea matInput
-                      asmAutogrow
-                      [formControlName]="'title'"
-                      [spellcheck]="false"
-                      #titleField></textarea>
-        </mat-form-field>
+        <label class="asm-mat-label">
+            <span>{{task.type === 'task' ? 'Task title' : 'Section title'}}</span>
+            <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
+                <textarea matInput
+                          asmAutogrow
+                          [formControlName]="'title'"
+                          [spellcheck]="false"
+                          #titleField></textarea>
+            </mat-form-field>
+        </label>
     </div>
 
     <!-- Tags -->
@@ -274,13 +276,15 @@
 
     <!-- Notes -->
     <div class="notes">
-        <div class="label">Notes</div>
-        <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
-            <textarea matInput
-                      asmAutogrow
-                      [formControlName]="'notes'"
-                      [spellcheck]="false"></textarea>
-        </mat-form-field>
+        <label class="asm-mat-label">
+            <span>Notes</span>
+            <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
+                <textarea matInput
+                          asmAutogrow
+                          [formControlName]="'notes'"
+                          [spellcheck]="false"></textarea>
+            </mat-form-field>
+        </label>
     </div>
 
 </form>
