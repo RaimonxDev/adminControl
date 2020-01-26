@@ -41,10 +41,10 @@ export const adminRoutes: Route[] = [{
 
                 {path: 'confirmation-required', loadChildren: () => import('./pages/authentication/confirmation-required/confirmation-required.module').then(m => m.ConfirmationRequiredModule)},
                 {path: 'forgot-password', loadChildren: () => import('./pages/authentication/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)},
-                {path: 'login', loadChildren: () => import('./pages/authentication/login/login.module').then(m => m.LoginModule)},
-                {path: 'logout', loadChildren: () => import('./pages/authentication/logout/logout.module').then(m => m.LogoutModule)},
                 {path: 'reset-password', loadChildren: () => import('./pages/authentication/reset-password/reset-password.module').then(m => m.ResetPasswordModule)},
-                {path: 'signup', loadChildren: () => import('./pages/authentication/signup/signup.module').then(m => m.SignupModule)},
+                {path: 'sign-in', loadChildren: () => import('app/modules/admin/pages/authentication/sign-in/sign-in.module').then(m => m.SignInModule)},
+                {path: 'sign-up', loadChildren: () => import('app/modules/admin/pages/authentication/sign-up/sign-up.module').then(m => m.SignUpModule)},
+                {path: 'sign-out', loadChildren: () => import('app/modules/admin/pages/authentication/sign-out/sign-out.module').then(m => m.SignOutModule)},
                 {path: 'unlock-session', loadChildren: () => import('./pages/authentication/unlock-session/unlock-session.module').then(m => m.UnlockSessionModule)}
             ]},
 

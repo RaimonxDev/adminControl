@@ -4,29 +4,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { SignupComponent } from 'app/modules/admin/pages/authentication/signup/signup.component';
-import { signupRoutes } from 'app/modules/admin/pages/authentication/signup/signup.routing';
+import { SignInComponent } from 'app/modules/admin/pages/authentication/sign-in/sign-in.component';
+import { signInRoutes } from 'app/modules/admin/pages/authentication/sign-in/sign-in.routing';
 
 @NgModule({
     declarations: [
-        SignupComponent
+        SignInComponent
     ],
     imports     : [
-        RouterModule.forChild(signupRoutes),
+        RouterModule.forChild(signInRoutes),
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
-        MatSelectModule,
         AsmCardModule,
         AsmMessageModule,
         AsmSpinnerModule,
         SharedModule
     ]
 })
-export class SignupModule
+export class SignInModule
 {
 }

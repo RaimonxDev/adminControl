@@ -1,45 +1,53 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormGroup, ValidatorFn } from '@angular/forms';
 
 export class AsmValidators
 {
     /**
-     * Confirm password validator
+     * Check for empty (optional fields) values
      *
-     * @param passwordField
-     * @param passwordConfirmField
-     * @returns {ValidationErrors | null}
+     * @param value
      */
-    static confirmPassword(passwordField: string = 'password', passwordConfirmField: string = 'passwordConfirm'): ValidatorFn
+    static isEmptyInputValue(value: any): boolean
     {
-        return (control: AbstractControl): ValidationErrors | null => {
+        return value == null || value.length === 0;
+    }
 
-            if ( !control.parent || !control )
+    /**
+     * Must match validator
+     *
+     * @param controlPath A dot-delimited string values that define the path to the control.
+     * @param matchingControlPath A dot-delimited string values that define the path to the matching control.
+     */
+    static mustMatch(controlPath: string, matchingControlPath: string): ValidatorFn
+    {
+        return (formGroup: FormGroup): null => {
+
+            // Get the control and matching control
+            const control = formGroup.get(controlPath);
+            const matchingControl = formGroup.get(matchingControlPath);
+
+            // Return if control or matching control doesn't exist
+            if ( !control || !matchingControl )
             {
-                return null;
+                return;
             }
 
-            const password = control.parent.get(passwordField);
-            const passwordConfirm = control.parent.get(passwordConfirmField);
-
-            if ( !password || !passwordConfirm )
+            // Delete the mustMatch error to reset the error on the matching control
+            if ( matchingControl.hasError('mustMatch') )
             {
-                return null;
+                delete matchingControl.errors.mustMatch;
+                matchingControl.updateValueAndValidity();
             }
 
-            if ( passwordConfirm.value === '' )
+            // Don't validate empty values on the matching control
+            // Don't validate if values are matching
+            if ( this.isEmptyInputValue(matchingControl.value) || control.value === matchingControl.value )
             {
-                return null;
+                return;
             }
 
-            if ( password.value === passwordConfirm.value )
-            {
-                return null;
-            }
-
-            return {
-                passwordsNotMatching: true
-            };
-
+            // Set the validation error on the matching control
+            matchingControl.setErrors({mustMatch: true});
         };
     }
 }

@@ -1,31 +1,34 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'coming-soon',
-    templateUrl  : './coming-soon.component.html',
-    styleUrls    : ['./coming-soon.component.scss'],
+    selector     : 'sign-in',
+    templateUrl  : './sign-in.component.html',
+    styleUrls    : ['./sign-in.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class ComingSoonComponent implements OnInit
+export class SignInComponent implements OnInit
 {
     cardStyle: string;
-    comingSoonForm: FormGroup;
+    signInForm: FormGroup;
     message: any;
 
     /**
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {AuthService} _authService
      * @param {FormBuilder} _formBuilder
      * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _authService: AuthService,
         private _formBuilder: FormBuilder,
         private _router: Router
     )
@@ -44,8 +47,9 @@ export class ComingSoonComponent implements OnInit
     ngOnInit(): void
     {
         // Create the form
-        this.comingSoonForm = this._formBuilder.group({
-            email: ['', [Validators.required, Validators.email]]
+        this.signInForm = this._formBuilder.group({
+            email   : [''],
+            password: ['']
         });
 
         // Set the card style for the first time
@@ -89,18 +93,12 @@ export class ComingSoonComponent implements OnInit
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register
+     * Sign in
      */
-    register(): void
+    signIn(): void
     {
-        // Do nothing if the form is invalid
-        if ( this.comingSoonForm.invalid )
-        {
-            return;
-        }
-
         // Disable the form
-        this.comingSoonForm.disable();
+        this.signInForm.disable();
 
         // Hide the message
         this.message = null;
@@ -111,16 +109,17 @@ export class ComingSoonComponent implements OnInit
         setTimeout(() => {
 
             // Re-enable the form
-            this.comingSoonForm.enable();
+            this.signInForm.enable();
 
             // Reset the form
-            this.comingSoonForm.reset({});
+            this.signInForm.reset({});
 
             // Show the message
             this.message = {
-                type   : 'success',
-                content: 'You have been registered to the list.',
-                shake  : false
+                content : 'Invalid email or password',
+                shake   : true,
+                showIcon: false,
+                type    : 'error'
             };
         }, 1000);
     }

@@ -365,77 +365,115 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'lock',
         children: [
             {
-                id      : 'pages.authentication.login',
-                title   : 'Login',
+                id      : 'pages.authentication.sign-in',
+                title   : 'Sign in',
                 type    : 'collapsable',
                 children: [
                     {
-                        id   : 'pages.authentication.login.classic',
+                        id   : 'pages.authentication.sign-in.classic',
                         title: 'Classic',
                         type : 'basic',
-                        link : '/pages/authentication/login/classic'
+                        link : '/pages/authentication/sign-in/classic'
                     },
                     {
-                        id   : 'pages.authentication.login.modern',
+                        id   : 'pages.authentication.sign-in.modern',
                         title: 'Modern',
                         type : 'basic',
-                        link : '/pages/authentication/login/modern'
+                        link : '/pages/authentication/sign-in/modern'
                     },
                     {
-                        id   : 'pages.authentication.login.modern-alt',
+                        id   : 'pages.authentication.sign-in.modern-alt',
                         title: 'Modern Alt.',
                         type : 'basic',
-                        link : '/pages/authentication/login/modern-alt'
+                        link : '/pages/authentication/sign-in/modern-alt'
                     },
                     {
-                        id   : 'pages.authentication.login.fullscreen',
+                        id   : 'pages.authentication.sign-in.fullscreen',
                         title: 'Fullscreen',
                         type : 'basic',
-                        link : '/pages/authentication/login/fullscreen'
+                        link : '/pages/authentication/sign-in/fullscreen'
                     },
                     {
-                        id   : 'pages.authentication.login.fullscreen-alt',
+                        id   : 'pages.authentication.sign-in.fullscreen-alt',
                         title: 'Fullscreen Alt.',
                         type : 'basic',
-                        link : '/pages/authentication/login/fullscreen-alt'
+                        link : '/pages/authentication/sign-in/fullscreen-alt'
                     }
                 ]
             },
             {
-                id      : 'pages.authentication.signup',
+                id      : 'pages.authentication.sign-up',
                 title   : 'Sign up',
                 type    : 'collapsable',
-                link    : '/pages/authentication/signup',
+                link    : '/pages/authentication/sign-up',
                 children: [
                     {
-                        id   : 'pages.authentication.signup.classic',
+                        id   : 'pages.authentication.sign-up.classic',
                         title: 'Classic',
                         type : 'basic',
-                        link : '/pages/authentication/signup/classic'
+                        link : '/pages/authentication/sign-up/classic'
                     },
                     {
-                        id   : 'pages.authentication.signup.modern',
+                        id   : 'pages.authentication.sign-up.modern',
                         title: 'Modern',
                         type : 'basic',
-                        link : '/pages/authentication/signup/modern'
+                        link : '/pages/authentication/sign-up/modern'
                     },
                     {
-                        id   : 'pages.authentication.signup.modern-alt',
+                        id   : 'pages.authentication.sign-up.modern-alt',
                         title: 'Modern Alt.',
                         type : 'basic',
-                        link : '/pages/authentication/signup/modern-alt'
+                        link : '/pages/authentication/sign-up/modern-alt'
                     },
                     {
-                        id   : 'pages.authentication.signup.fullscreen',
+                        id   : 'pages.authentication.sign-up.fullscreen',
                         title: 'Fullscreen',
                         type : 'basic',
-                        link : '/pages/authentication/signup/fullscreen'
+                        link : '/pages/authentication/sign-up/fullscreen'
                     },
                     {
-                        id   : 'pages.authentication.signup.fullscreen-alt',
+                        id   : 'pages.authentication.sign-up.fullscreen-alt',
                         title: 'Fullscreen Alt.',
                         type : 'basic',
-                        link : '/pages/authentication/signup/fullscreen-alt'
+                        link : '/pages/authentication/sign-up/fullscreen-alt'
+                    }
+                ]
+            },
+            {
+                id      : 'pages.authentication.sign-out',
+                title   : 'Sign out',
+                type    : 'collapsable',
+                link    : '/pages/authentication/sign-out',
+                children: [
+                    {
+                        id   : 'pages.authentication.sign-out.classic',
+                        title: 'Classic',
+                        type : 'basic',
+                        link : '/pages/authentication/sign-out/classic'
+                    },
+                    {
+                        id   : 'pages.authentication.sign-out.modern',
+                        title: 'Modern',
+                        type : 'basic',
+                        link : '/pages/authentication/sign-out/modern'
+                    },
+                    {
+                        id   : 'pages.authentication.sign-out.modern-alt',
+                        title: 'Modern Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/sign-out/modern-alt'
+                    },
+                    {
+                        id   : 'pages.authentication.sign-out.fullscreen',
+                        title: 'Fullscreen',
+                        type : 'basic',
+                        link : '/pages/authentication/sign-out/fullscreen'
+                    },
+                    {
+                        id   : 'pages.authentication.sign-out.fullscreen-alt',
+                        title: 'Fullscreen Alt.',
+                        type : 'basic',
+                        link : '/pages/authentication/sign-out/fullscreen-alt'
                     }
                 ]
             },
@@ -512,44 +550,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         title: 'Fullscreen Alt.',
                         type : 'basic',
                         link : '/pages/authentication/reset-password/fullscreen-alt'
-                    }
-                ]
-            },
-            {
-                id      : 'pages.authentication.logout',
-                title   : 'Logout',
-                type    : 'collapsable',
-                link    : '/pages/authentication/logout',
-                children: [
-                    {
-                        id   : 'pages.authentication.logout.classic',
-                        title: 'Classic',
-                        type : 'basic',
-                        link : '/pages/authentication/logout/classic'
-                    },
-                    {
-                        id   : 'pages.authentication.logout.modern',
-                        title: 'Modern',
-                        type : 'basic',
-                        link : '/pages/authentication/logout/modern'
-                    },
-                    {
-                        id   : 'pages.authentication.logout.modern-alt',
-                        title: 'Modern Alt.',
-                        type : 'basic',
-                        link : '/pages/authentication/logout/modern-alt'
-                    },
-                    {
-                        id   : 'pages.authentication.logout.fullscreen',
-                        title: 'Fullscreen',
-                        type : 'basic',
-                        link : '/pages/authentication/logout/fullscreen'
-                    },
-                    {
-                        id   : 'pages.authentication.logout.fullscreen-alt',
-                        title: 'Fullscreen Alt.',
-                        type : 'basic',
-                        link : '/pages/authentication/logout/fullscreen-alt'
                     }
                 ]
             },

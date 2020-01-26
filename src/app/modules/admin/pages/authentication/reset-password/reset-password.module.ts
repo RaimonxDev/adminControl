@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { ResetPasswordComponent } from 'app/modules/admin/pages/authentication/reset-password/reset-password.component';
@@ -20,7 +19,6 @@ import { resetPasswordRoutes } from 'app/modules/admin/pages/authentication/rese
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
-        MatSelectModule,
         AsmCardModule,
         AsmMessageModule,
         AsmSpinnerModule,

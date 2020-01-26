@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
-import { LoginComponent } from 'app/modules/admin/pages/authentication/login/login.component';
+import { SignInComponent } from 'app/modules/admin/pages/authentication/sign-in/sign-in.component';
 
-export const loginRoutes: Route[] = [
+export const signInRoutes: Route[] = [
     // Redirect empty route
     {
         path      : '',
@@ -11,7 +11,7 @@ export const loginRoutes: Route[] = [
     // Use 'empty' layout on 'fullscreen' style
     {
         path     : 'fullscreen',
-        component: LoginComponent,
+        component: SignInComponent,
         data     : {
             layout: 'empty'
         }
@@ -19,7 +19,7 @@ export const loginRoutes: Route[] = [
     // Use 'empty' layout on 'fullscreen-alt' style
     {
         path     : 'fullscreen-alt',
-        component: LoginComponent,
+        component: SignInComponent,
         data     : {
             layout: 'empty'
         }
@@ -27,6 +27,6 @@ export const loginRoutes: Route[] = [
     // Use defaults on other styles
     {
         path     : '**',
-        component: LoginComponent
+        component: SignInComponent
     }
 ];

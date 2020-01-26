@@ -1,6 +1,6 @@
 @import 'assembly';
 
-confirmation-required {
+sign-up {
 
     .content-layout {
         align-items: center;
@@ -98,21 +98,44 @@ confirmation-required {
                     margin: 56px 0 0 0;
                 }
 
-                p {
-
-                    + p {
-                        margin-top: 0;
-                    }
+                asm-message {
+                    margin-top: 40px;
+                    margin-bottom: -24px;
                 }
 
-                .footer-link {
-                    width: 100%;
-                    margin-top: 16px;
-                    font-size: 13px;
-                    font-weight: 500;
+                form {
+                    margin-top: 40px;
 
-                    .link {
-                        margin-left: 4px;
+                    .mat-form-field {
+                        width: 100%;
+                    }
+
+                    .terms-and-privacy {
+                        margin-top: 8px;
+
+                        .link {
+                            margin: 0 4px;
+
+                            &:last-of-type {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+
+                    .submit-button {
+                        width: 100%;
+                        margin-top: 24px;
+                    }
+
+                    .footer-link {
+                        width: 100%;
+                        margin-top: 16px;
+                        font-size: 13px;
+                        font-weight: 500;
+
+                        .link {
+                            margin-left: 4px;
+                        }
                     }
                 }
             }
@@ -185,7 +208,7 @@ confirmation-required {
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    confirmation-required {
+    sign-up {
 
         asm-card {
 
@@ -208,10 +231,13 @@ confirmation-required {
                     }
                 }
 
-                .footer-link {
+                form {
 
-                    span {
-                        color: map-get($foreground, secondary-text);
+                    .footer-link {
+
+                        span {
+                            color: map-get($foreground, secondary-text);
+                        }
                     }
                 }
             }

@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { SignupComponent } from 'app/modules/admin/pages/authentication/signup/signup.component';
+import { SignUpComponent } from 'app/modules/admin/pages/authentication/sign-up/sign-up.component';
 
 export const signupRoutes: Route[] = [
     // Redirect empty route
@@ -11,7 +11,7 @@ export const signupRoutes: Route[] = [
     // Use 'empty' layout on 'fullscreen' style
     {
         path     : 'fullscreen',
-        component: SignupComponent,
+        component: SignUpComponent,
         data     : {
             layout: 'empty'
         }
@@ -19,7 +19,7 @@ export const signupRoutes: Route[] = [
     // Use 'empty' layout on 'fullscreen-alt' style
     {
         path     : 'fullscreen-alt',
-        component: SignupComponent,
+        component: SignUpComponent,
         data     : {
             layout: 'empty'
         }
@@ -27,6 +27,6 @@ export const signupRoutes: Route[] = [
     // Use defaults on other styles
     {
         path     : '**',
-        component: SignupComponent
+        component: SignUpComponent
     }
 ];

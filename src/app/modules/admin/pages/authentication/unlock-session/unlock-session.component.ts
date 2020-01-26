@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly';
@@ -15,7 +15,6 @@ export class UnlockSessionComponent implements OnInit
 {
     cardStyle: string;
     message: any;
-    messageAnimationState: boolean;
     name: string;
     unlockSessionForm: FormGroup;
 
@@ -34,7 +33,6 @@ export class UnlockSessionComponent implements OnInit
     {
         // Set the defaults
         this.message = null;
-        this.messageAnimationState = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -57,7 +55,7 @@ export class UnlockSessionComponent implements OnInit
                     disabled: true
                 }
             ],
-            password: ['', Validators.required]
+            password: ['']
         });
 
         // Set the card style for the first time
@@ -94,5 +92,41 @@ export class UnlockSessionComponent implements OnInit
 
         // Set the card style from the path
         this.cardStyle = route.snapshot.url[0].path;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Unlock
+     */
+    unlock(): void
+    {
+        // Disable the form
+        this.unlockSessionForm.disable();
+
+        // Hide the message
+        this.message = null;
+
+        // Do your action here...
+
+        // Emulate server delay
+        setTimeout(() => {
+
+            // Re-enable the form
+            this.unlockSessionForm.enable();
+
+            // Reset the form
+            this.unlockSessionForm.reset({});
+
+            // Show the message
+            this.message = {
+                content : 'Invalid password',
+                shake   : true,
+                showIcon: false,
+                type    : 'error'
+            };
+        }, 1000);
     }
 }

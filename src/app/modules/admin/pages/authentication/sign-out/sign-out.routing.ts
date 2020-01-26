@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
-import { LogoutComponent } from 'app/modules/admin/pages/authentication/logout/logout.component';
+import { SignOutComponent } from 'app/modules/admin/pages/authentication/sign-out/sign-out.component';
 
-export const logoutRoutes: Route[] = [
+export const signOutRoutes: Route[] = [
     // Redirect empty route
     {
         path      : '',
@@ -11,7 +11,7 @@ export const logoutRoutes: Route[] = [
     // Use 'empty' layout on 'fullscreen' style
     {
         path     : 'fullscreen',
-        component: LogoutComponent,
+        component: SignOutComponent,
         data     : {
             layout: 'empty'
         }
@@ -19,7 +19,7 @@ export const logoutRoutes: Route[] = [
     // Use 'empty' layout on 'fullscreen-alt' style
     {
         path     : 'fullscreen-alt',
-        component: LogoutComponent,
+        component: SignOutComponent,
         data     : {
             layout: 'empty'
         }
@@ -27,6 +27,6 @@ export const logoutRoutes: Route[] = [
     // Use defaults on other styles
     {
         path     : '**',
-        component: LogoutComponent
+        component: SignOutComponent
     }
 ];

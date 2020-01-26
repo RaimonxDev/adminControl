@@ -1,12 +1,13 @@
 @import 'assembly';
 
-confirmation-required {
+sign-out {
 
     .content-layout {
         align-items: center;
         justify-content: center;
 
         asm-card {
+
             margin: 8px;
 
             // Classic style
@@ -98,16 +99,18 @@ confirmation-required {
                     margin: 56px 0 0 0;
                 }
 
-                p {
+                .subtitle {
+                    margin: 2px 0 0 0;
+                }
 
-                    + p {
-                        margin-top: 0;
-                    }
+                asm-message {
+                    margin-top: 40px;
+                    margin-bottom: -24px;
                 }
 
                 .footer-link {
                     width: 100%;
-                    margin-top: 16px;
+                    margin-top: 56px;
                     font-size: 13px;
                     font-weight: 500;
 
@@ -185,7 +188,7 @@ confirmation-required {
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    confirmation-required {
+    sign-out {
 
         asm-card {
 
@@ -206,6 +209,10 @@ confirmation-required {
                             display: none;
                         }
                     }
+                }
+
+                .subtitle {
+                    color: map-get($foreground, secondary-text);
                 }
 
                 .footer-link {

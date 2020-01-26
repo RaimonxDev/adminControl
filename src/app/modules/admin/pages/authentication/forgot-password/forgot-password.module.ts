@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { ForgotPasswordComponent } from 'app/modules/admin/pages/authentication/forgot-password/forgot-password.component';
@@ -20,7 +19,6 @@ import { forgotPasswordRoutes } from 'app/modules/admin/pages/authentication/for
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
-        MatSelectModule,
         AsmCardModule,
         AsmMessageModule,
         AsmSpinnerModule,

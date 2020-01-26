@@ -2,21 +2,22 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
-import { AsmAnimations, AsmValidators } from '@assembly';
+import { filter } from 'rxjs/operators';
+import { AsmAnimations } from '@assembly';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'signup',
-    templateUrl  : './signup.component.html',
-    styleUrls    : ['./signup.component.scss'],
+    selector     : 'sign-up',
+    templateUrl  : './sign-up.component.html',
+    styleUrls    : ['./sign-up.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class SignupComponent implements OnInit, OnDestroy
+export class SignUpComponent implements OnInit, OnDestroy
 {
     cardStyle: string;
     message: any;
-    signupForm: FormGroup;
+    signUpForm: FormGroup;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -25,11 +26,13 @@ export class SignupComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {AuthService} _authService
      * @param {FormBuilder} _formBuilder
      * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _authService: AuthService,
         private _formBuilder: FormBuilder,
         private _router: Router
     )
@@ -51,20 +54,14 @@ export class SignupComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Create the form
-        this.signupForm = this._formBuilder.group({
-            name           : ['', Validators.required],
-            email          : ['', [Validators.required, Validators.email]],
-            password       : ['', Validators.required],
-            passwordConfirm: ['', [Validators.required, AsmValidators.confirmPassword()]]
-        });
-
-        // Update the validity of the 'passwordConfirm' field
-        // when the 'password' field changes
-        this.signupForm.get('password').valueChanges
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-                this.signupForm.get('passwordConfirm').updateValueAndValidity();
-            });
+        this.signUpForm = this._formBuilder.group({
+                name      : ['', Validators.required],
+                email     : ['', [Validators.required, Validators.email]],
+                password  : ['', Validators.required],
+                company   : [''],
+                agreements: ['', Validators.requiredTrue]
+            }
+        );
 
         // Set the card style for the first time
         this._setCardStyle();
@@ -110,5 +107,47 @@ export class SignupComponent implements OnInit, OnDestroy
 
         // Set the card style from the path
         this.cardStyle = route.snapshot.url[0].path;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Sign up
+     */
+    signUp(): void
+    {
+        // Do nothing if the form is invalid
+        if ( this.signUpForm.invalid )
+        {
+            return;
+        }
+
+        // Disable the form
+        this.signUpForm.disable();
+
+        // Hide the message
+        this.message = null;
+
+        // Do your action here...
+
+        // Emulate server delay
+        setTimeout(() => {
+
+            // Re-enable the form
+            this.signUpForm.enable();
+
+            // Reset the form
+            this.signUpForm.reset({});
+
+            // Show the message
+            this.message = {
+                content : 'Your account has been created and a confirmation mail has been sent to your email address.',
+                shake   : false,
+                showIcon: false,
+                type    : 'success'
+            };
+        }, 1000);
     }
 }

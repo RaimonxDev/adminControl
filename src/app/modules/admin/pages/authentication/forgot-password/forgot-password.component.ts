@@ -83,4 +83,46 @@ export class ForgotPasswordComponent implements OnInit
         // Set the card style from the path
         this.cardStyle = route.snapshot.url[0].path;
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Send the reset link
+     */
+    sendResetLink(): void
+    {
+        // Do nothing if the form is invalid
+        if ( this.forgotPasswordForm.invalid )
+        {
+            return;
+        }
+
+        // Disable the form
+        this.forgotPasswordForm.disable();
+
+        // Hide the message
+        this.message = null;
+
+        // Do your action here...
+
+        // Emulate server delay
+        setTimeout(() => {
+
+            // Re-enable the form
+            this.forgotPasswordForm.enable();
+
+            // Reset the form
+            this.forgotPasswordForm.reset({});
+
+            // Show the message
+            this.message = {
+                content : 'Password reset sent! You\'ll receive an email if you are registered on our system.',
+                shake   : false,
+                showIcon: false,
+                type    : 'success'
+            };
+        }, 1000);
+    }
 }

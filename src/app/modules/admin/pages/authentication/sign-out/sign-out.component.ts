@@ -1,37 +1,43 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly';
+import { interval, Subject } from 'rxjs';
+import { filter, take, takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector     : 'login',
-    templateUrl  : './login.component.html',
-    styleUrls    : ['./login.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    selector     : 'sign-out',
+    templateUrl  : './sign-out.component.html',
+    styleUrls    : ['./sign-out.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent implements OnInit
+export class SignOutComponent implements OnInit, OnDestroy
 {
     cardStyle: string;
-    loginForm: FormGroup;
-    message: any;
+    countdown: number;
+    countdownMapping: any;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {FormBuilder} _formBuilder
      * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _formBuilder: FormBuilder,
         private _router: Router
     )
     {
+        // Set the private default
+        this._unsubscribeAll = new Subject();
+
         // Set the defaults
-        this.message = null;
+        this.countdown = 5;
+        this.countdownMapping = {
+            '=1'   : '# second',
+            'other': '# seconds'
+        };
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -43,11 +49,23 @@ export class LoginComponent implements OnInit
      */
     ngOnInit(): void
     {
-        // Create the form
-        this.loginForm = this._formBuilder.group({
-            email   : ['', [Validators.required, Validators.email]],
-            password: ['', Validators.required]
-        });
+        // Get the duration
+        const duration = this.countdown;
+
+        // Redirect after the countdown
+        interval(1000)
+            .pipe(
+                take(duration),
+                takeUntil(this._unsubscribeAll)
+            )
+            .subscribe(() => {
+                    this.countdown--;
+                },
+                () => {
+                },
+                () => {
+                }
+            );
 
         // Set the card style for the first time
         this._setCardStyle();
@@ -60,6 +78,16 @@ export class LoginComponent implements OnInit
                 // Set the card style
                 this._setCardStyle();
             });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -52,17 +52,13 @@ export class ResetPasswordComponent implements OnInit, OnDestroy
     {
         // Create the form
         this.resetPasswordForm = this._formBuilder.group({
-            password       : ['', Validators.required],
-            passwordConfirm: ['', [Validators.required, AsmValidators.confirmPassword()]]
-        });
-
-        // Update the validity of the 'passwordConfirm' field
-        // when the 'password' field changes
-        this.resetPasswordForm.get('password').valueChanges
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-                this.resetPasswordForm.get('passwordConfirm').updateValueAndValidity();
-            });
+                password       : ['', Validators.required],
+                passwordConfirm: ['', Validators.required]
+            },
+            {
+                validators: AsmValidators.mustMatch('password', 'passwordConfirm')
+            }
+        );
 
         // Set the card style for the first time
         this._setCardStyle();
@@ -108,5 +104,47 @@ export class ResetPasswordComponent implements OnInit, OnDestroy
 
         // Set the card style from the path
         this.cardStyle = route.snapshot.url[0].path;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Reset password
+     */
+    resetPassword(): void
+    {
+        // Do nothing if the form is invalid
+        if ( this.resetPasswordForm.invalid )
+        {
+            return;
+        }
+
+        // Disable the form
+        this.resetPasswordForm.disable();
+
+        // Hide the message
+        this.message = null;
+
+        // Do your action here...
+
+        // Emulate server delay
+        setTimeout(() => {
+
+            // Re-enable the form
+            this.resetPasswordForm.enable();
+
+            // Reset the form
+            this.resetPasswordForm.reset({});
+
+            // Show the message
+            this.message = {
+                content : 'Your password has been reset.',
+                shake   : false,
+                showIcon: false,
+                type    : 'success'
+            };
+        }, 1000);
     }
 }
