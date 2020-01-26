@@ -9,9 +9,9 @@ asm-date-range {
     .range {
         display: flex;
         align-items: center;
-        height: 56px;
-        min-height: 56px;
-        max-height: 56px;
+        height: 52px;
+        min-height: 52px;
+        max-height: 52px;
         cursor: pointer;
 
         .start,
@@ -19,8 +19,8 @@ asm-date-range {
             display: flex;
             align-items: center;
             height: 100%;
-            padding: 0 1em;
-            border-radius: 4px;
+            padding: 0 16px;
+            border-radius: 5px;
             border-width: 1px;
             line-height: 1;
 

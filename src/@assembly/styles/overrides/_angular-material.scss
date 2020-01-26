@@ -106,6 +106,33 @@
 }
 
 // -----------------------------------------------------------------------------------------------------
+// @ Checkbox
+// -----------------------------------------------------------------------------------------------------
+.mat-checkbox {
+
+    // Allow multiline text
+    .mat-checkbox-layout {
+        white-space: normal;
+
+        .mat-checkbox-inner-container {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 8px 0 0;
+
+            // Add a zero-width space character to trick the container
+            // into being the same height as a single line of the label
+            &:after {
+                content: '\200b';
+            }
+        }
+
+        .mat-checkbox-label {
+            line-height: inherit;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
 // @ Chip
 // -----------------------------------------------------------------------------------------------------
 .mat-chip {
@@ -163,12 +190,10 @@
         .mat-form-field-label-wrapper {
 
             .mat-form-field-label {
-                transform: translateY(-8px) scale(0.7857142857) !important;
-                width: 100% !important;
+                transform: translateY(-7px) scale(0.7857142857) !important;
             }
         }
     }
-
 
     // Fix the arrow for native select
     &.mat-form-field-type-mat-native-select {
@@ -202,13 +227,13 @@
 
     // Default style tweaks and enhancements
     .mat-form-field-wrapper {
-        margin-bottom: 12px;
-        padding-bottom: 18px;
+        margin-bottom: 16px;
+        padding-bottom: 0;
 
         .mat-form-field-flex {
             display: flex;
             align-items: stretch;
-            min-height: 56px;
+            min-height: 52px;
             border-radius: 5px;
             padding: 0 16px;
             border-width: 1px;
@@ -332,7 +357,7 @@
                     align-items: center;
                     margin-top: 0;
                     opacity: 0;
-                    transform: translateY(9px);
+                    transform: translateY(8px);
                 }
 
                 [matInputPrefix] {
@@ -346,7 +371,7 @@
                 .mat-input-element {
                     order: 2;
                     margin-top: 0;
-                    transform: translateY(9px);
+                    transform: translateY(8px);
                 }
 
                 // Textarea
@@ -436,7 +461,23 @@
 
         // Subscript tweaks
         .mat-form-field-subscript-wrapper {
+            position: relative;
+            top: auto;
             padding: 0;
+            margin-top: 0;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+
+            > div {
+                display: contents; // Remove the div from flow to stop the subscript animation
+            }
+
+            .mat-error,
+            .mat-hint {
+                display: block;
+                margin-top: 4px;
+            }
         }
     }
 
@@ -492,7 +533,7 @@
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
-                    border-radius: 28px;
+                    border-radius: 26px;
                 }
             }
         }
@@ -528,7 +569,7 @@
             .mat-form-field-wrapper {
 
                 .mat-form-field-flex {
-                    min-height: 52px;
+                    min-height: 48px;
                 }
             }
         }
@@ -619,6 +660,7 @@ label.asm-mat-label {
     min-height: 24px;
     font-size: 24px;
     line-height: 24px;
+    -webkit-appearance: none !important;
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -703,7 +745,7 @@ label.asm-mat-label {
         transform: translateY(0);
 
         .mat-select-arrow {
-            margin: 0 0 0 8px;
+            margin: 0 4px 0 2px;
         }
     }
 }
