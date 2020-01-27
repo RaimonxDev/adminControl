@@ -45,11 +45,11 @@ export class AuthService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Login
+     * Sign in
      *
      * @param credentials
      */
-    login(credentials: { email: string, password: string }): Observable<any>
+    signIn(credentials: { email: string, password: string }): Observable<any>
     {
         // Throw error, if the user is already logged in
         if ( this._authenticated )
@@ -57,7 +57,7 @@ export class AuthService
             return throwError('User is already logged in.');
         }
 
-        return this._httpClient.post('api/auth/login', credentials).pipe(
+        return this._httpClient.post('api/auth/sign-in', credentials).pipe(
             switchMap((response: any) => {
 
                 // Store the access token in the local storage
@@ -73,9 +73,9 @@ export class AuthService
     }
 
     /**
-     * Login using the access token
+     * Sign in using the access token
      */
-    loginUsingToken(): Observable<any>
+    signInUsingToken(): Observable<any>
     {
         // Renew token
         return this._httpClient.post('api/auth/refresh-access-token', {
@@ -101,9 +101,9 @@ export class AuthService
     }
 
     /**
-     * Logout
+     * Sign out
      */
-    logout(): Observable<any>
+    signOut(): Observable<any>
     {
         // Remove the access token from the local storage
         localStorage.removeItem('accessToken');
@@ -139,6 +139,6 @@ export class AuthService
         }
 
         // If the access token exists and it didn't expire, login using it
-        return this.loginUsingToken();
+        return this.signInUsingToken();
     }
 }

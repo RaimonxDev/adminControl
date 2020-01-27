@@ -1,16 +1,16 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'app/core/auth/auth.service';
 import { interval, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'auth-logout',
-    templateUrl  : './logout.component.html',
-    styleUrls    : ['./logout.component.scss'],
+    selector     : 'auth-sign-out',
+    templateUrl  : './sign-out.component.html',
+    styleUrls    : ['./sign-out.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AuthLogoutComponent implements OnInit, OnDestroy
+export class AuthSignOutComponent implements OnInit, OnDestroy
 {
     countdown: number;
     countdownMapping: any;
@@ -49,8 +49,8 @@ export class AuthLogoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Logout
-        this._authService.logout();
+        // Sign out
+        this._authService.signOut();
 
         // Get the duration
         const duration = this.countdown;
@@ -67,7 +67,7 @@ export class AuthLogoutComponent implements OnInit, OnDestroy
                 () => {
                 },
                 () => {
-                    this._router.navigate(['login']);
+                    this._router.navigate(['sign-in']);
                 }
             );
     }

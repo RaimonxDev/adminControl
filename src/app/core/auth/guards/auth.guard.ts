@@ -43,7 +43,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
                            if ( !authenticated )
                            {
                                // Redirect to the login page
-                               this._router.navigate(['login'], {queryParams: {redirectURL}});
+                               this._router.navigate(['sign-in'], {queryParams: {redirectURL}});
 
                                // Prevent the access
                                return of(false);
@@ -69,7 +69,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
     {
         let redirectUrl = state.url;
 
-        if ( redirectUrl === '/logout' )
+        if ( redirectUrl === '/sign-out' )
         {
             redirectUrl = '/';
         }
@@ -87,7 +87,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
     {
         let redirectUrl = state.url;
 
-        if ( redirectUrl === '/logout' )
+        if ( redirectUrl === '/sign-out' )
         {
             redirectUrl = '/';
         }

@@ -3,20 +3,20 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { AsmCardModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { AuthConfirmationRequiredComponent } from 'app/modules/auth/confirmation-required/confirmation-required.component';
-import { authConfirmationRequiredRoutes } from 'app/modules/auth/confirmation-required/confirmation-required.routing';
+import { AuthSignOutComponent } from 'app/modules/auth/sign-out/sign-out.component';
+import { authSignOutRoutes } from 'app/modules/auth/sign-out/sign-out.routing';
 
 @NgModule({
     declarations: [
-        AuthConfirmationRequiredComponent
+        AuthSignOutComponent
     ],
     imports     : [
-        RouterModule.forChild(authConfirmationRequiredRoutes),
+        RouterModule.forChild(authSignOutRoutes),
         MatButtonModule,
         AsmCardModule,
         SharedModule
     ]
 })
-export class AuthConfirmationRequiredModule
+export class AuthSignOutModule
 {
 }

@@ -129,7 +129,7 @@ export class MockAuthApi
         // -----------------------------------------------------------------------------------------------------
 
         this._asmMockApiService
-            .onPost('api/auth/login', 1500)
+            .onPost('api/auth/sign-in', 1500)
             .reply((request) => {
 
                 // Login successful

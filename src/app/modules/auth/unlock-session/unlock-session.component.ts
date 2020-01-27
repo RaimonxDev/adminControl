@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AsmAnimations } from '@assembly';
-import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'auth-unlock-session',
@@ -20,16 +18,10 @@ export class AuthUnlockSessionComponent implements OnInit
     /**
      * Constructor
      *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {AuthService} _authService
      * @param {FormBuilder} _formBuilder
-     * @param {Router} _router
      */
     constructor(
-        private _activatedRoute: ActivatedRoute,
-        private _authService: AuthService,
-        private _formBuilder: FormBuilder,
-        private _router: Router
+        private _formBuilder: FormBuilder
     )
     {
         // Set the defaults
@@ -56,7 +48,48 @@ export class AuthUnlockSessionComponent implements OnInit
                     disabled: true
                 }
             ],
-            password: ['', Validators.required]
+            password: ['']
         });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Unlock
+     */
+    unlock(): void
+    {
+        // Disable the form
+        this.unlockSessionForm.disable();
+
+        // Hide the message
+        this.message = null;
+
+        // Do your action here...
+
+        // Emulate server delay
+        setTimeout(() => {
+
+            // Re-enable the form
+            this.unlockSessionForm.enable();
+
+            // Reset the form
+            this.unlockSessionForm.reset({
+                name: {
+                    value   : this.name,
+                    disabled: true
+                }
+            });
+
+            // Show the message
+            this.message = {
+                content : 'Invalid password',
+                shake   : true,
+                showIcon: false,
+                type    : 'error'
+            };
+        }, 1000);
     }
 }

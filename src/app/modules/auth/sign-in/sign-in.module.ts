@@ -6,15 +6,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { AuthSignupComponent } from 'app/modules/auth/signup/signup.component';
-import { authSignupRoutes } from 'app/modules/auth/signup/signup.routing';
+import { AuthSignInComponent } from 'app/modules/auth/sign-in/sign-in.component';
+import { authSignInRoutes } from 'app/modules/auth/sign-in/sign-in.routing';
 
 @NgModule({
     declarations: [
-        AuthSignupComponent
+        AuthSignInComponent
     ],
     imports     : [
-        RouterModule.forChild(authSignupRoutes),
+        RouterModule.forChild(authSignInRoutes),
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
@@ -25,6 +25,6 @@ import { authSignupRoutes } from 'app/modules/auth/signup/signup.routing';
         SharedModule
     ]
 })
-export class AuthSignupModule
+export class AuthSignInModule
 {
 }

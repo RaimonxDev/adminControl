@@ -160,11 +160,11 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Logout
+     * Sign out
      */
-    logout(): void
+    signOut(): void
     {
-        this._router.navigate(['/logout']);
+        this._router.navigate(['/sign-out']);
     }
 
     /**

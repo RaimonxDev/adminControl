@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AsmCardModule, AsmMessageModule, AsmSpinnerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
-import { AuthLoginComponent } from 'app/modules/auth/login/login.component';
-import { authLoginRoutes } from 'app/modules/auth/login/login.routing';
+import { AuthSignUpComponent } from 'app/modules/auth/sign-up/sign-up.component';
+import { authSignupRoutes } from 'app/modules/auth/sign-up/sign-up.routing';
 
 @NgModule({
     declarations: [
-        AuthLoginComponent
+        AuthSignUpComponent
     ],
     imports     : [
-        RouterModule.forChild(authLoginRoutes),
+        RouterModule.forChild(authSignupRoutes),
         MatButtonModule,
+        MatCheckboxModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
@@ -25,6 +27,6 @@ import { authLoginRoutes } from 'app/modules/auth/login/login.routing';
         SharedModule
     ]
 })
-export class AuthLoginModule
+export class AuthSignUpModule
 {
 }

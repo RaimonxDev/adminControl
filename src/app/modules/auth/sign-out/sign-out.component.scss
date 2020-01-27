@@ -1,12 +1,13 @@
 @import 'assembly';
 
-auth-reset-password {
+auth-sign-out {
 
     .content-layout {
         align-items: center;
         justify-content: center;
 
         asm-card {
+
             margin: 8px;
 
             // Classic style
@@ -95,8 +96,11 @@ auth-reset-password {
                 }
 
                 .title {
-                    max-width: 256px;
                     margin: 56px 0 0 0;
+                }
+
+                .subtitle {
+                    margin: 2px 0 0 0;
                 }
 
                 asm-message {
@@ -104,26 +108,14 @@ auth-reset-password {
                     margin-bottom: -24px;
                 }
 
-                form {
-                    margin-top: 40px;
+                .footer-link {
+                    width: 100%;
+                    margin-top: 56px;
+                    font-size: 13px;
+                    font-weight: 500;
 
-                    .mat-form-field {
-                        width: 100%;
-                    }
-
-                    .submit-button {
-                        width: 100%;
-                    }
-
-                    .footer-link {
-                        width: 100%;
-                        margin-top: 16px;
-                        font-size: 13px;
-                        font-weight: 500;
-
-                        .link {
-                            margin-left: 4px;
-                        }
+                    .link {
+                        margin-left: 4px;
                     }
                 }
             }
@@ -196,7 +188,7 @@ auth-reset-password {
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    auth-reset-password {
+    auth-sign-out {
 
         asm-card {
 
@@ -219,13 +211,14 @@ auth-reset-password {
                     }
                 }
 
-                form {
+                .subtitle {
+                    color: map-get($foreground, secondary-text);
+                }
 
-                    .footer-link {
+                .footer-link {
 
-                        span {
-                            color: map-get($foreground, secondary-text);
-                        }
+                    span {
+                        color: map-get($foreground, secondary-text);
                     }
                 }
             }

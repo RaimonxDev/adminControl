@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AsmAnimations } from '@assembly';
 import { AuthService } from 'app/core/auth/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    selector     : 'auth-login',
-    templateUrl  : './login.component.html',
-    styleUrls    : ['./login.component.scss'],
+    selector     : 'auth-sign-in',
+    templateUrl  : './sign-in.component.html',
+    styleUrls    : ['./sign-in.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class AuthLoginComponent implements OnInit
+export class AuthSignInComponent implements OnInit
 {
-    loginForm: FormGroup;
+    signInForm: FormGroup;
     message: any;
 
     /**
@@ -45,9 +45,9 @@ export class AuthLoginComponent implements OnInit
     ngOnInit(): void
     {
         // Create the form
-        this.loginForm = this._formBuilder.group({
-            email   : ['watkins.andrew@company.com', [Validators.required, Validators.email]],
-            password: ['admin', Validators.required]
+        this.signInForm = this._formBuilder.group({
+            email   : ['watkins.andrew@company.com'],
+            password: ['admin']
         });
     }
 
@@ -56,21 +56,21 @@ export class AuthLoginComponent implements OnInit
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Login
+     * Sign in
      */
-    login(): void
+    signIn(): void
     {
         // Disable the form
-        this.loginForm.disable();
+        this.signInForm.disable();
 
         // Hide the message
         this.message = null;
 
         // Get the credentials
-        const credentials = this.loginForm.value;
+        const credentials = this.signInForm.value;
 
-        // Login
-        this._authService.login(credentials)
+        // Sign in
+        this._authService.signIn(credentials)
             .subscribe(() => {
 
                 // Set the redirect url
@@ -82,12 +82,14 @@ export class AuthLoginComponent implements OnInit
             }, (response) => {
 
                 // Re-enable the form
-                this.loginForm.enable();
+                this.signInForm.enable();
 
                 // Show the error message
                 this.message = {
-                    content: response.error,
-                    type   : 'error'
+                    content : response.error,
+                    shake   : true,
+                    showIcon: false,
+                    type    : 'error'
                 };
             });
     }

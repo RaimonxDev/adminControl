@@ -1,30 +1,40 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { AsmAnimations } from '@assembly';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'auth-forgot-password',
-    templateUrl  : './forgot-password.component.html',
-    styleUrls    : ['./forgot-password.component.scss'],
+    selector     : 'auth-sign-up',
+    templateUrl  : './sign-up.component.html',
+    styleUrls    : ['./sign-up.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : AsmAnimations
 })
-export class AuthForgotPasswordComponent implements OnInit
+export class AuthSignUpComponent implements OnInit, OnDestroy
 {
-    forgotPasswordForm: FormGroup;
     message: any;
+    signUpForm: FormGroup;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
+     * @param {AuthService} _authService
      * @param {FormBuilder} _formBuilder
      */
     constructor(
+        private _authService: AuthService,
         private _formBuilder: FormBuilder
     )
     {
         // Set the defaults
         this.message = null;
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -37,9 +47,24 @@ export class AuthForgotPasswordComponent implements OnInit
     ngOnInit(): void
     {
         // Create the form
-        this.forgotPasswordForm = this._formBuilder.group({
-            email: ['', [Validators.required, Validators.email]]
-        });
+        this.signUpForm = this._formBuilder.group({
+                name      : ['', Validators.required],
+                email     : ['', [Validators.required, Validators.email]],
+                password  : ['', Validators.required],
+                company   : [''],
+                agreements: ['', Validators.requiredTrue]
+            }
+        );
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -47,18 +72,18 @@ export class AuthForgotPasswordComponent implements OnInit
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Send the reset link
+     * Sign up
      */
-    sendResetLink(): void
+    signUp(): void
     {
         // Do nothing if the form is invalid
-        if ( this.forgotPasswordForm.invalid )
+        if ( this.signUpForm.invalid )
         {
             return;
         }
 
         // Disable the form
-        this.forgotPasswordForm.disable();
+        this.signUpForm.disable();
 
         // Hide the message
         this.message = null;
@@ -69,14 +94,14 @@ export class AuthForgotPasswordComponent implements OnInit
         setTimeout(() => {
 
             // Re-enable the form
-            this.forgotPasswordForm.enable();
+            this.signUpForm.enable();
 
             // Reset the form
-            this.forgotPasswordForm.reset({});
+            this.signUpForm.reset({});
 
             // Show the message
             this.message = {
-                content : 'Password reset sent! You\'ll receive an email if you are registered on our system.',
+                content : 'Your account has been created and a confirmation mail has been sent to your email address.',
                 shake   : false,
                 showIcon: false,
                 type    : 'success'

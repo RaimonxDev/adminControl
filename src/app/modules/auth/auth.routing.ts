@@ -15,7 +15,7 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: () => import('./confirmation-required/confirmation-required.module')
+                loadChildren: () => import('app/modules/auth/confirmation-required/confirmation-required.module')
                     .then(m => m.AuthConfirmationRequiredModule)
             }
         ]
@@ -36,38 +36,6 @@ export const authRoutes: Route[] = [
             }
         ]
     },
-    // Login
-    {
-        path       : 'login',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
-        canActivate: [NoAuthGuard],
-        children   : [
-            {
-                path        : '',
-                loadChildren: () => import('./login/login.module')
-                    .then(m => m.AuthLoginModule)
-            }
-        ]
-    },
-    // Logout
-    {
-        path       : 'logout',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
-        canActivate: [AuthGuard],
-        children   : [
-            {
-                path        : '',
-                loadChildren: () => import('./logout/logout.module')
-                    .then(m => m.AuthLogoutModule)
-            }
-        ]
-    },
     // Reset password
     {
         path       : 'reset-password',
@@ -84,9 +52,9 @@ export const authRoutes: Route[] = [
             }
         ]
     },
-    // Signup
+    // Sign in
     {
-        path       : 'signup',
+        path       : 'sign-in',
         component  : MainComponent,
         data       : {
             layout: 'empty'
@@ -95,8 +63,40 @@ export const authRoutes: Route[] = [
         children   : [
             {
                 path        : '',
-                loadChildren: () => import('./signup/signup.module')
-                    .then(m => m.AuthSignupModule)
+                loadChildren: () => import('./sign-in/sign-in.module')
+                    .then(m => m.AuthSignInModule)
+            }
+        ]
+    },
+    // Sign out
+    {
+        path       : 'sign-out',
+        component  : MainComponent,
+        data       : {
+            layout: 'empty'
+        },
+        canActivate: [AuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: () => import('./sign-out/sign-out.module')
+                    .then(m => m.AuthSignOutModule)
+            }
+        ]
+    },
+    // Sign up
+    {
+        path       : 'sign-up',
+        component  : MainComponent,
+        data       : {
+            layout: 'empty'
+        },
+        canActivate: [NoAuthGuard],
+        children   : [
+            {
+                path        : '',
+                loadChildren: () => import('./sign-up/sign-up.module')
+                    .then(m => m.AuthSignUpModule)
             }
         ]
     },

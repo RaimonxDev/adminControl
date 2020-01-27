@@ -1,6 +1,6 @@
 @import 'assembly';
 
-auth-reset-password {
+auth-sign-in {
 
     .content-layout {
         align-items: center;
@@ -95,7 +95,6 @@ auth-reset-password {
                 }
 
                 .title {
-                    max-width: 256px;
                     margin: 56px 0 0 0;
                 }
 
@@ -111,8 +110,16 @@ auth-reset-password {
                         width: 100%;
                     }
 
+                    .field-link {
+                        width: 100%;
+                        font-size: 13px;
+                        font-weight: 500;
+                        text-align: right;
+                    }
+
                     .submit-button {
                         width: 100%;
+                        margin-top: 16px;
                     }
 
                     .footer-link {
@@ -196,7 +203,7 @@ auth-reset-password {
     $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
-    auth-reset-password {
+    auth-sign-in {
 
         asm-card {
 
