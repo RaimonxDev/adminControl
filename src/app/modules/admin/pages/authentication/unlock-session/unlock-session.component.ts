@@ -118,7 +118,12 @@ export class UnlockSessionComponent implements OnInit
             this.unlockSessionForm.enable();
 
             // Reset the form
-            this.unlockSessionForm.reset({});
+            this.unlockSessionForm.reset({
+                name: {
+                    value   : this.name,
+                    disabled: true
+                }
+            });
 
             // Show the message
             this.message = {
