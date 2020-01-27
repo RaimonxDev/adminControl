@@ -246,12 +246,13 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      */
     geometry(prefix: string = 'scroll'): ScrollbarGeometry
     {
-        return new ScrollbarGeometry(
+        const scrollbarGeometry = new ScrollbarGeometry(
             this._elementRef.nativeElement[prefix + 'Left'],
             this._elementRef.nativeElement[prefix + 'Top'],
             this._elementRef.nativeElement[prefix + 'Width'],
-            this._elementRef.nativeElement[prefix + 'Height']
-        );
+            this._elementRef.nativeElement[prefix + 'Height']);
+
+        return scrollbarGeometry;
     }
 
     /**
@@ -261,20 +262,24 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      */
     position(absolute: boolean = false): ScrollbarPosition
     {
+        let scrollbarPosition;
+
         if ( !absolute && this.ps )
         {
-            return new ScrollbarPosition(
+            scrollbarPosition = new ScrollbarPosition(
                 this.ps.reach.x || 0,
                 this.ps.reach.y || 0
             );
         }
         else
         {
-            return new ScrollbarPosition(
+            scrollbarPosition = new ScrollbarPosition(
                 this._elementRef.nativeElement.scrollLeft,
                 this._elementRef.nativeElement.scrollTop
             );
         }
+
+        return scrollbarPosition;
     }
 
     /**
