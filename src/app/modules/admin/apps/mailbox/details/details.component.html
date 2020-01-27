@@ -115,7 +115,7 @@
                  *ngIf="mail.labels && mail.labels.length > 0">
 
                 <div class="label"
-                     *ngFor="let label of (mail.labels | lookUpBy:'id':labels)"
+                     *ngFor="let label of (mail.labels | findByKey:'id':labels)"
                      [ngClass]="['text-' + label.color + '-100', 'bg-' + label.color + '-500']">
                     {{label.title}}
                 </div>

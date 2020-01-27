@@ -26,8 +26,7 @@ export * from './services/media-watcher/public-api';
 export * from './services/splash-screen/public-api';
 
 // Pipes
-export * from './pipes/time-ago/public-api';
-export * from './pipes/look-up-by/public-api';
+export * from './pipes/find-by-key/public-api';
 
 // Validators
 export * from './validators/public-api';

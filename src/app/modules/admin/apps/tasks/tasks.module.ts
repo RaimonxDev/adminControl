@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import * as moment from 'moment';
-import { AsmAutogrowModule, AsmLookUpByPipeModule } from '@assembly';
+import { AsmAutogrowModule, AsmFindByKeyPipeModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { tasksRoutes } from 'app/modules/admin/apps/tasks/tasks.routing';
 import { TasksComponent } from 'app/modules/admin/apps/tasks/tasks.component';
@@ -51,7 +51,7 @@ import { TasksListComponent } from 'app/modules/admin/apps/tasks/list/list.compo
         MatSidenavModule,
         MatTooltipModule,
         AsmAutogrowModule,
-        AsmLookUpByPipeModule,
+        AsmFindByKeyPipeModule,
         SharedModule
     ],
     providers   : [
