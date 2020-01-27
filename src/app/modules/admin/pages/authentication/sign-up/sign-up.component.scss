@@ -9,6 +9,15 @@ sign-up {
         asm-card {
             margin: 8px;
 
+            @include asm-media-breakpoint('xs') {
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
             // Classic style
             &.classic {
 
@@ -49,15 +58,20 @@ sign-up {
             // Fullscreen style
             &.fullscreen,
             &.fullscreen-alt {
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
 
-                @include asm-media-breakpoint('gt-sm') {
-                    width: 100%;
-                    height: 100%;
-                    margin: 0;
-                    box-shadow: none;
-                    border-radius: 0;
+                .form-container {
 
-                    .form-container {
+                    @include asm-media-breakpoint('sm') {
+                        margin: 48px 40px;
+                    }
+
+                    @include asm-media-breakpoint('gt-sm') {
                         margin: 96px 80px 80px 80px;
                     }
                 }
@@ -84,9 +98,9 @@ sign-up {
                 width: 100%;
                 margin: 64px 56px;
 
-                @include asm-media-breakpoint('lt-sm') {
+                @include asm-media-breakpoint('xs') {
                     min-width: 0;
-                    margin: 64px 40px;
+                    margin: 48px 40px;
                 }
 
                 .logo {
@@ -95,7 +109,7 @@ sign-up {
                 }
 
                 .title {
-                    margin: 56px 0 0 0;
+                    margin: 40px 0 0 0;
                 }
 
                 asm-message {
@@ -211,6 +225,19 @@ sign-up {
     sign-up {
 
         asm-card {
+
+            @include asm-media-breakpoint('xs') {
+                background: transparent;
+            }
+
+            // Fullscreen style
+            &.fullscreen,
+            &.fullscreen-alt {
+
+                @include asm-media-breakpoint('lt-md') {
+                    background: transparent;
+                }
+            }
 
             .form-container {
 
