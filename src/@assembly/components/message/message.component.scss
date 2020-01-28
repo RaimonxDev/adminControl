@@ -2,14 +2,22 @@
 
 asm-message {
 
+    // Show icon
+    &.asm-message-show-icon {
+
+        .asm-message-container {
+            padding: 16px 16px 16px 20px;
+        }
+    }
+
     // Common
     .asm-message-container {
         display: flex;
         align-items: center;
-        min-height: 64px;
-        padding: 16px 16px 16px 24px;
+        padding: 16px 24px;
         font-size: 14px;
         line-height: 1;
+
 
         // Icon
         .asm-message-icon {
@@ -23,7 +31,7 @@ asm-message {
 
                 &:not(:empty) {
                     display: flex;
-                    margin-right: 24px;
+                    margin-right: 16px;
                 }
             }
 

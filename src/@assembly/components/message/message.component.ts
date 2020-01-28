@@ -138,11 +138,11 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         // Update the class name
         if ( value )
         {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-show-icon' + this.appearance);
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-message-show-icon');
         }
         else
         {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-show-icon' + this.appearance);
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-message-show-icon');
         }
 
         // Store the value
