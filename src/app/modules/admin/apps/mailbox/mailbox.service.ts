@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
+import { Mail, MailCategory, MailFilter, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Injectable({
     providedIn: 'root'
@@ -9,13 +10,13 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 export class MailboxService
 {
     // Observables
-    private _category: BehaviorSubject<any>;
-    private _filters: BehaviorSubject<any>;
-    private _folders: BehaviorSubject<any>;
-    private _labels: BehaviorSubject<any>;
-    private _mails: BehaviorSubject<any>;
+    private _category: BehaviorSubject<MailCategory>;
+    private _filters: BehaviorSubject<MailFilter[]>;
+    private _folders: BehaviorSubject<MailFolder[]>;
+    private _labels: BehaviorSubject<MailLabel[]>;
+    private _mails: BehaviorSubject<Mail[]>;
     private _mailsLoading: BehaviorSubject<boolean>;
-    private _mail: BehaviorSubject<any>;
+    private _mail: BehaviorSubject<Mail>;
     private _pagination: BehaviorSubject<any>;
 
     // Observables that can be executable from outside
@@ -51,7 +52,7 @@ export class MailboxService
     /**
      * Getter for category
      */
-    get category$(): Observable<any>
+    get category$(): Observable<MailCategory>
     {
         return this._category.asObservable();
     }
@@ -59,7 +60,7 @@ export class MailboxService
     /**
      * Getter for filters
      */
-    get filters$(): Observable<any>
+    get filters$(): Observable<MailFilter[]>
     {
         return this._filters.asObservable();
     }
@@ -67,7 +68,7 @@ export class MailboxService
     /**
      * Getter for folders
      */
-    get folders$(): Observable<any>
+    get folders$(): Observable<MailFolder[]>
     {
         return this._folders.asObservable();
     }
@@ -75,7 +76,7 @@ export class MailboxService
     /**
      * Getter for labels
      */
-    get labels$(): Observable<any>
+    get labels$(): Observable<MailLabel[]>
     {
         return this._labels.asObservable();
     }
@@ -83,7 +84,7 @@ export class MailboxService
     /**
      * Getter for mails
      */
-    get mails$(): Observable<any>
+    get mails$(): Observable<Mail[]>
     {
         return this._mails.asObservable();
     }
@@ -91,7 +92,7 @@ export class MailboxService
     /**
      * Getter for mails loading
      */
-    get mailsLoading$(): Observable<any>
+    get mailsLoading$(): Observable<boolean>
     {
         return this._mailsLoading.asObservable();
     }
@@ -99,7 +100,7 @@ export class MailboxService
     /**
      * Getter for mail
      */
-    get mail$(): Observable<any>
+    get mail$(): Observable<Mail>
     {
         return this._mail.asObservable();
     }
@@ -121,7 +122,7 @@ export class MailboxService
      */
     getFilters(): Observable<any>
     {
-        return this._httpClient.get('api/apps/mailbox/filters').pipe(
+        return this._httpClient.get<MailFilter[]>('api/apps/mailbox/filters').pipe(
             tap((response: any) => {
                 this._filters.next(response);
             })
@@ -133,7 +134,7 @@ export class MailboxService
      */
     getFolders(): Observable<any>
     {
-        return this._httpClient.get('api/apps/mailbox/folders').pipe(
+        return this._httpClient.get<MailFolder[]>('api/apps/mailbox/folders').pipe(
             tap((response: any) => {
                 this._folders.next(response);
             })
@@ -145,7 +146,7 @@ export class MailboxService
      */
     getLabels(): Observable<any>
     {
-        return this._httpClient.get('api/apps/mailbox/labels').pipe(
+        return this._httpClient.get<MailLabel[]>('api/apps/mailbox/labels').pipe(
             tap((response: any) => {
                 this._labels.next(response);
             })
@@ -155,12 +156,12 @@ export class MailboxService
     /**
      * Get mails by filter
      */
-    getMailsByFilter(filter, page = '1'): Observable<any>
+    getMailsByFilter(filter: string, page: string = '1'): Observable<any>
     {
         // Execute the mails loading with true
         this._mailsLoading.next(true);
 
-        return this._httpClient.get('api/apps/mailbox/mails', {
+        return this._httpClient.get<Mail[]>('api/apps/mailbox/mails', {
             params: {
                 filter,
                 page
@@ -193,12 +194,12 @@ export class MailboxService
     /**
      * Get mails by folder
      */
-    getMailsByFolder(folder, page = '1'): Observable<any>
+    getMailsByFolder(folder: string, page: string = '1'): Observable<any>
     {
         // Execute the mails loading with true
         this._mailsLoading.next(true);
 
-        return this._httpClient.get('api/apps/mailbox/mails', {
+        return this._httpClient.get<Mail[]>('api/apps/mailbox/mails', {
             params: {
                 folder,
                 page
@@ -231,12 +232,12 @@ export class MailboxService
     /**
      * Get mails by label
      */
-    getMailsByLabel(label, page = '1'): Observable<any>
+    getMailsByLabel(label: string, page: string = '1'): Observable<any>
     {
         // Execute the mails loading with true
         this._mailsLoading.next(true);
 
-        return this._httpClient.get('api/apps/mailbox/mails', {
+        return this._httpClient.get<Mail[]>('api/apps/mailbox/mails', {
             params: {
                 label,
                 page
@@ -269,7 +270,7 @@ export class MailboxService
     /**
      * Get mail by id
      */
-    getMailById(id): Observable<any>
+    getMailById(id: string): Observable<any>
     {
         return this._mails.pipe(
             take(1),
@@ -302,7 +303,7 @@ export class MailboxService
      * @param id
      * @param mail
      */
-    updateMail(id, mail): Observable<any>
+    updateMail(id: string, mail: Mail): Observable<any>
     {
         return this._httpClient.patch('api/apps/mailbox/mail', {
             id,
@@ -320,7 +321,7 @@ export class MailboxService
     /**
      * Reset the current mail
      */
-    resetMail(): Observable<any>
+    resetMail(): Observable<boolean>
     {
         return of(true).pipe(
             take(1),
@@ -335,11 +336,11 @@ export class MailboxService
      *
      * @param label
      */
-    addLabel(label): Observable<any>
+    addLabel(label: MailLabel): Observable<any>
     {
         return this.labels$.pipe(
             take(1),
-            switchMap(labels => this._httpClient.put('api/apps/mailbox/label', {label}).pipe(
+            switchMap(labels => this._httpClient.put<MailLabel>('api/apps/mailbox/label', {label}).pipe(
                 map((newLabel) => {
 
                     // Update the labels with the new label
@@ -358,11 +359,11 @@ export class MailboxService
      * @param id
      * @param label
      */
-    updateLabel(id, label): Observable<any>
+    updateLabel(id: string, label: MailLabel): Observable<any>
     {
         return this.labels$.pipe(
             take(1),
-            switchMap(labels => this._httpClient.patch('api/apps/mailbox/label', {
+            switchMap(labels => this._httpClient.patch<MailLabel>('api/apps/mailbox/label', {
                 id,
                 label
             }).pipe(
@@ -389,7 +390,7 @@ export class MailboxService
      *
      * @param id
      */
-    deleteLabel(id): Observable<any>
+    deleteLabel(id: string): Observable<any>
     {
         return this.labels$.pipe(
             take(1),

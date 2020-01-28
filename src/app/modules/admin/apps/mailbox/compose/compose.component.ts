@@ -74,7 +74,7 @@ export class MailboxComposeComponent implements OnInit
      *
      * @param name
      */
-    showCopyField(name): void
+    showCopyField(name: string): void
     {
         // Return, if the name is not one of the available names
         if ( name !== 'cc' && name !== 'bcc' )

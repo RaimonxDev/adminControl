@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { filter, map, switchMap, take, tap } from 'rxjs/operators';
-import { Contact, Country, Tag } from 'app/modules/admin/apps/contacts/contacts.type';
+import { Contact, Country, Tag } from 'app/modules/admin/apps/contacts/contacts.types';
 
 @Injectable({
     providedIn: 'root'
@@ -77,7 +77,7 @@ export class ContactsService
      * @param sortField
      * @param sortDirection
      */
-    getContacts(sortField = 'name', sortDirection: 'asc' | 'desc' | '' = 'asc'): Observable<Contact[]>
+    getContacts(sortField: string = 'name', sortDirection: 'asc' | 'desc' | '' = 'asc'): Observable<Contact[]>
     {
         return this._httpClient.get<Contact[]>('api/apps/contacts/all', {
             params: {
@@ -96,7 +96,7 @@ export class ContactsService
      *
      * @param query
      */
-    searchContacts(query): Observable<Contact[] | null>
+    searchContacts(query: string): Observable<Contact[] | null>
     {
         return this._httpClient.get<Contact[] | null>('api/apps/contacts/search', {
             params: {query}
@@ -110,7 +110,7 @@ export class ContactsService
     /**
      * Get contact by id
      */
-    getContactById(id): Observable<Contact>
+    getContactById(id: string): Observable<Contact>
     {
         return this._contacts.pipe(
             take(1),
@@ -163,7 +163,7 @@ export class ContactsService
      * @param id
      * @param contact
      */
-    updateContact(id, contact): Observable<Contact>
+    updateContact(id: string, contact: Contact): Observable<Contact>
     {
         return this.contacts$.pipe(
             take(1),
@@ -206,7 +206,7 @@ export class ContactsService
      *
      * @param id
      */
-    deleteContact(id): Observable<boolean>
+    deleteContact(id: string): Observable<boolean>
     {
         return this.contacts$.pipe(
             take(1),
@@ -266,7 +266,7 @@ export class ContactsService
      *
      * @param tag
      */
-    createTag(tag): Observable<Tag>
+    createTag(tag: Tag): Observable<Tag>
     {
         return this.tags$.pipe(
             take(1),
@@ -289,7 +289,7 @@ export class ContactsService
      * @param id
      * @param tag
      */
-    updateTag(id, tag): Observable<Tag>
+    updateTag(id: string, tag: Tag): Observable<Tag>
     {
         return this.tags$.pipe(
             take(1),
@@ -320,7 +320,7 @@ export class ContactsService
      *
      * @param id
      */
-    deleteTag(id): Observable<boolean>
+    deleteTag(id: string): Observable<boolean>
     {
         return this.tags$.pipe(
             take(1),
@@ -370,7 +370,7 @@ export class ContactsService
      * @param id
      * @param avatar
      */
-    uploadAvatar(id, avatar: File): Observable<Contact>
+    uploadAvatar(id: string, avatar: File): Observable<Contact>
     {
         return this.contacts$.pipe(
             take(1),

@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.service';
-import { Contact, Country, Tag } from 'app/modules/admin/apps/contacts/contacts.type';
+import { Contact, Country, Tag } from 'app/modules/admin/apps/contacts/contacts.types';
 
 @Injectable({
     providedIn: 'root'
@@ -31,7 +31,7 @@ export class ContactsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Contact[]> | Promise<Contact[]> | Contact[]
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Contact[]>
     {
         return this._contactsService.getContacts();
     }
@@ -65,7 +65,7 @@ export class ContactsContactResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Contact> | Promise<Contact> | Contact
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Contact>
     {
         return this._contactsService.getContactById(route.paramMap.get('id'))
                    .pipe(
@@ -114,7 +114,7 @@ export class ContactsCountriesResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Country[]> | Promise<Country[]> | Country[]
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Country[]>
     {
         return this._contactsService.getCountries();
     }
@@ -146,7 +146,7 @@ export class ContactsTagsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tag[]> | Promise<Tag[]> | Tag[]
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tag[]>
     {
         return this._contactsService.getTags();
     }

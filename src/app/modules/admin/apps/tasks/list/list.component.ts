@@ -6,7 +6,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
-import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
+import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.types';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
 @Component({
@@ -74,7 +74,7 @@ export class TasksListComponent implements OnInit, OnDestroy
         // Get the tags
         this._tasksService.tags$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((tags) => {
+            .subscribe((tags: Tag[]) => {
                 this.tags = tags;
 
                 // Mark for check
@@ -84,7 +84,7 @@ export class TasksListComponent implements OnInit, OnDestroy
         // Get the tasks
         this._tasksService.tasks$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((tasks) => {
+            .subscribe((tasks: Task[]) => {
                 this.tasks = tasks;
 
                 // Update the counts
@@ -114,7 +114,7 @@ export class TasksListComponent implements OnInit, OnDestroy
         // Get the task
         this._tasksService.task$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((task) => {
+            .subscribe((task: Task) => {
                 this.selectedTask = task;
 
                 // Mark for check
@@ -233,7 +233,7 @@ export class TasksListComponent implements OnInit, OnDestroy
      *
      * @param task
      */
-    toggleCompleted(task): void
+    toggleCompleted(task: Task): void
     {
         // Toggle the completed status
         task.completed = !task.completed;
@@ -268,7 +268,7 @@ export class TasksListComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackById(index: number, item: any): number
     {
         return item.id || index;
     }

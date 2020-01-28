@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, take } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { labelColors as labelColorsData } from 'app/modules/admin/apps/mailbox/settings/label-colors';
+import { MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Component({
     selector     : 'mailbox-settings',
@@ -13,7 +14,7 @@ import { labelColors as labelColorsData } from 'app/modules/admin/apps/mailbox/s
 export class MailboxSettingsComponent implements OnInit
 {
     labelColors: any;
-    labels: any[];
+    labels: MailLabel[];
     labelsForm: FormGroup;
 
     /**
@@ -52,7 +53,7 @@ export class MailboxSettingsComponent implements OnInit
         // Labels
         this._mailboxService.labels$
             .pipe(take(1))
-            .subscribe((labels) => {
+            .subscribe((labels: MailLabel[]) => {
 
                 // Get the labels
                 this.labels = labels;
@@ -113,7 +114,7 @@ export class MailboxSettingsComponent implements OnInit
     /**
      * Delete a label
      */
-    deleteLabel(id): void
+    deleteLabel(id: string): void
     {
         // Get the labels form array
         const labelsFormArray = this.labelsForm.get('labels') as FormArray;

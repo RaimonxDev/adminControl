@@ -6,7 +6,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
-import { Contact, Country } from 'app/modules/admin/apps/contacts/contacts.type';
+import { Contact, Country } from 'app/modules/admin/apps/contacts/contacts.types';
 import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.service';
 
 @Component({
@@ -73,7 +73,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
         this.contacts$ = this._contactsService.contacts$;
         this._contactsService.contacts$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((contacts) => {
+            .subscribe((contacts: Contact[]) => {
 
                 // Update the counts
                 this.contactsCount = contacts.length;
@@ -85,7 +85,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
         // Get the contact
         this._contactsService.contact$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((contact) => {
+            .subscribe((contact: Contact) => {
 
                 // Update the selected contact
                 this.selectedContact = contact;
@@ -97,7 +97,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
         // Get the countries
         this._contactsService.countries$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((countries) => {
+            .subscribe((countries: Country[]) => {
 
                 // Update the countries
                 this.countries = countries;
@@ -216,7 +216,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
      *
      * @param iso
      */
-    getCountryCode(iso): string
+    getCountryCode(iso: string): string
     {
         if ( !iso )
         {
@@ -232,7 +232,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackById(index: number, item: any): number
     {
         return item.id || index;
     }

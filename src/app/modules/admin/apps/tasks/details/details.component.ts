@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil, tap } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
+import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.types';
 import { TasksListComponent } from 'app/modules/admin/apps/tasks/list/list.component';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
@@ -119,7 +119,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         // Get the tags
         this._tasksService.tags$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((tags) => {
+            .subscribe((tags: Tag[]) => {
                 this.tags = tags;
                 this.filteredTags = tags;
 
@@ -130,7 +130,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         // Get the tasks
         this._tasksService.tasks$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((tasks) => {
+            .subscribe((tasks: Task[]) => {
                 this.tasks = tasks;
 
                 // Mark for check
@@ -140,7 +140,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         // Get the task
         this._tasksService.task$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((task) => {
+            .subscribe((task: Task) => {
 
                 // Get the task
                 this.task = task;
@@ -389,7 +389,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param title
      */
-    createTag(title): void
+    createTag(title: string): void
     {
         const tag = {
             title
@@ -410,7 +410,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      * @param tag
      * @param event
      */
-    updateTagTitle(tag, event): void
+    updateTagTitle(tag: Tag, event): void
     {
         // Update the title on the tag
         tag.title = event.target.value;
@@ -429,7 +429,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param tag
      */
-    deleteTag(tag): void
+    deleteTag(tag: Tag): void
     {
         // Delete the tag from the server
         this._tasksService.deleteTag(tag.id).subscribe();
@@ -443,7 +443,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param tag
      */
-    addTagToTask(tag): void
+    addTagToTask(tag: Tag): void
     {
         // Add the tag
         this.task.tags.unshift(tag.id);
@@ -460,7 +460,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param tag
      */
-    deleteTagFromTask(tag): void
+    deleteTagFromTask(tag: Tag): void
     {
         // Remove the tag
         this.task.tags.splice(this.task.tags.findIndex(item => item === tag.id), 1);
@@ -478,7 +478,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      * @param tag
      * @param change
      */
-    toggleTaskTag(tag, change: MatCheckboxChange): void
+    toggleTaskTag(tag: Tag, change: MatCheckboxChange): void
     {
         if ( change.checked )
         {
@@ -495,7 +495,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param inputValue
      */
-    shouldShowCreateTagButton(inputValue): boolean
+    shouldShowCreateTagButton(inputValue: string): boolean
     {
         return !!!(inputValue === '' || this.tags.findIndex(tag => tag.title.toLowerCase() === inputValue.toLowerCase()) > -1);
     }
@@ -722,7 +722,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackById(index: number, item: any): number
     {
         return item.id || index;
     }

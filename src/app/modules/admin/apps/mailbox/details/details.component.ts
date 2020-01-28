@@ -6,6 +6,7 @@ import { MatButton } from '@angular/material/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
+import { Mail, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Component({
     selector     : 'mailbox-details',
@@ -15,9 +16,9 @@ import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 })
 export class MailboxDetailsComponent implements OnInit, OnDestroy
 {
-    folders: any[];
-    labels: any[];
-    mail: any;
+    folders: MailFolder[];
+    labels: MailLabel[];
+    mail: Mail;
     replyFormActive: boolean;
 
     // Private
@@ -68,21 +69,21 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         // Folders
         this._mailboxService.folders$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((folders) => {
+            .subscribe((folders: MailFolder[]) => {
                 this.folders = folders;
             });
 
         // Labels
         this._mailboxService.labels$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((labels) => {
+            .subscribe((labels: MailLabel[]) => {
                 this.labels = labels;
             });
 
         // Mail
         this._mailboxService.mail$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((mail) => {
+            .subscribe((mail: Mail) => {
                 this.mail = mail;
             });
 
@@ -121,12 +122,12 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * Move to folder
      *
-     * @param folder
+     * @param folderSlug
      */
-    moveToFolder(folder): void
+    moveToFolder(folderSlug: string): void
     {
         // Find the folder details
-        folder = this.folders.find((item) => {
+        const folder = this.folders.find((item) => {
             return item.slug === folder;
         });
 
@@ -152,7 +153,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      *
      * @param label
      */
-    toggleLabel(label): void
+    toggleLabel(label: MailLabel): void
     {
         let deleted = false;
 
@@ -237,7 +238,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      *
      * @param unread
      */
-    toggleUnread(unread): void
+    toggleUnread(unread: boolean): void
     {
         // Update the mail object
         this.mail.unread = unread;
@@ -380,7 +381,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackById(index: number, item: any): number
     {
         return item.id || index;
     }

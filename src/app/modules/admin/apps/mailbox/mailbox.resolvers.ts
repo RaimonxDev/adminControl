@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { forkJoin, Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
+import { Mail, MailFilter, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Injectable({
     providedIn: 'root'
@@ -30,7 +31,7 @@ export class MailboxFoldersResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<MailFolder[]>
     {
         return this._mailboxService.getFolders();
     }
@@ -62,7 +63,7 @@ export class MailboxFiltersResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<MailFilter[]>
     {
         return this._mailboxService.getFilters();
     }
@@ -94,7 +95,7 @@ export class MailboxLabelsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<MailLabel[]>
     {
         return this._mailboxService.getLabels();
     }
@@ -128,7 +129,7 @@ export class MailboxMailsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Mail[]> | any
     {
         // Don't allow page param to go below 1
         if ( route.paramMap.get('page') && parseInt(route.paramMap.get('page'), 10) <= 0 )
@@ -237,7 +238,7 @@ export class MailboxMailResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Mail>
     {
         return this._mailboxService.getMailById(route.paramMap.get('id'))
                    .pipe(

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { filter, map, switchMap, take, tap } from 'rxjs/operators';
-import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.type';
+import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.types';
 
 @Injectable({
     providedIn: 'root'
@@ -78,7 +78,7 @@ export class TasksService
      *
      * @param tag
      */
-    createTag(tag): Observable<Tag>
+    createTag(tag: Tag): Observable<Tag>
     {
         return this.tags$.pipe(
             take(1),
@@ -101,7 +101,7 @@ export class TasksService
      * @param id
      * @param tag
      */
-    updateTag(id, tag): Observable<Tag>
+    updateTag(id: string, tag: Tag): Observable<Tag>
     {
         return this.tags$.pipe(
             take(1),
@@ -132,7 +132,7 @@ export class TasksService
      *
      * @param id
      */
-    deleteTag(id): Observable<boolean>
+    deleteTag(id: string): Observable<boolean>
     {
         return this.tags$.pipe(
             take(1),
@@ -193,7 +193,7 @@ export class TasksService
      *
      * @param tasks
      */
-    updateTasksOrders(tasks): Observable<Task[]>
+    updateTasksOrders(tasks: Task[]): Observable<Task[]>
     {
         return this._httpClient.patch<Task[]>('api/apps/tasks/order', {tasks});
     }
@@ -203,7 +203,7 @@ export class TasksService
      *
      * @param query
      */
-    searchTasks(query): Observable<Task[] | null>
+    searchTasks(query: string): Observable<Task[] | null>
     {
         return this._httpClient.get<Task[] | null>('api/apps/tasks/search', {params: {query}});
     }
@@ -211,7 +211,7 @@ export class TasksService
     /**
      * Get task by id
      */
-    getTaskById(id): Observable<Task>
+    getTaskById(id: string): Observable<Task>
     {
         return this._tasks.pipe(
             take(1),
@@ -243,7 +243,7 @@ export class TasksService
      *
      * @param type
      */
-    createTask(type): Observable<Task>
+    createTask(type: string): Observable<Task>
     {
         return this.tasks$.pipe(
             take(1),
@@ -266,7 +266,7 @@ export class TasksService
      * @param id
      * @param task
      */
-    updateTask(id, task): Observable<Task>
+    updateTask(id: string, task: Task): Observable<Task>
     {
         return this.tasks$
                    .pipe(
@@ -310,7 +310,7 @@ export class TasksService
      *
      * @param id
      */
-    deleteTask(id): Observable<boolean>
+    deleteTask(id: string): Observable<boolean>
     {
         return this.tasks$.pipe(
             take(1),

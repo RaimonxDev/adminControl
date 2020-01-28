@@ -1,7 +1,7 @@
 export interface Tag
 {
-    id: string;
-    title: string;
+    id?: string;
+    title?: string;
 }
 
 export interface Task

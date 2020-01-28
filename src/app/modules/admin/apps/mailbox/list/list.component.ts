@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import * as moment from 'moment';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
+import { Mail, MailCategory } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Component({
     selector     : 'mailbox-list',
@@ -13,11 +14,11 @@ import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.compone
 })
 export class MailboxListComponent implements OnInit, OnDestroy
 {
-    category: any;
-    mails: any[];
+    category: MailCategory;
+    mails: Mail[];
     mailsLoading: boolean;
     pagination: any;
-    selectedMail: any;
+    selectedMail: Mail;
 
     @ViewChild('mailList')
     mailList: ElementRef;
@@ -55,21 +56,21 @@ export class MailboxListComponent implements OnInit, OnDestroy
         // Category
         this._mailboxService.category$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((category) => {
+            .subscribe((category: MailCategory) => {
                 this.category = category;
             });
 
         // Mails
         this._mailboxService.mails$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((mails) => {
+            .subscribe((mails: Mail[]) => {
                 this.mails = mails;
             });
 
         // Mails loading
         this._mailboxService.mailsLoading$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((mailsLoading) => {
+            .subscribe((mailsLoading: boolean) => {
                 this.mailsLoading = mailsLoading;
 
                 // If the mail list element is available & the mails are loaded...
@@ -90,7 +91,7 @@ export class MailboxListComponent implements OnInit, OnDestroy
         // Selected mail
         this._mailboxService.mail$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((mail) => {
+            .subscribe((mail: Mail) => {
                 this.selectedMail = mail;
             });
     }
@@ -114,7 +115,7 @@ export class MailboxListComponent implements OnInit, OnDestroy
      *
      * @param mail
      */
-    onMailSelected(mail): void
+    onMailSelected(mail: Mail): void
     {
         // If the mail is unread...
         if ( mail.unread )
@@ -135,7 +136,7 @@ export class MailboxListComponent implements OnInit, OnDestroy
      *
      * @param index
      */
-    mailListGroupLabel(index): string | false
+    mailListGroupLabel(index: number): string | false
     {
         const previousMail = this.mails[index - 1];
         const currentMail = this.mails[index];
@@ -166,7 +167,7 @@ export class MailboxListComponent implements OnInit, OnDestroy
      * @param mailDate
      * @private
      */
-    private _generateMailListGroupLabel(mailDate): string
+    private _generateMailListGroupLabel(mailDate: string): string
     {
         const date = moment(mailDate, moment.ISO_8601);
         const today = moment();
@@ -207,7 +208,7 @@ export class MailboxListComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackById(index: number, item: any): number
     {
         return item.id || index;
     }

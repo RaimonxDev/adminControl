@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { AsmNavigationItem, AsmNavigationService } from '@assembly';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
+import { MailFilter, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Component({
     selector     : 'mailbox-sidebar',
@@ -14,9 +15,9 @@ import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/
 })
 export class MailboxSidebarComponent implements OnInit, OnDestroy
 {
-    filters: any[];
-    folders: any[];
-    labels: any[];
+    filters: MailFilter[];
+    folders: MailFolder[];
+    labels: MailLabel[];
     menuData: AsmNavigationItem[];
 
     // Private
@@ -62,7 +63,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         // Filters
         this._mailboxService.filters$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((filters) => {
+            .subscribe((filters: MailFilter[]) => {
                 this.filters = filters;
 
                 // Generate menu links
@@ -72,7 +73,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         // Folders
         this._mailboxService.folders$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((folders) => {
+            .subscribe((folders: MailFolder[]) => {
                 this.folders = folders;
 
                 // Generate menu links
@@ -85,7 +86,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         // Labels
         this._mailboxService.labels$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((labels) => {
+            .subscribe((labels: MailLabel[]) => {
                 this.labels = labels;
 
                 // Generate menu links
@@ -137,7 +138,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             {
                 // Add the count as a badge
                 menuItem['badge'] = {
-                    title: folder.count,
+                    title: folder.count + '',
                     style: 'rounded'
                 };
             }
@@ -267,7 +268,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
      * @param folders
      * @private
      */
-    private _updateNavigationBadge(folders): void
+    private _updateNavigationBadge(folders: MailFolder[]): void
     {
         // Get the inbox folder
         const inboxFolder = this.folders.find((folder) => folder.slug === 'inbox');
@@ -278,7 +279,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         const menuItem = this._asmNavigationService.getItem('applications.mailbox', mainNavigation);
 
         // Update the badge title of the item
-        menuItem.badge.title = inboxFolder.count;
+        menuItem.badge.title = inboxFolder.count + '';
 
         // Refresh the navigation
         mainNavigationComponent.refresh();
