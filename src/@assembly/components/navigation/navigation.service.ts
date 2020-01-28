@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 
 @Injectable({

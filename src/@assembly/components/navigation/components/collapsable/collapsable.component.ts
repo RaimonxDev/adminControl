@@ -5,7 +5,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
-import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
 
 @Component({
     selector       : 'asm-navigation-collapsable-item',

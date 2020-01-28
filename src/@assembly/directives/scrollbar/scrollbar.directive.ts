@@ -62,7 +62,7 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      * @param value
      */
     @Input()
-    set asmScrollbarOptions(value)
+    set asmScrollbarOptions(value: any)
     {
         // Merge the options
         this._options = _.merge({}, this._options, value);

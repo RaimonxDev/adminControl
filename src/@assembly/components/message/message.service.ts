@@ -49,7 +49,7 @@ export class AsmMessageService
      *
      * @param name
      */
-    dismiss(name): void
+    dismiss(name: string): void
     {
         // Return, if the name is not provided
         if ( !name )
@@ -66,7 +66,7 @@ export class AsmMessageService
      *
      * @param name
      */
-    show(name): void
+    show(name: string): void
     {
         // Return, if the name is not provided
         if ( !name )

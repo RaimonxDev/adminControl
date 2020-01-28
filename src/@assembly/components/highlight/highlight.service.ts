@@ -77,7 +77,7 @@ export class AsmHighlightService
     /**
      * Highlight
      */
-    highlight(code, language): string
+    highlight(code: string, language: string): string
     {
         // Format the code
         code = this._format(code);

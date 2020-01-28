@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Moment } from 'moment';
-import { Calendar, CalendarEvent, CalendarSettings, CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
+import { Calendar, CalendarEvent, CalendarEventEditMode, CalendarSettings, CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.types';
 
 @Injectable({
     providedIn: 'root'
@@ -95,7 +95,7 @@ export class CalendarService
      *
      * @param calendar
      */
-    addCalendar(calendar): Observable<Calendar>
+    addCalendar(calendar: Calendar): Observable<Calendar>
     {
         return this.calendars$.pipe(
             take(1),
@@ -123,7 +123,7 @@ export class CalendarService
      * @param id
      * @param calendar
      */
-    updateCalendar(id, calendar): Observable<Calendar>
+    updateCalendar(id: string, calendar: Calendar): Observable<Calendar>
     {
         return this.calendars$.pipe(
             take(1),
@@ -154,7 +154,7 @@ export class CalendarService
      *
      * @param id
      */
-    deleteCalendar(id): Observable<any>
+    deleteCalendar(id: string): Observable<any>
     {
         return this.calendars$.pipe(
             take(1),
@@ -347,7 +347,7 @@ export class CalendarService
      * @param id
      * @param event
      */
-    updateEvent(id, event): Observable<CalendarEvent>
+    updateEvent(id: string, event): Observable<CalendarEvent>
     {
         return this.events$.pipe(
             take(1),
@@ -380,7 +380,7 @@ export class CalendarService
      * @param originalEvent
      * @param mode
      */
-    updateRecurringEvent(event, originalEvent, mode): Observable<boolean>
+    updateRecurringEvent(event, originalEvent, mode: CalendarEventEditMode): Observable<boolean>
     {
         return this._httpClient.patch<boolean>('api/apps/calendar/recurring-event', {
             event,
@@ -394,7 +394,7 @@ export class CalendarService
      *
      * @param id
      */
-    deleteEvent(id): Observable<CalendarEvent>
+    deleteEvent(id: string): Observable<CalendarEvent>
     {
         return this.events$.pipe(
             take(1),
@@ -423,7 +423,7 @@ export class CalendarService
      * @param event
      * @param mode
      */
-    deleteRecurringEvent(event, mode): Observable<boolean>
+    deleteRecurringEvent(event, mode: CalendarEventEditMode): Observable<boolean>
     {
         return this._httpClient.delete<boolean>('api/apps/calendar/recurring-event', {
             params: {
@@ -448,7 +448,7 @@ export class CalendarService
     /**
      * Update settings
      */
-    updateSettings(settings): Observable<CalendarSettings>
+    updateSettings(settings: CalendarSettings): Observable<CalendarSettings>
     {
         return this.events$.pipe(
             take(1),

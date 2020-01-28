@@ -21,7 +21,7 @@ import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService } from '@assembly';
 import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
-import { Calendar, CalendarEvent, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.type';
+import { Calendar, CalendarDrawerMode, CalendarEvent, CalendarEventEditMode, CalendarEventPanelMode, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.types';
 
 @Component({
     selector       : 'calendar',
@@ -34,14 +34,14 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 {
     calendars: Calendar[];
     calendarPlugins: any;
-    drawerMode: 'over' | 'side';
+    drawerMode: CalendarDrawerMode;
     drawerOpened: boolean;
     event: CalendarEvent;
-    eventEditMode: 'single' | 'future' | 'all';
+    eventEditMode: CalendarEventEditMode;
     eventForm: FormGroup;
     eventTimeFormat: any;
     events: CalendarEvent[];
-    panelMode: 'view' | 'add' | 'edit';
+    panelMode: CalendarEventPanelMode;
     settings: CalendarSettings;
     view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listYear';
     views: any;
@@ -618,7 +618,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      * @param panelMode
      * @param eventEditMode
      */
-    changeEventPanelMode(panelMode: 'view' | 'add' | 'edit', eventEditMode: 'single' | 'future' | 'all' = 'single'): void
+    changeEventPanelMode(panelMode: CalendarEventPanelMode, eventEditMode: CalendarEventEditMode = 'single'): void
     {
         // Set the panel mode
         this.panelMode = panelMode;
@@ -1020,7 +1020,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      * @param event
      * @param mode
      */
-    deleteEvent(event, mode: 'single' | 'future' | 'all' = 'single'): void
+    deleteEvent(event, mode: CalendarEventEditMode = 'single'): void
     {
         // If the event is a recurring event...
         if ( event.recurrence )

@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
-import { CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.type';
+import { CalendarWeekday } from 'app/modules/admin/apps/calendar/calendar.types';
 
 @Component({
     selector     : 'calendar-recurrence',
@@ -216,7 +216,7 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
      * @param freq
      * @private
      */
-    private _setEndValues(freq): void
+    private _setEndValues(freq: string): void
     {
         // Return if freq is not available
         if ( !freq )

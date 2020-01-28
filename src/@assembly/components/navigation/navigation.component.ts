@@ -3,7 +3,7 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { BehaviorSubject, merge, Subject, Subscription } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
-import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.types';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.directive';
 
@@ -734,8 +734,10 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 
     /**
      * Open the aside
+     *
+     * @param navigationId
      */
-    openAside(navigationId): void
+    openAside(navigationId: string): void
     {
         // Open
         this.activeAsideItemId = navigationId;
@@ -767,7 +769,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @param navigationId
      */
-    toggleAside(navigationId): void
+    toggleAside(navigationId: string): void
     {
         // Toggle
         if ( this.activeAsideItemId === navigationId )
@@ -786,7 +788,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackById(index: number, item: any): number
     {
         return item.id || index;
     }

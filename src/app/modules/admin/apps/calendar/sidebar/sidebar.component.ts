@@ -4,7 +4,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import * as _ from 'lodash';
-import { Calendar } from 'app/modules/admin/apps/calendar/calendar.type';
+import { Calendar } from 'app/modules/admin/apps/calendar/calendar.types';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 import { calendarColors } from 'app/modules/admin/apps/calendar/sidebar/calendar-colors';
 
@@ -88,7 +88,7 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
     /**
      * Open edit panel
      */
-    openEditPanel(calendar): void
+    openEditPanel(calendar: Calendar): void
     {
         // Set the calendar
         this.calendar = _.cloneDeep(calendar);
@@ -147,7 +147,7 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
      *
      * @param calendar
      */
-    toggleCalendarVisibility(calendar): void
+    toggleCalendarVisibility(calendar: Calendar): void
     {
         // Toggle the visibility
         calendar.visible = !calendar.visible;
@@ -178,7 +178,7 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
      *
      * @param calendar
      */
-    saveCalendar(calendar): void
+    saveCalendar(calendar: Calendar): void
     {
         // If there is no id on the calendar...
         if ( !calendar.id )
@@ -213,7 +213,7 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
      *
      * @param calendar
      */
-    deleteCalendar(calendar): void
+    deleteCalendar(calendar: Calendar): void
     {
         // Delete the calendar on the server
         this._calendarService.deleteCalendar(calendar.id).subscribe(() => {

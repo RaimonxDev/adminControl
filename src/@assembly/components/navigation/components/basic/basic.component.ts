@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
-import { AsmNavigationItem } from '@assembly/components/navigation/navigation.type';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
 
 @Component({
     selector       : 'asm-navigation-basic-item',

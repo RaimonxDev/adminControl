@@ -540,7 +540,7 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
      *
      * @param month
      */
-    getMonthLabel(month): string
+    getMonthLabel(month: number): string
     {
         if ( month === 1 )
         {
