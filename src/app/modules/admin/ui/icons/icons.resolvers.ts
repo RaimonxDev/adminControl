@@ -29,7 +29,7 @@ export class IconsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>
     {
         return this._iconsService.getIcons(state.url);
     }

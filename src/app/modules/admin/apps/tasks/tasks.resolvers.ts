@@ -31,7 +31,7 @@ export class TasksTagsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tag[]> | Promise<Tag[]> | Tag[]
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tag[]>
     {
         return this._tasksService.getTags();
     }
@@ -63,7 +63,7 @@ export class TasksResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Task[]> | Promise<Task[]> | Task[]
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Task[]>
     {
         return this._tasksService.getTasks();
     }
@@ -97,7 +97,7 @@ export class TasksTaskResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Task> | Promise<Task> | Task
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Task>
     {
         return this._tasksService.getTaskById(route.paramMap.get('id'))
                    .pipe(
