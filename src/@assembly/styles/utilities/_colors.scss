@@ -88,17 +88,17 @@
     // Angular Material's mat-xxx-theme-foreground map
     $foreground: (
         base: if($is-dark, white, black),
-        text: if($is-dark, white, asm-color('gray', 800)),
-        secondary-text: if($is-dark, asm-color('gray', 500), asm-color('gray', 600)),
-        hint-text: if($is-dark, asm-color('gray', 600), asm-color('gray', 500)),
+        divider: if($is-dark, rgba(asm-color('gray', 200), 0.12), asm-color('gray', 300)),
+        dividers: if($is-dark, rgba(asm-color('gray', 200), 0.12), asm-color('gray', 300)),
         disabled: if($is-dark, asm-color('gray', 700), asm-color('gray', 500)),
         disabled-button: if($is-dark, asm-color('gray', 800), asm-color('gray', 500)),
         disabled-text: if($is-dark, asm-color('gray', 700), asm-color('gray', 500)),
-        divider: if($is-dark, rgba(asm-color('gray', 200), 0.12), asm-color('gray', 300)),
-        dividers: if($is-dark, rgba(asm-color('gray', 200), 0.12), asm-color('gray', 300)),
         elevation: black,
+        hint-text: if($is-dark, asm-color('gray', 600), asm-color('gray', 500)),
+        secondary-text: if($is-dark, asm-color('gray', 500), asm-color('gray', 600)),
         icon: if($is-dark, asm-color('gray', 100), asm-color('gray', 600)),
         icons: if($is-dark, asm-color('gray', 100), asm-color('gray', 600)),
+        text: if($is-dark, white, asm-color('gray', 800)),
         slider-min: if($is-dark, white, asm-color('gray', 800)),
         slider-off: if($is-dark, asm-color('gray', 600), asm-color('gray', 400)),
         slider-off-active: if($is-dark, asm-color('gray', 500), asm-color('gray', 500)),
@@ -121,6 +121,7 @@
         disabled-button-toggle: if($is-dark, asm-color('gray', 900), asm-color('gray', 400)),
         unselected-chip: if($is-dark, asm-color('gray', 700), asm-color('gray', 300)),
         disabled-list-option: if($is-dark, asm-color('gray', 300), asm-color('gray', 400)),
+        tooltip: if($is-dark, asm-color('gray', 600), asm-color('gray', 800)),
     );
 
     // Store the modified theme.
