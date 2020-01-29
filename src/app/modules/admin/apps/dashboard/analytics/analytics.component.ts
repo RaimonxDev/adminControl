@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
@@ -16,7 +17,6 @@ import { DashboardAnalyticsService } from 'app/modules/admin/apps/dashboard/anal
 export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDestroy
 {
     data: any;
-    range: string;
     recentOrdersDataSource: MatTableDataSource<any>;
     recentOrdersTableColumns: string[];
     ageOptions: ApexOptions;
@@ -44,16 +44,17 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
      * Constructor
      *
      * @param {DashboardAnalyticsService} _dashboardAnalyticsService
+     * @param {Router} _router
      */
     constructor(
-        private _dashboardAnalyticsService: DashboardAnalyticsService
+        private _dashboardAnalyticsService: DashboardAnalyticsService,
+        private _router: Router
     )
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.range = '30days';
         this.recentOrdersDataSource = new MatTableDataSource();
         this.recentOrdersTableColumns = ['orderId', 'date', 'customer', 'product', 'amount', 'status'];
     }
@@ -81,6 +82,20 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
                 // Prepare the chart data
                 this._prepareChartData();
             });
+
+        // Attach SVG fill fixer to all ApexCharts
+        window['Apex'] = {
+            chart: {
+                events: {
+                    mounted: (chart: any, options?: any) => {
+                        this._fixSvgFill(chart.el);
+                    },
+                    updated: (chart: any, options?: any) => {
+                        this._fixSvgFill(chart.el);
+                    }
+                }
+            }
+        };
     }
 
     /**
@@ -105,6 +120,32 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Fix the SVG fill references. This fix must be applied to all ApexCharts
+     * charts in order to fix 'black color on gradient fills on certain browsers'
+     * issue caused by the '<base>' tag.
+     *
+     * Fix based on https://gist.github.com/Kamshak/c84cdc175209d1a30f711abd6a81d472
+     *
+     * @param element
+     * @private
+     */
+    private _fixSvgFill(element: Element): void
+    {
+        // Current URL
+        const currentURL = this._router.url;
+
+        // 1. Find all elements with 'fill' attribute within the element
+        // 2. Filter out the ones that doesn't have cross reference so we only left with the ones that use the 'url(#id)' syntax
+        // 3. Insert the 'currentURL' at the front of the 'fill' attribute value
+        Array.from(element.querySelectorAll('*[fill]'))
+             .filter((el) => el.getAttribute('fill').indexOf('url(') !== -1)
+             .forEach((el) => {
+                 const attrVal = el.getAttribute('fill');
+                 el.setAttribute('fill', `url(${currentURL}${attrVal.slice(attrVal.indexOf('#'))}`);
+             });
+    }
 
     /**
      * Prepare the chart data from the data

@@ -298,25 +298,6 @@ export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
             xaxis  : {
                 type: 'category'
             }
-            /*yaxis  : {
-                min: 130,
-                max: 160
-            }*/
         };
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Track by function for ngFor loops
-     *
-     * @param index
-     * @param item
-     */
-    trackById(index, item): number
-    {
-        return item.id || index;
     }
 }
