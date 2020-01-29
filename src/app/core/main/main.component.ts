@@ -92,11 +92,13 @@ export class MainComponent implements OnInit, OnDestroy
                 this._updateLayout();
             });
 
-        // Subscribe to NavigationEnd event to update the layout on route changes
+        // Subscribe to NavigationEnd event
         this._router.events.pipe(
             filter(event => event instanceof NavigationEnd),
             takeUntil(this._unsubscribeAll)
         ).subscribe(() => {
+
+            // Update the layout
             this._updateLayout();
         });
 
