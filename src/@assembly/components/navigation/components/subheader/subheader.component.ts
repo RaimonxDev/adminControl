@@ -21,10 +21,6 @@ export class AsmNavigationSubheaderItemComponent implements OnInit, OnDestroy
     @Input()
     name: string;
 
-    // Show tooltips
-    @Input()
-    showTooltips: boolean;
-
     // Private
     private _asmNavigationComponent: AsmNavigationComponent;
     private _unsubscribeAll: Subject<any>;

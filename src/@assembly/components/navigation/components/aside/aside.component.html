@@ -2,10 +2,7 @@
 
     <div class="asm-navigation-item-wrapper"
          [class.asm-navigation-item-has-subtitle]="!!item.subtitle"
-         [ngClass]="item.classes"
-         [matTooltip]="item.title"
-         [matTooltipPosition]="'right'"
-         [matTooltipDisabled]="!showTooltips">
+         [ngClass]="item.classes">
 
         <div class="asm-navigation-item"
              [ngClass]="{'asm-navigation-item-active': active}">
@@ -55,15 +52,13 @@
                 <!-- Basic -->
                 <asm-navigation-basic-item *ngIf="item.type === 'basic'"
                                            [item]="item"
-                                           [name]="name"
-                                           [showTooltips]="showTooltips"></asm-navigation-basic-item>
+                                           [name]="name"></asm-navigation-basic-item>
 
                 <!-- Collapsable -->
                 <asm-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
                                                  [item]="item"
                                                  [name]="name"
-                                                 [autoCollapse]="autoCollapse"
-                                                 [showTooltips]="showTooltips"></asm-navigation-collapsable-item>
+                                                 [autoCollapse]="autoCollapse"></asm-navigation-collapsable-item>
 
                 <!-- Divider -->
                 <asm-navigation-divider-item *ngIf="item.type === 'divider'"
@@ -78,8 +73,7 @@
                 <!-- Subheader -->
                 <asm-navigation-subheader-item *ngIf="item.type === 'subheader'"
                                                [item]="item"
-                                               [name]="name"
-                                               [showTooltips]="showTooltips"></asm-navigation-subheader-item>
+                                               [name]="name"></asm-navigation-subheader-item>
 
             </ng-container>
 

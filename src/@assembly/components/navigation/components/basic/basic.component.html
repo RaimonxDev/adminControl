@@ -3,10 +3,7 @@
     <!-- Item wrapper -->
     <div class="asm-navigation-item-wrapper"
          [class.asm-navigation-item-has-subtitle]="!!item.subtitle"
-         [ngClass]="item.classes"
-         [matTooltip]="item.title"
-         [matTooltipPosition]="'right'"
-         [matTooltipDisabled]="!showTooltips">
+         [ngClass]="item.classes">
 
         <!-- Item with an internal link -->
         <a class="asm-navigation-item"

@@ -29,10 +29,6 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
     @Input()
     name: string;
 
-    // Show tooltips
-    @Input()
-    showTooltips: boolean;
-
     // Skip children
     @Input()
     skipChildren: boolean;

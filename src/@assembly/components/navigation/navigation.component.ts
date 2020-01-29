@@ -31,10 +31,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     @Input()
     name: string;
 
-    // Show tooltips
-    @Input()
-    showTooltips: boolean;
-
     // On appearance changed
     @Output()
     readonly appearanceChanged: EventEmitter<AsmNavigationAppearance>;
@@ -109,7 +105,6 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this.mode = 'side';
         this.opened = false;
         this.position = 'left';
-        this.showTooltips = false;
         this.transparentOverlay = false;
     }
 
