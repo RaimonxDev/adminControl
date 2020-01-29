@@ -722,7 +722,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index: number, item: any): number
+    trackByFn(index: number, item: any): any
     {
         return item.id || index;
     }

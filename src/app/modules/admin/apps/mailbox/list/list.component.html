@@ -63,7 +63,7 @@
              #mailList>
 
             <!-- Mail list item loop -->
-            <ng-container *ngFor="let mail of mails; let i = index; trackBy: trackById">
+            <ng-container *ngFor="let mail of mails; let i = index; trackBy: trackByFn">
 
                 <!-- Mail list item -->
                 <a class="item"

@@ -22,7 +22,7 @@
             <mat-menu class="mailbox-details-toggle-label-menu-panel"
                       #toggleLabelMenu="matMenu">
                 <div mat-menu-item
-                     *ngFor="let label of labels; trackBy: trackById">
+                     *ngFor="let label of labels; trackBy: trackByFn">
                     <mat-checkbox (change)="toggleLabel(label)"
                                   [color]="'primary'"
                                   [checked]="mail.labels.includes(label.id)"

@@ -348,7 +348,7 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackByFn(index: number, item: any): any
     {
         return item.id || index;
     }

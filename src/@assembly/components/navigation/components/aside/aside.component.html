@@ -50,7 +50,7 @@
 
         <div class="asm-navigation-item-children">
 
-            <ng-container *ngFor="let item of item.children; trackBy: trackById">
+            <ng-container *ngFor="let item of item.children; trackBy: trackByFn">
 
                 <!-- Basic -->
                 <asm-navigation-basic-item *ngIf="item.type === 'basic'"

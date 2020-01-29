@@ -118,7 +118,7 @@
          *ngIf="contact.tags.length || editMode">
 
         <div class="tag"
-             *ngFor="let tag of (contact.tags | findByKey:'id':tags); trackBy: trackById">
+             *ngFor="let tag of (contact.tags | findByKey:'id':tags); trackBy: trackByFn">
             <span class="tag-title">{{tag.title}}</span>
         </div>
 
@@ -177,7 +177,7 @@
 
                             <!-- Tags -->
                             <ng-container *ngIf="!tagsEditMode">
-                                <mat-checkbox *ngFor="let tag of filteredTags; trackBy: trackById"
+                                <mat-checkbox *ngFor="let tag of filteredTags; trackBy: trackByFn"
                                               [color]="'primary'"
                                               [checked]="contact.tags.includes(tag.id)"
                                               (change)="toggleContactTag(tag, $event)">
@@ -188,7 +188,7 @@
                             <!-- Tags editing -->
                             <ng-container *ngIf="tagsEditMode">
                                 <div class="tag-edit"
-                                     *ngFor="let tag of filteredTags; trackBy: trackById">
+                                     *ngFor="let tag of filteredTags; trackBy: trackByFn">
                                     <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
                                         <input matInput
                                                [value]="tag.title"
@@ -276,7 +276,7 @@
              *ngIf="!editMode">
 
             <div class="email"
-                 *ngFor="let email of contact.emails; let i = index; trackBy: trackById">
+                 *ngFor="let email of contact.emails; let i = index; trackBy: trackByFn">
                 <div class="address">
                     <a class="link"
                        [href]="'mailto:' + email.email">
@@ -297,7 +297,7 @@
              *ngIf="editMode">
 
             <div class="email"
-                 *ngFor="let email of contactForm.get('emails')['controls']; let i = index; let last = last; trackBy: trackById">
+                 *ngFor="let email of contactForm.get('emails')['controls']; let i = index; let last = last; trackBy: trackByFn">
 
                 <mat-form-field class="asm-mat-no-subscript">
                     <mat-label>Email</mat-label>
@@ -351,7 +351,7 @@
              *ngIf="!editMode">
 
             <div class="phone-number"
-                 *ngFor="let phoneNumber of contact.phoneNumbers; let i = index; trackBy: trackById">
+                 *ngFor="let phoneNumber of contact.phoneNumbers; let i = index; trackBy: trackByFn">
                 <div class="flag"
                      [matTooltip]="getCountryByIso(phoneNumber.country).name"
                      [style.backgroundPosition]="getCountryByIso(phoneNumber.country).flagImagePos"></div>
@@ -371,7 +371,7 @@
              *ngIf="editMode">
 
             <div class="phone-number"
-                 *ngFor="let phoneNumber of contactForm.get('phoneNumbers')['controls']; let i = index; let last = last; trackBy: trackById">
+                 *ngFor="let phoneNumber of contactForm.get('phoneNumbers')['controls']; let i = index; let last = last; trackBy: trackByFn">
 
                 <mat-form-field class="asm-mat-no-subscript">
                     <mat-label>Phone</mat-label>
@@ -384,7 +384,7 @@
                             <span class="flag"
                                   [style.backgroundPosition]="getCountryByIso(phoneNumber.get('country').value).flagImagePos"></span>
                         </mat-select-trigger>
-                        <mat-option *ngFor="let country of countries; trackBy: trackById"
+                        <mat-option *ngFor="let country of countries; trackBy: trackByFn"
                                     [value]="country.iso">
                             <span class="flag"
                                   [style.backgroundPosition]="country.flagImagePos"></span>

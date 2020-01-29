@@ -69,7 +69,7 @@
         <div class="tag-wrapper">
 
             <div class="tag"
-                 *ngFor="let tag of (task.tags | findByKey:'id':tags); trackBy: trackById">
+                 *ngFor="let tag of (task.tags | findByKey:'id':tags); trackBy: trackByFn">
                 <span class="tag-title">{{tag.title}}</span>
             </div>
 
@@ -126,7 +126,7 @@
 
                         <!-- Tags -->
                         <ng-container *ngIf="!tagsEditMode">
-                            <mat-checkbox *ngFor="let tag of filteredTags; trackBy: trackById"
+                            <mat-checkbox *ngFor="let tag of filteredTags; trackBy: trackByFn"
                                           [color]="'primary'"
                                           [checked]="task.tags.includes(tag.id)"
                                           (change)="toggleTaskTag(tag, $event)">
@@ -137,7 +137,7 @@
                         <!-- Tags editing -->
                         <ng-container *ngIf="tagsEditMode">
                             <div class="tag-edit"
-                                 *ngFor="let tag of filteredTags; trackBy: trackById">
+                                 *ngFor="let tag of filteredTags; trackBy: trackByFn">
                                 <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
                                     <input matInput
                                            [value]="tag.title"

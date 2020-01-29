@@ -794,7 +794,7 @@ export class DashboardAnalyticsComponent implements OnInit, AfterViewInit, OnDes
      * @param index
      * @param item
      */
-    trackById(index, item): number
+    trackByFn(index: number, item: any): any
     {
         return item.id || index;
     }

@@ -77,7 +77,7 @@
                         <!-- Table -->
                         <table mat-table
                                [dataSource]="contacts$"
-                               [trackBy]="trackById">
+                               [trackBy]="trackByFn">
 
                             <!-- Name -->
                             <ng-container matColumnDef="name">

@@ -32,7 +32,7 @@
         <div class="guides">
 
             <div class="category"
-                 *ngFor="let guideCategory of guideCategories; trackBy: trackById">
+                 *ngFor="let guideCategory of guideCategories; trackBy: trackByFn">
 
                 <a class="title"
                    [routerLink]="[guideCategory.slug]">
@@ -40,7 +40,7 @@
                 </a>
 
                 <a class="link guide"
-                   *ngFor="let guide of guideCategory.guides; trackBy: trackById"
+                   *ngFor="let guide of guideCategory.guides; trackBy: trackByFn"
                    [routerLink]="[guideCategory.slug, guide.slug]">
                     {{guide.title}}
                 </a>

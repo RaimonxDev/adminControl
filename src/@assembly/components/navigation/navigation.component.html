@@ -16,7 +16,7 @@
         </div>
 
         <!-- Items -->
-        <ng-container *ngFor="let item of navigation; trackBy: trackById">
+        <ng-container *ngFor="let item of navigation; trackBy: trackByFn">
 
             <!-- Aside -->
             <asm-navigation-aside-item *ngIf="item.type === 'aside'"
@@ -84,7 +84,7 @@
      [@fadeOutRight]="position === 'right'">
 
     <!-- Items -->
-    <ng-container *ngFor="let item of navigation; trackBy: trackById">
+    <ng-container *ngFor="let item of navigation; trackBy: trackByFn">
 
         <!-- Aside -->
         <asm-navigation-aside-item *ngIf="item.type === 'aside' && item.id === activeAsideItemId"

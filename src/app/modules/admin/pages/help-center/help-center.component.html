@@ -63,7 +63,7 @@
 
             <mat-accordion>
 
-                <mat-expansion-panel *ngFor="let faq of faqCategory.faqs; trackBy: trackById">
+                <mat-expansion-panel *ngFor="let faq of faqCategory.faqs; trackBy: trackByFn">
 
                     <mat-expansion-panel-header [collapsedHeight]="'56px'">
                         <mat-panel-title>{{faq.question}}</mat-panel-title>

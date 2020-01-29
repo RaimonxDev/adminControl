@@ -32,7 +32,7 @@
         <div class="guides">
 
             <a class="link guide"
-               *ngFor="let guide of guideCategory.guides; trackBy: trackById"
+               *ngFor="let guide of guideCategory.guides; trackBy: trackByFn"
                [routerLink]="[guide.slug]">
                 {{guide.title}}
             </a>
