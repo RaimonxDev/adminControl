@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { Overlay } from '@angular/cdk/overlay';
+import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +24,15 @@ import { SearchComponent } from 'app/core/main/common/search/search.component';
     ],
     exports     : [
         SearchComponent
+    ],
+    providers   : [
+        {
+            provide   : MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
+            useFactory: (overlay: Overlay) => {
+                return () => overlay.scrollStrategies.block();
+            },
+            deps      : [Overlay]
+        }
     ]
 })
 export class SearchModule

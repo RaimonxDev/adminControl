@@ -7,23 +7,22 @@ shortcuts {
 
 // Shortcuts panel
 .shortcuts-panel {
-    display: flex;
-    flex-direction: column;
-    max-width: 416px !important;
-    min-width: 416px !important;
+    min-width: 360px !important;
+    max-width: 360px !important;
     border-radius: 8px;
     max-height: calc(100vh - 80px);
     overflow: hidden;
-    @include asm-elevation('2xl');
+    @include asm-elevation('lg');
+    @include asm-media-breakpoint('xs') {
+        min-width: 0 !important;
+        max-width: 384px !important;
+        width: calc(100vw - 32px);
+    }
 
     .header {
         display: flex;
         align-items: center;
-        height: 144px;
-        min-height: 144px;
-        max-height: 144px;
-        padding: 0 24px 0 32px;
-        border-bottom-width: 1px;
+        padding: 32px 24px 32px 32px;
 
         > .mat-icon {
             width: 40px;
@@ -36,28 +35,15 @@ shortcuts {
             margin-right: 16px;
         }
 
-        .left {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            justify-content: center;
-
-            .title {
-                font-size: 20px;
-                font-weight: 700;
-                line-height: 1;
-            }
-
-            .subtitle {
-                margin-top: 4px;
-                line-height: 1;
-            }
+        .title {
+            font-size: 18px;
+            font-weight: 500;
         }
 
-        .right {
+        .actions {
             display: flex;
             align-items: center;
-            margin-left: 16px;
+            margin-left: auto;
         }
     }
 
@@ -69,6 +55,10 @@ shortcuts {
         padding: 0;
         margin-bottom: -1px;
         overflow-y: auto;
+
+        @include asm-media-breakpoint('xs') {
+            max-height: 480px;
+        }
 
         // Modify mode
         &.mode-modify {
@@ -263,11 +253,6 @@ shortcuts {
                 background: map-get($primary, default) !important;
                 color: map-get($primary, default-contrast) !important;
             }
-
-            .subtitle,
-            .mat-icon {
-                color: asm-color('gray', 500);
-            }
         }
 
         .content {
@@ -278,11 +263,14 @@ shortcuts {
 
                 .shortcut {
 
-                    &:hover {
-                        @if ($is-dark) {
-                            background: rgba(0, 0, 0, 0.05);
-                        } @else {
-                            background: asm-color('gray', 100);
+                    @include asm-media-breakpoint('gt-xs') {
+
+                        &:hover {
+                            @if ($is-dark) {
+                                background: rgba(0, 0, 0, 0.05);
+                            } @else {
+                                background: asm-color('gray', 100);
+                            }
                         }
                     }
                 }

@@ -163,7 +163,7 @@ export class NotificationsComponent implements OnInit, OnDestroy
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(this._notificationsOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
-                                  .withViewportMargin(64)
+                                  .withViewportMargin(16)
                                   .withLockedPosition()
                                   .withPositions([
                                       {

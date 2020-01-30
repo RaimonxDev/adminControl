@@ -26,9 +26,13 @@ search {
 
                     .mat-form-field-flex {
                         height: 100%;
-                        padding: 0 80px 0 40px;
+                        padding: 0 72px 0 32px;
                         border: none;
                         border-radius: 0 !important;
+
+                        @include asm-media-breakpoint('xs') {
+                            padding: 0 64px 0 24px
+                        }
                     }
                 }
             }
@@ -36,12 +40,16 @@ search {
             .search-toggle-close {
                 position: absolute;
                 top: 50%;
-                right: 40px;
+                right: 32px;
                 margin-top: -20px;
                 min-width: 40px;
                 width: 40px;
                 min-height: 40px;
                 height: 40px;
+
+                @include asm-media-breakpoint('xs') {
+                    right: 24px;
+                }
             }
         }
     }
@@ -102,6 +110,10 @@ search {
 
         .mat-option {
             padding: 0 40px;
+
+            @include asm-media-breakpoint('xs') {
+                padding: 0 24px
+            }
         }
     }
 
@@ -113,6 +125,10 @@ search {
 
         .mat-option {
             padding: 0 32px;
+
+            @include asm-media-breakpoint('xs') {
+                padding: 0 24px
+            }
         }
     }
 
@@ -248,9 +264,15 @@ search {
 
         .mat-option {
 
-            &:hover:not(.mat-option-disabled),
-            &:focus:not(.mat-option-disabled) {
-                box-shadow: inset 4px 0 0 map-get($primary, default);
+            @include asm-media-breakpoint('xs') {
+                background: transparent !important;
+            }
+
+            @include asm-media-breakpoint('gt-xs') {
+                &:hover:not(.mat-option-disabled),
+                &:focus:not(.mat-option-disabled) {
+                    box-shadow: inset 4px 0 0 map-get($primary, default);
+                }
             }
 
             &.no-results {

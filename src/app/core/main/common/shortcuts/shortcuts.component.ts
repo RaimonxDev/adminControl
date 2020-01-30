@@ -153,7 +153,7 @@ export class ShortcutsComponent implements OnInit, OnDestroy
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(this._shortcutsOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
-                                  .withViewportMargin(64)
+                                  .withViewportMargin(16)
                                   .withLockedPosition()
                                   .withPositions([
                                       {

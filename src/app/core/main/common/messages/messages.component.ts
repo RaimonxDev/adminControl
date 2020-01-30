@@ -163,7 +163,7 @@ export class MessagesComponent implements OnInit, OnDestroy
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(this._messagesOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
-                                  .withViewportMargin(64)
+                                  .withViewportMargin(16)
                                   .withLockedPosition()
                                   .withPositions([
                                       {

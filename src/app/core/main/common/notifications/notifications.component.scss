@@ -23,21 +23,22 @@ notifications {
 
 // Notifications panel
 .notifications-panel {
-    max-width: 416px !important;
-    min-width: 416px !important;
+    min-width: 360px !important;
+    max-width: 360px !important;
     border-radius: 8px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     @include asm-elevation('lg');
+    @include asm-media-breakpoint('xs') {
+        min-width: 0 !important;
+        max-width: 384px !important;
+        width: calc(100vw - 32px);
+    }
 
     .header {
         display: flex;
         align-items: center;
-        height: 120px;
-        min-height: 120px;
-        max-height: 120px;
-        padding: 0 24px;
-        border-bottom-width: 1px;
+        padding: 32px 24px 32px 32px;
 
         .header-icon {
             position: relative;
@@ -79,12 +80,6 @@ notifications {
 
         .mark-all-as-read {
             margin-left: auto;
-            font-size: 13px;
-            cursor: pointer;
-
-            &:hover {
-                text-decoration: underline;
-            }
         }
     }
 
@@ -94,10 +89,12 @@ notifications {
         flex-direction: column;
         max-height: 480px;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
 
         .notification {
             display: flex;
-            padding: 20px 16px 20px 24px;
+            flex: 1 0 auto;
+            padding: 20px 24px 20px 32px;
             border-radius: 4px;
             cursor: pointer;
             border-bottom-width: 1px;
@@ -106,19 +103,22 @@ notifications {
                 border-bottom-width: 0;
             }
 
-            &:hover {
+            @include asm-media-breakpoint('gt-xs') {
 
-                .actions {
+                &:hover {
 
-                    .indicator {
+                    .actions {
 
-                        .read {
+                        .indicator {
+
+                            .read {
+                                opacity: 1;
+                            }
+                        }
+
+                        .remove {
                             opacity: 1;
                         }
-                    }
-
-                    .remove {
-                        opacity: 1;
                     }
                 }
             }
@@ -200,8 +200,11 @@ notifications {
                         border-radius: 50%;
                     }
 
-                    .read {
-                        opacity: 0;
+                    @include asm-media-breakpoint('gt-xs') {
+
+                        .read {
+                            opacity: 0;
+                        }
                     }
                 }
 
@@ -210,7 +213,10 @@ notifications {
                     height: 24px;
                     min-height: 24px;
                     line-height: 24px !important;
-                    opacity: 0;
+
+                    @include asm-media-breakpoint('gt-xs') {
+                        opacity: 0;
+                    }
 
                     .mat-icon {
                         @include asm-icon-size(16);
@@ -298,11 +304,14 @@ notifications {
 
             .notification {
 
-                &:hover {
-                    @if ($is-dark) {
-                        background: rgba(0, 0, 0, 0.05) !important;
-                    } @else {
-                        background: asm-color('gray', 100) !important;
+                @include asm-media-breakpoint('gt-xs') {
+
+                    &:hover {
+                        @if ($is-dark) {
+                            background: rgba(0, 0, 0, 0.05) !important;
+                        } @else {
+                            background: asm-color('gray', 100) !important;
+                        }
                     }
                 }
 

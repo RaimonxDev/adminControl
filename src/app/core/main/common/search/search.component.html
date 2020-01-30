@@ -25,7 +25,8 @@
     </mat-form-field>
 
     <mat-autocomplete [class]="'search-results search-results-appearance-' + appearance"
-                      #matAutocomplete="matAutocomplete">
+                      #matAutocomplete="matAutocomplete"
+                      [disableRipple]="true">
 
         <mat-option class="no-results"
                     *ngIf="results && !results.length">

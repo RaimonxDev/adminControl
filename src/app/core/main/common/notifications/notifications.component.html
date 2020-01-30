@@ -27,10 +27,12 @@
                 Notifications
             </div>
 
-            <div class="mark-all-as-read"
-                 (click)="markAllAsRead()">
-                Mark all as read
-            </div>
+            <button class="mark-all-as-read"
+                    mat-icon-button
+                    [matTooltip]="'Mark all as read'"
+                    (click)="markAllAsRead()">
+                <mat-icon [svgIcon]="'playlist_add_check'"></mat-icon>
+            </button>
 
         </div>
 
