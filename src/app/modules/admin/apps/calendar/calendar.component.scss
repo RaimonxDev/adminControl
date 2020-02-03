@@ -146,6 +146,7 @@ calendar {
                                                         > .fc-day-grid {
                                                             display: flex;
                                                             flex-direction: column;
+                                                            min-height: 640px;
 
                                                             > .fc-row {
                                                                 flex: 1 0 0;

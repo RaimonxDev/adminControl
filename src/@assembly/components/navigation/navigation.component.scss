@@ -4,7 +4,7 @@ asm-navigation {
     position: sticky;
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
+    flex: 1 0 auto;
     top: 0;
     width: 280px;
     min-width: 280px;
@@ -415,6 +415,7 @@ asm-navigation {
         .asm-navigation-wrapper {
             position: relative;
             overflow: visible;
+            height: auto;
 
             .asm-navigation-content {
                 overflow: visible !important;

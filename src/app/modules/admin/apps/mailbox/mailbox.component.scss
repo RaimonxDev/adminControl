@@ -23,13 +23,7 @@ mailbox {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
-    $background: map-get($theme, background);
-    $is-dark: map-get($theme, is-dark);
-
     mailbox {
 
-        .mat-drawer {
-            border-right: none;
-        }
     }
 }

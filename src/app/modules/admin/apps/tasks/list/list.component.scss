@@ -397,7 +397,6 @@ tasks-list {
             }
 
             .mat-drawer {
-                border: none;
 
                 @if ($is-dark) {
                     background: map-get($background, background);
