@@ -12,8 +12,8 @@
             <div class="flex flex-col flex-auto h-full">
 
                 <!-- Watchlist -->
-                <div class="flex flex-col">
-                    <div class="flex items-center px-16 py-20 border-b"
+                <div class="flex flex-col flex-0">
+                    <div class="flex flex-0 items-center px-16 py-20 border-b"
                          *ngFor="let item of data.watchlist">
                         <div class="flex flex-col flex-auto pr-24">
                             <div class="flex items-baseline">
@@ -44,9 +44,9 @@
                 </div>
 
                 <!-- Buy / Sell -->
-                <div class="flex flex-col flex-auto light:bg-gray-100 dark:bg-transparent">
+                <div class="flex flex-col flex-auto flex-shrink-0 light:bg-gray-100 dark:bg-transparent">
 
-                    <mat-button-toggle-group class="buy-sell-toggle w-full mb-32"
+                    <mat-button-toggle-group class="buy-sell-toggle flex-0 w-full mb-32"
                                              [value]="'buy'"
                                              #buySellToggleGroup="matButtonToggleGroup">
                         <mat-button-toggle class="w-1/2"
@@ -178,7 +178,7 @@
         <mat-drawer-content>
 
             <!-- BTC Price -->
-            <div class="flex flex-col flex-auto h-full bg-card dark:bg-base">
+            <div class="flex flex-col flex-auto min-h-full bg-card dark:bg-base">
                 <div class="flex flex-wrap items-center px-24 py-12 border-b">
                     <button class="mr-24 gt-md:hidden"
                             mat-icon-button
