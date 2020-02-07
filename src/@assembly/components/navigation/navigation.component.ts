@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { BehaviorSubject, merge, Subject, Subscription } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
@@ -64,6 +64,9 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 
     @HostBinding('class.asm-navigation-animations-enabled')
     private _animationsEnabled: boolean;
+
+    @ViewChild('navigationContent')
+    private _navigationContentEl: ElementRef;
 
     /**
      * Constructor
@@ -442,13 +445,37 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      */
     ngAfterViewInit(): void
     {
-        // Go through all the scrollbar directives
-        this._asmScrollbarDirectives.forEach((asmScrollbarDirective) => {
+        setTimeout(() => {
 
-            // Scroll to the active element
-            setTimeout(() => {
-                asmScrollbarDirective.scrollToElement('.asm-navigation-item-active', -120, true);
-            });
+            // If 'navigation content' element doesn't have
+            // perfect scrollbar activated on it...
+            if ( !this._navigationContentEl.nativeElement.classList.contains('ps') )
+            {
+                // Find the active item
+                const activeItem = this._navigationContentEl.nativeElement.querySelector('.asm-navigation-item-active');
+
+                // If the active item exists, scroll it into view
+                if ( activeItem )
+                {
+                    activeItem.scrollIntoView();
+                }
+            }
+            // Otherwise
+            else
+            {
+                // Go through all the scrollbar directives
+                this._asmScrollbarDirectives.forEach((asmScrollbarDirective) => {
+
+                    // Skip if not enabled
+                    if ( !asmScrollbarDirective.enabled )
+                    {
+                        return;
+                    }
+
+                    // Scroll to the active element
+                    asmScrollbarDirective.scrollToElement('.asm-navigation-item-active', -120, true);
+                });
+            }
         });
     }
 

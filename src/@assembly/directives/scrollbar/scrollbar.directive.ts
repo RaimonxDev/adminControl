@@ -89,8 +89,14 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
      * @param value
      */
     @Input('asmScrollbar')
-    set enabled(value: boolean)
+    set enabled(value: boolean | '')
     {
+        // If the value is an empty string, interpret it as 'true'
+        if ( value === '' )
+        {
+            value = true;
+        }
+
         // If the value is the same, return...
         if ( this._enabled === value )
         {
@@ -113,7 +119,7 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
         }
     }
 
-    get enabled(): boolean
+    get enabled(): boolean | ''
     {
         // Return the enabled status
         return this._enabled;
@@ -187,6 +193,9 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
         // Return if it's mobile or the platform is not a browser
         if ( this.isMobile || !this._platform.isBrowser )
         {
+            // Silently set the enabled to false
+            this._enabled = false;
+
             return;
         }
 
