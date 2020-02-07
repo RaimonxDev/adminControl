@@ -7,6 +7,7 @@ mailbox-list {
     width: 100%;
 
     .list-wrapper {
+        position: relative;
         display: flex;
         flex: 0 1 auto;
         flex-direction: column;
@@ -14,18 +15,12 @@ mailbox-list {
         min-width: 360px;
         max-width: 360px;
         border-right-width: 1px;
+        z-index: 5;
 
         @include asm-media-breakpoint('lt-lg') {
             width: 100%;
             max-width: none;
             min-width: 0;
-
-            + router-outlet {
-
-                + mailbox-details {
-                    display: none;
-                }
-            }
 
             &.mail-selected {
 
@@ -38,7 +33,16 @@ mailbox-list {
                         left: 0;
                         right: 0;
                         bottom: 0;
-                        z-index: 9;
+                    }
+                }
+
+                > .header {
+
+                    // Safari bug: Progress bar animation brakes the z-index on
+                    // .list-wrapper, so we hide it if the mail is selected to
+                    // prevent the issue
+                    .loading-progress-bar {
+                        display: none;
                     }
                 }
             }
@@ -60,7 +64,6 @@ mailbox-list {
             min-height: 64px;
             height: 64px;
             padding: 0 8px 0 16px;
-            z-index: 9;
 
             .left {
                 display: flex;
