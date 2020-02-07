@@ -676,17 +676,6 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
         // Get form array for emails
         const emailsFormArray = this.contactForm.get('emails') as FormArray;
 
-        // If it's the last field, empty it rather than removing it
-        if ( index === 0 )
-        {
-            emailsFormArray.at(index).patchValue({
-                email: '',
-                label: ''
-            });
-
-            return;
-        }
-
         // Remove the email field
         emailsFormArray.removeAt(index);
 
@@ -722,18 +711,6 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
     {
         // Get form array for phone numbers
         const phoneNumbersFormArray = this.contactForm.get('phoneNumbers') as FormArray;
-
-        // If it's the last field, empty it rather than removing it
-        if ( index === 0 )
-        {
-            phoneNumbersFormArray.at(index).patchValue({
-                country: 'us',
-                number : '',
-                label  : ''
-            });
-
-            return;
-        }
 
         // Remove the phone number field
         phoneNumbersFormArray.removeAt(index);

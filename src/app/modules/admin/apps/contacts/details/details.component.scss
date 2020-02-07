@@ -14,20 +14,20 @@ contacts-details {
         -webkit-overflow-scrolling: touch;
 
         @include asm-media-breakpoint('lt-sm') {
-            padding: 40px 64px 40px 80px;
+            padding: 24px 48px 40px 80px;
         }
 
         &.edit-mode {
-            padding: 56px 96px 64px 80px;
+            padding: 56px 80px 64px 80px;
 
             @include asm-media-breakpoint('lt-sm') {
-                padding: 40px 96px 40px 80px;
+                padding: 24px 80px 40px 40px;
             }
 
             > .actions {
 
                 @include asm-media-breakpoint('(max-width: 480px)') {
-                    margin: 0 -72px 16px 0;
+                    margin: 0 -56px 24px -16px;
                 }
             }
 
@@ -37,6 +37,21 @@ contacts-details {
 
                 .icon {
                     margin-top: 12px;
+                }
+            }
+
+            @include asm-media-breakpoint('xs') {
+
+                > .job,
+                > .emails,
+                > .phone-numbers,
+                > .address,
+                > .birthday,
+                > .notes {
+
+                    .icon {
+                        display: none !important;
+                    }
                 }
             }
         }
@@ -66,9 +81,13 @@ contacts-details {
             @include asm-media-breakpoint('(max-width: 480px)') {
                 position: relative;
                 justify-content: flex-end;
-                margin: 0 -40px 16px 0;
+                margin: 0 -24px 16px 0;
                 top: auto;
                 right: auto;
+            }
+
+            .cancel-button {
+                margin-right: auto;
             }
         }
 
@@ -339,18 +358,6 @@ contacts-details {
                 .email {
                     position: relative;
 
-                    &:hover {
-
-                        .actions {
-
-                            .remove-email-field {
-                                opacity: 1;
-                                visibility: visible;
-                                pointer-events: auto;
-                            }
-                        }
-                    }
-
                     .mat-form-field {
                         flex: 1 1 auto;
 
@@ -372,8 +379,8 @@ contacts-details {
                         align-items: center;
                         right: -80px;
                         width: 80px;
+                        height: 52px;
                         padding: 0 8px;
-                        margin-top: 10px;
 
                         .add-email-field,
                         .remove-email-field {
@@ -381,19 +388,6 @@ contacts-details {
                             height: 32px;
                             line-height: 32px !important;
                             min-height: 32px;
-                        }
-
-                        .add-email-field {
-
-                            .mat-icon {
-                                @include asm-icon-size(20);
-                            }
-                        }
-
-                        .remove-email-field {
-                            opacity: 0;
-                            visibility: hidden;
-                            pointer-events: none;
 
                             .mat-icon {
                                 @include asm-icon-size(20);
@@ -472,18 +466,6 @@ contacts-details {
                 .phone-number {
                     position: relative;
 
-                    &:hover {
-
-                        .actions {
-
-                            .remove-phone-number-field {
-                                opacity: 1;
-                                visibility: visible;
-                                pointer-events: auto;
-                            }
-                        }
-                    }
-
                     .mat-form-field {
                         flex: 1 1 auto;
 
@@ -523,8 +505,8 @@ contacts-details {
                         align-items: center;
                         right: -80px;
                         width: 80px;
+                        height: 52px;
                         padding: 0 8px;
-                        margin-top: 10px;
 
                         .add-phone-number-field,
                         .remove-phone-number-field {
@@ -532,19 +514,6 @@ contacts-details {
                             height: 32px;
                             line-height: 32px !important;
                             min-height: 32px;
-                        }
-
-                        .add-phone-number-field {
-
-                            .mat-icon {
-                                @include asm-icon-size(20);
-                            }
-                        }
-
-                        .remove-phone-number-field {
-                            opacity: 0;
-                            visibility: hidden;
-                            pointer-events: none;
 
                             .mat-icon {
                                 @include asm-icon-size(20);

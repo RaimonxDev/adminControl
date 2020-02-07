@@ -19,6 +19,15 @@
             </button>
         </mat-menu>
 
+        <!-- Cancel button -->
+        <button class="cancel-button"
+                mat-icon-button
+                *ngIf="editMode"
+                [matTooltip]="'Cancel'"
+                (click)="toggleEditMode(false)">
+            <mat-icon [svgIcon]="'cancel'"></mat-icon>
+        </button>
+
         <!-- Save button -->
         <button mat-icon-button
                 *ngIf="editMode"
@@ -26,14 +35,6 @@
                 [matTooltip]="'Save'"
                 (click)="updateContact()">
             <mat-icon [svgIcon]="'save'"></mat-icon>
-        </button>
-
-        <!-- Cancel button -->
-        <button mat-icon-button
-                *ngIf="editMode"
-                [matTooltip]="'Cancel'"
-                (click)="toggleEditMode(false)">
-            <mat-icon [svgIcon]="'cancel'"></mat-icon>
         </button>
 
         <!-- Delete button -->
@@ -297,7 +298,7 @@
              *ngIf="editMode">
 
             <div class="email"
-                 *ngFor="let email of contactForm.get('emails')['controls']; let i = index; let last = last; trackBy: trackByFn">
+                 *ngFor="let email of contactForm.get('emails')['controls']; let i = index; let first = first; let last = last; trackBy: trackByFn">
 
                 <mat-form-field class="asm-mat-no-subscript">
                     <mat-label>Email</mat-label>
@@ -315,6 +316,7 @@
                 <div class="actions">
 
                     <button class="remove-email-field"
+                            *ngIf="!(first && last)"
                             mat-icon-button
                             (click)="removeEmailField(i)"
                             matTooltip="Remove">
@@ -371,7 +373,7 @@
              *ngIf="editMode">
 
             <div class="phone-number"
-                 *ngFor="let phoneNumber of contactForm.get('phoneNumbers')['controls']; let i = index; let last = last; trackBy: trackByFn">
+                 *ngFor="let phoneNumber of contactForm.get('phoneNumbers')['controls']; let i = index; let first = first; let last = last; trackBy: trackByFn">
 
                 <mat-form-field class="asm-mat-no-subscript">
                     <mat-label>Phone</mat-label>
@@ -403,6 +405,7 @@
                 <div class="actions">
 
                     <button class="remove-phone-number-field"
+                            *ngIf="!(first && last)"
                             mat-icon-button
                             (click)="removePhoneNumberField(i)"
                             matTooltip="Remove">

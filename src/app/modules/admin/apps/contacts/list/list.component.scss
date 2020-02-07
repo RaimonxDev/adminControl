@@ -98,35 +98,34 @@ contacts-list {
                         width: 100%;
                         table-layout: fixed;
 
-                        th {
-
-                            &:first-child {
-                                padding-left: 96px;
+                        thead {
+                            @include asm-media-breakpoint('lt-sm') {
+                                display: none;
                             }
 
-                            &:last-child {
-                                padding-right: 40px;
-                            }
+                            th {
 
-                            &.mat-column-email {
-
-                                @include asm-media-breakpoint('lt-sm') {
-                                    display: none;
+                                &:first-child {
+                                    padding-left: 96px;
                                 }
-                            }
 
-                            &.mat-column-phoneNumber {
-
-                                @include asm-media-breakpoint('(max-width: 720px)') {
-                                    display: none;
+                                &:last-child {
+                                    padding-right: 40px;
                                 }
-                            }
 
-                            &.mat-column-job {
-                                max-width: 240px;
+                                &.mat-column-phoneNumber {
 
-                                @include asm-media-breakpoint('lt-lg') {
-                                    display: none;
+                                    @include asm-media-breakpoint('(max-width: 720px)') {
+                                        display: none;
+                                    }
+                                }
+
+                                &.mat-column-job {
+                                    max-width: 240px;
+
+                                    @include asm-media-breakpoint('lt-lg') {
+                                        display: none;
+                                    }
                                 }
                             }
                         }
