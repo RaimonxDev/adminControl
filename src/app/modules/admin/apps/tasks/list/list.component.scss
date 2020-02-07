@@ -128,14 +128,17 @@ tasks-list {
                             }
                         }
 
-                        &:hover {
+                        @include asm-media-breakpoint('gt-sm') {
 
-                            .task-content {
+                            &:hover {
 
-                                .drag-handle {
-                                    visibility: visible;
-                                    pointer-events: auto;
-                                    opacity: 1;
+                                .task-content {
+
+                                    .drag-handle {
+                                        visibility: visible;
+                                        pointer-events: auto;
+                                        opacity: 1;
+                                    }
                                 }
                             }
                         }
@@ -177,12 +180,18 @@ tasks-list {
                                 justify-content: center;
                                 top: 0;
                                 bottom: 0;
-                                left: 0px;
+                                left: 0;
                                 width: 32px;
                                 visibility: hidden;
                                 pointer-events: none;
                                 opacity: 0;
                                 cursor: grab;
+
+                                @include asm-media-breakpoint('lt-md') {
+                                    visibility: visible;
+                                    pointer-events: auto;
+                                    opacity: 1;
+                                }
 
                                 .mat-icon {
                                     @include asm-icon-size(18);
