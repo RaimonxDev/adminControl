@@ -14,7 +14,7 @@ calendar {
 
         .mat-drawer-content {
             display: flex;
-            overflow: hidden;
+            overflow: hidden auto;
 
             .main {
                 display: flex;
@@ -25,12 +25,15 @@ calendar {
 
                 .header {
                     display: flex;
+                    flex-wrap: wrap;
+                    flex: 0 0 auto;
                     align-items: center;
-                    height: 72px;
-                    min-height: 72px;
-                    max-height: 72px;
-                    padding: 0 16px;
+                    padding: 8px 16px;
                     border-bottom: 1px solid;
+
+                    > * {
+                        margin: 8px 0;
+                    }
 
                     .drawer-toggle {
                         display: none !important;
@@ -42,20 +45,21 @@ calendar {
                     }
 
                     .today {
+                        margin-right: 8px;
+                    }
+
+                    .next {
                         margin-right: 20px;
                     }
 
                     .title {
-                        margin: 0 auto 0 20px;
+                        margin-right: auto;
                         white-space: nowrap;
-                    }
-
-                    .settings {
-                        margin: 0 12px;
                     }
 
                     .view-changer {
                         width: 120px;
+                        margin-left: 8px;
 
                         .mat-form-field-flex {
                             min-height: 40px;
@@ -66,10 +70,8 @@ calendar {
 
                 .calendar {
                     display: flex;
+                    flex-direction: column;
                     flex: 1 1 auto;
-                    height: calc(100% - 72px);
-                    min-height: calc(100% - 72px);
-                    max-height: calc(100% - 72px);
 
                     // Tweak: FullCalendar CSS only height to improve resize performance
                     // With this tweak, we can disable "handleWindowResize" option of FullCalendar
@@ -78,10 +80,15 @@ calendar {
                     // This tweak only affects the Calendar app's FullCalendar.
                     full-calendar {
                         display: flex;
+                        flex-direction: column;
+                        flex: 1 0 auto;
                         width: 100%;
                         height: 100%;
 
                         .fc-view-container {
+                            display: flex;
+                            flex-direction: column;
+                            flex: 1 0 auto;
                             width: 100%;
                             height: 100%;
 
@@ -93,12 +100,16 @@ calendar {
                                 &.fc-dayGridMonth-view,
                                 &.fc-timeGridWeek-view,
                                 &.fc-timeGridDay-view {
+                                    display: flex;
+                                    flex-direction: column;
+                                    flex: 1 0 auto;
                                     width: 100%;
                                     height: 100%;
 
                                     > table {
                                         display: flex;
                                         flex-direction: column;
+                                        flex: 1 0 auto;
                                         height: 100%;
 
                                         > thead {
@@ -146,7 +157,7 @@ calendar {
                                                         > .fc-day-grid {
                                                             display: flex;
                                                             flex-direction: column;
-                                                            min-height: 640px;
+                                                            min-height: 580px;
 
                                                             > .fc-row {
                                                                 flex: 1 0 0;
@@ -168,7 +179,7 @@ calendar {
                                     .fc-scroller {
                                         width: 100%;
                                         height: 100% !important;
-                                        overflow: hidden auto !important;
+                                        overflow: hidden !important;
                                     }
                                 }
                             }
@@ -186,6 +197,10 @@ calendar {
     max-width: 544px;
     border-radius: 8px;
     @include asm-elevation('2xl');
+
+    @include asm-media-breakpoint('xs') {
+        min-width: 80vw;
+    }
 
     // View mode
     &.panel-mode-view {
@@ -261,6 +276,10 @@ calendar {
     &.panel-mode-edit {
         padding: 40px 32px 24px 24px;
 
+        @include asm-media-breakpoint('xs') {
+            padding: 32px 24px 24px 24px;
+        }
+
         form {
             display: flex;
             flex-direction: column;
@@ -273,6 +292,10 @@ calendar {
 
                 .mat-icon {
                     margin-right: 24px;
+
+                    @include asm-media-breakpoint('xs') {
+                        display: none !important;
+                    }
                 }
 
                 .field {

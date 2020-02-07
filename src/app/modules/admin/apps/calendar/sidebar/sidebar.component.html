@@ -1,5 +1,6 @@
 <h1 class="title">Calendar</h1>
 
+<!-- Calendars -->
 <div class="calendars">
 
     <div class="header">
@@ -32,6 +33,13 @@
     </div>
 
 </div>
+
+<!-- Settings -->
+<a class="settings"
+   [routerLink]="['settings']">
+    <mat-icon [svgIcon]="'settings_applications'"></mat-icon>
+    <span>Settings</span>
+</a>
 
 <!-- Edit panel -->
 <ng-template #editPanel>
@@ -77,6 +85,7 @@
     <div class="actions">
 
         <button mat-button
+                *ngIf="calendar.id"
                 (click)="deleteCalendar(calendar)">
             Delete
         </button>
@@ -87,6 +96,12 @@
                 [disabled]="!calendar.title"
                 (click)="saveCalendar(calendar)">
             Update
+        </button>
+
+        <button mat-button
+                *ngIf="!calendar.id"
+                (click)="closeEditPanel()">
+            Cancel
         </button>
 
         <button mat-flat-button

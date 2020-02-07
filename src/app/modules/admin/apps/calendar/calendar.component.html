@@ -27,9 +27,9 @@
                     </button>
 
                     <button class="today"
-                            mat-stroked-button
+                            mat-icon-button
                             (click)="today()">
-                        Today
+                        <mat-icon [svgIcon]="'today'"></mat-icon>
                     </button>
 
                     <button class="previous"
@@ -47,12 +47,6 @@
                     <h4 class="title">
                         {{viewTitle}}
                     </h4>
-
-                    <a class="settings"
-                       [routerLink]="['settings']"
-                       mat-icon-button>
-                        <mat-icon [svgIcon]="'settings_applications'"></mat-icon>
-                    </a>
 
                     <mat-form-field class="asm-mat-dense asm-mat-no-subscript view-changer">
                         <mat-select (selectionChange)="changeView(viewChanger.value)"

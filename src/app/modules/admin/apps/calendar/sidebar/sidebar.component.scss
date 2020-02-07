@@ -4,6 +4,7 @@ calendar-sidebar {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
+    min-height: 100%;
 
     > .title {
         margin: 32px 32px 24px 32px;
@@ -73,6 +74,21 @@ calendar-sidebar {
                 cursor: pointer;
                 @include asm-icon-size(16);
             }
+        }
+    }
+
+    .settings {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        min-height: 40px;
+        max-height: 40px;
+        margin: auto 0 16px 0;
+        padding: 0 32px;
+        font-weight: 500;
+
+        .mat-icon {
+            margin-right: 8px;
         }
     }
 }
