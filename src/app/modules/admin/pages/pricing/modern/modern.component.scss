@@ -4,8 +4,10 @@ pricing-modern {
     display: flex;
 
     .content-layout {
+        position: relative;
         padding: 32px;
         align-items: center;
+        overflow: hidden;
 
         @include asm-media-breakpoint('lt-sm') {
             padding: 16px;
