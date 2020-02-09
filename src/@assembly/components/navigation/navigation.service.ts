@@ -111,11 +111,10 @@ export class AsmNavigationService
             if ( item.type === 'basic' )
             {
                 flatNavigation.push(item);
-
                 continue;
             }
 
-            if ( item.type === 'aside' || item.type === 'collapsable' )
+            if ( item.type === 'aside' || item.type === 'collapsable' || item.type === 'group' )
             {
                 if ( item.children )
                 {

@@ -46,16 +46,13 @@ export class MockNavigationApi
                 // Fill compact navigation's aside item's children using the default navigation
                 this._compactNavigation.forEach((compactNavItem) => {
 
-                    if ( compactNavItem.type === 'aside' )
-                    {
-                        this._defaultNavigation.forEach((defaultNavItem) => {
+                    this._defaultNavigation.forEach((defaultNavItem) => {
 
-                            if ( defaultNavItem.id === compactNavItem.id || defaultNavItem.id.startsWith(compactNavItem.id) )
-                            {
-                                compactNavItem.children.push(_.cloneDeep(defaultNavItem));
-                            }
-                        });
-                    }
+                        if ( defaultNavItem.id === compactNavItem.id )
+                        {
+                            compactNavItem.children = _.cloneDeep(defaultNavItem.children);
+                        }
+                    });
                 });
 
                 return [

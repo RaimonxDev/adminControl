@@ -10,7 +10,7 @@ mailbox-sidebar {
     }
 
     .compose-button {
-        margin: 0 32px;
+        margin: 0 32px 32px 32px;
 
         .mat-icon {
             @include asm-icon-size(18);

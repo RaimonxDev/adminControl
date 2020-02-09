@@ -44,15 +44,16 @@
                                          [item]="item"
                                          [name]="name"></asm-navigation-divider-item>
 
+            <!-- Group -->
+            <asm-navigation-group-item *ngIf="item.type === 'group'"
+                                       [item]="item"
+                                       [name]="name"
+                                       [autoCollapse]="autoCollapse"></asm-navigation-group-item>
+
             <!-- Spacer -->
             <asm-navigation-spacer-item *ngIf="item.type === 'spacer'"
                                         [item]="item"
                                         [name]="name"></asm-navigation-spacer-item>
-
-            <!-- Subheader -->
-            <asm-navigation-subheader-item *ngIf="item.type === 'subheader'"
-                                           [item]="item"
-                                           [name]="name"></asm-navigation-subheader-item>
 
         </ng-container>
 

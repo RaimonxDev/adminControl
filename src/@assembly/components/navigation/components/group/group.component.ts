@@ -6,13 +6,17 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
 
 @Component({
-    selector       : 'asm-navigation-subheader-item',
-    templateUrl    : './subheader.component.html',
+    selector       : 'asm-navigation-group-item',
+    templateUrl    : './group.component.html',
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationSubheaderItemComponent implements OnInit, OnDestroy
+export class AsmNavigationGroupItemComponent implements OnInit, OnDestroy
 {
+    // Auto collapse
+    @Input()
+    autoCollapse: boolean;
+
     // Item
     @Input()
     item: AsmNavigationItem;
@@ -70,5 +74,20 @@ export class AsmNavigationSubheaderItemComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any
+    {
+        return item.id || index;
     }
 }
