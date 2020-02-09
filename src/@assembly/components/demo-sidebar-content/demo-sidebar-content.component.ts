@@ -18,111 +18,119 @@ export class AsmDemoSidebarContentComponent
             {
                 title   : 'Actions',
                 subtitle: 'Task, project & team',
-                type    : 'subheader'
-            },
-            {
-                title: 'Create task',
-                type : 'basic',
-                icon : 'add_circle'
-            },
-            {
-                title: 'Create team',
-                type : 'basic',
-                icon : 'people_alt'
-            },
-            {
-                title: 'Create project',
-                type : 'basic',
-                icon : 'work'
-            },
-            {
-                title: 'Create user',
-                type : 'basic',
-                icon : 'person_outline'
-            },
-            {
-                title   : 'Assign user or team',
-                subtitle: 'Assign to a task or a project',
-                type    : 'basic',
-                icon    : 'assignment_ind'
-            },
-            {
-                title: 'Tasks',
-                type : 'subheader'
-            },
-            {
-                title: 'All tasks',
-                type : 'basic',
-                icon : 'list_alt',
-                badge: {
-                    title: '49',
-                    style: 'rounded'
-                }
-            },
-            {
-                title: 'Ongoing tasks',
-                type : 'basic',
-                icon : 'play_circle_filled'
-            },
-            {
-                title: 'Completed tasks',
-                type : 'basic',
-                icon : 'check_circle'
-            },
-            {
-                title: 'Abandoned tasks',
-                type : 'basic',
-                icon : 'remove_circle'
-            },
-            {
-                title: 'Assigned to me',
-                type : 'basic',
-                icon : 'person_outline'
-            },
-            {
-                title: 'Assigned to my team',
-                type : 'basic',
-                icon : 'people_alt'
-            },
-            {
-                title: 'Settings',
-                type : 'subheader'
-            },
-            {
-                title   : 'General',
-                type    : 'collapsable',
-                icon    : 'settings_applications',
+                type    : 'group',
                 children: [
                     {
-                        title: 'Tasks',
-                        type : 'basic'
+                        title: 'Create task',
+                        type : 'basic',
+                        icon : 'add_circle'
                     },
                     {
-                        title: 'Users',
-                        type : 'basic'
+                        title: 'Create team',
+                        type : 'basic',
+                        icon : 'people_alt'
                     },
                     {
-                        title: 'Teams',
-                        type : 'basic'
+                        title: 'Create project',
+                        type : 'basic',
+                        icon : 'work'
+                    },
+                    {
+                        title: 'Create user',
+                        type : 'basic',
+                        icon : 'person_outline'
+                    },
+                    {
+                        title   : 'Assign user or team',
+                        subtitle: 'Assign to a task or a project',
+                        type    : 'basic',
+                        icon    : 'assignment_ind'
                     }
                 ]
             },
             {
-                title   : 'Account',
-                type    : 'collapsable',
-                icon    : 'account_circle',
+                title   : 'Tasks',
+                type    : 'group',
                 children: [
+
                     {
-                        title: 'Personal',
-                        type : 'basic'
+                        title: 'All tasks',
+                        type : 'basic',
+                        icon : 'list_alt',
+                        badge: {
+                            title: '49',
+                            style: 'rounded'
+                        }
                     },
                     {
-                        title: 'Payment',
-                        type : 'basic'
+                        title: 'Ongoing tasks',
+                        type : 'basic',
+                        icon : 'play_circle_filled'
                     },
                     {
-                        title: 'Security',
-                        type : 'basic'
+                        title: 'Completed tasks',
+                        type : 'basic',
+                        icon : 'check_circle'
+                    },
+                    {
+                        title: 'Abandoned tasks',
+                        type : 'basic',
+                        icon : 'remove_circle'
+                    },
+                    {
+                        title: 'Assigned to me',
+                        type : 'basic',
+                        icon : 'person_outline'
+                    },
+                    {
+                        title: 'Assigned to my team',
+                        type : 'basic',
+                        icon : 'people_alt'
+                    }
+                ]
+            },
+            {
+                title   : 'Settings',
+                type    : 'group',
+                children: [
+
+                    {
+                        title   : 'General',
+                        type    : 'collapsable',
+                        icon    : 'settings_applications',
+                        children: [
+                            {
+                                title: 'Tasks',
+                                type : 'basic'
+                            },
+                            {
+                                title: 'Users',
+                                type : 'basic'
+                            },
+                            {
+                                title: 'Teams',
+                                type : 'basic'
+                            }
+                        ]
+                    },
+                    {
+                        title   : 'Account',
+                        type    : 'collapsable',
+                        icon    : 'account_circle',
+                        children: [
+                            {
+                                title: 'Personal',
+                                type : 'basic'
+                            },
+                            {
+                                title: 'Payment',
+                                type : 'basic'
+                            },
+                            {
+                                title: 'Security',
+                                type : 'basic'
+                            }
+                        ]
                     }
                 ]
             },
@@ -130,6 +138,5 @@ export class AsmDemoSidebarContentComponent
                 type: 'divider'
             }
         ];
-
     }
 }

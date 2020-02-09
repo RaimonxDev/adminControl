@@ -9,15 +9,15 @@ import { AsmNavigationService } from '@assembly/components/navigation/navigation
 import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.directive';
 
 @Component({
-    selector       : 'asm-navigation',
-    templateUrl    : './navigation.component.html',
-    styleUrls      : ['./navigation.component.scss'],
+    selector       : 'asm-vertical-navigation',
+    templateUrl    : './vertical.component.html',
+    styleUrls      : ['./vertical.component.scss'],
     animations     : AsmAnimations,
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs       : 'asmNavigation'
+    exportAs       : 'asmVerticalNavigation'
 })
-export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
+export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, OnDestroy
 {
     activeAsideItemId: null | string;
     onCollapsableItemCollapsed: BehaviorSubject<AsmNavigationItem | null>;
@@ -63,7 +63,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     private _transparentOverlay: boolean | '';
     private _unsubscribeAll: Subject<any>;
 
-    @HostBinding('class.asm-navigation-animations-enabled')
+    @HostBinding('class.asm-vertical-navigation-animations-enabled')
     private _animationsEnabled: boolean;
 
     @ViewChild('navigationContent')
@@ -135,14 +135,14 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         let appearanceClassName;
 
         // Remove the previous appearance class
-        appearanceClassName = 'asm-navigation-appearance-' + this.appearance;
+        appearanceClassName = 'asm-vertical-navigation-appearance-' + this.appearance;
         this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
 
         // Store the appearance
         this._appearance = value;
 
         // Add the new appearance class
-        appearanceClassName = 'asm-navigation-appearance-' + this.appearance;
+        appearanceClassName = 'asm-vertical-navigation-appearance-' + this.appearance;
         this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
 
         // Execute the observable
@@ -232,11 +232,11 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         // Update the class
         if ( this.inner )
         {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-navigation-inner');
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-vertical-navigation-inner');
         }
         else
         {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-navigation-inner');
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-vertical-navigation-inner');
         }
     }
 
@@ -282,14 +282,14 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         let modeClassName;
 
         // Remove the previous mode class
-        modeClassName = 'asm-navigation-mode-' + this.mode;
+        modeClassName = 'asm-vertical-navigation-mode-' + this.mode;
         this._renderer2.removeClass(this._elementRef.nativeElement, modeClassName);
 
         // Store the mode
         this._mode = value;
 
         // Add the new mode class
-        modeClassName = 'asm-navigation-mode-' + this.mode;
+        modeClassName = 'asm-vertical-navigation-mode-' + this.mode;
         this._renderer2.addClass(this._elementRef.nativeElement, modeClassName);
 
         // Execute the observable
@@ -343,13 +343,13 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         {
             // Update styles and classes
             this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'visible');
-            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-navigation-opened');
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-vertical-navigation-opened');
         }
         else
         {
             // Update styles and classes
             this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-navigation-opened');
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-vertical-navigation-opened');
         }
 
         // Execute the observable
@@ -378,14 +378,14 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         let positionClassName;
 
         // Remove the previous position class
-        positionClassName = 'asm-navigation-position-' + this.position;
+        positionClassName = 'asm-vertical-navigation-position-' + this.position;
         this._renderer2.removeClass(this._elementRef.nativeElement, positionClassName);
 
         // Store the position
         this._position = value;
 
         // Add the new position class
-        positionClassName = 'asm-navigation-position-' + this.position;
+        positionClassName = 'asm-vertical-navigation-position-' + this.position;
         this._renderer2.addClass(this._elementRef.nativeElement, positionClassName);
 
         // Execute the observable
@@ -470,7 +470,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
             if ( !this._navigationContentEl.nativeElement.classList.contains('ps') )
             {
                 // Find the active item
-                const activeItem = this._navigationContentEl.nativeElement.querySelector('.asm-navigation-item-active');
+                const activeItem = this._navigationContentEl.nativeElement.querySelector('.asm-vertical-navigation-item-active');
 
                 // If the active item exists, scroll it into view
                 if ( activeItem )
@@ -491,7 +491,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
                     }
 
                     // Scroll to the active element
-                    asmScrollbarDirective.scrollToElement('.asm-navigation-item-active', -120, true);
+                    asmScrollbarDirective.scrollToElement('.asm-vertical-navigation-item-active', -120, true);
                 });
             }
         });
@@ -548,12 +548,12 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._overlay = this._renderer2.createElement('div');
 
         // Add a class to the overlay element
-        this._overlay.classList.add('asm-navigation-overlay');
+        this._overlay.classList.add('asm-vertical-navigation-overlay');
 
         // Add a class depending on the transparentOverlay option
         if ( this.transparentOverlay )
         {
-            this._overlay.classList.add('asm-navigation-overlay-transparent');
+            this._overlay.classList.add('asm-vertical-navigation-overlay-transparent');
         }
 
         // Append the overlay to the parent of the navigation
@@ -627,7 +627,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._asideOverlay = this._renderer2.createElement('div');
 
         // Add a class to the aside overlay element
-        this._asideOverlay.classList.add('asm-navigation-aside-overlay');
+        this._asideOverlay.classList.add('asm-vertical-navigation-aside-overlay');
 
         // Append the aside overlay to the parent of the navigation
         this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._asideOverlay);
@@ -695,7 +695,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._enableAnimations();
 
         // Add a class
-        this._renderer2.addClass(this._elementRef.nativeElement, 'asm-navigation-hover');
+        this._renderer2.addClass(this._elementRef.nativeElement, 'asm-vertical-navigation-hover');
     }
 
     /**
@@ -710,7 +710,7 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
         this._enableAnimations();
 
         // Remove the class
-        this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-navigation-hover');
+        this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-vertical-navigation-hover');
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -1,11 +1,11 @@
 <!-- Navigation -->
-<asm-navigation [appearance]="'classic'"
-                [mode]="isScreenSmall ? 'over' : 'side'"
-                [name]="'mainNavigation'"
-                [navigation]="data.navigation.default"
-                [opened]="!isScreenSmall">
+<asm-vertical-navigation [appearance]="'classic'"
+                         [mode]="isScreenSmall ? 'over' : 'side'"
+                         [name]="'mainNavigation'"
+                         [navigation]="data.navigation.default"
+                         [opened]="!isScreenSmall">
 
-    <div asmNavigationHeader>
+    <div asmVerticalNavigationHeader>
         <div class="logo">
             <img class="logo-dark"
                  src="assets/images/logo/logo-dark.svg">
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-</asm-navigation>
+</asm-vertical-navigation>
 
 <!-- Wrapper -->
 <div class="wrapper">

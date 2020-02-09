@@ -1,18 +1,18 @@
 <!-- Navigation -->
-<asm-navigation class="bg-gray-900 theme-dark"
-                [appearance]="'compact'"
-                [mode]="isScreenSmall ? 'over' : 'side'"
-                [name]="'mainNavigation'"
-                [navigation]="data.navigation.compact"
-                [opened]="!isScreenSmall">
+<asm-vertical-navigation class="bg-gray-900 theme-dark"
+                         [appearance]="'compact'"
+                         [mode]="isScreenSmall ? 'over' : 'side'"
+                         [name]="'mainNavigation'"
+                         [navigation]="data.navigation.compact"
+                         [opened]="!isScreenSmall">
 
-    <div asmNavigationContentHeader>
+    <div asmVerticalNavigationContentHeader>
         <div class="logo">
             <img src="assets/images/logo/logo-base.svg">
         </div>
     </div>
 
-</asm-navigation>
+</asm-vertical-navigation>
 
 <!-- Wrapper -->
 <div class="wrapper">

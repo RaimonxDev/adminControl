@@ -234,26 +234,32 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     {
         this.menuData = [
             {
-                title: 'MAILBOXES',
-                type : 'subheader'
+                title   : 'MAILBOXES',
+                type    : 'group',
+                children: [
+                    ...this._foldersMenuData
+                ]
             },
-            ...this._foldersMenuData,
             {
                 type: 'spacer'
             },
             {
-                title: 'FILTERS',
-                type : 'subheader'
+                title   : 'FILTERS',
+                type    : 'group',
+                children: [
+                    ...this._filtersMenuData
+                ]
             },
-            ...this._filtersMenuData,
             {
                 type: 'spacer'
             },
             {
-                title: 'LABELS',
-                type : 'subheader'
+                title   : 'LABELS',
+                type    : 'group',
+                children: [
+                    ...this._labelsMenuData
+                ]
             },
-            ...this._labelsMenuData,
             {
                 type: 'spacer'
             },
@@ -275,14 +281,19 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
         // Get the component -> navigation data -> item
         const mainNavigationComponent = this._asmNavigationService.getComponent('mainNavigation');
-        const mainNavigation = mainNavigationComponent.navigation;
-        const menuItem = this._asmNavigationService.getItem('applications.mailbox', mainNavigation);
 
-        // Update the badge title of the item
-        menuItem.badge.title = inboxFolder.count + '';
+        // If the main navigation component exists...
+        if ( mainNavigationComponent )
+        {
+            const mainNavigation = mainNavigationComponent.navigation;
+            const menuItem = this._asmNavigationService.getItem('applications.mailbox', mainNavigation);
 
-        // Refresh the navigation
-        mainNavigationComponent.refresh();
+            // Update the badge title of the item
+            menuItem.badge.title = inboxFolder.count + '';
+
+            // Refresh the navigation
+            mainNavigationComponent.refresh();
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------

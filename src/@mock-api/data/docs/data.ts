@@ -25,7 +25,7 @@ export const docs = {
                 content: `
                     <h2>Introduction</h2>
                     <p>
-                        <code>asm-navigation</code> is a component that can be used to create application wide navigation. It has a built in
+                        <code>asm-vertical-navigation</code> is a component that can be used to create application wide navigation. It has a built in
                         programmable drawer with different styles.
                     </p>
                 `
@@ -149,15 +149,15 @@ export const docs = {
                 language: 'html',
                 // language=HTML
                 content : `
-                    <asm-navigation [name]="'leftNavigation'"
-                                    [appearance]="'classic'"
-                                    [mode]="isScreenSmall ? 'over' : 'side'"
-                                    [position]="'left'"
-                                    [autoCollapse]="true"
-                                    [opened]="!isScreenSmall"
-                                    [showTooltips]="false"
-                                    [transparentOverlay]="false"
-                    ></asm-navigation>
+                    <asm-vertical-navigation [name]="'leftNavigation'"
+                                             [appearance]="'classic'"
+                                             [mode]="isScreenSmall ? 'over' : 'side'"
+                                             [position]="'left'"
+                                             [autoCollapse]="true"
+                                             [opened]="!isScreenSmall"
+                                             [showTooltips]="false"
+                                             [transparentOverlay]="false"
+                    ></asm-vertical-navigation>
                 `
             },
             {

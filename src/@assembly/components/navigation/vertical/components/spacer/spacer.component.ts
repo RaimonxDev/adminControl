@@ -1,26 +1,18 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
+import { Subject } from 'rxjs';
+import { AsmVerticalNavigationComponent } from '@assembly/components/navigation/vertical/vertical.component';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
 
 @Component({
-    selector       : 'asm-navigation-aside-item',
-    templateUrl    : './aside.component.html',
+    selector       : 'asm-vertical-navigation-spacer-item',
+    templateUrl    : './spacer.component.html',
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
+export class AsmVerticalNavigationSpacerItemComponent implements OnInit, OnDestroy
 {
-    // Active
-    @Input()
-    active: boolean;
-
-    // Auto collapse
-    @Input()
-    autoCollapse: boolean;
-
     // Item
     @Input()
     item: AsmNavigationItem;
@@ -29,12 +21,8 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
     @Input()
     name: string;
 
-    // Skip children
-    @Input()
-    skipChildren: boolean;
-
     // Private
-    private _asmNavigationComponent: AsmNavigationComponent;
+    private _asmVerticalNavigationComponent: AsmVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -50,9 +38,6 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.skipChildren = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -65,10 +50,10 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Get the parent navigation component
-        this._asmNavigationComponent = this._asmNavigationService.getComponent(this.name);
+        this._asmVerticalNavigationComponent = this._asmNavigationService.getComponent(this.name);
 
         // Subscribe to onRefreshed on the navigation component
-        this._asmNavigationComponent.onRefreshed.pipe(
+        this._asmVerticalNavigationComponent.onRefreshed.pipe(
             takeUntil(this._unsubscribeAll)
         ).subscribe(() => {
 
@@ -85,20 +70,5 @@ export class AsmNavigationAsideItemComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Track by function for ngFor loops
-     *
-     * @param index
-     * @param item
-     */
-    trackByFn(index: number, item: any): any
-    {
-        return item.id || index;
     }
 }

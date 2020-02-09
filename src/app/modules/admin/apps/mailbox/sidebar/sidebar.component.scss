@@ -10,7 +10,7 @@ mailbox-sidebar {
     }
 
     .compose-button {
-        margin: 0 32px 32px 32px;
+        margin: 0 32px;
 
         .mat-icon {
             @include asm-icon-size(18);
@@ -18,9 +18,9 @@ mailbox-sidebar {
         }
     }
 
-    asm-navigation {
+    asm-vertical-navigation {
 
-        .asm-navigation-wrapper {
+        .asm-vertical-navigation-wrapper {
             border-right-width: 0;
         }
     }

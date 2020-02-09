@@ -6,9 +6,9 @@ layout[type="basic"] {
     flex: 1 1 auto;
     width: 100%;
 
-    > asm-navigation {
+    > asm-vertical-navigation {
 
-        .asm-navigation-header {
+        .asm-vertical-navigation-header {
 
             .logo {
                 display: flex;
@@ -195,14 +195,14 @@ layout[type="basic"] {
 
     layout[type="basic"] {
 
-        > asm-navigation {
+        > asm-vertical-navigation {
             @if ($is-dark) {
                 background: asm-color('gray', 900);
             } @else {
                 background: map-get($background, card);
             }
 
-            .asm-navigation-header {
+            .asm-vertical-navigation-header {
 
                 .logo {
 

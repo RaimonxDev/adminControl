@@ -62,15 +62,15 @@ export class NavigationComponent
 
             // language=HTML
             component: `
-                <asm-navigation [name]="'leftNavigation'"
-                                [appearance]="'classic'"
-                                [mode]="isScreenSmall ? 'over' : 'side'"
-                                [position]="'left'"
-                                [autoCollapse]="true"
-                                [opened]="!isScreenSmall"
-                                [showTooltips]="false"
-                                [transparentOverlay]="false">
-                </asm-navigation>
+                <asm-vertical-navigation [name]="'leftNavigation'"
+                                         [appearance]="'classic'"
+                                         [mode]="isScreenSmall ? 'over' : 'side'"
+                                         [position]="'left'"
+                                         [autoCollapse]="true"
+                                         [opened]="!isScreenSmall"
+                                         [showTooltips]="false"
+                                         [transparentOverlay]="false">
+                </asm-vertical-navigation>
             `
 
         };

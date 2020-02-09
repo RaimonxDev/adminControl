@@ -4,23 +4,23 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AsmScrollbarModule } from '@assembly/directives/scrollbar/public-api';
-import { AsmNavigationAsideItemComponent } from '@assembly/components/navigation/components/aside/aside.component';
-import { AsmNavigationBasicItemComponent } from '@assembly/components/navigation/components/basic/basic.component';
-import { AsmNavigationCollapsableItemComponent } from '@assembly/components/navigation/components/collapsable/collapsable.component';
-import { AsmNavigationDividerItemComponent } from '@assembly/components/navigation/components/divider/divider.component';
-import { AsmNavigationGroupItemComponent } from '@assembly/components/navigation/components/group/group.component';
-import { AsmNavigationSpacerItemComponent } from '@assembly/components/navigation/components/spacer/spacer.component';
-import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
+import { AsmVerticalNavigationAsideItemComponent } from '@assembly/components/navigation/vertical/components/aside/aside.component';
+import { AsmVerticalNavigationBasicItemComponent } from '@assembly/components/navigation/vertical/components/basic/basic.component';
+import { AsmVerticalNavigationCollapsableItemComponent } from '@assembly/components/navigation/vertical/components/collapsable/collapsable.component';
+import { AsmVerticalNavigationDividerItemComponent } from '@assembly/components/navigation/vertical/components/divider/divider.component';
+import { AsmVerticalNavigationGroupItemComponent } from '@assembly/components/navigation/vertical/components/group/group.component';
+import { AsmVerticalNavigationSpacerItemComponent } from '@assembly/components/navigation/vertical/components/spacer/spacer.component';
+import { AsmVerticalNavigationComponent } from '@assembly/components/navigation/vertical/vertical.component';
 
 @NgModule({
     declarations: [
-        AsmNavigationAsideItemComponent,
-        AsmNavigationBasicItemComponent,
-        AsmNavigationCollapsableItemComponent,
-        AsmNavigationDividerItemComponent,
-        AsmNavigationGroupItemComponent,
-        AsmNavigationSpacerItemComponent,
-        AsmNavigationComponent
+        AsmVerticalNavigationAsideItemComponent,
+        AsmVerticalNavigationBasicItemComponent,
+        AsmVerticalNavigationCollapsableItemComponent,
+        AsmVerticalNavigationDividerItemComponent,
+        AsmVerticalNavigationGroupItemComponent,
+        AsmVerticalNavigationSpacerItemComponent,
+        AsmVerticalNavigationComponent
     ],
     imports     : [
         CommonModule,
@@ -30,7 +30,7 @@ import { AsmNavigationComponent } from '@assembly/components/navigation/navigati
         AsmScrollbarModule
     ],
     exports     : [
-        AsmNavigationComponent
+        AsmVerticalNavigationComponent
     ]
 })
 export class AsmNavigationModule

@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmNavigationComponent } from '@assembly/components/navigation/navigation.component';
+import { AsmVerticalNavigationComponent } from '@assembly/components/navigation/vertical/vertical.component';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
 
 @Component({
-    selector       : 'asm-navigation-basic-item',
-    templateUrl    : './basic.component.html',
+    selector       : 'asm-vertical-navigation-divider-item',
+    templateUrl    : './divider.component.html',
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
+export class AsmVerticalNavigationDividerItemComponent implements OnInit, OnDestroy
 {
     // Item
     @Input()
@@ -22,7 +22,7 @@ export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _asmNavigationComponent: AsmNavigationComponent;
+    private _asmVerticalNavigationComponent: AsmVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -50,10 +50,10 @@ export class AsmNavigationBasicItemComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Get the parent navigation component
-        this._asmNavigationComponent = this._asmNavigationService.getComponent(this.name);
+        this._asmVerticalNavigationComponent = this._asmNavigationService.getComponent(this.name);
 
         // Subscribe to onRefreshed on the navigation component
-        this._asmNavigationComponent.onRefreshed.pipe(
+        this._asmVerticalNavigationComponent.onRefreshed.pipe(
             takeUntil(this._unsubscribeAll)
         ).subscribe(() => {
 
