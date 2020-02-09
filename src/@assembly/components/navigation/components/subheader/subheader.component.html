@@ -1,4 +1,4 @@
-<ng-container *ngIf="!item.hidden">
+<ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
     <!-- Item wrapper -->
     <div class="asm-navigation-item-wrapper"

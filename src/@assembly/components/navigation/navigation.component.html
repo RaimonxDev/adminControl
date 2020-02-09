@@ -26,7 +26,7 @@
                                        [skipChildren]="true"
                                        [autoCollapse]="autoCollapse"
                                        [active]="item.id === activeAsideItemId"
-                                       (click)="toggleAside(item.id)"></asm-navigation-aside-item>
+                                       (click)="toggleAside(item)"></asm-navigation-aside-item>
 
             <!-- Basic -->
             <asm-navigation-basic-item *ngIf="item.type === 'basic'"

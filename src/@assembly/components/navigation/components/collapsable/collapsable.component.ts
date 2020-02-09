@@ -283,6 +283,12 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
      */
     collapse(): void
     {
+        // Return if the item is disabled
+        if ( this.item.disabled )
+        {
+            return;
+        }
+
         // Return if the item is already collapsed
         if ( this.isCollapsed )
         {
@@ -305,6 +311,12 @@ export class AsmNavigationCollapsableItemComponent implements OnInit, OnDestroy
      */
     expand(): void
     {
+        // Return if the item is disabled
+        if ( this.item.disabled )
+        {
+            return;
+        }
+
         // Return if the item is already expanded
         if ( !this.isCollapsed )
         {

@@ -1,11 +1,11 @@
-<ng-container *ngIf="!item.hidden">
+<ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
     <div class="asm-navigation-item-wrapper"
          [class.asm-navigation-item-has-subtitle]="!!item.subtitle"
          [ngClass]="item.classes">
 
         <div class="asm-navigation-item"
-             [ngClass]="{'asm-navigation-item-active': active}">
+             [ngClass]="{'asm-navigation-item-active': active, 'asm-navigation-item-disabled': item.disabled}">
 
             <!-- Icon -->
             <mat-icon class="asm-navigation-item-icon text-secondary"
@@ -15,9 +15,7 @@
 
             <!-- Title & Subtitle -->
             <div class="asm-navigation-item-title-wrapper">
-
                 <div class="asm-navigation-item-title">{{item.title}}</div>
-
                 <div class="asm-navigation-item-subtitle text-hint"
                      *ngIf="item.subtitle">
                     {{item.subtitle}}

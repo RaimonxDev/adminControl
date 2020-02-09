@@ -4,11 +4,12 @@ export interface AsmNavigationItem
     title?: string;
     subtitle?: string;
     type: 'aside' | 'basic' | 'collapsable' | 'divider' | 'spacer' | 'subheader';
-    hidden?: boolean;
+    hidden?: (item: AsmNavigationItem) => boolean;
+    disabled?: boolean;
     link?: string;
     externalLink?: boolean;
     exactMatch?: boolean;
-    function?: any;
+    function?: (item: AsmNavigationItem) => void;
     classes?: string;
     icon?: string;
     iconFontSet?: string;
@@ -20,6 +21,7 @@ export interface AsmNavigationItem
         color?: string;
     };
     children?: AsmNavigationItem[];
+    meta?: any;
 }
 
 export type AsmNavigationAppearance = 'classic' | 'compact' | 'dense' | 'thin';

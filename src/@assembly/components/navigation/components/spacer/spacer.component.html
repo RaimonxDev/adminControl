@@ -1,4 +1,4 @@
-<ng-container *ngIf="!item.hidden">
+<ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
     <!-- Spacer -->
     <div class="asm-navigation-menu-spacer"></div>

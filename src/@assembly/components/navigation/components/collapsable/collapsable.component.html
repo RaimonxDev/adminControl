@@ -1,10 +1,11 @@
-<ng-container *ngIf="!item.hidden">
+<ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
     <div class="asm-navigation-item-wrapper"
          [class.asm-navigation-item-has-subtitle]="!!item.subtitle"
          [ngClass]="item.classes">
 
         <div class="asm-navigation-item"
+             [ngClass]="{'asm-navigation-item-disabled': item.disabled}"
              (click)="toggleCollapsable()">
 
             <!-- Icon -->

@@ -1,4 +1,4 @@
-<ng-container *ngIf="!item.hidden">
+<ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
     <!-- Item wrapper -->
     <div class="asm-navigation-item-wrapper"
@@ -7,61 +7,55 @@
 
         <!-- Item with an internal link -->
         <a class="asm-navigation-item"
-           *ngIf="item.link && !item.externalLink && !item.function"
+           *ngIf="item.link && !item.externalLink && !item.function && !item.disabled"
            [routerLink]="[item.link]"
            [routerLinkActive]="'asm-navigation-item-active'"
            [routerLinkActiveOptions]="{exact: item.exactMatch || false}">
-
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-
         </a>
 
         <!-- Item with an external link -->
         <a class="asm-navigation-item"
-           *ngIf="item.link && item.externalLink && !item.function"
+           *ngIf="item.link && item.externalLink && !item.function && !item.disabled"
            [href]="item.link">
-
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-
         </a>
 
         <!-- Item with a function -->
         <div class="asm-navigation-item"
-             *ngIf="!item.link && item.function"
-             (click)="item.function()">
-
+             *ngIf="!item.link && item.function && !item.disabled"
+             (click)="item.function(item)">
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-
         </div>
 
         <!-- Item with an internal link and function -->
         <a class="asm-navigation-item"
-           *ngIf="item.link && !item.externalLink && item.function"
+           *ngIf="item.link && !item.externalLink && item.function && !item.disabled"
            [routerLink]="[item.link]"
            [routerLinkActive]="'asm-navigation-item-active'"
            [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
-           (click)="item.function()">
-
+           (click)="item.function(item)">
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-
         </a>
 
         <!-- Item with an external link and function -->
         <a class="asm-navigation-item"
-           *ngIf="item.link && item.externalLink && item.function"
+           *ngIf="item.link && item.externalLink && item.function && !item.disabled"
            [href]="item.link"
-           (click)="item.function()">
-
+           (click)="item.function(item)">
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-
         </a>
 
         <!-- Item with a no link and no function -->
         <div class="asm-navigation-item"
-             *ngIf="!item.link && !item.function">
-
+             *ngIf="!item.link && !item.function && !item.disabled">
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
+        </div>
 
+        <!-- Item is disabled -->
+        <div class="asm-navigation-item asm-navigation-item-disabled"
+             *ngIf="item.disabled">
+            <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
         </div>
 
     </div>

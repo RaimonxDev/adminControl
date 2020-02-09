@@ -1,7 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
+import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, merge, Subject, Subscription } from 'rxjs';
-import { delay, takeUntil } from 'rxjs/operators';
+import { delay, filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
 import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.types';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
@@ -76,13 +77,15 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
+     * @param {Router} _router
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
         private _asmNavigationService: AsmNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
-        private _renderer2: Renderer2
+        private _renderer2: Renderer2,
+        private _router: Router
     )
     {
         // Set the private defaults
@@ -438,6 +441,21 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Register the navigation component
         this._asmNavigationService.registerComponent(this.name, this);
+
+        // Subscribe to the 'NavigationEnd' event
+        this._router.events
+            .pipe(
+                filter(event => event instanceof NavigationEnd),
+                takeUntil(this._unsubscribeAll)
+            )
+            .subscribe(() => {
+
+                if ( this.mode === 'over' && this.opened )
+                {
+                    // Close the navigation
+                    this.close();
+                }
+            });
     }
 
     /**
@@ -757,12 +775,18 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     /**
      * Open the aside
      *
-     * @param navigationId
+     * @param item
      */
-    openAside(navigationId: string): void
+    openAside(item: AsmNavigationItem): void
     {
+        // Return if the item is disabled
+        if ( item.disabled )
+        {
+            return;
+        }
+
         // Open
-        this.activeAsideItemId = navigationId;
+        this.activeAsideItemId = item.id;
 
         // Show the aside overlay
         this._showAsideOverlay();
@@ -789,18 +813,18 @@ export class AsmNavigationComponent implements OnInit, AfterViewInit, OnDestroy
     /**
      * Toggle the aside
      *
-     * @param navigationId
+     * @param item
      */
-    toggleAside(navigationId: string): void
+    toggleAside(item: AsmNavigationItem): void
     {
         // Toggle
-        if ( this.activeAsideItemId === navigationId )
+        if ( this.activeAsideItemId === item.id )
         {
             this.closeAside();
         }
         else
         {
-            this.openAside(navigationId);
+            this.openAside(item);
         }
     }
 

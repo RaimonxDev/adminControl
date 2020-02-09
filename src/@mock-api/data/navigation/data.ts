@@ -1548,41 +1548,41 @@ export const compactNavigation: AsmNavigationItem[] = [
         title   : 'Apps',
         type    : 'aside',
         icon    : 'apps',
-        children: []
+        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'aside',
         icon    : 'description',
-        children: []
+        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
     },
     {
         id      : 'ui-elements',
         title   : 'User Interface',
         type    : 'aside',
         icon    : 'list_alt',
-        children: []
+        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
     },
     {
         id      : 'assembly',
         title   : 'Assembly',
         type    : 'aside',
         icon    : 'change_history',
-        children: []
+        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
     },
     {
         id      : 'documentation',
         title   : 'Documentation',
         type    : 'aside',
         icon    : 'help',
-        children: []
+        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
     },
     {
         id      : 'navigation-features',
         title   : 'Navigation',
         type    : 'aside',
         icon    : 'menu',
-        children: []
+        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
     }
 ];
