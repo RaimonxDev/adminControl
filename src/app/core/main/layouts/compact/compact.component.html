@@ -53,17 +53,17 @@
         <button class="user"
                 mat-button
                 [matMenuTriggerFor]="userActions">
-            <div class="avatar">
+            <span class="avatar">
                 <img [src]="user.avatar">
-                <div class="status"
-                     [ngClass]="user.status"></div>
-            </div>
-            <div class="info">
-                <div class="name">{{user.name}}</div>
-                <div class="menu">
+                <span class="status"
+                      [ngClass]="user.status"></span>
+            </span>
+            <span class="info">
+                <span class="name">{{user.name}}</span>
+                <span class="menu">
                     <mat-icon [svgIcon]="'keyboard_arrow_down'"></mat-icon>
-                </div>
-            </div>
+                </span>
+            </span>
 
             <mat-menu class="user-actions-menu"
                       [xPosition]="'before'"
