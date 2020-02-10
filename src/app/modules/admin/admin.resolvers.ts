@@ -108,8 +108,9 @@ export class AdminResolver implements Resolve<any>
                 return {
                     messages     : data[0].messages,
                     navigation   : {
-                        compact: data[1].compact,
-                        default: data[1].default
+                        compact   : data[1].compact,
+                        default   : data[1].default,
+                        horizontal: data[1].horizontal
                     },
                     notifications: data[2].notifications,
                     shortcuts    : data[3].shortcuts,

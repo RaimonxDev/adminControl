@@ -1381,10 +1381,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 }
             },
             {
-                id  : 'documentation.divider-1',
-                type: 'divider'
-            },
-            {
                 id   : 'documentation.getting-started',
                 title: 'Getting started',
                 type : 'basic',
@@ -1567,41 +1563,85 @@ export const compactNavigation: AsmNavigationItem[] = [
         title   : 'Apps',
         type    : 'aside',
         icon    : 'apps',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'aside',
         icon    : 'description',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'ui-elements',
         title   : 'User Interface',
         type    : 'aside',
         icon    : 'list_alt',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'assembly',
         title   : 'Assembly',
         type    : 'aside',
         icon    : 'change_history',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'documentation',
         title   : 'Documentation',
         type    : 'aside',
         icon    : 'help',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'navigation-features',
         title   : 'Navigation',
         type    : 'aside',
-        icon    : 'menu',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage 2 different sets of same navigation
+        icon    : 'menu_open',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    }
+];
+export const horizontalNavigation: AsmNavigationItem[] = [
+    {
+        id      : 'applications',
+        title   : 'Apps',
+        type    : 'group',
+        icon    : 'apps',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    },
+    {
+        id      : 'pages',
+        title   : 'Pages',
+        type    : 'group',
+        icon    : 'description',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    },
+    {
+        id      : 'ui-elements',
+        title   : 'UI',
+        type    : 'group',
+        icon    : 'list_alt',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    },
+    {
+        id      : 'assembly',
+        title   : 'Assembly',
+        type    : 'group',
+        icon    : 'change_history',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    },
+    {
+        id      : 'documentation',
+        title   : 'Docs',
+        type    : 'group',
+        icon    : 'help',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    },
+    {
+        id      : 'navigation-features',
+        title   : 'Misc',
+        type    : 'group',
+        icon    : 'menu_open',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];

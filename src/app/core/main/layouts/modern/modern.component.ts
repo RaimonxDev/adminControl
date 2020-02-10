@@ -6,12 +6,12 @@ import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '
 import { UserService } from 'app/core/user/user.service';
 
 @Component({
-    selector     : 'layout[type="classic"]',
-    templateUrl  : './classic.component.html',
-    styleUrls    : ['./classic.component.scss'],
+    selector     : 'layout[type="modern"]',
+    templateUrl  : './modern.component.html',
+    styleUrls    : ['./modern.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ClassicLayoutComponent implements OnInit, OnDestroy
+export class ModernLayoutComponent implements OnInit, OnDestroy
 {
     data: any;
     isScreenSmall: boolean;

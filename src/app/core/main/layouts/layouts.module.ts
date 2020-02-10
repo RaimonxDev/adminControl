@@ -6,26 +6,27 @@ import { ClassyLayoutModule } from 'app/core/main/layouts/classy/classy.module';
 import { CompactLayoutModule } from 'app/core/main/layouts/compact/compact.module';
 import { DenseLayoutModule } from 'app/core/main/layouts/dense/dense.module';
 import { ThinLayoutModule } from 'app/core/main/layouts/thin/thin.module';
+import { ModernLayoutModule } from 'app/core/main/layouts/modern/modern.module';
+
+const modules = [
+    // Empty
+    EmptyLayoutModule,
+
+    // Vertical navigation
+    BasicLayoutModule,
+    ClassicLayoutModule,
+    ClassyLayoutModule,
+    CompactLayoutModule,
+    DenseLayoutModule,
+    ThinLayoutModule,
+
+    // Horizontal navigation
+    ModernLayoutModule
+];
 
 @NgModule({
-    imports: [
-        EmptyLayoutModule,
-        BasicLayoutModule,
-        ClassicLayoutModule,
-        ClassyLayoutModule,
-        CompactLayoutModule,
-        DenseLayoutModule,
-        ThinLayoutModule
-    ],
-    exports: [
-        EmptyLayoutModule,
-        BasicLayoutModule,
-        ClassicLayoutModule,
-        ClassyLayoutModule,
-        CompactLayoutModule,
-        DenseLayoutModule,
-        ThinLayoutModule
-    ]
+    imports: [...modules],
+    exports: [...modules]
 })
 export class LayoutsModule
 {

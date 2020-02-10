@@ -1,0 +1,151 @@
+<!-- Navigation -->
+<asm-vertical-navigation class="bg-gray-900 theme-dark"
+                         *ngIf="isScreenSmall"
+                         [appearance]="'classic'"
+                         [mode]="'over'"
+                         [name]="'mainNavigation'"
+                         [navigation]="data.navigation.default"
+                         [opened]="false">
+
+    <div asmVerticalNavigationContentHeader>
+        <div class="logo">
+            <img src="assets/images/logo/logo-light.svg">
+        </div>
+    </div>
+
+</asm-vertical-navigation>
+
+<!-- Wrapper -->
+<div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+
+        <!-- Logo and horizontal navigation -->
+        <ng-container *ngIf="!isScreenSmall">
+
+            <div class="logo">
+                <img class="logo-light"
+                     src="assets/images/logo/logo-light.svg">
+                <img class="logo-dark"
+                     src="assets/images/logo/logo-dark.svg">
+            </div>
+
+            <asm-horizontal-navigation *ngIf="!isScreenSmall"
+                                       [name]="'mainNavigation'"
+                                       [navigation]="data.navigation.horizontal"></asm-horizontal-navigation>
+
+        </ng-container>
+
+        <!-- Navigation toggle button -->
+        <button class="navigation-toggle-button"
+                *ngIf="isScreenSmall"
+                mat-icon-button
+                (click)="toggleNavigation('mainNavigation')">
+            <mat-icon [svgIcon]="'menu'"></mat-icon>
+        </button>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+
+        <!-- Configurator toggle button -->
+        <button class="configurator-toggle-button"
+                mat-icon-button
+                (click)="toggleDrawer('configuratorDrawer')">
+            <mat-icon [svgIcon]="'color_lens'"></mat-icon>
+        </button>
+
+        <!-- Search -->
+        <search [appearance]="'bar'"></search>
+
+        <!-- Shortcuts -->
+        <shortcuts [shortcuts]="data.shortcuts"></shortcuts>
+
+        <!-- Messages -->
+        <messages [messages]="data.messages"></messages>
+
+        <!-- Notifications -->
+        <notifications [notifications]="data.notifications"></notifications>
+
+        <!-- User -->
+        <button class="user"
+                mat-button
+                [matMenuTriggerFor]="userActions">
+            <span class="avatar">
+                <img [src]="user.avatar">
+                <span class="status"
+                      [ngClass]="user.status"></span>
+            </span>
+            <span class="info">
+                <span class="name">{{user.name}}</span>
+                <span class="menu">
+                    <mat-icon [svgIcon]="'keyboard_arrow_down'"></mat-icon>
+                </span>
+            </span>
+
+            <mat-menu class="user-actions-menu"
+                      [xPosition]="'before'"
+                      #userActions="matMenu">
+                <button mat-menu-item>
+                    <mat-icon [svgIcon]="'account_circle'"></mat-icon>
+                    <span>Profile</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon [svgIcon]="'settings_applications'"></mat-icon>
+                    <span>Settings</span>
+                </button>
+                <button mat-menu-item
+                        [matMenuTriggerFor]="userStatus">
+                    <mat-icon [svgIcon]="'radio_button_unchecked'"></mat-icon>
+                    <span>Status</span>
+                </button>
+                <mat-divider class="my-8"></mat-divider>
+                <button mat-menu-item
+                        (click)="signOut()">
+                    <mat-icon [svgIcon]="'power_settings_new'"></mat-icon>
+                    <span>Sign out</span>
+                </button>
+            </mat-menu>
+
+            <mat-menu class="user-status-menu"
+                      #userStatus="matMenu">
+                <button mat-menu-item
+                        (click)="updateUserStatus('online')">
+                    <span class="status online"></span>
+                    <span>Online</span>
+                </button>
+                <button mat-menu-item
+                        (click)="updateUserStatus('away')">
+                    <span class="status away"></span>
+                    <span>Away</span>
+                </button>
+                <button mat-menu-item
+                        (click)="updateUserStatus('busy')">
+                    <span class="status busy"></span>
+                    <span>Busy</span>
+                </button>
+                <button mat-menu-item
+                        (click)="updateUserStatus('not-visible')">
+                    <span class="status not-visible"></span>
+                    <span>Invisible</span>
+                </button>
+            </mat-menu>
+        </button>
+
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly. Otherwise,
+             it won't register the changes on the layout and won't update the view. -->
+        <router-outlet *ngIf="true"></router-outlet>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Assembly &copy; {{currentYear}}
+    </div>
+
+</div>
