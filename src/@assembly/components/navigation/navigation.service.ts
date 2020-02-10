@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
+import { AsmHorizontalNavigationComponent } from '@assembly/components/navigation/horizontal/horizontal.component';
 import { AsmVerticalNavigationComponent } from '@assembly/components/navigation/vertical/vertical.component';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { AsmVerticalNavigationComponent } from '@assembly/components/navigation/
 export class AsmNavigationService
 {
     // Private
-    private _componentRegistry: Map<string, AsmVerticalNavigationComponent>;
+    private _componentRegistry: Map<string, any>;
     private _navigationStore: Map<string, AsmNavigationItem[]>;
 
     /**
@@ -17,7 +18,7 @@ export class AsmNavigationService
     constructor()
     {
         // Set the private defaults
-        this._componentRegistry = new Map<string, AsmVerticalNavigationComponent>();
+        this._componentRegistry = new Map<string, any>();
         this._navigationStore = new Map<string, any>();
     }
 
@@ -31,7 +32,7 @@ export class AsmNavigationService
      * @param name
      * @param component
      */
-    registerComponent(name: string, component: AsmVerticalNavigationComponent): void
+    registerComponent(name: string, component: any): void
     {
         this._componentRegistry.set(name, component);
     }
@@ -51,7 +52,7 @@ export class AsmNavigationService
      *
      * @param name
      */
-    getComponent(name: string): AsmVerticalNavigationComponent
+    getComponent(name: string): any
     {
         return this._componentRegistry.get(name);
     }

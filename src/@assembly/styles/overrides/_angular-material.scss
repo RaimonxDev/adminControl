@@ -705,6 +705,11 @@ label.asm-mat-label {
                 margin-right: 12px;
             }
         }
+
+        // Divider within mat-menu
+        mat-divider {
+            margin: 8px 0;
+        }
     }
 }
 

@@ -1310,6 +1310,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title   : 'Assembly',
         subtitle: 'Built-in components and more',
         type    : 'group',
+        icon    : 'change_history',
         children: [
             {
                 id   : 'assembly.animations',
@@ -1362,8 +1363,9 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'documentation',
         title   : 'Documentation',
-        icon    : 'import_contacts',
+        subtitle: 'Everything you need to get started',
         type    : 'group',
+        icon    : 'import_contacts',
         children: [
             {
                 id   : 'documentation.changelog',
@@ -1377,6 +1379,10 @@ export const defaultNavigation: AsmNavigationItem[] = [
                     background: '#FFEB3B',
                     color     : '#000000'
                 }
+            },
+            {
+                id  : 'documentation.divider-1',
+                type: 'divider'
             },
             {
                 id   : 'documentation.getting-started',
@@ -1445,6 +1451,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title   : 'Navigation features',
         subtitle: 'Collapsable levels & badge styles',
         type    : 'group',
+        icon    : 'menu_open',
         children: [
             {
                 id      : 'navigation-features.levels.0',

@@ -1,57 +1,58 @@
 <!-- Item wrapper -->
-<div class="asm-vertical-navigation-item-wrapper"
-     [class.asm-vertical-navigation-item-has-subtitle]="!!item.subtitle"
+<div class="asm-horizontal-navigation-item-wrapper"
+     [class.asm-horizontal-navigation-item-has-subtitle]="!!item.subtitle"
      [ngClass]="item.classes">
 
     <!-- Item with an internal link -->
-    <a class="asm-vertical-navigation-item"
-       *ngIf="item.link && !item.externalLink && !item.function && !item.disabled"
-       [routerLink]="[item.link]"
-       [routerLinkActive]="'asm-vertical-navigation-item-active'"
-       [routerLinkActiveOptions]="{exact: item.exactMatch || false}">
+    <div class="asm-horizontal-navigation-item"
+         *ngIf="item.link && !item.externalLink && !item.function && !item.disabled"
+         [routerLink]="[item.link]"
+         [routerLinkActive]="'asm-horizontal-navigation-item-active'"
+         [routerLinkActiveOptions]="{exact: item.exactMatch || false}">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-    </a>
+    </div>
 
     <!-- Item with an external link -->
-    <a class="asm-vertical-navigation-item"
+    <a class="asm-horizontal-navigation-item"
        *ngIf="item.link && item.externalLink && !item.function && !item.disabled"
        [href]="item.link">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </a>
 
     <!-- Item with a function -->
-    <div class="asm-vertical-navigation-item"
+    <div class="asm-horizontal-navigation-item"
          *ngIf="!item.link && item.function && !item.disabled"
          (click)="item.function(item)">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </div>
 
     <!-- Item with an internal link and function -->
-    <a class="asm-vertical-navigation-item"
-       *ngIf="item.link && !item.externalLink && item.function && !item.disabled"
-       [routerLink]="[item.link]"
-       [routerLinkActive]="'asm-vertical-navigation-item-active'"
-       [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
-       (click)="item.function(item)">
+    <div class="asm-horizontal-navigation-item"
+         *ngIf="item.link && !item.externalLink && item.function && !item.disabled"
+         [routerLink]="[item.link]"
+         [routerLinkActive]="'asm-horizontal-navigation-item-active'"
+         [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
+         (click)="item.function(item)">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
-    </a>
+    </div>
 
     <!-- Item with an external link and function -->
-    <a class="asm-vertical-navigation-item"
+    <a class="asm-horizontal-navigation-item"
        *ngIf="item.link && item.externalLink && item.function && !item.disabled"
        [href]="item.link"
-       (click)="item.function(item)">
+       (click)="item.function(item)"
+       mat-menu-item>
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </a>
 
     <!-- Item with a no link and no function -->
-    <div class="asm-vertical-navigation-item"
+    <div class="asm-horizontal-navigation-item"
          *ngIf="!item.link && !item.function && !item.disabled">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </div>
 
     <!-- Item is disabled -->
-    <div class="asm-vertical-navigation-item asm-vertical-navigation-item-disabled"
+    <div class="asm-horizontal-navigation-item asm-horizontal-navigation-item-disabled"
          *ngIf="item.disabled">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </div>
@@ -62,25 +63,25 @@
 <ng-template #itemTemplate>
 
     <!-- Icon -->
-    <mat-icon class="asm-vertical-navigation-item-icon"
+    <mat-icon class="asm-horizontal-navigation-item-icon"
               [ngClass]="item.iconClassNames"
               *ngIf="item.icon"
               [svgIcon]="item.icon"></mat-icon>
 
     <!-- Title & Subtitle -->
-    <div class="asm-vertical-navigation-item-title-wrapper">
-        <div class="asm-vertical-navigation-item-title">{{item.title}}</div>
-        <div class="asm-vertical-navigation-item-subtitle text-hint"
+    <div class="asm-horizontal-navigation-item-title-wrapper">
+        <div class="asm-horizontal-navigation-item-title">{{item.title}}</div>
+        <div class="asm-horizontal-navigation-item-subtitle text-hint"
              *ngIf="item.subtitle">
             {{item.subtitle}}
         </div>
     </div>
 
     <!-- Badge -->
-    <div class="asm-vertical-navigation-item-badge"
+    <div class="asm-horizontal-navigation-item-badge"
          *ngIf="item.badge">
-        <div class="asm-vertical-navigation-item-badge-content"
-             [ngClass]="[(item.badge.style != undefined ? 'asm-vertical-navigation-item-badge-style-' + item.badge.style : ''),
+        <div class="asm-horizontal-navigation-item-badge-content"
+             [ngClass]="[(item.badge.style != undefined ? 'asm-horizontal-navigation-item-badge-style-' + item.badge.style : ''),
                              (item.badge.background != undefined && !item.badge.background.startsWith('#') ? item.badge.background : ''),
                              (item.badge.color != undefined && !item.badge.color.startsWith('#') ? item.badge.color : '')]"
              [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
