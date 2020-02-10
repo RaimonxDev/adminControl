@@ -9,7 +9,7 @@ import { AsmNavigationItem } from '@assembly/components/navigation/navigation.ty
     selector       : 'asm-horizontal-navigation-spacer-item',
     templateUrl    : './spacer.component.html',
     styles         : [],
-    // changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AsmHorizontalNavigationSpacerItemComponent implements OnInit, OnDestroy
 {
