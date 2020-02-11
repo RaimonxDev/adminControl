@@ -46,12 +46,37 @@ layout[type="modern"] {
             .logo {
                 display: flex;
                 align-items: center;
-                margin-right: 32px;
+                margin-right: 24px;
+
+                @include asm-media-breakpoint('lt-lg') {
+                    margin-right: 16px;
+                }
 
                 img {
                     width: 144px;
                     min-width: 144px;
                     max-width: 144px;
+
+                    &.logo-base {
+                        width: 40px;
+                        min-width: 40px;
+                        max-width: 40px;
+                    }
+                }
+
+                .logo-light,
+                .logo-dark {
+                    @include asm-media-breakpoint('lt-lg') {
+                        display: none;
+                    }
+                }
+
+                .logo-base {
+                    display: none;
+
+                    @include asm-media-breakpoint('lt-lg') {
+                        display: flex;
+                    }
                 }
             }
 
