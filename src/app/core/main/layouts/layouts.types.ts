@@ -1,1 +1,11 @@
-export type Layout = 'basic' | 'classic' | 'classy' | 'compact' | 'dense' | 'empty' | 'modern' | 'thin' | 'thin-light';
+export type Layout =
+    'empty' |
+    'material' |
+    'modern' |
+    'basic' |
+    'classic' |
+    'classy' |
+    'compact' |
+    'dense' |
+    'thin' |
+    'thin-light';

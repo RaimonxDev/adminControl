@@ -1,0 +1,357 @@
+@import 'assembly';
+
+layout[type="material"] {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+
+    > asm-vertical-navigation {
+
+        .asm-vertical-navigation-content-header {
+
+            .logo {
+                display: flex;
+                align-items: center;
+                height: 80px;
+                min-height: 80px;
+                max-height: 80px;
+                padding: 24px 32px 0 32px;
+
+                img {
+                    max-width: 163px;
+                }
+            }
+        }
+    }
+
+    > .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1 1 auto;
+        min-width: 0;
+
+        > .header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+            z-index: 49;
+
+            .container {
+                position: relative;
+                max-width: 1440px;
+                width: calc(100% - 64px);
+                margin: 64px 32px 0 32px;
+                padding: 16px 0 12px 0;
+                border-bottom-width: 1px;
+                border-radius: 12px 12px 0 0;
+                box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
+
+                @include asm-media-breakpoint('xs') {
+                    width: calc(100% - 32px);
+                    margin: 16px 16px 0 16px;
+                }
+
+                .top-bar,
+                .bottom-bar {
+                    display: flex;
+                    flex: 1 1 auto;
+                    align-items: center;
+                    height: 64px;
+                    max-height: 64px;
+                    min-height: 64px;
+                }
+
+                .top-bar {
+                    padding: 0 16px 0 32px;
+
+                    @include asm-media-breakpoint('lt-md') {
+                        padding-left: 24px;
+                    }
+                }
+
+                .bottom-bar {
+                    padding: 0 16px;
+                }
+
+                .logo {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 32px;
+
+                    img {
+                        width: 160px;
+                        min-width: 160px;
+                        max-width: 160px;
+                    }
+                }
+
+                .navigation-toggle-button {
+                    margin-right: 8px;
+                }
+
+                .spacer {
+                    display: flex;
+                    flex: 1 1 auto;
+                    height: 1px;
+                }
+
+                search {
+                    margin-right: 8px;
+                }
+
+                shortcuts {
+                    margin-right: 8px;
+                }
+
+                messages {
+                    margin-right: 8px;
+                }
+
+                .user {
+                    height: 48px;
+                    min-height: 48px;
+                    max-height: 48px;
+
+                    .avatar {
+                        position: relative;
+
+                        img {
+                            width: 32px;
+                            min-width: 32px;
+                            height: 32px;
+                            min-height: 32px;
+                            border-radius: 50%;
+                        }
+
+                        .status {
+                            position: absolute;
+                            right: -2px;
+                            bottom: -3px;
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            border-width: 2px;
+                        }
+                    }
+
+                    .info {
+                        display: flex;
+                        align-items: center;
+                        margin-left: 12px;
+                        overflow: hidden;
+
+                        @include asm-media-breakpoint('xs') {
+                            display: none;
+                        }
+
+                        .name {
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            line-height: 1;
+                        }
+
+                        .menu {
+                            margin-left: 4px;
+                            height: 20px;
+                            min-height: 20px;
+                            max-height: 20px;
+
+                            .mat-icon {
+                                @include asm-icon-size(20);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        > .content {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            max-width: 1440px;
+            width: calc(100% - 64px);
+            margin: 0 32px;
+            box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
+
+            @include asm-media-breakpoint('xs') {
+                width: calc(100% - 32px);
+                margin: 0 16px;
+            }
+
+            > *:not(router-outlet) {
+                position: relative;
+                display: flex;
+                flex: 1 1 auto;
+            }
+        }
+
+        > .footer {
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            justify-content: flex-start;
+            max-width: 1440px;
+            width: calc(100% - 64px);
+            height: 80px;
+            max-height: 80px;
+            min-height: 80px;
+            margin: 0 32px;
+            padding: 0 24px;
+            z-index: 49;
+            border-top-width: 1px;
+            box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
+
+            @include asm-media-breakpoint('xs') {
+                width: calc(100% - 32px);
+                margin: 0 16px;
+            }
+        }
+    }
+
+    &.fixed-header {
+
+        > .wrapper {
+
+            > .header {
+                position: sticky;
+                top: 0;
+            }
+        }
+    }
+
+    &.fixed-footer {
+
+        > .wrapper {
+
+            > .footer {
+                position: sticky;
+                bottom: 0;
+            }
+        }
+    }
+}
+
+.user-status-menu {
+
+    .status {
+        width: 16px;
+        height: 16px;
+        margin-right: 12px;
+        border-radius: 50%;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    layout[type='material'] {
+
+        > .wrapper {
+            @if ($is-dark) {
+                background: map-get($background, card);
+            } @else {
+                background: asm-color('gray', 300);
+            }
+
+            > .header {
+                background: map-get($primary, default);
+
+                .container {
+                    background: map-get($background, card);
+
+                    .top-bar {
+
+                        .logo {
+
+                            .logo-dark {
+
+                                @if ($is-dark) {
+                                    display: none;
+                                }
+                            }
+
+                            .logo-light {
+
+                                @if (not $is-dark) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .user {
+
+                            .avatar {
+
+                                .status {
+                                    border-color: map-get($background, card);
+
+                                    &.online {
+                                        background: asm-color('green', 500);
+                                    }
+
+                                    &.away {
+                                        background: asm-color('orange', 500);
+                                    }
+
+                                    &.busy {
+                                        background: asm-color('red', 500);
+                                    }
+
+                                    &.not-visible {
+                                        background: asm-color('gray', 500);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            > .content {
+                background: map-get($background, background);
+            }
+
+            > .footer {
+                @if (not $is-dark) {
+                    background: map-get($background, card);
+                }
+                color: map-get($foreground, secondary-text);
+            }
+        }
+    }
+
+    .user-status-menu {
+
+        .status {
+
+            &.online {
+                background: asm-color('green', 500);
+            }
+
+            &.away {
+                background: asm-color('orange', 500);
+            }
+
+            &.busy {
+                background: asm-color('red', 500);
+            }
+
+            &.not-visible {
+                background: asm-color('gray', 500);
+            }
+        }
+    }
+}
