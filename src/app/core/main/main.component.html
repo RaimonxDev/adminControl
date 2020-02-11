@@ -8,6 +8,10 @@
 <!-- Layouts with horizontal navigation -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
+<!-- Centered -->
+<layout *ngIf="layout === 'centered'"
+        type="centered"></layout>
+
 <!-- Enterprise -->
 <layout *ngIf="layout === 'enterprise'"
         type="enterprise"></layout>
@@ -92,6 +96,7 @@
                              [value]="layout"
                              (change)="setLayout($event)">
                 <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
+                <mat-radio-button [value]="'centered'">Centered</mat-radio-button>
                 <mat-radio-button [value]="'enterprise'">Enterprise</mat-radio-button>
                 <mat-radio-button [value]="'material'">Material</mat-radio-button>
                 <mat-radio-button [value]="'modern'">Modern</mat-radio-button>

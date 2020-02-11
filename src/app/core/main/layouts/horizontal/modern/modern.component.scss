@@ -226,7 +226,6 @@ layout[type="modern"] {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
     layout[type='modern'] {

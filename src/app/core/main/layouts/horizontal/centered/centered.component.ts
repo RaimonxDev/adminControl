@@ -6,12 +6,12 @@ import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { UserService } from 'app/core/user/user.service';
 
 @Component({
-    selector     : 'layout[type="material"]',
-    templateUrl  : './material.component.html',
-    styleUrls    : ['./material.component.scss'],
+    selector     : 'layout[type="centered"]',
+    templateUrl  : './centered.component.html',
+    styleUrls    : ['./centered.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class MaterialLayoutComponent implements OnInit, OnDestroy
+export class CenteredLayoutComponent implements OnInit, OnDestroy
 {
     data: any;
     isScreenSmall: boolean;

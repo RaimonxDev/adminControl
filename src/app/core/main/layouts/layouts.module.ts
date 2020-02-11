@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { EmptyLayoutModule } from 'app/core/main/layouts/empty/empty.module';
+import { CenteredLayoutModule } from 'app/core/main/layouts/horizontal/centered/centered.module';
 import { EnterpriseLayoutModule } from 'app/core/main/layouts/horizontal/enterprise/enterprise.module';
 import { MaterialLayoutModule } from 'app/core/main/layouts/horizontal/material/material.module';
 import { ModernLayoutModule } from 'app/core/main/layouts/horizontal/modern/modern.module';
@@ -15,6 +16,7 @@ const modules = [
     EmptyLayoutModule,
 
     // Horizontal navigation
+    CenteredLayoutModule,
     EnterpriseLayoutModule,
     MaterialLayoutModule,
     ModernLayoutModule,

@@ -2,7 +2,7 @@ import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@a
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { UserService } from 'app/core/user/user.service';
 
 @Component({
