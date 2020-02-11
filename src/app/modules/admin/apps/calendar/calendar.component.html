@@ -26,11 +26,9 @@
                         <mat-icon [svgIcon]="'menu'"></mat-icon>
                     </button>
 
-                    <button class="today"
-                            mat-icon-button
-                            (click)="today()">
-                        <mat-icon [svgIcon]="'today'"></mat-icon>
-                    </button>
+                    <h4 class="title">
+                        {{viewTitle}}
+                    </h4>
 
                     <button class="previous"
                             mat-icon-button
@@ -44,9 +42,11 @@
                         <mat-icon [svgIcon]="'chevron_right'"></mat-icon>
                     </button>
 
-                    <h4 class="title">
-                        {{viewTitle}}
-                    </h4>
+                    <button class="today"
+                            mat-icon-button
+                            (click)="today()">
+                        <mat-icon [svgIcon]="'today'"></mat-icon>
+                    </button>
 
                     <mat-form-field class="asm-mat-dense asm-mat-no-subscript view-changer">
                         <mat-select (selectionChange)="changeView(viewChanger.value)"

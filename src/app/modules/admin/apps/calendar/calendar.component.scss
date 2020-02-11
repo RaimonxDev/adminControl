@@ -28,8 +28,8 @@ calendar {
                     flex-wrap: wrap;
                     flex: 0 0 auto;
                     align-items: center;
-                    padding: 8px 16px;
-                    border-bottom: 1px solid;
+                    padding: 8px 16px 8px 24px;
+                    border-bottom-width: 1px;
 
                     > * {
                         margin: 8px 0;
@@ -37,24 +37,20 @@ calendar {
 
                     .drawer-toggle {
                         display: none !important;
-                        margin-right: 20px;
+                        margin-right: 16px;
 
                         @include asm-media-breakpoint('lt-md') {
                             display: flex !important;
                         }
                     }
 
-                    .today {
-                        margin-right: 8px;
-                    }
-
-                    .next {
-                        margin-right: 20px;
-                    }
-
                     .title {
-                        margin-right: auto;
+                        margin-right: 20px;
                         white-space: nowrap;
+                    }
+
+                    .today {
+                        margin: 0 16px 0 auto;
                     }
 
                     .view-changer {
@@ -405,13 +401,6 @@ calendar {
 
         .mat-drawer-container {
             background: transparent;
-
-            .main {
-
-                .header {
-                    border-bottom-color: map-get($foreground, divider);
-                }
-            }
         }
     }
 

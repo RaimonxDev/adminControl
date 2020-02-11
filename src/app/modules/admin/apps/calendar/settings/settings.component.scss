@@ -16,7 +16,7 @@ calendar-settings {
             min-height: 64px;
             max-height: 64px;
             padding: 8px 16px;
-            border-bottom: 1px solid;
+            border-bottom-width: 1px;
 
             .back {
                 margin: 0 20px 0 0;
@@ -57,7 +57,6 @@ calendar-settings {
 @include asm-theme {
 
     $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
     $is-dark: map-get($theme, is-dark);
 
     calendar-settings {
@@ -65,13 +64,6 @@ calendar-settings {
             background: asm-color('gray', 900);
         } @else {
             background: map-get($background, card);
-        }
-
-        .main {
-
-            .header {
-                border-bottom-color: map-get($foreground, divider);
-            }
         }
     }
 }
