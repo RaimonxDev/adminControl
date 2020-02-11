@@ -288,6 +288,9 @@ layout[type="enterprise"] {
             }
 
             > .header {
+                @if (not $is-dark) {
+                    @include asm-elevation();
+                }
 
                 .top-bar {
                     @if ($is-dark) {

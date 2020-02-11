@@ -285,7 +285,7 @@ layout[type="centered"] {
                     box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation('md');
+                    @include asm-elevation();
                 }
 
                 .container {
