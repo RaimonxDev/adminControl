@@ -11,11 +11,11 @@ import { NotificationsModule } from 'app/core/main/common/notifications/notifica
 import { SearchModule } from 'app/core/main/common/search/search.module';
 import { ShortcutsModule } from 'app/core/main/common/shortcuts/shortcuts.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { ClassicLayoutComponent } from 'app/core/main/layouts/classic/classic.component';
+import { CompactLayoutComponent } from 'app/core/main/layouts/vertical/compact/compact.component';
 
 @NgModule({
     declarations: [
-        ClassicLayoutComponent
+        CompactLayoutComponent
     ],
     imports     : [
         HttpClientModule,
@@ -32,9 +32,9 @@ import { ClassicLayoutComponent } from 'app/core/main/layouts/classic/classic.co
         SharedModule
     ],
     exports     : [
-        ClassicLayoutComponent
+        CompactLayoutComponent
     ]
 })
-export class ClassicLayoutModule
+export class CompactLayoutModule
 {
 }

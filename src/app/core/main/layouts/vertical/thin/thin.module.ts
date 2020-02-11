@@ -11,11 +11,11 @@ import { NotificationsModule } from 'app/core/main/common/notifications/notifica
 import { SearchModule } from 'app/core/main/common/search/search.module';
 import { ShortcutsModule } from 'app/core/main/common/shortcuts/shortcuts.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { ClassyLayoutComponent } from 'app/core/main/layouts/classy/classy.component';
+import { ThinLayoutComponent } from 'app/core/main/layouts/vertical/thin/thin.component';
 
 @NgModule({
     declarations: [
-        ClassyLayoutComponent
+        ThinLayoutComponent
     ],
     imports     : [
         HttpClientModule,
@@ -32,9 +32,9 @@ import { ClassyLayoutComponent } from 'app/core/main/layouts/classy/classy.compo
         SharedModule
     ],
     exports     : [
-        ClassyLayoutComponent
+        ThinLayoutComponent
     ]
 })
-export class ClassyLayoutModule
+export class ThinLayoutModule
 {
 }
