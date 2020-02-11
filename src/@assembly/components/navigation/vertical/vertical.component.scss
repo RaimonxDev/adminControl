@@ -477,14 +477,14 @@ asm-vertical-navigation {
                     .asm-vertical-navigation-item {
                         flex-direction: column;
                         justify-content: center;
-                        height: 96px;
-                        min-height: 96px;
-                        max-height: 96px;
+                        height: 88px;
+                        min-height: 88px;
+                        max-height: 88px;
                         padding: 0 16px;
 
                         .asm-vertical-navigation-item-icon {
                             margin-right: 0;
-                            margin-bottom: 12px;
+                            margin-bottom: 8px;
                             @include asm-icon-size(24);
                         }
 

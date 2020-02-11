@@ -1574,7 +1574,7 @@ export const compactNavigation: AsmNavigationItem[] = [
     },
     {
         id      : 'ui-elements',
-        title   : 'User Interface',
+        title   : 'UI',
         type    : 'aside',
         icon    : 'list_alt',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
@@ -1588,7 +1588,7 @@ export const compactNavigation: AsmNavigationItem[] = [
     },
     {
         id      : 'documentation',
-        title   : 'Documentation',
+        title   : 'Docs',
         type    : 'aside',
         icon    : 'help',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation

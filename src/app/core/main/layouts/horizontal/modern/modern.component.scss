@@ -110,7 +110,7 @@ layout[type="modern"] {
                     margin-left: 12px;
                     overflow: hidden;
 
-                    @include asm-media-breakpoint('xs') {
+                    @include asm-media-breakpoint('lt-lg') {
                         display: none;
                     }
 
