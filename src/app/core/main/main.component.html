@@ -36,18 +36,31 @@
 <!-- Layouts with horizontal navigation -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
+<!-- Material -->
+<layout *ngIf="layout === 'material'"
+        type="material"></layout>
+
 <!-- Modern -->
 <layout *ngIf="layout === 'modern'"
         type="modern"></layout>
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- Configurator -->
+<!-- Configuration drawer - Remove this to remove the drawer and its button -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
+<div class="configuration-drawer-toggle fixed flex items-center justify-center right-0 w-48 h-48 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
+     style="top: 320px"
+     (click)="configurationDrawer.toggle()">
+    <mat-icon class="icon-size-24 text-white"
+              style="animation: rotation 2s infinite linear;"
+              [svgIcon]="'settings'"></mat-icon>
+</div>
+
 <asm-drawer class="configuration-drawer"
-            [name]="'configuratorDrawer'"
+            [name]="'configurationDrawer'"
             [position]="'right'"
-            [mode]="'over'">
+            [mode]="'over'"
+            #configurationDrawer>
 
     <div class="flex flex-col w-full">
 
@@ -74,6 +87,7 @@
                              [value]="layout"
                              (change)="setLayout($event)">
                 <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
+                <mat-radio-button [value]="'material'">Material</mat-radio-button>
                 <mat-radio-button [value]="'modern'">Modern</mat-radio-button>
                 <mat-radio-button [value]="'basic'">Basic</mat-radio-button>
                 <mat-radio-button [value]="'classic'">Classic</mat-radio-button>

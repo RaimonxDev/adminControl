@@ -2,7 +2,7 @@ import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@a
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmDrawerService, AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
 import { UserService } from 'app/core/user/user.service';
 
 @Component({
@@ -30,7 +30,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {AsmDrawerService} _asmDrawerService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
      * @param {Router} _router
@@ -38,7 +37,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _asmDrawerService: AsmDrawerService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
         private _router: Router,
@@ -114,23 +112,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Toggle drawer
-     *
-     * @param key
-     */
-    toggleDrawer(key): void
-    {
-        // Get the drawer
-        const drawer = this._asmDrawerService.getComponent(key);
-
-        if ( drawer )
-        {
-            // Toggle the opened status
-            drawer.toggle();
-        }
-    }
 
     /**
      * Toggle navigation

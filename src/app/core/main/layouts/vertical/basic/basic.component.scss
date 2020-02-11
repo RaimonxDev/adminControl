@@ -1,4 +1,4 @@
-@import '../../../../../../@assembly/styles/assembly';
+@import 'assembly';
 
 layout[type="basic"] {
     position: relative;
@@ -52,10 +52,6 @@ layout[type="basic"] {
                 display: flex;
                 flex: 1 1 auto;
                 height: 1px;
-            }
-
-            .configurator-toggle-button {
-                margin-right: 8px;
             }
 
             shortcuts {
