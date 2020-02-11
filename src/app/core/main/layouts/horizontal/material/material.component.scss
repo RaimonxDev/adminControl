@@ -272,47 +272,44 @@ layout[type="material"] {
                 .container {
                     background: map-get($background, card);
 
-                    .top-bar {
+                    .logo {
 
-                        .logo {
+                        .logo-dark {
 
-                            .logo-dark {
-
-                                @if ($is-dark) {
-                                    display: none;
-                                }
-                            }
-
-                            .logo-light {
-
-                                @if (not $is-dark) {
-                                    display: none;
-                                }
+                            @if ($is-dark) {
+                                display: none;
                             }
                         }
 
-                        .user {
+                        .logo-light {
 
-                            .avatar {
+                            @if (not $is-dark) {
+                                display: none;
+                            }
+                        }
+                    }
 
-                                .status {
-                                    border-color: map-get($background, card);
+                    .user {
 
-                                    &.online {
-                                        background: asm-color('green', 500);
-                                    }
+                        .avatar {
 
-                                    &.away {
-                                        background: asm-color('orange', 500);
-                                    }
+                            .status {
+                                border-color: map-get($background, card);
 
-                                    &.busy {
-                                        background: asm-color('red', 500);
-                                    }
+                                &.online {
+                                    background: asm-color('green', 500);
+                                }
 
-                                    &.not-visible {
-                                        background: asm-color('gray', 500);
-                                    }
+                                &.away {
+                                    background: asm-color('orange', 500);
+                                }
+
+                                &.busy {
+                                    background: asm-color('red', 500);
+                                }
+
+                                &.not-visible {
+                                    background: asm-color('gray', 500);
                                 }
                             }
                         }
