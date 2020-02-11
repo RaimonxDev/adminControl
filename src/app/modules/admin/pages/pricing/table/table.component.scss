@@ -19,7 +19,6 @@ pricing-table {
             left: 0;
             width: 100%;
             height: 891px;
-            z-index: -1;
 
             path {
                 opacity: 0.1;
@@ -27,6 +26,7 @@ pricing-table {
         }
 
         .main {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -80,11 +80,9 @@ pricing-table {
             }
 
             .cards {
-                position: relative;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                z-index: 10;
                 width: 100%;
 
                 .tiers-selector {

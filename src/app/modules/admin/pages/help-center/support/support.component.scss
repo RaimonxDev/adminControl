@@ -20,7 +20,10 @@ help-center-support {
             left: 0;
             width: 100%;
             height: 891px;
-            z-index: -1;
+
+            path {
+                opacity: 0.1;
+            }
         }
 
         .header {
@@ -58,6 +61,7 @@ help-center-support {
         }
 
         .main {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;

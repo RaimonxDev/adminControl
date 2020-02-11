@@ -2,7 +2,6 @@
 
 help-center-guides-category {
     display: flex;
-    flex: 1 1 auto;
 
     .content-layout {
         position: relative;
@@ -20,7 +19,10 @@ help-center-guides-category {
             left: 0;
             width: 100%;
             height: 891px;
-            z-index: -1;
+
+            path {
+                opacity: 0.1;
+            }
         }
 
         .header {
@@ -58,6 +60,7 @@ help-center-guides-category {
         }
 
         .main {
+            position: relative;
             display: flex;
             align-items: flex-start;
             width: 100%;
