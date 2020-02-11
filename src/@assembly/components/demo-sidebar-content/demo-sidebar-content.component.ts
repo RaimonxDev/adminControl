@@ -97,7 +97,7 @@ export class AsmDemoSidebarContentComponent
                     {
                         title   : 'General',
                         type    : 'collapsable',
-                        icon    : 'settings_applications',
+                        icon    : 'settings',
                         children: [
                             {
                                 title: 'Tasks',

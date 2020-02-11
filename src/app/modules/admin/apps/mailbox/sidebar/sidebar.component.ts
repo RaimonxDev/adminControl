@@ -217,7 +217,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         this._otherMenuData.push({
             title: 'Settings',
             type : 'basic',
-            icon : 'settings_applications',
+            icon : 'settings',
             link : '/apps/mailbox/settings'
         });
 
