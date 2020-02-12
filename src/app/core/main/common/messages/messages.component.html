@@ -3,9 +3,10 @@
         mat-icon-button
         (click)="openPanel()"
         #messagesOrigin>
-    <span *ngIf="unreadCount > 0"
-          class="dot"></span>
-    <mat-icon [svgIcon]="'message'"></mat-icon>
+    <mat-icon *ngIf="unreadCount > 0"
+              [svgIcon]="'message'"></mat-icon>
+    <mat-icon *ngIf="unreadCount === 0"
+              [svgIcon]="'chat_bubble'"></mat-icon>
 </button>
 
 <!-- Messages panel -->

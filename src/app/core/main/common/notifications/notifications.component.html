@@ -3,9 +3,10 @@
         mat-icon-button
         (click)="openPanel()"
         #notificationsOrigin>
-    <span *ngIf="unreadCount > 0"
-          class="dot"></span>
-    <mat-icon [svgIcon]="'notifications'"></mat-icon>
+    <mat-icon *ngIf="unreadCount > 0"
+              [svgIcon]="'notifications_active'"></mat-icon>
+    <mat-icon *ngIf="unreadCount === 0"
+              [svgIcon]="'notifications'"></mat-icon>
 </button>
 
 <!-- Notifications panel -->

@@ -3,21 +3,6 @@
 messages {
     display: flex;
     align-items: center;
-
-    .messages-toggle {
-        position: relative;
-
-        .dot {
-            position: absolute;
-            right: -2px;
-            top: -1px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            z-index: 5;
-            pointer-events: none;
-        }
-    }
 }
 
 // Messages panel
@@ -250,16 +235,6 @@ messages {
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
-
-    messages {
-
-        .messages-toggle {
-
-            .dot {
-                background: asm-color('blue', 600);
-            }
-        }
-    }
 
     // Messages panel
     .messages-panel {
