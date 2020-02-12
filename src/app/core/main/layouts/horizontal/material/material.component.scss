@@ -45,14 +45,23 @@ layout[type="material"] {
                 max-width: 1440px;
                 width: calc(100% - 64px);
                 margin: 48px 32px 0 32px;
+                padding: 16px 0 12px 0;
                 border-bottom-width: 1px;
                 border-radius: 12px 12px 0 0;
                 box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
                 overflow: hidden;
 
+                @include asm-media-breakpoint('lt-md') {
+                    margin-top: 32px;
+                    padding: 12px 0;
+                }
+
                 @include asm-media-breakpoint('xs') {
-                    width: calc(100% - 32px);
-                    margin: 16px 16px 0 16px;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    border-radius: 0;
+                    box-shadow: none;
                 }
 
                 .top-bar,
@@ -60,31 +69,28 @@ layout[type="material"] {
                     display: flex;
                     flex: 1 1 auto;
                     align-items: center;
+                    height: 64px;
+                    max-height: 64px;
+                    min-height: 64px;
                 }
 
                 .top-bar {
                     position: relative;
-                    height: 80px;
-                    max-height: 80px;
-                    min-height: 80px;
-                    padding: 16px 16px 0 32px;
+                    padding: 0 24px;
 
                     @include asm-media-breakpoint('lt-md') {
-                        padding-left: 24px;
+                        padding: 0 16px;
                     }
                 }
 
                 .bottom-bar {
-                    height: 72px;
-                    max-height: 72px;
-                    min-height: 72px;
-                    padding: 0 16px 12px 16px;
+                    padding: 0 16px;
                 }
 
                 .logo {
                     display: flex;
                     align-items: center;
-                    margin-right: 32px;
+                    margin: 0 8px;
 
                     img {
                         width: 160px;
@@ -131,8 +137,9 @@ layout[type="material"] {
             box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
 
             @include asm-media-breakpoint('xs') {
-                width: calc(100% - 32px);
-                margin: 0 16px;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
             }
 
             > *:not(router-outlet) {
@@ -159,8 +166,9 @@ layout[type="material"] {
             box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
 
             @include asm-media-breakpoint('xs') {
-                width: calc(100% - 32px);
-                margin: 0 16px;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
             }
         }
     }

@@ -40,16 +40,20 @@ layout[type="modern"] {
             height: 80px;
             max-height: 80px;
             min-height: 80px;
-            padding: 0 16px 0 24px;
+            padding: 0 24px;
             z-index: 49;
+
+            @include asm-media-breakpoint('lt-md') {
+                padding: 0 16px;
+            }
 
             .logo {
                 display: flex;
                 align-items: center;
-                margin-right: 24px;
+                margin: 0 32px 0 8px;
 
                 @include asm-media-breakpoint('lt-lg') {
-                    margin-right: 16px;
+                    margin-right: 8px;
                 }
 
                 img {
@@ -58,9 +62,9 @@ layout[type="modern"] {
                     max-width: 144px;
 
                     &.logo-base {
-                        width: 40px;
-                        min-width: 40px;
-                        max-width: 40px;
+                        width: 32px;
+                        min-width: 32px;
+                        max-width: 32px;
                     }
                 }
 
@@ -78,6 +82,10 @@ layout[type="modern"] {
                         display: flex;
                     }
                 }
+            }
+
+            asm-horizontal-navigation {
+                margin-right: 8px;
             }
 
             .navigation-toggle-button {

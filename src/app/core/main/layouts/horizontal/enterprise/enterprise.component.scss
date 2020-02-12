@@ -83,7 +83,7 @@ layout[type="enterprise"] {
                 width: calc(100% - 64px);
                 margin: 0 32px;
 
-                @include asm-media-breakpoint('xs') {
+                @include asm-media-breakpoint('lt-md') {
                     width: calc(100% - 32px);
                     margin: 0 16px;
                 }
@@ -91,7 +91,6 @@ layout[type="enterprise"] {
                 .logo {
                     display: flex;
                     align-items: center;
-                    margin-right: 32px;
 
                     img {
                         width: 144px;
@@ -143,9 +142,15 @@ layout[type="enterprise"] {
             overflow: hidden;
             @include asm-elevation('lg');
 
+            @include asm-media-breakpoint('lt-md') {
+                width: calc(100% - 48px);
+                margin: 24px;
+            }
+
             @include asm-media-breakpoint('xs') {
-                width: calc(100% - 32px);
-                margin: 16px;
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
             }
 
             > *:not(router-outlet) {
