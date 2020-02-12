@@ -4,7 +4,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { MatButton } from '@angular/material/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Notification } from 'app/core/main/common/notifications/notifications.type';
+import { Notification } from 'app/core/main/common/notifications/notifications.types';
 import { NotificationsService } from 'app/core/main/common/notifications/notifications.service';
 
 @Component({

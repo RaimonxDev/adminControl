@@ -4,7 +4,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { MatButton } from '@angular/material/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Message } from 'app/core/main/common/messages/messages.type';
+import { Message } from 'app/core/main/common/messages/messages.types';
 import { MessagesService } from 'app/core/main/common/messages/messages.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Notification } from 'app/core/main/common/notifications/notifications.type';
+import { Notification } from 'app/core/main/common/notifications/notifications.types';
 import { map, switchMap, take } from 'rxjs/operators';
 
 @Injectable({

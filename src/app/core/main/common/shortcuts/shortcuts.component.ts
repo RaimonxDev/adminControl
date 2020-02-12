@@ -5,7 +5,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { MatButton } from '@angular/material/button';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Shortcut } from 'app/core/main/common/shortcuts/shortcuts.type';
+import { Shortcut } from 'app/core/main/common/shortcuts/shortcuts.types';
 import { ShortcutsService } from 'app/core/main/common/shortcuts/shortcuts.service';
 
 @Component({

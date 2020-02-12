@@ -11,9 +11,8 @@ notifications {
             position: absolute;
             right: 1px;
             top: -1px;
-            width: 10px;
-            height: 10px;
-            border-width: 2px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             z-index: 5;
             pointer-events: none;
@@ -260,7 +259,6 @@ notifications {
 
             .dot {
                 background: asm-color('red', 600);
-                border-color: map-get($background, card);
             }
         }
     }
