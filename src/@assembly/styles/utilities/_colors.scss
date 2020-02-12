@@ -222,10 +222,12 @@
         background: $color !important;
         color: $contrast-color !important;
 
+        // Icon
         .mat-icon {
             color: $contrast-color !important;
         }
 
+        // Text
         &.text-secondary,
         .text-secondary {
             color: rgba($contrast-color, 0.6) !important;
