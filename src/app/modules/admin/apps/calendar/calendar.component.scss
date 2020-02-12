@@ -28,8 +28,12 @@ calendar {
                     flex-wrap: wrap;
                     flex: 0 0 auto;
                     align-items: center;
-                    padding: 8px 16px 8px 24px;
+                    padding: 8px 24px;
                     border-bottom-width: 1px;
+
+                    @include asm-media-breakpoint('lt-md') {
+                        padding: 8px 16px;
+                    }
 
                     > * {
                         margin: 8px 0;
@@ -50,7 +54,7 @@ calendar {
                     }
 
                     .today {
-                        margin: 0 16px 0 auto;
+                        margin: 0 auto 0 8px;
                     }
 
                     .view-changer {
@@ -61,6 +65,10 @@ calendar {
                             min-height: 40px;
                             padding: 0 0.75em;
                         }
+                    }
+
+                    .actions-menu {
+                        margin-left: auto;
                     }
                 }
 

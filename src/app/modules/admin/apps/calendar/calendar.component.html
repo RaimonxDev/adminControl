@@ -42,13 +42,13 @@
                         <mat-icon [svgIcon]="'chevron_right'"></mat-icon>
                     </button>
 
-                    <button class="today"
+                    <button class="today lt-md:hidden"
                             mat-icon-button
                             (click)="today()">
                         <mat-icon [svgIcon]="'today'"></mat-icon>
                     </button>
 
-                    <mat-form-field class="asm-mat-dense asm-mat-no-subscript view-changer">
+                    <mat-form-field class="lt-md:hidden asm-mat-dense asm-mat-no-subscript view-changer">
                         <mat-select (selectionChange)="changeView(viewChanger.value)"
                                     [value]="view"
                                     #viewChanger="matSelect">
@@ -58,6 +58,52 @@
                             <mat-option [value]="'listYear'">Schedule</mat-option>
                         </mat-select>
                     </mat-form-field>
+
+                    <button class="actions-menu hidden lt-md:inline-flex"
+                            [matMenuTriggerFor]="actionsMenu"
+                            mat-icon-button>
+                        <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+
+                        <mat-menu #actionsMenu="matMenu">
+                            <button mat-menu-item
+                                    (click)="today()">
+                                <mat-icon [svgIcon]="'today'"></mat-icon>
+                                <span>Go to today</span>
+                            </button>
+                            <button [matMenuTriggerFor]="actionsViewsMenu"
+                                    mat-menu-item>
+                                <mat-icon [svgIcon]="'tune'"></mat-icon>
+                                <span>View</span>
+                            </button>
+                        </mat-menu>
+
+                        <mat-menu #actionsViewsMenu="matMenu">
+                            <button mat-menu-item
+                                    [disabled]="view === 'dayGridMonth'"
+                                    (click)="changeView('dayGridMonth')">
+                                <mat-icon [svgIcon]="'view_comfy'"></mat-icon>
+                                <span>Month</span>
+                            </button>
+                            <button mat-menu-item
+                                    [disabled]="view === 'timeGridWeek'"
+                                    (click)="changeView('timeGridWeek')">
+                                <mat-icon [svgIcon]="'view_week'"></mat-icon>
+                                <span>Week</span>
+                            </button>
+                            <button mat-menu-item
+                                    [disabled]="view === 'timeGridDay'"
+                                    (click)="changeView('timeGridDay')">
+                                <mat-icon [svgIcon]="'view_day'"></mat-icon>
+                                <span>Day</span>
+                            </button>
+                            <button mat-menu-item
+                                    [disabled]="view === 'listYear'"
+                                    (click)="changeView('listYear')">
+                                <mat-icon [svgIcon]="'view_agenda'"></mat-icon>
+                                <span>Schedule</span>
+                            </button>
+                        </mat-menu>
+                    </button>
 
                 </div>
 
