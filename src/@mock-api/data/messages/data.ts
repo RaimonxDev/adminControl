@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Message } from 'app/core/main/common/messages/messages.type';
+import { Message } from 'app/core/main/common/messages/messages.types';
 
 /* tslint:disable:max-line-length */
 export const messages: Message[] = [

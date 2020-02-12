@@ -1,4 +1,4 @@
-import { Shortcut } from 'app/core/main/common/shortcuts/shortcuts.type';
+import { Shortcut } from 'app/core/main/common/shortcuts/shortcuts.types';
 
 /* tslint:disable:max-line-length */
 

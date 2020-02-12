@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Notification } from 'app/core/main/common/notifications/notifications.type';
+import { Notification } from 'app/core/main/common/notifications/notifications.types';
 
 /* tslint:disable:max-line-length */
 export const notifications: Notification[] = [
