@@ -22,7 +22,7 @@
     <div class="header">
 
         <!-- Header container -->
-        <div class="container theme-dark">
+        <div class="container">
 
             <!-- Top bar -->
             <div class="top-bar">
@@ -30,7 +30,10 @@
                 <!-- Logo -->
                 <div class="logo"
                      *ngIf="!isScreenSmall">
-                    <img src="assets/images/logo/logo-light.svg">
+                    <img class="logo-light"
+                         src="assets/images/logo/logo-light.svg">
+                    <img class="logo-dark"
+                         src="assets/images/logo/logo-dark.svg">
                 </div>
 
                 <!-- Navigation toggle button -->
