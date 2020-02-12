@@ -10,6 +10,7 @@ import { MessagesModule } from 'app/core/main/common/messages/messages.module';
 import { NotificationsModule } from 'app/core/main/common/notifications/notifications.module';
 import { SearchModule } from 'app/core/main/common/search/search.module';
 import { ShortcutsModule } from 'app/core/main/common/shortcuts/shortcuts.module';
+import { UserModule } from 'app/core/main/common/user/user.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { MaterialLayoutComponent } from 'app/core/main/layouts/horizontal/material/material.component';
 
@@ -29,6 +30,7 @@ import { MaterialLayoutComponent } from 'app/core/main/layouts/horizontal/materi
         NotificationsModule,
         SearchModule,
         ShortcutsModule,
+        UserModule,
         SharedModule
     ],
     exports     : [

@@ -32,6 +32,8 @@ layout[type="classy"] {
 
                 .avatar {
                     position: relative;
+                    width: 96px;
+                    height: 96px;
 
                     img {
                         width: 96px;
@@ -41,14 +43,8 @@ layout[type="classy"] {
                         border-radius: 50%;
                     }
 
-                    .status {
-                        position: absolute;
-                        right: 6px;
-                        bottom: 0;
-                        width: 20px;
-                        height: 20px;
-                        border-radius: 50%;
-                        border-width: 3px;
+                    .mat-icon {
+                        @include asm-icon-size(96);
                     }
                 }
 
@@ -134,16 +130,6 @@ layout[type="classy"] {
     }
 }
 
-.user-status-menu {
-
-    .status {
-        width: 16px;
-        height: 16px;
-        margin-right: 12px;
-        border-radius: 50%;
-    }
-}
-
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
@@ -156,37 +142,6 @@ layout[type="classy"] {
 
     layout[type='classy'] {
 
-        > asm-vertical-navigation {
-
-            .asm-vertical-navigation-content-header {
-
-                .user {
-
-                    .avatar {
-
-                        .status {
-
-                            &.online {
-                                background: asm-color('green', 500);
-                            }
-
-                            &.away {
-                                background: asm-color('orange', 500);
-                            }
-
-                            &.busy {
-                                background: asm-color('red', 500);
-                            }
-
-                            &.not-visible {
-                                background: asm-color('gray', 500);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         > .wrapper {
 
             .navigation-toggle-button {
@@ -195,28 +150,6 @@ layout[type="classy"] {
                 .mat-icon {
                     color: map-get($primary, default-contrast);
                 }
-            }
-        }
-    }
-
-    .user-status-menu {
-
-        .status {
-
-            &.online {
-                background: asm-color('green', 500);
-            }
-
-            &.away {
-                background: asm-color('orange', 500);
-            }
-
-            &.busy {
-                background: asm-color('red', 500);
-            }
-
-            &.not-visible {
-                background: asm-color('gray', 500);
             }
         }
     }

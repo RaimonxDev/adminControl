@@ -24,72 +24,23 @@
             <!-- Notifications -->
             <notifications [notifications]="data.notifications"></notifications>
 
-            <!-- User menu -->
-            <div class="user-menu">
-                <button mat-icon-button
-                        [matMenuTriggerFor]="userActions">
-                    <mat-icon [svgIcon]="'account_circle'"></mat-icon>
-                </button>
-                <mat-menu class="user-actions-menu"
-                          [xPosition]="'before'"
-                          #userActions="matMenu">
-                    <button mat-menu-item>
-                        <mat-icon [svgIcon]="'account_circle'"></mat-icon>
-                        <span>Profile</span>
-                    </button>
-                    <button mat-menu-item>
-                        <mat-icon [svgIcon]="'settings'"></mat-icon>
-                        <span>Settings</span>
-                    </button>
-                    <button mat-menu-item
-                            [matMenuTriggerFor]="userStatus">
-                        <mat-icon [svgIcon]="'radio_button_unchecked'"></mat-icon>
-                        <span>Status</span>
-                    </button>
-                    <mat-divider class="my-8"></mat-divider>
-                    <button mat-menu-item
-                            (click)="signOut()">
-                        <mat-icon [svgIcon]="'power_settings_new'"></mat-icon>
-                        <span>Sign out</span>
-                    </button>
-                </mat-menu>
-                <mat-menu class="user-status-menu"
-                          #userStatus="matMenu">
-                    <button mat-menu-item
-                            (click)="updateUserStatus('online')">
-                        <span class="status online"></span>
-                        <span>Online</span>
-                    </button>
-                    <button mat-menu-item
-                            (click)="updateUserStatus('away')">
-                        <span class="status away"></span>
-                        <span>Away</span>
-                    </button>
-                    <button mat-menu-item
-                            (click)="updateUserStatus('busy')">
-                        <span class="status busy"></span>
-                        <span>Busy</span>
-                    </button>
-                    <button mat-menu-item
-                            (click)="updateUserStatus('not-visible')">
-                        <span class="status not-visible"></span>
-                        <span>Invisible</span>
-                    </button>
-                </mat-menu>
-            </div>
+            <!-- User -->
+            <user [user]="data.user"
+                  [showAvatar]="false"></user>
 
         </div>
 
         <!-- User -->
         <div class="user">
             <div class="avatar">
-                <img [src]="user.avatar">
-                <div class="status border-gray-900"
-                     [ngClass]="user.status"></div>
+                <img *ngIf="data.user.avatar"
+                     [src]="data.user.avatar">
+                <mat-icon *ngIf="!data.user.avatar"
+                          [svgIcon]="'account_circle'"></mat-icon>
             </div>
             <div class="info">
-                <div class="name">{{user.name}}</div>
-                <div class="email text-hint">{{user.email}}</div>
+                <div class="name">{{data.user.name}}</div>
+                <div class="email text-hint">{{data.user.email}}</div>
             </div>
         </div>
 

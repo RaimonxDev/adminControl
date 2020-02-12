@@ -3,7 +3,6 @@ import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
-import { UserService } from 'app/core/user/user.service';
 
 @Component({
     selector     : 'layout[type="enterprise"]',
@@ -15,7 +14,6 @@ export class EnterpriseLayoutComponent implements OnInit, OnDestroy
 {
     data: any;
     isScreenSmall: boolean;
-    user: any;
 
     @HostBinding('class.fixed-header')
     fixedHeader: boolean;
@@ -33,14 +31,12 @@ export class EnterpriseLayoutComponent implements OnInit, OnDestroy
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {AsmNavigationService} _asmNavigationService
      * @param {Router} _router
-     * @param {UserService}_userService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
-        private _router: Router,
-        private _userService: UserService
+        private _router: Router
     )
     {
         // Set the private defaults
@@ -72,21 +68,9 @@ export class EnterpriseLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // User
-        this._userService.user$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((user) => {
-                this.user = user;
-            });
-
         // Subscribe to the resolved route data
         this._activatedRoute.data.subscribe((data: Data) => {
-
-            // Store the data
             this.data = data.admin;
-
-            // Store the user data on user service
-            this._userService.user = this.data.user;
         });
 
         // Subscribe to media changes
@@ -128,27 +112,5 @@ export class EnterpriseLayoutComponent implements OnInit, OnDestroy
             // Toggle the opened status
             navigation.toggle();
         }
-    }
-
-    /**
-     * Sign out
-     */
-    signOut(): void
-    {
-        this._router.navigate(['/sign-out']);
-    }
-
-    /**
-     * Update the user status
-     *
-     * @param status
-     */
-    updateUserStatus(status): void
-    {
-        // Update the user data
-        this.user.status = status;
-
-        // Update the user on the server
-        this._userService.update(this.user);
     }
 }

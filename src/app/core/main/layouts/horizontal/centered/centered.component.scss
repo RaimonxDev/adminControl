@@ -115,61 +115,8 @@ layout[type="centered"] {
                     margin-right: 8px;
                 }
 
-                .user {
-                    height: 48px;
-                    min-height: 48px;
-                    max-height: 48px;
-
-                    .avatar {
-                        position: relative;
-
-                        img {
-                            width: 32px;
-                            min-width: 32px;
-                            height: 32px;
-                            min-height: 32px;
-                            border-radius: 50%;
-                        }
-
-                        .status {
-                            position: absolute;
-                            right: -2px;
-                            bottom: -3px;
-                            width: 12px;
-                            height: 12px;
-                            border-radius: 50%;
-                            border-width: 2px;
-                        }
-                    }
-
-                    .info {
-                        display: flex;
-                        align-items: center;
-                        margin-left: 12px;
-                        overflow: hidden;
-
-                        @include asm-media-breakpoint('lt-lg') {
-                            display: none;
-                        }
-
-                        .name {
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
-                            overflow: hidden;
-                            line-height: 1;
-                        }
-
-                        .menu {
-                            margin-left: 4px;
-                            height: 20px;
-                            min-height: 20px;
-                            max-height: 20px;
-
-                            .mat-icon {
-                                @include asm-icon-size(20);
-                            }
-                        }
-                    }
+                notifications {
+                    margin-right: 8px;
                 }
 
                 asm-horizontal-navigation {
@@ -252,16 +199,6 @@ layout[type="centered"] {
     }
 }
 
-.user-status-menu {
-
-    .status {
-        width: 16px;
-        height: 16px;
-        margin-right: 12px;
-        border-radius: 50%;
-    }
-}
-
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
@@ -306,32 +243,6 @@ layout[type="centered"] {
                             }
                         }
                     }
-
-                    .user {
-
-                        .avatar {
-
-                            .status {
-                                border-color: map-get($background, card);
-
-                                &.online {
-                                    background: asm-color('green', 500);
-                                }
-
-                                &.away {
-                                    background: asm-color('orange', 500);
-                                }
-
-                                &.busy {
-                                    background: asm-color('red', 500);
-                                }
-
-                                &.not-visible {
-                                    background: asm-color('gray', 500);
-                                }
-                            }
-                        }
-                    }
                 }
             }
 
@@ -346,28 +257,6 @@ layout[type="centered"] {
                 }
                 box-shadow: 0 -1px 0 0 map-get($foreground, divider);
                 color: map-get($foreground, secondary-text);
-            }
-        }
-    }
-
-    .user-status-menu {
-
-        .status {
-
-            &.online {
-                background: asm-color('green', 500);
-            }
-
-            &.away {
-                background: asm-color('orange', 500);
-            }
-
-            &.busy {
-                background: asm-color('red', 500);
-            }
-
-            &.not-visible {
-                background: asm-color('gray', 500);
             }
         }
     }
