@@ -30,7 +30,7 @@ tasks-list {
                     display: flex;
                     flex: 0 1 auto;
                     align-items: center;
-                    padding: 40px;
+                    padding: 40px 32px;
 
                     @include asm-media-breakpoint('lt-sm') {
                         flex-direction: column;

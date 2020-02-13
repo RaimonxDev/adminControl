@@ -28,7 +28,7 @@ calendar {
                     flex-wrap: wrap;
                     flex: 0 0 auto;
                     align-items: center;
-                    padding: 8px 24px;
+                    padding: 8px 32px;
                     border-bottom-width: 1px;
 
                     @include asm-media-breakpoint('lt-md') {

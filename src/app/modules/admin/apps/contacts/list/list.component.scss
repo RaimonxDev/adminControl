@@ -28,7 +28,7 @@ contacts-list {
                     display: flex;
                     flex: 1 1 auto;
                     align-items: center;
-                    padding: 40px;
+                    padding: 40px 32px;
                     border-bottom-width: 1px;
 
                     @include asm-media-breakpoint('lt-sm') {
@@ -68,7 +68,7 @@ contacts-list {
                         .search {
                             flex: 1 1 auto;
                             margin-right: 16px;
-                            min-width: 240px;
+                            min-width: 200px;
                             width: 100%;
 
                             @include asm-media-breakpoint('lt-sm') {
@@ -106,11 +106,11 @@ contacts-list {
                             th {
 
                                 &:first-child {
-                                    padding-left: 96px;
+                                    padding-left: 88px;
                                 }
 
                                 &:last-child {
-                                    padding-right: 40px;
+                                    padding-right: 32px;
                                 }
 
                                 &.mat-column-phoneNumber {
@@ -139,11 +139,11 @@ contacts-list {
                                 border-bottom-width: 1px;
 
                                 &:first-child {
-                                    padding-left: 40px;
+                                    padding-left: 32px;
                                 }
 
                                 &:last-child {
-                                    padding-right: 40px;
+                                    padding-right: 32px;
                                 }
 
                                 &.mat-column-name {

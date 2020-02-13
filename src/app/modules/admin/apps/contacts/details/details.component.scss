@@ -76,7 +76,7 @@ contacts-details {
             display: flex;
             align-items: center;
             top: 32px;
-            right: 32px;
+            right: 24px;
 
             @include asm-media-breakpoint('(max-width: 480px)') {
                 position: relative;

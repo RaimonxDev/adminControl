@@ -227,9 +227,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         {
             this._tagsPanelOverlayRef.dispose();
         }
-
-        // Reset the selected task
-        this._tasksService.resetSelectedTask();
     }
 
     // -----------------------------------------------------------------------------------------------------

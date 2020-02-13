@@ -230,14 +230,6 @@ export class ContactsService
     }
 
     /**
-     * Reset the selected contact
-     */
-    resetSelectedContact(): void
-    {
-        this._contact.next(null);
-    }
-
-    /**
      * Get countries
      */
     getCountries(): Observable<Country[]>

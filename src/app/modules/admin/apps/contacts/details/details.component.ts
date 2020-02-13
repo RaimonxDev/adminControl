@@ -243,9 +243,6 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
         {
             this._tagsPanelOverlayRef.dispose();
         }
-
-        // Reset the selected contact
-        this._contactsService.resetSelectedContact();
     }
 
     // -----------------------------------------------------------------------------------------------------

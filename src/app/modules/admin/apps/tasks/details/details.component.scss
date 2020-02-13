@@ -9,12 +9,12 @@ tasks-details {
         flex-direction: column;
         flex: 1 1 auto;
         height: 100%;
-        padding: 52px 48px;
+        padding: 52px 32px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
         @include asm-media-breakpoint('lt-sm') {
-            padding: 40px;
+            padding: 32px;
         }
 
         .header {

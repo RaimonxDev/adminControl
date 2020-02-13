@@ -332,12 +332,4 @@ export class TasksService
             ))
         );
     }
-
-    /**
-     * Reset the selected task
-     */
-    resetSelectedTask(): void
-    {
-        this._task.next(null);
-    }
 }
