@@ -78,8 +78,8 @@ export const adminRoutes: Route[] = [{
         // User interface
         {path: 'ui', children: [
 
-            // Material components
-            {path: 'material-components', loadChildren: () => import('./ui/material-components/material-components.module').then(m => m.MaterialComponentsModule)},
+            // Angular Material
+            {path: 'angular-material', loadChildren: () => import('app/modules/admin/ui/angular-material/angular-material.module').then(m => m.AngularMaterialModule)},
 
             // Cards
             {path: 'cards', loadChildren: () => import('app/modules/admin/ui/cards/cards.module').then(m => m.CardsModule)},
