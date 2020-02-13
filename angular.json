@@ -68,10 +68,6 @@
                                     "maximumError": "10kb"
                                 }
                             ]
-                        },
-                        "ec": {
-                            "sourceMap": true,
-                            "extractCss": true
                         }
                     }
                 },
@@ -83,9 +79,6 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "assembly:build:production"
-                        },
-                        "ec": {
-                            "browserTarget": "assembly:build:ec"
                         }
                     }
                 },
