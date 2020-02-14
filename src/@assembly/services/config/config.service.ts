@@ -16,8 +16,6 @@ export class AsmConfigService
      */
     constructor(@Inject(ASM_APP_CONFIG) config: any)
     {
-        console.log('...asmConfigService constructor...');
-
         // Set the private defaults
         this._config = new BehaviorSubject(config);
     }
@@ -56,4 +54,3 @@ export class AsmConfigService
         this._config.next(this.config);
     }
 }
-
