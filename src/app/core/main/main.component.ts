@@ -8,10 +8,9 @@ import { MatRadioChange } from '@angular/material/radio';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AsmDrawerService } from '@assembly';
-import { AppConfig, Theme } from 'app/config/app';
+import { AsmConfigService, AsmDrawerService } from '@assembly';
 import { Layout } from 'app/core/main/layouts/layouts.types';
-import { ConfigService } from 'app/core/config/config.service';
+import { AppConfig, Theme } from 'app/core/config';
 
 @Component({
     selector     : 'main',
@@ -32,8 +31,8 @@ export class MainComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {AsmConfigService} _asmConfigService
      * @param {AsmDrawerService} _asmDrawerService
-     * @param {ConfigService} _configService
      * @param {DOCUMENT} _document
      * @param {DomSanitizer} _domSanitizer
      * @param {MatIconRegistry} _matIconRegistry
@@ -43,8 +42,8 @@ export class MainComponent implements OnInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _asmConfigService: AsmConfigService,
         private _asmDrawerService: AsmDrawerService,
-        private _configService: ConfigService,
         @Inject(DOCUMENT) private _document: any,
         private _domSanitizer: DomSanitizer,
         private _matIconRegistry: MatIconRegistry,
@@ -67,9 +66,9 @@ export class MainComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to config changes
-        this._configService.config$
+        this._asmConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((config) => {
+            .subscribe((config: AppConfig) => {
 
                 // Store the config
                 this.config = config;
@@ -191,7 +190,7 @@ export class MainComponent implements OnInit, OnDestroy
      */
     setLayout(change: MatRadioChange): void
     {
-        this._configService.config = {layout: change.value};
+        this._asmConfigService.config = {layout: change.value};
     }
 
     /**
@@ -201,6 +200,6 @@ export class MainComponent implements OnInit, OnDestroy
      */
     setTheme(change: MatSlideToggleChange): void
     {
-        this._configService.config = {theme: change.checked ? 'dark' : 'light'};
+        this._asmConfigService.config = {theme: change.checked ? 'dark' : 'light'};
     }
 }

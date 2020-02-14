@@ -3,10 +3,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AsmDrawerModule } from '@assembly';
+import { AsmConfigModule, AsmDrawerModule } from '@assembly';
 import { SharedModule } from 'app/shared/shared.module';
 import { MainComponent } from 'app/core/main/main.component';
 import { LayoutsModule } from 'app/core/main/layouts/layouts.module';
+import { appConfig } from 'app/core/config';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { LayoutsModule } from 'app/core/main/layouts/layouts.module';
         MatIconModule,
         MatRadioModule,
         MatSlideToggleModule,
+        AsmConfigModule.forRoot(appConfig),
         AsmDrawerModule,
         LayoutsModule,
         SharedModule

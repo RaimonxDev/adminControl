@@ -1,23 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as _ from 'lodash';
-import { AppConfig, appConfig } from 'app/config/app';
+import { ASM_APP_CONFIG } from '@assembly/services/config/config.constants';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ConfigService
+export class AsmConfigService
 {
     // Private
-    private _config: BehaviorSubject<AppConfig>;
+    private _config: BehaviorSubject<any>;
 
     /**
      * Constructor
      */
-    constructor()
+    constructor(@Inject(ASM_APP_CONFIG) config: any)
     {
+        console.log('...asmConfigService constructor...');
+
         // Set the private defaults
-        this._config = new BehaviorSubject(appConfig);
+        this._config = new BehaviorSubject(config);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -36,7 +38,7 @@ export class ConfigService
         this._config.next(config);
     }
 
-    get config$(): Observable<AppConfig>
+    get config$(): Observable<any>
     {
         return this._config.asObservable();
     }
@@ -51,7 +53,7 @@ export class ConfigService
     reset(): void
     {
         // Set the config
-        this._config.next(appConfig);
+        this._config.next(this.config);
     }
 }
 

@@ -29,11 +29,13 @@ export class AsmCoreModule
      *
      * @param parentModule
      */
-    constructor(@Optional() @SkipSelf() parentModule: AsmCoreModule)
+    constructor(
+        @Optional() @SkipSelf() parentModule?: AsmCoreModule
+    )
     {
         if ( parentModule )
         {
-            throw new Error('AsmCoreModule has already been loaded. Import this module in the AppModule only.');
+            throw new Error('AsmCoreModule has already been loaded. Import this module in the AppModule only!');
         }
     }
 }

@@ -4,9 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
-import { AsmMediaWatcherService } from '@assembly';
-import { ConfigService } from 'app/core/config/config.service';
-import { AppConfig } from 'app/config/app';
+import { AsmConfigService, AsmMediaWatcherService } from '@assembly';
 import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.service';
 
 @Component({
@@ -18,7 +16,7 @@ import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard
 })
 export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
 {
-    appConfig: AppConfig;
+    appConfig: any;
     btcOptions: ApexOptions;
     data: any;
     drawerMode: 'over' | 'side';
@@ -34,16 +32,16 @@ export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {AsmConfigService} _asmConfigService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
      * @param {DashboardCryptocurrencyService} _dashboardCryptocurrencyService
      * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ConfigService} _configService
      */
     constructor(
+        private _asmConfigService: AsmConfigService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _dashboardCryptocurrencyService: DashboardCryptocurrencyService,
-        private _changeDetectorRef: ChangeDetectorRef,
-        private _configService: ConfigService
+        private _changeDetectorRef: ChangeDetectorRef
     )
     {
         // Set the private defaults
@@ -85,7 +83,7 @@ export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
             });
 
         // Get the app config
-        this._configService.config$
+        this._asmConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
 
