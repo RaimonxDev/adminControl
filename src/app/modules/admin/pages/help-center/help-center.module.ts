@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AsmMessageModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { HelpCenterComponent } from 'app/modules/admin/pages/help-center/help-center.component';
 import { HelpCenterFaqsComponent } from 'app/modules/admin/pages/help-center/faqs/faqs.component';
 import { HelpCenterGuidesComponent } from 'app/modules/admin/pages/help-center/guides/guides.component';

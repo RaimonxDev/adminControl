@@ -12,7 +12,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { DashboardCryptocurrencyComponent } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.component';
 import { dashboardCryptocurrencyRoutes } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.routing';
 

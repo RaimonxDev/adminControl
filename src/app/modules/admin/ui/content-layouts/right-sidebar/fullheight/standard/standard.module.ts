@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AsmDemoContentModule, AsmDemoSidebarContentModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { RightSidebarFullheightStandardComponent } from 'app/modules/admin/ui/content-layouts/right-sidebar/fullheight/standard/standard.component';
 import { rightSidebarFullheightStandardRoutes } from 'app/modules/admin/ui/content-layouts/right-sidebar/fullheight/standard/standard.routing';
 

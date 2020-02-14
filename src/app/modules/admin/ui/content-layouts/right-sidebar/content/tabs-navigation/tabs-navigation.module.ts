@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AsmDemoContentModule, AsmDemoSidebarContentModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { RightSidebarContentTabsNavigationComponent } from 'app/modules/admin/ui/content-layouts/right-sidebar/content/tabs-navigation/tabs-navigation.component';
 import { RightSidebarContentTabsNavigationTab1Component } from 'app/modules/admin/ui/content-layouts/right-sidebar/content/tabs-navigation/tabs/tab-1/tab-1.component';
 import { RightSidebarContentTabsNavigationTab2Component } from 'app/modules/admin/ui/content-layouts/right-sidebar/content/tabs-navigation/tabs/tab-2/tab-2.component';

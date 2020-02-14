@@ -6,7 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AsmDemoContentModule, AsmDemoSidebarContentModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { LeftSidebarContentTabsComponent } from 'app/modules/admin/ui/content-layouts/left-sidebar/content/tabs/tabs.component';
 import { leftSidebarContentTabsRoutes } from 'app/modules/admin/ui/content-layouts/left-sidebar/content/tabs/tabs.routing';
 

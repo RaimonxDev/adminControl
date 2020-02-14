@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AsmHighlightModule, AsmMessageModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { MessagesComponent } from 'app/modules/admin/assembly/components/messages/messages.component';
 import { messagesRoutes } from 'app/modules/admin/assembly/components/messages/messages.routing';
 

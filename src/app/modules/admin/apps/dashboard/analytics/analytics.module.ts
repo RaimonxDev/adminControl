@@ -6,7 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { DashboardAnalyticsComponent } from 'app/modules/admin/apps/dashboard/analytics/analytics.component';
 import { dashboardAnalyticsRoutes } from 'app/modules/admin/apps/dashboard/analytics/analytics.routing';
 

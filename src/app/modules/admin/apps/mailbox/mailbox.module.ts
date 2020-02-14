@@ -13,7 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { QuillModule } from 'ngx-quill';
 import { AsmFindByKeyPipeModule, AsmNavigationModule, AsmScrollbarModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
 import { MailboxDetailsComponent } from 'app/modules/admin/apps/mailbox/details/details.component';

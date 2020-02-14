@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AsmCardModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { PricingModernComponent } from 'app/modules/admin/pages/pricing/modern/modern.component';
 import { pricingModernRoutes } from 'app/modules/admin/pages/pricing/modern/modern.routing';
 

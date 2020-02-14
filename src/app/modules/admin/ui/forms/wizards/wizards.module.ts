@@ -9,7 +9,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AsmCardModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { FormsWizardsComponent } from 'app/modules/admin/ui/forms/wizards/wizards.component';
 import { formsWizardsRoutes } from 'app/modules/admin/ui/forms/wizards/wizards.routing';
 

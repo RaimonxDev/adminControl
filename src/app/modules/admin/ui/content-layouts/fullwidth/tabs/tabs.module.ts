@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AsmDemoContentModule } from '@assembly';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from 'app/core/shared/shared.module';
 import { FullwidthTabsComponent } from 'app/modules/admin/ui/content-layouts/fullwidth/tabs/tabs.component';
 import { fullwidthTabsRoutes } from 'app/modules/admin/ui/content-layouts/fullwidth/tabs/tabs.routing';
 
