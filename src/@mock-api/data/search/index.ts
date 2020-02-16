@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmNavigationItem, AsmNavigationService } from '@assembly';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { defaultNavigation } from '@mock-api/data/navigation/data';
 import { contacts } from '@mock-api/data/contacts/data';
@@ -8,7 +9,7 @@ import { contacts } from '@mock-api/data/contacts/data';
 @Injectable({
     providedIn: 'root'
 })
-export class MockSearchResultsApi
+export class SearchResultsMockApi implements AsmMockApi
 {
     // Private Readonly
     private readonly _defaultNavigation: AsmNavigationItem[] = defaultNavigation;
@@ -35,9 +36,9 @@ export class MockSearchResultsApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // Get the flat navigation and store it
         const flatNavigation = this._asmNavigationService.getFlatNavigation(this._defaultNavigation);

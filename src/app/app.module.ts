@@ -25,11 +25,11 @@ const routerConfig: ExtraOptions = {
         // Assembly Core
         AsmCoreModule,
 
-        // App Core
-        CoreModule,
-
         // Assembly Mock API
         AsmMockApiModule,
+
+        // App Core
+        CoreModule,
 
         // App Modules
         AuthModule,

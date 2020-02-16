@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { docs } from './data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockDocsApi
+export class DocsMockApi implements AsmMockApi
 {
     // Private Readonly
     private readonly _docs: any;
@@ -28,9 +29,9 @@ export class MockDocsApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Changelog

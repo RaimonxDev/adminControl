@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { cryptocurrency as cryptocurrencyData } from '@mock-api/data/dashboards/cryptocurrency/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockDashboardCryptocurrencyApi
+export class DashboardCryptocurrencyMockApi implements AsmMockApi
 {
     // Private
     private _cryptocurrency: any;
@@ -29,9 +30,9 @@ export class MockDashboardCryptocurrencyApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Cryptocurrency - GET

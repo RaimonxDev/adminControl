@@ -12,7 +12,6 @@ export class AsmMockApiRequestHandler
     private _executionLimit: number;
     private _interceptedRequest: HttpRequest<any>;
     private _replyCallback: any;
-    private _replyWithAuth: boolean;
     private _url: string;
 
     /**
@@ -23,7 +22,6 @@ export class AsmMockApiRequestHandler
         // Set the private defaults
         this._executionCount = 0;
         this._executionLimit = 0;
-        this._replyWithAuth = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -116,13 +114,6 @@ export class AsmMockApiRequestHandler
         // Increase the execution count
         this._executionCount++;
 
-        // If authentication is required for the reply, but there is no Authorization header...
-        if ( this._replyWithAuth && (!this.interceptedRequest.headers.get('Authorization') || !this.interceptedRequest.headers.get('Authorization').startsWith('Bearer ')) )
-        {
-            // Return an observable which returns a 401 response
-            return of([401, {error: 'Unauthorized'}]);
-        }
-
         // Execute the reply callback
         const replyCallbackResult = this._replyCallback(this.interceptedRequest);
 
@@ -145,15 +136,11 @@ export class AsmMockApiRequestHandler
      * Reply
      *
      * @param callback
-     * @param withAuth
      */
-    reply(callback: (req: HttpRequest<any>) => ([number, any | string] | Observable<any>), withAuth = true): void
+    reply(callback: (req: HttpRequest<any>) => ([number, any | string] | Observable<any>)): void
     {
         // Store the reply callback
         this._replyCallback = callback;
-
-        // Store the withAuth preference
-        this._replyWithAuth = withAuth;
     }
 
     /**

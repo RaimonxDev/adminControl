@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { contacts as contactsData, countries as countriesData, tags as tagsData } from '@mock-api/data/contacts/data';
@@ -9,7 +10,7 @@ import { contacts as contactsData, countries as countriesData, tags as tagsData 
 @Injectable({
     providedIn: 'root'
 })
-export class MockContactsApi
+export class ContactsMockApi implements AsmMockApi
 {
     // Private
     private _contacts: any[];
@@ -36,9 +37,9 @@ export class MockContactsApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Contacts - GET

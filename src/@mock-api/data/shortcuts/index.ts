@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { shortcuts as shortcutsData } from '@mock-api/data/shortcuts/data';
@@ -7,7 +8,7 @@ import { shortcuts as shortcutsData } from '@mock-api/data/shortcuts/data';
 @Injectable({
     providedIn: 'root'
 })
-export class MockShortcutsApi
+export class ShortcutsMockApi implements AsmMockApi
 {
     // Private
     private _shortcuts: any;
@@ -30,9 +31,9 @@ export class MockShortcutsApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - GET

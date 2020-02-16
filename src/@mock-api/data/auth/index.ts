@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockAuthApi
+export class AuthMockApi implements AsmMockApi
 {
     // Private Readonly
     private readonly _secret: any;
@@ -120,9 +121,9 @@ export class MockAuthApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Login - POST
@@ -150,7 +151,7 @@ export class MockAuthApi
                         error: 'Wrong email or password'
                     }
                 ];
-            }, false);
+            });
 
         // -----------------------------------------------------------------------------------------------------
         // @ Verify and refresh the access token - POST

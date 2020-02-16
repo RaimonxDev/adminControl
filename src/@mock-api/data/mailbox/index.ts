@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { filters as filtersData, folders as foldersData, labels as labelsData, mails as mailsData, settings as settingsData } from '@mock-api/data/mailbox/data';
@@ -7,7 +8,7 @@ import { filters as filtersData, folders as foldersData, labels as labelsData, m
 @Injectable({
     providedIn: 'root'
 })
-export class MockMailboxApi
+export class MailboxMockApi implements AsmMockApi
 {
     // Private
     private _filters: any[];
@@ -38,9 +39,9 @@ export class MockMailboxApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - GET

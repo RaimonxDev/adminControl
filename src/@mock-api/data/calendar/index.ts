@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import RRule, { RRuleSet, rrulestr } from 'rrule';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { calendars as calendarsData, events as eventsData, exceptions as exceptionsData, settings as settingsData, weekdays as weekdaysData } from '@mock-api/data/calendar/data';
@@ -9,7 +10,7 @@ import { calendars as calendarsData, events as eventsData, exceptions as excepti
 @Injectable({
     providedIn: 'root'
 })
-export class MockCalendarApi
+export class CalendarMockApi implements AsmMockApi
 {
     // Private
     private _calendars: any[];
@@ -103,9 +104,9 @@ export class MockCalendarApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - GET

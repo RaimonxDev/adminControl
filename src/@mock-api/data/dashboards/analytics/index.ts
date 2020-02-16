@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { analytics as analyticsData } from '@mock-api/data/dashboards/analytics/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockDashboardAnalyticsApi
+export class DashboardAnalyticsMockApi implements AsmMockApi
 {
     // Private
     private _analytics: any;
@@ -29,9 +30,9 @@ export class MockDashboardAnalyticsApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Sales - GET

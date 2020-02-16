@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { faqCategories as faqCategoriesData, faqs as faqsData, guideCategories as guideCategoriesData, guideContent as guideContentData, guides as guidesData } from '@mock-api/data/help-center/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockHelpCenterApi
+export class HelpCenterMockApi implements AsmMockApi
 {
     // Private
     private _faqCategories: any[];
@@ -37,9 +38,9 @@ export class MockHelpCenterApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ FAQs - GET

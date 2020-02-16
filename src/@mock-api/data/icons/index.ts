@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { dripicons, iconsmind, material } from '@mock-api/data/icons/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockIconsApi
+export class IconsMockApi implements AsmMockApi
 {
     // Private Readonly
     private readonly _dripicons: any;
@@ -33,9 +34,9 @@ export class MockIconsApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Dripicons icons - GET

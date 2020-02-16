@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmNavigationItem } from '@assembly';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { compactNavigation, defaultNavigation, horizontalNavigation } from '@mock-api/data/navigation/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MockNavigationApi
+export class NavigationMockApi implements AsmMockApi
 {
     // Private Readonly
     private readonly _compactNavigation: AsmNavigationItem[];
@@ -34,9 +35,9 @@ export class MockNavigationApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Navigation - GET

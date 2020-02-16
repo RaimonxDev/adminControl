@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { tags as tagsData, tasks as tasksData } from '@mock-api/data/tasks/data';
@@ -7,7 +8,7 @@ import { tags as tagsData, tasks as tasksData } from '@mock-api/data/tasks/data'
 @Injectable({
     providedIn: 'root'
 })
-export class MockTasksApi
+export class TasksMockApi implements AsmMockApi
 {
     // Private
     private _tags: any[];
@@ -32,9 +33,9 @@ export class MockTasksApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET

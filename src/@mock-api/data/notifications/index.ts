@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
 import { notifications as notificationsData } from '@mock-api/data/notifications/data';
@@ -7,7 +8,7 @@ import { notifications as notificationsData } from '@mock-api/data/notifications
 @Injectable({
     providedIn: 'root'
 })
-export class MockNotificationsApi
+export class NotificationsMockApi implements AsmMockApi
 {
     // Private
     private _notifications: any;
@@ -30,9 +31,9 @@ export class MockNotificationsApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Initialize
+     * Register
      */
-    init(): void
+    register(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - GET
