@@ -1,39 +1,46 @@
-import { AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EmbeddedViewRef, Input, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { AsmHighlightService } from '@assembly/components/highlight/highlight.service';
 
 @Component({
-    selector     : 'asm-highlight',
-    templateUrl  : './highlight.component.html',
-    styles       : [],
-    encapsulation: ViewEncapsulation.None,
-    exportAs     : 'asmHighlight'
+    selector       : 'textarea[asmHighlight]',
+    templateUrl    : './highlight.component.html',
+    styleUrls      : ['./highlight.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs       : 'asmHighlight'
 })
 export class AsmHighlightComponent implements AfterViewInit
 {
-    // Code element
-    @ViewChild('code', {static: true})
-    codeElementRef: ElementRef;
+    highlightedCode: string;
+    viewRef: EmbeddedViewRef<any>;
+
+    @ViewChild(TemplateRef)
+    templateRef: TemplateRef<any>;
 
     // Private
-    private _code: string | null;
-    private _lang: string | null;
+    private _code: string;
+    private _lang: string;
 
     /**
      * Constructor
      *
      * @param {AsmHighlightService} _asmHighlightService
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
+     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _asmHighlightService: AsmHighlightService,
+        private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
-        private _renderer2: Renderer2
+        private _renderer2: Renderer2,
+        private _viewContainerRef: ViewContainerRef
     )
     {
         // Set the private defaults
-        this._code = null;
-        this._lang = null;
+        this._code = '';
+        this._lang = '';
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -44,7 +51,7 @@ export class AsmHighlightComponent implements AfterViewInit
      * Setter and getter for the code
      */
     @Input()
-    set code(value: string | null)
+    set code(value: string)
     {
         // If the value is the same, return...
         if ( this._code === value )
@@ -55,11 +62,17 @@ export class AsmHighlightComponent implements AfterViewInit
         // Set the code
         this._code = value;
 
-        // Highlight and insert the code
-        this._highlightAndInsert();
+        // Highlight and insert the code if the
+        // viewContainerRef is available. This will
+        // ensure the highlightAndInsert method
+        // won't run before the AfterContentInit hook.
+        if ( this._viewContainerRef.length )
+        {
+            this._highlightAndInsert();
+        }
     }
 
-    get code(): string | null
+    get code(): string
     {
         return this._code;
     }
@@ -68,7 +81,7 @@ export class AsmHighlightComponent implements AfterViewInit
      * Setter and getter for the language
      */
     @Input()
-    set lang(value: string | null)
+    set lang(value: string)
     {
         // If the value is the same, return...
         if ( this._lang === value )
@@ -79,11 +92,17 @@ export class AsmHighlightComponent implements AfterViewInit
         // Set the language
         this._lang = value;
 
-        // Highlight and insert the code
-        this._highlightAndInsert();
+        // Highlight and insert the code if the
+        // viewContainerRef is available. This will
+        // ensure the highlightAndInsert method
+        // won't run before the AfterContentInit hook.
+        if ( this._viewContainerRef.length )
+        {
+            this._highlightAndInsert();
+        }
     }
 
-    get lang(): string | null
+    get lang(): string
     {
         return this._lang;
     }
@@ -104,15 +123,15 @@ export class AsmHighlightComponent implements AfterViewInit
         }
 
         // If there is no code input, get the code from
-        // the textarea, highlight it and insert it
+        // the textarea
         if ( !this.code )
         {
             // Get the code
-            this.code = this._elementRef.nativeElement.children[0].value;
-
-            // Highlight and insert
-            this._highlightAndInsert();
+            this.code = this._elementRef.nativeElement.value;
         }
+
+        // Highlight and insert
+        this._highlightAndInsert();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -132,16 +151,22 @@ export class AsmHighlightComponent implements AfterViewInit
             return;
         }
 
-        // Highlight the source and get the container div
-        const highlightedCode = this._asmHighlightService.highlight(this.code, this.lang);
-
-        // Fill the container with pre and code blocks and put the highlighted code into
-        this._renderer2.setProperty(this.codeElementRef.nativeElement, 'innerHTML', highlightedCode);
-
-        // Remove the textarea element if it exists
-        if ( this._elementRef.nativeElement.children[0].nodeName.toLowerCase() === 'textarea' )
+        // Destroy the component if there is already one
+        if ( this.viewRef )
         {
-            this._renderer2.removeChild(this._elementRef.nativeElement, this._elementRef.nativeElement.children[0]);
+            this.viewRef.destroy();
         }
+
+        // Highlight the code
+        this.highlightedCode = this._asmHighlightService.highlight(this.code, this.lang);
+
+        // Render and insert the template
+        this.viewRef = this._viewContainerRef.createEmbeddedView(this.templateRef, {
+            highlightedCode: this.highlightedCode,
+            lang           : this.lang
+        });
+
+        // Detect the changes
+        this.viewRef.detectChanges();
     }
 }

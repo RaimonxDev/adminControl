@@ -18,9 +18,9 @@ export class AsmHighlightService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Re-align the indentation based on the first
-     * non-whitespace indented character and remove
-     * the whitespace only first and last lines
+     * Remove the empty lines around the code block
+     * and re-align the indentation based on the first
+     * non-whitespace indented character
      *
      * @param code
      * @private
@@ -29,17 +29,16 @@ export class AsmHighlightService
     {
         let firstCharIndentation: number | null = null;
 
-        // Split the markdown into lines and store the lines
+        // Split the code into lines and store the lines
         const lines = code.split('\n');
 
-        // If trimmed first line is an empty string, remove it
-        if ( lines[0].trim() === '' )
+        // Trim the empty lines around the code block
+        while ( lines[0].trim() === '' )
         {
             lines.shift();
         }
 
-        // If trimmed last line is an empty string, remove it
-        if ( lines[lines.length - 1].trim() === '' )
+        while ( lines[lines.length - 1].trim() === '' )
         {
             lines.pop();
         }
