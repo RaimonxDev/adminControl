@@ -16,7 +16,7 @@ import { formsLayoutsRoutes } from 'app/modules/admin/ui/forms/layouts/layouts.r
 
 @NgModule({
     declarations: [
-        FormsLayoutsComponent,
+        FormsLayoutsComponent
     ],
     imports     : [
         RouterModule.forChild(formsLayoutsRoutes),

@@ -12,13 +12,13 @@ import { pricingSimpleRoutes } from 'app/modules/admin/pages/pricing/simple/simp
     declarations: [
         PricingSimpleComponent
     ],
-    imports: [
+    imports     : [
         RouterModule.forChild(pricingSimpleRoutes),
         MatButtonModule,
         MatIconModule,
         MatSlideToggleModule,
         AsmCardModule,
-        SharedModule,
+        SharedModule
     ]
 })
 export class PricingSimpleModule

@@ -55,7 +55,7 @@
     }
 
     // AsmHighlight
-    asm-highlight {
+    .asm-highlight {
         display: block;
         margin: 32px 0;
     }
@@ -114,7 +114,7 @@
                 .mat-tab-body-content {
                     padding: 40px;
 
-                    asm-highlight {
+                    .asm-highlight {
                         margin: 0;
 
                         pre {
@@ -311,7 +311,7 @@
 
                     .mat-tab-body-content {
 
-                        asm-highlight {
+                        .asm-highlight {
 
                             pre[class*='language-'] {
                                 border: none;

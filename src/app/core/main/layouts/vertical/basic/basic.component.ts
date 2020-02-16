@@ -36,7 +36,7 @@ export class BasicLayoutComponent implements OnInit, OnDestroy
         private _activatedRoute: ActivatedRoute,
         private _asmMediaWatcherService: AsmMediaWatcherService,
         private _asmNavigationService: AsmNavigationService,
-        private _router: Router,
+        private _router: Router
     )
     {
         // Set the private defaults

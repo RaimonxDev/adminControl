@@ -13,14 +13,14 @@ import { pricingTableRoutes } from 'app/modules/admin/pages/pricing/table/table.
     declarations: [
         PricingTableComponent
     ],
-    imports: [
+    imports     : [
         RouterModule.forChild(pricingTableRoutes),
         MatButtonModule,
         MatButtonToggleModule,
         MatIconModule,
         MatSlideToggleModule,
         AsmCardModule,
-        SharedModule,
+        SharedModule
     ]
 })
 export class PricingTableModule
