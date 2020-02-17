@@ -2,8 +2,8 @@ import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@a
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
-import { AsmNavigationService } from '@assembly/components/navigation';
+import { AsmMediaWatcherService } from '@assembly/media-watcher';
+import { AsmNavigationService } from '@assembly/navigation';
 
 @Component({
     selector     : 'layout[type="modern"]',

@@ -1,0 +1,14 @@
+import { NgModule } from '@angular/core';
+import { AsmDemoContentComponent } from '@assembly/demo-content/demo-content.component';
+
+@NgModule({
+    declarations: [
+        AsmDemoContentComponent
+    ],
+    exports     : [
+        AsmDemoContentComponent
+    ]
+})
+export class AsmDemoContentModule
+{
+}

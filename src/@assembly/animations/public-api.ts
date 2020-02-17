@@ -1,8 +1,8 @@
-import { expandCollapse } from '@assembly/animations/expand-collapse';
-import { fadeIn, fadeInBottom, fadeInLeft, fadeInRight, fadeInTop, fadeOut, fadeOutBottom, fadeOutLeft, fadeOutRight, fadeOutTop } from '@assembly/animations/fade';
-import { shake } from '@assembly/animations/shake';
-import { slideInBottom, slideInLeft, slideInRight, slideInTop, slideOutBottom, slideOutLeft, slideOutRight, slideOutTop } from '@assembly/animations/slide';
-import { zoomIn, zoomOut } from '@assembly/animations/zoom';
+import { expandCollapse } from './expand-collapse';
+import { fadeIn, fadeInBottom, fadeInLeft, fadeInRight, fadeInTop, fadeOut, fadeOutBottom, fadeOutLeft, fadeOutRight, fadeOutTop } from './fade';
+import { shake } from './shake';
+import { slideInBottom, slideInLeft, slideInRight, slideInTop, slideOutBottom, slideOutLeft, slideOutRight, slideOutTop } from './slide';
+import { zoomIn, zoomOut } from './zoom';
 
 export const AsmAnimations = [
     expandCollapse,

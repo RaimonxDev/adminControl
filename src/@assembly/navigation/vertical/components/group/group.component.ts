@@ -1,0 +1,93 @@
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { AsmVerticalNavigationComponent } from '@assembly/navigation/vertical/vertical.component';
+import { AsmNavigationService } from '@assembly/navigation/navigation.service';
+import { AsmNavigationItem } from '@assembly/navigation/navigation.types';
+
+@Component({
+    selector       : 'asm-vertical-navigation-group-item',
+    templateUrl    : './group.component.html',
+    styles         : [],
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class AsmVerticalNavigationGroupItemComponent implements OnInit, OnDestroy
+{
+    // Auto collapse
+    @Input()
+    autoCollapse: boolean;
+
+    // Item
+    @Input()
+    item: AsmNavigationItem;
+
+    // Name
+    @Input()
+    name: string;
+
+    // Private
+    private _asmVerticalNavigationComponent: AsmVerticalNavigationComponent;
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {AsmNavigationService} _asmNavigationService
+     * @param {ChangeDetectorRef} _changeDetectorRef
+     */
+    constructor(
+        private _asmNavigationService: AsmNavigationService,
+        private _changeDetectorRef: ChangeDetectorRef
+    )
+    {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Get the parent navigation component
+        this._asmVerticalNavigationComponent = this._asmNavigationService.getComponent(this.name);
+
+        // Subscribe to onRefreshed on the navigation component
+        this._asmVerticalNavigationComponent.onRefreshed.pipe(
+            takeUntil(this._unsubscribeAll)
+        ).subscribe(() => {
+
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+        });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any
+    {
+        return item.id || index;
+    }
+}

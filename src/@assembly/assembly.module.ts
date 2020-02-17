@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { AsmMediaWatcherModule } from '@assembly/services/media-watcher/public-api';
-import { AsmSplashScreenModule } from '@assembly/services/splash-screen/public-api';
+import { AsmMediaWatcherModule } from '@assembly/media-watcher/public-api';
+import { AsmSplashScreenModule } from '@assembly/splash-screen/public-api';
 
 @NgModule({
     imports  : [

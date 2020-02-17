@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { AsmNavigationModule } from '@assembly/components/navigation';
+import { AsmNavigationModule } from '@assembly/navigation';
 import { MessagesModule } from 'app/core/main/common/messages/messages.module';
 import { NotificationsModule } from 'app/core/main/common/notifications/notifications.module';
 import { SearchModule } from 'app/core/main/common/search/search.module';

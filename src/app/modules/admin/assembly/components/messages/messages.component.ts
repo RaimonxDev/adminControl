@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AsmMessageService } from '@assembly/components/message';
+import { AsmMessageService } from '@assembly/message';
 
 @Component({
     selector     : 'messages',

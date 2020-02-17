@@ -1,0 +1,1081 @@
+@import 'src/@assembly/styles/assembly';
+
+asm-vertical-navigation {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    top: 0;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    z-index: 75;
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Navigation Drawer
+    // -----------------------------------------------------------------------------------------------------
+
+    // Animations
+    &.asm-vertical-navigation-animations-enabled {
+        transition-duration: 400ms;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-property: visibility, margin-left, margin-right, transform, width, max-width, min-width;
+
+        // Wrapper
+        .asm-vertical-navigation-wrapper {
+            transition-duration: 400ms;
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-property: width, max-width, min-width;
+        }
+    }
+
+    // Over mode
+    &.asm-vertical-navigation-mode-over {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+    }
+
+    // Left position
+    &.asm-vertical-navigation-position-left {
+
+        // Side mode
+        &.asm-vertical-navigation-mode-side {
+            margin-left: -280px;
+
+            &.asm-vertical-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        // Over mode
+        &.asm-vertical-navigation-mode-over {
+            left: 0;
+            transform: translate3d(-100%, 0, 0);
+
+            &.asm-vertical-navigation-opened {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        // Wrapper
+        .asm-vertical-navigation-wrapper {
+            left: 0;
+        }
+    }
+
+    // Right position
+    &.asm-vertical-navigation-position-right {
+
+        // Side mode
+        &.asm-vertical-navigation-mode-side {
+            margin-right: -280px;
+
+            &.asm-vertical-navigation-opened {
+                margin-right: 0;
+            }
+        }
+
+        // Over mode
+        &.asm-vertical-navigation-mode-over {
+            right: 0;
+            transform: translate3d(100%, 0, 0);
+
+            &.asm-vertical-navigation-opened {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        // Wrapper
+        .asm-vertical-navigation-wrapper {
+            right: 0;
+        }
+    }
+
+    // Wrapper
+    .asm-vertical-navigation-wrapper {
+        position: absolute;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-right-width: 1px;
+        overflow: hidden;
+        z-index: 10;
+
+        // Header
+        .asm-vertical-navigation-header {
+
+        }
+
+        // Content
+        .asm-vertical-navigation-content {
+            flex: 1 1 auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+
+            // Divider
+            > asm-vertical-navigation-divider-item {
+                margin: 24px 0;
+            }
+
+            // Group
+            > asm-vertical-navigation-group-item {
+                margin-top: 24px;
+            }
+
+            // Spacer
+            > asm-vertical-navigation-spacer-item {
+                margin: 8px 0;
+            }
+        }
+
+        // Footer
+        .asm-vertical-navigation-footer {
+
+        }
+    }
+
+    // Aside wrapper
+    .asm-vertical-navigation-aside-wrapper {
+        position: absolute;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        top: 0;
+        bottom: 0;
+        left: 280px;
+        width: 280px;
+        height: 100%;
+        z-index: 5;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        transition-duration: 400ms;
+        transition-property: left, right;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        > asm-vertical-navigation-aside-item {
+            padding: 24px 0;
+
+            // First item of the aside
+            > .asm-vertical-navigation-item-wrapper {
+                display: none !important;
+            }
+        }
+    }
+
+    &.asm-vertical-navigation-position-right {
+
+        .asm-vertical-navigation-aside-wrapper {
+            left: auto;
+            right: 280px;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Navigation Items
+    // -----------------------------------------------------------------------------------------------------
+
+    // Navigation items common
+    asm-vertical-navigation-aside-item,
+    asm-vertical-navigation-basic-item,
+    asm-vertical-navigation-collapsable-item,
+    asm-vertical-navigation-divider-item,
+    asm-vertical-navigation-group-item,
+    asm-vertical-navigation-spacer-item {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        user-select: none;
+
+        .asm-vertical-navigation-item-wrapper {
+
+            &.asm-vertical-navigation-item-has-subtitle {
+
+                .asm-vertical-navigation-item {
+                    min-height: 56px;
+                }
+            }
+
+            .asm-vertical-navigation-item {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 14px 24px 14px 32px;
+                min-height: 48px;
+                font-size: 13px;
+                font-weight: 500;
+                text-decoration: none;
+
+                .asm-vertical-navigation-item-icon {
+                    margin-right: 18px;
+                }
+
+                .asm-vertical-navigation-item-title-wrapper {
+
+                    .asm-vertical-navigation-item-subtitle {
+                        font-size: 12px;
+                    }
+                }
+
+                .asm-vertical-navigation-item-badge {
+                    margin-left: auto;
+
+                    .asm-vertical-navigation-item-badge-content {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 10px;
+                        font-weight: 700;
+                        white-space: nowrap;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+
+                        // Rectangle
+                        &.asm-vertical-navigation-item-badge-style-rectangle {
+                            width: auto;
+                            min-width: 24px;
+                            height: 20px;
+                            line-height: normal;
+                            padding: 0 6px;
+                            border-radius: 4px;
+                        }
+
+                        // Rounded
+                        &.asm-vertical-navigation-item-badge-style-rounded {
+                            width: auto;
+                            min-width: 24px;
+                            height: 20px;
+                            line-height: normal;
+                            padding: 0 10px;
+                            border-radius: 12px;
+                        }
+
+                        // Simple
+                        &.asm-vertical-navigation-item-badge-style-simple {
+                            width: auto;
+                            font-size: 11px;
+                            background-color: transparent !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    asm-vertical-navigation-aside-item,
+    asm-vertical-navigation-basic-item,
+    asm-vertical-navigation-collapsable-item {
+
+        .asm-vertical-navigation-item {
+            cursor: pointer;
+        }
+    }
+
+    // Aside
+    asm-vertical-navigation-aside-item {
+
+    }
+
+    // Basic
+    asm-vertical-navigation-basic-item {
+
+    }
+
+    // Collapsable
+    asm-vertical-navigation-collapsable-item {
+
+        > .asm-vertical-navigation-item-wrapper {
+
+            .asm-vertical-navigation-item {
+
+                .asm-vertical-navigation-item-badge {
+
+                    + .asm-vertical-navigation-item-arrow {
+                        margin-left: 8px;
+                    }
+                }
+
+                .asm-vertical-navigation-item-arrow {
+                    height: 20px;
+                    line-height: 20px;
+                    margin-left: auto;
+                    transition: transform 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                }
+            }
+        }
+
+        &.asm-vertical-navigation-item-expanded {
+
+            > .asm-vertical-navigation-item-wrapper {
+
+                .asm-vertical-navigation-item {
+
+                    .asm-vertical-navigation-item-arrow {
+                        transform: rotate(-180deg);
+                    }
+                }
+            }
+        }
+
+        // 1st level
+        .asm-vertical-navigation-item-children {
+            overflow: hidden;
+
+            .asm-vertical-navigation-item {
+                padding-left: 74px;
+            }
+
+            // 2nd level
+            .asm-vertical-navigation-item-children {
+
+                .asm-vertical-navigation-item {
+                    padding-left: 90px;
+                }
+
+                // 3rd level
+                .asm-vertical-navigation-item-children {
+
+                    .asm-vertical-navigation-item {
+                        padding-left: 106px;
+                    }
+
+                    // 4th level
+                    .asm-vertical-navigation-item-children {
+
+                        .asm-vertical-navigation-item {
+                            padding-left: 122px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Divider
+    asm-vertical-navigation-divider-item {
+        margin: 12px 0;
+
+        .asm-vertical-navigation-item-wrapper {
+            height: 1px;
+            box-shadow: 0 1px 0 0;
+        }
+    }
+
+    // Group
+    asm-vertical-navigation-group-item {
+
+        > .asm-vertical-navigation-item-wrapper {
+
+            .asm-vertical-navigation-item {
+
+                .asm-vertical-navigation-item-badge,
+                .asm-vertical-navigation-item-icon {
+                    display: none !important;
+                }
+
+                .asm-vertical-navigation-item-title {
+                    font-size: 12px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    // Spacer
+    asm-vertical-navigation-spacer-item {
+        margin: 12px 0;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [inner]
+    // -----------------------------------------------------------------------------------------------------
+    &.asm-vertical-navigation-inner {
+        position: relative;
+        width: auto;
+        min-width: 0;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        box-shadow: none;
+
+        .asm-vertical-navigation-wrapper {
+            position: relative;
+            overflow: visible;
+            height: auto;
+
+            .asm-vertical-navigation-content {
+                overflow: visible !important;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [appearance] Compact
+    // -----------------------------------------------------------------------------------------------------
+
+    &.asm-vertical-navigation-appearance-compact {
+        width: 144px;
+        min-width: 144px;
+        max-width: 144px;
+
+        // Left positioned
+        &.asm-vertical-navigation-position-left {
+
+            // Side mode
+            &.asm-vertical-navigation-mode-side {
+                margin-left: -144px;
+            }
+
+            // Opened
+            &.asm-vertical-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        // Right positioned
+        &.asm-vertical-navigation-position-right {
+
+            // Side mode
+            &.asm-vertical-navigation-mode-side {
+                margin-right: -144px;
+            }
+
+            // Opened
+            &.asm-vertical-navigation-opened {
+                margin-right: 0;
+            }
+
+            // Aside wrapper
+            .asm-vertical-navigation-aside-wrapper {
+                left: auto;
+                right: 144px;
+            }
+        }
+
+        // Wrapper
+        .asm-vertical-navigation-wrapper {
+
+            // Content
+            .asm-vertical-navigation-content {
+
+                > asm-vertical-navigation-aside-item,
+                > asm-vertical-navigation-basic-item {
+
+                    .asm-vertical-navigation-item {
+                        flex-direction: column;
+                        justify-content: center;
+                        height: 88px;
+                        min-height: 88px;
+                        max-height: 88px;
+                        padding: 0 16px;
+
+                        .asm-vertical-navigation-item-icon {
+                            margin-right: 0;
+                            margin-bottom: 8px;
+                            @include asm-icon-size(24);
+                        }
+
+                        .asm-vertical-navigation-item-title-wrapper {
+
+                            .asm-vertical-navigation-item-title {
+                                text-align: center;
+                                font-weight: 500;
+                            }
+
+                            .asm-vertical-navigation-item-subtitle {
+                                display: none !important;
+                            }
+                        }
+
+                        .asm-vertical-navigation-item-badge {
+                            position: absolute;
+                            top: 12px;
+                            left: 64px;
+                        }
+                    }
+                }
+
+                > asm-vertical-navigation-collapsable-item {
+                    display: none
+                }
+
+                > asm-vertical-navigation-group-item {
+
+                    > .asm-vertical-navigation-item-wrapper {
+                        display: none
+                    }
+                }
+            }
+        }
+
+        // Aside wrapper
+        .asm-vertical-navigation-aside-wrapper {
+            left: 144px;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [appearance] Dense
+    // -----------------------------------------------------------------------------------------------------
+
+    &.asm-vertical-navigation-appearance-dense {
+
+        &:not(.asm-vertical-navigation-mode-over) {
+            width: 88px;
+            min-width: 88px;
+            max-width: 88px;
+
+            // Left positioned
+            &.asm-vertical-navigation-position-left {
+
+                // Side mode
+                &.asm-vertical-navigation-mode-side {
+                    margin-left: -88px;
+                }
+
+                // Opened
+                &.asm-vertical-navigation-opened {
+                    margin-left: 0;
+                }
+            }
+
+            // Right positioned
+            &.asm-vertical-navigation-position-right {
+
+                // Side mode
+                &.asm-vertical-navigation-mode-side {
+                    margin-right: -88px;
+                }
+
+                // Opened
+                &.asm-vertical-navigation-opened {
+                    margin-right: 0;
+                }
+
+                // Aside wrapper
+                .asm-vertical-navigation-aside-wrapper {
+                    left: auto;
+                    right: 88px;
+                }
+
+                &.asm-vertical-navigation-hover {
+
+                    .asm-vertical-navigation-aside-wrapper {
+                        left: auto;
+                        right: 280px;
+                    }
+                }
+            }
+        }
+
+        // Wrapper
+        .asm-vertical-navigation-wrapper {
+
+            // Content
+            .asm-vertical-navigation-content {
+
+                asm-vertical-navigation-aside-item,
+                asm-vertical-navigation-basic-item,
+                asm-vertical-navigation-collapsable-item,
+                asm-vertical-navigation-group-item {
+
+                    .asm-vertical-navigation-item {
+                        width: 280px;
+                        min-width: 280px;
+                        max-width: 280px;
+
+                        .asm-vertical-navigation-item-arrow,
+                        .asm-vertical-navigation-item-badge,
+                        .asm-vertical-navigation-item-title-wrapper {
+                            transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                        }
+                    }
+                }
+
+                asm-vertical-navigation-group-item {
+
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        &:not(.asm-vertical-navigation-hover):not(.asm-vertical-navigation-mode-over) {
+
+            // Wrapper
+            .asm-vertical-navigation-wrapper {
+
+                // Content
+                .asm-vertical-navigation-content {
+
+                    .asm-vertical-navigation-item {
+                        padding: 14px 32px;
+
+                        .asm-vertical-navigation-item-arrow,
+                        .asm-vertical-navigation-item-badge,
+                        .asm-vertical-navigation-item-title-wrapper {
+                            white-space: nowrap;
+                        }
+
+                        .asm-vertical-navigation-item-arrow,
+                        .asm-vertical-navigation-item-badge-content,
+                        .asm-vertical-navigation-item-title-wrapper {
+                            opacity: 0;
+                        }
+                    }
+
+                    asm-vertical-navigation-collapsable-item {
+
+                        .asm-vertical-navigation-item-children {
+                            display: none;
+                        }
+                    }
+
+                    asm-vertical-navigation-group-item {
+
+                        > .asm-vertical-navigation-item-wrapper {
+
+                            .asm-vertical-navigation-item {
+
+                                &:before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 20px;
+                                    width: 23px;
+                                    border-top-width: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Aside wrapper
+        .asm-vertical-navigation-aside-wrapper {
+            left: 80px;
+        }
+
+        // Hover
+        &.asm-vertical-navigation-hover {
+
+            .asm-vertical-navigation-wrapper {
+                width: 280px;
+            }
+
+            .asm-vertical-navigation-aside-wrapper {
+                left: 280px;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ [appearance] Thin
+    // -----------------------------------------------------------------------------------------------------
+
+    &.asm-vertical-navigation-appearance-thin {
+        width: 88px;
+        min-width: 88px;
+        max-width: 88px;
+
+        // Left positioned
+        &.asm-vertical-navigation-position-left {
+
+            &.asm-vertical-navigation-mode-side {
+                margin-left: -88px;
+            }
+
+            &.asm-vertical-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        // Right positioned
+        &.asm-vertical-navigation-position-right {
+
+            &.asm-vertical-navigation-mode-side {
+                margin-right: -88px;
+            }
+
+            &.asm-vertical-navigation-opened {
+                margin-right: 0;
+            }
+
+            .asm-vertical-navigation-aside-wrapper {
+                left: auto;
+                right: 88px;
+            }
+        }
+
+        // Wrapper
+        .asm-vertical-navigation-wrapper {
+
+            // Content
+            .asm-vertical-navigation-content {
+
+                > asm-vertical-navigation-aside-item,
+                > asm-vertical-navigation-basic-item {
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 64px;
+                    min-height: 64px;
+                    max-height: 64px;
+                    padding: 0 16px;
+
+                    .asm-vertical-navigation-item {
+                        justify-content: center;
+                        padding: 0;
+
+                        .asm-vertical-navigation-item-icon {
+                            margin: 0;
+                        }
+
+                        .asm-vertical-navigation-item-arrow,
+                        .asm-vertical-navigation-item-badge-content,
+                        .asm-vertical-navigation-item-title-wrapper {
+                            display: none;
+                        }
+                    }
+                }
+
+                > asm-vertical-navigation-collapsable-item {
+                    display: none
+                }
+
+                > asm-vertical-navigation-group-item {
+
+                    > .asm-vertical-navigation-item-wrapper {
+                        display: none
+                    }
+                }
+            }
+        }
+
+        // Aside wrapper
+        .asm-vertical-navigation-aside-wrapper {
+            left: 88px;
+        }
+    }
+}
+
+// Overlay
+.asm-vertical-navigation-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 70;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    + .asm-vertical-navigation-aside-overlay {
+        background-color: transparent;
+    }
+}
+
+// Aside overlay
+.asm-vertical-navigation-aside-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 69;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    asm-vertical-navigation {
+
+        // Wrapper
+        .asm-vertical-navigation-wrapper {
+            background: inherit;
+        }
+
+        // Aside wrapper
+        .asm-vertical-navigation-aside-wrapper {
+            background: inherit;
+        }
+
+        // Navigation items common
+        .asm-vertical-navigation-item {
+            color: currentColor;
+
+            &.asm-vertical-navigation-item-active:not(.asm-vertical-navigation-item-disabled) {
+                box-shadow: inset 3px 0 0 0 map-get($primary, default);
+
+                @if ($is-dark) {
+                    background: rgba(0, 0, 0, 0.38);
+                } @else {
+                    background: map-get($primary, 100);
+                }
+            }
+
+            &.asm-vertical-navigation-item-disabled {
+                opacity: 0.3;
+                cursor: default;
+
+                .asm-vertical-navigation-item-icon,
+                .asm-vertical-navigation-item-subtitle {
+                    color: currentColor !important;
+                }
+            }
+        }
+
+        // Aside, Basic, Collapsable
+        asm-vertical-navigation-aside-item,
+        asm-vertical-navigation-basic-item,
+        asm-vertical-navigation-collapsable-item {
+
+            > .asm-vertical-navigation-item-wrapper {
+
+                .asm-vertical-navigation-item {
+
+                    &:hover:not(.asm-vertical-navigation-item-active):not(.asm-vertical-navigation-item-disabled) {
+
+                        @if ($is-dark) {
+                            background: rgba(0, 0, 0, 0.38);
+                        } @else {
+                            background: map-get($primary, 100);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Collapsable
+        asm-vertical-navigation-collapsable-item {
+
+            &.asm-vertical-navigation-item-expanded {
+
+                @if ($is-dark) {
+                    background: rgba(0, 0, 0, 0.12);
+                } @else {
+                    background: rgba(map-get($primary, 100), 0.38);
+                }
+
+                asm-vertical-navigation-collapsable-item {
+                    background: transparent;
+                }
+            }
+        }
+
+        // Divider
+        asm-vertical-navigation-divider-item {
+            color: map-get($foreground, divider);
+        }
+
+        // Group
+        asm-vertical-navigation-group-item {
+
+            > .asm-vertical-navigation-item-wrapper {
+
+                .asm-vertical-navigation-item {
+
+                    .asm-vertical-navigation-item-title {
+                        @if ($is-dark) {
+                            color: map-get($primary, 400);
+                        } @else {
+                            color: map-get($primary, 600);
+                        }
+                    }
+                }
+            }
+        }
+
+        // DARK THEME
+        &.theme-dark {
+
+            // Navigation items common
+            .asm-vertical-navigation-item {
+
+                &.asm-vertical-navigation-item-active {
+                    background: rgba(0, 0, 0, 0.38);
+                }
+
+                .asm-vertical-navigation-item-icon {
+                    color: asm-color('gray', 600);
+                }
+            }
+
+            // Aside, Basic, Collapsable
+            asm-vertical-navigation-aside-item,
+            asm-vertical-navigation-basic-item,
+            asm-vertical-navigation-collapsable-item {
+
+                > .asm-vertical-navigation-item-wrapper {
+
+                    .asm-vertical-navigation-item {
+
+                        &:hover:not(.asm-vertical-navigation-item-active):not(.asm-vertical-navigation-item-disabled) {
+                            background: rgba(0, 0, 0, 0.38);
+                        }
+                    }
+                }
+            }
+
+            // Collapsable
+            asm-vertical-navigation-collapsable-item {
+
+                &.asm-vertical-navigation-item-expanded {
+                    background: rgba(0, 0, 0, 0.12);
+
+                    asm-vertical-navigation-collapsable-item {
+                        background: transparent;
+                    }
+                }
+            }
+
+            // Divider
+            asm-vertical-navigation-divider-item {
+                color: rgba(asm-color('gray', 200), 0.12)
+            }
+
+            // Group
+            asm-vertical-navigation-group-item {
+
+                > .asm-vertical-navigation-item-wrapper {
+
+                    .asm-vertical-navigation-item {
+
+                        .asm-vertical-navigation-item-title {
+                            color: map-get($primary, 400);
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Compact
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-vertical-navigation-appearance-compact {
+
+            // Wrapper
+            .asm-vertical-navigation-wrapper {
+
+                .asm-vertical-navigation-content {
+
+                    .asm-vertical-navigation-item {
+
+                        &.asm-vertical-navigation-item-active {
+                            background: transparent;
+                            box-shadow: none !important;
+
+                            .asm-vertical-navigation-item-title,
+                            .asm-vertical-navigation-item-icon {
+                                color: map-get($primary, default) !important;
+                            }
+                        }
+                    }
+
+                    // Aside, Basic, Collapsable
+                    asm-vertical-navigation-aside-item,
+                    asm-vertical-navigation-basic-item,
+                    asm-vertical-navigation-collapsable-item {
+
+                        > .asm-vertical-navigation-item-wrapper {
+
+                            .asm-vertical-navigation-item {
+
+                                &:hover:not(.asm-vertical-navigation-item-active):not(.asm-vertical-navigation-item-disabled) {
+                                    background: transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Dense
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-vertical-navigation-appearance-dense {
+
+            // Wrapper
+            .asm-vertical-navigation-wrapper {
+
+                .asm-vertical-navigation-content {
+
+                    .asm-vertical-navigation-item {
+
+                        &.asm-vertical-navigation-item-active {
+                            box-shadow: none !important;
+
+                            .asm-vertical-navigation-item-title,
+                            .asm-vertical-navigation-item-icon {
+                                color: map-get($primary, default) !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ [appearance] Thin
+        // -----------------------------------------------------------------------------------------------------
+
+        &.asm-vertical-navigation-appearance-thin {
+
+            // Wrapper
+            .asm-vertical-navigation-wrapper {
+
+                .asm-vertical-navigation-content {
+
+                    .asm-vertical-navigation-item {
+
+                        &.asm-vertical-navigation-item-active {
+                            box-shadow: none !important;
+                        }
+                    }
+                }
+            }
+
+            // Aside, Basic, Collapsable
+            asm-vertical-navigation-aside-item,
+            asm-vertical-navigation-basic-item,
+            asm-vertical-navigation-collapsable-item {
+
+                .asm-vertical-navigation-item {
+
+                    &.asm-vertical-navigation-item-active {
+
+                        .asm-vertical-navigation-item-title,
+                        .asm-vertical-navigation-item-icon {
+                            color: map-get($primary, default) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

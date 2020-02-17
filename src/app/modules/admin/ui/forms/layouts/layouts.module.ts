@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { AsmCardModule } from '@assembly/components/card';
+import { AsmCardModule } from '@assembly/card';
 import { SharedModule } from 'app/core/shared/shared.module';
 import { FormsLayoutsComponent } from 'app/modules/admin/ui/forms/layouts/layouts.component';
 import { formsLayoutsRoutes } from 'app/modules/admin/ui/forms/layouts/layouts.routing';
