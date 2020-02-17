@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FindByKeyPipe } from '@assembly/pipes/find-by-key/find-by-key.pipe';
+import { AsmFindByKeyPipe } from '@assembly/pipes/find-by-key/find-by-key.pipe';
 
 @NgModule({
     declarations: [
-        FindByKeyPipe
+        AsmFindByKeyPipe
     ],
     exports     : [
-        FindByKeyPipe
+        AsmFindByKeyPipe
     ]
 })
 export class AsmFindByKeyPipeModule

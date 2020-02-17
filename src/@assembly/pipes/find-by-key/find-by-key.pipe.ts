@@ -4,10 +4,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Finds an object from given source using the given key - value pairs
  */
 @Pipe({
-    name: 'findByKey',
+    name: 'asmFindByKey',
     pure: false
 })
-export class FindByKeyPipe implements PipeTransform
+export class AsmFindByKeyPipe implements PipeTransform
 {
     /**
      * Constructor
