@@ -4,9 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { AsmDemoContentModule } from '@assembly/demo-content';
-import { AsmDemoSidebarContentModule } from '@assembly/demo-sidebar-content';
 import { SharedModule } from 'app/core/shared/shared.module';
+import { DemoContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-content/demo-content.module';
+import { DemoSidebarContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-sidebar-content/demo-sidebar-content.module';
 import { LeftSidebarContentStandardComponent } from 'app/modules/admin/ui/content-layouts/left-sidebar/content/standard/standard.component';
 import { leftSidebarContentStandardRoutes } from 'app/modules/admin/ui/content-layouts/left-sidebar/content/standard/standard.routing';
 
@@ -20,9 +20,9 @@ import { leftSidebarContentStandardRoutes } from 'app/modules/admin/ui/content-l
         MatIconModule,
         MatMenuModule,
         MatSidenavModule,
-        AsmDemoContentModule,
-        AsmDemoSidebarContentModule,
-        SharedModule
+        SharedModule,
+        DemoContentModule,
+        DemoSidebarContentModule
     ]
 })
 export class LeftSidebarContentStandardModule

@@ -3,11 +3,11 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AsmNavigationModule } from '@assembly/navigation/navigation.module';
-import { AsmDemoSidebarContentComponent } from '@assembly/demo-sidebar-content/demo-sidebar-content.component';
+import { DemoSidebarContentComponent } from 'app/modules/admin/ui/content-layouts/common/demo-sidebar-content/demo-sidebar-content.component';
 
 @NgModule({
     declarations: [
-        AsmDemoSidebarContentComponent
+        DemoSidebarContentComponent
     ],
     imports     : [
         RouterModule.forChild([]),
@@ -16,9 +16,9 @@ import { AsmDemoSidebarContentComponent } from '@assembly/demo-sidebar-content/d
         AsmNavigationModule
     ],
     exports     : [
-        AsmDemoSidebarContentComponent
+        DemoSidebarContentComponent
     ]
 })
-export class AsmDemoSidebarContentModule
+export class DemoSidebarContentModule
 {
 }

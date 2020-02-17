@@ -5,9 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AsmDemoContentModule } from '@assembly/demo-content';
-import { AsmDemoSidebarContentModule } from '@assembly/demo-sidebar-content';
 import { SharedModule } from 'app/core/shared/shared.module';
+import { DemoContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-content/demo-content.module';
+import { DemoSidebarContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-sidebar-content/demo-sidebar-content.module';
 import { RightSidebarContentTabsComponent } from 'app/modules/admin/ui/content-layouts/right-sidebar/content/tabs/tabs.component';
 import { rightSidebarContentTabsRoutes } from 'app/modules/admin/ui/content-layouts/right-sidebar/content/tabs/tabs.routing';
 
@@ -22,9 +22,9 @@ import { rightSidebarContentTabsRoutes } from 'app/modules/admin/ui/content-layo
         MatMenuModule,
         MatSidenavModule,
         MatTabsModule,
-        AsmDemoContentModule,
-        AsmDemoSidebarContentModule,
-        SharedModule
+        SharedModule,
+        DemoContentModule,
+        DemoSidebarContentModule,
     ]
 })
 export class RightSidebarContentTabsModule

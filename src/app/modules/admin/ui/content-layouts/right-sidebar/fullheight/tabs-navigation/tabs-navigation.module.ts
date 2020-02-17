@@ -5,9 +5,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AsmDemoContentModule } from '@assembly/demo-content';
-import { AsmDemoSidebarContentModule } from '@assembly/demo-sidebar-content';
 import { SharedModule } from 'app/core/shared/shared.module';
+import { DemoContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-content/demo-content.module';
+import { DemoSidebarContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-sidebar-content/demo-sidebar-content.module';
 import { RightSidebarFullheightTabsNavigationComponent } from 'app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs-navigation/tabs-navigation.component';
 import { RightSidebarFullheightTabsNavigationTab1Component } from 'app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs-navigation/tabs/tab-1/tab-1.component';
 import { RightSidebarFullheightTabsNavigationTab2Component } from 'app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs-navigation/tabs/tab-2/tab-2.component';
@@ -28,9 +28,9 @@ import { rightSidebarFullheightTabsNavigationRoutes } from 'app/modules/admin/ui
         MatIconModule,
         MatMenuModule,
         MatTabsModule,
-        AsmDemoContentModule,
-        AsmDemoSidebarContentModule,
-        SharedModule
+        SharedModule,
+        DemoContentModule,
+        DemoSidebarContentModule,
     ]
 })
 export class RightSidebarFullheightTabsNavigationModule

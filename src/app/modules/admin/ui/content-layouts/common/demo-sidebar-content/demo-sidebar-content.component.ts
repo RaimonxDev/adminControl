@@ -2,12 +2,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { AsmNavigationItem } from '@assembly/navigation/navigation.types';
 
 @Component({
-    selector     : 'asm-demo-sidebar-content',
+    selector     : 'demo-sidebar-content',
     templateUrl  : './demo-sidebar-content.component.html',
     styleUrls    : ['./demo-sidebar-content.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AsmDemoSidebarContentComponent
+export class DemoSidebarContentComponent
 {
     menuData: AsmNavigationItem[];
 

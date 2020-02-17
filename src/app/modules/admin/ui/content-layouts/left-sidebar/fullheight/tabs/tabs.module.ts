@@ -5,9 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AsmDemoContentModule } from '@assembly/demo-content';
-import { AsmDemoSidebarContentModule } from '@assembly/demo-sidebar-content';
 import { SharedModule } from 'app/core/shared/shared.module';
+import { DemoContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-content/demo-content.module';
+import { DemoSidebarContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-sidebar-content/demo-sidebar-content.module';
 import { LeftSidebarFullheightTabsComponent } from 'app/modules/admin/ui/content-layouts/left-sidebar/fullheight/tabs/tabs.component';
 import { leftSidebarFullheightTabsRoutes } from 'app/modules/admin/ui/content-layouts/left-sidebar/fullheight/tabs/tabs.routing';
 
@@ -22,9 +22,9 @@ import { leftSidebarFullheightTabsRoutes } from 'app/modules/admin/ui/content-la
         MatMenuModule,
         MatSidenavModule,
         MatTabsModule,
-        AsmDemoContentModule,
-        AsmDemoSidebarContentModule,
-        SharedModule
+        SharedModule,
+        DemoContentModule,
+        DemoSidebarContentModule
     ]
 })
 export class LeftSidebarFullheightTabsModule

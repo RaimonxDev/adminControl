@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AsmDemoContentModule } from '@assembly/demo-content';
 import { SharedModule } from 'app/core/shared/shared.module';
+import { DemoContentModule } from 'app/modules/admin/ui/content-layouts/common/demo-content/demo-content.module';
 import { FullwidthTabsComponent } from 'app/modules/admin/ui/content-layouts/fullwidth/tabs/tabs.component';
 import { fullwidthTabsRoutes } from 'app/modules/admin/ui/content-layouts/fullwidth/tabs/tabs.routing';
 
@@ -19,8 +19,8 @@ import { fullwidthTabsRoutes } from 'app/modules/admin/ui/content-layouts/fullwi
         MatIconModule,
         MatMenuModule,
         MatTabsModule,
-        AsmDemoContentModule,
-        SharedModule
+        SharedModule,
+        DemoContentModule
     ]
 })
 export class FullwidthTabsModule
