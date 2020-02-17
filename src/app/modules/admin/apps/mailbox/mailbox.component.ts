@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@ang
 import { MatDrawer } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly';
+import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
 
 @Component({
     selector     : 'mailbox',

@@ -17,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { AsmDateRangeModule } from '@assembly';
+import { AsmDateRangeModule } from '@assembly/components/date-range';
 import { SharedModule } from 'app/core/shared/shared.module';
 import { CalendarComponent } from 'app/modules/admin/apps/calendar/calendar.component';
 import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
@@ -35,7 +35,7 @@ import { calendarRoutes } from 'app/modules/admin/apps/calendar/calendar.routing
     entryComponents: [
         CalendarRecurrenceComponent
     ],
-    imports        : [
+    imports: [
         RouterModule.forChild(calendarRoutes),
         ScrollingModule,
         MatButtonModule,

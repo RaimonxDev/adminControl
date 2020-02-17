@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AsmAnimations } from '@assembly';
+import { AsmAnimations } from '@assembly/animations';
 
 @Component({
     selector     : 'auth-unlock-session',

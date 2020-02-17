@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AsmAnimations } from '@assembly';
+import { AsmAnimations } from '@assembly/animations';
 
 @Component({
     selector     : 'auth-confirmation-required',

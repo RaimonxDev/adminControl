@@ -1,2 +1,2 @@
-export * from '@assembly/pipes/find-by-key/find-by-key.pipe';
-export * from '@assembly/pipes/find-by-key/find-by-key.module';
+export * from './find-by-key.pipe';
+export * from './find-by-key.module';

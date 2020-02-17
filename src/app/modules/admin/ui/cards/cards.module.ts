@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AsmCardModule } from '@assembly';
+import { AsmCardModule } from '@assembly/components/card';
 import { SharedModule } from 'app/core/shared/shared.module';
 import { CardsComponent } from 'app/modules/admin/ui/cards/cards.component';
 import { cardsRoutes } from 'app/modules/admin/ui/cards/cards.routing';

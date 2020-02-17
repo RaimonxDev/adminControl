@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly';
+import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
 
 @Component({
     selector   : 'left-sidebar-content-tabs-navigation',

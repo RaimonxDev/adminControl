@@ -8,7 +8,8 @@ import { MatRadioChange } from '@angular/material/radio';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AsmConfigService, AsmDrawerService } from '@assembly';
+import { AsmConfigService } from '@assembly/services/config';
+import { AsmDrawerService } from '@assembly/components/drawer';
 import { Layout } from 'app/core/main/layouts/layouts.types';
 import { AppConfig, Theme } from 'app/core/config';
 

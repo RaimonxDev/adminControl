@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService, AsmNavigationService } from '@assembly';
+import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
+import { AsmNavigationService } from '@assembly/components/navigation';
 
 @Component({
     selector     : 'layout[type="classy"]',

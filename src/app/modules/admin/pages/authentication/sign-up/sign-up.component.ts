@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly';
+import { AsmAnimations } from '@assembly/animations';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({

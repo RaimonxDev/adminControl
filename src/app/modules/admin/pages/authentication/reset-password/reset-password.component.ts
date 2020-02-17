@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
-import { AsmAnimations, AsmValidators } from '@assembly';
+import { filter } from 'rxjs/operators';
+import { AsmAnimations } from '@assembly/animations';
+import { AsmValidators } from '@assembly/validators';
 
 @Component({
     selector     : 'reset-password',

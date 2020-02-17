@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AsmAnimations } from '@assembly';
+import { AsmAnimations } from '@assembly/animations';
 import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-center.service';
 
 @Component({

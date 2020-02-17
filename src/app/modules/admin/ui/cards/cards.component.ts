@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
-import { AsmCardComponent } from '@assembly';
+import { AsmCardComponent } from '@assembly/components/card';
 
 @Component({
     selector       : 'cards',

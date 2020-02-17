@@ -8,10 +8,6 @@ import { AsmSplashScreenModule } from '@assembly/services/splash-screen/public-a
         AsmMediaWatcherModule,
         AsmSplashScreenModule
     ],
-    exports  : [
-        AsmMediaWatcherModule,
-        AsmSplashScreenModule
-    ],
     providers: [
         {
             // Use the 'fill' appearance on form fields by default
@@ -22,7 +18,7 @@ import { AsmSplashScreenModule } from '@assembly/services/splash-screen/public-a
         }
     ]
 })
-export class AsmCoreModule
+export class AsmModule
 {
     /**
      * Constructor
@@ -30,7 +26,7 @@ export class AsmCoreModule
      * @param parentModule
      */
     constructor(
-        @Optional() @SkipSelf() parentModule?: AsmCoreModule
+        @Optional() @SkipSelf() parentModule?: AsmModule
     )
     {
         if ( parentModule )

@@ -1,6 +1,7 @@
-import { AsmNavigationItem } from '@assembly';
 
 /* tslint:disable:max-line-length */
+import { AsmNavigationItem } from '@assembly/components/navigation';
+
 export const defaultNavigation: AsmNavigationItem[] = [
     /*{
         id      : 'applications-aside-1',

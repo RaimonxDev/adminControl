@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly';
+import { AsmAnimations } from '@assembly/animations';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({

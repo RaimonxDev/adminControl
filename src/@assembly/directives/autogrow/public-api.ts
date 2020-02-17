@@ -1,2 +1,2 @@
-export * from '@assembly/directives/autogrow/autogrow.directive';
-export * from '@assembly/directives/autogrow/autogrow.module';
+export * from './autogrow.directive';
+export * from './autogrow.module';

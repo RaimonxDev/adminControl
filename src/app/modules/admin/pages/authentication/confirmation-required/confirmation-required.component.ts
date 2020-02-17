@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly';
+import { AsmAnimations } from '@assembly/animations';
 
 @Component({
     selector     : 'confirmation-required',

@@ -11,7 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSelectModule } from '@angular/material/select';
-import { AsmAutogrowModule, AsmCardModule, AsmHighlightModule } from '@assembly';
+import { AsmAutogrowModule } from '@assembly/directives/autogrow';
+import { AsmCardModule } from '@assembly/components/card';
+import { AsmHighlightModule } from '@assembly/components/highlight';
 import { SharedModule } from 'app/core/shared/shared.module';
 import { AssemblyHelpersComponent } from 'app/modules/admin/ui/helpers/assembly/assembly.component';
 import { assemblyHelpersRoutes } from 'app/modules/admin/ui/helpers/assembly/assembly.routing';
@@ -20,7 +22,7 @@ import { assemblyHelpersRoutes } from 'app/modules/admin/ui/helpers/assembly/ass
     declarations: [
         AssemblyHelpersComponent
     ],
-    imports     : [
+    imports: [
         RouterModule.forChild(assemblyHelpersRoutes),
         MatButtonModule,
         MatButtonToggleModule,

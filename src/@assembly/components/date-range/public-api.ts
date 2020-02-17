@@ -1,2 +1,2 @@
-export * from '@assembly/components/date-range/date-range.component';
-export * from '@assembly/components/date-range/date-range.module';
+export * from './date-range.component';
+export * from './date-range.module';
