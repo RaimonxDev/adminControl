@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inpu
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations/public-api';
+import { AsmMessageAppearance, AsmMessageType } from '@assembly/components/message/message.types';
 import { AsmMessageService } from '@assembly/components/message/message.service';
 
 @Component({
@@ -20,10 +21,10 @@ export class AsmMessageComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _appearance: 'border' | 'solid' | 'outline';
+    private _appearance: AsmMessageAppearance;
     private _dismissed: null | boolean;
     private _showIcon: boolean;
-    private _type: 'primary' | 'accent' | 'warn' | 'basic' | 'info' | 'success' | 'warning' | 'error';
+    private _type: AsmMessageType;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -45,7 +46,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.appearance = 'solid';
+        this.appearance = 'fill';
         this.dismissed = null;
         this.showIcon = true;
         this.type = 'primary';
@@ -61,7 +62,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
      * @param value
      */
     @Input()
-    set appearance(value: 'border' | 'solid' | 'outline')
+    set appearance(value: AsmMessageAppearance)
     {
         // If the value is the same, return...
         if ( this._appearance === value )
@@ -77,7 +78,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         this._appearance = value;
     }
 
-    get appearance(): 'border' | 'solid' | 'outline'
+    get appearance(): AsmMessageAppearance
     {
         return this._appearance;
     }
@@ -160,7 +161,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
      * @param value
      */
     @Input()
-    set type(value: 'primary' | 'accent' | 'warn' | 'basic' | 'info' | 'success' | 'warning' | 'error')
+    set type(value: AsmMessageType)
     {
         // If the value is the same, return...
         if ( this._type === value )
@@ -176,7 +177,7 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         this._type = value;
     }
 
-    get type(): 'primary' | 'accent' | 'warn' | 'basic' | 'info' | 'success' | 'warning' | 'error'
+    get type(): AsmMessageType
     {
         return this._type;
     }

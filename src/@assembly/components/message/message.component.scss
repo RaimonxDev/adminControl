@@ -58,7 +58,7 @@ asm-message {
             .asm-message-title {
                 display: none;
                 font-size: 15px;
-                font-weight: 700;
+                font-weight: 600;
 
                 &:not(:empty) {
                     display: block;
@@ -97,14 +97,15 @@ asm-message {
 
         .asm-message-container {
             overflow: hidden;
-            border-left: 6px solid;
-            border-radius: 4px;
-            @include asm-elevation();
+            border-width: 1px;
+            border-left-width: 8px;
+            border-radius: 6px;
+            @include asm-elevation('xl');
         }
     }
 
-    // Solid
-    &.asm-message-appearance-solid {
+    // Fill
+    &.asm-message-appearance-fill {
 
         .asm-message-container {
             border-radius: 4px;
@@ -168,7 +169,7 @@ asm-message {
             &.asm-message-type-primary {
 
                 .asm-message-container {
-                    border-left-color: map-get($primary, default);
+                    border-color: map-get($primary, default);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -181,7 +182,7 @@ asm-message {
             &.asm-message-type-accent {
 
                 .asm-message-container {
-                    border-left-color: map-get($accent, default);
+                    border-color: map-get($accent, default);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -194,7 +195,7 @@ asm-message {
             &.asm-message-type-warn {
 
                 .asm-message-container {
-                    border-left-color: map-get($warn, default);
+                    border-color: map-get($warn, default);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -207,7 +208,7 @@ asm-message {
             &.asm-message-type-basic {
 
                 .asm-message-container {
-                    border-left-color: asm-color('gray', 600);
+                    border-color: asm-color('gray', 600);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -220,7 +221,7 @@ asm-message {
             &.asm-message-type-info {
 
                 .asm-message-container {
-                    border-left-color: #4299E1;
+                    border-color: #4299E1;
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -233,7 +234,7 @@ asm-message {
             &.asm-message-type-success {
 
                 .asm-message-container {
-                    border-left-color: #48BB78;
+                    border-color: #48BB78;
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -246,7 +247,7 @@ asm-message {
             &.asm-message-type-warning {
 
                 .asm-message-container {
-                    border-left-color: #ED8936;
+                    border-color: #ED8936;
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -259,7 +260,7 @@ asm-message {
             &.asm-message-type-error {
 
                 .asm-message-container {
-                    border-left-color: #E53E3E;
+                    border-color: #E53E3E;
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -269,8 +270,8 @@ asm-message {
             }
         }
 
-        // Solid
-        &.asm-message-appearance-solid {
+        // Fill
+        &.asm-message-appearance-fill {
 
             // Primary
             &.asm-message-type-primary {
