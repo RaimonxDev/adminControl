@@ -565,7 +565,7 @@
                 Use the <code>@include asm-media-breakpoint($breakpoint)</code> mixin to add a media rule that wraps the code inside it:
             </p>
             <!-- @formatter:off -->
-            <textarea asmHighlight
+            <textarea asm-highlight
                       [lang]="'css'">
                 @include asm-media-breakpoint('lt-md') {
                     top: 0;
@@ -579,7 +579,7 @@
                 will result with the following code:
             </p>
             <!-- @formatter:off -->
-            <textarea asmHighlight
+            <textarea asm-highlight
                       [lang]="'css'">
                 @media (max-width: 959px) {
                     top: 0;
@@ -611,7 +611,7 @@
 
             </p>
             <!-- @formatter:off -->
-            <textarea asmHighlight
+            <textarea asm-highlight
                       [lang]="'css'">
                 .some-element {
                     background: asm-color('red', 500);
@@ -623,7 +623,7 @@
                 will result with the following code:
             </p>
             <!-- @formatter:off -->
-            <textarea asmHighlight
+            <textarea asm-highlight
                       [lang]="'css'">
                 .some-element {
                     background: #F56565;
@@ -643,7 +643,7 @@
                 Use the <code>@include asm-elevation($elevation, $important, $color)</code> mixin to add an elevation based on box-shadow.
             </p>
             <!-- @formatter:off -->
-            <textarea asmHighlight
+            <textarea asm-highlight
                       [lang]="'css'">
                 asm-card {
                     @include asm-elevation('md');
@@ -654,7 +654,7 @@
                 will result with the following code:
             </p>
             <!-- @formatter:off -->
-            <textarea asmHighlight
+            <textarea asm-highlight
                       [lang]="'css'">
                 asm-card {
                     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -688,7 +688,7 @@
                 box shadows are not clearly visible.
             </p>
             <!-- @formatter:off -->
-            <textarea asmHighlight
+            <textarea asm-highlight
                       [lang]="'css'">
                 asm-card {
                     @if ($is-dark) {

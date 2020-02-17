@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, E
 import { AsmHighlightService } from '@assembly/components/highlight/highlight.service';
 
 @Component({
-    selector       : 'textarea[asmHighlight]',
+    selector       : 'textarea[asm-highlight]',
     templateUrl    : './highlight.component.html',
     styleUrls      : ['./highlight.component.scss'],
     encapsulation  : ViewEncapsulation.None,

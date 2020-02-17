@@ -33,7 +33,7 @@
                         {{partial.content}}
                     </asm-message>
 
-                    <textarea asmHighlight
+                    <textarea asm-highlight
                               *ngIf="partial.type === 'code'"
                               [lang]="partial.language"
                               [code]="partial.content">
