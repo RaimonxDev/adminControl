@@ -7,6 +7,7 @@ import { AsmMockApiModule } from '@mock-api/mock-api.module';
 import { CoreModule } from 'app/core/core.module';
 import { AuthModule } from 'app/modules/auth/auth.module';
 import { AdminModule } from 'app/modules/admin/admin.module';
+import { LandingModule } from 'app/modules/landing/landing.module';
 import { AppComponent } from 'app/app.component';
 
 const routerConfig: ExtraOptions = {
@@ -32,6 +33,7 @@ const routerConfig: ExtraOptions = {
         CoreModule,
 
         // App Modules
+        LandingModule,
         AuthModule,
         AdminModule
     ],

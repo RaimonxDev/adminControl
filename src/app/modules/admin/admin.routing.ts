@@ -14,8 +14,8 @@ export const adminRoutes: Route[] = [{
     },
     children   : [
 
-        // Redirect / to /apps/dashboard/analytics
-        {path: '', pathMatch : 'full', redirectTo: 'apps/dashboard/analytics'},
+        // Redirect /apps/dashboard to /apps/dashboard/analytics
+        {path: 'apps/dashboard', pathMatch : 'full', redirectTo: 'apps/dashboard/analytics'},
 
         // Apps
         {path: 'apps', children: [
