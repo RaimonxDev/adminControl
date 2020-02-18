@@ -333,28 +333,28 @@ asm-vertical-navigation {
             overflow: hidden;
 
             .asm-vertical-navigation-item {
-                padding-left: 64px;
+                padding-left: 72px;
             }
 
             // 2nd level
             .asm-vertical-navigation-item-children {
 
                 .asm-vertical-navigation-item {
-                    padding-left: 80px;
+                    padding-left: 88px;
                 }
 
                 // 3rd level
                 .asm-vertical-navigation-item-children {
 
                     .asm-vertical-navigation-item {
-                        padding-left: 96px;
+                        padding-left: 104px;
                     }
 
                     // 4th level
                     .asm-vertical-navigation-item-children {
 
                         .asm-vertical-navigation-item {
-                            padding-left: 112px;
+                            padding-left: 120px;
                         }
                     }
                 }
