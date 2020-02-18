@@ -731,7 +731,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'pages.maintenance',
                 title: 'Maintenance',
                 type : 'basic',
-                icon : 'build',
+                icon : 'warning',
                 link : '/pages/maintenance'
             },
             {

@@ -97,9 +97,8 @@ asm-message {
 
         .asm-message-container {
             overflow: hidden;
-            border-width: 1px;
-            border-left-width: 8px;
-            border-radius: 6px;
+            border-left-width: 4px;
+            border-radius: 4px;
             @include asm-elevation('xl');
         }
     }
@@ -169,7 +168,7 @@ asm-message {
             &.asm-message-type-primary {
 
                 .asm-message-container {
-                    border-color: map-get($primary, default);
+                    border-left-color: map-get($primary, default);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -182,7 +181,7 @@ asm-message {
             &.asm-message-type-accent {
 
                 .asm-message-container {
-                    border-color: map-get($accent, default);
+                    border-left-color: map-get($accent, default);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -195,7 +194,7 @@ asm-message {
             &.asm-message-type-warn {
 
                 .asm-message-container {
-                    border-color: map-get($warn, default);
+                    border-left-color: map-get($warn, default);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -208,7 +207,7 @@ asm-message {
             &.asm-message-type-basic {
 
                 .asm-message-container {
-                    border-color: asm-color('gray', 600);
+                    border-left-color: asm-color('gray', 600);
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -221,7 +220,7 @@ asm-message {
             &.asm-message-type-info {
 
                 .asm-message-container {
-                    border-color: #4299E1;
+                    border-left-color: #4299E1;
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -234,7 +233,7 @@ asm-message {
             &.asm-message-type-success {
 
                 .asm-message-container {
-                    border-color: #48BB78;
+                    border-left-color: #48BB78;
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -247,7 +246,7 @@ asm-message {
             &.asm-message-type-warning {
 
                 .asm-message-container {
-                    border-color: #ED8936;
+                    border-left-color: #ED8936;
 
                     .asm-message-title,
                     .asm-message-icon {
@@ -260,7 +259,7 @@ asm-message {
             &.asm-message-type-error {
 
                 .asm-message-container {
-                    border-color: #E53E3E;
+                    border-left-color: #E53E3E;
 
                     .asm-message-title,
                     .asm-message-icon {
