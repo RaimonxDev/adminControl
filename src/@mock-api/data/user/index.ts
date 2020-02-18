@@ -23,6 +23,9 @@ export class UserMockApi implements AsmMockApi
     {
         // Set the data
         this._user = userData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

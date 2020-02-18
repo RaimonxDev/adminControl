@@ -28,6 +28,9 @@ export class NavigationMockApi implements AsmMockApi
         this._compactNavigation = compactNavigation;
         this._defaultNavigation = defaultNavigation;
         this._horizontalNavigation = horizontalNavigation;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

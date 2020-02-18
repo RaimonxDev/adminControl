@@ -29,6 +29,9 @@ export class SearchResultsMockApi implements AsmMockApi
         // Set the data
         this._defaultNavigation = defaultNavigation;
         this._contacts = contacts;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

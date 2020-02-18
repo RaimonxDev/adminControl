@@ -24,6 +24,9 @@ export class NotificationsMockApi implements AsmMockApi
     {
         // Set the data
         this._notifications = notificationsData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

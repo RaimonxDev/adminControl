@@ -22,6 +22,9 @@ export class DocsMockApi implements AsmMockApi
     {
         // Set the data
         this._docs = docs;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

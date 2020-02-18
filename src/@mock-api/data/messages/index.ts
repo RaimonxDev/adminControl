@@ -24,6 +24,9 @@ export class MessagesMockApi implements AsmMockApi
     {
         // Set the data
         this._messages = messagesData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

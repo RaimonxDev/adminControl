@@ -26,6 +26,9 @@ export class TasksMockApi implements AsmMockApi
         // Set the data
         this._tags = tagsData;
         this._tasks = tasksData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

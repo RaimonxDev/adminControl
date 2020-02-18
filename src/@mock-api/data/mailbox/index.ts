@@ -32,6 +32,9 @@ export class MailboxMockApi implements AsmMockApi
         this._mails = mailsData;
         this._labels = labelsData;
         this._settings = settingsData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -27,6 +27,9 @@ export class IconsMockApi implements AsmMockApi
         this._dripicons = dripicons;
         this._iconsmind = iconsmind;
         this._material = material;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

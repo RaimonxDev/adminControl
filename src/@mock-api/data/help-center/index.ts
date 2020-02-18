@@ -31,6 +31,9 @@ export class HelpCenterMockApi implements AsmMockApi
         this._guideCategories = guideCategoriesData;
         this._guides = guidesData;
         this._guideContent = guideContentData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

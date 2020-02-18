@@ -23,6 +23,9 @@ export class DashboardAnalyticsMockApi implements AsmMockApi
     {
         // Set the data
         this._analytics = analyticsData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

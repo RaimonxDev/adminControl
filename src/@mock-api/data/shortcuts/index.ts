@@ -24,6 +24,9 @@ export class ShortcutsMockApi implements AsmMockApi
     {
         // Set the data
         this._shortcuts = shortcutsData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

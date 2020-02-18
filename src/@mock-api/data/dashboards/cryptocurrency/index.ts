@@ -23,6 +23,9 @@ export class DashboardCryptocurrencyMockApi implements AsmMockApi
     {
         // Set the data
         this._cryptocurrency = cryptocurrencyData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

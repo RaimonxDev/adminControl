@@ -22,6 +22,9 @@ export class AuthMockApi implements AsmMockApi
     {
         // Set the data
         this._secret = 'YOUR_VERY_CONFIDENTIAL_SECRET_FOR_SIGNING_JWT_TOKENS!!!';
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

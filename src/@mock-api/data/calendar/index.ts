@@ -34,6 +34,9 @@ export class CalendarMockApi implements AsmMockApi
         this._exceptions = exceptionsData;
         this._settings = settingsData;
         this._weekdays = weekdaysData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------

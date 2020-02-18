@@ -70,21 +70,5 @@ export class AsmMockApiModule
         private _mockUserApi: UserMockApi
     )
     {
-        this._mockAuthApi.register();
-        this._mockCalendarApi.register();
-        this._mockContactsApi.register();
-        this._mockDashboardAnalyticsApi.register();
-        this._mockDashboardCryptocurrencyApi.register();
-        this._mockDocsApi.register();
-        this._mockHelpCenterApi.register();
-        this._mockIconsApi.register();
-        this._mockMailboxApi.register();
-        this._mockMessagesApi.register();
-        this._mockNavigationApi.register();
-        this._mockNotificationsApi.register();
-        this._mockSearchResultsApi.register();
-        this._mockShortcutsApi.register();
-        this._mockTasksApi.register();
-        this._mockUserApi.register();
     }
 }

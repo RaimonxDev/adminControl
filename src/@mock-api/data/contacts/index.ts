@@ -30,6 +30,9 @@ export class ContactsMockApi implements AsmMockApi
         this._contacts = contactsData;
         this._countries = countriesData;
         this._tags = tagsData;
+
+        // Register the API endpoints
+        this.register();
     }
 
     // -----------------------------------------------------------------------------------------------------
