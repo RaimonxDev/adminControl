@@ -19,7 +19,7 @@ help-center-support {
             flex-direction: column;
             align-items: flex-start;
             width: 100%;
-            max-width: 640px;
+            max-width: 960px;
             margin-top: 64px;
 
             @include asm-media-breakpoint('xs') {
@@ -54,7 +54,7 @@ help-center-support {
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 640px;
+            max-width: 960px;
             margin: 80px 0;
             padding: 0 !important;
 
@@ -86,8 +86,12 @@ help-center-support {
                     width: 100%;
 
                     .label {
-                        margin-bottom: 4px;
+                        margin: 8px 0 4px 0;
                         font-weight: 600;
+
+                        &:first-of-type {
+                            margin-top: 0;
+                        }
                     }
 
                     .actions {

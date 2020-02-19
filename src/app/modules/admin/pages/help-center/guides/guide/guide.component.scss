@@ -60,7 +60,7 @@ help-center-guides-guide {
             width: 100%;
             max-width: 960px;
             margin: 48px 0 32px 0;
-            padding: 32px !important;
+            padding: 40px !important;
             border-radius: 4px;
             @include asm-elevation();
 
@@ -131,7 +131,7 @@ help-center-guides-guide {
             max-width: 960px;
             width: 100%;
             margin-bottom: 64px;
-            padding: 24px 32px;
+            padding: 24px 40px;
             border-radius: 4px;
             transition: box-shadow 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
             @include asm-elevation();
@@ -163,13 +163,13 @@ help-center-guides-guide {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
 
     help-center-guides-guide {
 
         .content-layout {
 
             .header {
-                border-color: asm-color('gray', 400);
 
                 .subtitle {
                     color: map-get($foreground, secondary-text);
@@ -181,7 +181,12 @@ help-center-guides-guide {
 
                 .footer {
                     color: map-get($foreground, secondary-text);
-                    border-color: asm-color('gray', 400);
+
+                    @if ($is-dark) {
+                        border-color: asm-color('gray', 700);
+                    } @else {
+                        border-color: asm-color('gray', 400);
+                    }
                 }
             }
 
