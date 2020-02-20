@@ -236,7 +236,7 @@ pricing-modern {
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                border-radius: 50%;
+                                border-radius: 6px;
                                 margin-bottom: 24px;
                                 width: 48px !important;
                                 height: 48px !important;
@@ -430,8 +430,8 @@ pricing-modern {
                         .title-container {
 
                             .mat-icon {
-                                background: map-get($accent, default);
-                                color: map-get($accent, default-contrast);
+                                background: map-get($primary, default);
+                                color: map-get($primary, default-contrast);
                             }
                         }
 
