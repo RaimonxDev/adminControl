@@ -198,22 +198,15 @@ asm-vertical-navigation {
 
         .asm-vertical-navigation-item-wrapper {
 
-            &.asm-vertical-navigation-item-has-subtitle {
-
-                .asm-vertical-navigation-item {
-                    min-height: 56px;
-                }
-            }
-
             .asm-vertical-navigation-item {
                 position: relative;
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                padding: 14px 24px 14px 32px;
-                min-height: 52px;
+                padding: 12px 24px 12px 32px;
                 font-size: 13px;
                 font-weight: 500;
+                line-height: 20px;
                 text-decoration: none;
 
                 .asm-vertical-navigation-item-icon {
