@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MarkdownModule } from 'ngx-markdown';
 import { AsmHighlightModule } from '@assembly/highlight';
 import { AsmMessageModule } from '@assembly/message';
 import { SharedModule } from 'app/core/shared/shared.module';
@@ -18,6 +19,7 @@ import { messagesRoutes } from 'app/modules/admin/assembly/components/messages/m
         MatButtonModule,
         MatIconModule,
         MatTabsModule,
+        MarkdownModule.forChild(),
         AsmHighlightModule,
         AsmMessageModule,
         SharedModule

@@ -1,4 +1,4 @@
-<div class="content-layout fullwidth-standard-normal-scroll docs">
+<div class="content-layout fullwidth-standard-normal-scroll">
 
     <div class="header">
 
@@ -19,34 +19,24 @@
 
     <div class="main">
 
-        <div class="container">
+        <div class="container rich-text">
 
-            <!-- Introduction -->
-            <h2>
-                Introduction
-            </h2>
-            <p>
-                <code>asm-message</code> is a highly customizable and detailed component
-                for displaying all kinds of messages across your app. They can be controlled
-                from your components as well as via the <code>AsmMessageService</code>.
-            </p>
+            <markdown ngPreserveWhitespaces>
+                ## Introduction
+                `asm-message` is a customizable component for displaying all kinds of messages across your app. They can be controlled from your components as well as via the
+                `AsmMessageService`.
+                ## Module
+                `import &#123; AsmMessageModule &#125; from '@assembly';`
+                ## Appearance
+                Message boxes have 3 different built-in appearances to choose from. You can use them as they are or modify them for your own needs and likings.
+                ## Component
+                | | | |
+                |-------------|-------------|-----|
+                | col 3 is | right-aligned | $1600 |
+                | col 2 is | centered | $12 |
+                | zebra stripes | are neat | $1 |
 
-            <!-- Module -->
-            <h2>
-                Module
-            </h2>
-            <p>
-                <code>import &#123; AsmMessageModule &#125; from '@assembly';</code>
-            </p>
-
-            <!-- Appearance -->
-            <h2>
-                Appearance
-            </h2>
-            <p>
-                Message boxes have 3 different built-in appearances to choose from. You can
-                use them as they are or modify them for your own needs and likings.
-            </p>
+            </markdown>
 
             <div class="example-viewer">
 
@@ -458,13 +448,10 @@
 
             </div>
 
-            <!-- Title and message -->
-            <h2>
-                Title and message
-            </h2>
-            <p>
-                All message boxes have <b>title</b> and <b>message</b> content that can be customized.
-            </p>
+            <markdown ngPreserveWhitespaces>
+                ## Title and message
+                All message boxes have **title** and **message** content that can be customized.
+            </markdown>
 
             <div class="example-viewer">
 
@@ -527,15 +514,11 @@
 
             </div>
 
-            <!-- Icons -->
-            <h2>
-                Icons
-            </h2>
-            <p>
-                The <code>info</code>, <code>success</code>, <code>warning</code> and <code>error</code> type message boxes have
-                default icons and they are visible by default. If you wish to hide those icons, use the <code>[showIcon]="false"</code>
-                input.
-            </p>
+            <markdown ngPreserveWhitespaces>
+                ## Icons
+                The `info`, `success`, `warning` and `error` type message boxes have default icons and they are visible by default. If you wish to hide those icons, use the
+                `[showIcon]="false"` input.
+            </markdown>
 
             <div class="example-viewer">
 
@@ -578,15 +561,11 @@
 
             </div>
 
-            <!-- Custom icons -->
-            <h2>
-                Custom icons
-            </h2>
-            <p>
-                All message boxes come with custom icon support. To use a custom icon, simply use
-                <code>asmMessageIcon</code> attribute on an element you wish to use as the icon.
-                If there is a default icon for the message box, custom icon will override it.
-            </p>
+            <markdown ngPreserveWhitespaces>
+                ## Custom icons
+                All message boxes come with custom icon support. To use a custom icon, simply use `asmMessageIcon` attribute on an element you wish to use as the icon. If there is
+                a default icon for the message box, custom icon will override it.
+            </markdown>
 
             <div class="example-viewer">
 
@@ -631,15 +610,11 @@
 
             </div>
 
-            <!-- Dismissible messages -->
-            <h2>
-                Dismissible messages
-            </h2>
-            <p>
-                Dismissible messages can be removed from the view by clicking their <b>X</b> button. In order to get the dismiss button visible, the <code>[dismissed]</code> input
-                must be explicitly set either to <code>true</code> or <code>false</code>. Setting the <code>[dismissed]</code> input to <code>null</code> or simply removing it from
-                the element will remove the <b>X</b> button.
-            </p>
+            <markdown ngPreserveWhitespaces>
+                ## Dismissible messages
+                Dismissible messages can be removed from the view by clicking their **X** button. In order to get the dismiss button visible, the `[dismissed]` input must be
+                explicitly set either to `true` or `false`. Setting the `[dismissed]` input to `null` or simply removing it from the element will remove the **X** button.
+            </markdown>
 
             <div class="example-viewer">
 
@@ -705,13 +680,10 @@
 
             </div>
 
-            <!-- Dismissible boxes controlled from the service -->
-            <h2>
-                Dismissible messages controlled from the service
-            </h2>
-            <p>
-                Messages can be shown and dismissed via the <code>AsmMessageService</code>.
-            </p>
+            <markdown ngPreserveWhitespaces>
+                ## Dismissible messages controlled from the service
+                Messages can be shown and dismissed via the `AsmMessageService`.
+            </markdown>
 
             <div class="example-viewer">
 
