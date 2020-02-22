@@ -34,7 +34,7 @@
                             ]
                         },
                         "styles": [
-                            "src/@assembly/styles/styles.scss",
+                            "src/@assembly/styles/main.scss",
                             "src/styles.scss",
                             "src/tailwind.scss"
                         ],
