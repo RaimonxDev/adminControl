@@ -3,7 +3,7 @@
     <mat-drawer-container>
 
         <!-- Drawer -->
-        <mat-drawer class="w-320"
+        <mat-drawer class="w-80"
                     [autoFocus]="false"
                     [mode]="drawerMode"
                     [opened]="drawerOpened"
@@ -13,15 +13,15 @@
 
                 <!-- Watchlist -->
                 <div class="flex flex-col flex-0">
-                    <div class="flex flex-0 items-center px-16 py-20 border-b"
+                    <div class="flex flex-0 items-center px-4 py-5 border-b"
                          *ngFor="let item of data.watchlist">
-                        <div class="flex flex-col flex-auto pr-24">
+                        <div class="flex flex-col flex-auto pr-6">
                             <div class="flex items-baseline">
-                                <div class="mr-4 font-medium text-md text-secondary">{{item.title}}</div>
+                                <div class="mr-1 font-medium text-md text-secondary">{{item.title}}</div>
                                 <div class="font-medium text-sm text-hint uppercase tracking-wider">({{item.iso}})</div>
                             </div>
-                            <div class="flex items-center mt-8">
-                                <div class="min-w-80 font-mono text-2xl tracking-tighter leading-none">
+                            <div class="flex items-center mt-2">
+                                <div class="min-w-20 font-mono text-2xl tracking-tighter leading-none">
                                     {{item.amount | currency:'USD':'symbol':'1.2-4'}}
                                 </div>
                                 <mat-icon class="text-green icon-size-20"
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <apx-chart class="flex flex-auto items-center h-40 overflow-hidden"
+                        <apx-chart class="flex flex-auto items-center h-10 overflow-hidden"
                                    [chart]="watchlistChartOptions.chart"
                                    [colors]="item.trend.dir === 'up' ? ['#48BB78']: ['#F56565']"
                                    [series]="item.series"
@@ -46,7 +46,7 @@
                 <!-- Buy / Sell -->
                 <div class="flex flex-col flex-auto flex-shrink-0 light:bg-gray-100 dark:bg-transparent">
 
-                    <mat-button-toggle-group class="buy-sell-toggle flex-0 w-full mb-32"
+                    <mat-button-toggle-group class="buy-sell-toggle flex-0 w-full mb-8"
                                              [value]="'buy'"
                                              #buySellToggleGroup="matButtonToggleGroup">
                         <mat-button-toggle class="w-1/2"
@@ -60,7 +60,7 @@
                     </mat-button-toggle-group>
 
                     <!-- Wallet -->
-                    <div class="flex flex-col px-24 pb-8">
+                    <div class="flex flex-col px-6 pb-2">
                         <mat-form-field class="w-full">
                             <mat-label>Wallet</mat-label>
                             <mat-select [value]="'btc'"
@@ -68,10 +68,10 @@
                                 <mat-select-trigger>
                                     <span class="flex items-center">
                                         <span>{{walletSelector.triggerValue}}</span>
-                                        <span class="mx-4 text-hint">-</span>
+                                        <span class="mx-1 text-hint">-</span>
                                         <span class="flex items-center font-mono">
                                             <span>{{data.wallets[walletSelector.value]}}</span>
-                                            <span class="ml-4">{{walletSelector.value | uppercase}}</span>
+                                            <span class="ml-1">{{walletSelector.value | uppercase}}</span>
                                         </span>
                                     </span>
                                 </mat-select-trigger>
@@ -81,7 +81,7 @@
                                 <mat-option [value]="'xrp'">XRP</mat-option>
                             </mat-select>
                             <mat-hint class="flex items-center">
-                                <span class="mr-4">USD:</span>
+                                <span class="mr-1">USD:</span>
                                 <span class="font-mono font-medium text-normal">
                                     {{data.wallets[walletSelector.value] * data.prices[walletSelector.value] | currency:'USD'}}
                                 </span>
@@ -90,7 +90,7 @@
                     </div>
 
                     <!-- Buy form -->
-                    <form class="flex flex-col px-24"
+                    <form class="flex flex-col px-6"
                           *ngIf="buySellToggleGroup.value === 'buy'">
                         <mat-form-field class="w-full">
                             <mat-label>Amount</mat-label>
@@ -109,20 +109,20 @@
                             </span>
                             <mat-hint class="flex items-center">
                                 <ng-container *ngIf="buyType.value === 'coin'">
-                                    <span class="mr-4">It will cost:</span>
+                                    <span class="mr-1">It will cost:</span>
                                     <span class="font-mono font-medium text-normal">
                                         {{buyAmount.value * data.prices[walletSelector.value] | currency:'USD':'symbol':'1.2-4'}}
                                     </span>
                                 </ng-container>
                                 <ng-container *ngIf="buyType.value === 'usd'">
-                                    <span class="mr-4">You will receive:</span>
+                                    <span class="mr-1">You will receive:</span>
                                     <span class="font-mono font-medium text-normal">
                                         {{buyAmount.value / data.prices[walletSelector.value] | number:'1.2-6'}} {{walletSelector.value | uppercase}}
                                     </span>
                                 </ng-container>
                             </mat-hint>
                         </mat-form-field>
-                        <button class="mt-16 mb-32"
+                        <button class="mt-4 mb-8"
                                 mat-flat-button
                                 [color]="'primary'">
                             BUY
@@ -130,7 +130,7 @@
                     </form>
 
                     <!-- Sell form -->
-                    <form class="flex flex-col px-24"
+                    <form class="flex flex-col px-6"
                           *ngIf="buySellToggleGroup.value === 'sell'">
                         <mat-form-field class="w-full">
                             <mat-label>Amount</mat-label>
@@ -149,20 +149,20 @@
                             </span>
                             <mat-hint class="flex items-center">
                                 <ng-container *ngIf="sellType.value === 'coin'">
-                                    <span class="mr-4">You will receive:</span>
+                                    <span class="mr-1">You will receive:</span>
                                     <span class="font-mono font-medium text-normal">
                                         {{sellAmount.value * data.prices[walletSelector.value] | currency:'USD':'symbol':'1.2-4'}}
                                     </span>
                                 </ng-container>
                                 <ng-container *ngIf="sellType.value === 'usd'">
-                                    <span class="mr-4">You will sell:</span>
+                                    <span class="mr-1">You will sell:</span>
                                     <span class="font-mono font-medium text-normal">
                                         {{sellAmount.value / data.prices[walletSelector.value] | number:'1.2-6'}} {{walletSelector.value | uppercase}}
                                     </span>
                                 </ng-container>
                             </mat-hint>
                         </mat-form-field>
-                        <button class="mt-16 mb-32"
+                        <button class="mt-4 mb-8"
                                 mat-flat-button
                                 [color]="'primary'">
                             SELL
@@ -179,19 +179,19 @@
 
             <!-- BTC Price -->
             <div class="flex flex-col flex-auto min-h-full bg-card dark:bg-base">
-                <div class="flex flex-wrap items-center px-24 py-12 border-b xs:pl-16">
-                    <button class="mr-24 gt-md:hidden"
+                <div class="flex flex-wrap items-center px-6 py-3 border-b xs:pl-4">
+                    <button class="mr-6 gt-md:hidden"
                             mat-icon-button
                             (click)="matDrawer.toggle()">
                         <mat-icon [svgIcon]="'menu'"></mat-icon>
                     </button>
-                    <div class="flex flex-col flex-auto my-12 mr-24">
+                    <div class="flex flex-col flex-auto my-3 mr-6">
                         <div class="flex items-center">
-                            <div class="font-medium text-2xl text-secondary mr-8">Bitcoin</div>
+                            <div class="font-medium text-2xl text-secondary mr-2">Bitcoin</div>
                             <div class="font-medium text-lg text-hint tracking-wider">(BTC)</div>
                         </div>
-                        <div class="flex items-center mt-4">
-                            <div class="mr-8 font-mono text-3xl leading-none tracking-tight">{{data.btc.amount | currency:'USD':'symbol':'1.2-2'}}</div>
+                        <div class="flex items-center mt-1">
+                            <div class="mr-2 font-mono text-3xl leading-none tracking-tight">{{data.btc.amount | currency:'USD':'symbol':'1.2-2'}}</div>
                             <mat-icon class="text-green"
                                       [ngClass]="{'text-green': data.btc.trend.dir === 'up', 'text-red': data.btc.trend.dir === 'down'}"
                                       [svgIcon]="data.btc.trend.dir === 'up' ? 'arrow_drop_up' : 'arrow_drop_down'"></mat-icon>
@@ -201,26 +201,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center my-12 lt-sm:hidden">
-                        <div class="p-16 leading-none border border-r-0">
+                    <div class="flex items-center my-3 lt-sm:hidden">
+                        <div class="p-4 leading-none border border-r-0">
                             <div class="font-bold text-xs text-hint uppercase tracking-wider">Market Cap</div>
-                            <div class="mt-8 font-mono text-xl">{{(data.btc.marketCap / 1000000000) | number: '1.0-2' | currency}}B</div>
+                            <div class="mt-2 font-mono text-xl">{{(data.btc.marketCap / 1000000000) | number: '1.0-2' | currency}}B</div>
                         </div>
-                        <div class="p-16 leading-none border border-r-0">
+                        <div class="p-4 leading-none border border-r-0">
                             <div class="font-bold text-xs text-hint uppercase tracking-wider">Volume</div>
-                            <div class="mt-8 font-mono text-xl">{{(data.btc.volume / 1000000000) | number: '1.0-2' | currency}}B</div>
+                            <div class="mt-2 font-mono text-xl">{{(data.btc.volume / 1000000000) | number: '1.0-2' | currency}}B</div>
                         </div>
-                        <div class="p-16 leading-none border border-r-0">
+                        <div class="p-4 leading-none border border-r-0">
                             <div class="font-bold text-xs text-hint uppercase tracking-wider">Supply</div>
-                            <div class="mt-8 font-mono text-xl">{{(data.btc.supply / 1000000) | number: '1.0-2'}}M</div>
+                            <div class="mt-2 font-mono text-xl">{{(data.btc.supply / 1000000) | number: '1.0-2'}}M</div>
                         </div>
-                        <div class="p-16 leading-none border">
+                        <div class="p-4 leading-none border">
                             <div class="font-bold text-xs text-hint uppercase tracking-wider">All Time High</div>
-                            <div class="mt-8 font-mono text-xl">{{data.btc.allTimeHigh | currency:'USD'}}</div>
+                            <div class="mt-2 font-mono text-xl">{{data.btc.allTimeHigh | currency:'USD'}}</div>
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center justify-end px-32 pt-24 light:bg-gray-100 dark:bg-transparent lt-lg:px-24">
+                <div class="flex items-center justify-end px-8 pt-6 light:bg-gray-100 dark:bg-transparent lt-lg:px-6">
                     <mat-button-toggle-group class="btc-chart-timespan-toggle"
                                              [value]="'hour'">
                         <mat-button-toggle [value]="'hour'">Hour</mat-button-toggle>
@@ -231,7 +231,7 @@
                     </mat-button-toggle-group>
                 </div>
                 <div class="relative flex flex-auto light:bg-gray-100 dark:bg-transparent">
-                    <apx-chart class="absolute inset-0 overflow-hidden lt-md:relative lt-md:inset-auto lt-md:w-full lt-md:h-640"
+                    <apx-chart class="absolute inset-0 overflow-hidden lt-md:relative lt-md:inset-auto lt-md:w-full lt-md:h-160"
                                [chart]="btcOptions.chart"
                                [colors]="btcOptions.colors"
                                [dataLabels]="btcOptions.dataLabels"

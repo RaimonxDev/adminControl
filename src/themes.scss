@@ -14,7 +14,7 @@
 //   to generate the themes.
 //
 // @ 'asm-palette' values are coming from '$asm-color' map which can be found in
-//   '@assembly/styles/utility/_colors.scss'.
+//   '@assembly/styles/utilities/_colors.scss'.
 // -----------------------------------------------------------------------------------------------------
 $asm-themes: (
 
@@ -42,14 +42,14 @@ $asm-themes: (
     //   or an element independently from the app's global theme.
     //
     // @ Example: If you want to have a dark toolbar in your light themed app, adding '.theme-dark' class
-    //   to the toolbar will apply a light color to every element that stays inside it without needing any
-    //   extra work. Without the '.theme-dark' class, adding just a dark background color won't make the
-    //   toolbar elements light colored automatically, which will break the styling of the toolbar.
+    //   to the toolbar will apply a dark theme to every element that stays inside it without needing any
+    //   extra work. Without the '.theme-dark' class, adding just a dark background color won't automatically
+    //   make the toolbar elements colored correctly, which will break the styling of the toolbar.
     //
     // @ Important note: '.theme-light' classes will always override '.theme-dark' classes because how CSS
     //   works. Since 'theme-light' definition comes after the 'theme-dark' definition, CSS classes and
     //   helpers will also be generated with that order which will cause that behavior. To overcome this
-    //   issue, never nest '.theme-light' and '.theme-dark' classes. Make sure to use them as siblings.
+    //   issue, never nest '.theme-light' and '.theme-dark' classes. Use them as siblings!
     // -----------------------------------------------------------------------------------------------------
 
     // Dark theme - DO NOT REMOVE

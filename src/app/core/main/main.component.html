@@ -57,7 +57,7 @@
 <!-- Configuration drawer - Remove this to remove the drawer and its button -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
-<div class="configuration-drawer-toggle fixed flex items-center justify-center right-0 w-48 h-48 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
+<div class="configuration-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
      style="top: 320px"
      (click)="configurationDrawer.toggle()">
     <mat-icon class="icon-size-24 text-white"
@@ -73,16 +73,16 @@
 
     <div class="flex flex-col w-full">
 
-        <div class="flex flex-row items-center gray-800 p-24">
-            <mat-icon class="mr-12"
+        <div class="flex flex-row items-center gray-800 p-6">
+            <mat-icon class="mr-3"
                       [svgIcon]="'color_lens'"></mat-icon>
             <div class="text-2xl">Configuration</div>
         </div>
 
-        <div class="flex flex-col p-24">
+        <div class="flex flex-col p-6">
 
             <!-- Dark theme -->
-            <mat-slide-toggle class="mt-8 mb-32"
+            <mat-slide-toggle class="mt-2 mb-8"
                               [checked]="theme === 'dark'"
                               (change)="setTheme($event)"
                               [color]="'primary'">
@@ -90,8 +90,8 @@
             </mat-slide-toggle>
 
             <!-- Layout -->
-            <div class="font-medium mb-8">Layout:</div>
-            <mat-radio-group class="flex flex-col mb-8"
+            <div class="font-medium mb-2">Layout:</div>
+            <mat-radio-group class="flex flex-col mb-2"
                              [color]="'primary'"
                              [value]="layout"
                              (change)="setLayout($event)">

@@ -1,5 +1,6 @@
+const forEach = require('lodash/forEach');
+const isObject = require('lodash/isObject');
 const {colors} = require('tailwindcss/defaultTheme');
-const utils = require('./utils');
 
 module.exports = {
 
@@ -8,10 +9,24 @@ module.exports = {
 
     // Theme
     theme: {
-        spacing     : {
-            ...utils.spacing()
+        fontSize: {
+            'xs'  : '0.625rem',
+            'sm'  : '0.75rem',
+            'md'  : '0.8125rem',
+            'base': '0.875rem',
+            'lg'  : '1rem',
+            'xl'  : '1.125rem',
+            '2xl' : '1.25rem',
+            '3xl' : '1.5rem',
+            '4xl' : '2rem',
+            '5xl' : '2.25rem',
+            '6xl' : '2.5rem',
+            '7xl' : '3rem',
+            '8xl' : '4rem',
+            '9xl' : '6rem',
+            '10xl': '8rem'
         },
-        screens     : {
+        screens : {
             // XSmall
             'xs'   : {
                 min: '0',
@@ -69,120 +84,68 @@ module.exports = {
                 min: '1920px'
             }
         },
-        borderRadius: {
-            none: '0',
-            4   : '4px',
-            8   : '8px',
-            full: '9999px'
-        },
-        fontSize    : {
-            'xs'  : '10px',
-            'sm'  : '12px',
-            'md'  : '13px',
-            'base': '14px',
-            'lg'  : '16px',
-            'xl'  : '18px',
-            '2xl' : '20px',
-            '3xl' : '24px',
-            '4xl' : '32px',
-            '5xl' : '36px',
-            '6xl' : '40px',
-            '7xl' : '48px',
-            '8xl' : '64px',
-            '9xl' : '96px',
-            '10xl': '128px'
-        },
-        height      : {
-            auto  : 'auto',
-            screen: '100vh',
-            ...utils.sizes()
-        },
-        maxHeight   : {
-            none  : 'none',
-            screen: '100vh',
-            ...utils.sizes()
-        },
-        maxWidth    : {
-            none  : 'none',
-            screen: '100vw',
-            ...utils.sizes()
-        },
-        minHeight   : {
-            screen: '100vh',
-            ...utils.sizes()
-        },
-        minWidth    : {
-            screen: '100vw',
-            ...utils.sizes()
-        },
-        opacity     : {
-            0  : '0',
-            12 : '0.12',
-            38 : '0.38',
-            54 : '0.54',
-            70 : '0.70',
-            84 : '0.84',
-            100: '1'
-        },
-        width       : {
-            auto  : 'auto',
-            screen: '100vw',
-            ...utils.sizes()
-        },
-
-        // Extensions
-        extend: {
-
-            // Extend the colors to add 'default' values that uses the hue 500.
-            // This will generate utilities like 'text-indigo' or 'bg-red',
-            // which will be defaulted to the hue 500 of that color palette.
-            colors: {
-                gray  : {
-                    ...colors.gray,
-                    default: colors.gray['500']
-                },
-                red   : {
-                    ...colors.red,
-                    default: colors.red['500']
-                },
-                orange: {
-                    ...colors.orange,
-                    default: colors.orange['500']
-                },
-                yellow: {
-                    ...colors.yellow,
-                    default: colors.yellow['500']
-                },
-                green : {
-                    ...colors.green,
-                    default: colors.green['500']
-                },
-                teal  : {
-                    ...colors.teal,
-                    default: colors.teal['500']
-                },
-                blue  : {
-                    ...colors.blue,
-                    default: colors.blue['500']
-                },
-                indigo: {
-                    ...colors.indigo,
-                    default: colors.indigo['500']
-                },
-                purple: {
-                    ...colors.purple,
-                    default: colors.purple['500']
-                },
-                pink  : {
-                    ...colors.pink,
-                    default: colors.pink['500']
-                }
+        sizes   : theme => ({
+            // Sizes are used in width & height helpers
+            ...theme('spacing'),
+            '50'   : '12.5rem',
+            '60'   : '15rem',
+            '80'   : '20rem',
+            '90'   : '24rem',
+            '100'  : '25rem',
+            '120'  : '30rem',
+            '128'  : '32rem',
+            '140'  : '35rem',
+            '160'  : '40rem',
+            '180'  : '45rem',
+            '192'  : '48rem',
+            '200'  : '50rem',
+            '240'  : '60rem',
+            '256'  : '64rem',
+            '280'  : '70rem',
+            '320'  : '80rem',
+            '360'  : '90rem',
+            '400'  : '100rem',
+            '480'  : '120rem',
+            '1/2'  : '50%',
+            '1/3'  : '33.33333%',
+            '2/3'  : '66.66667%',
+            '1/4'  : '25%',
+            '2/4'  : '50%',
+            '3/4'  : '75%',
+            '1/5'  : '20%',
+            '2/5'  : '40%',
+            '3/5'  : '60%',
+            '4/5'  : '80%',
+            '1/12' : '8.33333%',
+            '2/12' : '16.66667%',
+            '3/12' : '25%',
+            '4/12' : '33.33333%',
+            '5/12' : '41.66667%',
+            '6/12' : '50%',
+            '7/12' : '58.33333%',
+            '8/12' : '66.66667%',
+            '9/12' : '75%',
+            '10/12': '83.33333%',
+            '11/12': '91.66667%'
+        }),
+        // Extending default configurations
+        extend  : {
+            colors    : theme => {
+                // Extend the colors to add 'default' values that uses the hue 500.
+                // This will generate utilities like 'text-indigo' or 'bg-red',
+                // which will be defaulted to the hue 500 of that color palette.
+                const defaultColors = colors;
+                forEach(defaultColors, (value, key) => {
+                    if ( isObject(value) )
+                    {
+                        defaultColors[key]['default'] = defaultColors[key]['500']
+                    }
+                });
+                return defaultColors;
             },
-
-            flex: {
+            flex      : {
                 '0': '0 0 auto'
             },
-
             fontFamily: {
                 sans: [
                     'Inter',
@@ -200,18 +163,40 @@ module.exports = {
                     '"Segoe UI Symbol"',
                     '"Noto Color Emoji"'
                 ],
-                mono: ['"IBM Plex Mono"', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace']
+                mono: [
+                    '"IBM Plex Mono"',
+                    'Menlo',
+                    'Monaco',
+                    'Consolas',
+                    '"Liberation Mono"',
+                    '"Courier New"',
+                    'monospace'
+                ]
             },
-
-            rotate: {
+            opacity   : {
+                12: '0.12',
+                38: '0.38',
+                54: '0.54',
+                70: '0.70',
+                84: '0.84'
+            },
+            rotate    : {
                 '-270': '270deg',
                 '15'  : '15deg',
                 '30'  : '30deg',
                 '60'  : '60deg',
                 '270' : '270deg'
             },
-
-            zIndex: {
+            spacing   : {
+                '2px': '2px',
+                '14' : '3.5rem',
+                '18' : '4.5rem',
+                '22' : '5.5rem',
+                '26' : '6.5rem',
+                '28' : '7rem',
+                '30' : '7.5rem'
+            },
+            zIndex    : {
                 '-1'   : -1,
                 '60'   : 60,
                 '70'   : 70,
@@ -221,7 +206,28 @@ module.exports = {
                 '999'  : 999,
                 '9999' : 9999,
                 '99999': 99999
-            }
+            },
+            maxHeight : theme => ({
+                none: 'none',
+                ...theme('sizes')
+            }),
+            minHeight : theme => ({
+                ...theme('sizes')
+            }),
+            height    : theme => ({
+                ...theme('sizes')
+            }),
+            maxWidth  : theme => ({
+                screen: '100vw',
+                ...theme('sizes')
+            }),
+            minWidth  : theme => ({
+                screen: '100vw',
+                ...theme('sizes')
+            }),
+            width     : theme => ({
+                ...theme('sizes')
+            })
         }
     },
 

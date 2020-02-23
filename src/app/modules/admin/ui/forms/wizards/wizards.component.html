@@ -19,7 +19,7 @@
 
     <div class="main">
 
-        <div class="container mb-32">
+        <div class="container mb-8">
 
             <p>
                 Form wizard examples in this page uses <code>mat-horizontal-stepper</code> and <code>mat-vertical-stepper</code> components from Angular Material. You can get more
@@ -33,9 +33,9 @@
             </p>
 
             <!-- Horizontal stepper -->
-            <h3 class="mt-64 mb-32">Horizontal Stepper</h3>
+            <h3 class="mt-16 mb-8">Horizontal Stepper</h3>
 
-            <asm-card class="p-32">
+            <asm-card class="p-8">
                 <form class="w-full"
                       [formGroup]="horizontalStepperForm">
                     <mat-horizontal-stepper [linear]="true"
@@ -44,7 +44,7 @@
                                   [stepControl]="horizontalStepperForm.get('step1')"
                                   #horizontalStepperStep1>
                             <ng-template matStepLabel>Basic information</ng-template>
-                            <h6 class="text-secondary my-24">
+                            <h6 class="text-secondary my-6">
                                 Fill in your basic information to let us know your preferences
                             </h6>
                             <div class="flex">
@@ -58,7 +58,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="flex flex-col gt-xs:flex-row">
-                                <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
                                     <mat-select [formControlName]="'country'"
                                                 [placeholder]="'Country / Region'"
                                                 required>
@@ -69,7 +69,7 @@
                                     <mat-icon matPrefix
                                               [svgIcon]="'room'"></mat-icon>
                                 </mat-form-field>
-                                <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <mat-form-field class="flex-auto gt-xs:pl-3">
                                     <mat-select [formControlName]="'language'"
                                                 [placeholder]="'Language'"
                                                 required>
@@ -82,7 +82,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="flex justify-end">
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         [disabled]="horizontalStepperStep1.stepControl.pristine || horizontalStepperStep1.stepControl.invalid"
@@ -97,11 +97,11 @@
                                   [stepControl]="horizontalStepperForm.get('step2')"
                                   #horizontalStepperStep2>
                             <ng-template matStepLabel>Profile</ng-template>
-                            <h6 class="text-secondary my-24">
+                            <h6 class="text-secondary my-6">
                                 People here will get to know you with this information
                             </h6>
                             <div class="flex flex-col gt-xs:flex-row">
-                                <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
                                     <input matInput
                                            [formControlName]="'firstName'"
                                            [placeholder]="'First name'"
@@ -109,7 +109,7 @@
                                     <mat-icon matPrefix
                                               [svgIcon]="'account_circle'"></mat-icon>
                                 </mat-form-field>
-                                <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <mat-form-field class="flex-auto gt-xs:pl-3">
                                     <input matInput
                                            [formControlName]="'lastName'"
                                            [placeholder]="'Last name'"
@@ -138,14 +138,14 @@
                                 </mat-form-field>
                             </div>
                             <div class="flex justify-end">
-                                <button class="px-32 mr-8"
+                                <button class="px-8 mr-2"
                                         mat-flat-button
                                         [color]="'accent'"
                                         type="button"
                                         matStepperPrevious>
                                     Back
                                 </button>
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         [disabled]="horizontalStepperStep2.stepControl.pristine || horizontalStepperStep2.stepControl.invalid"
@@ -159,20 +159,20 @@
                         <mat-step [formGroupName]="'step3'"
                                   [stepControl]="horizontalStepperForm.get('step3')">
                             <ng-template matStepLabel>Notifications</ng-template>
-                            <h6 class="text-secondary my-24">
+                            <h6 class="text-secondary my-6">
                                 We'll always let you know about important changes, but you pick what else you want to hear about.
                             </h6>
                             <div class="flex flex-col gt-sm:flex-row">
                                 <div class="flex flex-col">
-                                    <span class="font-medium mb-8">By Email</span>
+                                    <span class="font-medium mb-2">By Email</span>
                                     <div class="flex flex-col"
                                          [formGroupName]="'byEmail'">
-                                        <mat-checkbox class="mb-4"
+                                        <mat-checkbox class="mb-1"
                                                       [color]="'primary'"
                                                       [formControlName]="'companyNews'">
                                             Company News
                                         </mat-checkbox>
-                                        <mat-checkbox class="mb-4"
+                                        <mat-checkbox class="mb-1"
                                                       [color]="'primary'"
                                                       [formControlName]="'featuredProducts'">
                                             Featured Products
@@ -183,16 +183,16 @@
                                         </mat-checkbox>
                                     </div>
                                 </div>
-                                <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-64">
-                                    <span class="font-medium mb-8">Push Notifications</span>
+                                <div class="flex flex-col mt-8 gt-sm:mt-0 gt-sm:ml-16">
+                                    <span class="font-medium mb-2">Push Notifications</span>
                                     <mat-radio-group class="flex flex-col"
                                                      [color]="'primary'"
                                                      [formControlName]="'pushNotifications'">
-                                        <mat-radio-button class="mb-8"
+                                        <mat-radio-button class="mb-2"
                                                           [value]="'everything'">
                                             Everything
                                         </mat-radio-button>
-                                        <mat-radio-button class="mb-8"
+                                        <mat-radio-button class="mb-2"
                                                           [value]="'just-good'">
                                             Just the good stuff
                                         </mat-radio-button>
@@ -202,15 +202,15 @@
                                     </mat-radio-group>
                                 </div>
                             </div>
-                            <div class="flex justify-end mt-32">
-                                <button class="px-32 mr-8"
+                            <div class="flex justify-end mt-8">
+                                <button class="px-8 mr-2"
                                         mat-flat-button
                                         [color]="'accent'"
                                         type="button"
                                         matStepperPrevious>
                                     Back
                                 </button>
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         type="button"
@@ -222,18 +222,18 @@
 
                         <mat-step>
                             <ng-template matStepLabel>Done</ng-template>
-                            <h6 class="my-24">
+                            <h6 class="my-6">
                                 Thank you for completing our form! You can reset the form if you would like to change your information.
                             </h6>
-                            <div class="flex justify-end mt-32">
-                                <button class="px-32 mr-8"
+                            <div class="flex justify-end mt-8">
+                                <button class="px-8 mr-2"
                                         mat-flat-button
                                         [color]="'accent'"
                                         type="button"
                                         matStepperPrevious>
                                     Back
                                 </button>
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         type="reset"
@@ -247,9 +247,9 @@
             </asm-card>
 
             <!-- Vertical stepper -->
-            <h3 class="mt-64 mb-32">Vertical Stepper</h3>
+            <h3 class="mt-16 mb-8">Vertical Stepper</h3>
 
-            <asm-card class="p-32">
+            <asm-card class="p-8">
                 <form class="w-full"
                       [formGroup]="verticalStepperForm">
                     <mat-vertical-stepper [linear]="true"
@@ -258,7 +258,7 @@
                                   [stepControl]="verticalStepperForm.get('step1')"
                                   #verticalStepperStep1>
                             <ng-template matStepLabel>Basic information</ng-template>
-                            <h6 class="text-secondary my-24">
+                            <h6 class="text-secondary my-6">
                                 Fill in your basic information to let us know your preferences
                             </h6>
                             <div class="flex">
@@ -272,7 +272,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="flex flex-col gt-xs:flex-row">
-                                <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
                                     <mat-select [formControlName]="'country'"
                                                 [placeholder]="'Country / Region'"
                                                 required>
@@ -283,7 +283,7 @@
                                     <mat-icon matPrefix
                                               [svgIcon]="'room'"></mat-icon>
                                 </mat-form-field>
-                                <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <mat-form-field class="flex-auto gt-xs:pl-3">
                                     <mat-select [formControlName]="'language'"
                                                 [placeholder]="'Language'"
                                                 required>
@@ -296,7 +296,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="flex justify-end">
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         [disabled]="verticalStepperStep1.stepControl.pristine || verticalStepperStep1.stepControl.invalid"
@@ -311,11 +311,11 @@
                                   [stepControl]="verticalStepperForm.get('step2')"
                                   #verticalStepperStep2>
                             <ng-template matStepLabel>Profile</ng-template>
-                            <h6 class="text-secondary my-24">
+                            <h6 class="text-secondary my-6">
                                 People here will get to know you with this information
                             </h6>
                             <div class="flex flex-col gt-xs:flex-row">
-                                <mat-form-field class="flex-auto gt-xs:pr-12">
+                                <mat-form-field class="flex-auto gt-xs:pr-3">
                                     <input matInput
                                            [formControlName]="'firstName'"
                                            [placeholder]="'First name'"
@@ -323,7 +323,7 @@
                                     <mat-icon matPrefix
                                               [svgIcon]="'account_circle'"></mat-icon>
                                 </mat-form-field>
-                                <mat-form-field class="flex-auto gt-xs:pl-12">
+                                <mat-form-field class="flex-auto gt-xs:pl-3">
                                     <input matInput
                                            [formControlName]="'lastName'"
                                            [placeholder]="'Last name'"
@@ -352,14 +352,14 @@
                                 </mat-form-field>
                             </div>
                             <div class="flex justify-end">
-                                <button class="px-32 mr-8"
+                                <button class="px-8 mr-2"
                                         mat-flat-button
                                         [color]="'accent'"
                                         type="button"
                                         matStepperPrevious>
                                     Back
                                 </button>
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         [disabled]="verticalStepperStep2.stepControl.pristine || verticalStepperStep2.stepControl.invalid"
@@ -373,20 +373,20 @@
                         <mat-step [formGroupName]="'step3'"
                                   [stepControl]="verticalStepperForm.get('step3')">
                             <ng-template matStepLabel>Notifications</ng-template>
-                            <h6 class="text-secondary my-24">
+                            <h6 class="text-secondary my-6">
                                 We'll always let you know about important changes, but you pick what else you want to hear about.
                             </h6>
                             <div class="flex flex-col gt-sm:flex-row">
                                 <div class="flex flex-col">
-                                    <span class="font-medium mb-8">By Email</span>
+                                    <span class="font-medium mb-2">By Email</span>
                                     <div class="flex flex-col"
                                          [formGroupName]="'byEmail'">
-                                        <mat-checkbox class="mb-4"
+                                        <mat-checkbox class="mb-1"
                                                       [color]="'primary'"
                                                       [formControlName]="'companyNews'">
                                             Company News
                                         </mat-checkbox>
-                                        <mat-checkbox class="mb-4"
+                                        <mat-checkbox class="mb-1"
                                                       [color]="'primary'"
                                                       [formControlName]="'featuredProducts'">
                                             Featured Products
@@ -397,16 +397,16 @@
                                         </mat-checkbox>
                                     </div>
                                 </div>
-                                <div class="flex flex-col mt-32 gt-sm:mt-0 gt-sm:ml-64">
-                                    <span class="font-medium mb-8">Push Notifications</span>
+                                <div class="flex flex-col mt-8 gt-sm:mt-0 gt-sm:ml-16">
+                                    <span class="font-medium mb-2">Push Notifications</span>
                                     <mat-radio-group class="flex flex-col"
                                                      [color]="'primary'"
                                                      [formControlName]="'pushNotifications'">
-                                        <mat-radio-button class="mb-8"
+                                        <mat-radio-button class="mb-2"
                                                           [value]="'everything'">
                                             Everything
                                         </mat-radio-button>
-                                        <mat-radio-button class="mb-8"
+                                        <mat-radio-button class="mb-2"
                                                           [value]="'just-good'">
                                             Just the good stuff
                                         </mat-radio-button>
@@ -416,15 +416,15 @@
                                     </mat-radio-group>
                                 </div>
                             </div>
-                            <div class="flex justify-end mt-32">
-                                <button class="px-32 mr-8"
+                            <div class="flex justify-end mt-8">
+                                <button class="px-8 mr-2"
                                         mat-flat-button
                                         [color]="'accent'"
                                         type="button"
                                         matStepperPrevious>
                                     Back
                                 </button>
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         type="button"
@@ -436,18 +436,18 @@
 
                         <mat-step>
                             <ng-template matStepLabel>Done</ng-template>
-                            <h6 class="my-24">
+                            <h6 class="my-6">
                                 Thank you for completing our form! You can reset the form if you would like to change your information.
                             </h6>
-                            <div class="flex justify-end mt-32">
-                                <button class="px-32 mr-8"
+                            <div class="flex justify-end mt-8">
+                                <button class="px-8 mr-2"
                                         mat-flat-button
                                         [color]="'accent'"
                                         type="button"
                                         matStepperPrevious>
                                     Back
                                 </button>
-                                <button class="px-32"
+                                <button class="px-8"
                                         mat-flat-button
                                         [color]="'primary'"
                                         type="reset"

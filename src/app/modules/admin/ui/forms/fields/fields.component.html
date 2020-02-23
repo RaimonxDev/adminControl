@@ -19,7 +19,7 @@
 
     <div class="main">
 
-        <div class="container mb-32">
+        <div class="container mb-8">
             <p>
                 By default, Assembly uses the <b>Fill</b> style form fields and apply numerous of tweaks on top of it to make it cleaner, better aligned and consistent across the
                 app. We absolutely do NOT recommend using any other Angular Material form field style other than <b>Fill</b>.
@@ -38,25 +38,25 @@
             </p>
 
             <!-- Appearance -->
-            <div class="mt-48">
+            <div class="mt-12">
 
                 <h3 class="my-0">Appearance</h3>
-                <p class="mt-8 mb-24">
+                <p class="mt-2 mb-6">
                     Here's a very simple form layout to showcase the <b>Fill</b> form field appearance.
                 </p>
 
-                <asm-card class="flex flex-col mt-32 p-32 pb-20">
+                <asm-card class="flex flex-col mt-8 p-8 pb-5">
 
-                    <form class="mt-8">
+                    <form class="mt-2">
 
                         <div class="flex flex-col gt-xs:flex-row">
-                            <mat-form-field class="flex-auto gt-xs:pr-12">
+                            <mat-form-field class="flex-auto gt-xs:pr-3">
                                 <mat-label>First name</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
                                           [svgIcon]="'account_circle'"></mat-icon>
                             </mat-form-field>
-                            <mat-form-field class="flex-auto gt-xs:pl-12">
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
                                 <mat-label>Last name</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
@@ -76,13 +76,13 @@
                         </div>
 
                         <div class="flex flex-col gt-md:flex-row">
-                            <mat-form-field class="flex-auto gt-md:pr-12">
+                            <mat-form-field class="flex-auto gt-md:pr-3">
                                 <mat-label>City</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
                                           [svgIcon]="'landscape'"></mat-icon>
                             </mat-form-field>
-                            <mat-form-field class="flex-auto gt-md:pl-12">
+                            <mat-form-field class="flex-auto gt-md:pl-3">
                                 <mat-label>State</mat-label>
                                 <input matInput>
                                 <mat-icon matSuffix
@@ -102,11 +102,11 @@
                             </mat-form-field>
                         </div>
 
-                        <div class="flex items-center justify-end border-t -mx-32 mt-20 px-32 pt-20">
+                        <div class="flex items-center justify-end border-t -mx-8 mt-5 px-8 pt-5">
                             <button mat-button>
                                 Cancel
                             </button>
-                            <button class="px-24 ml-12"
+                            <button class="px-6 ml-3"
                                     mat-flat-button
                                     [color]="'primary'">
                                 Save
@@ -120,17 +120,17 @@
             </div>
 
             <!-- Label positions -->
-            <div class="mt-64">
+            <div class="mt-16">
 
                 <h3 class="my-0">Label positions</h3>
-                <p class="mt-8 mb-40">
+                <p class="mt-2 mb-10">
                     Following form contains different examples to showcase the possible label positions for the default (<b>fill</b>) form field appearance. All fields are normal
                     <em>inputs</em> but all label positions can be applied to other input types such as <em>Textarea</em>, <em>Select</em>, <em>Chips</em> etc.
                 </p>
 
-                <asm-card class="flex flex-col mt-32 p-32 pb-20">
+                <asm-card class="flex flex-col mt-8 p-8 pb-5">
 
-                    <form class="mt-8">
+                    <form class="mt-2">
 
                         <mat-form-field class="w-full">
                             <mat-label>Floating label</mat-label>
@@ -142,7 +142,7 @@
                                    [placeholder]="'Placeholder only'">
                         </mat-form-field>
 
-                        <mat-divider class="mt-24 mb-40"></mat-divider>
+                        <mat-divider class="mt-6 mb-10"></mat-divider>
 
                         <label class="asm-mat-label">
                             <span>Label on top</span>
@@ -159,7 +159,7 @@
                             </mat-form-field>
                         </label>
 
-                        <mat-divider class="mt-24 mb-48"></mat-divider>
+                        <mat-divider class="mt-6 mb-12"></mat-divider>
 
                         <label class="asm-mat-label asm-start">
                             <span>Label on start</span>
@@ -176,7 +176,7 @@
                             </mat-form-field>
                         </label>
 
-                        <mat-divider class="mt-24 mb-40"></mat-divider>
+                        <mat-divider class="mt-6 mb-10"></mat-divider>
 
                         <label class="asm-mat-label asm-end">
                             <span>Label on end</span>
@@ -193,11 +193,11 @@
                             </mat-form-field>
                         </label>
 
-                        <div class="flex items-center justify-end border-t -mx-32 mt-20 px-32 pt-20">
+                        <div class="flex items-center justify-end border-t -mx-8 mt-5 px-8 pt-5">
                             <button mat-button>
                                 Cancel
                             </button>
-                            <button class="px-24 ml-12"
+                            <button class="px-6 ml-3"
                                     mat-flat-button
                                     [color]="'primary'">
                                 Save
