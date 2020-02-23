@@ -1,15 +1,6 @@
-@import 'assembly';
-
 // -----------------------------------------------------------------------------------------------------
-// @ Angular Material typography
+// @ You can use this file to import custom styles.
+//
+// @ Styles from this file will override anything from 'vendors.scss' file allowing customizations and
+//  modifications of third party libraries.
 // -----------------------------------------------------------------------------------------------------
-$typography: mat-typography-config(
-    $font-family: $asm-font-sans,
-    $title: mat-typography-level(1.25rem, 2rem, 600),
-    $body-2: mat-typography-level(0.875rem, 1.5rem, 600),
-    $button: mat-typography-level(0.875rem, 0.875rem, 500),
-    $input: mat-typography-level(0.875rem, 1.2857142857, 400) // line-height: 20px
-);
-
-// Setup the typography
-@include angular-material-typography($typography);

@@ -1,4 +1,17 @@
 // -----------------------------------------------------------------------------------------------------
+// @ Angular Material typography config
+// -----------------------------------------------------------------------------------------------------
+@include angular-material-typography(
+        mat-typography-config(
+            $font-family: $asm-font-sans,
+            $title: mat-typography-level(1.25rem, 2rem, 600),
+            $body-2: mat-typography-level(0.875rem, 1.5rem, 600),
+            $button: mat-typography-level(0.875rem, 0.875rem, 500),
+            $input: mat-typography-level(0.875rem, 1.2857142857, 400) // line-height: 20px
+        )
+);
+
+// -----------------------------------------------------------------------------------------------------
 // @ General
 // -----------------------------------------------------------------------------------------------------
 html {
@@ -7,13 +20,7 @@ html {
 
 body {
     font-size: 0.875rem;
-    line-height: 1.5 !important;
     font-family: $asm-font-sans;
-}
-
-html, body {
-    -webkit-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
 }
 
 // Headings
