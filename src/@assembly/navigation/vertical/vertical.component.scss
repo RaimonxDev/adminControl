@@ -130,11 +130,6 @@ asm-vertical-navigation {
             > asm-vertical-navigation-group-item {
                 margin-top: 24px;
             }
-
-            // Spacer
-            > asm-vertical-navigation-spacer-item {
-                margin: 8px 0;
-            }
         }
 
         // Footer
@@ -404,7 +399,7 @@ asm-vertical-navigation {
                 .asm-vertical-navigation-item-title {
                     font-size: 12px;
                     font-weight: 600;
-                    letter-spacing: 0.075em;
+                    letter-spacing: 0.05em;
                     text-transform: uppercase;
                 }
             }
@@ -413,7 +408,7 @@ asm-vertical-navigation {
 
     // Spacer
     asm-vertical-navigation-spacer-item {
-        margin: 12px 0;
+        margin: 6px 0;
     }
 
     // -----------------------------------------------------------------------------------------------------
