@@ -139,7 +139,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
                 // Add the count as a badge
                 menuItem['badge'] = {
                     title: folder.count + '',
-                    style: 'rounded'
+                    style: 'simple'
                 };
             }
 
@@ -241,17 +241,11 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
                 ]
             },
             {
-                type: 'spacer'
-            },
-            {
                 title   : 'FILTERS',
                 type    : 'group',
                 children: [
                     ...this._filtersMenuData
                 ]
-            },
-            {
-                type: 'spacer'
             },
             {
                 title   : 'LABELS',

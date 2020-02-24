@@ -18,10 +18,14 @@ mailbox-sidebar {
         }
     }
 
-    asm-vertical-navigation {
+    .navigation {
+        padding: 0 8px;
 
-        .asm-vertical-navigation-wrapper {
-            border-right-width: 0;
+        asm-vertical-navigation {
+
+            .asm-vertical-navigation-wrapper {
+                border-right-width: 0;
+            }
         }
     }
 }
