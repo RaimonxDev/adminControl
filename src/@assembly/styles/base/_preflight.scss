@@ -239,9 +239,15 @@ video {
     -webkit-text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
 
-    // Focus outline
+    // Disable default focus outline
     &:focus {
-        outline: none;
+        outline: none !important;
+    }
+
+    // Enable focus outline only on keyboard focused buttons
+    button.cdk-focused.cdk-keyboard-focused {
+        outline: 1px dotted !important;
+        outline: 5px auto -webkit-focus-ring-color !important;
     }
 }
 
