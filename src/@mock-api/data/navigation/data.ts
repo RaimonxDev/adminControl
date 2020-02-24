@@ -1,4 +1,3 @@
-
 /* tslint:disable:max-line-length */
 import { AsmNavigationItem } from '@assembly/navigation';
 
@@ -287,7 +286,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'applications',
         title   : 'Applications',
-        subtitle: 'Example & ready to use apps',
+        subtitle: 'Custom made application designs',
         type    : 'group',
         icon    : 'apps',
         children: [
@@ -357,7 +356,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'pages',
         title   : 'Pages',
-        subtitle: 'Example & ready to use pages',
+        subtitle: 'Custom made page designs',
         type    : 'group',
         icon    : 'pages',
         children: [
@@ -776,85 +775,77 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     },
     {
-        id      : 'ui-elements',
-        title   : 'UI Elements',
-        subtitle: 'User interface elements',
+        id      : 'user-interface',
+        title   : 'User Interface',
+        subtitle: 'Building blocks of the UI & UX',
         type    : 'group',
         icon    : 'web',
         children: [
             {
-                id   : 'ui-elements.angular-material',
+                id   : 'user-interface.angular-material',
                 title: 'Angular Material',
                 type : 'basic',
                 icon : 'layers',
                 link : '/ui/angular-material'
             },
             {
-                id      : 'ui-elements.third-party-components',
-                title   : 'Third party components',
-                type    : 'collapsable',
-                icon    : 'settings_input_component',
-                children: [
-                    {
-                        id   : 'ui-elements.third-party-components.quill-editor',
-                        title: 'Quill editor',
-                        type : 'basic',
-                        link : '/ui/third-party/quill-editor'
-                    }
-                ]
+                id   : 'user-interface.tailwindcss',
+                title: 'TailwindCSS',
+                type : 'basic',
+                icon : 'assistant',
+                link : '/ui/tailwindcss'
             },
             {
-                id   : 'ui-elements.cards',
+                id   : 'user-interface.cards',
                 title: 'Cards',
                 type : 'basic',
                 icon : 'web_asset',
                 link : '/ui/cards'
             },
             {
-                id   : 'ui-elements.colors',
+                id   : 'user-interface.colors',
                 title: 'Colors',
                 type : 'basic',
                 icon : 'color_lens',
                 link : '/ui/colors'
             },
             {
-                id      : 'ui-elements.content-layouts',
+                id      : 'user-interface.content-layouts',
                 title   : 'Content layouts',
-                subtitle: '18 unique layout styles',
                 type    : 'collapsable',
-                icon    : 'view_quilt',
+                icon    : 'view_compact',
                 children: [
                     {
-                        id   : 'ui-elements.content-layouts.overview',
+                        id   : 'user-interface.content-layouts.overview',
                         title: 'Overview',
                         type : 'basic',
                         link : '/ui/content-layouts/overview'
                     },
                     {
-                        id      : 'ui-elements.content-layouts.fullwidth',
+                        id      : 'user-interface.content-layouts.fullwidth',
                         title   : 'Fullwidth',
                         type    : 'collapsable',
                         children: [
                             {
-                                id   : 'ui-elements.content-layouts.fullwidth.basic',
+                                id   : 'user-interface.content-layouts.fullwidth.basic',
                                 title: 'Basic',
                                 type : 'basic',
                                 link : '/ui/content-layouts/fullwidth/basic'
                             },
                             {
-                                id   : 'ui-elements.content-layouts.fullwidth.standard',
+                                id   : 'user-interface.content-layouts.fullwidth.standard',
                                 title: 'Standard',
                                 type : 'basic',
                                 link : '/ui/content-layouts/fullwidth/standard'
                             },
                             {
-                                id   : 'ui-elements.content-layouts.fullwidth.tabs',
+                                id   : 'user-interface.content-layouts.fullwidth.tabs',
                                 title: 'Tabs',
                                 type : 'basic',
                                 link : '/ui/content-layouts/fullwidth/tabs'
                             },
                             {
-                                id   : 'ui-elements.content-layouts.fullwidth.tabs-navigation',
+                                id   : 'user-interface.content-layouts.fullwidth.tabs-navigation',
                                 title: 'Tabs navigation',
                                 type : 'basic',
                                 link : '/ui/content-layouts/fullwidth/tabs-navigation'
@@ -862,35 +853,35 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         ]
                     },
                     {
-                        id      : 'ui-elements.content-layouts.left-sidebar',
+                        id      : 'user-interface.content-layouts.left-sidebar',
                         title   : 'Left Sidebar',
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'ui-elements.content-layouts.left-sidebar.fullheight',
+                                id      : 'user-interface.content-layouts.left-sidebar.fullheight',
                                 title   : 'Fullheight',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'ui-elements.content-layouts.left-sidebar.fullheight.basic',
+                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.basic',
                                         title: 'Basic',
                                         type : 'basic',
                                         link : '/ui/content-layouts/left-sidebar/fullheight/basic'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.left-sidebar.fullheight.standard',
+                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.standard',
                                         title: 'Standard',
                                         type : 'basic',
                                         link : '/ui/content-layouts/left-sidebar/fullheight/standard'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabs',
+                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
                                         link : '/ui/content-layouts/left-sidebar/fullheight/tabs'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.left-sidebar.fullheight.tabs-navigation',
+                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.tabs-navigation',
                                         title: 'Tabs navigation',
                                         type : 'basic',
                                         link : '/ui/content-layouts/left-sidebar/fullheight/tabs-navigation'
@@ -898,24 +889,24 @@ export const defaultNavigation: AsmNavigationItem[] = [
                                 ]
                             },
                             {
-                                id      : 'ui-elements.content-layouts.left-sidebar.content',
+                                id      : 'user-interface.content-layouts.left-sidebar.content',
                                 title   : 'Content',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'ui-elements.content-layouts.left-sidebar.content.standard',
+                                        id   : 'user-interface.content-layouts.left-sidebar.content.standard',
                                         title: 'Standard',
                                         type : 'basic',
                                         link : '/ui/content-layouts/left-sidebar/content/standard'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.left-sidebar.content.tabs',
+                                        id   : 'user-interface.content-layouts.left-sidebar.content.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
                                         link : '/ui/content-layouts/left-sidebar/content/tabs'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.left-sidebar.content.tabs-navigation',
+                                        id   : 'user-interface.content-layouts.left-sidebar.content.tabs-navigation',
                                         title: 'Tabs navigation',
                                         type : 'basic',
                                         link : '/ui/content-layouts/left-sidebar/content/tabs-navigation'
@@ -930,30 +921,30 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'ui-elements.content-layouts.right-sidebar.fullheight',
+                                id      : 'user-interface.content-layouts.right-sidebar.fullheight',
                                 title   : 'Fullheight',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'ui-elements.content-layouts.right-sidebar.fullheight.basic',
+                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.basic',
                                         title: 'Basic',
                                         type : 'basic',
                                         link : '/ui/content-layouts/right-sidebar/fullheight/basic'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.right-sidebar.fullheight.standard',
+                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.standard',
                                         title: 'Standard',
                                         type : 'basic',
                                         link : '/ui/content-layouts/right-sidebar/fullheight/standard'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.right-sidebar.fullheight.tabs',
+                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
                                         link : '/ui/content-layouts/right-sidebar/fullheight/tabs'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.right-sidebar.fullheight.tabs-navigation',
+                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.tabs-navigation',
                                         title: 'Tabs navigation',
                                         type : 'basic',
                                         link : '/ui/content-layouts/right-sidebar/fullheight/tabs-navigation'
@@ -961,24 +952,24 @@ export const defaultNavigation: AsmNavigationItem[] = [
                                 ]
                             },
                             {
-                                id      : 'ui-elements.content-layouts.right-sidebar.content',
+                                id      : 'user-interface.content-layouts.right-sidebar.content',
                                 title   : 'Content',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'ui-elements.content-layouts.right-sidebar.content.standard',
+                                        id   : 'user-interface.content-layouts.right-sidebar.content.standard',
                                         title: 'Standard',
                                         type : 'basic',
                                         link : '/ui/content-layouts/right-sidebar/content/standard'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.right-sidebar.content.tabs',
+                                        id   : 'user-interface.content-layouts.right-sidebar.content.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
                                         link : '/ui/content-layouts/right-sidebar/content/tabs'
                                     },
                                     {
-                                        id   : 'ui-elements.content-layouts.right-sidebar.content.tabs-navigation',
+                                        id   : 'user-interface.content-layouts.right-sidebar.content.tabs-navigation',
                                         title: 'Tabs navigation',
                                         type : 'basic',
                                         link : '/ui/content-layouts/right-sidebar/content/tabs-navigation'
@@ -990,25 +981,32 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 ]
             },
             {
-                id      : 'ui-elements.forms',
+                id   : 'user-interface.datatable',
+                title: 'Datatable',
+                type : 'basic',
+                icon : 'table_chart',
+                link : '/ui/datatable'
+            },
+            {
+                id      : 'user-interface.forms',
                 title   : 'Forms',
                 type    : 'collapsable',
                 icon    : 'ballot',
                 children: [
                     {
-                        id   : 'ui-elements.forms.fields',
+                        id   : 'user-interface.forms.fields',
                         title: 'Fields',
                         type : 'basic',
                         link : '/ui/forms/fields'
                     },
                     {
-                        id   : 'ui-elements.forms.layouts',
+                        id   : 'user-interface.forms.layouts',
                         title: 'Layouts',
                         type : 'basic',
                         link : '/ui/forms/layouts'
                     },
                     {
-                        id   : 'ui-elements.forms.wizards',
+                        id   : 'user-interface.forms.wizards',
                         title: 'Wizards',
                         type : 'basic',
                         link : '/ui/forms/wizards'
@@ -1016,51 +1014,31 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 ]
             },
             {
-                id      : 'ui-elements.helpers',
-                title   : 'Helpers',
-                type    : 'collapsable',
-                icon    : 'help_outline',
-                children: [
-                    {
-                        id   : 'ui-elements.helpers.assembly',
-                        title: 'Assembly',
-                        type : 'basic',
-                        link : '/ui/helpers/assembly'
-                    },
-                    {
-                        id   : 'ui-elements.helpers.tailwindcss',
-                        title: 'TailwindCSS',
-                        type : 'basic',
-                        link : '/ui/helpers/tailwindcss'
-                    }
-                ]
-            },
-            {
-                id      : 'ui-elements.icons',
+                id      : 'user-interface.icons',
                 title   : 'Icons',
                 type    : 'collapsable',
-                icon    : 'photo',
+                icon    : 'category',
                 children: [
                     {
-                        id   : 'ui-elements.icons.dripicons',
+                        id   : 'user-interface.icons.dripicons',
                         title: 'Dripicons',
                         type : 'basic',
                         link : '/ui/icons/dripicons'
                     },
                     {
-                        id   : 'ui-elements.icons.iconsmind',
+                        id   : 'user-interface.icons.iconsmind',
                         title: 'Iconsmind',
                         type : 'basic',
                         link : '/ui/icons/iconsmind'
                     },
                     {
-                        id   : 'ui-elements.icons.material-outline',
+                        id   : 'user-interface.icons.material-outline',
                         title: 'Material Outline',
                         type : 'basic',
                         link : '/ui/icons/material-outline'
                     },
                     {
-                        id   : 'ui-elements.icons.material-twotone',
+                        id   : 'user-interface.icons.material-twotone',
                         title: 'Material Twotone',
                         type : 'basic',
                         link : '/ui/icons/material-twotone'
@@ -1068,7 +1046,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 ]
             },
             {
-                id   : 'ui-elements.typography',
+                id   : 'user-interface.typography',
                 title: 'Typography',
                 type : 'basic',
                 icon : 'text_fields',
@@ -1079,7 +1057,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
     {
         id      : 'assembly',
         title   : 'Assembly',
-        subtitle: 'Built-in components and more',
+        subtitle: 'Components, services and more',
         type    : 'group',
         icon    : 'change_history',
         children: [
@@ -1088,42 +1066,240 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 title: 'Animations',
                 type : 'basic',
                 icon : 'movie_creation',
-                link : '/assembly/components/animations'
+                link : '/assembly/animations'
             },
             {
-                id   : 'assembly.messages',
-                title: 'Messages',
+                id   : 'assembly.helpers',
+                title: 'Helpers',
                 type : 'basic',
-                icon : 'info',
-                link : '/assembly/components/messages'
+                icon : 'assistant',
+                link : '/assembly/helpers'
             },
             {
-                id   : 'assembly.navigation',
-                title: 'Navigation',
+                id   : 'assembly.mock-api',
+                title: 'MockAPI',
                 type : 'basic',
-                icon : 'menu',
-                link : '/assembly/components/navigation'
+                icon : 'http',
+                link : '/assembly/mock-api'
+            },
+            {
+                id   : 'assembly.validators',
+                title: 'Validators',
+                type : 'basic',
+                icon : 'check_circle',
+                link : '/assembly/validators'
+            },
+            {
+                id      : 'assembly.components',
+                title   : 'Components',
+                icon    : 'memory',
+                type    : 'collapsable',
+                children: [
+                    {
+                        id   : 'assembly.components.card',
+                        title: 'Card',
+                        type : 'basic',
+                        link : '/assembly/components/card'
+                    },
+                    {
+                        id   : 'assembly.components.date-range',
+                        title: 'DateRange',
+                        type : 'basic',
+                        link : '/assembly/components/date-range'
+                    },
+                    {
+                        id   : 'assembly.components.drawer',
+                        title: 'Drawer',
+                        type : 'basic',
+                        link : '/assembly/components/drawer'
+                    },
+                    {
+                        id   : 'assembly.components.highlight',
+                        title: 'Highlight',
+                        type : 'basic',
+                        link : '/assembly/components/highlight'
+                    },
+                    {
+                        id   : 'assembly.components.message',
+                        title: 'Message',
+                        type : 'basic',
+                        link : '/assembly/components/message'
+                    },
+                    {
+                        id   : 'assembly.components.navigation',
+                        title: 'Navigation',
+                        type : 'basic',
+                        link : '/assembly/components/navigation'
+                    },
+                    {
+                        id   : 'assembly.components.spinner',
+                        title: 'Spinner',
+                        type : 'basic',
+                        link : '/assembly/components/spinner'
+                    }
+                ]
             },
             {
                 id      : 'assembly.directives',
                 title   : 'Directives',
                 icon    : 'memory',
                 type    : 'collapsable',
-                children: []
+                children: [
+                    {
+                        id   : 'assembly.directives.autogrow',
+                        title: 'Autogrow',
+                        type : 'basic',
+                        link : '/assembly/directives/autogrow'
+                    },
+                    {
+                        id   : 'assembly.directives..scrollbar',
+                        title: 'Scrollbar',
+                        type : 'basic',
+                        link : '/assembly/directives/scrollbar'
+                    }
+                ]
             },
             {
                 id      : 'assembly.services',
                 title   : 'Services',
                 icon    : 'memory',
                 type    : 'collapsable',
-                children: []
+                children: [
+                    {
+                        id   : 'assembly.services.config',
+                        title: 'Config',
+                        type : 'basic',
+                        link : '/assembly/services/config'
+                    },
+                    {
+                        id   : 'assembly.services.splash-screen',
+                        title: 'SplashScreen',
+                        type : 'basic',
+                        link : '/assembly/services/splash-screen'
+                    },
+                    {
+                        id   : 'assembly.services.media-watcher',
+                        title: 'MediaWatcher',
+                        type : 'basic',
+                        link : '/assembly/services/media-watcher'
+                    }
+                ]
             },
             {
                 id      : 'assembly.pipes',
                 title   : 'Pipes',
                 icon    : 'memory',
                 type    : 'collapsable',
-                children: []
+                children: [
+                    {
+                        id   : 'assembly.pipes.find-by-key',
+                        title: 'FindByKey',
+                        type : 'basic',
+                        link : '/assembly/pipes/find-by-key'
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id      : 'custom-components',
+        title   : 'Custom components',
+        subtitle: 'To help you build your app quickly',
+        type    : 'group',
+        icon    : 'memory',
+        children: [
+            {
+                id   : 'custom-components.overview',
+                title: 'Overview',
+                type : 'basic',
+                icon : 'info',
+                link : '/custom-components/overview'
+            },
+            {
+                id   : 'custom-components.messages',
+                title: 'Messages',
+                type : 'basic',
+                icon : 'message',
+                link : '/custom-components/messages'
+            },
+            {
+                id   : 'custom-components.notifications',
+                title: 'Notifications',
+                type : 'basic',
+                icon : 'notifications',
+                link : '/custom-components/notifications'
+            },
+            {
+                id   : 'custom-components.search',
+                title: 'Search',
+                type : 'basic',
+                icon : 'search',
+                link : '/custom-components/search'
+            },
+            {
+                id   : 'custom-components.shortcuts',
+                title: 'Shortcuts',
+                type : 'basic',
+                icon : 'bookmarks',
+                link : '/custom-components/shortcuts'
+            },
+            {
+                id   : 'custom-components.user',
+                title: 'User',
+                type : 'basic',
+                icon : 'account_circle',
+                link : '/custom-components/user'
+            }
+        ]
+    },
+    {
+        id      : 'supported-components',
+        title   : 'Supported components',
+        subtitle: 'Compatible third party components',
+        type    : 'group',
+        icon    : 'memory',
+        children: [
+            {
+                id   : 'supported-components.apex-charts',
+                title: 'ApexCharts',
+                type : 'basic',
+                icon : 'insert_chart',
+                link : '/supported-components/apex-charts'
+            },
+            {
+                id   : 'supported-components.full-calendar',
+                title: 'FullCalendar',
+                type : 'basic',
+                icon : 'today',
+                link : '/supported-components/full-calendar'
+            },
+            {
+                id   : 'supported-components.google-maps',
+                title: 'Google Maps',
+                type : 'basic',
+                icon : 'map',
+                link : '/supported-components/google-maps'
+            },
+            {
+                id   : 'supported-components.ngx-markdown',
+                title: 'ngx-markdown',
+                type : 'basic',
+                icon : 'text_format',
+                link : '/supported-components/ngx-markdown'
+            },
+            {
+                id   : 'supported-components.quill-editor',
+                title: 'Quill editor',
+                type : 'basic',
+                icon : 'font_download',
+                link : '/supported-components/quill-editor'
+            },
+            {
+                id   : 'supported-components.youtube-player',
+                title: 'Youtube player',
+                type : 'basic',
+                icon : 'play_circle_filled',
+                link : '/supported-components/youtube-player'
             }
         ]
     },
@@ -1132,18 +1308,18 @@ export const defaultNavigation: AsmNavigationItem[] = [
         type: 'divider'
     },
     {
-        id      : 'documentation',
-        title   : 'Documentation',
+        id      : 'guides',
+        title   : 'Guides',
         subtitle: 'Everything you need to get started',
         type    : 'group',
         icon    : 'import_contacts',
         children: [
             {
-                id   : 'documentation.changelog',
+                id   : 'guides.changelog',
                 title: 'Changelog',
                 type : 'basic',
                 icon : 'update',
-                link : '/docs/changelog',
+                link : '/guides/changelog',
                 badge: {
                     title     : '1.0.0',
                     style     : 'rounded',
@@ -1152,60 +1328,108 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 }
             },
             {
-                id   : 'documentation.getting-started',
-                title: 'Getting started',
-                type : 'basic',
-                icon : 'import_contacts',
-                link : '/docs/getting-started'
+                id      : 'guides.getting-started',
+                title   : 'Getting started',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'guides.getting-started.introduction',
+                        title: 'Introduction',
+                        type : 'basic',
+                        link : '/guides/getting-started/introduction'
+                    },
+                    {
+                        id   : 'guides.getting-started.libraries',
+                        title: 'Libraries',
+                        type : 'basic',
+                        link : '/guides/getting-started/libraries'
+                    },
+                    {
+                        id   : 'guides.getting-started.prerequisites',
+                        title: 'Prerequisites',
+                        type : 'basic',
+                        link : '/guides/getting-started/prerequisites'
+                    },
+                    {
+                        id   : 'guides.getting-started.installation',
+                        title: 'Installation',
+                        type : 'basic',
+                        link : '/guides/getting-started/installation'
+                    },
+                    {
+                        id   : 'guides.getting-started.serving',
+                        title: 'Serving',
+                        type : 'basic',
+                        link : '/guides/getting-started/serving'
+                    }
+                ]
             },
             {
-                id   : 'documentation.building-and-serving',
-                title: 'Building and serving',
-                type : 'basic',
-                icon : 'import_contacts',
-                link : '/docs/building-and-serving'
+                id      : 'guides.development',
+                title   : 'Development',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'guides.development.structure',
+                        title: 'Structure',
+                        type : 'basic',
+                        link : '/guides/development/structure'
+                    },
+                    {
+                        id   : 'guides.development.starter-kit',
+                        title: 'Starter kit',
+                        type : 'basic',
+                        link : '/guides/development/starter-kit'
+                    },
+                    {
+                        id   : 'guides.development.deployment',
+                        title: 'Deployment',
+                        type : 'basic',
+                        link : '/guides/development/deployment'
+                    },
+                    {
+                        id   : 'guides.development.updating',
+                        title: 'Updating',
+                        type : 'basic',
+                        link : '/guides/development/updating'
+                    }
+                ]
             },
             {
-                id   : 'documentation.directory-structure',
-                title: 'Directory structure',
-                icon : 'import_contacts',
-                type : 'basic',
-                link : '/docs/fundamentals/directory-structure'
+                id      : 'guides.customization',
+                title   : 'Customization',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'guides.customization.pre-made-layouts',
+                        title: 'Pre-made layouts',
+                        type : 'basic',
+                        link : '/guides/customization/pre-made-layouts'
+                    },
+                    {
+                        id   : 'guides.customization.theming',
+                        title: 'Theming',
+                        type : 'basic',
+                        link : '/guides/customization/theming'
+                    }
+                ]
             },
             {
-                id   : 'documentation.updating-assembly',
-                title: 'Updating Assembly',
-                icon : 'import_contacts',
-                type : 'basic',
-                link : '/docs/fundamentals/updating-assmebly'
-            },
-            {
-                id   : 'documentation.multi-language',
-                title: 'Multi language',
-                icon : 'import_contacts',
-                type : 'basic',
-                link : '/docs/fundamentals/multi-language'
-            },
-            {
-                id   : 'documentation.material-theming',
-                title: 'Material theming',
-                icon : 'import_contacts',
-                type : 'basic',
-                link : '/docs/fundamentals/material-theming'
-            },
-            {
-                id   : 'documentation.theme-layouts',
-                title: 'Theme layouts',
-                icon : 'import_contacts',
-                type : 'basic',
-                link : '/docs/fundamentals/theme-layouts'
-            },
-            {
-                id   : 'documentation.content-layouts',
-                title: 'Content layouts',
-                icon : 'import_contacts',
-                type : 'basic',
-                link : '/docs/fundamentals/page-layouts'
+                id      : 'guides.authentication',
+                title   : 'Authentication',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'guides.authentication.jwt',
+                        title: 'JWT',
+                        type : 'basic',
+                        link : '/guides/authentication/jwt'
+                    }
+                ]
             }
         ]
     },
@@ -1254,7 +1478,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                                                             {
                                                                 id   : 'navigation-features.levels.0.1.2.3.4.5.6',
                                                                 title: 'Level 6',
-                                                                type : 'collapsable'
+                                                                type : 'basic'
                                                             }
                                                         ]
                                                     }
@@ -1267,6 +1491,29 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         ]
                     }
                 ]
+            },
+            {
+                id      : 'navigation-features.disabled-collapsable',
+                title   : 'Disabled collapsable',
+                icon    : 'menu',
+                type    : 'collapsable',
+                disabled: true,
+                children: [
+                    {
+                        id   : 'navigation-features.disabled-collapsable.child',
+                        title: 'You shouldn\'t be able to see this child',
+                        type : 'basic',
+                        link : '#'
+                    }
+                ]
+            },
+            {
+                id      : 'navigation-features.disabled-basic',
+                title   : 'Disabled basic',
+                icon    : 'menu',
+                type    : 'basic',
+                link    : '#',
+                disabled: true
             },
             {
                 id   : 'navigation-features.badge-style-oval',
@@ -1358,8 +1605,8 @@ export const compactNavigation: AsmNavigationItem[] = [
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
-        id      : 'documentation',
-        title   : 'Docs',
+        id      : 'guides',
+        title   : 'Guides',
         type    : 'aside',
         icon    : 'help',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
@@ -1402,8 +1649,8 @@ export const horizontalNavigation: AsmNavigationItem[] = [
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
-        id      : 'documentation',
-        title   : 'Docs',
+        id      : 'guides',
+        title   : 'Guides',
         type    : 'group',
         icon    : 'help',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
