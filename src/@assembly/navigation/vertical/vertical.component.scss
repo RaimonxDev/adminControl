@@ -203,7 +203,7 @@ asm-vertical-navigation {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                padding: 12px 24px 12px 32px;
+                padding: 12px 24px;
                 font-size: 13px;
                 font-weight: 500;
                 line-height: 20px;
@@ -211,12 +211,18 @@ asm-vertical-navigation {
 
                 .asm-vertical-navigation-item-icon {
                     margin-right: 16px;
+                    transition: color 375ms cubic-bezier(0.25, 0.8, 0.25, 1);
                 }
 
                 .asm-vertical-navigation-item-title-wrapper {
 
+                    .asm-vertical-navigation-item-title {
+                        transition: color 375ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                    }
+
                     .asm-vertical-navigation-item-subtitle {
                         font-size: 12px;
+                        transition: color 375ms cubic-bezier(0.25, 0.8, 0.25, 1);
                     }
                 }
 
@@ -315,9 +321,27 @@ asm-vertical-navigation {
                 .asm-vertical-navigation-item {
 
                     .asm-vertical-navigation-item-arrow {
-                        transform: rotate(-180deg);
+                        transform: rotate(90deg);
                     }
                 }
+            }
+        }
+
+        > .asm-vertical-navigation-item-children {
+
+            > *:last-child {
+                padding-bottom: 6px;
+
+                > .asm-vertical-navigation-item-children {
+
+                    > *:last-child {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+
+            .asm-vertical-navigation-item {
+                padding: 8px 24px;
             }
         }
 
@@ -326,28 +350,28 @@ asm-vertical-navigation {
             overflow: hidden;
 
             .asm-vertical-navigation-item {
-                padding-left: 72px;
+                padding-left: 64px;
             }
 
             // 2nd level
             .asm-vertical-navigation-item-children {
 
                 .asm-vertical-navigation-item {
-                    padding-left: 88px;
+                    padding-left: 80px;
                 }
 
                 // 3rd level
                 .asm-vertical-navigation-item-children {
 
                     .asm-vertical-navigation-item {
-                        padding-left: 104px;
+                        padding-left: 96px;
                     }
 
                     // 4th level
                     .asm-vertical-navigation-item-children {
 
                         .asm-vertical-navigation-item {
-                            padding-left: 120px;
+                            padding-left: 112px;
                         }
                     }
                 }
@@ -528,16 +552,16 @@ asm-vertical-navigation {
     &.asm-vertical-navigation-appearance-dense {
 
         &:not(.asm-vertical-navigation-mode-over) {
-            width: 88px;
-            min-width: 88px;
-            max-width: 88px;
+            width: 72px;
+            min-width: 72px;
+            max-width: 72px;
 
             // Left positioned
             &.asm-vertical-navigation-position-left {
 
                 // Side mode
                 &.asm-vertical-navigation-mode-side {
-                    margin-left: -88px;
+                    margin-left: -72px;
                 }
 
                 // Opened
@@ -551,7 +575,7 @@ asm-vertical-navigation {
 
                 // Side mode
                 &.asm-vertical-navigation-mode-side {
-                    margin-right: -88px;
+                    margin-right: -72px;
                 }
 
                 // Opened
@@ -562,7 +586,7 @@ asm-vertical-navigation {
                 // Aside wrapper
                 .asm-vertical-navigation-aside-wrapper {
                     left: auto;
-                    right: 88px;
+                    right: 72px;
                 }
 
                 &.asm-vertical-navigation-hover {
@@ -617,7 +641,7 @@ asm-vertical-navigation {
                 .asm-vertical-navigation-content {
 
                     .asm-vertical-navigation-item {
-                        padding: 14px 32px;
+                        padding: 12px 24px;
 
                         .asm-vertical-navigation-item-arrow,
                         .asm-vertical-navigation-item-badge,
@@ -661,7 +685,7 @@ asm-vertical-navigation {
 
         // Aside wrapper
         .asm-vertical-navigation-aside-wrapper {
-            left: 80px;
+            left: 72px;
         }
 
         // Hover
@@ -821,12 +845,14 @@ asm-vertical-navigation {
             color: currentColor;
 
             &.asm-vertical-navigation-item-active:not(.asm-vertical-navigation-item-disabled) {
-                box-shadow: inset 3px 0 0 0 map-get($primary, default);
+                color: map-get($primary, default);
 
-                @if ($is-dark) {
-                    background: rgba(0, 0, 0, 0.38);
-                } @else {
-                    background: map-get($primary, 100);
+                .asm-vertical-navigation-item-icon {
+                    color: map-get($primary, default);
+                }
+
+                .asm-vertical-navigation-item-subtitle {
+                    color: rgba(map-get($primary, default), 0.7);
                 }
             }
 
@@ -850,12 +876,15 @@ asm-vertical-navigation {
 
                 .asm-vertical-navigation-item {
 
-                    &:hover:not(.asm-vertical-navigation-item-active):not(.asm-vertical-navigation-item-disabled) {
+                    &:hover:not(.asm-vertical-navigation-item-disabled) {
+                        color: map-get($primary, default);
 
-                        @if ($is-dark) {
-                            background: rgba(0, 0, 0, 0.38);
-                        } @else {
-                            background: map-get($primary, 100);
+                        .asm-vertical-navigation-item-icon {
+                            color: map-get($primary, default);
+                        }
+
+                        .asm-vertical-navigation-item-subtitle {
+                            color: rgba(map-get($primary, default), 0.7);
                         }
                     }
                 }
@@ -867,14 +896,19 @@ asm-vertical-navigation {
 
             &.asm-vertical-navigation-item-expanded {
 
-                @if ($is-dark) {
-                    background: rgba(0, 0, 0, 0.12);
-                } @else {
-                    background: rgba(map-get($primary, 100), 0.38);
-                }
+                > .asm-vertical-navigation-item-wrapper {
 
-                asm-vertical-navigation-collapsable-item {
-                    background: transparent;
+                    .asm-vertical-navigation-item {
+                        color: map-get($primary, default);
+
+                        .asm-vertical-navigation-item-icon {
+                            color: map-get($primary, default);
+                        }
+
+                        .asm-vertical-navigation-item-subtitle {
+                            color: rgba(map-get($primary, default), 0.7);
+                        }
+                    }
                 }
             }
         }
@@ -905,42 +939,6 @@ asm-vertical-navigation {
         // DARK THEME
         &.theme-dark {
 
-            // Navigation items common
-            .asm-vertical-navigation-item {
-
-                &.asm-vertical-navigation-item-active {
-                    background: rgba(0, 0, 0, 0.38);
-                }
-            }
-
-            // Aside, Basic, Collapsable
-            asm-vertical-navigation-aside-item,
-            asm-vertical-navigation-basic-item,
-            asm-vertical-navigation-collapsable-item {
-
-                > .asm-vertical-navigation-item-wrapper {
-
-                    .asm-vertical-navigation-item {
-
-                        &:hover:not(.asm-vertical-navigation-item-active):not(.asm-vertical-navigation-item-disabled) {
-                            background: rgba(0, 0, 0, 0.38);
-                        }
-                    }
-                }
-            }
-
-            // Collapsable
-            asm-vertical-navigation-collapsable-item {
-
-                &.asm-vertical-navigation-item-expanded {
-                    background: rgba(0, 0, 0, 0.12);
-
-                    asm-vertical-navigation-collapsable-item {
-                        background: transparent;
-                    }
-                }
-            }
-
             // Divider
             asm-vertical-navigation-divider-item {
                 color: rgba(asm-color('gray', 200), 0.12)
@@ -955,113 +953,6 @@ asm-vertical-navigation {
 
                         .asm-vertical-navigation-item-title {
                             color: map-get($primary, 400);
-                        }
-                    }
-                }
-            }
-        }
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ [appearance] Compact
-        // -----------------------------------------------------------------------------------------------------
-
-        &.asm-vertical-navigation-appearance-compact {
-
-            // Wrapper
-            .asm-vertical-navigation-wrapper {
-
-                .asm-vertical-navigation-content {
-
-                    .asm-vertical-navigation-item {
-
-                        &.asm-vertical-navigation-item-active {
-                            background: transparent;
-                            box-shadow: none !important;
-
-                            .asm-vertical-navigation-item-title,
-                            .asm-vertical-navigation-item-icon {
-                                color: map-get($primary, default) !important;
-                            }
-                        }
-                    }
-
-                    // Aside, Basic, Collapsable
-                    asm-vertical-navigation-aside-item,
-                    asm-vertical-navigation-basic-item,
-                    asm-vertical-navigation-collapsable-item {
-
-                        > .asm-vertical-navigation-item-wrapper {
-
-                            .asm-vertical-navigation-item {
-
-                                &:hover:not(.asm-vertical-navigation-item-active):not(.asm-vertical-navigation-item-disabled) {
-                                    background: transparent;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ [appearance] Dense
-        // -----------------------------------------------------------------------------------------------------
-
-        &.asm-vertical-navigation-appearance-dense {
-
-            // Wrapper
-            .asm-vertical-navigation-wrapper {
-
-                .asm-vertical-navigation-content {
-
-                    .asm-vertical-navigation-item {
-
-                        &.asm-vertical-navigation-item-active {
-                            box-shadow: none !important;
-
-                            .asm-vertical-navigation-item-title,
-                            .asm-vertical-navigation-item-icon {
-                                color: map-get($primary, default) !important;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ [appearance] Thin
-        // -----------------------------------------------------------------------------------------------------
-
-        &.asm-vertical-navigation-appearance-thin {
-
-            // Wrapper
-            .asm-vertical-navigation-wrapper {
-
-                .asm-vertical-navigation-content {
-
-                    .asm-vertical-navigation-item {
-
-                        &.asm-vertical-navigation-item-active {
-                            box-shadow: none !important;
-                        }
-                    }
-                }
-            }
-
-            // Aside, Basic, Collapsable
-            asm-vertical-navigation-aside-item,
-            asm-vertical-navigation-basic-item,
-            asm-vertical-navigation-collapsable-item {
-
-                .asm-vertical-navigation-item {
-
-                    &.asm-vertical-navigation-item-active {
-
-                        .asm-vertical-navigation-item-title,
-                        .asm-vertical-navigation-item-icon {
-                            color: map-get($primary, default) !important;
                         }
                     }
                 }
