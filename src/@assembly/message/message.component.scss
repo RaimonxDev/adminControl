@@ -1,6 +1,7 @@
 @import 'src/@assembly/styles/assembly';
 
 asm-message {
+    display: block;
 
     // Show icon
     &.asm-message-show-icon {

@@ -1026,6 +1026,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         link : '/ui/icons/dripicons'
                     },
                     {
+                        id   : 'user-interface.icons.feather',
+                        title: 'Feather',
+                        type : 'basic',
+                        link : '/ui/icons/feather'
+                    },
+                    {
                         id   : 'user-interface.icons.iconsmind',
                         title: 'Iconsmind',
                         type : 'basic',

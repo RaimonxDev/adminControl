@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { dripicons, iconsmind, material } from '@mock-api/data/icons/data';
+import { dripicons, feather, iconsmind, material } from '@mock-api/data/icons/data';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +11,7 @@ export class IconsMockApi implements AsmMockApi
 {
     // Private Readonly
     private readonly _dripicons: any;
+    private readonly _feather: any;
     private readonly _iconsmind: any;
     private readonly _material: any;
 
@@ -25,6 +26,7 @@ export class IconsMockApi implements AsmMockApi
     {
         // Set the data
         this._dripicons = dripicons;
+        this._feather = feather;
         this._iconsmind = iconsmind;
         this._material = material;
 
@@ -53,6 +55,22 @@ export class IconsMockApi implements AsmMockApi
                         namespace: 'dripicons',
                         name     : 'Dripicons',
                         list     : _.cloneDeep(this._dripicons)
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Feather icons - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/ui/icons/feather')
+            .reply(() => {
+                return [
+                    200,
+                    {
+                        namespace: 'feather',
+                        name     : 'Feather',
+                        list     : _.cloneDeep(this._feather)
                     }
                 ];
             });
