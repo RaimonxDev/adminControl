@@ -127,10 +127,11 @@ export class UnlockSessionComponent implements OnInit
 
             // Show the message
             this.message = {
-                content : 'Invalid password',
-                shake   : true,
-                showIcon: false,
-                type    : 'error'
+                appearance: 'outline',
+                content   : 'Invalid password',
+                shake     : true,
+                showIcon  : false,
+                type      : 'error'
             };
         }, 1000);
     }

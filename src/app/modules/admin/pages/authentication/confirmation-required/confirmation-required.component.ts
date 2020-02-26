@@ -13,7 +13,6 @@ import { AsmAnimations } from '@assembly/animations';
 export class ConfirmationRequiredComponent implements OnInit
 {
     cardStyle: string;
-    email: string;
 
     /**
      * Constructor
@@ -37,9 +36,6 @@ export class ConfirmationRequiredComponent implements OnInit
      */
     ngOnInit(): void
     {
-        // Get the user's email
-        this.email = 'watkins.andrew@company.com';
-
         // Set the card style for the first time
         this._setCardStyle();
 

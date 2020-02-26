@@ -48,8 +48,9 @@ export class SignInComponent implements OnInit
     {
         // Create the form
         this.signInForm = this._formBuilder.group({
-            email   : [''],
-            password: ['']
+            email     : [''],
+            password  : [''],
+            rememberMe: ['']
         });
 
         // Set the card style for the first time
@@ -116,10 +117,11 @@ export class SignInComponent implements OnInit
 
             // Show the message
             this.message = {
-                content : 'Invalid email or password',
-                shake   : true,
-                showIcon: false,
-                type    : 'error'
+                appearance: 'outline',
+                content   : 'Invalid email or password',
+                shake     : true,
+                showIcon  : false,
+                type      : 'error'
             };
         }, 1000);
     }

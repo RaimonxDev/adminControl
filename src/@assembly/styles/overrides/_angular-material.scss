@@ -106,6 +106,7 @@
 // @ Checkbox
 // -----------------------------------------------------------------------------------------------------
 .mat-checkbox {
+    display: inline-flex;
 
     // Allow multiline text
     .mat-checkbox-layout {
@@ -150,6 +151,7 @@
         .mat-form-field-wrapper {
 
             .mat-form-field-flex {
+                min-height: 48px !important;
 
                 .mat-form-field-infix {
 
@@ -592,12 +594,15 @@ label.asm-mat-label {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    font-weight: 600;
+    font-weight: 500;
 
     > span {
         position: relative;
-        margin-bottom: 4px;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
         order: 1;
+        margin-bottom: 4px;
     }
 
     > .mat-form-field.mat-form-field-appearance-fill {
@@ -1076,6 +1081,14 @@ textarea.mat-input-element {
                     }
                 }
             }
+        }
+    }
+
+    // mat-form-field within a label tag
+    label.asm-mat-label {
+
+        > span {
+            color: map-get($foreground, secondary-text);
         }
     }
 

@@ -1,85 +1,91 @@
 <div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- cardStyle can be 'classic', 'modern', 'modern-alt', 'fullscreen', 'fullscreen-alt' -->
-    <asm-card [ngClass]="cardStyle">
+    <asm-card class="auth-card"
+              [ngClass]="cardStyle">
 
         <!-- Form container -->
         <div class="form-container">
 
-            <!-- Logo -->
-            <div class="logo">
-                <img class="logo-dark"
-                     src="assets/images/logo/logo-dark.svg">
-                <img class="logo-light"
-                     src="assets/images/logo/logo-light.svg">
-            </div>
+            <div class="form">
 
-            <!-- Title -->
-            <h2 class="title">Your session is locked!</h2>
-
-            <!-- Message -->
-            <asm-message *ngIf="message"
-                         [showIcon]="message.showIcon"
-                         [type]="message.type"
-                         [@shake]="message.shake">
-                <div asmMessageContent>{{message.content}}</div>
-            </asm-message>
-
-            <!-- Unlock form -->
-            <form [formGroup]="unlockSessionForm">
-
-                <!-- Name field -->
-                <mat-form-field>
-                    <mat-label>Full name</mat-label>
-                    <input id="name"
-                           matInput
-                           [formControlName]="'name'">
-                    <mat-icon matSuffix
-                              [svgIcon]="'account_circle'"></mat-icon>
-                </mat-form-field>
-
-                <!-- Password field -->
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input id="password"
-                           matInput
-                           type="password"
-                           [formControlName]="'password'"
-                           #passwordField>
-                    <button mat-icon-button
-                            (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
-                            tabindex="-1"
-                            matSuffix>
-                        <mat-icon *ngIf="passwordField.type === 'password'"
-                                  [svgIcon]="'visibility'"></mat-icon>
-                        <mat-icon *ngIf="passwordField.type === 'text'"
-                                  [svgIcon]="'visibility_off'"></mat-icon>
-                    </button>
-                </mat-form-field>
-
-                <!-- Submit button -->
-                <button class="submit-button asm-mat-button-large"
-                        mat-flat-button
-                        type="button"
-                        [color]="'primary'"
-                        [disabled]="unlockSessionForm.disabled"
-                        (click)="unlock()">
-                    <span *ngIf="!unlockSessionForm.disabled">
-                        Unlock your session
-                    </span>
-                    <asm-spinner *ngIf="unlockSessionForm.disabled"
-                                 [appearance]="'material'"
-                                 [diameter]="24"></asm-spinner>
-                </button>
-
-                <!-- Footer link -->
-                <div class="footer-link">
-                    <span>I'm not</span>
-                    <a class="link"
-                       [routerLink]="['/pages/authentication/sign-out']">{{name}}</a>
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="assets/images/logo/logo-base.svg">
                 </div>
 
-            </form>
+                <!-- Title -->
+                <div class="title">Unlock your session</div>
+                <div class="subtitle">Your session is locked due to inactivity</div>
+
+                <!-- Message -->
+                <asm-message *ngIf="message"
+                             [appearance]="message.appearance"
+                             [showIcon]="message.showIcon"
+                             [type]="message.type"
+                             [@shake]="message.shake">
+                    <div asmMessageContent>{{message.content}}</div>
+                </asm-message>
+
+                <!-- Unlock form -->
+                <form [formGroup]="unlockSessionForm">
+
+                    <!-- Name field -->
+                    <label class="asm-mat-label">
+                        <span>Full name</span>
+                        <mat-form-field>
+                            <input id="name"
+                                   matInput
+                                   [formControlName]="'name'">
+                        </mat-form-field>
+                    </label>
+
+                    <!-- Password field -->
+                    <label class="asm-mat-label">
+                        <span>Password</span>
+                        <mat-form-field>
+                            <input id="password"
+                                   matInput
+                                   type="password"
+                                   [formControlName]="'password'"
+                                   #passwordField>
+                            <button mat-icon-button
+                                    (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                                    tabindex="-1"
+                                    matSuffix>
+                                <mat-icon *ngIf="passwordField.type === 'password'"
+                                          [svgIcon]="'visibility'"></mat-icon>
+                                <mat-icon *ngIf="passwordField.type === 'text'"
+                                          [svgIcon]="'visibility_off'"></mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </label>
+
+                    <!-- Submit button -->
+                    <button class="submit-button asm-mat-button-large"
+                            mat-flat-button
+                            type="button"
+                            [color]="'primary'"
+                            [disabled]="unlockSessionForm.disabled"
+                            (click)="unlock()">
+                        <span *ngIf="!unlockSessionForm.disabled">
+                            Unlock your session
+                        </span>
+                        <asm-spinner *ngIf="unlockSessionForm.disabled"
+                                     [appearance]="'material'"
+                                     [diameter]="24"></asm-spinner>
+                    </button>
+
+                    <!-- Form footer -->
+                    <div class="form-footer">
+                        <span>I'm not</span>
+                        <a class="link"
+                           [routerLink]="['/pages/authentication/sign-out']">{{name}}</a>
+                    </div>
+
+                </form>
+
+            </div>
 
         </div>
 

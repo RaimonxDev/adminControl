@@ -1,71 +1,73 @@
 <div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- cardStyle can be 'classic', 'modern', 'modern-alt', 'fullscreen', 'fullscreen-alt' -->
-    <asm-card [ngClass]="cardStyle">
+    <asm-card class="auth-card"
+              [ngClass]="cardStyle">
 
         <!-- Form container -->
         <div class="form-container">
 
-            <!-- Logo -->
-            <div class="logo">
-                <img class="logo-dark"
-                     src="assets/images/logo/logo-dark.svg">
-                <img class="logo-light"
-                     src="assets/images/logo/logo-light.svg">
-            </div>
+            <div class="form">
 
-            <!-- Title -->
-            <h2 class="title">Almost there!</h2>
-            <h6 class="subtitle">Do you want to be notified when we are ready? Register below so we can notify you about the launch!</h6>
-
-            <!-- Message -->
-            <asm-message *ngIf="message"
-                         [showIcon]="message.showIcon"
-                         [type]="message.type"
-                         [@shake]="message.shake">
-                <div asmMessageContent>{{message.content}}</div>
-            </asm-message>
-
-            <!-- Coming soon form -->
-            <form [formGroup]="comingSoonForm">
-
-                <!-- Email field -->
-                <mat-form-field>
-                    <mat-label>Email</mat-label>
-                    <input id="email"
-                           matInput
-                           [formControlName]="'email'">
-                    <mat-icon matSuffix
-                              [svgIcon]="'mail'"></mat-icon>
-                    <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
-                        Email address is required
-                    </mat-error>
-                    <mat-error *ngIf="comingSoonForm.get('email').hasError('email')">
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-
-                <!-- Submit button -->
-                <button class="submit-button asm-mat-button-large"
-                        mat-flat-button
-                        type="button"
-                        [color]="'primary'"
-                        [disabled]="comingSoonForm.disabled"
-                        (click)="register()">
-                    <span *ngIf="!comingSoonForm.disabled">
-                        Register to launch list
-                    </span>
-                    <asm-spinner *ngIf="comingSoonForm.disabled"
-                                 [appearance]="'material'"
-                                 [diameter]="24"></asm-spinner>
-                </button>
-
-                <!-- Footer -->
-                <div class="footer">
-                    You are not joining to a newsletter! We will only send one e-mail to you when we launch and that's it!
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="assets/images/logo/logo-base.svg">
                 </div>
 
-            </form>
+                <!-- Title -->
+                <div class="title">Almost there!</div>
+                <div class="subtitle">Do you want to be notified when we are ready? Register below so we can notify you about the launch!</div>
+
+                <!-- Message -->
+                <asm-message *ngIf="message"
+                             [showIcon]="message.showIcon"
+                             [type]="message.type"
+                             [@shake]="message.shake">
+                    <div asmMessageContent>{{message.content}}</div>
+                </asm-message>
+
+                <!-- Coming soon form -->
+                <form [formGroup]="comingSoonForm">
+
+                    <!-- Email field -->
+                    <label class="asm-mat-label">
+                        <span>Email address</span>
+                        <mat-form-field>
+                            <input id="email"
+                                   matInput
+                                   [formControlName]="'email'">
+                            <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
+                                Email address is required
+                            </mat-error>
+                            <mat-error *ngIf="comingSoonForm.get('email').hasError('email')">
+                                Please enter a valid email address
+                            </mat-error>
+                        </mat-form-field>
+                    </label>
+
+                    <!-- Submit button -->
+                    <button class="submit-button asm-mat-button-large"
+                            mat-flat-button
+                            type="button"
+                            [color]="'primary'"
+                            [disabled]="comingSoonForm.disabled"
+                            (click)="register()">
+                        <span *ngIf="!comingSoonForm.disabled">
+                            Notify me when you launch
+                        </span>
+                        <asm-spinner *ngIf="comingSoonForm.disabled"
+                                     [appearance]="'material'"
+                                     [diameter]="24"></asm-spinner>
+                    </button>
+
+                    <!-- Form footer -->
+                    <div class="form-footer">
+                        This isn't a newsletter subscription. We will send one email to you when we launch and then you will be removed from the list.
+                    </div>
+
+                </form>
+
+            </div>
 
         </div>
 
