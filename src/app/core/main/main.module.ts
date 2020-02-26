@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -15,7 +14,6 @@ import { appConfig } from 'app/core/config';
         MainComponent
     ],
     imports     : [
-        MatButtonModule,
         MatIconModule,
         MatRadioModule,
         MatSlideToggleModule,
