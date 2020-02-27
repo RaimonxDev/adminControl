@@ -271,3 +271,9 @@ img {
     width: 100%;
     vertical-align: top;
 }
+
+// Fix: Disabled placeholder color is too faded on Safari
+input[disabled] {
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
+}

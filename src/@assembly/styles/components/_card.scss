@@ -119,7 +119,7 @@ asm-card {
                 max-width: 320px;
 
                 @include asm-media-breakpoint('xs') {
-                    min-width: 0;
+                    max-width: 0;
                 }
 
                 .logo {
