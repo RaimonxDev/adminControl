@@ -277,10 +277,10 @@ asm-date-range {
             .end {
                 @if ($is-dark) {
                     background-color: rgba(0, 0, 0, 0.05);
-                    border-color: asm-color('gray', 600);
+                    border-color: asm-color('cool-gray', 500);
                 } @else {
-                    background-color: asm-color('gray', 100);
-                    border-color: asm-color('gray', 400);
+                    background-color: asm-color('cool-gray', 50);
+                    border-color: asm-color('cool-gray', 300);
                 }
             }
         }

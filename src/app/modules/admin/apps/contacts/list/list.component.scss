@@ -316,7 +316,7 @@ contacts-list {
                             background: transparent;
 
                             th {
-                                background: asm-color('gray', 100);
+                                background: asm-color('cool-gray', 50);
                             }
 
                             tr.contact-row {
@@ -337,8 +337,8 @@ contacts-list {
                                         .avatar {
 
                                             > span {
-                                                background: asm-color('gray', 300);
-                                                color: asm-color('gray', 700);
+                                                background: asm-color('cool-gray', 200);
+                                                color: asm-color('cool-gray', 600);
                                             }
                                         }
                                     }

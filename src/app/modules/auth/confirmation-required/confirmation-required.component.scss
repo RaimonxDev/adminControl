@@ -247,7 +247,7 @@ auth-confirmation-required {
             // Content container
             .content-container {
                 @if ($is-dark) {
-                    background: asm-color('gray', 700);
+                    background: asm-color('cool-gray', 600);
                 } @else {
                     background: asm-color('indigo', 700);
                 }
@@ -257,7 +257,7 @@ auth-confirmation-required {
 
                     path {
                         @if ($is-dark) {
-                            fill: asm-color('gray', 900);
+                            fill: asm-color('cool-gray', 900);
                         } @else {
                             fill: asm-color('indigo', 100);
                         }

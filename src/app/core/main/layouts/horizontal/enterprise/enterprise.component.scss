@@ -226,7 +226,7 @@ layout[type="enterprise"] {
             @if ($is-dark) {
                 background: map-get($background, card);
             } @else {
-                background: asm-color('gray', 300);
+                background: asm-color('cool-gray', 200);
             }
 
             > .header {
@@ -236,15 +236,15 @@ layout[type="enterprise"] {
 
                 .top-bar {
                     @if ($is-dark) {
-                        background: asm-color('gray', 900);
+                        background: asm-color('cool-gray', 900);
                     } @else {
-                        background: asm-color('gray', 800);
+                        background: asm-color('cool-gray', 800);
                     }
                 }
 
                 .bottom-bar {
                     @if ($is-dark) {
-                        background: asm-color('gray', 700);
+                        background: asm-color('cool-gray', 600);
                     } @else {
                         background: map-get($background, card);
                     }
@@ -257,7 +257,7 @@ layout[type="enterprise"] {
 
             > .footer {
                 @if ($is-dark) {
-                    background: asm-color('gray', 700);
+                    background: asm-color('cool-gray', 600);
                 } @else {
                     background: map-get($background, card);
                     box-shadow: 0 -1px 0 0 map-get($foreground, divider);

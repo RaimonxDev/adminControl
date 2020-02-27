@@ -333,7 +333,7 @@ tasks-list {
                                 @if ($is-dark) {
                                     background: rgba(0, 0, 0, 0.05);
                                 } @else {
-                                    background: asm-color('gray', 100);
+                                    background: asm-color('cool-gray', 100);
                                 }
                             }
 
@@ -390,7 +390,7 @@ tasks-list {
 
                         .no-tasks {
                             @if (not $is-dark) {
-                                background: asm-color('gray', 200);
+                                background: asm-color('cool-gray', 100);
                             }
 
                             .mat-icon {

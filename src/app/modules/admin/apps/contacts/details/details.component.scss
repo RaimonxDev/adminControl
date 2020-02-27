@@ -838,17 +838,17 @@ contacts-details {
                             &:hover,
                             &:focus {
                                 @if ($is-dark) {
-                                    background-color: asm-color('gray', 800);
+                                    background-color: asm-color('cool-gray', 800);
                                 } @else {
-                                    background-color: rgba(asm-color('gray', 500), 0.2);
+                                    background-color: rgba(asm-color('cool-gray', 400), 0.2);
                                 }
                             }
                         }
                     }
 
                     .no-avatar {
-                        background: asm-color('gray', 300);
-                        color: asm-color('gray', 700);
+                        background: asm-color('cool-gray', 200);
+                        color: asm-color('cool-gray', 600);
                     }
                 }
             }
@@ -857,16 +857,16 @@ contacts-details {
 
                 .tag,
                 .edit-tags {
-                    color: asm-color('gray', 600);
+                    color: asm-color('cool-gray', 500);
 
                     .mat-icon {
-                        color: asm-color('gray', 600);
+                        color: asm-color('cool-gray', 500);
                     }
 
                     @if ($is-dark) {
                         background: map-get($background, background);
                     } @else {
-                        background: asm-color('gray', 200);
+                        background: asm-color('cool-gray', 100);
                     }
                 }
             }

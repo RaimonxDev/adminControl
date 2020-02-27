@@ -361,7 +361,7 @@ pricing-simple {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-color('gray', 800);
+                    fill: asm-color('cool-gray', 800);
                 } @else {
                     fill: asm-color('blue', 300);
                 }

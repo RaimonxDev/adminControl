@@ -138,7 +138,7 @@ layout[type="basic"] {
 
         > asm-vertical-navigation {
             @if ($is-dark) {
-                background: asm-color('gray', 900);
+                background: asm-color('cool-gray', 900);
             } @else {
                 background: map-get($background, card);
             }
@@ -192,7 +192,7 @@ layout[type="basic"] {
                             }
 
                             &.not-visible {
-                                background: asm-color('gray', 500);
+                                background: asm-color('cool-gray', 400);
                             }
                         }
                     }

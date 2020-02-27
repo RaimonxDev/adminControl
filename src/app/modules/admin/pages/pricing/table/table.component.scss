@@ -466,7 +466,7 @@ pricing-table {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-color('gray', 800);
+                    fill: asm-color('cool-gray', 800);
                 } @else {
                     fill: asm-color('blue', 300);
                 }
@@ -521,7 +521,7 @@ pricing-table {
                                 @if ($is-dark) {
                                     background: rgba(0, 0, 0, 0.05);
                                 } @else {
-                                    background: asm-color('gray', 100);
+                                    background: asm-color('cool-gray', 100);
                                 }
                             }
                         }

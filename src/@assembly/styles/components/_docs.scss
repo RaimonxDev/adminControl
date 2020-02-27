@@ -310,7 +310,7 @@
                         @if ($is-dark) {
                             background: map-get($background, card);
                         } @else {
-                            background: asm-color('gray', 100);
+                            background: asm-color('cool-gray', 50);
                         }
                     }
 
@@ -359,7 +359,7 @@
 
                                 .label {
                                     color: map-get($foreground, secondary-text);
-                                    background: asm-color('gray', 300);
+                                    background: asm-color('cool-gray', 200);
                                 }
                             }
                         }

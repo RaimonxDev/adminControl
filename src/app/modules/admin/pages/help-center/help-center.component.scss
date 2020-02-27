@@ -168,7 +168,7 @@ help-center {
             @if ($is-dark) {
                 background: rgba(0, 0, 0, 0.12);
             } @else {
-                background: asm-color('gray', 300);
+                background: asm-color('cool-gray', 200);
             }
         }
 

@@ -71,7 +71,7 @@ tasks-details {
 
             .label {
                 margin-bottom: 4px;
-                font-weight: 600;
+                font-weight: 500;
             }
 
             .tag-wrapper {
@@ -125,7 +125,7 @@ tasks-details {
 
                 .label {
                     margin-bottom: 4px;
-                    font-weight: 600;
+                    font-weight: 500;
                 }
 
                 .mat-button {
@@ -144,7 +144,7 @@ tasks-details {
 
                 .label {
                     margin-bottom: 4px;
-                    font-weight: 600;
+                    font-weight: 500;
                 }
 
                 .mat-button {
@@ -385,17 +385,17 @@ tasks-details {
                     .tag {
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.09);
-                            color: asm-color('gray', 500);
+                            color: asm-color('cool-gray', 400);
                         } @else {
-                            background: asm-color('gray', 200);
-                            color: asm-color('gray', 600);
+                            background: asm-color('cool-gray', 100);
+                            color: asm-color('cool-gray', 500);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('gray', 500);
+                                color: asm-color('cool-gray', 400);
                             } @else {
-                                color: asm-color('gray', 600);
+                                color: asm-color('cool-gray', 500);
                             }
                         }
                     }
@@ -404,17 +404,17 @@ tasks-details {
 
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.09);
-                            color: asm-color('gray', 500);
+                            color: asm-color('cool-gray', 400);
                         } @else {
-                            background: asm-color('gray', 200);
-                            color: asm-color('gray', 600);
+                            background: asm-color('cool-gray', 100);
+                            color: asm-color('cool-gray', 500);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('gray', 500);
+                                color: asm-color('cool-gray', 400);
                             } @else {
-                                color: asm-color('gray', 600);
+                                color: asm-color('cool-gray', 500);
                             }
                         }
 
@@ -422,7 +422,7 @@ tasks-details {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.08) !important;
                             } @else {
-                                background: asm-color('gray', 300) !important;
+                                background: asm-color('cool-gray', 200) !important;
                             }
                         }
                     }
@@ -462,17 +462,17 @@ tasks-details {
                     &.normal {
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.09);
-                            color: asm-color('gray', 500);
+                            color: asm-color('cool-gray', 400);
                         } @else {
-                            background: asm-color('gray', 200);
-                            color: asm-color('gray', 600);
+                            background: asm-color('cool-gray', 100);
+                            color: asm-color('cool-gray', 500);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('gray', 500);
+                                color: asm-color('cool-gray', 400);
                             } @else {
-                                color: asm-color('gray', 600);
+                                color: asm-color('cool-gray', 500);
                             }
                         }
 
@@ -480,7 +480,7 @@ tasks-details {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.08) !important;
                             } @else {
-                                background: asm-color('gray', 300) !important;
+                                background: asm-color('cool-gray', 200) !important;
                             }
                         }
                     }
@@ -519,17 +519,17 @@ tasks-details {
 
                     @if ($is-dark) {
                         background: rgba(0, 0, 0, 0.09);
-                        color: asm-color('gray', 500);
+                        color: asm-color('cool-gray', 400);
                     } @else {
-                        background: asm-color('gray', 200);
-                        color: asm-color('gray', 600);
+                        background: asm-color('cool-gray', 100);
+                        color: asm-color('cool-gray', 500);
                     }
 
                     .mat-icon {
                         @if ($is-dark) {
-                            color: asm-color('gray', 500);
+                            color: asm-color('cool-gray', 400);
                         } @else {
-                            color: asm-color('gray', 600);
+                            color: asm-color('cool-gray', 500);
                         }
                     }
 
@@ -537,7 +537,7 @@ tasks-details {
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.08) !important;
                         } @else {
-                            background: asm-color('gray', 300) !important;
+                            background: asm-color('cool-gray', 200) !important;
                         }
                     }
 

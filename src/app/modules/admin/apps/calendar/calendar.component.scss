@@ -402,7 +402,7 @@ calendar {
 
     calendar {
         @if ($is-dark) {
-            background: asm-color('gray', 900);
+            background: asm-color('cool-gray', 900);
         } @else {
             background: map-get($background, card);
         }
@@ -445,10 +445,10 @@ calendar {
                         .field {
                             @if ($is-dark) {
                                 background-color: rgba(0, 0, 0, 0.05);
-                                border-color: asm-color('gray', 600);
+                                border-color: asm-color('cool-gray', 500);
                             } @else {
-                                background-color: asm-color('gray', 100);
-                                border-color: asm-color('gray', 400);
+                                background-color: asm-color('cool-gray', 50);
+                                border-color: asm-color('cool-gray', 300);
                             }
                         }
                     }

@@ -15,19 +15,19 @@ input {
 
         // Placeholder color
         &::placeholder {
-            color: map-get($foreground, secondary-text);
+            color: map-get($foreground, hint-text);
         }
 
         &::-moz-placeholder {
-            color: map-get($foreground, secondary-text);
+            color: map-get($foreground, hint-text);
         }
 
         &::-webkit-input-placeholder {
-            color: map-get($foreground, secondary-text);
+            color: map-get($foreground, hint-text);
         }
 
         &:-ms-input-placeholder {
-            color: map-get($foreground, secondary-text);
+            color: map-get($foreground, hint-text);
         }
 
         &:-webkit-autofill {

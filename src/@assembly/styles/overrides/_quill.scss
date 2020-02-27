@@ -42,10 +42,10 @@
     .ql-toolbar {
         @if ($is-dark) {
             background-color: rgba(0, 0, 0, 0.05);
-            border-color: asm-color('gray', 600);
+            border-color: asm-color('cool-gray', 500);
         } @else {
-            background: asm-color('gray', 200);
-            border-color: asm-color('gray', 400);
+            background: asm-color('cool-gray', 100);
+            border-color: asm-color('cool-gray', 300);
         }
 
         .ql-picker {
@@ -54,17 +54,17 @@
 
                 .ql-picker-label {
                     @if ($is-dark) {
-                        border-color: asm-color('gray', 600);
+                        border-color: asm-color('cool-gray', 500);
                     } @else {
-                        border-color: asm-color('gray', 400);
+                        border-color: asm-color('cool-gray', 300);
                     }
                 }
 
                 .ql-picker-options {
                     @if ($is-dark) {
-                        border-color: asm-color('gray', 600);
+                        border-color: asm-color('cool-gray', 500);
                     } @else {
-                        border-color: asm-color('gray', 400);
+                        border-color: asm-color('cool-gray', 300);
                     }
                     background: map-get($background, card);
                 }
@@ -113,16 +113,16 @@
 
     .ql-container {
         @if ($is-dark) {
-            border-color: asm-color('gray', 600);
+            border-color: asm-color('cool-gray', 500);
         } @else {
-            border-color: asm-color('gray', 400);
+            border-color: asm-color('cool-gray', 300);
         }
 
         .ql-editor {
             @if ($is-dark) {
                 background-color: rgba(0, 0, 0, 0.05);
             } @else {
-                background-color: asm-color('gray', 100);
+                background-color: asm-color('cool-gray', 50);
             }
 
             &:focus {

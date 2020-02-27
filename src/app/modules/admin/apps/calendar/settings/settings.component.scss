@@ -61,7 +61,7 @@ calendar-settings {
 
     calendar-settings {
         @if ($is-dark) {
-            background: asm-color('gray', 900);
+            background: asm-color('cool-gray', 900);
         } @else {
             background: map-get($background, card);
         }

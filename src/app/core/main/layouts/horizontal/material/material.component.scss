@@ -212,7 +212,7 @@ layout[type="material"] {
             @if ($is-dark) {
                 background: map-get($background, card);
             } @else {
-                background: asm-color('gray', 300);
+                background: asm-color('cool-gray', 200);
             }
 
             > .header {

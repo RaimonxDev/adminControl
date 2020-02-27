@@ -183,9 +183,9 @@ help-center-guides-guide {
                     color: map-get($foreground, secondary-text);
 
                     @if ($is-dark) {
-                        border-color: asm-color('gray', 700);
+                        border-color: asm-color('cool-gray', 600);
                     } @else {
-                        border-color: asm-color('gray', 400);
+                        border-color: asm-color('cool-gray', 300);
                     }
                 }
             }

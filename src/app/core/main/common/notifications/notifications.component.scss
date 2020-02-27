@@ -246,7 +246,7 @@ notifications {
             @if ($is-dark) {
                 background: rgba(0, 0, 0, 0.05);
             } @else {
-                background: asm-color('gray', 800);
+                background: asm-color('cool-gray', 800);
                 color: asm-contrast('gray', 800);
             }
 
@@ -268,7 +268,7 @@ notifications {
             }
 
             .mark-all-as-read {
-                color: asm-color('gray', 500);
+                color: asm-color('cool-gray', 400);
             }
         }
 
@@ -283,7 +283,7 @@ notifications {
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.05) !important;
                         } @else {
-                            background: asm-color('gray', 100) !important;
+                            background: asm-color('cool-gray', 100) !important;
                         }
                     }
                 }
@@ -315,9 +315,9 @@ notifications {
 
                         .read {
                             @if ($is-dark) {
-                                background: asm-color('gray', 600);
+                                background: asm-color('cool-gray', 500);
                             } @else {
-                                background: asm-color('gray', 500);
+                                background: asm-color('cool-gray', 400);
                             }
                         }
                     }
