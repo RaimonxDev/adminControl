@@ -82,6 +82,7 @@
                     <mat-button-toggle [value]="'asm-mat-dense'">Dense</mat-button-toggle>
                     <mat-button-toggle [value]="'asm-mat-rounded'">Rounded</mat-button-toggle>
                     <mat-button-toggle [value]="'asm-mat-no-subscript'">No subscript</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-emphasized-affix'">Emphasized affix</mat-button-toggle>
                 </mat-button-toggle-group>
             </p>
 
@@ -93,7 +94,8 @@
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <mat-label>Input</mat-label>
-                            <input matInput>
+                            <input matInput
+                                   [placeholder]="'This is a placeholder'">
                             <mat-hint>This is a hint text</mat-hint>
                         </mat-form-field>
                     </div>
@@ -101,10 +103,8 @@
                     <div class="flex">
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Input with Prefix & Suffix</mat-label>
+                            <mat-label>Input with mat-icon as prefix & suffix</mat-label>
                             <input matInput>
-                            <span matInputPrefix>$</span>
-                            <span matInputSuffix>.00</span>
                             <mat-icon matPrefix
                                       [svgIcon]="'account_circle'"></mat-icon>
                             <mat-icon matSuffix
@@ -115,7 +115,7 @@
                     <div class="flex">
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Input with mat-icon-button as Prefix & Suffix</mat-label>
+                            <mat-label>Input with mat-icon-button as prefix & suffix</mat-label>
                             <input matInput>
                             <button mat-icon-button
                                     matPrefix>
@@ -131,28 +131,28 @@
                     <div class="flex">
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Input with Text Prefix & Text Suffix</mat-label>
+                            <mat-label>Input with text prefix & suffix</mat-label>
                             <input matInput>
-                            <span matInputPrefix>$</span>
-                            <span matInputSuffix>.00</span>
+                            <span matPrefix>$</span>
+                            <span matSuffix>.00</span>
                         </mat-form-field>
                     </div>
 
                     <div class="flex">
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Input with Text Prefix & Text Suffix</mat-label>
+                            <mat-label>Right aligned input with text prefix & suffix</mat-label>
                             <input class="text-right"
                                    matInput>
-                            <span matInputPrefix>$</span>
-                            <span matInputSuffix>.00</span>
+                            <span matPrefix>$</span>
+                            <span matSuffix>.00</span>
                         </mat-form-field>
                     </div>
 
                     <div class="flex">
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Input with mat-select as Prefix & Suffix</mat-label>
+                            <mat-label>Input with mat-select as prefix & suffix</mat-label>
                             <input matInput>
                             <mat-select [value]="'EU'"
                                         matPrefix>
@@ -179,7 +179,7 @@
                     <div class="flex">
                         <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Textarea with Prefix & Suffix</mat-label>
+                            <mat-label>Textarea with prefix & suffix</mat-label>
                             <textarea matInput></textarea>
                             <mat-icon matPrefix
                                       [svgIcon]="'account_circle'"></mat-icon>
@@ -191,7 +191,7 @@
                     <div class="flex">
                         <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Textarea with Autosize</mat-label>
+                            <mat-label>Textarea with autosize</mat-label>
                             <textarea matInput
                                       asmAutogrow></textarea>
                         </mat-form-field>
@@ -200,7 +200,7 @@
                     <div class="flex">
                         <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Textarea with Autosize, Prefix & Suffix</mat-label>
+                            <mat-label>Textarea with autosize, prefix & suffix</mat-label>
                             <textarea matInput
                                       asmAutogrow></textarea>
                             <mat-icon matPrefix
@@ -213,7 +213,7 @@
                     <div class="flex flex-col gt-xs:flex-row">
                         <mat-form-field class="flex-auto gt-xs:pr-3"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Select with Prefix</mat-label>
+                            <mat-label>Select with prefix</mat-label>
                             <mat-select>
                                 <mat-option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</mat-option>
                                 <mat-option value="select1-2">Select 1-2</mat-option>
@@ -224,7 +224,7 @@
                         </mat-form-field>
                         <mat-form-field class="flex-auto gt-xs:pl-3"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Select with Suffix</mat-label>
+                            <mat-label>Select with suffix</mat-label>
                             <mat-select>
                                 <mat-option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</mat-option>
                                 <mat-option value="select2-2">Select 2-2</mat-option>
@@ -238,7 +238,7 @@
                     <div class="flex flex-col gt-xs:flex-row">
                         <mat-form-field class="flex-auto gt-xs:pr-3"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Native select with Prefix</mat-label>
+                            <mat-label>Native select with prefix</mat-label>
                             <select matNativeControl>
                                 <option value=""></option>
                                 <option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</option>
@@ -250,7 +250,7 @@
                         </mat-form-field>
                         <mat-form-field class="flex-auto gt-xs:pl-3"
                                         [ngClass]="formFieldHelpers">
-                            <mat-label>Native select with Suffix</mat-label>
+                            <mat-label>Native select with suffix</mat-label>
                             <select matNativeControl>
                                 <option value=""></option>
                                 <option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</option>
@@ -314,6 +314,7 @@
                     <mat-button-toggle [value]="'asm-mat-dense'">Dense</mat-button-toggle>
                     <mat-button-toggle [value]="'asm-mat-rounded'">Rounded</mat-button-toggle>
                     <mat-button-toggle [value]="'asm-mat-no-subscript'">No subscript</mat-button-toggle>
+                    <mat-button-toggle [value]="'asm-mat-emphasized-affix'">Emphasized affix</mat-button-toggle>
                 </mat-button-toggle-group>
             </p>
 
@@ -333,7 +334,7 @@
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <input matInput
-                                   [placeholder]="'Input with Prefix & Suffix'">
+                                   [placeholder]="'Input with mat-icon as prefix & suffix'">
                             <mat-icon matPrefix
                                       [svgIcon]="'account_circle'"></mat-icon>
                             <mat-icon matSuffix
@@ -345,7 +346,7 @@
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <input matInput
-                                   [placeholder]="'Input with mat-icon-button as Prefix & Suffix'">
+                                   [placeholder]="'Input with mat-icon-button as prefix & suffix'">
                             <button mat-icon-button
                                     matPrefix>
                                 <mat-icon [svgIcon]="'3d_rotation'"></mat-icon>
@@ -361,7 +362,7 @@
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <input matInput
-                                   [placeholder]="'Input with Text Prefix & Text Suffix'">
+                                   [placeholder]="'Input with text prefix Suffix'">
                             <span matPrefix>$</span>
                             <span matSuffix>.00</span>
                         </mat-form-field>
@@ -372,7 +373,7 @@
                                         [ngClass]="formFieldHelpers">
                             <input class="text-right"
                                    matInput
-                                   [placeholder]="'Input with Text Prefix & Text Suffix'">
+                                   [placeholder]="'Right aligned input with text prefix & suffix'">
                             <span matPrefix>$</span>
                             <span matSuffix>.00</span>
                         </mat-form-field>
@@ -382,7 +383,7 @@
                         <mat-form-field class="flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <input matInput
-                                   [placeholder]="'Input with mat-select as Prefix & Suffix'">
+                                   [placeholder]="'Input with mat-select as prefix & suffix'">
                             <mat-select [value]="'EU'"
                                         matPrefix>
                                 <mat-option [value]="'EU'">EU</mat-option>
@@ -409,7 +410,7 @@
                         <mat-form-field class="asm-mat-textarea flex-auto"
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
-                                      [placeholder]="'Textarea with Prefix & Suffix'"></textarea>
+                                      [placeholder]="'Textarea with prefix & suffix'"></textarea>
                             <mat-icon matPrefix
                                       [svgIcon]="'account_circle'"></mat-icon>
                             <mat-icon matSuffix
@@ -422,7 +423,7 @@
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
                                       asmAutogrow
-                                      [placeholder]="'Textarea with Autosize'"></textarea>
+                                      [placeholder]="'Textarea with autosize'"></textarea>
                         </mat-form-field>
                     </div>
 
@@ -431,7 +432,7 @@
                                         [ngClass]="formFieldHelpers">
                             <textarea matInput
                                       asmAutogrow
-                                      [placeholder]="'Textarea with Autosize, Prefix & Suffix'"></textarea>
+                                      [placeholder]="'Textarea with autosize, prefix & suffix'"></textarea>
                             <mat-icon matPrefix
                                       [svgIcon]="'account_circle'"></mat-icon>
                             <mat-icon matSuffix
@@ -442,7 +443,7 @@
                     <div class="flex flex-col gt-xs:flex-row">
                         <mat-form-field class="flex-auto gt-xs:pr-3"
                                         [ngClass]="formFieldHelpers">
-                            <mat-select [placeholder]="'Select with Prefix'">
+                            <mat-select [placeholder]="'Select with prefix'">
                                 <mat-option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</mat-option>
                                 <mat-option value="select1-2">Select 1-2</mat-option>
                                 <mat-option value="select1-3">Select 1-3</mat-option>
@@ -452,7 +453,7 @@
                         </mat-form-field>
                         <mat-form-field class="flex-auto gt-xs:pl-3"
                                         [ngClass]="formFieldHelpers">
-                            <mat-select [placeholder]="'Select with Suffix'">
+                            <mat-select [placeholder]="'Select with suffix'">
                                 <mat-option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</mat-option>
                                 <mat-option value="select2-2">Select 2-2</mat-option>
                                 <mat-option value="select2-3">Select 2-3</mat-option>
@@ -466,7 +467,7 @@
                         <mat-form-field class="flex-auto gt-xs:pr-3"
                                         [ngClass]="formFieldHelpers">
                             <select matNativeControl
-                                    [placeholder]="'Native select with Prefix'">
+                                    [placeholder]="'Native select with prefix'">
                                 <option value=""></option>
                                 <option value="select1-1">Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1 Select 1-1</option>
                                 <option value="select1-2">Select 1-2</option>
@@ -478,7 +479,7 @@
                         <mat-form-field class="flex-auto gt-xs:pl-3"
                                         [ngClass]="formFieldHelpers">
                             <select matNativeControl
-                                    [placeholder]="'Native select with Suffix'">
+                                    [placeholder]="'Native select with suffix'">
                                 <option value=""></option>
                                 <option value="select2-1">Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1 Select 2-1</option>
                                 <option value="select2-2">Select 2-2</option>
