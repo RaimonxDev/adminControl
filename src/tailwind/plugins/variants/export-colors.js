@@ -53,12 +53,12 @@ module.exports = plugin(({addVariant, theme}) => {
                     }
 
                     // Hue
-                    [100, 200, 300, 400, 500, 600, 700, 800, 900].forEach((hue) => {
+                    [50, 100, 200, 300, 400, 500, 600, 700, 800, 900].forEach((hue) => {
                         hues = `${hues} ${hue}: ${value},\n`;
                     });
 
                     // Contrasts
-                    [100, 200, 300, 400, 500, 600, 700, 800, 900].forEach((hue) => {
+                    [50, 100, 200, 300, 400, 500, 600, 700, 800, 900].forEach((hue) => {
                         contrasts = `${contrasts} ${hue}: ${theme('colorContrasts.' + key)},\n`;
                     });
                 }

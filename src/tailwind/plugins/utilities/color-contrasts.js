@@ -1,4 +1,3 @@
-const {colors} = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 const _ = require('lodash');
 
@@ -43,130 +42,153 @@ module.exports = plugin(({addUtilities, variants, theme, e}) => {
     },
     {
         theme   : {
-            colorContrasts: {
-                black : colors.white,
-                white : colors.gray['800'],
-                gray  : {
-                    100    : colors.gray['900'],
-                    200    : colors.gray['900'],
-                    300    : colors.gray['900'],
-                    400    : colors.gray['900'],
-                    500    : colors.gray['900'],
-                    600    : colors.gray['100'],
-                    700    : colors.gray['100'],
-                    800    : colors.gray['100'],
-                    900    : colors.gray['100'],
-                    default: colors.gray['900']
+            colorContrasts: theme => ({
+                black      : theme('colors.white'),
+                white      : theme('colors.gray.800'),
+                gray       : {
+                    50     : theme('colors.gray.900'),
+                    100    : theme('colors.gray.900'),
+                    200    : theme('colors.gray.900'),
+                    300    : theme('colors.gray.900'),
+                    400    : theme('colors.gray.900'),
+                    500    : theme('colors.gray.900'),
+                    600    : theme('colors.gray.100'),
+                    700    : theme('colors.gray.100'),
+                    800    : theme('colors.gray.100'),
+                    900    : theme('colors.gray.100'),
+                    default: theme('colors.gray.900')
                 },
-                red   : {
-                    100    : colors.red['900'],
-                    200    : colors.red['900'],
-                    300    : colors.red['900'],
-                    400    : colors.red['900'],
-                    500    : colors.red['900'],
-                    600    : colors.red['100'],
-                    700    : colors.red['100'],
-                    800    : colors.red['100'],
-                    900    : colors.red['100'],
-                    default: colors.red['900']
+                'cool-gray': {
+                    50     : theme('colors.cool-gray.900'),
+                    100    : theme('colors.cool-gray.900'),
+                    200    : theme('colors.cool-gray.900'),
+                    300    : theme('colors.cool-gray.900'),
+                    400    : theme('colors.cool-gray.900'),
+                    500    : theme('colors.cool-gray.900'),
+                    600    : theme('colors.cool-gray.100'),
+                    700    : theme('colors.cool-gray.100'),
+                    800    : theme('colors.cool-gray.100'),
+                    900    : theme('colors.cool-gray.100'),
+                    default: theme('colors.cool-gray.900')
                 },
-                orange: {
-                    100    : colors.orange['900'],
-                    200    : colors.orange['900'],
-                    300    : colors.orange['900'],
-                    400    : colors.orange['900'],
-                    500    : colors.orange['900'],
-                    600    : colors.orange['100'],
-                    700    : colors.orange['100'],
-                    800    : colors.orange['100'],
-                    900    : colors.orange['100'],
-                    default: colors.orange['900']
+                red        : {
+                    50     : theme('colors.red.900'),
+                    100    : theme('colors.red.900'),
+                    200    : theme('colors.red.900'),
+                    300    : theme('colors.red.900'),
+                    400    : theme('colors.red.900'),
+                    500    : theme('colors.red.900'),
+                    600    : theme('colors.red.100'),
+                    700    : theme('colors.red.100'),
+                    800    : theme('colors.red.100'),
+                    900    : theme('colors.red.100'),
+                    default: theme('colors.red.900')
                 },
-                yellow: {
-                    100    : colors.yellow['900'],
-                    200    : colors.yellow['900'],
-                    300    : colors.yellow['900'],
-                    400    : colors.yellow['900'],
-                    500    : colors.yellow['900'],
-                    600    : colors.yellow['100'],
-                    700    : colors.yellow['100'],
-                    800    : colors.yellow['100'],
-                    900    : colors.yellow['100'],
-                    default: colors.yellow['900']
+                orange     : {
+                    50     : theme('colors.orange.900'),
+                    100    : theme('colors.orange.900'),
+                    200    : theme('colors.orange.900'),
+                    300    : theme('colors.orange.900'),
+                    400    : theme('colors.orange.900'),
+                    500    : theme('colors.orange.900'),
+                    600    : theme('colors.orange.100'),
+                    700    : theme('colors.orange.100'),
+                    800    : theme('colors.orange.100'),
+                    900    : theme('colors.orange.100'),
+                    default: theme('colors.orange.900')
                 },
-                green : {
-                    100    : colors.green['900'],
-                    200    : colors.green['900'],
-                    300    : colors.green['900'],
-                    400    : colors.green['900'],
-                    500    : colors.green['100'],
-                    600    : colors.green['100'],
-                    700    : colors.green['100'],
-                    800    : colors.green['100'],
-                    900    : colors.green['100'],
-                    default: colors.green['100']
+                yellow     : {
+                    50     : theme('colors.yellow.900'),
+                    100    : theme('colors.yellow.900'),
+                    200    : theme('colors.yellow.900'),
+                    300    : theme('colors.yellow.900'),
+                    400    : theme('colors.yellow.900'),
+                    500    : theme('colors.yellow.900'),
+                    600    : theme('colors.yellow.100'),
+                    700    : theme('colors.yellow.100'),
+                    800    : theme('colors.yellow.100'),
+                    900    : theme('colors.yellow.100'),
+                    default: theme('colors.yellow.900')
                 },
-                teal  : {
-                    100    : colors.teal['900'],
-                    200    : colors.teal['900'],
-                    300    : colors.teal['900'],
-                    400    : colors.teal['900'],
-                    500    : colors.teal['100'],
-                    600    : colors.teal['100'],
-                    700    : colors.teal['100'],
-                    800    : colors.teal['100'],
-                    900    : colors.teal['100'],
-                    default: colors.teal['100']
+                green      : {
+                    50     : theme('colors.green.900'),
+                    100    : theme('colors.green.900'),
+                    200    : theme('colors.green.900'),
+                    300    : theme('colors.green.900'),
+                    400    : theme('colors.green.900'),
+                    500    : theme('colors.green.100'),
+                    600    : theme('colors.green.100'),
+                    700    : theme('colors.green.100'),
+                    800    : theme('colors.green.100'),
+                    900    : theme('colors.green.100'),
+                    default: theme('colors.green.100')
                 },
-                blue  : {
-                    100    : colors.blue['900'],
-                    200    : colors.blue['900'],
-                    300    : colors.blue['900'],
-                    400    : colors.blue['900'],
-                    500    : colors.blue['100'],
-                    600    : colors.blue['100'],
-                    700    : colors.blue['100'],
-                    800    : colors.blue['100'],
-                    900    : colors.blue['100'],
-                    default: colors.blue['100']
+                teal       : {
+                    50     : theme('colors.teal.900'),
+                    100    : theme('colors.teal.900'),
+                    200    : theme('colors.teal.900'),
+                    300    : theme('colors.teal.900'),
+                    400    : theme('colors.teal.900'),
+                    500    : theme('colors.teal.100'),
+                    600    : theme('colors.teal.100'),
+                    700    : theme('colors.teal.100'),
+                    800    : theme('colors.teal.100'),
+                    900    : theme('colors.teal.100'),
+                    default: theme('colors.teal.100')
                 },
-                indigo: {
-                    100    : colors.indigo['900'],
-                    200    : colors.indigo['900'],
-                    300    : colors.indigo['900'],
-                    400    : colors.indigo['900'],
-                    500    : colors.indigo['100'],
-                    600    : colors.indigo['100'],
-                    700    : colors.indigo['100'],
-                    800    : colors.indigo['100'],
-                    900    : colors.indigo['100'],
-                    default: colors.indigo['100']
+                blue       : {
+                    50     : theme('colors.blue.900'),
+                    100    : theme('colors.blue.900'),
+                    200    : theme('colors.blue.900'),
+                    300    : theme('colors.blue.900'),
+                    400    : theme('colors.blue.900'),
+                    500    : theme('colors.blue.100'),
+                    600    : theme('colors.blue.100'),
+                    700    : theme('colors.blue.100'),
+                    800    : theme('colors.blue.100'),
+                    900    : theme('colors.blue.100'),
+                    default: theme('colors.blue.100')
                 },
-                purple: {
-                    100    : colors.purple['900'],
-                    200    : colors.purple['900'],
-                    300    : colors.purple['900'],
-                    400    : colors.purple['900'],
-                    500    : colors.purple['100'],
-                    600    : colors.purple['100'],
-                    700    : colors.purple['100'],
-                    800    : colors.purple['100'],
-                    900    : colors.purple['100'],
-                    default: colors.purple['100']
+                indigo     : {
+                    50     : theme('colors.indigo.900'),
+                    100    : theme('colors.indigo.900'),
+                    200    : theme('colors.indigo.900'),
+                    300    : theme('colors.indigo.900'),
+                    400    : theme('colors.indigo.900'),
+                    500    : theme('colors.indigo.100'),
+                    600    : theme('colors.indigo.100'),
+                    700    : theme('colors.indigo.100'),
+                    800    : theme('colors.indigo.100'),
+                    900    : theme('colors.indigo.100'),
+                    default: theme('colors.indigo.100')
                 },
-                pink  : {
-                    100    : colors.pink['900'],
-                    200    : colors.pink['900'],
-                    300    : colors.pink['900'],
-                    400    : colors.pink['900'],
-                    500    : colors.pink['100'],
-                    600    : colors.pink['100'],
-                    700    : colors.pink['100'],
-                    800    : colors.pink['100'],
-                    900    : colors.pink['100'],
-                    default: colors.pink['100']
+                purple     : {
+                    50     : theme('colors.purple.900'),
+                    100    : theme('colors.purple.900'),
+                    200    : theme('colors.purple.900'),
+                    300    : theme('colors.purple.900'),
+                    400    : theme('colors.purple.900'),
+                    500    : theme('colors.purple.100'),
+                    600    : theme('colors.purple.100'),
+                    700    : theme('colors.purple.100'),
+                    800    : theme('colors.purple.100'),
+                    900    : theme('colors.purple.100'),
+                    default: theme('colors.purple.100')
+                },
+                pink       : {
+                    50     : theme('colors.pink.900'),
+                    100    : theme('colors.pink.900'),
+                    200    : theme('colors.pink.900'),
+                    300    : theme('colors.pink.900'),
+                    400    : theme('colors.pink.900'),
+                    500    : theme('colors.pink.100'),
+                    600    : theme('colors.pink.100'),
+                    700    : theme('colors.pink.100'),
+                    800    : theme('colors.pink.100'),
+                    900    : theme('colors.pink.100'),
+                    default: theme('colors.pink.100')
                 }
-            }
+            })
         },
         variants: {
             colorContrasts: []
