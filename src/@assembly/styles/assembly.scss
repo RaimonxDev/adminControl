@@ -6,7 +6,7 @@
 @import '~@angular/material/theming';
 
 // 2. Utilities
-@import 'utilities/tailwind';
+@import '../tailwind/exported/variables';
 @import 'utilities/theming';
 @import 'utilities/breakpoints';
 @import 'utilities/colors';

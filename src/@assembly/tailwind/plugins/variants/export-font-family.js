@@ -21,5 +21,5 @@ module.exports = plugin(({addVariant, theme}) => {
 
     };
 
-    addVariant('exportFontFamily', variant);
+    addVariant('export-fontFamily', variant);
 });

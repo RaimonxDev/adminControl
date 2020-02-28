@@ -415,19 +415,10 @@ module.exports = {
     // Custom plugins
     plugins: [
 
-        // Exporter variants
-        require('./plugins/variants/export-box-shadow'),
-        require('./plugins/variants/export-colors'),
-        require('./plugins/variants/export-font-family'),
-        require('./plugins/variants/export-screens'),
+        // Custom plugins required by Assembly
+        ...require('../@assembly/tailwind/plugins')
 
-        // Variants
-        require('./plugins/variants/dark-light'),
-
-        // Utilities
-        require('./plugins/utilities/color-contrasts'),
-        require('./plugins/utilities/color-combinations'),
-        require('./plugins/utilities/icon-size'),
-        require('./plugins/utilities/mirror')
+        // Other third party and custom plugins can be required here
+        // ...
     ]
 };

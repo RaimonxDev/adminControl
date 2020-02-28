@@ -23,5 +23,5 @@ module.exports = plugin(({addVariant, theme}) => {
         );
     };
 
-    addVariant('exportBoxShadow', variant);
+    addVariant('export-boxShadow', variant);
 });

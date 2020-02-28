@@ -5,11 +5,8 @@
  * CSS rules, but they will generate SCSS variables from your Tailwind
  * config file.
  *
- * The generated output used by Assembly and it can be accessible
- * by adding 'import "assembly"' in any scss file.
- *
- * If you have your own Tailwind variants, do NOT use this file to
- * generate them. Add them to the './main.css' file.
+ * The generated output will be used by Assembly.
+ * Do NOT modify or use this file to generate your own variants.
  */
 
 $asm-elevations: (

@@ -75,6 +75,6 @@ module.exports = plugin(({addVariant, theme}) => {
             );
         };
 
-        addVariant('exportColors', variant);
+        addVariant('export-colors', variant);
     }
 );

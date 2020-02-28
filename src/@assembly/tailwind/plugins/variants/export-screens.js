@@ -24,5 +24,5 @@ module.exports = plugin(({addVariant, theme}) => {
         );
     };
 
-    addVariant('exportScreens', variant);
+    addVariant('export-screens', variant);
 });

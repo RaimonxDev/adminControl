@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { BehaviorSubject, Observable } from 'rxjs';
-import resolveConfig from 'tailwindcss/resolveConfig';
-import buildMediaQuery from 'tailwindcss/lib/util/buildMediaQuery';
-import tailwindConfig from 'tailwind/config';
+import { asmBreakpoints } from '@assembly/tailwind/exported/variables';
 
 @Injectable()
 export class AsmMediaWatcherService
 {
     private _onMediaChange: BehaviorSubject<{ matchingAliases: string[], matchingRules: any }>;
-    private _rules: any;
 
     /**
      * Constructor
@@ -22,7 +19,6 @@ export class AsmMediaWatcherService
     {
         // Set the defaults
         this._onMediaChange = new BehaviorSubject(null);
-        this._rules = {};
 
         // Initialize
         this._init();
@@ -51,15 +47,8 @@ export class AsmMediaWatcherService
      */
     private _init(): void
     {
-        // Get the screens config from the tailwind config and build the media queries
-        // into the '_rules' object so we can use them to watch media query changes
-        const screens = resolveConfig(tailwindConfig).theme.screens;
-        Object.keys(screens).forEach((key) => {
-            this._rules[key] = buildMediaQuery(screens[key]);
-        });
-
         // Subscribe to the breakpoint observer
-        this._breakpointObserver.observe(Object.values(this._rules))
+        this._breakpointObserver.observe(Object.values(asmBreakpoints))
             .subscribe((state) => {
 
                 const matchingAliases = [];
@@ -85,7 +74,7 @@ export class AsmMediaWatcherService
                     }
 
                     // Get the alias of the matching query
-                    const alias = Object.keys(this._rules).find(key => this._rules[key] === query);
+                    const alias = Object.keys(asmBreakpoints).find(key => asmBreakpoints[key] === query);
 
                     // Prepare the observable values
                     matchingAliases.push(alias);
