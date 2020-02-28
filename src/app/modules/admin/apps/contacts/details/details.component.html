@@ -104,9 +104,9 @@
              *ngIf="editMode">
 
             <mat-form-field class="name edit asm-mat-no-subscript">
-                <mat-label>Name</mat-label>
                 <input matInput
                        [formControlName]="'name'"
+                       [placeholder]="'Name'"
                        [spellcheck]="false">
             </mat-form-field>
 
@@ -250,15 +250,15 @@
              *ngIf="editMode">
 
             <mat-form-field class="asm-mat-no-subscript">
-                <mat-label>Job title</mat-label>
                 <input matInput
-                       [formControlName]="'title'">
+                       [formControlName]="'title'"
+                       [placeholder]="'Job title'">
             </mat-form-field>
 
             <mat-form-field class="asm-mat-no-subscript">
-                <mat-label>Company</mat-label>
                 <input matInput
-                       [formControlName]="'company'">
+                       [formControlName]="'company'"
+                       [placeholder]="'Company'">
             </mat-form-field>
 
         </div>
@@ -301,16 +301,16 @@
                  *ngFor="let email of contactForm.get('emails')['controls']; let i = index; let first = first; let last = last; trackBy: trackByFn">
 
                 <mat-form-field class="asm-mat-no-subscript">
-                    <mat-label>Email</mat-label>
                     <input matInput
                            [formControl]="email.get('email')"
+                           [placeholder]="'Email address'"
                            [spellcheck]="false">
                 </mat-form-field>
 
                 <mat-form-field class="asm-mat-no-subscript">
-                    <mat-label>Label</mat-label>
                     <input matInput
-                           [formControl]="email.get('label')">
+                           [formControl]="email.get('label')"
+                           [placeholder]="'Label'">
                 </mat-form-field>
 
                 <div class="actions">
@@ -376,9 +376,9 @@
                  *ngFor="let phoneNumber of contactForm.get('phoneNumbers')['controls']; let i = index; let first = first; let last = last; trackBy: trackByFn">
 
                 <mat-form-field class="asm-mat-no-subscript">
-                    <mat-label>Phone</mat-label>
                     <input matInput
-                           [formControl]="phoneNumber.get('number')">
+                           [formControl]="phoneNumber.get('number')"
+                           [placeholder]="'Phone'">
                     <mat-select [panelClass]="'contacts-details-country-code-selector-panel'"
                                 [formControl]="phoneNumber.get('country')"
                                 matPrefix>
@@ -397,9 +397,9 @@
                 </mat-form-field>
 
                 <mat-form-field class="asm-mat-no-subscript">
-                    <mat-label>Label</mat-label>
                     <input matInput
-                           [formControl]="phoneNumber.get('label')">
+                           [formControl]="phoneNumber.get('label')"
+                           [placeholder]="'Label'">
                 </mat-form-field>
 
                 <div class="actions">
@@ -445,9 +445,9 @@
         <div class="edit"
              *ngIf="editMode">
             <mat-form-field class="asm-mat-no-subscript">
-                <mat-label>Address</mat-label>
                 <input matInput
                        [formControlName]="'address'"
+                       [placeholder]="'Address'"
                        [spellcheck]="false">
             </mat-form-field>
         </div>
@@ -472,10 +472,10 @@
              *ngIf="editMode">
 
             <mat-form-field class="asm-mat-no-subscript">
-                <mat-label>Birthday</mat-label>
                 <input matInput
                        [matDatepicker]="birthdayDatepicker"
-                       [formControlName]="'birthday'">
+                       [formControlName]="'birthday'"
+                       [placeholder]="'Birthday'">
                 <mat-datepicker-toggle matSuffix
                                        [for]="birthdayDatepicker">
                 </mat-datepicker-toggle>
@@ -504,11 +504,11 @@
              *ngIf="editMode">
 
             <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
-                <mat-label>Notes</mat-label>
                 <textarea matInput
                           asmAutogrow
                           [rows]="5"
                           [formControlName]="'notes'"
+                          [placeholder]="'Notes'"
                           [spellcheck]="false"></textarea>
             </mat-form-field>
 

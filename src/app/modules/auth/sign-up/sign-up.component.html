@@ -1,129 +1,123 @@
 <div class="content-layout fullwidth-basic-normal-scroll">
 
-    <asm-card class="fullscreen">
+    <asm-card class="auth-card fullscreen">
 
         <!-- Form container -->
         <div class="form-container">
 
-            <!-- Logo -->
-            <div class="logo">
-                <img class="logo-dark"
-                     src="assets/images/logo/logo-dark.svg">
-                <img class="logo-light"
-                     src="assets/images/logo/logo-light.svg">
-            </div>
+            <div class="form">
 
-            <!-- Title -->
-            <h2 class="title">Create your free account</h2>
-
-            <!-- Message -->
-            <asm-message *ngIf="message"
-                         [showIcon]="message.showIcon"
-                         [type]="message.type"
-                         [@shake]="message.shake">
-                {{message.content}}
-            </asm-message>
-
-            <!-- Sign Up form -->
-            <form [formGroup]="signUpForm">
-
-                <!-- Name field -->
-                <mat-form-field>
-                    <mat-label>Full name</mat-label>
-                    <input id="name"
-                           matInput
-                           [formControlName]="'name'">
-                    <mat-icon matSuffix
-                              [svgIcon]="'account_circle'"></mat-icon>
-                    <mat-error *ngIf="signUpForm.get('name').hasError('required')">
-                        Full name is required
-                    </mat-error>
-                </mat-form-field>
-
-                <!-- Email field -->
-                <mat-form-field>
-                    <mat-label>Email address</mat-label>
-                    <input id="email"
-                           matInput
-                           [formControlName]="'email'">
-                    <mat-icon matSuffix
-                              [svgIcon]="'mail'"></mat-icon>
-                    <mat-error *ngIf="signUpForm.get('email').hasError('required')">
-                        Email address is required
-                    </mat-error>
-                    <mat-error *ngIf="signUpForm.get('email').hasError('email')">
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-
-                <!-- Password field -->
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input id="password"
-                           matInput
-                           type="password"
-                           [formControlName]="'password'"
-                           #passwordField>
-                    <button mat-icon-button
-                            (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
-                            tabindex="-1"
-                            matSuffix>
-                        <mat-icon *ngIf="passwordField.type === 'password'"
-                                  [svgIcon]="'visibility'"></mat-icon>
-                        <mat-icon *ngIf="passwordField.type === 'text'"
-                                  [svgIcon]="'visibility_off'"></mat-icon>
-                    </button>
-                    <mat-error>
-                        Password is required
-                    </mat-error>
-                </mat-form-field>
-
-                <!-- Company field -->
-                <mat-form-field>
-                    <mat-label>Company</mat-label>
-                    <input id="company-confirm"
-                           matInput
-                           [formControlName]="'company'">
-                    <mat-icon matSuffix
-                              [svgIcon]="'work'"></mat-icon>
-                </mat-form-field>
-
-                <!-- Terms and privacy -->
-                <div class="terms-and-privacy">
-                    <mat-checkbox [color]="'primary'"
-                                  [formControlName]="'agreements'">
-                        <span>By creating an account, I agree to the</span>
-                        <a class="link"
-                           [routerLink]="['./']">Terms and Conditions</a>
-                        <span>and</span>
-                        <a class="link"
-                           [routerLink]="['./']">Privacy policy</a>.
-                    </mat-checkbox>
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="assets/images/logo/logo-base.svg">
                 </div>
 
-                <!-- Submit button -->
-                <button class="submit-button asm-mat-button-large"
-                        mat-flat-button
-                        type="button"
-                        [color]="'primary'"
-                        [disabled]="signUpForm.disabled"
-                        (click)="signUp()">
-                    <span *ngIf="!signUpForm.disabled">
-                        Create your free account
-                    </span>
-                    <asm-spinner *ngIf="signUpForm.disabled"
-                                 [appearance]="'material'"
-                                 [diameter]="24"></asm-spinner>
-                </button>
-
-                <!-- Footer link -->
-                <div class="footer-link">
+                <!-- Title -->
+                <div class="title">Sign up</div>
+                <div class="subtitle">
                     <span>Already have an account?</span>
                     <a class="link"
                        [routerLink]="['/sign-in']">Sign in</a>
                 </div>
 
-            </form>
+                <!-- Message -->
+                <asm-message *ngIf="message"
+                             [appearance]="message.appearance"
+                             [showIcon]="message.showIcon"
+                             [type]="message.type"
+                             [@shake]="message.shake">
+                    {{message.content}}
+                </asm-message>
+
+                <!-- Sign Up form -->
+                <form [formGroup]="signUpForm">
+
+                    <!-- Name field -->
+                    <mat-form-field>
+                        <mat-label>Full name</mat-label>
+                        <input id="name"
+                               matInput
+                               [formControlName]="'name'">
+                        <mat-error *ngIf="signUpForm.get('name').hasError('required')">
+                            Full name is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- Email field -->
+                    <mat-form-field>
+                        <mat-label>Email address</mat-label>
+                        <input id="email"
+                               matInput
+                               [formControlName]="'email'">
+                        <mat-error *ngIf="signUpForm.get('email').hasError('required')">
+                            Email address is required
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.get('email').hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- Password field -->
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input id="password"
+                               matInput
+                               type="password"
+                               [formControlName]="'password'"
+                               #passwordField>
+                        <button mat-icon-button
+                                (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                                tabindex="-1"
+                                matSuffix>
+                            <mat-icon *ngIf="passwordField.type === 'password'"
+                                      [svgIcon]="'visibility'"></mat-icon>
+                            <mat-icon *ngIf="passwordField.type === 'text'"
+                                      [svgIcon]="'visibility_off'"></mat-icon>
+                        </button>
+                        <mat-error>
+                            Password is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- Company field -->
+                    <mat-form-field>
+                        <mat-label>Company</mat-label>
+                        <input id="company-confirm"
+                               matInput
+                               [formControlName]="'company'">
+                    </mat-form-field>
+
+                    <!-- Field footer -->
+                    <div class="field-footer">
+                        <mat-checkbox [color]="'primary'"
+                                      [formControlName]="'agreements'">
+                            <span>I agree to the</span>
+                            <a class="link"
+                               [routerLink]="['./']">Terms of Service</a>
+                            <span>and</span>
+                            <a class="link"
+                               [routerLink]="['./']">Privacy Policy</a>
+                        </mat-checkbox>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button class="submit-button asm-mat-button-large"
+                            mat-flat-button
+                            type="button"
+                            [color]="'primary'"
+                            [disabled]="signUpForm.disabled"
+                            (click)="signUp()">
+                        <span *ngIf="!signUpForm.disabled">
+                            Create your free account
+                        </span>
+                        <asm-spinner *ngIf="signUpForm.disabled"
+                                     [appearance]="'material'"
+                                     [diameter]="24"></asm-spinner>
+                    </button>
+
+                </form>
+
+            </div>
 
         </div>
 

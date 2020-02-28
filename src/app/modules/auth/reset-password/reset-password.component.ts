@@ -99,10 +99,11 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
 
             // Show the message
             this.message = {
-                content : 'Your password has been reset.',
-                shake   : false,
-                showIcon: false,
-                type    : 'success'
+                appearance: 'outline',
+                content   : 'Your password has been reset.',
+                shake     : false,
+                showIcon  : false,
+                type      : 'success'
             };
         }, 1000);
     }

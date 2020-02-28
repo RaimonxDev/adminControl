@@ -76,10 +76,11 @@ export class AuthForgotPasswordComponent implements OnInit
 
             // Show the message
             this.message = {
-                content : 'Password reset sent! You\'ll receive an email if you are registered on our system.',
-                shake   : false,
-                showIcon: false,
-                type    : 'success'
+                appearance: 'outline',
+                content   : 'Password reset sent! You\'ll receive an email if you are registered on our system.',
+                shake     : false,
+                showIcon  : false,
+                type      : 'success'
             };
         }, 1000);
     }

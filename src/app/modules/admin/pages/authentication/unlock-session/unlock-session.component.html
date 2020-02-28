@@ -31,35 +31,31 @@
                 <form [formGroup]="unlockSessionForm">
 
                     <!-- Name field -->
-                    <label class="asm-mat-label">
-                        <span>Full name</span>
-                        <mat-form-field>
-                            <input id="name"
-                                   matInput
-                                   [formControlName]="'name'">
-                        </mat-form-field>
-                    </label>
+                    <mat-form-field>
+                        <mat-label>Full name</mat-label>
+                        <input id="name"
+                               matInput
+                               [formControlName]="'name'">
+                    </mat-form-field>
 
                     <!-- Password field -->
-                    <label class="asm-mat-label">
-                        <span>Password</span>
-                        <mat-form-field>
-                            <input id="password"
-                                   matInput
-                                   type="password"
-                                   [formControlName]="'password'"
-                                   #passwordField>
-                            <button mat-icon-button
-                                    (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
-                                    tabindex="-1"
-                                    matSuffix>
-                                <mat-icon *ngIf="passwordField.type === 'password'"
-                                          [svgIcon]="'visibility'"></mat-icon>
-                                <mat-icon *ngIf="passwordField.type === 'text'"
-                                          [svgIcon]="'visibility_off'"></mat-icon>
-                            </button>
-                        </mat-form-field>
-                    </label>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input id="password"
+                               matInput
+                               type="password"
+                               [formControlName]="'password'"
+                               #passwordField>
+                        <button mat-icon-button
+                                (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                                tabindex="-1"
+                                matSuffix>
+                            <mat-icon *ngIf="passwordField.type === 'password'"
+                                      [svgIcon]="'visibility'"></mat-icon>
+                            <mat-icon *ngIf="passwordField.type === 'text'"
+                                      [svgIcon]="'visibility_off'"></mat-icon>
+                        </button>
+                    </mat-form-field>
 
                     <!-- Submit button -->
                     <button class="submit-button asm-mat-button-large"

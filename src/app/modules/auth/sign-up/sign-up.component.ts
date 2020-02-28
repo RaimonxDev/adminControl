@@ -101,10 +101,11 @@ export class AuthSignUpComponent implements OnInit, OnDestroy
 
             // Show the message
             this.message = {
-                content : 'Your account has been created and a confirmation mail has been sent to your email address.',
-                shake   : false,
-                showIcon: false,
-                type    : 'success'
+                appearance: 'outline',
+                content   : 'Your account has been created and a confirmation mail has been sent to your email address.',
+                shake     : false,
+                showIcon  : false,
+                type      : 'success'
             };
         }, 1000);
     }

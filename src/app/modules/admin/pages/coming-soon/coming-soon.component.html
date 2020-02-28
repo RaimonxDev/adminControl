@@ -30,20 +30,18 @@
                 <form [formGroup]="comingSoonForm">
 
                     <!-- Email field -->
-                    <label class="asm-mat-label">
-                        <span>Email address</span>
-                        <mat-form-field>
-                            <input id="email"
-                                   matInput
-                                   [formControlName]="'email'">
-                            <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
-                                Email address is required
-                            </mat-error>
-                            <mat-error *ngIf="comingSoonForm.get('email').hasError('email')">
-                                Please enter a valid email address
-                            </mat-error>
-                        </mat-form-field>
-                    </label>
+                    <mat-form-field>
+                        <mat-label>Email address</mat-label>
+                        <input id="email"
+                               matInput
+                               [formControlName]="'email'">
+                        <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
+                            Email address is required
+                        </mat-error>
+                        <mat-error *ngIf="comingSoonForm.get('email').hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                    </mat-form-field>
 
                     <!-- Submit button -->
                     <button class="submit-button asm-mat-button-large"

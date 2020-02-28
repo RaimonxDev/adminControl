@@ -1,30 +1,32 @@
 <div class="content-layout fullwidth-basic-normal-scroll">
 
-    <asm-card class="classic">
+    <asm-card class="auth-card fullscreen">
 
         <!-- Form container -->
         <div class="form-container">
 
-            <!-- Logo -->
-            <div class="logo">
-                <img class="logo-dark"
-                     src="assets/images/logo/logo-dark.svg">
-                <img class="logo-light"
-                     src="assets/images/logo/logo-light.svg">
-            </div>
+            <div class="form">
 
-            <!-- Title -->
-            <h2 class="title">Confirm your e-mail!</h2>
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="assets/images/logo/logo-base.svg">
+                </div>
 
-            <!-- Description -->
-            <p>A confirmation mail has been sent to <b>{{email}}</b></p>
-            <p>Click on the <b>"Confirm my e-mail address"</b> link from the e-mail to confirm your address.</p>
+                <!-- Title -->
+                <div class="title">Confirmation required</div>
 
-            <!-- Footer link -->
-            <div class="footer-link">
-                <span>Return to</span>
-                <a class="link"
-                   [routerLink]="['/sign-in']">sign in</a>
+                <!-- Description -->
+                <div class="description">
+                    A confirmation mail with instructions has been sent to your email address. Follow those instructions to confirm your email address and activate your account.
+                </div>
+
+                <!-- Form footer -->
+                <div class="form-footer">
+                    <span>Return to</span>
+                    <a class="link"
+                       [routerLink]="['/sign-in']">sign in</a>
+                </div>
+
             </div>
 
         </div>
