@@ -18,7 +18,7 @@ import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard
 export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
 {
     appConfig: any;
-    btcOptions: ApexOptions;
+    btcOptions: ApexOptions | any;
     data: any;
     drawerMode: 'over' | 'side';
     drawerOpened: boolean;
