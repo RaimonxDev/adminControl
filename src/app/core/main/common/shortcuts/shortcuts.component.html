@@ -13,11 +13,8 @@
 
         <div class="header">
 
-            <mat-icon class="header-icon"
-                      [svgIcon]="'bookmarks'"></mat-icon>
-
             <div class="title">
-                Quick Access
+                Shortcuts
             </div>
 
             <div class="actions">
@@ -139,30 +136,30 @@
                 <form [formGroup]="shortcutForm">
 
                     <mat-form-field>
+                        <mat-label>Label</mat-label>
                         <input matInput
                                [formControlName]="'label'"
                                required>
-                        <mat-label>Label</mat-label>
                     </mat-form-field>
 
                     <mat-form-field>
+                        <mat-label>Description</mat-label>
                         <input matInput
                                [formControlName]="'description'">
-                        <mat-label>Description</mat-label>
                     </mat-form-field>
 
                     <mat-form-field>
+                        <mat-label>Icon</mat-label>
                         <input matInput
                                [formControlName]="'icon'"
                                required>
-                        <mat-label>Icon</mat-label>
                     </mat-form-field>
 
                     <mat-form-field>
+                        <mat-label>Link</mat-label>
                         <input matInput
                                [formControlName]="'link'"
                                required>
-                        <mat-label>Link</mat-label>
                     </mat-form-field>
 
                     <mat-slide-toggle [color]="'primary'"

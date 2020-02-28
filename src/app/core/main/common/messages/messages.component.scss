@@ -9,7 +9,7 @@ messages {
 .messages-panel {
     min-width: 360px !important;
     max-width: 360px !important;
-    border-radius: 8px;
+    border-radius: 4px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     @include asm-elevation('lg');
@@ -22,43 +22,14 @@ messages {
     .header {
         display: flex;
         align-items: center;
-        padding: 32px 24px 32px 32px;
-
-        .header-icon {
-            position: relative;
-            display: flex;
-            margin-right: 16px;
-
-            .mat-icon {
-                width: 40px;
-                min-width: 40px;
-                height: 40px;
-                min-height: 40px;
-                line-height: 40px !important;
-                padding: 8px;
-                border-radius: 10px;
-            }
-
-            .unread-count {
-                position: absolute;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                right: -6px;
-                top: -6px;
-                min-width: 19px;
-                min-height: 19px;
-                padding: 2px 6px;
-                border-radius: 10px;
-                font-size: 10px;
-                font-weight: 700;
-            }
-        }
+        padding: 16px 16px 16px 24px;
+        border-top-width: 4px;
+        border-bottom-width: 1px;
 
         .title {
             display: flex;
             align-items: center;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
         }
 
@@ -77,8 +48,7 @@ messages {
         .message {
             display: flex;
             flex: 1 0 auto;
-            padding: 20px 24px 20px 32px;
-            border-radius: 4px;
+            padding: 20px 24px;
             cursor: pointer;
             border-bottom-width: 1px;
 
@@ -240,29 +210,12 @@ messages {
     .messages-panel {
 
         .header {
+            border-top-color: map-get($primary, default);
 
             @if ($is-dark) {
-                background: rgba(0, 0, 0, 0.05);
-            } @else {
                 background: asm-color('cool-gray', 800);
-                color: asm-contrast('gray', 800);
-            }
-
-            .header-icon {
-
-                .mat-icon {
-                    background: map-get($primary, default) !important;
-                    color: map-get($primary, default-contrast) !important;
-                }
-
-                .unread-count {
-                    background: white;
-                    color: map-get($primary, default);
-                }
-            }
-
-            .title {
-
+            } @else {
+                background: asm-color('cool-gray', 100);
             }
 
             .mark-all-as-read {

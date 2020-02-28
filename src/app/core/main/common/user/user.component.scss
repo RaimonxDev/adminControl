@@ -59,6 +59,21 @@ user {
     }
 }
 
+.user-actions-menu {
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+
+        .email {
+            margin-top: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+    }
+}
+
 .user-status-menu {
 
     .status {

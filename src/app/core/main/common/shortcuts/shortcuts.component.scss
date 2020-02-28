@@ -9,7 +9,7 @@ shortcuts {
 .shortcuts-panel {
     min-width: 360px !important;
     max-width: 360px !important;
-    border-radius: 8px;
+    border-radius: 4px;
     max-height: calc(100vh - 80px);
     overflow: hidden;
     @include asm-elevation('lg');
@@ -22,7 +22,9 @@ shortcuts {
     .header {
         display: flex;
         align-items: center;
-        padding: 32px 24px 32px 32px;
+        padding: 16px 16px 16px 24px;
+        border-top-width: 4px;
+        border-bottom-width: 1px;
 
         > .mat-icon {
             width: 40px;
@@ -36,7 +38,7 @@ shortcuts {
         }
 
         .title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
         }
 
@@ -241,17 +243,12 @@ shortcuts {
     .shortcuts-panel {
 
         .header {
+            border-top-color: map-get($primary, default);
 
             @if ($is-dark) {
-                background: rgba(0, 0, 0, 0.05);
-            } @else {
                 background: asm-color('cool-gray', 800);
-                color: asm-contrast('gray', 800);
-            }
-
-            .header-icon {
-                background: map-get($primary, default) !important;
-                color: map-get($primary, default-contrast) !important;
+            } @else {
+                background: asm-color('cool-gray', 100);
             }
         }
 
