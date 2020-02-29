@@ -1,7 +1,7 @@
 <ng-content></ng-content>
 
 <!-- @formatter:off -->
-<ng-template>
+<ng-template let-highlightedCode="highlightedCode" let-lang="lang">
 <div class="asm-highlight asm-highlight-code-container">
 <pre [ngClass]="'language-' + lang"><code [ngClass]="'language-' + lang" [innerHTML]="highlightedCode"></code></pre>
 </div>
