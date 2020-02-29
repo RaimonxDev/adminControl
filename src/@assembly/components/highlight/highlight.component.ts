@@ -1,4 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EmbeddedViewRef, Input, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EmbeddedViewRef, Input, Renderer2, SecurityContext, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AsmHighlightService } from '@assembly/components/highlight/highlight.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class AsmHighlightComponent implements AfterViewInit
      * Constructor
      *
      * @param {AsmHighlightService} _asmHighlightService
+     * @param {DomSanitizer} _domSanitizer
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
@@ -32,6 +34,7 @@ export class AsmHighlightComponent implements AfterViewInit
      */
     constructor(
         private _asmHighlightService: AsmHighlightService,
+        private _domSanitizer: DomSanitizer,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _renderer2: Renderer2,
@@ -157,8 +160,8 @@ export class AsmHighlightComponent implements AfterViewInit
             this.viewRef.destroy();
         }
 
-        // Highlight the code
-        this.highlightedCode = this._asmHighlightService.highlight(this.code, this.lang);
+        // Highlight and sanitize the code just in case
+        this.highlightedCode = this._domSanitizer.sanitize(SecurityContext.HTML, this._asmHighlightService.highlight(this.code, this.lang));
 
         // Render and insert the template
         this.viewRef = this._viewContainerRef.createEmbeddedView(this.templateRef, {
