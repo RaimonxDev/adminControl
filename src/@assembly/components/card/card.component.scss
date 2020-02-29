@@ -1,0 +1,21 @@
+@import 'assembly';
+
+asm-card {
+    position: relative;
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    @include asm-elevation('md');
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+
+    asm-card {
+        background: map-get($background, card);
+    }
+}

@@ -4,8 +4,8 @@ import { takeUntil } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
-import { AsmConfigService } from '@assembly/config';
-import { AsmMediaWatcherService } from '@assembly/media-watcher';
+import { AsmConfigService } from '@assembly/services/config';
+import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
 import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.service';
 
 @Component({

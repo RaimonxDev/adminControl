@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AsmNavigationItem } from '@assembly/navigation/navigation.types';
+import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
 
 @Component({
     selector     : 'demo-sidebar-content',

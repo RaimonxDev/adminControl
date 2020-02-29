@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmNavigationItem, AsmNavigationService } from '@assembly/navigation';
+import { AsmNavigationItem, AsmNavigationService } from '@assembly/components/navigation';
 import { AsmMockApi } from '@mock-api/mock-api.interface';
 import { AsmMockApiService } from '@mock-api/mock-api.service';
 import { defaultNavigation } from '@mock-api/data/navigation/data';
