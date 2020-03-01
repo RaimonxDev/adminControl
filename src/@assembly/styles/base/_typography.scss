@@ -67,133 +67,19 @@ h6 {
     letter-spacing: -0.011em;
 }
 
-// Links
+// Override links for web apps
 a {
     color: currentColor;
     text-decoration: none;
 }
 
-// Abbr
-abbr {
-    cursor: help;
-    border-bottom-width: 1px;
-    border-bottom-style: dotted;
-}
-
-// Blockquote
-blockquote {
-    border-left-width: 3px;
-    font-style: italic;
-    margin: 1em 0;
-    padding-left: 16px;
-
-    footer {
-        font-style: normal;
-
-        &:before {
-            content: '\2014 \00A0';
-        }
-    }
-
-    &.reverse {
-        border-left-width: 0;
-        border-right-width: 3px;
-        text-align: right;
-        padding-left: 0;
-        padding-right: 16px;
-
-        footer {
-
-            &:before {
-                content: '';
-            }
-
-            &:after {
-                content: '\2014 \00A0';
-            }
-        }
-    }
-}
-
-// Code
-code:not([class*='language-']) {
-    font-family: $asm-font-mono;
-    font-size: 13px;
-    padding: 3px 7px;
-    border-radius: 3px;
-}
-
-// Definition lists
-dl {
-
-    dt {
-        font-weight: 700;
-    }
-
-    dd {
-        margin: 4px 0 16px 0;
-    }
-}
-
-// Fieldset
-fieldset {
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-    padding-inline-start: 0;
-    padding-inline-end: 0;
-    padding-block-start: 0;
-    padding-block-end: 0;
-    width: 100%;
-    border-width: 1px;
-    border-radius: 4px;
-    padding: 24px;
-
-    legend {
-        padding: 0 6px;
-        margin-left: -6px;
-    }
-}
-
-// Mark
-mark {
-    background: #F7F49A;
-}
-
-// Pre
-pre {
-    white-space: pre-wrap;
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Helpers
-// -----------------------------------------------------------------------------------------------------
-
-// Link
+// Link helper for applying default 'a' style
 .link {
     cursor: pointer;
 
     &:focus,
     &:hover {
         text-decoration: underline;
-    }
-}
-
-// Marked
-.marked {
-    position: relative;
-    white-space: nowrap;
-
-    &:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        right: -4px;
-        bottom: 10%;
-        left: -4px;
-        z-index: -1;
-        background: asm-color('yellow', 900);
-
-        pointer-events: none;
     }
 }
 
@@ -224,6 +110,278 @@ pre {
 }
 
 // -----------------------------------------------------------------------------------------------------
+// @ Code and Pre
+// -----------------------------------------------------------------------------------------------------
+code,
+pre {
+    font-family: $asm-font-mono;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 4px;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+pre {
+    padding: 24px;
+    margin: 0;
+    border-width: 1px;
+}
+
+:not(pre) > code {
+    padding: 3px 5px;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Rich text
+// -----------------------------------------------------------------------------------------------------
+.rich-text {
+
+    h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    h1 + * {
+        margin-top: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    * + h2 {
+        margin-top: 2rem;
+    }
+
+    h2 + * {
+        margin-top: 1rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    * + h3 {
+        margin-top: 1.5rem;
+    }
+
+    h2 + h3 {
+        margin-top: 1rem;
+    }
+
+    h3 + * {
+        margin-top: 0.5rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    * + h4 {
+        margin-top: 1.5rem;
+    }
+
+    h3 + h4 {
+        margin-top: 0.5rem;
+    }
+
+    h4 + * {
+        margin-top: 0.5rem;
+    }
+
+    p {
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.625;
+    }
+
+    p + p {
+        margin-top: 1rem;
+    }
+
+    ol {
+        list-style-type: decimal;
+        padding-left: 1.25rem;
+    }
+
+    * + ol {
+        margin-top: 1rem;
+    }
+
+    ol + * {
+        margin-top: 1rem;
+    }
+
+    li ol {
+        margin-top: 0.5rem;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 1.25rem;
+    }
+
+    * + ul {
+        margin-top: 1rem;
+    }
+
+    ul + * {
+        margin-top: 1rem;
+    }
+
+    li ul {
+        margin-top: 0.5rem;
+    }
+
+    li {
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.625;
+    }
+
+    li + li {
+        margin-top: 0.5rem;
+    }
+
+    li p {
+        margin-top: 1rem;
+    }
+
+    li p + p {
+        margin-top: 0.5rem;
+    }
+
+    li:first-child p:first-child {
+        margin-top: 0.5rem;
+    }
+
+    a {
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    abbr {
+        cursor: help;
+        border-bottom-width: 1px;
+        border-bottom-style: dotted;
+    }
+
+    blockquote {
+        border-left-width: 3px;
+        font-style: italic;
+        margin: 1em 0;
+        padding-left: 16px;
+
+        footer {
+            font-style: normal;
+
+            &:before {
+                content: '\2014 \00A0';
+            }
+        }
+
+        &.reverse {
+            border-left-width: 0;
+            border-right-width: 3px;
+            text-align: right;
+            padding-left: 0;
+            padding-right: 16px;
+
+            footer {
+
+                &:before {
+                    content: '';
+                }
+
+                &:after {
+                    content: '\2014 \00A0';
+                }
+            }
+        }
+    }
+
+    * + blockquote {
+        margin-top: 1rem;
+    }
+
+    blockquote + * {
+        margin-top: 1rem;
+    }
+
+    dl {
+
+        dt {
+            font-weight: 700;
+        }
+
+        dd {
+            margin: 4px 0 16px 0;
+        }
+    }
+
+    fieldset {
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+        padding-block-start: 0;
+        padding-block-end: 0;
+        width: 100%;
+        border-width: 1px;
+        border-radius: 4px;
+        padding: 24px;
+
+        legend {
+            padding: 0 6px;
+            margin-left: -6px;
+        }
+    }
+
+    img {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    * + pre {
+        margin-top: 1rem;
+    }
+
+    pre + * {
+        margin-top: 1rem;
+    }
+
+    pre code {
+        padding: 0;
+    }
+
+    strong {
+        font-weight: 700;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
@@ -232,35 +390,11 @@ pre {
     $primary: map-get($theme, primary);
     $is-dark: map-get($theme, is-dark);
 
-    // Code
-    code:not([class*='language-']) {
-
-        @if ($is-dark) {
-            color: #CDD3DE;
-            background: #525252;
-        } @else {
-            color: #748DB9;
-            background: #E2E8EF;
-        }
-    }
-
     // -----------------------------------------------------------------------------------------------------
-    // @ Helpers
+    // @ General
     // -----------------------------------------------------------------------------------------------------
 
-    // Marked
-    .marked {
-
-        &:after {
-            @if ($is-dark) {
-                background: asm-color('pink', 600);
-            } @else {
-                background: asm-color('yellow', 200);
-            }
-        }
-    }
-
-    // Link
+    // Link helper for applying default 'a' style
     .link {
         color: map-get($primary, default);
         border-bottom-color: map-get($primary, default);
@@ -279,6 +413,51 @@ pre {
 
         .separator {
             color: map-get($foreground, secondary-text);
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Code and Pre
+    // -----------------------------------------------------------------------------------------------------
+    code,
+    pre {
+        @if ($is-dark) {
+            color: asm-color('cool-gray', 400);
+            background: asm-color('cool-gray', 800);
+        } @else {
+            background: #FFFFFF;
+            color: #728FCB;
+        }
+    }
+
+    pre {
+        @if ($is-dark) {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+    }
+
+    :not(pre) > code {
+        @if ($is-dark) {
+            color: asm-color('cool-gray', 400);
+            background: asm-color('cool-gray', 700);
+        } @else {
+            color: asm-color('cool-gray', 500);
+            background: asm-color('cool-gray', 200);
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Rich text
+    // -----------------------------------------------------------------------------------------------------
+    .rich-text {
+
+        a {
+            color: map-get($primary, default);
+            border-bottom-color: map-get($primary, default);
+        }
+
+        mark {
+            background: #F7F49A;
         }
     }
 }
