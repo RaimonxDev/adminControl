@@ -31,7 +31,7 @@ export class AsmModule
     {
         if ( parentModule )
         {
-            throw new Error('AsmCoreModule has already been loaded. Import this module in the AppModule only!');
+            throw new Error('AsmModule has already been loaded. Import this module in the AppModule only!');
         }
     }
 }
