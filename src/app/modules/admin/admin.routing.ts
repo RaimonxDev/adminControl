@@ -169,9 +169,6 @@ export const adminRoutes: Route[] = [{
             ]}
         ]},
 
-        // Docs
-        {path: 'docs', loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule)},
-
         // 404
         {path: '404-not-found', pathMatch: 'full', loadChildren: () => import('./pages/errors/error-404/error-404.module').then(m => m.Error404Module)},
 

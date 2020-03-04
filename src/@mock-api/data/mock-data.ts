@@ -3,7 +3,6 @@ import { CalendarMockApi } from '@mock-api/data/calendar';
 import { ContactsMockApi } from '@mock-api/data/contacts';
 import { DashboardAnalyticsMockApi } from '@mock-api/data/dashboards/analytics';
 import { DashboardCryptocurrencyMockApi } from '@mock-api/data/dashboards/cryptocurrency';
-import { DocsMockApi } from '@mock-api/data/docs';
 import { HelpCenterMockApi } from '@mock-api/data/help-center';
 import { IconsMockApi } from '@mock-api/data/icons';
 import { MailboxMockApi } from '@mock-api/data/mailbox';
@@ -21,7 +20,6 @@ export const asmMockApiData = [
     ContactsMockApi,
     DashboardAnalyticsMockApi,
     DashboardCryptocurrencyMockApi,
-    DocsMockApi,
     HelpCenterMockApi,
     IconsMockApi,
     MailboxMockApi,
