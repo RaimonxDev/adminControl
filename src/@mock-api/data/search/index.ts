@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmNavigationItem, AsmNavigationService } from '@assembly/components/navigation';
-import { AsmMockApi } from '@mock-api/mock-api.interface';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApi } from '@mock-api/core/mock-api.interface';
+import { AsmMockApiService } from '@mock-api/core/mock-api.service';
 import { defaultNavigation } from '@mock-api/data/navigation/data';
 import { contacts } from '@mock-api/data/contacts/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SearchResultsMockApi implements AsmMockApi
+export class SearchMockApi implements AsmMockApi
 {
     // Private Readonly
     private readonly _defaultNavigation: AsmNavigationItem[] = defaultNavigation;

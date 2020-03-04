@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import { AsmMockApi } from '@mock-api/mock-api.interface';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApi } from '@mock-api/core/mock-api.interface';
+import { AsmMockApiService } from '@mock-api/core/mock-api.service';
 
 @Injectable({
     providedIn: 'root'

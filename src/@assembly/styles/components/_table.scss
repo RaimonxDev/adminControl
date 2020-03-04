@@ -1,75 +1,71 @@
 table {
+    width: 100%;
+    border-spacing: 0;
 
-    &.asm-table {
-        width: 100%;
-        border-spacing: 0;
-        @include asm-elevation('md');
+    thead {
 
-        thead {
+        tr {
 
-            tr {
+            th {
+                padding: 16px;
+                border-bottom-width: 2px;
+                text-align: left;
+                font-weight: 500;
 
-                th {
-                    padding: 16px;
-                    border-bottom: 2px solid;
-                    text-align: left;
-                    font-weight: 500;
-
-                    &:first-child {
-                        padding-left: 24px;
-                    }
-
-                    &:last-child {
-                        padding-right: 24px;
-                    }
-                }
-            }
-        }
-
-        tbody {
-
-            tr {
-
-                td {
-                    padding: 16px;
-                    border-bottom: 1px solid;
-                    text-align: left;
-
-                    &:first-child {
-                        padding-left: 24px;
-                    }
-
-                    &:last-child {
-                        padding-right: 24px;
-                    }
+                &:first-child {
+                    padding-left: 24px;
                 }
 
                 &:last-child {
-
-                    td {
-                        border-bottom: none;
-                    }
+                    padding-right: 24px;
                 }
             }
         }
+    }
 
-        tfoot {
+    tbody {
 
-            tr {
+        tr {
 
-                th {
-                    padding: 16px;
-                    border-top: 2px solid;
-                    text-align: left;
-                    font-weight: 500;
+            td {
+                padding: 16px;
+                border-bottom-width: 1px;
+                text-align: left;
 
-                    &:first-child {
-                        padding-left: 24px;
-                    }
+                &:first-child {
+                    padding-left: 24px;
+                }
 
-                    &:last-child {
-                        padding-right: 24px;
-                    }
+                &:last-child {
+                    padding-right: 24px;
+                }
+            }
+
+            &:last-child {
+
+                td {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    tfoot {
+
+        tr {
+
+            th {
+                padding: 16px;
+                border-top-width: 2px;
+                text-align: left;
+                font-weight: 500;
+
+                &:first-child {
+                    padding-left: 24px;
+                }
+
+                &:last-child {
+                    padding-right: 24px;
                 }
             }
         }
@@ -81,43 +77,4 @@ table {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-
-    table {
-
-        &.asm-table {
-            background: map-get($background, card);
-
-            thead {
-
-                tr {
-
-                    th {
-                        border-bottom-color: map-get($foreground, divider);
-                    }
-                }
-            }
-
-            tbody {
-
-                tr {
-
-                    td {
-                        border-bottom-color: map-get($foreground, divider);
-                    }
-                }
-            }
-
-            tfoot {
-
-                tr {
-
-                    th {
-                        border-top-color: map-get($foreground, divider);
-                    }
-                }
-            }
-        }
-    }
 }

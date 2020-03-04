@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
-import { AsmMockApiRequestHandler } from '@mock-api/mock-api.request-handler';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApiRequestHandler } from '@mock-api/core/mock-api.request-handler';
+import { AsmMockApiService } from '@mock-api/core/mock-api.service';
 
 @Injectable({
     providedIn: 'root'

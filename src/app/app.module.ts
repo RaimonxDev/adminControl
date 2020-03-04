@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExtraOptions, RouterModule } from '@angular/router';
 import { AsmModule } from '@assembly';
-import { AsmMockApiModule } from '@mock-api/mock-api.module';
+import { AsmMockApiModule } from '@mock-api/core/mock-api.module';
 import { CoreModule } from 'app/core/core.module';
 import { AuthModule } from 'app/modules/auth/auth.module';
 import { AdminModule } from 'app/modules/admin/admin.module';

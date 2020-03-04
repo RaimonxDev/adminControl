@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AsmMockApi } from '@mock-api/mock-api.interface';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApi } from '@mock-api/core/mock-api.interface';
+import { AsmMockApiService } from '@mock-api/core/mock-api.service';
 import { docs } from './data';
 
 @Injectable({
