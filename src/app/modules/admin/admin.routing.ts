@@ -1,14 +1,14 @@
 import { Route } from '@angular/router';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
+import { LayoutComponent } from 'app/layout/layout.component';
 import { AdminResolver } from 'app/modules/admin/admin.resolvers';
-import { MainComponent } from 'app/core/main/main.component';
 
 // @formatter:off
 // tslint:disable:max-line-length
 export const adminRoutes: Route[] = [{
     path       : '',
     canActivate: [AuthGuard],
-    component  : MainComponent,
+    component  : LayoutComponent,
     resolve    : {
         admin: AdminResolver,
     },

@@ -1,0 +1,156 @@
+@import 'assembly';
+
+classy-layout {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+
+    > asm-vertical-navigation {
+
+        .asm-vertical-navigation-content-header {
+
+            .actions {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                padding: 16px;
+
+                .spacer {
+                    display: flex;
+                    flex: 1 1 auto;
+                    height: 1px;
+                }
+            }
+
+            .user {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 16px 24px;
+
+                .avatar {
+                    position: relative;
+                    width: 96px;
+                    height: 96px;
+
+                    img {
+                        width: 96px;
+                        min-width: 96px;
+                        height: 96px;
+                        min-height: 96px;
+                        border-radius: 50%;
+                    }
+
+                    .mat-icon {
+                        @include asm-icon-size(96);
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    min-width: 0;
+                    margin-top: 24px;
+
+                    .name,
+                    .email {
+                        width: 100%;
+                        min-width: 0;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        text-align: center;
+                        line-height: normal;
+                    }
+
+                    .email {
+                        margin-top: 2px;
+                    }
+
+                    .menu {
+                        margin-left: auto;
+
+                        .mat-icon {
+                            @include asm-icon-size(20);
+                        }
+                    }
+                }
+            }
+        }
+
+        .asm-vertical-navigation-content-footer {
+
+            .logo {
+                display: flex;
+                align-items: center;
+                height: 80px;
+                min-height: 80px;
+                max-height: 80px;
+                padding: 0 24px;
+                margin-left: 16px;
+                opacity: 0.12;
+
+                img {
+                    max-width: 163px;
+                }
+            }
+        }
+    }
+
+    > .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-width: 0;
+
+        .navigation-toggle-button {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 45;
+        }
+
+        > .content {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+
+            > *:not(router-outlet) {
+                position: relative;
+                display: flex;
+                flex: 1 1 auto;
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    classy-layout {
+
+        > .wrapper {
+
+            .navigation-toggle-button {
+                background: map-get($primary, default);
+
+                .mat-icon {
+                    color: map-get($primary, default-contrast);
+                }
+            }
+        }
+    }
+}

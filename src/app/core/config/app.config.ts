@@ -1,4 +1,4 @@
-import { Layout } from 'app/core/main/layouts/layouts.types';
+import { Layout } from 'app/layout/layout.types';
 
 // Theme type
 export type Theme = 'light' | 'dark';

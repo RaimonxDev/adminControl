@@ -1,17 +1,14 @@
 import { Route } from '@angular/router';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
-import { MainComponent } from 'app/core/main/main.component';
+import { EmptyLayoutComponent } from 'app/layout/layouts/empty/empty.component';
 
 export const authRoutes: Route[] = [
     // Confirmation required
     {
         path       : 'confirmation-required',
         canActivate: [NoAuthGuard],
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
+        component  : EmptyLayoutComponent,
         children   : [
             {
                 path        : '',
@@ -23,10 +20,7 @@ export const authRoutes: Route[] = [
     // Forgot password
     {
         path       : 'forgot-password',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
+        component  : EmptyLayoutComponent,
         canActivate: [NoAuthGuard],
         children   : [
             {
@@ -39,10 +33,7 @@ export const authRoutes: Route[] = [
     // Reset password
     {
         path       : 'reset-password',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
+        component  : EmptyLayoutComponent,
         canActivate: [NoAuthGuard],
         children   : [
             {
@@ -55,10 +46,7 @@ export const authRoutes: Route[] = [
     // Sign in
     {
         path       : 'sign-in',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
+        component  : EmptyLayoutComponent,
         canActivate: [NoAuthGuard],
         children   : [
             {
@@ -71,10 +59,7 @@ export const authRoutes: Route[] = [
     // Sign out
     {
         path       : 'sign-out',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
+        component  : EmptyLayoutComponent,
         canActivate: [AuthGuard],
         children   : [
             {
@@ -87,10 +72,7 @@ export const authRoutes: Route[] = [
     // Sign up
     {
         path       : 'sign-up',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
+        component  : EmptyLayoutComponent,
         canActivate: [NoAuthGuard],
         children   : [
             {
@@ -103,10 +85,7 @@ export const authRoutes: Route[] = [
     // Unlock session
     {
         path       : 'unlock-session',
-        component  : MainComponent,
-        data       : {
-            layout: 'empty'
-        },
+        component  : EmptyLayoutComponent,
         canActivate: [AuthGuard],
         children   : [
             {

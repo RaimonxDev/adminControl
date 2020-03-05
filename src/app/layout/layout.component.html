@@ -1,0 +1,104 @@
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Empty layout -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<empty-layout *ngIf="layout === 'empty'"></empty-layout>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Layouts with horizontal navigation -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- Centered -->
+<centered-layout *ngIf="layout === 'centered'"></centered-layout>
+
+<!-- Enterprise -->
+<enterprise-layout *ngIf="layout === 'enterprise'"></enterprise-layout>
+
+<!-- Material -->
+<material-layout *ngIf="layout === 'material'"></material-layout>
+
+<!-- Modern -->
+<modern-layout *ngIf="layout === 'modern'"></modern-layout>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Layouts with vertical navigation -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- Basic -->
+<basic-layout *ngIf="layout === 'basic'"></basic-layout>
+
+<!-- Classic -->
+<classic-layout *ngIf="layout === 'classic'"></classic-layout>
+
+<!-- Classy -->
+<classy-layout *ngIf="layout === 'classy'"></classy-layout>
+
+<!-- Compact -->
+<compact-layout *ngIf="layout === 'compact'"></compact-layout>
+
+<!-- Dense -->
+<dense-layout *ngIf="layout === 'dense'"></dense-layout>
+
+<!-- Thin -->
+<thin-layout *ngIf="layout === 'thin'"></thin-layout>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Configuration drawer - Remove this to remove the drawer and its button -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<div class="configuration-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
+     style="top: 320px"
+     (click)="configurationDrawer.toggle()">
+    <mat-icon class="icon-size-24 text-white"
+              style="animation: rotation 2s infinite linear;"
+              [svgIcon]="'settings'"></mat-icon>
+</div>
+
+<asm-drawer class="configuration-drawer"
+            [name]="'configurationDrawer'"
+            [position]="'right'"
+            [mode]="'over'"
+            #configurationDrawer>
+
+    <div class="flex flex-col w-full">
+
+        <div class="flex flex-row items-center gray-800 p-6">
+            <mat-icon class="mr-3"
+                      [svgIcon]="'color_lens'"></mat-icon>
+            <div class="text-2xl">Configuration</div>
+        </div>
+
+        <div class="flex flex-col p-6">
+
+            <!-- Dark theme -->
+            <mat-slide-toggle class="mt-2 mb-8"
+                              [checked]="theme === 'dark'"
+                              (change)="setTheme($event)"
+                              [color]="'primary'">
+                Dark theme
+            </mat-slide-toggle>
+
+            <!-- Layout -->
+            <div class="font-medium mb-2">Layout:</div>
+            <mat-radio-group class="flex flex-col mb-2"
+                             [color]="'primary'"
+                             [value]="layout"
+                             (change)="setLayout($event)">
+                <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
+                <mat-radio-button [value]="'centered'">Centered</mat-radio-button>
+                <mat-radio-button [value]="'enterprise'">Enterprise</mat-radio-button>
+                <mat-radio-button [value]="'material'">Material</mat-radio-button>
+                <mat-radio-button [value]="'modern'">Modern</mat-radio-button>
+                <mat-radio-button [value]="'basic'">Basic</mat-radio-button>
+                <mat-radio-button [value]="'classic'">Classic</mat-radio-button>
+                <mat-radio-button [value]="'classy'">Classy</mat-radio-button>
+                <mat-radio-button [value]="'compact'">Compact</mat-radio-button>
+                <mat-radio-button [value]="'dense'">Dense</mat-radio-button>
+                <mat-radio-button [value]="'thin'">Thin</mat-radio-button>
+            </mat-radio-group>
+
+        </div>
+
+    </div>
+
+</asm-drawer>
+
