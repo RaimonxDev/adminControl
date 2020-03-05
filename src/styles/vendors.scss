@@ -8,13 +8,13 @@
 // -----------------------------------------------------------------------------------------------------
 
 // FullCalendar
-@import '~@fullcalendar/core/main.css';
-@import '~@fullcalendar/daygrid/main.css';
-@import '~@fullcalendar/timegrid/main.css';
-@import '~@fullcalendar/list/main.css';
+@import '../../node_modules/@fullcalendar/core/main.css';
+@import '../../node_modules/@fullcalendar/daygrid/main.css';
+@import '../../node_modules/@fullcalendar/timegrid/main.css';
+@import '../../node_modules/@fullcalendar/list/main.css';
 
 // Perfect scrollbar
-@import '~perfect-scrollbar/css/perfect-scrollbar';
+@import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
 
 // Quill
-@import '~quill/dist/quill.snow.css';
+@import '../../node_modules/quill/dist/quill.snow.css';
