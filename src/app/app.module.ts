@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ExtraOptions, RouterModule } from '@angular/router';
+import { ExtraOptions, PreloadAllModules, RouterModule } from '@angular/router';
 import { AsmModule } from '@assembly';
 import { AsmMockApiModule } from '@mock-api';
 import { CoreModule } from 'app/core/core.module';
@@ -12,7 +12,8 @@ import { LandingModule } from 'app/modules/landing/landing.module';
 import { AppComponent } from 'app/app.component';
 
 const routerConfig: ExtraOptions = {
-    scrollPositionRestoration: 'top'
+    scrollPositionRestoration: 'enabled',
+    preloadingStrategy       : PreloadAllModules
 };
 
 @NgModule({
