@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class AdminResolver implements Resolve<any>
+export class InitialDataResolver implements Resolve<any>
 {
     /**
      * Constructor

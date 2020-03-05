@@ -49,7 +49,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     {
         // Subscribe to the resolved route data
         this._activatedRoute.data.subscribe((data: Data) => {
-            this.data = data.admin;
+            this.data = data.initialData;
         });
 
         // Subscribe to media changes
