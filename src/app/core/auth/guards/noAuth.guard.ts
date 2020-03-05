@@ -38,10 +38,10 @@ export class NoAuthGuard implements CanActivate, CanActivateChild, CanLoad
                    .pipe(
                        switchMap((authenticated) => {
 
-                           // If the user is not authenticated...
+                           // If the user is authenticated...
                            if ( authenticated )
                            {
-                               // Redirect to the login page
+                               // Redirect to the root
                                this._router.navigate(['']);
 
                                // Prevent the access
