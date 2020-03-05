@@ -11,7 +11,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { AsmConfigService } from '@assembly/services/config';
 import { AsmDrawerService } from '@assembly/components/drawer';
 import { Layout } from 'app/core/main/layouts/layouts.types';
-import { AppConfig, Theme } from 'app/core/config';
+import { AppConfig, Theme } from 'app/core/config/app';
 
 @Component({
     selector     : 'main',
