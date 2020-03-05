@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@mock-api/mock-api.interfaces';
-import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
+import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
+import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
 import { contacts as contactsData, countries as countriesData, tags as tagsData } from 'app/data/mock/contacts/data';
 
 @Injectable({

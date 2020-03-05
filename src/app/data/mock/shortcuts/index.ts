@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
+import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
+import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
 import { shortcuts as shortcutsData } from 'app/data/mock/shortcuts/data';
 
 @Injectable({

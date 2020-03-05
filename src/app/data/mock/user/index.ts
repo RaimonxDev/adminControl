@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
+import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
 import { user as userData } from 'app/data/mock/user/data';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
+import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
 import { dripicons, feather, iconsmind, material } from 'app/data/mock/icons/data';
 
 @Injectable({

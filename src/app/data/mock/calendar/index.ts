@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import RRule, { RRuleSet, rrulestr } from 'rrule';
-import { AsmMockApi } from '@mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
-import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
+import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
+import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
 import { calendars as calendarsData, events as eventsData, exceptions as exceptionsData, settings as settingsData, weekdays as weekdaysData } from 'app/data/mock/calendar/data';
 
 @Injectable({

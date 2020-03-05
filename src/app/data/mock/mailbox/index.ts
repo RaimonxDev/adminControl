@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@mock-api/mock-api.interfaces';
-import { AsmMockApiUtils } from '@mock-api/mock-api.utils';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
+import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
+import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
 import { filters as filtersData, folders as foldersData, labels as labelsData, mails as mailsData, settings as settingsData } from 'app/data/mock/mailbox/data';
 
 @Injectable({
