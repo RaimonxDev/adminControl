@@ -7,7 +7,7 @@ import { AsmDrawerModule } from '@assembly/components/drawer';
 import { SharedModule } from 'app/shared/shared.module';
 import { MainComponent } from 'app/core/main/main.component';
 import { LayoutsModule } from 'app/core/main/layouts/layouts.module';
-import { appConfig } from 'app/core/config/app';
+import { appConfig } from 'app/core/config/app.config';
 
 @NgModule({
     declarations: [
