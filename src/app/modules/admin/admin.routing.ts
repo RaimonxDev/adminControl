@@ -17,6 +17,9 @@ export const adminRoutes: Route[] = [{
         // Redirect empty path to '/apps/dashboard/analytics'
         {path: '', pathMatch : 'full', redirectTo: 'apps/dashboard/analytics'},
 
+        // Redirect signed in user to the '/apps/dashboard/analytics'
+        {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'apps/dashboard/analytics'},
+
         // Apps
         {path: 'apps', children: [
 
