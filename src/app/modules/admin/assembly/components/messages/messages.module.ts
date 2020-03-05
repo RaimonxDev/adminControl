@@ -6,7 +6,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MarkdownModule } from 'ngx-markdown';
 import { AsmHighlightModule } from '@assembly/components/highlight';
 import { AsmMessageModule } from '@assembly/components/message';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { MessagesComponent } from 'app/modules/admin/assembly/components/messages/messages.component';
 import { messagesRoutes } from 'app/modules/admin/assembly/components/messages/messages.routing';
 

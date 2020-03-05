@@ -15,7 +15,7 @@ import { QuillModule } from 'ngx-quill';
 import { AsmFindByKeyPipeModule } from '@assembly/pipes/find-by-key';
 import { AsmNavigationModule } from '@assembly/components/navigation';
 import { AsmScrollbarModule } from '@assembly/directives/scrollbar';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
 import { MailboxDetailsComponent } from 'app/modules/admin/apps/mailbox/details/details.component';

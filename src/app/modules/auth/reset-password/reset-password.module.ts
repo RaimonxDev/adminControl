@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AsmCardModule } from '@assembly/components/card';
 import { AsmMessageModule } from '@assembly/components/message';
 import { AsmSpinnerModule } from '@assembly/components/spinner';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { AuthResetPasswordComponent } from 'app/modules/auth/reset-password/reset-password.component';
 import { authResetPasswordRoutes } from 'app/modules/auth/reset-password/reset-password.routing';
 

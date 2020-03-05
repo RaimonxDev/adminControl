@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AsmHighlightModule } from '@assembly/components/highlight';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { AnimationsComponent } from 'app/modules/admin/assembly/components/animations/animations.component';
 import { animationsRoutes } from 'app/modules/admin/assembly/components/animations/animations.routing';
 

@@ -20,7 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import * as moment from 'moment';
 import { AsmAutogrowModule } from '@assembly/directives/autogrow';
 import { AsmFindByKeyPipeModule } from '@assembly/pipes/find-by-key';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { tasksRoutes } from 'app/modules/admin/apps/tasks/tasks.routing';
 import { TasksComponent } from 'app/modules/admin/apps/tasks/tasks.component';
 import { TasksDetailsComponent } from 'app/modules/admin/apps/tasks/details/details.component';

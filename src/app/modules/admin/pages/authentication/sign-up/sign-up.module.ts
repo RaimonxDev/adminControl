@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AsmCardModule } from '@assembly/components/card';
 import { AsmMessageModule } from '@assembly/components/message';
 import { AsmSpinnerModule } from '@assembly/components/spinner';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { SignUpComponent } from 'app/modules/admin/pages/authentication/sign-up/sign-up.component';
 import { signupRoutes } from 'app/modules/admin/pages/authentication/sign-up/sign-up.routing';
 

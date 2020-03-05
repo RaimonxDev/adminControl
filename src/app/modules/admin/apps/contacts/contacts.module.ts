@@ -19,7 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import * as moment from 'moment';
 import { AsmAutogrowModule } from '@assembly/directives/autogrow';
 import { AsmFindByKeyPipeModule } from '@assembly/pipes/find-by-key';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { contactsRoutes } from 'app/modules/admin/apps/contacts/contacts.routing';
 import { ContactsComponent } from 'app/modules/admin/apps/contacts/contacts.component';
 import { ContactsDetailsComponent } from 'app/modules/admin/apps/contacts/details/details.component';

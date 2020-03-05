@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { AngularMaterialComponent } from 'app/modules/admin/ui/angular-material/angular-material.component';
 import { angularMaterialRoutes } from 'app/modules/admin/ui/angular-material/angular-material.routing';
 

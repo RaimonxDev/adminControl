@@ -14,7 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AsmAutogrowModule } from '@assembly/directives/autogrow';
 import { AsmCardModule } from '@assembly/components/card';
 import { AsmHighlightModule } from '@assembly/components/highlight';
-import { SharedModule } from 'app/core/shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { AssemblyHelpersComponent } from 'app/modules/admin/ui/helpers/assembly/assembly.component';
 import { assemblyHelpersRoutes } from 'app/modules/admin/ui/helpers/assembly/assembly.routing';
 
