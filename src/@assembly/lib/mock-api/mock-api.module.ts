@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AsmMockApiInterceptor } from '@mock-api/mock-api.interceptor';
-import { AsmMockApiService } from '@mock-api/mock-api.service';
+import { AsmMockApiInterceptor } from '@assembly/lib/mock-api/mock-api.interceptor';
+import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
 
 @NgModule({
     providers: [

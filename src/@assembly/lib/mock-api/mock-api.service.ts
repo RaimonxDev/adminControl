@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AsmMockApiRequestHandler } from '@mock-api/mock-api.request-handler';
+import { AsmMockApiRequestHandler } from '@assembly/lib/mock-api/mock-api.request-handler';
 
 @Injectable({
     providedIn: 'root'
