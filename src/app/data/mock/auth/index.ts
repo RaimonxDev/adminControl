@@ -56,8 +56,8 @@ export class AuthMockApi implements AsmMockApi
     /**
      * Generates a JWT token using CryptoJS library.
      *
-     * This generator is mocking purposes only and it is NOT
-     * safe to use it in frontend applications in production!
+     * This generator is for mocking purposes only and it is NOT
+     * safe to use it in production frontend applications!
      *
      * @private
      */
