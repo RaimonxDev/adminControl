@@ -1,71 +1,74 @@
-table {
-    width: 100%;
-    border-spacing: 0;
+.rich-text {
 
-    thead {
+    table {
+        width: 100%;
+        border-spacing: 0;
 
-        tr {
+        thead {
 
-            th {
-                padding: 16px;
-                border-bottom-width: 2px;
-                text-align: left;
-                font-weight: 500;
+            tr {
 
-                &:first-child {
-                    padding-left: 24px;
-                }
+                th {
+                    padding: 16px;
+                    border-bottom-width: 2px;
+                    text-align: left;
+                    font-weight: 500;
 
-                &:last-child {
-                    padding-right: 24px;
+                    &:first-child {
+                        padding-left: 24px;
+                    }
+
+                    &:last-child {
+                        padding-right: 24px;
+                    }
                 }
             }
         }
-    }
 
-    tbody {
+        tbody {
 
-        tr {
-
-            td {
-                padding: 16px;
-                border-bottom-width: 1px;
-                text-align: left;
-
-                &:first-child {
-                    padding-left: 24px;
-                }
-
-                &:last-child {
-                    padding-right: 24px;
-                }
-            }
-
-            &:last-child {
+            tr {
 
                 td {
-                    border-bottom: none;
-                }
-            }
-        }
-    }
+                    padding: 16px;
+                    border-bottom-width: 1px;
+                    text-align: left;
 
-    tfoot {
+                    &:first-child {
+                        padding-left: 24px;
+                    }
 
-        tr {
-
-            th {
-                padding: 16px;
-                border-top-width: 2px;
-                text-align: left;
-                font-weight: 500;
-
-                &:first-child {
-                    padding-left: 24px;
+                    &:last-child {
+                        padding-right: 24px;
+                    }
                 }
 
                 &:last-child {
-                    padding-right: 24px;
+
+                    td {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+
+        tfoot {
+
+            tr {
+
+                th {
+                    padding: 16px;
+                    border-top-width: 2px;
+                    text-align: left;
+                    font-weight: 500;
+
+                    &:first-child {
+                        padding-left: 24px;
+                    }
+
+                    &:last-child {
+                        padding-right: 24px;
+                    }
                 }
             }
         }
