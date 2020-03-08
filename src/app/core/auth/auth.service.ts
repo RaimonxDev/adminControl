@@ -138,7 +138,7 @@ export class AuthService
             return of(false);
         }
 
-        // If the access token exists and it didn't expire, login using it
+        // If the access token exists and it didn't expire, sign in using it
         return this.signInUsingToken();
     }
 }

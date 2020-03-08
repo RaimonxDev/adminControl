@@ -129,14 +129,14 @@ export class AuthMockApi implements AsmMockApi
     register(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ Login - POST
+        // @ Sign in - POST
         // -----------------------------------------------------------------------------------------------------
 
         this._asmMockApiService
             .onPost('api/auth/sign-in', 1500)
             .reply((request) => {
 
-                // Login successful
+                // Sign in successful
                 if ( request.body.email === 'watkins.andrew@company.com' && request.body.password === 'admin' )
                 {
                     return [
