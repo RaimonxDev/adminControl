@@ -32,12 +32,12 @@ export class AuthService
      */
     set accessToken(token: string)
     {
-        localStorage.setItem('accessToken', token);
+        localStorage.setItem('access_token', token);
     }
 
     get accessToken(): string
     {
-        return localStorage.getItem('accessToken');
+        return localStorage.getItem('access_token');
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ export class AuthService
             switchMap((response: any) => {
 
                 // Store the access token in the local storage
-                this.accessToken = response.accessToken;
+                this.accessToken = response.access_token;
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
@@ -79,7 +79,7 @@ export class AuthService
     {
         // Renew token
         return this._httpClient.post('api/auth/refresh-access-token', {
-            accessToken: this.accessToken
+            access_token: this.accessToken
         }).pipe(
             catchError(() => {
 
@@ -89,7 +89,7 @@ export class AuthService
             switchMap((response: any) => {
 
                 // Store the access token in the local storage
-                this.accessToken = response.accessToken;
+                this.accessToken = response.access_token;
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
@@ -106,7 +106,7 @@ export class AuthService
     signOut(): Observable<any>
     {
         // Remove the access token from the local storage
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('access_token');
 
         // Set the authenticated flag to false
         this._authenticated = false;

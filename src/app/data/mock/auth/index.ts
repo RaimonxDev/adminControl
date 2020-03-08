@@ -142,7 +142,8 @@ export class AuthMockApi implements AsmMockApi
                     return [
                         200,
                         {
-                            accessToken: this._generateJWTToken()
+                            access_token: this._generateJWTToken(),
+                            token_type  : 'bearer'
                         }
                     ];
                 }
@@ -164,7 +165,7 @@ export class AuthMockApi implements AsmMockApi
             .reply((request) => {
 
                 // Get the access token
-                const accessToken = request.body.accessToken;
+                const accessToken = request.body.access_token;
 
                 // Verify the token
                 if ( this._verifyJWTToken(accessToken) )
@@ -172,7 +173,8 @@ export class AuthMockApi implements AsmMockApi
                     return [
                         200,
                         {
-                            accessToken: this._generateJWTToken()
+                            access_token: this._generateJWTToken(),
+                            token_type  : 'bearer'
                         }
                     ];
                 }
