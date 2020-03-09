@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations';
@@ -19,6 +19,12 @@ export class AsmMessageComponent implements OnInit, OnDestroy
     // Name
     @Input()
     name: string;
+
+    @Output()
+    readonly afterDismissed: EventEmitter<boolean>;
+
+    @Output()
+    readonly afterShown: EventEmitter<boolean>;
 
     // Private
     private _appearance: AsmMessageAppearance;
@@ -46,6 +52,8 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
+        this.afterDismissed = new EventEmitter<boolean>();
+        this.afterShown = new EventEmitter<boolean>();
         this.appearance = 'fill';
         this.dismissed = null;
         this.showIcon = true;
@@ -249,6 +257,9 @@ export class AsmMessageComponent implements OnInit, OnDestroy
         // Dismiss
         this.dismissed = true;
 
+        // Execute the observable
+        this.afterDismissed.next(true);
+
         // Notify the change detector
         this._changeDetectorRef.markForCheck();
     }
@@ -266,6 +277,9 @@ export class AsmMessageComponent implements OnInit, OnDestroy
 
         // Show
         this.dismissed = false;
+
+        // Execute the observable
+        this.afterShown.next(true);
 
         // Notify the change detector
         this._changeDetectorRef.markForCheck();
