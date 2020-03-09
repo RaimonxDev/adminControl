@@ -1,7 +1,7 @@
 <div class="asm-message-container"
      *ngIf="!dismissed"
-     [@fadeIn]
-     [@fadeOut]>
+     [@fadeIn]="dismissed === null ? false : !dismissed"
+     [@fadeOut]="dismissed === null ? false : !dismissed">
 
     <!-- Icon -->
     <div class="asm-message-icon"
@@ -47,11 +47,15 @@
     <div class="asm-message-content">
 
         <div class="asm-message-title">
-            <ng-content select="[asmMessageTitle]"></ng-content>
+            <p>
+                <ng-content select="[asmMessageTitle]"></ng-content>
+            </p>
         </div>
 
         <div class="asm-message-message">
-            <ng-content></ng-content>
+            <p>
+                <ng-content></ng-content>
+            </p>
         </div>
 
     </div>
