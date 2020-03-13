@@ -148,7 +148,7 @@ export class AsmMockApiRequestHandler
      *
      * @param callback
      */
-    replyOnce(callback: (req: HttpRequest<any>) => ([number, any | string])): void
+    replyOnce(callback: (req: HttpRequest<any>) => ([number, any | string] | Observable<any>)): void
     {
         // Set the execute limit to 1
         this._executionLimit = 1;
