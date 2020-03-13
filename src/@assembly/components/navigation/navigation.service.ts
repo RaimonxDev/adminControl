@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
-import { AsmHorizontalNavigationComponent } from '@assembly/components/navigation/horizontal/horizontal.component';
-import { AsmVerticalNavigationComponent } from '@assembly/components/navigation/vertical/vertical.component';
 
 @Injectable({
     providedIn: 'root'
