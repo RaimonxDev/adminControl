@@ -278,23 +278,53 @@ module.exports = {
         }),
         // Extending default configurations
         extend  : {
-            // Once TailwindCSS adds the above colors to their default config,
-            // this code will be used for generating the default colors
-            // and the theme.colors object will be removed from above
-            /*colors    : theme => {
-                // Extend the colors to add 'default' values that uses the hue 500.
-                // This will generate utilities like 'text-indigo' or 'bg-red',
-                // which will be defaulted to the hue 500 of that color palette.
-                const defaultColors = colors;
+            /*
+                // Once TailwindCSS adds the above colors to their default config,
+                // this code will be used for generating the default colors
+                // and the theme.colors object will be removed from above
+                colors    : theme => {
+                    // Extend the colors to add 'default' values that uses the hue 500.
+                    // This will generate utilities like 'text-indigo' or 'bg-red',
+                    // which will be defaulted to the hue 500 of that color palette.
+                    const defaultColors = colors;
 
-                forEach(defaultColors, (value, key) => {
-                    if ( isObject(value) )
-                    {
-                        defaultColors[key]['default'] = defaultColors[key]['500']
+                    forEach(defaultColors, (value, key) => {
+                        if ( isObject(value) )
+                        {
+                            defaultColors[key]['default'] = defaultColors[key]['500']
+                        }
+                    });
+                    return defaultColors;
+                },
+            */
+
+            /*
+                // Use this map to define custom contrasting colors for the custom colors
+                colorContrasts: theme => ({
+                    brand-color: {
+                        50     : theme('colors.brand-color.900'), // Use the 900 from the 'brand-color' palette as the contrasting color of the 50
+                        100    : theme('colors.brand-color.900'),
+                        200    : theme('colors.brand-color.900'),
+                        300    : theme('colors.brand-color.900'),
+                        400    : theme('colors.brand-color.900'),
+                        500    : theme('colors.brand-color.900'),
+                        600    : theme('colors.brand-color.50'),
+                        700    : theme('colors.brand-color.50'),
+                        800    : theme('colors.brand-color.50'),
+                        900    : theme('colors.brand-color.50'),
+                        default: theme('colors.brand-color.900')
                     }
-                });
-                return defaultColors;
-            },*/
+                },
+            */
+
+            /*
+                // Use this map to extend the iconSize utility sizes
+                iconSize: {
+                    8: '8px',
+                    10: '10px'
+                },
+            */
+
             flex      : {
                 '0': '0 0 auto'
             },
