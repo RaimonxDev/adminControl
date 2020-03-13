@@ -206,8 +206,6 @@ export const appRoutes: Route[] = [
 
                 // Components
                 {path: 'components', children: [
-                    {path: 'animations', loadChildren: () => import('app/modules/admin/assembly/components/animations/animations.module').then(m => m.AnimationsModule)},
-                    {path: 'messages', loadChildren: () => import('app/modules/admin/assembly/components/messages/messages.module').then(m => m.MessagesModule)},
                     {path: 'navigation', loadChildren: () => import('app/modules/admin/assembly/components/navigation/navigation.module').then(m => m.NavigationModule)}
                 ]}
             ]},
