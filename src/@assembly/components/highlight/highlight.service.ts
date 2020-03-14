@@ -33,12 +33,12 @@ export class AsmHighlightService
         const lines = code.split('\n');
 
         // Trim the empty lines around the code block
-        while ( lines[0].trim() === '' )
+        while ( lines.length && lines[0].trim() === '' )
         {
             lines.shift();
         }
 
-        while ( lines[lines.length - 1].trim() === '' )
+        while ( lines.length && lines[lines.length - 1].trim() === '' )
         {
             lines.pop();
         }
