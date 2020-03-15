@@ -193,12 +193,12 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
             // Generate menu item for the label
             this._labelsMenuData.push({
-                id            : label.id,
-                title         : label.title,
-                type          : 'basic',
-                icon          : 'label',
-                iconClassNames: 'text-' + label.color,
-                link          : '/apps/mailbox/label/' + label.slug
+                id         : label.id,
+                title      : label.title,
+                type       : 'basic',
+                icon       : 'label',
+                iconClasses: 'text-' + label.color,
+                link       : '/apps/mailbox/label/' + label.slug
             });
         });
 

@@ -12,8 +12,7 @@ export interface AsmNavigationItem
     function?: (item: AsmNavigationItem) => void;
     classes?: string;
     icon?: string;
-    iconFontSet?: string;
-    iconClassNames?: string;
+    iconClasses?: string;
     badge?: {
         title?: string;
         style?: 'rectangle' | 'rounded' | 'simple',
