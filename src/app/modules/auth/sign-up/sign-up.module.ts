@@ -5,9 +5,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AsmCardModule } from '@assembly/components/card';
 import { AsmMessageModule } from '@assembly/components/message';
-import { AsmSpinnerModule } from '@assembly/components/spinner';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthSignUpComponent } from 'app/modules/auth/sign-up/sign-up.component';
 import { authSignupRoutes } from 'app/modules/auth/sign-up/sign-up.routing';
@@ -23,9 +23,9 @@ import { authSignupRoutes } from 'app/modules/auth/sign-up/sign-up.routing';
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatProgressSpinnerModule,
         AsmCardModule,
         AsmMessageModule,
-        AsmSpinnerModule,
         SharedModule
     ]
 })

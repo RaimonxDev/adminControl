@@ -110,9 +110,9 @@
                         <span *ngIf="!signUpForm.disabled">
                             Create your free account
                         </span>
-                        <asm-spinner *ngIf="signUpForm.disabled"
-                                     [appearance]="'material'"
-                                     [diameter]="24"></asm-spinner>
+                        <mat-progress-spinner *ngIf="signUpForm.disabled"
+                                              [diameter]="24"
+                                              [mode]="'indeterminate'"></mat-progress-spinner>
                     </button>
 
                 </form>

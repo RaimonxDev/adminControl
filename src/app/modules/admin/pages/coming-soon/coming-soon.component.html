@@ -53,9 +53,9 @@
                         <span *ngIf="!comingSoonForm.disabled">
                             Notify me when you launch
                         </span>
-                        <asm-spinner *ngIf="comingSoonForm.disabled"
-                                     [appearance]="'material'"
-                                     [diameter]="24"></asm-spinner>
+                        <mat-progress-spinner *ngIf="comingSoonForm.disabled"
+                                              [diameter]="24"
+                                              [mode]="'indeterminate'"></mat-progress-spinner>
                     </button>
 
                     <!-- Form footer -->

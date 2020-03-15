@@ -89,6 +89,29 @@
     max-height: 56px;
 }
 
+// Target all buttons
+.mat-button,
+.mat-fab,
+.mat-flat-button,
+.mat-icon-button,
+.mat-fab,
+.mat-mini-fab,
+.mat-raised-button,
+.mat-stroked-button {
+
+    // mat-progress-spinner inside buttons
+    .mat-progress-spinner {
+
+        &.mat-progress-spinner-indeterminate-animation[mode=indeterminate] {
+
+            circle {
+                stroke: currentColor;
+                animation-duration: 6000ms;
+            }
+        }
+    }
+}
+
 // -----------------------------------------------------------------------------------------------------
 // @ Button Toggle
 // -----------------------------------------------------------------------------------------------------

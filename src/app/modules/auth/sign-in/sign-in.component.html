@@ -81,9 +81,9 @@
                         <span *ngIf="!signInForm.disabled">
                             Sign in
                         </span>
-                        <asm-spinner *ngIf="signInForm.disabled"
-                                     [appearance]="'material'"
-                                     [diameter]="24"></asm-spinner>
+                        <mat-progress-spinner *ngIf="signInForm.disabled"
+                                              [diameter]="24"
+                                              [mode]="'indeterminate'"></mat-progress-spinner>
                     </button>
 
                     <!-- Single sign-on -->

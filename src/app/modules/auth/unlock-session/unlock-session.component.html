@@ -65,9 +65,9 @@
                         <span *ngIf="!unlockSessionForm.disabled">
                             Unlock your session
                         </span>
-                        <asm-spinner *ngIf="unlockSessionForm.disabled"
-                                     [appearance]="'material'"
-                                     [diameter]="24"></asm-spinner>
+                        <mat-progress-spinner *ngIf="unlockSessionForm.disabled"
+                                              [diameter]="24"
+                                              [mode]="'indeterminate'"></mat-progress-spinner>
                     </button>
 
                     <!-- Form footer -->
