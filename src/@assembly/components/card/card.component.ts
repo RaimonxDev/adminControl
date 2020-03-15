@@ -12,6 +12,7 @@ import { AsmAnimations } from '@assembly/animations';
 export class AsmCardComponent
 {
     expanded: boolean;
+    flipped: boolean;
 
     // Private
     private _flippable: boolean;
@@ -30,6 +31,7 @@ export class AsmCardComponent
         // Set the defaults
         this.expanded = false;
         this.flippable = false;
+        this.flipped = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -95,5 +97,29 @@ export class AsmCardComponent
     toggleExpanded(): void
     {
         this.expanded = !this.expanded;
+    }
+
+    /**
+     * Flip the card
+     */
+    flip(): void
+    {
+        // Return if not flippable
+        if ( !this.flippable )
+        {
+            return;
+        }
+
+        this.flipped = !this.flipped;
+
+        // Update the class name
+        if ( this.flipped )
+        {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-card-flipped');
+        }
+        else
+        {
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-card-flipped');
+        }
     }
 }
