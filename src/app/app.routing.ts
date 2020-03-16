@@ -201,15 +201,6 @@ export const appRoutes: Route[] = [
                 {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.module').then(m => m.IconsModule)}
             ]},
 
-            // Assembly
-            {path: 'assembly', children: [
-
-                // Components
-                {path: 'components', children: [
-                    {path: 'navigation', loadChildren: () => import('app/modules/admin/assembly/components/navigation/navigation.module').then(m => m.NavigationModule)}
-                ]}
-            ]},
-
             // 404 & Catch all
             {path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/modules/admin/pages/errors/error-404/error-404.module').then(m => m.Error404Module)},
             {path: '**', redirectTo: '404-not-found'}

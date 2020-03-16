@@ -197,8 +197,8 @@ calendar {
 
 // Event panel
 .calendar-event-panel {
-    min-width: 544px;
-    max-width: 544px;
+    min-width: 600px;
+    max-width: 600px;
     border-radius: 8px;
     @include asm-elevation('2xl');
 
