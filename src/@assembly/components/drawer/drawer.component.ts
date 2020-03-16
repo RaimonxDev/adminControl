@@ -87,6 +87,9 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
             return;
         }
 
+        // Disable the animations
+        this._disableAnimations();
+
         // If the mode changes to the 'side' from the 'over'...
         if ( this.mode === 'over' && value === 'side' )
         {
@@ -120,6 +123,13 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
 
         // Execute the observable
         this.modeChanged.next(this.mode);
+
+        // Enable the animations after a delay
+        // The delay must be bigger than the current transition-duration
+        // to make sure nothing will be animated while the mode changing
+        setTimeout(() => {
+            this._enableAnimations();
+        }, 500);
     }
 
     get mode(): AsmDrawerMode
@@ -296,6 +306,23 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
 
         // Enable the animations
         this._animationsEnabled = true;
+    }
+
+    /**
+     * Disable the animations
+     *
+     * @private
+     */
+    private _disableAnimations(): void
+    {
+        // If the animations are already disabled, return...
+        if ( !this._animationsEnabled )
+        {
+            return;
+        }
+
+        // Disable the animations
+        this._animationsEnabled = false;
     }
 
     /**
