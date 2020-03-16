@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
+import { AsmDrawerMode, AsmDrawerPosition } from '@assembly/components/drawer/drawer.types';
 import { AsmDrawerService } from '@assembly/components/drawer/drawer.service';
 
 @Component({
@@ -16,16 +17,16 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
-    private _mode: 'over' | 'side';
+    private _mode: AsmDrawerMode;
     private _opened: boolean | '';
     private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
-    private _position: 'left' | 'right';
+    private _position: AsmDrawerPosition;
     private _transparentOverlay: boolean | '';
 
     // On mode changed
     @Output()
-    readonly modeChanged: EventEmitter<'over' | 'side'>;
+    readonly modeChanged: EventEmitter<AsmDrawerMode>;
 
     // On opened changed
     @Output()
@@ -33,7 +34,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
 
     // On position changed
     @Output()
-    readonly positionChanged: EventEmitter<'left' | 'right'>;
+    readonly positionChanged: EventEmitter<AsmDrawerPosition>;
 
     @HostBinding('class.asm-drawer-animations-enabled')
     private _animationsEnabled: boolean;
@@ -58,9 +59,9 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this._overlay = null;
 
         // Set the defaults
-        this.modeChanged = new EventEmitter<'over' | 'side'>();
+        this.modeChanged = new EventEmitter<AsmDrawerMode>();
         this.openedChanged = new EventEmitter<boolean | ''>();
-        this.positionChanged = new EventEmitter<'left' | 'right'>();
+        this.positionChanged = new EventEmitter<AsmDrawerPosition>();
 
         this.mode = 'side';
         this.opened = false;
@@ -78,7 +79,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
      * @param value
      */
     @Input()
-    set mode(value: 'over' | 'side')
+    set mode(value: AsmDrawerMode)
     {
         // If the value is the same, return...
         if ( this._mode === value )
@@ -110,7 +111,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this.modeChanged.next(this.mode);
     }
 
-    get mode(): 'over' | 'side'
+    get mode(): AsmDrawerMode
     {
         return this._mode;
     }
@@ -180,7 +181,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
      * @param value
      */
     @Input()
-    set position(value: 'left' | 'right')
+    set position(value: AsmDrawerPosition)
     {
         // If the value is the same, return...
         if ( this._position === value )
@@ -205,7 +206,7 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this.positionChanged.next(this.position);
     }
 
-    get position(): 'left' | 'right'
+    get position(): AsmDrawerPosition
     {
         return this._position;
     }
