@@ -48,7 +48,6 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     @ViewChild('pickerPanel')
     private _pickerPanel: TemplateRef<any>;
 
-    private _appearance: 'standard' | 'outline' | 'fill';
     private _dateFormat: string;
     private _onChange: (value: any) => void;
     private _onTouched: (value: any) => void;
@@ -90,7 +89,6 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.appearance = 'standard';
         this.activeDates = {
             month1: null,
             month2: null
@@ -107,29 +105,6 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter and getter for appearance input
-     *
-     * @param value
-     */
-    @Input()
-    set appearance(value: 'standard' | 'outline' | 'fill')
-    {
-        // Return, if the values are the same
-        if ( this._appearance === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._appearance = value;
-    }
-
-    get appearance(): 'standard' | 'outline' | 'fill'
-    {
-        return this._appearance;
-    }
 
     /**
      * Setter and getter for dateFormat input
@@ -478,8 +453,6 @@ export class AsmDateRangeComponent implements ControlValueAccessor, OnInit, OnDe
 
     /**
      * Open the picker panel
-     *
-     * @private
      */
     openPickerPanel(): void
     {
