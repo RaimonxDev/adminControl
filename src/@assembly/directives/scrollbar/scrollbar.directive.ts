@@ -349,6 +349,18 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
     }
 
     /**
+     * Scroll to bottom
+     *
+     * @param {number} offset
+     * @param {number} speed
+     */
+    scrollToBottom(offset: number = 0, speed?: number): void
+    {
+        const top = this._elementRef.nativeElement.scrollHeight - this._elementRef.nativeElement.clientHeight;
+        this.animateScrolling('scrollTop', top - offset, speed);
+    }
+
+    /**
      * Scroll to left
      *
      * @param {number} offset
@@ -369,18 +381,6 @@ export class AsmScrollbarDirective implements OnInit, OnDestroy
     {
         const left = this._elementRef.nativeElement.scrollWidth - this._elementRef.nativeElement.clientWidth;
         this.animateScrolling('scrollLeft', left - offset, speed);
-    }
-
-    /**
-     * Scroll to bottom
-     *
-     * @param {number} offset
-     * @param {number} speed
-     */
-    scrollToBottom(offset: number = 0, speed?: number): void
-    {
-        const top = this._elementRef.nativeElement.scrollHeight - this._elementRef.nativeElement.clientHeight;
-        this.animateScrolling('scrollTop', top - offset, speed);
     }
 
     /**
