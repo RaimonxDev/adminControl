@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 import { ScrollbarGeometry, ScrollbarPosition } from '@assembly/directives/scrollbar/scrollbar.interfaces';
 
 // -----------------------------------------------------------------------------------------------------
-// Wrapper directive for the Perfect Scrollbar: https://github.com/utatti/perfect-scrollbar
+// Wrapper directive for the Perfect Scrollbar: https://github.com/mdbootstrap/perfect-scrollbar
 // Based on https://github.com/zefoy/ngx-perfect-scrollbar
 // -----------------------------------------------------------------------------------------------------
 @Directive({
