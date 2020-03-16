@@ -87,11 +87,22 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
             return;
         }
 
-        // If the mode changes to the 'side' from the 'over',
-        // hide the backdrop
-        if ( this.mode === 'over' && value.startsWith('side') )
+        // If the mode changes to the 'side' from the 'over'...
+        if ( this.mode === 'over' && value === 'side' )
         {
+            // Hide the overlay
             this._hideOverlay();
+        }
+
+        // If the mode changes to the 'over' from the 'side'...
+        if ( this.mode === 'side' && value === 'over' )
+        {
+            // If the drawer is opened
+            if ( this.opened )
+            {
+                // Show the overlay
+                this._showOverlay();
+            }
         }
 
         let modeClassName;
