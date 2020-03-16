@@ -259,24 +259,28 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
             return;
         }
 
-        // If the mode changes to the 'side' from the 'over'...
+        // Disable the animations
+        this._disableAnimations();
+
+        // If the mode changes: 'over -> side'
         if ( this.mode === 'over' && value === 'side' )
         {
             // Hide the overlay
             this._hideOverlay();
-
-            // Execute the observable
-            this.modeChanged.next(value);
         }
 
-        // If the mode changes to the 'side' from the 'over'...
+        // If the mode changes: 'side -> over'
         if ( this.mode === 'side' && value === 'over' )
         {
             // Close the aside
             this.closeAside();
 
-            // Execute the observable
-            this.modeChanged.next(value);
+            // If the navigation is opened
+            if ( this.opened )
+            {
+                // Show the overlay
+                this._showOverlay();
+            }
         }
 
         let modeClassName;
@@ -294,6 +298,13 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
 
         // Execute the observable
         this.modeChanged.next(this.mode);
+
+        // Enable the animations after a delay
+        // The delay must be bigger than the current transition-duration
+        // to make sure nothing will be animated while the mode changing
+        setTimeout(() => {
+            this._enableAnimations();
+        }, 500);
     }
 
     get mode(): AsmNavigationMode
@@ -529,6 +540,23 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
 
         // Enable the animations
         this._animationsEnabled = true;
+    }
+
+    /**
+     * Disable the animations
+     *
+     * @private
+     */
+    private _disableAnimations(): void
+    {
+        // If the animations are already disabled, return...
+        if ( !this._animationsEnabled )
+        {
+            return;
+        }
+
+        // Disable the animations
+        this._animationsEnabled = false;
     }
 
     /**

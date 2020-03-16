@@ -90,14 +90,14 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         // Disable the animations
         this._disableAnimations();
 
-        // If the mode changes to the 'side' from the 'over'...
+        // If the mode changes: 'over -> side'
         if ( this.mode === 'over' && value === 'side' )
         {
             // Hide the overlay
             this._hideOverlay();
         }
 
-        // If the mode changes to the 'over' from the 'side'...
+        // If the mode changes: 'side -> over'
         if ( this.mode === 'side' && value === 'over' )
         {
             // If the drawer is opened
