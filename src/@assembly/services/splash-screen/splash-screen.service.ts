@@ -55,7 +55,6 @@ export class AsmSplashScreenService
     show(): void
     {
         this._document.body.classList.remove('asm-splash-screen-hidden');
-        this._document.body.classList.add('asm-splash-screen-visible');
     }
 
     /**
@@ -63,7 +62,6 @@ export class AsmSplashScreenService
      */
     hide(): void
     {
-        this._document.body.classList.remove('asm-splash-screen-visible');
         this._document.body.classList.add('asm-splash-screen-hidden');
     }
 }
