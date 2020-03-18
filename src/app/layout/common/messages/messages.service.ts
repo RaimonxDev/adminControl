@@ -83,7 +83,7 @@ export class MessagesService
      * @param id
      * @param message
      */
-    update(id, message: Message): Observable<Message>
+    update(id: string, message: Message): Observable<Message>
     {
         return this.messages$.pipe(
             take(1),
@@ -114,7 +114,7 @@ export class MessagesService
      *
      * @param id
      */
-    delete(id): Observable<boolean>
+    delete(id: string): Observable<boolean>
     {
         return this.messages$.pipe(
             take(1),

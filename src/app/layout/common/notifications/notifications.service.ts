@@ -83,7 +83,7 @@ export class NotificationsService
      * @param id
      * @param notification
      */
-    update(id, notification: Notification): Observable<Notification>
+    update(id: string, notification: Notification): Observable<Notification>
     {
         return this.notifications$.pipe(
             take(1),
@@ -114,7 +114,7 @@ export class NotificationsService
      *
      * @param id
      */
-    delete(id): Observable<boolean>
+    delete(id: string): Observable<boolean>
     {
         return this.notifications$.pipe(
             take(1),
