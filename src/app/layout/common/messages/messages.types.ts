@@ -6,7 +6,7 @@ export interface Message
     title?: string;
     description?: string;
     time: string;
-    link?: string | string[];
+    link?: string;
     useRouter?: boolean;
     read: boolean;
 }

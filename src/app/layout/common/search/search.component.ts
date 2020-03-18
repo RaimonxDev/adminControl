@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
@@ -19,10 +19,6 @@ export class SearchComponent implements OnInit, OnDestroy
     results: any[] | null;
     searchControl: FormControl;
 
-    // Result template
-    @ContentChild(TemplateRef)
-    resultTemplate: TemplateRef<any>;
-
     // Debounce
     @Input()
     debounce: number;
@@ -30,14 +26,6 @@ export class SearchComponent implements OnInit, OnDestroy
     // Min. length
     @Input()
     minLength: number;
-
-    // No results text
-    @Input()
-    noResultsText: string;
-
-    // Placeholder
-    @Input()
-    placeholder: string;
 
     // Search
     @Output()

@@ -84,7 +84,7 @@ export class ShortcutsService
      * @param id
      * @param shortcut
      */
-    update(id, shortcut: Shortcut): Observable<Shortcut>
+    update(id: string, shortcut: Shortcut): Observable<Shortcut>
     {
         return this.shortcuts$.pipe(
             take(1),
@@ -115,7 +115,7 @@ export class ShortcutsService
      *
      * @param id
      */
-    delete(id): Observable<boolean>
+    delete(id: string): Observable<boolean>
     {
         return this.shortcuts$.pipe(
             take(1),
