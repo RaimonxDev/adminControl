@@ -49,8 +49,6 @@ notifications {
         .notification {
             display: flex;
             flex: 1 0 auto;
-            padding: 20px 24px;
-            cursor: pointer;
             border-bottom-width: 1px;
 
             &:last-child {
@@ -77,9 +75,15 @@ notifications {
                 }
             }
 
-            a {
+            > a {
+                cursor: pointer;
+            }
+
+            > a,
+            > span {
                 display: flex;
                 flex: 1 1 auto;
+                padding: 20px 0 20px 24px;
 
                 .icon,
                 .image {
@@ -135,7 +139,7 @@ notifications {
                 position: relative;
                 display: flex;
                 flex-direction: column;
-                margin-left: 8px;
+                margin: 20px 24px 20px 8px;
 
                 .indicator {
                     width: 24px;

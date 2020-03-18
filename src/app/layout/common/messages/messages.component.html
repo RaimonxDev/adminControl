@@ -37,17 +37,25 @@
                 <div class="message"
                      [ngClass]="{'unread': !message.read}">
 
-                    <!-- Normal links -->
-                    <a *ngIf="!message.useRouter"
-                       [href]="message.link">
-                        <ng-container *ngTemplateOutlet="messageContent"></ng-container>
-                    </a>
+                    <!-- Message with a link -->
+                    <ng-container *ngIf="message.link">
+                        <!-- Normal links -->
+                        <a *ngIf="!message.useRouter"
+                           [href]="message.link">
+                            <ng-container *ngTemplateOutlet="messageContent"></ng-container>
+                        </a>
 
-                    <!-- Router links -->
-                    <a *ngIf="message.useRouter"
-                       [routerLink]="createRouteFromLink(message.link)">
+                        <!-- Router links -->
+                        <a *ngIf="message.useRouter"
+                           [routerLink]="createRouteFromLink(message.link)">
+                            <ng-container *ngTemplateOutlet="messageContent"></ng-container>
+                        </a>
+                    </ng-container>
+
+                    <!-- Message without a link -->
+                    <span *ngIf="!message.link">
                         <ng-container *ngTemplateOutlet="messageContent"></ng-container>
-                    </a>
+                    </span>
 
                     <!-- Actions -->
                     <div class="actions">
