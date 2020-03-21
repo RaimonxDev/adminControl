@@ -2,287 +2,6 @@
 import { AsmNavigationItem } from '@assembly/components/navigation';
 
 export const defaultNavigation: AsmNavigationItem[] = [
-    /*{
-        id      : 'applications-aside-1',
-        title   : 'Applications Aside 1',
-        subtitle: 'Aside is good!',
-        type    : 'aside',
-        icon    : 'apps',
-        children: [
-            {
-                id      : 'dashboard',
-                title   : 'Dashboard',
-                subtitle: 'Health tracking',
-                type    : 'basic',
-                icon    : 'dashboards',
-                link    : 'apps/dashboard'
-            },
-            {
-                id      : 'calendar',
-                title   : 'Calendar',
-                subtitle: '3 upcoming events',
-                type    : 'basic',
-                icon    : 'today',
-                link    : '/apps/calendar'
-            },
-            {
-                id      : 'e-commerce',
-                title   : 'E-Commerce',
-                subtitle: '4 new orders',
-                type    : 'collapsable',
-                icon    : 'shopping_cart',
-                children: [
-                    {
-                        id        : 'products',
-                        title     : 'Products',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/products',
-                        exactMatch: true
-                    },
-                    {
-                        id        : 'productDetail',
-                        title     : 'Product Detail',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/products/1/printed-dress',
-                        exactMatch: true
-                    },
-                    {
-                        id        : 'orders',
-                        title     : 'Orders',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/orders',
-                        exactMatch: true
-                    },
-                    {
-                        id        : 'orderDetail',
-                        title     : 'Order Detail',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/orders/1',
-                        exactMatch: true
-                    }
-                ]
-            },
-            {
-                id      : 'academy',
-                title   : 'Academy',
-                subtitle: 'New lessons available!',
-                type    : 'basic',
-                icon    : 'school',
-                link    : '/apps/academy'
-            },
-            {
-                id   : 'mail',
-                title: 'Mail',
-                type : 'basic',
-                icon : 'email',
-                link : '/apps/mail',
-                badge: {
-                    title     : '25',
-                    background: '#F44336',
-                    color     : '#FFFFFF'
-                }
-            },
-            {
-                id   : 'mail-ngrx',
-                title: 'Mail Ngrx',
-                type : 'basic',
-                icon : 'email',
-                link : '/apps/mail-ngrx',
-                badge: {
-                    title     : 'NEW',
-                    style     : 'rectangle',
-                    background: '#EC0C8E',
-                    color     : '#FFFFFF'
-                }
-            },
-            {
-                id   : 'chat',
-                title: 'Chat',
-                type : 'basic',
-                icon : 'chat',
-                link : '/apps/chat',
-                badge: {
-                    title     : '13',
-                    style     : 'simple',
-                    background: '#09D261',
-                    color     : '#09D261'
-                }
-            },
-            {
-                id      : 'file-manager',
-                title   : 'File Manager',
-                subtitle: '1.4GB of 5GB used',
-                type    : 'basic',
-                icon    : 'folder',
-                link    : '/apps/file-manager'
-            },
-            {
-                id   : 'contacts',
-                title: 'Contacts',
-                type : 'basic',
-                icon : 'account_box',
-                link : '/apps/contacts'
-            },
-            {
-                id      : 'to-do',
-                title   : 'To-Do',
-                subtitle: '7 overdue tasks',
-                type    : 'basic',
-                icon    : 'check_box',
-                link    : '/apps/todo',
-                badge   : {
-                    title     : 'HOT!',
-                    style     : 'rounded',
-                    background: '#FF6F00',
-                    color     : '#FFFFFF'
-                }
-            },
-            {
-                id   : 'scrumboard',
-                title: 'Scrumboard',
-                type : 'basic',
-                icon : 'assessment',
-                link : '/apps/scrumboard'
-            }
-        ]
-    },
-    {
-        id      : 'applications-aside-2',
-        title   : 'Applications Aside 2',
-        type    : 'aside',
-        icon    : 'apps',
-        children: [
-            {
-                id   : 'dashboard',
-                title: 'Dashboard',
-                type : 'basic',
-                icon : 'dashboards',
-                link : 'apps/dashboard'
-            },
-            {
-                id   : 'calendar',
-                title: 'Calendar',
-                type : 'basic',
-                icon : 'today',
-                link : '/apps/calendar'
-            },
-            {
-                id      : 'e-commerce',
-                title   : 'E-Commerce',
-                type    : 'collapsable',
-                icon    : 'shopping_cart',
-                children: [
-                    {
-                        id        : 'products',
-                        title     : 'Products',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/products',
-                        exactMatch: true
-                    },
-                    {
-                        id        : 'productDetail',
-                        title     : 'Product Detail',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/products/1/printed-dress',
-                        exactMatch: true
-                    },
-                    {
-                        id        : 'orders',
-                        title     : 'Orders',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/orders',
-                        exactMatch: true
-                    },
-                    {
-                        id        : 'orderDetail',
-                        title     : 'Order Detail',
-                        type      : 'basic',
-                        link      : '/apps/e-commerce/orders/1',
-                        exactMatch: true
-                    }
-                ]
-            },
-            {
-                id   : 'academy',
-                title: 'Academy',
-                type : 'basic',
-                icon : 'school',
-                link : '/apps/academy'
-            },
-            {
-                id   : 'mail',
-                title: 'Mail',
-                type : 'basic',
-                icon : 'email',
-                link : '/apps/mail',
-                badge: {
-                    title     : '25',
-                    background: '#F44336',
-                    color     : '#FFFFFF'
-                }
-            },
-            {
-                id   : 'mail-ngrx',
-                title: 'Mail Ngrx',
-                type : 'basic',
-                icon : 'email',
-                link : '/apps/mail-ngrx',
-                badge: {
-                    title     : 'NEW',
-                    style     : 'rectangle',
-                    background: '#EC0C8E',
-                    color     : '#FFFFFF'
-                }
-            },
-            {
-                id   : 'chat',
-                title: 'Chat',
-                type : 'basic',
-                icon : 'chat',
-                link : '/apps/chat',
-                badge: {
-                    title     : '13',
-                    style     : 'simple',
-                    background: '#09D261',
-                    color     : '#09D261'
-                }
-            },
-            {
-                id   : 'file-manager',
-                title: 'File Manager',
-                type : 'basic',
-                icon : 'folder',
-                link : '/apps/file-manager'
-            },
-            {
-                id   : 'contacts',
-                title: 'Contacts',
-                type : 'basic',
-                icon : 'account_box',
-                link : '/apps/contacts'
-            },
-            {
-                id   : 'to-do',
-                title: 'To-Do',
-                type : 'basic',
-                icon : 'check_box',
-                link : '/apps/todo',
-                badge: {
-                    title     : 'HOT!',
-                    style     : 'rounded',
-                    background: '#FF6F00',
-                    color     : '#FFFFFF'
-                }
-            },
-            {
-                id   : 'scrumboard',
-                title: 'Scrumboard',
-                type : 'basic',
-                icon : 'assessment',
-                link : '/apps/scrumboard'
-            }
-        ]
-    },*/
     {
         id      : 'applications',
         title   : 'Applications',
@@ -1014,6 +733,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 ]
             },
             {
+                id   : 'user-interface.google-maps',
+                title: 'Google maps',
+                type : 'basic',
+                icon : 'map',
+                link : '/ui/google-maps'
+            },
+            {
                 id      : 'user-interface.icons',
                 title   : 'Icons',
                 type    : 'collapsable',
@@ -1057,6 +783,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 type : 'basic',
                 icon : 'text_fields',
                 link : '/ui/typography'
+            },
+            {
+                id   : 'user-interface.youtube-player',
+                title: 'YouTube player',
+                type : 'basic',
+                icon : 'play_circle_filled',
+                link : '/ui/youtube-player'
             }
         ]
     },
@@ -1218,7 +951,7 @@ export const compactNavigation: AsmNavigationItem[] = [
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
-        id      : 'ui-elements',
+        id      : 'user-interface',
         title   : 'UI',
         type    : 'aside',
         icon    : 'list_alt',
@@ -1248,7 +981,7 @@ export const horizontalNavigation: AsmNavigationItem[] = [
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
-        id      : 'ui-elements',
+        id      : 'user-interface',
         title   : 'UI',
         type    : 'group',
         icon    : 'list_alt',
