@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
-import { ContentLayoutsComponent } from 'app/modules/admin/ui/content-layouts/overview/overview.component';
+import { ContentLayoutsOverviewComponent } from 'app/modules/admin/ui/content-layouts/overview/overview.component';
 
-export const contentLayoutsRoutes: Route[] = [
+export const contentLayoutsOverviewRoutes: Route[] = [
     {
         path     : '',
-        component: ContentLayoutsComponent
+        component: ContentLayoutsOverviewComponent
     }
 ];

@@ -29,6 +29,7 @@ export class ColorsComponent
         ];
         this.asmPalettes = [
             'gray',
+            'cool-gray',
             'red',
             'orange',
             'yellow',
@@ -39,6 +40,6 @@ export class ColorsComponent
             'purple',
             'pink'
         ];
-        this.hues = ['900', '800', '700', '600', '500', '400', '300', '200', '100'];
+        this.hues = ['900', '800', '700', '600', '500', '400', '300', '200', '100', '50'];
     }
 }

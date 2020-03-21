@@ -124,6 +124,9 @@ export const appRoutes: Route[] = [
                 // Angular Material
                 {path: 'angular-material', loadChildren: () => import('app/modules/admin/ui/angular-material/angular-material.module').then(m => m.AngularMaterialModule)},
 
+                // TailwindCSS
+                {path: 'tailwindcss', loadChildren: () => import('app/modules/admin/ui/tailwindcss/tailwindcss.module').then(m => m.TailwindCSSModule)},
+
                 // Cards
                 {path: 'cards', loadChildren: () => import('app/modules/admin/ui/cards/cards.module').then(m => m.CardsModule)},
 
@@ -134,7 +137,7 @@ export const appRoutes: Route[] = [
                 {path: 'content-layouts', children: [
 
                     // Overview
-                    {path: 'overview', loadChildren: () => import('app/modules/admin/ui/content-layouts/overview/overview.module').then(m => m.ContentLayoutsModule)},
+                    {path: 'overview', loadChildren: () => import('app/modules/admin/ui/content-layouts/overview/overview.module').then(m => m.ContentLayoutsOverviewModule)},
 
                     // Fullwidth
                     {path: 'fullwidth', children: [
@@ -184,6 +187,9 @@ export const appRoutes: Route[] = [
                     ]}
                 ]},
 
+                // Datatable
+                {path: 'datatable', loadChildren: () => import('app/modules/admin/ui/datatable/datatable.module').then(m => m.DatatableModule)},
+
                 // Forms
                 {path: 'forms', children: [
                     {path: 'fields', loadChildren: () => import('app/modules/admin/ui/forms/fields/fields.module').then(m => m.FormsFieldsModule)},
@@ -191,14 +197,17 @@ export const appRoutes: Route[] = [
                     {path: 'wizards', loadChildren: () => import('app/modules/admin/ui/forms/wizards/wizards.module').then(m => m.FormsWizardsModule)}
                 ]},
 
-                // Helpers
-                {path: 'helpers', children: [
-                    {path: 'assembly', loadChildren: () => import('app/modules/admin/ui/helpers/assembly/assembly.module').then(m => m.AssemblyHelpersModule)},
-                    {path: 'tailwindcss', loadChildren: () => import('app/modules/admin/ui/helpers/tailwind/tailwind.module').then(m => m.TailwindModule)}
-                ]},
+                // Google maps
+                {path: 'google-maps', loadChildren: () => import('app/modules/admin/ui/google-maps/google-maps.module').then(m => m.GoogleMapsModule)},
 
                 // Icons
-                {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.module').then(m => m.IconsModule)}
+                {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.module').then(m => m.IconsModule)},
+
+                // Typography
+                {path: 'typography', loadChildren: () => import('app/modules/admin/ui/typography/typography.module').then(m => m.TypographyModule)},
+
+                // YouTube player
+                {path: 'youtube-player', loadChildren: () => import('app/modules/admin/ui/youtube-player/youtube-player.module').then(m => m.YouTubePlayerModule)}
             ]},
 
             // 404 & Catch all

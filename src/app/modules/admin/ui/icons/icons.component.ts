@@ -29,7 +29,7 @@ export class IconsComponent implements OnInit
     {
         // Set the defaults
         this.filterValue$ = new BehaviorSubject('');
-        this.iconSizeInput = new FormControl('32');
+        this.iconSizeInput = new FormControl('24');
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ContentLayoutsComponent } from 'app/modules/admin/ui/content-layouts/overview/overview.component';
-import { contentLayoutsRoutes } from 'app/modules/admin/ui/content-layouts/overview/overview.routing';
+import { ContentLayoutsOverviewComponent } from 'app/modules/admin/ui/content-layouts/overview/overview.component';
+import { contentLayoutsOverviewRoutes } from 'app/modules/admin/ui/content-layouts/overview/overview.routing';
 
 @NgModule({
     declarations: [
-        ContentLayoutsComponent
+        ContentLayoutsOverviewComponent
     ],
     imports     : [
-        RouterModule.forChild(contentLayoutsRoutes)
+        RouterModule.forChild(contentLayoutsOverviewRoutes)
     ]
 })
-export class ContentLayoutsModule
+export class ContentLayoutsOverviewModule
 {
 }

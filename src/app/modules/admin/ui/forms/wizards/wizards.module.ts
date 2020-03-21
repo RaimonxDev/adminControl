@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
-import { AsmCardModule } from '@assembly/components/card';
 import { SharedModule } from 'app/shared/shared.module';
 import { FormsWizardsComponent } from 'app/modules/admin/ui/forms/wizards/wizards.component';
 import { formsWizardsRoutes } from 'app/modules/admin/ui/forms/wizards/wizards.routing';
@@ -27,7 +26,6 @@ import { formsWizardsRoutes } from 'app/modules/admin/ui/forms/wizards/wizards.r
         MatRadioModule,
         MatSelectModule,
         MatStepperModule,
-        AsmCardModule,
         SharedModule
     ]
 })
