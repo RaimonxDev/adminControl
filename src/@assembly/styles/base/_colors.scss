@@ -37,7 +37,11 @@
         }
     }
 
-    .text-base {
+    .text-card {
+        color: map-get($background, card);
+    }
+
+    .text-default {
         color: map-get($foreground, text);
     }
 
@@ -58,7 +62,7 @@
     }
 
     // Background colors
-    .bg-base {
+    .bg-default {
         background-color: map-get($background, background);
     }
 
@@ -99,8 +103,8 @@
             color: map-get($foreground, divider);
         }
 
-        &.dark\:bg-base,
-        .dark\:bg-base {
+        &.dark\:bg-default,
+        .dark\:bg-default {
             background-color: map-get($background, background);
         }
 
@@ -143,8 +147,8 @@
             color: map-get($foreground, divider);
         }
 
-        &.light\:bg-base,
-        .light\:bg-base {
+        &.light\:bg-default,
+        .light\:bg-default {
             background-color: map-get($background, background);
         }
 
