@@ -733,13 +733,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 ]
             },
             {
-                id   : 'user-interface.google-maps',
-                title: 'Google maps',
-                type : 'basic',
-                icon : 'map',
-                link : '/ui/google-maps'
-            },
-            {
                 id      : 'user-interface.icons',
                 title   : 'Icons',
                 type    : 'collapsable',
@@ -783,13 +776,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 type : 'basic',
                 icon : 'text_fields',
                 link : '/ui/typography'
-            },
-            {
-                id   : 'user-interface.youtube-player',
-                title: 'YouTube player',
-                type : 'basic',
-                icon : 'play_circle_filled',
-                link : '/ui/youtube-player'
             }
         ]
     },

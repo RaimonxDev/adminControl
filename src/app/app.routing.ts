@@ -197,17 +197,11 @@ export const appRoutes: Route[] = [
                     {path: 'wizards', loadChildren: () => import('app/modules/admin/ui/forms/wizards/wizards.module').then(m => m.FormsWizardsModule)}
                 ]},
 
-                // Google maps
-                {path: 'google-maps', loadChildren: () => import('app/modules/admin/ui/google-maps/google-maps.module').then(m => m.GoogleMapsModule)},
-
                 // Icons
                 {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.module').then(m => m.IconsModule)},
 
                 // Typography
-                {path: 'typography', loadChildren: () => import('app/modules/admin/ui/typography/typography.module').then(m => m.TypographyModule)},
-
-                // YouTube player
-                {path: 'youtube-player', loadChildren: () => import('app/modules/admin/ui/youtube-player/youtube-player.module').then(m => m.YouTubePlayerModule)}
+                {path: 'typography', loadChildren: () => import('app/modules/admin/ui/typography/typography.module').then(m => m.TypographyModule)}
             ]},
 
             // 404 & Catch all
