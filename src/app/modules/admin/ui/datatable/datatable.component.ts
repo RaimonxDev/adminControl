@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector     : 'tailwind',
-    templateUrl  : './tailwind.component.html',
-    styleUrls    : ['./tailwind.component.scss'],
+    selector     : 'datatable',
+    templateUrl  : './datatable.component.html',
+    styleUrls    : ['./datatable.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TailwindComponent
+export class DatatableComponent
 {
     /**
      * Constructor
