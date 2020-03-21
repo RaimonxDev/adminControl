@@ -17,12 +17,17 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     name: string;
 
     // Private
+    private _fixed: boolean;
     private _mode: AsmDrawerMode;
     private _opened: boolean | '';
     private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
     private _position: AsmDrawerPosition;
     private _transparentOverlay: boolean | '';
+
+    // On fixed changed
+    @Output()
+    readonly fixedChanged: EventEmitter<boolean>;
 
     // On mode changed
     @Output()
@@ -59,10 +64,12 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
         this._overlay = null;
 
         // Set the defaults
+        this.fixedChanged = new EventEmitter<boolean>();
         this.modeChanged = new EventEmitter<AsmDrawerMode>();
         this.openedChanged = new EventEmitter<boolean | ''>();
         this.positionChanged = new EventEmitter<AsmDrawerPosition>();
 
+        this.fixed = false;
         this.mode = 'side';
         this.opened = false;
         this.position = 'left';
@@ -72,6 +79,42 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Setter & getter for fixed
+     *
+     * @param value
+     */
+    @Input()
+    set fixed(value: boolean)
+    {
+        // If the value is the same, return...
+        if ( this._fixed === value )
+        {
+            return;
+        }
+
+        // Store the fixed value
+        this._fixed = value;
+
+        // Update the class
+        if ( this.fixed )
+        {
+            this._renderer2.addClass(this._elementRef.nativeElement, 'asm-drawer-fixed');
+        }
+        else
+        {
+            this._renderer2.removeClass(this._elementRef.nativeElement, 'asm-drawer-fixed');
+        }
+
+        // Execute the observable
+        this.fixedChanged.next(this.fixed);
+    }
+
+    get fixed(): boolean
+    {
+        return this._fixed;
+    }
 
     /**
      * Setter & getter for mode
@@ -337,6 +380,12 @@ export class AsmDrawerComponent implements OnInit, OnDestroy
 
         // Add a class to the backdrop element
         this._overlay.classList.add('asm-drawer-overlay');
+
+        // Add a class depending on the fixed option
+        if ( this.fixed )
+        {
+            this._overlay.classList.add('asm-drawer-overlay-fixed');
+        }
 
         // Add a class depending on the transparentOverlay option
         if ( this.transparentOverlay )

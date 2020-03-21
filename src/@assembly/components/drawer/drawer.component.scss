@@ -29,6 +29,11 @@ asm-drawer {
         position: absolute;
         top: 0;
         bottom: 0;
+
+        // Fixed mode
+        &.asm-drawer-fixed {
+            position: fixed;
+        }
     }
 
     // Left position
@@ -111,6 +116,12 @@ asm-drawer {
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.6);
 
+    // Fixed mode
+    &.asm-drawer-overlay-fixed {
+        position: fixed;
+    }
+
+    // Transparent overlay
     &.asm-drawer-overlay-transparent {
         background-color: transparent;
     }
