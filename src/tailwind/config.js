@@ -325,6 +325,9 @@ module.exports = {
                 },
             */
 
+            boxShadow : {
+                solid: '0 0 0 2px currentColor'
+            },
             flex      : {
                 '0': '0 0 auto'
             },
