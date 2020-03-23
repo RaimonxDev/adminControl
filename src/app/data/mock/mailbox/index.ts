@@ -360,7 +360,6 @@ export class MailboxMockApi implements AsmMockApi
                         endIndex      : end - 1
                     };
                 }
-
                 // Paginate - End
 
                 return [

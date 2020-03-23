@@ -247,14 +247,14 @@ export class ContactsService
     getTags(): Observable<Tag[]>
     {
         return this._httpClient.get<Tag[]>('api/apps/contacts/tags').pipe(
-            tap((response: any) => {
-                this._tags.next(response);
+            tap((tags) => {
+                this._tags.next(tags);
             })
         );
     }
 
     /**
-     * Crate tag
+     * Create tag
      *
      * @param tag
      */
