@@ -248,40 +248,6 @@ contacts-list {
     }
 }
 
-.contacts-list-search-results-panel {
-
-    > .mat-optgroup {
-
-        &.no-results {
-
-            label {
-                visibility: hidden;
-                opacity: 0;
-                height: 0;
-                pointer-events: none;
-            }
-
-            .mat-option {
-                pointer-events: none;
-            }
-        }
-    }
-
-    > .mat-option {
-
-        .mat-option-text {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        .mat-icon {
-            margin-right: 12px;
-            @include asm-icon-size(26);
-        }
-    }
-}
-
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
@@ -316,7 +282,11 @@ contacts-list {
                             background: transparent;
 
                             th {
-                                background: asm-color('cool-gray', 50);
+                                @if ($is-dark) {
+                                    background: asm-color('cool-gray', 800);
+                                } @else {
+                                    background: asm-color('cool-gray', 50);
+                                }
                             }
 
                             tr.contact-row {
@@ -326,7 +296,7 @@ contacts-list {
                                     @if ($is-dark) {
                                         background: rgba(0, 0, 0, 0.05);
                                     } @else {
-                                        background: map-get($primary, 100);
+                                        background: map-get($primary, 50);
                                     }
                                 }
 
@@ -353,19 +323,6 @@ contacts-list {
 
                 @if ($is-dark) {
                     background: map-get($background, background);
-                }
-            }
-        }
-    }
-
-    .contacts-list-search-results-panel {
-
-        .mat-option {
-
-            .result {
-
-                .result-notes {
-                    color: map-get($foreground, secondary-text);
                 }
             }
         }

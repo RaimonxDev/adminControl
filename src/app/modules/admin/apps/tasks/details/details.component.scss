@@ -9,7 +9,7 @@ tasks-details {
         flex-direction: column;
         flex: 1 1 auto;
         height: 100%;
-        padding: 52px 32px;
+        padding: 48px 32px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
@@ -23,7 +23,7 @@ tasks-details {
             margin: 0 -12px 0 -16px;
 
             .mark-as-button {
-                padding: 0 16px 0 12px;
+                padding: 0 16px 0 14px;
 
                 .complete,
                 .incomplete {
