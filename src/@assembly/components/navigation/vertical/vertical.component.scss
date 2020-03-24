@@ -12,7 +12,7 @@ asm-vertical-navigation {
     height: 100vh;
     min-height: 100vh;
     max-height: 100vh;
-    z-index: 75;
+    z-index: 200;
 
     // -----------------------------------------------------------------------------------------------------
     // @ Navigation Drawer
@@ -792,7 +792,7 @@ asm-vertical-navigation {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 70;
+    z-index: 170;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.6);
 
@@ -808,7 +808,7 @@ asm-vertical-navigation {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 69;
+    z-index: 169;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.3);
 }

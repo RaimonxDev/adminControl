@@ -738,6 +738,57 @@
 }
 
 // -----------------------------------------------------------------------------------------------------
+// @ Paginator
+// -----------------------------------------------------------------------------------------------------
+.mat-paginator {
+
+    .mat-paginator-container {
+        padding: 8px 16px;
+
+        @include asm-media-breakpoint('xs') {
+            justify-content: space-between;
+        }
+
+        // Page size select
+        .mat-paginator-page-size {
+            align-items: center;
+            min-height: 40px;
+            margin: 8px;
+
+            .mat-paginator-page-size-label {
+                margin-right: 12px;
+
+                @include asm-media-breakpoint('xs') {
+                    display: none;
+                }
+            }
+
+            .mat-paginator-page-size-select {
+                margin: 0;
+
+                .mat-form-field-wrapper {
+                    margin-bottom: 0;
+
+                    .mat-form-field-flex {
+                        min-height: 32px;
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
+
+        // Range actions
+        .mat-paginator-range-actions {
+            margin: 8px 0;
+
+            .mat-paginator-range-label {
+                margin-right: 16px;
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
 // @ Select
 // -----------------------------------------------------------------------------------------------------
 .mat-select {
