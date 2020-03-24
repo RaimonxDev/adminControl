@@ -1,0 +1,20 @@
+@import 'assembly';
+
+inventory {
+
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    inventory {
+        @if (not $is-dark) {
+            background: map-get($background, card);
+        }
+    }
+}

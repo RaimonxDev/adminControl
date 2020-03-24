@@ -38,6 +38,33 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link    : '/apps/calendar'
             },
             {
+                id   : 'applications.contacts',
+                title: 'Contacts',
+                type : 'basic',
+                icon : 'account_box',
+                link : '/apps/contacts',
+                badge: {
+                    title     : 'NEW',
+                    style     : 'rounded',
+                    background: '#304FFE',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id      : 'applications.ecommerce',
+                title   : 'ECommerce',
+                type    : 'collapsable',
+                icon    : 'shopping_cart',
+                children: [
+                    {
+                        id   : 'applications.ecommerce.inventory',
+                        title: 'Inventory',
+                        type : 'basic',
+                        link : '/apps/ecommerce/inventory'
+                    }
+                ]
+            },
+            {
                 id   : 'applications.mailbox',
                 title: 'Mailbox',
                 type : 'basic',
@@ -56,19 +83,6 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 type : 'basic',
                 icon : 'check_box',
                 link : '/apps/tasks'
-            },
-            {
-                id   : 'applications.contacts',
-                title: 'Contacts',
-                type : 'basic',
-                icon : 'account_box',
-                link : '/apps/contacts',
-                badge: {
-                    title     : 'NEW',
-                    style     : 'rounded',
-                    background: '#304FFE',
-                    color     : '#FFFFFF'
-                }
             }
         ]
     },

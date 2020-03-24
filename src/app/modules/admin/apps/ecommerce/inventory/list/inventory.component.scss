@@ -1,0 +1,347 @@
+@import 'assembly';
+
+inventory-list {
+    display: flex;
+    flex: 1 1 auto;
+
+    .main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 0 !important;
+        min-height: 100%;
+
+        .header {
+            position: relative;
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+            padding: 40px 32px;
+            border-bottom-width: 1px;
+
+            @include asm-media-breakpoint('lt-sm') {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title {
+                margin-right: 32px;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    margin-right: 0;
+                }
+
+                h1 {
+                    margin: 0;
+                    line-height: 1;
+                }
+            }
+
+            .main-actions {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    margin-top: 32px;
+                    margin-left: 0;
+                    width: 100%;
+                }
+
+                .search {
+                    flex: 1 1 auto;
+                    margin-right: 16px;
+                    min-width: 200px;
+                    width: 100%;
+
+                    @include asm-media-breakpoint('lt-sm') {
+                        min-width: 0;
+                    }
+
+                    .mat-form-field {
+                        width: 100%;
+                    }
+                }
+
+                .add-product {
+                    flex: 1 0 auto;
+                    padding: 0 20px 0 16px;
+
+                    .mat-icon {
+                        margin-right: 8px;
+                        @include asm-icon-size(20);
+                    }
+                }
+            }
+
+            .loader {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        .products-list {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            margin-bottom: 72px;
+            overflow: hidden;
+
+            @include asm-media-breakpoint('xs') {
+                display: block;
+                overflow: visible;
+                margin-bottom: 0;
+            }
+
+            .table-wrapper {
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+
+                @include asm-media-breakpoint('xs') {
+                    overflow: visible;
+                    overflow-x: auto;
+                }
+
+                table {
+                    width: 100%;
+                    min-width: 960px;
+                    table-layout: fixed;
+
+                    &.loading {
+                        pointer-events: none;
+                    }
+
+                    thead {
+
+                        th {
+
+                            &.mat-column-sku {
+                                width: 224px;
+                                padding-left: 104px;
+                            }
+
+                            &.mat-column-price {
+                                width: 160px;
+                            }
+
+                            &.mat-column-stock {
+                                width: 96px;
+                            }
+
+                            &.mat-column-active {
+                                width: 96px;
+                            }
+
+                            &.mat-column-actions {
+                                width: 96px;
+                                padding-right: 32px;
+                            }
+                        }
+                    }
+
+                    tbody {
+
+                        tr.product-row {
+                            height: 72px;
+
+                            &:last-child {
+
+                                td {
+                                    border-bottom-width: 0;
+                                }
+                            }
+
+                            td {
+                                line-height: 1;
+                                border-bottom-width: 1px;
+
+                                &.mat-column-sku {
+                                    padding-left: 32px;
+                                    padding-right: 32px;
+
+                                    .sku-content {
+                                        display: flex;
+                                        align-items: center;
+
+                                        .thumbnail {
+                                            position: relative;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            width: 48px;
+                                            min-width: 48px;
+                                            height: 48px;
+                                            min-height: 48px;
+                                            margin-right: 24px;
+                                            overflow: hidden;
+                                            border-width: 1px;
+                                            border-radius: 8px;
+
+                                            > img {
+                                                width: 30px;
+                                            }
+
+                                            > span {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                width: 100%;
+                                                height: 100%;
+                                                font-size: 10px;
+                                                font-weight: 600;
+                                                line-height: normal;
+                                                text-align: center;
+                                                text-transform: uppercase;
+                                            }
+                                        }
+
+                                        .sku {
+                                            overflow: hidden;
+                                            white-space: nowrap;
+                                            text-overflow: ellipsis;
+                                            line-height: normal;
+                                        }
+                                    }
+                                }
+
+                                &.mat-column-name {
+                                    padding-right: 32px;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    font-weight: 500;
+                                }
+
+                                &.mat-column-price {
+                                    padding-right: 16px;
+                                }
+
+                                &.mat-column-stock {
+                                    padding-right: 16px;
+                                }
+
+                                &.mat-column-active {
+                                    padding-right: 16px;
+                                }
+
+                                &.mat-column-actions {
+                                    padding-right: 32px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .mat-paginator {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                border-top-width: 1px;
+                border-bottom-width: 1px;
+                z-index: 10;
+
+                @include asm-media-breakpoint('xs') {
+                    position: relative;
+                    right: auto;
+                    bottom: auto;
+                    left: auto;
+                }
+
+                &.loading {
+                    pointer-events: none;
+                }
+
+                .mat-paginator-container {
+                    min-height: 72px;
+                }
+            }
+
+            .no-products {
+                padding: 64px;
+                font-size: 24px;
+                text-align: center;
+
+                @include asm-media-breakpoint('lt-sm') {
+                    padding: 32px;
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@include asm-theme {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    inventory-list {
+
+        .main {
+
+            .products-list {
+
+                table {
+                    background: transparent;
+
+                    thead {
+
+                        th {
+                            box-shadow: 0 1px 0 0 map-get($foreground, divider);
+
+                            @if ($is-dark) {
+                                background: asm-color('cool-gray', 800);
+                            } @else {
+                                background: asm-color('cool-gray', 50);
+                            }
+                        }
+                    }
+
+                    tbody {
+
+                        tr.product-row {
+
+                            &:hover {
+                                @if ($is-dark) {
+                                    background: rgba(0, 0, 0, 0.05);
+                                } @else {
+                                    background: map-get($primary, 50);
+                                }
+                            }
+
+                            td {
+
+                                &.mat-column-sku {
+
+                                    .thumbnail {
+                                        background: white;
+
+                                        > span {
+                                            color: asm-color('cool-gray', 500);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .mat-paginator {
+                    @if ($is-dark) {
+                        background: asm-color('cool-gray', 800);
+                    } @else {
+                        background: asm-color('cool-gray', 50);
+                    }
+                }
+            }
+        }
+    }
+}
