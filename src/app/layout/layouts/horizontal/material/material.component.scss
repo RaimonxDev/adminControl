@@ -170,6 +170,12 @@ material-layout {
                 margin: 0;
                 box-shadow: none;
             }
+
+            @include asm-media-breakpoint('xs') {
+                height: 56px;
+                max-height: 56px;
+                min-height: 56px;
+            }
         }
     }
 

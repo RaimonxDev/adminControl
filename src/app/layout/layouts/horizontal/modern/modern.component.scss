@@ -47,6 +47,12 @@ modern-layout {
                 padding: 0 16px;
             }
 
+            @include asm-media-breakpoint('xs') {
+                height: 64px;
+                max-height: 64px;
+                min-height: 64px;
+            }
+
             .logo {
                 display: flex;
                 align-items: center;
@@ -138,6 +144,12 @@ modern-layout {
             min-height: 80px;
             padding: 0 24px;
             z-index: 49;
+
+            @include asm-media-breakpoint('xs') {
+                height: 56px;
+                max-height: 56px;
+                min-height: 56px;
+            }
         }
     }
 

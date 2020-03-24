@@ -50,6 +50,12 @@ enterprise-layout {
                 min-height: 80px;
             }
 
+            @include asm-media-breakpoint('xs') {
+                height: 64px;
+                max-height: 64px;
+                min-height: 64px;
+            }
+
             .top-bar,
             .bottom-bar {
                 display: flex;
@@ -63,6 +69,12 @@ enterprise-layout {
                     height: 80px;
                     max-height: 80px;
                     min-height: 80px;
+
+                    @include asm-media-breakpoint('xs') {
+                        height: 64px;
+                        max-height: 64px;
+                        min-height: 64px;
+                    }
                 }
             }
 
@@ -171,6 +183,12 @@ enterprise-layout {
             min-height: 80px;
             z-index: 49;
 
+            @include asm-media-breakpoint('xs') {
+                height: 56px;
+                max-height: 56px;
+                min-height: 56px;
+            }
+
             .container {
                 display: flex;
                 align-items: center;
@@ -182,7 +200,7 @@ enterprise-layout {
 
                 @include asm-media-breakpoint('xs') {
                     width: calc(100% - 32px);
-                    margin: 0 16px;
+                    margin: 0 24px;
                 }
             }
         }
