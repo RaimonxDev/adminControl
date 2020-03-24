@@ -118,7 +118,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'etv-2425',
+        sku        : 'ETV-2425',
         barcode    : '8346201275534',
         brand      : '61d52c2a-8947-4a2c-8c35-f36baef45b96',
         vendor     : '998b0c07-abfd-4ba3-8de1-7563ef3c4d57',
@@ -149,7 +149,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'ath-7573',
+        sku        : 'ATH-7573',
         barcode    : '8278968055700',
         brand      : '2c4d98d8-f334-4125-9596-862515f5526b',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -180,7 +180,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'adh-1921',
+        sku        : 'ADH-1921',
         barcode    : '8808746892183',
         brand      : 'e1789f32-9475-43e7-9256-451d2e3a2282',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -211,7 +211,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'eap-7752',
+        sku        : 'EAP-7752',
         barcode    : '8866355574164',
         brand      : '61d52c2a-8947-4a2c-8c35-f36baef45b96',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -242,7 +242,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'adp-5745',
+        sku        : 'ADP-5745',
         barcode    : '8390590339828',
         brand      : 'e1789f32-9475-43e7-9256-451d2e3a2282',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -273,7 +273,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'atv-2569',
+        sku        : 'ATV-2569',
         barcode    : '8238990048137',
         brand      : 'e1789f32-9475-43e7-9256-451d2e3a2282',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -304,7 +304,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'eah-2563',
+        sku        : 'EAH-2563',
         barcode    : '8638426908385',
         brand      : 'e1789f32-9475-43e7-9256-451d2e3a2282',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -335,7 +335,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'ath-6399',
+        sku        : 'ATH-6399',
         barcode    : '8881883828441',
         brand      : 'e1789f32-9475-43e7-9256-451d2e3a2282',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -366,7 +366,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'elh-2495',
+        sku        : 'ELH-2495',
         barcode    : '8268777127281',
         brand      : '5913ee46-a497-41db-a118-ee506011529f',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -397,7 +397,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'att-6019',
+        sku        : 'ATT-6019',
         barcode    : '8452763551765',
         brand      : 'f9987124-7ada-4b93-bef7-35280b3ddbd7',
         vendor     : '998b0c07-abfd-4ba3-8de1-7563ef3c4d57',
@@ -428,7 +428,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'adh-2335',
+        sku        : 'ADH-2335',
         barcode    : '8385907318041',
         brand      : 'f9987124-7ada-4b93-bef7-35280b3ddbd7',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -459,7 +459,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'ath-3064',
+        sku        : 'ATH-3064',
         barcode    : '8608510561856',
         brand      : 'e1789f32-9475-43e7-9256-451d2e3a2282',
         vendor     : '998b0c07-abfd-4ba3-8de1-7563ef3c4d57',
@@ -490,7 +490,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'adv-3188',
+        sku        : 'ADV-3188',
         barcode    : '8334758988643',
         brand      : '2c4d98d8-f334-4125-9596-862515f5526b',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -521,7 +521,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'att-7423',
+        sku        : 'ATT-7423',
         barcode    : '8417153336369',
         brand      : 'f9987124-7ada-4b93-bef7-35280b3ddbd7',
         vendor     : '998b0c07-abfd-4ba3-8de1-7563ef3c4d57',
@@ -552,7 +552,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'aat-6453',
+        sku        : 'AAT-6453',
         barcode    : '8501386761670',
         brand      : '5913ee46-a497-41db-a118-ee506011529f',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -583,7 +583,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'aap-4902',
+        sku        : 'AAP-4902',
         barcode    : '8847387136582',
         brand      : 'f9987124-7ada-4b93-bef7-35280b3ddbd7',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -614,7 +614,7 @@ export const products = [
             '2300ac48-f268-466a-b765-8b878b6e14a7',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'alv-194',
+        sku        : 'ALV-194',
         barcode    : '8860845382207',
         brand      : 'f9987124-7ada-4b93-bef7-35280b3ddbd7',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -645,7 +645,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'adh-5492',
+        sku        : 'ADH-5492',
         barcode    : '8611606513571',
         brand      : '2c4d98d8-f334-4125-9596-862515f5526b',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -676,7 +676,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'aat-6702',
+        sku        : 'AAT-6702',
         barcode    : '8330223562386',
         brand      : 'f9987124-7ada-4b93-bef7-35280b3ddbd7',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -707,7 +707,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'edh-5599',
+        sku        : 'EDH-5599',
         barcode    : '8309212335274',
         brand      : '2c4d98d8-f334-4125-9596-862515f5526b',
         vendor     : '05ebb527-d733-46a9-acfb-a4e4ec960024',
@@ -738,7 +738,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'adp-3719',
+        sku        : 'ADP-3719',
         barcode    : '8879167838673',
         brand      : 'f9987124-7ada-4b93-bef7-35280b3ddbd7',
         vendor     : '998b0c07-abfd-4ba3-8de1-7563ef3c4d57',
@@ -769,7 +769,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'ath-3399',
+        sku        : 'ATH-3399',
         barcode    : '8356410903599',
         brand      : '5913ee46-a497-41db-a118-ee506011529f',
         vendor     : '987dd10a-43b1-49f9-bfd9-05bb2dbc7029',
@@ -800,7 +800,7 @@ export const products = [
             '0b11b742-3125-4d75-9a6f-84af7fde1969',
             'b1286f3a-e2d0-4237-882b-f0efc0819ec3'
         ],
-        sku        : 'eav-4030',
+        sku        : 'EAV-4030',
         barcode    : '8545771786193',
         brand      : '61d52c2a-8947-4a2c-8c35-f36baef45b96',
         vendor     : '998b0c07-abfd-4ba3-8de1-7563ef3c4d57',
