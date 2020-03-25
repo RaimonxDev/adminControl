@@ -1,13 +1,15 @@
 @import 'assembly';
 
+$asm-drawer-width: 320;
+
 asm-drawer {
     position: relative;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
+    width: #{$asm-drawer-width}px;
+    min-width: #{$asm-drawer-width}px;
+    max-width: #{$asm-drawer-width}px;
     z-index: 300;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
 
@@ -41,7 +43,7 @@ asm-drawer {
 
         // Side mode
         &.asm-drawer-mode-side {
-            margin-left: -280px;
+            margin-left: #{$asm-drawer-width}px;
 
             &.asm-drawer-opened {
                 margin-left: 0;
@@ -69,7 +71,7 @@ asm-drawer {
 
         // Side mode
         &.asm-drawer-mode-side {
-            margin-right: -280px;
+            margin-right: -#{$asm-drawer-width}px;
 
             &.asm-drawer-opened {
                 margin-right: 0;
