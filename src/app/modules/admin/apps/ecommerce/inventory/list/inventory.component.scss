@@ -106,7 +106,7 @@ inventory-list {
 
                 table {
                     width: 100%;
-                    min-width: 960px;
+                    min-width: 1200px;
                     table-layout: fixed;
 
                     &.loading {
@@ -134,8 +134,8 @@ inventory-list {
                                 width: 96px;
                             }
 
-                            &.mat-column-actions {
-                                width: 120px;
+                            &.mat-column-details {
+                                width: 96px;
                                 padding-right: 32px;
                             }
                         }
@@ -225,29 +225,155 @@ inventory-list {
                                     padding-right: 16px;
                                 }
 
-                                &.mat-column-actions {
+                                &.mat-column-details {
                                     padding-right: 32px;
 
-                                    .actions-content {
-                                        display: flex;
-                                        align-items: center;
+                                    .mat-stroked-button {
+                                        min-width: 40px;
+                                        min-height: 28px;
+                                        height: 28px;
+                                        padding: 0 8px;
+                                        line-height: 24px !important;
 
-                                        .mat-stroked-button {
-                                            min-width: 40px;
-                                            min-height: 28px;
-                                            height: 28px;
-                                            padding: 0 8px;
-                                            line-height: 24px !important;
+                                        .mat-icon {
+                                            @include asm-icon-size(20);
+                                        }
+                                    }
+                                }
+                            }
+                        }
 
-                                            .mat-icon {
-                                                @include asm-icon-size(20);
-                                            }
+                        tr.product-details-row {
+                            height: 0;
 
-                                            + .mat-stroked-button {
-                                                margin-left: 8px;
+                            td {
 
-                                                .mat-icon {
-                                                    @include asm-icon-size(16);
+                                &.mat-column-productDetails {
+                                    padding: 0;
+                                    border-bottom-width: 0;
+
+                                    .product-details-container {
+                                        overflow: hidden;
+                                        @include asm-elevation('lg');
+
+                                        .product-details {
+                                            display: flex;
+                                            border-bottom-width: 1px;
+
+                                            .tags {
+                                                margin-top: 3px;
+                                                border-radius: 6px;
+                                                border-width: 1px;
+
+                                                .tags-header {
+                                                    display: flex;
+                                                    align-items: center;
+                                                    margin: 9px 12px;
+
+                                                    .new-tag {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        flex: 1 1 auto;
+                                                        min-width: 0;
+
+                                                        .mat-icon {
+                                                            @include asm-icon-size(16);
+                                                        }
+
+                                                        input {
+                                                            min-width: 0;
+                                                            margin: 0 0 0 8px;
+                                                            border: none;
+                                                            padding: 4px 0;
+                                                        }
+                                                    }
+
+                                                    .toggle-edit-mode {
+                                                        margin-left: 12px;
+                                                        width: 24px;
+                                                        height: 24px;
+                                                        min-height: 24px;
+
+                                                        .mat-icon {
+                                                            @include asm-icon-size(16);
+                                                        }
+                                                    }
+                                                }
+
+                                                .available-tags {
+                                                    max-height: 175px;
+                                                    overflow-y: auto;
+                                                    -webkit-overflow-scrolling: touch;
+                                                    line-height: 1;
+
+                                                    &:not(:empty) {
+                                                        padding: 8px 0;
+
+                                                        &.editing {
+                                                            padding: 16px 0;
+                                                        }
+                                                    }
+
+                                                    .mat-checkbox {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        height: 40px;
+                                                        min-height: 40px;
+
+                                                        .mat-checkbox-layout {
+                                                            align-items: center;
+                                                            width: 100%;
+                                                            height: 100%;
+                                                            padding: 8px 16px;
+
+                                                            .mat-checkbox-inner-container {
+                                                                margin: 0 12px 0 0
+                                                            }
+                                                        }
+                                                    }
+
+                                                    .tag-edit {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        margin-bottom: 16px;
+
+                                                        &:last-child {
+                                                            margin-bottom: 0;
+                                                        }
+
+                                                        .mat-icon-button {
+                                                            margin-left: 4px;
+
+                                                            .mat-icon {
+                                                                @include asm-icon-size(20);
+                                                            }
+                                                        }
+
+                                                        .mat-form-field {
+                                                            flex: 1 1 auto;
+                                                            min-width: 0;
+                                                            margin: 0 16px;
+                                                        }
+                                                    }
+                                                }
+
+                                                .create-tag {
+                                                    position: relative;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    padding: 16px 16px 16px 12px;
+                                                    cursor: pointer;
+                                                    line-height: 1;
+
+                                                    .mat-icon {
+                                                        margin-right: 8px;
+                                                        @include asm-icon-size(18);
+                                                    }
+
+                                                    div {
+                                                        width: 100%;
+                                                        word-break: break-all;
+                                                    }
                                                 }
                                             }
                                         }
@@ -350,6 +476,41 @@ inventory-list {
 
                                         > span {
                                             color: asm-color('cool-gray', 500);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        tr.product-details-row {
+
+                            td {
+
+                                &.mat-column-productDetails {
+
+                                    .product-details-container {
+
+                                        .product-details {
+
+                                            .tags {
+                                                background: map-get($background, card);
+                                                border-color: asm-color('cool-gray', 300);
+
+                                                .available-tags {
+                                                    box-shadow: 0 -1px 0 0 map-get($foreground, divider);
+
+                                                    .mat-checkbox {
+
+                                                        &:hover {
+                                                            background: map-get($background, hover);
+                                                        }
+                                                    }
+                                                }
+
+                                                .create-tag {
+                                                    background: map-get($background, hover);
+                                                }
+                                            }
                                         }
                                     }
                                 }

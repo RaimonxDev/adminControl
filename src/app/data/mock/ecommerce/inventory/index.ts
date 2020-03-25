@@ -161,153 +161,127 @@ export class ECommerceInventoryMockApi implements AsmMockApi
                     }
                 ];
             });
-        /*
-                // -----------------------------------------------------------------------------------------------------
-                // @ Contacts Search - GET
-                // -----------------------------------------------------------------------------------------------------
-                this._asmMockApiService
-                    .onGet('api/apps/contacts/search')
-                    .reply((request) => {
 
-                        // Get the search query
-                        const query = request.params.get('query');
+        // -----------------------------------------------------------------------------------------------------
+        // @ Product - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/apps/ecommerce/inventory/product')
+            .reply((request) => {
 
-                        // Clone the contacts
-                        let contacts = _.cloneDeep(this._contacts);
+                // Get the id from the params
+                const id = request.params.get('id');
 
-                        // If the query exists...
-                        if ( query )
-                        {
-                            // Filter the contacts
-                            contacts = contacts.filter((contact) => {
-                                return contact.name && contact.name.toLowerCase().includes(query.toLowerCase());
-                            });
-                        }
+                // Clone the products
+                const products = _.cloneDeep(this._products);
 
-                        // Sort the contacts by the name field by default
-                        contacts.sort((a, b) => a.name.localeCompare(b.name));
+                // Find the product
+                const product = products.find((item) => {
+                    return item.id === id;
+                });
 
-                        return [
-                            200,
-                            contacts
-                        ];
-                    });
+                return [
+                    200,
+                    product
+                ];
+            });
 
-                // -----------------------------------------------------------------------------------------------------
-                // @ Contact - GET
-                // -----------------------------------------------------------------------------------------------------
-                this._asmMockApiService
-                    .onGet('api/apps/contacts/contact')
-                    .reply((request) => {
+        // -----------------------------------------------------------------------------------------------------
+        // @ Product - PUT
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPut('api/apps/ecommerce/inventory/product')
+            .reply(() => {
 
-                        // Get the id from the params
-                        const id = request.params.get('id');
+                // Generate a new product
+                const newProduct = {
+                    id         : AsmMockApiUtils.guid(),
+                    category   : '',
+                    name       : 'A New Product',
+                    description: '',
+                    tags       : [],
+                    sku        : '',
+                    barcode    : '',
+                    brand      : '',
+                    vendor     : '',
+                    stock      : '',
+                    reserved   : '',
+                    cost       : '',
+                    basePrice  : '',
+                    taxPercent : '',
+                    price      : '',
+                    weight     : '',
+                    thumbnail  : '',
+                    images     : [],
+                    active     : false
+                };
 
-                        // Clone the contacts
-                        const contacts = _.cloneDeep(this._contacts);
+                // Unshift the new product
+                this._products.unshift(newProduct);
 
-                        // Find the contact
-                        const contact = contacts.find((item) => {
-                            return item.id === id;
-                        });
+                return [
+                    200,
+                    newProduct
+                ];
+            });
 
-                        return [
-                            200,
-                            contact
-                        ];
-                    });
+        // -----------------------------------------------------------------------------------------------------
+        // @ Product - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/apps/ecommerce/inventory/product')
+            .reply((request) => {
 
-                // -----------------------------------------------------------------------------------------------------
-                // @ Contact - PUT
-                // -----------------------------------------------------------------------------------------------------
-                this._asmMockApiService
-                    .onPut('api/apps/contacts/contact')
-                    .reply(() => {
+                // Get the id and product
+                const id = request.body.id;
+                const product = _.cloneDeep(request.body.product);
 
-                        // Generate a new contact
-                        const newContact = {
-                            id          : AsmMockApiUtils.guid(),
-                            avatar      : null,
-                            name        : 'New Contact',
-                            emails      : [],
-                            phoneNumbers: [],
-                            job         : {
-                                title  : '',
-                                company: ''
-                            },
-                            birthday    : null,
-                            address     : null,
-                            notes       : null,
-                            tags        : []
-                        };
+                // Prepare the updated product
+                let updatedProduct = null;
 
-                        // Unshift the new contact
-                        this._contacts.unshift(newContact);
+                // Find the product and update it
+                this._products.forEach((item, index, products) => {
 
-                        return [
-                            200,
-                            newContact
-                        ];
-                    });
+                    if ( item.id === id )
+                    {
+                        // Update the product
+                        products[index] = _.assign({}, products[index], product);
 
-                // -----------------------------------------------------------------------------------------------------
-                // @ Contact - PATCH
-                // -----------------------------------------------------------------------------------------------------
-                this._asmMockApiService
-                    .onPatch('api/apps/contacts/contact')
-                    .reply((request) => {
+                        // Store the updated product
+                        updatedProduct = products[index];
+                    }
+                });
 
-                        // Get the id and contact
-                        const id = request.body.id;
-                        const contact = _.cloneDeep(request.body.contact);
+                return [
+                    200,
+                    updatedProduct
+                ];
+            });
 
-                        // Prepare the updated contact
-                        let updatedContact = null;
+        // -----------------------------------------------------------------------------------------------------
+        // @ Product - DELETE
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onDelete('api/apps/ecommerce/inventory/product')
+            .reply((request) => {
 
-                        // Find the contact and update it
-                        this._contacts.forEach((item, index, contacts) => {
+                // Get the id
+                const id = request.params.get('id');
 
-                            if ( item.id === id )
-                            {
-                                // Update the contact
-                                contacts[index] = _.assign({}, contacts[index], contact);
+                // Find the product and delete it
+                this._products.forEach((item, index) => {
 
-                                // Store the updated contact
-                                updatedContact = contacts[index];
-                            }
-                        });
+                    if ( item.id === id )
+                    {
+                        this._products.splice(index, 1);
+                    }
+                });
 
-                        return [
-                            200,
-                            updatedContact
-                        ];
-                    });
-
-                // -----------------------------------------------------------------------------------------------------
-                // @ Contact - DELETE
-                // -----------------------------------------------------------------------------------------------------
-                this._asmMockApiService
-                    .onDelete('api/apps/contacts/contact')
-                    .reply((request) => {
-
-                        // Get the id
-                        const id = request.params.get('id');
-
-                        // Find the contact and delete it
-                        this._contacts.forEach((item, index) => {
-
-                            if ( item.id === id )
-                            {
-                                this._contacts.splice(index, 1);
-                            }
-                        });
-
-                        return [
-                            200,
-                            true
-                        ];
-                    });
-                    */
+                return [
+                    200,
+                    true
+                ];
+            });
 
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
@@ -419,79 +393,8 @@ export class ECommerceInventoryMockApi implements AsmMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._brands)
+                    _.cloneDeep(this._vendors)
                 ];
             });
-
-        /*
-        // -----------------------------------------------------------------------------------------------------
-        // @ Avatar - POST
-        // -----------------------------------------------------------------------------------------------------
-
-        /!**
-         * Read the given file as data url
-         *
-         * @param file
-         *!/
-        const readAsDataURL = (file: File): Promise<any> => {
-
-            // Return a new promise
-            return new Promise((resolve, reject) => {
-
-                // Create a new reader
-                const reader = new FileReader();
-
-                // Resolve the promise on success
-                reader.onload = () => {
-                    resolve(reader.result);
-                };
-
-                // Reject the promise on error
-                reader.onerror = (e) => {
-                    reject(e);
-                };
-
-                // Read the file as the
-                reader.readAsDataURL(file);
-            });
-        };
-
-        this._asmMockApiService
-            .onPost('api/apps/contacts/avatar')
-            .reply((request) => {
-
-                // Get the id and avatar
-                const id = request.body.id;
-                const avatar = request.body.avatar;
-
-                // Prepare the updated contact
-                let updatedContact = null;
-
-                // In a real world application, this would return the path
-                // of the saved image file (from host, S3 bucket, etc.) but,
-                // for the sake of the demo, we encode the image to base64
-                // and return it as the new path of the uploaded image since
-                // the src attribute of the img tag works with both image urls
-                // and encoded images.
-                return from(readAsDataURL(avatar)).pipe(
-                    map((path) => {
-
-                        // Find the contact and update it
-                        this._contacts.forEach((item, index, contacts) => {
-
-                            if ( item.id === id )
-                            {
-                                // Update the avatar
-                                contacts[index].avatar = path;
-
-                                // Store the updated contact
-                                updatedContact = contacts[index];
-                            }
-                        });
-
-                        return [200, updatedContact];
-                    })
-                );
-            });*/
     }
 }
