@@ -262,7 +262,7 @@ enterprise-layout {
 
                 .bottom-bar {
                     @if ($is-dark) {
-                        background: asm-color('cool-gray', 600);
+                        background: asm-color('cool-gray', 700);
                     } @else {
                         background: map-get($background, card);
                     }
@@ -275,7 +275,7 @@ enterprise-layout {
 
             > .footer {
                 @if ($is-dark) {
-                    background: asm-color('cool-gray', 600);
+                    background: asm-color('cool-gray', 700);
                 } @else {
                     background: map-get($background, card);
                     box-shadow: 0 -1px 0 0 map-get($foreground, divider);

@@ -253,6 +253,7 @@ centered-layout {
 
             > .header {
                 @if ($is-dark) {
+                    background: map-get($background, background);
                     box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 } @else {
                     background: map-get($background, card);
@@ -285,7 +286,9 @@ centered-layout {
             }
 
             > .footer {
-                @if (not $is-dark) {
+                @if ($is-dark) {
+                    background: map-get($background, background);
+                } @else {
                     background: map-get($background, card);
                     @include asm-elevation('md');
                 }

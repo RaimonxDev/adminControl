@@ -58,14 +58,15 @@
             [name]="'configurationDrawer'"
             [position]="'right'"
             [mode]="'over'"
+            [transparentOverlay]="true"
             #configurationDrawer>
 
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full light:bg-cool-gray-100 overflow-auto">
 
-        <div class="flex flex-row items-center gray-800 p-6">
-            <mat-icon class="mr-3"
-                      [svgIcon]="'color_lens'"></mat-icon>
-            <div class="text-2xl">Configuration</div>
+        <div class="flex flex-row items-center px-6 h-20 min-h-20 border-b">
+            <mat-icon class="mr-3 text-secondary"
+                      [svgIcon]="'settings'"></mat-icon>
+            <div class="text-lg font-semibold tracking-wide">SETTINGS</div>
         </div>
 
         <div class="flex flex-col p-6">
@@ -79,23 +80,18 @@
             </mat-slide-toggle>
 
             <!-- Layout -->
-            <div class="font-medium mb-2">Layout:</div>
-            <mat-radio-group class="flex flex-col mb-2"
-                             [color]="'primary'"
-                             [value]="layout"
-                             (change)="setLayout($event)">
-                <mat-radio-button [value]="'empty'">Empty</mat-radio-button>
-                <mat-radio-button [value]="'centered'">Centered</mat-radio-button>
-                <mat-radio-button [value]="'enterprise'">Enterprise</mat-radio-button>
-                <mat-radio-button [value]="'material'">Material</mat-radio-button>
-                <mat-radio-button [value]="'modern'">Modern</mat-radio-button>
-                <mat-radio-button [value]="'basic'">Basic</mat-radio-button>
-                <mat-radio-button [value]="'classic'">Classic</mat-radio-button>
-                <mat-radio-button [value]="'classy'">Classy</mat-radio-button>
-                <mat-radio-button [value]="'compact'">Compact</mat-radio-button>
-                <mat-radio-button [value]="'dense'">Dense</mat-radio-button>
-                <mat-radio-button [value]="'thin'">Thin</mat-radio-button>
-            </mat-radio-group>
+            <ng-container *ngFor="let layoutType of ['empty', 'classic', 'basic', 'classy', 'compact', 'dense', 'thin', 'centered', 'enterprise', 'material', 'modern']">
+                <div class="flex flex-col items-center cursor-pointer mb-8"
+                     (click)="setLayout(layoutType)">
+                    <div class="font-medium text-secondary mb-2"
+                         [ngClass]="{'text-primary': layout === layoutType}">
+                        {{layoutType | titlecase}}
+                    </div>
+                    <img class="w-full border-4 rounded"
+                         [ngClass]="{'border-primary': layout === layoutType}"
+                         [src]="'assets/images/demo/layouts/' + layoutType + '-' + theme + '.png'">
+                </div>
+            </ng-container>
 
         </div>
 

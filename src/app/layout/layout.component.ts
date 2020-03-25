@@ -1,7 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { MatRadioChange } from '@angular/material/radio';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -164,11 +163,11 @@ export class LayoutComponent implements OnInit, OnDestroy
     /**
      * Set the layout on the config
      *
-     * @param change
+     * @param layout
      */
-    setLayout(change: MatRadioChange): void
+    setLayout(layout: string): void
     {
-        this._asmConfigService.config = {layout: change.value};
+        this._asmConfigService.config = {layout};
     }
 
     /**
