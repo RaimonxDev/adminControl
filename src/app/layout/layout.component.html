@@ -42,24 +42,22 @@
 <thin-layout *ngIf="layout === 'thin'"></thin-layout>
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- Configuration drawer - Remove this to remove the drawer and its button -->
+<!-- Settings drawer - Remove this to remove the drawer and its button -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
-
-<div class="configuration-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
+<div class="settings-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
      style="top: 310px"
-     (click)="configurationDrawer.toggle()">
+     (click)="settingsDrawer.toggle()">
     <mat-icon class="icon-size-24 text-white"
               style="animation: rotation 2s infinite linear;"
               [svgIcon]="'settings'"></mat-icon>
 </div>
 
-<asm-drawer class="configuration-drawer"
-            [fixed]="true"
-            [name]="'configurationDrawer'"
+<asm-drawer [fixed]="true"
+            [name]="'settingsDrawer'"
             [position]="'right'"
             [mode]="'over'"
             [transparentOverlay]="true"
-            #configurationDrawer>
+            #settingsDrawer>
 
     <div class="flex flex-col w-full light:bg-cool-gray-100 overflow-auto">
 
