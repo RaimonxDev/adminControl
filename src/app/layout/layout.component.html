@@ -45,7 +45,7 @@
 <!-- Configuration drawer - Remove this to remove the drawer and its button -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 
-<div class="configuration-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-md rounded-l-4 z-999 cursor-pointer bg-red-600"
+<div class="configuration-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
      style="top: 310px"
      (click)="configurationDrawer.toggle()">
     <mat-icon class="icon-size-24 text-white"
@@ -71,27 +71,34 @@
 
         <div class="flex flex-col p-6">
 
-            <!-- Dark theme -->
-            <mat-slide-toggle class="mt-2 mb-8"
-                              [checked]="theme === 'dark'"
-                              (change)="setTheme($event)"
-                              [color]="'primary'">
-                Dark theme
-            </mat-slide-toggle>
+            <!-- Theme -->
+            <div class="mb-4 text-sm font-medium text-secondary tracking-widest">THEME</div>
+            <div class="flex items-center">
+                <div class="mr-2">Light</div>
+                <mat-slide-toggle [checked]="theme === 'dark'"
+                                  (change)="setTheme($event)"
+                                  [color]="'primary'">
+                    Dark
+                </mat-slide-toggle>
+            </div>
+
+            <hr class="my-8 -mx-6">
 
             <!-- Layout -->
-            <ng-container *ngFor="let layoutType of ['empty', 'classic', 'basic', 'classy', 'compact', 'dense', 'thin', 'centered', 'enterprise', 'material', 'modern']">
-                <div class="flex flex-col items-center cursor-pointer mb-8"
+            <div class="mb-4 text-sm font-medium text-secondary tracking-widest">LAYOUT</div>
+            <div class="flex flex-wrap">
+                <div class="flex flex-col items-center mb-4 cursor-pointer"
+                     *ngFor="let layoutType of ['empty', 'classic', 'basic', 'classy', 'compact', 'dense', 'thin', 'centered', 'enterprise', 'material', 'modern']"
                      (click)="setLayout(layoutType)">
-                    <div class="font-medium text-secondary mb-2"
+                    <img class="w-full p-1 border-4 rounded-sm text-primary light:border-cool-gray-300 dark:border-cool-gray-900 light:bg-card dark:bg-cool-gray-600"
+                         [ngClass]="{'border-primary shadow-solid': layout === layoutType}"
+                         [src]="'assets/images/demo/layouts/' + layoutType + '-' + theme + '.png'">
+                    <div class="mt-2 text-md font-medium text-secondary tracking-wide"
                          [ngClass]="{'text-primary': layout === layoutType}">
                         {{layoutType | titlecase}}
                     </div>
-                    <img class="w-full border-4 rounded"
-                         [ngClass]="{'border-primary': layout === layoutType}"
-                         [src]="'assets/images/demo/layouts/' + layoutType + '-' + theme + '.png'">
                 </div>
-            </ng-container>
+            </div>
 
         </div>
 
