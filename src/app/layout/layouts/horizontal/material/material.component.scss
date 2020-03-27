@@ -51,12 +51,12 @@ material-layout {
                 box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
                 overflow: hidden;
 
-                @include asm-media-breakpoint('lt-md') {
+                @include asm-breakpoint('lt-md') {
                     margin-top: 32px;
                     padding: 12px 0;
                 }
 
-                @include asm-media-breakpoint('xs') {
+                @include asm-breakpoint('xs') {
                     width: 100%;
                     margin: 0;
                     padding: 0;
@@ -78,7 +78,7 @@ material-layout {
                     position: relative;
                     padding: 0 24px;
 
-                    @include asm-media-breakpoint('lt-md') {
+                    @include asm-breakpoint('lt-md') {
                         padding: 0 16px;
                     }
                 }
@@ -136,7 +136,7 @@ material-layout {
             margin: 0 32px;
             box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 width: 100%;
                 margin: 0;
                 box-shadow: none;
@@ -165,13 +165,13 @@ material-layout {
             border-top-width: 1px;
             box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 width: 100%;
                 margin: 0;
                 box-shadow: none;
             }
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 height: 56px;
                 max-height: 56px;
                 min-height: 56px;

@@ -745,7 +745,7 @@
     .mat-paginator-container {
         padding: 8px 16px;
 
-        @include asm-media-breakpoint('xs') {
+        @include asm-breakpoint('xs') {
             justify-content: space-between;
         }
 
@@ -758,7 +758,7 @@
             .mat-paginator-page-size-label {
                 margin-right: 12px;
 
-                @include asm-media-breakpoint('xs') {
+                @include asm-breakpoint('xs') {
                     display: none;
                 }
             }

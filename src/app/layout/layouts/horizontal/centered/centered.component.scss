@@ -8,11 +8,11 @@ centered-layout {
     width: 100%;
     padding: 32px;
 
-    @include asm-media-breakpoint('lt-lg') {
+    @include asm-breakpoint('lt-lg') {
         padding: 16px;
     }
 
-    @include asm-media-breakpoint('xs') {
+    @include asm-breakpoint('xs') {
         padding: 0;
     }
 
@@ -45,7 +45,7 @@ centered-layout {
         border-radius: 8px;
         overflow: hidden;
 
-        @include asm-media-breakpoint('xs') {
+        @include asm-breakpoint('xs') {
             border-radius: 0;
         }
 
@@ -59,7 +59,7 @@ centered-layout {
             min-height: 80px;
             z-index: 49;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 height: 64px;
                 max-height: 64px;
                 min-height: 64px;
@@ -73,7 +73,7 @@ centered-layout {
                 height: 100%;
                 margin: 0 24px;
 
-                @include asm-media-breakpoint('lt-md') {
+                @include asm-breakpoint('lt-md') {
                     margin: 0 16px;
                 }
 
@@ -82,7 +82,7 @@ centered-layout {
                     align-items: center;
                     margin: 0 32px 0 8px;
 
-                    @include asm-media-breakpoint('lt-lg') {
+                    @include asm-breakpoint('lt-lg') {
                         margin-right: 8px;
                     }
 
@@ -100,7 +100,7 @@ centered-layout {
 
                     .logo-light,
                     .logo-dark {
-                        @include asm-media-breakpoint('lt-lg') {
+                        @include asm-breakpoint('lt-lg') {
                             display: none;
                         }
                     }
@@ -108,7 +108,7 @@ centered-layout {
                     .logo-base {
                         display: none;
 
-                        @include asm-media-breakpoint('lt-lg') {
+                        @include asm-breakpoint('lt-lg') {
                             display: flex;
                         }
                     }
@@ -131,7 +131,7 @@ centered-layout {
                 search {
                     margin-right: 8px;
 
-                    @include asm-media-breakpoint('lt-lg') {
+                    @include asm-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -139,7 +139,7 @@ centered-layout {
                 shortcuts {
                     margin-right: 8px;
 
-                    @include asm-media-breakpoint('lt-lg') {
+                    @include asm-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -147,7 +147,7 @@ centered-layout {
                 messages {
                     margin-right: 8px;
 
-                    @include asm-media-breakpoint('lt-lg') {
+                    @include asm-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -155,7 +155,7 @@ centered-layout {
                 notifications {
                     margin-right: 8px;
 
-                    @include asm-media-breakpoint('lt-lg') {
+                    @include asm-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -186,7 +186,7 @@ centered-layout {
             min-height: 80px;
             z-index: 49;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 height: 56px;
                 max-height: 56px;
                 min-height: 56px;
@@ -200,7 +200,7 @@ centered-layout {
                 height: 100%;
                 margin: 0 32px;
 
-                @include asm-media-breakpoint('xs') {
+                @include asm-breakpoint('xs') {
                     margin: 0 24px;
                 }
             }

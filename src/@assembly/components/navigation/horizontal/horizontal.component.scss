@@ -157,7 +157,7 @@ asm-horizontal-navigation {
             asm-horizontal-navigation-basic-item,
             asm-horizontal-navigation-branch-item {
 
-                @include asm-media-breakpoint('gt-xs') {
+                @include asm-breakpoint('gt-xs') {
 
                     &:hover {
 

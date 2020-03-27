@@ -78,7 +78,7 @@
                                         border: none;
                                         cursor: pointer;
 
-                                        @include asm-media-breakpoint('xs') {
+                                        @include asm-breakpoint('xs') {
                                             padding: 0 5px;
                                         }
                                     }
@@ -90,7 +90,7 @@
                                     font-weight: 500;
                                     white-space: nowrap;
 
-                                    @include asm-media-breakpoint('xs') {
+                                    @include asm-breakpoint('xs') {
                                         padding: 0 3px;
                                     }
                                 }
@@ -484,7 +484,7 @@
                             min-width: 120px;
                             max-width: 120px;
 
-                            @include asm-media-breakpoint('xs') {
+                            @include asm-breakpoint('xs') {
                                 width: 100px;
                                 min-width: 100px;
                                 max-width: 100px;
@@ -505,7 +505,7 @@
                                         max-width: 32px;
                                         font-size: 18px;
 
-                                        @include asm-media-breakpoint('xs') {
+                                        @include asm-breakpoint('xs') {
                                             padding-right: 2px;
                                         }
 
@@ -528,7 +528,7 @@
                             min-width: 160px;
                             max-width: 160px;
 
-                            @include asm-media-breakpoint('xs') {
+                            @include asm-breakpoint('xs') {
                                 width: 120px;
                                 min-width: 120px;
                                 max-width: 120px;

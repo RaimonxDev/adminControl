@@ -11,7 +11,7 @@ tasks-list {
             max-width: 496px !important;
             width: 496px !important;
 
-            @include asm-media-breakpoint('lt-sm') {
+            @include asm-breakpoint('lt-sm') {
                 min-width: 100% !important;
                 max-width: 100% !important;
                 width: 100% !important;
@@ -32,7 +32,7 @@ tasks-list {
                     align-items: center;
                     padding: 40px 32px;
 
-                    @include asm-media-breakpoint('lt-sm') {
+                    @include asm-breakpoint('lt-sm') {
                         flex-direction: column;
                         align-items: flex-start;
                     }
@@ -53,14 +53,14 @@ tasks-list {
                     .main-actions {
                         margin-left: auto;
 
-                        @include asm-media-breakpoint('lt-sm') {
+                        @include asm-breakpoint('lt-sm') {
                             margin-left: 0;
                         }
 
                         .add-task {
                             margin-right: 16px;
 
-                            @include asm-media-breakpoint('lt-sm') {
+                            @include asm-breakpoint('lt-sm') {
                                 margin-right: 12px;
                             }
                         }
@@ -69,7 +69,7 @@ tasks-list {
                         .add-section {
                             padding: 0 20px 0 16px;
 
-                            @include asm-media-breakpoint('lt-sm') {
+                            @include asm-breakpoint('lt-sm') {
                                 margin-top: 24px;
                             }
 
@@ -80,7 +80,7 @@ tasks-list {
                         }
 
                         .add-section {
-                            @include asm-media-breakpoint('lt-sm') {
+                            @include asm-breakpoint('lt-sm') {
                                 margin-top: 12px;
                             }
                         }
@@ -128,7 +128,7 @@ tasks-list {
                             }
                         }
 
-                        @include asm-media-breakpoint('gt-sm') {
+                        @include asm-breakpoint('gt-sm') {
 
                             &:hover {
 
@@ -187,7 +187,7 @@ tasks-list {
                                 opacity: 0;
                                 cursor: grab;
 
-                                @include asm-media-breakpoint('lt-md') {
+                                @include asm-breakpoint('lt-md') {
                                     visibility: visible;
                                     pointer-events: auto;
                                     opacity: 1;

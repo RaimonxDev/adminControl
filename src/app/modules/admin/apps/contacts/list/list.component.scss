@@ -11,7 +11,7 @@ contacts-list {
             min-width: 512px !important;
             max-width: 512px !important;
 
-            @include asm-media-breakpoint('lt-sm') {
+            @include asm-breakpoint('lt-sm') {
                 width: 100% !important;
                 min-width: 100% !important;
                 max-width: 100% !important;
@@ -31,7 +31,7 @@ contacts-list {
                     padding: 40px 32px;
                     border-bottom-width: 1px;
 
-                    @include asm-media-breakpoint('lt-sm') {
+                    @include asm-breakpoint('lt-sm') {
                         flex-direction: column;
                         align-items: flex-start;
                     }
@@ -39,7 +39,7 @@ contacts-list {
                     .title {
                         margin-right: 32px;
 
-                        @include asm-media-breakpoint('lt-sm') {
+                        @include asm-breakpoint('lt-sm') {
                             margin-right: 0;
                         }
 
@@ -59,7 +59,7 @@ contacts-list {
                         align-items: center;
                         margin-left: auto;
 
-                        @include asm-media-breakpoint('lt-sm') {
+                        @include asm-breakpoint('lt-sm') {
                             margin-top: 32px;
                             margin-left: 0;
                             width: 100%;
@@ -71,7 +71,7 @@ contacts-list {
                             min-width: 200px;
                             width: 100%;
 
-                            @include asm-media-breakpoint('lt-sm') {
+                            @include asm-breakpoint('lt-sm') {
                                 min-width: 0;
                             }
 
@@ -99,7 +99,7 @@ contacts-list {
                         table-layout: fixed;
 
                         thead {
-                            @include asm-media-breakpoint('lt-sm') {
+                            @include asm-breakpoint('lt-sm') {
                                 display: none;
                             }
 
@@ -115,7 +115,7 @@ contacts-list {
 
                                 &.mat-column-phoneNumber {
 
-                                    @include asm-media-breakpoint('(max-width: 720px)') {
+                                    @include asm-breakpoint('(max-width: 720px)') {
                                         display: none;
                                     }
                                 }
@@ -123,7 +123,7 @@ contacts-list {
                                 &.mat-column-job {
                                     max-width: 240px;
 
-                                    @include asm-media-breakpoint('lt-lg') {
+                                    @include asm-breakpoint('lt-lg') {
                                         display: none;
                                     }
                                 }
@@ -202,7 +202,7 @@ contacts-list {
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
 
-                                    @include asm-media-breakpoint('lt-sm') {
+                                    @include asm-breakpoint('lt-sm') {
                                         display: none;
                                     }
                                 }
@@ -214,7 +214,7 @@ contacts-list {
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
 
-                                    @include asm-media-breakpoint('(max-width: 720px)') {
+                                    @include asm-breakpoint('(max-width: 720px)') {
                                         display: none;
                                     }
                                 }
@@ -225,7 +225,7 @@ contacts-list {
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
 
-                                    @include asm-media-breakpoint('lt-lg') {
+                                    @include asm-breakpoint('lt-lg') {
                                         display: none;
                                     }
                                 }
@@ -238,7 +238,7 @@ contacts-list {
                         font-size: 24px;
                         text-align: center;
 
-                        @include asm-media-breakpoint('lt-sm') {
+                        @include asm-breakpoint('lt-sm') {
                             padding: 32px;
                         }
                     }

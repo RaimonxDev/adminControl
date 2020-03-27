@@ -13,7 +13,7 @@ messages {
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     @include asm-elevation('lg');
-    @include asm-media-breakpoint('xs') {
+    @include asm-breakpoint('xs') {
         min-width: 0 !important;
         max-width: 384px !important;
         width: calc(100vw - 32px);
@@ -54,7 +54,7 @@ messages {
                 border-bottom-width: 0;
             }
 
-            @include asm-media-breakpoint('gt-xs') {
+            @include asm-breakpoint('gt-xs') {
 
                 &:hover {
 
@@ -156,7 +156,7 @@ messages {
                         border-radius: 50%;
                     }
 
-                    @include asm-media-breakpoint('gt-xs') {
+                    @include asm-breakpoint('gt-xs') {
 
                         .read {
                             opacity: 0;
@@ -170,7 +170,7 @@ messages {
                     min-height: 24px;
                     line-height: 24px !important;
 
-                    @include asm-media-breakpoint('gt-xs') {
+                    @include asm-breakpoint('gt-xs') {
                         opacity: 0;
                     }
 
@@ -232,7 +232,7 @@ messages {
 
             .message {
 
-                @include asm-media-breakpoint('gt-xs') {
+                @include asm-breakpoint('gt-xs') {
 
                     &:hover {
                         @if ($is-dark) {

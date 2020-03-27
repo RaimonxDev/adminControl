@@ -6,7 +6,7 @@ mailbox-details {
     flex-direction: column;
     overflow: hidden;
 
-    @include asm-media-breakpoint('lt-lg') {
+    @include asm-breakpoint('lt-lg') {
         display: none;
         z-index: 10;
         overflow-y: auto;
@@ -33,7 +33,7 @@ mailbox-details {
                 display: none !important;
                 margin: 0 auto 0 -12px;
 
-                @include asm-media-breakpoint('lt-lg') {
+                @include asm-breakpoint('lt-lg') {
                     display: inline-flex !important;
                 }
             }
@@ -92,7 +92,7 @@ mailbox-details {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include asm-media-breakpoint('lt-lg') {
+        @include asm-breakpoint('lt-lg') {
             flex: 1 0 auto;
             overflow-y: hidden;
         }

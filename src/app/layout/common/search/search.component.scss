@@ -30,7 +30,7 @@ search {
                         border: none;
                         border-radius: 0 !important;
 
-                        @include asm-media-breakpoint('xs') {
+                        @include asm-breakpoint('xs') {
                             padding: 0 64px 0 24px
                         }
                     }
@@ -47,7 +47,7 @@ search {
                 min-height: 40px;
                 height: 40px;
 
-                @include asm-media-breakpoint('xs') {
+                @include asm-breakpoint('xs') {
                     right: 24px;
                 }
             }
@@ -111,7 +111,7 @@ search {
         .mat-option {
             padding: 0 40px;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 padding: 0 24px
             }
         }
@@ -126,7 +126,7 @@ search {
         .mat-option {
             padding: 0 32px;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 padding: 0 24px
             }
         }
@@ -264,11 +264,11 @@ search {
 
         .mat-option {
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 background: transparent !important;
             }
 
-            @include asm-media-breakpoint('gt-xs') {
+            @include asm-breakpoint('gt-xs') {
                 &:hover:not(.mat-option-disabled),
                 &:focus:not(.mat-option-disabled) {
                     box-shadow: inset 4px 0 0 map-get($primary, default);

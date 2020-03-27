@@ -8,7 +8,7 @@ error-500 {
         justify-content: center;
         padding: 32px;
 
-        @include asm-media-breakpoint('xs') {
+        @include asm-breakpoint('xs') {
             padding: 32px 16px;
         }
 
@@ -21,7 +21,7 @@ error-500 {
             margin: 96px 0 0 0;
             text-align: center;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 margin: 48px 0 0 0;
             }
         }

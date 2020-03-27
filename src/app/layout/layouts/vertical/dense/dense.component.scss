@@ -43,11 +43,11 @@ dense-layout {
             padding: 0 24px;
             z-index: 49;
 
-            @include asm-media-breakpoint('lt-md') {
+            @include asm-breakpoint('lt-md') {
                 padding: 0 16px;
             }
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 height: 64px;
                 max-height: 64px;
                 min-height: 64px;
@@ -60,7 +60,7 @@ dense-layout {
             .navigation-appearance-toggle-button {
                 margin-right: 8px;
 
-                @include asm-media-breakpoint('lt-md') {
+                @include asm-breakpoint('lt-md') {
                     display: none !important;
                 }
             }
@@ -112,7 +112,7 @@ dense-layout {
             padding: 0 24px;
             z-index: 49;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 height: 56px;
                 max-height: 56px;
                 min-height: 56px;

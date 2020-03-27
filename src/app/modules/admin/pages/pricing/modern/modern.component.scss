@@ -9,7 +9,7 @@ pricing-modern {
         align-items: center;
         overflow: hidden;
 
-        @include asm-media-breakpoint('lt-sm') {
+        @include asm-breakpoint('lt-sm') {
             padding: 16px;
         }
 
@@ -41,7 +41,7 @@ pricing-modern {
                 width: 100%;
                 margin: 64px 0 80px 0;
 
-                @include asm-media-breakpoint('lt-sm') {
+                @include asm-breakpoint('lt-sm') {
                     margin: 48px 0 56px 0;
                 }
 
@@ -63,7 +63,7 @@ pricing-modern {
                     justify-content: center;
                     margin-top: 64px;
 
-                    @include asm-media-breakpoint('lt-sm') {
+                    @include asm-breakpoint('lt-sm') {
                         margin-top: 48px;
                     }
 
@@ -84,7 +84,7 @@ pricing-modern {
                 justify-content: center;
                 margin: 0 -12px;
 
-                @include asm-media-breakpoint('lt-lg') {
+                @include asm-breakpoint('lt-lg') {
                     flex-direction: column;
                     margin: 0;
                 }
@@ -96,7 +96,7 @@ pricing-modern {
                     padding: 64px 48px;
                     overflow: visible;
 
-                    @include asm-media-breakpoint('lt-lg') {
+                    @include asm-breakpoint('lt-lg') {
                         margin: 0 0 32px 0;
                     }
 
@@ -187,7 +187,7 @@ pricing-modern {
                 align-items: center;
                 margin-top: 96px;
 
-                @include asm-media-breakpoint('lt-sm') {
+                @include asm-breakpoint('lt-sm') {
                     margin-top: 72px;
                 }
 
@@ -222,7 +222,7 @@ pricing-modern {
                         padding: 64px 40px 0 40px;
                         text-align: center;
 
-                        @include asm-media-breakpoint('lt-sm') {
+                        @include asm-breakpoint('lt-sm') {
                             padding: 64px 0 0 0;
                         }
 
@@ -266,7 +266,7 @@ pricing-modern {
                 width: 100%;
                 margin: 152px 0 32px 0;
 
-                @include asm-media-breakpoint('lt-sm') {
+                @include asm-breakpoint('lt-sm') {
                     margin: 128px 0 32px 0;
                 }
 
@@ -295,7 +295,7 @@ pricing-modern {
                     width: 100%;
                     margin-top: 32px;
 
-                    @include asm-media-breakpoint('lt-sm') {
+                    @include asm-breakpoint('lt-sm') {
                         max-width: 384px;
                     }
 

@@ -13,7 +13,7 @@ shortcuts {
     max-height: calc(100vh - 80px);
     overflow: hidden;
     @include asm-elevation('lg');
-    @include asm-media-breakpoint('xs') {
+    @include asm-breakpoint('xs') {
         min-width: 0 !important;
         max-width: 384px !important;
         width: calc(100vw - 32px);
@@ -58,7 +58,7 @@ shortcuts {
         margin-bottom: -1px;
         overflow-y: auto;
 
-        @include asm-media-breakpoint('xs') {
+        @include asm-breakpoint('xs') {
             max-height: 480px;
         }
 
@@ -260,7 +260,7 @@ shortcuts {
 
                 .shortcut {
 
-                    @include asm-media-breakpoint('gt-xs') {
+                    @include asm-breakpoint('gt-xs') {
 
                         &:hover {
                             @if ($is-dark) {

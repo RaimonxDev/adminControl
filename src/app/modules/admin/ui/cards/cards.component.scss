@@ -4,14 +4,14 @@ cards {
 
     .main {
 
-        @include asm-media-breakpoint('xs') {
+        @include asm-breakpoint('xs') {
             padding: 16px !important;
         }
 
         .filters {
             margin-bottom: 64px;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 margin-bottom: 24px;
             }
 

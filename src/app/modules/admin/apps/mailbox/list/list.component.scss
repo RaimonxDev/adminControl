@@ -17,7 +17,7 @@ mailbox-list {
         border-right-width: 1px;
         z-index: 5;
 
-        @include asm-media-breakpoint('lt-lg') {
+        @include asm-breakpoint('lt-lg') {
             width: 100%;
             max-width: none;
             min-width: 0;

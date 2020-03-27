@@ -44,13 +44,13 @@ enterprise-layout {
             overflow: hidden;
             z-index: 49;
 
-            @include asm-media-breakpoint('lt-md') {
+            @include asm-breakpoint('lt-md') {
                 height: 80px;
                 max-height: 80px;
                 min-height: 80px;
             }
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 height: 64px;
                 max-height: 64px;
                 min-height: 64px;
@@ -70,7 +70,7 @@ enterprise-layout {
                     max-height: 80px;
                     min-height: 80px;
 
-                    @include asm-media-breakpoint('xs') {
+                    @include asm-breakpoint('xs') {
                         height: 64px;
                         max-height: 64px;
                         min-height: 64px;
@@ -95,7 +95,7 @@ enterprise-layout {
                 width: calc(100% - 64px);
                 margin: 0 32px;
 
-                @include asm-media-breakpoint('lt-md') {
+                @include asm-breakpoint('lt-md') {
                     width: calc(100% - 32px);
                     margin: 0 16px;
                 }
@@ -154,12 +154,12 @@ enterprise-layout {
             overflow: hidden;
             @include asm-elevation('lg');
 
-            @include asm-media-breakpoint('lt-md') {
+            @include asm-breakpoint('lt-md') {
                 width: calc(100% - 48px);
                 margin: 24px;
             }
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 width: 100%;
                 margin: 0;
                 border-radius: 0;
@@ -183,7 +183,7 @@ enterprise-layout {
             min-height: 80px;
             z-index: 49;
 
-            @include asm-media-breakpoint('xs') {
+            @include asm-breakpoint('xs') {
                 height: 56px;
                 max-height: 56px;
                 min-height: 56px;
@@ -198,7 +198,7 @@ enterprise-layout {
                 height: 100%;
                 margin: 0 32px;
 
-                @include asm-media-breakpoint('xs') {
+                @include asm-breakpoint('xs') {
                     width: calc(100% - 32px);
                     margin: 0 24px;
                 }
