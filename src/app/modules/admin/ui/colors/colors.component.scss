@@ -91,7 +91,7 @@ colors {
             flex-wrap: wrap;
             justify-content: center;
 
-            @include asm-breakpoint('lt-sm') {
+            @include asm-breakpoint('xs') {
                 width: 100%;
             }
 
@@ -101,7 +101,7 @@ colors {
                 width: 100%;
                 margin-top: 48px;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin-top: 40px;
                 }
 

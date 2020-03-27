@@ -9,7 +9,7 @@ pricing-single {
         align-items: center;
         overflow: hidden;
 
-        @include asm-breakpoint('lt-sm') {
+        @include asm-breakpoint('xs') {
             padding: 16px;
         }
 
@@ -41,7 +41,7 @@ pricing-single {
                 width: 100%;
                 margin: 64px 0 80px 0;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin: 48px 0 56px 0;
                 }
 
@@ -217,7 +217,7 @@ pricing-single {
                 margin-top: 96px;
                 max-width: 1200px;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin-top: 72px;
                 }
 
@@ -252,7 +252,7 @@ pricing-single {
                         padding: 64px 40px 0 40px;
                         text-align: center;
 
-                        @include asm-breakpoint('lt-sm') {
+                        @include asm-breakpoint('xs') {
                             padding: 64px 0 0 0;
                         }
 
@@ -297,7 +297,7 @@ pricing-single {
                 width: 100%;
                 margin: 152px 0 32px 0;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin: 128px 0 32px 0;
                 }
 
@@ -326,7 +326,7 @@ pricing-single {
                     width: 100%;
                     margin-top: 32px;
 
-                    @include asm-breakpoint('lt-sm') {
+                    @include asm-breakpoint('xs') {
                         max-width: 384px;
                     }
 

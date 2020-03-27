@@ -9,7 +9,7 @@ help-center-guides-category {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('lt-sm') {
+        @include asm-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -21,7 +21,7 @@ help-center-guides-category {
             max-width: 960px;
             margin-top: 64px;
 
-            @include asm-breakpoint('lt-sm') {
+            @include asm-breakpoint('xs') {
                 margin-top: 48px;
             }
 

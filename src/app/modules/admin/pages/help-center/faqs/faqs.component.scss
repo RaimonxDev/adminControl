@@ -9,7 +9,7 @@ help-center-faqs {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('lt-sm') {
+        @include asm-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -21,7 +21,7 @@ help-center-faqs {
             max-width: 960px;
             margin-top: 64px;
 
-            @include asm-breakpoint('lt-sm') {
+            @include asm-breakpoint('xs') {
                 margin-top: 48px;
             }
 
@@ -56,7 +56,7 @@ help-center-faqs {
             margin-top: 80px;
             padding: 0 !important;
 
-            @include asm-breakpoint('lt-sm') {
+            @include asm-breakpoint('xs') {
                 margin-top: 64px;
             }
 
@@ -65,7 +65,7 @@ help-center-faqs {
                 flex-direction: column;
                 margin-bottom: 80px;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin-bottom: 64px;
                 }
 

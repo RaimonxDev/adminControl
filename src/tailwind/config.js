@@ -199,10 +199,6 @@ module.exports = {
             'xl'   : {
                 min: '1920px'
             },
-            // Less than Small
-            'lt-sm': {
-                max: '599px'
-            },
             // Less than Medium
             'lt-md': {
                 max: '959px'

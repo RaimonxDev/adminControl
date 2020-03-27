@@ -19,7 +19,7 @@ inventory-list {
             padding: 40px 32px;
             border-bottom-width: 1px;
 
-            @include asm-breakpoint('lt-sm') {
+            @include asm-breakpoint('xs') {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -27,7 +27,7 @@ inventory-list {
             .title {
                 margin-right: 32px;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin-right: 0;
                 }
 
@@ -42,7 +42,7 @@ inventory-list {
                 align-items: center;
                 margin-left: auto;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin-top: 32px;
                     margin-left: 0;
                     width: 100%;
@@ -54,7 +54,7 @@ inventory-list {
                     min-width: 200px;
                     width: 100%;
 
-                    @include asm-breakpoint('lt-sm') {
+                    @include asm-breakpoint('xs') {
                         min-width: 0;
                     }
 
@@ -415,7 +415,7 @@ inventory-list {
                 font-size: 24px;
                 text-align: center;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     padding: 32px;
                 }
             }

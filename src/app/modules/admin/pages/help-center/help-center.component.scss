@@ -9,7 +9,7 @@ help-center {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('lt-sm') {
+        @include asm-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -41,7 +41,7 @@ help-center {
                 width: 100%;
                 margin: 64px 0 0 0;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin: 48px 0 0 0;
                 }
 
@@ -55,7 +55,7 @@ help-center {
                     max-width: 600px;
                     width: 100%;
 
-                    @include asm-breakpoint('lt-sm') {
+                    @include asm-breakpoint('xs') {
                         margin-top: 48px;
                     }
 
@@ -122,7 +122,7 @@ help-center {
                 justify-content: center;
                 margin: 112px 0 64px 0;
 
-                @include asm-breakpoint('lt-sm') {
+                @include asm-breakpoint('xs') {
                     margin: 64px 0;
                 }
 

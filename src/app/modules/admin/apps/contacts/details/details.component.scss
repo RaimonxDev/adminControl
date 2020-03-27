@@ -13,14 +13,14 @@ contacts-details {
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include asm-breakpoint('lt-sm') {
+        @include asm-breakpoint('xs') {
             padding: 24px 48px 40px 80px;
         }
 
         &.edit-mode {
             padding: 56px 80px 64px 80px;
 
-            @include asm-breakpoint('lt-sm') {
+            @include asm-breakpoint('xs') {
                 padding: 24px 80px 40px 40px;
             }
 
@@ -737,7 +737,7 @@ contacts-details {
     border: 1px solid;
     @include asm-elevation('md');
 
-    @include asm-breakpoint('lt-sm') {
+    @include asm-breakpoint('xs') {
         min-width: 280px;
         max-width: 280px;
     }
