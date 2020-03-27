@@ -448,7 +448,7 @@ inventory-list {
                             box-shadow: 0 1px 0 0 map-get($foreground, divider);
 
                             @if ($is-dark) {
-                                background: asm-color('cool-gray', 800);
+                                background: rgba(0, 0, 0, 0.05);
                             } @else {
                                 background: asm-color('cool-gray', 50);
                             }
@@ -493,8 +493,13 @@ inventory-list {
                                         .product-details {
 
                                             .tags {
-                                                background: map-get($background, card);
-                                                border-color: asm-color('cool-gray', 300);
+                                                @if ($is-dark) {
+                                                    background-color: rgba(0, 0, 0, 0.05);
+                                                    border-color: asm-color('cool-gray', 500);
+                                                } @else {
+                                                    background-color: white;
+                                                    border-color: asm-color('cool-gray', 300);
+                                                }
 
                                                 .available-tags {
                                                     box-shadow: 0 -1px 0 0 map-get($foreground, divider);
@@ -521,7 +526,7 @@ inventory-list {
 
                 .mat-paginator {
                     @if ($is-dark) {
-                        background: asm-color('cool-gray', 800);
+                        background: rgba(0, 0, 0, 0.05);
                     } @else {
                         background: asm-color('cool-gray', 50);
                     }

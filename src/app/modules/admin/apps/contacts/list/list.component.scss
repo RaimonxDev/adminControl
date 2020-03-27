@@ -283,7 +283,7 @@ contacts-list {
 
                             th {
                                 @if ($is-dark) {
-                                    background: asm-color('cool-gray', 800);
+                                    background: rgba(0, 0, 0, 0.05);
                                 } @else {
                                     background: asm-color('cool-gray', 50);
                                 }

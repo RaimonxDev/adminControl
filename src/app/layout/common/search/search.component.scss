@@ -31,7 +31,7 @@ search {
                         border-radius: 0 !important;
 
                         @include asm-breakpoint('xs') {
-                            padding: 0 64px 0 24px
+                            padding: 0 56px 0 24px
                         }
                     }
                 }
@@ -48,7 +48,7 @@ search {
                 height: 40px;
 
                 @include asm-breakpoint('xs') {
-                    right: 24px;
+                    right: 8px;
                 }
             }
         }

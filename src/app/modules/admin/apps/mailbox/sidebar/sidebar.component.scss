@@ -35,13 +35,7 @@ mailbox-sidebar {
 // -----------------------------------------------------------------------------------------------------
 @include asm-theme {
 
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-    $is-dark: map-get($theme, is-dark);
-
     mailbox-sidebar {
-        @if ($is-dark) {
-            background: asm-color('cool-gray', 900);
-        }
+
     }
 }

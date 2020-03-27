@@ -865,7 +865,7 @@ contacts-details {
                     }
 
                     @if ($is-dark) {
-                        background: map-get($background, background);
+                        background: asm-color('cool-gray', 800);
                     } @else {
                         background: asm-color('cool-gray', 100);
                     }

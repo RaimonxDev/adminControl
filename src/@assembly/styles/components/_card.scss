@@ -349,7 +349,7 @@ asm-card {
             // Content container
             .content-container {
                 @if ($is-dark) {
-                    background: asm-color('cool-gray', 600);
+                    background: asm-color('cool-gray', 700);
                 } @else {
                     background: asm-color('indigo', 700);
                 }

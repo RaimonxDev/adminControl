@@ -409,6 +409,12 @@ calendar {
 
         .mat-drawer-container {
             background: transparent;
+
+            .mat-drawer {
+                @if ($is-dark) {
+                    background: asm-color('cool-gray', 900);
+                }
+            }
         }
     }
 
