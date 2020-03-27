@@ -193,11 +193,11 @@ module.exports = {
             // Large
             'lg'   : {
                 min: '1280px',
-                max: '1919px'
+                max: '1439px'
             },
             // XLarge
             'xl'   : {
-                min: '1920px'
+                min: '1440px'
             },
             // Less than Medium
             'lt-md': {
@@ -209,7 +209,7 @@ module.exports = {
             },
             // Less than XLarge
             'lt-xl': {
-                max: '1919px'
+                max: '1439px'
             },
             // Greater than XSmall
             'gt-xs': {
@@ -222,10 +222,6 @@ module.exports = {
             // Greater than Medium
             'gt-md': {
                 min: '1280px'
-            },
-            // Greater than Large
-            'gt-lg': {
-                min: '1920px'
             }
         },
         sizes   : theme => ({
