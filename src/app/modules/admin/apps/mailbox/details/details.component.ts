@@ -128,7 +128,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     {
         // Find the folder details
         const folder = this.folders.find((item) => {
-            return item.slug === folder;
+            return item.slug === folderSlug;
         });
 
         // Return if the current folder of the mail
