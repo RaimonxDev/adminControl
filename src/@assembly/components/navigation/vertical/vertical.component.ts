@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
+import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { BehaviorSubject, merge, Subject, Subscription } from 'rxjs';
 import { delay, filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations';
@@ -53,6 +54,8 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
     private _asideOverlay: HTMLElement | null;
     private _asmScrollbarDirectives: QueryList<AsmScrollbarDirective>;
     private _asmScrollbarDirectivesSubscription: Subscription;
+    private _handleAsideOverlayClick: any;
+    private _handleOverlayClick: any;
     private _inner: boolean;
     private _mode: AsmNavigationMode;
     private _navigation: AsmNavigationItem[];
@@ -60,6 +63,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
     private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
     private _position: AsmNavigationPosition;
+    private _scrollStrategy: ScrollStrategy;
     private _transparentOverlay: boolean | '';
     private _unsubscribeAll: Subject<any>;
 
@@ -78,6 +82,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
      * @param {Router} _router
+     * @param {ScrollStrategyOptions} _scrollStrategyOptions
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
@@ -85,13 +90,21 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _renderer2: Renderer2,
-        private _router: Router
+        private _router: Router,
+        private _scrollStrategyOptions: ScrollStrategyOptions
     )
     {
         // Set the private defaults
         this._animationsEnabled = false;
         this._asideOverlay = null;
+        this._handleAsideOverlayClick = () => {
+            this.closeAside();
+        };
+        this._handleOverlayClick = () => {
+            this.close();
+        };
         this._overlay = null;
+        this._scrollStrategy = this._scrollStrategyOptions.block();
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
@@ -587,6 +600,9 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         // Append the overlay to the parent of the navigation
         this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
 
+        // Enable block scroll strategy
+        this._scrollStrategy.enable();
+
         // Create the enter animation and attach it to the player
         this._player =
             this._animationBuilder
@@ -598,9 +614,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         this._player.play();
 
         // Add an event listener to the overlay
-        this._overlay.addEventListener('click', () => {
-            this.close();
-        });
+        this._overlay.addEventListener('click', this._handleOverlayClick);
     }
 
     /**
@@ -631,10 +645,16 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
             // If the overlay still exists...
             if ( this._overlay )
             {
+                // Remove the event listener
+                this._overlay.removeEventListener('click', this._handleOverlayClick);
+
                 // Remove the overlay
                 this._overlay.parentNode.removeChild(this._overlay);
                 this._overlay = null;
             }
+
+            // Disable block scroll strategy
+            this._scrollStrategy.disable();
         });
     }
 
@@ -671,9 +691,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         this._player.play();
 
         // Add an event listener to the aside overlay
-        this._asideOverlay.addEventListener('click', () => {
-            this.closeAside();
-        });
+        this._asideOverlay.addEventListener('click', this._handleAsideOverlayClick);
     }
 
     /**
@@ -704,6 +722,9 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
             // If the aside overlay still exists...
             if ( this._asideOverlay )
             {
+                // Remove the event listener
+                this._asideOverlay.removeEventListener('click', this._handleAsideOverlayClick);
+
                 // Remove the aside overlay
                 this._asideOverlay.parentNode.removeChild(this._asideOverlay);
                 this._asideOverlay = null;
