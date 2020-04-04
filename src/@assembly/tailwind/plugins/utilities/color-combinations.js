@@ -33,6 +33,20 @@ module.exports = plugin(({addUtilities, variants, theme, e}) => {
                     '&.divider, .divider': {
                         color: `rgba(${contrastColor}, 0.12) !important`
                     }
+                },
+                [`.text-${e(selector)}`]: {
+
+                    '&.text-secondary, .text-secondary': {
+                        color: `rgba(${color}, 0.7) !important`
+                    },
+
+                    '&.text-hint, .text-hint, &.text-disabled, .text-disabled': {
+                        color: `rgba(${color}, 0.38) !important`
+                    },
+
+                    '&.divider, .divider': {
+                        color: `rgba(${color}, 0.12) !important`
+                    }
                 }
             }
         };
