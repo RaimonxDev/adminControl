@@ -8,7 +8,7 @@ export const shortcuts: Shortcut[] = [
         label      : 'Changelog',
         description: 'Latest version: v1.2',
         icon       : 'list_alt',
-        link       : 'apps/dashboard/analytics',
+        link       : 'apps/analytics-dashboard',
         useRouter  : true
     },
     {
@@ -16,7 +16,7 @@ export const shortcuts: Shortcut[] = [
         label      : 'Documentation',
         description: 'Getting started',
         icon       : 'chrome_reader_mode',
-        link       : 'apps/dashboard/analytics',
+        link       : 'apps/analytics-dashboard',
         useRouter  : true
     },
     {
@@ -32,7 +32,7 @@ export const shortcuts: Shortcut[] = [
         label      : 'Dashboard',
         description: 'User analytics',
         icon       : 'dashboard',
-        link       : 'apps/dashboard/analytics',
+        link       : 'apps/analytics-dashboard',
         useRouter  : true
     },
     {
@@ -72,7 +72,7 @@ export const shortcuts: Shortcut[] = [
         label      : 'Reload',
         description: 'Restart the app',
         icon       : 'refresh',
-        link       : 'apps/dashboard/analytics',
+        link       : 'apps/analytics-dashboard',
         useRouter  : false
     }
 ];

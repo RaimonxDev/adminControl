@@ -8,19 +8,183 @@ futuristic-layout {
 
     > asm-vertical-navigation {
 
-        .asm-vertical-navigation-content-header {
+        .asm-vertical-navigation-header {
 
-            .logo {
+            .user {
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                height: 80px;
-                min-height: 80px;
-                max-height: 80px;
-                padding: 24px 24px 0 24px;
+                width: 100%;
+                padding: 40px 16px 32px 20px;
 
-                img {
-                    max-width: 48px;
+                .mat-icon-button {
+                    width: 72px;
+                    height: 72px;
+                    min-height: 72px;
+                    max-height: 72px;
+                }
+
+                .avatar {
+
+                    img {
+                        width: 72px;
+                        min-width: 72px;
+                        height: 72px;
+                        min-height: 72px;
+                        border-radius: 16px;
+                    }
+
+                    .mat-icon {
+                        @include asm-icon-size(72);
+                    }
+
+                    .status {
+                        right: -4px;
+                        bottom: -5px;
+                        width: 16px;
+                        height: 16px;
+                        border-width: 3px;
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    width: 100%;
+                    min-width: 0;
+                    margin-top: 16px;
+
+                    .name,
+                    .email {
+                        width: 100%;
+                        min-width: 0;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        line-height: normal;
+                        text-align: center;
+                    }
+
+                    .name {
+                        font-size: 15px;
+                    }
+
+                    .email {
+                        margin-top: 2px;
+                    }
+                }
+            }
+        }
+
+        .asm-vertical-navigation-footer {
+            border-top-width: 1px;
+
+            .navigation-footer-menu {
+                display: flex;
+                flex-direction: column;
+                padding: 16px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 16px;
+                    border-radius: 6px;
+                    font-weight: 500;
+
+                    + a {
+                        margin-top: 4px;
+                    }
+
+                    .mat-icon {
+                        margin-right: 16px;
+                    }
+                }
+            }
+        }
+
+        // Futuristic appearance overrides
+        &.asm-vertical-navigation-appearance-futuristic {
+
+            // Wrapper
+            .asm-vertical-navigation-wrapper {
+
+                // Content
+                .asm-vertical-navigation-content {
+                    padding: 16px 0;
+                }
+            }
+
+            // Aside, basic, collapsable, group
+            asm-vertical-navigation-aside-item,
+            asm-vertical-navigation-basic-item,
+            asm-vertical-navigation-collapsable-item,
+            asm-vertical-navigation-group-item {
+                margin-bottom: 4px;
+
+                > .asm-vertical-navigation-item-wrapper {
+                    margin: 0 16px;
+
+                    .asm-vertical-navigation-item {
+                        padding-left: 16px;
+                        padding-right: 16px;
+                    }
+                }
+            }
+
+            // Collapsable
+            asm-vertical-navigation-collapsable-item {
+
+                > .asm-vertical-navigation-item-children {
+
+                    .asm-vertical-navigation-item {
+                        padding: 10px 16px;
+                    }
+                }
+
+                // 1st level
+                .asm-vertical-navigation-item-children {
+
+                    .asm-vertical-navigation-item {
+                        padding-left: 56px;
+                    }
+
+                    // 2nd level
+                    .asm-vertical-navigation-item-children {
+
+                        .asm-vertical-navigation-item {
+                            padding-left: 72px;
+                        }
+
+                        // 3rd level
+                        .asm-vertical-navigation-item-children {
+
+                            .asm-vertical-navigation-item {
+                                padding-left: 88px;
+                            }
+
+                            // 4th level
+                            .asm-vertical-navigation-item-children {
+
+                                .asm-vertical-navigation-item {
+                                    padding-left: 104px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Navigation items common
+            .asm-vertical-navigation-item {
+                border-radius: 6px;
+            }
+
+            // Aside
+            .asm-vertical-navigation-aside-wrapper {
+
+                > asm-vertical-navigation-aside-item {
+                    padding: 8px 0;
                 }
             }
         }
@@ -147,6 +311,182 @@ futuristic-layout {
     $is-dark: map-get($theme, is-dark);
 
     futuristic-layout {
+
+        > asm-vertical-navigation {
+
+            .asm-vertical-navigation-header {
+
+                .user {
+
+                    .avatar {
+
+                        .status {
+                            border-color: asm-color('indigo', 800);
+                        }
+                    }
+                }
+            }
+
+            .asm-vertical-navigation-footer {
+
+                .navigation-footer-menu {
+
+                    a {
+
+                        &:hover {
+                            background: rgba(0, 0, 0, 0.12);
+                            color: white;
+
+                            .mat-icon {
+                                color: white !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Futuristic appearance overrides
+            &.asm-vertical-navigation-appearance-futuristic {
+
+                // Navigation items common
+                .asm-vertical-navigation-item {
+
+                    // Active
+                    &.asm-vertical-navigation-item-active:not(.asm-vertical-navigation-item-disabled) {
+                        background: rgba(0, 0, 0, 0.12);
+                        color: asm-color('cool-gray', 700);
+
+                        .asm-vertical-navigation-item-icon {
+                            color: asm-color('cool-gray', 700) !important;
+                        }
+
+                        .asm-vertical-navigation-item-subtitle {
+                            color: asm-color('cool-gray', 800) !important;
+                        }
+                    }
+                }
+
+                // Aside, Basic, Collapsable
+                asm-vertical-navigation-aside-item,
+                asm-vertical-navigation-basic-item,
+                asm-vertical-navigation-collapsable-item {
+
+                    > .asm-vertical-navigation-item-wrapper {
+
+                        .asm-vertical-navigation-item {
+
+                            &:hover:not(.asm-vertical-navigation-item-disabled):not(.asm-vertical-navigation-item-active) {
+                                background: rgba(0, 0, 0, 0.12);
+                                color: asm-color('cool-gray', 700) !important;
+
+                                .asm-vertical-navigation-item-icon {
+                                    color: asm-color('cool-gray', 700) !important;
+                                }
+
+                                .asm-vertical-navigation-item-subtitle {
+                                    color: asm-color('cool-gray', 800) !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Collapsable
+                asm-vertical-navigation-collapsable-item {
+
+                    &.asm-vertical-navigation-item-expanded {
+
+                        > .asm-vertical-navigation-item-wrapper {
+
+                            .asm-vertical-navigation-item {
+                                color: asm-color('cool-gray', 800) !important;
+
+                                .asm-vertical-navigation-item-icon {
+                                    color: asm-color('cool-gray', 800) !important;
+                                }
+
+                                .asm-vertical-navigation-item-subtitle {
+                                    color: asm-color('cool-gray', 800) !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // DARK THEME
+                &.theme-dark {
+
+                    // Navigation items common
+                    .asm-vertical-navigation-item {
+
+                        .asm-vertical-navigation-item-subtitle {
+                            color: currentColor !important;
+                            opacity: 0.7;
+                        }
+
+                        // Active
+                        &.asm-vertical-navigation-item-active:not(.asm-vertical-navigation-item-disabled) {
+                            background: rgba(0, 0, 0, 0.24);
+                            color: white !important;
+
+                            .asm-vertical-navigation-item-icon {
+                                color: white !important;
+                            }
+
+                            .asm-vertical-navigation-item-subtitle {
+                                color: rgba(255, 255, 255, 0.7) !important;
+                            }
+                        }
+                    }
+
+                    // Aside, Basic, Collapsable
+                    asm-vertical-navigation-aside-item,
+                    asm-vertical-navigation-basic-item,
+                    asm-vertical-navigation-collapsable-item {
+
+                        > .asm-vertical-navigation-item-wrapper {
+
+                            .asm-vertical-navigation-item {
+
+                                &:hover:not(.asm-vertical-navigation-item-disabled):not(.asm-vertical-navigation-item-active) {
+                                    color: white !important;
+
+                                    .asm-vertical-navigation-item-icon {
+                                        color: white !important;
+                                    }
+
+                                    .asm-vertical-navigation-item-subtitle {
+                                        color: white !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Collapsable
+                    asm-vertical-navigation-collapsable-item {
+
+                        &.asm-vertical-navigation-item-expanded {
+
+                            > .asm-vertical-navigation-item-wrapper {
+
+                                .asm-vertical-navigation-item {
+                                    color: white !important;
+
+                                    .asm-vertical-navigation-item-icon {
+                                        color: white !important;
+                                    }
+
+                                    .asm-vertical-navigation-item-subtitle {
+                                        color: white !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         > .wrapper {
 

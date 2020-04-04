@@ -10,24 +10,18 @@ export const defaultNavigation: AsmNavigationItem[] = [
         icon    : 'apps',
         children: [
             {
-                id      : 'applications.dashboard',
-                title   : 'Dashboard',
-                type    : 'collapsable',
-                icon    : 'dashboard',
-                children: [
-                    {
-                        id   : 'applications.dashboard.analytics',
-                        title: 'Analytics',
-                        type : 'basic',
-                        link : '/apps/dashboard/analytics'
-                    },
-                    {
-                        id   : 'applications.dashboard.cryptocurrency',
-                        title: 'Cryptocurrency',
-                        type : 'basic',
-                        link : '/apps/dashboard/cryptocurrency'
-                    }
-                ]
+                id   : 'applications.analytics-dashboard',
+                title: 'Analytics Dashboard',
+                type : 'basic',
+                icon : 'bar_chart',
+                link : '/apps/analytics-dashboard'
+            },
+            {
+                id   : 'applications.cryptocurrency-dashboard',
+                title: 'Cryptocurrency Dashboard',
+                type : 'basic',
+                icon : 'monetization_on',
+                link : '/apps/cryptocurrency-dashboard'
             },
             {
                 id      : 'applications.calendar',
@@ -966,6 +960,101 @@ export const compactNavigation: AsmNavigationItem[] = [
     {
         id      : 'navigation-features',
         title   : 'Navigation',
+        type    : 'aside',
+        icon    : 'heroicons:menu',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    }
+];
+export const futuristicNavigation: AsmNavigationItem[] = [
+    {
+        id   : 'applications.analytics-dashboard',
+        title: 'Analytics Dashboard',
+        type : 'basic',
+        icon : 'heroicons:chart-pie',
+        link : '/apps/analytics-dashboard'
+    },
+    {
+        id   : 'applications.cryptocurrency-dashboard',
+        title: 'Cryptocurrency Dashboard',
+        type : 'basic',
+        icon : 'heroicons:currency-dollar',
+        link : '/apps/cryptocurrency-dashboard'
+    },
+    {
+        id      : 'applications.calendar',
+        title   : 'Calendar',
+        type    : 'basic',
+        icon    : 'heroicons:calendar',
+        link    : '/apps/calendar'
+    },
+    {
+        id   : 'applications.contacts',
+        title: 'Contacts',
+        type : 'basic',
+        icon : 'heroicons:user-group',
+        link : '/apps/contacts',
+        badge: {
+            title     : 'NEW',
+            style     : 'rounded',
+            background: 'rgba(0, 0, 0, 0.24)',
+            color     : '#FFFFFF'
+        }
+    },
+    {
+        id      : 'applications.ecommerce',
+        title   : 'ECommerce',
+        type    : 'collapsable',
+        icon    : 'heroicons:shopping-cart',
+        children: [
+            {
+                id   : 'applications.ecommerce.inventory',
+                title: 'Inventory',
+                type : 'basic',
+                link : '/apps/ecommerce/inventory'
+            }
+        ]
+    },
+    {
+        id   : 'applications.mailbox',
+        title: 'Mailbox',
+        type : 'basic',
+        icon : 'heroicons:mail',
+        link : '/apps/mailbox',
+        badge: {
+            title     : '27',
+            style     : 'rounded',
+            background: 'rgba(0, 0, 0, 0.24)',
+            color     : '#FFFFFF'
+        }
+    },
+    {
+        id   : 'applications.tasks',
+        title: 'Tasks',
+        type : 'basic',
+        icon : 'heroicons:check-circle',
+        link : '/apps/tasks'
+    },
+    {
+        id  : 'spacer-1',
+        type: 'spacer'
+    },
+    {
+        id      : 'pages',
+        title   : 'Pages',
+        type    : 'aside',
+        icon    : 'heroicons:document-duplicate',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    },
+    {
+        id      : 'user-interface',
+        title   : 'User Interface',
+        type    : 'aside',
+        icon    : 'heroicons:collection',
+        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+    },
+    {
+        id      : 'navigation-features',
+        title   : 'Navigation Features',
         type    : 'aside',
         icon    : 'heroicons:menu',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation

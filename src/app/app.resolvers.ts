@@ -110,6 +110,7 @@ export class InitialDataResolver implements Resolve<any>
                     navigation   : {
                         compact   : data[1].compact,
                         default   : data[1].default,
+                        futuristic: data[1].futuristic,
                         horizontal: data[1].horizontal
                     },
                     notifications: data[2].notifications,
