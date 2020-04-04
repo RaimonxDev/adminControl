@@ -5,7 +5,7 @@ import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { BehaviorSubject, merge, Subject, Subscription } from 'rxjs';
 import { delay, filter, takeUntil } from 'rxjs/operators';
 import { AsmAnimations } from '@assembly/animations';
-import { AsmNavigationAppearance, AsmNavigationItem, AsmNavigationMode, AsmNavigationPosition } from '@assembly/components/navigation/navigation.types';
+import { AsmVerticalNavigationAppearance, AsmNavigationItem, AsmVerticalNavigationMode, AsmVerticalNavigationPosition } from '@assembly/components/navigation/navigation.types';
 import { AsmNavigationService } from '@assembly/components/navigation/navigation.service';
 import { AsmScrollbarDirective } from '@assembly/directives/scrollbar/scrollbar.directive';
 
@@ -35,11 +35,11 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
 
     // On appearance changed
     @Output()
-    readonly appearanceChanged: EventEmitter<AsmNavigationAppearance>;
+    readonly appearanceChanged: EventEmitter<AsmVerticalNavigationAppearance>;
 
     // On mode changed
     @Output()
-    readonly modeChanged: EventEmitter<AsmNavigationMode>;
+    readonly modeChanged: EventEmitter<AsmVerticalNavigationMode>;
 
     // On opened changed
     @Output()
@@ -47,22 +47,22 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
 
     // On position changed
     @Output()
-    readonly positionChanged: EventEmitter<AsmNavigationPosition>;
+    readonly positionChanged: EventEmitter<AsmVerticalNavigationPosition>;
 
     // Private
-    private _appearance: AsmNavigationAppearance;
+    private _appearance: AsmVerticalNavigationAppearance;
     private _asideOverlay: HTMLElement | null;
     private _asmScrollbarDirectives: QueryList<AsmScrollbarDirective>;
     private _asmScrollbarDirectivesSubscription: Subscription;
     private _handleAsideOverlayClick: any;
     private _handleOverlayClick: any;
     private _inner: boolean;
-    private _mode: AsmNavigationMode;
+    private _mode: AsmVerticalNavigationMode;
     private _navigation: AsmNavigationItem[];
     private _opened: boolean | '';
     private _overlay: HTMLElement | null;
     private _player: AnimationPlayer;
-    private _position: AsmNavigationPosition;
+    private _position: AsmVerticalNavigationPosition;
     private _scrollStrategy: ScrollStrategy;
     private _transparentOverlay: boolean | '';
     private _unsubscribeAll: Subject<any>;
@@ -108,10 +108,10 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         this._unsubscribeAll = new Subject();
 
         // Set the defaults
-        this.appearanceChanged = new EventEmitter<AsmNavigationAppearance>();
-        this.modeChanged = new EventEmitter<AsmNavigationMode>();
+        this.appearanceChanged = new EventEmitter<AsmVerticalNavigationAppearance>();
+        this.modeChanged = new EventEmitter<AsmVerticalNavigationMode>();
         this.openedChanged = new EventEmitter<boolean | ''>();
-        this.positionChanged = new EventEmitter<AsmNavigationPosition>();
+        this.positionChanged = new EventEmitter<AsmVerticalNavigationPosition>();
 
         this.onCollapsableItemCollapsed = new BehaviorSubject(null);
         this.onCollapsableItemExpanded = new BehaviorSubject(null);
@@ -137,7 +137,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
      * @param value
      */
     @Input()
-    set appearance(value: AsmNavigationAppearance)
+    set appearance(value: AsmVerticalNavigationAppearance)
     {
         // If the value is the same, return...
         if ( this._appearance === value )
@@ -162,7 +162,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         this.appearanceChanged.next(this.appearance);
     }
 
-    get appearance(): AsmNavigationAppearance
+    get appearance(): AsmVerticalNavigationAppearance
     {
         return this._appearance;
     }
@@ -264,7 +264,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
      * @param value
      */
     @Input()
-    set mode(value: AsmNavigationMode)
+    set mode(value: AsmVerticalNavigationMode)
     {
         // If the value is the same, return...
         if ( this._mode === value )
@@ -320,7 +320,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         }, 500);
     }
 
-    get mode(): AsmNavigationMode
+    get mode(): AsmVerticalNavigationMode
     {
         return this._mode;
     }
@@ -391,7 +391,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
      * @param value
      */
     @Input()
-    set position(value: AsmNavigationPosition)
+    set position(value: AsmVerticalNavigationPosition)
     {
         // If the value is the same, return...
         if ( this._position === value )
@@ -416,7 +416,7 @@ export class AsmVerticalNavigationComponent implements OnInit, AfterViewInit, On
         this.positionChanged.next(this.position);
     }
 
-    get position(): AsmNavigationPosition
+    get position(): AsmVerticalNavigationPosition
     {
         return this._position;
     }
