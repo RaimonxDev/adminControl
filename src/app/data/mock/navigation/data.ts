@@ -7,20 +7,20 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title   : 'Applications',
         subtitle: 'Custom made application designs',
         type    : 'group',
-        icon    : 'apps',
+        icon    : 'heroicons:home',
         children: [
             {
                 id   : 'applications.analytics-dashboard',
                 title: 'Analytics Dashboard',
                 type : 'basic',
-                icon : 'bar_chart',
+                icon : 'heroicons:chart-pie',
                 link : '/apps/analytics-dashboard'
             },
             {
                 id   : 'applications.cryptocurrency-dashboard',
                 title: 'Cryptocurrency Dashboard',
                 type : 'basic',
-                icon : 'monetization_on',
+                icon : 'heroicons:currency-dollar',
                 link : '/apps/cryptocurrency-dashboard'
             },
             {
@@ -28,14 +28,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 title   : 'Calendar',
                 subtitle: '3 upcoming events',
                 type    : 'basic',
-                icon    : 'today',
+                icon    : 'heroicons:calendar',
                 link    : '/apps/calendar'
             },
             {
                 id   : 'applications.contacts',
                 title: 'Contacts',
                 type : 'basic',
-                icon : 'account_box',
+                icon : 'heroicons:user-group',
                 link : '/apps/contacts',
                 badge: {
                     title     : 'NEW',
@@ -48,7 +48,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'applications.ecommerce',
                 title   : 'ECommerce',
                 type    : 'collapsable',
-                icon    : 'shopping_cart',
+                icon    : 'heroicons:shopping-cart',
                 children: [
                     {
                         id   : 'applications.ecommerce.inventory',
@@ -62,8 +62,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'applications.mailbox',
                 title: 'Mailbox',
                 type : 'basic',
-                icon : 'email',
-                link : '/apps/mailbox',
+                icon : 'heroicons:mail',
                 badge: {
                     title     : '27',
                     style     : 'rounded',
@@ -75,7 +74,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'applications.tasks',
                 title: 'Tasks',
                 type : 'basic',
-                icon : 'check_box',
+                icon : 'heroicons:check-circle',
                 link : '/apps/tasks'
             }
         ]
@@ -85,13 +84,13 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title   : 'Pages',
         subtitle: 'Custom made page designs',
         type    : 'group',
-        icon    : 'pages',
+        icon    : 'heroicons:document',
         children: [
             {
                 id      : 'pages.authentication',
                 title   : 'Authentication',
                 type    : 'collapsable',
-                icon    : 'lock',
+                icon    : 'heroicons:lock-closed',
                 children: [
                     {
                         id      : 'pages.authentication.sign-in',
@@ -364,7 +363,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'pages.coming-soon',
                 title   : 'Coming soon',
                 type    : 'collapsable',
-                icon    : 'hourglass_empty',
+                icon    : 'heroicons:clock',
                 link    : '/pages/coming-soon',
                 children: [
                     {
@@ -403,7 +402,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'pages.errors',
                 title   : 'Errors',
                 type    : 'collapsable',
-                icon    : 'error_outline',
+                icon    : 'heroicons:exclamation-circle',
                 children: [
                     {
                         id   : 'pages.errors.404',
@@ -423,7 +422,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'pages.help-center',
                 title   : 'Help center',
                 type    : 'collapsable',
-                icon    : 'help_outline',
+                icon    : 'heroicons:question-mark-circle',
                 link    : '/pages/help-center',
                 children: [
                     {
@@ -457,14 +456,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'pages.maintenance',
                 title: 'Maintenance',
                 type : 'basic',
-                icon : 'warning',
+                icon : 'heroicons:exclamation',
                 link : '/pages/maintenance'
             },
             {
                 id      : 'pages.pricing',
                 title   : 'Pricing',
                 type    : 'collapsable',
-                icon    : 'monetization_on',
+                icon    : 'heroicons:cash',
                 children: [
                     {
                         id   : 'pages.pricing.modern',
@@ -496,7 +495,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'pages.profile',
                 title: 'Profile',
                 type : 'basic',
-                icon : 'account_circle',
+                icon : 'heroicons:user-circle',
                 link : '/pages/profile'
             }
         ]
@@ -506,41 +505,41 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title   : 'User Interface',
         subtitle: 'Building blocks of the UI & UX',
         type    : 'group',
-        icon    : 'web',
+        icon    : 'heroicons:collection',
         children: [
             {
                 id   : 'user-interface.angular-material',
                 title: 'Angular Material',
                 type : 'basic',
-                icon : 'layers',
+                icon : 'heroicons:shield-check',
                 link : '/ui/angular-material'
             },
             {
                 id   : 'user-interface.tailwindcss',
                 title: 'TailwindCSS',
                 type : 'basic',
-                icon : 'assistant',
+                icon : 'heroicons:sparkles',
                 link : '/ui/tailwindcss'
             },
             {
                 id   : 'user-interface.cards',
                 title: 'Cards',
                 type : 'basic',
-                icon : 'web_asset',
+                icon : 'heroicons:duplicate',
                 link : '/ui/cards'
             },
             {
                 id   : 'user-interface.colors',
                 title: 'Colors',
                 type : 'basic',
-                icon : 'color_lens',
+                icon : 'heroicons:color-swatch',
                 link : '/ui/colors'
             },
             {
                 id      : 'user-interface.content-layouts',
                 title   : 'Content layouts',
                 type    : 'collapsable',
-                icon    : 'view_compact',
+                icon    : 'heroicons:template',
                 children: [
                     {
                         id   : 'user-interface.content-layouts.overview',
@@ -711,14 +710,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'user-interface.datatable',
                 title: 'Datatable',
                 type : 'basic',
-                icon : 'table_chart',
+                icon : 'heroicons:view-list',
                 link : '/ui/datatable'
             },
             {
                 id      : 'user-interface.forms',
                 title   : 'Forms',
                 type    : 'collapsable',
-                icon    : 'ballot',
+                icon    : 'heroicons:pencil-alt',
                 children: [
                     {
                         id   : 'user-interface.forms.fields',
@@ -744,7 +743,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id      : 'user-interface.icons',
                 title   : 'Icons',
                 type    : 'collapsable',
-                icon    : 'category',
+                icon    : 'heroicons:lightning-bolt',
                 children: [
                     {
                         id   : 'user-interface.icons.dripicons',
@@ -788,7 +787,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 id   : 'user-interface.typography',
                 title: 'Typography',
                 type : 'basic',
-                icon : 'text_fields',
+                icon : 'heroicons:pencil',
                 link : '/ui/typography'
             }
         ]
@@ -802,12 +801,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
         title   : 'Navigation features',
         subtitle: 'Collapsable levels & badge styles',
         type    : 'group',
-        icon    : 'menu_open',
+        icon    : 'heroicons:menu',
         children: [
             {
                 id      : 'navigation-features.levels.0',
                 title   : 'Level 0',
-                icon    : 'menu',
+                icon    : 'heroicons:check-circle',
                 type    : 'collapsable',
                 children: [
                     {
@@ -855,7 +854,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id      : 'navigation-features.disabled-collapsable',
                 title   : 'Disabled collapsable',
-                icon    : 'menu',
+                icon    : 'heroicons:check-circle',
                 type    : 'collapsable',
                 disabled: true,
                 children: [
@@ -870,7 +869,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id      : 'navigation-features.disabled-basic',
                 title   : 'Disabled basic',
-                icon    : 'menu',
+                icon    : 'heroicons:check-circle',
                 type    : 'basic',
                 link    : '#',
                 disabled: true
@@ -878,7 +877,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-oval',
                 title: 'Oval badge',
-                icon : 'label',
+                icon : 'heroicons:tag',
                 type : 'basic',
                 link : '#',
                 badge: {
@@ -890,7 +889,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-rectangle',
                 title: 'Rectangle badge',
-                icon : 'label',
+                icon : 'heroicons:tag',
                 type : 'basic',
                 link : '#',
                 badge: {
@@ -903,7 +902,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-rounded',
                 title: 'Rounded badge',
-                icon : 'label',
+                icon : 'heroicons:tag',
                 type : 'basic',
                 link : '#',
                 badge: {
@@ -916,7 +915,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-simple',
                 title: 'Simple badge',
-                icon : 'label',
+                icon : 'heroicons:tag',
                 type : 'basic',
                 link : '#',
                 badge: {
@@ -928,7 +927,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
             {
                 id   : 'navigation-features.multi-line',
                 title: 'A multi line navigation item title example which works just fine',
-                icon : 'menu',
+                icon : 'heroicons:check-circle',
                 type : 'basic',
                 link : '#'
             }
