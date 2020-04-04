@@ -167,7 +167,17 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     setLayout(layout: string): void
     {
-        this._asmConfigService.config = {layout};
+        // Clear the 'layout' query param to allow layout changes
+        this._router.navigate([], {
+            queryParams        : {
+                layout: null
+            },
+            queryParamsHandling: 'merge'
+        }).then(() => {
+
+            // Set the config
+            this._asmConfigService.config = {layout};
+        });
     }
 
     /**
