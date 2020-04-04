@@ -14,6 +14,7 @@ import { ClassicLayoutModule } from 'app/layout/layouts/vertical/classic/classic
 import { ClassyLayoutModule } from 'app/layout/layouts/vertical/classy/classy.module';
 import { CompactLayoutModule } from 'app/layout/layouts/vertical/compact/compact.module';
 import { DenseLayoutModule } from 'app/layout/layouts/vertical/dense/dense.module';
+import { FuturisticLayoutModule } from 'app/layout/layouts/vertical/futuristic/futuristic.module';
 import { ThinLayoutModule } from 'app/layout/layouts/vertical/thin/thin.module';
 import { SharedModule } from 'app/shared/shared.module';
 
@@ -33,6 +34,7 @@ const modules = [
     ClassyLayoutModule,
     CompactLayoutModule,
     DenseLayoutModule,
+    FuturisticLayoutModule,
     ThinLayoutModule
 ];
 
