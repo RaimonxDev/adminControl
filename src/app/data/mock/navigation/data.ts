@@ -946,28 +946,28 @@ export const compactNavigation: AsmNavigationItem[] = [
         id      : 'applications',
         title   : 'Apps',
         type    : 'aside',
-        icon    : 'apps',
+        icon    : 'heroicons:home',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'aside',
-        icon    : 'description',
+        icon    : 'heroicons:document-duplicate',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'user-interface',
         title   : 'UI',
         type    : 'aside',
-        icon    : 'list_alt',
+        icon    : 'heroicons:collection',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'navigation-features',
         title   : 'Navigation',
         type    : 'aside',
-        icon    : 'menu_open',
+        icon    : 'heroicons:menu',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];
@@ -976,28 +976,28 @@ export const horizontalNavigation: AsmNavigationItem[] = [
         id      : 'applications',
         title   : 'Apps',
         type    : 'group',
-        icon    : 'apps',
+        icon    : 'heroicons:home',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'group',
-        icon    : 'description',
+        icon    : 'heroicons:document-duplicate',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'user-interface',
         title   : 'UI',
         type    : 'group',
-        icon    : 'list_alt',
+        icon    : 'heroicons:collection',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'navigation-features',
         title   : 'Misc',
         type    : 'group',
-        icon    : 'menu_open',
+        icon    : 'heroicons:menu',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];
