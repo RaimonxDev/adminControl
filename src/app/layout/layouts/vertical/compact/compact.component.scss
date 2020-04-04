@@ -79,15 +79,15 @@ compact-layout {
                         .asm-vertical-navigation-item {
                             flex-direction: column;
                             justify-content: center;
-                            height: 88px;
-                            min-height: 88px;
-                            max-height: 88px;
+                            height: 96px;
+                            min-height: 96px;
+                            max-height: 96px;
                             padding: 0 16px;
 
                             .asm-vertical-navigation-item-icon {
                                 margin-right: 0;
                                 margin-bottom: 8px;
-                                @include asm-icon-size(24);
+                                @include asm-icon-size(30);
                             }
 
                             .asm-vertical-navigation-item-title-wrapper {
