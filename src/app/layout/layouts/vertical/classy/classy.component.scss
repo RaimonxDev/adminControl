@@ -10,25 +10,12 @@ classy-layout {
 
         .asm-vertical-navigation-content-header {
 
-            .actions {
-                display: flex;
-                align-items: center;
-                width: 100%;
-                padding: 16px;
-
-                .spacer {
-                    display: flex;
-                    flex: 1 1 auto;
-                    height: 1px;
-                }
-            }
-
             .user {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
-                padding: 16px 24px;
+                padding: 40px 16px 16px 16px;
 
                 .avatar {
                     position: relative;
@@ -109,11 +96,53 @@ classy-layout {
         flex: 1 1 auto;
         min-width: 0;
 
-        .navigation-toggle-button {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            z-index: 45;
+        > .header {
+            position: relative;
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            width: 100%;
+            height: 80px;
+            max-height: 80px;
+            min-height: 80px;
+            padding: 0 24px;
+            z-index: 49;
+
+            @include asm-breakpoint('lt-md') {
+                padding: 0 16px;
+            }
+
+            @include asm-breakpoint('xs') {
+                height: 64px;
+                max-height: 64px;
+                min-height: 64px;
+            }
+
+            .navigation-toggle-button {
+                margin-right: 8px;
+            }
+
+            .spacer {
+                display: flex;
+                flex: 1 1 auto;
+                height: 1px;
+            }
+
+            search {
+                margin-right: 8px;
+            }
+
+            shortcuts {
+                margin-right: 8px;
+            }
+
+            messages {
+                margin-right: 8px;
+            }
+
+            notifications {
+                margin-right: 8px;
+            }
         }
 
         > .content {
@@ -144,11 +173,12 @@ classy-layout {
 
         > .wrapper {
 
-            .navigation-toggle-button {
-                background: map-get($primary, default);
-
-                .mat-icon {
-                    color: map-get($primary, default-contrast);
+            > .header {
+                @if ($is-dark) {
+                    box-shadow: 0 1px 0 0 map-get($foreground, divider);
+                } @else {
+                    background: map-get($background, card);
+                    @include asm-elevation();
                 }
             }
         }

@@ -8,28 +8,6 @@
                          #mainNavigation>
 
     <div asmVerticalNavigationContentHeader>
-
-        <div class="actions">
-
-            <!-- Navigation toggle button -->
-            <button class="navigation-toggle-button"
-                    mat-icon-button
-                    (click)="toggleNavigation('mainNavigation')">
-                <mat-icon [svgIcon]="'menu'"></mat-icon>
-            </button>
-
-            <!-- Spacer -->
-            <div class="spacer"></div>
-
-            <!-- Notifications -->
-            <notifications [notifications]="data.notifications"></notifications>
-
-            <!-- User -->
-            <user [user]="data.user"
-                  [showAvatar]="false"></user>
-
-        </div>
-
         <!-- User -->
         <div class="user">
             <div class="avatar">
@@ -43,7 +21,6 @@
                 <div class="email text-hint">{{data.user.email}}</div>
             </div>
         </div>
-
     </div>
 
     <div asmVerticalNavigationContentFooter>
@@ -57,13 +34,35 @@
 <!-- Wrapper -->
 <div class="wrapper">
 
-    <!-- Navigation toggle button -->
-    <button class="navigation-toggle-button"
-            *ngIf="!mainNavigation.opened"
-            mat-icon-button
-            (click)="toggleNavigation('mainNavigation')">
-        <mat-icon [svgIcon]="'menu'"></mat-icon>
-    </button>
+    <!-- Header -->
+    <div class="header">
+
+        <!-- Navigation toggle button -->
+        <button class="navigation-toggle-button"
+                mat-icon-button
+                (click)="toggleNavigation('mainNavigation')">
+            <mat-icon [svgIcon]="'menu'"></mat-icon>
+        </button>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+
+        <!-- Search -->
+        <search [appearance]="'bar'"></search>
+
+        <!-- Shortcuts -->
+        <shortcuts [shortcuts]="data.shortcuts"></shortcuts>
+
+        <!-- Messages -->
+        <messages [messages]="data.messages"></messages>
+
+        <!-- Notifications -->
+        <notifications [notifications]="data.notifications"></notifications>
+
+        <!-- User -->
+        <user [user]="data.user"></user>
+
+    </div>
 
     <!-- Content -->
     <div class="content">
