@@ -18,11 +18,7 @@ module.exports = plugin(({addUtilities, variants, theme, e}) => {
                     lineHeight: value,
                     [`svg`]   : {
                         width     : value,
-                        height    : value,
-                        minWidth  : value,
-                        minHeight : value,
-                        fontSize  : value,
-                        lineHeight: value
+                        height    : value
                     }
                 }
             }

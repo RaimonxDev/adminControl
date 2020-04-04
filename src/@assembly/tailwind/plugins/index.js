@@ -12,6 +12,7 @@ module.exports = [
     // Utilities
     require('./utilities/color-contrasts'),
     require('./utilities/color-combinations'),
+    require('./utilities/icon-color'),
     require('./utilities/icon-size'),
     require('./utilities/mirror')
 ];
