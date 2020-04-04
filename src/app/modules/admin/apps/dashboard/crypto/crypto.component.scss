@@ -1,6 +1,6 @@
 @import 'assembly';
 
-dashboard-cryptocurrency {
+dashboard-crypto {
     position: relative;
 
     .buy-sell-toggle {
@@ -57,7 +57,7 @@ dashboard-cryptocurrency {
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
 
-    dashboard-cryptocurrency {
+    dashboard-crypto {
 
         .buy-sell-toggle {
 

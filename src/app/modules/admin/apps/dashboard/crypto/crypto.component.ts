@@ -6,16 +6,16 @@ import * as moment from 'moment';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
 import { AsmConfigService } from '@assembly/services/config';
 import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
-import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.service';
+import { DashboardCryptoService } from 'app/modules/admin/apps/dashboard/crypto/crypto.service';
 
 @Component({
-    selector       : 'dashboard-cryptocurrency',
-    templateUrl    : './cryptocurrency.component.html',
-    styleUrls      : ['./cryptocurrency.component.scss'],
+    selector       : 'dashboard-crypto',
+    templateUrl    : './crypto.component.html',
+    styleUrls      : ['./crypto.component.scss'],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
+export class DashboardCryptoComponent implements OnInit, OnDestroy
 {
     appConfig: any;
     btcOptions: ApexOptions | any;
@@ -35,13 +35,13 @@ export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
      *
      * @param {AsmConfigService} _asmConfigService
      * @param {AsmMediaWatcherService} _asmMediaWatcherService
-     * @param {DashboardCryptocurrencyService} _dashboardCryptocurrencyService
+     * @param {DashboardCryptoService} _dashboardCryptoService
      * @param {ChangeDetectorRef} _changeDetectorRef
      */
     constructor(
         private _asmConfigService: AsmConfigService,
         private _asmMediaWatcherService: AsmMediaWatcherService,
-        private _dashboardCryptocurrencyService: DashboardCryptocurrencyService,
+        private _dashboardCryptoService: DashboardCryptoService,
         private _changeDetectorRef: ChangeDetectorRef
     )
     {
@@ -118,7 +118,7 @@ export class DashboardCryptocurrencyComponent implements OnInit, OnDestroy
             });
 
         // Get the data
-        this._dashboardCryptocurrencyService.data$
+        this._dashboardCryptoService.data$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
 

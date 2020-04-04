@@ -2,7 +2,7 @@ import { AuthMockApi } from 'app/data/mock/auth';
 import { CalendarMockApi } from 'app/data/mock/calendar';
 import { ContactsMockApi } from 'app/data/mock/contacts';
 import { DashboardAnalyticsMockApi } from 'app/data/mock/dashboards/analytics';
-import { DashboardCryptocurrencyMockApi } from 'app/data/mock/dashboards/cryptocurrency';
+import { DashboardCryptoMockApi } from 'app/data/mock/dashboards/crypto';
 import { ECommerceInventoryMockApi } from 'app/data/mock/ecommerce/inventory';
 import { HelpCenterMockApi } from 'app/data/mock/help-center';
 import { IconsMockApi } from 'app/data/mock/icons';
@@ -20,7 +20,7 @@ export const mockDataServices = [
     CalendarMockApi,
     ContactsMockApi,
     DashboardAnalyticsMockApi,
-    DashboardCryptocurrencyMockApi,
+    DashboardCryptoMockApi,
     ECommerceInventoryMockApi,
     HelpCenterMockApi,
     IconsMockApi,

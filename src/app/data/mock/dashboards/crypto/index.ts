@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
 import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
-import { cryptocurrency as cryptocurrencyData } from 'app/data/mock/dashboards/cryptocurrency/data';
+import { crypto as cryptoData } from 'app/data/mock/dashboards/crypto/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class DashboardCryptocurrencyMockApi implements AsmMockApi
+export class DashboardCryptoMockApi implements AsmMockApi
 {
     // Private
-    private _cryptocurrency: any;
+    private _crypto: any;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ export class DashboardCryptocurrencyMockApi implements AsmMockApi
     )
     {
         // Set the data
-        this._cryptocurrency = cryptocurrencyData;
+        this._crypto = cryptoData;
 
         // Register the API endpoints
         this.register();
@@ -38,15 +38,15 @@ export class DashboardCryptocurrencyMockApi implements AsmMockApi
     register(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ Cryptocurrency - GET
+        // @ Crypto - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/dashboard/cryptocurrency')
+            .onGet('api/dashboard/crypto')
             .reply(() => {
 
                 return [
                     200,
-                    _.cloneDeep(this._cryptocurrency)
+                    _.cloneDeep(this._crypto)
                 ];
             });
     }

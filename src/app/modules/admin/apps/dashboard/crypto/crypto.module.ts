@@ -13,15 +13,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SharedModule } from 'app/shared/shared.module';
-import { DashboardCryptocurrencyComponent } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.component';
-import { dashboardCryptocurrencyRoutes } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.routing';
+import { DashboardCryptoComponent } from 'app/modules/admin/apps/dashboard/crypto/crypto.component';
+import { dashboardCryptoRoutes } from 'app/modules/admin/apps/dashboard/crypto/crypto.routing';
 
 @NgModule({
     declarations: [
-        DashboardCryptocurrencyComponent
+        DashboardCryptoComponent
     ],
     imports     : [
-        RouterModule.forChild(dashboardCryptocurrencyRoutes),
+        RouterModule.forChild(dashboardCryptoRoutes),
         MatButtonModule,
         MatButtonToggleModule,
         MatFormFieldModule,
@@ -37,6 +37,6 @@ import { dashboardCryptocurrencyRoutes } from 'app/modules/admin/apps/dashboard/
         SharedModule
     ]
 })
-export class DashboardCryptocurrencyModule
+export class DashboardCryptoModule
 {
 }

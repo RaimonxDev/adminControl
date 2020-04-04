@@ -65,7 +65,7 @@ export const appRoutes: Route[] = [
 
                 // Dashboards
                 {path: 'analytics-dashboard', loadChildren: () => import('app/modules/admin/apps/dashboard/analytics/analytics.module').then(m => m.DashboardAnalyticsModule)},
-                {path: 'cryptocurrency-dashboard', loadChildren: () => import('app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.module').then(m => m.DashboardCryptocurrencyModule)},
+                {path: 'crypto-dashboard', loadChildren: () => import('app/modules/admin/apps/dashboard/crypto/crypto.module').then(m => m.DashboardCryptoModule)},
                 {path: 'calendar', loadChildren: () => import('app/modules/admin/apps/calendar/calendar.module').then(m => m.CalendarModule)},
                 {path: 'contacts', loadChildren: () => import('app/modules/admin/apps/contacts/contacts.module').then(m => m.ContactsModule)},
                 {path: 'ecommerce', loadChildren: () => import('app/modules/admin/apps/ecommerce/ecommerce.module').then(m => m.ECommerceModule)},

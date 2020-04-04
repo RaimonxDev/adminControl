@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DashboardCryptocurrencyService } from 'app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.service';
+import { DashboardCryptoService } from 'app/modules/admin/apps/dashboard/crypto/crypto.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class DashboardCryptocurrencyResolver implements Resolve<any>
+export class DashboardCryptoResolver implements Resolve<any>
 {
     /**
      * Constructor
      *
-     * @param {DashboardCryptocurrencyService} _dashboardCryptocurrencyService
+     * @param {DashboardCryptoService} _dashboardCryptoService
      */
     constructor(
-        private _dashboardCryptocurrencyService: DashboardCryptocurrencyService
+        private _dashboardCryptoService: DashboardCryptoService
     )
     {
     }
@@ -31,6 +31,6 @@ export class DashboardCryptocurrencyResolver implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>
     {
-        return this._dashboardCryptocurrencyService.getData();
+        return this._dashboardCryptoService.getData();
     }
 }

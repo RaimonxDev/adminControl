@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 
 /* tslint:disable:max-line-length */
-export const cryptocurrency = {
+export const crypto = {
     btc      : {
         amount     : 8878.48,
         trend      : {

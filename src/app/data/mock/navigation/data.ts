@@ -17,11 +17,11 @@ export const defaultNavigation: AsmNavigationItem[] = [
                 link : '/apps/analytics-dashboard'
             },
             {
-                id   : 'applications.cryptocurrency-dashboard',
-                title: 'Cryptocurrency Dashboard',
+                id   : 'applications.crypto-dashboard',
+                title: 'Crypto Dashboard',
                 type : 'basic',
                 icon : 'heroicons:currency-dollar',
-                link : '/apps/cryptocurrency-dashboard'
+                link : '/apps/crypto-dashboard'
             },
             {
                 id      : 'applications.calendar',
@@ -973,11 +973,11 @@ export const futuristicNavigation: AsmNavigationItem[] = [
         link : '/apps/analytics-dashboard'
     },
     {
-        id   : 'applications.cryptocurrency-dashboard',
-        title: 'Cryptocurrency Dashboard',
+        id   : 'applications.crypto-dashboard',
+        title: 'Crypto Dashboard',
         type : 'basic',
         icon : 'heroicons:currency-dollar',
-        link : '/apps/cryptocurrency-dashboard'
+        link : '/apps/crypto-dashboard'
     },
     {
         id      : 'applications.calendar',
