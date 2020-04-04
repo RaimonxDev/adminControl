@@ -65,7 +65,7 @@ export const appRoutes: Route[] = [
 
                 // Dashboards
                 {path: 'dashboard', children: [
-
+                    {path: '', pathMatch: 'full', redirectTo: 'analytics'},
                     {path: 'analytics', loadChildren: () => import('app/modules/admin/apps/dashboard/analytics/analytics.module').then(m => m.DashboardAnalyticsModule)},
                     {path: 'cryptocurrency', loadChildren: () => import('app/modules/admin/apps/dashboard/cryptocurrency/cryptocurrency.module').then(m => m.DashboardCryptocurrencyModule)},
                 ]},
@@ -82,7 +82,6 @@ export const appRoutes: Route[] = [
 
                 // Authentication
                 {path: 'authentication', children: [
-
                     {path: 'confirmation-required', loadChildren: () => import('app/modules/admin/pages/authentication/confirmation-required/confirmation-required.module').then(m => m.ConfirmationRequiredModule)},
                     {path: 'forgot-password', loadChildren: () => import('app/modules/admin/pages/authentication/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)},
                     {path: 'reset-password', loadChildren: () => import('app/modules/admin/pages/authentication/reset-password/reset-password.module').then(m => m.ResetPasswordModule)},
@@ -142,7 +141,6 @@ export const appRoutes: Route[] = [
 
                     // Fullwidth
                     {path: 'fullwidth', children: [
-
                         {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/basic/basic.module').then(m => m.FullwidthBasicModule)},
                         {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/standard/standard.module').then(m => m.FullwidthStandardModule)},
                         {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/tabs/tabs.module').then(m => m.FullwidthTabsModule)},
@@ -153,7 +151,6 @@ export const appRoutes: Route[] = [
                     {path: 'left-sidebar', children: [
 
                         {path: 'fullheight', children: [
-
                             {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/basic/basic.module').then(m => m.LeftSidebarFullheightBasicModule)},
                             {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/standard/standard.module').then(m => m.LeftSidebarFullheightStandardModule)},
                             {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/tabs/tabs.module').then(m => m.LeftSidebarFullheightTabsModule)},
@@ -161,7 +158,6 @@ export const appRoutes: Route[] = [
                         ]},
 
                         {path: 'content', children: [
-
                             {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/standard/standard.module').then(m => m.LeftSidebarContentStandardModule)},
                             {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/tabs/tabs.module').then(m => m.LeftSidebarContentTabsModule)},
                             {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/tabs-navigation/tabs-navigation.module').then(m => m.LeftSidebarContentTabsNavigationModule)}
@@ -172,7 +168,6 @@ export const appRoutes: Route[] = [
                     {path: 'right-sidebar', children: [
 
                         {path: 'fullheight', children: [
-
                             {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/basic/basic.module').then(m => m.RightSidebarFullheightBasicModule)},
                             {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/standard/standard.module').then(m => m.RightSidebarFullheightStandardModule)},
                             {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs/tabs.module').then(m => m.RightSidebarFullheightTabsModule)},
@@ -180,7 +175,6 @@ export const appRoutes: Route[] = [
                         ]},
 
                         {path: 'content', children: [
-
                             {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/standard/standard.module').then(m => m.RightSidebarContentStandardModule)},
                             {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/tabs/tabs.module').then(m => m.RightSidebarContentTabsModule)},
                             {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/tabs-navigation/tabs-navigation.module').then(m => m.RightSidebarContentTabsNavigationModule)}
