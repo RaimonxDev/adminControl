@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
 import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
-import { dripicons, feather, iconsmind, material } from 'app/data/mock/icons/data';
+import { dripicons, feather, heroicons, iconsmind, material } from 'app/data/mock/icons/data';
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +12,7 @@ export class IconsMockApi implements AsmMockApi
     // Private Readonly
     private readonly _dripicons: any;
     private readonly _feather: any;
+    private readonly _heroicons: any;
     private readonly _iconsmind: any;
     private readonly _material: any;
 
@@ -27,6 +28,7 @@ export class IconsMockApi implements AsmMockApi
         // Set the data
         this._dripicons = dripicons;
         this._feather = feather;
+        this._heroicons = heroicons;
         this._iconsmind = iconsmind;
         this._material = material;
 
@@ -71,6 +73,22 @@ export class IconsMockApi implements AsmMockApi
                         namespace: 'feather',
                         name     : 'Feather',
                         list     : _.cloneDeep(this._feather)
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Heroicons icons - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onGet('api/ui/icons/heroicons')
+            .reply(() => {
+                return [
+                    200,
+                    {
+                        namespace: 'heroicons',
+                        name     : 'Heroicons',
+                        list     : _.cloneDeep(this._heroicons)
                     }
                 ];
             });

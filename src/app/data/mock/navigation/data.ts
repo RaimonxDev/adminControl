@@ -765,6 +765,12 @@ export const defaultNavigation: AsmNavigationItem[] = [
                         link : '/ui/icons/feather'
                     },
                     {
+                        id   : 'user-interface.icons.heroicons',
+                        title: 'Heroicons',
+                        type : 'basic',
+                        link : '/ui/icons/heroicons'
+                    },
+                    {
                         id   : 'user-interface.icons.iconsmind',
                         title: 'Iconsmind',
                         type : 'basic',
