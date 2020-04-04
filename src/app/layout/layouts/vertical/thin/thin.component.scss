@@ -1,5 +1,7 @@
 @import 'assembly';
 
+$asm-vertical-navigation-thin-width: 88;
+
 thin-layout {
     position: relative;
     display: flex;
@@ -21,6 +23,91 @@ thin-layout {
                 img {
                     max-width: 32px;
                 }
+            }
+        }
+
+        // Thin appearance overrides
+        &.asm-vertical-navigation-appearance-thin {
+            width: #{$asm-vertical-navigation-thin-width}px;
+            min-width: #{$asm-vertical-navigation-thin-width}px;
+            max-width: #{$asm-vertical-navigation-thin-width}px;
+
+            // Left positioned
+            &.asm-vertical-navigation-position-left {
+
+                &.asm-vertical-navigation-mode-side {
+                    margin-left: -#{$asm-vertical-navigation-thin-width}px;
+                }
+
+                &.asm-vertical-navigation-opened {
+                    margin-left: 0;
+                }
+            }
+
+            // Right positioned
+            &.asm-vertical-navigation-position-right {
+
+                &.asm-vertical-navigation-mode-side {
+                    margin-right: -#{$asm-vertical-navigation-thin-width}px;
+                }
+
+                &.asm-vertical-navigation-opened {
+                    margin-right: 0;
+                }
+
+                .asm-vertical-navigation-aside-wrapper {
+                    left: auto;
+                    right: #{$asm-vertical-navigation-thin-width}px;
+                }
+            }
+
+            // Wrapper
+            .asm-vertical-navigation-wrapper {
+
+                // Content
+                .asm-vertical-navigation-content {
+
+                    > asm-vertical-navigation-aside-item,
+                    > asm-vertical-navigation-basic-item {
+                        flex-direction: column;
+                        justify-content: center;
+                        height: 64px;
+                        min-height: 64px;
+                        max-height: 64px;
+                        padding: 0 16px;
+
+                        .asm-vertical-navigation-item {
+                            justify-content: center;
+                            padding: 0;
+
+                            .asm-vertical-navigation-item-icon {
+                                margin: 0;
+                            }
+
+                            .asm-vertical-navigation-item-arrow,
+                            .asm-vertical-navigation-item-badge-content,
+                            .asm-vertical-navigation-item-title-wrapper {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    > asm-vertical-navigation-collapsable-item {
+                        display: none
+                    }
+
+                    > asm-vertical-navigation-group-item {
+
+                        > .asm-vertical-navigation-item-wrapper {
+                            display: none
+                        }
+                    }
+                }
+            }
+
+            // Aside wrapper
+            .asm-vertical-navigation-aside-wrapper {
+                left: #{$asm-vertical-navigation-thin-width}px;
             }
         }
     }

@@ -23,6 +23,6 @@ export interface AsmNavigationItem
     meta?: any;
 }
 
-export type AsmVerticalNavigationAppearance = 'classic' | 'compact' | 'dense' | 'thin';
+export type AsmVerticalNavigationAppearance = string;
 export type AsmVerticalNavigationMode = 'over' | 'side';
 export type AsmVerticalNavigationPosition = 'left' | 'right';
