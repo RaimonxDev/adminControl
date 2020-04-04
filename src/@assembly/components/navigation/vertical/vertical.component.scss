@@ -524,14 +524,14 @@ asm-vertical-navigation {
                 .asm-vertical-navigation-item {
 
                     &:hover:not(.asm-vertical-navigation-item-disabled) {
-                        color: map-get($primary, default);
+                        color: map-get($primary, default) !important;
 
                         .asm-vertical-navigation-item-icon {
-                            color: map-get($primary, default);
+                            color: map-get($primary, default) !important;
                         }
 
                         .asm-vertical-navigation-item-subtitle {
-                            color: rgba(map-get($primary, default), 0.7);
+                            color: rgba(map-get($primary, default), 0.7) !important;
                         }
                     }
                 }
@@ -546,14 +546,14 @@ asm-vertical-navigation {
                 > .asm-vertical-navigation-item-wrapper {
 
                     .asm-vertical-navigation-item {
-                        color: map-get($primary, default);
+                        color: map-get($primary, default) !important;
 
                         .asm-vertical-navigation-item-icon {
-                            color: map-get($primary, default);
+                            color: map-get($primary, default) !important;
                         }
 
                         .asm-vertical-navigation-item-subtitle {
-                            color: rgba(map-get($primary, default), 0.7);
+                            color: rgba(map-get($primary, default), 0.7) !important;
                         }
                     }
                 }
