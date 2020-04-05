@@ -8,6 +8,26 @@
                          #mainNavigation>
 
     <div asmVerticalNavigationContentHeader>
+
+        <!-- Actions -->
+        <div class="actions">
+
+            <!-- Logo -->
+            <div class="logo">
+                <img src="assets/images/logo/logo-base-dark.svg">
+            </div>
+
+            <!-- Spacer -->
+            <div class="spacer"></div>
+
+            <!-- Notifications -->
+            <notifications [notifications]="data.notifications"></notifications>
+
+            <!-- User -->
+            <user [user]="data.user"
+                  [showAvatar]="false"></user>
+        </div>
+
         <!-- User -->
         <div class="user">
             <div class="avatar">
@@ -44,6 +64,17 @@
             <mat-icon [svgIcon]="'menu'"></mat-icon>
         </button>
 
+        <!-- Message -->
+        <div class="message">
+            <span>Complete the</span>
+            <a class="text-primary mx-1"
+               [routerLink]="['./']">
+                2020 survey
+                <mat-icon [svgIcon]="'launch'"></mat-icon>
+            </a>
+            <span>to help us!</span>
+        </div>
+
         <!-- Spacer -->
         <div class="spacer"></div>
 
@@ -55,12 +86,6 @@
 
         <!-- Messages -->
         <messages [messages]="data.messages"></messages>
-
-        <!-- Notifications -->
-        <notifications [notifications]="data.notifications"></notifications>
-
-        <!-- User -->
-        <user [user]="data.user"></user>
 
     </div>
 

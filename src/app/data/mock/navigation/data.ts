@@ -11,14 +11,14 @@ export const defaultNavigation: AsmNavigationItem[] = [
         children: [
             {
                 id   : 'applications.analytics-dashboard',
-                title: 'Analytics Dashboard',
+                title: 'Analytics dashboard',
                 type : 'basic',
                 icon : 'heroicons:chart-pie',
                 link : '/apps/analytics-dashboard'
             },
             {
                 id   : 'applications.crypto-dashboard',
-                title: 'Crypto Dashboard',
+                title: 'Crypto dashboard',
                 type : 'basic',
                 icon : 'heroicons:currency-dollar',
                 link : '/apps/crypto-dashboard'
@@ -967,14 +967,14 @@ export const compactNavigation: AsmNavigationItem[] = [
 export const futuristicNavigation: AsmNavigationItem[] = [
     {
         id   : 'applications.analytics-dashboard',
-        title: 'Analytics Dashboard',
+        title: 'Analytics dashboard',
         type : 'basic',
         icon : 'heroicons:chart-pie',
         link : '/apps/analytics-dashboard'
     },
     {
         id   : 'applications.crypto-dashboard',
-        title: 'Crypto Dashboard',
+        title: 'Crypto dashboard',
         type : 'basic',
         icon : 'heroicons:currency-dollar',
         link : '/apps/crypto-dashboard'
