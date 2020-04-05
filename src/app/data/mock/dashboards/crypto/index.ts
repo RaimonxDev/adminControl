@@ -7,7 +7,7 @@ import { crypto as cryptoData } from 'app/data/mock/dashboards/crypto/data';
 @Injectable({
     providedIn: 'root'
 })
-export class DashboardCryptoMockApi implements AsmMockApi
+export class CryptoMockApi implements AsmMockApi
 {
     // Private
     private _crypto: any;
@@ -41,7 +41,7 @@ export class DashboardCryptoMockApi implements AsmMockApi
         // @ Crypto - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/dashboard/crypto')
+            .onGet('api/dashboards/crypto')
             .reply(() => {
 
                 return [

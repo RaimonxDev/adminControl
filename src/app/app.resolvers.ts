@@ -31,7 +31,7 @@ export class InitialDataResolver implements Resolve<any>
      */
     private _loadMessages(): Observable<any>
     {
-        return this._httpClient.get('api/messages');
+        return this._httpClient.get('api/common/messages');
     }
 
     /**
@@ -41,7 +41,7 @@ export class InitialDataResolver implements Resolve<any>
      */
     private _loadNavigation(): Observable<any>
     {
-        return this._httpClient.get('api/navigation');
+        return this._httpClient.get('api/common/navigation');
     }
 
     /**
@@ -51,7 +51,7 @@ export class InitialDataResolver implements Resolve<any>
      */
     private _loadNotifications(): Observable<any>
     {
-        return this._httpClient.get('api/notifications');
+        return this._httpClient.get('api/common/notifications');
     }
 
     /**
@@ -61,7 +61,7 @@ export class InitialDataResolver implements Resolve<any>
      */
     private _loadShortcuts(): Observable<any>
     {
-        return this._httpClient.get('api/shortcuts');
+        return this._httpClient.get('api/common/shortcuts');
     }
 
     /**
@@ -71,7 +71,7 @@ export class InitialDataResolver implements Resolve<any>
      */
     private _loadUser(): Observable<any>
     {
-        return this._httpClient.get('api/user');
+        return this._httpClient.get('api/common/user');
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -9,11 +9,11 @@ import { InitialDataResolver } from 'app/app.resolvers';
 // tslint:disable:max-line-length
 export const appRoutes: Route[] = [
 
-    // Redirect empty path to '/apps/analytics-dashboard'
-    {path: '', pathMatch : 'full', redirectTo: 'apps/analytics-dashboard'},
+    // Redirect empty path to '/dashboards/finance'
+    {path: '', pathMatch : 'full', redirectTo: 'dashboards/finance'},
 
-    // Redirect signed in user to the '/apps/analytics-dashboard'
-    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'apps/analytics-dashboard'},
+    // Redirect signed in user to the '/dashboards/finance'
+    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'dashboards/finance'},
 
     // Auth routes
     {
@@ -60,12 +60,15 @@ export const appRoutes: Route[] = [
         },
         children   : [
 
+            // Dashboards
+            {path: 'dashboards', children: [
+                {path: 'finance', loadChildren: () => import('app/modules/admin/dashboards/finance/finance.module').then(m => m.FinanceModule)},
+                {path: 'analytics', loadChildren: () => import('app/modules/admin/dashboards/analytics/analytics.module').then(m => m.AnalyticsModule)},
+                {path: 'crypto', loadChildren: () => import('app/modules/admin/dashboards/crypto/crypto.module').then(m => m.CryptoModule)},
+            ]},
+
             // Apps
             {path: 'apps', children: [
-
-                // Dashboards
-                {path: 'analytics-dashboard', loadChildren: () => import('app/modules/admin/apps/dashboard/analytics/analytics.module').then(m => m.DashboardAnalyticsModule)},
-                {path: 'crypto-dashboard', loadChildren: () => import('app/modules/admin/apps/dashboard/crypto/crypto.module').then(m => m.DashboardCryptoModule)},
                 {path: 'calendar', loadChildren: () => import('app/modules/admin/apps/calendar/calendar.module').then(m => m.CalendarModule)},
                 {path: 'contacts', loadChildren: () => import('app/modules/admin/apps/contacts/contacts.module').then(m => m.ContactsModule)},
                 {path: 'ecommerce', loadChildren: () => import('app/modules/admin/apps/ecommerce/ecommerce.module').then(m => m.ECommerceModule)},

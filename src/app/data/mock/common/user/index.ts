@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
 import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
-import { analytics as analyticsData } from 'app/data/mock/dashboards/analytics/data';
+import { user as userData } from 'app/data/mock/common/user/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AnalyticsMockApi implements AsmMockApi
+export class UserMockApi implements AsmMockApi
 {
     // Private
-    private _analytics: any;
+    private _user: any;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ export class AnalyticsMockApi implements AsmMockApi
     )
     {
         // Set the data
-        this._analytics = analyticsData;
+        this._user = userData;
 
         // Register the API endpoints
         this.register();
@@ -38,15 +38,37 @@ export class AnalyticsMockApi implements AsmMockApi
     register(): void
     {
         // -----------------------------------------------------------------------------------------------------
-        // @ Sales - GET
+        // @ User - GET
         // -----------------------------------------------------------------------------------------------------
         this._asmMockApiService
-            .onGet('api/dashboards/analytics')
+            .onGet('api/common/user')
             .reply(() => {
+                return [
+                    200,
+                    {
+                        user: _.cloneDeep(this._user)
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ User - PATCH
+        // -----------------------------------------------------------------------------------------------------
+        this._asmMockApiService
+            .onPatch('api/common/user')
+            .reply((request) => {
+
+                // Get the user data
+                const user = _.cloneDeep(request.body.user);
+
+                // Update the user data
+                this._user = _.assign({}, this._user, user);
 
                 return [
                     200,
-                    _.cloneDeep(this._analytics)
+                    {
+                        user: _.cloneDeep(this._user)
+                    }
                 ];
             });
     }

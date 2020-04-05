@@ -199,7 +199,7 @@ export class SearchComponent implements OnInit, OnDestroy
                 })
             )
             .subscribe((value) => {
-                this._httpClient.post('api/search', {query: value})
+                this._httpClient.post('api/common/search', {query: value})
                     .subscribe((response: any) => {
                         this.results = response.results;
                     });

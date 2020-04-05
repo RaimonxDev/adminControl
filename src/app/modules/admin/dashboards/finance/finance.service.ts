@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { User } from 'app/layout/common/user/user.types';
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserService
+export class FinanceService
 {
     // Observables
-    private _user: BehaviorSubject<User | null>;
+    private _data: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -21,24 +20,20 @@ export class UserService
         private _httpClient: HttpClient
     )
     {
-        // Set the defaults
-        this._user = new BehaviorSubject(null);
+        // Set the private defaults
+        this._data = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
 
-    // Setter and getter for user
-    set user(value: User)
+    /**
+     * Getter for data
+     */
+    get data$(): Observable<any>
     {
-        // Store the value
-        this._user.next(value);
-    }
-
-    get user$(): Observable<User>
-    {
-        return this._user.asObservable();
+        return this._data.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -46,17 +41,13 @@ export class UserService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Update the user data
-     *
-     * @param user
+     * Get data
      */
-    update(user: User): Observable<any>
+    getData(): Observable<any>
     {
-        return this._httpClient.patch('api/common/user', {user}).pipe(
-            tap(() => {
-
-                // Execute the observable
-                this._user.next(user);
+        return this._httpClient.get('api/dashboards/finance').pipe(
+            tap((response: any) => {
+                this._data.next(response);
             })
         );
     }

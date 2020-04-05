@@ -65,7 +65,7 @@ export class ShortcutsService
     {
         return this.shortcuts$.pipe(
             take(1),
-            switchMap(shortcuts => this._httpClient.put<Shortcut>('api/shortcuts', {shortcut}).pipe(
+            switchMap(shortcuts => this._httpClient.put<Shortcut>('api/common/shortcuts', {shortcut}).pipe(
                 map((newShortcut) => {
 
                     // Update the shortcuts with the new shortcut
@@ -88,7 +88,7 @@ export class ShortcutsService
     {
         return this.shortcuts$.pipe(
             take(1),
-            switchMap(shortcuts => this._httpClient.patch<Shortcut>('api/shortcuts', {
+            switchMap(shortcuts => this._httpClient.patch<Shortcut>('api/common/shortcuts', {
                 id,
                 shortcut
             }).pipe(
@@ -119,7 +119,7 @@ export class ShortcutsService
     {
         return this.shortcuts$.pipe(
             take(1),
-            switchMap(shortcuts => this._httpClient.delete<boolean>('api/shortcuts', {params: {id}}).pipe(
+            switchMap(shortcuts => this._httpClient.delete<boolean>('api/common/shortcuts', {params: {id}}).pipe(
                 map((isDeleted: boolean) => {
 
                     // Find the index of the deleted shortcut

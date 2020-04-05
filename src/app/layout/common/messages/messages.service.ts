@@ -64,7 +64,7 @@ export class MessagesService
     {
         return this.messages$.pipe(
             take(1),
-            switchMap(messages => this._httpClient.put<Message>('api/messages', {message}).pipe(
+            switchMap(messages => this._httpClient.put<Message>('api/common/messages', {message}).pipe(
                 map((newMessage) => {
 
                     // Update the messages with the new message
@@ -87,7 +87,7 @@ export class MessagesService
     {
         return this.messages$.pipe(
             take(1),
-            switchMap(messages => this._httpClient.patch<Message>('api/messages', {
+            switchMap(messages => this._httpClient.patch<Message>('api/common/messages', {
                 id,
                 message
             }).pipe(
@@ -118,7 +118,7 @@ export class MessagesService
     {
         return this.messages$.pipe(
             take(1),
-            switchMap(messages => this._httpClient.delete<boolean>('api/messages', {params: {id}}).pipe(
+            switchMap(messages => this._httpClient.delete<boolean>('api/common/messages', {params: {id}}).pipe(
                 map((isDeleted: boolean) => {
 
                     // Find the index of the deleted message
@@ -144,7 +144,7 @@ export class MessagesService
     {
         return this.messages$.pipe(
             take(1),
-            switchMap(messages => this._httpClient.get<boolean>('api/messages/mark-all-as-read').pipe(
+            switchMap(messages => this._httpClient.get<boolean>('api/common/messages/mark-all-as-read').pipe(
                 map((isUpdated: boolean) => {
 
                     // Go through all messages and set them as read
