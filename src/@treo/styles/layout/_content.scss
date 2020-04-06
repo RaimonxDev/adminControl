@@ -5,14 +5,14 @@
 // Header
 %content-layout-header {
     display: flex;
-    padding: 40px 64px;
+    padding: 40px;
 
     @include treo-breakpoint('lt-md') {
         flex-direction: column;
     }
 
     @include treo-breakpoint('xs') {
-        padding: 40px 32px;
+        padding: 32px 24px;
     }
 
     .breadcrumb {
@@ -68,10 +68,10 @@
 
         > .main {
             flex: 1 1 auto;
-            padding: 64px;
+            padding: 40px;
 
             @include treo-breakpoint('xs') {
-                padding: 32px;
+                padding: 24px;
             }
         }
     }
@@ -90,10 +90,10 @@
 
         > .main {
             flex: 1 1 auto;
-            padding: 64px;
+            padding: 40px;
 
             @include treo-breakpoint('xs') {
-                padding: 32px;
+                padding: 24px;
             }
         }
     }
@@ -109,10 +109,10 @@
 
         > .main {
             flex: 1 1 auto;
-            padding: 64px;
+            padding: 40px;
 
             @include treo-breakpoint('xs') {
-                padding: 32px;
+                padding: 24px;
             }
         }
     }
@@ -135,10 +135,10 @@
 
         > .main {
             flex: 1 1 auto;
-            padding: 64px;
+            padding: 40px;
 
             @include treo-breakpoint('xs') {
-                padding: 32px;
+                padding: 24px;
             }
         }
     }
@@ -160,12 +160,12 @@
 
         > .main {
             flex: 1 1 auto;
-            padding: 64px;
+            padding: 40px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
 
             @include treo-breakpoint('xs') {
-                padding: 32px;
+                padding: 24px;
             }
         }
     }
@@ -177,6 +177,7 @@
 
         > .header {
             @extend %content-layout-header;
+            padding-bottom: 24px;
         }
 
         > .main {
@@ -185,10 +186,10 @@
             .mat-tab-group {
 
                 .mat-tab-header {
-                    padding: 0 64px;
+                    padding: 0 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 0 32px;
+                        padding: 0 24px;
                     }
 
                     &.mat-tab-header-pagination-controls-enabled {
@@ -214,10 +215,10 @@
                     .mat-tab-body {
 
                         .mat-tab-body-content {
-                            padding: 64px;
+                            padding: 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 32px;
+                                padding: 24px;
                             }
                         }
                     }
@@ -240,6 +241,7 @@
 
         > .header {
             @extend %content-layout-header;
+            padding-bottom: 24px;
         }
 
         > .main {
@@ -250,10 +252,10 @@
             .mat-tab-group {
 
                 .mat-tab-header {
-                    padding: 0 64px;
+                    padding: 0 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 0 32px;
+                        padding: 0 24px;
                     }
 
                     &.mat-tab-header-pagination-controls-enabled {
@@ -279,10 +281,10 @@
                     .mat-tab-body {
 
                         .mat-tab-body-content {
-                            padding: 64px;
+                            padding: 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 32px;
+                                padding: 24px;
                             }
                         }
                     }
@@ -304,6 +306,7 @@
 
         > .header {
             @extend %content-layout-header;
+            padding-bottom: 24px;
         }
 
         > .main {
@@ -316,10 +319,10 @@
                 overflow: hidden;
 
                 .mat-tab-header {
-                    padding: 0 64px;
+                    padding: 0 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 0 32px;
+                        padding: 0 24px;
                     }
 
                     &.mat-tab-header-pagination-controls-enabled {
@@ -345,11 +348,11 @@
                     .mat-tab-body {
 
                         .mat-tab-body-content {
-                            padding: 64px;
+                            padding: 40px;
                             -webkit-overflow-scrolling: touch;
 
                             @include treo-breakpoint('xs') {
-                                padding: 32px;
+                                padding: 24px;
                             }
                         }
                     }
@@ -365,6 +368,7 @@
 
         > .header {
             @extend %content-layout-header;
+            padding-bottom: 24px;
         }
 
         > .main {
@@ -374,10 +378,10 @@
 
             nav {
                 margin: 0;
-                padding: 0 64px;
+                padding: 0 40px;
 
                 @include treo-breakpoint('xs') {
-                    padding: 0 32px;
+                    padding: 0 24px;
                 }
 
                 .mat-tab-link {
@@ -387,10 +391,10 @@
 
             .main-inner {
                 flex: 1 1 auto;
-                padding: 64px;
+                padding: 40px;
 
                 @include treo-breakpoint('xs') {
-                    padding: 32px;
+                    padding: 24px;
                 }
 
                 > *:not(router-outlet) {
@@ -414,6 +418,7 @@
 
         > .header {
             @extend %content-layout-header;
+            padding-bottom: 24px;
         }
 
         > .main {
@@ -423,10 +428,10 @@
 
             nav {
                 margin: 0;
-                padding: 0 64px;
+                padding: 0 40px;
 
                 @include treo-breakpoint('xs') {
-                    padding: 0 32px;
+                    padding: 0 24px;
                 }
 
                 .mat-tab-link {
@@ -436,10 +441,10 @@
 
             .main-inner {
                 flex: 1 1 auto;
-                padding: 64px;
+                padding: 40px;
 
                 @include treo-breakpoint('xs') {
-                    padding: 32px;
+                    padding: 24px;
                 }
 
                 > *:not(router-outlet) {
@@ -462,7 +467,7 @@
 
         > .header {
             @extend %content-layout-header;
-            padding-bottom: 40px;
+            padding-bottom: 24px;
         }
 
         > .main {
@@ -473,10 +478,10 @@
 
             nav {
                 margin: 0;
-                padding: 0 64px;
+                padding: 0 40px;
 
                 @include treo-breakpoint('xs') {
-                    padding: 0 32px;
+                    padding: 0 24px;
                 }
 
                 .mat-tab-link {
@@ -486,12 +491,12 @@
 
             .main-inner {
                 flex: 1 1 auto;
-                padding: 64px;
+                padding: 40px;
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
 
                 @include treo-breakpoint('xs') {
-                    padding: 32px;
+                    padding: 24px;
                 }
 
                 > *:not(router-outlet) {
@@ -518,10 +523,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -553,10 +558,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -587,10 +592,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -618,10 +623,10 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -657,10 +662,10 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -694,10 +699,10 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -735,12 +740,12 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
                     overflow-y: auto;
                     -webkit-overflow-scrolling: touch;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -765,6 +770,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -773,10 +779,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -802,10 +808,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -842,6 +848,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -850,10 +857,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -879,10 +886,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -917,6 +924,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -925,10 +933,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -954,10 +962,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -996,6 +1004,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -1006,10 +1015,10 @@
                         height: 100%;
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -1035,11 +1044,11 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
                                     -webkit-overflow-scrolling: touch;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -1068,6 +1077,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -1077,10 +1087,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -1090,10 +1100,10 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -1131,6 +1141,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -1140,10 +1151,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -1153,10 +1164,10 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -1192,6 +1203,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -1201,10 +1213,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -1214,10 +1226,10 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -1257,6 +1269,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -1267,10 +1280,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -1280,12 +1293,12 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
                         overflow-y: auto;
                         -webkit-overflow-scrolling: touch;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -1318,10 +1331,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -1357,10 +1370,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -1398,12 +1411,12 @@
                 overflow: hidden;
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
                     overflow-y: auto;
                     -webkit-overflow-scrolling: touch;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -1436,10 +1449,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -1457,7 +1470,7 @@
 
                             .mat-tab-label {
                                 min-width: 128px;
-                                height: 64px;
+                                height: 56px;
                             }
                         }
 
@@ -1466,10 +1479,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -1514,10 +1527,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -1535,7 +1548,7 @@
 
                             .mat-tab-label {
                                 min-width: 128px;
-                                height: 64px;
+                                height: 56px;
                             }
                         }
 
@@ -1544,10 +1557,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -1596,10 +1609,10 @@
                         height: 100%;
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -1617,7 +1630,7 @@
 
                             .mat-tab-label {
                                 min-width: 128px;
-                                height: 64px;
+                                height: 56px;
                             }
                         }
 
@@ -1626,11 +1639,11 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
                                     -webkit-overflow-scrolling: touch;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -1668,24 +1681,24 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
                             min-width: 128px;
-                            height: 64px;
+                            height: 56px;
                         }
                     }
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -1732,24 +1745,24 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
                             min-width: 128px;
-                            height: 64px;
+                            height: 56px;
                         }
                     }
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -1799,26 +1812,26 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
                             min-width: 128px;
-                            height: 64px;
+                            height: 56px;
                         }
                     }
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
                         overflow-y: auto;
                         -webkit-overflow-scrolling: touch;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -1847,10 +1860,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -1882,10 +1895,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -1916,10 +1929,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -1947,10 +1960,10 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -1986,10 +1999,10 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -2023,10 +2036,10 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -2063,12 +2076,12 @@
                 }
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
                     overflow-y: auto;
                     -webkit-overflow-scrolling: touch;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -2093,6 +2106,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2101,10 +2115,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -2130,10 +2144,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -2170,6 +2184,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2178,10 +2193,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -2207,10 +2222,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -2245,6 +2260,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2253,10 +2269,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -2282,10 +2298,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -2324,6 +2340,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2334,10 +2351,10 @@
                         height: 100%;
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -2363,11 +2380,11 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
                                     -webkit-overflow-scrolling: touch;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -2396,6 +2413,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2405,10 +2423,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -2418,10 +2436,10 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -2459,6 +2477,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2468,10 +2487,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -2481,10 +2500,10 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -2520,6 +2539,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2529,10 +2549,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -2542,10 +2562,10 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -2585,6 +2605,7 @@
 
                 > .header {
                     @extend %content-layout-header;
+                    padding-bottom: 24px;
                 }
 
                 > .main {
@@ -2595,10 +2616,10 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
@@ -2608,12 +2629,12 @@
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
                         overflow-y: auto;
                         -webkit-overflow-scrolling: touch;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -2646,10 +2667,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -2685,10 +2706,10 @@
             .mat-drawer-content {
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -2726,12 +2747,12 @@
                 overflow: hidden;
 
                 > .main {
-                    padding: 64px;
+                    padding: 40px;
                     overflow-y: auto;
                     -webkit-overflow-scrolling: touch;
 
                     @include treo-breakpoint('xs') {
-                        padding: 32px;
+                        padding: 24px;
                     }
                 }
             }
@@ -2764,10 +2785,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -2785,7 +2806,7 @@
 
                             .mat-tab-label {
                                 min-width: 128px;
-                                height: 64px;
+                                height: 56px;
                             }
                         }
 
@@ -2794,10 +2815,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -2842,10 +2863,10 @@
                     .mat-tab-group {
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -2863,7 +2884,7 @@
 
                             .mat-tab-label {
                                 min-width: 128px;
-                                height: 64px;
+                                height: 56px;
                             }
                         }
 
@@ -2872,10 +2893,10 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -2924,10 +2945,10 @@
                         height: 100%;
 
                         .mat-tab-header {
-                            padding: 0 64px;
+                            padding: 0 40px;
 
                             @include treo-breakpoint('xs') {
-                                padding: 0 32px;
+                                padding: 0 24px;
                             }
 
                             &.mat-tab-header-pagination-controls-enabled {
@@ -2945,7 +2966,7 @@
 
                             .mat-tab-label {
                                 min-width: 128px;
-                                height: 64px;
+                                height: 56px;
                             }
                         }
 
@@ -2954,11 +2975,11 @@
                             .mat-tab-body {
 
                                 .mat-tab-body-content {
-                                    padding: 64px;
+                                    padding: 40px;
                                     -webkit-overflow-scrolling: touch;
 
                                     @include treo-breakpoint('xs') {
-                                        padding: 32px;
+                                        padding: 24px;
                                     }
                                 }
                             }
@@ -2996,24 +3017,24 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
                             min-width: 128px;
-                            height: 64px;
+                            height: 56px;
                         }
                     }
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -3060,24 +3081,24 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
                             min-width: 128px;
-                            height: 64px;
+                            height: 56px;
                         }
                     }
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -3127,26 +3148,26 @@
 
                     nav {
                         margin: 0;
-                        padding: 0 64px;
+                        padding: 0 40px;
 
                         @include treo-breakpoint('xs') {
-                            padding: 0 32px;
+                            padding: 0 24px;
                         }
 
                         .mat-tab-link {
                             min-width: 128px;
-                            height: 64px;
+                            height: 56px;
                         }
                     }
 
                     .main-inner {
                         flex: 1 1 auto;
-                        padding: 64px;
+                        padding: 40px;
                         overflow-y: auto;
                         -webkit-overflow-scrolling: touch;
 
                         @include treo-breakpoint('xs') {
-                            padding: 32px;
+                            padding: 24px;
                         }
 
                         > *:not(router-outlet) {
@@ -3191,7 +3212,7 @@
         &.fullwidth-standard-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -3204,7 +3225,7 @@
         &.fullwidth-standard-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -3217,7 +3238,7 @@
         &.fullwidth-standard-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -3230,7 +3251,7 @@
         &.fullwidth-tabs-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
             }
@@ -3240,7 +3261,7 @@
                 .mat-tab-group {
 
                     .mat-tab-header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -3254,7 +3275,7 @@
         &.fullwidth-tabs-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
             }
@@ -3264,7 +3285,7 @@
                 .mat-tab-group {
 
                     .mat-tab-header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -3298,7 +3319,7 @@
         &.fullwidth-tabs-navigation-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
             }
@@ -3306,7 +3327,7 @@
             > .main {
 
                 nav {
-                    @if (not $is-dark){
+                    @if (not $is-dark) {
                         background: map-get($background, card);
                     }
                 }
@@ -3319,7 +3340,7 @@
         &.fullwidth-tabs-navigation-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
             }
@@ -3327,7 +3348,7 @@
             > .main {
 
                 nav {
-                    @if (not $is-dark){
+                    @if (not $is-dark) {
                         background: map-get($background, card);
                     }
                 }
@@ -3340,7 +3361,7 @@
         &.fullwidth-tabs-navigation-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
             }
@@ -3348,7 +3369,7 @@
             > .main {
 
                 nav {
-                    @if (not $is-dark){
+                    @if (not $is-dark) {
                         background: map-get($background, card);
                     }
                 }
@@ -3410,7 +3431,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -3435,7 +3456,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -3460,7 +3481,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -3485,7 +3506,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -3510,7 +3531,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -3520,7 +3541,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3546,7 +3567,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -3556,7 +3577,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3582,7 +3603,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -3592,7 +3613,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3618,7 +3639,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -3628,7 +3649,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3654,17 +3675,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3690,17 +3711,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3726,17 +3747,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3762,17 +3783,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -3794,7 +3815,7 @@
         &.left-sidebar-content-standard-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -3816,7 +3837,7 @@
         &.left-sidebar-content-standard-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -3838,7 +3859,7 @@
         &.left-sidebar-content-standard-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -3860,13 +3881,28 @@
         &.left-sidebar-content-tabs-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -3882,13 +3918,28 @@
         &.left-sidebar-content-tabs-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -3904,13 +3955,28 @@
         &.left-sidebar-content-tabs-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -3926,13 +3992,28 @@
         &.left-sidebar-content-tabs-navigation-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-nav-bar {
+
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -3948,13 +4029,28 @@
         &.left-sidebar-content-tabs-navigation-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-nav-bar {
+
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -3970,13 +4066,28 @@
         &.left-sidebar-content-tabs-navigation-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-nav-bar {
+
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -4041,7 +4152,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -4066,7 +4177,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -4091,7 +4202,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -4116,7 +4227,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                         border-bottom: 1px solid map-get($foreground, divider);
@@ -4141,7 +4252,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -4151,7 +4262,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4177,7 +4288,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -4187,7 +4298,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4213,7 +4324,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -4223,7 +4334,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4249,7 +4360,7 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
@@ -4259,7 +4370,7 @@
                         .mat-tab-group {
 
                             .mat-tab-header {
-                                @if (not $is-dark){
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4285,17 +4396,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4321,17 +4432,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4357,17 +4468,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4393,17 +4504,17 @@
                 .mat-drawer-content {
 
                     > .header {
-                        @if (not $is-dark){
+                        @if (not $is-dark) {
                             background: map-get($background, card);
                         }
                     }
 
                     > .main {
 
-                        .mat-tab-group {
+                        .mat-tab-nav-bar {
 
-                            .mat-tab-header {
-                                @if (not $is-dark){
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
                                     background: map-get($background, card);
                                 }
                             }
@@ -4425,7 +4536,7 @@
         &.right-sidebar-content-standard-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -4447,7 +4558,7 @@
         &.right-sidebar-content-standard-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -4469,7 +4580,7 @@
         &.right-sidebar-content-standard-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
@@ -4491,13 +4602,28 @@
         &.right-sidebar-content-tabs-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -4513,13 +4639,28 @@
         &.right-sidebar-content-tabs-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -4535,13 +4676,28 @@
         &.right-sidebar-content-tabs-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-group {
+
+                            .mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -4557,13 +4713,28 @@
         &.right-sidebar-content-tabs-navigation-normal-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-nav-bar {
+
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -4579,13 +4750,28 @@
         &.right-sidebar-content-tabs-navigation-content-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-nav-bar {
+
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {
@@ -4601,13 +4787,28 @@
         &.right-sidebar-content-tabs-navigation-inner-scroll {
 
             > .header {
-                @if (not $is-dark){
+                @if (not $is-dark) {
                     background: map-get($background, card);
                 }
                 border-bottom: 1px solid map-get($foreground, divider);
             }
 
             > .mat-drawer-container {
+
+                .mat-drawer-content {
+
+                    > .main {
+
+                        .mat-tab-nav-bar {
+
+                            &.mat-tab-header {
+                                @if (not $is-dark) {
+                                    background: map-get($background, card);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .mat-drawer {
                     @if ($is-dark) {

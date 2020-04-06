@@ -99,15 +99,16 @@ classy-layout {
             .logo {
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 height: 80px;
                 min-height: 80px;
                 max-height: 80px;
-                padding: 0 24px;
-                margin-left: 16px;
+                padding: 24px;
+                margin: 8px 0;
                 opacity: 0.12;
 
                 img {
-                    max-width: 168px;
+                    max-width: 192px;
                 }
             }
         }
@@ -151,6 +152,10 @@ classy-layout {
 
                 @include treo-breakpoint('lt-md') {
                     display: none;
+                }
+
+                .mat-icon {
+                    margin-right: 8px;
                 }
 
                 a {

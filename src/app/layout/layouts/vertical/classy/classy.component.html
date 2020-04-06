@@ -1,11 +1,11 @@
 <!-- Navigation -->
 <treo-vertical-navigation class="text-cool-gray-300 bg-cool-gray-900 theme-dark"
-                         [appearance]="'classic'"
-                         [mode]="isScreenSmall ? 'over' : 'side'"
-                         [name]="'mainNavigation'"
-                         [navigation]="data.navigation.default"
-                         [opened]="!isScreenSmall"
-                         #mainNavigation>
+                          [appearance]="'classic'"
+                          [mode]="isScreenSmall ? 'over' : 'side'"
+                          [name]="'mainNavigation'"
+                          [navigation]="data.navigation.default"
+                          [opened]="!isScreenSmall"
+                          #mainNavigation>
 
     <div treoVerticalNavigationContentHeader>
 
@@ -45,7 +45,7 @@
 
     <div treoVerticalNavigationContentFooter>
         <div class="logo">
-            <img src="assets/images/logo/logo-text.svg">
+            <img src="assets/images/logo/logo-text-on-dark.svg">
         </div>
     </div>
 
@@ -66,6 +66,7 @@
 
         <!-- Message -->
         <div class="message">
+            <mat-icon [svgIcon]="'info'"></mat-icon>
             <span>Complete the</span>
             <a class="text-primary mx-1"
                [routerLink]="['./']">
