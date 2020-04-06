@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 inventory-list {
     display: flex;
@@ -19,7 +19,7 @@ inventory-list {
             padding: 40px 32px;
             border-bottom-width: 1px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -27,7 +27,7 @@ inventory-list {
             .title {
                 margin-right: 32px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin-right: 0;
                 }
 
@@ -42,7 +42,7 @@ inventory-list {
                 align-items: center;
                 margin-left: auto;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin-top: 32px;
                     margin-left: 0;
                     width: 100%;
@@ -54,7 +54,7 @@ inventory-list {
                     min-width: 200px;
                     width: 100%;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         min-width: 0;
                     }
 
@@ -69,7 +69,7 @@ inventory-list {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(20);
+                        @include treo-icon-size(20);
                     }
                 }
             }
@@ -89,7 +89,7 @@ inventory-list {
             margin-bottom: 72px;
             overflow: hidden;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 display: block;
                 overflow: visible;
                 margin-bottom: 0;
@@ -99,7 +99,7 @@ inventory-list {
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     overflow: visible;
                     overflow-x: auto;
                 }
@@ -236,7 +236,7 @@ inventory-list {
                                         line-height: 24px !important;
 
                                         .mat-icon {
-                                            @include asm-icon-size(20);
+                                            @include treo-icon-size(20);
                                         }
                                     }
                                 }
@@ -254,7 +254,7 @@ inventory-list {
 
                                     .product-details-container {
                                         overflow: hidden;
-                                        @include asm-elevation('lg');
+                                        @include treo-elevation('lg');
 
                                         .product-details {
                                             display: flex;
@@ -277,7 +277,7 @@ inventory-list {
                                                         min-width: 0;
 
                                                         .mat-icon {
-                                                            @include asm-icon-size(16);
+                                                            @include treo-icon-size(16);
                                                         }
 
                                                         input {
@@ -295,7 +295,7 @@ inventory-list {
                                                         min-height: 24px;
 
                                                         .mat-icon {
-                                                            @include asm-icon-size(16);
+                                                            @include treo-icon-size(16);
                                                         }
                                                     }
                                                 }
@@ -345,7 +345,7 @@ inventory-list {
                                                             margin-left: 4px;
 
                                                             .mat-icon {
-                                                                @include asm-icon-size(20);
+                                                                @include treo-icon-size(20);
                                                             }
                                                         }
 
@@ -367,7 +367,7 @@ inventory-list {
 
                                                     .mat-icon {
                                                         margin-right: 8px;
-                                                        @include asm-icon-size(18);
+                                                        @include treo-icon-size(18);
                                                     }
 
                                                     div {
@@ -394,7 +394,7 @@ inventory-list {
                 border-bottom-width: 1px;
                 z-index: 10;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     position: relative;
                     right: auto;
                     bottom: auto;
@@ -415,7 +415,7 @@ inventory-list {
                 font-size: 24px;
                 text-align: center;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     padding: 32px;
                 }
             }
@@ -426,7 +426,7 @@ inventory-list {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -450,7 +450,7 @@ inventory-list {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.05);
                             } @else {
-                                background: asm-color('cool-gray', 50);
+                                background: treo-color('cool-gray', 50);
                             }
                         }
                     }
@@ -475,7 +475,7 @@ inventory-list {
                                         background: white;
 
                                         > span {
-                                            color: asm-color('cool-gray', 500);
+                                            color: treo-color('cool-gray', 500);
                                         }
                                     }
                                 }
@@ -495,10 +495,10 @@ inventory-list {
                                             .tags {
                                                 @if ($is-dark) {
                                                     background-color: rgba(0, 0, 0, 0.05);
-                                                    border-color: asm-color('cool-gray', 500);
+                                                    border-color: treo-color('cool-gray', 500);
                                                 } @else {
                                                     background-color: white;
-                                                    border-color: asm-color('cool-gray', 300);
+                                                    border-color: treo-color('cool-gray', 300);
                                                 }
 
                                                 .available-tags {
@@ -528,7 +528,7 @@ inventory-list {
                     @if ($is-dark) {
                         background: rgba(0, 0, 0, 0.05);
                     } @else {
-                        background: asm-color('cool-gray', 50);
+                        background: treo-color('cool-gray', 50);
                     }
                 }
             }

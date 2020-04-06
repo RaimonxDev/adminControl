@@ -1,16 +1,16 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AsmAnimations } from '@assembly/animations';
+import { TreoAnimations } from '@treo/animations';
 
 @Component({
     selector     : 'colors',
     templateUrl  : './colors.component.html',
     styleUrls    : ['./colors.component.scss'],
-    animations   : AsmAnimations,
+    animations   : TreoAnimations,
     encapsulation: ViewEncapsulation.None
 })
 export class ColorsComponent
 {
-    asmPalettes: any[];
+    treoPalettes: any[];
     themePalettes: any[];
     hues: any[];
 
@@ -27,7 +27,7 @@ export class ColorsComponent
             'white',
             'black'
         ];
-        this.asmPalettes = [
+        this.treoPalettes = [
             'gray',
             'cool-gray',
             'red',

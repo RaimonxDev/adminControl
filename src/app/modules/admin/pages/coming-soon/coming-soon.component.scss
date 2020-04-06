@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 coming-soon {
 
@@ -11,7 +11,7 @@ coming-soon {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $foreground: map-get($theme, foreground);
 
@@ -19,7 +19,7 @@ coming-soon {
 
         .content-layout {
 
-            asm-card {
+            treo-card {
 
                 .form-container {
 

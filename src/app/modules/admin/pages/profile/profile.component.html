@@ -50,7 +50,7 @@
         <div class="column">
 
             <!-- About me -->
-            <asm-card class="flex flex-col max-w-80 w-full p-8">
+            <treo-card class="flex flex-col max-w-80 w-full p-8">
                 <div class="text-2xl font-bold leading-tight">About Me</div>
                 <div class="mt-4">
                     I’m a friendly kitchen assistant who suffers from a severe phobia of buttons.
@@ -81,10 +81,10 @@
                         [routerLink]="['./']">
                     See complete bio
                 </button>
-            </asm-card>
+            </treo-card>
 
             <!-- Followers -->
-            <asm-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
+            <treo-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">Followers</div>
                     <div class="-mr-3">
@@ -148,10 +148,10 @@
                         See all followers
                     </button>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Gallery -->
-            <asm-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
+            <treo-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">Gallery</div>
                     <div class="-mr-3">
@@ -216,10 +216,10 @@
                         See entire gallery
                     </button>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Groups -->
-            <asm-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
+            <treo-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">Groups</div>
                     <div class="-mr-3">
@@ -279,10 +279,10 @@
                         See all groups
                     </button>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- News -->
-            <asm-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
+            <treo-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">News</div>
                     <div class="-mr-3">
@@ -327,10 +327,10 @@
                         See all news
                     </button>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Activity Feed -->
-            <asm-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
+            <treo-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-bold leading-tight">Activity Feed</div>
                     <div class="-mr-3">
@@ -386,7 +386,7 @@
                         See entire activity feed
                     </button>
                 </div>
-            </asm-card>
+            </treo-card>
 
         </div>
 
@@ -394,7 +394,7 @@
         <div class="column">
 
             <!-- Create Post -->
-            <asm-card class="flex flex-col max-w-140 w-full p-6 gt-xs:p-8 pb-6">
+            <treo-card class="flex flex-col max-w-140 w-full p-6 gt-xs:p-8 pb-6">
                 <div class="text-xl font-semibold">Create Post</div>
                 <div class="flex flex-col gt-xs:flex-row items-start mt-8">
                     <div class="flex items-center mb-6 gt-xs:mb-0">
@@ -402,7 +402,7 @@
                              src="assets/images/avatars/male-04.jpg">
                         <div class="gt-xs:hidden">Andrew Watkins</div>
                     </div>
-                    <mat-form-field class="asm-mat-textarea asm-mat-no-subscript w-full">
+                    <mat-form-field class="treo-mat-textarea treo-mat-no-subscript w-full">
                         <textarea class="text-lg leading-normal my-2"
                                   matInput
                                   cdkTextareaAutosize
@@ -479,11 +479,11 @@
                         </button>
                     </mat-menu>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Post 1 -->
-            <asm-card class="flex flex-col max-w-140 w-full mt-8"
-                      #asmCard02>
+            <treo-card class="flex flex-col max-w-140 w-full mt-8"
+                      #treoCard02>
                 <div class="flex items-center mx-6 gt-xs:mx-8 my-4">
                     <img class="w-10 h-10 rounded-full mr-4"
                          src="assets/images/avatars/female-01.jpg">
@@ -598,25 +598,25 @@
                         </button>
                         <button class="px-3 gt-xs:-mr-4"
                                 mat-button
-                                (click)="asmCard02.toggleExpanded()">
+                                (click)="treoCard02.toggleExpanded()">
                             <span class="mr-1">5 Comments</span>
                             <mat-icon class="icon-size-16"
-                                      *ngIf="!asmCard02.expanded"
+                                      *ngIf="!treoCard02.expanded"
                                       [svgIcon]="'expand_more'"></mat-icon>
                             <mat-icon class="icon-size-16"
-                                      *ngIf="asmCard02.expanded"
+                                      *ngIf="treoCard02.expanded"
                                       [svgIcon]="'expand_less'"></mat-icon>
                         </button>
                     </div>
                 </div>
 
-                <ng-container asmCardExpansion>
+                <ng-container treoCardExpansion>
                     <hr class="border-b m-0">
                     <div class="flex flex-col mx-4 gt-xs:mx-8 mt-6 mb-3">
                         <div class="flex items-start">
                             <img class="w-12 h-12 rounded-full mr-5"
                                  src="assets/images/avatars/andrew-watkins.jpg">
-                            <mat-form-field class="asm-mat-textarea asm-mat-no-subscript w-full">
+                            <mat-form-field class="treo-mat-textarea treo-mat-no-subscript w-full">
                                 <textarea class="leading-normal my-2"
                                           matInput
                                           cdkTextareaAutosize
@@ -801,10 +801,10 @@
                         </div>
                     </div>
                 </ng-container>
-            </asm-card>
+            </treo-card>
 
             <!-- Post 2 -->
-            <asm-card class="flex flex-col max-w-140 w-full mt-8">
+            <treo-card class="flex flex-col max-w-140 w-full mt-8">
                 <div class="flex items-center mx-6 gt-xs:mx-8 mt-4 mb-1">
                     <img class="w-10 h-10 rounded-full mr-4"
                          src="assets/images/avatars/female-01.jpg">
@@ -923,10 +923,10 @@
                         </button>
                     </div>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Post 3 -->
-            <asm-card class="flex flex-col max-w-140 w-full mt-8">
+            <treo-card class="flex flex-col max-w-140 w-full mt-8">
                 <div class="flex items-center mx-6 gt-xs:mx-8 my-4">
                     <img class="w-10 h-10 rounded-full mr-4"
                          src="assets/images/avatars/female-14.jpg">
@@ -1063,10 +1063,10 @@
                         </button>
                     </div>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Post 4 -->
-            <asm-card class="flex flex-col max-w-140 w-full mt-8">
+            <treo-card class="flex flex-col max-w-140 w-full mt-8">
                 <div class="flex items-center mx-6 gt-xs:mx-8 my-4">
                     <img class="w-10 h-10 rounded-full mr-4"
                          src="assets/images/avatars/female-01.jpg">
@@ -1192,10 +1192,10 @@
                         </button>
                     </div>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Post 5 -->
-            <asm-card class="flex flex-col max-w-140 w-full mt-8">
+            <treo-card class="flex flex-col max-w-140 w-full mt-8">
                 <div class="flex items-center mx-6 gt-xs:mx-8 my-4">
                     <img class="w-10 h-10 rounded-full mr-4"
                          src="assets/images/avatars/female-14.jpg">
@@ -1316,10 +1316,10 @@
                         </button>
                     </div>
                 </div>
-            </asm-card>
+            </treo-card>
 
             <!-- Post 6 -->
-            <asm-card class="flex flex-col max-w-140 w-full mt-8">
+            <treo-card class="flex flex-col max-w-140 w-full mt-8">
                 <div class="flex items-center mx-6 gt-xs:mx-8 my-4">
                     <img class="w-10 h-10 rounded-full mr-4"
                          src="assets/images/avatars/female-01.jpg">
@@ -1445,7 +1445,7 @@
                         </button>
                     </div>
                 </div>
-            </asm-card>
+            </treo-card>
 
         </div>
 

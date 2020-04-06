@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AsmCardModule } from '@assembly/components/card';
+import { TreoCardModule } from '@treo/components/card';
 import { SharedModule } from 'app/shared/shared.module';
 import { PricingSimpleComponent } from 'app/modules/admin/pages/pricing/simple/simple.component';
 import { pricingSimpleRoutes } from 'app/modules/admin/pages/pricing/simple/simple.routing';
@@ -17,7 +17,7 @@ import { pricingSimpleRoutes } from 'app/modules/admin/pages/pricing/simple/simp
         MatButtonModule,
         MatIconModule,
         MatSlideToggleModule,
-        AsmCardModule,
+        TreoCardModule,
         SharedModule
     ]
 })

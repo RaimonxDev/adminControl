@@ -51,10 +51,10 @@
 
     <!-- Title -->
     <div class="title">
-        <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
+        <mat-form-field class="treo-mat-textarea treo-mat-no-subscript">
             <mat-label>{{task.type === 'task' ? 'Task title' : 'Section title'}}</mat-label>
             <textarea matInput
-                      asmAutogrow
+                      treoAutogrow
                       [formControlName]="'title'"
                       [spellcheck]="false"
                       #titleField></textarea>
@@ -67,7 +67,7 @@
         <div class="tag-wrapper">
 
             <div class="tag"
-                 *ngFor="let tag of (task.tags | asmFindByKey:'id':tags); trackBy: trackByFn">
+                 *ngFor="let tag of (task.tags | treoFindByKey:'id':tags); trackBy: trackByFn">
                 <span class="tag-title">{{tag.title}}</span>
             </div>
 
@@ -136,7 +136,7 @@
                         <ng-container *ngIf="tagsEditMode">
                             <div class="tag-edit"
                                  *ngFor="let tag of filteredTags; trackBy: trackByFn">
-                                <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
+                                <mat-form-field class="treo-mat-dense treo-mat-no-subscript">
                                     <input matInput
                                            [value]="tag.title"
                                            (input)="updateTagTitle(tag, $event)">
@@ -274,10 +274,10 @@
 
     <!-- Notes -->
     <div class="notes">
-        <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
+        <mat-form-field class="treo-mat-textarea treo-mat-no-subscript">
             <mat-label>Notes</mat-label>
             <textarea matInput
-                      asmAutogrow
+                      treoAutogrow
                       [formControlName]="'notes'"
                       [spellcheck]="false"></textarea>
         </mat-form-field>

@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 help-center-support {
     display: flex;
@@ -10,7 +10,7 @@ help-center-support {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -22,7 +22,7 @@ help-center-support {
             max-width: 960px;
             margin-top: 64px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin-top: 48px;
             }
 
@@ -33,7 +33,7 @@ help-center-support {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(18);
+                        @include treo-icon-size(18);
                     }
 
                     span {
@@ -58,7 +58,7 @@ help-center-support {
             margin: 80px 0;
             padding: 0 !important;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin: 64px 0 48px 0;
             }
 
@@ -66,14 +66,14 @@ help-center-support {
                 width: 100%;
                 padding: 40px;
                 border-radius: 8px;
-                @include asm-elevation('md');
+                @include treo-elevation('md');
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     padding: 0;
-                    @include asm-elevation('none');
+                    @include treo-elevation('none');
                 }
 
-                asm-message {
+                treo-message {
 
                     + form {
                         margin-top: 24px;
@@ -112,7 +112,7 @@ help-center-support {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $primary: map-get($theme, primary);
@@ -125,7 +125,7 @@ help-center-support {
             .card {
                 background: map-get($background, card);
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     background: transparent;
                 }
             }

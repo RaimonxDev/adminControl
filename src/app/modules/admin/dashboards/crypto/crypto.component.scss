@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 crypto {
     position: relative;
@@ -52,7 +52,7 @@ crypto {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme() {
+@include treo-theme() {
 
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);

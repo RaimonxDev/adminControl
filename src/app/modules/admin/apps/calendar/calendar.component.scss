@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 calendar {
 
@@ -31,7 +31,7 @@ calendar {
                     padding: 8px 32px;
                     border-bottom-width: 1px;
 
-                    @include asm-breakpoint('lt-md') {
+                    @include treo-breakpoint('lt-md') {
                         padding: 8px 16px;
                     }
 
@@ -43,7 +43,7 @@ calendar {
                         display: none !important;
                         margin-right: 16px;
 
-                        @include asm-breakpoint('lt-md') {
+                        @include treo-breakpoint('lt-md') {
                             display: flex !important;
                         }
                     }
@@ -200,9 +200,9 @@ calendar {
     min-width: 600px;
     max-width: 600px;
     border-radius: 8px;
-    @include asm-elevation('2xl');
+    @include treo-elevation('2xl');
 
-    @include asm-breakpoint('xs') {
+    @include treo-breakpoint('xs') {
         min-width: 80vw;
     }
 
@@ -280,7 +280,7 @@ calendar {
     &.panel-mode-edit {
         padding: 40px 32px 24px 24px;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 32px 24px 24px 24px;
         }
 
@@ -297,7 +297,7 @@ calendar {
                 .mat-icon {
                     margin-right: 24px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         display: none !important;
                     }
                 }
@@ -312,7 +312,7 @@ calendar {
                         display: flex;
                         align-items: center;
 
-                        asm-date-range {
+                        treo-date-range {
                             margin-right: 24px;
                         }
                     }
@@ -394,7 +394,7 @@ calendar {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -402,7 +402,7 @@ calendar {
 
     calendar {
         @if ($is-dark) {
-            background: asm-color('cool-gray', 900);
+            background: treo-color('cool-gray', 900);
         } @else {
             background: map-get($background, card);
         }
@@ -412,7 +412,7 @@ calendar {
 
             .mat-drawer {
                 @if ($is-dark) {
-                    background: asm-color('cool-gray', 900);
+                    background: treo-color('cool-gray', 900);
                 }
             }
         }
@@ -451,10 +451,10 @@ calendar {
                         .field {
                             @if ($is-dark) {
                                 background-color: rgba(0, 0, 0, 0.05);
-                                border-color: asm-color('cool-gray', 500);
+                                border-color: treo-color('cool-gray', 500);
                             } @else {
-                                background-color: asm-color('cool-gray', 50);
-                                border-color: asm-color('cool-gray', 300);
+                                background-color: treo-color('cool-gray', 50);
+                                border-color: treo-color('cool-gray', 300);
                             }
                         }
                     }

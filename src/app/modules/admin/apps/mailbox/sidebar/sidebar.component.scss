@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 mailbox-sidebar {
     display: flex;
@@ -13,7 +13,7 @@ mailbox-sidebar {
         margin: 0 32px;
 
         .mat-icon {
-            @include asm-icon-size(18);
+            @include treo-icon-size(18);
             margin-right: 4px;
         }
     }
@@ -21,9 +21,9 @@ mailbox-sidebar {
     .navigation {
         padding: 0 8px;
 
-        asm-vertical-navigation {
+        treo-vertical-navigation {
 
-            .asm-vertical-navigation-wrapper {
+            .treo-vertical-navigation-wrapper {
                 border-right-width: 0;
             }
         }
@@ -33,7 +33,7 @@ mailbox-sidebar {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     mailbox-sidebar {
 

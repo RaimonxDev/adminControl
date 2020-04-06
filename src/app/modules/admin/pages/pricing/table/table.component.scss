@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 pricing-table {
     display: flex;
@@ -9,7 +9,7 @@ pricing-table {
         align-items: center;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 16px;
         }
 
@@ -41,7 +41,7 @@ pricing-table {
                 width: 100%;
                 margin: 64px 0 80px 0;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin: 48px 0 56px 0;
                 }
 
@@ -63,7 +63,7 @@ pricing-table {
                     justify-content: center;
                     margin-top: 64px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         margin-top: 48px;
                     }
 
@@ -91,9 +91,9 @@ pricing-table {
                     margin-bottom: 32px;
                     border-radius: 8px;
                     border: none;
-                    @include asm-elevation('md');
+                    @include treo-elevation('md');
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         display: flex;
                         width: 100% !important;
                         max-width: 384px !important;
@@ -104,12 +104,12 @@ pricing-table {
                     }
                 }
 
-                asm-card {
+                treo-card {
                     flex: 1 0 auto;
                     width: 100%;
                     overflow: visible;
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         flex-direction: column;
                         width: 100% !important;
                         max-width: 384px !important;
@@ -120,7 +120,7 @@ pricing-table {
                         flex-direction: column;
                         width: 100%;
 
-                        @include asm-breakpoint('lt-lg') {
+                        @include treo-breakpoint('lt-lg') {
 
                             // Common
                             .head,
@@ -297,7 +297,7 @@ pricing-table {
                         }
 
                         .mat-icon {
-                            @include asm-icon-size(20);
+                            @include treo-icon-size(20);
                         }
                     }
                 }
@@ -310,7 +310,7 @@ pricing-table {
                 margin-top: 96px;
                 max-width: 1200px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin-top: 72px;
                 }
 
@@ -345,7 +345,7 @@ pricing-table {
                         padding: 64px 40px 0 40px;
                         text-align: center;
 
-                        @include asm-breakpoint('xs') {
+                        @include treo-breakpoint('xs') {
                             padding: 64px 0 0 0;
                         }
 
@@ -365,7 +365,7 @@ pricing-table {
                                 height: 48px !important;
 
                                 svg {
-                                    @include asm-icon-size(24);
+                                    @include treo-icon-size(24);
                                 }
                             }
 
@@ -390,7 +390,7 @@ pricing-table {
                 width: 100%;
                 margin: 152px 0 32px 0;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin: 128px 0 32px 0;
                 }
 
@@ -419,7 +419,7 @@ pricing-table {
                     width: 100%;
                     margin-top: 32px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         max-width: 384px;
                     }
 
@@ -452,7 +452,7 @@ pricing-table {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -466,9 +466,9 @@ pricing-table {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-color('cool-gray', 800);
+                    fill: treo-color('cool-gray', 800);
                 } @else {
-                    fill: asm-color('blue', 300);
+                    fill: treo-color('blue', 300);
                 }
             }
         }
@@ -511,7 +511,7 @@ pricing-table {
                     background: map-get($background, card);
                 }
 
-                asm-card {
+                treo-card {
 
                     .price-table {
 
@@ -521,7 +521,7 @@ pricing-table {
                                 @if ($is-dark) {
                                     background: rgba(0, 0, 0, 0.05);
                                 } @else {
-                                    background: asm-color('cool-gray', 100);
+                                    background: treo-color('cool-gray', 100);
                                 }
                             }
                         }

@@ -48,7 +48,7 @@
                         <mat-icon [svgIcon]="'today'"></mat-icon>
                     </button>
 
-                    <mat-form-field class="lt-md:hidden asm-mat-dense asm-mat-no-subscript view-changer">
+                    <mat-form-field class="lt-md:hidden treo-mat-dense treo-mat-no-subscript view-changer">
                         <mat-select (selectionChange)="changeView(viewChanger.value)"
                                     [value]="view"
                                     #viewChanger="matSelect">
@@ -244,7 +244,7 @@
 
                                 <mat-icon [svgIcon]="'edit'"></mat-icon>
 
-                                <mat-form-field class="field asm-mat-no-subscript">
+                                <mat-form-field class="field treo-mat-no-subscript">
                                     <input matInput
                                            [formControlName]="'title'"
                                            [placeholder]="'Event title'">
@@ -259,10 +259,10 @@
 
                                 <div class="field">
 
-                                    <asm-date-range [formControlName]="'range'"
+                                    <treo-date-range [formControlName]="'range'"
                                                     [dateFormat]="settings.dateFormat"
                                                     [timeRange]="!eventForm.get('allDay').value"
-                                                    [timeFormat]="settings.timeFormat"></asm-date-range>
+                                                    [timeFormat]="settings.timeFormat"></treo-date-range>
 
                                     <mat-checkbox [color]="'primary'"
                                                   [formControlName]="'allDay'">
@@ -294,7 +294,7 @@
 
                                 <mat-icon [svgIcon]="'event'"></mat-icon>
 
-                                <mat-form-field class="field asm-mat-no-subscript">
+                                <mat-form-field class="field treo-mat-no-subscript">
                                     <mat-select [formControlName]="'calendarId'"
                                                 [panelClass]="'calendar-event-panel-calendar-selector'"
                                                 (change)="$event.stopImmediatePropagation()">
@@ -319,7 +319,7 @@
 
                                 <mat-icon [svgIcon]="'notes'"></mat-icon>
 
-                                <mat-form-field class="field asm-mat-textarea asm-mat-no-subscript">
+                                <mat-form-field class="field treo-mat-textarea treo-mat-no-subscript">
                                     <textarea matInput
                                               cdkTextareaAutosize
                                               [cdkAutosizeMinRows]="1"

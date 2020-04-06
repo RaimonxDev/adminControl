@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 help-center {
     display: flex;
@@ -9,7 +9,7 @@ help-center {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -41,7 +41,7 @@ help-center {
                 width: 100%;
                 margin: 64px 0 0 0;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin: 48px 0 0 0;
                 }
 
@@ -55,7 +55,7 @@ help-center {
                     max-width: 600px;
                     width: 100%;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         margin-top: 48px;
                     }
 
@@ -87,17 +87,17 @@ help-center {
                         margin: 16px;
                         border-radius: 8px;
                         transition: box-shadow 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-                        @include asm-elevation();
+                        @include treo-elevation();
 
-                        @include asm-breakpoint('gt-xs') {
+                        @include treo-breakpoint('gt-xs') {
 
                             &:hover {
-                                @include asm-elevation('lg');
+                                @include treo-elevation('lg');
                             }
                         }
 
                         .mat-icon {
-                            @include asm-icon-size(48);
+                            @include treo-icon-size(48);
                         }
 
                         .title {
@@ -122,7 +122,7 @@ help-center {
                 justify-content: center;
                 margin: 112px 0 64px 0;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin: 64px 0;
                 }
 
@@ -159,7 +159,7 @@ help-center {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -172,9 +172,9 @@ help-center {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-color('cool-gray', 800);
+                    fill: treo-color('cool-gray', 800);
                 } @else {
-                    fill: asm-color('blue', 300);
+                    fill: treo-color('blue', 300);
                 }
             }
         }

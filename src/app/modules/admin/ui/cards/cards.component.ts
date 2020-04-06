@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, QueryList, Renderer2, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
-import { AsmCardComponent } from '@assembly/components/card';
+import { TreoCardComponent } from '@treo/components/card';
 
 @Component({
     selector       : 'cards',
@@ -16,8 +16,8 @@ export class CardsComponent implements AfterViewInit
     selectedFilter: string;
 
     // Private
-    @ViewChildren(AsmCardComponent, {read: ElementRef})
-    private _asmCards: QueryList<ElementRef>;
+    @ViewChildren(TreoCardComponent, {read: ElementRef})
+    private _treoCards: QueryList<ElementRef>;
 
     /**
      * Constructor
@@ -68,11 +68,11 @@ export class CardsComponent implements AfterViewInit
             // For each filter, calculate the card count
             if ( filter === 'all' )
             {
-                count = this._asmCards.length;
+                count = this._treoCards.length;
             }
             else
             {
-                count = this.numberOfCards[filter] = this._asmCards.filter((asmCard) => asmCard.nativeElement.classList.contains('filter-' + filter)).length;
+                count = this.numberOfCards[filter] = this._treoCards.filter((treoCard) => treoCard.nativeElement.classList.contains('filter-' + filter)).length;
             }
 
             // Fill the numberOfCards object with the counts
@@ -87,29 +87,29 @@ export class CardsComponent implements AfterViewInit
      */
     _filterCards(): void
     {
-        // Go through all asm-cards
-        this._asmCards.forEach((asmCard) => {
+        // Go through all treo-cards
+        this._treoCards.forEach((treoCard) => {
 
             // If the 'all' filter is selected...
             if ( this.selectedFilter === 'all' )
             {
                 // Remove hidden class from all cards
-                asmCard.nativeElement.classList.remove('hidden');
+                treoCard.nativeElement.classList.remove('hidden');
             }
             // Otherwise...
             else
             {
                 // If the card has the class name that matches the selected filter...
-                if ( asmCard.nativeElement.classList.contains('filter-' + this.selectedFilter) )
+                if ( treoCard.nativeElement.classList.contains('filter-' + this.selectedFilter) )
                 {
                     // Remove the hidden class
-                    asmCard.nativeElement.classList.remove('hidden');
+                    treoCard.nativeElement.classList.remove('hidden');
                 }
                 // Otherwise
                 else
                 {
                     // Add the hidden class
-                    asmCard.nativeElement.classList.add('hidden');
+                    treoCard.nativeElement.classList.add('hidden');
                 }
             }
         });

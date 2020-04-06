@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 maintenance {
     display: flex;
@@ -8,7 +8,7 @@ maintenance {
         justify-content: center;
         padding: 32px;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 32px 16px;
         }
 
@@ -21,7 +21,7 @@ maintenance {
             margin: 96px 0 0 0;
             text-align: center;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin: 48px 0 0 0;
             }
         }
@@ -36,7 +36,7 @@ maintenance {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $foreground: map-get($theme, foreground);
 

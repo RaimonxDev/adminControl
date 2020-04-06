@@ -23,7 +23,7 @@
 
             <h2>Usage</h2>
             <ng-container *ngIf="(filteredIcons$ | async) as icons">
-                <textarea asm-highlight
+                <textarea treo-highlight
                           lang="html"
                           [code]="'<mat-icon svgIcon=&#34;' + icons.namespace + ':ICONNAME&#34;></mat-icon>'"></textarea>
             </ng-container>

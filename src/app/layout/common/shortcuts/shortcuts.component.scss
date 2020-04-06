@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 shortcuts {
     display: flex;
@@ -12,8 +12,8 @@ shortcuts {
     border-radius: 4px;
     max-height: calc(100vh - 80px);
     overflow: hidden;
-    @include asm-elevation('lg');
-    @include asm-breakpoint('xs') {
+    @include treo-elevation('lg');
+    @include treo-breakpoint('xs') {
         min-width: 0 !important;
         max-width: 384px !important;
         width: calc(100vw - 32px);
@@ -58,7 +58,7 @@ shortcuts {
         margin-bottom: -1px;
         overflow-y: auto;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             max-height: 480px;
         }
 
@@ -214,7 +214,7 @@ shortcuts {
             padding: 96px 24px;
 
             .mat-icon {
-                @include asm-icon-size(64);
+                @include treo-icon-size(64);
 
                 + * {
                     margin-top: 16px;
@@ -228,7 +228,7 @@ shortcuts {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -246,9 +246,9 @@ shortcuts {
             border-top-color: map-get($primary, default);
 
             @if ($is-dark) {
-                background: asm-color('cool-gray', 800);
+                background: treo-color('cool-gray', 800);
             } @else {
-                background: asm-color('cool-gray', 100);
+                background: treo-color('cool-gray', 100);
             }
         }
 
@@ -260,13 +260,13 @@ shortcuts {
 
                 .shortcut {
 
-                    @include asm-breakpoint('gt-xs') {
+                    @include treo-breakpoint('gt-xs') {
 
                         &:hover {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.05);
                             } @else {
-                                background: asm-color('cool-gray', 100);
+                                background: treo-color('cool-gray', 100);
                             }
                         }
                     }
@@ -289,8 +289,8 @@ shortcuts {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.11);
                             } @else {
-                                background: asm-color('cool-gray', 800);
-                                color: asm-contrast('gray', 800);
+                                background: treo-color('cool-gray', 800);
+                                color: treo-contrast('gray', 800);
                             }
                         }
 

@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 classy-layout {
     position: relative;
@@ -6,9 +6,9 @@ classy-layout {
     flex: 1 1 auto;
     width: 100%;
 
-    > asm-vertical-navigation {
+    > treo-vertical-navigation {
 
-        .asm-vertical-navigation-content-header {
+        .treo-vertical-navigation-content-header {
 
             .actions {
                 display: flex;
@@ -54,7 +54,7 @@ classy-layout {
                     }
 
                     .mat-icon {
-                        @include asm-icon-size(96);
+                        @include treo-icon-size(96);
                     }
                 }
 
@@ -87,14 +87,14 @@ classy-layout {
                         margin-left: auto;
 
                         .mat-icon {
-                            @include asm-icon-size(20);
+                            @include treo-icon-size(20);
                         }
                     }
                 }
             }
         }
 
-        .asm-vertical-navigation-content-footer {
+        .treo-vertical-navigation-content-footer {
 
             .logo {
                 display: flex;
@@ -131,14 +131,14 @@ classy-layout {
             padding: 0 24px;
             z-index: 49;
 
-            @include asm-breakpoint('lt-md') {
+            @include treo-breakpoint('lt-md') {
                 padding: 0 16px;
             }
 
             .navigation-toggle-button {
                 margin-right: 8px;
 
-                @include asm-breakpoint('gt-sm') {
+                @include treo-breakpoint('gt-sm') {
                     display: none !important;
                 }
             }
@@ -149,7 +149,7 @@ classy-layout {
                 margin: 0 32px 0 8px;
                 line-height: 1;
 
-                @include asm-breakpoint('lt-md') {
+                @include treo-breakpoint('lt-md') {
                     display: none;
                 }
 
@@ -160,7 +160,7 @@ classy-layout {
                     .mat-icon {
                         margin-left: 4px;
                         color: currentColor !important;
-                        @include asm-icon-size(16);
+                        @include treo-icon-size(16);
                     }
                 }
 
@@ -206,7 +206,7 @@ classy-layout {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -222,7 +222,7 @@ classy-layout {
                     box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation();
+                    @include treo-elevation();
                 }
             }
         }

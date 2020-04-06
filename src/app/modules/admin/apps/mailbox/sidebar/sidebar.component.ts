@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmNavigationItem, AsmNavigationService } from '@assembly/components/navigation';
+import { TreoNavigationItem, TreoNavigationService } from '@treo/components/navigation';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
 import { MailFilter, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
@@ -18,24 +18,24 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     filters: MailFilter[];
     folders: MailFolder[];
     labels: MailLabel[];
-    menuData: AsmNavigationItem[];
+    menuData: TreoNavigationItem[];
 
     // Private
-    private _filtersMenuData: AsmNavigationItem[];
-    private _foldersMenuData: AsmNavigationItem[];
-    private _labelsMenuData: AsmNavigationItem[];
-    private _otherMenuData: AsmNavigationItem[];
+    private _filtersMenuData: TreoNavigationItem[];
+    private _foldersMenuData: TreoNavigationItem[];
+    private _labelsMenuData: TreoNavigationItem[];
+    private _otherMenuData: TreoNavigationItem[];
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
-     * @param {AsmNavigationService} _asmNavigationService
+     * @param {TreoNavigationService} _treoNavigationService
      * @param {MailboxService} _mailboxService
      * @param {MatDialog} _matDialog
      */
     constructor(
-        private _asmNavigationService: AsmNavigationService,
+        private _treoNavigationService: TreoNavigationService,
         private _mailboxService: MailboxService,
         private _matDialog: MatDialog
     )
@@ -125,7 +125,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         this.folders.forEach((folder) => {
 
             // Generate menu item for the folder
-            const menuItem: AsmNavigationItem = {
+            const menuItem: TreoNavigationItem = {
                 id   : folder.id,
                 title: folder.title,
                 type : 'basic',
@@ -274,13 +274,13 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         const inboxFolder = this.folders.find((folder) => folder.slug === 'inbox');
 
         // Get the component -> navigation data -> item
-        const mainNavigationComponent = this._asmNavigationService.getComponent('mainNavigation');
+        const mainNavigationComponent = this._treoNavigationService.getComponent('mainNavigation');
 
         // If the main navigation component exists...
         if ( mainNavigationComponent )
         {
             const mainNavigation = mainNavigationComponent.navigation;
-            const menuItem = this._asmNavigationService.getItem('applications.mailbox', mainNavigation);
+            const menuItem = this._treoNavigationService.getItem('applications.mailbox', mainNavigation);
 
             // Update the badge title of the item
             menuItem.badge.title = inboxFolder.count + '';

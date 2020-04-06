@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 calendar-recurrence {
     display: flex;
@@ -7,7 +7,7 @@ calendar-recurrence {
     max-width: 320px;
     padding: 32px 24px;
     border-radius: 8px;
-    @include asm-elevation('2xl');
+    @include treo-elevation('2xl');
 
     form {
         display: flex;
@@ -137,7 +137,7 @@ calendar-recurrence {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);
@@ -159,8 +159,8 @@ calendar-recurrence {
                         .mat-button-toggle-group {
 
                             .mat-button-toggle {
-                                background: asm-color('cool-gray', 100);
-                                color: asm-contrast('gray', 200);
+                                background: treo-color('cool-gray', 100);
+                                color: treo-contrast('gray', 200);
 
                                 &.mat-button-toggle-checked {
                                     background: map-get($primary, default);

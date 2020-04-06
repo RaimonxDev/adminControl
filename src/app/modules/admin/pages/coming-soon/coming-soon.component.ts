@@ -2,14 +2,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly/animations';
+import { TreoAnimations } from '@treo/animations';
 
 @Component({
     selector     : 'coming-soon',
     templateUrl  : './coming-soon.component.html',
     styleUrls    : ['./coming-soon.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    animations   : TreoAnimations
 })
 export class ComingSoonComponent implements OnInit
 {

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly/animations';
+import { TreoAnimations } from '@treo/animations';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AuthService } from 'app/core/auth/auth.service';
     templateUrl  : './sign-up.component.html',
     styleUrls    : ['./sign-up.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    animations   : TreoAnimations
 })
 export class SignUpComponent implements OnInit, OnDestroy
 {

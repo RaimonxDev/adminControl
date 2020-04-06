@@ -1,12 +1,12 @@
 <!-- Navigation -->
-<asm-vertical-navigation class="bg-indigo-800 text-indigo-300 icon-indigo-300 theme-dark"
+<treo-vertical-navigation class="bg-indigo-800 text-indigo-300 icon-indigo-300 theme-dark"
                          [appearance]="'futuristic'"
                          [mode]="isScreenSmall ? 'over' : 'side'"
                          [name]="'mainNavigation'"
                          [navigation]="data.navigation.futuristic"
                          [opened]="!isScreenSmall">
 
-    <div asmVerticalNavigationHeader>
+    <div treoVerticalNavigationHeader>
         <!-- User -->
         <div class="user">
             <user [user]="data.user"></user>
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div asmVerticalNavigationFooter>
+    <div treoVerticalNavigationFooter>
         <div class="navigation-footer-menu">
             <a [routerLink]="['./']">
                 <mat-icon [svgIcon]="'heroicons:cog'"></mat-icon>
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-</asm-vertical-navigation>
+</treo-vertical-navigation>
 
 <!-- Wrapper -->
 <div class="wrapper">
@@ -75,7 +75,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        Assembly &copy; {{currentYear}}
+        Treo &copy; {{currentYear}}
     </div>
 
 </div>

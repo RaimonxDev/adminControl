@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 mailbox-settings {
     display: flex;
@@ -107,7 +107,7 @@ mailbox-settings {
                     top: 14px;
                     left: 14px;
                     margin: 0;
-                    @include asm-icon-size(20);
+                    @include treo-icon-size(20);
                 }
 
                 .color-box {
@@ -125,7 +125,7 @@ mailbox-settings {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);

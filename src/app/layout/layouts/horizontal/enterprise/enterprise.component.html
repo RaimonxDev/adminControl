@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<asm-vertical-navigation class="bg-cool-gray-900 theme-dark"
+<treo-vertical-navigation class="bg-cool-gray-900 theme-dark"
                          *ngIf="isScreenSmall"
                          [appearance]="'classic'"
                          [mode]="'over'"
@@ -7,13 +7,13 @@
                          [navigation]="data.navigation.default"
                          [opened]="false">
 
-    <div asmVerticalNavigationContentHeader>
+    <div treoVerticalNavigationContentHeader>
         <div class="logo">
-            <img src="assets/images/logo/logo-light.svg">
+            <img src="assets/images/logo/logo-text-on-dark.svg">
         </div>
     </div>
 
-</asm-vertical-navigation>
+</treo-vertical-navigation>
 
 <!-- Wrapper -->
 <div class="wrapper">
@@ -29,7 +29,7 @@
                 <!-- Logo -->
                 <div class="logo"
                      *ngIf="!isScreenSmall">
-                    <img src="assets/images/logo/logo-light.svg">
+                    <img src="assets/images/logo/logo-text-on-dark.svg">
                 </div>
 
                 <!-- Navigation toggle button -->
@@ -67,8 +67,8 @@
 
             <div class="container">
 
-                <asm-horizontal-navigation [name]="'mainNavigation'"
-                                           [navigation]="data.navigation.horizontal"></asm-horizontal-navigation>
+                <treo-horizontal-navigation [name]="'mainNavigation'"
+                                           [navigation]="data.navigation.horizontal"></treo-horizontal-navigation>
             </div>
 
         </div>
@@ -87,7 +87,7 @@
     <!-- Footer -->
     <div class="footer">
         <div class="container">
-            Assembly &copy; {{currentYear}}
+            Treo &copy; {{currentYear}}
         </div>
     </div>
 

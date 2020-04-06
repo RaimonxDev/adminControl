@@ -1,17 +1,17 @@
-@import 'assembly';
+@import 'treo';
 
 cards {
 
     .main {
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 16px !important;
         }
 
         .filters {
             margin-bottom: 64px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin-bottom: 24px;
             }
 
@@ -47,7 +47,7 @@ cards {
             margin: 0 -16px;
             max-width: 1600px;
 
-            asm-card {
+            treo-card {
                 margin: 16px;
             }
         }
@@ -58,7 +58,7 @@ cards {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $foreground: map-get($theme, foreground);
 

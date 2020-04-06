@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 help-center-guides-guide {
     display: flex;
@@ -9,7 +9,7 @@ help-center-guides-guide {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -21,7 +21,7 @@ help-center-guides-guide {
             max-width: 960px;
             margin-top: 64px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin-top: 48px;
             }
 
@@ -32,7 +32,7 @@ help-center-guides-guide {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(18);
+                        @include treo-icon-size(18);
                     }
 
                     span {
@@ -62,7 +62,7 @@ help-center-guides-guide {
             margin: 48px 0 32px 0;
             padding: 40px !important;
             border-radius: 4px;
-            @include asm-elevation();
+            @include treo-elevation();
 
             .guide {
 
@@ -84,7 +84,7 @@ help-center-guides-guide {
                 padding-top: 32px;
                 border-top-width: 1px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     flex-direction: column;
                     align-items: flex-start;
                 }
@@ -98,7 +98,7 @@ help-center-guides-guide {
                     display: flex;
                     align-items: center;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         margin-top: 16px;
                     }
 
@@ -134,12 +134,12 @@ help-center-guides-guide {
             padding: 24px 40px;
             border-radius: 4px;
             transition: box-shadow 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-            @include asm-elevation();
+            @include treo-elevation();
 
-            @include asm-breakpoint('gt-xs') {
+            @include treo-breakpoint('gt-xs') {
 
                 &:hover {
-                    @include asm-elevation('lg');
+                    @include treo-elevation('lg');
                 }
             }
 
@@ -159,7 +159,7 @@ help-center-guides-guide {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -183,9 +183,9 @@ help-center-guides-guide {
                     color: map-get($foreground, secondary-text);
 
                     @if ($is-dark) {
-                        border-color: asm-color('cool-gray', 600);
+                        border-color: treo-color('cool-gray', 600);
                     } @else {
-                        border-color: asm-color('cool-gray', 300);
+                        border-color: treo-color('cool-gray', 300);
                     }
                 }
             }

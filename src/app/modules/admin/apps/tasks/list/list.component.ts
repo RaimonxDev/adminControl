@@ -5,8 +5,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
-import { AsmNavigationService } from '@assembly/components/navigation';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
+import { TreoNavigationService } from '@treo/components/navigation';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.types';
 import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 
@@ -35,8 +35,8 @@ export class TasksListComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {AsmMediaWatcherService} _asmMediaWatcherService
-     * @param {AsmNavigationService} _asmNavigationService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
+     * @param {TreoNavigationService} _treoNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {DOCUMENT} _document
      * @param {Router} _router
@@ -44,8 +44,8 @@ export class TasksListComponent implements OnInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _asmMediaWatcherService: AsmMediaWatcherService,
-        private _asmNavigationService: AsmNavigationService,
+        private _treoMediaWatcherService: TreoMediaWatcherService,
+        private _treoNavigationService: TreoNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router,
@@ -100,13 +100,13 @@ export class TasksListComponent implements OnInit, OnDestroy
                 setTimeout(() => {
 
                     // Get the component -> navigation data -> item
-                    const mainNavigationComponent = this._asmNavigationService.getComponent('mainNavigation');
+                    const mainNavigationComponent = this._treoNavigationService.getComponent('mainNavigation');
 
                     // If the main navigation component exists...
                     if ( mainNavigationComponent )
                     {
                         const mainNavigation = mainNavigationComponent.navigation;
-                        const menuItem = this._asmNavigationService.getItem('applications.tasks', mainNavigation);
+                        const menuItem = this._treoNavigationService.getItem('applications.tasks', mainNavigation);
 
                         // Update the subtitle of the item
                         menuItem.subtitle = this.tasksCount.incomplete + ' remaining tasks';
@@ -128,7 +128,7 @@ export class TasksListComponent implements OnInit, OnDestroy
             });
 
         // Subscribe to media query change
-        this._asmMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
+        this._treoMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((state) => {
 

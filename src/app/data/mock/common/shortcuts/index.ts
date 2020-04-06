@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { shortcuts as shortcutsData } from 'app/data/mock/common/shortcuts/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ShortcutsMockApi implements AsmMockApi
+export class ShortcutsMockApi implements TreoMockApi
 {
     // Private
     private _shortcuts: any;
@@ -16,10 +16,10 @@ export class ShortcutsMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -41,7 +41,7 @@ export class ShortcutsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/common/shortcuts')
             .reply(() => {
                 return [
@@ -55,7 +55,7 @@ export class ShortcutsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/common/shortcuts')
             .reply((request) => {
 
@@ -63,7 +63,7 @@ export class ShortcutsMockApi implements AsmMockApi
                 const newShortcut = _.cloneDeep(request.body.shortcut);
 
                 // Generate a new GUID
-                newShortcut.id = AsmMockApiUtils.guid();
+                newShortcut.id = TreoMockApiUtils.guid();
 
                 // Unshift the new shortcut
                 this._shortcuts.unshift(newShortcut);
@@ -77,7 +77,7 @@ export class ShortcutsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/common/shortcuts')
             .reply((request) => {
 
@@ -110,7 +110,7 @@ export class ShortcutsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/common/shortcuts')
             .reply((request) => {
 

@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "assembly": {
+        "treo": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/assembly",
+                        "outputPath": "dist/treo",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -30,12 +30,12 @@
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
-                                "src/@assembly/styles"
+                                "src/@treo/styles"
                             ]
                         },
                         "styles": [
                             "src/styles/vendors.scss",
-                            "src/@assembly/styles/main.scss",
+                            "src/@treo/styles/main.scss",
                             "src/styles/styles.scss",
                             "src/styles/tailwind.scss"
                         ],
@@ -75,18 +75,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "assembly:build"
+                        "browserTarget": "treo:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "assembly:build:production"
+                            "browserTarget": "treo:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "assembly:build"
+                        "browserTarget": "treo:build"
                     }
                 },
                 "test": {
@@ -124,16 +124,16 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "assembly:serve"
+                        "devServerTarget": "treo:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "assembly:serve:production"
+                            "devServerTarget": "treo:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "assembly"
+    "defaultProject": "treo"
 }

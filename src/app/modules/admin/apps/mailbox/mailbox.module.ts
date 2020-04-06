@@ -12,9 +12,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { QuillModule } from 'ngx-quill';
-import { AsmFindByKeyPipeModule } from '@assembly/pipes/find-by-key';
-import { AsmNavigationModule } from '@assembly/components/navigation';
-import { AsmScrollbarModule } from '@assembly/directives/scrollbar';
+import { TreoFindByKeyPipeModule } from '@treo/pipes/find-by-key';
+import { TreoNavigationModule } from '@treo/components/navigation';
+import { TreoScrollbarModule } from '@treo/directives/scrollbar';
 import { SharedModule } from 'app/shared/shared.module';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
@@ -50,9 +50,9 @@ import { mailboxRoutes } from 'app/modules/admin/apps/mailbox/mailbox.routing';
         MatSelectModule,
         MatSidenavModule,
         QuillModule.forRoot(),
-        AsmFindByKeyPipeModule,
-        AsmNavigationModule,
-        AsmScrollbarModule,
+        TreoFindByKeyPipeModule,
+        TreoNavigationModule,
+        TreoScrollbarModule,
         SharedModule
     ]
 })

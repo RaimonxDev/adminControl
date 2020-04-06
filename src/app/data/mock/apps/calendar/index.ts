@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import RRule, { RRuleSet, rrulestr } from 'rrule';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { calendars as calendarsData, events as eventsData, exceptions as exceptionsData, settings as settingsData, weekdays as weekdaysData } from 'app/data/mock/apps/calendar/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CalendarMockApi implements AsmMockApi
+export class CalendarMockApi implements TreoMockApi
 {
     // Private
     private _calendars: any[];
@@ -22,10 +22,10 @@ export class CalendarMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -114,7 +114,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/calendar/calendars')
             .reply(() => {
 
@@ -130,7 +130,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/calendar/calendars')
             .reply((request) => {
 
@@ -138,7 +138,7 @@ export class CalendarMockApi implements AsmMockApi
                 const newCalendar = _.cloneDeep(request.body.calendar);
 
                 // Add an id to the new calendar
-                newCalendar.id = AsmMockApiUtils.guid();
+                newCalendar.id = TreoMockApiUtils.guid();
 
                 // Push the new calendar
                 this._calendars.push(newCalendar);
@@ -152,7 +152,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/calendar/calendars')
             .reply((request) => {
 
@@ -185,7 +185,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/calendar/calendars')
             .reply((request) => {
 
@@ -208,7 +208,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Events - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/calendar/events')
             .reply((request) => {
 
@@ -315,7 +315,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Event - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/calendar/event')
             .reply((request) => {
 
@@ -323,7 +323,7 @@ export class CalendarMockApi implements AsmMockApi
                 const newEvent = _.cloneDeep(request.body.event);
 
                 // Add an id to the new event
-                newEvent.id = AsmMockApiUtils.guid();
+                newEvent.id = TreoMockApiUtils.guid();
 
                 // Unshift the new event
                 this._events.unshift(newEvent);
@@ -337,7 +337,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Event - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/calendar/event')
             .reply((request) => {
 
@@ -370,7 +370,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Event - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/calendar/event')
             .reply((request) => {
 
@@ -390,7 +390,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Recurring Event - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/calendar/recurring-event')
             .reply((request) => {
 
@@ -409,7 +409,7 @@ export class CalendarMockApi implements AsmMockApi
                     const {range, recurringEventId, ...newEvent} = event;
 
                     // Generate a unique id for the event
-                    newEvent.id = AsmMockApiUtils.guid();
+                    newEvent.id = TreoMockApiUtils.guid();
 
                     // Calculate the end date using the start date and the duration
                     newEvent.end = moment(newEvent.start).add(newEvent.duration, 'minutes');
@@ -446,7 +446,7 @@ export class CalendarMockApi implements AsmMockApi
                     {
                         // Add a new exception for the recurring event that ignores this single event's start date
                         this._exceptions.push({
-                            id     : AsmMockApiUtils.guid(),
+                            id     : TreoMockApiUtils.guid(),
                             eventId: originalEvent.recurringEventId,
                             exdate : moment(originalEvent.start).toISOString()
                         });
@@ -483,7 +483,7 @@ export class CalendarMockApi implements AsmMockApi
                     const {recurringEventId, ...newEvent} = event;
 
                     // Generate a unique id for the event
-                    newEvent.id = AsmMockApiUtils.guid();
+                    newEvent.id = TreoMockApiUtils.guid();
 
                     // Push the new event to the events array
                     this._events.push(newEvent);
@@ -508,7 +508,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Recurring Event - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/calendar/recurring-event')
             .reply((request) => {
 
@@ -547,7 +547,7 @@ export class CalendarMockApi implements AsmMockApi
                     {
                         // Add a new exception for the recurring event that ignores this single event's start date
                         this._exceptions.push({
-                            id     : AsmMockApiUtils.guid(),
+                            id     : TreoMockApiUtils.guid(),
                             eventId: event.recurringEventId,
                             exdate : moment(event.start).toISOString()
                         });
@@ -598,7 +598,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/calendar/settings')
             .reply(() => {
 
@@ -614,7 +614,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/calendar/settings')
             .reply((request) => {
 
@@ -633,7 +633,7 @@ export class CalendarMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Weekdays - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/calendar/weekdays')
             .reply(() => {
 

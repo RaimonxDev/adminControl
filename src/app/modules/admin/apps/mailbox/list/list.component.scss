@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 mailbox-list {
     position: relative;
@@ -17,7 +17,7 @@ mailbox-list {
         border-right-width: 1px;
         z-index: 5;
 
-        @include asm-breakpoint('lt-lg') {
+        @include treo-breakpoint('lt-lg') {
             width: 100%;
             max-width: none;
             min-width: 0;
@@ -73,7 +73,7 @@ mailbox-list {
                     margin-right: 8px;
 
                     .mat-icon {
-                        @include asm-icon-size(24);
+                        @include treo-icon-size(24);
                     }
                 }
 
@@ -108,7 +108,7 @@ mailbox-list {
                     line-height: 32px !important;
 
                     .mat-icon {
-                        @include asm-icon-size(16);
+                        @include treo-icon-size(16);
                     }
                 }
 
@@ -161,7 +161,7 @@ mailbox-list {
 
                         .important-indicator {
                             margin-right: 12px;
-                            @include asm-icon-size(16);
+                            @include treo-icon-size(16);
                         }
 
                         .date {
@@ -196,7 +196,7 @@ mailbox-list {
                             .attachments-indicator {
                                 display: flex;
                                 justify-content: center;
-                                @include asm-icon-size(16);
+                                @include treo-icon-size(16);
 
                                 + .starred-indicator {
                                     margin-left: 8px;
@@ -206,7 +206,7 @@ mailbox-list {
                             .starred-indicator {
                                 display: flex;
                                 justify-content: center;
-                                @include asm-icon-size(16);
+                                @include treo-icon-size(16);
                             }
                         }
                     }
@@ -228,7 +228,7 @@ mailbox-list {
             justify-content: center;
 
             .mat-icon {
-                @include asm-icon-size(96);
+                @include treo-icon-size(96);
             }
 
             h4 {
@@ -241,7 +241,7 @@ mailbox-list {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -257,7 +257,7 @@ mailbox-list {
 
             > .header {
                 @if (not $is-dark) {
-                    background: asm-color('cool-gray', 50);
+                    background: treo-color('cool-gray', 50);
                 }
 
                 .pagination {
@@ -281,7 +281,7 @@ mailbox-list {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.05);
                             } @else {
-                                background: asm-color('cool-gray', 100);
+                                background: treo-color('cool-gray', 100);
                             }
                         }
                     }
@@ -318,9 +318,9 @@ mailbox-list {
 
                             .important-indicator {
                                 @if ($is-dark) {
-                                    color: asm-color('red', 600);
+                                    color: treo-color('red', 600);
                                 } @else {
-                                    color: asm-color('red', 500);
+                                    color: treo-color('red', 500);
                                 }
                             }
 
@@ -336,9 +336,9 @@ mailbox-list {
                                 .starred-indicator {
 
                                     @if ($is-dark) {
-                                        color: asm-color('orange', 400);
+                                        color: treo-color('orange', 400);
                                     } @else {
-                                        color: asm-color('orange', 500);
+                                        color: treo-color('orange', 500);
                                     }
                                 }
                             }
@@ -353,7 +353,7 @@ mailbox-list {
 
             .no-mails {
                 @if (not $is-dark) {
-                    background: asm-color('cool-gray', 100);
+                    background: treo-color('cool-gray', 100);
                 }
 
                 .mat-icon {

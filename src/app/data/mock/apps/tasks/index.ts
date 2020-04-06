@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { tags as tagsData, tasks as tasksData } from 'app/data/mock/apps/tasks/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class TasksMockApi implements AsmMockApi
+export class TasksMockApi implements TreoMockApi
 {
     // Private
     private _tags: any[];
@@ -17,10 +17,10 @@ export class TasksMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -43,7 +43,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/tasks/tags')
             .reply(() => {
 
@@ -56,7 +56,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/tasks/tag')
             .reply((request) => {
 
@@ -64,7 +64,7 @@ export class TasksMockApi implements AsmMockApi
                 const newTag = _.cloneDeep(request.body.tag);
 
                 // Generate a new GUID
-                newTag.id = AsmMockApiUtils.guid();
+                newTag.id = TreoMockApiUtils.guid();
 
                 // Unshift the new tag
                 this._tags.unshift(newTag);
@@ -78,7 +78,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/tasks/tag')
             .reply((request) => {
 
@@ -111,7 +111,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tag - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/tasks/tag')
             .reply((request) => {
 
@@ -139,7 +139,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tasks - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/tasks/all')
             .reply(() => {
 
@@ -158,7 +158,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tasks Search - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/tasks/search')
             .reply((request) => {
 
@@ -203,7 +203,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tasks Orders - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/tasks/order')
             .reply((request) => {
 
@@ -230,7 +230,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/tasks/task')
             .reply((request) => {
 
@@ -252,13 +252,13 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/tasks/task')
             .reply((request) => {
 
                 // Generate a new task
                 const newTask = {
-                    id       : AsmMockApiUtils.guid(),
+                    id       : TreoMockApiUtils.guid(),
                     type     : request.body.type,
                     title    : '',
                     notes    : null,
@@ -286,7 +286,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/tasks/task')
             .reply((request) => {
 
@@ -319,7 +319,7 @@ export class TasksMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/tasks/task')
             .reply((request) => {
 

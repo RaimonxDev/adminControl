@@ -4,8 +4,8 @@ import { takeUntil } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
-import { AsmConfigService } from '@assembly/services/config';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
+import { TreoConfigService } from '@treo/services/config';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { CryptoService } from 'app/modules/admin/dashboards/crypto/crypto.service';
 
 @Component({
@@ -33,14 +33,14 @@ export class CryptoComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {AsmConfigService} _asmConfigService
-     * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {TreoConfigService} _treoConfigService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {CryptoService} _cryptoService
      * @param {ChangeDetectorRef} _changeDetectorRef
      */
     constructor(
-        private _asmConfigService: AsmConfigService,
-        private _asmMediaWatcherService: AsmMediaWatcherService,
+        private _treoConfigService: TreoConfigService,
+        private _treoMediaWatcherService: TreoMediaWatcherService,
         private _cryptoService: CryptoService,
         private _changeDetectorRef: ChangeDetectorRef
     )
@@ -63,7 +63,7 @@ export class CryptoComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to media changes
-        this._asmMediaWatcherService.onMediaChange$
+        this._treoMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
@@ -84,7 +84,7 @@ export class CryptoComponent implements OnInit, OnDestroy
             });
 
         // Get the app config
-        this._asmConfigService.config$
+        this._treoConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
 

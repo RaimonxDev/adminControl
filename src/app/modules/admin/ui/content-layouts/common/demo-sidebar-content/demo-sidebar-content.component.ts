@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AsmNavigationItem } from '@assembly/components/navigation/navigation.types';
+import { TreoNavigationItem } from '@treo/components/navigation/navigation.types';
 
 @Component({
     selector     : 'demo-sidebar-content',
@@ -9,7 +9,7 @@ import { AsmNavigationItem } from '@assembly/components/navigation/navigation.ty
 })
 export class DemoSidebarContentComponent
 {
-    menuData: AsmNavigationItem[];
+    menuData: TreoNavigationItem[];
 
     constructor()
     {

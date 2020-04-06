@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AsmAnimations } from '@assembly/animations';
+import { TreoAnimations } from '@treo/animations';
 import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-center.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-cent
     templateUrl  : './support.component.html',
     styleUrls    : ['./support.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    animations   : TreoAnimations
 })
 export class HelpCenterSupportComponent implements OnInit, OnDestroy
 {

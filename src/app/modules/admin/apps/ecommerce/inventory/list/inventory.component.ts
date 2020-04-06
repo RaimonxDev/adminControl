@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, Observable, Subject } from 'rxjs';
 import { debounceTime, map, switchMap, takeUntil } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly/animations';
+import { TreoAnimations } from '@treo/animations';
 import { InventoryBrand, InventoryCategory, InventoryPagination, InventoryProduct, InventoryTag, InventoryVendor } from 'app/modules/admin/apps/ecommerce/inventory/inventory.types';
 import { InventoryService } from 'app/modules/admin/apps/ecommerce/inventory/inventory.service';
 
@@ -15,7 +15,7 @@ import { InventoryService } from 'app/modules/admin/apps/ecommerce/inventory/inv
     styleUrls      : ['./inventory.component.scss'],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations     : AsmAnimations
+    animations     : TreoAnimations
 })
 export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
 {

@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 calendar-sidebar {
     display: flex;
@@ -34,7 +34,7 @@ calendar-sidebar {
             .mat-icon {
                 display: none !important;
                 cursor: pointer;
-                @include asm-icon-size(20);
+                @include treo-icon-size(20);
             }
         }
 
@@ -72,7 +72,7 @@ calendar-sidebar {
                 display: none !important;
                 margin-left: 4px;
                 cursor: pointer;
-                @include asm-icon-size(16);
+                @include treo-icon-size(16);
             }
         }
     }
@@ -101,7 +101,7 @@ calendar-sidebar {
     max-width: 320px;
     border-radius: 8px;
     padding: 32px 32px 32px 24px;
-    @include asm-elevation('2xl');
+    @include treo-elevation('2xl');
 
     .title {
         margin: 0 0 32px 0;
@@ -120,7 +120,7 @@ calendar-sidebar {
             margin-right: 16px;
 
             .mat-icon {
-                @include asm-icon-size(20);
+                @include treo-icon-size(20);
             }
 
             .mat-select-value {
@@ -193,7 +193,7 @@ calendar-sidebar {
                     top: 14px;
                     left: 14px;
                     margin: 0;
-                    @include asm-icon-size(20);
+                    @include treo-icon-size(20);
                 }
 
                 .color-box {
@@ -211,14 +211,14 @@ calendar-sidebar {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
     calendar-sidebar {
         @if ($is-dark) {
-            background: asm-color('cool-gray', 900);
+            background: treo-color('cool-gray', 900);
         }
     }
 

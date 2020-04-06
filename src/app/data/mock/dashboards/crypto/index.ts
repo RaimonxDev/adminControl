@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { crypto as cryptoData } from 'app/data/mock/dashboards/crypto/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CryptoMockApi implements AsmMockApi
+export class CryptoMockApi implements TreoMockApi
 {
     // Private
     private _crypto: any;
@@ -15,10 +15,10 @@ export class CryptoMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param _asmMockApiService
+     * @param _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -40,7 +40,7 @@ export class CryptoMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Crypto - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/dashboards/crypto')
             .reply(() => {
 

@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 material-layout {
     position: relative;
@@ -6,9 +6,9 @@ material-layout {
     flex: 1 1 auto;
     width: 100%;
 
-    > asm-vertical-navigation {
+    > treo-vertical-navigation {
 
-        .asm-vertical-navigation-content-header {
+        .treo-vertical-navigation-content-header {
 
             .logo {
                 display: flex;
@@ -19,7 +19,7 @@ material-layout {
                 padding: 24px 32px 0 32px;
 
                 img {
-                    max-width: 168px;
+                    max-width: 96px;
                 }
             }
         }
@@ -51,12 +51,12 @@ material-layout {
                 box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
                 overflow: hidden;
 
-                @include asm-breakpoint('lt-md') {
+                @include treo-breakpoint('lt-md') {
                     margin-top: 32px;
                     padding: 12px 0;
                 }
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     width: 100%;
                     margin: 0;
                     padding: 0;
@@ -78,7 +78,7 @@ material-layout {
                     position: relative;
                     padding: 0 24px;
 
-                    @include asm-breakpoint('lt-md') {
+                    @include treo-breakpoint('lt-md') {
                         padding: 0 16px;
                     }
                 }
@@ -93,9 +93,9 @@ material-layout {
                     margin: 0 8px;
 
                     img {
-                        width: 160px;
-                        min-width: 160px;
-                        max-width: 160px;
+                        width: 96px;
+                        min-width: 96px;
+                        max-width: 96px;
                     }
                 }
 
@@ -136,7 +136,7 @@ material-layout {
             margin: 0 32px;
             box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 width: 100%;
                 margin: 0;
                 box-shadow: none;
@@ -165,13 +165,13 @@ material-layout {
             border-top-width: 1px;
             box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1), 0 0 10px 0 rgba(0, 0, 0, 0.04);
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 width: 100%;
                 margin: 0;
                 box-shadow: none;
             }
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 height: 56px;
                 max-height: 56px;
                 min-height: 56px;
@@ -205,7 +205,7 @@ material-layout {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -218,7 +218,7 @@ material-layout {
             @if ($is-dark) {
                 background: map-get($background, card);
             } @else {
-                background: asm-color('cool-gray', 200);
+                background: treo-color('cool-gray', 200);
             }
 
             > .header {
@@ -229,15 +229,13 @@ material-layout {
 
                     .logo {
 
-                        .logo-dark {
-
+                        .logo-text {
                             @if ($is-dark) {
                                 display: none;
                             }
                         }
 
-                        .logo-light {
-
+                        .logo-text-on-dark {
                             @if (not $is-dark) {
                                 display: none;
                             }

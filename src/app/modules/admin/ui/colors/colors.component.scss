@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 colors {
 
@@ -11,7 +11,7 @@ colors {
             margin: 32px 0;
             border-radius: 4px;
             overflow: hidden;
-            @include asm-elevation();
+            @include treo-elevation();
 
             .title {
                 display: flex;
@@ -45,7 +45,7 @@ colors {
                 .mat-tab-body-content {
                     padding: 40px;
 
-                    .asm-highlight {
+                    .treo-highlight {
                         margin: 0;
 
                         pre {
@@ -81,7 +81,7 @@ colors {
                     border-radius: 4px;
                     text-align: center;
                     font-size: 13px;
-                    @include asm-elevation('md');
+                    @include treo-elevation('md');
                 }
             }
         }
@@ -91,7 +91,7 @@ colors {
             flex-wrap: wrap;
             justify-content: center;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 width: 100%;
             }
 
@@ -101,7 +101,7 @@ colors {
                 width: 100%;
                 margin-top: 48px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin-top: 40px;
                 }
 
@@ -110,7 +110,7 @@ colors {
                     flex-wrap: wrap;
                     margin: 16px -16px 0 -16px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         margin-left: -12px;
                         margin-right: -12px;
                     }
@@ -125,7 +125,7 @@ colors {
                         border-radius: 8px;
                         box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 
-                        @include asm-breakpoint('xs') {
+                        @include treo-breakpoint('xs') {
                             margin: 12px;
                         }
 
@@ -158,7 +158,7 @@ colors {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -178,13 +178,13 @@ colors {
                     @if ($is-dark) {
                         background: map-get($background, card);
                     } @else {
-                        background: asm-color('cool-gray', 50);
+                        background: treo-color('cool-gray', 50);
                     }
                 }
 
                 .mat-tab-body-content {
 
-                    .asm-highlight {
+                    .treo-highlight {
 
                         pre[class*='language-'] {
                             border: none;

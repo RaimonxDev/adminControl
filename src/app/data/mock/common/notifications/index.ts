@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { notifications as notificationsData } from 'app/data/mock/common/notifications/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class NotificationsMockApi implements AsmMockApi
+export class NotificationsMockApi implements TreoMockApi
 {
     // Private
     private _notifications: any;
@@ -16,10 +16,10 @@ export class NotificationsMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -41,7 +41,7 @@ export class NotificationsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/common/notifications')
             .reply(() => {
                 return [
@@ -55,7 +55,7 @@ export class NotificationsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/common/notifications')
             .reply((request) => {
 
@@ -63,7 +63,7 @@ export class NotificationsMockApi implements AsmMockApi
                 const newNotification = _.cloneDeep(request.body.notification);
 
                 // Generate a new GUID
-                newNotification.id = AsmMockApiUtils.guid();
+                newNotification.id = TreoMockApiUtils.guid();
 
                 // Unshift the new notification
                 this._notifications.unshift(newNotification);
@@ -77,7 +77,7 @@ export class NotificationsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/common/notifications')
             .reply((request) => {
 
@@ -110,7 +110,7 @@ export class NotificationsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/common/notifications')
             .reply((request) => {
 
@@ -138,7 +138,7 @@ export class NotificationsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mark all as read - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/common/notifications/mark-all-as-read')
             .reply(() => {
 
@@ -159,7 +159,7 @@ export class NotificationsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Toggle read status - POST
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPost('api/common/notifications/toggle-read-status')
             .reply((request) => {
 

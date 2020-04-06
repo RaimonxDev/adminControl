@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 contacts-details {
     display: flex;
@@ -13,20 +13,20 @@ contacts-details {
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 24px 48px 40px 80px;
         }
 
         &.edit-mode {
             padding: 56px 80px 64px 80px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 padding: 24px 80px 40px 40px;
             }
 
             > .actions {
 
-                @include asm-breakpoint('(max-width: 480px)') {
+                @include treo-breakpoint('(max-width: 480px)') {
                     margin: 0 -56px 24px -16px;
                 }
             }
@@ -40,7 +40,7 @@ contacts-details {
                 }
             }
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
 
                 > .job,
                 > .emails,
@@ -78,7 +78,7 @@ contacts-details {
             top: 32px;
             right: 24px;
 
-            @include asm-breakpoint('(max-width: 480px)') {
+            @include treo-breakpoint('(max-width: 480px)') {
                 position: relative;
                 justify-content: flex-end;
                 margin: 0 -24px 16px 0;
@@ -126,7 +126,7 @@ contacts-details {
                     border-radius: 50%;
 
                     .mat-icon {
-                        @include asm-icon-size(20);
+                        @include treo-icon-size(20);
                     }
                 }
 
@@ -245,12 +245,12 @@ contacts-details {
                 .mat-icon {
 
                     &.add-icon {
-                        @include asm-icon-size(16);
+                        @include treo-icon-size(16);
                         margin-right: 4px;
                     }
 
                     &.edit-icon {
-                        @include asm-icon-size(14);
+                        @include treo-icon-size(14);
                         margin-right: 6px;
                     }
                 }
@@ -390,7 +390,7 @@ contacts-details {
                             min-height: 32px;
 
                             .mat-icon {
-                                @include asm-icon-size(20);
+                                @include treo-icon-size(20);
                             }
                         }
                     }
@@ -516,7 +516,7 @@ contacts-details {
                             min-height: 32px;
 
                             .mat-icon {
-                                @include asm-icon-size(20);
+                                @include treo-icon-size(20);
                             }
                         }
                     }
@@ -617,7 +617,7 @@ contacts-details {
     margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
-    @include asm-elevation('md');
+    @include treo-elevation('md');
 
     .tags-panel-header {
         display: flex;
@@ -630,7 +630,7 @@ contacts-details {
             min-width: 0;
 
             .mat-icon {
-                @include asm-icon-size(16);
+                @include treo-icon-size(16);
             }
 
             input {
@@ -648,7 +648,7 @@ contacts-details {
             min-height: 24px;
 
             .mat-icon {
-                @include asm-icon-size(16);
+                @include treo-icon-size(16);
             }
         }
     }
@@ -697,7 +697,7 @@ contacts-details {
                 margin-left: 4px;
 
                 .mat-icon {
-                    @include asm-icon-size(20);
+                    @include treo-icon-size(20);
                 }
             }
 
@@ -718,7 +718,7 @@ contacts-details {
 
         .mat-icon {
             margin-right: 8px;
-            @include asm-icon-size(18);
+            @include treo-icon-size(18);
         }
 
         div {
@@ -735,9 +735,9 @@ contacts-details {
     max-width: 320px;
     border-radius: 4px;
     border: 1px solid;
-    @include asm-elevation('md');
+    @include treo-elevation('md');
 
-    @include asm-breakpoint('xs') {
+    @include treo-breakpoint('xs') {
         min-width: 280px;
         max-width: 280px;
     }
@@ -747,7 +747,7 @@ contacts-details {
 
         .mat-icon {
             margin-right: 8px;
-            @include asm-icon-size(20);
+            @include treo-icon-size(20);
         }
     }
 }
@@ -787,7 +787,7 @@ contacts-details {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -839,17 +839,17 @@ contacts-details {
                             &:hover,
                             &:focus {
                                 @if ($is-dark) {
-                                    background-color: asm-color('cool-gray', 800);
+                                    background-color: treo-color('cool-gray', 800);
                                 } @else {
-                                    background-color: rgba(asm-color('cool-gray', 400), 0.2);
+                                    background-color: rgba(treo-color('cool-gray', 400), 0.2);
                                 }
                             }
                         }
                     }
 
                     .no-avatar {
-                        background: asm-color('cool-gray', 200);
-                        color: asm-color('cool-gray', 600);
+                        background: treo-color('cool-gray', 200);
+                        color: treo-color('cool-gray', 600);
                     }
                 }
             }
@@ -858,16 +858,16 @@ contacts-details {
 
                 .tag,
                 .edit-tags {
-                    color: asm-color('cool-gray', 500);
+                    color: treo-color('cool-gray', 500);
 
                     .mat-icon {
-                        color: asm-color('cool-gray', 500);
+                        color: treo-color('cool-gray', 500);
                     }
 
                     @if ($is-dark) {
-                        background: asm-color('cool-gray', 800);
+                        background: treo-color('cool-gray', 800);
                     } @else {
-                        background: asm-color('cool-gray', 100);
+                        background: treo-color('cool-gray', 100);
                     }
                 }
             }

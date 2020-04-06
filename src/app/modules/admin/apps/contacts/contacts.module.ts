@@ -17,8 +17,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import * as moment from 'moment';
-import { AsmAutogrowModule } from '@assembly/directives/autogrow';
-import { AsmFindByKeyPipeModule } from '@assembly/pipes/find-by-key';
+import { TreoAutogrowModule } from '@treo/directives/autogrow';
+import { TreoFindByKeyPipeModule } from '@treo/pipes/find-by-key';
 import { SharedModule } from 'app/shared/shared.module';
 import { contactsRoutes } from 'app/modules/admin/apps/contacts/contacts.routing';
 import { ContactsComponent } from 'app/modules/admin/apps/contacts/contacts.component';
@@ -49,8 +49,8 @@ import { ContactsListComponent } from 'app/modules/admin/apps/contacts/list/list
         MatSidenavModule,
         MatTableModule,
         MatTooltipModule,
-        AsmAutogrowModule,
-        AsmFindByKeyPipeModule,
+        TreoAutogrowModule,
+        TreoFindByKeyPipeModule,
         SharedModule
     ],
     providers   : [

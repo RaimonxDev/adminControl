@@ -1,7 +1,7 @@
 /* tslint:disable:max-line-length */
-import { AsmNavigationItem } from '@assembly/components/navigation';
+import { TreoNavigationItem } from '@treo/components/navigation';
 
-export const defaultNavigation: AsmNavigationItem[] = [
+export const defaultNavigation: TreoNavigationItem[] = [
     {
         id      : 'dashboards',
         title   : 'Dashboards',
@@ -945,7 +945,7 @@ export const defaultNavigation: AsmNavigationItem[] = [
         ]
     }
 ];
-export const compactNavigation: AsmNavigationItem[] = [
+export const compactNavigation: TreoNavigationItem[] = [
     {
         id      : 'dashboards',
         title   : 'Dashboards',
@@ -982,7 +982,7 @@ export const compactNavigation: AsmNavigationItem[] = [
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];
-export const futuristicNavigation: AsmNavigationItem[] = [
+export const futuristicNavigation: TreoNavigationItem[] = [
     {
         id   : 'dashboards.finance',
         title: 'Finance',
@@ -1078,7 +1078,7 @@ export const futuristicNavigation: AsmNavigationItem[] = [
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];
-export const horizontalNavigation: AsmNavigationItem[] = [
+export const horizontalNavigation: TreoNavigationItem[] = [
     {
         id      : 'dashboards',
         title   : 'Dashboards',

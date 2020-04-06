@@ -115,7 +115,7 @@
                  *ngIf="mail.labels && mail.labels.length > 0">
 
                 <div class="label"
-                     *ngFor="let label of (mail.labels | asmFindByKey:'id':labels)"
+                     *ngFor="let label of (mail.labels | treoFindByKey:'id':labels)"
                      [ngClass]="['text-' + label.color + '-100', 'bg-' + label.color + '-500']">
                     {{label.title}}
                 </div>
@@ -310,7 +310,7 @@
                  *ngIf="replyFormActive"
                  #replyForm>
 
-                <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
+                <mat-form-field class="treo-mat-textarea treo-mat-no-subscript">
                     <textarea class="textarea"
                               matInput
                               [placeholder]="'Type your reply here'"

@@ -1,4 +1,4 @@
-@import "assembly";
+@import "treo";
 
 typography {
 
@@ -9,7 +9,7 @@ typography {
         margin: 32px 0;
         border-radius: 4px;
         overflow: hidden;
-        @include asm-elevation();
+        @include treo-elevation();
 
         .title {
             display: flex;
@@ -43,7 +43,7 @@ typography {
             .mat-tab-body-content {
                 padding: 40px;
 
-                .asm-highlight {
+                .treo-highlight {
                     margin: 0;
 
                     pre {
@@ -60,7 +60,7 @@ typography {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -80,13 +80,13 @@ typography {
                     @if ($is-dark) {
                         background: map-get($background, card);
                     } @else {
-                        background: asm-color('cool-gray', 50);
+                        background: treo-color('cool-gray', 50);
                     }
                 }
 
                 .mat-tab-body-content {
 
-                    .asm-highlight {
+                    .treo-highlight {
 
                         pre[class*='language-'] {
                             border: none;

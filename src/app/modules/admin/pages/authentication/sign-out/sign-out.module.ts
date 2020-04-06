@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { AsmCardModule } from '@assembly/components/card';
+import { TreoCardModule } from '@treo/components/card';
 import { SharedModule } from 'app/shared/shared.module';
 import { SignOutComponent } from 'app/modules/admin/pages/authentication/sign-out/sign-out.component';
 import { signOutRoutes } from 'app/modules/admin/pages/authentication/sign-out/sign-out.routing';
@@ -13,7 +13,7 @@ import { signOutRoutes } from 'app/modules/admin/pages/authentication/sign-out/s
     imports     : [
         RouterModule.forChild(signOutRoutes),
         MatButtonModule,
-        AsmCardModule,
+        TreoCardModule,
         SharedModule
     ]
 })

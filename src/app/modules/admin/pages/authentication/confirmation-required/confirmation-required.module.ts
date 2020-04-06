@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { AsmCardModule } from '@assembly/components/card';
+import { TreoCardModule } from '@treo/components/card';
 import { SharedModule } from 'app/shared/shared.module';
 import { ConfirmationRequiredComponent } from 'app/modules/admin/pages/authentication/confirmation-required/confirmation-required.component';
 import { confirmationRequiredRoutes } from 'app/modules/admin/pages/authentication/confirmation-required/confirmation-required.routing';
@@ -13,7 +13,7 @@ import { confirmationRequiredRoutes } from 'app/modules/admin/pages/authenticati
     imports     : [
         RouterModule.forChild(confirmationRequiredRoutes),
         MatButtonModule,
-        AsmCardModule,
+        TreoCardModule,
         SharedModule
     ]
 })

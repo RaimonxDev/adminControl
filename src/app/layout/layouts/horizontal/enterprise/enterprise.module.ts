@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { AsmNavigationModule } from '@assembly/components/navigation';
+import { TreoNavigationModule } from '@treo/components/navigation';
 import { MessagesModule } from 'app/layout/common/messages/messages.module';
 import { NotificationsModule } from 'app/layout/common/notifications/notifications.module';
 import { SearchModule } from 'app/layout/common/search/search.module';
@@ -25,7 +25,7 @@ import { EnterpriseLayoutComponent } from 'app/layout/layouts/horizontal/enterpr
         MatDividerModule,
         MatIconModule,
         MatMenuModule,
-        AsmNavigationModule,
+        TreoNavigationModule,
         MessagesModule,
         NotificationsModule,
         SearchModule,

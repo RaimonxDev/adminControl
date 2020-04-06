@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<asm-vertical-navigation class="bg-cool-gray-900 theme-dark"
+<treo-vertical-navigation class="bg-cool-gray-900 theme-dark"
                          *ngIf="isScreenSmall"
                          [appearance]="'classic'"
                          [mode]="'over'"
@@ -7,13 +7,13 @@
                          [navigation]="data.navigation.default"
                          [opened]="false">
 
-    <div asmVerticalNavigationContentHeader>
+    <div treoVerticalNavigationContentHeader>
         <div class="logo">
-            <img src="assets/images/logo/logo-light.svg">
+            <img src="assets/images/logo/logo-text-on-dark.svg">
         </div>
     </div>
 
-</asm-vertical-navigation>
+</treo-vertical-navigation>
 
 <!-- Wrapper -->
 <div class="wrapper">
@@ -26,18 +26,18 @@
             <!-- Logo -->
             <div class="logo"
                  *ngIf="!isScreenSmall">
-                <img class="logo-light"
-                     src="assets/images/logo/logo-light.svg">
-                <img class="logo-dark"
-                     src="assets/images/logo/logo-dark.svg">
+                <img class="logo-text"
+                     src="assets/images/logo/logo-text.svg">
+                <img class="logo-text-on-dark"
+                     src="assets/images/logo/logo-text-on-dark.svg">
                 <img class="logo-base"
-                     src="assets/images/logo/logo-base-dark.svg">
+                     src="assets/images/logo/logo.svg">
             </div>
 
             <!-- Horizontal navigation -->
-            <asm-horizontal-navigation *ngIf="!isScreenSmall"
+            <treo-horizontal-navigation *ngIf="!isScreenSmall"
                                        [name]="'mainNavigation'"
-                                       [navigation]="data.navigation.horizontal"></asm-horizontal-navigation>
+                                       [navigation]="data.navigation.horizontal"></treo-horizontal-navigation>
 
             <!-- Navigation toggle button -->
             <button class="navigation-toggle-button"
@@ -81,7 +81,7 @@
     <!-- Footer -->
     <div class="footer">
         <div class="container">
-            Assembly &copy; {{currentYear}}
+            Treo &copy; {{currentYear}}
         </div>
     </div>
 

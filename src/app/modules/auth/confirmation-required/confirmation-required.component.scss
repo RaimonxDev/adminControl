@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 auth-confirmation-required {
 
@@ -6,7 +6,7 @@ auth-confirmation-required {
         align-items: center;
         justify-content: center;
 
-        asm-card {
+        treo-card {
 
             .form-container {
 
@@ -24,6 +24,6 @@ auth-confirmation-required {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
 }

@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmNavigationItem } from '@assembly/components/navigation';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoNavigationItem } from '@treo/components/navigation';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { compactNavigation, defaultNavigation, futuristicNavigation, horizontalNavigation } from 'app/data/mock/common/navigation/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class NavigationMockApi implements AsmMockApi
+export class NavigationMockApi implements TreoMockApi
 {
     // Private Readonly
-    private readonly _compactNavigation: AsmNavigationItem[];
-    private readonly _defaultNavigation: AsmNavigationItem[];
-    private readonly _futuristicNavigation: AsmNavigationItem[];
-    private readonly _horizontalNavigation: AsmNavigationItem[];
+    private readonly _compactNavigation: TreoNavigationItem[];
+    private readonly _defaultNavigation: TreoNavigationItem[];
+    private readonly _futuristicNavigation: TreoNavigationItem[];
+    private readonly _horizontalNavigation: TreoNavigationItem[];
 
     /**
      * Constructor
      *
-     * @param _asmMockApiService
+     * @param _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -47,7 +47,7 @@ export class NavigationMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Navigation - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/common/navigation')
             .reply(() => {
 

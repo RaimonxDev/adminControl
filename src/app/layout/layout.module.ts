@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AsmDrawerModule } from '@assembly/components/drawer';
+import { TreoDrawerModule } from '@treo/components/drawer';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { EmptyLayoutModule } from 'app/layout/layouts/empty/empty.module';
 import { CenteredLayoutModule } from 'app/layout/layouts/horizontal/centered/centered.module';
@@ -46,7 +46,7 @@ const modules = [
         MatIconModule,
         MatRadioModule,
         MatSlideToggleModule,
-        AsmDrawerModule,
+        TreoDrawerModule,
         SharedModule,
         ...modules
     ],

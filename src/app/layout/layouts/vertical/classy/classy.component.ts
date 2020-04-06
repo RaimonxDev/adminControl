@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
-import { AsmNavigationService } from '@assembly/components/navigation';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
+import { TreoNavigationService } from '@treo/components/navigation';
 
 @Component({
     selector     : 'classy-layout',
@@ -23,14 +23,14 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {AsmMediaWatcherService} _asmMediaWatcherService
-     * @param {AsmNavigationService} _asmNavigationService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
+     * @param {TreoNavigationService} _treoNavigationService
      * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _asmMediaWatcherService: AsmMediaWatcherService,
-        private _asmNavigationService: AsmNavigationService,
+        private _treoMediaWatcherService: TreoMediaWatcherService,
+        private _treoNavigationService: TreoNavigationService,
         private _router: Router
     )
     {
@@ -53,7 +53,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         });
 
         // Subscribe to media changes
-        this._asmMediaWatcherService.onMediaChange$
+        this._treoMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
@@ -84,7 +84,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     toggleNavigation(key): void
     {
         // Get the navigation
-        const navigation = this._asmNavigationService.getComponent(key);
+        const navigation = this._treoNavigationService.getComponent(key);
 
         if ( navigation )
         {

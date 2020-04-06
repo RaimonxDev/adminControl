@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 notifications {
     display: flex;
@@ -12,8 +12,8 @@ notifications {
     border-radius: 4px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
-    @include asm-elevation('lg');
-    @include asm-breakpoint('xs') {
+    @include treo-elevation('lg');
+    @include treo-breakpoint('xs') {
         min-width: 0 !important;
         max-width: 384px !important;
         width: calc(100vw - 32px);
@@ -55,7 +55,7 @@ notifications {
                 border-bottom-width: 0;
             }
 
-            @include asm-breakpoint('gt-xs') {
+            @include treo-breakpoint('gt-xs') {
 
                 &:hover {
 
@@ -158,7 +158,7 @@ notifications {
                         border-radius: 50%;
                     }
 
-                    @include asm-breakpoint('gt-xs') {
+                    @include treo-breakpoint('gt-xs') {
 
                         .read {
                             opacity: 0;
@@ -172,12 +172,12 @@ notifications {
                     min-height: 24px;
                     line-height: 24px !important;
 
-                    @include asm-breakpoint('gt-xs') {
+                    @include treo-breakpoint('gt-xs') {
                         opacity: 0;
                     }
 
                     .mat-icon {
-                        @include asm-icon-size(16);
+                        @include treo-icon-size(16);
                     }
                 }
             }
@@ -191,7 +191,7 @@ notifications {
             padding: 96px 24px;
 
             .mat-icon {
-                @include asm-icon-size(64);
+                @include treo-icon-size(64);
 
                 + * {
                     margin-top: 16px;
@@ -205,7 +205,7 @@ notifications {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -219,13 +219,13 @@ notifications {
             border-top-color: map-get($primary, default);
 
             @if ($is-dark) {
-                background: asm-color('cool-gray', 800);
+                background: treo-color('cool-gray', 800);
             } @else {
-                background: asm-color('cool-gray', 100);
+                background: treo-color('cool-gray', 100);
             }
 
             .mark-all-as-read {
-                color: asm-color('cool-gray', 400);
+                color: treo-color('cool-gray', 400);
             }
         }
 
@@ -234,13 +234,13 @@ notifications {
 
             .notification {
 
-                @include asm-breakpoint('gt-xs') {
+                @include treo-breakpoint('gt-xs') {
 
                     &:hover {
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.05) !important;
                         } @else {
-                            background: asm-color('cool-gray', 100) !important;
+                            background: treo-color('cool-gray', 100) !important;
                         }
                     }
                 }
@@ -267,14 +267,14 @@ notifications {
                     .indicator {
 
                         .unread {
-                            background: asm-color('red', 600);
+                            background: treo-color('red', 600);
                         }
 
                         .read {
                             @if ($is-dark) {
-                                background: asm-color('cool-gray', 500);
+                                background: treo-color('cool-gray', 500);
                             } @else {
-                                background: asm-color('cool-gray', 400);
+                                background: treo-color('cool-gray', 400);
                             }
                         }
                     }

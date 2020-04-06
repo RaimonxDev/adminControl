@@ -2481,7 +2481,7 @@ export const iconsmind = [
     'plane_2',
     'plane',
     'plant',
-    'plasmid',
+    'pltreoid',
     'plaster',
     'plastic_cupphone',
     'plastic_cupphone2',

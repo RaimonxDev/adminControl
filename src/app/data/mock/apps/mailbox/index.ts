@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { filters as filtersData, folders as foldersData, labels as labelsData, mails as mailsData, settings as settingsData } from 'app/data/mock/apps/mailbox/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MailboxMockApi implements AsmMockApi
+export class MailboxMockApi implements TreoMockApi
 {
     // Private
     private _filters: any[];
@@ -20,10 +20,10 @@ export class MailboxMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -49,7 +49,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/mailbox/settings')
             .reply(() => {
 
@@ -62,7 +62,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/mailbox/settings')
             .reply((request) => {
 
@@ -81,7 +81,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Folders - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/mailbox/folders')
             .reply(() => {
 
@@ -134,7 +134,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Filters - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/mailbox/filters')
             .reply(() => {
 
@@ -147,7 +147,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/mailbox/labels')
             .reply(() => {
 
@@ -160,7 +160,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/mailbox/label')
             .reply((request) => {
 
@@ -168,7 +168,7 @@ export class MailboxMockApi implements AsmMockApi
                 const label = _.cloneDeep(request.body.label);
 
                 // Generate an id
-                label.id = AsmMockApiUtils.guid();
+                label.id = TreoMockApiUtils.guid();
 
                 // Generate a slug
                 label.slug = label.title.toLowerCase()
@@ -208,7 +208,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/mailbox/label')
             .reply((request) => {
 
@@ -247,7 +247,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/mailbox/label')
             .reply((request) => {
 
@@ -277,7 +277,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mails - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/mailbox/mails', 625)
             .reply((request) => {
 
@@ -374,7 +374,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mail - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/mailbox/mail')
             .reply((request) => {
 
@@ -396,7 +396,7 @@ export class MailboxMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mail - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/mailbox/mail')
             .reply((request) => {
 

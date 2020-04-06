@@ -4,15 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
-import { AsmAnimations } from '@assembly/animations/public-api';
+import { TreoAnimations } from '@treo/animations/public-api';
 
 @Component({
     selector     : 'search',
     templateUrl  : './search.component.html',
     styleUrls    : ['./search.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    exportAs     : 'asmSearch',
-    animations   : AsmAnimations
+    exportAs     : 'treoSearch',
+    animations   : TreoAnimations
 })
 export class SearchComponent implements OnInit, OnDestroy
 {

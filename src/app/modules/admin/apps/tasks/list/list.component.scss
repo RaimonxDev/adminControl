@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 tasks-list {
     display: flex;
@@ -11,7 +11,7 @@ tasks-list {
             max-width: 496px !important;
             width: 496px !important;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 min-width: 100% !important;
                 max-width: 100% !important;
                 width: 100% !important;
@@ -32,7 +32,7 @@ tasks-list {
                     align-items: center;
                     padding: 40px 32px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         flex-direction: column;
                         align-items: flex-start;
                     }
@@ -53,14 +53,14 @@ tasks-list {
                     .main-actions {
                         margin-left: auto;
 
-                        @include asm-breakpoint('xs') {
+                        @include treo-breakpoint('xs') {
                             margin-left: 0;
                         }
 
                         .add-task {
                             margin-right: 16px;
 
-                            @include asm-breakpoint('xs') {
+                            @include treo-breakpoint('xs') {
                                 margin-right: 12px;
                             }
                         }
@@ -69,18 +69,18 @@ tasks-list {
                         .add-section {
                             padding: 0 20px 0 16px;
 
-                            @include asm-breakpoint('xs') {
+                            @include treo-breakpoint('xs') {
                                 margin-top: 24px;
                             }
 
                             .mat-icon {
                                 margin-right: 8px;
-                                @include asm-icon-size(20);
+                                @include treo-icon-size(20);
                             }
                         }
 
                         .add-section {
-                            @include asm-breakpoint('xs') {
+                            @include treo-breakpoint('xs') {
                                 margin-top: 12px;
                             }
                         }
@@ -128,7 +128,7 @@ tasks-list {
                             }
                         }
 
-                        @include asm-breakpoint('gt-sm') {
+                        @include treo-breakpoint('gt-sm') {
 
                             &:hover {
 
@@ -187,14 +187,14 @@ tasks-list {
                                 opacity: 0;
                                 cursor: grab;
 
-                                @include asm-breakpoint('lt-md') {
+                                @include treo-breakpoint('lt-md') {
                                     visibility: visible;
                                     pointer-events: auto;
                                     opacity: 1;
                                 }
 
                                 .mat-icon {
-                                    @include asm-icon-size(18);
+                                    @include treo-icon-size(18);
                                     margin-left: 8px;
                                 }
                             }
@@ -231,7 +231,7 @@ tasks-list {
 
                                     .low,
                                     .high {
-                                        @include asm-icon-size(16);
+                                        @include treo-icon-size(16);
                                     }
                                 }
 
@@ -251,7 +251,7 @@ tasks-list {
                         justify-content: center;
 
                         .mat-icon {
-                            @include asm-icon-size(96);
+                            @include treo-icon-size(96);
                         }
 
                         h4 {
@@ -274,7 +274,7 @@ tasks-list {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -333,7 +333,7 @@ tasks-list {
                                 @if ($is-dark) {
                                     background: rgba(0, 0, 0, 0.05);
                                 } @else {
-                                    background: asm-color('cool-gray', 100);
+                                    background: treo-color('cool-gray', 100);
                                 }
                             }
 
@@ -366,17 +366,17 @@ tasks-list {
 
                                         .low {
                                             @if ($is-dark) {
-                                                color: asm-color('green', 400);
+                                                color: treo-color('green', 400);
                                             } @else {
-                                                color: asm-color('green', 600);
+                                                color: treo-color('green', 600);
                                             }
                                         }
 
                                         .high {
                                             @if ($is-dark) {
-                                                color: asm-color('red', 400);
+                                                color: treo-color('red', 400);
                                             } @else {
-                                                color: asm-color('red', 600);
+                                                color: treo-color('red', 600);
                                             }
                                         }
                                     }
@@ -390,7 +390,7 @@ tasks-list {
 
                         .no-tasks {
                             @if (not $is-dark) {
-                                background: asm-color('cool-gray', 100);
+                                background: treo-color('cool-gray', 100);
                             }
 
                             .mat-icon {

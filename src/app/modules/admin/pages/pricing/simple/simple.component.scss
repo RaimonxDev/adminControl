@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 pricing-simple {
     display: flex;
@@ -9,7 +9,7 @@ pricing-simple {
         align-items: center;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 16px;
         }
 
@@ -41,7 +41,7 @@ pricing-simple {
                 width: 100%;
                 margin: 64px 0 80px 0;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin: 48px 0 56px 0;
                 }
 
@@ -63,7 +63,7 @@ pricing-simple {
                     justify-content: center;
                     margin-top: 64px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         margin-top: 48px;
                     }
 
@@ -83,12 +83,12 @@ pricing-simple {
                 display: flex;
                 width: 100%;
 
-                @include asm-breakpoint('lt-lg') {
+                @include treo-breakpoint('lt-lg') {
                     flex-direction: column;
                     align-items: center;
                 }
 
-                asm-card {
+                treo-card {
                     flex-direction: column;
                     flex: 1 0 auto;
                     align-items: center;
@@ -111,14 +111,14 @@ pricing-simple {
                     &:nth-child(2) {
                         padding: 112px 64px;
                         z-index: 5;
-                        @include asm-elevation('xl');
+                        @include treo-elevation('xl');
                     }
 
                     &:nth-child(3) {
                         border-radius: 0 8px 8px 0;
                     }
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         width: 100% !important;
                         max-width: 384px !important;
                         padding: 64px 48px !important;
@@ -186,7 +186,7 @@ pricing-simple {
 
                             .mat-icon {
                                 margin-right: 8px;
-                                @include asm-icon-size(20);
+                                @include treo-icon-size(20);
                             }
                         }
                     }
@@ -205,7 +205,7 @@ pricing-simple {
                 margin-top: 96px;
                 max-width: 1200px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin-top: 72px;
                 }
 
@@ -240,7 +240,7 @@ pricing-simple {
                         padding: 64px 40px 0 40px;
                         text-align: center;
 
-                        @include asm-breakpoint('xs') {
+                        @include treo-breakpoint('xs') {
                             padding: 64px 0 0 0;
                         }
 
@@ -260,7 +260,7 @@ pricing-simple {
                                 height: 48px !important;
 
                                 svg {
-                                    @include asm-icon-size(24);
+                                    @include treo-icon-size(24);
                                 }
                             }
 
@@ -285,7 +285,7 @@ pricing-simple {
                 width: 100%;
                 margin: 152px 0 32px 0;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin: 128px 0 32px 0;
                 }
 
@@ -314,7 +314,7 @@ pricing-simple {
                     width: 100%;
                     margin-top: 32px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         max-width: 384px;
                     }
 
@@ -347,7 +347,7 @@ pricing-simple {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -361,9 +361,9 @@ pricing-simple {
 
             path {
                 @if ($is-dark) {
-                    fill: asm-color('cool-gray', 800);
+                    fill: treo-color('cool-gray', 800);
                 } @else {
-                    fill: asm-color('blue', 300);
+                    fill: treo-color('blue', 300);
                 }
             }
         }
@@ -402,7 +402,7 @@ pricing-simple {
 
             .cards {
 
-                asm-card {
+                treo-card {
 
                     .tag {
                         background: map-get($accent, default);

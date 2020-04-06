@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@ang
 import { MatDrawer } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 
 @Component({
     selector     : 'mailbox',
@@ -24,10 +24,10 @@ export class MailboxComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
-        private _asmMediaWatcherService: AsmMediaWatcherService
+        private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
         // Set the private defaults
@@ -48,7 +48,7 @@ export class MailboxComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to media changes
-        this._asmMediaWatcherService.onMediaChange$
+        this._treoMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 

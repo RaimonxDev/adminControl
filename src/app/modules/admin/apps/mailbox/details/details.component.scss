@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 mailbox-details {
     display: flex;
@@ -6,7 +6,7 @@ mailbox-details {
     flex-direction: column;
     overflow: hidden;
 
-    @include asm-breakpoint('lt-lg') {
+    @include treo-breakpoint('lt-lg') {
         display: none;
         z-index: 10;
         overflow-y: auto;
@@ -33,7 +33,7 @@ mailbox-details {
                 display: none !important;
                 margin: 0 auto 0 -12px;
 
-                @include asm-breakpoint('lt-lg') {
+                @include treo-breakpoint('lt-lg') {
                     display: inline-flex !important;
                 }
             }
@@ -92,7 +92,7 @@ mailbox-details {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include asm-breakpoint('lt-lg') {
+        @include treo-breakpoint('lt-lg') {
             flex: 1 0 auto;
             overflow-y: hidden;
         }
@@ -185,7 +185,7 @@ mailbox-details {
                             line-height: 20px !important;
 
                             .mat-icon {
-                                @include asm-icon-size(20);
+                                @include treo-icon-size(20);
                             }
                         }
                     }
@@ -297,7 +297,7 @@ mailbox-details {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(20);
+                        @include treo-icon-size(20);
                     }
                 }
             }
@@ -323,7 +323,7 @@ mailbox-details {
                         button {
 
                             .mat-icon {
-                                @include asm-icon-size(20);
+                                @include treo-icon-size(20);
                             }
                         }
                     }
@@ -357,7 +357,7 @@ mailbox-details {
         justify-content: center;
 
         .mat-icon {
-            @include asm-icon-size(96);
+            @include treo-icon-size(96);
         }
 
         h4 {
@@ -399,7 +399,7 @@ mailbox-details {
     font-size: 13px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    @include asm-elevation('md');
+    @include treo-elevation('md');
 
     table {
 
@@ -436,7 +436,7 @@ mailbox-details {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -452,16 +452,16 @@ mailbox-details {
 
             .toolbar {
                 @if (not $is-dark) {
-                    background: asm-color('cool-gray', 50);
+                    background: treo-color('cool-gray', 50);
                 }
 
                 .toggle-important {
 
                     .important {
                         @if ($is-dark) {
-                            color: asm-color('red', 600);
+                            color: treo-color('red', 600);
                         } @else {
-                            color: asm-color('red', 500);
+                            color: treo-color('red', 500);
                         }
                     }
 
@@ -474,9 +474,9 @@ mailbox-details {
 
                     .starred {
                         @if ($is-dark) {
-                            color: asm-color('orange', 400);
+                            color: treo-color('orange', 400);
                         } @else {
-                            color: asm-color('orange', 500);
+                            color: treo-color('orange', 500);
                         }
                     }
 
@@ -489,7 +489,7 @@ mailbox-details {
 
         .threads {
             @if (not $is-dark) {
-                background: asm-color('cool-gray', 100);
+                background: treo-color('cool-gray', 100);
             }
 
             .thread {
@@ -544,7 +544,7 @@ mailbox-details {
 
         .select-mail-to-read {
             @if (not $is-dark) {
-                background: asm-color('cool-gray', 100);
+                background: treo-color('cool-gray', 100);
             }
 
             .mat-icon {

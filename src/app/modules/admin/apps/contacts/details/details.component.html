@@ -103,7 +103,7 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="name edit asm-mat-no-subscript">
+            <mat-form-field class="name edit treo-mat-no-subscript">
                 <input matInput
                        [formControlName]="'name'"
                        [placeholder]="'Name'"
@@ -119,7 +119,7 @@
          *ngIf="contact.tags.length || editMode">
 
         <div class="tag"
-             *ngFor="let tag of (contact.tags | asmFindByKey:'id':tags); trackBy: trackByFn">
+             *ngFor="let tag of (contact.tags | treoFindByKey:'id':tags); trackBy: trackByFn">
             <span class="tag-title">{{tag.title}}</span>
         </div>
 
@@ -190,7 +190,7 @@
                             <ng-container *ngIf="tagsEditMode">
                                 <div class="tag-edit"
                                      *ngFor="let tag of filteredTags; trackBy: trackByFn">
-                                    <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
+                                    <mat-form-field class="treo-mat-dense treo-mat-no-subscript">
                                         <input matInput
                                                [value]="tag.title"
                                                (input)="updateTagTitle(tag, $event)">
@@ -249,13 +249,13 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="asm-mat-no-subscript">
+            <mat-form-field class="treo-mat-no-subscript">
                 <input matInput
                        [formControlName]="'title'"
                        [placeholder]="'Job title'">
             </mat-form-field>
 
-            <mat-form-field class="asm-mat-no-subscript">
+            <mat-form-field class="treo-mat-no-subscript">
                 <input matInput
                        [formControlName]="'company'"
                        [placeholder]="'Company'">
@@ -300,14 +300,14 @@
             <div class="email"
                  *ngFor="let email of contactForm.get('emails')['controls']; let i = index; let first = first; let last = last; trackBy: trackByFn">
 
-                <mat-form-field class="asm-mat-no-subscript">
+                <mat-form-field class="treo-mat-no-subscript">
                     <input matInput
                            [formControl]="email.get('email')"
                            [placeholder]="'Email address'"
                            [spellcheck]="false">
                 </mat-form-field>
 
-                <mat-form-field class="asm-mat-no-subscript">
+                <mat-form-field class="treo-mat-no-subscript">
                     <input matInput
                            [formControl]="email.get('label')"
                            [placeholder]="'Label'">
@@ -375,7 +375,7 @@
             <div class="phone-number"
                  *ngFor="let phoneNumber of contactForm.get('phoneNumbers')['controls']; let i = index; let first = first; let last = last; trackBy: trackByFn">
 
-                <mat-form-field class="asm-mat-no-subscript">
+                <mat-form-field class="treo-mat-no-subscript">
                     <input matInput
                            [formControl]="phoneNumber.get('number')"
                            [placeholder]="'Phone'">
@@ -396,7 +396,7 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="asm-mat-no-subscript">
+                <mat-form-field class="treo-mat-no-subscript">
                     <input matInput
                            [formControl]="phoneNumber.get('label')"
                            [placeholder]="'Label'">
@@ -444,7 +444,7 @@
         <!-- Edit -->
         <div class="edit"
              *ngIf="editMode">
-            <mat-form-field class="asm-mat-no-subscript">
+            <mat-form-field class="treo-mat-no-subscript">
                 <input matInput
                        [formControlName]="'address'"
                        [placeholder]="'Address'"
@@ -471,7 +471,7 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="asm-mat-no-subscript">
+            <mat-form-field class="treo-mat-no-subscript">
                 <input matInput
                        [matDatepicker]="birthdayDatepicker"
                        [formControlName]="'birthday'"
@@ -503,9 +503,9 @@
         <div class="edit"
              *ngIf="editMode">
 
-            <mat-form-field class="asm-mat-textarea asm-mat-no-subscript">
+            <mat-form-field class="treo-mat-textarea treo-mat-no-subscript">
                 <textarea matInput
-                          asmAutogrow
+                          treoAutogrow
                           [rows]="5"
                           [formControlName]="'notes'"
                           [placeholder]="'Notes'"

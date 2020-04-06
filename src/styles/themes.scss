@@ -1,39 +1,39 @@
 // @formatter:off
 
 // -----------------------------------------------------------------------------------------------------
-// @ Assembly themes map. Do NOT rename the '$asm-themes' variable!!!
-//   This file meant to be imported more than once by @assembly, do NOT put anything heavy here!
+// @ Treo themes map. Do NOT rename the '$treo-themes' variable!!!
+//   This file meant to be imported more than once by @treo, do NOT put anything heavy here!
 //   The map contains Angular Material themes that will be generated for your app.
 //
 // @ Each key represents a class name that can be added to the 'body' tag to enable the theme globally.
 //   If added to other elements, themes will be applied to that element's scope only.
-//   Keys must start with 'asm-theme-'.
+//   Keys must start with 'treo-theme-'.
 //
-// @ Each value is an Angular Material theme, generated and modified by using 'asm-light-theme' or
-//   'asm-dark-theme' functions which uses 'mat-light-theme' and 'mat-dark-theme' functions respectively
+// @ Each value is an Angular Material theme, generated and modified by using 'treo-light-theme' or
+//   'treo-dark-theme' functions which uses 'mat-light-theme' and 'mat-dark-theme' functions respectively
 //   to generate the themes.
 //
-// @ 'asm-palette' values are coming from '$asm-color' map which can be found in
-//   '@assembly/styles/utilities/_colors.scss'.
+// @ 'treo-palette' values are coming from '$treo-color' map which can be found in
+//   '@treo/styles/utilities/_colors.scss'.
 // -----------------------------------------------------------------------------------------------------
-$asm-themes: (
+$treo-themes: (
 
     // -----------------------------------------------------------------------------------------------------
     // @ User themes - Add/Remove/Modify these for your own likings and needs
     // -----------------------------------------------------------------------------------------------------
 
     // Dark theme
-    'asm-theme-dark': asm-dark-theme(
-            asm-palette('teal'),
-            asm-palette('pink', 500),
-            asm-palette('red', 400)
+    'treo-theme-dark': treo-dark-theme(
+            treo-palette('teal'),
+            treo-palette('pink', 500),
+            treo-palette('red', 400)
     ),
 
     // Light theme
-    'asm-theme-light': asm-light-theme(
-            asm-palette('indigo'),
-            asm-palette('gray', 800),
-            asm-palette('red', 700)
+    'treo-theme-light': treo-light-theme(
+            treo-palette('indigo'),
+            treo-palette('gray', 800),
+            treo-palette('red', 700)
     ),
 
     // -----------------------------------------------------------------------------------------------------
@@ -53,16 +53,16 @@ $asm-themes: (
     // -----------------------------------------------------------------------------------------------------
 
     // Dark theme - DO NOT REMOVE
-    'theme-dark': asm-dark-theme(
-            asm-palette('white'),
-            asm-palette('gray', 800),
-            asm-palette('red', 800)
+    'theme-dark': treo-dark-theme(
+            treo-palette('white'),
+            treo-palette('gray', 800),
+            treo-palette('red', 800)
     ),
 
     // Light theme - DO NOT REMOVE
-    'theme-light': asm-light-theme(
-            asm-palette('black'),
-            asm-palette('gray', 800),
-            asm-palette('red', 800)
+    'theme-light': treo-light-theme(
+            treo-palette('black'),
+            treo-palette('gray', 800),
+            treo-palette('red', 800)
     )
 );

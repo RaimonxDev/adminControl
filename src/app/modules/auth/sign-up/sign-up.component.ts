@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AsmAnimations } from '@assembly/animations';
+import { TreoAnimations } from '@treo/animations';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from 'app/core/auth/auth.service';
     templateUrl  : './sign-up.component.html',
     styleUrls    : ['./sign-up.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    animations   : TreoAnimations
 })
 export class AuthSignUpComponent implements OnInit, OnDestroy
 {

@@ -5,8 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AsmCardModule } from '@assembly/components/card';
-import { AsmMessageModule } from '@assembly/components/message';
+import { TreoCardModule } from '@treo/components/card';
+import { TreoMessageModule } from '@treo/components/message';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthResetPasswordComponent } from 'app/modules/auth/reset-password/reset-password.component';
 import { authResetPasswordRoutes } from 'app/modules/auth/reset-password/reset-password.routing';
@@ -22,8 +22,8 @@ import { authResetPasswordRoutes } from 'app/modules/auth/reset-password/reset-p
         MatIconModule,
         MatInputModule,
         MatProgressSpinnerModule,
-        AsmCardModule,
-        AsmMessageModule,
+        TreoCardModule,
+        TreoMessageModule,
         SharedModule
     ]
 })

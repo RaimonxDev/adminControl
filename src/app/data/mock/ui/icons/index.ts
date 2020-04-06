@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { dripicons, feather, heroicons, iconsmind, material } from 'app/data/mock/ui/icons/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class IconsMockApi implements AsmMockApi
+export class IconsMockApi implements TreoMockApi
 {
     // Private Readonly
     private readonly _dripicons: any;
@@ -19,10 +19,10 @@ export class IconsMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -48,7 +48,7 @@ export class IconsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Dripicons icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/ui/icons/dripicons')
             .reply(() => {
                 return [
@@ -64,7 +64,7 @@ export class IconsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Feather icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/ui/icons/feather')
             .reply(() => {
                 return [
@@ -80,7 +80,7 @@ export class IconsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Heroicons icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/ui/icons/heroicons')
             .reply(() => {
                 return [
@@ -96,7 +96,7 @@ export class IconsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Iconsmind icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/ui/icons/iconsmind')
             .reply(() => {
                 return [
@@ -112,7 +112,7 @@ export class IconsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Material outline icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/ui/icons/material-outline')
             .reply(() => {
                 return [
@@ -128,7 +128,7 @@ export class IconsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Material twotone icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/ui/icons/material-twotone')
             .reply(() => {
                 return [

@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 import { MatDrawer } from '@angular/material/sidenav';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { Contact, Country } from 'app/modules/admin/apps/contacts/contacts.types';
 import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.service';
 
@@ -36,7 +36,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ContactsService} _contactsService
      * @param {DOCUMENT} _document
@@ -44,7 +44,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _asmMediaWatcherService: AsmMediaWatcherService,
+        private _treoMediaWatcherService: TreoMediaWatcherService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _contactsService: ContactsService,
         @Inject(DOCUMENT) private _document: any,
@@ -119,7 +119,7 @@ export class ContactsListComponent implements OnInit, OnDestroy
             .subscribe();
 
         // Subscribe to media query change
-        this._asmMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
+        this._treoMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((state) => {
 

@@ -18,8 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import * as moment from 'moment';
-import { AsmAutogrowModule } from '@assembly/directives/autogrow';
-import { AsmFindByKeyPipeModule } from '@assembly/pipes/find-by-key';
+import { TreoAutogrowModule } from '@treo/directives/autogrow';
+import { TreoFindByKeyPipeModule } from '@treo/pipes/find-by-key';
 import { SharedModule } from 'app/shared/shared.module';
 import { tasksRoutes } from 'app/modules/admin/apps/tasks/tasks.routing';
 import { TasksComponent } from 'app/modules/admin/apps/tasks/tasks.component';
@@ -51,8 +51,8 @@ import { TasksListComponent } from 'app/modules/admin/apps/tasks/list/list.compo
         MatSelectModule,
         MatSidenavModule,
         MatTooltipModule,
-        AsmAutogrowModule,
-        AsmFindByKeyPipeModule,
+        TreoAutogrowModule,
+        TreoFindByKeyPipeModule,
         SharedModule
     ],
     providers   : [

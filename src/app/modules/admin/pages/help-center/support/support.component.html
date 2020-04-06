@@ -19,12 +19,12 @@
         <div class="card">
 
             <!-- Message -->
-            <asm-message *ngIf="message"
+            <treo-message *ngIf="message"
                          [appearance]="'outline'"
                          [type]="message.type"
                          [showIcon]="false">
                 {{message.content}}
-            </asm-message>
+            </treo-message>
 
             <form [formGroup]="supportForm">
 
@@ -62,7 +62,7 @@
                 </mat-form-field>
 
                 <div class="label">Provide a detailed description</div>
-                <mat-form-field class="asm-mat-textarea">
+                <mat-form-field class="treo-mat-textarea">
                     <textarea matInput
                               [cdkTextareaAutosize]
                               [cdkAutosizeMinRows]="5"

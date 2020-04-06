@@ -1,29 +1,29 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmNavigationItem, AsmNavigationService } from '@assembly/components/navigation';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoNavigationItem, TreoNavigationService } from '@treo/components/navigation';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { defaultNavigation } from 'app/data/mock/common/navigation/data';
 import { contacts } from 'app/data/mock/apps/contacts/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SearchMockApi implements AsmMockApi
+export class SearchMockApi implements TreoMockApi
 {
     // Private Readonly
-    private readonly _defaultNavigation: AsmNavigationItem[] = defaultNavigation;
+    private readonly _defaultNavigation: TreoNavigationItem[] = defaultNavigation;
     private readonly _contacts: any[] = contacts;
 
     /**
      * Constructor
      *
-     * @param _asmNavigationService
-     * @param _asmMockApiService
+     * @param _treoNavigationService
+     * @param _treoMockApiService
      */
     constructor(
-        private _asmNavigationService: AsmNavigationService,
-        private _asmMockApiService: AsmMockApiService
+        private _treoNavigationService: TreoNavigationService,
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -44,12 +44,12 @@ export class SearchMockApi implements AsmMockApi
     register(): void
     {
         // Get the flat navigation and store it
-        const flatNavigation = this._asmNavigationService.getFlatNavigation(this._defaultNavigation);
+        const flatNavigation = this._treoNavigationService.getFlatNavigation(this._defaultNavigation);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Search results - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPost('api/common/search')
             .reply((request) => {
 

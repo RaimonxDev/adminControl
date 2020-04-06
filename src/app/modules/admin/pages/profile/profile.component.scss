@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 profile {
     display: flex;
@@ -10,7 +10,7 @@ profile {
             flex-direction: column;
             padding: 0 !important;
             border-bottom: none !important;
-            @include asm-elevation();
+            @include treo-elevation();
 
             .cover {
 
@@ -18,7 +18,7 @@ profile {
                     height: 160px;
                     object-fit: cover;
 
-                    @include asm-breakpoint('gt-md') {
+                    @include treo-breakpoint('gt-md') {
                         height: 320px;
                     }
                 }
@@ -33,7 +33,7 @@ profile {
                 margin: 0 auto;
                 padding: 0 32px;
 
-                @include asm-breakpoint('gt-md') {
+                @include treo-breakpoint('gt-md') {
                     flex-direction: row;
                     height: 72px;
                     max-height: 72px;
@@ -45,7 +45,7 @@ profile {
                     padding: 4px;
                     border-radius: 100%;
 
-                    @include asm-breakpoint('gt-md') {
+                    @include treo-breakpoint('gt-md') {
                         margin-top: -88px;
                     }
 
@@ -63,7 +63,7 @@ profile {
                     height: 32px;
                     margin: 0 32px;
 
-                    @include asm-breakpoint('gt-md') {
+                    @include treo-breakpoint('gt-md') {
                         display: flex;
                     }
                 }
@@ -74,7 +74,7 @@ profile {
                     align-items: center;
                     margin: 16px 0 0 0;
 
-                    @include asm-breakpoint('gt-md') {
+                    @include treo-breakpoint('gt-md') {
                         align-items: flex-start;
                         margin: 0 0 0 32px;
                     }
@@ -91,7 +91,7 @@ profile {
                     align-items: center;
                     margin: 24px 0 0 0;
 
-                    @include asm-breakpoint('gt-md') {
+                    @include treo-breakpoint('gt-md') {
                         margin: 0;
                     }
 
@@ -121,7 +121,7 @@ profile {
                     align-items: center;
                     margin: 32px 0 16px 0;
 
-                    @include asm-breakpoint('gt-md') {
+                    @include treo-breakpoint('gt-md') {
                         margin: 0 0 0 auto;
                     }
 
@@ -157,7 +157,7 @@ profile {
                     display: none;
                     margin-right: 32px;
 
-                    @include asm-breakpoint('gt-md') {
+                    @include treo-breakpoint('gt-md') {
                         display: flex;
                     }
                 }
@@ -169,7 +169,7 @@ profile {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);

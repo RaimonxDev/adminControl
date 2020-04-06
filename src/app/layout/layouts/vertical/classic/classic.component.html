@@ -1,18 +1,18 @@
 <!-- Navigation -->
-<asm-vertical-navigation class="text-cool-gray-300 bg-cool-gray-900 theme-dark"
+<treo-vertical-navigation class="text-cool-gray-300 bg-cool-gray-900 theme-dark"
                          [appearance]="'classic'"
                          [mode]="isScreenSmall ? 'over' : 'side'"
                          [name]="'mainNavigation'"
                          [navigation]="data.navigation.default"
                          [opened]="!isScreenSmall">
 
-    <div asmVerticalNavigationContentHeader>
+    <div treoVerticalNavigationContentHeader>
         <div class="logo">
-            <img src="assets/images/logo/logo-light.svg">
+            <img src="assets/images/logo/logo-text-on-dark.svg">
         </div>
     </div>
 
-</asm-vertical-navigation>
+</treo-vertical-navigation>
 
 <!-- Wrapper -->
 <div class="wrapper">
@@ -58,7 +58,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        Assembly &copy; {{currentYear}}
+        Treo &copy; {{currentYear}}
     </div>
 
 </div>

@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { brands as brandsData, categories as categoriesData, products as productsData, tags as tagsData, vendors as vendorsData } from 'app/data/mock/apps/ecommerce/inventory/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ECommerceInventoryMockApi implements AsmMockApi
+export class ECommerceInventoryMockApi implements TreoMockApi
 {
     // Private
     private _categories: any[];
@@ -22,10 +22,10 @@ export class ECommerceInventoryMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -51,7 +51,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Categories - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/ecommerce/inventory/categories')
             .reply(() => {
 
@@ -64,7 +64,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Brands - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/ecommerce/inventory/brands')
             .reply(() => {
 
@@ -77,7 +77,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Products - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/ecommerce/inventory/products', 625)
             .reply((request) => {
 
@@ -165,7 +165,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/ecommerce/inventory/product')
             .reply((request) => {
 
@@ -189,13 +189,13 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/ecommerce/inventory/product')
             .reply(() => {
 
                 // Generate a new product
                 const newProduct = {
-                    id         : AsmMockApiUtils.guid(),
+                    id         : TreoMockApiUtils.guid(),
                     category   : '',
                     name       : 'A New Product',
                     description: '',
@@ -228,7 +228,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/ecommerce/inventory/product')
             .reply((request) => {
 
@@ -261,7 +261,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/ecommerce/inventory/product')
             .reply((request) => {
 
@@ -286,7 +286,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/ecommerce/inventory/tags')
             .reply(() => {
 
@@ -299,7 +299,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/ecommerce/inventory/tag')
             .reply((request) => {
 
@@ -307,7 +307,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
                 const newTag = _.cloneDeep(request.body.tag);
 
                 // Generate a new GUID
-                newTag.id = AsmMockApiUtils.guid();
+                newTag.id = TreoMockApiUtils.guid();
 
                 // Unshift the new tag
                 this._tags.unshift(newTag);
@@ -321,7 +321,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/ecommerce/inventory/tag')
             .reply((request) => {
 
@@ -354,7 +354,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tag - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/ecommerce/inventory/tag')
             .reply((request) => {
 
@@ -387,7 +387,7 @@ export class ECommerceInventoryMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Vendors - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/ecommerce/inventory/vendors')
             .reply(() => {
 

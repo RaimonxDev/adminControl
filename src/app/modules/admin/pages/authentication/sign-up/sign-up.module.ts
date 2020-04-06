@@ -6,8 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AsmCardModule } from '@assembly/components/card';
-import { AsmMessageModule } from '@assembly/components/message';
+import { TreoCardModule } from '@treo/components/card';
+import { TreoMessageModule } from '@treo/components/message';
 import { SharedModule } from 'app/shared/shared.module';
 import { SignUpComponent } from 'app/modules/admin/pages/authentication/sign-up/sign-up.component';
 import { signupRoutes } from 'app/modules/admin/pages/authentication/sign-up/sign-up.routing';
@@ -24,8 +24,8 @@ import { signupRoutes } from 'app/modules/admin/pages/authentication/sign-up/sig
         MatIconModule,
         MatInputModule,
         MatProgressSpinnerModule,
-        AsmCardModule,
-        AsmMessageModule,
+        TreoCardModule,
+        TreoMessageModule,
         SharedModule
     ]
 })

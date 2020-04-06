@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 auth-sign-up {
 
@@ -6,7 +6,7 @@ auth-sign-up {
         align-items: center;
         justify-content: center;
 
-        asm-card {
+        treo-card {
 
             .form-container {
 
@@ -27,6 +27,6 @@ auth-sign-up {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
 }

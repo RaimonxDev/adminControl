@@ -441,8 +441,8 @@ module.exports = {
     // Custom plugins
     plugins: [
 
-        // Custom plugins required by Assembly
-        ...require('../@assembly/tailwind/plugins')
+        // Custom plugins required by Treo
+        ...require('../@treo/tailwind/plugins')
 
         // Other third party and custom plugins can be required here
         // ...

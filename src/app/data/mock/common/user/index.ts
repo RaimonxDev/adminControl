@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { user as userData } from 'app/data/mock/common/user/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserMockApi implements AsmMockApi
+export class UserMockApi implements TreoMockApi
 {
     // Private
     private _user: any;
@@ -15,10 +15,10 @@ export class UserMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param _asmMockApiService
+     * @param _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -40,7 +40,7 @@ export class UserMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ User - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/common/user')
             .reply(() => {
                 return [
@@ -54,7 +54,7 @@ export class UserMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ User - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/common/user')
             .reply((request) => {
 

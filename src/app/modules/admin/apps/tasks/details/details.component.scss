@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 tasks-details {
     display: flex;
@@ -13,7 +13,7 @@ tasks-details {
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 32px;
         }
 
@@ -108,7 +108,7 @@ tasks-details {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(16);
+                        @include treo-icon-size(16);
                     }
                 }
             }
@@ -136,7 +136,7 @@ tasks-details {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(16);
+                        @include treo-icon-size(16);
                     }
                 }
             }
@@ -156,7 +156,7 @@ tasks-details {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(16);
+                        @include treo-icon-size(16);
                     }
                 }
             }
@@ -186,7 +186,7 @@ tasks-details {
     margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
-    @include asm-elevation('md');
+    @include treo-elevation('md');
 
     .tags-panel-header {
         display: flex;
@@ -199,7 +199,7 @@ tasks-details {
             min-width: 0;
 
             .mat-icon {
-                @include asm-icon-size(16);
+                @include treo-icon-size(16);
             }
 
             input {
@@ -217,7 +217,7 @@ tasks-details {
             min-height: 24px;
 
             .mat-icon {
-                @include asm-icon-size(16);
+                @include treo-icon-size(16);
             }
         }
     }
@@ -267,7 +267,7 @@ tasks-details {
                 margin-left: 4px;
 
                 .mat-icon {
-                    @include asm-icon-size(20);
+                    @include treo-icon-size(20);
                 }
             }
 
@@ -288,7 +288,7 @@ tasks-details {
 
         .mat-icon {
             margin-right: 8px;
-            @include asm-icon-size(18);
+            @include treo-icon-size(18);
         }
 
         div {
@@ -304,7 +304,7 @@ tasks-details {
     margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
-    @include asm-elevation('md');
+    @include treo-elevation('md');
 
     .mat-radio-group {
         display: flex;
@@ -329,7 +329,7 @@ tasks-details {
                     flex: 1 1 auto;
 
                     .mat-icon {
-                        @include asm-icon-size(18);
+                        @include treo-icon-size(18);
                         margin-left: auto;
                     }
                 }
@@ -346,9 +346,9 @@ tasks-details {
     margin-top: 4px;
     border-radius: 4px;
     border: 1px solid;
-    @include asm-elevation('md');
+    @include treo-elevation('md');
 
-    @include asm-breakpoint('xs') {
+    @include treo-breakpoint('xs') {
         min-width: 280px;
         max-width: 280px;
     }
@@ -358,7 +358,7 @@ tasks-details {
 
         .mat-icon {
             margin-right: 8px;
-            @include asm-icon-size(20);
+            @include treo-icon-size(20);
         }
     }
 }
@@ -366,7 +366,7 @@ tasks-details {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -387,18 +387,18 @@ tasks-details {
 
                     .tag {
                         @if ($is-dark) {
-                            background: asm-color('cool-gray', 800);
-                            color: asm-color('cool-gray', 400);
+                            background: treo-color('cool-gray', 800);
+                            color: treo-color('cool-gray', 400);
                         } @else {
-                            background: asm-color('cool-gray', 100);
-                            color: asm-color('cool-gray', 500);
+                            background: treo-color('cool-gray', 100);
+                            color: treo-color('cool-gray', 500);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('cool-gray', 400);
+                                color: treo-color('cool-gray', 400);
                             } @else {
-                                color: asm-color('cool-gray', 500);
+                                color: treo-color('cool-gray', 500);
                             }
                         }
                     }
@@ -406,18 +406,18 @@ tasks-details {
                     .mat-button {
 
                         @if ($is-dark) {
-                            background: asm-color('cool-gray', 800);
-                            color: asm-color('cool-gray', 400);
+                            background: treo-color('cool-gray', 800);
+                            color: treo-color('cool-gray', 400);
                         } @else {
-                            background: asm-color('cool-gray', 100);
-                            color: asm-color('cool-gray', 500);
+                            background: treo-color('cool-gray', 100);
+                            color: treo-color('cool-gray', 500);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('cool-gray', 400);
+                                color: treo-color('cool-gray', 400);
                             } @else {
-                                color: asm-color('cool-gray', 500);
+                                color: treo-color('cool-gray', 500);
                             }
                         }
 
@@ -425,7 +425,7 @@ tasks-details {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.08) !important;
                             } @else {
-                                background: asm-color('cool-gray', 200) !important;
+                                background: treo-color('cool-gray', 200) !important;
                             }
                         }
                     }
@@ -438,26 +438,26 @@ tasks-details {
 
                     &.low {
                         @if ($is-dark) {
-                            background: asm-color('green', 500);
-                            color: asm-color('green', 100);
+                            background: treo-color('green', 500);
+                            color: treo-color('green', 100);
                         } @else {
-                            background: asm-color('green', 200);
-                            color: asm-color('green', 600);
+                            background: treo-color('green', 200);
+                            color: treo-color('green', 600);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('green', 100);
+                                color: treo-color('green', 100);
                             } @else {
-                                color: asm-color('green', 600);
+                                color: treo-color('green', 600);
                             }
                         }
 
                         .mat-button-focus-overlay {
                             @if ($is-dark) {
-                                background: asm-color('green', 400) !important;
+                                background: treo-color('green', 400) !important;
                             } @else {
-                                background: asm-color('green', 300) !important;
+                                background: treo-color('green', 300) !important;
                             }
                         }
                     }
@@ -465,17 +465,17 @@ tasks-details {
                     &.normal {
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.09);
-                            color: asm-color('cool-gray', 400);
+                            color: treo-color('cool-gray', 400);
                         } @else {
-                            background: asm-color('cool-gray', 100);
-                            color: asm-color('cool-gray', 500);
+                            background: treo-color('cool-gray', 100);
+                            color: treo-color('cool-gray', 500);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('cool-gray', 400);
+                                color: treo-color('cool-gray', 400);
                             } @else {
-                                color: asm-color('cool-gray', 500);
+                                color: treo-color('cool-gray', 500);
                             }
                         }
 
@@ -483,33 +483,33 @@ tasks-details {
                             @if ($is-dark) {
                                 background: rgba(0, 0, 0, 0.08) !important;
                             } @else {
-                                background: asm-color('cool-gray', 200) !important;
+                                background: treo-color('cool-gray', 200) !important;
                             }
                         }
                     }
 
                     &.high {
                         @if ($is-dark) {
-                            background: asm-color('red', 500);
-                            color: asm-color('red', 100);
+                            background: treo-color('red', 500);
+                            color: treo-color('red', 100);
                         } @else {
-                            background: asm-color('red', 200);
-                            color: asm-color('red', 600);
+                            background: treo-color('red', 200);
+                            color: treo-color('red', 600);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('red', 100);
+                                color: treo-color('red', 100);
                             } @else {
-                                color: asm-color('red', 600);
+                                color: treo-color('red', 600);
                             }
                         }
 
                         .mat-button-focus-overlay {
                             @if ($is-dark) {
-                                background: asm-color('red', 400) !important;
+                                background: treo-color('red', 400) !important;
                             } @else {
-                                background: asm-color('red', 300) !important;
+                                background: treo-color('red', 300) !important;
                             }
                         }
                     }
@@ -522,17 +522,17 @@ tasks-details {
 
                     @if ($is-dark) {
                         background: rgba(0, 0, 0, 0.09);
-                        color: asm-color('cool-gray', 400);
+                        color: treo-color('cool-gray', 400);
                     } @else {
-                        background: asm-color('cool-gray', 100);
-                        color: asm-color('cool-gray', 500);
+                        background: treo-color('cool-gray', 100);
+                        color: treo-color('cool-gray', 500);
                     }
 
                     .mat-icon {
                         @if ($is-dark) {
-                            color: asm-color('cool-gray', 400);
+                            color: treo-color('cool-gray', 400);
                         } @else {
-                            color: asm-color('cool-gray', 500);
+                            color: treo-color('cool-gray', 500);
                         }
                     }
 
@@ -540,58 +540,58 @@ tasks-details {
                         @if ($is-dark) {
                             background: rgba(0, 0, 0, 0.08) !important;
                         } @else {
-                            background: asm-color('cool-gray', 200) !important;
+                            background: treo-color('cool-gray', 200) !important;
                         }
                     }
 
                     &.due-set {
                         @if ($is-dark) {
-                            background: asm-color('green', 500);
-                            color: asm-color('green', 100);
+                            background: treo-color('green', 500);
+                            color: treo-color('green', 100);
                         } @else {
-                            background: asm-color('green', 200);
-                            color: asm-color('green', 600);
+                            background: treo-color('green', 200);
+                            color: treo-color('green', 600);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('green', 100);
+                                color: treo-color('green', 100);
                             } @else {
-                                color: asm-color('green', 600);
+                                color: treo-color('green', 600);
                             }
                         }
 
                         .mat-button-focus-overlay {
                             @if ($is-dark) {
-                                background: asm-color('green', 400) !important;
+                                background: treo-color('green', 400) !important;
                             } @else {
-                                background: asm-color('green', 300) !important;
+                                background: treo-color('green', 300) !important;
                             }
                         }
                     }
 
                     &.overdue {
                         @if ($is-dark) {
-                            background: asm-color('red', 500);
-                            color: asm-color('red', 100);
+                            background: treo-color('red', 500);
+                            color: treo-color('red', 100);
                         } @else {
-                            background: asm-color('red', 200);
-                            color: asm-color('red', 600);
+                            background: treo-color('red', 200);
+                            color: treo-color('red', 600);
                         }
 
                         .mat-icon {
                             @if ($is-dark) {
-                                color: asm-color('red', 100);
+                                color: treo-color('red', 100);
                             } @else {
-                                color: asm-color('red', 600);
+                                color: treo-color('red', 600);
                             }
                         }
 
                         .mat-button-focus-overlay {
                             @if ($is-dark) {
-                                background: asm-color('red', 400) !important;
+                                background: treo-color('red', 400) !important;
                             } @else {
-                                background: asm-color('red', 300) !important;
+                                background: treo-color('red', 300) !important;
                             }
                         }
                     }
@@ -635,7 +635,7 @@ tasks-details {
                 &.low {
 
                     .mat-icon {
-                        color: asm-color('green', 600);
+                        color: treo-color('green', 600);
                     }
                 }
 
@@ -649,7 +649,7 @@ tasks-details {
                 &.high {
 
                     .mat-icon {
-                        color: asm-color('red', 600);
+                        color: treo-color('red', 600);
                     }
                 }
             }

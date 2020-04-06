@@ -4,8 +4,8 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { AsmConfigService } from '@assembly/services/config';
-import { AsmDrawerService } from '@assembly/components/drawer';
+import { TreoConfigService } from '@treo/services/config';
+import { TreoDrawerService } from '@treo/components/drawer';
 import { Layout } from 'app/layout/layout.types';
 import { AppConfig, Theme } from 'app/core/config/app.config';
 
@@ -28,15 +28,15 @@ export class LayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {AsmConfigService} _asmConfigService
-     * @param {AsmDrawerService} _asmDrawerService
+     * @param {TreoConfigService} _treoConfigService
+     * @param {TreoDrawerService} _treoDrawerService
      * @param {DOCUMENT} _document
      * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _asmConfigService: AsmConfigService,
-        private _asmDrawerService: AsmDrawerService,
+        private _treoConfigService: TreoConfigService,
+        private _treoDrawerService: TreoDrawerService,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router
     )
@@ -55,7 +55,7 @@ export class LayoutComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to config changes
-        this._asmConfigService.config$
+        this._treoConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config: AppConfig) => {
 
@@ -66,9 +66,9 @@ export class LayoutComponent implements OnInit, OnDestroy
                 this.theme = config.theme;
 
                 // Update the selected theme class name on body
-                const themeName = 'asm-theme-' + config.theme;
+                const themeName = 'treo-theme-' + config.theme;
                 this._document.body.classList.forEach((className) => {
-                    if ( className.startsWith('asm-theme-') && className !== themeName )
+                    if ( className.startsWith('treo-theme-') && className !== themeName )
                     {
                         this._document.body.classList.remove(className);
                         this._document.body.classList.add(themeName);
@@ -176,7 +176,7 @@ export class LayoutComponent implements OnInit, OnDestroy
         }).then(() => {
 
             // Set the config
-            this._asmConfigService.config = {layout};
+            this._treoConfigService.config = {layout};
         });
     }
 
@@ -187,6 +187,6 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     setTheme(change: MatSlideToggleChange): void
     {
-        this._asmConfigService.config = {theme: change.checked ? 'dark' : 'light'};
+        this._treoConfigService.config = {theme: change.checked ? 'dark' : 'light'};
     }
 }

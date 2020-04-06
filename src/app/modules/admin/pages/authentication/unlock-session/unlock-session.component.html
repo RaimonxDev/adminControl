@@ -1,7 +1,7 @@
 <div class="content-layout fullwidth-basic-normal-scroll">
 
     <!-- cardStyle can be 'classic', 'modern', 'modern-alt', 'fullscreen', 'fullscreen-alt' -->
-    <asm-card class="auth-card"
+    <treo-card class="auth-card"
               [ngClass]="cardStyle">
 
         <!-- Form container -->
@@ -11,7 +11,7 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <img src="assets/images/logo/logo-base-dark.svg">
+                    <img src="assets/images/logo/logo.svg">
                 </div>
 
                 <!-- Title -->
@@ -19,13 +19,13 @@
                 <div class="subtitle">Your session is locked due to inactivity</div>
 
                 <!-- Message -->
-                <asm-message *ngIf="message"
+                <treo-message *ngIf="message"
                              [appearance]="message.appearance"
                              [showIcon]="message.showIcon"
                              [type]="message.type"
                              [@shake]="message.shake">
-                    <div asmMessageContent>{{message.content}}</div>
-                </asm-message>
+                    <div treoMessageContent>{{message.content}}</div>
+                </treo-message>
 
                 <!-- Unlock form -->
                 <form [formGroup]="unlockSessionForm">
@@ -58,7 +58,7 @@
                     </mat-form-field>
 
                     <!-- Submit button -->
-                    <button class="submit-button asm-mat-button-large"
+                    <button class="submit-button treo-mat-button-large"
                             mat-flat-button
                             type="button"
                             [color]="'primary'"
@@ -105,7 +105,7 @@
                     <span>Build with passion.</span>
                 </div>
                 <div class="description">
-                    Assembly helps developers to build organized and well-coded admin dashboards full of beautiful and feature rich modules.
+                    Treo helps developers to build organized and well-coded admin dashboards full of beautiful and feature rich modules.
                 </div>
                 <button class="learn-more-button"
                         mat-stroked-button>
@@ -115,7 +115,7 @@
 
         </div>
 
-    </asm-card>
+    </treo-card>
 
 </div>
 

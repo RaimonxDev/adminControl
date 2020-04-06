@@ -1,6 +1,6 @@
-@import 'assembly';
+@import 'treo';
 
-$asm-vertical-navigation-compact-width: 144;
+$treo-vertical-navigation-compact-width: 144;
 
 compact-layout {
     position: relative;
@@ -8,9 +8,9 @@ compact-layout {
     flex: 1 1 auto;
     width: 100%;
 
-    > asm-vertical-navigation {
+    > treo-vertical-navigation {
 
-        .asm-vertical-navigation-content-header {
+        .treo-vertical-navigation-content-header {
 
             .logo {
                 display: flex;
@@ -28,55 +28,55 @@ compact-layout {
         }
 
         // Compact appearance overrides
-        &.asm-vertical-navigation-appearance-compact {
-            width: #{$asm-vertical-navigation-compact-width}px;
-            min-width: #{$asm-vertical-navigation-compact-width}px;
-            max-width: #{$asm-vertical-navigation-compact-width}px;
+        &.treo-vertical-navigation-appearance-compact {
+            width: #{$treo-vertical-navigation-compact-width}px;
+            min-width: #{$treo-vertical-navigation-compact-width}px;
+            max-width: #{$treo-vertical-navigation-compact-width}px;
 
             // Left positioned
-            &.asm-vertical-navigation-position-left {
+            &.treo-vertical-navigation-position-left {
 
                 // Side mode
-                &.asm-vertical-navigation-mode-side {
-                    margin-left: -#{$asm-vertical-navigation-compact-width}px;
+                &.treo-vertical-navigation-mode-side {
+                    margin-left: -#{$treo-vertical-navigation-compact-width}px;
                 }
 
                 // Opened
-                &.asm-vertical-navigation-opened {
+                &.treo-vertical-navigation-opened {
                     margin-left: 0;
                 }
             }
 
             // Right positioned
-            &.asm-vertical-navigation-position-right {
+            &.treo-vertical-navigation-position-right {
 
                 // Side mode
-                &.asm-vertical-navigation-mode-side {
-                    margin-right: -#{$asm-vertical-navigation-compact-width}px;
+                &.treo-vertical-navigation-mode-side {
+                    margin-right: -#{$treo-vertical-navigation-compact-width}px;
                 }
 
                 // Opened
-                &.asm-vertical-navigation-opened {
+                &.treo-vertical-navigation-opened {
                     margin-right: 0;
                 }
 
                 // Aside wrapper
-                .asm-vertical-navigation-aside-wrapper {
+                .treo-vertical-navigation-aside-wrapper {
                     left: auto;
-                    right: #{$asm-vertical-navigation-compact-width}px;
+                    right: #{$treo-vertical-navigation-compact-width}px;
                 }
             }
 
             // Wrapper
-            .asm-vertical-navigation-wrapper {
+            .treo-vertical-navigation-wrapper {
 
                 // Content
-                .asm-vertical-navigation-content {
+                .treo-vertical-navigation-content {
 
-                    > asm-vertical-navigation-aside-item,
-                    > asm-vertical-navigation-basic-item {
+                    > treo-vertical-navigation-aside-item,
+                    > treo-vertical-navigation-basic-item {
 
-                        .asm-vertical-navigation-item {
+                        .treo-vertical-navigation-item {
                             flex-direction: column;
                             justify-content: center;
                             height: 96px;
@@ -84,25 +84,25 @@ compact-layout {
                             max-height: 96px;
                             padding: 0 16px;
 
-                            .asm-vertical-navigation-item-icon {
+                            .treo-vertical-navigation-item-icon {
                                 margin-right: 0;
                                 margin-bottom: 8px;
-                                @include asm-icon-size(30);
+                                @include treo-icon-size(30);
                             }
 
-                            .asm-vertical-navigation-item-title-wrapper {
+                            .treo-vertical-navigation-item-title-wrapper {
 
-                                .asm-vertical-navigation-item-title {
+                                .treo-vertical-navigation-item-title {
                                     text-align: center;
                                     font-weight: 500;
                                 }
 
-                                .asm-vertical-navigation-item-subtitle {
+                                .treo-vertical-navigation-item-subtitle {
                                     display: none !important;
                                 }
                             }
 
-                            .asm-vertical-navigation-item-badge {
+                            .treo-vertical-navigation-item-badge {
                                 position: absolute;
                                 top: 12px;
                                 left: 64px;
@@ -110,13 +110,13 @@ compact-layout {
                         }
                     }
 
-                    > asm-vertical-navigation-collapsable-item {
+                    > treo-vertical-navigation-collapsable-item {
                         display: none
                     }
 
-                    > asm-vertical-navigation-group-item {
+                    > treo-vertical-navigation-group-item {
 
-                        > .asm-vertical-navigation-item-wrapper {
+                        > .treo-vertical-navigation-item-wrapper {
                             display: none
                         }
                     }
@@ -124,8 +124,8 @@ compact-layout {
             }
 
             // Aside wrapper
-            .asm-vertical-navigation-aside-wrapper {
-                left: #{$asm-vertical-navigation-compact-width}px;
+            .treo-vertical-navigation-aside-wrapper {
+                left: #{$treo-vertical-navigation-compact-width}px;
             }
         }
     }
@@ -148,7 +148,7 @@ compact-layout {
             padding: 0 24px;
             z-index: 49;
 
-            @include asm-breakpoint('lt-md') {
+            @include treo-breakpoint('lt-md') {
                 padding: 0 16px;
             }
 
@@ -231,7 +231,7 @@ compact-layout {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -247,14 +247,14 @@ compact-layout {
                     box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation();
+                    @include treo-elevation();
                 }
             }
 
             > .footer {
                 @if (not $is-dark) {
                     background: map-get($background, card);
-                    @include asm-elevation();
+                    @include treo-elevation();
                 }
                 box-shadow: 0 -1px 0 0 map-get($foreground, divider);
                 color: map-get($foreground, secondary-text);

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { faqCategories as faqCategoriesData, faqs as faqsData, guideCategories as guideCategoriesData, guideContent as guideContentData, guides as guidesData } from 'app/data/mock/pages/help-center/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class HelpCenterMockApi implements AsmMockApi
+export class HelpCenterMockApi implements TreoMockApi
 {
     // Private
     private _faqCategories: any[];
@@ -19,10 +19,10 @@ export class HelpCenterMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -48,7 +48,7 @@ export class HelpCenterMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ FAQs - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/pages/help-center/faqs')
             .reply((request) => {
 
@@ -102,7 +102,7 @@ export class HelpCenterMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Guides - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/pages/help-center/guides')
             .reply((request) => {
 
@@ -162,7 +162,7 @@ export class HelpCenterMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Guide - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/pages/help-center/guide')
             .reply((request) => {
 

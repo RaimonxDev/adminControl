@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 help-center-guides {
     display: flex;
@@ -9,7 +9,7 @@ help-center-guides {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -21,7 +21,7 @@ help-center-guides {
             max-width: 960px;
             margin-top: 64px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin-top: 48px;
             }
 
@@ -32,7 +32,7 @@ help-center-guides {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(18);
+                        @include treo-icon-size(18);
                     }
 
                     span {
@@ -56,7 +56,7 @@ help-center-guides {
             margin-top: 80px;
             padding: 0 !important;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin-top: 64px;
             }
 
@@ -75,7 +75,7 @@ help-center-guides {
                     min-width: 45%;
                     margin-bottom: 80px;
 
-                    @include asm-breakpoint('xs') {
+                    @include treo-breakpoint('xs') {
                         margin-bottom: 64px;
                     }
 
@@ -98,7 +98,7 @@ help-center-guides {
                         margin-top: 24px;
 
                         .mat-icon {
-                            @include asm-icon-size(18);
+                            @include treo-icon-size(18);
                             margin-left: 8px;
                         }
                     }
@@ -119,7 +119,7 @@ help-center-guides {
                         }
 
                         .mat-icon {
-                            @include asm-icon-size(14);
+                            @include treo-icon-size(14);
                             margin-left: 8px;
                         }
                     }
@@ -132,7 +132,7 @@ help-center-guides {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);

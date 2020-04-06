@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 search {
     display: flex;
@@ -30,7 +30,7 @@ search {
                         border: none;
                         border-radius: 0 !important;
 
-                        @include asm-breakpoint('xs') {
+                        @include treo-breakpoint('xs') {
                             padding: 0 56px 0 24px
                         }
                     }
@@ -47,7 +47,7 @@ search {
                 min-height: 40px;
                 height: 40px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     right: 8px;
                 }
             }
@@ -106,12 +106,12 @@ search {
     &.search-results-appearance-bar {
         border-top-width: 1px;
         border-radius: 0 0 4px 4px;
-        @include asm-elevation('md', true);
+        @include treo-elevation('md', true);
 
         .mat-option {
             padding: 0 40px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 padding: 0 24px
             }
         }
@@ -121,12 +121,12 @@ search {
     &.search-results-appearance-basic {
         margin-top: 8px;
         border-radius: 4px;
-        @include asm-elevation('2xl', true);
+        @include treo-elevation('2xl', true);
 
         .mat-option {
             padding: 0 32px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 padding: 0 24px
             }
         }
@@ -165,7 +165,7 @@ search {
 
                         .mat-icon {
                             margin: 0;
-                            @include asm-icon-size(20);
+                            @include treo-icon-size(20);
                         }
                     }
                 }
@@ -216,7 +216,7 @@ search {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -264,11 +264,11 @@ search {
 
         .mat-option {
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 background: transparent !important;
             }
 
-            @include asm-breakpoint('gt-xs') {
+            @include treo-breakpoint('gt-xs') {
                 &:hover:not(.mat-option-disabled),
                 &:focus:not(.mat-option-disabled) {
                     box-shadow: inset 4px 0 0 map-get($primary, default);
@@ -289,16 +289,16 @@ search {
                     &.contact-result {
 
                         .badge {
-                            background: asm-color('blue', 500);
-                            color: asm-contrast('blue', 500);
+                            background: treo-color('blue', 500);
+                            color: treo-contrast('blue', 500);
                         }
                     }
 
                     &.page-result {
 
                         .badge {
-                            background: asm-color('purple', 500);
-                            color: asm-contrast('purple', 500);
+                            background: treo-color('purple', 500);
+                            color: treo-contrast('purple', 500);
                         }
 
                         .title {

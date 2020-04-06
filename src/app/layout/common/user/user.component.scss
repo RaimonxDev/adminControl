@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 user {
     display: flex;
@@ -53,7 +53,7 @@ user {
             max-height: 20px;
 
             .mat-icon {
-                @include asm-icon-size(20);
+                @include treo-icon-size(20);
             }
         }
     }
@@ -87,7 +87,7 @@ user {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
 
@@ -98,19 +98,19 @@ user {
             .status {
 
                 &.online {
-                    background: asm-color('green', 500);
+                    background: treo-color('green', 500);
                 }
 
                 &.away {
-                    background: asm-color('orange', 500);
+                    background: treo-color('orange', 500);
                 }
 
                 &.busy {
-                    background: asm-color('red', 500);
+                    background: treo-color('red', 500);
                 }
 
                 &.not-visible {
-                    background: asm-color('cool-gray', 400);
+                    background: treo-color('cool-gray', 400);
                 }
             }
         }
@@ -121,19 +121,19 @@ user {
         .status {
 
             &.online {
-                background: asm-color('green', 500);
+                background: treo-color('green', 500);
             }
 
             &.away {
-                background: asm-color('orange', 500);
+                background: treo-color('orange', 500);
             }
 
             &.busy {
-                background: asm-color('red', 500);
+                background: treo-color('red', 500);
             }
 
             &.not-visible {
-                background: asm-color('cool-gray', 400);
+                background: treo-color('cool-gray', 400);
             }
         }
     }

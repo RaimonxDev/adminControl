@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { messages as messagesData } from 'app/data/mock/common/messages/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MessagesMockApi implements AsmMockApi
+export class MessagesMockApi implements TreoMockApi
 {
     // Private
     private _messages: any;
@@ -16,10 +16,10 @@ export class MessagesMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -41,7 +41,7 @@ export class MessagesMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/common/messages')
             .reply(() => {
                 return [
@@ -55,7 +55,7 @@ export class MessagesMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/common/messages')
             .reply((request) => {
 
@@ -63,7 +63,7 @@ export class MessagesMockApi implements AsmMockApi
                 const newMessage = _.cloneDeep(request.body.message);
 
                 // Generate a new GUID
-                newMessage.id = AsmMockApiUtils.guid();
+                newMessage.id = TreoMockApiUtils.guid();
 
                 // Unshift the new message
                 this._messages.unshift(newMessage);
@@ -77,7 +77,7 @@ export class MessagesMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/common/messages')
             .reply((request) => {
 
@@ -110,7 +110,7 @@ export class MessagesMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/common/messages')
             .reply((request) => {
 
@@ -138,7 +138,7 @@ export class MessagesMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mark all as read - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/common/messages/mark-all-as-read')
             .reply(() => {
 
@@ -159,7 +159,7 @@ export class MessagesMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Toggle read status - POST
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPost('api/common/messages/toggle-read-status')
             .reply((request) => {
 

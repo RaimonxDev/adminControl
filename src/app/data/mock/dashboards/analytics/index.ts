@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { analytics as analyticsData } from 'app/data/mock/dashboards/analytics/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AnalyticsMockApi implements AsmMockApi
+export class AnalyticsMockApi implements TreoMockApi
 {
     // Private
     private _analytics: any;
@@ -15,10 +15,10 @@ export class AnalyticsMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param _asmMockApiService
+     * @param _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -40,7 +40,7 @@ export class AnalyticsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Sales - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/dashboards/analytics')
             .reply(() => {
 

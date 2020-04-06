@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 help-center-faqs {
     display: flex;
@@ -9,7 +9,7 @@ help-center-faqs {
         padding: 0 64px;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             padding: 0 32px;
         }
 
@@ -21,7 +21,7 @@ help-center-faqs {
             max-width: 960px;
             margin-top: 64px;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin-top: 48px;
             }
 
@@ -32,7 +32,7 @@ help-center-faqs {
 
                     .mat-icon {
                         margin-right: 8px;
-                        @include asm-icon-size(18);
+                        @include treo-icon-size(18);
                     }
 
                     span {
@@ -56,7 +56,7 @@ help-center-faqs {
             margin-top: 80px;
             padding: 0 !important;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 margin-top: 64px;
             }
 
@@ -65,7 +65,7 @@ help-center-faqs {
                 flex-direction: column;
                 margin-bottom: 80px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin-bottom: 64px;
                 }
 
@@ -95,7 +95,7 @@ help-center-faqs {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $foreground: map-get($theme, foreground);
     $primary: map-get($theme, primary);

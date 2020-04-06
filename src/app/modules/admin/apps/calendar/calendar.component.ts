@@ -18,7 +18,7 @@ import * as moment from 'moment';
 import { RRule } from 'rrule';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AsmMediaWatcherService } from '@assembly/services/media-watcher';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { CalendarRecurrenceComponent } from 'app/modules/admin/apps/calendar/recurrence/recurrence.component';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 import { Calendar, CalendarDrawerMode, CalendarEvent, CalendarEventEditMode, CalendarEventPanelMode, CalendarSettings } from 'app/modules/admin/apps/calendar/calendar.types';
@@ -65,7 +65,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {AsmMediaWatcherService} _asmMediaWatcherService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {CalendarService} _calendarService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {Document} _document
@@ -75,7 +75,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
-        private _asmMediaWatcherService: AsmMediaWatcherService,
+        private _treoMediaWatcherService: TreoMediaWatcherService,
         private _calendarService: CalendarService,
         private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: Document,
@@ -237,7 +237,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             });
 
         // Subscribe to media changes
-        this._asmMediaWatcherService.onMediaChange$
+        this._treoMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 

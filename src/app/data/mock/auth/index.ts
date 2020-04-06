@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthMockApi implements AsmMockApi
+export class AuthMockApi implements TreoMockApi
 {
     // Private Readonly
     private readonly _secret: any;
@@ -14,10 +14,10 @@ export class AuthMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -77,7 +77,7 @@ export class AuthMockApi implements AsmMockApi
         // Define token payload
         const payload = {
             iat: iat,
-            iss: 'Assembly',
+            iss: 'Treo',
             exp: exp
         };
 
@@ -132,7 +132,7 @@ export class AuthMockApi implements AsmMockApi
         // @ Sign in - POST
         // -----------------------------------------------------------------------------------------------------
 
-        this._asmMockApiService
+        this._treoMockApiService
             .onPost('api/auth/sign-in', 1500)
             .reply((request) => {
 
@@ -160,7 +160,7 @@ export class AuthMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Verify and refresh the access token - POST
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPost('api/auth/refresh-access-token')
             .reply((request) => {
 

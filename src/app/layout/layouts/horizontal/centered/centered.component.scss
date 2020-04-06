@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 centered-layout {
     position: relative;
@@ -8,17 +8,17 @@ centered-layout {
     width: 100%;
     padding: 32px;
 
-    @include asm-breakpoint('lt-lg') {
+    @include treo-breakpoint('lt-lg') {
         padding: 16px;
     }
 
-    @include asm-breakpoint('xs') {
+    @include treo-breakpoint('xs') {
         padding: 0;
     }
 
-    > asm-vertical-navigation {
+    > treo-vertical-navigation {
 
-        .asm-vertical-navigation-content-header {
+        .treo-vertical-navigation-content-header {
 
             .logo {
                 display: flex;
@@ -29,7 +29,7 @@ centered-layout {
                 padding: 24px 32px 0 32px;
 
                 img {
-                    max-width: 168px;
+                    max-width: 96px;
                 }
             }
         }
@@ -45,7 +45,7 @@ centered-layout {
         border-radius: 8px;
         overflow: hidden;
 
-        @include asm-breakpoint('xs') {
+        @include treo-breakpoint('xs') {
             border-radius: 0;
         }
 
@@ -59,7 +59,7 @@ centered-layout {
             min-height: 80px;
             z-index: 49;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 height: 64px;
                 max-height: 64px;
                 min-height: 64px;
@@ -73,7 +73,7 @@ centered-layout {
                 height: 100%;
                 margin: 0 24px;
 
-                @include asm-breakpoint('lt-md') {
+                @include treo-breakpoint('lt-md') {
                     margin: 0 16px;
                 }
 
@@ -82,14 +82,14 @@ centered-layout {
                     align-items: center;
                     margin: 0 32px 0 8px;
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         margin-right: 8px;
                     }
 
                     img {
-                        width: 144px;
-                        min-width: 144px;
-                        max-width: 144px;
+                        width: 96px;
+                        min-width: 96px;
+                        max-width: 96px;
 
                         &.logo-base {
                             width: 32px;
@@ -98,9 +98,9 @@ centered-layout {
                         }
                     }
 
-                    .logo-light,
-                    .logo-dark {
-                        @include asm-breakpoint('lt-lg') {
+                    .logo-text,
+                    .logo-text-on-dark {
+                        @include treo-breakpoint('lt-lg') {
                             display: none;
                         }
                     }
@@ -108,13 +108,13 @@ centered-layout {
                     .logo-base {
                         display: none;
 
-                        @include asm-breakpoint('lt-lg') {
+                        @include treo-breakpoint('lt-lg') {
                             display: flex;
                         }
                     }
                 }
 
-                asm-horizontal-navigation {
+                treo-horizontal-navigation {
                     margin-right: 8px;
                 }
 
@@ -131,7 +131,7 @@ centered-layout {
                 search {
                     margin-right: 8px;
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -139,7 +139,7 @@ centered-layout {
                 shortcuts {
                     margin-right: 8px;
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -147,7 +147,7 @@ centered-layout {
                 messages {
                     margin-right: 8px;
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -155,7 +155,7 @@ centered-layout {
                 notifications {
                     margin-right: 8px;
 
-                    @include asm-breakpoint('lt-lg') {
+                    @include treo-breakpoint('lt-lg') {
                         margin-right: 2px;
                     }
                 }
@@ -186,7 +186,7 @@ centered-layout {
             min-height: 80px;
             z-index: 49;
 
-            @include asm-breakpoint('xs') {
+            @include treo-breakpoint('xs') {
                 height: 56px;
                 max-height: 56px;
                 min-height: 56px;
@@ -200,7 +200,7 @@ centered-layout {
                 height: 100%;
                 margin: 0 32px;
 
-                @include asm-breakpoint('xs') {
+                @include treo-breakpoint('xs') {
                     margin: 0 24px;
                 }
             }
@@ -233,7 +233,7 @@ centered-layout {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
@@ -243,12 +243,12 @@ centered-layout {
         @if ($is-dark) {
             background: map-get($background, card);
         } @else {
-            background: asm-color('cool-gray', 200);
+            background: treo-color('cool-gray', 200);
         }
 
         > .wrapper {
             @if (not $is-dark) {
-                @include asm-elevation('xl');
+                @include treo-elevation('xl');
             }
 
             > .header {
@@ -257,22 +257,20 @@ centered-layout {
                     box-shadow: 0 1px 0 0 map-get($foreground, divider);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation('xs');
+                    @include treo-elevation('xs');
                 }
 
                 .container {
 
                     .logo {
 
-                        .logo-dark {
-
+                        .logo-text {
                             @if ($is-dark) {
                                 display: none;
                             }
                         }
 
-                        .logo-light {
-
+                        .logo-text-on-dark {
                             @if (not $is-dark) {
                                 display: none;
                             }
@@ -290,7 +288,7 @@ centered-layout {
                     background: map-get($background, background);
                 } @else {
                     background: map-get($background, card);
-                    @include asm-elevation('md');
+                    @include treo-elevation('md');
                 }
                 box-shadow: 0 -1px 0 0 map-get($foreground, divider);
                 color: map-get($foreground, secondary-text);

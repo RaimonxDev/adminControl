@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AsmAnimations } from '@assembly/animations';
-import { AsmValidators } from '@assembly/validators';
+import { TreoAnimations } from '@treo/animations';
+import { TreoValidators } from '@treo/validators';
 
 @Component({
     selector     : 'auth-reset-password',
     templateUrl  : './reset-password.component.html',
     styleUrls    : ['./reset-password.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : AsmAnimations
+    animations   : TreoAnimations
 })
 export class AuthResetPasswordComponent implements OnInit, OnDestroy
 {
@@ -50,7 +50,7 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
                 passwordConfirm: ['', Validators.required]
             },
             {
-                validators: AsmValidators.mustMatch('password', 'passwordConfirm')
+                validators: TreoValidators.mustMatch('password', 'passwordConfirm')
             }
         );
     }

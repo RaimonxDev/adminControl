@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 mailbox {
 
@@ -21,7 +21,7 @@ mailbox {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $is-dark: map-get($theme, is-dark);
 
@@ -31,7 +31,7 @@ mailbox {
 
             .mat-drawer {
                 @if ($is-dark) {
-                    background: asm-color('cool-gray', 900);
+                    background: treo-color('cool-gray', 900);
                 }
             }
         }

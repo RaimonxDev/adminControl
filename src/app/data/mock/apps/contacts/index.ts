@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
-import { AsmMockApi } from '@assembly/lib/mock-api/mock-api.interfaces';
-import { AsmMockApiUtils } from '@assembly/lib/mock-api/mock-api.utils';
-import { AsmMockApiService } from '@assembly/lib/mock-api/mock-api.service';
+import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
+import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
+import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { contacts as contactsData, countries as countriesData, tags as tagsData } from 'app/data/mock/apps/contacts/data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ContactsMockApi implements AsmMockApi
+export class ContactsMockApi implements TreoMockApi
 {
     // Private
     private _contacts: any[];
@@ -20,10 +20,10 @@ export class ContactsMockApi implements AsmMockApi
     /**
      * Constructor
      *
-     * @param {AsmMockApiService} _asmMockApiService
+     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
-        private _asmMockApiService: AsmMockApiService
+        private _treoMockApiService: TreoMockApiService
     )
     {
         // Set the data
@@ -47,7 +47,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contacts - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/contacts/all')
             .reply(() => {
 
@@ -66,7 +66,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contacts Search - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/contacts/search')
             .reply((request) => {
 
@@ -97,7 +97,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/contacts/contact')
             .reply((request) => {
 
@@ -121,13 +121,13 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/contacts/contact')
             .reply(() => {
 
                 // Generate a new contact
                 const newContact = {
-                    id          : AsmMockApiUtils.guid(),
+                    id          : TreoMockApiUtils.guid(),
                     avatar      : null,
                     name        : 'New Contact',
                     emails      : [],
@@ -154,7 +154,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/contacts/contact')
             .reply((request) => {
 
@@ -187,7 +187,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/contacts/contact')
             .reply((request) => {
 
@@ -212,7 +212,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Countries - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/contacts/countries')
             .reply(() => {
 
@@ -225,7 +225,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onGet('api/apps/contacts/tags')
             .reply(() => {
 
@@ -238,7 +238,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPut('api/apps/contacts/tag')
             .reply((request) => {
 
@@ -246,7 +246,7 @@ export class ContactsMockApi implements AsmMockApi
                 const newTag = _.cloneDeep(request.body.tag);
 
                 // Generate a new GUID
-                newTag.id = AsmMockApiUtils.guid();
+                newTag.id = TreoMockApiUtils.guid();
 
                 // Unshift the new tag
                 this._tags.unshift(newTag);
@@ -260,7 +260,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onPatch('api/apps/contacts/tag')
             .reply((request) => {
 
@@ -293,7 +293,7 @@ export class ContactsMockApi implements AsmMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tag - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._asmMockApiService
+        this._treoMockApiService
             .onDelete('api/apps/contacts/tag')
             .reply((request) => {
 
@@ -355,7 +355,7 @@ export class ContactsMockApi implements AsmMockApi
             });
         };
 
-        this._asmMockApiService
+        this._treoMockApiService
             .onPost('api/apps/contacts/avatar')
             .reply((request) => {
 

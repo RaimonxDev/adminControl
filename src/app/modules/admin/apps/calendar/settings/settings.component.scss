@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 calendar-settings {
 
@@ -54,14 +54,14 @@ calendar-settings {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);
 
     calendar-settings {
         @if ($is-dark) {
-            background: asm-color('cool-gray', 900);
+            background: treo-color('cool-gray', 900);
         } @else {
             background: map-get($background, card);
         }

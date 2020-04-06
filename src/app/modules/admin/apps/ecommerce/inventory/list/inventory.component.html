@@ -17,7 +17,7 @@
                 <!-- Search -->
                 <div class="search">
 
-                    <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
+                    <mat-form-field class="treo-mat-dense treo-mat-no-subscript">
                         <mat-icon matPrefix
                                   [svgIcon]="'search'"></mat-icon>
                         <input matInput
@@ -370,7 +370,7 @@
                                                                     <ng-container *ngIf="tagsEditMode">
                                                                         <div class="tag-edit"
                                                                              *ngFor="let tag of filteredTags; trackBy: trackByFn">
-                                                                            <mat-form-field class="asm-mat-dense asm-mat-no-subscript">
+                                                                            <mat-form-field class="treo-mat-dense treo-mat-no-subscript">
                                                                                 <input matInput
                                                                                        [value]="tag.title"
                                                                                        (input)="updateTagTitle(tag, $event)">

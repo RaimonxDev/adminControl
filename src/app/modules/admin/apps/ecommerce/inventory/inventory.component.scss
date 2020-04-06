@@ -1,4 +1,4 @@
-@import 'assembly';
+@import 'treo';
 
 inventory {
 
@@ -7,7 +7,7 @@ inventory {
 // -----------------------------------------------------------------------------------------------------
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
-@include asm-theme {
+@include treo-theme {
 
     $background: map-get($theme, background);
     $is-dark: map-get($theme, is-dark);

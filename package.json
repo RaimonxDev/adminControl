@@ -1,5 +1,5 @@
 {
-    "name": "assembly",
+    "name": "treo",
     "version": "1.0.0",
     "scripts": {
         "ng": "ng",
@@ -14,8 +14,8 @@
         "tw": "npm run tw:build && npm run tw:export",
         "tw:build": "./node_modules/.bin/tailwind build src/tailwind/main.css -c src/tailwind/config.js -o src/styles/tailwind.scss",
         "tw:export": "npm run tw:export:js && npm run tw:export:scss",
-        "tw:export:js": "node src/@assembly/tailwind/export.js -c src/tailwind/config.js -o src/@assembly/tailwind/exported/variables.ts",
-        "tw:export:scss": "./node_modules/.bin/tailwind build src/@assembly/tailwind/export.css -c src/tailwind/config.js -o src/@assembly/tailwind/exported/_variables.scss"
+        "tw:export:js": "node src/@treo/tailwind/export.js -c src/tailwind/config.js -o src/@treo/tailwind/exported/variables.ts",
+        "tw:export:scss": "./node_modules/.bin/tailwind build src/@treo/tailwind/export.css -c src/tailwind/config.js -o src/@treo/tailwind/exported/_variables.scss"
     },
     "private": true,
     "dependencies": {
