@@ -12,30 +12,29 @@ futuristic-layout {
 
             .user {
                 display: flex;
-                flex-direction: column;
                 align-items: center;
                 width: 100%;
                 padding: 40px 16px 32px 20px;
 
                 .mat-icon-button {
-                    width: 72px;
-                    height: 72px;
-                    min-height: 72px;
-                    max-height: 72px;
+                    width: 48px;
+                    height: 48px;
+                    min-height: 48px;
+                    max-height: 48px;
                 }
 
                 .avatar {
 
                     img {
-                        width: 72px;
-                        min-width: 72px;
-                        height: 72px;
-                        min-height: 72px;
+                        width: 48px;
+                        min-width: 48px;
+                        height: 48px;
+                        min-height: 48px;
                         border-radius: 16px;
                     }
 
                     .mat-icon {
-                        @include treo-icon-size(72);
+                        @include treo-icon-size(48);
                     }
 
                     .status {
@@ -53,7 +52,7 @@ futuristic-layout {
                     flex: 1 1 auto;
                     width: 100%;
                     min-width: 0;
-                    margin-top: 16px;
+                    margin-left: 16px;
 
                     .name,
                     .email {
@@ -63,11 +62,6 @@ futuristic-layout {
                         text-overflow: ellipsis;
                         overflow: hidden;
                         line-height: normal;
-                        text-align: center;
-                    }
-
-                    .name {
-                        font-size: 15px;
                     }
 
                     .email {
