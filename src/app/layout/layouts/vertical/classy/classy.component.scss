@@ -14,7 +14,7 @@ classy-layout {
                 display: flex;
                 align-items: center;
                 width: 100%;
-                padding: 16px;
+                padding: 16px 16px 16px 24px;
 
                 .logo {
                     display: flex;
@@ -137,10 +137,6 @@ classy-layout {
 
             .navigation-toggle-button {
                 margin-right: 8px;
-
-                @include treo-breakpoint('gt-sm') {
-                    display: none !important;
-                }
             }
 
             .message {
