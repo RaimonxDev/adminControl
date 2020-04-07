@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TreoDrawerModule } from '@treo/components/drawer';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { EmptyLayoutModule } from 'app/layout/layouts/empty/empty.module';
@@ -43,9 +40,6 @@ const modules = [
         LayoutComponent
     ],
     imports     : [
-        MatIconModule,
-        MatRadioModule,
-        MatSlideToggleModule,
         TreoDrawerModule,
         SharedModule,
         ...modules
