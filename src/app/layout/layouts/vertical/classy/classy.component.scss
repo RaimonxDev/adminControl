@@ -99,16 +99,15 @@ classy-layout {
             .logo {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                height: 80px;
-                min-height: 80px;
-                max-height: 80px;
-                padding: 24px;
-                margin: 8px 0;
+                height: 64px;
+                min-height: 64px;
+                max-height: 64px;
+                padding: 0 24px;
+                margin: 8px 0 16px 0;
                 opacity: 0.12;
 
                 img {
-                    max-width: 192px;
+                    max-width: 144px;
                 }
             }
         }
