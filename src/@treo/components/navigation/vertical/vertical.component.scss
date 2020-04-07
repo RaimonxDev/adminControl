@@ -504,7 +504,7 @@ treo-vertical-navigation {
             }
 
             &.treo-vertical-navigation-item-disabled {
-                opacity: 0.3;
+                opacity: 0.38;
                 cursor: default;
 
                 .treo-vertical-navigation-item-icon,
@@ -599,7 +599,7 @@ treo-vertical-navigation {
                     .treo-vertical-navigation-item {
 
                         .treo-vertical-navigation-item-title {
-                            color: map-get($primary, 400);
+                            color: map-get($primary, 400) !important;
                         }
                     }
                 }
