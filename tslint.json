@@ -13,14 +13,14 @@
         "directive-selector": [
             true,
             "attribute",
-            ["asm", ""],
+            ["treo", ""],
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
             "attribute",
-            ["asm", ""],
+            ["treo", ""],
             ["kebab-case", "camelCase"]
         ],
         "import-blacklist": [
