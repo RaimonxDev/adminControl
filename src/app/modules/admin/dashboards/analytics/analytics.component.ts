@@ -188,10 +188,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         this.averagePurchaseValueOptions = {
             chart  : {
                 animations: {
-                    speed           : 400,
-                    animateGradually: {
-                        enabled: false
-                    }
+                    enabled: false
                 },
                 fontFamily: 'inherit',
                 foreColor : 'inherit',
@@ -570,10 +567,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         this.purchasesOptions = {
             chart  : {
                 animations: {
-                    speed           : 400,
-                    animateGradually: {
-                        enabled: false
-                    }
+                    enabled: false
                 },
                 fontFamily: 'inherit',
                 foreColor : 'inherit',
@@ -613,10 +607,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         this.refundsOptions = {
             chart  : {
                 animations: {
-                    speed           : 400,
-                    animateGradually: {
-                        enabled: false
-                    }
+                    enabled: false
                 },
                 fontFamily: 'inherit',
                 foreColor : 'inherit',
@@ -650,10 +641,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         this.totalVisitsOptions = {
             chart  : {
                 animations: {
-                    speed           : 400,
-                    animateGradually: {
-                        enabled: false
-                    }
+                    enabled: false
                 },
                 fontFamily: 'inherit',
                 foreColor : 'inherit',
@@ -693,10 +681,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         this.uniquePurchasesOptions = {
             chart  : {
                 animations: {
-                    speed           : 400,
-                    animateGradually: {
-                        enabled: false
-                    }
+                    enabled: false
                 },
                 fontFamily: 'inherit',
                 foreColor : 'inherit',
@@ -730,10 +715,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         this.uniqueVisitorsOptions = {
             chart  : {
                 animations: {
-                    speed           : 400,
-                    animateGradually: {
-                        enabled: false
-                    }
+                    enabled: false
                 },
                 fontFamily: 'inherit',
                 foreColor : 'inherit',
