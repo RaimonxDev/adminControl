@@ -147,6 +147,7 @@ treo-horizontal-navigation {
 
     $background: map-get($theme, background);
     $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
 
     // Root navigation specific
     treo-horizontal-navigation {
@@ -172,7 +173,18 @@ treo-horizontal-navigation {
             treo-horizontal-navigation-basic-item {
 
                 .treo-horizontal-navigation-item-active {
-                    color: map-get($primary, default);
+
+                    .treo-horizontal-navigation-item-title {
+                        color: map-get($primary, default) !important;
+                    }
+
+                    .treo-horizontal-navigation-item-subtitle {
+                        @if ($is-dark) {
+                            color: map-get($primary, 600) !important;
+                        } @else {
+                            color: map-get($primary, 400) !important;
+                        }
+                    }
 
                     .treo-horizontal-navigation-item-icon {
                         color: map-get($primary, default) !important;
@@ -200,7 +212,18 @@ treo-horizontal-navigation {
         treo-horizontal-navigation-basic-item {
 
             .treo-horizontal-navigation-item-active {
-                color: map-get($primary, default);
+
+                .treo-horizontal-navigation-item-title {
+                    color: map-get($primary, default) !important;
+                }
+
+                .treo-horizontal-navigation-item-subtitle {
+                    @if ($is-dark) {
+                        color: map-get($primary, 600) !important;
+                    } @else {
+                        color: map-get($primary, 400) !important;
+                    }
+                }
 
                 .treo-horizontal-navigation-item-icon {
                     color: map-get($primary, default) !important;
