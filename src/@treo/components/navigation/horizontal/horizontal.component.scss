@@ -168,7 +168,19 @@ treo-horizontal-navigation {
                 }
             }
 
-            // Branch
+            // Basic - When item active (current link)
+            treo-horizontal-navigation-basic-item {
+
+                .treo-horizontal-navigation-item-active {
+                    color: map-get($primary, default);
+
+                    .treo-horizontal-navigation-item-icon {
+                        color: map-get($primary, default) !important;
+                    }
+                }
+            }
+
+            // Branch - When menu open
             treo-horizontal-navigation-branch-item {
 
                 .treo-horizontal-navigation-menu-active {
@@ -184,7 +196,7 @@ treo-horizontal-navigation {
     // Navigation menu item common
     .treo-horizontal-navigation-menu-item {
 
-        // Basic
+        // Basic - When item active (current link)
         treo-horizontal-navigation-basic-item {
 
             .treo-horizontal-navigation-item-active {
