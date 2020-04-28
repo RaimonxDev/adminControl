@@ -180,4 +180,20 @@ treo-horizontal-navigation {
             }
         }
     }
+
+    // Navigation menu item common
+    .treo-horizontal-navigation-menu-item {
+
+        // Basic
+        treo-horizontal-navigation-basic-item {
+
+            .treo-horizontal-navigation-item-active {
+                color: map-get($primary, default);
+
+                .treo-horizontal-navigation-item-icon {
+                    color: map-get($primary, default) !important;
+                }
+            }
+        }
+    }
 }
