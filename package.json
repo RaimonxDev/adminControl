@@ -1,6 +1,7 @@
 {
     "name": "@treo/demo",
     "version": "1.0.0",
+    "license": "https://themeforest.net/licenses/standard",
     "scripts": {
         "ng": "ng",
         "start": "ng serve --open",
