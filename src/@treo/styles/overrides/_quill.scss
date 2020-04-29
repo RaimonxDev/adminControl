@@ -7,7 +7,7 @@
     padding: 0 !important;
 
     .ql-formats {
-        margin: 8px !important;
+        margin: 11px 8px !important;
     }
 
     .ql-picker {
@@ -22,9 +22,14 @@
 }
 
 .ql-container {
+    overflow: hidden;
+    border-radius: 0 0 6px 6px;
+    @include treo-elevation('sm');
 
     .ql-editor {
         min-height: 160px;
+        max-height: 160px;
+        height: 160px;
     }
 }
 
