@@ -32,31 +32,6 @@ user {
             border-radius: 50%;
         }
     }
-
-    .info {
-        display: flex;
-        align-items: center;
-        margin-left: 12px;
-        overflow: hidden;
-
-        .name {
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            line-height: 1;
-        }
-
-        .menu {
-            margin-left: 4px;
-            height: 20px;
-            min-height: 20px;
-            max-height: 20px;
-
-            .mat-icon {
-                @include treo-icon-size(20);
-            }
-        }
-    }
 }
 
 .user-actions-menu {
