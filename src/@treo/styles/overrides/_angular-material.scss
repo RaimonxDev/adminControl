@@ -220,6 +220,7 @@
             border-radius: 6px;
             padding: 0 16px;
             border-width: 1px;
+            @include treo-elevation('sm');
 
             .mat-form-field-prefix {
 

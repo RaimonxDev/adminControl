@@ -264,6 +264,7 @@ inventory-list {
                                                 margin-top: 3px;
                                                 border-radius: 6px;
                                                 border-width: 1px;
+                                                @include treo-elevation('sm');
 
                                                 .tags-header {
                                                     display: flex;
