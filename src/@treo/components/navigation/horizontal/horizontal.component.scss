@@ -147,6 +147,7 @@ treo-horizontal-navigation {
 
     $background: map-get($theme, background);
     $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
 
     // Root navigation specific
     treo-horizontal-navigation {
@@ -168,7 +169,30 @@ treo-horizontal-navigation {
                 }
             }
 
-            // Branch
+            // Basic - When item active (current link)
+            treo-horizontal-navigation-basic-item {
+
+                .treo-horizontal-navigation-item-active {
+
+                    .treo-horizontal-navigation-item-title {
+                        color: map-get($primary, default) !important;
+                    }
+
+                    .treo-horizontal-navigation-item-subtitle {
+                        @if ($is-dark) {
+                            color: map-get($primary, 600) !important;
+                        } @else {
+                            color: map-get($primary, 400) !important;
+                        }
+                    }
+
+                    .treo-horizontal-navigation-item-icon {
+                        color: map-get($primary, default) !important;
+                    }
+                }
+            }
+
+            // Branch - When menu open
             treo-horizontal-navigation-branch-item {
 
                 .treo-horizontal-navigation-menu-active {
@@ -176,6 +200,33 @@ treo-horizontal-navigation {
                     .treo-horizontal-navigation-item-wrapper {
                         background: map-get($background, hover);
                     }
+                }
+            }
+        }
+    }
+
+    // Navigation menu item common
+    .treo-horizontal-navigation-menu-item {
+
+        // Basic - When item active (current link)
+        treo-horizontal-navigation-basic-item {
+
+            .treo-horizontal-navigation-item-active {
+
+                .treo-horizontal-navigation-item-title {
+                    color: map-get($primary, default) !important;
+                }
+
+                .treo-horizontal-navigation-item-subtitle {
+                    @if ($is-dark) {
+                        color: map-get($primary, 600) !important;
+                    } @else {
+                        color: map-get($primary, 400) !important;
+                    }
+                }
+
+                .treo-horizontal-navigation-item-icon {
+                    color: map-get($primary, default) !important;
                 }
             }
         }
