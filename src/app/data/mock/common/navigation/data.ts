@@ -62,7 +62,7 @@ export const horizontalNavigation: TreoNavigationItem[] = [
     {
         id      : 'starter',
         title   : 'Starter',
-        type    : 'aside',
+        type    : 'group',
         icon    : 'apps',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
