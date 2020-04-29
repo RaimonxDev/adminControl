@@ -7,27 +7,27 @@ export const defaultNavigation: TreoNavigationItem[] = [
         title   : 'Dashboards',
         subtitle: 'Unique dashboard designs',
         type    : 'group',
-        icon    : 'heroicons:home',
+        icon    : 'heroicons_outline:home',
         children: [
             {
                 id   : 'dashboards.finance',
                 title: 'Finance',
                 type : 'basic',
-                icon : 'heroicons:cash',
+                icon : 'heroicons_outline:cash',
                 link : '/dashboards/finance'
             },
             {
                 id   : 'dashboards.analytics',
                 title: 'Analytics',
                 type : 'basic',
-                icon : 'heroicons:chart-pie',
+                icon : 'heroicons_outline:chart-pie',
                 link : '/dashboards/analytics'
             },
             {
                 id   : 'dashboards.crypto',
                 title: 'Crypto',
                 type : 'basic',
-                icon : 'heroicons:currency-dollar',
+                icon : 'heroicons_outline:currency-dollar',
                 link : '/dashboards/crypto'
             }
         ]
@@ -37,28 +37,28 @@ export const defaultNavigation: TreoNavigationItem[] = [
         title   : 'Applications',
         subtitle: 'Custom made application designs',
         type    : 'group',
-        icon    : 'heroicons:home',
+        icon    : 'heroicons_outline:home',
         children: [
             {
                 id      : 'applications.calendar',
                 title   : 'Calendar',
                 subtitle: '3 upcoming events',
                 type    : 'basic',
-                icon    : 'heroicons:calendar',
+                icon    : 'heroicons_outline:calendar',
                 link    : '/apps/calendar'
             },
             {
                 id   : 'applications.contacts',
                 title: 'Contacts',
                 type : 'basic',
-                icon : 'heroicons:user-group',
+                icon : 'heroicons_outline:user-group',
                 link : '/apps/contacts'
             },
             {
                 id      : 'applications.ecommerce',
                 title   : 'ECommerce',
                 type    : 'collapsable',
-                icon    : 'heroicons:shopping-cart',
+                icon    : 'heroicons_outline:shopping-cart',
                 children: [
                     {
                         id   : 'applications.ecommerce.inventory',
@@ -72,7 +72,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id   : 'applications.mailbox',
                 title: 'Mailbox',
                 type : 'basic',
-                icon : 'heroicons:mail',
+                icon : 'heroicons_outline:mail',
                 link : '/apps/mailbox',
                 badge: {
                     title     : '27',
@@ -85,7 +85,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id   : 'applications.tasks',
                 title: 'Tasks',
                 type : 'basic',
-                icon : 'heroicons:check-circle',
+                icon : 'heroicons_outline:check-circle',
                 link : '/apps/tasks'
             }
         ]
@@ -95,13 +95,13 @@ export const defaultNavigation: TreoNavigationItem[] = [
         title   : 'Pages',
         subtitle: 'Custom made page designs',
         type    : 'group',
-        icon    : 'heroicons:document',
+        icon    : 'heroicons_outline:document',
         children: [
             {
                 id      : 'pages.authentication',
                 title   : 'Authentication',
                 type    : 'collapsable',
-                icon    : 'heroicons:lock-closed',
+                icon    : 'heroicons_outline:lock-closed',
                 children: [
                     {
                         id      : 'pages.authentication.sign-in',
@@ -374,7 +374,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id      : 'pages.coming-soon',
                 title   : 'Coming soon',
                 type    : 'collapsable',
-                icon    : 'heroicons:clock',
+                icon    : 'heroicons_outline:clock',
                 link    : '/pages/coming-soon',
                 children: [
                     {
@@ -413,7 +413,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id      : 'pages.errors',
                 title   : 'Errors',
                 type    : 'collapsable',
-                icon    : 'heroicons:exclamation-circle',
+                icon    : 'heroicons_outline:exclamation-circle',
                 children: [
                     {
                         id   : 'pages.errors.404',
@@ -433,7 +433,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id      : 'pages.help-center',
                 title   : 'Help center',
                 type    : 'collapsable',
-                icon    : 'heroicons:question-mark-circle',
+                icon    : 'heroicons_outline:question-mark-circle',
                 link    : '/pages/help-center',
                 children: [
                     {
@@ -467,14 +467,14 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id   : 'pages.maintenance',
                 title: 'Maintenance',
                 type : 'basic',
-                icon : 'heroicons:exclamation',
+                icon : 'heroicons_outline:exclamation',
                 link : '/pages/maintenance'
             },
             {
                 id      : 'pages.pricing',
                 title   : 'Pricing',
                 type    : 'collapsable',
-                icon    : 'heroicons:cash',
+                icon    : 'heroicons_outline:cash',
                 children: [
                     {
                         id   : 'pages.pricing.modern',
@@ -506,7 +506,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id   : 'pages.profile',
                 title: 'Profile',
                 type : 'basic',
-                icon : 'heroicons:user-circle',
+                icon : 'heroicons_outline:user-circle',
                 link : '/pages/profile'
             }
         ]
@@ -516,41 +516,41 @@ export const defaultNavigation: TreoNavigationItem[] = [
         title   : 'User Interface',
         subtitle: 'Building blocks of the UI & UX',
         type    : 'group',
-        icon    : 'heroicons:collection',
+        icon    : 'heroicons_outline:collection',
         children: [
             {
                 id   : 'user-interface.angular-material',
                 title: 'Angular Material',
                 type : 'basic',
-                icon : 'heroicons:shield-check',
+                icon : 'heroicons_outline:shield-check',
                 link : '/ui/angular-material'
             },
             {
                 id   : 'user-interface.tailwindcss',
                 title: 'TailwindCSS',
                 type : 'basic',
-                icon : 'heroicons:sparkles',
+                icon : 'heroicons_outline:sparkles',
                 link : '/ui/tailwindcss'
             },
             {
                 id   : 'user-interface.cards',
                 title: 'Cards',
                 type : 'basic',
-                icon : 'heroicons:duplicate',
+                icon : 'heroicons_outline:duplicate',
                 link : '/ui/cards'
             },
             {
                 id   : 'user-interface.colors',
                 title: 'Colors',
                 type : 'basic',
-                icon : 'heroicons:color-swatch',
+                icon : 'heroicons_outline:color-swatch',
                 link : '/ui/colors'
             },
             {
                 id      : 'user-interface.content-layouts',
                 title   : 'Content layouts',
                 type    : 'collapsable',
-                icon    : 'heroicons:template',
+                icon    : 'heroicons_outline:template',
                 children: [
                     {
                         id   : 'user-interface.content-layouts.overview',
@@ -721,14 +721,14 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id   : 'user-interface.datatable',
                 title: 'Datatable',
                 type : 'basic',
-                icon : 'heroicons:view-list',
+                icon : 'heroicons_outline:view-list',
                 link : '/ui/datatable'
             },
             {
                 id      : 'user-interface.forms',
                 title   : 'Forms',
                 type    : 'collapsable',
-                icon    : 'heroicons:pencil-alt',
+                icon    : 'heroicons_outline:pencil-alt',
                 children: [
                     {
                         id   : 'user-interface.forms.fields',
@@ -754,7 +754,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id      : 'user-interface.icons',
                 title   : 'Icons',
                 type    : 'collapsable',
-                icon    : 'heroicons:lightning-bolt',
+                icon    : 'heroicons_outline:lightning-bolt',
                 children: [
                     {
                         id   : 'user-interface.icons.dripicons',
@@ -769,10 +769,16 @@ export const defaultNavigation: TreoNavigationItem[] = [
                         link : '/ui/icons/feather'
                     },
                     {
-                        id   : 'user-interface.icons.heroicons',
-                        title: 'Heroicons',
+                        id   : 'user-interface.icons.heroicons-outline',
+                        title: 'Heroicons Outline',
                         type : 'basic',
-                        link : '/ui/icons/heroicons'
+                        link : '/ui/icons/heroicons-outline'
+                    },
+                    {
+                        id   : 'user-interface.icons.heroicons-solid',
+                        title: 'Heroicons Solid',
+                        type : 'basic',
+                        link : '/ui/icons/heroicons-solid'
                     },
                     {
                         id   : 'user-interface.icons.iconsmind',
@@ -798,7 +804,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id   : 'user-interface.typography',
                 title: 'Typography',
                 type : 'basic',
-                icon : 'heroicons:pencil',
+                icon : 'heroicons_outline:pencil',
                 link : '/ui/typography'
             }
         ]
@@ -812,12 +818,12 @@ export const defaultNavigation: TreoNavigationItem[] = [
         title   : 'Navigation features',
         subtitle: 'Collapsable levels & badge styles',
         type    : 'group',
-        icon    : 'heroicons:menu',
+        icon    : 'heroicons_outline:menu',
         children: [
             {
                 id      : 'navigation-features.levels.0',
                 title   : 'Level 0',
-                icon    : 'heroicons:check-circle',
+                icon    : 'heroicons_outline:check-circle',
                 type    : 'collapsable',
                 children: [
                     {
@@ -865,7 +871,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id      : 'navigation-features.disabled-collapsable',
                 title   : 'Disabled collapsable',
-                icon    : 'heroicons:check-circle',
+                icon    : 'heroicons_outline:check-circle',
                 type    : 'collapsable',
                 disabled: true,
                 children: [
@@ -880,7 +886,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id      : 'navigation-features.disabled-basic',
                 title   : 'Disabled basic',
-                icon    : 'heroicons:check-circle',
+                icon    : 'heroicons_outline:check-circle',
                 type    : 'basic',
                 link    : '',
                 disabled: true
@@ -888,7 +894,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-oval',
                 title: 'Oval badge',
-                icon : 'heroicons:tag',
+                icon : 'heroicons_outline:tag',
                 type : 'basic',
                 link : '',
                 badge: {
@@ -900,7 +906,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-rectangle',
                 title: 'Rectangle badge',
-                icon : 'heroicons:tag',
+                icon : 'heroicons_outline:tag',
                 type : 'basic',
                 link : '',
                 badge: {
@@ -913,7 +919,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-rounded',
                 title: 'Rounded badge',
-                icon : 'heroicons:tag',
+                icon : 'heroicons_outline:tag',
                 type : 'basic',
                 link : '',
                 badge: {
@@ -926,7 +932,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id   : 'navigation-features.badge-style-simple',
                 title: 'Simple badge',
-                icon : 'heroicons:tag',
+                icon : 'heroicons_outline:tag',
                 type : 'basic',
                 link : '',
                 badge: {
@@ -938,7 +944,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id   : 'navigation-features.multi-line',
                 title: 'A multi line navigation item title example which works just fine',
-                icon : 'heroicons:check-circle',
+                icon : 'heroicons_outline:check-circle',
                 type : 'basic',
                 link : ''
             }
@@ -950,35 +956,35 @@ export const compactNavigation: TreoNavigationItem[] = [
         id      : 'dashboards',
         title   : 'Dashboards',
         type    : 'aside',
-        icon    : 'heroicons:home',
+        icon    : 'heroicons_outline:home',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'applications',
         title   : 'Apps',
         type    : 'aside',
-        icon    : 'heroicons:qrcode',
+        icon    : 'heroicons_outline:qrcode',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'aside',
-        icon    : 'heroicons:document-duplicate',
+        icon    : 'heroicons_outline:document-duplicate',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'user-interface',
         title   : 'UI',
         type    : 'aside',
-        icon    : 'heroicons:collection',
+        icon    : 'heroicons_outline:collection',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'navigation-features',
         title   : 'Navigation',
         type    : 'aside',
-        icon    : 'heroicons:menu',
+        icon    : 'heroicons_outline:menu',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];
@@ -987,42 +993,42 @@ export const futuristicNavigation: TreoNavigationItem[] = [
         id   : 'dashboards.finance',
         title: 'Finance',
         type : 'basic',
-        icon : 'heroicons:cash',
+        icon : 'heroicons_outline:cash',
         link : '/dashboards/finance'
     },
     {
         id   : 'dashboards.analytics',
         title: 'Analytics',
         type : 'basic',
-        icon : 'heroicons:chart-pie',
+        icon : 'heroicons_outline:chart-pie',
         link : '/dashboards/analytics'
     },
     {
         id   : 'dashboards.crypto',
         title: 'Crypto',
         type : 'basic',
-        icon : 'heroicons:currency-dollar',
+        icon : 'heroicons_outline:currency-dollar',
         link : '/dashboards/crypto'
     },
     {
         id   : 'applications.calendar',
         title: 'Calendar',
         type : 'basic',
-        icon : 'heroicons:calendar',
+        icon : 'heroicons_outline:calendar',
         link : '/apps/calendar'
     },
     {
         id   : 'applications.contacts',
         title: 'Contacts',
         type : 'basic',
-        icon : 'heroicons:user-group',
+        icon : 'heroicons_outline:user-group',
         link : '/apps/contacts'
     },
     {
         id      : 'applications.ecommerce',
         title   : 'ECommerce',
         type    : 'collapsable',
-        icon    : 'heroicons:shopping-cart',
+        icon    : 'heroicons_outline:shopping-cart',
         children: [
             {
                 id   : 'applications.ecommerce.inventory',
@@ -1036,7 +1042,7 @@ export const futuristicNavigation: TreoNavigationItem[] = [
         id   : 'applications.mailbox',
         title: 'Mailbox',
         type : 'basic',
-        icon : 'heroicons:mail',
+        icon : 'heroicons_outline:mail',
         link : '/apps/mailbox',
         badge: {
             title     : '27',
@@ -1049,7 +1055,7 @@ export const futuristicNavigation: TreoNavigationItem[] = [
         id   : 'applications.tasks',
         title: 'Tasks',
         type : 'basic',
-        icon : 'heroicons:check-circle',
+        icon : 'heroicons_outline:check-circle',
         link : '/apps/tasks'
     },
     {
@@ -1060,21 +1066,21 @@ export const futuristicNavigation: TreoNavigationItem[] = [
         id      : 'pages',
         title   : 'Pages',
         type    : 'aside',
-        icon    : 'heroicons:document-duplicate',
+        icon    : 'heroicons_outline:document-duplicate',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'user-interface',
         title   : 'User Interface',
         type    : 'aside',
-        icon    : 'heroicons:collection',
+        icon    : 'heroicons_outline:collection',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'navigation-features',
         title   : 'Navigation Features',
         type    : 'aside',
-        icon    : 'heroicons:menu',
+        icon    : 'heroicons_outline:menu',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];
@@ -1083,35 +1089,35 @@ export const horizontalNavigation: TreoNavigationItem[] = [
         id      : 'dashboards',
         title   : 'Dashboards',
         type    : 'group',
-        icon    : 'heroicons:home',
+        icon    : 'heroicons_outline:home',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'applications',
         title   : 'Apps',
         type    : 'group',
-        icon    : 'heroicons:qrcode',
+        icon    : 'heroicons_outline:qrcode',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'pages',
         title   : 'Pages',
         type    : 'group',
-        icon    : 'heroicons:document-duplicate',
+        icon    : 'heroicons_outline:document-duplicate',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'user-interface',
         title   : 'UI',
         type    : 'group',
-        icon    : 'heroicons:collection',
+        icon    : 'heroicons_outline:collection',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
         id      : 'navigation-features',
         title   : 'Misc',
         type    : 'group',
-        icon    : 'heroicons:menu',
+        icon    : 'heroicons_outline:menu',
         children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     }
 ];

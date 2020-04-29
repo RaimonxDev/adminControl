@@ -78,16 +78,32 @@ export class IconsMockApi implements TreoMockApi
             });
 
         // -----------------------------------------------------------------------------------------------------
-        // @ Heroicons icons - GET
+        // @ Heroicons outline icons - GET
         // -----------------------------------------------------------------------------------------------------
         this._treoMockApiService
-            .onGet('api/ui/icons/heroicons')
+            .onGet('api/ui/icons/heroicons-outline')
             .reply(() => {
                 return [
                     200,
                     {
-                        namespace: 'heroicons',
-                        name     : 'Heroicons',
+                        namespace: 'heroicons_outline',
+                        name     : 'Heroicons Outline',
+                        list     : _.cloneDeep(this._heroicons)
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Heroicons solid icons - GET
+        // -----------------------------------------------------------------------------------------------------
+        this._treoMockApiService
+            .onGet('api/ui/icons/heroicons-solid')
+            .reply(() => {
+                return [
+                    200,
+                    {
+                        namespace: 'heroicons_solid',
+                        name     : 'Heroicons Solid',
                         list     : _.cloneDeep(this._heroicons)
                     }
                 ];
