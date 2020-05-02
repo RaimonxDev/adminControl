@@ -61,7 +61,7 @@ module.exports = plugin(({addUtilities, variants, theme, e}) => {
             }
             else
             {
-                if ( colorName === 'transparent' )
+                if ( value === 'transparent' || value === 'currentColor' )
                 {
                     return;
                 }

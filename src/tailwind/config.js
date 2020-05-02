@@ -4,12 +4,16 @@ const {colors} = require('tailwindcss/defaultTheme');
 
 module.exports = {
 
+    // PurgeCSS
+    purge: false,
+
     // Options
     important: true,
 
     // Theme
     theme: {
         colors  : {
+            current    : 'currentColor',
             transparent: 'transparent',
             white      : '#FFFFFF',
             black      : '#000000',
@@ -427,7 +431,8 @@ module.exports = {
         skew                    : [],
         transitionProperty      : [],
         transitionTimingFunction: [],
-        transitionDuration      : []
+        transitionDuration      : [],
+        transitionDelay         : []
     },
 
     // Core plugins

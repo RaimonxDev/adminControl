@@ -46,8 +46,8 @@ module.exports = plugin(({addVariant, theme}) => {
                 }
                 else
                 {
-                    // Skip the 'transparent' color
-                    if ( value === 'transparent' )
+                    // Skip the 'transparent' and 'current'
+                    if ( value === 'transparent' || value === 'currentColor' )
                     {
                         return;
                     }
