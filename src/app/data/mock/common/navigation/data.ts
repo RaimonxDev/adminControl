@@ -821,38 +821,38 @@ export const defaultNavigation: TreoNavigationItem[] = [
         icon    : 'heroicons_outline:menu',
         children: [
             {
-                id      : 'navigation-features.levels.0',
+                id      : 'navigation-features.level.0',
                 title   : 'Level 0',
                 icon    : 'heroicons_outline:check-circle',
                 type    : 'collapsable',
                 children: [
                     {
-                        id      : 'navigation-features.levels.0.1',
+                        id      : 'navigation-features.level.0.1',
                         title   : 'Level 1',
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'navigation-features.levels.0.1.2',
+                                id      : 'navigation-features.level.0.1.2',
                                 title   : 'Level 2',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id      : 'navigation-features.levels.0.1.2.3',
+                                        id      : 'navigation-features.level.0.1.2.3',
                                         title   : 'Level 3',
                                         type    : 'collapsable',
                                         children: [
                                             {
-                                                id      : 'navigation-features.levels.0.1.2.3.4',
+                                                id      : 'navigation-features.level.0.1.2.3.4',
                                                 title   : 'Level 4',
                                                 type    : 'collapsable',
                                                 children: [
                                                     {
-                                                        id      : 'navigation-features.levels.0.1.2.3.4.5',
+                                                        id      : 'navigation-features.level.0.1.2.3.4.5',
                                                         title   : 'Level 5',
                                                         type    : 'collapsable',
                                                         children: [
                                                             {
-                                                                id   : 'navigation-features.levels.0.1.2.3.4.5.6',
+                                                                id   : 'navigation-features.level.0.1.2.3.4.5.6',
                                                                 title: 'Level 6',
                                                                 type : 'basic'
                                                             }
@@ -869,8 +869,28 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 ]
             },
             {
+                id      : 'navigation-features.level.0',
+                title   : 'Level 0',
+                subtitle: 'With subtitle',
+                icon    : 'heroicons_outline:check-circle',
+                type    : 'collapsable',
+                children: [
+                    {
+                        id   : 'navigation-features.level.0.1-1',
+                        title: 'Level 1.1',
+                        type : 'basic'
+                    },
+                    {
+                        id   : 'navigation-features.level.0.1-2',
+                        title: 'Level 1.2',
+                        type : 'basic'
+                    }
+                ]
+            },
+            {
                 id      : 'navigation-features.disabled-collapsable',
                 title   : 'Disabled collapsable',
+                subtitle: 'Some subtitle',
                 icon    : 'heroicons_outline:check-circle',
                 type    : 'collapsable',
                 disabled: true,
@@ -886,6 +906,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
             {
                 id      : 'navigation-features.disabled-basic',
                 title   : 'Disabled basic',
+                subtitle: 'Some subtitle',
                 icon    : 'heroicons_outline:check-circle',
                 type    : 'basic',
                 link    : '',
@@ -990,77 +1011,85 @@ export const compactNavigation: TreoNavigationItem[] = [
 ];
 export const futuristicNavigation: TreoNavigationItem[] = [
     {
-        id   : 'dashboards.finance',
-        title: 'Finance',
-        type : 'basic',
-        icon : 'heroicons_outline:cash',
-        link : '/dashboards/finance'
-    },
-    {
-        id   : 'dashboards.analytics',
-        title: 'Analytics',
-        type : 'basic',
-        icon : 'heroicons_outline:chart-pie',
-        link : '/dashboards/analytics'
-    },
-    {
-        id   : 'dashboards.crypto',
-        title: 'Crypto',
-        type : 'basic',
-        icon : 'heroicons_outline:currency-dollar',
-        link : '/dashboards/crypto'
-    },
-    {
-        id   : 'applications.calendar',
-        title: 'Calendar',
-        type : 'basic',
-        icon : 'heroicons_outline:calendar',
-        link : '/apps/calendar'
-    },
-    {
-        id   : 'applications.contacts',
-        title: 'Contacts',
-        type : 'basic',
-        icon : 'heroicons_outline:user-group',
-        link : '/apps/contacts'
-    },
-    {
-        id      : 'applications.ecommerce',
-        title   : 'ECommerce',
-        type    : 'collapsable',
-        icon    : 'heroicons_outline:shopping-cart',
+        id      : 'apps',
+        title   : 'APPS',
+        type    : 'group',
         children: [
             {
-                id   : 'applications.ecommerce.inventory',
-                title: 'Inventory',
+                id   : 'applications.dashboards.finance',
+                title: 'Finance',
                 type : 'basic',
-                link : '/apps/ecommerce/inventory'
+                icon : 'heroicons_outline:cash',
+                link : '/dashboards/finance'
+            },
+            {
+                id   : 'applications.dashboards.analytics',
+                title: 'Analytics',
+                type : 'basic',
+                icon : 'heroicons_outline:chart-pie',
+                link : '/dashboards/analytics'
+            },
+            {
+                id   : 'applications.dashboards.crypto',
+                title: 'Crypto',
+                type : 'basic',
+                icon : 'heroicons_outline:currency-dollar',
+                link : '/dashboards/crypto'
+            },
+            {
+                id   : 'applications.calendar',
+                title: 'Calendar',
+                type : 'basic',
+                icon : 'heroicons_outline:calendar',
+                link : '/apps/calendar'
+            },
+            {
+                id   : 'applications.contacts',
+                title: 'Contacts',
+                type : 'basic',
+                icon : 'heroicons_outline:user-group',
+                link : '/apps/contacts'
+            },
+            {
+                id      : 'applications.ecommerce',
+                title   : 'ECommerce',
+                type    : 'collapsable',
+                icon    : 'heroicons_outline:shopping-cart',
+                children: [
+                    {
+                        id   : 'applications.ecommerce.inventory',
+                        title: 'Inventory',
+                        type : 'basic',
+                        link : '/apps/ecommerce/inventory'
+                    }
+                ]
+            },
+            {
+                id   : 'applications.mailbox',
+                title: 'Mailbox',
+                type : 'basic',
+                icon : 'heroicons_outline:mail',
+                link : '/apps/mailbox',
+                badge: {
+                    title     : '27',
+                    style     : 'rounded',
+                    background: 'rgba(0, 0, 0, 0.24)',
+                    color     : '#FFFFFF'
+                }
+            },
+            {
+                id   : 'applications.tasks',
+                title: 'Tasks',
+                type : 'basic',
+                icon : 'heroicons_outline:check-circle',
+                link : '/apps/tasks'
             }
         ]
     },
     {
-        id   : 'applications.mailbox',
-        title: 'Mailbox',
-        type : 'basic',
-        icon : 'heroicons_outline:mail',
-        link : '/apps/mailbox',
-        badge: {
-            title     : '27',
-            style     : 'rounded',
-            background: 'rgba(0, 0, 0, 0.24)',
-            color     : '#FFFFFF'
-        }
-    },
-    {
-        id   : 'applications.tasks',
-        title: 'Tasks',
-        type : 'basic',
-        icon : 'heroicons_outline:check-circle',
-        link : '/apps/tasks'
-    },
-    {
-        id  : 'spacer-1',
-        type: 'spacer'
+        id   : 'others',
+        title: 'OTHERS',
+        type : 'group'
     },
     {
         id      : 'pages',

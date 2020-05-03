@@ -61,7 +61,7 @@ export class NavigationMockApi implements TreoMockApi
                     });
                 });
 
-                // Fill compact navigation children using the default navigation
+                // Fill futuristic navigation children using the default navigation
                 this._futuristicNavigation.forEach((futuristicNavItem) => {
                     this._defaultNavigation.forEach((defaultNavItem) => {
                         if ( defaultNavItem.id === futuristicNavItem.id )
