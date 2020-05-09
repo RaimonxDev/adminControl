@@ -474,10 +474,18 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
             )
             .subscribe(() => {
 
+                // If the mode is 'over' and the navigation is opened...
                 if ( this.mode === 'over' && this.opened )
                 {
                     // Close the navigation
                     this.close();
+                }
+
+                // If the mode is 'side' and the aside is active...
+                if ( this.mode === 'side' && this.activeAsideItemId )
+                {
+                    // Close the aside
+                    this.closeAside();
                 }
             });
     }
