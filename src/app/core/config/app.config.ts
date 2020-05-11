@@ -1,7 +1,7 @@
 import { Layout } from 'app/layout/layout.types';
 
 // Theme type
-export type Theme = 'light' | 'dark';
+export type Theme = 'auto' | 'dark' | 'light';
 
 /**
  * AppConfig interface. Update this interface to strictly type your config
@@ -9,8 +9,8 @@ export type Theme = 'light' | 'dark';
  */
 export interface AppConfig
 {
-    theme: Theme;
     layout: Layout;
+    theme: Theme;
 }
 
 /**
@@ -22,6 +22,6 @@ export interface AppConfig
  * 'ConfigService'.
  */
 export const appConfig: AppConfig = {
-    theme : 'light',
-    layout: 'classy'
+    layout: 'classy',
+    theme : 'light'
 };

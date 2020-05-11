@@ -47,7 +47,7 @@
 <!-- ----------------------------------------------------------------------------------------------------- -->
 <!-- Settings drawer - Remove this to remove the drawer and its button -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
-<div class="settings-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-md rounded-l-4 z-99 cursor-pointer bg-red-600"
+<div class="settings-drawer-toggle fixed flex items-center justify-center right-0 w-12 h-12 shadow-lg rounded-l-4 z-99 cursor-pointer bg-red-600"
      style="top: 310px"
      (click)="settingsDrawer.toggle()">
     <mat-icon class="icon-size-24 text-white"
@@ -56,11 +56,11 @@
 </div>
 
 <treo-drawer [fixed]="true"
-            [name]="'settingsDrawer'"
-            [position]="'right'"
-            [mode]="'over'"
-            [transparentOverlay]="true"
-            #settingsDrawer>
+             [name]="'settingsDrawer'"
+             [position]="'right'"
+             [mode]="'over'"
+             [transparentOverlay]="true"
+             #settingsDrawer>
 
     <div class="flex flex-col w-full light:bg-cool-gray-100 overflow-auto">
 
@@ -74,14 +74,21 @@
 
             <!-- Theme -->
             <div class="mb-4 text-sm font-medium text-secondary tracking-widest">THEME</div>
-            <div class="flex items-center">
-                <div class="mr-2">Light</div>
-                <mat-slide-toggle [checked]="theme === 'dark'"
-                                  (change)="setTheme($event)"
-                                  [color]="'primary'">
-                    Dark
-                </mat-slide-toggle>
-            </div>
+            <mat-radio-group class="flex flex-col space-y-2"
+                             [color]="'primary'"
+                             [value]="config.theme"
+                             (change)="setTheme($event)">
+                <mat-radio-button [value]="'auto'">
+                    <span class="inline-flex items-center">
+                        Auto
+                        <mat-icon class="ml-2 icon-size-18"
+                                  [svgIcon]="'heroicons_solid:question-mark-circle'"
+                                  [matTooltip]="'Automatically sets the theme based on user\'s operating system\'s color scheme preference using \'prefer-color-scheme\' media query.'"></mat-icon>
+                    </span>
+                </mat-radio-button>
+                <mat-radio-button [value]="'dark'">Dark</mat-radio-button>
+                <mat-radio-button [value]="'light'">Light</mat-radio-button>
+            </mat-radio-group>
 
             <hr class="my-8">
 
@@ -92,10 +99,10 @@
                      *ngFor="let layoutType of ['empty', 'basic', 'classic', 'classy', 'compact', 'dense', 'futuristic', 'thin', 'centered', 'enterprise', 'material', 'modern']"
                      (click)="setLayout(layoutType)">
                     <img class="w-full p-1 border-4 rounded-sm text-primary light:border-cool-gray-300 dark:border-cool-gray-900 light:bg-card dark:bg-cool-gray-600"
-                         [ngClass]="{'border-primary shadow-solid': layout === layoutType}"
+                         [ngClass]="{'border-primary shadow-solid': config.layout === layoutType}"
                          [src]="'assets/images/demo/layouts/' + layoutType + '-' + theme + '.png'">
                     <div class="mt-2 text-md font-medium text-secondary tracking-wide"
-                         [ngClass]="{'text-primary': layout === layoutType}">
+                         [ngClass]="{'text-primary': config.layout === layoutType}">
                         {{layoutType | titlecase}}
                     </div>
                 </div>
@@ -106,4 +113,3 @@
     </div>
 
 </treo-drawer>
-

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TreoDrawerModule } from '@treo/components/drawer';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { EmptyLayoutModule } from 'app/layout/layouts/empty/empty.module';
@@ -43,9 +45,11 @@ const modules = [
         LayoutComponent
     ],
     imports     : [
+        MatCheckboxModule,
         MatIconModule,
         MatRadioModule,
         MatSlideToggleModule,
+        MatTooltipModule,
         TreoDrawerModule,
         SharedModule,
         ...modules

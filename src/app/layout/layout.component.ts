@@ -1,13 +1,13 @@
 import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { combineLatest, Subject } from 'rxjs';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { TreoConfigService } from '@treo/services/config';
-import { TreoDrawerService } from '@treo/components/drawer';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { Layout } from 'app/layout/layout.types';
-import { AppConfig, Theme } from 'app/core/config/app.config';
+import { AppConfig } from 'app/core/config/app.config';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
     selector     : 'layout',
@@ -19,7 +19,7 @@ export class LayoutComponent implements OnInit, OnDestroy
 {
     config: AppConfig;
     layout: Layout;
-    theme: Theme;
+    theme: 'dark' | 'light';
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -28,17 +28,17 @@ export class LayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {TreoConfigService} _treoConfigService
-     * @param {TreoDrawerService} _treoDrawerService
      * @param {DOCUMENT} _document
      * @param {Router} _router
+     * @param {TreoConfigService} _treoConfigService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _treoConfigService: TreoConfigService,
-        private _treoDrawerService: TreoDrawerService,
         @Inject(DOCUMENT) private _document: any,
-        private _router: Router
+        private _router: Router,
+        private _treoConfigService: TreoConfigService,
+        private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
         // Set the private defaults
@@ -54,6 +54,37 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Set the theme based on the configuration
+        combineLatest([
+            this._treoConfigService.config$,
+            this._treoMediaWatcherService.onMediaQueryChange$(['(prefers-color-scheme: dark)', '(prefers-color-scheme: light)'])
+        ]).pipe(
+            takeUntil(this._unsubscribeAll),
+            map(([config, mql]) => {
+
+                // If the config is set to 'dark' or 'light'...
+                if ( config.theme !== 'auto' )
+                {
+                    return config.theme;
+                }
+
+                // If the config is set to 'auto'...
+                if ( mql.breakpoints['(prefers-color-scheme: dark)'] === true )
+                {
+                    return 'dark';
+                }
+
+                return 'light';
+            })
+        ).subscribe((theme) => {
+
+            // Store the theme
+            this.theme = theme;
+
+            // Update the theme
+            this._updateTheme();
+        });
+
         // Subscribe to config changes
         this._treoConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -61,20 +92,6 @@ export class LayoutComponent implements OnInit, OnDestroy
 
                 // Store the config
                 this.config = config;
-
-                // Store the theme
-                this.theme = config.theme;
-
-                // Update the selected theme class name on body
-                const themeName = 'treo-theme-' + config.theme;
-                this._document.body.classList.forEach((className) => {
-                    if ( className.startsWith('treo-theme-') && className !== themeName )
-                    {
-                        this._document.body.classList.remove(className);
-                        this._document.body.classList.add(themeName);
-                        return;
-                    }
-                });
 
                 // Update the layout
                 this._updateLayout();
@@ -156,6 +173,26 @@ export class LayoutComponent implements OnInit, OnDestroy
         });
     }
 
+    /**
+     * Update the selected theme
+     *
+     * @private
+     */
+    private _updateTheme(): void
+    {
+        // Find the class name for the previously selected theme and remove it
+        this._document.body.classList.forEach((className) => {
+            if ( className.startsWith('treo-theme-') )
+            {
+                this._document.body.classList.remove(className);
+                return;
+            }
+        });
+
+        // Add class name for the currently selected theme
+        this._document.body.classList.add('treo-theme-' + this.theme);
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -185,8 +222,8 @@ export class LayoutComponent implements OnInit, OnDestroy
      *
      * @param change
      */
-    setTheme(change: MatSlideToggleChange): void
+    setTheme(change: MatRadioChange): void
     {
-        this._treoConfigService.config = {theme: change.checked ? 'dark' : 'light'};
+        this._treoConfigService.config = {theme: change.value};
     }
 }
