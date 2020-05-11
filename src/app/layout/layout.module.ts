@@ -40,7 +40,6 @@ const modules = [
         LayoutComponent
     ],
     imports     : [
-        TreoDrawerModule,
         SharedModule,
         ...modules
     ],

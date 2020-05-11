@@ -98,7 +98,7 @@ export class TreoMediaWatcherService
      *
      * @param query
      */
-    onMediaQueryChange$(query: string): Observable<BreakpointState>
+    onMediaQueryChange$(query: string | string[]): Observable<BreakpointState>
     {
         return this._breakpointObserver.observe(query);
     }
