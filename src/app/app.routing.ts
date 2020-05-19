@@ -14,12 +14,12 @@ export const appRoutes: Route[] = [
     // Redirect signed in user to the '/dashboards/finance'
     {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'dashboards/finance'},
 
-    // Auth routes
+    // Auth routes (guest)
     {
         path: '',
         canActivate: [NoAuthGuard],
         canActivateChild: [NoAuthGuard],
-        component  : LayoutComponent,
+        component: LayoutComponent,
         data: {
             layout: 'empty'
         },
@@ -31,11 +31,13 @@ export const appRoutes: Route[] = [
             {path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.module').then(m => m.AuthSignUpModule)}
         ]
     },
+
+    // Auth routes (logged in)
     {
         path: '',
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
-        component  : LayoutComponent,
+        component: LayoutComponent,
         data: {
             layout: 'empty'
         },
