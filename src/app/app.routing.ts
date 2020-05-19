@@ -14,12 +14,12 @@ export const appRoutes: Route[] = [
     // Redirect signed in user to the '/example'
     {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'example'},
 
-    // Auth routes
+    // Auth routes (guest)
     {
         path: '',
         canActivate: [NoAuthGuard],
         canActivateChild: [NoAuthGuard],
-        component  : LayoutComponent,
+        component: LayoutComponent,
         data: {
             layout: 'empty'
         },
@@ -31,11 +31,13 @@ export const appRoutes: Route[] = [
             {path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.module').then(m => m.AuthSignUpModule)}
         ]
     },
+
+    // Auth routes (logged in)
     {
         path: '',
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
-        component  : LayoutComponent,
+        component: LayoutComponent,
         data: {
             layout: 'empty'
         },
@@ -48,25 +50,25 @@ export const appRoutes: Route[] = [
     // Landing routes
     {
         path: '',
-        component  : LayoutComponent,
+        component: LayoutComponent,
         data: {
             layout: 'empty'
         },
-        children   : [
+        children: [
             {path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)},
         ]
     },
 
     // Admin routes
     {
-        path       : '',
+        path: '',
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
-        component  : LayoutComponent,
-        resolve    : {
+        component: LayoutComponent,
+        resolve: {
             initialData: InitialDataResolver,
         },
-        children   : [
+        children: [
 
             // Example
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)}
