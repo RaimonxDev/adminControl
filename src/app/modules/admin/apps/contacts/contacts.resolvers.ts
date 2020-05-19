@@ -45,12 +45,12 @@ export class ContactsContactResolver implements Resolve<any>
     /**
      * Constructor
      *
-     * @param {Router} _router
      * @param {ContactsService} _contactsService
+     * @param {Router} _router
      */
     constructor(
-        private _router: Router,
-        private _contactsService: ContactsService
+        private _contactsService: ContactsService,
+        private _router: Router
     )
     {
     }

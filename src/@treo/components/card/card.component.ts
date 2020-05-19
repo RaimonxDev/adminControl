@@ -20,12 +20,12 @@ export class TreoCardComponent
     /**
      * Constructor
      *
-     * @param {Renderer2} _renderer2
      * @param {ElementRef} _elementRef
+     * @param {Renderer2} _renderer2
      */
     constructor(
-        private _renderer2: Renderer2,
-        private _elementRef: ElementRef
+        private _elementRef: ElementRef,
+        private _renderer2: Renderer2
     )
     {
         // Set the defaults

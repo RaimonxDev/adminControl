@@ -33,16 +33,16 @@ export class CryptoComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {TreoConfigService} _treoConfigService
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {CryptoService} _cryptoService
      * @param {ChangeDetectorRef} _changeDetectorRef
+     * @param {TreoConfigService} _treoConfigService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
-        private _treoConfigService: TreoConfigService,
-        private _treoMediaWatcherService: TreoMediaWatcherService,
         private _cryptoService: CryptoService,
-        private _changeDetectorRef: ChangeDetectorRef
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _treoConfigService: TreoConfigService,
+        private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
         // Set the private defaults

@@ -40,12 +40,12 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
     /**
      * Constructor
      *
-     * @param {TreoNavigationService} _treoNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
+     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
-        private _treoNavigationService: TreoNavigationService,
-        private _changeDetectorRef: ChangeDetectorRef
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _treoNavigationService: TreoNavigationService
     )
     {
         // Set the private defaults

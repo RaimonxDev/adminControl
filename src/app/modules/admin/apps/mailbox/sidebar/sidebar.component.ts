@@ -30,14 +30,14 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {TreoNavigationService} _treoNavigationService
      * @param {MailboxService} _mailboxService
      * @param {MatDialog} _matDialog
+     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
-        private _treoNavigationService: TreoNavigationService,
         private _mailboxService: MailboxService,
-        private _matDialog: MatDialog
+        private _matDialog: MatDialog,
+        private _treoNavigationService: TreoNavigationService
     )
     {
         // Set the private defaults

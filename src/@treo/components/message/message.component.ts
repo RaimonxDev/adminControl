@@ -36,16 +36,16 @@ export class TreoMessageComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {TreoMessageService} _treoMessageService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
+     * @param {TreoMessageService} _treoMessageService
      */
     constructor(
-        private _treoMessageService: TreoMessageService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
-        private _renderer2: Renderer2
+        private _renderer2: Renderer2,
+        private _treoMessageService: TreoMessageService
     )
     {
         // Set the private defaults

@@ -25,19 +25,19 @@ export class TreoHighlightComponent implements AfterViewInit
     /**
      * Constructor
      *
-     * @param {TreoHighlightService} _treoHighlightService
      * @param {DomSanitizer} _domSanitizer
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
+     * @param {TreoHighlightService} _treoHighlightService
      * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
-        private _treoHighlightService: TreoHighlightService,
         private _domSanitizer: DomSanitizer,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _renderer2: Renderer2,
+        private _treoHighlightService: TreoHighlightService,
         private _viewContainerRef: ViewContainerRef
     )
     {

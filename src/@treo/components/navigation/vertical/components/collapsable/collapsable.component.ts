@@ -43,14 +43,14 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
     /**
      * Constructor
      *
-     * @param {TreoNavigationService} _treoNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {Router} _router
+     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
-        private _treoNavigationService: TreoNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
-        private _router: Router
+        private _router: Router,
+        private _treoNavigationService: TreoNavigationService
     )
     {
         // Set the private defaults

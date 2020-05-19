@@ -5,7 +5,7 @@ import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { BehaviorSubject, merge, Subject, Subscription } from 'rxjs';
 import { delay, filter, takeUntil } from 'rxjs/operators';
 import { TreoAnimations } from '@treo/animations';
-import { TreoVerticalNavigationAppearance, TreoNavigationItem, TreoVerticalNavigationMode, TreoVerticalNavigationPosition } from '@treo/components/navigation/navigation.types';
+import { TreoNavigationItem, TreoVerticalNavigationAppearance, TreoVerticalNavigationMode, TreoVerticalNavigationPosition } from '@treo/components/navigation/navigation.types';
 import { TreoNavigationService } from '@treo/components/navigation/navigation.service';
 import { TreoScrollbarDirective } from '@treo/directives/scrollbar/scrollbar.directive';
 
@@ -52,8 +52,6 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
     // Private
     private _appearance: TreoVerticalNavigationAppearance;
     private _asideOverlay: HTMLElement | null;
-    private _treoScrollbarDirectives: QueryList<TreoScrollbarDirective>;
-    private _treoScrollbarDirectivesSubscription: Subscription;
     private _handleAsideOverlayClick: any;
     private _handleOverlayClick: any;
     private _inner: boolean;
@@ -65,6 +63,8 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
     private _position: TreoVerticalNavigationPosition;
     private _scrollStrategy: ScrollStrategy;
     private _transparentOverlay: boolean | '';
+    private _treoScrollbarDirectives: QueryList<TreoScrollbarDirective>;
+    private _treoScrollbarDirectivesSubscription: Subscription;
     private _unsubscribeAll: Subject<any>;
 
     @HostBinding('class.treo-vertical-navigation-animations-enabled')
@@ -77,21 +77,21 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
      * Constructor
      *
      * @param {AnimationBuilder} _animationBuilder
-     * @param {TreoNavigationService} _treoNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
      * @param {Router} _router
      * @param {ScrollStrategyOptions} _scrollStrategyOptions
+     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
-        private _treoNavigationService: TreoNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _renderer2: Renderer2,
         private _router: Router,
-        private _scrollStrategyOptions: ScrollStrategyOptions
+        private _scrollStrategyOptions: ScrollStrategyOptions,
+        private _treoNavigationService: TreoNavigationService
     )
     {
         // Set the private defaults

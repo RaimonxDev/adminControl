@@ -77,12 +77,12 @@ export class InventoryProductResolver implements Resolve<any>
     /**
      * Constructor
      *
-     * @param {Router} _router
      * @param {InventoryService} _inventoryService
+     * @param {Router} _router
      */
     constructor(
-        private _router: Router,
-        private _inventoryService: InventoryService
+        private _inventoryService: InventoryService,
+        private _router: Router
     )
     {
     }
@@ -146,7 +146,7 @@ export class InventoryProductsResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{pagination: InventoryPagination, products: InventoryProduct[]}>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{ pagination: InventoryPagination, products: InventoryProduct[] }>
     {
         return this._inventoryService.getProducts();
     }

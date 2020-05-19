@@ -29,15 +29,15 @@ export class BasicLayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {Router} _router
      * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {TreoNavigationService} _treoNavigationService
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _router: Router,
         private _treoMediaWatcherService: TreoMediaWatcherService,
-        private _treoNavigationService: TreoNavigationService,
-        private _router: Router
+        private _treoNavigationService: TreoNavigationService
     )
     {
         // Set the private defaults

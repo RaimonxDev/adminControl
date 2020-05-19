@@ -36,19 +36,19 @@ export class ContactsListComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ContactsService} _contactsService
      * @param {DOCUMENT} _document
      * @param {Router} _router
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _treoMediaWatcherService: TreoMediaWatcherService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _contactsService: ContactsService,
         @Inject(DOCUMENT) private _document: any,
-        private _router: Router
+        private _router: Router,
+        private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
         // Set the private defaults

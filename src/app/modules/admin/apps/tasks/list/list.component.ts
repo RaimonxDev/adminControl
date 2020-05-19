@@ -35,21 +35,21 @@ export class TasksListComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
-     * @param {TreoNavigationService} _treoNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {DOCUMENT} _document
      * @param {Router} _router
      * @param {TasksService} _tasksService
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
+     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _treoMediaWatcherService: TreoMediaWatcherService,
-        private _treoNavigationService: TreoNavigationService,
         private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router,
-        private _tasksService: TasksService
+        private _tasksService: TasksService,
+        private _treoMediaWatcherService: TreoMediaWatcherService,
+        private _treoNavigationService: TreoNavigationService
     )
     {
         // Set the private defaults

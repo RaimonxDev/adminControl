@@ -20,12 +20,12 @@ export class MailboxSettingsComponent implements OnInit
     /**
      * Constructor
      *
-     * @param {MailboxService} _mailboxService
      * @param {FormBuilder} _formBuilder
+     * @param {MailboxService} _mailboxService
      */
     constructor(
-        private _mailboxService: MailboxService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _mailboxService: MailboxService
     )
     {
         // Set the defaults

@@ -65,23 +65,23 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {CalendarService} _calendarService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {Document} _document
      * @param {FormBuilder} _formBuilder
      * @param {MatDialog} _matDialog
      * @param {Overlay} _overlay
+     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
-        private _treoMediaWatcherService: TreoMediaWatcherService,
         private _calendarService: CalendarService,
         private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: Document,
         private _formBuilder: FormBuilder,
         private _matDialog: MatDialog,
         private _overlay: Overlay,
+        private _treoMediaWatcherService: TreoMediaWatcherService,
         private _viewContainerRef: ViewContainerRef
     )
     {
