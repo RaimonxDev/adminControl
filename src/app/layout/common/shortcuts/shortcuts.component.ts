@@ -35,16 +35,16 @@ export class ShortcutsComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {ShortcutsService} _shortcutsService
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {FormBuilder} _formBuilder
+     * @param {ShortcutsService} _shortcutsService
      * @param {Overlay} _overlay
      * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
-        private _shortcutsService: ShortcutsService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _formBuilder: FormBuilder,
+        private _shortcutsService: ShortcutsService,
         private _overlay: Overlay,
         private _viewContainerRef: ViewContainerRef
     )
@@ -66,7 +66,7 @@ export class ShortcutsComponent implements OnInit, OnDestroy
     @Input()
     set shortcuts(value: Shortcut[])
     {
-        // Store the data
+        // Store the value
         this._shortcutsService.store(value);
     }
 

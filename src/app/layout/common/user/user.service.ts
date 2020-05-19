@@ -29,7 +29,11 @@ export class UserService
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
 
-    // Setter and getter for user
+    /**
+     * Setter & getter for user
+     *
+     * @param value
+     */
     set user(value: User)
     {
         // Store the value

@@ -25,7 +25,7 @@ export class TreoConfigService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for config
+     * Setter & getter for config
      */
     set config(value: any)
     {

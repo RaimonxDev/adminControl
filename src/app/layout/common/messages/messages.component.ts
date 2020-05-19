@@ -62,7 +62,7 @@ export class MessagesComponent implements OnInit, OnDestroy
     @Input()
     set messages(value: Message[])
     {
-        // Store the data
+        // Store the value
         this._messagesService.store(value);
     }
 

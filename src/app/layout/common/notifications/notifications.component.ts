@@ -62,7 +62,7 @@ export class NotificationsComponent implements OnInit, OnDestroy
     @Input()
     set notifications(value: Notification[])
     {
-        // Store the data
+        // Store the value
         this._notificationsService.store(value);
     }
 

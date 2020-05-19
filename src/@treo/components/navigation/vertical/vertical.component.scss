@@ -518,9 +518,9 @@ treo-vertical-navigation {
             // Active state
             &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled) {
                 @if ($is-dark) {
-                    background-color: rgba(0, 0, 0, 0.25);
+                    background-color: rgba(0, 0, 0, 0.30);
                 } @else {
-                    background-color: treo-color('cool-gray', 100);
+                    background-color: treo-color('cool-gray', 200);
                 }
 
                 .treo-vertical-navigation-item-icon {
@@ -577,9 +577,9 @@ treo-vertical-navigation {
                     // Hover state
                     &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
                         @if ($is-dark) {
-                            background-color: rgba(0, 0, 0, 0.25);
+                            background-color: rgba(255, 255, 255, 0.12);
                         } @else {
-                            background-color: treo-color('gray', 50);
+                            background-color: treo-color('gray', 100);
                         }
 
                         .treo-vertical-navigation-item-icon {
@@ -691,7 +691,7 @@ treo-vertical-navigation {
 
                 // Active state
                 &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled) {
-                    background-color: rgba(0, 0, 0, 0.25);
+                    background-color: rgba(0, 0, 0, 0.30);
 
                     .treo-vertical-navigation-item-icon {
                         color: treo-color('cool-gray', 100);
@@ -730,7 +730,7 @@ treo-vertical-navigation {
 
                         // Hover state
                         &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
-                            background-color: rgba(0, 0, 0, 0.25);
+                            background-color: rgba(255, 255, 255, 0.12);
 
                             .treo-vertical-navigation-item-icon {
                                 color: treo-color('cool-gray', 100);

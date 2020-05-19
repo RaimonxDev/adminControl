@@ -28,7 +28,7 @@ export class AuthService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for access token
+     * Setter & getter for access token
      */
     set accessToken(token: string)
     {

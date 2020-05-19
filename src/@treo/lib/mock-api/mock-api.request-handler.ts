@@ -29,7 +29,7 @@ export class TreoMockApiRequestHandler
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for delay
+     * Setter & getter for delay
      *
      * @param value
      */
@@ -41,7 +41,7 @@ export class TreoMockApiRequestHandler
             return;
         }
 
-        // Store the delay
+        // Store the value
         this._delay = value;
     }
 
@@ -51,7 +51,7 @@ export class TreoMockApiRequestHandler
     }
 
     /**
-     * Setter and getter for url
+     * Setter & getter for url
      *
      * @param value
      */
@@ -63,7 +63,7 @@ export class TreoMockApiRequestHandler
             return;
         }
 
-        // Store the url
+        // Store the value
         this._url = value;
     }
 
@@ -73,7 +73,7 @@ export class TreoMockApiRequestHandler
     }
 
     /**
-     * Setter and getter for intercepted request
+     * Setter & getter for intercepted request
      *
      * @param value
      */
@@ -85,7 +85,7 @@ export class TreoMockApiRequestHandler
             return;
         }
 
-        // Store the intercepted request
+        // Store the value
         this._interceptedRequest = value;
     }
 

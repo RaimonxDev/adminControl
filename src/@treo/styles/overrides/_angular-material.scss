@@ -1154,6 +1154,7 @@ textarea.mat-input-element {
         // Placeholder
         &.mat-form-field-hide-placeholder {
 
+            // Normal inputs
             .mat-input-element {
 
                 &::placeholder {
@@ -1175,6 +1176,12 @@ textarea.mat-input-element {
                     color: map-get($foreground, hint-text) !important;
                     -webkit-text-fill-color: currentColor !important;
                 }
+            }
+
+            // Select
+            .mat-select-placeholder {
+                color: map-get($foreground, hint-text) !important;
+                -webkit-text-fill-color: currentColor !important;
             }
         }
 

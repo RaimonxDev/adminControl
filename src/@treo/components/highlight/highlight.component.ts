@@ -25,19 +25,19 @@ export class TreoHighlightComponent implements AfterViewInit
     /**
      * Constructor
      *
-     * @param {TreoHighlightService} _treoHighlightService
      * @param {DomSanitizer} _domSanitizer
      * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {Renderer2} _renderer2
+     * @param {TreoHighlightService} _treoHighlightService
      * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
-        private _treoHighlightService: TreoHighlightService,
         private _domSanitizer: DomSanitizer,
         private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _renderer2: Renderer2,
+        private _treoHighlightService: TreoHighlightService,
         private _viewContainerRef: ViewContainerRef
     )
     {
@@ -51,7 +51,7 @@ export class TreoHighlightComponent implements AfterViewInit
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for the code
+     * Setter & getter for the code
      */
     @Input()
     set code(value: string)
@@ -62,7 +62,7 @@ export class TreoHighlightComponent implements AfterViewInit
             return;
         }
 
-        // Set the code
+        // Store the value
         this._code = value;
 
         // Highlight and insert the code if the
@@ -81,7 +81,7 @@ export class TreoHighlightComponent implements AfterViewInit
     }
 
     /**
-     * Setter and getter for the language
+     * Setter & getter for the language
      */
     @Input()
     set lang(value: string)
@@ -92,7 +92,7 @@ export class TreoHighlightComponent implements AfterViewInit
             return;
         }
 
-        // Set the language
+        // Store the value
         this._lang = value;
 
         // Highlight and insert the code if the

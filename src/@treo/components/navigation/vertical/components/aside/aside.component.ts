@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { TreoVerticalNavigationComponent } from '@treo/components/navigation/vertical/vertical.component';
 import { TreoNavigationService } from '@treo/components/navigation/navigation.service';
 import { TreoNavigationItem } from '@treo/components/navigation/navigation.types';
@@ -13,8 +14,6 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestroy
 {
-    // Active
-    @Input()
     active: boolean;
 
     // Auto collapse
@@ -34,18 +33,21 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
     skipChildren: boolean;
 
     // Private
+    private _activeItemId: string;
     private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
-     * @param {TreoNavigationService} _treoNavigationService
      * @param {ChangeDetectorRef} _changeDetectorRef
+     * @param {Router} _router
+     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
-        private _treoNavigationService: TreoNavigationService,
-        private _changeDetectorRef: ChangeDetectorRef
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _router: Router,
+        private _treoNavigationService: TreoNavigationService
     )
     {
         // Set the private defaults
@@ -53,6 +55,36 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
 
         // Set the defaults
         this.skipChildren = false;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Setter & getter for activeItemId
+     *
+     * @param value
+     */
+    @Input()
+    set activeItemId(value: string)
+    {
+        // If the value is the same, return...
+        if ( this._activeItemId === value )
+        {
+            return;
+        }
+
+        // Store the value
+        this._activeItemId = value;
+
+        // Mark if active
+        this._markIfActive(this._router.url);
+    }
+
+    get activeItemId(): string
+    {
+        return this._activeItemId;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -66,6 +98,21 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
     {
         // Get the parent navigation component
         this._treoVerticalNavigationComponent = this._treoNavigationService.getComponent(this.name);
+
+        // Mark if active
+        this._markIfActive(this._router.url);
+
+        // Attach a listener to the NavigationEnd event
+        this._router.events
+            .pipe(
+                filter(event => event instanceof NavigationEnd),
+                takeUntil(this._unsubscribeAll)
+            )
+            .subscribe((event: NavigationEnd) => {
+
+                // Mark if active
+                this._markIfActive(event.urlAfterRedirects);
+            });
 
         // Subscribe to onRefreshed on the navigation component
         this._treoVerticalNavigationComponent.onRefreshed.pipe(
@@ -85,6 +132,76 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Check if the given item has the given url
+     * in one of its children
+     *
+     * @param item
+     * @param url
+     * @private
+     */
+    private _hasCurrentUrlInChildren(item, url): boolean
+    {
+        const children = item.children;
+
+        if ( !children )
+        {
+            return false;
+        }
+
+        for ( const child of children )
+        {
+            if ( child.children )
+            {
+                if ( this._hasCurrentUrlInChildren(child, url) )
+                {
+                    return true;
+                }
+            }
+
+            // Check if the item's link is the exact same of the
+            // current url
+            if ( child.link === url )
+            {
+                return true;
+            }
+
+            // If exactMatch is not set for the item, also check
+            // if the current url starts with the item's link and
+            // continues with a question mark, a pound sign or a
+            // slash
+            if ( !child.exactMatch && (child.link === url || url.startsWith(child.link + '?') || url.startsWith(child.link + '#') || url.startsWith(child.link + '/')) )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Decide and mark if the item is active
+     *
+     * @private
+     */
+    private _markIfActive(url): void
+    {
+        // If the aside has a children that is active,
+        // always mark it as active
+        if ( this._hasCurrentUrlInChildren(this.item, url) )
+        {
+            this.active = true;
+            return;
+        }
+
+        // Check if the activeItemId is equals to this item id
+        this.active = this.activeItemId === this.item.id;
     }
 
     // -----------------------------------------------------------------------------------------------------

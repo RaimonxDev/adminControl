@@ -107,7 +107,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for dateFormat input
+     * Setter & getter for dateFormat input
      *
      * @param value
      */
@@ -130,7 +130,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     }
 
     /**
-     * Setter and getter for timeFormat input
+     * Setter & getter for timeFormat input
      *
      * @param value
      */
@@ -153,7 +153,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     }
 
     /**
-     * Setter and getter for timeRange input
+     * Setter & getter for timeRange input
      *
      * @param value
      */
@@ -185,7 +185,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     }
 
     /**
-     * Setter and getter for range input
+     * Setter & getter for range input
      *
      * @param value
      */

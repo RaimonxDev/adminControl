@@ -38,7 +38,7 @@ export class TreoAutogrowDirective implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for padding
+     * Setter & getter for padding
      *
      * @param value
      */
