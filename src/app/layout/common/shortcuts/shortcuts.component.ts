@@ -66,7 +66,7 @@ export class ShortcutsComponent implements OnInit, OnDestroy
     @Input()
     set shortcuts(value: Shortcut[])
     {
-        // Store the data
+        // Store the value
         this._shortcutsService.store(value);
     }
 

@@ -53,7 +53,7 @@ export class TreoHorizontalNavigationComponent implements OnInit, OnDestroy
     @Input()
     set navigation(value: TreoNavigationItem[])
     {
-        // Store the data
+        // Store the value
         this._navigation = value;
 
         // Mark for check

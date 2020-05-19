@@ -39,7 +39,7 @@ export class TreoCardComponent
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for flippable
+     * Setter & getter for flippable
      *
      * @param value
      */

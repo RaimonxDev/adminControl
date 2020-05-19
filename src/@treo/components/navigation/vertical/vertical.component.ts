@@ -151,7 +151,7 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
         appearanceClassName = 'treo-vertical-navigation-appearance-' + this.appearance;
         this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
 
-        // Store the appearance
+        // Store the value
         this._appearance = value;
 
         // Add the new appearance class
@@ -213,7 +213,7 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
     @Input()
     set navigation(value: TreoNavigationItem[])
     {
-        // Store the data
+        // Store the value
         this._navigation = value;
 
         // Mark for check
@@ -239,7 +239,7 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
             return;
         }
 
-        // Set the naked value
+        // Store the value
         this._inner = value;
 
         // Update the class
@@ -302,7 +302,7 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
         modeClassName = 'treo-vertical-navigation-mode-' + this.mode;
         this._renderer2.removeClass(this._elementRef.nativeElement, modeClassName);
 
-        // Store the mode
+        // Store the value
         this._mode = value;
 
         // Add the new mode class
@@ -346,7 +346,7 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
             value = true;
         }
 
-        // Set the opened value
+        // Store the value
         this._opened = value;
 
         // If the navigation opened, and the mode
@@ -405,7 +405,7 @@ export class TreoVerticalNavigationComponent implements OnInit, AfterViewInit, O
         positionClassName = 'treo-vertical-navigation-position-' + this.position;
         this._renderer2.removeClass(this._elementRef.nativeElement, positionClassName);
 
-        // Store the position
+        // Store the value
         this._position = value;
 
         // Add the new position class

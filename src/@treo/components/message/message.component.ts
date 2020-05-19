@@ -65,7 +65,7 @@ export class TreoMessageComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for appearance
+     * Setter & getter for appearance
      *
      * @param value
      */
@@ -92,7 +92,7 @@ export class TreoMessageComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Setter and getter for dismissed
+     * Setter & getter for dismissed
      *
      * @param value
      */
@@ -131,7 +131,7 @@ export class TreoMessageComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Setter and getter for show icon
+     * Setter & getter for show icon
      *
      * @param value
      */
@@ -164,7 +164,7 @@ export class TreoMessageComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Setter and getter for type
+     * Setter & getter for type
      *
      * @param value
      */

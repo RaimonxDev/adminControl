@@ -94,7 +94,7 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
             return;
         }
 
-        // Store the fixed value
+        // Store the value
         this._fixed = value;
 
         // Update the class
@@ -157,7 +157,7 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
         modeClassName = 'treo-drawer-mode-' + this.mode;
         this._renderer2.removeClass(this._elementRef.nativeElement, modeClassName);
 
-        // Store the mode
+        // Store the value
         this._mode = value;
 
         // Add the new mode class
@@ -201,7 +201,7 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
             value = true;
         }
 
-        // Set the opened value
+        // Store the value
         this._opened = value;
 
         // If the drawer opened, and the mode
@@ -259,7 +259,7 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
         positionClassName = 'treo-drawer-position-' + this.position;
         this._renderer2.removeClass(this._elementRef.nativeElement, positionClassName);
 
-        // Store the position
+        // Store the value
         this._position = value;
 
         // Add the new position class

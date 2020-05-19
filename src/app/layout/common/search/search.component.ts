@@ -66,7 +66,7 @@ export class SearchComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter and getter for appearance
+     * Setter & getter for appearance
      *
      * @param value
      */
@@ -89,7 +89,7 @@ export class SearchComponent implements OnInit, OnDestroy
         appearanceClassName = 'search-appearance-' + this.appearance;
         this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
 
-        // Store the appearance
+        // Store the value
         this._appearance = value;
 
         // Add the new appearance class
@@ -103,7 +103,7 @@ export class SearchComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Setter and getter for opened
+     * Setter & getter for opened
      *
      * @param value
      */
@@ -115,7 +115,7 @@ export class SearchComponent implements OnInit, OnDestroy
             return;
         }
 
-        // Store the opened status
+        // Store the value
         this._opened = value;
 
         // If opened...
@@ -137,7 +137,7 @@ export class SearchComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Setter and getter for search input
+     * Setter & getter for search input
      *
      * @param value
      */
