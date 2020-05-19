@@ -898,8 +898,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                     {
                         id   : 'navigation-features.disabled-collapsable.child',
                         title: 'You shouldn\'t be able to see this child',
-                        type : 'basic',
-                        link : ''
+                        type : 'basic'
                     }
                 ]
             },
@@ -909,7 +908,6 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 subtitle: 'Some subtitle',
                 icon    : 'heroicons_outline:check-circle',
                 type    : 'basic',
-                link    : '',
                 disabled: true
             },
             {
@@ -917,7 +915,6 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 title: 'Oval badge',
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
-                link : '',
                 badge: {
                     title     : '8',
                     background: '#17FEFF',
@@ -929,7 +926,6 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 title: 'Rectangle badge',
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
-                link : '',
                 badge: {
                     title     : 'Updated!',
                     style     : 'rectangle',
@@ -942,7 +938,6 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 title: 'Rounded badge',
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
-                link : '',
                 badge: {
                     title     : 'NEW',
                     style     : 'rounded',
@@ -955,7 +950,6 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 title: 'Simple badge',
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
-                link : '',
                 badge: {
                     title: '87 Unread',
                     style: 'simple',
@@ -966,8 +960,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 id   : 'navigation-features.multi-line',
                 title: 'A multi line navigation item title example which works just fine',
                 icon : 'heroicons_outline:check-circle',
-                type : 'basic',
-                link : ''
+                type : 'basic'
             }
         ]
     }

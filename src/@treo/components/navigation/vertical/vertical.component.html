@@ -26,9 +26,9 @@
                 <treo-vertical-navigation-aside-item *ngIf="item.type === 'aside'"
                                                     [item]="item"
                                                     [name]="name"
-                                                    [skipChildren]="true"
+                                                    [activeItemId]="activeAsideItemId"
                                                     [autoCollapse]="autoCollapse"
-                                                    [active]="item.id === activeAsideItemId"
+                                                    [skipChildren]="true"
                                                     (click)="toggleAside(item)"></treo-vertical-navigation-aside-item>
 
                 <!-- Basic -->
