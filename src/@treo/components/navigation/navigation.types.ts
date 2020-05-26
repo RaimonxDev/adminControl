@@ -5,6 +5,7 @@ export interface TreoNavigationItem
     subtitle?: string;
     type: 'aside' | 'basic' | 'collapsable' | 'divider' | 'group' | 'spacer';
     hidden?: (item: TreoNavigationItem) => boolean;
+    active?: boolean;
     disabled?: boolean;
     link?: string;
     externalLink?: boolean;

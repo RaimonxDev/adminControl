@@ -888,6 +888,14 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 ]
             },
             {
+                id      : 'navigation-features.active',
+                title   : 'Active item',
+                subtitle: 'Manually marked as active',
+                icon    : 'heroicons_outline:check-circle',
+                type    : 'basic',
+                active  : true
+            },
+            {
                 id      : 'navigation-features.disabled-collapsable',
                 title   : 'Disabled collapsable',
                 subtitle: 'Some subtitle',

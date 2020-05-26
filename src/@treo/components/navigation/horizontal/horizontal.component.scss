@@ -172,7 +172,8 @@ treo-horizontal-navigation {
             // Basic - When item active (current link)
             treo-horizontal-navigation-basic-item {
 
-                .treo-horizontal-navigation-item-active {
+                .treo-horizontal-navigation-item-active,
+                .treo-horizontal-navigation-item-active-forced {
 
                     .treo-horizontal-navigation-item-title {
                         color: map-get($primary, default) !important;
@@ -195,7 +196,8 @@ treo-horizontal-navigation {
             // Branch - When menu open
             treo-horizontal-navigation-branch-item {
 
-                .treo-horizontal-navigation-menu-active {
+                .treo-horizontal-navigation-menu-active,
+                .treo-horizontal-navigation-menu-active-forced {
 
                     .treo-horizontal-navigation-item-wrapper {
                         background: map-get($background, hover);
@@ -211,7 +213,8 @@ treo-horizontal-navigation {
         // Basic - When item active (current link)
         treo-horizontal-navigation-basic-item {
 
-            .treo-horizontal-navigation-item-active {
+            .treo-horizontal-navigation-item-active,
+            .treo-horizontal-navigation-item-active-forced {
 
                 .treo-horizontal-navigation-item-title {
                     color: map-get($primary, default) !important;
