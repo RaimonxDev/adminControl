@@ -8,17 +8,18 @@ mailbox-settings {
     padding: 32px;
 
     .title {
-        margin: 16px 0 4px 8px;
+        margin: 16px 0 4px 0;
     }
 
     .subtitle {
-        margin: 0 0 32px 8px;
+        margin: 0 0 32px 0;
     }
 
     .add-label {
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        margin-bottom: 32px;
 
         .label {
             display: flex;
