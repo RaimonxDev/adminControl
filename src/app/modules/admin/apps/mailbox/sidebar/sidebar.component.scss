@@ -6,11 +6,11 @@ mailbox-sidebar {
     flex-direction: column;
 
     .title {
-        margin: 40px 32px 24px 32px;
+        margin: 40px 24px 24px 24px;
     }
 
     .compose-button {
-        margin: 0 32px;
+        margin: 0 24px;
 
         .mat-icon {
             @include treo-icon-size(18);
@@ -19,7 +19,6 @@ mailbox-sidebar {
     }
 
     .navigation {
-        padding: 0 8px;
 
         treo-vertical-navigation {
 
