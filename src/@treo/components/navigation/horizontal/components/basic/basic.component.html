@@ -6,6 +6,7 @@
     <!-- Item with an internal link -->
     <div class="treo-horizontal-navigation-item"
          *ngIf="item.link && !item.externalLink && !item.function && !item.disabled"
+         [ngClass]="{'treo-horizontal-navigation-item-active-forced': item.active}"
          [routerLink]="[item.link]"
          [routerLinkActive]="'treo-horizontal-navigation-item-active'"
          [routerLinkActiveOptions]="{exact: item.exactMatch || false}">
@@ -22,6 +23,7 @@
     <!-- Item with a function -->
     <div class="treo-horizontal-navigation-item"
          *ngIf="!item.link && item.function && !item.disabled"
+         [ngClass]="{'treo-horizontal-navigation-item-active-forced': item.active}"
          (click)="item.function(item)">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </div>
@@ -29,6 +31,7 @@
     <!-- Item with an internal link and function -->
     <div class="treo-horizontal-navigation-item"
          *ngIf="item.link && !item.externalLink && item.function && !item.disabled"
+         [ngClass]="{'treo-horizontal-navigation-item-active-forced': item.active}"
          [routerLink]="[item.link]"
          [routerLinkActive]="'treo-horizontal-navigation-item-active'"
          [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
@@ -47,7 +50,8 @@
 
     <!-- Item with a no link and no function -->
     <div class="treo-horizontal-navigation-item"
-         *ngIf="!item.link && !item.function && !item.disabled">
+         *ngIf="!item.link && !item.function && !item.disabled"
+         [ngClass]="{'treo-horizontal-navigation-item-active-forced': item.active}">
         <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
     </div>
 

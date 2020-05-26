@@ -355,7 +355,8 @@ futuristic-layout {
                     }
 
                     // Active state
-                    &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled) {
+                    &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled),
+                    &.treo-vertical-navigation-item-active-forced:not(.treo-vertical-navigation-item-disabled) {
                         background-color: treo-color('indigo', 900);
 
                         .treo-vertical-navigation-item-icon {
@@ -393,7 +394,8 @@ futuristic-layout {
                         .treo-vertical-navigation-item {
 
                             // Hover state
-                            &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
+                            &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled),
+                            &:hover:not(.treo-vertical-navigation-item-active-forced):not(.treo-vertical-navigation-item-disabled) {
                                 background-color: treo-color('indigo', 700);
 
                                 .treo-vertical-navigation-item-icon {

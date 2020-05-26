@@ -516,7 +516,8 @@ treo-vertical-navigation {
             }
 
             // Active state
-            &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled) {
+            &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled),
+            &.treo-vertical-navigation-item-active-forced:not(.treo-vertical-navigation-item-disabled) {
                 @if ($is-dark) {
                     background-color: rgba(0, 0, 0, 0.30);
                 } @else {
@@ -575,7 +576,8 @@ treo-vertical-navigation {
                 .treo-vertical-navigation-item {
 
                     // Hover state
-                    &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
+                    &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled),
+                    &:hover:not(.treo-vertical-navigation-item-active-forced):not(.treo-vertical-navigation-item-disabled) {
                         @if ($is-dark) {
                             background-color: rgba(255, 255, 255, 0.12);
                         } @else {
@@ -690,7 +692,8 @@ treo-vertical-navigation {
                 }
 
                 // Active state
-                &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled) {
+                &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled),
+                &.treo-vertical-navigation-item-active-forced:not(.treo-vertical-navigation-item-disabled) {
                     background-color: rgba(0, 0, 0, 0.30);
 
                     .treo-vertical-navigation-item-icon {
@@ -729,7 +732,8 @@ treo-vertical-navigation {
                     .treo-vertical-navigation-item {
 
                         // Hover state
-                        &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
+                        &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled),
+                        &:hover:not(.treo-vertical-navigation-item-active-forced):not(.treo-vertical-navigation-item-disabled) {
                             background-color: rgba(255, 255, 255, 0.12);
 
                             .treo-vertical-navigation-item-icon {

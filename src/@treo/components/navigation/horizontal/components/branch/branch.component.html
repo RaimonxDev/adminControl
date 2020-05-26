@@ -1,5 +1,6 @@
 <div *ngIf="!child"
-     [ngClass]="{'treo-horizontal-navigation-menu-active': trigger.menuOpen}"
+     [ngClass]="{'treo-horizontal-navigation-menu-active': trigger.menuOpen,
+                 'treo-horizontal-navigation-menu-active-forced': item.active}"
      [matMenuTriggerFor]="matMenu"
      (onMenuOpen)="triggerChangeDetection()"
      (onMenuClose)="triggerChangeDetection()"
@@ -21,7 +22,7 @@
                  *ngIf="item.type === 'basic'"
                  mat-menu-item>
                 <treo-horizontal-navigation-basic-item [item]="item"
-                                                      [name]="name"></treo-horizontal-navigation-basic-item>
+                                                       [name]="name"></treo-horizontal-navigation-basic-item>
             </div>
 
             <!-- Branch: aside, collapsable, group -->
@@ -31,9 +32,9 @@
                  mat-menu-item>
                 <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item}"></ng-container>
                 <treo-horizontal-navigation-branch-item [child]="true"
-                                                       [item]="item"
-                                                       [name]="name"
-                                                       #branch></treo-horizontal-navigation-branch-item>
+                                                        [item]="item"
+                                                        [name]="name"
+                                                        #branch></treo-horizontal-navigation-branch-item>
             </div>
 
             <!-- Divider -->
@@ -41,7 +42,7 @@
                  *ngIf="item.type === 'divider'"
                  mat-menu-item>
                 <treo-horizontal-navigation-divider-item [item]="item"
-                                                        [name]="name"></treo-horizontal-navigation-divider-item>
+                                                         [name]="name"></treo-horizontal-navigation-divider-item>
             </div>
 
         </ng-container>
@@ -59,7 +60,8 @@
          [ngClass]="item.classes">
 
         <div class="treo-horizontal-navigation-item"
-             [ngClass]="{'treo-horizontal-navigation-item-disabled': item.disabled}">
+             [ngClass]="{'treo-horizontal-navigation-item-disabled': item.disabled,
+                         'treo-horizontal-navigation-item-active-forced': item.active}">
 
             <!-- Icon -->
             <mat-icon class="treo-horizontal-navigation-item-icon"
