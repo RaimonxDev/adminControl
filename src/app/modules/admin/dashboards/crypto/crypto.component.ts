@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import * as _ from 'lodash';
+import { merge } from 'lodash-es';
 import * as moment from 'moment';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
 import { TreoConfigService } from '@treo/services/config';
@@ -94,7 +94,7 @@ export class CryptoComponent implements OnInit, OnDestroy
                 // Update the chart options
                 if ( this.btcChartComponent )
                 {
-                    this.btcChartComponent.updateOptions(_.merge(this.btcOptions, {
+                    this.btcChartComponent.updateOptions(merge(this.btcOptions, {
                         grid : {
                             borderColor: this._getBorderColor()
                         },

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
-import { map } from 'rxjs/operators';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
@@ -57,7 +55,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._categories)
+                    cloneDeep(this._categories)
                 ];
             });
 
@@ -70,7 +68,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._brands)
+                    cloneDeep(this._brands)
                 ];
             });
 
@@ -89,7 +87,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
                 const size = parseInt(request.params.get('size'), 10);
 
                 // Clone the products
-                let products = _.cloneDeep(this._products);
+                let products = cloneDeep(this._products);
 
                 // Sort the products
                 if ( sort === 'sku' || sort === 'name' || sort === 'active' )
@@ -173,7 +171,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
                 const id = request.params.get('id');
 
                 // Clone the products
-                const products = _.cloneDeep(this._products);
+                const products = cloneDeep(this._products);
 
                 // Find the product
                 const product = products.find((item) => {
@@ -234,7 +232,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
 
                 // Get the id and product
                 const id = request.body.id;
-                const product = _.cloneDeep(request.body.product);
+                const product = cloneDeep(request.body.product);
 
                 // Prepare the updated product
                 let updatedProduct = null;
@@ -245,7 +243,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the product
-                        products[index] = _.assign({}, products[index], product);
+                        products[index] = assign({}, products[index], product);
 
                         // Store the updated product
                         updatedProduct = products[index];
@@ -292,7 +290,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._tags)
+                    cloneDeep(this._tags)
                 ];
             });
 
@@ -304,7 +302,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the tag
-                const newTag = _.cloneDeep(request.body.tag);
+                const newTag = cloneDeep(request.body.tag);
 
                 // Generate a new GUID
                 newTag.id = TreoMockApiUtils.guid();
@@ -327,7 +325,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
 
                 // Get the id and tag
                 const id = request.body.id;
-                const tag = _.cloneDeep(request.body.tag);
+                const tag = cloneDeep(request.body.tag);
 
                 // Prepare the updated tag
                 let updatedTag = null;
@@ -338,7 +336,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the tag
-                        tags[index] = _.assign({}, tags[index], tag);
+                        tags[index] = assign({}, tags[index], tag);
 
                         // Store the updated tag
                         updatedTag = tags[index];
@@ -393,7 +391,7 @@ export class ECommerceInventoryMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._vendors)
+                    cloneDeep(this._vendors)
                 ];
             });
     }

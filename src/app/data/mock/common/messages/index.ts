@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
@@ -47,7 +47,7 @@ export class MessagesMockApi implements TreoMockApi
                 return [
                     200,
                     {
-                        messages: _.cloneDeep(this._messages)
+                        messages: cloneDeep(this._messages)
                     }
                 ];
             });
@@ -60,7 +60,7 @@ export class MessagesMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the message
-                const newMessage = _.cloneDeep(request.body.message);
+                const newMessage = cloneDeep(request.body.message);
 
                 // Generate a new GUID
                 newMessage.id = TreoMockApiUtils.guid();
@@ -83,7 +83,7 @@ export class MessagesMockApi implements TreoMockApi
 
                 // Get the id and message
                 const id = request.body.id;
-                const message = _.cloneDeep(request.body.message);
+                const message = cloneDeep(request.body.message);
 
                 // Prepare the updated message
                 let updatedMessage = null;
@@ -94,7 +94,7 @@ export class MessagesMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the message
-                        messages[index] = _.assign({}, messages[index], message);
+                        messages[index] = assign({}, messages[index], message);
 
                         // Store the updated message
                         updatedMessage = messages[index];
@@ -124,7 +124,7 @@ export class MessagesMockApi implements TreoMockApi
                 const index = this._messages.findIndex((item) => item.id === id);
 
                 // Store the deleted message
-                deletedMessage = _.cloneDeep(this._messages[index]);
+                deletedMessage = cloneDeep(this._messages[index]);
 
                 // Delete the message
                 this._messages.splice(index, 1);
@@ -164,7 +164,7 @@ export class MessagesMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the message
-                const message = _.cloneDeep(request.body.message);
+                const message = cloneDeep(request.body.message);
 
                 // Prepare the updated message
                 let updatedMessage = null;

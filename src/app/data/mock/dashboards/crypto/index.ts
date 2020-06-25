@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { crypto as cryptoData } from 'app/data/mock/dashboards/crypto/data';
@@ -46,7 +46,7 @@ export class CryptoMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._crypto)
+                    cloneDeep(this._crypto)
                 ];
             });
     }

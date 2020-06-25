@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { assign, cloneDeep, omit } from 'lodash-es';
 import * as moment from 'moment';
 import RRule, { RRuleSet, rrulestr } from 'rrule';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
@@ -119,7 +119,7 @@ export class CalendarMockApi implements TreoMockApi
             .reply(() => {
 
                 // Clone the calendars
-                const calendars = _.cloneDeep(this._calendars);
+                const calendars = cloneDeep(this._calendars);
 
                 return [
                     200,
@@ -135,7 +135,7 @@ export class CalendarMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the calendar as the new calendar
-                const newCalendar = _.cloneDeep(request.body.calendar);
+                const newCalendar = cloneDeep(request.body.calendar);
 
                 // Add an id to the new calendar
                 newCalendar.id = TreoMockApiUtils.guid();
@@ -158,7 +158,7 @@ export class CalendarMockApi implements TreoMockApi
 
                 // Get the id and calendar
                 const id = request.body.id;
-                const calendar = _.cloneDeep(request.body.calendar);
+                const calendar = cloneDeep(request.body.calendar);
 
                 // Prepare the updated calendar
                 let updatedCalendar = null;
@@ -169,7 +169,7 @@ export class CalendarMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the calendar
-                        calendars[index] = _.assign({}, calendars[index], calendar);
+                        calendars[index] = assign({}, calendars[index], calendar);
 
                         // Store the updated calendar
                         updatedCalendar = calendars[index];
@@ -217,7 +217,7 @@ export class CalendarMockApi implements TreoMockApi
                 const viewEnd = moment(request.params.get('end')).endOf('day');
 
                 // Clone the events
-                const events = _.cloneDeep(this._events);
+                const events = cloneDeep(this._events);
 
                 // Prepare the results
                 const results = [];
@@ -320,7 +320,7 @@ export class CalendarMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the event as the new event
-                const newEvent = _.cloneDeep(request.body.event);
+                const newEvent = cloneDeep(request.body.event);
 
                 // Add an id to the new event
                 newEvent.id = TreoMockApiUtils.guid();
@@ -343,7 +343,7 @@ export class CalendarMockApi implements TreoMockApi
 
                 // Get the id and event
                 const id = request.body.id;
-                const event = _.cloneDeep(request.body.event);
+                const event = cloneDeep(request.body.event);
 
                 // Prepare the updated event
                 let updatedEvent = null;
@@ -354,7 +354,7 @@ export class CalendarMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the event
-                        events[index] = _.assign({}, events[index], event);
+                        events[index] = assign({}, events[index], event);
 
                         // Store the updated event
                         updatedEvent = events[index];
@@ -395,8 +395,8 @@ export class CalendarMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the event, original event and mode
-                const event = _.cloneDeep(request.body.event);
-                const originalEvent = _.cloneDeep(request.body.originalEvent);
+                const event = cloneDeep(request.body.event);
+                const originalEvent = cloneDeep(request.body.originalEvent);
                 const mode = request.body.mode;
 
                 // Find the original recurring event from db
@@ -496,7 +496,7 @@ export class CalendarMockApi implements TreoMockApi
                     const eventIndex = this._events.findIndex((item) => item.id === event.recurringEventId);
 
                     // Update the recurring event
-                    this._events[eventIndex] = _.assign({}, this._events[eventIndex], _.omit(event, ['id', 'recurringEventId', 'range']));
+                    this._events[eventIndex] = assign({}, this._events[eventIndex], omit(event, ['id', 'recurringEventId', 'range']));
                 }
 
                 return [
@@ -603,7 +603,7 @@ export class CalendarMockApi implements TreoMockApi
             .reply(() => {
 
                 // Clone the settings
-                const settings = _.cloneDeep(this._settings);
+                const settings = cloneDeep(this._settings);
 
                 return [
                     200,
@@ -619,7 +619,7 @@ export class CalendarMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the settings
-                const settings = _.cloneDeep(request.body.settings);
+                const settings = cloneDeep(request.body.settings);
 
                 // Store the updated settings
                 this._settings = settings;
@@ -638,7 +638,7 @@ export class CalendarMockApi implements TreoMockApi
             .reply(() => {
 
                 // Clone the weekdays
-                const weekdays = _.cloneDeep(this._weekdays);
+                const weekdays = cloneDeep(this._weekdays);
 
                 // If the startWeekOn setting is set to Sunday...
                 if ( this._settings.startWeekOn === 0 )

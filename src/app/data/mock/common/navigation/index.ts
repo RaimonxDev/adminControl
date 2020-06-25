@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TreoNavigationItem } from '@treo/components/navigation';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
@@ -56,7 +56,7 @@ export class NavigationMockApi implements TreoMockApi
                     this._defaultNavigation.forEach((defaultNavItem) => {
                         if ( defaultNavItem.id === compactNavItem.id )
                         {
-                            compactNavItem.children = _.cloneDeep(defaultNavItem.children);
+                            compactNavItem.children = cloneDeep(defaultNavItem.children);
                         }
                     });
                 });
@@ -66,7 +66,7 @@ export class NavigationMockApi implements TreoMockApi
                     this._defaultNavigation.forEach((defaultNavItem) => {
                         if ( defaultNavItem.id === futuristicNavItem.id )
                         {
-                            futuristicNavItem.children = _.cloneDeep(defaultNavItem.children);
+                            futuristicNavItem.children = cloneDeep(defaultNavItem.children);
                         }
                     });
                 });
@@ -76,7 +76,7 @@ export class NavigationMockApi implements TreoMockApi
                     this._defaultNavigation.forEach((defaultNavItem) => {
                         if ( defaultNavItem.id === horizontalNavItem.id )
                         {
-                            horizontalNavItem.children = _.cloneDeep(defaultNavItem.children);
+                            horizontalNavItem.children = cloneDeep(defaultNavItem.children);
                         }
                     });
                 });
@@ -84,10 +84,10 @@ export class NavigationMockApi implements TreoMockApi
                 return [
                     200,
                     {
-                        compact   : _.cloneDeep(this._compactNavigation),
-                        default   : _.cloneDeep(this._defaultNavigation),
-                        futuristic: _.cloneDeep(this._futuristicNavigation),
-                        horizontal: _.cloneDeep(this._horizontalNavigation)
+                        compact   : cloneDeep(this._compactNavigation),
+                        default   : cloneDeep(this._defaultNavigation),
+                        futuristic: cloneDeep(this._futuristicNavigation),
+                        horizontal: cloneDeep(this._horizontalNavigation)
                     }
                 ];
             });

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import Base64 from 'crypto-js/enc-base64';
+import HmacSHA256 from 'crypto-js/hmac-sha256';
+import Utf8 from 'crypto-js/enc-utf8';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 
@@ -40,7 +42,7 @@ export class AuthMockApi implements TreoMockApi
     private _base64url(source): string
     {
         // Encode in classical base64
-        let encodedSource = CryptoJS.enc.Base64.stringify(source);
+        let encodedSource = Base64.stringify(source);
 
         // Remove padding equal characters
         encodedSource = encodedSource.replace(/=+$/, '');
@@ -82,16 +84,16 @@ export class AuthMockApi implements TreoMockApi
         };
 
         // Stringify and encode the header
-        const stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
+        const stringifiedHeader = Utf8.parse(JSON.stringify(header));
         const encodedHeader = this._base64url(stringifiedHeader);
 
         // Stringify and encode the payload
-        const stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));
+        const stringifiedPayload = Utf8.parse(JSON.stringify(payload));
         const encodedPayload = this._base64url(stringifiedPayload);
 
         // Sign the encoded header and data
         let signature: any = encodedHeader + '.' + encodedPayload;
-        signature = CryptoJS.HmacSHA256(signature, this._secret);
+        signature = HmacSHA256(signature, this._secret);
         signature = this._base64url(signature);
 
         // Build and return the token
@@ -113,7 +115,7 @@ export class AuthMockApi implements TreoMockApi
         const signature = parts[2];
 
         // Re-sign and encode the header and payload using the secret
-        const signatureCheck = this._base64url(CryptoJS.HmacSHA256(header + '.' + payload, this._secret));
+        const signatureCheck = this._base64url(HmacSHA256(header + '.' + payload, this._secret));
 
         // Verify that the resulting signature is valid
         return (signature === signatureCheck);

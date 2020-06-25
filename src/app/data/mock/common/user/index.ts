@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { user as userData } from 'app/data/mock/common/user/data';
@@ -46,7 +46,7 @@ export class UserMockApi implements TreoMockApi
                 return [
                     200,
                     {
-                        user: _.cloneDeep(this._user)
+                        user: cloneDeep(this._user)
                     }
                 ];
             });
@@ -59,15 +59,15 @@ export class UserMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the user data
-                const user = _.cloneDeep(request.body.user);
+                const user = cloneDeep(request.body.user);
 
                 // Update the user data
-                this._user = _.assign({}, this._user, user);
+                this._user = assign({}, this._user, user);
 
                 return [
                     200,
                     {
-                        user: _.cloneDeep(this._user)
+                        user: cloneDeep(this._user)
                     }
                 ];
             });

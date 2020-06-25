@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
@@ -52,7 +52,7 @@ export class ContactsMockApi implements TreoMockApi
             .reply(() => {
 
                 // Clone the contacts
-                const contacts = _.cloneDeep(this._contacts);
+                const contacts = cloneDeep(this._contacts);
 
                 // Sort the contacts by the name field by default
                 contacts.sort((a, b) => a.name.localeCompare(b.name));
@@ -74,7 +74,7 @@ export class ContactsMockApi implements TreoMockApi
                 const query = request.params.get('query');
 
                 // Clone the contacts
-                let contacts = _.cloneDeep(this._contacts);
+                let contacts = cloneDeep(this._contacts);
 
                 // If the query exists...
                 if ( query )
@@ -105,7 +105,7 @@ export class ContactsMockApi implements TreoMockApi
                 const id = request.params.get('id');
 
                 // Clone the contacts
-                const contacts = _.cloneDeep(this._contacts);
+                const contacts = cloneDeep(this._contacts);
 
                 // Find the contact
                 const contact = contacts.find((item) => {
@@ -160,7 +160,7 @@ export class ContactsMockApi implements TreoMockApi
 
                 // Get the id and contact
                 const id = request.body.id;
-                const contact = _.cloneDeep(request.body.contact);
+                const contact = cloneDeep(request.body.contact);
 
                 // Prepare the updated contact
                 let updatedContact = null;
@@ -171,7 +171,7 @@ export class ContactsMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the contact
-                        contacts[index] = _.assign({}, contacts[index], contact);
+                        contacts[index] = assign({}, contacts[index], contact);
 
                         // Store the updated contact
                         updatedContact = contacts[index];
@@ -218,7 +218,7 @@ export class ContactsMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._countries)
+                    cloneDeep(this._countries)
                 ];
             });
 
@@ -231,7 +231,7 @@ export class ContactsMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._tags)
+                    cloneDeep(this._tags)
                 ];
             });
 
@@ -243,7 +243,7 @@ export class ContactsMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the tag
-                const newTag = _.cloneDeep(request.body.tag);
+                const newTag = cloneDeep(request.body.tag);
 
                 // Generate a new GUID
                 newTag.id = TreoMockApiUtils.guid();
@@ -266,7 +266,7 @@ export class ContactsMockApi implements TreoMockApi
 
                 // Get the id and tag
                 const id = request.body.id;
-                const tag = _.cloneDeep(request.body.tag);
+                const tag = cloneDeep(request.body.tag);
 
                 // Prepare the updated tag
                 let updatedTag = null;
@@ -277,7 +277,7 @@ export class ContactsMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the tag
-                        tags[index] = _.assign({}, tags[index], tag);
+                        tags[index] = assign({}, tags[index], tag);
 
                         // Store the updated tag
                         updatedTag = tags[index];

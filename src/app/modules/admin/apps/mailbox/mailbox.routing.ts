@@ -1,5 +1,5 @@
 import { ActivatedRouteSnapshot, Route, UrlMatchResult, UrlSegment } from '@angular/router';
-import * as _ from 'lodash';
+import { isEqual } from 'lodash-es';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 import { MailboxFiltersResolver, MailboxFoldersResolver, MailboxLabelsResolver, MailboxMailResolver, MailboxMailsResolver } from 'app/modules/admin/apps/mailbox/mailbox.resolvers';
 import { MailboxListComponent } from 'app/modules/admin/apps/mailbox/list/list.component';
@@ -94,7 +94,7 @@ export function mailboxRunGuardsAndResolvers(from: ActivatedRouteSnapshot, to: A
         toParams[key] = to.paramMap.get(key);
     });
 
-    if ( _.isEqual(fromParams, toParams) )
+    if ( isEqual(fromParams, toParams) )
     {
         return false;
     }

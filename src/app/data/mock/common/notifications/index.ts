@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
@@ -47,7 +47,7 @@ export class NotificationsMockApi implements TreoMockApi
                 return [
                     200,
                     {
-                        notifications: _.cloneDeep(this._notifications)
+                        notifications: cloneDeep(this._notifications)
                     }
                 ];
             });
@@ -60,7 +60,7 @@ export class NotificationsMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the notification
-                const newNotification = _.cloneDeep(request.body.notification);
+                const newNotification = cloneDeep(request.body.notification);
 
                 // Generate a new GUID
                 newNotification.id = TreoMockApiUtils.guid();
@@ -83,7 +83,7 @@ export class NotificationsMockApi implements TreoMockApi
 
                 // Get the id and notification
                 const id = request.body.id;
-                const notification = _.cloneDeep(request.body.notification);
+                const notification = cloneDeep(request.body.notification);
 
                 // Prepare the updated notification
                 let updatedNotification = null;
@@ -94,7 +94,7 @@ export class NotificationsMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the notification
-                        notifications[index] = _.assign({}, notifications[index], notification);
+                        notifications[index] = assign({}, notifications[index], notification);
 
                         // Store the updated notification
                         updatedNotification = notifications[index];
@@ -124,7 +124,7 @@ export class NotificationsMockApi implements TreoMockApi
                 const index = this._notifications.findIndex((item) => item.id === id);
 
                 // Store the deleted notification
-                deletedNotification = _.cloneDeep(this._notifications[index]);
+                deletedNotification = cloneDeep(this._notifications[index]);
 
                 // Delete the notification
                 this._notifications.splice(index, 1);
@@ -164,7 +164,7 @@ export class NotificationsMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the notification
-                const notification = _.cloneDeep(request.body.notification);
+                const notification = cloneDeep(request.body.notification);
 
                 // Prepare the updated notification
                 let updatedNotification = null;

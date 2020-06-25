@@ -13,7 +13,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import momentPlugin from '@fullcalendar/moment';
 import rrulePlugin from '@fullcalendar/rrule';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import * as _ from 'lodash';
+import { cloneDeep, omit, clone, isEqual } from 'lodash-es';
 import * as moment from 'moment';
 import { RRule } from 'rrule';
 import { Subject } from 'rxjs';
@@ -210,7 +210,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
                 // Clone the events to change the object reference so
                 // that the FullCalendar can trigger a re-render.
-                this.events = _.cloneDeep(events);
+                this.events = cloneDeep(events);
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
@@ -786,7 +786,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     onEventClick(calendarEvent): void
     {
         // Find the event with the clicked event's id
-        const event: any = _.cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
+        const event: any = cloneDeep(this.events.find(item => item.id === calendarEvent.event.id));
 
         // Set the event
         this.event = event;
@@ -894,7 +894,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     addEvent(): void
     {
         // Get the clone of the event form value
-        let newEvent = _.clone(this.eventForm.value);
+        let newEvent = clone(this.eventForm.value);
 
         // If the event is a recurring event...
         if ( newEvent.recurrence )
@@ -904,7 +904,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         }
 
         // Modify the event before sending it to the server
-        newEvent = _.omit(newEvent, ['range', 'recurringEventId']);
+        newEvent = omit(newEvent, ['range', 'recurringEventId']);
 
         // Add the event
         this._calendarService.addEvent(newEvent).subscribe(() => {
@@ -923,14 +923,14 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     updateEvent(): void
     {
         // Get the clone of the event form value
-        let event = _.clone(this.eventForm.value);
+        let event = clone(this.eventForm.value);
         const {range, ...eventWithoutRange} = event;
 
         // Get the original event
         const originalEvent = this.events.find(item => item.id === event.id);
 
         // Return, if there are no changes made to the event
-        if ( _.isEqual(eventWithoutRange, originalEvent) )
+        if ( isEqual(eventWithoutRange, originalEvent) )
         {
             // Close the event panel
             this._closeEventPanel();
@@ -977,7 +977,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             event.duration = moment(event.range.end).diff(moment(event.range.start), 'minutes');
 
             // Omit unnecessary fields
-            event = _.omit(event, ['range', 'recurringEventId']);
+            event = omit(event, ['range', 'recurringEventId']);
 
             // Update the event on the server
             this._calendarService.updateEvent(event.id, event).subscribe(() => {

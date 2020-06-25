@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { faqCategories as faqCategoriesData, faqs as faqsData, guideCategories as guideCategoriesData, guideContent as guideContentData, guides as guidesData } from 'app/data/mock/pages/help-center/data';
@@ -59,10 +59,10 @@ export class HelpCenterMockApi implements TreoMockApi
                 const results = [];
 
                 // Get FAQs
-                const faqs = _.cloneDeep(this._faqs);
+                const faqs = cloneDeep(this._faqs);
 
                 // Get FAQ Categories
-                const categories = _.cloneDeep(this._faqCategories);
+                const categories = cloneDeep(this._faqCategories);
 
                 // If slug is not provided...
                 if ( !slug )
@@ -114,10 +114,10 @@ export class HelpCenterMockApi implements TreoMockApi
                 const results = [];
 
                 // Get all Guides
-                const guides = _.cloneDeep(this._guides);
+                const guides = cloneDeep(this._guides);
 
                 // Get Guide categories
-                const categories = _.cloneDeep(this._guideCategories);
+                const categories = cloneDeep(this._guideCategories);
 
                 // If slug is not provided...
                 if ( !slug )
@@ -171,8 +171,8 @@ export class HelpCenterMockApi implements TreoMockApi
                 const guideSlug = request.params.get('guideSlug');
 
                 // Get all Guides and Guide Categories
-                const guides = _.cloneDeep(this._guides);
-                const categories = _.cloneDeep(this._guideCategories);
+                const guides = cloneDeep(this._guides);
+                const categories = cloneDeep(this._guideCategories);
 
                 // Prepare the result
                 const result = {

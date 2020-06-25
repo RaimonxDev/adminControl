@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
@@ -49,7 +49,7 @@ export class TasksMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._tags)
+                    cloneDeep(this._tags)
                 ];
             });
 
@@ -61,7 +61,7 @@ export class TasksMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the tag
-                const newTag = _.cloneDeep(request.body.tag);
+                const newTag = cloneDeep(request.body.tag);
 
                 // Generate a new GUID
                 newTag.id = TreoMockApiUtils.guid();
@@ -84,7 +84,7 @@ export class TasksMockApi implements TreoMockApi
 
                 // Get the id and tag
                 const id = request.body.id;
-                const tag = _.cloneDeep(request.body.tag);
+                const tag = cloneDeep(request.body.tag);
 
                 // Prepare the updated tag
                 let updatedTag = null;
@@ -95,7 +95,7 @@ export class TasksMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the tag
-                        tags[index] = _.assign({}, tags[index], tag);
+                        tags[index] = assign({}, tags[index], tag);
 
                         // Store the updated tag
                         updatedTag = tags[index];
@@ -144,7 +144,7 @@ export class TasksMockApi implements TreoMockApi
             .reply(() => {
 
                 // Clone the tasks
-                const tasks = _.cloneDeep(this._tasks);
+                const tasks = cloneDeep(this._tasks);
 
                 // Sort the tasks by order
                 tasks.sort((a, b) => a.order - b.order);
@@ -172,7 +172,7 @@ export class TasksMockApi implements TreoMockApi
                 if ( query )
                 {
                     // Clone the tasks
-                    let tasks = _.cloneDeep(this._tasks);
+                    let tasks = cloneDeep(this._tasks);
 
                     // Filter the tasks
                     tasks = tasks.filter((task) => {
@@ -219,7 +219,7 @@ export class TasksMockApi implements TreoMockApi
                 });
 
                 // Clone the tasks
-                const updatedTasks = _.cloneDeep(this._tasks);
+                const updatedTasks = cloneDeep(this._tasks);
 
                 return [
                     200,
@@ -238,7 +238,7 @@ export class TasksMockApi implements TreoMockApi
                 const id = request.params.get('id');
 
                 // Clone the tasks
-                const tasks = _.cloneDeep(this._tasks);
+                const tasks = cloneDeep(this._tasks);
 
                 // Find the task
                 const task = tasks.find((item) => item.id === id);
@@ -292,7 +292,7 @@ export class TasksMockApi implements TreoMockApi
 
                 // Get the id and task
                 const id = request.body.id;
-                const task = _.cloneDeep(request.body.task);
+                const task = cloneDeep(request.body.task);
 
                 // Prepare the updated task
                 let updatedTask = null;
@@ -303,7 +303,7 @@ export class TasksMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the task
-                        tasks[index] = _.assign({}, tasks[index], task);
+                        tasks[index] = assign({}, tasks[index], task);
 
                         // Store the updated task
                         updatedTask = tasks[index];

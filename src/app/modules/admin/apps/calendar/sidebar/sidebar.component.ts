@@ -3,7 +3,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { Calendar } from 'app/modules/admin/apps/calendar/calendar.types';
 import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.service';
 import { calendarColors } from 'app/modules/admin/apps/calendar/sidebar/calendar-colors';
@@ -91,7 +91,7 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
     openEditPanel(calendar: Calendar): void
     {
         // Set the calendar
-        this.calendar = _.cloneDeep(calendar);
+        this.calendar = cloneDeep(calendar);
 
         // Create the overlay
         this._editPanelOverlayRef = this._overlay.create({

@@ -8,7 +8,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil, tap } from 'rxjs/operators';
-import * as _ from 'lodash';
+import { assign } from 'lodash-es';
 import * as moment from 'moment';
 import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.types';
 import { TasksListComponent } from 'app/modules/admin/apps/tasks/list/list.component';
@@ -158,7 +158,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
                 tap((value) => {
 
                     // Update the task object
-                    this.task = _.assign(this.task, value);
+                    this.task = assign(this.task, value);
                 }),
                 debounceTime(300),
                 takeUntil(this._unsubscribeAll)
