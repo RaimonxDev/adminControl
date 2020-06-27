@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
@@ -55,7 +55,7 @@ export class MailboxMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._settings)
+                    cloneDeep(this._settings)
                 ];
             });
 
@@ -67,14 +67,14 @@ export class MailboxMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the settings
-                const settings = _.cloneDeep(request.body.settings);
+                const settings = cloneDeep(request.body.settings);
 
                 // Update the settings
-                this._settings = _.assign({}, this._settings, settings);
+                this._settings = assign({}, this._settings, settings);
 
                 return [
                     200,
-                    _.cloneDeep(this._settings)
+                    cloneDeep(this._settings)
                 ];
             });
 
@@ -127,7 +127,7 @@ export class MailboxMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._folders)
+                    cloneDeep(this._folders)
                 ];
             });
 
@@ -140,7 +140,7 @@ export class MailboxMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._filters)
+                    cloneDeep(this._filters)
                 ];
             });
 
@@ -153,7 +153,7 @@ export class MailboxMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._labels)
+                    cloneDeep(this._labels)
                 ];
             });
 
@@ -165,7 +165,7 @@ export class MailboxMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the label
-                const label = _.cloneDeep(request.body.label);
+                const label = cloneDeep(request.body.label);
 
                 // Generate an id
                 label.id = TreoMockApiUtils.guid();
@@ -214,7 +214,7 @@ export class MailboxMockApi implements TreoMockApi
 
                 // Get the id and label
                 const id = request.body.id;
-                const label = _.cloneDeep(request.body.label);
+                const label = cloneDeep(request.body.label);
 
                 // Prepare the updated label
                 let updatedLabel = null;
@@ -231,7 +231,7 @@ export class MailboxMockApi implements TreoMockApi
                                           .replace(/[^\w-]+/g, '');
 
                         // Update the label
-                        labels[index] = _.assign({}, labels[index], label);
+                        labels[index] = assign({}, labels[index], label);
 
                         // Store the updated label
                         updatedLabel = labels[index];
@@ -287,7 +287,7 @@ export class MailboxMockApi implements TreoMockApi
                 const byLabel = request.params.get('label');
 
                 // Clone the mails data to prevent accidental data updates
-                let mails = _.cloneDeep(this._mails);
+                let mails = cloneDeep(this._mails);
 
                 // Filter the mails depending on the requested by type
                 mails = mails.filter((mail) => {
@@ -382,7 +382,7 @@ export class MailboxMockApi implements TreoMockApi
                 const id = request.params.get('id');
 
                 // Clone the mails data to prevent accidental data updates
-                const mails = _.cloneDeep(this._mails);
+                const mails = cloneDeep(this._mails);
 
                 // Find the mail
                 const mail = mails.find((item) => item.id === id);
@@ -402,7 +402,7 @@ export class MailboxMockApi implements TreoMockApi
 
                 // Get the id and mail
                 const id = request.body.id;
-                const mail = _.cloneDeep(request.body.mail);
+                const mail = cloneDeep(request.body.mail);
 
                 // Prepare the updated mail
                 let updatedMail = null;
@@ -413,7 +413,7 @@ export class MailboxMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the mail
-                        mails[index] = _.assign({}, mails[index], mail);
+                        mails[index] = assign({}, mails[index], mail);
 
                         // Store the updated mail
                         updatedMail = mails[index];

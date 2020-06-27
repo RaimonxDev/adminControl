@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { finance as financeData } from 'app/data/mock/dashboards/finance/data';
@@ -46,7 +46,7 @@ export class FinanceMockApi implements TreoMockApi
 
                 return [
                     200,
-                    _.cloneDeep(this._finance)
+                    cloneDeep(this._finance)
                 ];
             });
     }

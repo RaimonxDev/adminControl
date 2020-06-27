@@ -4,7 +4,7 @@ import { Platform } from '@angular/cdk/platform';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
-import * as _ from 'lodash';
+import { merge } from 'lodash-es';
 import { ScrollbarGeometry, ScrollbarPosition } from '@treo/directives/scrollbar/scrollbar.interfaces';
 
 // -----------------------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
     set treoScrollbarOptions(value: any)
     {
         // Merge the options
-        this._options = _.merge({}, this._options, value);
+        this._options = merge({}, this._options, value);
 
         // Destroy and re-init the PerfectScrollbar to update its options
         setTimeout(() => {

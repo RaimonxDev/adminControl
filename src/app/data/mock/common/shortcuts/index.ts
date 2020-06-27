@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { assign, cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { TreoMockApiUtils } from '@treo/lib/mock-api/mock-api.utils';
@@ -47,7 +47,7 @@ export class ShortcutsMockApi implements TreoMockApi
                 return [
                     200,
                     {
-                        shortcuts: _.cloneDeep(this._shortcuts)
+                        shortcuts: cloneDeep(this._shortcuts)
                     }
                 ];
             });
@@ -60,7 +60,7 @@ export class ShortcutsMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the shortcut
-                const newShortcut = _.cloneDeep(request.body.shortcut);
+                const newShortcut = cloneDeep(request.body.shortcut);
 
                 // Generate a new GUID
                 newShortcut.id = TreoMockApiUtils.guid();
@@ -83,7 +83,7 @@ export class ShortcutsMockApi implements TreoMockApi
 
                 // Get the id and shortcut
                 const id = request.body.id;
-                const shortcut = _.cloneDeep(request.body.shortcut);
+                const shortcut = cloneDeep(request.body.shortcut);
 
                 // Prepare the updated shortcut
                 let updatedShortcut = null;
@@ -94,7 +94,7 @@ export class ShortcutsMockApi implements TreoMockApi
                     if ( item.id === id )
                     {
                         // Update the shortcut
-                        shortcuts[index] = _.assign({}, shortcuts[index], shortcut);
+                        shortcuts[index] = assign({}, shortcuts[index], shortcut);
 
                         // Store the updated shortcut
                         updatedShortcut = shortcuts[index];
@@ -124,7 +124,7 @@ export class ShortcutsMockApi implements TreoMockApi
                 const index = this._shortcuts.findIndex((item) => item.id === id);
 
                 // Store the deleted shortcut
-                deletedShortcut = _.cloneDeep(this._shortcuts[index]);
+                deletedShortcut = cloneDeep(this._shortcuts[index]);
 
                 // Delete the shortcut
                 this._shortcuts.splice(index, 1);

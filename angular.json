@@ -23,6 +23,12 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "aot": true,
+                        "allowedCommonJsDependencies": [
+                            "highlight.js",
+                            "crypto-js/enc-utf8",
+                            "crypto-js/hmac-sha256",
+                            "crypto-js/enc-base64"
+                        ],
                         "assets": [
                             "src/favicon-16x16.png",
                             "src/favicon-32x32.png",

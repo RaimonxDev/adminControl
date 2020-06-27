@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 import { dripicons, feather, heroicons, iconsmind, material } from 'app/data/mock/ui/icons/data';
@@ -56,7 +56,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'dripicons',
                         name     : 'Dripicons',
-                        list     : _.cloneDeep(this._dripicons)
+                        list     : cloneDeep(this._dripicons)
                     }
                 ];
             });
@@ -72,7 +72,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'feather',
                         name     : 'Feather',
-                        list     : _.cloneDeep(this._feather)
+                        list     : cloneDeep(this._feather)
                     }
                 ];
             });
@@ -88,7 +88,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'heroicons_outline',
                         name     : 'Heroicons Outline',
-                        list     : _.cloneDeep(this._heroicons)
+                        list     : cloneDeep(this._heroicons)
                     }
                 ];
             });
@@ -104,7 +104,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'heroicons_solid',
                         name     : 'Heroicons Solid',
-                        list     : _.cloneDeep(this._heroicons)
+                        list     : cloneDeep(this._heroicons)
                     }
                 ];
             });
@@ -120,7 +120,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'iconsmind',
                         name     : 'Iconsmind',
-                        list     : _.cloneDeep(this._iconsmind)
+                        list     : cloneDeep(this._iconsmind)
                     }
                 ];
             });
@@ -136,7 +136,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'mat_outline',
                         name     : 'Material Outline',
-                        list     : _.cloneDeep(this._material)
+                        list     : cloneDeep(this._material)
                     }
                 ];
             });
@@ -152,7 +152,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: '',
                         name     : 'Material Twotone',
-                        list     : _.cloneDeep(this._material)
+                        list     : cloneDeep(this._material)
                     }
                 ];
             });

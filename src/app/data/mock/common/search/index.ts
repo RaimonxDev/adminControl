@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { TreoNavigationItem, TreoNavigationService } from '@treo/components/navigation';
 import { TreoMockApi } from '@treo/lib/mock-api/mock-api.interfaces';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
@@ -54,7 +54,7 @@ export class SearchMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the search query
-                const query = _.cloneDeep(request.body.query.toLowerCase());
+                const query = cloneDeep(request.body.query.toLowerCase());
 
                 // If the search query is an empty string,
                 // return an empty array
@@ -64,12 +64,12 @@ export class SearchMockApi implements TreoMockApi
                 }
 
                 // Filter the navigation
-                const navigationResults = _.cloneDeep(flatNavigation).filter((item) => {
+                const navigationResults = cloneDeep(flatNavigation).filter((item) => {
                     return (item.title.toLowerCase().includes(query) || (item.subtitle && item.subtitle.includes(query)));
                 });
 
                 // Filter the contacts
-                const contactsResults = _.cloneDeep(this._contacts).filter((user) => {
+                const contactsResults = cloneDeep(this._contacts).filter((user) => {
                     return user.name.toLowerCase().includes(query);
                 });
 

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import * as _ from 'lodash';
+import { merge } from 'lodash-es';
 import { TREO_APP_CONFIG } from '@treo/services/config/config.constants';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class TreoConfigService
     set config(value: any)
     {
         // Merge the new config over to the current config
-        const config = _.merge({}, this._config.getValue(), value);
+        const config = merge({}, this._config.getValue(), value);
 
         // Execute the observable
         this._config.next(config);
