@@ -99,7 +99,7 @@ export class CalendarService
     {
         return this.calendars$.pipe(
             take(1),
-            switchMap(calendars => this._httpClient.put<Calendar>('api/apps/calendar/calendars', {
+            switchMap(calendars => this._httpClient.post<Calendar>('api/apps/calendar/calendars', {
                 calendar
             }).pipe(
                 map((addedCalendar) => {
@@ -326,7 +326,7 @@ export class CalendarService
     {
         return this.events$.pipe(
             take(1),
-            switchMap(events => this._httpClient.put<CalendarEvent>('api/apps/calendar/event', {
+            switchMap(events => this._httpClient.post<CalendarEvent>('api/apps/calendar/event', {
                 event
             }).pipe(
                 map((addedEvent) => {

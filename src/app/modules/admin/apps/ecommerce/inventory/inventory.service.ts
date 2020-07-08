@@ -191,7 +191,7 @@ export class InventoryService
     {
         return this.products$.pipe(
             take(1),
-            switchMap((products) => this._httpClient.put<InventoryProduct>('api/apps/ecommerce/inventory/product', {}).pipe(
+            switchMap((products) => this._httpClient.post<InventoryProduct>('api/apps/ecommerce/inventory/product', {}).pipe(
                 map((newProduct) => {
 
                     // Update the products with the new product
@@ -297,7 +297,7 @@ export class InventoryService
     {
         return this.tags$.pipe(
             take(1),
-            switchMap(tags => this._httpClient.put<InventoryTag>('api/apps/ecommerce/inventory/tag', {tag}).pipe(
+            switchMap(tags => this._httpClient.post<InventoryTag>('api/apps/ecommerce/inventory/tag', {tag}).pipe(
                 map((newTag) => {
 
                     // Update the tags with the new tag

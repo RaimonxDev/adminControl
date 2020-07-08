@@ -82,7 +82,7 @@ export class TasksService
     {
         return this.tags$.pipe(
             take(1),
-            switchMap(tags => this._httpClient.put<Tag>('api/apps/tasks/tag', {tag}).pipe(
+            switchMap(tags => this._httpClient.post<Tag>('api/apps/tasks/tag', {tag}).pipe(
                 map((newTag) => {
 
                     // Update the tags with the new tag
@@ -247,7 +247,7 @@ export class TasksService
     {
         return this.tasks$.pipe(
             take(1),
-            switchMap((tasks) => this._httpClient.put<Task>('api/apps/tasks/task', {type}).pipe(
+            switchMap((tasks) => this._httpClient.post<Task>('api/apps/tasks/task', {type}).pipe(
                 map((newTask) => {
 
                     // Update the tasks with the new task

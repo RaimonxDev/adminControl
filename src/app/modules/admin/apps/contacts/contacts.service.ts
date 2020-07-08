@@ -144,7 +144,7 @@ export class ContactsService
     {
         return this.contacts$.pipe(
             take(1),
-            switchMap((contacts) => this._httpClient.put<Contact>('api/apps/contacts/contact', {}).pipe(
+            switchMap((contacts) => this._httpClient.post<Contact>('api/apps/contacts/contact', {}).pipe(
                 map((newContact) => {
 
                     // Update the contacts with the new contact
@@ -262,7 +262,7 @@ export class ContactsService
     {
         return this.tags$.pipe(
             take(1),
-            switchMap(tags => this._httpClient.put<Tag>('api/apps/contacts/tag', {tag}).pipe(
+            switchMap(tags => this._httpClient.post<Tag>('api/apps/contacts/tag', {tag}).pipe(
                 map((newTag) => {
 
                     // Update the tags with the new tag

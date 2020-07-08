@@ -340,7 +340,7 @@ export class MailboxService
     {
         return this.labels$.pipe(
             take(1),
-            switchMap(labels => this._httpClient.put<MailLabel>('api/apps/mailbox/label', {label}).pipe(
+            switchMap(labels => this._httpClient.post<MailLabel>('api/apps/mailbox/label', {label}).pipe(
                 map((newLabel) => {
 
                     // Update the labels with the new label
