@@ -165,6 +165,12 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
                 }
             }
 
+            // Skip items other than 'basic'
+            if ( child.type !== 'basic' )
+            {
+                return false;
+            }
+
             // Check if the item's link is the exact same of the
             // current url
             if ( child.link === url )
