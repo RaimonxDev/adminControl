@@ -51,8 +51,8 @@
                                [formControlName]="'password'"
                                #passwordField>
                         <button mat-icon-button
+                                type="button"
                                 (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
-                                tabindex="-1"
                                 matSuffix>
                             <mat-icon *ngIf="passwordField.type === 'password'"
                                       [svgIcon]="'visibility'"></mat-icon>
@@ -76,7 +76,6 @@
                     <!-- Submit button -->
                     <button class="submit-button treo-mat-button-large"
                             mat-flat-button
-                            type="button"
                             [color]="'primary'"
                             [disabled]="signInForm.disabled"
                             (click)="signIn()">
@@ -95,14 +94,17 @@
                         </div>
                         <div class="buttons">
                             <button class="sso-button"
+                                    type="button"
                                     mat-stroked-button>
                                 <mat-icon [svgIcon]="'feather:facebook'"></mat-icon>
                             </button>
                             <button class="sso-button"
+                                    type="button"
                                     mat-stroked-button>
                                 <mat-icon [svgIcon]="'feather:twitter'"></mat-icon>
                             </button>
                             <button class="sso-button"
+                                    type="button"
                                     mat-stroked-button>
                                 <mat-icon [svgIcon]="'feather:github'"></mat-icon>
                             </button>
