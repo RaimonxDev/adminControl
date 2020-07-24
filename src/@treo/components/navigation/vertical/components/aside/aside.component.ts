@@ -198,16 +198,18 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
      */
     private _markIfActive(url): void
     {
+        // Check if the activeItemId is equals to this item id
+        this.active = this.activeItemId === this.item.id;
+
         // If the aside has a children that is active,
         // always mark it as active
         if ( this._hasCurrentUrlInChildren(this.item, url) )
         {
             this.active = true;
-            return;
         }
 
-        // Check if the activeItemId is equals to this item id
-        this.active = this.activeItemId === this.item.id;
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     // -----------------------------------------------------------------------------------------------------
