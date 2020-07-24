@@ -122,6 +122,9 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((contact: Contact) => {
 
+                // Open the drawer in case it is closed
+                this._contactsListComponent.matDrawer.open();
+
                 // Get the contact
                 this.contact = contact;
 
