@@ -146,7 +146,7 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
      * @param url
      * @private
      */
-    private _hasCurrentUrlInChildren(item, url): boolean
+    private _hasCurrentUrlAsChildren(item, url): boolean
     {
         const children = item.children;
 
@@ -159,7 +159,7 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
         {
             if ( child.children )
             {
-                if ( this._hasCurrentUrlInChildren(child, url) )
+                if ( this._hasCurrentUrlAsChildren(child, url) )
                 {
                     return true;
                 }
@@ -203,7 +203,7 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
 
         // If the aside has a children that is active,
         // always mark it as active
-        if ( this._hasCurrentUrlInChildren(this.item, url) )
+        if ( this._hasCurrentUrlAsChildren(this.item, url) )
         {
             this.active = true;
         }
