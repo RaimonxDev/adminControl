@@ -7,22 +7,20 @@ tasks-list {
     .mat-drawer-container {
 
         .mat-drawer {
+            width: 496px !important;
             min-width: 496px !important;
             max-width: 496px !important;
-            width: 496px !important;
 
             @include treo-breakpoint('xs') {
+                width: 100% !important;
                 min-width: 100% !important;
                 max-width: 100% !important;
-                width: 100% !important;
             }
         }
 
         .mat-drawer-content {
 
             .main {
-                display: flex;
-                flex-direction: column;
                 padding: 0 !important;
                 min-height: 100%;
 
@@ -88,9 +86,6 @@ tasks-list {
                 }
 
                 .tasks-list {
-                    display: flex;
-                    flex-direction: column;
-                    flex: 1 1 auto;
 
                     &.cdk-drop-list-dragging {
 

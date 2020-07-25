@@ -142,6 +142,9 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((task: Task) => {
 
+                // Open the drawer in case it is closed
+                this._tasksListComponent.matDrawer.open();
+
                 // Get the task
                 this.task = task;
 
