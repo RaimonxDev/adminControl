@@ -11,6 +11,9 @@ export class DemoSidebarContentComponent
 {
     menuData: TreoNavigationItem[];
 
+    /**
+     * Constructor
+     */
     constructor()
     {
         // Set the defaults
