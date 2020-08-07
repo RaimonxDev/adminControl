@@ -31,9 +31,6 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     @ViewChild('infoDetailsPanel')
     private _infoDetailsPanel: TemplateRef<any>;
 
-    @ViewChild('threadsContainer')
-    private _threadsContainer: ElementRef;
-
     /**
      * Constructor
      *
@@ -98,16 +95,6 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
                 // De-activate the reply form
                 this.replyFormActive = false;
             });
-
-        // Subscribe to NavigationEnd event
-        this._router.events.pipe(
-            filter(event => event instanceof NavigationEnd),
-            takeUntil(this._unsubscribeAll)
-        ).subscribe((event) => {
-
-            // Scroll the threads container to the top
-            this._threadsContainer.nativeElement.scrollTop = 0;
-        });
     }
 
     /**

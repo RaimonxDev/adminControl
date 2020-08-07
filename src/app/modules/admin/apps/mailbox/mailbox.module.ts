@@ -15,6 +15,7 @@ import { QuillModule } from 'ngx-quill';
 import { TreoFindByKeyPipeModule } from '@treo/pipes/find-by-key';
 import { TreoNavigationModule } from '@treo/components/navigation';
 import { TreoScrollbarModule } from '@treo/directives/scrollbar';
+import { TreoScrollResetModule } from '@treo/directives/scroll-reset';
 import { SharedModule } from 'app/shared/shared.module';
 import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
@@ -53,6 +54,7 @@ import { mailboxRoutes } from 'app/modules/admin/apps/mailbox/mailbox.routing';
         TreoFindByKeyPipeModule,
         TreoNavigationModule,
         TreoScrollbarModule,
+        TreoScrollResetModule,
         SharedModule
     ]
 })
