@@ -533,6 +533,13 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 link : '/ui/tailwindcss'
             },
             {
+                id   : 'user-interface.animations',
+                title: 'Animations',
+                type : 'basic',
+                icon : 'heroicons_outline:play',
+                link : '/ui/animations'
+            },
+            {
                 id   : 'user-interface.cards',
                 title: 'Cards',
                 type : 'basic',
@@ -751,6 +758,13 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 ]
             },
             {
+                id   : 'user-interface.helpers',
+                title: 'Helpers',
+                type : 'basic',
+                icon : 'heroicons_outline:support',
+                link : '/ui/helpers'
+            },
+            {
                 id      : 'user-interface.icons',
                 title   : 'Icons',
                 type    : 'collapsable',
@@ -811,6 +825,53 @@ export const defaultNavigation: TreoNavigationItem[] = [
     },
     {
         id  : 'divider-1',
+        type: 'divider'
+    },
+    {
+        id      : 'documentation',
+        title   : 'Documentation',
+        subtitle: 'Everything you need to know about Treo',
+        type    : 'group',
+        icon    : 'heroicons_outline:support',
+        children: [
+            {
+                id   : 'documentation.changelog',
+                title: 'Changelog',
+                type : 'basic',
+                icon : 'heroicons_outline:speakerphone',
+                link : '/docs/changelog',
+                badge: {
+                    title     : '1.0.2',
+                    style     : 'rounded',
+                    background: '#FFEB3B',
+                    color     : '#000000'
+                }
+            },
+            {
+                id   : 'documentation.guides',
+                title: 'Guides',
+                type : 'basic',
+                icon : 'heroicons_outline:book-open',
+                link : '/docs/guides'
+            },
+            {
+                id   : 'documentation.core-features',
+                title: 'Core features',
+                type : 'basic',
+                icon : 'heroicons_outline:book-open',
+                link : '/docs/core-features'
+            },
+            {
+                id   : 'documentation.other-components',
+                title: 'Other components',
+                type : 'basic',
+                icon : 'heroicons_outline:book-open',
+                link : '/docs/other-components'
+            }
+        ]
+    },
+    {
+        id  : 'divider-2',
         type: 'divider'
     },
     {

@@ -136,7 +136,10 @@ export const appRoutes: Route[] = [
                 // TailwindCSS
                 {path: 'tailwindcss', loadChildren: () => import('app/modules/admin/ui/tailwindcss/tailwindcss.module').then(m => m.TailwindCSSModule)},
 
-                // Cards
+                // Animations
+                {path: 'animations', loadChildren: () => import('app/modules/admin/ui/animations/animations.module').then(m => m.AnimationsModule)},
+
+                 // Cards
                 {path: 'cards', loadChildren: () => import('app/modules/admin/ui/cards/cards.module').then(m => m.CardsModule)},
 
                 // Colors
@@ -201,11 +204,30 @@ export const appRoutes: Route[] = [
                     {path: 'wizards', loadChildren: () => import('app/modules/admin/ui/forms/wizards/wizards.module').then(m => m.FormsWizardsModule)}
                 ]},
 
+                // Helpers
+                {path: 'helpers', loadChildren: () => import('app/modules/admin/ui/helpers/helpers.module').then(m => m.HelpersModule)},
+
                 // Icons
                 {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.module').then(m => m.IconsModule)},
 
                 // Typography
                 {path: 'typography', loadChildren: () => import('app/modules/admin/ui/typography/typography.module').then(m => m.TypographyModule)}
+            ]},
+
+            // Documentation
+            {path: 'docs', children: [
+
+                // Changelog
+                {path: 'changelog', loadChildren: () => import('app/modules/admin/docs/changelog/changelog.module').then(m => m.ChangelogModule)},
+
+                // Guides
+                {path: 'guides', loadChildren: () => import('app/modules/admin/docs/guides/guides.module').then(m => m.GuidesModule)},
+
+                // Core features
+                {path: 'core-features', loadChildren: () => import('app/modules/admin/docs/core-features/core-features.module').then(m => m.CoreFeaturesModule)},
+
+                // Other components
+                {path: 'other-components', loadChildren: () => import('app/modules/admin/docs/other-components/other-components.module').then(m => m.OtherComponentsModule)},
             ]},
 
             // 404 & Catch all
