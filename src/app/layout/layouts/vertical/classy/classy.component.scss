@@ -140,33 +140,6 @@ classy-layout {
                 margin-right: 8px;
             }
 
-            .message {
-                display: flex;
-                align-items: center;
-                margin: 0 32px 0 8px;
-                line-height: 1;
-
-                @include treo-breakpoint('lt-md') {
-                    display: none;
-                }
-
-                .mat-icon {
-                    margin-right: 8px;
-                }
-
-                a {
-                    display: flex;
-                    align-items: center;
-
-                    .mat-icon {
-                        margin-left: 4px;
-                        color: currentColor !important;
-                        @include treo-icon-size(16);
-                    }
-                }
-
-            }
-
             .spacer {
                 display: flex;
                 flex: 1 1 auto;
