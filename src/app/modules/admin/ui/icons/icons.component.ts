@@ -41,6 +41,7 @@ export class IconsComponent implements OnInit
      */
     ngOnInit(): void
     {
+        // Get the icons
         this.icons$ = this._iconsService.icons;
 
         // Create filtered icons
@@ -50,6 +51,9 @@ export class IconsComponent implements OnInit
 
                     // Filter the icons
                     const filteredIcons = icons.list.filter(icon => icon.toLowerCase().includes(filterValue.toLowerCase()));
+
+                    // Set the icon size input
+                    this.iconSizeInput.setValue(icons.grid);
 
                     // Update the list with the filtered icons
                     return {
