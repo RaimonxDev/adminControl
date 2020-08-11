@@ -64,14 +64,14 @@
             <treo-message appearance="outline"
                           [showIcon]="false"
                           type="basic">
-                <p treoMessageTitle>A note from the developer:</p>
-                <p class="mt-2">
-                    You can completely skip the step #1 and #2 and instead fork the project from Treo's Github repo directly. This will not only make things simpler, but it
-                    will also make any future updates easier as you can merge the changes from the original repo into your fork.
-                </p>
-                <p class="mt-2">
+                <span treoMessageTitle>A note from the developer:</span>
+                <div>
+                    You can completely skip the steps <strong>#1</strong> and <strong>#2</strong> and instead fork the project from Treo's Github repo directly. This will not only
+                    make things simpler, but it will also make any future updates easier as you can merge the changes from the original repo into your fork.
+                </div>
+                <div class="mt-2">
                     For more information and to access Treo's Github repo, check out the Treo's Themeforest description page.
-                </p>
+                </div>
             </treo-message>
 
             <h2>3. Run the installation command</h2>
@@ -91,14 +91,14 @@
             </p>
             <treo-message appearance="outline"
                           type="info">
-                <p>
+                <div>
                     After the installation completes, you may see warnings about deprecated packages and security risks. You can safely ignore those messages as Treo (and other
                     Angular apps) use Node.js for only development environment.
-                </p>
-                <p>
+                </div>
+                <div class="mt-4">
                     Unless you explicitly add a package to your <strong>dependencies</strong> list in <em>package.json</em> file, they won't be included into the final application
                     therefore they are not going cause any security risks.
-                </p>
+                </div>
             </treo-message>
 
             <!-- Nav -->
