@@ -71,27 +71,20 @@ treo-message {
                 display: none;
                 font-size: 15px;
                 font-weight: 600;
-                line-height: 1.2;
+                line-height: 1.625;
 
                 &:not(:empty) {
                     display: block;
-                }
-
-                p {
-                    line-height: 1.625;
                 }
             }
 
             // Message
             .treo-message-message {
                 display: none;
+                line-height: 1.625;
 
                 &:not(:empty) {
                     display: block;
-                }
-
-                p {
-                    line-height: 1.625;
                 }
             }
         }
