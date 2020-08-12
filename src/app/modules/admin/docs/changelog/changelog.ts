@@ -18,19 +18,55 @@ export class ChangelogComponent
         // Set the defaults
         this.changelog = [
 
+            // v1.1.0
+            {
+                version    : 'v1.1.0',
+                releaseDate: 'WIP/TBA',
+                changes    : [
+                    {
+                        type: 'Breaking Changes',
+                        list: [
+                            '(@treo/TreoMessage) Changed the default style to \'soft\'',
+                            '(@treo/TreoMessage) Default icons are now using Heroicons Solid icons'
+                        ]
+                    },
+                    {
+                        type: 'Bug Fixes',
+                        list: [
+                            '(@treo/TreoDrawer) Left positioned \'side\' mode drawer doesn\'t toggle open/close correctly',
+                            '(@treo/TreoVerticalNavigation) Aside type navigation items must only check its \'basic\' type children to mark itself as active',
+                            '(apps/contacts) When clicking on a contact while contact details sidebar closing breaks the app',
+                            '(apps/tasks) When clicking on a task while task details sidebar closing breaks the app'
+                        ]
+                    },
+                    {
+                        type: 'Features',
+                        list: [
+                            '(@treo/TreoMessage) Added a new \'soft\' style',
+                            '(docs) Moved the documentation into the Demo app for better accessibility and visibility'
+                        ]
+                    },
+                    {
+                        type: 'Improvements',
+                        list: [
+                            '(Dependencies) Updated Angular & Angular Material',
+                            '(Dependencies) Updated Tailwind',
+                            '(Dependencies) Updated various other packages',
+                            '(@treo/MockAPI) PUT requests are replaced with POST to better follow REST guidelines',
+                            '(@treo/TreoMessage) Better icon/text alignment for different sized icons',
+                            '(ui/forms) Updated form examples to showcase all available form field types',
+                            '(ui/helpers) Improved the \'.rich-text\' utility class to align it better with Tailwind\'s \'.prose\' utility',
+                            '(ui/icons) Updated Material and Heroicons icon packs'
+                        ]
+                    }
+                ]
+            },
+
             // v1.0.2
             {
                 version    : 'v1.0.2',
                 releaseDate: 'June 27, 2020',
                 changes    : [
-                    /*{
-                        type: 'Breaking Changes',
-                        list: [
-                            'Some breaking changes',
-                            'Some breaking changes',
-                            'Some breaking changes'
-                        ]
-                    },*/
                     {
                         type: 'Bug Fixes',
                         list: [
