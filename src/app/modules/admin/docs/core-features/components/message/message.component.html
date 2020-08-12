@@ -69,7 +69,7 @@
                                 Appearance of the message box.
                             </td>
                             <td>
-                                <code class="whitespace-no-wrap">'fill'</code>
+                                <code class="whitespace-no-wrap">'soft'</code>
                             </td>
                         </tr>
                         <tr>
@@ -139,7 +139,7 @@
             <h2>Type aliases</h2>
             <textarea treo-highlight
                       lang="typescript">
-                export type TreoMessageAppearance = 'border' | 'fill' | 'outline';
+                export type TreoMessageAppearance = 'border' | 'fill' | 'outline' | 'soft';
             </textarea>
             <textarea treo-highlight
                       lang="typescript">
@@ -153,14 +153,14 @@
 
             <div class="example-viewer">
 
-                <!-- Solid -->
+                <!-- Soft -->
                 <div class="title">
-                    <h6>Solid (default)</h6>
+                    <h6>Soft (default)</h6>
                 </div>
 
                 <mat-tab-group [animationDuration]="'0ms'">
 
-                    <mat-tab label="Preview">
+                    <mat-tab label="Preview" class="bg-gray-200">
 
                         <ng-template matTabContent>
 
@@ -407,6 +407,148 @@
                             <!-- Error -->
                             <treo-message [type]="'error'"
                                           [appearance]="'outline'">
+                                <span treoMessageTitle>Error message</span>
+                                This is a message with an 'error' level severity
+                            </treo-message>
+
+                        </textarea>
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
+            </div>
+
+            <div class="example-viewer">
+
+                <!-- Fill -->
+                <div class="title">
+                    <h6>Fill</h6>
+                </div>
+
+                <mat-tab-group [animationDuration]="'0ms'">
+
+                    <mat-tab label="Preview">
+
+                        <ng-template matTabContent>
+
+                            <!-- Primary -->
+                            <treo-message [type]="'primary'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Primary message</span>
+                                Thank you for joining our newsletter
+                            </treo-message>
+
+                            <!-- Accent -->
+                            <treo-message [type]="'accent'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Accent message</span>
+                                Your changes has been saved
+                            </treo-message>
+
+                            <!-- Warn -->
+                            <treo-message [type]="'warn'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Warn message</span>
+                                Fill all required fields to proceed next step
+                            </treo-message>
+
+                            <!-- Basic -->
+                            <treo-message [type]="'basic'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Basic message</span>
+                                You have 3 new notifications
+                            </treo-message>
+
+                            <!-- Info -->
+                            <treo-message [type]="'info'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Info message</span>
+                                This is a message with an 'info' level severity
+                            </treo-message>
+
+                            <!-- Success -->
+                            <treo-message [type]="'success'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Success message</span>
+                                This is a message with a 'success' level severity
+                            </treo-message>
+
+                            <!-- Warning -->
+                            <treo-message [type]="'warning'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Warning message</span>
+                                This is a message with a 'warning' level severity
+                            </treo-message>
+
+                            <!-- Error -->
+                            <treo-message [type]="'error'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Error message</span>
+                                This is a message with an 'error' level severity
+                            </treo-message>
+
+                        </ng-template>
+
+                    </mat-tab>
+
+                    <mat-tab label="HTML">
+
+                        <textarea treo-highlight
+                                  [lang]="'html'">
+
+                            <!-- Primary -->
+                            <treo-message [type]="'primary'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Primary message</span>
+                                Thank you for joining our newsletter
+                            </treo-message>
+
+                            <!-- Accent -->
+                            <treo-message [type]="'accent'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Accent message</span>
+                                Your changes has been saved
+                            </treo-message>
+
+                            <!-- Warn -->
+                            <treo-message [type]="'warn'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Warn message</span>
+                                Fill all required fields to proceed next step
+                            </treo-message>
+
+                            <!-- Basic -->
+                            <treo-message [type]="'basic'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Basic message</span>
+                                You have 3 new notifications
+                            </treo-message>
+
+                            <!-- Info -->
+                            <treo-message [type]="'info'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Info message</span>
+                                This is a message with an 'info' level severity
+                            </treo-message>
+
+                            <!-- Success -->
+                            <treo-message [type]="'success'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Success message</span>
+                                This is a message with a 'success' level severity
+                            </treo-message>
+
+                            <!-- Warning -->
+                            <treo-message [type]="'warning'"
+                                          [appearance]="'fill'">
+                                <span treoMessageTitle>Warning message</span>
+                                This is a message with a 'warning' level severity
+                            </treo-message>
+
+                            <!-- Error -->
+                            <treo-message [type]="'error'"
+                                          [appearance]="'fill'">
                                 <span treoMessageTitle>Error message</span>
                                 This is a message with an 'error' level severity
                             </treo-message>
