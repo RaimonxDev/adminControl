@@ -10,7 +10,7 @@ help-center-guides-guide {
         overflow: hidden;
 
         @include treo-breakpoint('xs') {
-            padding: 0 32px;
+            padding: 0 24px;
         }
 
         .header {
@@ -60,9 +60,7 @@ help-center-guides-guide {
             width: 100%;
             max-width: 960px;
             margin: 48px 0 32px 0;
-            padding: 40px !important;
-            border-radius: 4px;
-            @include treo-elevation();
+            padding: 0 !important;
 
             .guide {
 
@@ -173,7 +171,6 @@ help-center-guides-guide {
             }
 
             .main {
-                background: map-get($background, card);
 
                 .footer {
                     color: map-get($foreground, secondary-text);
