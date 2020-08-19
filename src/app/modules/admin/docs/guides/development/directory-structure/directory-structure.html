@@ -19,9 +19,9 @@
 
     </div>
 
-    <div class="main rich-text">
+    <div class="main">
 
-        <div class="max-w-3xl">
+        <div class="rich-text max-w-3xl">
 
             <treo-message appearance="outline"
                           type="info">
@@ -223,15 +223,15 @@
             <ul>
                 <li>
                     <p><strong>CommonModule</strong></p>
-                    Required for common directives such as *ngIf and *ngFor
+                    <p>Required for common directives such as *ngIf and *ngFor</p>
                 </li>
                 <li>
                     <p><strong>FormsModule</strong></p>
-                    Required for form directives
+                    <p>Required for form directives</p>
                 </li>
                 <li>
                     <p><strong>ReactiveFormsModule</strong></p>
-                    Required for reactive form directives
+                    <p>Required for reactive form directives</p>
                 </li>
             </ul>
             <p>
@@ -256,21 +256,25 @@
             <ul>
                 <li>
                     <p><strong>styles.scss</strong></p>
-                    This file is for adding/importing global styles to the app.
+                    <p>This file is for adding/importing global styles to the app.</p>
                 </li>
                 <li>
                     <p><strong>tailwind.scss</strong></p>
-                    This is the auto-generated scss file contains the TailwindCSS utilities. Do <strong>NOT</strong> edit this file manually.
+                    <p>This is the auto-generated scss file contains the TailwindCSS utilities. Do <strong>NOT</strong> edit this file manually.</p>
                 </li>
                 <li>
                     <p><strong>themes.scss</strong></p>
-                    This file is used for defining color themes for the app. More information about the themes can be found in the
-                    <a [routerLink]="['../../customization/theming']">Customization > Theming</a> section of this documentation.
+                    <p>
+                        This file is used for defining color themes for the app. More information about the themes can be found in the
+                        <a [routerLink]="['../../customization/theming']">Customization > Theming</a> section of this documentation.
+                    </p>
                 </li>
                 <li>
                     <p><strong>vendors.scss</strong></p>
-                    This file is designed to import 3rd party library css/scss files into the project. Any style here can be overridden by <em>styles.scss</em> file
-                    allowing you to overwrite/modify 3rd party library styles and make them visually compatible with your app.
+                    <p>
+                        This file is designed to import 3rd party library css/scss files into the project. Any style here can be overridden by <em>styles.scss</em> file
+                        allowing you to overwrite/modify 3rd party library styles and make them visually compatible with your app.
+                    </p>
                     <p>
                         For example, let's say you use <strong>FullCalendar</strong> 3rd party library. You use the <em>vendors.scss</em> file to import default styles
                         of the FullCalendar into your project so it looks and works correctly. Then, you can add custom styles to the <em>styles.scss</em> file to overwrite those

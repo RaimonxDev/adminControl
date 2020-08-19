@@ -15,9 +15,9 @@
 
     </div>
 
-    <div class="main rich-text">
+    <div class="main">
 
-        <div class="max-w-3xl">
+        <div class="rich-text max-w-3xl">
 
             <!-- Form field helpers -->
             <h2>Form field helpers</h2>
@@ -33,9 +33,11 @@
             <ul>
                 <li>
                     <p><code>.treo-mat-textarea</code></p>
-                    This helper class is required if you are using a textarea as your input. Since Angular Material doesn't differentiate a textarea from a
-                    normal input while using them with <strong>mat-form-field</strong>, this helper class is required for <strong>textarea</strong> inputs to look good and
-                    consistent.
+                    <p>
+                        This helper class is required if you are using a textarea as your input. Since Angular Material doesn't differentiate a textarea from a
+                        normal input while using them with <strong>mat-form-field</strong>, this helper class is required for <strong>textarea</strong> inputs to look good and
+                        consistent.
+                    </p>
                 </li>
             </ul>
             <textarea treo-highlight
@@ -50,22 +52,28 @@
             <ul>
                 <li>
                     <p><code>.treo-mat-dense</code></p>
-                    Provides set of adjustments to make the fields denser. Dense fields are suitable for non-form usages and places where there isn't much space to work with such
-                    as small dialogs, menus, popovers and etc.
+                    <p>
+                        Provides set of adjustments to make the fields denser. Dense fields are suitable for non-form usages and places where there isn't much space to work with such
+                        as small dialogs, menus, popovers and etc.
+                    </p>
                 </li>
                 <li>
                     <p><code>.treo-mat-rounded</code></p>
-                    Provides set of adjustments to make the fields look fully rounded.
+                    <p>Provides set of adjustments to make the fields look fully rounded.</p>
                 </li>
                 <li>
                     <p><code>.treo-mat-no-subscript</code></p>
-                    Provides set of adjustments to remove the bottom spacing where <em>hint</em> and <em>error</em> messages placed. This helper is particularly useful to align the
-                    field easily if you don't need to show error messages or hint text. For example a search bar in the toolbar uses this helper to fit the field to the toolbar
-                    without having an extra bottom spacing.
+                    <p>
+                        Provides set of adjustments to remove the bottom spacing where <em>hint</em> and <em>error</em> messages placed. This helper is particularly useful to align the
+                        field easily if you don't need to show error messages or hint text. For example a search bar in the toolbar uses this helper to fit the field to the toolbar
+                        without having an extra bottom spacing.
+                    </p>
                 </li>
                 <li>
                     <p><code>.treo-mat-emphasized-affix</code></p>
-                    Provides set of adjustments to emphasize the field prefix and suffix by changing their background color and adding a border around them.
+                    <p>
+                        Provides set of adjustments to emphasize the field prefix and suffix by changing their background color and adding a border around them.
+                    </p>
                 </li>
             </ul>
 
@@ -338,15 +346,14 @@
             <ul>
                 <li>
                     <p><code>.icon-size-[SIZE]</code></p>
-                    By default, <strong>SIZE</strong> parameters are but not limited to: <strong>12 14 16 18 20 24 32 40 48 56 64 72 80 88 96</strong>.
+                    <p>By default, <strong>SIZE</strong> parameters are but not limited to: <strong>12 14 16 18 20 24 32 40 48 56 64 72 80 88 96</strong>.</p>
                 </li>
             </ul>
 
             <h4>Mixin</h4>
             <p>
-                To change the icon size from the SCSS files, you can also use the <code>@include treo-icon-size($size)</code> mixin. It has the same <strong>$size</strong> parameter
-                rule
-                as the helper class.
+                To change the icon size from the SCSS files, you can also use the <code>@include treo-icon-size($size)</code> mixin. It has the same <strong>$size</strong>
+                parameter rule as the helper class.
             </p>
             <!-- @formatter:off -->
             <textarea treo-highlight
@@ -360,7 +367,7 @@
             </textarea>
             <!-- @formatter:on -->
             <treo-message appearance="outline"
-                         type="info">
+                          type="info">
                 In order to use this mixin, you need to target the <code>.mat-icon</code> element and you must <strong>turn off</strong> the <em>View encapsulation</em> of your
                 component.
             </treo-message>
@@ -472,15 +479,15 @@
             <ul>
                 <li>
                     <p><code>$elevation</code></p>
-                    Default elevation levels from TailwindCSS
+                    <p>Default elevation levels from TailwindCSS</p>
                 </li>
                 <li>
                     <p><code>$important</code></p>
-                    Whether to add <strong>!important</strong> tag to the generated rule.
+                    <p>Whether to add <strong>!important</strong> tag to the generated rule.</p>
                 </li>
                 <li>
                     <p><code>$color</code></p>
-                    Color of the shadow, can be any valid SCSS color.
+                    <p>Color of the shadow, can be any valid SCSS color.</p>
                 </li>
             </ul>
 
