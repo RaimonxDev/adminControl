@@ -56,7 +56,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'dripicons',
                         name     : 'Dripicons',
-                        grid     : '24',
+                        grid     : 24,
                         list     : cloneDeep(this._dripicons)
                     }
                 ];
@@ -73,7 +73,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'feather',
                         name     : 'Feather',
-                        grid     : '24',
+                        grid     : 24,
                         list     : cloneDeep(this._feather)
                     }
                 ];
@@ -90,7 +90,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'heroicons_outline',
                         name     : 'Heroicons Outline',
-                        grid     : '24',
+                        grid     : 24,
                         list     : cloneDeep(this._heroicons)
                     }
                 ];
@@ -107,7 +107,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'heroicons_solid',
                         name     : 'Heroicons Solid',
-                        grid     : '20',
+                        grid     : 20,
                         list     : cloneDeep(this._heroicons)
                     }
                 ];
@@ -124,7 +124,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'iconsmind',
                         name     : 'Iconsmind',
-                        grid     : '40',
+                        grid     : 40,
                         list     : cloneDeep(this._iconsmind)
                     }
                 ];
@@ -141,7 +141,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: 'mat_outline',
                         name     : 'Material Outline',
-                        grid     : '24',
+                        grid     : 24,
                         list     : cloneDeep(this._material)
                     }
                 ];
@@ -158,7 +158,7 @@ export class IconsMockApi implements TreoMockApi
                     {
                         namespace: '',
                         name     : 'Material Twotone',
-                        grid     : '24',
+                        grid     : 24,
                         list     : cloneDeep(this._material)
                     }
                 ];

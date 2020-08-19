@@ -5,15 +5,20 @@ import { IconsResolver } from 'app/modules/admin/ui/icons/icons.resolvers';
 export const iconRoutes: Route[] = [
     {
         // Redirect /icons to /icons/material-twotone
-        path      : 'icons',
-        redirectTo: 'icons/material-twotone',
-        pathMatch : 'full'
+        path      : '',
+        pathMatch : 'full',
+        redirectTo: 'material-twotone'
     },
     {
-        path     : '**',
+        path     : '',
         component: IconsComponent,
-        resolve  : {
-            icons: IconsResolver
-        }
+        children : [
+            {
+                path   : '**',
+                resolve: {
+                    icons: IconsResolver
+                }
+            }
+        ]
     }
 ];

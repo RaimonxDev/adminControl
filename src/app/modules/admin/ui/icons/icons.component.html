@@ -25,7 +25,7 @@
             <ng-container *ngIf="(filteredIcons$ | async) as icons">
                 <textarea treo-highlight
                           lang="html"
-                          [code]="'<mat-icon svgIcon=&#34;' + icons.namespace + ':ICONNAME&#34;></mat-icon>'"></textarea>
+                          [code]="'<mat-icon svgIcon=&#34;' + calcSvgIconAttr() + '&#34;></mat-icon>'"></textarea>
             </ng-container>
 
             <h2>Icons</h2>
@@ -38,14 +38,14 @@
                 </mat-form-field>
                 <mat-form-field class="min-w-40 ml-8 xs:ml-0">
                     <mat-label>Icon size</mat-label>
-                    <mat-select [formControl]="iconSizeInput">
-                        <mat-option [value]="'16'">16</mat-option>
-                        <mat-option [value]="'20'">20</mat-option>
-                        <mat-option [value]="'24'">24</mat-option>
-                        <mat-option [value]="'32'">32</mat-option>
-                        <mat-option [value]="'40'">40</mat-option>
-                        <mat-option [value]="'48'">48</mat-option>
-                        <mat-option [value]="'64'">64</mat-option>
+                    <mat-select [(ngModel)]="iconSize">
+                        <mat-option [value]="16">16</mat-option>
+                        <mat-option [value]="20">20</mat-option>
+                        <mat-option [value]="24">24</mat-option>
+                        <mat-option [value]="32">32</mat-option>
+                        <mat-option [value]="40">40</mat-option>
+                        <mat-option [value]="48">48</mat-option>
+                        <mat-option [value]="64">64</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -56,10 +56,12 @@
 
                     <ng-container *ngFor="let icon of icons.list">
 
-                        <div class="flex flex-col items-center justify-center m-4 p-4 min-w-36 max-w-36 min-h-30 max-h-30 rounded border light:bg-card">
+                        <div class="flex flex-col items-center justify-center m-4 p-4 min-w-36 max-w-36 min-h-30 max-h-30 rounded border-2 cursor-pointer light:bg-card"
+                             [class.border-primary]="selectedIcon[1] === icon"
+                             (click)="selectIcon(icons.namespace, icon)">
 
                             <div class="flex items-center justify-center mb-3">
-                                <mat-icon [ngClass]="'icon-size-' + iconSizeInput.value"
+                                <mat-icon [ngClass]="'icon-size-' + iconSize"
                                           [svgIcon]="icons.namespace + ':' + icon"></mat-icon>
                             </div>
 
