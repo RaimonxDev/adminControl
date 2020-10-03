@@ -54,6 +54,7 @@ export class ChangelogComponent
                             '(Dependencies) Updated various other packages',
                             '(@treo/MockAPI) PUT requests are replaced with POST to better follow REST guidelines',
                             '(@treo/TreoMessage) Better icon/text alignment for different sized icons',
+                            '(pages/help-center) Better styling on home page grid items & better overall spacing',
                             '(ui/forms) Updated form examples to showcase all available form field types',
                             '(ui/helpers) Improved the \'.rich-text\' utility class to align it better with Tailwind\'s \'.prose\' utility',
                             '(ui/icons) Updated Material and Heroicons icon packs'
