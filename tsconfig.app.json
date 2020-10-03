@@ -11,7 +11,5 @@
     "include": [
         "src/**/*.d.ts"
     ],
-    "exclude": [
-        "src/tailwind/**"
-    ]
+    "exclude": []
 }

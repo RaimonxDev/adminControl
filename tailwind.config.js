@@ -23,7 +23,7 @@ module.exports = {
 
     // Theme
     theme: {
-        colors  : {
+        colors: {
             current    : 'currentColor',
             transparent: 'transparent',
             white      : '#FFFFFF',
@@ -172,75 +172,54 @@ module.exports = {
                 '900'  : '#751A3D'
             }
         },
-        fontSize: {
-            'xs'  : '0.625rem',
-            'sm'  : '0.75rem',
-            'md'  : '0.8125rem',
-            'base': '0.875rem',
-            'lg'  : '1rem',
-            'xl'  : '1.125rem',
-            '2xl' : '1.25rem',
-            '3xl' : '1.5rem',
-            '4xl' : '2rem',
-            '5xl' : '2.25rem',
-            '6xl' : '2.5rem',
-            '7xl' : '3rem',
-            '8xl' : '4rem',
-            '9xl' : '6rem',
-            '10xl': '8rem'
-        },
-        screens : {
-            // XSmall
-            'xs'   : {
-                min: '0',
-                max: '599px'
-            },
-            // Small
-            'sm'   : {
-                min: '600px',
-                max: '959px'
-            },
-            // Medium
-            'md'   : {
-                min: '960px',
-                max: '1279px'
-            },
-            // Large
-            'lg'   : {
-                min: '1280px',
-                max: '1439px'
-            },
-            // XLarge
-            'xl'   : {
-                min: '1440px'
-            },
-            // Less than Medium
-            'lt-md': {
-                max: '959px'
-            },
-            // Less than Large
-            'lt-lg': {
-                max: '1279px'
-            },
-            // Less than XLarge
-            'lt-xl': {
-                max: '1439px'
-            },
-            // Greater than XSmall
-            'gt-xs': {
-                min: '600px'
-            },
-            // Greater than Small
-            'gt-sm': {
-                min: '960px'
-            },
-            // Greater than Medium
-            'gt-md': {
-                min: '1280px'
-            }
-        },
-        // Extending default configurations
-        extend  : {
+        extend: {
+
+            // Treo Tailwind plugin configuration
+            treo: theme => ({
+                contrasts: {
+                    gray: {
+                        '50'   : '#000000',
+                        '100'  : '#000000',
+                        '200'  : '#000000',
+                        '300'  : '#000000',
+                        '400'  : '#000000',
+                        '500'  : '#000000',
+                        default: '#000000',
+                        '600'  : '#000000',
+                        '700'  : '#000000',
+                        '800'  : '#000000',
+                        '900'  : '#000000'
+                    }
+                },
+                themes   : {
+                    'treo-theme-dark' : {
+                        scheme : 'dark',
+                        primary: ['teal', 500],
+                        accent : ['pink', 500],
+                        warn   : ['red', 400]
+                    },
+                    'treo-theme-light': {
+                        scheme : 'light',
+                        primary: ['indigo', 600],
+                        accent : ['cool-gray', 800],
+                        warn   : ['red', 700]
+                    },
+                    // Teal color theme (Dark)
+                    teal              : {
+                        scheme : 'dark',
+                        primary: ['teal', 500],
+                        accent : ['pink', 500],
+                        warn   : ['red', 400]
+                    },
+                    // Indigo color theme (Light)
+                    indigo            : {
+                        scheme : 'light',
+                        primary: ['indigo', 600],
+                        accent : ['cool-gray', 800],
+                        warn   : ['red', 700]
+                    }
+                }
+            })
             /*
             // Once TailwindCSS adds the above colors to their default config,
             // this code will be used for generating the default colors
@@ -305,103 +284,6 @@ module.exports = {
                 10: '10px'
             },
             */
-
-            boxShadow : {
-                solid: '0 0 0 2px currentColor'
-            },
-            flex      : {
-                '0': '0 0 auto'
-            },
-            fontFamily: {
-                sans: [
-                    'Inter var',
-                    'system-ui',
-                    '-apple-system',
-                    'BlinkMacSystemFont',
-                    '"Segoe UI"',
-                    'Roboto',
-                    '"Helvetica Neue"',
-                    'Arial',
-                    '"Noto Sans"',
-                    'sans-serif',
-                    '"Apple Color Emoji"',
-                    '"Segoe UI Emoji"',
-                    '"Segoe UI Symbol"',
-                    '"Noto Color Emoji"'
-                ],
-                mono: [
-                    '"IBM Plex Mono"',
-                    'Menlo',
-                    'Monaco',
-                    'Consolas',
-                    '"Liberation Mono"',
-                    '"Courier New"',
-                    'monospace'
-                ]
-            },
-            opacity   : {
-                12: '0.12',
-                38: '0.38',
-                54: '0.54',
-                70: '0.70',
-                84: '0.84'
-            },
-            rotate    : {
-                '-270': '270deg',
-                '15'  : '15deg',
-                '30'  : '30deg',
-                '60'  : '60deg',
-                '270' : '270deg'
-            },
-            spacing   : {
-                '2px': '2px',
-                '18' : '4.5rem',
-                '22' : '5.5rem',
-                '26' : '6.5rem',
-                '30' : '7.5rem',
-                '50' : '12.5rem',
-                '90' : '24rem',
-                '100': '25rem',
-                '120': '30rem',
-                '128': '32rem',
-                '140': '35rem',
-                '160': '40rem',
-                '180': '45rem',
-                '192': '48rem',
-                '200': '50rem',
-                '240': '60rem',
-                '256': '64rem',
-                '280': '70rem',
-                '320': '80rem',
-                '360': '90rem',
-                '400': '100rem',
-                '480': '120rem'
-            },
-            zIndex    : {
-                '-1'   : -1,
-                '60'   : 60,
-                '70'   : 70,
-                '80'   : 80,
-                '90'   : 90,
-                '99'   : 99,
-                '999'  : 999,
-                '9999' : 9999,
-                '99999': 99999
-            },
-            minHeight : theme => ({
-                ...theme('spacing')
-            }),
-            maxHeight : {
-                none: 'none'
-            },
-            minWidth  : theme => ({
-                screen: '100vw',
-                ...theme('spacing')
-            }),
-            maxWidth  : theme => ({
-                screen: '100vw',
-                ...theme('spacing')
-            })
         }
     },
 
@@ -524,7 +406,7 @@ module.exports = {
     plugins: [
 
         // Custom plugins required by Treo
-        ...require('../@treo/tailwind/plugins')
+        ...require('./src/@treo/tailwind/plugins')
 
         // Other third party and custom plugins can be required here
         // ...

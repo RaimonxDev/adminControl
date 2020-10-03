@@ -5,6 +5,7 @@ module.exports = [
     require('./variants/export-colors'),
     require('./variants/export-font-family'),
     require('./variants/export-screens'),
+    require('./treo'),
 
     // Variants
     require('./variants/dark-light'),
