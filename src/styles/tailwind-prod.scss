@@ -1,30 +1,18 @@
 /* ----------------------------------------------------------------------------------------------------- */
 
-/* This injects Tailwind's component classes and any component classes registered by plugins.
+/* Required modules for TREO generated code - DO NOT REMOVE
 /* ----------------------------------------------------------------------------------------------------- */
 
-/* ----------------------------------------------------------------------------------------------------- */
+@use "sass:map";
 
-/* Use custom @apply directives here to inline any existing utility classes into your own custom CSS.
-/* ----------------------------------------------------------------------------------------------------- */
-
-/**
- * .btn {
- *   @apply font-bold py-2 px-4 rounded;
- * }
- */
+@import '~@angular/material/theming';
 
 /* ----------------------------------------------------------------------------------------------------- */
 
-/* This injects Tailwind's utility classes and any utility classes registered by plugins.
+/* Tailwind
 /* ----------------------------------------------------------------------------------------------------- */
 
 /*@tailwind utilities;*/
-
-/* ----------------------------------------------------------------------------------------------------- */
-
-/* Use custom @variant directives here to build them.
-/* ----------------------------------------------------------------------------------------------------- */
 
 $treo-material-palettes: (
   'gray': (
@@ -39,16 +27,16 @@ $treo-material-palettes: (
  800: #252F3F,
  900: #161E2E,
  contrast: (
-  50: #000000,
- 100: #000000,
- 200: #000000,
- 300: #000000,
- 400: #000000,
- 500: #000000,
- 600: #000000,
- 700: #000000,
- 800: #000000,
- 900: #000000,
+  50: #161E2E,
+ 100: #161E2E,
+ 200: #161E2E,
+ 300: #161E2E,
+ 400: #161E2E,
+ 500: #F9FAFB,
+ 600: #F9FAFB,
+ 700: #F9FAFB,
+ 800: #F9FAFB,
+ 900: #F9FAFB,
  )
 ),
  'cool-gray': (
@@ -293,8 +281,126 @@ $treo-material-palettes: (
 ),
  ) !default;
 
-/* ----------------------------------------------------------------------------------------------------- */
+$foreground-light: ( base:#000000,  divider:#E2E8F0,  dividers:#E2E8F0,  disabled:#97A6BA,  disabled-button:#97A6BA,  disabled-text:#97A6BA,  elevation:#000000,  hint-text:#97A6BA,  secondary-text:#64748B,  icon:#64748B,  icons:#64748B,  text:#27303F,  slider-min:#27303F,  slider-off:#CFD8E3,  slider-off-active:#97A6BA, );
 
-/*  Use this directive to control where Tailwind injects the responsive variations of each utility.
-/*  If omitted, Tailwind will append these classes to the very end of your stylesheet by default.
-/* ----------------------------------------------------------------------------------------------------- */
+$foreground-dark: ( base:#FFFFFF,  divider:rgba(#F1F5F9, 0.12),  dividers:rgba(#F1F5F9, 0.12),  disabled:#475569,  disabled-button:#27303F,  disabled-text:#475569,  elevation:#000000,  hint-text:#64748B,  secondary-text:#97A6BA,  icon:#F1F5F9,  icons:#F1F5F9,  text:#FFFFFF,  slider-min:#FFFFFF,  slider-off:#64748B,  slider-off-active:#97A6BA, );
+
+$background-light: ( status-bar:#CFD8E3,  app-bar:#FFFFFF,  background:#F1F5F9,  hover:rgba(#97A6BA, 0.12),  card:#FFFFFF,  dialog:#FFFFFF,  disabled-button:rgba(#97A6BA, 0.38),  raised-button:#FFFFFF,  focused-button:#64748B,  selected-button:#E2E8F0,  selected-disabled-button:#E2E8F0,  disabled-button-toggle:#CFD8E3,  unselected-chip:#E2E8F0,  disabled-list-option:#CFD8E3,  tooltip:#27303F, );
+
+$background-dark: ( status-bar:#1A202E,  app-bar:#1A202E,  background:#1A202E,  hover:rgba(255, 255, 255, 0.05),  card:#27303F,  dialog:#27303F,  disabled-button:rgba(#1A202E, 0.38),  raised-button:#1A202E,  focused-button:#E2E8F0,  selected-button:rgba(255, 255, 255, 0.05),  selected-disabled-button:#27303F,  disabled-button-toggle:#1A202E,  unselected-chip:#475569,  disabled-list-option:#E2E8F0,  tooltip:#64748B, );
+
+.treo-theme-dark {
+  $base-angular-material-theme-for-treo-theme-dark: mat-dark-theme (
+                                (
+                                    color: (
+                                        primary: mat-palette(map.get($treo-material-palettes, 'teal'), 500, 100, 700, 500),
+                                        accent: mat-palette(map.get($treo-material-palettes, 'pink'), 500, 100, 700, 500),
+                                        warn: mat-palette(map.get($treo-material-palettes, 'red'), 400, 100, 700, 400)
+                                    )
+                                )
+                            );
+  $angular-material-theme-for-treo-theme-dark: (
+                                color: (
+                                    primary: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), primary),
+                                    accent: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), accent),
+                                    warn: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), warn),
+                                    is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), is-dark),
+                                    foreground: $foreground-dark,
+                                    background: $background-dark
+                                ),
+                                primary: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), primary),
+                                accent: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), accent),
+                                warn: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), warn),
+                                is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-dark, color), is-dark),
+                                foreground: $foreground-dark,
+                                background: $background-dark
+                            );
+  @include angular-material-theme($angular-material-theme-for-treo-theme-dark);
+}
+
+.treo-theme-light {
+  $base-angular-material-theme-for-treo-theme-light: mat-light-theme (
+                                (
+                                    color: (
+                                        primary: mat-palette(map.get($treo-material-palettes, 'indigo'), 600, 100, 700, 600),
+                                        accent: mat-palette(map.get($treo-material-palettes, 'cool-gray'), 800, 100, 700, 800),
+                                        warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
+                                    )
+                                )
+                            );
+  $angular-material-theme-for-treo-theme-light: (
+                                color: (
+                                    primary: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), primary),
+                                    accent: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), accent),
+                                    warn: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), warn),
+                                    is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), is-dark),
+                                    foreground: $foreground-light,
+                                    background: $background-light
+                                ),
+                                primary: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), primary),
+                                accent: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), accent),
+                                warn: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), warn),
+                                is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-light, color), is-dark),
+                                foreground: $foreground-light,
+                                background: $background-light
+                            );
+  @include angular-material-theme($angular-material-theme-for-treo-theme-light);
+}
+
+.treo-theme-teal {
+  $base-angular-material-theme-for-treo-theme-teal: mat-dark-theme (
+                                (
+                                    color: (
+                                        primary: mat-palette(map.get($treo-material-palettes, 'teal'), 500, 100, 700, 500),
+                                        accent: mat-palette(map.get($treo-material-palettes, 'pink'), 500, 100, 700, 500),
+                                        warn: mat-palette(map.get($treo-material-palettes, 'red'), 400, 100, 700, 400)
+                                    )
+                                )
+                            );
+  $angular-material-theme-for-treo-theme-teal: (
+                                color: (
+                                    primary: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), primary),
+                                    accent: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), accent),
+                                    warn: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), warn),
+                                    is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), is-dark),
+                                    foreground: $foreground-dark,
+                                    background: $background-dark
+                                ),
+                                primary: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), primary),
+                                accent: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), accent),
+                                warn: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), warn),
+                                is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-teal, color), is-dark),
+                                foreground: $foreground-dark,
+                                background: $background-dark
+                            );
+  @include angular-material-theme($angular-material-theme-for-treo-theme-teal);
+}
+
+.treo-theme-indigo {
+  $base-angular-material-theme-for-treo-theme-indigo: mat-light-theme (
+                                (
+                                    color: (
+                                        primary: mat-palette(map.get($treo-material-palettes, 'indigo'), 600, 100, 700, 600),
+                                        accent: mat-palette(map.get($treo-material-palettes, 'cool-gray'), 800, 100, 700, 800),
+                                        warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
+                                    )
+                                )
+                            );
+  $angular-material-theme-for-treo-theme-indigo: (
+                                color: (
+                                    primary: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), primary),
+                                    accent: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), accent),
+                                    warn: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), warn),
+                                    is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), is-dark),
+                                    foreground: $foreground-light,
+                                    background: $background-light
+                                ),
+                                primary: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), primary),
+                                accent: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), accent),
+                                warn: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), warn),
+                                is-dark: map.get(map.get($base-angular-material-theme-for-treo-theme-indigo, color), is-dark),
+                                foreground: $foreground-light,
+                                background: $background-light
+                            );
+  @include angular-material-theme($angular-material-theme-for-treo-theme-indigo);
+}

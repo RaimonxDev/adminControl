@@ -63,15 +63,6 @@ module.exports = plugin(({addVariant, variants, theme, e, postcss}) =>
         // -----------------------------------------------------------------------------------------------------
         addVariant('treo-angular-material-themes', ({container}) =>
         {
-            console.dir('USER PROVIDED CONTRASTS');
-            console.dir(theme('treo.contrasts'));
-            console.dir('--------------------------------------------------');
-            console.dir('ALL CALCULATED CONTRASTS');
-            console.dir(theme('treo._allContrasts'));
-            console.dir('--------------------------------------------------');
-            console.dir('MATERIAL PALETTES');
-            console.dir(theme('treo._materialPalettes'));
-
             // -----------------------------------------------------------------------------------------------------
             // @ Generate Angular Material compatible palettes map
             // -----------------------------------------------------------------------------------------------------
@@ -79,7 +70,7 @@ module.exports = plugin(({addVariant, variants, theme, e, postcss}) =>
             let map = '';
 
             // Iterate through Material palettes
-            Object.entries(theme('treo._materialPalettes'))
+            Object.entries(materialPalettes)
                 .forEach(([name, palette]) =>
                 {
                     // Prepare contrasts and hues
@@ -123,55 +114,85 @@ module.exports = plugin(({addVariant, variants, theme, e, postcss}) =>
             // -----------------------------------------------------------------------------------------------------
             // @ Generate Angular Material theme generator code
             // -----------------------------------------------------------------------------------------------------
-            // Prepare the string
+            // Prepare the theme generator string
             let themeGenCode = '';
 
-            // Iterate through themes
+            // Generate modified foreground colors map for light and dark themes
+            let foregroundLight = '';
+            let foregroundDark = '';
+
+            Object.entries(theme('treo.material.colors.foreground.light')).forEach(([name, color]) =>
+            {
+                foregroundLight = `${foregroundLight} ${name}:${color}, `;
+            });
+            Object.entries(theme('treo.material.colors.foreground.dark')).forEach(([name, color]) =>
+            {
+                foregroundDark = `${foregroundDark} ${name}:${color}, `;
+            });
+
+            // Generate modified background colors map for light and dark themes
+            let backgroundLight = '';
+            let backgroundDark = '';
+
+            Object.entries(theme('treo.material.colors.background.light')).forEach(([name, color]) =>
+            {
+                backgroundLight = `${backgroundLight} ${name}:${color}, `;
+            });
+            Object.entries(theme('treo.material.colors.background.dark')).forEach(([name, color]) =>
+            {
+                backgroundDark = `${backgroundDark} ${name}:${color}, `;
+            });
+
+            // Add foreground and background maps to the theme generator code
+            themeGenCode = `${themeGenCode}
+                $foreground-light: (${foregroundLight});
+                $foreground-dark: (${foregroundDark});
+                $background-light: (${backgroundLight});
+                $background-dark: (${backgroundDark});
+            `;
+
+            // Iterate through user defined themes
             Object.entries(theme('treo.themes'))
-                .forEach(([name, theme]) =>
+                .forEach(([name, themeConfig]) =>
                 {
-                    // Generate modified foreground colors map for this theme
-                    let foregroundMap = '';
-                    Object.entries(theme('treo.material.colors.foreground.' + theme.scheme)).forEach(([name, color]) =>
-                    {
-                        foregroundMap = `${foregroundMap} ${name}:${color},\n`;
-                    });
-
-                    // Generate modified background colors map for this theme
-                    let backgroundMap = '';
-                    Object.entries(theme('treo.material.colors.background.' + theme.scheme)).forEach(([name, color]) =>
-                    {
-                        backgroundMap = `${backgroundMap} ${name}:${color},\n`;
-                    });
-
                     // Generate the code for the theme
                     themeGenCode = `${themeGenCode}
                         
-                        $angular-material-theme-for-${name}: ${theme.scheme === 'light' ? 'mat-light-theme' : 'mat-dark-theme'}
-                        (
-                            (
-                                color: (
-                                    primary: mat-palette(map-get($treo-material-palettes, ${theme.scheme.primary[0]}, ${theme.scheme.primary[1]}, 100, 700, ${theme.scheme.primary[1]})),
-                                    accent: mat-palette(map-get($treo-material-palettes, ${theme.scheme.accent[0]}, ${theme.scheme.accent[1]}, 100, 700, ${theme.scheme.accent[1]})),
-                                    warn: mat-palette(map-get($treo-material-palettes, ${theme.scheme.warn[0]}, ${theme.scheme.warn[1]}, 100, 700, ${theme.scheme.warn[1]}))
-                                )
-                            )
-                        );
-                        
-                        $foreground-colors-for-${name}: (
-                            ${foregroundMap}
-                        );
-                        
-                        $background-colors-for-${name}: (
-                            ${backgroundMap}
-                        );
-                        
                         .${name} {
+                            $base-angular-material-theme-for-${name}: ${themeConfig.scheme === 'light' ? 'mat-light-theme' : 'mat-dark-theme'}(
+                                (
+                                    color: (
+                                        primary: mat-palette(map.get($treo-material-palettes, '${themeConfig.primary[0]}'), ${themeConfig.primary[1]}, 100, 700, ${themeConfig.primary[1]}),
+                                        accent: mat-palette(map.get($treo-material-palettes, '${themeConfig.accent[0]}'), ${themeConfig.accent[1]}, 100, 700, ${themeConfig.accent[1]}),
+                                        warn: mat-palette(map.get($treo-material-palettes, '${themeConfig.warn[0]}'), ${themeConfig.warn[1]}, 100, 700, ${themeConfig.warn[1]})
+                                    )
+                                )
+                            );
                             
+                            $angular-material-theme-for-${name}: (
+                                color: (
+                                    primary: map.get(map.get($base-angular-material-theme-for-${name}, color), primary),
+                                    accent: map.get(map.get($base-angular-material-theme-for-${name}, color), accent),
+                                    warn: map.get(map.get($base-angular-material-theme-for-${name}, color), warn),
+                                    is-dark: map.get(map.get($base-angular-material-theme-for-${name}, color), is-dark),
+                                    foreground: ${themeConfig.scheme === 'light' ? '$foreground-light' : '$foreground-dark'},
+                                    background: ${themeConfig.scheme === 'light' ? '$background-light' : '$background-dark'}
+                                ),
+                                primary: map.get(map.get($base-angular-material-theme-for-${name}, color), primary),
+                                accent: map.get(map.get($base-angular-material-theme-for-${name}, color), accent),
+                                warn: map.get(map.get($base-angular-material-theme-for-${name}, color), warn),
+                                is-dark: map.get(map.get($base-angular-material-theme-for-${name}, color), is-dark),
+                                foreground: ${themeConfig.scheme === 'light' ? '$foreground-light' : '$foreground-dark'},
+                                background: ${themeConfig.scheme === 'light' ? '$background-light' : '$background-dark'}
+                            );
+                        
+                            @include angular-material-theme($angular-material-theme-for-${name});
                         }
                     `;
                 });
 
+            // Append the theme generator code into the container
+            container.append(themeGenCode);
         });
 
 

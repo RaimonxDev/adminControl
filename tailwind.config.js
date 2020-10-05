@@ -12,6 +12,7 @@ module.exports = {
 
     // Future
     future: {
+        purgeLayersByDefault        : true,
         removeDeprecatedGapUtilities: true
     },
 
@@ -176,7 +177,13 @@ module.exports = {
 
             // Treo Tailwind plugin configuration
             treo: theme => ({
-                contrasts: {
+
+                // Override contrasting colors for any available or added color palettes
+                //
+                // Contrasting colors will be generated automatically based on palette
+                // colors but for some reason if you don't like them, you can use the
+                // 'contrasts' config and manually define them.
+                /*contrasts: {
                     gray: {
                         '50'   : '#000000',
                         '100'  : '#000000',
@@ -190,29 +197,29 @@ module.exports = {
                         '800'  : '#000000',
                         '900'  : '#000000'
                     }
-                },
-                themes   : {
-                    'treo-theme-dark' : {
+                },*/
+                themes: {
+                    'treo-theme-dark'  : {
                         scheme : 'dark',
                         primary: ['teal', 500],
                         accent : ['pink', 500],
                         warn   : ['red', 400]
                     },
-                    'treo-theme-light': {
+                    'treo-theme-light' : {
                         scheme : 'light',
                         primary: ['indigo', 600],
                         accent : ['cool-gray', 800],
                         warn   : ['red', 700]
                     },
                     // Teal color theme (Dark)
-                    teal              : {
+                    'treo-theme-teal'  : {
                         scheme : 'dark',
                         primary: ['teal', 500],
                         accent : ['pink', 500],
                         warn   : ['red', 400]
                     },
                     // Indigo color theme (Light)
-                    indigo            : {
+                    'treo-theme-indigo': {
                         scheme : 'light',
                         primary: ['indigo', 600],
                         accent : ['cool-gray', 800],
