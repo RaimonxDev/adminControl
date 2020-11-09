@@ -20,9 +20,11 @@ export class TreoMessageComponent implements OnInit, OnDestroy
     @Input()
     name: string;
 
+    // On dismissed
     @Output()
     readonly afterDismissed: EventEmitter<boolean>;
 
+    // On show
     @Output()
     readonly afterShown: EventEmitter<boolean>;
 

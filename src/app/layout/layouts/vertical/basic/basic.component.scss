@@ -1,5 +1,3 @@
-@import 'treo';
-
 basic-layout {
     position: relative;
     display: flex;
@@ -7,6 +5,11 @@ basic-layout {
     width: 100%;
 
     > treo-vertical-navigation {
+        @apply bg-card;
+
+        .dark & {
+            @apply bg-coolGray-900;
+        }
 
         .treo-vertical-navigation-header {
 
@@ -18,6 +21,21 @@ basic-layout {
                 max-height: 65px;
                 padding: 0 24px;
                 border-bottom-width: 1px;
+
+                .logo-text {
+
+                    .dark & {
+                        display: none;
+                    }
+                }
+
+                .logo-text-on-dark {
+                    display: none;
+
+                    .dark & {
+                        display: block;
+                    }
+                }
 
                 img {
                     max-width: 96px;
@@ -41,11 +59,17 @@ basic-layout {
             height: 64px;
             max-height: 64px;
             min-height: 64px;
-            padding: 0 24px;
+            padding: 0 16px;
             z-index: 49;
+            box-shadow: 0 1px 0 0 var(--foreground-divider);
+            @apply bg-card;
 
-            @include treo-breakpoint('lt-md') {
-                padding: 0 16px;
+            @screen md {
+                padding: 0 24px;
+            }
+
+            .dark & {
+                background: transparent;
             }
 
             .navigation-toggle-button {
@@ -98,6 +122,12 @@ basic-layout {
             min-height: 56px;
             padding: 0 24px;
             z-index: 49;
+            box-shadow: 0 -1px 0 0 var(--foregaround-divider);
+            @apply bg-card text-secondary;
+
+            .dark & {
+                background: transparent;
+            }
         }
     }
 
@@ -119,90 +149,6 @@ basic-layout {
             > .footer {
                 position: sticky;
                 bottom: 0;
-            }
-        }
-    }
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-    $is-dark: map-get($theme, is-dark);
-
-    basic-layout {
-
-        > treo-vertical-navigation {
-            @if ($is-dark) {
-                background: treo-color('cool-gray', 900);
-            } @else {
-                background: map-get($background, card);
-            }
-
-            .treo-vertical-navigation-header {
-
-                .logo {
-
-                    .logo-text {
-                        @if ($is-dark) {
-                            display: none;
-                        }
-                    }
-
-                    .logo-text-on-dark {
-                        @if (not $is-dark) {
-                            display: none;
-                        }
-                    }
-                }
-            }
-        }
-
-        > .wrapper {
-
-            > .header {
-                @if (not $is-dark) {
-                    background: map-get($background, card);
-                }
-                box-shadow: 0 1px 0 0 map-get($foreground, divider);
-
-                .user {
-
-                    .avatar {
-
-                        .status {
-                            border-color: map-get($background, card);
-
-                            &.online {
-                                background: treo-color('green', 500);
-                            }
-
-                            &.away {
-                                background: treo-color('orange', 500);
-                            }
-
-                            &.busy {
-                                background: treo-color('red', 500);
-                            }
-
-                            &.not-visible {
-                                background: treo-color('cool-gray', 400);
-                            }
-                        }
-                    }
-                }
-            }
-
-            > .footer {
-                @if (not $is-dark) {
-                    background: map-get($background, card);
-                }
-                box-shadow: 0 -1px 0 0 map-get($foreground, divider);
-                color: map-get($foreground, secondary-text);
             }
         }
     }

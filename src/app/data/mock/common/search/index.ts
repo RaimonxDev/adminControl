@@ -118,7 +118,10 @@ export class SearchMockApi implements TreoMockApi
                 }
 
                 // Return the results
-                return [200, {results}];
+                return [
+                    200,
+                    {results}
+                ];
             });
     }
 }

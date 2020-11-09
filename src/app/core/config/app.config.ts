@@ -1,7 +1,8 @@
 import { Layout } from 'app/layout/layout.types';
 
-// Theme type
-export type Theme = 'auto' | 'dark' | 'light';
+// Types
+export type Scheme = 'auto' | 'dark' | 'light';
+export type Theme = 'default' | string;
 
 /**
  * AppConfig interface. Update this interface to strictly type your config
@@ -10,18 +11,20 @@ export type Theme = 'auto' | 'dark' | 'light';
 export interface AppConfig
 {
     layout: Layout;
+    scheme: Scheme;
     theme: Theme;
 }
 
 /**
  * Default configuration for the entire application. This object is used by
- * 'ConfigService' to set the default configuration.
+ * TreoConfigService to set the default configuration.
  *
  * If you need to store global configuration for your app, you can use this
  * object to set the defaults. To access, update and reset the config, use
- * 'ConfigService'.
+ * TreoConfigService and its methods.
  */
 export const appConfig: AppConfig = {
-    layout: 'classy',
-    theme : 'light'
+    layout: 'basic',
+    scheme: 'light',
+    theme : 'default'
 };

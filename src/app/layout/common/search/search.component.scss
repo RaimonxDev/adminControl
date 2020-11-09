@@ -1,9 +1,6 @@
-@import 'treo';
-
 search {
-    display: flex;
 
-    // Bar appearance
+    /* Bar appearance */
     &.search-appearance-bar {
 
         .search-container {
@@ -16,6 +13,7 @@ search {
             bottom: 0;
             left: 0;
             z-index: 99;
+            background: var(--bg-card);
 
             .search-input {
                 flex: 1 0 auto;
@@ -26,12 +24,13 @@ search {
 
                     .mat-form-field-flex {
                         height: 100%;
-                        padding: 0 72px 0 32px;
+                        padding: 0 56px 0 24px;
                         border: none;
                         border-radius: 0 !important;
+                        background: transparent;
 
-                        @include treo-breakpoint('xs') {
-                            padding: 0 56px 0 24px
+                        @screen sm {
+                            padding: 0 72px 0 32px;
                         }
                     }
                 }
@@ -40,24 +39,25 @@ search {
             .search-toggle-close {
                 position: absolute;
                 top: 50%;
-                right: 32px;
+                right: 8px;
                 margin-top: -20px;
                 min-width: 40px;
                 width: 40px;
                 min-height: 40px;
                 height: 40px;
 
-                @include treo-breakpoint('xs') {
-                    right: 8px;
+                @screen sm {
+                    right: 32px;
                 }
             }
         }
     }
 
-    // Basic appearance
+    /* Basic appearance */
     &.search-appearance-basic {
         width: 100%;
         max-width: 400px;
+        background: transparent;
 
         .search-container {
             display: flex;
@@ -76,7 +76,7 @@ search {
     }
 }
 
-// Search results panel
+/* Search results panel */
 .search-results {
     max-height: 512px !important;
 
@@ -95,39 +95,41 @@ search {
     &:before {
         border-width: 9px;
         margin-left: -9px;
+        border-bottom-color: var(--divider);
     }
 
     &:after {
         border-width: 8px;
         margin-left: -8px;
+        border-bottom-color: var(--bg-card);
     }
 
-    // Bar appearance
+    /* Bar appearance */
     &.search-results-appearance-bar {
         border-top-width: 1px;
         border-radius: 0 0 4px 4px;
-        @include treo-elevation('md', true);
+        @apply shadow-md;
 
         .mat-option {
-            padding: 0 40px;
+            padding: 0 24px;
 
-            @include treo-breakpoint('xs') {
-                padding: 0 24px
+            @screen sm {
+                padding: 0 40px;
             }
         }
     }
 
-    // Basic appearance
+    /* Basic appearance */
     &.search-results-appearance-basic {
         margin-top: 8px;
         border-radius: 4px;
-        @include treo-elevation('2xl', true);
+        @apply shadow-2xl;
 
         .mat-option {
-            padding: 0 32px;
+            padding: 0 24px;
 
-            @include treo-breakpoint('xs') {
-                padding: 0 24px
+            @screen sm {
+                padding: 0 32px;
             }
         }
     }
@@ -136,9 +138,21 @@ search {
         height: 56px;
         line-height: 56px;
         font-size: 14px;
+        background: transparent !important;
+
+        @screen sm {
+            &:hover:not(.mat-option-disabled),
+            &:focus:not(.mat-option-disabled) {
+                box-shadow: inset 4px 0 0 var(--primary);
+            }
+        }
 
         &.no-results {
             pointer-events: none;
+
+            .mat-option-text {
+                color: var(--text-secondary);
+            }
         }
 
         .mat-option-text {
@@ -148,6 +162,10 @@ search {
                 align-items: center;
 
                 &.contact-result {
+
+                    .badge {
+                        @apply indigo;
+                    }
 
                     .image {
                         display: flex;
@@ -165,12 +183,16 @@ search {
 
                         .mat-icon {
                             margin: 0;
-                            @include treo-icon-size(20);
+                            @apply icon-size-20;
                         }
                     }
                 }
 
                 &.page-result {
+
+                    .badge {
+                        @apply teal-600;
+                    }
 
                     .title {
                         display: flex;
@@ -188,6 +210,7 @@ search {
                             line-height: normal;
                             font-size: 12px;
                             text-decoration: none !important;
+                            color: var(--text-secondary);
                         }
                     }
                 }
@@ -206,127 +229,20 @@ search {
 
                     mark {
                         font-weight: 500;
+                        background: transparent;
+                        color: var(--primary);
                     }
                 }
-            }
-        }
-    }
-}
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
+                .image {
+                    background: var(--primary-100);
 
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-    $is-dark: map-get($theme, is-dark);
-
-    search {
-
-        // Basic appearance
-        &.search-appearance-basic {
-            background: transparent;
-        }
-
-        // Bar appearance
-        &.search-appearance-bar {
-
-            .search-container {
-                background: map-get($background, card);
-
-                .search-input {
-
-                    .mat-form-field-wrapper {
-
-                        .mat-form-field-flex {
-                            background: transparent;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // Search results panel
-    .search-results {
-
-        &:before {
-            border-color: transparent;
-            border-bottom-color: map-get($foreground, divider);
-        }
-
-        &:after {
-            border-color: transparent;
-            border-bottom-color: map-get($background, card);
-        }
-
-        .mat-option {
-
-            @include treo-breakpoint('xs') {
-                background: transparent !important;
-            }
-
-            @include treo-breakpoint('gt-xs') {
-                &:hover:not(.mat-option-disabled),
-                &:focus:not(.mat-option-disabled) {
-                    box-shadow: inset 4px 0 0 map-get($primary, default);
-                }
-            }
-
-            &.no-results {
-
-                .mat-option-text {
-                    color: map-get($foreground, secondary-text);
-                }
-            }
-
-            .mat-option-text {
-
-                .result {
-
-                    &.contact-result {
-
-                        .badge {
-                            background: treo-color('blue', 500);
-                            color: treo-contrast('blue', 500);
-                        }
+                    .dark & {
+                        background: rgba(0, 0, 0, 0.05);
                     }
 
-                    &.page-result {
-
-                        .badge {
-                            background: treo-color('purple', 500);
-                            color: treo-contrast('purple', 500);
-                        }
-
-                        .title {
-
-                            .link {
-                                color: map-get($foreground, secondary-text);
-                            }
-                        }
-                    }
-
-                    .image {
-                        @if ($is-dark) {
-                            background: rgba(0, 0, 0, 0.05);
-                        } @else {
-                            background: map-get($primary, 100);
-                        }
-
-                        .mat-icon {
-                            color: map-get($primary, default);
-                        }
-                    }
-
-                    .title {
-
-                        mark {
-                            background: transparent;
-                            color: map-get($primary, default);
-                        }
+                    .mat-icon {
+                        color: var(--primary);
                     }
                 }
             }

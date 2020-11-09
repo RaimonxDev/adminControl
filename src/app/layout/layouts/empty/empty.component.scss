@@ -1,19 +1,17 @@
-@import 'treo';
-
 empty-layout {
     position: relative;
     display: flex;
     flex: 1 1 auto;
     width: 100%;
 
-    // Container
+    /* Container */
     > .container {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
         width: 100%;
 
-        // Content
+        /* Content */
         > .content {
             display: flex;
             flex-direction: column;
@@ -29,11 +27,4 @@ empty-layout {
             }
         }
     }
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-
 }

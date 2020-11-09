@@ -24,7 +24,7 @@
                                 <div class="min-w-20 font-mono text-2xl tracking-tighter leading-none">
                                     {{item.amount | currency:'USD':'symbol':'1.2-4'}}
                                 </div>
-                                <mat-icon class="text-green icon-size-20"
+                                <mat-icon class="text-green icon-size-5"
                                           [ngClass]="{'text-green': item.trend.dir === 'up', 'text-red': item.trend.dir === 'down'}"
                                           [svgIcon]="item.trend.dir === 'up' ? 'arrow_drop_up' : 'arrow_drop_down'"></mat-icon>
                                 <div class="font-mono font-medium text-sm leading-none"

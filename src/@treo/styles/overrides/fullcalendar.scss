@@ -1,12 +1,11 @@
-// -----------------------------------------------------------------------------------------------------
-// @ FullCalendar overrides
-// -----------------------------------------------------------------------------------------------------
-
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ FullCalendar overrides
+/* ----------------------------------------------------------------------------------------------------- */
 .fc {
 
     .fc-view-container {
 
-        // Day Grid - Month view
+        /* Day Grid - Month view */
         .fc-view.fc-dayGridMonth-view {
 
             .fc-head {
@@ -17,6 +16,7 @@
                     .fc-row {
 
                         .fc-day-header {
+                            border-color: var(--divider);
 
                             span {
                                 display: flex;
@@ -26,6 +26,7 @@
                                 font-size: 12px;
                                 font-weight: 500;
                                 text-transform: uppercase;
+                                color: var(--text-secondary);
                             }
                         }
                     }
@@ -41,6 +42,17 @@
 
                         .fc-week {
 
+                            .fc-bg {
+
+                                .fc-day {
+                                    border-color: var(--divider);
+
+                                    &.fc-today {
+                                        background: none;
+                                    }
+                                }
+                            }
+
                             .fc-content-skeleton {
 
                                 .fc-day-top {
@@ -48,6 +60,18 @@
 
                                     &.fc-other-month {
                                         opacity: 1;
+
+                                        .fc-day-number {
+                                            color: var(--text-hint);
+                                        }
+                                    }
+
+                                    &.fc-today {
+
+                                        .fc-day-number {
+                                            background: var(--primary);
+                                            color: var(--primary-contrast);
+                                        }
                                     }
 
                                     .fc-day-number {
@@ -72,26 +96,27 @@
                                         min-height: 22px;
                                         max-height: 22px;
                                         margin: 0 6px 4px 6px;
-                                        padding: 0 8px;
+                                        padding: 0 5px;
                                         font-size: 12px;
                                         border-radius: 4px;
                                         border: none;
                                         cursor: pointer;
 
-                                        @include treo-breakpoint('xs') {
-                                            padding: 0 5px;
+                                        @screen sm {
+                                            padding: 0 8px;
                                         }
                                     }
                                 }
 
                                 .fc-more {
-                                    padding: 0 6px;
+                                    padding: 0 3px;
                                     font-size: 12px;
                                     font-weight: 500;
                                     white-space: nowrap;
+                                    color: var(--text-secondary);
 
-                                    @include treo-breakpoint('xs') {
-                                        padding: 0 3px;
+                                    @screen sm {
+                                        padding: 0 6px;
                                     }
                                 }
                             }
@@ -100,6 +125,8 @@
 
                                 .fc-highlight {
                                     position: relative;
+                                    opacity: 1;
+                                    @apply bg-coolGray-100;
                                 }
                             }
                         }
@@ -108,17 +135,19 @@
             }
 
             .fc-popover {
+                background: var(--bg-card);
 
                 &.fc-more-popover {
                     border: none;
                     border-radius: 4px;
-                    @include treo-elevation('2xl');
+                    @apply shadow-2xl;
 
                     .fc-header {
                         height: 32px;
                         min-height: 32px;
                         max-height: 32px;
                         padding: 0 8px;
+                        background: var(--bg-hover);
 
                         .fc-title {
                             margin: 0;
@@ -158,7 +187,7 @@
             }
         }
 
-        // Time Grid - Week view
+        /* Time Grid - Week view */
         .fc-view.fc-timeGridWeek-view {
 
             .fc-head {
@@ -170,9 +199,11 @@
 
                         .fc-axis {
                             width: 48px !important;
+                            border-color: var(--divider);
                         }
 
                         .fc-day-header {
+                            border-color: var(--divider);
 
                             span {
                                 display: flex;
@@ -180,6 +211,7 @@
                                 align-items: center;
                                 justify-content: center;
                                 width: 100%;
+                                color: var(--text-secondary);
 
                                 &.fc-weekday {
                                     padding-top: 16px;
@@ -214,6 +246,15 @@
 
                                 .fc-axis {
                                     width: 48px !important;
+                                    border-color: var(--divider);
+                                }
+
+                                .fc-day {
+                                    border-color: var(--divider);
+
+                                    &.fc-today {
+                                        background: none;
+                                    }
                                 }
                             }
 
@@ -247,6 +288,7 @@
 
                     .fc-divider {
                         border: none;
+                        background: var(--divider);
                     }
 
                     .fc-time-grid {
@@ -259,6 +301,14 @@
 
                                 + .fc-day {
                                     border: none;
+                                }
+                            }
+
+                            .fc-day {
+                                border-color: var(--divider);
+
+                                &.fc-today {
+                                    background: none;
                                 }
                             }
                         }
@@ -275,6 +325,14 @@
                                     width: 48px;
                                     min-width: 48px;
                                 }
+                            }
+
+                            .fc-time {
+                                border-color: var(--divider);
+                            }
+
+                            .fc-widget-content {
+                                border-color: var(--divider);
                             }
                         }
 
@@ -306,7 +364,7 @@
             }
         }
 
-        // Time Grid - Day view
+        /* Time Grid - Day view */
         .fc-view.fc-timeGridDay-view {
 
             .fc-head {
@@ -318,9 +376,11 @@
 
                         .fc-axis {
                             width: 48px !important;
+                            border-color: var(--divider);
                         }
 
                         .fc-day-header {
+                            border-color: var(--divider);
 
                             span {
                                 display: flex;
@@ -328,6 +388,7 @@
                                 align-items: center;
                                 justify-content: center;
                                 width: 100%;
+                                color: var(--text-secondary);
 
                                 &.fc-weekday {
                                     padding-top: 16px;
@@ -354,6 +415,21 @@
                     border: none;
 
                     .fc-day-grid {
+
+                        .fc-bg {
+
+                            .fc-axis {
+                                border-color: var(--divider);
+                            }
+
+                            .fc-day {
+                                border-color: var(--divider);
+
+                                &.fc-today {
+                                    background: none;
+                                }
+                            }
+                        }
 
                         .fc-row {
                             min-height: 0;
@@ -395,11 +471,20 @@
 
                     .fc-divider {
                         border: none;
+                        border-color: var(--divider);
                     }
 
                     .fc-time-grid {
 
                         .fc-bg {
+
+                            .fc-day {
+                                border-color: var(--divider);
+
+                                &.fc-today {
+                                    background: none;
+                                }
+                            }
 
                             .fc-axis {
                                 border: none;
@@ -423,6 +508,14 @@
                                     width: 48px;
                                     min-width: 48px;
                                 }
+                            }
+
+                            .fc-time {
+                                border-color: var(--divider);
+                            }
+
+                            .fc-widget-content {
+                                border-color: var(--divider);
                             }
                         }
 
@@ -454,7 +547,7 @@
             }
         }
 
-        // List - Year view
+        /* List - Year view */
         .fc-view.fc-listYear-view {
             border: none;
 
@@ -468,6 +561,13 @@
                     display: flex;
                     cursor: pointer;
 
+                    &:hover {
+
+                        td {
+                            background-color: var(--bg-hover);
+                        }
+                    }
+
                     td {
                         display: flex;
                         align-items: center;
@@ -476,18 +576,19 @@
                         min-height: 48px;
                         padding: 0 8px;
                         border-width: 0 0 1px 0;
+                        border-color: var(--divider);
 
                         &.fc-list-item-date {
                             order: 1;
                             padding-left: 16px;
-                            width: 120px;
-                            min-width: 120px;
-                            max-width: 120px;
+                            width: 100px;
+                            min-width: 100px;
+                            max-width: 100px;
 
-                            @include treo-breakpoint('xs') {
-                                width: 100px;
-                                min-width: 100px;
-                                max-width: 100px;
+                            @screen sm {
+                                width: 120px;
+                                min-width: 120px;
+                                max-width: 120px;
                             }
 
                             > span {
@@ -499,14 +600,14 @@
                                     &:first-child {
                                         display: flex;
                                         justify-content: center;
-                                        padding-right: 8px;
+                                        padding-right: 2px;
                                         width: 32px;
                                         min-width: 32px;
                                         max-width: 32px;
                                         font-size: 18px;
 
-                                        @include treo-breakpoint('xs') {
-                                            padding-right: 2px;
+                                        @screen sm {
+                                            padding-right: 8px;
                                         }
 
                                         + span {
@@ -515,6 +616,7 @@
                                             font-weight: 500;
                                             letter-spacing: 0.055em;
                                             text-transform: uppercase;
+                                            color: var(--text-secondary);
                                         }
                                     }
                                 }
@@ -524,14 +626,14 @@
                         &.fc-list-item-time {
                             flex: 0 0 auto;
                             order: 3;
-                            width: 160px;
-                            min-width: 160px;
-                            max-width: 160px;
+                            width: 120px;
+                            min-width: 120px;
+                            max-width: 120px;
 
-                            @include treo-breakpoint('xs') {
-                                width: 120px;
-                                min-width: 120px;
-                                max-width: 120px;
+                            @screen sm {
+                                width: 160px;
+                                min-width: 160px;
+                                max-width: 160px;
                             }
                         }
 
@@ -558,7 +660,7 @@
         }
     }
 
-    // Day grid event - Dragging
+    /* Day grid event - Dragging */
     .fc-day-grid-event {
 
         &.fc-dragging,
@@ -574,305 +676,6 @@
             line-height: 1;
             border-radius: 4px;
             border: none;
-        }
-    }
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-
-    .fc {
-
-        .fc-view-container {
-
-            // Day Grid - Month view
-            .fc-view.fc-dayGridMonth-view {
-
-                .fc-head {
-
-                    > tr > .fc-head-container {
-
-                        .fc-row {
-
-                            .fc-day-header {
-                                border-color: map-get($foreground, divider);
-
-                                span {
-                                    color: map-get($foreground, secondary-text);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .fc-body {
-
-                    > tr > .fc-widget-content {
-
-                        .fc-day-grid {
-
-                            .fc-week {
-
-                                .fc-bg {
-
-                                    .fc-day {
-                                        border-color: map-get($foreground, divider);
-
-                                        &.fc-today {
-                                            background: none;
-                                        }
-                                    }
-                                }
-
-                                .fc-content-skeleton {
-
-                                    .fc-day-top {
-
-                                        &.fc-other-month {
-
-                                            .fc-day-number {
-                                                color: map-get($foreground, hint-text);
-                                            }
-                                        }
-
-                                        &.fc-today {
-
-                                            .fc-day-number {
-                                                background: map-get($primary, default);
-                                                color: map-get($primary, default-contrast);
-                                            }
-                                        }
-                                    }
-
-                                    .fc-more {
-                                        color: map-get($foreground, secondary-text);
-                                    }
-                                }
-
-                                .fc-highlight-skeleton {
-
-                                    .fc-highlight {
-                                        background: treo-color('cool-gray', 100);
-                                        opacity: 1;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .fc-popover {
-                    background: map-get($background, card);
-
-                    &.fc-more-popover {
-
-                        .fc-header {
-                            background: map-get($background, hover);
-                        }
-                    }
-                }
-            }
-
-            // Time Grid - Week view
-            .fc-view.fc-timeGridWeek-view {
-
-                .fc-head {
-
-                    > tr > .fc-head-container {
-
-                        .fc-row {
-
-                            .fc-axis {
-                                border-color: map-get($foreground, divider);
-                            }
-
-                            .fc-day-header {
-                                border-color: map-get($foreground, divider);
-
-                                span {
-                                    color: map-get($foreground, secondary-text);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .fc-body {
-
-                    > tr > .fc-widget-content {
-                        border: none;
-
-                        .fc-day-grid {
-
-                            .fc-bg {
-
-                                .fc-axis {
-                                    border-color: map-get($foreground, divider);
-                                }
-
-                                .fc-day {
-                                    border-color: map-get($foreground, divider);
-
-                                    &.fc-today {
-                                        background: none;
-                                    }
-                                }
-                            }
-                        }
-
-                        .fc-divider {
-                            background: map-get($foreground, divider);
-                        }
-
-                        .fc-time-grid {
-
-                            .fc-bg {
-
-                                .fc-day {
-                                    border-color: map-get($foreground, divider);
-
-                                    &.fc-today {
-                                        background: none;
-                                    }
-                                }
-                            }
-
-                            .fc-slats {
-
-                                .fc-time {
-                                    border-color: map-get($foreground, divider);
-                                }
-
-                                .fc-widget-content {
-                                    border-color: map-get($foreground, divider);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Time Grid - Day view
-            .fc-view.fc-timeGridDay-view {
-
-                .fc-head {
-
-                    > tr > .fc-head-container {
-
-                        .fc-row {
-
-                            .fc-axis {
-                                border-color: map-get($foreground, divider);
-                            }
-
-                            .fc-day-header {
-                                border-color: map-get($foreground, divider);
-
-                                span {
-                                    color: map-get($foreground, secondary-text);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .fc-body {
-
-                    > tr > .fc-widget-content {
-                        border: none;
-
-                        .fc-day-grid {
-
-                            .fc-bg {
-
-                                .fc-axis {
-                                    border-color: map-get($foreground, divider);
-                                }
-
-                                .fc-day {
-                                    border-color: map-get($foreground, divider);
-
-                                    &.fc-today {
-                                        background: none;
-                                    }
-                                }
-                            }
-                        }
-
-                        .fc-divider {
-                            background: map-get($foreground, divider);
-                        }
-
-                        .fc-time-grid {
-
-                            .fc-bg {
-
-                                .fc-day {
-                                    border-color: map-get($foreground, divider);
-
-                                    &.fc-today {
-                                        background: none;
-                                    }
-                                }
-                            }
-
-                            .fc-slats {
-
-                                .fc-time {
-                                    border-color: map-get($foreground, divider);
-                                }
-
-                                .fc-widget-content {
-                                    border-color: map-get($foreground, divider);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // List - Year view
-            .fc-view.fc-listYear-view {
-
-                .fc-list-table {
-
-                    .fc-list-item {
-
-                        &:hover {
-
-                            td {
-                                background-color: map-get($background, hover);
-                            }
-                        }
-
-                        td {
-                            border-color: map-get($foreground, divider);
-
-                            &.fc-list-item-date {
-
-                                > span {
-
-                                    span {
-
-                                        &:first-child {
-
-                                            + span {
-                                                color: map-get($foreground, secondary-text);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

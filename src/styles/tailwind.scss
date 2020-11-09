@@ -1,15 +1,3 @@
-/* ----------------------------------------------------------------------------------------------------- */
-/* Required modules for TREO generated code - DO NOT REMOVE
-/* ----------------------------------------------------------------------------------------------------- */
-@use "sass:map";
-@import '~@angular/material/theming';
-
-/* ----------------------------------------------------------------------------------------------------- */
-/* Tailwind
-/* ----------------------------------------------------------------------------------------------------- */
 @tailwind components;
-/*@tailwind utilities;*/
-@variants dark-light;
-@variants treo-angular-material-themes;
+@tailwind utilities;
 @tailwind screens;
-

@@ -26,13 +26,13 @@ thin-layout {
             }
         }
 
-        // Thin appearance overrides
+        /* Thin appearance overrides */
         &.treo-vertical-navigation-appearance-thin {
             width: #{$treo-vertical-navigation-thin-width}px;
             min-width: #{$treo-vertical-navigation-thin-width}px;
             max-width: #{$treo-vertical-navigation-thin-width}px;
 
-            // Left positioned
+            /* Left positioned */
             &.treo-vertical-navigation-position-left {
 
                 &.treo-vertical-navigation-mode-side {
@@ -44,7 +44,7 @@ thin-layout {
                 }
             }
 
-            // Right positioned
+            /* Right positioned */
             &.treo-vertical-navigation-position-right {
 
                 &.treo-vertical-navigation-mode-side {
@@ -61,10 +61,10 @@ thin-layout {
                 }
             }
 
-            // Wrapper
+            /* Wrapper */
             .treo-vertical-navigation-wrapper {
 
-                // Content
+                /* Content */
                 .treo-vertical-navigation-content {
 
                     > treo-vertical-navigation-aside-item,
@@ -112,7 +112,7 @@ thin-layout {
                 }
             }
 
-            // Aside wrapper
+            /* Aside wrapper */
             .treo-vertical-navigation-aside-wrapper {
                 left: #{$treo-vertical-navigation-thin-width}px;
             }
@@ -217,9 +217,9 @@ thin-layout {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);

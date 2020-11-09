@@ -2,7 +2,7 @@
 
 typography {
 
-    // Example viewer
+    /* Example viewer */
     .example-viewer {
         display: flex;
         flex-direction: column;
@@ -57,9 +57,9 @@ typography {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);
@@ -68,7 +68,7 @@ typography {
 
     typography {
 
-        // Example viewer
+        /* Example viewer */
         .example-viewer {
             background: map-get($background, card);
 

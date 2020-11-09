@@ -46,9 +46,7 @@ export class NotificationsMockApi implements TreoMockApi
             .reply(() => {
                 return [
                     200,
-                    {
-                        notifications: cloneDeep(this._notifications)
-                    }
+                    cloneDeep(this._notifications)
                 ];
             });
 

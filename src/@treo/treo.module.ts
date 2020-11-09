@@ -10,7 +10,7 @@ import { TreoSplashScreenModule } from '@treo/services/splash-screen/splash-scre
     ],
     providers: [
         {
-            // Use the 'fill' appearance on form fields by default
+            // Use the 'fill' appearance on Angular Material form fields by default
             provide : MAT_FORM_FIELD_DEFAULT_OPTIONS,
             useValue: {
                 appearance: 'fill'

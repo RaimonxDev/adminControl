@@ -156,10 +156,10 @@
                             </th>
                             <td mat-cell
                                 *matCellDef="let product">
-                                <mat-icon class="text-green-400 icon-size-20"
+                                <mat-icon class="text-green-400 icon-size-5"
                                           *ngIf="product.active"
                                           [svgIcon]="'check'"></mat-icon>
-                                <mat-icon class="text-cool-gray-400 icon-size-20"
+                                <mat-icon class="text-cool-gray-400 icon-size-5"
                                           *ngIf="!product.active"
                                           [svgIcon]="'close'"></mat-icon>
                             </td>
@@ -210,7 +210,7 @@
                                                              *ngIf="selectedProductForm.get('images').value.length">
                                                             <button mat-icon-button
                                                                     (click)="cycleImages(false)">
-                                                                <mat-icon class="icon-size-16"
+                                                                <mat-icon class="icon-size-4"
                                                                           [svgIcon]="'arrow_back'"></mat-icon>
                                                             </button>
                                                             <span class="font-sm mx-2">
@@ -218,7 +218,7 @@
                                                             </span>
                                                             <button mat-icon-button
                                                                     (click)="cycleImages(true)">
-                                                                <mat-icon class="icon-size-16"
+                                                                <mat-icon class="icon-size-4"
                                                                           [svgIcon]="'arrow_forward'"></mat-icon>
                                                             </button>
                                                         </div>

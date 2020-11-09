@@ -1,40 +1,23 @@
-@import 'treo';
-
 treo-message {
     display: block;
 
-    // Show icon
-    &.treo-message-show-icon {
-
-        .treo-message-container {
-            //padding-left: 56px;
-        }
-    }
-
-    // Dismissible
-    &.treo-message-dismissible {
-
-        .treo-message-container {
-            //padding-right: 56px;
-        }
-    }
-
-    // Common
+    /* Common */
     .treo-message-container {
         position: relative;
         display: flex;
-        //min-height: 64px;
         padding: 16px;
         font-size: 14px;
         line-height: 1;
 
-        // Icon
+        /* All icons */
+        .mat-icon {
+            color: currentColor;
+        }
+
+        /* Icon */
         .treo-message-icon {
             display: flex;
             align-items: flex-start;
-            //position: absolute;
-            //top: 20px;
-            //left: 17px;
 
             .treo-message-custom-icon,
             .treo-message-default-icon {
@@ -52,7 +35,7 @@ treo-message {
             .treo-message-default-icon {
 
                 .mat-icon {
-                    @include treo-icon-size(20);
+                    @apply icon-size-5;
                 }
             }
 
@@ -69,14 +52,14 @@ treo-message {
             }
         }
 
-        // Content
+        /* Content */
         .treo-message-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             line-height: 1;
 
-            // Title
+            /* Title */
             .treo-message-title {
                 display: none;
                 font-weight: 600;
@@ -85,7 +68,7 @@ treo-message {
                 &:not(:empty) {
                     display: block;
 
-                    // Message that comes after the title
+                    /* Message that comes after the title */
                     + .treo-message-message {
 
                         &:not(:empty) {
@@ -95,7 +78,7 @@ treo-message {
                 }
             }
 
-            // Message
+            /* Message */
             .treo-message-message {
                 display: none;
                 line-height: 20px;
@@ -106,11 +89,8 @@ treo-message {
             }
         }
 
-        // Dismiss button
+        /* Dismiss button */
         .treo-message-dismiss-button {
-            //position: absolute;
-            //top: 16px;
-            //right: 12px;
             width: 32px !important;
             min-width: 32px !important;
             height: 32px !important;
@@ -119,12 +99,12 @@ treo-message {
             margin-left: auto;
 
             .mat-icon {
-                @include treo-icon-size(20);
+                @apply icon-size-5;
             }
         }
     }
 
-    // Dismissible
+    /* Dismissible */
     &:not(.treo-message-dismissible) {
 
         .treo-message-container {
@@ -135,795 +115,759 @@ treo-message {
         }
     }
 
-    // Border
+    /* Border */
     &.treo-message-appearance-border {
 
         .treo-message-container {
             overflow: hidden;
             border-left-width: 4px;
             border-radius: 4px;
-            @include treo-elevation('xl');
+            background: var(--bg-card);
+            @apply shadow-xl;
+
+            .treo-message-message {
+                color: var(--text-secondary);
+            }
+        }
+
+        /* Primary */
+        &.treo-message-type-primary {
+
+            .treo-message-container {
+                border-color: var(--primary);
+
+                .treo-message-title,
+                .treo-message-icon {
+                    color: var(--primary);
+                }
+            }
+        }
+
+        /* Accent */
+        &.treo-message-type-accent {
+
+            .treo-message-container {
+                border-color: var(--accent);
+
+                .treo-message-title,
+                .treo-message-icon {
+                    color: var(--accent);
+                }
+            }
+        }
+
+        /* Warn */
+        &.treo-message-type-warn {
+
+            .treo-message-container {
+                border-color: var(--warn);
+
+                .treo-message-title,
+                .treo-message-icon {
+                    color: var(--warn);
+                }
+            }
+        }
+
+        /* Basic */
+        &.treo-message-type-basic {
+
+            .treo-message-container {
+                @apply border-coolGray-600;
+
+                .treo-message-title,
+                .treo-message-icon {
+                    @apply text-coolGray-600;
+                }
+            }
+        }
+
+        /* Info */
+        &.treo-message-type-info {
+
+            .treo-message-container {
+                @apply border-blue-600;
+
+                .treo-message-title,
+                .treo-message-icon {
+                    @apply text-blue-700;
+                }
+            }
+        }
+
+        /* Success */
+        &.treo-message-type-success {
+
+            .treo-message-container {
+                @apply border-green-500;
+
+                .treo-message-title,
+                .treo-message-icon {
+                    @apply text-green-500;
+                }
+            }
+        }
+
+        /* Warning */
+        &.treo-message-type-warning {
+
+            .treo-message-container {
+                @apply border-amber;
+
+                .treo-message-title,
+                .treo-message-icon {
+                    @apply text-amber;
+                }
+            }
+        }
+
+        /* Error */
+        &.treo-message-type-error {
+
+            .treo-message-container {
+                @apply border-red-600;
+
+                .treo-message-title,
+                .treo-message-icon {
+                    @apply text-red-700;
+                }
+            }
         }
     }
 
-    // Fill
+    /* Fill */
     &.treo-message-appearance-fill {
 
         .treo-message-container {
             border-radius: 4px;
         }
+
+        /* Primary */
+        &.treo-message-type-primary {
+
+            .treo-message-container {
+                background: var(--primary);
+                color: var(--primary-contrast);
+
+                code {
+                    background: var(--primary-600);
+                    color: var(--primary-600-contrast);
+                }
+            }
+        }
+
+        /* Accent */
+        &.treo-message-type-accent {
+
+            .treo-message-container {
+                background: var(--accent);
+                color: var(--accent-contrast);
+
+                code {
+                    background: var(--accent-600);
+                    color: var(--accent-600-contrast);
+                }
+            }
+        }
+
+        /* Warn */
+        &.treo-message-type-warn {
+
+            .treo-message-container {
+                background: var(--warn);
+                color: var(--warn-contrast);
+
+                code {
+                    background: var(--warn-800);
+                    color: var(--warn-800-contrast);
+                }
+            }
+        }
+
+        /* Basic */
+        &.treo-message-type-basic {
+
+            .treo-message-container {
+                @apply bg-coolGray-500 text-coolGray-50;
+
+                code {
+                    @apply bg-coolGray-600 text-coolGray-50;
+                }
+            }
+        }
+
+        /* Info */
+        &.treo-message-type-info {
+
+            .treo-message-container {
+                @apply bg-blue-600 text-blue-50;
+
+                code {
+                    @apply bg-blue-800 text-blue-50;
+                }
+            }
+        }
+
+        /* Success */
+        &.treo-message-type-success {
+
+            .treo-message-container {
+                @apply bg-green-500 text-coolGray-50;
+
+                code {
+                    @apply bg-green-600 text-coolGray-50;
+                }
+            }
+        }
+
+        /* Warning */
+        &.treo-message-type-warning {
+
+            .treo-message-container {
+                @apply bg-amber text-amber-50;
+
+                code {
+                    @apply bg-amber-600 text-amber-50;
+                }
+            }
+        }
+
+        /* Error */
+        &.treo-message-type-error {
+
+            .treo-message-container {
+                @apply bg-red-600 text-red-50;
+
+                code {
+                    @apply bg-red-800 text-red-50;
+                }
+            }
+        }
     }
 
-    // Outline
+    /* Outline */
     &.treo-message-appearance-outline {
 
         .treo-message-container {
             border-radius: 4px;
         }
+
+        /* Primary */
+        &.treo-message-type-primary {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px var(--primary-400);
+                background: var(--primary-50);
+                color: var(--primary-800);
+
+                .treo-message-icon {
+                    color: var(--primary);
+                }
+
+                code {
+                    background: var(--primary-200);
+                    color: var(--primary-800);
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px var(--primary-300);
+                    background: transparent;
+                    color: var(--primary-300);
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
+
+        /* Accent */
+        &.treo-message-type-accent {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px var(--accent-400);
+                background: var(--accent-50);
+                color: var(--accent-800);
+
+                .treo-message-icon {
+                    color: var(--accent);
+                }
+
+                code {
+                    background: var(--accent-200);
+                    color: var(--accent-800);
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px var(--accent-300);
+                    background: transparent;
+                    color: var(--accent-300);
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
+
+        /* Warn */
+        &.treo-message-type-warn {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px var(--warn-400);
+                background: var(--warn-50);
+                color: var(--warn-800);
+
+                .treo-message-icon {
+                    color: var(--warn);
+                }
+
+                code {
+                    background: var(--warn-200);
+                    color: var(--warn-800);
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px var(--warn-300);
+                    background: transparent;
+                    color: var(--warn-300);
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
+
+        /* Basic */
+        &.treo-message-type-basic {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px theme('colors.coolGray.400');
+                @apply bg-coolGray-50 text-coolGray-800;
+
+                .treo-message-icon {
+                    @apply text-coolGray-500;
+                }
+
+                code {
+                    @apply bg-coolGray-200 text-coolGray-800;
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px theme('colors.coolGray.300');
+                    background: transparent;
+                    @apply text-coolGray-300;
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
+
+        /* Info */
+        &.treo-message-type-info {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px theme('colors.blue.400');
+                @apply bg-blue-50 text-blue-800;
+
+                .treo-message-icon {
+                    @apply text-blue-500;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px theme('colors.blue.300');
+                    background: transparent;
+                    @apply text-blue-300;
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
+
+        /* Success */
+        &.treo-message-type-success {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px theme('colors.green.400');
+                @apply bg-green-50 text-green-800;
+
+                .treo-message-icon {
+                    @apply text-green-500;
+                }
+
+                code {
+                    @apply bg-green-200 text-green-800;
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px theme('colors.green.300');
+                    background: transparent;
+                    @apply text-green-300;
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
+
+        /* Warning */
+        &.treo-message-type-warning {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px theme('colors.yellow.400');
+                @apply bg-yellow-50 text-yellow-800;
+
+                .treo-message-icon {
+                    @apply text-yellow-500;
+                }
+
+                code {
+                    @apply bg-yellow-200 text-yellow-800;
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px theme('colors.yellow.300');
+                    background: transparent;
+                    @apply text-yellow-300;
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
+
+        /* Error */
+        &.treo-message-type-error {
+
+            .treo-message-container {
+                box-shadow: inset 0 0 0 1px theme('colors.red.400');
+                @apply bg-red-50 text-red-800;
+
+                .treo-message-icon {
+                    @apply text-red-500;
+                }
+
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
+
+                .dark & {
+                    box-shadow: inset 0 0 0 1px theme('colors.red.300');
+                    background: transparent;
+                    @apply text-red-300;
+
+                    .treo-message-icon {
+                        color: currentColor;
+                    }
+                }
+            }
+        }
     }
 
-    // Soft
+    /* Soft */
     &.treo-message-appearance-soft {
 
         .treo-message-container {
             border-radius: 6px;
         }
-    }
-}
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-    $accent: map-get($theme, accent);
-    $warn: map-get($theme, warn);
-    $is-dark: map-get($theme, is-dark);
-
-    treo-message {
-
-        .treo-message-container {
-
-            // Icon
-            .mat-icon {
-                color: currentColor;
-            }
-        }
-
-        // Border
-        &.treo-message-appearance-border {
+        /* Primary */
+        &.treo-message-type-primary {
 
             .treo-message-container {
-                background: map-get($background, card);
+                background: var(--primary-50);
+
+                .treo-message-icon {
+                    color: var(--primary-400);
+                }
+
+                .treo-message-title {
+                    color: var(--primary-800);
+                }
 
                 .treo-message-message {
-                    color: map-get($foreground, secondary-text);
+                    color: var(--primary-700);
                 }
-            }
 
-            // Primary
-            &.treo-message-type-primary {
+                code {
+                    background: var(--primary-200);
+                    color: var(--primary-800);
+                }
 
-                .treo-message-container {
-                    border-left-color: map-get($primary, default);
+                .dark & {
+                    background: var(--primary-900);
 
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: map-get($primary, default);
+                    .treo-message-title {
+                        color: var(--primary-400);
                     }
-                }
-            }
 
-            // Accent
-            &.treo-message-type-accent {
-
-                .treo-message-container {
-                    border-left-color: map-get($accent, default);
-
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: map-get($accent, default);
-                    }
-                }
-            }
-
-            // Warn
-            &.treo-message-type-warn {
-
-                .treo-message-container {
-                    border-left-color: map-get($warn, default);
-
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: map-get($warn, default);
-                    }
-                }
-            }
-
-            // Basic
-            &.treo-message-type-basic {
-
-                .treo-message-container {
-                    border-left-color: treo-color('cool-gray', 600);
-
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: treo-color('cool-gray', 600);
-                    }
-                }
-            }
-
-            // Info
-            &.treo-message-type-info {
-
-                .treo-message-container {
-                    border-left-color: treo-color('blue', 600);
-
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: treo-color('blue', 700);
-                    }
-                }
-            }
-
-            // Success
-            &.treo-message-type-success {
-
-                .treo-message-container {
-                    border-left-color: treo-color('green', 500);
-
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: treo-color('green', 500);
-                    }
-                }
-            }
-
-            // Warning
-            &.treo-message-type-warning {
-
-                .treo-message-container {
-                    border-left-color: treo-color('yellow', 400);
-
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: treo-color('yellow', 400);
-                    }
-                }
-            }
-
-            // Error
-            &.treo-message-type-error {
-
-                .treo-message-container {
-                    border-left-color: treo-color('red', 600);
-
-                    .treo-message-title,
-                    .treo-message-icon {
-                        color: treo-color('red', 700);
+                    .treo-message-message {
+                        color: var(--primary-400);
                     }
                 }
             }
         }
 
-        // Fill
-        &.treo-message-appearance-fill {
+        /* Accent */
+        &.treo-message-type-accent {
 
-            // Primary
-            &.treo-message-type-primary {
+            .treo-message-container {
+                background: var(--accent-100);
 
-                .treo-message-container {
-                    background: map-get($primary, default);
-                    color: map-get($primary, default-contrast);
-
-                    code {
-                        background: map-get($primary, 600);
-                        color: map-get($primary, '600-contrast');
-                    }
+                .treo-message-icon {
+                    color: var(--accent-400);
                 }
-            }
 
-            // Accent
-            &.treo-message-type-accent {
-
-                .treo-message-container {
-                    background: map-get($accent, default);
-                    color: map-get($accent, default-contrast);
-
-                    code {
-                        background: map-get($accent, 600);
-                        color: map-get($accent, '600-contrast');
-                    }
+                .treo-message-title {
+                    color: var(--accent-800);
                 }
-            }
 
-            // Warn
-            &.treo-message-type-warn {
-
-                .treo-message-container {
-                    background: map-get($warn, default);
-                    color: map-get($warn, default-contrast);
-
-                    code {
-                        background: map-get($warn, 800);
-                        color: map-get($warn, '800-contrast');
-                    }
+                .treo-message-message {
+                    color: var(--accent-700);
                 }
-            }
 
-            // Basic
-            &.treo-message-type-basic {
-
-                .treo-message-container {
-                    background: treo-color('cool-gray', 500);
-                    color: treo-color('cool-gray', 50);
-
-                    code {
-                        background: treo-color('cool-gray', 600);
-                        color: treo-color('cool-gray', 50);
-                    }
+                code {
+                    background: var(--accent-200);
+                    color: var(--accent-800);
                 }
-            }
 
-            // Info
-            &.treo-message-type-info {
+                .dark & {
+                    background: var(--accent-900);
 
-                .treo-message-container {
-                    background: treo-color('blue', 600);
-                    color: treo-color('blue', 50);
-
-                    code {
-                        background: treo-color('blue', 800);
-                        color: treo-color('blue', 50);
+                    .treo-message-title {
+                        color: var(--accent-400);
                     }
-                }
-            }
 
-            // Success
-            &.treo-message-type-success {
-
-                .treo-message-container {
-                    background: treo-color('green', 500);
-                    color: treo-color('green', 50);
-
-                    code {
-                        background: treo-color('green', 600);
-                        color: treo-color('green', 50);
-                    }
-                }
-            }
-
-            // Warning
-            &.treo-message-type-warning {
-
-                .treo-message-container {
-                    background: treo-color('yellow', 400);
-                    color: treo-color('yellow', 50);
-
-                    code {
-                        background: treo-color('yellow', 600);
-                        color: treo-color('yellow', 50);
-                    }
-                }
-            }
-
-            // Error
-            &.treo-message-type-error {
-
-                .treo-message-container {
-                    background: treo-color('red', 600);
-                    color: treo-color('red', 50);
-
-                    code {
-                        background: treo-color('red', 800);
-                        color: treo-color('red', 50);
+                    .treo-message-message {
+                        color: var(--accent-400);
                     }
                 }
             }
         }
 
-        // Outline
-        &.treo-message-appearance-outline {
+        /* Warn */
+        &.treo-message-type-warn {
 
-            // Primary
-            &.treo-message-type-primary {
+            .treo-message-container {
+                background: var(--warn-50);
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: map-get($primary, 300);
-                        box-shadow: inset 0 0 0 1px map-get($primary, 300);
-                    } @else {
-                        background: map-get($primary, 50);
-                        color: map-get($primary, 800);
-                        box-shadow: inset 0 0 0 1px map-get($primary, 400);
-
-                        .treo-message-icon {
-                            color: map-get($primary, 500);
-                        }
-                    }
-
-                    code {
-                        background: map-get($primary, 200);
-                        color: map-get($primary, 800);
-                    }
+                .treo-message-icon {
+                    color: var(--warn-400);
                 }
-            }
 
-            // Accent
-            &.treo-message-type-accent {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: map-get($accent, 300);
-                        box-shadow: inset 0 0 0 1px map-get($accent, 300);
-                    } @else {
-                        background: map-get($accent, 50);
-                        color: map-get($accent, 800);
-                        box-shadow: inset 0 0 0 1px map-get($accent, 400);
-
-                        .treo-message-icon {
-                            color: map-get($accent, 500);
-                        }
-                    }
-
-                    code {
-                        background: map-get($accent, 200);
-                        color: map-get($accent, 800);
-                    }
+                .treo-message-title {
+                    color: var(--warn-800);
                 }
-            }
 
-            // Warn
-            &.treo-message-type-warn {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: map-get($warn, 300);
-                        box-shadow: inset 0 0 0 1px map-get($warn, 300);
-                    } @else {
-                        background: map-get($warn, 50);
-                        color: map-get($warn, 800);
-                        box-shadow: inset 0 0 0 1px map-get($warn, 400);
-
-                        .treo-message-icon {
-                            color: map-get($warn, 500);
-                        }
-                    }
-
-                    code {
-                        background: map-get($warn, 200);
-                        color: map-get($warn, 800);
-                    }
+                .treo-message-message {
+                    color: var(--warn-700);
                 }
-            }
 
-            // Basic
-            &.treo-message-type-basic {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: treo-color('cool-gray', 300);
-                        box-shadow: inset 0 0 0 1px treo-color('cool-gray', 300);
-                    } @else {
-                        background: treo-color('cool-gray', 50);
-                        color: treo-color('cool-gray', 800);
-                        box-shadow: inset 0 0 0 1px treo-color('cool-gray', 400);
-
-                        .treo-message-icon {
-                            color: treo-color('cool-gray', 500);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('cool-gray', 200);
-                        color: treo-color('cool-gray', 800);
-                    }
+                code {
+                    background: var(--warn-200);
+                    color: var(--warn-800);
                 }
-            }
 
-            // Info
-            &.treo-message-type-info {
+                .dark & {
+                    background: var(--warn-900);
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: treo-color('blue', 300);
-                        box-shadow: inset 0 0 0 1px treo-color('blue', 300);
-                    } @else {
-                        background: treo-color('blue', 50);
-                        color: treo-color('blue', 800);
-                        box-shadow: inset 0 0 0 1px treo-color('blue', 400);
-
-                        .treo-message-icon {
-                            color: treo-color('blue', 500);
-                        }
+                    .treo-message-title {
+                        color: var(--warn-400);
                     }
 
-                    code {
-                        background: treo-color('blue', 200);
-                        color: treo-color('blue', 800);
-                    }
-                }
-            }
-
-            // Success
-            &.treo-message-type-success {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: treo-color('green', 300);
-                        box-shadow: inset 0 0 0 1px treo-color('green', 300);
-                    } @else {
-                        background: treo-color('green', 50);
-                        color: treo-color('green', 800);
-                        box-shadow: inset 0 0 0 1px treo-color('green', 400);
-
-                        .treo-message-icon {
-                            color: treo-color('green', 500);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('green', 200);
-                        color: treo-color('green', 800);
-                    }
-                }
-            }
-
-            // Warning
-            &.treo-message-type-warning {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: treo-color('yellow', 300);
-                        box-shadow: inset 0 0 0 1px treo-color('yellow', 300);
-                    } @else {
-                        background: treo-color('yellow', 50);
-                        color: treo-color('yellow', 800);
-                        box-shadow: inset 0 0 0 1px treo-color('yellow', 400);
-
-                        .treo-message-icon {
-                            color: treo-color('yellow', 500);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('yellow', 200);
-                        color: treo-color('yellow', 800);
-                    }
-                }
-            }
-
-            // Error
-            &.treo-message-type-error {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: transparent;
-                        color: treo-color('red', 500);
-                        box-shadow: inset 0 0 0 1px treo-color('red', 500);
-                    } @else {
-                        background: treo-color('red', 50);
-                        color: treo-color('red', 800);
-                        box-shadow: inset 0 0 0 1px treo-color('red', 400);
-
-                        .treo-message-icon {
-                            color: treo-color('red', 500);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('red', 200);
-                        color: treo-color('red', 800);
+                    .treo-message-message {
+                        color: var(--warn-400);
                     }
                 }
             }
         }
 
-        // Soft
-        &.treo-message-appearance-soft {
+        /* Basic */
+        &.treo-message-type-basic {
 
-            // Primary
-            &.treo-message-type-primary {
+            .treo-message-container {
+                @apply bg-coolGray-100;
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: map-get($primary, 900);
-                    } @else {
-                        background: map-get($primary, 50);
-                    }
+                .treo-message-icon {
+                    @apply text-coolGray-400;
+                }
 
-                    .treo-message-icon {
-                        color: map-get($primary, 400);
-                    }
+                .treo-message-title {
+                    @apply text-coolGray-800;
+                }
+
+                .treo-message-message {
+                    @apply text-coolGray-700;
+                }
+
+                code {
+                    @apply bg-coolGray-200 text-coolGray-800;
+                }
+
+                .dark & {
+                    @apply bg-coolGray-900;
 
                     .treo-message-title {
-                        @if ($is-dark) {
-                            color: map-get($primary, 400);
-                        } @else {
-                            color: map-get($primary, 800);
-                        }
+                        @apply text-coolGray-400;
                     }
 
                     .treo-message-message {
-                        @if ($is-dark) {
-                            color: map-get($primary, 300);
-                        } @else {
-                            color: map-get($primary, 700);
-                        }
-                    }
-
-                    code {
-                        background: map-get($primary, 200);
-                        color: map-get($primary, 800);
+                        @apply text-coolGray-300;
                     }
                 }
             }
+        }
 
-            // Accent
-            &.treo-message-type-accent {
+        /* Info */
+        &.treo-message-type-info {
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: map-get($accent, 900);
-                    } @else {
-                        background: map-get($accent, 100);
-                    }
+            .treo-message-container {
+                @apply bg-blue-50;
 
-                    .treo-message-icon {
-                        color: map-get($accent, 400);
-                    }
+                .treo-message-icon {
+                    @apply text-blue-400;
+                }
+
+                .treo-message-title {
+                    @apply text-blue-800;
+                }
+
+                .treo-message-message {
+                    @apply text-blue-700;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+
+                .dark & {
+                    @apply bg-blue-900;
 
                     .treo-message-title {
-                        @if ($is-dark) {
-                            color: map-get($accent, 400);
-                        } @else {
-                            color: map-get($accent, 800);
-                        }
+                        @apply text-blue-400;
                     }
 
                     .treo-message-message {
-                        @if ($is-dark) {
-                            color: map-get($accent, 300);
-                        } @else {
-                            color: map-get($accent, 700);
-                        }
-                    }
-
-                    code {
-                        background: map-get($accent, 200);
-                        color: map-get($accent, 800);
+                        @apply text-blue-300;
                     }
                 }
             }
+        }
 
-            // Warn
-            &.treo-message-type-warn {
+        /* Success */
+        &.treo-message-type-success {
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: map-get($warn, 900);
-                    } @else {
-                        background: map-get($warn, 50);
-                    }
+            .treo-message-container {
+                @apply bg-green-50;
 
-                    .treo-message-icon {
-                        color: map-get($warn, 400);
-                    }
+                .treo-message-icon {
+                    @apply text-green-400;
+                }
+
+                .treo-message-title {
+                    @apply text-green-800;
+                }
+
+                .treo-message-message {
+                    @apply text-green-700;
+                }
+
+                code {
+                    @apply bg-green-200 text-green-800;
+                }
+
+                .dark & {
+                    @apply bg-green-900;
 
                     .treo-message-title {
-                        @if ($is-dark) {
-                            color: map-get($warn, 400);
-                        } @else {
-                            color: map-get($warn, 800);
-                        }
+                        @apply text-green-400;
                     }
 
                     .treo-message-message {
-                        @if ($is-dark) {
-                            color: map-get($warn, 300);
-                        } @else {
-                            color: map-get($warn, 700);
-                        }
-                    }
-
-                    code {
-                        background: map-get($warn, 200);
-                        color: map-get($warn, 800);
+                        @apply text-green-300;
                     }
                 }
             }
+        }
 
-            // Basic
-            &.treo-message-type-basic {
+        /* Warning */
+        &.treo-message-type-warning {
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: treo-color('cool-gray', 900);
-                    } @else {
-                        background: treo-color('cool-gray', 100);
-                    }
+            .treo-message-container {
+                @apply bg-yellow-50;
 
-                    .treo-message-icon {
-                        color: treo-color('cool-gray', 400);
-                    }
+                .treo-message-icon {
+                    @apply text-yellow-300;
+                }
+
+                .treo-message-title {
+                    @apply text-yellow-800;
+                }
+
+                .treo-message-message {
+                    @apply text-yellow-700;
+                }
+
+                code {
+                    @apply bg-yellow-200 text-yellow-800;
+                }
+
+                .dark & {
+                    @apply bg-yellow-500;
 
                     .treo-message-title {
-                        @if ($is-dark) {
-                            color: treo-color('cool-gray', 400);
-                        } @else {
-                            color: treo-color('cool-gray', 800);
-                        }
+                        @apply text-yellow-300;
                     }
 
                     .treo-message-message {
-                        @if ($is-dark) {
-                            color: treo-color('cool-gray', 300);
-                        } @else {
-                            color: treo-color('cool-gray', 700);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('cool-gray', 200);
-                        color: treo-color('cool-gray', 800);
+                        @apply text-yellow-200;
                     }
                 }
             }
+        }
 
-            // Info
-            &.treo-message-type-info {
+        /* Error */
+        &.treo-message-type-error {
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: treo-color('blue', 900);
-                    } @else {
-                        background: treo-color('blue', 50);
-                    }
+            .treo-message-container {
+                @apply bg-red-50;
 
-                    .treo-message-icon {
-                        color: treo-color('blue', 400);
-                    }
-
-                    .treo-message-title {
-                        @if ($is-dark) {
-                            color: treo-color('blue', 400);
-                        } @else {
-                            color: treo-color('blue', 800);
-                        }
-                    }
-
-                    .treo-message-message {
-                        @if ($is-dark) {
-                            color: treo-color('blue', 300);
-                        } @else {
-                            color: treo-color('blue', 700);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('blue', 200);
-                        color: treo-color('blue', 800);
-                    }
+                .treo-message-icon {
+                    @apply text-red-400;
                 }
-            }
 
-            // Success
-            &.treo-message-type-success {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: treo-color('green', 900);
-                    } @else {
-                        background: treo-color('green', 50);
-                    }
-
-                    .treo-message-icon {
-                        color: treo-color('green', 400);
-                    }
-
-                    .treo-message-title {
-                        @if ($is-dark) {
-                            color: treo-color('green', 400);
-                        } @else {
-                            color: treo-color('green', 800);
-                        }
-                    }
-
-                    .treo-message-message {
-                        @if ($is-dark) {
-                            color: treo-color('green', 300);
-                        } @else {
-                            color: treo-color('green', 700);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('green', 200);
-                        color: treo-color('green', 800);
-                    }
+                .treo-message-title {
+                    @apply text-red-800;
                 }
-            }
 
-            // Warning
-            &.treo-message-type-warning {
-
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: treo-color('yellow', 500);
-                    } @else {
-                        background: treo-color('yellow', 50);
-                    }
-
-                    .treo-message-icon {
-                        color: treo-color('yellow', 300);
-                    }
-
-                    .treo-message-title {
-                        @if ($is-dark) {
-                            color: treo-color('yellow', 300);
-                        } @else {
-                            color: treo-color('yellow', 800);
-                        }
-                    }
-
-                    .treo-message-message {
-                        @if ($is-dark) {
-                            color: treo-color('yellow', 200);
-                        } @else {
-                            color: treo-color('yellow', 700);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('yellow', 200);
-                        color: treo-color('yellow', 800);
-                    }
+                .treo-message-message {
+                    @apply text-red-700;
                 }
-            }
 
-            // Error
-            &.treo-message-type-error {
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
 
-                .treo-message-container {
-                    @if ($is-dark) {
-                        background: treo-color('red', 900);
-                    } @else {
-                        background: treo-color('red', 50);
-                    }
-
-                    .treo-message-icon {
-                        color: treo-color('red', 400);
-                    }
+                .dark & {
+                    @apply bg-red-900;
 
                     .treo-message-title {
-                        @if ($is-dark) {
-                            color: treo-color('red', 400);
-                        } @else {
-                            color: treo-color('red', 800);
-                        }
+                        @apply text-red-400;
                     }
 
                     .treo-message-message {
-                        @if ($is-dark) {
-                            color: treo-color('red', 300);
-                        } @else {
-                            color: treo-color('red', 700);
-                        }
-                    }
-
-                    code {
-                        background: treo-color('red', 200);
-                        color: treo-color('red', 800);
+                        @apply text-red-300;
                     }
                 }
             }

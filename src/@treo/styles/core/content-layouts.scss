@@ -1,0 +1,3821 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/* @ Common
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* Header */
+%content-layout-header {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+
+    @screen sm {
+        padding: 40px;
+    }
+
+    @screen md {
+        flex-direction: row;
+    }
+
+    .breadcrumb {
+        margin-bottom: 8px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    .left {
+        align-self: flex-start;
+        justify-self: center;
+        margin-right: 24px;
+
+        @screen md {
+            align-self: center;
+            justify-self: flex-start;
+        }
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        justify-self: center;
+        margin-top: 24px;
+        margin-left: 0;
+        white-space: nowrap;
+
+        @screen md {
+            align-self: center;
+            justify-self: flex-start;
+            margin-top: 0;
+            margin-left: auto;
+        }
+    }
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* @ Content layout
+/* ----------------------------------------------------------------------------------------------------- */
+.content-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Basic - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-basic-normal-scroll {
+
+        > .main {
+            flex: 1 1 auto;
+            padding: 24px;
+
+            @screen sm {
+                padding: 40px;
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Basic - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-basic-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .main {
+            flex: 1 1 auto;
+            padding: 24px;
+
+            @screen sm {
+                padding: 40px;
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Standard - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-standard-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            flex: 1 1 auto;
+            padding: 24px;
+
+            @screen sm {
+                padding: 40px;
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Standard - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            flex: 1 1 auto;
+            padding: 24px;
+
+            @screen sm {
+                padding: 40px;
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Standard - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            flex: 1 1 auto;
+            padding: 24px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+
+            @screen sm {
+                padding: 40px;
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Tabs - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-tabs-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 24px;
+            background: var(--bg-card);
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            flex: 1 1 auto;
+
+            .mat-tab-group {
+
+                .mat-tab-header {
+                    padding: 0 24px;
+                    background: var(--bg-card);
+
+                    @screen sm {
+                        padding: 0 40px;
+                    }
+
+                    .dark & {
+                        background: transparent;
+                    }
+
+                    &.mat-tab-header-pagination-controls-enabled {
+                        padding: 0;
+
+                        @screen sm {
+                            padding: 0 32px;
+                        }
+                    }
+
+                    .mat-tab-header-pagination {
+                        padding: 0;
+                        box-shadow: none;
+                    }
+
+                    .mat-tab-label {
+                        min-width: 128px;
+                    }
+                }
+
+                .mat-tab-body-wrapper {
+
+                    .mat-tab-body {
+
+                        .mat-tab-body-content {
+                            padding: 24px;
+
+                            @screen sm {
+                                padding: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Tabs - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 24px;
+            background: var(--bg-card);
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+
+            .mat-tab-group {
+
+                .mat-tab-header {
+                    padding: 0 24px;
+                    background: var(--bg-card);
+
+                    @screen sm {
+                        padding: 0 40px;
+                    }
+
+                    .dark & {
+                        background: transparent;
+                    }
+
+                    &.mat-tab-header-pagination-controls-enabled {
+                        padding: 0;
+
+                        @screen sm {
+                            padding: 0 32px;
+                        }
+                    }
+
+                    .mat-tab-header-pagination {
+                        padding: 0;
+                        box-shadow: none;
+                    }
+
+                    .mat-tab-label {
+                        min-width: 128px;
+                    }
+                }
+
+                .mat-tab-body-wrapper {
+
+                    .mat-tab-body {
+
+                        .mat-tab-body-content {
+                            padding: 24px;
+
+                            @screen sm {
+                                padding: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Tabs - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-tabs-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 24px;
+            background: var(--bg-card);
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            .mat-tab-group {
+                overflow: hidden;
+
+                .mat-tab-header {
+                    padding: 0 24px;
+                    background: var(--bg-card);
+
+                    @screen sm {
+                        padding: 0 40px;
+                    }
+
+                    &.mat-tab-header-pagination-controls-enabled {
+                        padding: 0;
+
+                        @screen sm {
+                            padding: 0 32px;
+                        }
+                    }
+
+                    .mat-tab-header-pagination {
+                        padding: 0;
+                        box-shadow: none;
+                    }
+
+                    .mat-tab-label {
+                        min-width: 128px;
+                    }
+                }
+
+                .mat-tab-body-wrapper {
+
+                    .mat-tab-body {
+
+                        .mat-tab-body-content {
+                            padding: 24px;
+                            -webkit-overflow-scrolling: touch;
+
+                            @screen sm {
+                                padding: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Tabs navigation - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-tabs-navigation-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 24px;
+            background: var(--bg-card);
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+
+            nav {
+                margin: 0;
+                padding: 0 24px;
+                background: var(--bg-card);
+
+                @screen sm {
+                    padding: 0 40px;
+                }
+
+                .dark & {
+                    background: transparent;
+                }
+
+                .mat-tab-link {
+                    min-width: 128px;
+                }
+            }
+
+            .main-inner {
+                flex: 1 1 auto;
+                padding: 24px;
+
+                @screen sm {
+                    padding: 40px;
+                }
+
+                > *:not(router-outlet) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Tabs navigation - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 24px;
+            background: var(--bg-card);
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+
+            nav {
+                margin: 0;
+                padding: 0 24px;
+                background: var(--bg-card);
+
+                @screen sm {
+                    padding: 0 40px;
+                }
+
+                .dark & {
+                    background: transparent;
+                }
+
+                .mat-tab-link {
+                    min-width: 128px;
+                }
+            }
+
+            .main-inner {
+                flex: 1 1 auto;
+                padding: 24px;
+
+                @screen sm {
+                    padding: 40px;
+                }
+
+                > *:not(router-outlet) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Fullwidth - Tabs navigation - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.fullwidth-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            padding-bottom: 24px;
+            background: var(--bg-card);
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            overflow: hidden;
+
+            nav {
+                margin: 0;
+                padding: 0 24px;
+                background: var(--bg-card);
+
+                @screen sm {
+                    padding: 0 40px;
+                }
+
+                .dark & {
+                    background: transparent;
+                }
+
+                .mat-tab-link {
+                    min-width: 128px;
+                }
+            }
+
+            .main-inner {
+                flex: 1 1 auto;
+                padding: 24px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+
+                @screen sm {
+                    padding: 40px;
+                }
+
+                > *:not(router-outlet) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Basic - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-basic-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Basic - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-basic-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Basic - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-basic-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Standard - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-standard-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Standard - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Standard - Drawer content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-standard-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Standard - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 0 24px;
+
+                                    @screen sm {
+                                        padding: 0 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs - Drawer content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    .mat-tab-group {
+                        height: 100%;
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+                                    -webkit-overflow-scrolling: touch;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs navigation - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-navigation-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs navigation - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs navigation - Drawer content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-navigation-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar fullheight - Tabs navigation - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-fullheight-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Standard - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-standard-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Standard - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Standard - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    padding: 24px;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Tabs - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-tabs-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 56px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Tabs - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 56px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Tabs - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-tabs-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    .mat-tab-group {
+                        height: 100%;
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 56px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+                                    -webkit-overflow-scrolling: touch;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Tabs navigation - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-tabs-navigation-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 56px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Tabs navigation - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 56px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Left sidebar content - Tabs navigation - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.left-sidebar-content-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 56px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Basic - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-basic-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Basic - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-basic-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Basic - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-basic-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Standard - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-standard-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Standard - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Standard - Drawer content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-standard-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Standard - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    background: var(--bg-card);
+                    @apply border-b;
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    padding: 24px;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs - Drawer content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    .mat-tab-group {
+                        height: 100%;
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+                                    -webkit-overflow-scrolling: touch;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs navigation - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-navigation-normal-scroll {
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs navigation - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs navigation - Drawer content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-navigation-drawer-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar fullheight - Tabs navigation - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-fullheight-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .header {
+                    @extend %content-layout-header;
+                    padding-bottom: 24px;
+                    background: var(--bg-card);
+
+                    .dark & {
+                        background: transparent;
+                    }
+                }
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Standard - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-standard-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Standard - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-standard-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    padding: 24px;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Standard - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-standard-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    padding: 24px;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    @screen sm {
+                        padding: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Tabs - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-tabs-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 56px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Tabs - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-tabs-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    flex: 1 1 auto;
+
+                    .mat-tab-group {
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 56px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Tabs - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-tabs-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    .mat-tab-group {
+                        height: 100%;
+
+                        .mat-tab-header {
+                            padding: 0 24px;
+                            background: var(--bg-card);
+
+                            @screen sm {
+                                padding: 0 40px;
+                            }
+
+                            .dark & {
+                                background: transparent;
+                            }
+
+                            &.mat-tab-header-pagination-controls-enabled {
+                                padding: 0;
+
+                                @screen sm {
+                                    padding: 0 32px;
+                                }
+                            }
+
+                            .mat-tab-header-pagination {
+                                padding: 0;
+                                box-shadow: none;
+                            }
+
+                            .mat-tab-label {
+                                min-width: 128px;
+                                height: 56px;
+                            }
+                        }
+
+                        .mat-tab-body-wrapper {
+
+                            .mat-tab-body {
+
+                                .mat-tab-body-content {
+                                    padding: 24px;
+                                    -webkit-overflow-scrolling: touch;
+
+                                    @screen sm {
+                                        padding: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Tabs navigation - Normal scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-tabs-navigation-normal-scroll {
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 56px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Tabs navigation - Content scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-tabs-navigation-content-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            overflow: visible;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 56px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Right sidebar content - Tabs navigation - Inner scroll
+    /* ----------------------------------------------------------------------------------------------------- */
+    &.right-sidebar-content-tabs-navigation-inner-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        > .header {
+            @extend %content-layout-header;
+            background: var(--bg-card);
+            @apply border-b;
+
+            .dark & {
+                background: transparent;
+            }
+        }
+
+        > .mat-drawer-container {
+            flex: 1 1 auto;
+            height: 100%;
+
+            .mat-drawer {
+                min-width: 288px;
+                max-width: 288px;
+                width: 288px;
+
+                .dark & {
+                    @apply bg-coolGray-900;
+                }
+            }
+
+            .mat-drawer-content {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+
+                > .main {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+
+                    nav {
+                        margin: 0;
+                        padding: 0 24px;
+                        background: var(--bg-card);
+
+                        @screen sm {
+                            padding: 0 40px;
+                        }
+
+                        .dark & {
+                            background: transparent;
+                        }
+
+                        .mat-tab-link {
+                            min-width: 128px;
+                            height: 56px;
+                        }
+                    }
+
+                    .main-inner {
+                        flex: 1 1 auto;
+                        padding: 24px;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+
+                        @screen sm {
+                            padding: 40px;
+                        }
+
+                        > *:not(router-outlet) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

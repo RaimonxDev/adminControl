@@ -1,17 +1,17 @@
-// -----------------------------------------------------------------------------------------------------
-// @ Angular Material styles, overrides and extensions
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Angular Material overrides
+/* ----------------------------------------------------------------------------------------------------- */
 
-// -----------------------------------------------------------------------------------------------------
-// @ Accordion
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Accordion
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-accordion {
 
     .mat-expansion-panel {
         margin-bottom: 24px;
         border-radius: 8px !important;
         transition: box-shadow 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-        @include treo-elevation('default', true);
+        @apply shadow !important;
 
         &:last-child {
             margin-bottom: 0;
@@ -19,7 +19,22 @@
 
         &.mat-expanded,
         &:hover {
-            @include treo-elevation('lg', true);
+            @apply shadow-lg !important;
+        }
+
+        &:not(.mat-expanded) {
+
+            .mat-expansion-panel-header {
+
+                &:not([aria-disabled=true]) {
+
+                    &.cdk-keyboard-focused,
+                    &.cdk-program-focused,
+                    &:hover {
+                        background: transparent !important;
+                    }
+                }
+            }
         }
 
         .mat-expansion-panel-header {
@@ -39,7 +54,7 @@
                 width: 12px;
                 height: 12px;
 
-                // Do not override the border color of the expansion panel indicator
+                /* Do not override the border color of the expansion panel indicator */
                 &:after {
                     border-color: currentColor !important;
                 }
@@ -48,13 +63,14 @@
 
         .mat-expansion-panel-body {
             line-height: 1.7;
+            color: var(--text-secondary);
         }
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Buttons
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Buttons
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-button,
 .mat-fab,
 .mat-flat-button,
@@ -71,13 +87,20 @@
     line-height: 1 !important;
 
     .mat-button-wrapper {
+        position: relative;
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
         height: 100%;
+        z-index: 2; /* Move mat-button-wrapper above the ripple and focus overlay */
     }
 
-    // Large button
+    .mat-button-focus-overlay,
+    .mat-button-ripple {
+        z-index: 1;
+    }
+
+    /* Large button */
     &.treo-mat-button-large {
         height: 48px;
         min-height: 48px;
@@ -89,7 +112,7 @@
     max-height: 56px;
 }
 
-// Target all buttons
+/* Target all buttons */
 .mat-button,
 .mat-fab,
 .mat-flat-button,
@@ -99,7 +122,7 @@
 .mat-raised-button,
 .mat-stroked-button {
 
-    // mat-progress-spinner inside buttons
+    /* mat-progress-spinner inside buttons */
     .mat-progress-spinner {
 
         &.mat-progress-spinner-indeterminate-animation[mode=indeterminate] {
@@ -112,9 +135,190 @@
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Button Toggle
-// -----------------------------------------------------------------------------------------------------
+/* Colored background buttons */
+.mat-flat-button,
+.mat-raised-button,
+.mat-fab,
+.mat-mini-fab {
+
+    /* Apply primary contrast color rather than main foreground color */
+    &.mat-primary:not([disabled]) {
+        color: var(--primary-contrast);
+    }
+
+    /* Apply accent contrast color rather than main foreground color */
+    &.mat-accent:not([disabled]) {
+        color: var(--accent-contrast);
+    }
+
+    /* Apply warn contrast color rather than main foreground color */
+    &.mat-warn:not([disabled]) {
+        color: var(--warn-contrast);
+    }
+
+    .mat-icon {
+        color: currentColor !important;
+    }
+
+    /* Add hover and focus style on all buttons */
+    .mat-button-focus-overlay {
+        background-color: rgba(theme('colors.coolGray.400'), 0.2) !important;
+
+        .dark & {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+        }
+    }
+
+    /* On palette colored buttons, use a darker color */
+    &.mat-primary,
+    &.mat-accent,
+    &.mat-warn {
+
+        .mat-button-focus-overlay {
+            background-color: rgba(0, 0, 0, 0.1) !important;
+        }
+    }
+
+    &:hover,
+    &.cdk-keyboard-focused,
+    &.cdk-program-focused {
+
+        .mat-button-focus-overlay {
+            opacity: 1;
+        }
+    }
+
+    @media (hover: none) {
+
+        &:hover {
+
+            .mat-button-focus-overlay {
+                opacity: 0 !important;
+            }
+        }
+    }
+
+    &[disabled] {
+
+        .mat-button-focus-overlay {
+            opacity: 0 !important;
+        }
+    }
+}
+
+/* Transparent background buttons */
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button {
+
+    /* Apply primary color rather than main foreground color */
+    &.mat-primary:not([disabled]) {
+
+        .mat-icon {
+            color: var(--primary);
+        }
+    }
+
+    /* Apply accent color rather than main foreground color */
+    &.mat-accent:not([disabled]) {
+
+        .mat-icon {
+            color: var(--accent);
+        }
+    }
+
+    /* Apply warn color rather than main foreground color */
+    &.mat-warn:not([disabled]) {
+
+        .mat-icon {
+            color: var(--warn);
+        }
+    }
+
+    /* Add hover and focus styles */
+    .mat-button-focus-overlay {
+        background-color: rgba(theme('colors.coolGray.400'), 0.2) !important;
+
+        .dark & {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+        }
+    }
+
+    /* On primary colored buttons, use the primary color as focus overlay */
+    &.mat-primary:not([disabled]) {
+
+        .mat-button-focus-overlay {
+            background-color: rgba(var(--primary), 0.1) !important;
+        }
+    }
+
+    /* On accent colored buttons, use the accent color as focus overlay */
+    &.mat-accent:not([disabled]) {
+
+        .mat-button-focus-overlay {
+            background-color: rgba(var(--accent), 0.1) !important;
+        }
+    }
+
+    /* On warn colored buttons, use the warn color as focus overlay */
+    &.mat-warn:not([disabled]) {
+
+        .mat-button-focus-overlay {
+            background-color: rgba(var(--warn), 0.1) !important;
+        }
+    }
+
+    &:hover,
+    &.cdk-keyboard-focused,
+    &.cdk-program-focused {
+
+        .mat-button-focus-overlay {
+            opacity: 1;
+        }
+    }
+
+    @media (hover: none) {
+
+        &:hover {
+
+            .mat-button-focus-overlay {
+                opacity: 0 !important;
+            }
+        }
+    }
+
+    &[disabled] {
+
+        .mat-button-focus-overlay {
+            opacity: 0 !important;
+        }
+    }
+}
+
+/* Stroked buttons */
+.mat-stroked-button {
+
+    /* Border color */
+    &:not([disabled]) {
+        @apply border-coolGray-300;
+
+        .dark & {
+            @apply border-coolGray-500;
+        }
+    }
+
+    &[disabled] {
+        @apply border-coolGray-200;
+
+        .dark & {
+            @apply border-coolGray-600;
+        }
+    }
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Button Toggle
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-button-toggle-group {
 
     &.mat-button-toggle-group-appearance-standard {
@@ -125,13 +329,13 @@
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Checkbox
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Checkbox
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-checkbox {
     display: inline-flex;
 
-    // Allow multiline text
+    /* Allow multiline text */
     .mat-checkbox-layout {
         white-space: normal;
 
@@ -140,8 +344,8 @@
             align-items: center;
             margin: 0 8px 0 0;
 
-            // Add a zero-width space character to trick the container
-            // into being the same height as a single line of the label
+            /* Add a zero-width space character to trick the container */
+            /* into being the same height as a single line of the label */
             &:after {
                 content: '\200b';
             }
@@ -153,22 +357,70 @@
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Chip
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Chip
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-chip {
     font-weight: 500 !important;
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Form fields
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Drawer
+/* ----------------------------------------------------------------------------------------------------- */
+.mat-drawer-backdrop.mat-drawer-shown {
+    background-color: rgba(0, 0, 0, 0.6);
+}
 
-// Treo only uses 'fill' style form fields and therefore
-// only provides fixes and tweaks for that style
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Form fields
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* Treo only uses 'fill' style form fields and therefore */
+/* only provides fixes and tweaks for that style */
 .mat-form-field.mat-form-field-appearance-fill {
 
-    // Disable floating mat-label
+    /* Disabled */
+    &.mat-form-field-disabled {
+        opacity: 0.7 !important;
+    }
+
+    /* Invalid */
+    &.mat-form-field-invalid {
+
+        .mat-form-field-wrapper {
+
+            /* Border color */
+            .mat-form-field-flex {
+                border-color: var(--warn);
+            }
+        }
+    }
+
+    /* Focused */
+    &.mat-focused {
+
+        .mat-form-field-wrapper {
+
+            /* Background color */
+            .mat-form-field-flex {
+                background-color: var(--bg-card);
+            }
+        }
+    }
+
+    /* Focused and valid fields */
+    &.mat-focused:not(.mat-form-field-invalid) {
+
+        .mat-form-field-wrapper {
+
+            /* Border color */
+            .mat-form-field-flex {
+                border-color: var(--primary);
+            }
+        }
+    }
+
+    /* Disable floating mat-label */
     &.mat-form-field-has-label.mat-form-field-can-float.mat-form-field-should-float {
 
         .mat-form-field-label-wrapper {
@@ -180,7 +432,7 @@
         }
     }
 
-    // Remove the default arrow for native select
+    /* Remove the default arrow for native select */
     &.mat-form-field-type-mat-native-select {
 
         .mat-form-field-infix {
@@ -191,6 +443,14 @@
                 margin-bottom: 0;
                 padding-top: 0;
                 padding-right: 18px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2364748B' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right -7px center;
+                background-size: 24px;
+
+                .dark & {
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2397a6ba' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+                }
             }
 
             &:after {
@@ -199,7 +459,7 @@
         }
     }
 
-    // Adjustments for mat-label
+    /* Adjustments for mat-label */
     &.mat-form-field-has-label {
 
         .mat-form-field-wrapper {
@@ -207,7 +467,7 @@
         }
     }
 
-    // Default style tweaks and enhancements
+    /* Default style tweaks and enhancements */
     .mat-form-field-wrapper {
         margin-bottom: 16px;
         padding-bottom: 0;
@@ -220,7 +480,13 @@
             border-radius: 6px;
             padding: 0 16px;
             border-width: 1px;
-            @include treo-elevation('sm');
+            background-color: white;
+            @apply border-coolGray-300 shadow-sm;
+
+            .dark & {
+                background-color: rgba(0, 0, 0, 0.05);
+                @apply border-coolGray;
+            }
 
             .mat-form-field-prefix {
 
@@ -269,6 +535,7 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
+                color: var(--text-hint);
 
                 .mat-icon-button {
                     width: 40px;
@@ -277,8 +544,14 @@
                     min-height: 40px;
                 }
 
-                // Remove the margins from the mat-icon if it's inside a button
-                // Force the icon size to 24
+                .mat-icon,
+                .mat-icon-button,
+                .mat-select-value {
+                    color: var(--text-hint);
+                }
+
+                /* Remove the margins from the mat-icon if it's inside a button */
+                /* Force the icon size to 24 */
                 .mat-button,
                 .mat-raised-button,
                 .mat-icon-button,
@@ -289,17 +562,17 @@
 
                     .mat-icon {
                         margin: 0 !important;
-                        @include treo-icon-size(24);
+                        @apply icon-size-6;
                     }
                 }
 
-                // Datepicker default icon size
+                /* Datepicker default icon size */
                 .mat-datepicker-toggle-default-icon {
-                    @include treo-icon-size(24);
+                    @apply icon-size-6;
                 }
 
-                // Make mat-select usable as
-                // prefix and suffix
+                /* Make mat-select usable as */
+                /* prefix and suffix */
                 .mat-select {
                     display: flex;
                     align-items: center;
@@ -347,7 +620,7 @@
                     margin-top: 0;
                 }
 
-                // Textarea
+                /* Textarea */
                 textarea.mat-input-element {
                     display: flex;
                     align-self: stretch;
@@ -358,7 +631,7 @@
                     transform: none;
                 }
 
-                // Select
+                /* Select */
                 .mat-select {
                     display: inline-flex;
 
@@ -393,7 +666,7 @@
                     }
                 }
 
-                // Chips
+                /* Chips */
                 .mat-chip-list {
                     width: 100%;
                     margin: 0 -8px;
@@ -417,17 +690,18 @@
                         backface-visibility: hidden;
                         transition: none;
                         font-weight: 500;
+                        color: var(--text-default);
                     }
                 }
             }
         }
 
-        // Remove the underline
+        /* Remove the underline */
         .mat-form-field-underline {
             display: none;
         }
 
-        // Subscript tweaks
+        /* Subscript tweaks */
         .mat-form-field-subscript-wrapper {
             position: relative;
             top: auto;
@@ -438,7 +712,7 @@
             line-height: 1;
 
             > div {
-                display: contents; // Remove the div from flow to stop the subscript animation
+                display: contents; /* Remove the div from flow to stop the subscript animation */
             }
 
             .mat-error,
@@ -446,10 +720,14 @@
                 display: block;
                 margin-top: 4px;
             }
+
+            .mat-hint {
+                color: var(--text-hint);
+            }
         }
     }
 
-    // Adds better alignment for textarea inputs
+    /* Adds better alignment for textarea inputs */
     &.treo-mat-textarea {
 
         &.mat-form-field.mat-form-field-appearance-fill {
@@ -475,7 +753,7 @@
         }
     }
 
-    // Removes subscript space
+    /* Removes subscript space */
     &.treo-mat-no-subscript {
 
         &.mat-form-field.mat-form-field-appearance-fill {
@@ -492,7 +770,7 @@
         }
     }
 
-    // Rounded
+    /* Rounded */
     &.treo-mat-rounded {
 
         &.mat-form-field.mat-form-field-appearance-fill {
@@ -504,7 +782,7 @@
                 }
             }
 
-            // Emphasized affix
+            /* Emphasized affix */
             &.treo-mat-emphasized-affix {
 
                 .mat-form-field-wrapper {
@@ -524,7 +802,7 @@
         }
     }
 
-    // Dense
+    /* Dense */
     &.treo-mat-dense {
 
         &.mat-form-field.mat-form-field-appearance-fill {
@@ -571,7 +849,7 @@
             }
         }
 
-        // Rounded
+        /* Rounded */
         &.treo-mat-rounded {
 
             &.mat-form-field.mat-form-field-appearance-fill {
@@ -584,7 +862,7 @@
                 }
             }
 
-            // Emphasized affix
+            /* Emphasized affix */
             &.treo-mat-emphasized-affix {
 
                 &.mat-form-field.mat-form-field-appearance-fill {
@@ -607,7 +885,7 @@
         }
     }
 
-    // Emphasized affix
+    /* Emphasized affix */
     &.treo-mat-emphasized-affix {
 
         .mat-form-field-wrapper {
@@ -667,14 +945,24 @@
                         margin-left: 16px;
                     }
                 }
+
+                .mat-form-field-prefix,
+                .mat-form-field-suffix {
+                    background: var(--bg-default);
+                    @apply border-coolGray-300;
+
+                    .dark & {
+                        @apply border-coolGray;
+                    }
+                }
             }
         }
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Icon
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Icon
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-icon {
     display: inline-flex !important;
     align-items: center;
@@ -688,31 +976,59 @@
     -webkit-appearance: none !important;
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Inputs
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Inputs
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-input-element {
 
     &::placeholder {
         transition: none !important;
+        color: var(--text-hint);
     }
 
     &::-moz-placeholder {
         transition: none !important;
+        color: var(--text-hint);
     }
 
     &::-webkit-input-placeholder {
         transition: none !important;
+        color: var(--text-hint);
     }
 
     &:-ms-input-placeholder {
         transition: none !important;
+        color: var(--text-hint);
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Menu
-// -----------------------------------------------------------------------------------------------------
+/* Invalid */
+.mat-form-field-invalid {
+
+    .mat-input-element {
+
+        /* Placeholder color */
+        &::placeholder {
+            color: var(--warn);
+        }
+
+        &::-moz-placeholder {
+            color: var(--warn);
+        }
+
+        &::-webkit-input-placeholder {
+            color: var(--warn);
+        }
+
+        &:-ms-input-placeholder {
+            color: var(--warn);
+        }
+    }
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Menu
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-menu-panel {
     min-width: 144px !important;
 
@@ -731,36 +1047,38 @@
             }
         }
 
-        // Divider within mat-menu
+        /* Divider within mat-menu */
         mat-divider {
             margin: 8px 0;
         }
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Paginator
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Paginator
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-paginator {
 
     .mat-paginator-container {
         padding: 8px 16px;
+        justify-content: space-between;
 
-        @include treo-breakpoint('xs') {
-            justify-content: space-between;
+        @screen sm {
+            justify-content: normal;
         }
 
-        // Page size select
+        /* Page size select */
         .mat-paginator-page-size {
             align-items: center;
             min-height: 40px;
             margin: 8px;
 
             .mat-paginator-page-size-label {
+                display: none;
                 margin-right: 12px;
 
-                @include treo-breakpoint('xs') {
-                    display: none;
+                @screen sm {
+                    display: block;
                 }
             }
 
@@ -778,7 +1096,7 @@
             }
         }
 
-        // Range actions
+        /* Range actions */
         .mat-paginator-range-actions {
             margin: 8px 0;
 
@@ -789,14 +1107,15 @@
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Select
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Select
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-select {
     display: inline-flex;
 
     .mat-select-placeholder {
         transition: none !important;
+        color: var(--text-hint);
     }
 
     .mat-select-trigger {
@@ -831,12 +1150,24 @@
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Stepper
-// -----------------------------------------------------------------------------------------------------
+/* Invalid */
+.mat-form-field-invalid {
+
+    .mat-select {
+
+        /* Placeholder color */
+        .mat-select-placeholder {
+            color: var(--warn);
+        }
+    }
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Stepper
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-step-icon {
 
-    // Do not override the mat-icon color
+    /* Do not override the mat-icon color */
     .mat-icon {
         color: currentColor !important;
     }
@@ -847,466 +1178,94 @@
     font-weight: 500 !important;
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Tabs
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Tabs
+/* ----------------------------------------------------------------------------------------------------- */
 .mat-tab-label {
     opacity: 0.87 !important;
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Textarea
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Textarea
+/* ----------------------------------------------------------------------------------------------------- */
 textarea.mat-input-element {
     box-sizing: content-box !important;
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming overrides and fixes
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Toolbar
+/* ----------------------------------------------------------------------------------------------------- */
+.mat-toolbar {
 
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-    $warn: map-get($theme, warn);
-    $is-dark: map-get($theme, is-dark);
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accordion
-    // -----------------------------------------------------------------------------------------------------
-    .mat-accordion {
-
-        .mat-expansion-panel {
-
-            &:not(.mat-expanded) {
-
-                .mat-expansion-panel-header {
-
-                    &:not([aria-disabled=true]) {
-
-                        &.cdk-keyboard-focused,
-                        &.cdk-program-focused,
-                        &:hover {
-                            background: transparent !important;
-                        }
-                    }
-                }
-            }
-
-            .mat-expansion-panel-body {
-                color: map-get($foreground, secondary-text);
-            }
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Buttons
-    // -----------------------------------------------------------------------------------------------------
-
-    // Colored background buttons
-    .mat-flat-button,
-    .mat-raised-button,
-    .mat-fab,
-    .mat-mini-fab {
-
-        // Apply palette's contrasting color rather than main foreground color
-        @each $palette in (primary, accent, warn) {
-
-            $palette-contrast-color: map-get(map-get($theme, $palette), default-contrast);
-
-            &.mat-#{$palette}:not([disabled]) {
-
-                .mat-icon {
-                    color: $palette-contrast-color;
-                }
-            }
-        }
+    /* Apply primary contrast color rather than main foreground color */
+    &.mat-primary {
 
         .mat-icon {
-            color: currentColor !important;
+            color: var(--primary-contrast);
         }
 
-        // Add hover and focus style on all buttons
-        .mat-button-focus-overlay {
-            @if ($is-dark) {
-                background-color: rgba(0, 0, 0, 0.05);
-            } @else {
-                background-color: rgba(treo-color('cool-gray', 400), 0.2);
-            }
+        .text-secondary {
+            color: rgba(var(--primary-contrast), 0.6);
         }
 
-        // On palette colored buttons, use a darker color
-        @each $palette in (primary, accent, warn) {
-
-            &.mat-#{$palette} {
-
-                .mat-button-focus-overlay {
-                    background-color: rgba(0, 0, 0, 0.1);
-                }
-            }
+        .text-hint {
+            color: rgba(var(--primary-contrast), 0.38);
         }
 
-        &:hover,
-        &.cdk-keyboard-focused,
-        &.cdk-program-focused {
-
-            .mat-button-focus-overlay {
-                opacity: 1;
-            }
+        .text-disabled {
+            color: rgba(var(--primary-contrast), 0.38);
         }
 
-        @media (hover: none) {
-
-            &:hover {
-
-                .mat-button-focus-overlay {
-                    opacity: 0 !important;
-                }
-            }
-        }
-
-        &[disabled] {
-
-            .mat-button-focus-overlay {
-                opacity: 0 !important;
-            }
+        .divider {
+            color: rgba(var(--primary-contrast), 0.12);
         }
     }
 
-    // Transparent background buttons
-    .mat-button,
-    .mat-icon-button,
-    .mat-stroked-button {
+    /* Apply accent contrast color rather than main foreground color */
+    &.mat-accent {
 
-        // Apply palette's color rather than main foreground color
-        @each $palette in (primary, accent, warn) {
-
-            $palette-color: map-get(map-get($theme, $palette), default);
-
-            &.mat-#{$palette}:not([disabled]) {
-
-                .mat-icon {
-                    color: $palette-color;
-                }
-            }
+        .mat-icon {
+            color: var(--accent-contrast);
         }
 
-        // Add hover and focus styles
-        .mat-button-focus-overlay {
-            @if ($is-dark) {
-                background-color: rgba(0, 0, 0, 0.05) !important;
-            } @else {
-                background-color: rgba(treo-color('cool-gray', 400), 0.2) !important;
-            }
+        .text-secondary {
+            color: rgba(var(--accent-contrast), 0.6);
         }
 
-        // On palette colored buttons, use a the palette color
-        @each $palette in (primary, accent, warn) {
-
-            &.mat-#{$palette} {
-
-                .mat-button-focus-overlay {
-                    background-color: rgba(map-get(map-get($theme, $palette), default), 0.1) !important;
-                }
-            }
+        .text-hint {
+            color: rgba(var(--accent-contrast), 0.38);
         }
 
-        &:hover,
-        &.cdk-keyboard-focused,
-        &.cdk-program-focused {
-
-            .mat-button-focus-overlay {
-                opacity: 1;
-            }
+        .text-disabled {
+            color: rgba(var(--accent-contrast), 0.38);
         }
 
-        @media (hover: none) {
-
-            &:hover {
-
-                .mat-button-focus-overlay {
-                    opacity: 0 !important;
-                }
-            }
-        }
-
-        &[disabled] {
-
-            .mat-button-focus-overlay {
-                opacity: 0 !important;
-            }
+        .divider {
+            color: rgba(var(--accent-contrast), 0.12);
         }
     }
 
-    // All buttons
-    .mat-flat-button,
-    .mat-raised-button,
-    .mat-fab,
-    .mat-mini-fab,
-    .mat-button,
-    .mat-icon-button,
-    .mat-stroked-button {
+    /* Apply warn contrast color rather than main foreground color */
+    &.mat-warn {
 
-        // Move mat-button-wrapper above the ripple and focus overlay
-        .mat-button-wrapper {
-            position: relative;
-            z-index: 2;
+        .mat-icon {
+            color: var(--warn-contrast);
         }
 
-        .mat-button-focus-overlay,
-        .mat-button-ripple {
-            z-index: 1;
-        }
-    }
-
-    // Stroked buttons
-    .mat-stroked-button {
-
-        // Border color
-        &:not([disabled]) {
-            @if ($is-dark) {
-                border-color: treo-color('cool-gray', 500);
-            } @else {
-                border-color: treo-color('cool-gray', 300);
-            }
+        .text-secondary {
+            color: rgba(var(--warn-contrast), 0.6);
         }
 
-        &[disabled] {
-            @if ($is-dark) {
-                border-color: treo-color('cool-gray', 600);
-            } @else {
-                border-color: treo-color('cool-gray', 200);
-            }
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Drawer
-    // -----------------------------------------------------------------------------------------------------
-    .mat-drawer-backdrop.mat-drawer-shown {
-        background-color: rgba(0, 0, 0, 0.6);
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Form fields
-    // -----------------------------------------------------------------------------------------------------
-    .mat-form-field.mat-form-field-appearance-fill {
-
-        .mat-form-field-label {
-            color: map-get($foreground, text) !important;
+        .text-hint {
+            color: rgba(var(--warn-contrast), 0.38);
         }
 
-        .mat-hint {
-            color: map-get($foreground, hint-text);
+        .text-disabled {
+            color: rgba(var(--warn-contrast), 0.38);
         }
 
-        // Disabled
-        &.mat-form-field-disabled {
-            opacity: 0.7 !important;
-        }
-
-        // Invalid
-        &.mat-form-field-invalid {
-
-            .mat-form-field-wrapper {
-
-                // Border color
-                .mat-form-field-flex {
-                    border-color: map-get($warn, default);
-                }
-            }
-        }
-
-        // Focused
-        &.mat-focused {
-
-            .mat-form-field-wrapper {
-
-                // Background color
-                .mat-form-field-flex {
-                    background-color: map-get($background, card);
-                }
-            }
-        }
-
-        // Focused and valid fields
-        &.mat-focused:not(.mat-form-field-invalid) {
-
-            .mat-form-field-wrapper {
-
-                // Border color
-                .mat-form-field-flex {
-                    border-color: map-get($primary, default);
-                }
-            }
-        }
-
-        // Use svg arrow for native select
-        &.mat-form-field-type-mat-native-select {
-
-            .mat-form-field-infix {
-
-                select {
-                    @if ($is-dark) {
-                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2397a6ba' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
-                    } @else {
-                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2364748B' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
-                    }
-                    background-repeat: no-repeat;
-                    background-position: right -7px center;
-                    background-size: 24px;
-                }
-            }
-        }
-
-        .mat-form-field-wrapper {
-
-            .mat-form-field-flex {
-                @if ($is-dark) {
-                    background-color: rgba(0, 0, 0, 0.05);
-                    border-color: treo-color('cool-gray', 500);
-                } @else {
-                    background-color: white;
-                    border-color: treo-color('cool-gray', 300);
-                }
-
-                .mat-form-field-prefix,
-                .mat-form-field-suffix {
-                    color: map-get($foreground, hint-text);
-
-                    .mat-icon,
-                    .mat-icon-button,
-                    .mat-select-value {
-                        color: map-get($foreground, hint-text);
-                    }
-                }
-            }
-        }
-
-        // Emphasized affix
-        &.treo-mat-emphasized-affix {
-
-            .mat-form-field-wrapper {
-
-                .mat-form-field-flex {
-
-                    .mat-form-field-prefix,
-                    .mat-form-field-suffix {
-                        background: map-get($background, background);
-                        @if ($is-dark) {
-                            border-color: treo-color('cool-gray', 500);
-                        } @else {
-                            border-color: treo-color('cool-gray', 300);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Inputs
-    // -----------------------------------------------------------------------------------------------------
-    .mat-input-element {
-
-        // Placeholder color
-        &::placeholder {
-            color: map-get($foreground, hint-text);
-        }
-
-        &::-moz-placeholder {
-            color: map-get($foreground, hint-text);
-        }
-
-        &::-webkit-input-placeholder {
-            color: map-get($foreground, hint-text);
-        }
-
-        &:-ms-input-placeholder {
-            color: map-get($foreground, hint-text);
-        }
-    }
-
-    // Invalid
-    .mat-form-field-invalid {
-
-        .mat-input-element {
-
-            // Placeholder color
-            &::placeholder {
-                color: map-get($warn, default);
-            }
-
-            &::-moz-placeholder {
-                color: map-get($warn, default);
-            }
-
-            &::-webkit-input-placeholder {
-                color: map-get($warn, default);
-            }
-
-            &:-ms-input-placeholder {
-                color: map-get($warn, default);
-            }
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Select
-    // -----------------------------------------------------------------------------------------------------
-    .mat-select {
-
-        // Placeholder color
-        .mat-select-placeholder {
-            color: map-get($foreground, hint-text);
-        }
-    }
-
-    // Invalid
-    .mat-form-field-invalid {
-
-        .mat-select {
-
-            // Placeholder color
-            .mat-select-placeholder {
-                color: map-get($warn, default);
-            }
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Toolbar
-    // -----------------------------------------------------------------------------------------------------
-    .mat-toolbar {
-
-        // Apply palette's contrasting color rather than main foreground color
-        @each $palette in (primary, accent, warn) {
-
-            $palette-contrast-color: map-get(map-get($theme, $palette), default-contrast);
-
-            &.mat-#{$palette} {
-
-                .mat-icon {
-                    color: $palette-contrast-color;
-                }
-
-                .text-secondary {
-                    color: rgba(rgba($palette-contrast-color, 1), 0.6);
-                }
-
-                .text-hint {
-                    color: rgba(rgba($palette-contrast-color, 1), 0.38);
-                }
-
-                .text-disabled {
-                    color: rgba(rgba($palette-contrast-color, 1), 0.38);
-                }
-
-                .divider {
-                    color: rgba($palette-contrast-color, 0.12);
-                }
-            }
+        .divider {
+            color: rgba(var(--warn-contrast), 0.12);
         }
     }
 }

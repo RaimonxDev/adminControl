@@ -46,9 +46,7 @@ export class ShortcutsMockApi implements TreoMockApi
             .reply(() => {
                 return [
                     200,
-                    {
-                        shortcuts: cloneDeep(this._shortcuts)
-                    }
+                    cloneDeep(this._shortcuts)
                 ];
             });
 

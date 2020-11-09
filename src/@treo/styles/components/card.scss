@@ -1,21 +1,27 @@
-// -----------------------------------------------------------------------------------------------------
-// @ Extended styles for treo-card
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/* @ Extended styles for treo-card
+/* ----------------------------------------------------------------------------------------------------- */
 treo-card {
 
     &.auth-card {
-        margin: 8px;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        background: transparent;
 
-        @include treo-breakpoint('xs') {
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            box-shadow: none;
-            border-radius: 0;
+        @screen sm {
+            justify-content: flex-start;
+            width: auto;
+            height: auto;
+            margin: 8px;
+            border-radius: 8px;
+            background: var(--bg-card);
+            @apply shadow-md;
         }
 
-        // Classic style
+        /* Classic style */
         &.classic {
 
             .content-container {
@@ -23,19 +29,19 @@ treo-card {
             }
         }
 
-        // Modern style
+        /* Modern style */
         &.modern,
         &.modern-alt {
             max-width: 1200px;
-            width: calc(100% - 16px);
+            width: auto;
 
-            @include treo-breakpoint('lt-md') {
-                width: auto;
+            @screen md {
+                width: calc(100% - 16px);
             }
 
             .form-container {
 
-                @include treo-breakpoint('gt-sm') {
+                @screen md {
                     padding: 64px;
                 }
             }
@@ -52,32 +58,35 @@ treo-card {
             }
         }
 
-        // Fullscreen style
+        /* Fullscreen style */
         &.fullscreen,
         &.fullscreen-alt {
+            justify-content: center;
             width: 100%;
             height: 100%;
             margin: 0;
             box-shadow: none;
             border-radius: 0;
+            background: transparent;
 
-            @include treo-breakpoint('lt-md') {
-                justify-content: center;
+            @screen md {
+                justify-content: flex-start;
             }
 
             .form-container {
-                width: 45%;
+                width: auto;
+                padding: 40px;
 
-                @include treo-breakpoint('lt-md') {
-                    width: auto;
-                    padding: 40px;
+                @screen md {
+                    width: 45%;
+                    padding: 0;
                 }
 
                 .form {
-                    margin: auto 32px auto auto;
+                    margin: 0;
 
-                    @include treo-breakpoint('lt-md') {
-                        margin: 0;
+                    @screen md {
+                        margin: auto 32px auto auto;
                     }
                 }
             }
@@ -89,10 +98,10 @@ treo-card {
                 order: 2;
 
                 .form {
-                    margin: auto auto auto 32px;
+                    margin: 0;
 
-                    @include treo-breakpoint('lt-md') {
-                        margin: 0;
+                    @screen md {
+                        margin: auto auto auto 32px;
                     }
                 }
             }
@@ -102,24 +111,24 @@ treo-card {
             }
         }
 
-        // Form container
+        /* Form container */
         .form-container {
             display: flex;
             flex-direction: column;
             order: 1;
-            padding: 48px;
+            padding: 40px;
 
-            @include treo-breakpoint('xs') {
-                padding: 40px;
+            @screen sm {
+                padding: 48px;
             }
 
             .form {
                 width: 100%;
                 min-width: 320px;
-                max-width: 320px;
+                max-width: 0;
 
-                @include treo-breakpoint('xs') {
-                    max-width: 0;
+                @screen sm {
+                    max-width: 320px;
                 }
 
                 .logo {
@@ -186,6 +195,7 @@ treo-card {
                         justify-content: center;
                         flex: 1 1 auto;
                         margin: 32px 0;
+                        color: var(--text-secondary);
 
                         &:before,
                         &:after {
@@ -193,6 +203,7 @@ treo-card {
                             display: flex;
                             flex: 1 1 auto;
                             height: 1px;
+                            background: var(--divider);
                         }
 
                         &:before {
@@ -217,7 +228,7 @@ treo-card {
                             }
 
                             .mat-icon {
-                                @include treo-icon-size(20);
+                                @apply icon-size-5;
                             }
                         }
                     }
@@ -229,6 +240,10 @@ treo-card {
                     font-size: 13px;
                     font-weight: 500;
 
+                    span {
+                        color: var(--text-secondary);
+                    }
+
                     .link {
                         margin-left: 4px;
                     }
@@ -236,18 +251,24 @@ treo-card {
             }
         }
 
-        // Content container
+        /* Content container */
         .content-container {
             position: relative;
-            display: flex;
+            display: none;
             flex: 1 1 auto;
             align-items: center;
             justify-content: center;
             order: 2;
             overflow: hidden;
+            background: var(--primary-700);
+            color: white;
 
-            @include treo-breakpoint('lt-md') {
-                display: none;
+            @screen md {
+                display: flex;
+            }
+
+            .dark & {
+                @apply bg-coolGray-700;
             }
 
             .background {
@@ -260,6 +281,11 @@ treo-card {
 
                 path {
                     opacity: 0.1;
+                    fill: var(--primary-100);
+
+                    .dark & {
+                        fill: theme('colors.coolGray.900');
+                    }
                 }
             }
 
@@ -284,6 +310,7 @@ treo-card {
 
                 .description {
                     margin-top: 12px;
+                    opacity: 0.7;
                     font-size: 15px;
                 }
 
@@ -296,83 +323,3 @@ treo-card {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-
-    $foreground: map-get($theme, foreground);
-    $is-dark: map-get($theme, is-dark);
-
-    treo-card {
-
-        &.auth-card {
-
-            @include treo-breakpoint('xs') {
-                background: transparent;
-            }
-
-            // Fullscreen style
-            &.fullscreen,
-            &.fullscreen-alt {
-
-                @include treo-breakpoint('lt-md') {
-                    background: transparent;
-                }
-            }
-
-            .form-container {
-
-                .form {
-
-                    .form-footer {
-
-                        span {
-                            color: map-get($foreground, secondary-text);
-                        }
-                    }
-
-                    .sso {
-
-                        .separator {
-                            color: map-get($foreground, secondary-text);
-
-                            &:before,
-                            &:after {
-                                background: map-get($foreground, divider);
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Content container
-            .content-container {
-                @if ($is-dark) {
-                    background: treo-color('cool-gray', 700);
-                } @else {
-                    background: treo-color('indigo', 700);
-                }
-                color: white;
-
-                .background {
-
-                    path {
-                        @if ($is-dark) {
-                            fill: treo-color('cool-gray', 900);
-                        } @else {
-                            fill: treo-color('indigo', 100);
-                        }
-                    }
-                }
-
-                .content {
-
-                    .description {
-                        opacity: 0.7;
-                    }
-                }
-            }
-        }
-    }
-}

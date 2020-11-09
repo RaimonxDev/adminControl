@@ -138,19 +138,6 @@ export class MessagesComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Create route from given link
-     */
-    createRouteFromLink(link): string[]
-    {
-        // Split the link and add a leading slash
-        const route = link.split('/');
-        route.unshift('/');
-
-        // Return the route
-        return route;
-    }
-
-    /**
      * Open the messages panel
      */
     openPanel(): void
@@ -163,8 +150,8 @@ export class MessagesComponent implements OnInit, OnDestroy
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(this._messagesOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
-                                  .withViewportMargin(16)
                                   .withLockedPosition()
+                                  .withPush(false)
                                   .withPositions([
                                       {
                                           originX : 'start',

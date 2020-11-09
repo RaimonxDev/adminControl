@@ -138,19 +138,6 @@ export class NotificationsComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Create route from given link
-     */
-    createRouteFromLink(link): string[]
-    {
-        // Split the link and add a leading slash
-        const route = link.split('/');
-        route.unshift('/');
-
-        // Return the route
-        return route;
-    }
-
-    /**
      * Open the notifications panel
      */
     openPanel(): void
@@ -163,8 +150,8 @@ export class NotificationsComponent implements OnInit, OnDestroy
             positionStrategy: this._overlay.position()
                                   .flexibleConnectedTo(this._notificationsOrigin._elementRef.nativeElement)
                                   .withFlexibleDimensions()
-                                  .withViewportMargin(16)
                                   .withLockedPosition()
+                                  .withPush(true)
                                   .withPositions([
                                       {
                                           originX : 'start',

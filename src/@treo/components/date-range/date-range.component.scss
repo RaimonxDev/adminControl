@@ -1,6 +1,4 @@
-@import 'treo';
-
-// Variables
+/* Variables */
 $body-cell-padding: 2px;
 
 treo-date-range {
@@ -13,6 +11,12 @@ treo-date-range {
         min-height: 48px;
         max-height: 48px;
         cursor: pointer;
+        @apply bg-coolGray-50 border-coolGray-300;
+
+        .dark & {
+            background-color: rgba(0, 0, 0, 0.05);
+            @apply border-coolGray-500;
+        }
 
         .start,
         .end {
@@ -38,10 +42,10 @@ treo-date-range {
         }
 
         .separator {
-            margin: 0 12px;
+            margin: 0 2px;
 
-            @include treo-breakpoint('xs') {
-                margin: 0 2px;
+            @screen sm {
+                margin: 0 12px;
             }
         }
     }
@@ -50,6 +54,8 @@ treo-date-range {
 .treo-date-range-panel {
     border-radius: 4px;
     padding: 24px;
+    background: var(--bg-card);
+    @apply shadow-2xl;
 
     .start,
     .end {
@@ -79,7 +85,7 @@ treo-date-range {
                     line-height: 24px !important;
 
                     .mat-icon {
-                        @include treo-icon-size(20);
+                        @apply icon-size-5;
                     }
                 }
 
@@ -93,6 +99,7 @@ treo-date-range {
 
                 .month-label {
                     font-weight: 500;
+                    color: var(--text-secondary);
                 }
             }
 
@@ -121,6 +128,34 @@ treo-date-range {
                                         pointer-events: none;
                                         opacity: 0;
                                     }
+                                }
+                            }
+
+                            td,
+                            td:hover {
+
+                                &.treo-date-range {
+
+                                    &:before {
+                                        background: var(--primary-200);
+                                    }
+
+                                    .mat-calendar-body-cell-content {
+                                        background-color: transparent;
+                                    }
+                                }
+
+                                &.treo-date-range-start,
+                                &.treo-date-range-end {
+
+                                    .mat-calendar-body-cell-content {
+                                        background: var(--primary);
+                                        color: var(--primary-contrast);
+                                    }
+                                }
+
+                                .mat-calendar-body-today {
+                                    border: none;
                                 }
                             }
 
@@ -258,93 +293,6 @@ treo-date-range {
 
             .month-label {
                 margin-right: 8px;
-            }
-        }
-    }
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-    $is-dark: map-get($theme, is-dark);
-
-    treo-date-range {
-
-        .range {
-
-            .start,
-            .end {
-                @if ($is-dark) {
-                    background-color: rgba(0, 0, 0, 0.05);
-                    border-color: treo-color('cool-gray', 500);
-                } @else {
-                    background-color: treo-color('cool-gray', 50);
-                    border-color: treo-color('cool-gray', 300);
-                }
-            }
-        }
-    }
-
-    .treo-date-range-panel {
-        background: map-get($background, card);
-        @include treo-elevation('2xl');
-
-        .start,
-        .end {
-
-            .month {
-
-                .month-header {
-
-                    .month-label {
-                        color: map-get($foreground, secondary-text);
-                    }
-                }
-
-                mat-month-view {
-
-                    .mat-calendar-table {
-
-                        tbody {
-
-                            tr {
-
-                                td,
-                                td:hover {
-
-                                    &.treo-date-range {
-
-                                        &:before {
-                                            background-color: map-get($primary, 200);
-                                        }
-
-                                        .mat-calendar-body-cell-content {
-                                            background-color: transparent;
-                                        }
-                                    }
-
-                                    &.treo-date-range-start,
-                                    &.treo-date-range-end {
-
-                                        .mat-calendar-body-cell-content {
-                                            background-color: map-get($primary, default);
-                                            color: map-get($primary, default-contrast);
-                                        }
-                                    }
-
-                                    .mat-calendar-body-today {
-                                        border: none;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }

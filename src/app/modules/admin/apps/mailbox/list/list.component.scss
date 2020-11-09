@@ -38,9 +38,9 @@ mailbox-list {
 
                 > .header {
 
-                    // Safari bug: Progress bar animation brakes the z-index on
-                    // .list-wrapper, so we hide it if the mail is selected to
-                    // prevent the issue
+                    /* Safari bug: Progress bar animation brakes the z-index on */
+                    /* .list-wrapper, so we hide it if the mail is selected to */
+                    /* prevent the issue */
                     .loading-progress-bar {
                         display: none;
                     }
@@ -238,9 +238,9 @@ mailbox-list {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);

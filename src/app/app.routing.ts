@@ -12,9 +12,13 @@ export const appRoutes: Route[] = [
     {path: '', pathMatch : 'full', redirectTo: 'dashboards/finance'},
 
     // Redirect signed in user to the '/dashboards/finance'
+    //
+    // After the user signs in, the sign in page will redirect the user to the 'signed-in-redirect'
+    // path. Below is another redirection for that path to redirect the user to the desired
+    // location. This is a small convenience to keep all main routes together here on this file.
     {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'dashboards/finance'},
 
-    // Auth routes (guest)
+    // Auth routes for guests
     {
         path: '',
         canActivate: [NoAuthGuard],
@@ -32,7 +36,7 @@ export const appRoutes: Route[] = [
         ]
     },
 
-    // Auth routes (logged in)
+    // Auth routes for authenticated users
     {
         path: '',
         canActivate: [AuthGuard],

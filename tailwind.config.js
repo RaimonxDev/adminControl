@@ -1,421 +1,317 @@
-const forEach = require('lodash/forEach');
-const isObject = require('lodash/isObject');
-const {colors} = require('tailwindcss/defaultTheme');
-
-module.exports = {
-
-    // Experimental
-    experimental: {
-        applyComplexClasses : true,
-        extendedSpacingScale: true
+module.exports = (isProd) => ({
+    experimental: {},
+    future      : {},
+    darkMode    : 'class',
+    important   : true,
+    purge       : {
+        enabled: isProd,
+        content: [
+            '**/*.html',
+            '**/*.ts'
+        ],
+        options: {
+            whitelistPatternsChildren: [/^theme/, /^dark/, /^mat/]
+        }
     },
-
-    // Future
-    future: {
-        purgeLayersByDefault        : true,
-        removeDeprecatedGapUtilities: true
-    },
-
-    // PurgeCSS
-    purge: false,
-
-    // Options
-    important: true,
-
-    // Theme
-    theme: {
-        colors: {
-            current    : 'currentColor',
-            transparent: 'transparent',
-            white      : '#FFFFFF',
-            black      : '#000000',
-            gray       : {
-                '50'   : '#F9FAFB',
-                '100'  : '#F4F5F7',
-                '200'  : '#E5E7EB',
-                '300'  : '#D2D6DC',
-                '400'  : '#9FA6B2',
-                '500'  : '#6B7280',
-                default: '#6B7280',
-                '600'  : '#4B5563',
-                '700'  : '#374151',
-                '800'  : '#252F3F',
-                '900'  : '#161E2E'
-            },
-            'cool-gray': {
-                '50'   : '#FBFDFE',
-                '100'  : '#F1F5F9',
-                '200'  : '#E2E8F0',
-                '300'  : '#CFD8E3',
-                '400'  : '#97A6BA',
-                '500'  : '#64748B',
-                default: '#64748B',
-                '600'  : '#475569',
-                '700'  : '#364152',
-                '800'  : '#27303F',
-                '900'  : '#1A202E'
-            },
-            red        : {
-                '50'   : '#FDF2F2',
-                '100'  : '#FDE8E8',
-                '200'  : '#FBD5D5',
-                '300'  : '#F8B4B4',
-                '400'  : '#F98080',
-                '500'  : '#F05252',
-                default: '#F05252',
-                '600'  : '#E02424',
-                '700'  : '#C81E1E',
-                '800'  : '#9B1C1C',
-                '900'  : '#771D1D'
-            },
-            orange     : {
-                '50'   : '#FFF8F1',
-                '100'  : '#FEECDC',
-                '200'  : '#FCD9BD',
-                '300'  : '#FDBA8C',
-                '400'  : '#FF8A4C',
-                '500'  : '#FF5A1F',
-                default: '#FF5A1F',
-                '600'  : '#D03801',
-                '700'  : '#B43403',
-                '800'  : '#8A2C0D',
-                '900'  : '#771D1D'
-            },
-            yellow     : {
-                '50'   : '#FDFDEA',
-                '100'  : '#FDF6B2',
-                '200'  : '#FCE96A',
-                '300'  : '#FACA15',
-                '400'  : '#E3A008',
-                '500'  : '#C27803',
-                default: '#C27803',
-                '600'  : '#9F580A',
-                '700'  : '#8E4B10',
-                '800'  : '#723B13',
-                '900'  : '#633112'
-            },
-            green      : {
-                '50'   : '#F3FAF7',
-                '100'  : '#DEF7EC',
-                '200'  : '#BCF0DA',
-                '300'  : '#84E1BC',
-                '400'  : '#31C48D',
-                '500'  : '#0E9F6E',
-                default: '#0E9F6E',
-                '600'  : '#057A55',
-                '700'  : '#046C4E',
-                '800'  : '#03543F',
-                '900'  : '#014737'
-            },
-            teal       : {
-                '50'   : '#EDFAFA',
-                '100'  : '#D5F5F6',
-                '200'  : '#AFECEF',
-                '300'  : '#7EDCE2',
-                '400'  : '#16BDCA',
-                '500'  : '#0694A2',
-                default: '#0694A2',
-                '600'  : '#047481',
-                '700'  : '#036672',
-                '800'  : '#05505C',
-                '900'  : '#014451'
-            },
-            blue       : {
-                '50'   : '#EBF5FF',
-                '100'  : '#E1EFFE',
-                '200'  : '#C3DDFD',
-                '300'  : '#A4CAFE',
-                '400'  : '#76A9FA',
-                '500'  : '#3F83F8',
-                default: '#3F83F8',
-                '600'  : '#1C64F2',
-                '700'  : '#1A56DB',
-                '800'  : '#1E429F',
-                '900'  : '#233876'
-            },
-            indigo     : {
-                '50'   : '#F0F5FF',
-                '100'  : '#E5EDFF',
-                '200'  : '#CDDBFE',
-                '300'  : '#B4C6FC',
-                '400'  : '#8DA2FB',
-                '500'  : '#6875F5',
-                default: '#6875F5',
-                '600'  : '#5850EC',
-                '700'  : '#5145CD',
-                '800'  : '#42389D',
-                '900'  : '#362F78'
-            },
-            purple     : {
-                '50'   : '#F6F5FF',
-                '100'  : '#EDEBFE',
-                '200'  : '#DCD7FE',
-                '300'  : '#CABFFD',
-                '400'  : '#AC94FA',
-                '500'  : '#9061F9',
-                default: '#9061F9',
-                '600'  : '#7E3AF2',
-                '700'  : '#6C2BD9',
-                '800'  : '#5521B5',
-                '900'  : '#4A1D96'
-            },
-            pink       : {
-                '50'   : '#FDF2F8',
-                '100'  : '#FCE8F3',
-                '200'  : '#FAD1E8',
-                '300'  : '#F8B4D9',
-                '400'  : '#F17EB8',
-                '500'  : '#E74694',
-                default: '#E74694',
-                '600'  : '#D61F69',
-                '700'  : '#BF125D',
-                '800'  : '#99154B',
-                '900'  : '#751A3D'
-            }
+    theme       : {
+        fontSize: {
+            'xs'  : '0.625rem',
+            'sm'  : '0.75rem',
+            'md'  : '0.8125rem',
+            'base': '0.875rem',
+            'lg'  : '1rem',
+            'xl'  : '1.125rem',
+            '2xl' : '1.25rem',
+            '3xl' : '1.5rem',
+            '4xl' : '2rem',
+            '5xl' : '2.25rem',
+            '6xl' : '2.5rem',
+            '7xl' : '3rem',
+            '8xl' : '4rem',
+            '9xl' : '6rem',
+            '10xl': '8rem'
         },
-        extend: {
-
+        screens : {
+            sm : '600px',
+            md : '960px',
+            lg : '1280px',
+            xl : '1440px',
+            xxl: '1920px'
+        },
+        extend  : {
             // Treo Tailwind plugin configuration
-            treo: theme => ({
+            treo: {
 
-                // Override contrasting colors for any available or added color palettes
-                //
-                // Contrasting colors will be generated automatically based on palette
-                // colors but for some reason if you don't like them, you can use the
-                // 'contrasts' config and manually define them.
-                /*contrasts: {
-                    gray: {
+                /**
+                 * Treo color themes with Angular Material Components support
+                 * The 'default' theme is required for Treo to work correctly
+                 */
+                themes: {
+                    'default': {
+                        primary: ['indigo', 600],
+                        accent : ['coolGray', 800],
+                        warn   : ['red', 700]
+                    },
+                    'teal'   : {
+                        primary: ['teal', 600],
+                        accent : ['coolGray', 800],
+                        warn   : ['red', 700]
+                    },
+                    'purple' : {
+                        primary: ['purple', 600],
+                        accent : ['coolGray', 800],
+                        warn   : ['red', 700]
+                    },
+                    'orange' : {
+                        primary: ['orange', 600],
+                        accent : ['coolGray', 800],
+                        warn   : ['red', 700]
+                    }
+                },
+
+                /**
+                 * By default, contrasting colors will be generated automatically by Treo
+                 * Tailwind plugin based on palette colors but for some reason if you don't
+                 * like them, you can use the below config to manually define contrasting
+                 * colors for each palette
+                 */
+                /*
+                contrasts: {
+                    coolGray: {
                         '50'   : '#000000',
                         '100'  : '#000000',
                         '200'  : '#000000',
                         '300'  : '#000000',
                         '400'  : '#000000',
                         '500'  : '#000000',
-                        default: '#000000',
+                        DEFAULT: '#000000',
                         '600'  : '#000000',
                         '700'  : '#000000',
                         '800'  : '#000000',
                         '900'  : '#000000'
                     }
-                },*/
-                themes: {
-                    'treo-theme-dark'  : {
-                        scheme : 'dark',
-                        primary: ['teal', 500],
-                        accent : ['pink', 500],
-                        warn   : ['red', 400]
-                    },
-                    'treo-theme-light' : {
-                        scheme : 'light',
-                        primary: ['indigo', 600],
-                        accent : ['cool-gray', 800],
-                        warn   : ['red', 700]
-                    },
-                    // Teal color theme (Dark)
-                    'treo-theme-teal'  : {
-                        scheme : 'dark',
-                        primary: ['teal', 500],
-                        accent : ['pink', 500],
-                        warn   : ['red', 400]
-                    },
-                    // Indigo color theme (Light)
-                    'treo-theme-indigo': {
-                        scheme : 'light',
-                        primary: ['indigo', 600],
-                        accent : ['cool-gray', 800],
-                        warn   : ['red', 700]
-                    }
-                }
-            })
-            /*
-            // Once TailwindCSS adds the above colors to their default config,
-            // this code will be used for generating the default colors
-            // and the theme.colors object will be removed from above
-            colors: theme =>
-            {
-                const defaultColors = colors;
+                },
+                */
 
-                // Add 'cool-gray' palette
-                defaultColors['cool-gray'] = {
-                    '50' : '#FBFDFE',
-                    '100': '#F1F5F9',
-                    '200': '#E2E8F0',
-                    '300': '#CFD8E3',
-                    '400': '#97A6BA',
-                    '500': '#64748B',
-                    '600': '#475569',
-                    '700': '#364152',
-                    '800': '#27303F',
-                    '900': '#1A202E'
-                };
+                /**
+                 * Icon size object for extending Angular Material mat-icon
+                 * compatible .icon-size-XX utility classes
+                 */
+                /*
+                iconSize: {
+                    8: '0.5rem'
+                    10: '0.625rem',
+                    12: '0.75rem'
+                },
+                */
 
-                // Extend the colors to add 'default' values that uses the hue 500.
-                // This will generate utilities like 'text-indigo' or 'bg-red',
-                // which will be defaulted to the hue 500 of that color palette.
-                forEach(defaultColors, (value, key) =>
-                {
-                    if ( isObject(value) )
-                    {
-                        defaultColors[key]['default'] = defaultColors[key]['500'];
-                    }
-                });
+                /**
+                 * Separate spacing object to use in width/height utilities
+                 * We don't want to add these to the existing 'spacing' config
+                 * as it will result with bigger file as well as bunch of useless
+                 * utilities such as p-1/3 or m-3/4
+                 */
+                spacing: {
+                    // Fractional spacing values
+                    '1/2'  : '50%',
+                    '1/3'  : '33.333333%',
+                    '2/3'  : '66.666667%',
+                    '1/4'  : '25%',
+                    '2/4'  : '50%',
+                    '3/4'  : '75%',
+                    '1/5'  : '20%',
+                    '2/5'  : '40%',
+                    '3/5'  : '60%',
+                    '4/5'  : '80%',
+                    '1/6'  : '16.666667%',
+                    '2/6'  : '33.333333%',
+                    '3/6'  : '50%',
+                    '4/6'  : '66.666667%',
+                    '5/6'  : '83.333333%',
+                    '1/12' : '8.333333%',
+                    '2/12' : '16.666667%',
+                    '3/12' : '25%',
+                    '4/12' : '33.333333%',
+                    '5/12' : '41.666667%',
+                    '6/12' : '50%',
+                    '7/12' : '58.333333%',
+                    '8/12' : '66.666667%',
+                    '9/12' : '75%',
+                    '10/12': '83.333333%',
+                    '11/12': '91.666667%',
 
-                // Return the colors
-                return defaultColors;
-            },
-            */
-
-            /*
-            // Use this map to define custom contrasting colors for the custom colors
-            colorContrasts: theme => ({
-                brand-color: {
-                    50     : theme('colors.brand-color.900'), // Use the 900 from the 'brand-color' palette as the contrasting color of the 50
-                    100    : theme('colors.brand-color.900'),
-                    200    : theme('colors.brand-color.900'),
-                    300    : theme('colors.brand-color.900'),
-                    400    : theme('colors.brand-color.900'),
-                    500    : theme('colors.brand-color.900'),
-                    600    : theme('colors.brand-color.50'),
-                    700    : theme('colors.brand-color.50'),
-                    800    : theme('colors.brand-color.50'),
-                    900    : theme('colors.brand-color.50'),
-                    default: theme('colors.brand-color.900')
+                    // Extended spacing values
+                    '100': '25rem',
+                    '120': '30rem',
+                    '128': '32rem',
+                    '140': '35rem',
+                    '160': '40rem',
+                    '180': '45rem',
+                    '192': '48rem',
+                    '200': '50rem',
+                    '240': '60rem',
+                    '256': '64rem',
+                    '280': '70rem',
+                    '320': '80rem',
+                    '360': '90rem',
+                    '400': '100rem',
+                    '480': '120rem'
                 }
             },
-            */
 
-            /*
-            // Use this map to extend the iconSize utility sizes
-            iconSize: {
-                8: '8px',
-                10: '10px'
+            // Tailwind config extensions
+            flex      : {
+                '0': '0 0 auto'
             },
-            */
+            fontFamily: {
+                sans: [
+                    'Inter var',
+                    'ui-sans-serif',
+                    'system-ui',
+                    '-apple-system',
+                    'BlinkMacSystemFont',
+                    '"Segoe UI"',
+                    'Roboto',
+                    '"Helvetica Neue"',
+                    'Arial',
+                    '"Noto Sans"',
+                    'sans-serif',
+                    '"Apple Color Emoji"',
+                    '"Segoe UI Emoji"',
+                    '"Segoe UI Symbol"',
+                    '"Noto Color Emoji"'
+                ],
+                mono: [
+                    '"IBM Plex Mono"',
+                    'ui-monospace',
+                    'SFMono-Regular',
+                    'Menlo',
+                    'Monaco',
+                    'Consolas',
+                    '"Liberation Mono"',
+                    '"Courier New"',
+                    'monospace'
+                ]
+            },
+            opacity   : {
+                5 : '0.05',
+                12: '0.12',
+                38: '0.38',
+                54: '0.54',
+                84: '0.84'
+            },
+            rotate    : {
+                '-270': '270deg',
+                '15'  : '15deg',
+                '30'  : '30deg',
+                '60'  : '60deg',
+                '270' : '270deg'
+            },
+            spacing   : {
+                '2px': '2px',
+                '13' : '3.25rem',
+                '15' : '3.75rem',
+                '18' : '4.5rem',
+                '22' : '5.5rem',
+                '26' : '6.5rem',
+                '30' : '7.5rem',
+                '50' : '12.5rem',
+                '90' : '22.5rem'
+            },
+            height    : theme => ({
+                ...theme('treo.spacing')
+            }),
+            minHeight : theme => ({
+                ...theme('spacing'),
+                ...theme('treo.spacing')
+            }),
+            maxHeight : theme => ({
+                ...theme('treo.spacing'),
+                none: 'none'
+            }),
+            width     : theme => ({
+                ...theme('treo.spacing')
+            }),
+            minWidth  : theme => ({
+                ...theme('spacing'),
+                ...theme('treo.spacing'),
+                screen: '100vw'
+            }),
+            maxWidth  : theme => ({
+                ...theme('spacing'),
+                ...theme('treo.spacing'),
+                screen: '100vw'
+            }),
+            zIndex    : {
+                '-1'   : -1,
+                '60'   : 60,
+                '70'   : 70,
+                '80'   : 80,
+                '90'   : 90,
+                '99'   : 99,
+                '999'  : 999,
+                '9999' : 9999,
+                '99999': 99999
+            }
         }
     },
-
-    // Variants
-    variants: {
-        accessibility           : ['responsive', 'focus'],
-        alignContent            : ['responsive'],
-        alignItems              : ['responsive'],
-        alignSelf               : ['responsive'],
+    variants    : {
+        accessibility           : [],
+        animation               : [],
         backgroundAttachment    : [],
         backgroundClip          : [],
-        backgroundColor         : ['dark-light'],
+        backgroundColor         : ['dark', 'group-hover', 'hover', 'focus'],
         backgroundImage         : [],
-        gradientColorStops      : [],
-        backgroundOpacity       : [],
+        backgroundOpacity       : ['dark', 'hover'],
         backgroundPosition      : [],
         backgroundRepeat        : [],
         backgroundSize          : [],
         borderCollapse          : [],
-        borderColor             : ['dark-light'],
-        borderOpacity           : [],
-        borderRadius            : ['responsive'],
+        borderColor             : ['dark', 'group-hover', 'hover', 'focus'],
+        borderOpacity           : ['group-hover', 'hover', 'focus'],
         borderStyle             : [],
-        borderWidth             : ['responsive', 'first', 'last'],
-        boxShadow               : [],
+        borderWidth             : ['first', 'last', 'odd', 'even'],
+        boxShadow               : ['responsive', 'hover', 'focus'],
         boxSizing               : [],
         cursor                  : [],
-        display                 : ['responsive'],
-        divideColor             : [],
+        divideColor             : ['dark'],
         divideOpacity           : [],
         divideStyle             : [],
         divideWidth             : [],
         fill                    : [],
-        flex                    : ['responsive'],
-        flexDirection           : ['responsive'],
-        flexGrow                : ['responsive'],
-        flexShrink              : ['responsive'],
-        flexWrap                : ['responsive'],
         fontFamily              : [],
-        fontSize                : ['responsive'],
-        fontSmoothing           : [],
-        fontStyle               : [],
-        fontWeight              : ['responsive'],
-        height                  : ['responsive'],
-        inset                   : ['responsive'],
-        justifyContent          : ['responsive'],
-        letterSpacing           : ['responsive'],
-        lineHeight              : ['responsive'],
-        listStylePosition       : [],
-        listStyleType           : [],
-        margin                  : ['responsive'],
-        maxHeight               : ['responsive'],
-        maxWidth                : ['responsive'],
-        minHeight               : ['responsive'],
-        minWidth                : ['responsive'],
-        objectFit               : ['responsive'],
-        objectPosition          : ['responsive'],
-        opacity                 : ['responsive', 'hover', 'focus'],
-        order                   : ['responsive'],
-        outline                 : ['focus'],
-        overflow                : ['responsive'],
-        overscrollBehavior      : ['responsive'],
-        padding                 : ['responsive'],
-        placeholderOpacity      : ['focus'],
-        pointerEvents           : [],
-        position                : ['responsive'],
+        outline                 : [],
         resize                  : [],
-        space                   : ['responsive'],
-        stroke                  : [],
-        strokeWidth             : [],
-        tableLayout             : [],
-        textAlign               : ['responsive'],
-        textColor               : ['dark-light'],
-        textOpacity             : [],
-        textDecoration          : ['hover', 'focus'],
-        textTransform           : [],
-        userSelect              : [],
-        visibility              : ['responsive'],
-        whitespace              : ['responsive'],
-        width                   : ['responsive'],
-        wordBreak               : ['responsive'],
-        zIndex                  : ['responsive'],
-        gap                     : ['responsive'],
-        gridAutoFlow            : ['responsive'],
-        gridTemplateColumns     : ['responsive'],
-        gridColumn              : ['responsive'],
-        gridColumnStart         : ['responsive'],
-        gridColumnEnd           : ['responsive'],
-        gridTemplateRows        : ['responsive'],
-        gridRow                 : ['responsive'],
-        gridRowStart            : ['responsive'],
-        gridRowEnd              : ['responsive'],
-        transform               : ['responsive'],
-        transformOrigin         : ['responsive'],
-        scale                   : [],
         rotate                  : [],
-        translate               : [],
+        scale                   : [],
         skew                    : [],
+        textColor               : ['dark', 'group-hover', 'hover', 'focus'],
+        textOpacity             : ['group-hover', 'hover', 'focus'],
+        transform               : [],
+        transformOrigin         : [],
+        transitionDelay         : [],
+        transitionDuration      : [],
         transitionProperty      : [],
         transitionTimingFunction: [],
-        transitionDuration      : [],
-        transitionDelay         : [],
-        animation               : [],
-
-        // Custom
-        iconSize: ['responsive']
+        translate               : ['hover', 'focus'],
+        zIndex                  : ['responsive', 'focus']
     },
-
-    // Core plugins
-    corePlugins: {
-        appearance      : false,
-        container       : false,
-        clear           : false,
-        float           : false,
-        placeholderColor: false,
-        verticalAlign   : false
+    corePlugins : {
+        appearance        : false,
+        gradientColorStops: false,
+        container         : false,
+        float             : false,
+        clear             : false,
+        placeholderColor  : false,
+        placeholderOpacity: false,
+        verticalAlign     : false
     },
+    plugins     : [
 
-    // Custom plugins
-    plugins: [
+        // Treo Tailwind plugin
+        require('./src/@treo/tailwind/plugins/treo')
 
-        // Custom plugins required by Treo
-        ...require('./src/@treo/tailwind/plugins')
-
-        // Other third party and custom plugins can be required here
+        // Other third party and/or custom plugins can be required here
         // ...
     ]
-};
+});

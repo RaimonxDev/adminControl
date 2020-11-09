@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { treoBreakpoints } from '@treo/tailwind/exported/variables';
+import { tailwindConfig } from '@treo/tailwind/config';
 
 @Injectable()
 export class TreoMediaWatcherService
@@ -47,8 +47,11 @@ export class TreoMediaWatcherService
      */
     private _init(): void
     {
+        // Get the breakpoints
+        const breakpoints = tailwindConfig.breakpoints;
+
         // Subscribe to the breakpoint observer
-        this._breakpointObserver.observe(Object.values(treoBreakpoints))
+        this._breakpointObserver.observe(Object.values(breakpoints))
             .subscribe((state) => {
 
                 const matchingAliases = [];
@@ -74,7 +77,7 @@ export class TreoMediaWatcherService
                     }
 
                     // Get the alias of the matching query
-                    const alias = Object.keys(treoBreakpoints).find(key => treoBreakpoints[key] === query);
+                    const alias = Object.keys(breakpoints).find(key => breakpoints[key] === query);
 
                     // Prepare the observable values
                     matchingAliases.push(alias);

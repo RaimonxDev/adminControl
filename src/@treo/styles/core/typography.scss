@@ -1,29 +1,15 @@
-// -----------------------------------------------------------------------------------------------------
-// @ Angular Material typography config
-// -----------------------------------------------------------------------------------------------------
-@include angular-material-typography(
-        mat-typography-config(
-            $font-family: $treo-font-sans,
-            $title: mat-typography-level(1.25rem, 2rem, 600),
-            $body-2: mat-typography-level(0.875rem, 1.5rem, 600),
-            $button: mat-typography-level(0.875rem, 0.875rem, 500),
-            $input: mat-typography-level(0.875rem, 1.2857142857, 400) // line-height: 20px
-        )
-);
-
-// -----------------------------------------------------------------------------------------------------
-// @ General
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/* @ General
+/* ----------------------------------------------------------------------------------------------------- */
 html {
     font-size: 16px;
 }
 
 body {
     font-size: 0.875rem;
-    font-family: $treo-font-sans;
 }
 
-// Headings
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
     margin: 1.25em 0 0.5em 0;
 }
@@ -67,15 +53,17 @@ h6 {
     letter-spacing: -0.011em;
 }
 
-// Override links for web apps
+/* Override links for web apps */
 a {
     color: currentColor;
     text-decoration: none;
 }
 
-// Link helper for applying default 'a' style
+/* Link helper for applying default 'a' style */
 .link {
     cursor: pointer;
+    border-bottom-color: var(--primary);
+    color: var(--primary);
 
     &:focus,
     &:hover {
@@ -83,7 +71,7 @@ a {
     }
 }
 
-// Breadcrumb
+/* Breadcrumb */
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;
@@ -94,27 +82,28 @@ a {
 
     .path {
         white-space: nowrap;
+        color: var(--primary);
 
         &a {
             color: inherit;
         }
 
         &.current {
-
+            color: var(--text-secondary);
         }
     }
 
     .separator {
         margin: 0 6px;
+        color: var(--text-secondary);
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Code and Pre
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/* @ Code & Pre
+/* ----------------------------------------------------------------------------------------------------- */
 code,
 pre {
-    font-family: $treo-font-mono;
     font-size: 14px;
     line-height: 1.6;
     border-radius: 4px;
@@ -131,21 +120,33 @@ pre {
     white-space: pre-wrap;
     word-break: break-word;
     word-wrap: break-word;
+
+    background: #FFFFFF;
+    color: #728FCB;
+
+    .dark & {
+        @apply text-coolGray-400 bg-coolGray-800;
+    }
 }
 
 pre {
     padding: 24px;
     margin: 0;
-    @include treo-elevation();
+    @apply shadow;
 }
 
 :not(pre) > code {
     padding: 2px 5px;
+    @apply text-coolGray-500 bg-coolGray-200;
+
+    .dark & {
+        @apply text-coolGray-400 bg-coolGray-700;
+    }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Rich text
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/* @ Rich text
+/* ----------------------------------------------------------------------------------------------------- */
 .rich-text {
 
     h1, h2, h3, h4 {
@@ -221,6 +222,8 @@ pre {
     a {
         font-weight: 500;
         text-decoration: underline;
+        border-bottom-color: var(--primary);
+        color: var(--primary);
     }
 
     abbr {
@@ -326,6 +329,11 @@ pre {
         font-size: 12px;
         line-height: 1.5;
         margin-top: 12px;
+        color: var(--text-secondary);
+    }
+
+    mark {
+        background: #F7F49A;
     }
 
     pre {
@@ -369,6 +377,11 @@ pre {
         position: absolute;
         font-weight: 400;
         left: 0;
+        @apply text-coolGray-500;
+
+        .dark & {
+            @apply text-coolGray-400;
+        }
     }
 
     > ol > li > *:first-child {
@@ -392,6 +405,11 @@ pre {
         height: 5px;
         top: 9px;
         left: 3px;
+        @apply text-coolGray-400;
+
+        .dark & {
+            @apply text-coolGray-500;
+        }
     }
 
     > ul > li p {
@@ -473,7 +491,7 @@ pre {
         margin-bottom: 0;
     }
 
-    // treo-highlight
+    /* treo-highlight */
     * + .treo-highlight {
         margin-top: 16px;
     }
@@ -482,107 +500,12 @@ pre {
         margin-top: 24px;
     }
 
-    // treo-message
+    /* treo-message */
     * + treo-message {
         margin-top: 24px;
     }
 
     treo-message + p {
         margin-top: 24px;
-    }
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-    $is-dark: map-get($theme, is-dark);
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ General
-    // -----------------------------------------------------------------------------------------------------
-
-    // Link helper for applying default 'a' style
-    .link {
-        color: map-get($primary, default);
-        border-bottom-color: map-get($primary, default);
-    }
-
-    // Breadcrumb
-    .breadcrumb {
-
-        .path {
-            color: map-get($primary, default);
-
-            &.current {
-                color: map-get($foreground, secondary-text);
-            }
-        }
-
-        .separator {
-            color: map-get($foreground, secondary-text);
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Code and Pre
-    // -----------------------------------------------------------------------------------------------------
-    code,
-    pre {
-        @if ($is-dark) {
-            color: treo-color('cool-gray', 400);
-            background: treo-color('cool-gray', 800);
-        } @else {
-            background: #FFFFFF;
-            color: #728FCB;
-        }
-    }
-
-    :not(pre) > code {
-        @if ($is-dark) {
-            color: treo-color('cool-gray', 400);
-            background: treo-color('cool-gray', 700);
-        } @else {
-            color: treo-color('cool-gray', 500);
-            background: treo-color('cool-gray', 200);
-        }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Rich text
-    // -----------------------------------------------------------------------------------------------------
-    .rich-text {
-
-        a {
-            color: map-get($primary, default);
-            border-bottom-color: map-get($primary, default);
-        }
-
-        figure figcaption {
-            color: map-get($foreground, secondary-text);
-        }
-
-        mark {
-            background: #F7F49A;
-        }
-
-        ol > li:before {
-            @if ($is-dark) {
-                color: treo-color('cool-gray', 400);
-            } @else {
-                color: treo-color('cool-gray', 500);
-            }
-        }
-
-        ul > li:before {
-            @if ($is-dark) {
-                background: treo-color('cool-gray', 500);
-            } @else {
-                background: treo-color('cool-gray', 400);
-            }
-        }
     }
 }

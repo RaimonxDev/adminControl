@@ -46,9 +46,7 @@ export class MessagesMockApi implements TreoMockApi
             .reply(() => {
                 return [
                     200,
-                    {
-                        messages: cloneDeep(this._messages)
-                    }
+                    cloneDeep(this._messages)
                 ];
             });
 

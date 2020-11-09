@@ -20,7 +20,7 @@ import { FuturisticLayoutModule } from 'app/layout/layouts/vertical/futuristic/f
 import { ThinLayoutModule } from 'app/layout/layouts/vertical/thin/thin.module';
 import { SharedModule } from 'app/shared/shared.module';
 
-const modules = [
+const layoutModules = [
     // Empty
     EmptyLayoutModule,
 
@@ -52,10 +52,11 @@ const modules = [
         MatTooltipModule,
         TreoDrawerModule,
         SharedModule,
-        ...modules
+        ...layoutModules
     ],
     exports     : [
-        ...modules
+        LayoutComponent,
+        ...layoutModules
     ]
 })
 export class LayoutModule

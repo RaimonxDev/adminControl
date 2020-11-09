@@ -1,13 +1,14 @@
 import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { MatRadioChange } from '@angular/material/radio';
 import { combineLatest, Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { TreoConfigService } from '@treo/services/config';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
+import { tailwindConfig } from '@treo/tailwind/config';
 import { Layout } from 'app/layout/layout.types';
 import { AppConfig } from 'app/core/config/app.config';
-import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
     selector     : 'layout',
@@ -19,7 +20,9 @@ export class LayoutComponent implements OnInit, OnDestroy
 {
     config: AppConfig;
     layout: Layout;
-    theme: 'dark' | 'light';
+    scheme: 'dark' | 'light';
+    theme: string;
+    themes: any;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -54,7 +57,10 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Set the theme based on the configuration
+        // Get the available themes
+        this.themes = tailwindConfig.themes;
+
+        // Set the theme and scheme based on the configuration
         combineLatest([
             this._treoConfigService.config$,
             this._treoMediaWatcherService.onMediaQueryChange$(['(prefers-color-scheme: dark)', '(prefers-color-scheme: light)'])
@@ -62,26 +68,28 @@ export class LayoutComponent implements OnInit, OnDestroy
             takeUntil(this._unsubscribeAll),
             map(([config, mql]) => {
 
-                // If the config is set to 'dark' or 'light'...
-                if ( config.theme !== 'auto' )
+                const options = {
+                    scheme: config.scheme,
+                    theme : config.theme
+                };
+
+                // If the scheme is set to 'auto'...
+                if ( config.scheme === 'auto' )
                 {
-                    return config.theme;
+                    // Decide the scheme using the media query
+                    options.scheme = mql.breakpoints['(prefers-color-scheme: dark)'] === true ? 'dark' : 'light';
                 }
 
-                // If the config is set to 'auto'...
-                if ( mql.breakpoints['(prefers-color-scheme: dark)'] === true )
-                {
-                    return 'dark';
-                }
-
-                return 'light';
+                return options;
             })
-        ).subscribe((theme) => {
+        ).subscribe((options) => {
 
-            // Store the theme
-            this.theme = theme;
+            // Store the options
+            this.scheme = options.scheme;
+            this.theme = options.theme;
 
-            // Update the theme
+            // Update the scheme and theme
+            this._updateScheme();
             this._updateTheme();
         });
 
@@ -174,6 +182,20 @@ export class LayoutComponent implements OnInit, OnDestroy
     }
 
     /**
+     * Update the selected scheme
+     *
+     * @private
+     */
+    private _updateScheme(): void
+    {
+        // Remove class names for all schemes
+        this._document.body.classList.remove('light', 'dark');
+
+        // Add class name for the currently selected scheme
+        this._document.body.classList.add(this.scheme);
+    }
+
+    /**
      * Update the selected theme
      *
      * @private
@@ -182,15 +204,14 @@ export class LayoutComponent implements OnInit, OnDestroy
     {
         // Find the class name for the previously selected theme and remove it
         this._document.body.classList.forEach((className) => {
-            if ( className.startsWith('treo-theme-') )
+            if ( className.startsWith('theme-') )
             {
-                this._document.body.classList.remove(className);
-                return;
+                this._document.body.classList.remove(className, className.split('-')[1]);
             }
         });
 
         // Add class name for the currently selected theme
-        this._document.body.classList.add('treo-theme-' + this.theme);
+        this._document.body.classList.add(`theme-${this.theme}`);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -215,6 +236,16 @@ export class LayoutComponent implements OnInit, OnDestroy
             // Set the config
             this._treoConfigService.config = {layout};
         });
+    }
+
+    /**
+     * Set the scheme on the config
+     *
+     * @param change
+     */
+    setScheme(change: MatRadioChange): void
+    {
+        this._treoConfigService.config = {scheme: change.value};
     }
 
     /**

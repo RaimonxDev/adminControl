@@ -45,9 +45,7 @@ export class UserMockApi implements TreoMockApi
             .reply(() => {
                 return [
                     200,
-                    {
-                        user: cloneDeep(this._user)
-                    }
+                    cloneDeep(this._user)
                 ];
             });
 
@@ -66,9 +64,7 @@ export class UserMockApi implements TreoMockApi
 
                 return [
                     200,
-                    {
-                        user: cloneDeep(this._user)
-                    }
+                    cloneDeep(this._user)
                 ];
             });
     }

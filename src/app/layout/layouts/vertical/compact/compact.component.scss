@@ -27,50 +27,50 @@ compact-layout {
             }
         }
 
-        // Compact appearance overrides
+        /* Compact appearance overrides */
         &.treo-vertical-navigation-appearance-compact {
             width: #{$treo-vertical-navigation-compact-width}px;
             min-width: #{$treo-vertical-navigation-compact-width}px;
             max-width: #{$treo-vertical-navigation-compact-width}px;
 
-            // Left positioned
+            /* Left positioned */
             &.treo-vertical-navigation-position-left {
 
-                // Side mode
+                /* Side mode */
                 &.treo-vertical-navigation-mode-side {
                     margin-left: -#{$treo-vertical-navigation-compact-width}px;
                 }
 
-                // Opened
+                /* Opened */
                 &.treo-vertical-navigation-opened {
                     margin-left: 0;
                 }
             }
 
-            // Right positioned
+            /* Right positioned */
             &.treo-vertical-navigation-position-right {
 
-                // Side mode
+                /* Side mode */
                 &.treo-vertical-navigation-mode-side {
                     margin-right: -#{$treo-vertical-navigation-compact-width}px;
                 }
 
-                // Opened
+                /* Opened */
                 &.treo-vertical-navigation-opened {
                     margin-right: 0;
                 }
 
-                // Aside wrapper
+                /* Aside wrapper */
                 .treo-vertical-navigation-aside-wrapper {
                     left: auto;
                     right: #{$treo-vertical-navigation-compact-width}px;
                 }
             }
 
-            // Wrapper
+            /* Wrapper */
             .treo-vertical-navigation-wrapper {
 
-                // Content
+                /* Content */
                 .treo-vertical-navigation-content {
 
                     > treo-vertical-navigation-aside-item,
@@ -123,7 +123,7 @@ compact-layout {
                 }
             }
 
-            // Aside wrapper
+            /* Aside wrapper */
             .treo-vertical-navigation-aside-wrapper {
                 left: #{$treo-vertical-navigation-compact-width}px;
             }
@@ -228,9 +228,9 @@ compact-layout {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);

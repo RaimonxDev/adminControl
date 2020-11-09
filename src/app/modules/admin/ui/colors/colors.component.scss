@@ -4,7 +4,7 @@ colors {
 
     .main {
 
-        // Example viewer
+        /* Example viewer */
         .example-viewer {
             display: flex;
             flex-direction: column;
@@ -155,9 +155,9 @@ colors {
 }
 
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);
@@ -166,7 +166,7 @@ colors {
 
     colors {
 
-        // Example viewer
+        /* Example viewer */
         .example-viewer {
             background: map-get($background, card);
 

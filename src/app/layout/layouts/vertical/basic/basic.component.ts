@@ -79,8 +79,8 @@ export class BasicLayoutComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
-                // Check if the breakpoint is 'lt-md'
-                this.isScreenSmall = matchingAliases.includes('lt-md');
+                // Check if the screen is small
+                this.isScreenSmall = !matchingAliases.includes('md');
             });
     }
 

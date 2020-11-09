@@ -27,7 +27,7 @@ dense-layout {
             }
         }
 
-        // Dense appearance overrides
+        /* Dense appearance overrides */
         &.treo-vertical-navigation-appearance-dense {
 
             &:not(.treo-vertical-navigation-mode-over) {
@@ -35,34 +35,34 @@ dense-layout {
                 min-width: #{$treo-vertical-navigation-dense-width}px;
                 max-width: #{$treo-vertical-navigation-dense-width}px;
 
-                // Left positioned
+                /* Left positioned */
                 &.treo-vertical-navigation-position-left {
 
-                    // Side mode
+                    /* Side mode */
                     &.treo-vertical-navigation-mode-side {
                         margin-left: -#{$treo-vertical-navigation-dense-width}px;
                     }
 
-                    // Opened
+                    /* Opened */
                     &.treo-vertical-navigation-opened {
                         margin-left: 0;
                     }
                 }
 
-                // Right positioned
+                /* Right positioned */
                 &.treo-vertical-navigation-position-right {
 
-                    // Side mode
+                    /* Side mode */
                     &.treo-vertical-navigation-mode-side {
                         margin-right: -#{$treo-vertical-navigation-dense-width}px;
                     }
 
-                    // Opened
+                    /* Opened */
                     &.treo-vertical-navigation-opened {
                         margin-right: 0;
                     }
 
-                    // Aside wrapper
+                    /* Aside wrapper */
                     .treo-vertical-navigation-aside-wrapper {
                         left: auto;
                         right: #{$treo-vertical-navigation-dense-width}px;
@@ -78,10 +78,10 @@ dense-layout {
                 }
             }
 
-            // Wrapper
+            /* Wrapper */
             .treo-vertical-navigation-wrapper {
 
-                // Content
+                /* Content */
                 .treo-vertical-navigation-content {
 
                     treo-vertical-navigation-aside-item,
@@ -113,10 +113,10 @@ dense-layout {
 
             &:not(.treo-vertical-navigation-hover):not(.treo-vertical-navigation-mode-over) {
 
-                // Wrapper
+                /* Wrapper */
                 .treo-vertical-navigation-wrapper {
 
-                    // Content
+                    /* Content */
                     .treo-vertical-navigation-content {
 
                         .treo-vertical-navigation-item {
@@ -162,12 +162,12 @@ dense-layout {
                 }
             }
 
-            // Aside wrapper
+            /* Aside wrapper */
             .treo-vertical-navigation-aside-wrapper {
                 left: #{$treo-vertical-navigation-dense-width}px;
             }
 
-            // Hover
+            /* Hover */
             &.treo-vertical-navigation-hover {
 
                 .treo-vertical-navigation-wrapper {
@@ -287,9 +287,9 @@ dense-layout {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);

@@ -93,7 +93,7 @@ calendar-sidebar {
     }
 }
 
-// Edit panel
+/* Edit panel */
 .calendar-sidebar-calendar-edit-panel {
     display: flex;
     flex-direction: column;
@@ -157,7 +157,7 @@ calendar-sidebar {
     }
 }
 
-// Color select panel
+/* Color select panel */
 .calendar-sidebar-calendar-edit-panel-color-select-panel {
     overflow: hidden !important;
     max-height: none !important;
@@ -208,9 +208,9 @@ calendar-sidebar {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);
@@ -222,7 +222,7 @@ calendar-sidebar {
         }
     }
 
-    // Edit panel
+    /* Edit panel */
     .calendar-sidebar-calendar-edit-panel {
         background: map-get($background, card);
     }

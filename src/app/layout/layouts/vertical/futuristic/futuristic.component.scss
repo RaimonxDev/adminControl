@@ -112,10 +112,10 @@ futuristic-layout {
             }
         }
 
-        // Futuristic appearance overrides
+        /* Futuristic appearance overrides */
         &.treo-vertical-navigation-appearance-futuristic {
 
-            // Aside, basic, collapsable, group
+            /* Aside, basic, collapsable, group */
             treo-vertical-navigation-aside-item,
             treo-vertical-navigation-basic-item,
             treo-vertical-navigation-collapsable-item,
@@ -132,7 +132,7 @@ futuristic-layout {
                 }
             }
 
-            // Collapsable
+            /* Collapsable */
             treo-vertical-navigation-collapsable-item {
 
                 > .treo-vertical-navigation-item-children {
@@ -142,28 +142,28 @@ futuristic-layout {
                     }
                 }
 
-                // 1st level
+                /* 1st level */
                 .treo-vertical-navigation-item-children {
 
                     .treo-vertical-navigation-item {
                         padding-left: 56px;
                     }
 
-                    // 2nd level
+                    /* 2nd level */
                     .treo-vertical-navigation-item-children {
 
                         .treo-vertical-navigation-item {
                             padding-left: 72px;
                         }
 
-                        // 3rd level
+                        /* 3rd level */
                         .treo-vertical-navigation-item-children {
 
                             .treo-vertical-navigation-item {
                                 padding-left: 88px;
                             }
 
-                            // 4th level
+                            /* 4th level */
                             .treo-vertical-navigation-item-children {
 
                                 .treo-vertical-navigation-item {
@@ -175,12 +175,12 @@ futuristic-layout {
                 }
             }
 
-            // Navigation items common
+            /* Navigation items common */
             .treo-vertical-navigation-item {
                 border-radius: 6px;
             }
 
-            // Aside
+            /* Aside */
             .treo-vertical-navigation-aside-wrapper {
 
                 > treo-vertical-navigation-aside-item {
@@ -288,9 +288,9 @@ futuristic-layout {
     }
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Theming
+/* ----------------------------------------------------------------------------------------------------- */
 @include treo-theme {
 
     $background: map-get($theme, background);
@@ -335,13 +335,13 @@ futuristic-layout {
                 }
             }
 
-            // Futuristic appearance overrides
+            /* Futuristic appearance overrides */
             &.treo-vertical-navigation-appearance-futuristic {
 
-                // Navigation items common
+                /* Navigation items common */
                 .treo-vertical-navigation-item {
 
-                    // Normal state
+                    /* Normal state */
                     .treo-vertical-navigation-item-icon {
                         color: treo-color('indigo', 400);
                     }
@@ -354,7 +354,7 @@ futuristic-layout {
                         color: treo-color('indigo', 400);
                     }
 
-                    // Active state
+                    /* Active state */
                     &.treo-vertical-navigation-item-active:not(.treo-vertical-navigation-item-disabled),
                     &.treo-vertical-navigation-item-active-forced:not(.treo-vertical-navigation-item-disabled) {
                         background-color: treo-color('indigo', 900);
@@ -372,7 +372,7 @@ futuristic-layout {
                         }
                     }
 
-                    // Disabled state
+                    /* Disabled state */
                     &.treo-vertical-navigation-item-disabled {
 
                         .treo-vertical-navigation-item-icon,
@@ -384,7 +384,7 @@ futuristic-layout {
                     }
                 }
 
-                // Aside, Basic, Collapsable
+                /* Aside, Basic, Collapsable */
                 treo-vertical-navigation-aside-item,
                 treo-vertical-navigation-basic-item,
                 treo-vertical-navigation-collapsable-item {
@@ -393,7 +393,7 @@ futuristic-layout {
 
                         .treo-vertical-navigation-item {
 
-                            // Hover state
+                            /* Hover state */
                             &:hover:not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled),
                             &:hover:not(.treo-vertical-navigation-item-active-forced):not(.treo-vertical-navigation-item-disabled) {
                                 background-color: treo-color('indigo', 700);
@@ -414,7 +414,7 @@ futuristic-layout {
                     }
                 }
 
-                // Collapsable - Expanded state
+                /* Collapsable - Expanded state */
                 treo-vertical-navigation-collapsable-item {
 
                     &.treo-vertical-navigation-item-expanded {
@@ -440,7 +440,7 @@ futuristic-layout {
                     }
                 }
 
-                // Group - Normal state
+                /* Group - Normal state */
                 treo-vertical-navigation-group-item {
 
                     > .treo-vertical-navigation-item-wrapper {

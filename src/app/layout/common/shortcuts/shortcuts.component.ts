@@ -128,19 +128,6 @@ export class ShortcutsComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Create route from given link
-     */
-    createRouteFromLink(link): string[]
-    {
-        // Split the link and add a leading slash
-        const route = link.split('/');
-        route.unshift('/');
-
-        // Return the route
-        return route;
-    }
-
-    /**
      * Open the shortcuts panel
      */
     openPanel(): void

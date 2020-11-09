@@ -1,15 +1,15 @@
-// -----------------------------------------------------------------------------------------------------
-// @ Use this file to import third party library styles. You can override them in 'styles.scss' file.
-// -----------------------------------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Use this file to import third party library styles. You can override them in 'styles.scss' file.
+/* ----------------------------------------------------------------------------------------------------- */
 
-// FullCalendar
+/* FullCalendar */
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
 @import '~@fullcalendar/timegrid/main.css';
 @import '~@fullcalendar/list/main.css';
 
-// Perfect scrollbar
+/* Perfect scrollbar */
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 
-// Quill
+/* Quill */
 @import '~quill/dist/quill.snow.css';
