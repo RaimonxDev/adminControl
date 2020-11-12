@@ -1,6 +1,6 @@
 {
     "name": "@treo/demo",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "license": "https://themeforest.net/licenses/standard",
     "scripts": {
         "ng": "ng",

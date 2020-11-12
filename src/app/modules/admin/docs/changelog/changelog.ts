@@ -21,7 +21,7 @@ export class ChangelogComponent
             // v1.1.0
             {
                 version    : 'v1.1.0',
-                releaseDate: 'WIP/TBA',
+                releaseDate: 'November 12, 2020',
                 changes    : [
                     {
                         type: 'Breaking Changes',
@@ -49,7 +49,7 @@ export class ChangelogComponent
                     {
                         type: 'Improvements',
                         list: [
-                            '(Dependencies) Updated Angular & Angular Material',
+                            '(Dependencies) Updated Angular & Angular Material to v11',
                             '(Dependencies) Updated Tailwind',
                             '(Dependencies) Updated various other packages',
                             '(@treo/MockAPI) PUT requests are replaced with POST to better follow REST guidelines',
