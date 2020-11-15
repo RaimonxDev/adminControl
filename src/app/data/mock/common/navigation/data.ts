@@ -841,7 +841,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:speakerphone',
                 link : '/docs/changelog',
                 badge: {
-                    title     : '1.1.0',
+                    title     : '1.1.1',
                     style     : 'rounded',
                     background: '#FFEB3B',
                     color     : '#000000'

@@ -18,6 +18,20 @@ export class ChangelogComponent
         // Set the defaults
         this.changelog = [
 
+            // v1.1.1
+            {
+                version    : 'v1.1.1',
+                releaseDate: 'November 16, 2020',
+                changes    : [
+                    {
+                        type: 'Bug Fixes',
+                        list: [
+                            '(Starter project) app.routing.ts file includes routes from Demo app',
+                        ]
+                    }
+                ]
+            },
+
             // v1.1.0
             {
                 version    : 'v1.1.0',
