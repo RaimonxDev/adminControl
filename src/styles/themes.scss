@@ -1,0 +1,7 @@
+$treo-themes: (
+    'theme-default-old': treo-light-theme(
+            treo-palette('indigo', 600),
+            treo-palette('cool-gray', 800),
+            treo-palette('red', 700)
+    )
+);
