@@ -1,34 +1,49 @@
-<!-- Open button, 'bar' only -->
-<button class="search-toggle-open"
-        mat-icon-button
+<!-- Bar search -->
+<button mat-icon-button
         *ngIf="appearance === 'bar' && !opened"
         (click)="open()">
     <mat-icon [svgIcon]="'heroicons_outline:search'"></mat-icon>
 </button>
 
-<!-- Search container -->
-<div class="search-container"
-     *ngIf="appearance === 'basic' || (appearance === 'bar' && opened)"
-     [@.disabled]="appearance === 'basic'"
+<div class="search-bar absolute inset-0 flex items-center flex-shrink-0 z-99 bg-card"
+     *ngIf="appearance === 'bar' && opened"
      @slideInTop
      @slideOutTop>
+    <ng-container *ngTemplateOutlet="searchContent"></ng-container>
+    <button class="absolute top-1/2 right-2 sm:right-8 flex-shrink-0 w-10 h-10 -mt-5"
+            mat-icon-button
+            *ngIf="appearance === 'bar'"
+            (click)="close()">
+        <mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>
+    </button>
+</div>
 
-    <mat-form-field class="treo-mat-no-subscript search-input"
+<!-- Basic search -->
+<div class="w-full sm:min-w-80"
+     *ngIf="appearance === 'basic'">
+    <ng-container *ngTemplateOutlet="searchContent"></ng-container>
+</div>
+
+<!-- Search content template -->
+<ng-template #searchContent>
+
+    <mat-form-field class="treo-mat-no-subscript w-full"
                     #searchInput>
         <mat-icon matPrefix
-                  [svgIcon]="'search'"></mat-icon>
+                  [svgIcon]="'heroicons_outline:search'"></mat-icon>
         <input matInput
                [formControl]="searchControl"
-               [placeholder]="'Search for a page or a contact'"
                [matAutocomplete]="matAutocomplete"
+               [placeholder]="'Search for a page or a contact'"
                (keydown)="onKeydown($event)">
     </mat-form-field>
 
-    <mat-autocomplete [class]="'search-results search-results-appearance-' + appearance"
-                      #matAutocomplete="matAutocomplete"
-                      [disableRipple]="true">
+    <mat-autocomplete class="search-results"
+                      [ngClass]="'search-results-appearance-' + appearance"
+                      [disableRipple]="true"
+                      #matAutocomplete="matAutocomplete">
 
-        <mat-option class="no-results"
+        <mat-option class="no-pointer-events text-secondary"
                     *ngIf="results && !results.length">
             No results found!
         </mat-option>
@@ -66,12 +81,4 @@
 
     </mat-autocomplete>
 
-    <!-- Close button, 'bar' only -->
-    <button class="search-toggle-close"
-            mat-icon-button
-            *ngIf="appearance === 'bar'"
-            (click)="close()">
-        <mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>
-    </button>
-
-</div>
+</ng-template>

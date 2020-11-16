@@ -194,11 +194,9 @@ module.exports = (isProd) => ({
                 ]
             },
             opacity   : {
-                5 : '0.05',
                 12: '0.12',
                 38: '0.38',
-                54: '0.54',
-                84: '0.84'
+                87: '0.87'
             },
             rotate    : {
                 '-270': '270deg',
@@ -282,6 +280,10 @@ module.exports = (isProd) => ({
         fontFamily              : [],
         outline                 : [],
         resize                  : [],
+        ringColor               : ['responsive', 'dark'],
+        ringOffsetColor         : ['responsive', 'dark'],
+        ringOffsetWidth         : ['responsive'],
+        ringOpacity             : ['responsive'],
         rotate                  : [],
         scale                   : [],
         skew                    : [],

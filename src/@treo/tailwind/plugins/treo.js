@@ -32,14 +32,16 @@ const colorsWithDefaults = (defaultHue = '500') =>
     // Prepare the empty object
     const newColors = {};
 
-    // Iterate through the default color palettes and add a DEFAULT value
-    Object.entries(colors).forEach(([name, palette]) =>
-    {
-        newColors[name] = {
-            ...palette,
-            DEFAULT: palette[defaultHue]
-        };
-    });
+    // Iterate through the default color palette objects and add a DEFAULT value
+    Object.entries(colors)
+        .filter(([key, value]) => _.isObject(value))
+        .forEach(([name, palette]) =>
+        {
+            newColors[name] = {
+                ...palette,
+                DEFAULT: palette[defaultHue]
+            };
+        });
 
     return newColors;
 };
@@ -47,7 +49,7 @@ const colorsWithDefaults = (defaultHue = '500') =>
 // -----------------------------------------------------------------------------------------------------
 // @ TREO TailwindCSS Main Plugin
 // -----------------------------------------------------------------------------------------------------
-module.exports = plugin(({addVariant, addUtilities, corePlugins, e, postcss, theme, variants}) =>
+module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, e, postcss, theme, variants}) =>
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Helpers
@@ -58,50 +60,71 @@ module.exports = plugin(({addVariant, addUtilities, corePlugins, e, postcss, the
         // tailwindcss/src/plugins/textColor.js
         // tailwindcss/src/plugins/backgroundColor.js
         // tailwindcss/src/plugins/borderColor.js
-        const withOpacity = (value, type = 'text') =>
+        const withOpacity = (value, type = 'text', important = true) =>
         {
+            let css;
+
             switch ( type )
             {
                 case 'text' :
                 {
                     if ( corePlugins('textOpacity') )
                     {
-                        return withAlphaVariable({
+                        css = withAlphaVariable({
                             color   : value,
                             property: 'color',
                             variable: '--text-opacity'
                         });
                     }
+                    else
+                    {
+                        css = {color: value};
+                    }
 
-                    return {color: value};
+                    break;
                 }
                 case 'bg' :
                 {
                     if ( corePlugins('backgroundOpacity') )
                     {
-                        return withAlphaVariable({
+                        css = withAlphaVariable({
                             color   : value,
                             property: 'background-color',
                             variable: '--bg-opacity'
                         });
                     }
+                    else
+                    {
+                        css = {'background-color': value};
+                    }
 
-                    return {'background-color': value};
+                    break;
                 }
                 case 'border':
                 {
                     if ( corePlugins('borderOpacity') )
                     {
-                        return withAlphaVariable({
+                        css = withAlphaVariable({
                             color   : value,
                             property: 'border-color',
                             variable: '--border-opacity'
                         });
                     }
+                    else
+                    {
+                        css = {'border-color': value};
+                    }
 
-                    return {'border-color': value};
+                    break;
                 }
             }
+
+            if ( important )
+            {
+                return _.fromPairs(_.map(css, (value, prop) => [prop, value + ' !important']));
+            }
+
+            return css;
         };
 
         // -----------------------------------------------------------------------------------------------------
@@ -142,6 +165,113 @@ module.exports = plugin(({addVariant, addUtilities, corePlugins, e, postcss, the
                 // Merge contrasts in _allContrasts
                 contrasts[key] = colorContrasts;
             });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Generate scheme specific utility classes
+        // -----------------------------------------------------------------------------------------------------
+        const schemeUtilities = _.map(colorSchemes, (colorScheme) =>
+        {
+            const isDark = colorScheme === 'dark';
+            const dictionary = theme(`treo.customPropertyDictionary`);
+            const background = theme(`treo.material.colors.background.${colorScheme}`);
+            const foreground = theme(`treo.material.colors.foreground.${colorScheme}`);
+
+            // Prepare the root utilities and utilities objects
+            let rootUtilities = {};
+            let utilities = {};
+
+            // Generate and append custom properties as root utilities
+            rootUtilities = {
+                ..._.fromPairs(_.map(dictionary.background, (value, key) => [`--${key}`, background[value]])),
+                ..._.fromPairs(_.map(dictionary.foreground, (value, key) => [`--${key}`, foreground[value]]))
+            };
+
+            // If this is a light theme, add is-dark custom property
+            // If a custom property is not available, browsers will use
+            // the fallback value. In this case, since we use '--is-dark'
+            // as the name of our custom property, we can use it like this:
+            // background-color: var(--is-dark, red);
+            //
+            // Since we won't have '--is-dark' on dark themes, the above
+            // syntax can be interpreted as; 'Apply red color if we are
+            // using a dark theme!' which is easy to understand and remember.
+            if ( !isDark )
+            {
+                rootUtilities = {
+                    ...rootUtilities,
+                    '--is-dark': 'false'
+                };
+            }
+
+            // Generate and append main background and color as root utilities
+            rootUtilities = {
+                ...rootUtilities,
+                ...withOpacity(foreground.text),
+                ...withOpacity(background.background, 'bg')
+            };
+
+            // Generate base utility classes
+            utilities = {
+                '*, *::before, *::after'              : withOpacity(foreground.divider, 'border', false),
+                '[disabled] *'                        : withOpacity(foreground.disabled),
+                '.mat-icon'                           : (isDark ? withOpacity(foreground['secondary-text']) : withOpacity(foreground.icon)),
+                '.text-card'                          : withOpacity(background.card),
+                '.text-default'                       : withOpacity(foreground.text),
+                '.text-secondary'                     : withOpacity(foreground['secondary-text']),
+                '.text-hint'                          : withOpacity(foreground['hint-text']),
+                '.text-disabled'                      : withOpacity(foreground['disabled-text']),
+                '.divider'                            : withOpacity(foreground.divider),
+                '.bg-card'                            : withOpacity(background.card, 'bg'),
+                '.bg-default'                         : withOpacity(background.background, 'bg'),
+                '.bg-dialog'                          : withOpacity(background.card, 'bg'),
+                '.bg-hover'                           : withOpacity(background.hover, 'bg'),
+                '.hover\\:bg-hover:hover'             : withOpacity(background.hover, 'bg'),
+                '.group .group-hover\\:bg-hover:hover': withOpacity(background.hover, 'bg')
+            };
+
+            // Add dark variants
+            if ( isDark )
+            {
+                utilities = {
+                    ...utilities,
+                    '.dark\\:text-card'                          : withOpacity(background.card),
+                    '.dark\\:text-default'                       : withOpacity(foreground.text),
+                    '.dark\\:text-secondary'                     : withOpacity(foreground['secondary-text']),
+                    '.dark\\:text-hint'                          : withOpacity(foreground['hint-text']),
+                    '.dark\\:text-disabled'                      : withOpacity(foreground['disabled-text']),
+                    '.dark\\:divider'                            : withOpacity(foreground.divider),
+                    '.dark\\:bg-card'                            : withOpacity(background.card, 'bg'),
+                    '.dark\\:bg-default'                         : withOpacity(background.background, 'bg'),
+                    '.dark\\:bg-dialog'                          : withOpacity(background.card, 'bg'),
+                    '.dark\\:bg-hover'                           : withOpacity(background.hover, 'bg'),
+                    '.dark\\:hover\\:bg-hover:hover'             : withOpacity(background.hover, 'bg'),
+                    '.group .dark\\:group-hover\\:bg-hover:hover': withOpacity(background.hover, 'bg')
+                };
+            }
+
+            if ( !isDark )
+            {
+                return {
+                    ':root': rootUtilities,
+                    ...utilities,
+
+                    // Allow override dark theme using ".light" class
+                    '.dark .light': {
+                        ...rootUtilities,
+                        ...utilities
+                    }
+                };
+            }
+
+            return {
+                '.dark': {
+                    ...rootUtilities,
+                    ...utilities
+                }
+            };
+        });
+
+        addComponents(schemeUtilities);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Generate theme specific utility classes
@@ -247,118 +377,7 @@ module.exports = plugin(({addVariant, addUtilities, corePlugins, e, postcss, the
             };
         });
 
-        addUtilities(themeUtilities, {
-            variants        : [],
-            respectImportant: false
-        });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Generate scheme specific utility classes
-        // -----------------------------------------------------------------------------------------------------
-        const schemeUtilities = _.map(colorSchemes, (colorScheme) =>
-        {
-            const isDark = colorScheme === 'dark';
-            const dictionary = theme(`treo.customPropertyDictionary`);
-            const background = theme(`treo.material.colors.background.${colorScheme}`);
-            const foreground = theme(`treo.material.colors.foreground.${colorScheme}`);
-
-            // Prepare the root utilities and utilities objects
-            let rootUtilities = {};
-            let utilities = {};
-
-            // Generate and append custom properties as root utilities
-            rootUtilities = {
-                ..._.fromPairs(_.map(dictionary.background, (value, key) => [`--${key}`, background[value]])),
-                ..._.fromPairs(_.map(dictionary.foreground, (value, key) => [`--${key}`, foreground[value]]))
-            };
-
-            // If this is a light theme, add is-dark custom property
-            // If a custom property is not available, browsers will use
-            // the fallback value. In this case, since we use '--is-dark'
-            // as the name of our custom property, we can use it like this:
-            // background-color: var(--is-dark, red);
-            //
-            // Since we won't have '--is-dark' on dark themes, the above
-            // syntax can be interpreted as; 'Apply red color if we are
-            // using a dark theme!' which is easy to understand and remember.
-            if ( !isDark )
-            {
-                rootUtilities = {
-                    ...rootUtilities,
-                    '--is-dark': 'false'
-                };
-            }
-
-            // Generate and append main background and color as root utilities
-            rootUtilities = {
-                ...rootUtilities,
-                ...withOpacity(foreground.text),
-                ...withOpacity(background.background, 'bg')
-            };
-
-            // Generate base utility classes
-            utilities = {
-                '*, *::before, *::after' : withOpacity(foreground.divider, 'border'),
-                '[disabled] *'           : withOpacity(foreground.disabled),
-                '.mat-icon'              : (isDark ? withOpacity(foreground['secondary-text']) : withOpacity(foreground.icon)),
-                '.text-card'             : withOpacity(background.card),
-                '.text-default'          : withOpacity(foreground.text),
-                '.text-secondary'        : withOpacity(foreground['secondary-text']),
-                '.text-hint'             : withOpacity(foreground['hint-text']),
-                '.text-disabled'         : withOpacity(foreground['disabled-text']),
-                '.divider'               : withOpacity(foreground.divider),
-                '.bg-card'               : withOpacity(background.card, 'bg'),
-                '.bg-default'            : withOpacity(background.background, 'bg'),
-                '.bg-dialog'             : withOpacity(background.card, 'bg'),
-                '.bg-hover'              : withOpacity(background.hover, 'bg'),
-                '.hover\\:bg-hover:hover': withOpacity(background.hover, 'bg')
-            };
-
-            // Add dark variants
-            if ( isDark )
-            {
-                utilities = {
-                    ...utilities,
-                    '.dark\\:text-card'             : withOpacity(background.card),
-                    '.dark\\:text-default'          : withOpacity(foreground.text),
-                    '.dark\\:text-secondary'        : withOpacity(foreground['secondary-text']),
-                    '.dark\\:text-hint'             : withOpacity(foreground['hint-text']),
-                    '.dark\\:text-disabled'         : withOpacity(foreground['disabled-text']),
-                    '.dark\\:divider'               : withOpacity(foreground.divider),
-                    '.dark\\:bg-card'               : withOpacity(background.card, 'bg'),
-                    '.dark\\:bg-default'            : withOpacity(background.background, 'bg'),
-                    '.dark\\:bg-dialog'             : withOpacity(background.card, 'bg'),
-                    '.dark\\:bg-hover'              : withOpacity(background.hover, 'bg'),
-                    '.dark\\:hover\\:bg-hover:hover': withOpacity(background.hover, 'bg')
-                };
-            }
-
-            if ( !isDark )
-            {
-                return {
-                    ':root': rootUtilities,
-                    ...utilities,
-
-                    // Allow override dark theme using ".light" class
-                    '.dark .light': {
-                        ...rootUtilities,
-                        ...utilities
-                    }
-                };
-            }
-
-            return {
-                '.dark': {
-                    ...rootUtilities,
-                    ...utilities
-                }
-            };
-        });
-
-        addUtilities(schemeUtilities, {
-            variants        : [],
-            respectImportant: false
-        });
+        addComponents(themeUtilities);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Color combination utility classes

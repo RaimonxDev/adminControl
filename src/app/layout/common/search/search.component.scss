@@ -1,53 +1,24 @@
 search {
 
-    /* Bar appearance */
-    &.search-appearance-bar {
+    .search-bar {
 
-        .search-container {
-            position: absolute;
-            display: flex;
-            align-items: center;
+        .mat-form-field {
             flex: 1 0 auto;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 99;
-            background: var(--bg-card);
+            height: 100%;
 
-            .search-input {
-                flex: 1 0 auto;
+            .mat-form-field-wrapper {
                 height: 100%;
 
-                .mat-form-field-wrapper {
+                .mat-form-field-flex {
                     height: 100%;
+                    padding: 0 56px 0 24px;
+                    border: none;
+                    border-radius: 0 !important;
+                    background: transparent;
 
-                    .mat-form-field-flex {
-                        height: 100%;
-                        padding: 0 56px 0 24px;
-                        border: none;
-                        border-radius: 0 !important;
-                        background: transparent;
-
-                        @screen sm {
-                            padding: 0 72px 0 32px;
-                        }
+                    @screen sm {
+                        padding: 0 72px 0 32px;
                     }
-                }
-            }
-
-            .search-toggle-close {
-                position: absolute;
-                top: 50%;
-                right: 8px;
-                margin-top: -20px;
-                min-width: 40px;
-                width: 40px;
-                min-height: 40px;
-                height: 40px;
-
-                @screen sm {
-                    right: 32px;
                 }
             }
         }
@@ -55,23 +26,15 @@ search {
 
     /* Basic appearance */
     &.search-appearance-basic {
-        width: 100%;
-        max-width: 400px;
-        background: transparent;
+        //width: 100%;
+        //max-width: 400px;
+        //background: transparent;
 
         .search-container {
             display: flex;
             align-items: center;
             flex: 1 0 auto;
             overflow: hidden;
-
-            .search-icon {
-                margin-left: 16px;
-            }
-
-            .search-input {
-                width: 100%;
-            }
         }
     }
 }
@@ -183,7 +146,7 @@ search {
 
                         .mat-icon {
                             margin: 0;
-                            @apply icon-size-20;
+                            @apply icon-size-5;
                         }
                     }
                 }
