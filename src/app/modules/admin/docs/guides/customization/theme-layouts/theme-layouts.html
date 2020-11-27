@@ -32,11 +32,11 @@
                 <strong>app/core/config/</strong> directory. This configuration file is supplied as the default configuration to the <code>TreoConfigService</code> which is a custom
                 made configuration service to store, write and read application wide configurations.
             </p>
-            <treo-message appearance="outline"
-                          type="info">
+            <treo-alert appearance="outline"
+                        type="info">
                 More detailed information about <code>TreoConfigService</code> can be found in the <a [routerLink]="['/treo/services/config']">Treo > Services >
                 Config</a> section of this documentation.
-            </treo-message>
+            </treo-alert>
             <p>
                 After the default layout is read and set from the configuration service, <code>LayoutComponent</code> will also read the current route tree, walk through it starting
                 from the root all the way to the current route and look for the <strong>layout</strong> key-value from the <em>data</em> object. If found, <code>LayoutComponent</code>

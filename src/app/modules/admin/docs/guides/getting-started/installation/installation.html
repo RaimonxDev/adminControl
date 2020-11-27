@@ -61,9 +61,9 @@
             <p>
                 After choosing the version you want to install, unzip the .zip file of that version into your workspace directory.
             </p>
-            <treo-message appearance="outline"
-                          [showIcon]="false"
-                          type="basic">
+            <treo-alert appearance="outline"
+                        [showIcon]="false"
+                        type="basic">
                 <span treoMessageTitle>A note from the developer:</span>
                 <div>
                     You can completely skip the steps <strong>#1</strong> and <strong>#2</strong> and instead fork the project from Treo's Github repo directly. This will not only
@@ -72,7 +72,7 @@
                 <div class="mt-2">
                     For more information and to access Treo's Github repo, check out the Treo's Themeforest description page.
                 </div>
-            </treo-message>
+            </treo-alert>
 
             <h2>3. Run the installation command</h2>
             <p>
@@ -89,8 +89,8 @@
             <p>
                 This command will take some time and install all the required libraries into the <strong>node_modules</strong> directory in order for you to start developing.
             </p>
-            <treo-message appearance="outline"
-                          type="info">
+            <treo-alert appearance="outline"
+                        type="info">
                 <div>
                     After the installation completes, you may see warnings about deprecated packages and security risks. You can safely ignore those messages as Treo (and other
                     Angular apps) use Node.js for only development environment.
@@ -99,7 +99,7 @@
                     Unless you explicitly add a package to your <strong>dependencies</strong> list in <em>package.json</em> file, they won't be included into the final application
                     therefore they are not going cause any security risks.
                 </div>
-            </treo-message>
+            </treo-alert>
 
             <!-- Nav -->
             <div class="flex items-center xs:flex-col xs:items-stretch w-full mt-16">

@@ -13,9 +13,9 @@ import { contacts as contactsData, countries as countriesData, tags as tagsData 
 export class ContactsMockApi implements TreoMockApi
 {
     // Private
-    private _contacts: any[];
-    private _countries: any[];
-    private _tags: any[];
+    private _contacts: any[] = contactsData;
+    private _countries: any[] = countriesData;
+    private _tags: any[] = tagsData;
 
     /**
      * Constructor
@@ -26,11 +26,6 @@ export class ContactsMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._contacts = contactsData;
-        this._countries = countriesData;
-        this._tags = tagsData;
-
         // Register the API endpoints
         this.register();
     }
@@ -364,7 +359,7 @@ export class ContactsMockApi implements TreoMockApi
                 const avatar = request.body.avatar;
 
                 // Prepare the updated contact
-                let updatedContact = null;
+                let updatedContact: any = null;
 
                 // In a real world application, this would return the path
                 // of the saved image file (from host, S3 bucket, etc.) but,

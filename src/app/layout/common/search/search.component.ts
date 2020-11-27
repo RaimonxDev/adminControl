@@ -73,7 +73,7 @@ export class SearchComponent implements OnInit, OnDestroy
     @Input()
     set appearance(value: 'basic' | 'bar')
     {
-        // If the value is the same, return...
+        // Return if the value is the same
         if ( this._appearance === value )
         {
             return;
@@ -109,7 +109,7 @@ export class SearchComponent implements OnInit, OnDestroy
      */
     set opened(value: boolean)
     {
-        // If the value is the same, return...
+        // Return if the value is the same
         if ( this._opened === value )
         {
             return;
@@ -246,7 +246,7 @@ export class SearchComponent implements OnInit, OnDestroy
      */
     open(): void
     {
-        // Return, if it's already opened
+        // Return if it's already opened
         if ( this.opened )
         {
             return;
@@ -262,7 +262,7 @@ export class SearchComponent implements OnInit, OnDestroy
      */
     close(): void
     {
-        // Return, if it's already closed
+        // Return if it's already closed
         if ( !this.opened )
         {
             return;

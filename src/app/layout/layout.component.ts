@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ApplicationRef, Component, ElementRef, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatRadioChange } from '@angular/material/radio';
@@ -7,6 +7,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { TreoConfigService } from '@treo/services/config';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { tailwindConfig } from '@treo/tailwind/config';
+import { VERSION } from '@treo/version';
 import { Layout } from 'app/layout/layout.types';
 import { AppConfig } from 'app/core/config/app.config';
 
@@ -31,6 +32,7 @@ export class LayoutComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
+     * @param {ApplicationRef} _applicationRef
      * @param {DOCUMENT} _document
      * @param {Router} _router
      * @param {TreoConfigService} _treoConfigService
@@ -38,6 +40,7 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
+        private _applicationRef: ApplicationRef,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router,
         private _treoConfigService: TreoConfigService,
@@ -57,6 +60,12 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Insert id
+        this._insertId();
+
+        // Insert version number
+        this._insertVersion();
+
         // Get the available themes
         this.themes = tailwindConfig.themes;
 
@@ -129,6 +138,27 @@ export class LayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Insert id
+     *
+     * @private
+     */
+    private _insertId(): void
+    {
+        this._applicationRef.components[0].injector.get(ElementRef).nativeElement.id = 'treo';
+    }
+
+    /**
+     * Insert the version number
+     *
+     * @private
+     */
+    private _insertVersion(): void
+    {
+        const version = VERSION.full;
+        this._applicationRef.components[0].injector.get(ElementRef).nativeElement.setAttribute('treo-version', version);
+    }
 
     /**
      * Update the selected layout

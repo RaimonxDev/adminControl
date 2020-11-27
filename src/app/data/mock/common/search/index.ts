@@ -26,10 +26,6 @@ export class SearchMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._defaultNavigation = defaultNavigation;
-        this._contacts = contacts;
-
         // Register the API endpoints
         this.register();
     }
@@ -65,7 +61,7 @@ export class SearchMockApi implements TreoMockApi
 
                 // Filter the navigation
                 const navigationResults = cloneDeep(flatNavigation).filter((item) => {
-                    return (item.title.toLowerCase().includes(query) || (item.subtitle && item.subtitle.includes(query)));
+                    return (item.title?.toLowerCase().includes(query) || (item.subtitle && item.subtitle.includes(query)));
                 });
 
                 // Filter the contacts
@@ -80,7 +76,7 @@ export class SearchMockApi implements TreoMockApi
                 if ( navigationResults.length > 0 )
                 {
                     // Normalize the results while marking the found chars
-                    navigationResults.forEach((result) => {
+                    navigationResults.forEach((result: any) => {
 
                         // Normalize
                         result['hint'] = result.link;

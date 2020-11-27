@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { TreoMessageComponent } from '@treo/components/message/message.component';
+import { TreoAlertComponent } from '@treo/components/alert/alert.component';
 
 @NgModule({
     declarations: [
-        TreoMessageComponent
+        TreoAlertComponent
     ],
     imports     : [
         CommonModule,
@@ -14,9 +14,9 @@ import { TreoMessageComponent } from '@treo/components/message/message.component
         MatIconModule
     ],
     exports     : [
-        TreoMessageComponent
+        TreoAlertComponent
     ]
 })
-export class TreoMessageModule
+export class TreoAlertModule
 {
 }

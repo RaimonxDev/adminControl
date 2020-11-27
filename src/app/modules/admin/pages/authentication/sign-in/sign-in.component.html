@@ -23,13 +23,13 @@
                 </div>
 
                 <!-- Message -->
-                <treo-message *ngIf="message"
-                             [appearance]="message.appearance"
-                             [showIcon]="message.showIcon"
-                             [type]="message.type"
-                             [@shake]="message.shake">
+                <treo-alert *ngIf="message"
+                            [appearance]="message.appearance"
+                            [showIcon]="message.showIcon"
+                            [type]="message.type"
+                            [@shake]="message.shake">
                     {{message.content}}
-                </treo-message>
+                </treo-alert>
 
                 <!-- Sign in form -->
                 <form [formGroup]="signInForm">

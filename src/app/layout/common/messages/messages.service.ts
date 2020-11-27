@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { Message } from 'app/layout/common/messages/messages.types';
 import { map, switchMap, take } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 export class MessagesService
 {
     // Private
-    private _messages: BehaviorSubject<Message[] | null>;
+    private _messages: ReplaySubject<Message[]> = new ReplaySubject<Message[]>(1);
 
     /**
      * Constructor
@@ -21,8 +21,6 @@ export class MessagesService
         private _httpClient: HttpClient
     )
     {
-        // Set the private defaults
-        this._messages = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

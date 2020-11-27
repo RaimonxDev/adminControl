@@ -1,19 +1,19 @@
-<div class="treo-message-container"
-     *ngIf="!dismissed"
-     [@fadeIn]="dismissed === null ? false : !dismissed"
-     [@fadeOut]="dismissed === null ? false : !dismissed">
+<div class="treo-alert-container"
+     *ngIf="!dismissible || dismissible && !dismissed"
+     [@fadeIn]="!dismissed"
+     [@fadeOut]="!dismissed">
 
     <!-- Icon -->
-    <div class="treo-message-icon"
+    <div class="treo-alert-icon"
          *ngIf="showIcon">
 
         <!-- Custom icon -->
-        <div class="treo-message-custom-icon">
-            <ng-content select="[treoMessageIcon]"></ng-content>
+        <div class="treo-alert-custom-icon">
+            <ng-content select="[treoAlertIcon]"></ng-content>
         </div>
 
         <!-- Default icons -->
-        <div class="treo-message-default-icon">
+        <div class="treo-alert-default-icon">
 
             <mat-icon *ngIf="type === 'primary'"
                       [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
@@ -44,23 +44,23 @@
     </div>
 
     <!-- Content -->
-    <div class="treo-message-content">
+    <div class="treo-alert-content">
 
-        <div class="treo-message-title">
-            <ng-content select="[treoMessageTitle]"></ng-content>
+        <div class="treo-alert-title">
+            <ng-content select="[treoAlertTitle]"></ng-content>
         </div>
 
-        <div class="treo-message-message">
+        <div class="treo-alert-message">
             <ng-content></ng-content>
         </div>
 
     </div>
 
     <!-- Dismiss button -->
-    <button class="treo-message-dismiss-button"
+    <button class="treo-alert-dismiss-button"
             mat-icon-button
             (click)="dismiss()">
-        <mat-icon [svgIcon]="'close'"></mat-icon>
+        <mat-icon [svgIcon]="'heroicons_solid:x'"></mat-icon>
     </button>
 
 </div>

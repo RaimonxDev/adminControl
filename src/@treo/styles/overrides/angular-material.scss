@@ -63,7 +63,7 @@
 
         .mat-expansion-panel-body {
             line-height: 1.7;
-            color: var(--text-secondary);
+            color: var(--text-secondary) !important;
         }
     }
 }
@@ -128,7 +128,7 @@
         &.mat-progress-spinner-indeterminate-animation[mode=indeterminate] {
 
             circle {
-                stroke: currentColor;
+                stroke: currentColor !important;
                 animation-duration: 6000ms;
             }
         }
@@ -142,18 +142,18 @@
 .mat-mini-fab {
 
     /* Apply primary contrast color rather than main foreground color */
-    &.mat-primary:not([disabled]) {
-        color: var(--primary-contrast);
+    &.mat-primary:not(.mat-button-disabled) {
+        color: var(--primary-contrast) !important;
     }
 
     /* Apply accent contrast color rather than main foreground color */
-    &.mat-accent:not([disabled]) {
-        color: var(--accent-contrast);
+    &.mat-accent:not(.mat-button-disabled) {
+        color: var(--accent-contrast) !important;
     }
 
     /* Apply warn contrast color rather than main foreground color */
-    &.mat-warn:not([disabled]) {
-        color: var(--warn-contrast);
+    &.mat-warn:not(.mat-button-disabled) {
+        color: var(--warn-contrast) !important;
     }
 
     .mat-icon {
@@ -162,7 +162,7 @@
 
     /* Add hover and focus style on all buttons */
     .mat-button-focus-overlay {
-        background-color: rgba(theme('colors.coolGray.400'), 0.2) !important;
+        background-color: rgba(theme('colors.blueGray.400'), 0.2) !important;
 
         .dark & {
             background-color: rgba(0, 0, 0, 0.05) !important;
@@ -184,7 +184,7 @@
     &.cdk-program-focused {
 
         .mat-button-focus-overlay {
-            opacity: 1;
+            opacity: 1 !important;
         }
     }
 
@@ -198,7 +198,7 @@
         }
     }
 
-    &[disabled] {
+    &.mat-button-disabled {
 
         .mat-button-focus-overlay {
             opacity: 0 !important;
@@ -212,32 +212,32 @@
 .mat-stroked-button {
 
     /* Apply primary color rather than main foreground color */
-    &.mat-primary:not([disabled]) {
+    &.mat-primary:not(.mat-button-disabled) {
 
         .mat-icon {
-            color: var(--primary);
+            color: var(--primary) !important;
         }
     }
 
     /* Apply accent color rather than main foreground color */
-    &.mat-accent:not([disabled]) {
+    &.mat-accent:not(.mat-button-disabled) {
 
         .mat-icon {
-            color: var(--accent);
+            color: var(--accent) !important;
         }
     }
 
     /* Apply warn color rather than main foreground color */
-    &.mat-warn:not([disabled]) {
+    &.mat-warn:not(.mat-button-disabled) {
 
         .mat-icon {
-            color: var(--warn);
+            color: var(--warn) !important;
         }
     }
 
     /* Add hover and focus styles */
     .mat-button-focus-overlay {
-        background-color: rgba(theme('colors.coolGray.400'), 0.2) !important;
+        background-color: rgba(theme('colors.blueGray.400'), 0.2) !important;
 
         .dark & {
             background-color: rgba(0, 0, 0, 0.05) !important;
@@ -245,26 +245,40 @@
     }
 
     /* On primary colored buttons, use the primary color as focus overlay */
-    &.mat-primary:not([disabled]) {
+    &.mat-primary:not(.mat-button-disabled) {
 
         .mat-button-focus-overlay {
-            background-color: rgba(var(--primary), 0.1) !important;
+            background-color: var(--primary) !important;
         }
     }
 
     /* On accent colored buttons, use the accent color as focus overlay */
-    &.mat-accent:not([disabled]) {
+    &.mat-accent:not(.mat-button-disabled) {
 
         .mat-button-focus-overlay {
-            background-color: rgba(var(--accent), 0.1) !important;
+            background-color: var(--accent) !important;
         }
     }
 
     /* On warn colored buttons, use the warn color as focus overlay */
-    &.mat-warn:not([disabled]) {
+    &.mat-warn:not(.mat-button-disabled) {
 
         .mat-button-focus-overlay {
-            background-color: rgba(var(--warn), 0.1) !important;
+            background-color: var(--warn) !important;
+        }
+    }
+
+    &.mat-primary:not(.mat-button-disabled),
+    &.mat-accent:not(.mat-button-disabled),
+    &.mat-warn:not(.mat-button-disabled) {
+
+        &:hover,
+        &.cdk-keyboard-focused,
+        &.cdk-program-focused {
+
+            .mat-button-focus-overlay {
+                opacity: 0.1 !important;
+            }
         }
     }
 
@@ -273,7 +287,7 @@
     &.cdk-program-focused {
 
         .mat-button-focus-overlay {
-            opacity: 1;
+            opacity: 1 !important;
         }
     }
 
@@ -287,7 +301,7 @@
         }
     }
 
-    &[disabled] {
+    &.mat-button-disabled {
 
         .mat-button-focus-overlay {
             opacity: 0 !important;
@@ -299,19 +313,19 @@
 .mat-stroked-button {
 
     /* Border color */
-    &:not([disabled]) {
-        @apply border-coolGray-300;
+    &:not(.mat-button-disabled) {
+        @apply border-blueGray-300 !important;
 
         .dark & {
-            @apply border-coolGray-500;
+            @apply border-blueGray-500 !important;
         }
     }
 
-    &[disabled] {
-        @apply border-coolGray-200;
+    &.mat-button-disabled {
+        @apply border-blueGray-200 !important;
 
         .dark & {
-            @apply border-coolGray-600;
+            @apply border-blueGray-600 !important;
         }
     }
 }
@@ -368,7 +382,7 @@
 /*  @ Drawer
 /* ----------------------------------------------------------------------------------------------------- */
 .mat-drawer-backdrop.mat-drawer-shown {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
 /* ----------------------------------------------------------------------------------------------------- */
@@ -391,7 +405,7 @@
 
             /* Border color */
             .mat-form-field-flex {
-                border-color: var(--warn);
+                border-color: var(--warn) !important;
             }
         }
     }
@@ -403,7 +417,7 @@
 
             /* Background color */
             .mat-form-field-flex {
-                background-color: var(--bg-card);
+                background-color: var(--bg-card) !important;
             }
         }
     }
@@ -415,7 +429,7 @@
 
             /* Border color */
             .mat-form-field-flex {
-                border-color: var(--primary);
+                border-color: var(--primary) !important;
             }
         }
     }
@@ -481,11 +495,11 @@
             padding: 0 16px;
             border-width: 1px;
             background-color: white;
-            @apply border-coolGray-300 shadow-sm;
+            @apply border-blueGray-300 shadow-sm !important;
 
             .dark & {
-                background-color: rgba(0, 0, 0, 0.05);
-                @apply border-coolGray;
+                background-color: rgba(0, 0, 0, 0.05) !important;
+                @apply border-blueGray !important;
             }
 
             .mat-form-field-prefix {
@@ -535,7 +549,7 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--text-hint);
+                color: var(--text-hint) !important;
 
                 .mat-icon-button {
                     width: 40px;
@@ -547,7 +561,7 @@
                 .mat-icon,
                 .mat-icon-button,
                 .mat-select-value {
-                    color: var(--text-hint);
+                    color: var(--text-hint) !important;
                 }
 
                 /* Remove the margins from the mat-icon if it's inside a button */
@@ -690,7 +704,7 @@
                         backface-visibility: hidden;
                         transition: none;
                         font-weight: 500;
-                        color: var(--text-default);
+                        color: var(--text-default) !important;
                     }
                 }
             }
@@ -722,7 +736,7 @@
             }
 
             .mat-hint {
-                color: var(--text-hint);
+                color: var(--text-hint) !important;
             }
         }
     }
@@ -948,11 +962,11 @@
 
                 .mat-form-field-prefix,
                 .mat-form-field-suffix {
-                    background: var(--bg-default);
-                    @apply border-coolGray-300;
+                    background: var(--bg-default) !important;
+                    @apply border-blueGray-300 !important;
 
                     .dark & {
-                        @apply border-coolGray;
+                        @apply border-blueGray !important;
                     }
                 }
             }
@@ -983,22 +997,22 @@
 
     &::placeholder {
         transition: none !important;
-        color: var(--text-hint);
+        color: var(--text-hint) !important;
     }
 
     &::-moz-placeholder {
         transition: none !important;
-        color: var(--text-hint);
+        color: var(--text-hint) !important;
     }
 
     &::-webkit-input-placeholder {
         transition: none !important;
-        color: var(--text-hint);
+        color: var(--text-hint) !important;
     }
 
     &:-ms-input-placeholder {
         transition: none !important;
-        color: var(--text-hint);
+        color: var(--text-hint) !important;
     }
 }
 
@@ -1009,19 +1023,19 @@
 
         /* Placeholder color */
         &::placeholder {
-            color: var(--warn);
+            color: var(--warn) !important;
         }
 
         &::-moz-placeholder {
-            color: var(--warn);
+            color: var(--warn) !important;
         }
 
         &::-webkit-input-placeholder {
-            color: var(--warn);
+            color: var(--warn) !important;
         }
 
         &:-ms-input-placeholder {
-            color: var(--warn);
+            color: var(--warn) !important;
         }
     }
 }
@@ -1115,7 +1129,7 @@
 
     .mat-select-placeholder {
         transition: none !important;
-        color: var(--text-hint);
+        color: var(--text-hint) !important;
     }
 
     .mat-select-trigger {
@@ -1157,7 +1171,7 @@
 
         /* Placeholder color */
         .mat-select-placeholder {
-            color: var(--warn);
+            color: var(--warn) !important;
         }
     }
 }
@@ -1201,23 +1215,27 @@ textarea.mat-input-element {
     &.mat-primary {
 
         .mat-icon {
-            color: var(--primary-contrast);
+            color: var(--primary-contrast) !important;
         }
 
         .text-secondary {
-            color: rgba(var(--primary-contrast), 0.6);
+            color: var(--primary-contrast) !important;
+            opacity: 0.6 !important;
         }
 
         .text-hint {
-            color: rgba(var(--primary-contrast), 0.38);
+            color: var(--primary-contrast) !important;
+            opacity: 0.38 !important;
         }
 
         .text-disabled {
-            color: rgba(var(--primary-contrast), 0.38);
+            color: var(--primary-contrast) !important;
+            opacity: 0.38 !important;
         }
 
         .divider {
-            color: rgba(var(--primary-contrast), 0.12);
+            color: var(--primary-contrast) !important;
+            opacity: 0.12 !important;
         }
     }
 
@@ -1225,23 +1243,27 @@ textarea.mat-input-element {
     &.mat-accent {
 
         .mat-icon {
-            color: var(--accent-contrast);
+            color: var(--accent-contrast) !important;
         }
 
         .text-secondary {
-            color: rgba(var(--accent-contrast), 0.6);
+            color: var(--accent-contrast) !important;
+            opacity: 0.6 !important;
         }
 
         .text-hint {
-            color: rgba(var(--accent-contrast), 0.38);
+            color: var(--accent-contrast) !important;
+            opacity: 0.38 !important;
         }
 
         .text-disabled {
-            color: rgba(var(--accent-contrast), 0.38);
+            color: var(--accent-contrast) !important;
+            opacity: 0.38 !important;
         }
 
         .divider {
-            color: rgba(var(--accent-contrast), 0.12);
+            color: var(--accent-contrast) !important;
+            opacity: 0.12 !important;
         }
     }
 
@@ -1249,23 +1271,27 @@ textarea.mat-input-element {
     &.mat-warn {
 
         .mat-icon {
-            color: var(--warn-contrast);
+            color: var(--warn-contrast) !important;
         }
 
         .text-secondary {
-            color: rgba(var(--warn-contrast), 0.6);
+            color: var(--warn-contrast) !important;
+            opacity: 0.6 !important;
         }
 
         .text-hint {
-            color: rgba(var(--warn-contrast), 0.38);
+            color: var(--warn-contrast) !important;
+            opacity: 0.38 !important;
         }
 
         .text-disabled {
-            color: rgba(var(--warn-contrast), 0.38);
+            color: var(--warn-contrast) !important;
+            opacity: 0.38 !important;
         }
 
         .divider {
-            color: rgba(var(--warn-contrast), 0.12);
+            color: var(--warn-contrast) !important;
+            opacity: 0.12 !important;
         }
     }
 }

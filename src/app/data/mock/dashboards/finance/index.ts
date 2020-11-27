@@ -10,7 +10,7 @@ import { finance as financeData } from 'app/data/mock/dashboards/finance/data';
 export class FinanceMockApi implements TreoMockApi
 {
     // Private
-    private _finance: any;
+    private _finance: any = financeData;
 
     /**
      * Constructor
@@ -21,9 +21,6 @@ export class FinanceMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._finance = financeData;
-
         // Register the API endpoints
         this.register();
     }

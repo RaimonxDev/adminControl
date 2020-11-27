@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -16,21 +16,19 @@ import { ShortcutsService } from 'app/layout/common/shortcuts/shortcuts.service'
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs       : 'shortcuts'
 })
-export class ShortcutsComponent implements OnInit, OnDestroy
+export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
 {
-    mode: 'view' | 'modify' | 'add' | 'edit';
-    shortcutForm: FormGroup;
+    @Input() shortcuts: Shortcut[] = [];
+
+    // Public
+    mode: 'view' | 'modify' | 'add' | 'edit' = 'view';
+    shortcutForm!: FormGroup;
 
     // Private
-    private _overlayRef: OverlayRef;
-    private _shortcuts: Shortcut[];
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('shortcutsOrigin')
-    private _shortcutsOrigin: MatButton;
-
-    @ViewChild('shortcutsPanel')
-    private _shortcutsPanel: TemplateRef<any>;
+    private _overlayRef!: OverlayRef;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
+    @ViewChild('shortcutsOrigin') private _shortcutsOrigin!: MatButton;
+    @ViewChild('shortcutsPanel') private _shortcutsPanel!: TemplateRef<any>;
 
     /**
      * Constructor
@@ -49,35 +47,26 @@ export class ShortcutsComponent implements OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.mode = 'view';
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter & getter for shortcuts
-     */
-    @Input()
-    set shortcuts(value: Shortcut[])
-    {
-        // Store the value
-        this._shortcutsService.store(value);
-    }
-
-    get shortcuts(): Shortcut[]
-    {
-        return this._shortcuts;
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Shortcuts
+        if ( 'shortcuts' in changes )
+        {
+            // Store the shortcuts on the service
+            this._shortcutsService.store(changes.shortcuts.currentValue);
+        }
+    }
 
     /**
      * On init
@@ -100,7 +89,7 @@ export class ShortcutsComponent implements OnInit, OnDestroy
             .subscribe((shortcuts: Shortcut[]) => {
 
                 // Load the shortcuts
-                this._shortcuts = shortcuts;
+                this.shortcuts = shortcuts;
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
@@ -201,7 +190,7 @@ export class ShortcutsComponent implements OnInit, OnDestroy
     /**
      * Change the mode
      */
-    changeMode(mode): void
+    changeMode(mode: 'view' | 'modify' | 'add' | 'edit'): void
     {
         // Change the mode
         this.mode = mode;
@@ -222,7 +211,7 @@ export class ShortcutsComponent implements OnInit, OnDestroy
     /**
      * Edit a shortcut
      */
-    editShortcut(shortcut): void
+    editShortcut(shortcut: Shortcut): void
     {
         // Reset the form with the shortcut
         this.shortcutForm.reset(shortcut);

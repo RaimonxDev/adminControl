@@ -8,7 +8,7 @@ import { AuthUtils } from 'app/core/auth/auth.utils';
 export class AuthService
 {
     // Private
-    private _authenticated: boolean;
+    private _authenticated = false;
 
     /**
      * Constructor
@@ -19,8 +19,6 @@ export class AuthService
         private _httpClient: HttpClient
     )
     {
-        // Set the defaults
-        this._authenticated = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -37,7 +35,7 @@ export class AuthService
 
     get accessToken(): string
     {
-        return localStorage.getItem('access_token');
+        return localStorage.getItem('access_token') ?? '';
     }
 
     // -----------------------------------------------------------------------------------------------------

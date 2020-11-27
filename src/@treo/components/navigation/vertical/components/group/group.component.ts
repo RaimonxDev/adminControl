@@ -13,21 +13,13 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationGroupItemComponent implements OnInit, OnDestroy
 {
-    // Auto collapse
-    @Input()
-    autoCollapse: boolean;
-
-    // Item
-    @Input()
-    item: TreoNavigationItem;
-
-    // Name
-    @Input()
-    name: string;
+    @Input() autoCollapse!: boolean;
+    @Input() item!: TreoNavigationItem;
+    @Input() name!: string;
 
     // Private
-    private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
-    private _unsubscribeAll: Subject<any>;
+    private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -40,8 +32,6 @@ export class TreoVerticalNavigationGroupItemComponent implements OnInit, OnDestr
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

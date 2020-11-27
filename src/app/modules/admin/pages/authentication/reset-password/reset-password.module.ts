@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TreoCardModule } from '@treo/components/card';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { ResetPasswordComponent } from 'app/modules/admin/pages/authentication/reset-password/reset-password.component';
 import { resetPasswordRoutes } from 'app/modules/admin/pages/authentication/reset-password/reset-password.routing';
@@ -23,7 +23,7 @@ import { resetPasswordRoutes } from 'app/modules/admin/pages/authentication/rese
         MatInputModule,
         MatProgressSpinnerModule,
         TreoCardModule,
-        TreoMessageModule,
+        TreoAlertModule,
         SharedModule
     ]
 })

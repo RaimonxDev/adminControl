@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TreoCardModule } from '@treo/components/card';
 import { TreoHighlightModule } from '@treo/components/highlight';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { HelpersComponent } from 'app/modules/admin/ui/helpers/helpers.component';
 import { helpersRoutes } from 'app/modules/admin/ui/helpers/helpers.routing';
@@ -35,7 +35,7 @@ import { helpersRoutes } from 'app/modules/admin/ui/helpers/helpers.routing';
         MatTabsModule,
         TreoCardModule,
         TreoHighlightModule,
-        TreoMessageModule,
+        TreoAlertModule,
         SharedModule
     ]
 })

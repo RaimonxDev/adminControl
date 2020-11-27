@@ -9,17 +9,17 @@ import { TreoCardModule } from '@treo/components/card';
 import { TreoDateRangeModule } from '@treo/components/date-range';
 import { TreoDrawerModule } from '@treo/components/drawer';
 import { TreoHighlightModule } from '@treo/components/highlight';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { TreoNavigationModule } from '@treo/components/navigation';
 import { TreoScrollResetModule } from '@treo/directives/scroll-reset';
 import { SharedModule } from 'app/shared/shared.module';
 import { CoreFeaturesComponent } from 'app/modules/admin/docs/core-features/core-features.component';
 import { MockApiComponent } from 'app/modules/admin/docs/core-features/libraries/mock-api/mock-api.component';
+import { AlertComponent } from 'app/modules/admin/docs/core-features/components/alert/alert.component';
 import { CardComponent } from 'app/modules/admin/docs/core-features/components/card/card.component';
 import { DateRangeComponent } from 'app/modules/admin/docs/core-features/components/date-range/date-range.component';
 import { DrawerComponent } from 'app/modules/admin/docs/core-features/components/drawer/drawer.component';
 import { HighlightComponent } from 'app/modules/admin/docs/core-features/components/highlight/highlight.component';
-import { MessageComponent } from 'app/modules/admin/docs/core-features/components/message/message.component';
 import { NavigationComponent } from 'app/modules/admin/docs/core-features/components/navigation/navigation.component';
 import { AutogrowComponent } from 'app/modules/admin/docs/core-features/directives/autogrow/autogrow.component';
 import { ScrollbarComponent } from 'app/modules/admin/docs/core-features/directives/scrollbar/scrollbar.component';
@@ -35,11 +35,11 @@ import { coreFeaturesRoutes } from 'app/modules/admin/docs/core-features/core-fe
     declarations: [
         CoreFeaturesComponent,
         MockApiComponent,
+        AlertComponent,
         CardComponent,
         DateRangeComponent,
         DrawerComponent,
         HighlightComponent,
-        MessageComponent,
         NavigationComponent,
         AutogrowComponent,
         ScrollbarComponent,
@@ -57,11 +57,11 @@ import { coreFeaturesRoutes } from 'app/modules/admin/docs/core-features/core-fe
         MatSidenavModule,
         MatTabsModule,
         MatTreeModule,
+        TreoAlertModule,
         TreoCardModule,
         TreoDateRangeModule,
         TreoDrawerModule,
         TreoHighlightModule,
-        TreoMessageModule,
         TreoNavigationModule,
         TreoScrollResetModule,
         SharedModule,

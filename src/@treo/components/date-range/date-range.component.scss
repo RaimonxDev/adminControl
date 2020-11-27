@@ -11,11 +11,11 @@ treo-date-range {
         min-height: 48px;
         max-height: 48px;
         cursor: pointer;
-        @apply bg-coolGray-50 border-coolGray-300;
+        @apply bg-blueGray-50 border-blueGray-300;
 
         .dark & {
             background-color: rgba(0, 0, 0, 0.05);
-            @apply border-coolGray-500;
+            @apply border-blueGray-500;
         }
 
         .start,

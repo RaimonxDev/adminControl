@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -12,30 +12,20 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
     styles         : [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestroy
+export class TreoVerticalNavigationAsideItemComponent implements OnChanges, OnInit, OnDestroy
 {
-    active: boolean;
+    @Input() activeItemId = '';
+    @Input() autoCollapse!: boolean;
+    @Input() item!: TreoNavigationItem;
+    @Input() name!: string;
+    @Input() skipChildren = false;
 
-    // Auto collapse
-    @Input()
-    autoCollapse: boolean;
-
-    // Item
-    @Input()
-    item: TreoNavigationItem;
-
-    // Name
-    @Input()
-    name: string;
-
-    // Skip children
-    @Input()
-    skipChildren: boolean;
+    // Public
+    active = false;
 
     // Private
-    private _activeItemId: string;
-    private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
-    private _unsubscribeAll: Subject<any>;
+    private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -50,46 +40,26 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.skipChildren = false;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter & getter for activeItemId
-     *
-     * @param value
-     */
-    @Input()
-    set activeItemId(value: string)
-    {
-        // If the value is the same, return...
-        if ( this._activeItemId === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._activeItemId = value;
-
-        // Mark if active
-        this._markIfActive(this._router.url);
-    }
-
-    get activeItemId(): string
-    {
-        return this._activeItemId;
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Active item id
+        if ( 'activeItemId' in changes )
+        {
+            // Mark if active
+            this._markIfActive(this._router.url);
+        }
+    }
 
     /**
      * On init
@@ -105,7 +75,7 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
         // Attach a listener to the NavigationEnd event
         this._router.events
             .pipe(
-                filter(event => event instanceof NavigationEnd),
+                filter((event): event is NavigationEnd => event instanceof NavigationEnd),
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe((event: NavigationEnd) => {
@@ -146,7 +116,7 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
      * @param url
      * @private
      */
-    private _hasCurrentUrlAsChildren(item, url): boolean
+    private _hasCurrentUrlAsChildren(item: TreoNavigationItem, url: string): boolean
     {
         const children = item.children;
 
@@ -196,7 +166,7 @@ export class TreoVerticalNavigationAsideItemComponent implements OnInit, OnDestr
      *
      * @private
      */
-    private _markIfActive(url): void
+    private _markIfActive(url: string): void
     {
         // Check if the activeItemId is equals to this item id
         this.active = this.activeItemId === this.item.id;

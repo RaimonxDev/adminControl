@@ -11,7 +11,7 @@ import { messages as messagesData } from 'app/data/mock/common/messages/data';
 export class MessagesMockApi implements TreoMockApi
 {
     // Private
-    private _messages: any;
+    private _messages: any = messagesData;
 
     /**
      * Constructor
@@ -22,9 +22,6 @@ export class MessagesMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._messages = messagesData;
-
         // Register the API endpoints
         this.register();
     }
@@ -87,7 +84,7 @@ export class MessagesMockApi implements TreoMockApi
                 let updatedMessage = null;
 
                 // Find the message and update it
-                this._messages.forEach((item, index, messages) => {
+                this._messages.forEach((item: any, index: number, messages: any[]) => {
 
                     if ( item.id === id )
                     {
@@ -119,7 +116,7 @@ export class MessagesMockApi implements TreoMockApi
                 let deletedMessage = null;
 
                 // Find the message
-                const index = this._messages.findIndex((item) => item.id === id);
+                const index = this._messages.findIndex((item: any) => item.id === id);
 
                 // Store the deleted message
                 deletedMessage = cloneDeep(this._messages[index]);
@@ -141,7 +138,7 @@ export class MessagesMockApi implements TreoMockApi
             .reply(() => {
 
                 // Go through all messages
-                this._messages.forEach((item, index, messages) => {
+                this._messages.forEach((item: any, index: number, messages: any[]) => {
 
                     // Mark it as read
                     messages[index].read = true;
@@ -168,7 +165,7 @@ export class MessagesMockApi implements TreoMockApi
                 let updatedMessage = null;
 
                 // Find the message and update it
-                this._messages.forEach((item, index, messages) => {
+                this._messages.forEach((item: any, index: number, messages: any[]) => {
 
                     if ( item.id === message.id )
                     {

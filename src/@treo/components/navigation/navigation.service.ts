@@ -7,17 +7,14 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 export class TreoNavigationService
 {
     // Private
-    private _componentRegistry: Map<string, any>;
-    private _navigationStore: Map<string, TreoNavigationItem[]>;
+    private _componentRegistry: Map<string, any> = new Map<string, any>();
+    private _navigationStore: Map<string, TreoNavigationItem[]> = new Map<string, any>();
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the private defaults
-        this._componentRegistry = new Map<string, any>();
-        this._navigationStore = new Map<string, any>();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -75,7 +72,7 @@ export class TreoNavigationService
      */
     getNavigation(key: string): TreoNavigationItem[]
     {
-        return this._navigationStore.get(key);
+        return this._navigationStore.get(key) ?? [];
     }
 
     /**

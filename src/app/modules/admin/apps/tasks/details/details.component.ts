@@ -348,7 +348,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      */
     filterTagsInputKeyDown(event): void
     {
-        // Return, if the pressed key is not 'Enter'
+        // Return if the pressed key is not 'Enter'
         if ( event.key !== 'Enter' )
         {
             return;

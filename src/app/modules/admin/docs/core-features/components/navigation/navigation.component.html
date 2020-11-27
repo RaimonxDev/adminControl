@@ -39,11 +39,11 @@
                 <strong>Exported as: </strong><code>treoVerticalNavigation</code> and <code>treoHorizontalNavigation</code>
             </p>
 
-            <treo-message appearance="outline"
-                          type="info">
+            <treo-alert appearance="outline"
+                        type="info">
                 <strong>treo-navigation</strong> designed to work with data and it must be supplied in certain format. If you want to create a navigation from an HTML structure,
                 this component is not for you.
-            </treo-message>
+            </treo-alert>
 
             <h2>Module</h2>
             <textarea treo-highlight
@@ -659,7 +659,7 @@
                                 // Get the component -> navigation data -> item
                                 const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-                                // Return, if the navigation component does not exist
+                                // Return if the navigation component does not exist
                                 if ( !navComponent )
                                 {
                                     return null;
@@ -741,7 +741,7 @@
                                 // Get the component -> navigation data -> item
                                 const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-                                // Return, if the navigation component does not exist
+                                // Return if the navigation component does not exist
                                 if ( !navComponent )
                                 {
                                     return null;
@@ -816,7 +816,7 @@
                                 // Get the component -> navigation data -> item
                                 const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-                                // Return, if the navigation component does not exist
+                                // Return if the navigation component does not exist
                                 if ( !navComponent )
                                 {
                                     return null;
@@ -856,10 +856,10 @@
 
                         <ng-template matTabContent>
 
-                            <treo-message appearance="outline"
-                                          type="info">
+                            <treo-alert appearance="outline"
+                                        type="info">
                                 Reload the page to load the default navigation!
-                            </treo-message>
+                            </treo-alert>
                             <button class="mt-4"
                                     mat-flat-button
                                     [color]="'primary'"
@@ -902,7 +902,7 @@
                                 // Get the component -> navigation data -> item
                                 const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-                                // Return, if the navigation component does not exist
+                                // Return if the navigation component does not exist
                                 if ( !navComponent )
                                 {
                                     return null;

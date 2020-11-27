@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
+import { RuleSetLoader, RuleSetRule, RuleSetUseItem } from 'webpack';
 import { CustomWebpackBrowserSchema } from '@angular-builders/custom-webpack';
 
 module.exports = async (config: webpack.Configuration, options: CustomWebpackBrowserSchema) => {
@@ -22,27 +23,32 @@ module.exports = async (config: webpack.Configuration, options: CustomWebpackBro
             require('tailwindcss')({config: tailwindConfig})
         ];
 
-        // Find and loop through all scss rules
-        const scssRules = config.module.rules.filter((r) => r.test.test('.scss'));
-        for ( const scssRule of scssRules )
-        {
+        // Find all scss rules and loop through them if they exist
+        const scssRules: RuleSetRule[] | [] = config.module?.rules.filter((rule: RuleSetRule) => rule.test instanceof RegExp ? rule.test.test('.scss') : false) ?? [];
+
+        scssRules.forEach((scssRule: RuleSetRule) => {
+
             // Find the PostCSS loader
-            const postcssLoader = scssRule.use.find((item) => item.loader && item.loader.includes('postcss-loader'));
+            const postcssLoader: RuleSetUseItem | undefined = (scssRule.use as RuleSetLoader[])
+                .find((item) => (item as RuleSetLoader).loader?.includes('postcss-loader'));
 
             // Patch the plugins
-            const currentPluginsFunction = postcssLoader.options.plugins;
-            postcssLoader.options.plugins = (...args) => {
-                const currentPlugins = currentPluginsFunction.apply(this, args);
-                currentPlugins.splice(-1, 0, ...plugins);
-                return currentPlugins;
-            };
-        }
+            if ( postcssLoader && postcssLoader.options )
+            {
+                const currentPluginsFunction = (postcssLoader.options as any).plugins;
+                (postcssLoader.options as any).plugins = (...args: any) => {
+                    const currentPlugins = currentPluginsFunction.apply(this, args);
+                    currentPlugins.splice(-1, 0, ...plugins);
+                    return currentPlugins;
+                };
+            }
+        });
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Add a separate rule for certain files so they can be compiled by Tailwind before the SASS compiler
     // -----------------------------------------------------------------------------------------------------
-    config.module.rules.push({
+    config.module?.rules.push({
         include: [
             path.resolve(__dirname, 'src/@treo/styles/base.scss'),
             path.resolve(__dirname, 'src/@treo/styles/main.scss'),
@@ -68,7 +74,7 @@ module.exports = async (config: webpack.Configuration, options: CustomWebpackBro
     // -----------------------------------------------------------------------------------------------------
     // @ Webpack Plugins
     // -----------------------------------------------------------------------------------------------------
-    config.plugins.push(
+    config.plugins?.push(
         // Ignore watching related files to prevent triggering full re-compile when they modified
         new webpack.WatchIgnorePlugin([
             path.resolve(__dirname, 'tailwind.config.js'),
@@ -79,6 +85,11 @@ module.exports = async (config: webpack.Configuration, options: CustomWebpackBro
         // Replace __TAILWIND_CONFIG__ from any file with extracted Tailwind configuration
         new webpack.DefinePlugin({
             __TAILWIND_CONFIG__: require(path.resolve(__dirname, 'src/@treo/tailwind/config-extractor'))({tailwindConfig})
+        }),
+
+        // Replace __TREO_VERSION__ from any file with version number from package.json
+        new webpack.DefinePlugin({
+            __TREO_VERSION__: '"' + require(path.resolve(__dirname, 'package.json')).version + '"'
         })
     );
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { TreoHighlightModule } from '@treo/components/highlight';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { TreoNavigationModule } from '@treo/components/navigation';
 import { TreoScrollResetModule } from '@treo/directives/scroll-reset';
 import { SharedModule } from 'app/shared/shared.module';
@@ -37,7 +37,7 @@ import { otherComponentsRoutes } from 'app/modules/admin/docs/other-components/o
         RouterModule.forChild(otherComponentsRoutes),
         MatSidenavModule,
         TreoHighlightModule,
-        TreoMessageModule,
+        TreoAlertModule,
         TreoNavigationModule,
         TreoScrollResetModule,
         SharedModule

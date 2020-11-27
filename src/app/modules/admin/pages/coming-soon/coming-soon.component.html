@@ -19,12 +19,12 @@
                 <div class="subtitle">Do you want to be notified when we are ready? Register below so we can notify you about the launch!</div>
 
                 <!-- Message -->
-                <treo-message *ngIf="message"
-                             [showIcon]="message.showIcon"
-                             [type]="message.type"
-                             [@shake]="message.shake">
+                <treo-alert *ngIf="message"
+                            [showIcon]="message.showIcon"
+                            [type]="message.type"
+                            [@shake]="message.shake">
                     <div treoMessageContent>{{message.content}}</div>
-                </treo-message>
+                </treo-alert>
 
                 <!-- Coming soon form -->
                 <form [formGroup]="comingSoonForm">

@@ -11,8 +11,8 @@ import { tags as tagsData, tasks as tasksData } from 'app/data/mock/apps/tasks/d
 export class TasksMockApi implements TreoMockApi
 {
     // Private
-    private _tags: any[];
-    private _tasks: any[];
+    private _tags: any[] = tagsData;
+    private _tasks: any[] = tasksData;
 
     /**
      * Constructor
@@ -23,10 +23,6 @@ export class TasksMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._tags = tagsData;
-        this._tasks = tasksData;
-
         // Register the API endpoints
         this.register();
     }
@@ -215,7 +211,7 @@ export class TasksMockApi implements TreoMockApi
 
                     // Find this task's index within the tasks array that comes with the request
                     // and assign that index as the new order number for the task
-                    task.order = tasks.findIndex(item => item.id === task.id);
+                    task.order = tasks.findIndex((item: any) => item.id === task.id);
                 });
 
                 // Clone the tasks

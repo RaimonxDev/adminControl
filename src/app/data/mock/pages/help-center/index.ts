@@ -10,11 +10,11 @@ import { faqCategories as faqCategoriesData, faqs as faqsData, guideCategories a
 export class HelpCenterMockApi implements TreoMockApi
 {
     // Private
-    private _faqCategories: any[];
-    private _faqs: any[];
-    private _guideCategories: any[];
-    private _guides: any[];
-    private _guideContent: string;
+    private _faqCategories: any[] = faqCategoriesData;
+    private _faqs: any[] = faqsData;
+    private _guideCategories: any[] = guideCategoriesData;
+    private _guides: any[] = guidesData;
+    private _guideContent: string = guideContentData;
 
     /**
      * Constructor
@@ -25,13 +25,6 @@ export class HelpCenterMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._faqCategories = faqCategoriesData;
-        this._faqs = faqsData;
-        this._guideCategories = guideCategoriesData;
-        this._guides = guidesData;
-        this._guideContent = guideContentData;
-
         // Register the API endpoints
         this.register();
     }
@@ -123,7 +116,7 @@ export class HelpCenterMockApi implements TreoMockApi
                 if ( !slug )
                 {
                     // Parse the limit as an integer
-                    const limitNum = parseInt(limit, 10);
+                    const limitNum = parseInt(limit ?? '5', 10);
 
                     // Go through each category and set the results
                     categories.forEach((category) => {

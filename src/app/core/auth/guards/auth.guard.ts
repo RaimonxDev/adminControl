@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad
      * @param redirectURL
      * @private
      */
-    private _check(redirectURL): Observable<boolean>
+    private _check(redirectURL: string): Observable<boolean>
     {
         // Check the authentication status
         return this._authService.check()

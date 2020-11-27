@@ -35,7 +35,7 @@ export class NavigationComponent
         // Get the component -> navigation data -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-        // Return, if the navigation component does not exist
+        // Return if the navigation component does not exist
         if ( !navComponent )
         {
             return null;
@@ -60,7 +60,7 @@ export class NavigationComponent
         // Get the component -> navigation data -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-        // Return, if the navigation component does not exist
+        // Return if the navigation component does not exist
         if ( !navComponent )
         {
             return null;
@@ -84,7 +84,7 @@ export class NavigationComponent
         // Get the component -> navigation data -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-        // Return, if the navigation component does not exist
+        // Return if the navigation component does not exist
         if ( !navComponent )
         {
             return null;
@@ -107,7 +107,7 @@ export class NavigationComponent
         // Get the component -> navigation data -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
-        // Return, if the navigation component does not exist
+        // Return if the navigation component does not exist
         if ( !navComponent )
         {
             return null;

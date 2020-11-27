@@ -11,11 +11,11 @@ import { brands as brandsData, categories as categoriesData, products as product
 export class ECommerceInventoryMockApi implements TreoMockApi
 {
     // Private
-    private _categories: any[];
-    private _brands: any[];
-    private _products: any[];
-    private _tags: any[];
-    private _vendors: any[];
+    private _categories: any[] = categoriesData;
+    private _brands: any[] = brandsData;
+    private _products: any[] = productsData;
+    private _tags: any[] = tagsData;
+    private _vendors: any[] = vendorsData;
 
     /**
      * Constructor
@@ -26,13 +26,6 @@ export class ECommerceInventoryMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._categories = categoriesData;
-        this._brands = brandsData;
-        this._products = productsData;
-        this._tags = tagsData;
-        this._vendors = vendorsData;
-
         // Register the API endpoints
         this.register();
     }
@@ -83,11 +76,11 @@ export class ECommerceInventoryMockApi implements TreoMockApi
                 const search = request.params.get('search');
                 const sort = request.params.get('sort') || 'name';
                 const order = request.params.get('order') || 'asc';
-                const page = parseInt(request.params.get('page'), 10);
-                const size = parseInt(request.params.get('size'), 10);
+                const page = parseInt(request.params.get('page') ?? '1', 10);
+                const size = parseInt(request.params.get('size') ?? '10', 10);
 
                 // Clone the products
-                let products = cloneDeep(this._products);
+                let products: any[] | null = cloneDeep(this._products);
 
                 // Sort the products
                 if ( sort === 'sku' || sort === 'name' || sort === 'active' )

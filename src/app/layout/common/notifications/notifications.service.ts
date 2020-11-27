@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { Notification } from 'app/layout/common/notifications/notifications.types';
 import { map, switchMap, take } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 export class NotificationsService
 {
     // Private
-    private _notifications: BehaviorSubject<Notification[] | null>;
+    private _notifications: ReplaySubject<Notification[]> = new ReplaySubject<Notification[]>(1);
 
     /**
      * Constructor
@@ -21,8 +21,6 @@ export class NotificationsService
         private _httpClient: HttpClient
     )
     {
-        // Set the private defaults
-        this._notifications = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

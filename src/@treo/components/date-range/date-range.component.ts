@@ -27,34 +27,34 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     @Output()
     readonly rangeChanged: EventEmitter<{ start: string, end: string }>;
 
-    activeDates: { month1: Moment, month2: Moment };
+    activeDates: { month1: Moment | null, month2: Moment | null };
     setWhichDate: 'start' | 'end';
-    startTimeFormControl: FormControl;
-    endTimeFormControl: FormControl;
+    startTimeFormControl!: FormControl;
+    endTimeFormControl!: FormControl;
 
     // Private
     @HostBinding('class.treo-date-range')
     private _defaultClassNames;
 
     @ViewChild('matMonthView1')
-    private _matMonthView1: MatMonthView<any>;
+    private _matMonthView1!: MatMonthView<any>;
 
     @ViewChild('matMonthView2')
-    private _matMonthView2: MatMonthView<any>;
+    private _matMonthView2!: MatMonthView<any>;
 
     @ViewChild('pickerPanelOrigin', {read: ElementRef})
-    private _pickerPanelOrigin: ElementRef;
+    private _pickerPanelOrigin!: ElementRef;
 
     @ViewChild('pickerPanel')
-    private _pickerPanel: TemplateRef<any>;
+    private _pickerPanel!: TemplateRef<any>;
 
-    private _dateFormat: string;
+    private _dateFormat!: string;
     private _onChange: (value: any) => void;
     private _onTouched: (value: any) => void;
-    private _programmaticChange: boolean;
-    private _range: { start: Moment, end: Moment };
-    private _timeFormat: string;
-    private _timeRange: boolean;
+    private _programmaticChange!: boolean;
+    private _range: { start: Moment | null, end: Moment | null };
+    private _timeFormat!: string;
+    private _timeRange!: boolean;
     private readonly _timeRegExp: RegExp;
     private _unsubscribeAll: Subject<any>;
 
@@ -114,7 +114,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     @Input()
     set dateFormat(value: string)
     {
-        // Return, if the values are the same
+        // Return if the values are the same
         if ( this._dateFormat === value )
         {
             return;
@@ -137,7 +137,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     @Input()
     set timeFormat(value: string)
     {
-        // Return, if the values are the same
+        // Return if the values are the same
         if ( this._timeFormat === value )
         {
             return;
@@ -160,7 +160,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     @Input()
     set timeRange(value: boolean)
     {
-        // Return, if the values are the same
+        // Return if the values are the same
         if ( this._timeRange === value )
         {
             return;
@@ -173,8 +173,8 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
         if ( !value )
         {
             this.range = {
-                start: this._range.start.clone().startOf('day'),
-                end  : this._range.end.clone().endOf('day')
+                start: this._range?.start?.clone().startOf('day'),
+                end  : this._range?.end?.clone().endOf('day')
             };
         }
     }
@@ -245,7 +245,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
             this._range.end = end.clone();
 
             // If the selected end date is before the start date...
-            if ( this._range.start.isAfter(this._range.end) )
+            if ( this._range?.start?.isAfter(this._range.end) )
             {
                 // Set the start date to the end date but keep the start date's time
                 const startDate = end.clone().hours(this._range.start.hours()).minutes(this._range.start.minutes()).seconds(this._range.start.seconds());

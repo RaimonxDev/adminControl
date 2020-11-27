@@ -10,7 +10,7 @@ import { crypto as cryptoData } from 'app/data/mock/dashboards/crypto/data';
 export class CryptoMockApi implements TreoMockApi
 {
     // Private
-    private _crypto: any;
+    private _crypto: any = cryptoData;
 
     /**
      * Constructor
@@ -21,9 +21,6 @@ export class CryptoMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._crypto = cryptoData;
-
         // Register the API endpoints
         this.register();
     }

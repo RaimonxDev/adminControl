@@ -535,13 +535,13 @@ $treo-material-palettes: (
 ),
  ) !default;
 
-$background-light: ( status-bar:#d1d5db,  app-bar:#FFFFFF,  background:#f3f4f6,  hover:rgba(#9ca3af, 0.12),  card:#FFFFFF,  dialog:#FFFFFF,  disabled-button:rgba(#9ca3af, 0.38),  raised-button:#FFFFFF,  focused-button:#6b7280,  selected-button:#e5e7eb,  selected-disabled-button:#e5e7eb,  disabled-button-toggle:#d1d5db,  unselected-chip:#e5e7eb,  disabled-list-option:#d1d5db,  tooltip:#1f2937, );
+$background-light: ( status-bar:#cbd5e1,  app-bar:#FFFFFF,  background:#f1f5f9,  hover:rgba(#94a3b8, 0.12),  card:#FFFFFF,  dialog:#FFFFFF,  disabled-button:rgba(#94a3b8, 0.38),  raised-button:#FFFFFF,  focused-button:#64748b,  selected-button:#e2e8f0,  selected-disabled-button:#e2e8f0,  disabled-button-toggle:#cbd5e1,  unselected-chip:#e2e8f0,  disabled-list-option:#cbd5e1,  tooltip:#1e293b, );
 
-$background-dark: ( status-bar:#111827,  app-bar:#111827,  background:#111827,  hover:rgba(255, 255, 255, 0.05),  card:#1f2937,  dialog:#1f2937,  disabled-button:rgba(#111827, 0.38),  raised-button:#111827,  focused-button:#e5e7eb,  selected-button:rgba(255, 255, 255, 0.05),  selected-disabled-button:#1f2937,  disabled-button-toggle:#111827,  unselected-chip:#4b5563,  disabled-list-option:#e5e7eb,  tooltip:#6b7280, );
+$background-dark: ( status-bar:#0f172a,  app-bar:#0f172a,  background:#0f172a,  hover:rgba(255, 255, 255, 0.05),  card:#1e293b,  dialog:#1e293b,  disabled-button:rgba(#0f172a, 0.38),  raised-button:#0f172a,  focused-button:#e2e8f0,  selected-button:rgba(255, 255, 255, 0.05),  selected-disabled-button:#1e293b,  disabled-button-toggle:#0f172a,  unselected-chip:#475569,  disabled-list-option:#e2e8f0,  tooltip:#64748b, );
 
-$foreground-light: ( base:#000000,  divider:#e5e7eb,  dividers:#e5e7eb,  disabled:#9ca3af,  disabled-button:#9ca3af,  disabled-text:#9ca3af,  elevation:#000000,  hint-text:#9ca3af,  secondary-text:#6b7280,  icon:#6b7280,  icons:#6b7280,  text:#1f2937,  slider-min:#1f2937,  slider-off:#d1d5db,  slider-off-active:#9ca3af, );
+$foreground-light: ( base:#000000,  divider:#e2e8f0,  dividers:#e2e8f0,  disabled:#94a3b8,  disabled-button:#94a3b8,  disabled-text:#94a3b8,  elevation:#000000,  hint-text:#94a3b8,  secondary-text:#64748b,  icon:#64748b,  icons:#64748b,  text:#1e293b,  slider-min:#1e293b,  slider-off:#cbd5e1,  slider-off-active:#94a3b8, );
 
-$foreground-dark: ( base:#FFFFFF,  divider:rgba(#f3f4f6, 0.12),  dividers:rgba(#f3f4f6, 0.12),  disabled:#4b5563,  disabled-button:#1f2937,  disabled-text:#4b5563,  elevation:#000000,  hint-text:#6b7280,  secondary-text:#9ca3af,  icon:#f3f4f6,  icons:#f3f4f6,  text:#FFFFFF,  slider-min:#FFFFFF,  slider-off:#6b7280,  slider-off-active:#9ca3af, );
+$foreground-dark: ( base:#FFFFFF,  divider:rgba(#f1f5f9, 0.12),  dividers:rgba(#f1f5f9, 0.12),  disabled:#475569,  disabled-button:#1e293b,  disabled-text:#475569,  elevation:#000000,  hint-text:#64748b,  secondary-text:#94a3b8,  icon:#f1f5f9,  icons:#f1f5f9,  text:#FFFFFF,  slider-min:#FFFFFF,  slider-off:#64748b,  slider-off-active:#94a3b8, );
 
 @include angular-material-typography(
                     mat-typography-config(

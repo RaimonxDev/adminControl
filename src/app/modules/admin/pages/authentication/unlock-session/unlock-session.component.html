@@ -19,13 +19,13 @@
                 <div class="subtitle">Your session is locked due to inactivity</div>
 
                 <!-- Message -->
-                <treo-message *ngIf="message"
-                             [appearance]="message.appearance"
-                             [showIcon]="message.showIcon"
-                             [type]="message.type"
-                             [@shake]="message.shake">
+                <treo-alert *ngIf="message"
+                            [appearance]="message.appearance"
+                            [showIcon]="message.showIcon"
+                            [type]="message.type"
+                            [@shake]="message.shake">
                     <div treoMessageContent>{{message.content}}</div>
-                </treo-message>
+                </treo-alert>
 
                 <!-- Unlock form -->
                 <form [formGroup]="unlockSessionForm">

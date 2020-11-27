@@ -428,7 +428,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get the event
         const event = this.eventForm.value;
 
-        // Return, if this is a non-recurring event
+        // Return if this is a non-recurring event
         if ( !event.recurrence )
         {
             return;
@@ -508,7 +508,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get the event recurrence
         const recurrence = this.eventForm.get('recurrence').value;
 
-        // Return, if this is a non-recurring event
+        // Return if this is a non-recurring event
         if ( !recurrence )
         {
             return;
@@ -584,7 +584,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // After dialog closed
         dialogRef.afterClosed().subscribe((result) => {
 
-            // Return, if canceled
+            // Return if canceled
             if ( !result || !result.recurrence )
             {
                 return;
@@ -831,7 +831,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get event's calendar
         const calendar = this.calendars.find((item) => item.id === calendarEvent.event.extendedProps.calendarId);
 
-        // Return, if the calendar doesn't exist...
+        // Return if the calendar doesn't exist...
         if ( !calendar )
         {
             return;
@@ -929,7 +929,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get the original event
         const originalEvent = this.events.find(item => item.id === event.id);
 
-        // Return, if there are no changes made to the event
+        // Return if there are no changes made to the event
         if ( isEqual(eventWithoutRange, originalEvent) )
         {
             // Close the event panel

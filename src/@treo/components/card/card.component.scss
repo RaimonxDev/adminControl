@@ -12,10 +12,11 @@ treo-card {
         overflow: visible;
         transform-style: preserve-3d;
         transition: transform 1s;
+        perspective: 600px;
         background: transparent;
         @apply shadow-none;
 
-        &.treo-card-flipped {
+        &.treo-card-face-back {
 
             .treo-card-front {
                 visibility: hidden;

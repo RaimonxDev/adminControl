@@ -13,11 +13,11 @@ import { calendars as calendarsData, events as eventsData, exceptions as excepti
 export class CalendarMockApi implements TreoMockApi
 {
     // Private
-    private _calendars: any[];
-    private _events: any[];
-    private _exceptions: any[];
-    private _settings: any;
-    private _weekdays: any;
+    private _calendars: any[] = calendarsData;
+    private _events: any[] = eventsData;
+    private _exceptions: any[] = exceptionsData;
+    private _settings: any = settingsData;
+    private _weekdays: any = weekdaysData;
 
     /**
      * Constructor
@@ -28,13 +28,6 @@ export class CalendarMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._calendars = calendarsData;
-        this._events = eventsData;
-        this._exceptions = exceptionsData;
-        this._settings = settingsData;
-        this._weekdays = weekdaysData;
-
         // Register the API endpoints
         this.register();
     }
@@ -51,11 +44,11 @@ export class CalendarMockApi implements TreoMockApi
      * @param until
      * @private
      */
-    private _generateRuleset(event, dtStart, until): RRuleSet | RRule
+    private _generateRuleset(event: any, dtStart: any, until: any): RRuleSet | RRule
     {
         // Parse the recurrence rules
-        const parsedRules = {};
-        event.recurrence.split(';').forEach((rule) => {
+        const parsedRules: any = {};
+        event.recurrence.split(';').forEach((rule: string) => {
 
             // Split the rule
             const parsedRule = rule.split('=');
@@ -73,7 +66,7 @@ export class CalendarMockApi implements TreoMockApi
         });
 
         // Generate the rule array from the parsed rules
-        const rules = [];
+        const rules: string[] = [];
         Object.keys(parsedRules).forEach((key) => {
             rules.push(key + '=' + parsedRules[key]);
         });
@@ -220,7 +213,7 @@ export class CalendarMockApi implements TreoMockApi
                 const events = cloneDeep(this._events);
 
                 // Prepare the results
-                const results = [];
+                const results: any[] = [];
 
                 // Go through the events...
                 events.forEach((event) => {
@@ -460,8 +453,8 @@ export class CalendarMockApi implements TreoMockApi
                     recurringEvent.end = moment(originalEvent.start).subtract(1, 'day').endOf('day').toISOString();
 
                     // Parse the recurrence rules from the original event
-                    const parsedRules = {};
-                    originalEvent.recurrence.split(';').forEach((rule) => {
+                    const parsedRules: any = {};
+                    originalEvent.recurrence.split(';').forEach((rule: string) => {
                         const parsedRule = rule.split('=');
                         parsedRules[parsedRule[0]] = parsedRule[1];
                     });
@@ -470,14 +463,13 @@ export class CalendarMockApi implements TreoMockApi
                     parsedRules['UNTIL'] = moment(recurringEvent.end).utc().format('YYYYMMDD[T]HHmmss[Z]');
 
                     // Generate the rule string from the parsed rules
-                    const rules = [];
+                    const rules: string[] = [];
                     Object.keys(parsedRules).forEach((key) => {
                         rules.push(key + '=' + parsedRules[key]);
                     });
-                    const rrule = rules.join(';');
 
                     // Update the recurrence on the original recurring event
-                    recurringEvent.recurrence = rrule;
+                    recurringEvent.recurrence = rules.join(';');
 
                     // Create a new event from the event while ignoring the recurringEventId
                     const {recurringEventId, ...newEvent} = event;
@@ -513,7 +505,7 @@ export class CalendarMockApi implements TreoMockApi
             .reply((request) => {
 
                 // Get the event and mode
-                const event = JSON.parse(request.params.get('event'));
+                const event = JSON.parse(request.params.get('event') ?? '');
                 const mode = request.params.get('mode');
 
                 // Find the recurring event
@@ -561,8 +553,8 @@ export class CalendarMockApi implements TreoMockApi
                     recurringEvent.end = moment(event.start).subtract(1, 'day').endOf('day').toISOString();
 
                     // Parse the recurrence rules of the event
-                    const parsedRules = {};
-                    recurringEvent.recurrence.split(';').forEach((rule) => {
+                    const parsedRules: any = {};
+                    recurringEvent.recurrence.split(';').forEach((rule: string) => {
                         const parsedRule = rule.split('=');
                         parsedRules[parsedRule[0]] = parsedRule[1];
                     });
@@ -571,14 +563,13 @@ export class CalendarMockApi implements TreoMockApi
                     parsedRules['UNTIL'] = moment(event.end).utc().format('YYYYMMDD[T]HHmmss[Z]');
 
                     // Generate the rule string from the parsed rules
-                    const rules = [];
+                    const rules: string[] = [];
                     Object.keys(parsedRules).forEach((key) => {
                         rules.push(key + '=' + parsedRules[key]);
                     });
-                    const rrule = rules.join(';');
 
                     // Update the recurrence of the event
-                    recurringEvent.recurrence = rrule;
+                    recurringEvent.recurrence = rules.join(';');
                 }
 
                 // All

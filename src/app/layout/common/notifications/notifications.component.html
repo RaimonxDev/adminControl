@@ -16,7 +16,7 @@
 
         <!-- Header -->
         <div class="flex-shrink-0 w-full h-1 bg-teal-600"></div>
-        <div class="flex flex-shrink-0 items-center py-3 pr-4 pl-6 border-b bg-coolGray-100 dark:bg-coolGray-800">
+        <div class="flex flex-shrink-0 items-center py-3 pr-4 pl-6 border-b bg-blueGray-100 dark:bg-blueGray-800">
             <div class="text-lg font-medium leading-10">Notifications</div>
             <div class="ml-auto">
                 <button mat-icon-button
@@ -35,7 +35,7 @@
             <!-- Notifications -->
             <ng-container *ngFor="let notification of notifications">
 
-                <div class="flex border-b group last:border-b-0 hover:bg-coolGray-50 dark:hover:bg-black dark:hover:bg-opacity-5"
+                <div class="flex border-b group last:border-b-0 hover:bg-blueGray-50 dark:hover:bg-black dark:hover:bg-opacity-5"
                      [ngClass]="{'unread': !notification.read}">
 
                     <!-- Notification with a link -->
@@ -71,7 +71,7 @@
                                 (click)="toggleRead(notification)"
                                 [matTooltip]="notification.read ? 'Mark as unread' : 'Mark as read'">
                             <span class="w-2 h-2 rounded-full"
-                                  [ngClass]="{'bg-coolGray-400 dark:bg-coolGray-500 sm:opacity-0 sm:group-hover:opacity-100': notification.read,
+                                  [ngClass]="{'bg-blueGray-400 dark:bg-blueGray-500 sm:opacity-0 sm:group-hover:opacity-100': notification.read,
                                               'bg-teal-600': !notification.read}"
                             ></span>
                         </button>
@@ -93,7 +93,7 @@
                 <ng-template #notificationContent>
 
                     <!-- Icon -->
-                    <div class="flex flex-shrink-0 items-center justify-center w-8 h-8 mr-4 rounded-full bg-coolGray-100 dark:bg-coolGray-700"
+                    <div class="flex flex-shrink-0 items-center justify-center w-8 h-8 mr-4 rounded-full bg-blueGray-100 dark:bg-blueGray-700"
                          *ngIf="notification.icon && !notification.image">
                         <mat-icon class="icon-size-5"
                                   [svgIcon]="notification.icon">

@@ -10,7 +10,7 @@ import { analytics as analyticsData } from 'app/data/mock/dashboards/analytics/d
 export class AnalyticsMockApi implements TreoMockApi
 {
     // Private
-    private _analytics: any;
+    private _analytics: any = analyticsData;
 
     /**
      * Constructor
@@ -21,9 +21,6 @@ export class AnalyticsMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._analytics = analyticsData;
-
         // Register the API endpoints
         this.register();
     }

@@ -10,7 +10,7 @@ import { user as userData } from 'app/data/mock/common/user/data';
 export class UserMockApi implements TreoMockApi
 {
     // Private
-    private _user: any;
+    private _user: any = userData;
 
     /**
      * Constructor
@@ -21,9 +21,6 @@ export class UserMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._user = userData;
-
         // Register the API endpoints
         this.register();
     }

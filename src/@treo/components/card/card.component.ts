@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { TreoAnimations } from '@treo/animations';
+import { TreoCardFace } from '@treo/components/card/card.types';
 
 @Component({
     selector     : 'treo-card',
@@ -9,29 +10,16 @@ import { TreoAnimations } from '@treo/animations';
     animations   : TreoAnimations,
     exportAs     : 'treoCard'
 })
-export class TreoCardComponent
+export class TreoCardComponent implements OnChanges
 {
-    expanded: boolean;
-    flipped: boolean;
-
-    // Private
-    private _flippable: boolean;
+    @Input() expanded = false;
+    @Input() face: TreoCardFace | null = null;
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer2
      */
-    constructor(
-        private _elementRef: ElementRef,
-        private _renderer2: Renderer2
-    )
+    constructor()
     {
-        // Set the defaults
-        this.expanded = false;
-        this.flippable = false;
-        this.flipped = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -39,87 +27,33 @@ export class TreoCardComponent
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter & getter for flippable
+     * Host binding for classes
+     */
+    @HostBinding('class') get classList(): any
+    {
+        return {
+            [`treo-card-expanded`]         : this.expanded,
+            [`treo-card-face-${this.face}`]: this.face !== null,
+            'treo-card-flippable'          : this.face !== null
+        };
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
      *
-     * @param value
+     * @param changes
      */
-    @Input()
-    set flippable(value: boolean)
+    ngOnChanges(changes: SimpleChanges): void
     {
-        // If the value is the same, return...
-        if ( this._flippable === value )
+        // Expanded
+        if ( 'expanded' in changes )
         {
-            return;
-        }
-
-        // Update the class name
-        if ( value )
-        {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'treo-card-flippable');
-        }
-        else
-        {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'treo-card-flippable');
-        }
-
-        // Store the value
-        this._flippable = value;
-    }
-
-    get flippable(): boolean
-    {
-        return this._flippable;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Expand the details
-     */
-    expand(): void
-    {
-        this.expanded = true;
-    }
-
-    /**
-     * Collapse the details
-     */
-    collapse(): void
-    {
-        this.expanded = false;
-    }
-
-    /**
-     * Toggle the expand/collapse status
-     */
-    toggleExpanded(): void
-    {
-        this.expanded = !this.expanded;
-    }
-
-    /**
-     * Flip the card
-     */
-    flip(): void
-    {
-        // Return if not flippable
-        if ( !this.flippable )
-        {
-            return;
-        }
-
-        this.flipped = !this.flipped;
-
-        // Update the class name
-        if ( this.flipped )
-        {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'treo-card-flipped');
-        }
-        else
-        {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'treo-card-flipped');
+            // Interpret empty string as 'true'
+            this.expanded = changes.expanded.currentValue === '' ? true : changes.expanded.currentValue;
         }
     }
 }

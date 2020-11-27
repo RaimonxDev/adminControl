@@ -6,93 +6,29 @@ import { take } from 'rxjs/operators';
 @Injectable()
 export class TreoMockApiRequestHandler
 {
+    interceptedRequest!: HttpRequest<any>;
+
     // Private
-    private _delay: number;
-    private _executionCount: number;
-    private _executionLimit: number;
-    private _interceptedRequest: HttpRequest<any>;
-    private _replyCallback: any;
-    private _url: string;
+    private _executionCount = 0;
+    private _executionLimit = 0;
+    private _replyCallback: ((req: HttpRequest<any>) => ([number, any | string] | Observable<any>)) | undefined = undefined;
 
     /**
      * Constructor
+     *
+     * @param url
+     * @param delay
      */
-    constructor()
+    constructor(
+        public url: string,
+        public delay: number
+    )
     {
-        // Set the private defaults
-        this._executionCount = 0;
-        this._executionLimit = 0;
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter & getter for delay
-     *
-     * @param value
-     */
-    set delay(value: number)
-    {
-        // Return, if the value is the same
-        if ( this._delay === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._delay = value;
-    }
-
-    get delay(): number
-    {
-        return this._delay;
-    }
-
-    /**
-     * Setter & getter for url
-     *
-     * @param value
-     */
-    set url(value: string)
-    {
-        // Return, if the value is the same
-        if ( this._url === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._url = value;
-    }
-
-    get url(): string
-    {
-        return this._url;
-    }
-
-    /**
-     * Setter & getter for intercepted request
-     *
-     * @param value
-     */
-    set interceptedRequest(value: HttpRequest<any>)
-    {
-        // Return, if the value is the same
-        if ( this._interceptedRequest === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._interceptedRequest = value;
-    }
-
-    get interceptedRequest(): HttpRequest<any>
-    {
-        return this._interceptedRequest;
-    }
 
     /**
      * Getter for reply callback
@@ -103,6 +39,12 @@ export class TreoMockApiRequestHandler
         if ( this._executionLimit > 0 && this._executionCount === this._executionLimit )
         {
             return throwError('Execution limit reached');
+        }
+
+        // Throw an error, if the reply callback has not been set
+        if ( !this._replyCallback )
+        {
+            return throwError('Reply callback does not exist!');
         }
 
         // Throw an error, if the intercepted request has not been set

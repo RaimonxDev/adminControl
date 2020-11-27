@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { MatButton } from '@angular/material/button';
@@ -15,20 +15,18 @@ import { MessagesService } from 'app/layout/common/messages/messages.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs       : 'messages'
 })
-export class MessagesComponent implements OnInit, OnDestroy
+export class MessagesComponent implements OnInit, OnChanges, OnDestroy
 {
-    unreadCount: number;
+    @Input() messages: Message[] = [];
+
+    // Public
+    unreadCount = 0;
 
     // Private
-    private _messages: Message[];
-    private _overlayRef: OverlayRef;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('messagesOrigin')
-    private _messagesOrigin: MatButton;
-
-    @ViewChild('messagesPanel')
-    private _messagesPanel: TemplateRef<any>;
+    private _overlayRef!: OverlayRef;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
+    @ViewChild('messagesOrigin') private _messagesOrigin!: MatButton;
+    @ViewChild('messagesPanel') private _messagesPanel!: TemplateRef<any>;
 
     /**
      * Constructor
@@ -45,35 +43,26 @@ export class MessagesComponent implements OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.unreadCount = 0;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter & getter for messages
-     */
-    @Input()
-    set messages(value: Message[])
-    {
-        // Store the value
-        this._messagesService.store(value);
-    }
-
-    get messages(): Message[]
-    {
-        return this._messages;
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Messages
+        if ( 'messages' in changes )
+        {
+            // Store the messages on the service
+            this._messagesService.store(changes.messages.currentValue);
+        }
+    }
 
     /**
      * On init
@@ -86,7 +75,7 @@ export class MessagesComponent implements OnInit, OnDestroy
             .subscribe((messages: Message[]) => {
 
                 // Load the messages
-                this._messages = messages;
+                this.messages = messages;
 
                 // Calculate the unread count
                 this._calculateUnreadCount();
@@ -127,7 +116,7 @@ export class MessagesComponent implements OnInit, OnDestroy
 
         if ( this.messages && this.messages.length )
         {
-            count = this.messages.filter((message) => message.read === false).length;
+            count = this.messages.filter(message => !message.read).length;
         }
 
         this.unreadCount = count;
@@ -217,7 +206,7 @@ export class MessagesComponent implements OnInit, OnDestroy
     /**
      * Toggle read status of the given message
      */
-    toggleRead(message): void
+    toggleRead(message: Message): void
     {
         // Toggle the read status
         message.read = !message.read;
@@ -229,7 +218,7 @@ export class MessagesComponent implements OnInit, OnDestroy
     /**
      * Delete the given message
      */
-    delete(message): void
+    delete(message: Message): void
     {
         // Delete the message
         this._messagesService.delete(message.id).subscribe();

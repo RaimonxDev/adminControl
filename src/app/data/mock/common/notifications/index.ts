@@ -11,7 +11,7 @@ import { notifications as notificationsData } from 'app/data/mock/common/notific
 export class NotificationsMockApi implements TreoMockApi
 {
     // Private
-    private _notifications: any;
+    private _notifications: any = notificationsData;
 
     /**
      * Constructor
@@ -22,9 +22,6 @@ export class NotificationsMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._notifications = notificationsData;
-
         // Register the API endpoints
         this.register();
     }
@@ -87,7 +84,7 @@ export class NotificationsMockApi implements TreoMockApi
                 let updatedNotification = null;
 
                 // Find the notification and update it
-                this._notifications.forEach((item, index, notifications) => {
+                this._notifications.forEach((item: any, index: number, notifications: any[]) => {
 
                     if ( item.id === id )
                     {
@@ -119,7 +116,7 @@ export class NotificationsMockApi implements TreoMockApi
                 let deletedNotification = null;
 
                 // Find the notification
-                const index = this._notifications.findIndex((item) => item.id === id);
+                const index = this._notifications.findIndex((item: any) => item.id === id);
 
                 // Store the deleted notification
                 deletedNotification = cloneDeep(this._notifications[index]);
@@ -141,7 +138,7 @@ export class NotificationsMockApi implements TreoMockApi
             .reply(() => {
 
                 // Go through all notifications
-                this._notifications.forEach((item, index, notifications) => {
+                this._notifications.forEach((item: any, index: number, notifications: any[]) => {
 
                     // Mark it as read
                     notifications[index].read = true;
@@ -168,7 +165,7 @@ export class NotificationsMockApi implements TreoMockApi
                 let updatedNotification = null;
 
                 // Find the notification and update it
-                this._notifications.forEach((item, index, notifications) => {
+                this._notifications.forEach((item: any, index: number, notifications: any[]) => {
 
                     if ( item.id === notification.id )
                     {

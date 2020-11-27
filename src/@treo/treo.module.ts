@@ -2,11 +2,13 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TreoMediaWatcherModule } from '@treo/services/media-watcher/media-watcher.module';
 import { TreoSplashScreenModule } from '@treo/services/splash-screen/splash-screen.module';
+import { TreoUtilsModule } from '@treo/services/utils/utils.module';
 
 @NgModule({
     imports  : [
         TreoMediaWatcherModule,
-        TreoSplashScreenModule
+        TreoSplashScreenModule,
+        TreoUtilsModule
     ],
     providers: [
         {

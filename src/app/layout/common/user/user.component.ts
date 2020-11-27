@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -13,14 +13,13 @@ import { UserService } from 'app/layout/common/user/user.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs       : 'user'
 })
-export class UserComponent implements OnInit, OnDestroy
+export class UserComponent implements OnChanges, OnInit, OnDestroy
 {
-    @Input()
-    showAvatar: boolean;
+    @Input() showAvatar = true;
+    @Input() user!: User;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
-    private _user: User;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -35,40 +34,26 @@ export class UserComponent implements OnInit, OnDestroy
         private _userService: UserService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.showAvatar = true;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter & getter for user
-     *
-     * @param value
-     */
-    @Input()
-    set user(value: User)
-    {
-        // Save the user
-        this._user = value;
-
-        // Store the user in the service
-        this._userService.user = value;
-    }
-
-    get user(): User
-    {
-        return this._user;
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // User
+        if ( 'user' in changes )
+        {
+            // Store the user on the service
+            this._userService.user = changes.user.currentValue;
+        }
+    }
 
     /**
      * On init
@@ -79,7 +64,7 @@ export class UserComponent implements OnInit, OnDestroy
         this._userService.user$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((user: User) => {
-                this._user = user;
+                this.user = user;
             });
     }
 
@@ -102,7 +87,7 @@ export class UserComponent implements OnInit, OnDestroy
      *
      * @param status
      */
-    updateUserStatus(status): void
+    updateUserStatus(status: string): void
     {
         // Update the user data
         this.user.status = status;

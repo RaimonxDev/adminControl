@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
-import { TreoMessageService } from '@treo/components/message';
+import { TreoAlertService } from '@treo/components/alert';
 
 @Component({
-    selector   : 'messages',
-    templateUrl: './message.component.html',
+    selector   : 'alert',
+    templateUrl: './alert.component.html',
     styles     : ['']
 })
-export class MessageComponent
+export class AlertComponent
 {
     /**
      * Constructor
      *
-     * @param {TreoMessageService} _treoMessageService
+     * @param {TreoAlertService} _treoAlertService
      */
     constructor(
-        private _treoMessageService: TreoMessageService
+        private _treoAlertService: TreoAlertService
     )
     {
-
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -25,25 +24,25 @@ export class MessageComponent
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Dismiss a message box via the service
+     * Dismiss the alert via the service
      *
      * @param name
      */
-    dismiss(name): void
+    dismiss(name: string): void
     {
         // Dismiss
-        this._treoMessageService.dismiss(name);
+        this._treoAlertService.dismiss(name);
     }
 
     /**
-     * Show a message box via the service
+     * Show the alert via the service
      *
      * @param name
      */
-    show(name): void
+    show(name: string): void
     {
         // Show
-        this._treoMessageService.show(name);
+        this._treoAlertService.show(name);
     }
 
 }

@@ -19,12 +19,12 @@
         <div class="card">
 
             <!-- Message -->
-            <treo-message *ngIf="message"
-                         [appearance]="'outline'"
-                         [type]="message.type"
-                         [showIcon]="false">
+            <treo-alert *ngIf="message"
+                        [appearance]="'outline'"
+                        [type]="message.type"
+                        [showIcon]="false">
                 {{message.content}}
-            </treo-message>
+            </treo-alert>
 
             <form [formGroup]="supportForm">
 

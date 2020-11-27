@@ -7,15 +7,13 @@ import { TreoDrawerComponent } from '@treo/components/drawer/drawer.component';
 export class TreoDrawerService
 {
     // Private
-    private _componentRegistry: Map<string, TreoDrawerComponent>;
+    private _componentRegistry: Map<string, TreoDrawerComponent> = new Map<string, TreoDrawerComponent>();
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the defaults
-        this._componentRegistry = new Map<string, TreoDrawerComponent>();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -48,7 +46,7 @@ export class TreoDrawerService
      *
      * @param name
      */
-    getComponent(name: string): TreoDrawerComponent
+    getComponent(name: string): TreoDrawerComponent | undefined
     {
         return this._componentRegistry.get(name);
     }

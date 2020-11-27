@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSelectModule } from '@angular/material/select';
+import { TreoAutogrowModule } from '@treo/directives/autogrow';
 import { SharedModule } from 'app/shared/shared.module';
 import { FormsFieldsComponent } from 'app/modules/admin/ui/forms/fields/fields.component';
 import { formsFieldsRoutes } from 'app/modules/admin/ui/forms/fields/fields.routing';
@@ -30,6 +31,7 @@ import { formsFieldsRoutes } from 'app/modules/admin/ui/forms/fields/fields.rout
         MatMenuModule,
         MatMomentDateModule,
         MatSelectModule,
+        TreoAutogrowModule,
         SharedModule
     ]
 })

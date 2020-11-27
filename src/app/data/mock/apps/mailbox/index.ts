@@ -11,11 +11,11 @@ import { filters as filtersData, folders as foldersData, labels as labelsData, m
 export class MailboxMockApi implements TreoMockApi
 {
     // Private
-    private _filters: any[];
-    private _folders: any[];
-    private _mails: any[];
-    private _labels: any[];
-    private _settings: any;
+    private _filters: any[] = filtersData;
+    private _folders: any[] = foldersData;
+    private _mails: any[] = mailsData;
+    private _labels: any[] = labelsData;
+    private _settings: any = settingsData;
 
     /**
      * Constructor
@@ -26,13 +26,6 @@ export class MailboxMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._filters = filtersData;
-        this._folders = foldersData;
-        this._mails = mailsData;
-        this._labels = labelsData;
-        this._settings = settingsData;
-
         // Register the API endpoints
         this.register();
     }
@@ -287,7 +280,7 @@ export class MailboxMockApi implements TreoMockApi
                 const byLabel = request.params.get('label');
 
                 // Clone the mails data to prevent accidental data updates
-                let mails = cloneDeep(this._mails);
+                let mails: any[] | null = cloneDeep(this._mails);
 
                 // Filter the mails depending on the requested by type
                 mails = mails.filter((mail) => {
@@ -324,7 +317,7 @@ export class MailboxMockApi implements TreoMockApi
                 const resultsPerPage = 10;
 
                 // Get the requested page number
-                const page = parseInt(request.params.get('page'), 10);
+                const page = parseInt(request.params.get('page') ?? '1', 10);
 
                 // Calculate pagination details
                 const begin = (page - 1) * resultsPerPage;

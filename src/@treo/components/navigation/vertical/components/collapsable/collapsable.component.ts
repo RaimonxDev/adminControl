@@ -16,29 +16,15 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, OnDestroy
 {
-    // Auto collapse
-    @Input()
-    autoCollapse: boolean;
-
-    // Item
-    @Input()
-    item: TreoNavigationItem;
-
-    // Collapsed
-    @HostBinding('class.treo-vertical-navigation-item-collapsed')
-    isCollapsed: boolean;
-
-    // Expanded
-    @HostBinding('class.treo-vertical-navigation-item-expanded')
-    isExpanded: boolean;
-
-    // Name
-    @Input()
-    name: string;
+    @Input() autoCollapse!: boolean;
+    @Input() item!: TreoNavigationItem;
+    @Input() name!: string;
+    isCollapsed = true;
+    isExpanded = false;
 
     // Private
-    private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
-    private _unsubscribeAll: Subject<any>;
+    private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -53,12 +39,21 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
+    }
 
-        // Set the defaults
-        this.isCollapsed = true;
-        this.isExpanded = false;
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Host binding for classes
+     */
+    @HostBinding('class') get classList(): any
+    {
+        return {
+            'treo-vertical-navigation-item-collapsed': this.isCollapsed,
+            'treo-vertical-navigation-item-expanded' : this.isExpanded
+        };
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -145,7 +140,7 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
         // Attach a listener to the NavigationEnd event
         this._router.events
             .pipe(
-                filter(event => event instanceof NavigationEnd),
+                filter((event): event is NavigationEnd => event instanceof NavigationEnd),
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe((event: NavigationEnd) => {
@@ -198,7 +193,7 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
      * @param url
      * @private
      */
-    private _hasCurrentUrlAsChildren(item, url): boolean
+    private _hasCurrentUrlAsChildren(item: TreoNavigationItem, url: string): boolean
     {
         const children = item.children;
 
@@ -246,7 +241,7 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
      * @return {boolean}
      * @private
      */
-    private _isChildrenOf(parent, item): boolean
+    private _isChildrenOf(parent: TreoNavigationItem, item: TreoNavigationItem): boolean
     {
         const children = parent.children;
 
@@ -297,7 +292,7 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
 
         // Collapse it
         this.isCollapsed = true;
-        this.isExpanded = false;
+        this.isExpanded = !this.isCollapsed;
 
         // Mark for check
         this._changeDetectorRef.markForCheck();
@@ -325,7 +320,7 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
 
         // Expand it
         this.isCollapsed = false;
-        this.isExpanded = true;
+        this.isExpanded = !this.isCollapsed;
 
         // Mark for check
         this._changeDetectorRef.markForCheck();

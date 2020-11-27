@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { fromEvent, Subject } from 'rxjs';
@@ -7,24 +7,23 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import { merge } from 'lodash-es';
 import { ScrollbarGeometry, ScrollbarPosition } from '@treo/directives/scrollbar/scrollbar.interfaces';
 
-// -----------------------------------------------------------------------------------------------------
-// Wrapper directive for the Perfect Scrollbar: https://github.com/mdbootstrap/perfect-scrollbar
-// Based on https://github.com/zefoy/ngx-perfect-scrollbar
-// -----------------------------------------------------------------------------------------------------
+/**
+ * Wrapper directive for the Perfect Scrollbar: https://github.com/mdbootstrap/perfect-scrollbar
+ */
 @Directive({
     selector: '[treoScrollbar]',
     exportAs: 'treoScrollbar'
 })
-export class TreoScrollbarDirective implements OnInit, OnDestroy
+export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
 {
-    isMobile: boolean;
-    ps: PerfectScrollbar | any;
+    @Input() treoScrollbar = true;
+    @Input() treoScrollbarOptions: any = {};
 
     // Private
-    private _animation: number | null;
-    private _enabled: boolean;
-    private _options: any;
-    private _unsubscribeAll: Subject<any>;
+    private _animation: number | null = null;
+    private _options: any = {};
+    private _ps: PerfectScrollbar | undefined = undefined;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -39,88 +38,11 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
         private _router: Router
     )
     {
-        // Set the private defaults
-        this._animation = null;
-        this._options = {};
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.enabled = true;
-        this.isMobile = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Scrollbar options
-     *
-     * @param value
-     */
-    @Input()
-    set treoScrollbarOptions(value: any)
-    {
-        // Merge the options
-        this._options = merge({}, this._options, value);
-
-        // Destroy and re-init the PerfectScrollbar to update its options
-        setTimeout(() => {
-            this._destroy();
-        });
-
-        setTimeout(() => {
-            this._init();
-        });
-    }
-
-    get treoScrollbarOptions(): any
-    {
-        // Return the options
-        return this._options;
-    }
-
-    /**
-     * Is enabled
-     *
-     * @param value
-     */
-    @Input('treoScrollbar')
-    set enabled(value: boolean | '')
-    {
-        // If the value is an empty string, interpret it as 'true'
-        if ( value === '' )
-        {
-            value = true;
-        }
-
-        // If the value is the same, return...
-        if ( this._enabled === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._enabled = value;
-
-        // If enabled...
-        if ( this.enabled )
-        {
-            // Init the directive
-            this._init();
-        }
-        else
-        {
-            // Otherwise destroy it
-            this._destroy();
-        }
-    }
-
-    get enabled(): boolean | ''
-    {
-        // Return the enabled status
-        return this._enabled;
-    }
 
     /**
      * Getter for _elementRef
@@ -130,9 +52,65 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
         return this._elementRef;
     }
 
+    /**
+     * Getter for _ps
+     */
+    get ps(): PerfectScrollbar | undefined
+    {
+        return this._ps;
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Enabled
+        if ( 'treoScrollbar' in changes )
+        {
+            // Interpret empty string as 'true'
+            this.treoScrollbar = changes.treoScrollbar.currentValue === '' ? true : changes.treoScrollbar.currentValue;
+
+            // If enabled, init the directive
+            if ( this.treoScrollbar )
+            {
+                this._init();
+            }
+            // Otherwise destroy it
+            else
+            {
+                this._destroy();
+            }
+        }
+
+        // Scrollbar options
+        if ( 'treoScrollbarOptions' in changes )
+        {
+            // Merge the options
+            this._options = merge({}, this._options, changes.treoScrollbarOptions.currentValue);
+
+            // Return if not initialized
+            if ( !this._ps )
+            {
+                return;
+            }
+
+            // Destroy and re-init the PerfectScrollbar to update its options
+            setTimeout(() => {
+                this._destroy();
+            });
+
+            setTimeout(() => {
+                this._init();
+            });
+        }
+    }
 
     /**
      * On init
@@ -175,29 +153,21 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
      */
     private _init(): void
     {
-        // Return, if already initialized
-        if ( this.ps )
+        // Return if already initialized
+        if ( this._ps )
         {
             return;
         }
 
-        // Check if is mobile
-        if ( this._platform.ANDROID || this._platform.IOS )
+        // Return if on mobile or not on browser
+        if ( this._platform.ANDROID || this._platform.IOS || !this._platform.isBrowser )
         {
-            this.isMobile = true;
-        }
-
-        // Return if it's mobile or the platform is not a browser
-        if ( this.isMobile || !this._platform.isBrowser )
-        {
-            // Silently set the enabled to false
-            this._enabled = false;
-
+            this.treoScrollbar = false;
             return;
         }
 
         // Initialize the PerfectScrollbar
-        this.ps = new PerfectScrollbar(this._elementRef.nativeElement, {...this.treoScrollbarOptions});
+        this._ps = new PerfectScrollbar(this._elementRef.nativeElement, {...this._options});
     }
 
     /**
@@ -207,16 +177,17 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
      */
     private _destroy(): void
     {
-        if ( !this.ps )
+        // Return if not initialized
+        if ( !this._ps )
         {
             return;
         }
 
         // Destroy the PerfectScrollbar
-        this.ps.destroy();
+        this._ps.destroy();
 
         // Clean up
-        this.ps = null;
+        this._ps = undefined;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -224,17 +195,26 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Is enabled
+     */
+    isEnabled(): boolean
+    {
+        return this.treoScrollbar;
+    }
+
+    /**
      * Update the scrollbar
      */
     update(): void
     {
-        if ( !this.ps )
+        // Return if not initialized
+        if ( !this._ps )
         {
             return;
         }
 
         // Update the PerfectScrollbar
-        this.ps.update();
+        this._ps.update();
     }
 
     /**
@@ -252,13 +232,11 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
      */
     geometry(prefix: string = 'scroll'): ScrollbarGeometry
     {
-        const scrollbarGeometry = new ScrollbarGeometry(
+        return new ScrollbarGeometry(
             this._elementRef.nativeElement[prefix + 'Left'],
             this._elementRef.nativeElement[prefix + 'Top'],
             this._elementRef.nativeElement[prefix + 'Width'],
             this._elementRef.nativeElement[prefix + 'Height']);
-
-        return scrollbarGeometry;
     }
 
     /**
@@ -270,11 +248,11 @@ export class TreoScrollbarDirective implements OnInit, OnDestroy
     {
         let scrollbarPosition;
 
-        if ( !absolute && this.ps )
+        if ( !absolute && this._ps )
         {
             scrollbarPosition = new ScrollbarPosition(
-                this.ps.reach.x || 0,
-                this.ps.reach.y || 0
+                this._ps.reach.x || 0,
+                this._ps.reach.y || 0
             );
         }
         else

@@ -10,11 +10,11 @@ import { dripicons, feather, heroicons, iconsmind, material } from 'app/data/moc
 export class IconsMockApi implements TreoMockApi
 {
     // Private Readonly
-    private readonly _dripicons: any;
-    private readonly _feather: any;
-    private readonly _heroicons: any;
-    private readonly _iconsmind: any;
-    private readonly _material: any;
+    private readonly _dripicons: any = dripicons;
+    private readonly _feather: any = feather;
+    private readonly _heroicons: any = heroicons;
+    private readonly _iconsmind: any = iconsmind;
+    private readonly _material: any = material;
 
     /**
      * Constructor
@@ -25,13 +25,6 @@ export class IconsMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._dripicons = dripicons;
-        this._feather = feather;
-        this._heroicons = heroicons;
-        this._iconsmind = iconsmind;
-        this._material = material;
-
         // Register the API endpoints
         this.register();
     }

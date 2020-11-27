@@ -10,7 +10,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 export class TreoScrollResetDirective implements OnInit, OnDestroy
 {
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -23,8 +23,6 @@ export class TreoScrollResetDirective implements OnInit, OnDestroy
         private _router: Router
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

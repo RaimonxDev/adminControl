@@ -182,11 +182,11 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
 
             // Generate and append custom properties as root utilities
             rootUtilities = {
-                ..._.fromPairs(_.map(dictionary.background, (value, key) => [`--${key}`, background[value]])),
-                ..._.fromPairs(_.map(dictionary.foreground, (value, key) => [`--${key}`, foreground[value]]))
+                ..._.fromPairs(_.map(dictionary.background, (value, key) => [`--${e(key)}`, background[value]])),
+                ..._.fromPairs(_.map(dictionary.foreground, (value, key) => [`--${e(key)}`, foreground[value]]))
             };
 
-            // If this is a light theme, add is-dark custom property
+            // If this is a light scheme, add is-dark custom property
             // If a custom property is not available, browsers will use
             // the fallback value. In this case, since we use '--is-dark'
             // as the name of our custom property, we can use it like this:
@@ -212,21 +212,21 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
 
             // Generate base utility classes
             utilities = {
-                '*, *::before, *::after'              : withOpacity(foreground.divider, 'border', false),
-                '[disabled] *'                        : withOpacity(foreground.disabled),
-                '.mat-icon'                           : (isDark ? withOpacity(foreground['secondary-text']) : withOpacity(foreground.icon)),
-                '.text-card'                          : withOpacity(background.card),
-                '.text-default'                       : withOpacity(foreground.text),
-                '.text-secondary'                     : withOpacity(foreground['secondary-text']),
-                '.text-hint'                          : withOpacity(foreground['hint-text']),
-                '.text-disabled'                      : withOpacity(foreground['disabled-text']),
-                '.divider'                            : withOpacity(foreground.divider),
-                '.bg-card'                            : withOpacity(background.card, 'bg'),
-                '.bg-default'                         : withOpacity(background.background, 'bg'),
-                '.bg-dialog'                          : withOpacity(background.card, 'bg'),
-                '.bg-hover'                           : withOpacity(background.hover, 'bg'),
-                '.hover\\:bg-hover:hover'             : withOpacity(background.hover, 'bg'),
-                '.group .group-hover\\:bg-hover:hover': withOpacity(background.hover, 'bg')
+                '*, *::before, *::after'                      : withOpacity(foreground.divider, 'border', false),
+                '[disabled] *'                                : withOpacity(foreground.disabled),
+                '.mat-icon'                                   : (isDark ? withOpacity(foreground['secondary-text']) : withOpacity(foreground.icon)),
+                '.text-card'                                  : withOpacity(background.card),
+                '.text-default'                               : withOpacity(foreground.text),
+                '.text-secondary'                             : withOpacity(foreground['secondary-text']),
+                '.text-hint'                                  : withOpacity(foreground['hint-text']),
+                '.text-disabled'                              : withOpacity(foreground['disabled-text']),
+                '.divider'                                    : withOpacity(foreground.divider),
+                '.bg-card'                                    : withOpacity(background.card, 'bg'),
+                '.bg-default'                                 : withOpacity(background.background, 'bg'),
+                '.bg-dialog'                                  : withOpacity(background.card, 'bg'),
+                '.bg-hover'                                   : withOpacity(background.hover, 'bg'),
+                [`.${e(`hover:bg-hover:hover`)}`]             : withOpacity(background.hover, 'bg'),
+                [`.group .${e(`group-hover:bg-hover:hover`)}`]: withOpacity(background.hover, 'bg')
             };
 
             // Add dark variants
@@ -234,18 +234,18 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
             {
                 utilities = {
                     ...utilities,
-                    '.dark\\:text-card'                          : withOpacity(background.card),
-                    '.dark\\:text-default'                       : withOpacity(foreground.text),
-                    '.dark\\:text-secondary'                     : withOpacity(foreground['secondary-text']),
-                    '.dark\\:text-hint'                          : withOpacity(foreground['hint-text']),
-                    '.dark\\:text-disabled'                      : withOpacity(foreground['disabled-text']),
-                    '.dark\\:divider'                            : withOpacity(foreground.divider),
-                    '.dark\\:bg-card'                            : withOpacity(background.card, 'bg'),
-                    '.dark\\:bg-default'                         : withOpacity(background.background, 'bg'),
-                    '.dark\\:bg-dialog'                          : withOpacity(background.card, 'bg'),
-                    '.dark\\:bg-hover'                           : withOpacity(background.hover, 'bg'),
-                    '.dark\\:hover\\:bg-hover:hover'             : withOpacity(background.hover, 'bg'),
-                    '.group .dark\\:group-hover\\:bg-hover:hover': withOpacity(background.hover, 'bg')
+                    [`.${e(`dark:text-card`)}`]                        : withOpacity(background.card),
+                    [`.${e(`dark:text-default`)}`]                     : withOpacity(foreground.text),
+                    [`.${e(`dark:text-secondary`)}`]                   : withOpacity(foreground['secondary-text']),
+                    [`.${e(`dark:text-hint`)}`]                        : withOpacity(foreground['hint-text']),
+                    [`.${e(`dark:text-disabled`)}`]                    : withOpacity(foreground['disabled-text']),
+                    [`.${e(`dark:divider`)}`]                          : withOpacity(foreground.divider),
+                    [`.${e(`dark:bg-card`)}`]                          : withOpacity(background.card, 'bg'),
+                    [`.${e(`dark:bg-default`)}`]                       : withOpacity(background.background, 'bg'),
+                    [`.${e(`dark:bg-dialog`)}`]                        : withOpacity(background.card, 'bg'),
+                    [`.${e(`dark:bg-hover`)}`]                         : withOpacity(background.hover, 'bg'),
+                    [`.${e(`dark:hover:bg-hover:hover`)}`]             : withOpacity(background.hover, 'bg'),
+                    [`.group .${e(`dark:group-hover:bg-hover:hover`)}`]: withOpacity(background.hover, 'bg')
                 };
             }
 
@@ -255,7 +255,7 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
                     ':root': rootUtilities,
                     ...utilities,
 
-                    // Allow override dark theme using ".light" class
+                    // Allow overriding the dark theme using ".light" class
                     '.dark .light': {
                         ...rootUtilities,
                         ...utilities
@@ -304,8 +304,8 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
 
             // Generate and append custom properties
             utilities = {
-                ..._.fromPairs(_.map(themeColors, (value, key) => [`--${key}`, value])),
-                ..._.fromPairs(_.map(themeColorContrasts, (value, key) => [`--${key}-contrast`, value]))
+                ..._.fromPairs(_.map(themeColors, (value, key) => [`--${e(key)}`, value])),
+                ..._.fromPairs(_.map(themeColorContrasts, (value, key) => [`--${e(`${key}-contrast`)}`, value]))
             };
 
             // Generate utility classes for theme colors
@@ -313,10 +313,10 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
             {
                 utilities = {
                     ...utilities,
-                    [`.text-${key}`]  : withOpacity(value),
-                    [`.bg-${key}`]    : withOpacity(value, 'bg'),
-                    [`.border-${key}`]: withOpacity(value, 'border'),
-                    [`.${key}`]       : {
+                    [`.${e(`text-${key}`)}`]  : withOpacity(value),
+                    [`.${e(`bg-${key}`)}`]    : withOpacity(value, 'bg'),
+                    [`.${e(`border-${key}`)}`]: withOpacity(value, 'border'),
+                    [`.${e(key)}`]            : {
                         ...withOpacity(themeColorContrasts[key]),
                         ...withOpacity(value, 'bg'),
                         '.mat-icon'      : withOpacity(themeColorContrasts[key]),
@@ -343,10 +343,10 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
                 // Dark variants
                 darkUtilities = {
                     ...darkUtilities,
-                    [`.dark\\:text-${key}`]  : withOpacity(value),
-                    [`.dark\\:bg-${key}`]    : withOpacity(value, 'bg'),
-                    [`.dark\\:border-${key}`]: withOpacity(value, 'border'),
-                    [`.dark\\:${key}`]       : {
+                    [`.${e(`dark:text-${key}`)}`]  : withOpacity(value),
+                    [`.${e(`dark:bg-${key}`)}`]    : withOpacity(value, 'bg'),
+                    [`.${e(`dark:border-${key}`)}`]: withOpacity(value, 'border'),
+                    [`.${e(`dark:${key}`)}`]       : {
                         ...withOpacity(themeColorContrasts[key]),
                         ...withOpacity(value, 'bg'),
                         '.mat-icon'      : withOpacity(themeColorContrasts[key]),
@@ -372,8 +372,8 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
             });
 
             return {
-                [`.theme-${name}`]     : utilities,
-                [`.theme-${name}.dark`]: darkUtilities
+                [`.${e(`theme-${name}`)}`]                                   : utilities,
+                [`.${e(`theme-${name}`)}.dark, .${e(`theme-${name}`)} .dark`]: darkUtilities
             };
         });
 
@@ -394,9 +394,27 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
             }
 
             return {
-                [`.${e(`${key}`)}`]: {
-                    backgroundColor: value,
-                    color          : contrastingColors[key]
+                [`.${e(key)}, .dark .${e(`dark:${key}`)}`]: {
+                    ...withOpacity(contrastingColors[key]),
+                    ...withOpacity(value, 'bg'),
+                    '.mat-icon'      : withOpacity(contrastingColors[key]),
+                    '.text-default'  : withOpacity(contrastingColors[key]),
+                    '.text-secondary': {
+                        ...withOpacity(contrastingColors[key]),
+                        '--text-opacity': '0.6'
+                    },
+                    '.text-hint'     : {
+                        ...withOpacity(contrastingColors[key]),
+                        '--text-opacity': '0.38'
+                    },
+                    '.text-disabled' : {
+                        ...withOpacity(contrastingColors[key]),
+                        '--text-opacity': '0.38'
+                    },
+                    '.divider'       : {
+                        ...withOpacity(contrastingColors[key]),
+                        '--text-opacity': '0.12'
+                    }
                 }
             };
         });
@@ -406,7 +424,6 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
         // -----------------------------------------------------------------------------------------------------
         // @ Icon color utility classes
         // -----------------------------------------------------------------------------------------------------
-        // Generate icon color utilities for theme colors
         const iconColorUtilities = _.map(theme('treo.themes'), (themeConfig, name) =>
         {
             // Prepare theme colors
@@ -421,16 +438,19 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
             themeColors['accent'] = theme(`colors.${themeConfig.accent[0]}.${themeConfig.accent[1]}`);
             themeColors['warn'] = theme(`colors.${themeConfig.warn[0]}.${themeConfig.warn[1]}`);
 
+            // Generate icon color utilities for theme colors
             return {
-                [`.theme-${name}`]     : _.fromPairs(_.map(themeColors, (value, key) => [`.${e(`icon-${key}`)}`, withOpacity(value)])),
-                [`.theme-${name}.dark`]: _.fromPairs(_.map(themeColors, (value, key) => [`.dark\\:${e(`icon-${key}`)}`, withOpacity(value)]))
+                [`.${e(`theme-${name}`)}`]                                   :
+                    _.fromPairs(_.map(themeColors, (value, key) => [`.${e(`icon-${key}`)}.mat-icon, .${e(`icon-${key}`)} .mat-icon`, withOpacity(value)])),
+                [`.${e(`theme-${name}`)}.dark, .${e(`theme-${name}`)} .dark`]:
+                    _.fromPairs(_.map(themeColors, (value, key) => [`.${e(`dark:icon-${key}`)}.mat-icon, .${e(`dark:icon-${key}`)} .mat-icon`, withOpacity(value)]))
             };
         });
 
         // Generate icon color utilities for default colors
         iconColorUtilities.push(
-            _.fromPairs(_.map(flattenColorPalette(theme('treo.iconColor')), (value, key) => [`.${e(`icon-${key}`)}`, withOpacity(value)])),
-            _.fromPairs(_.map(flattenColorPalette(theme('treo.iconColor')), (value, key) => [`.dark:\\${e(`icon-${key}`)}`, withOpacity(value)]))
+            _.fromPairs(_.map(flattenColorPalette(theme('treo.iconColor')), (value, key) => [`.${e(`icon-${key}`)}.mat-icon, .${e(`icon-${key}`)} .mat-icon`, withOpacity(value)])),
+            _.fromPairs(_.map(flattenColorPalette(theme('treo.iconColor')), (value, key) => [`.dark .${e(`dark:icon-${key}`)}.mat-icon, .dark .${e(`dark:icon-${key}`)} .mat-icon`, withOpacity(value)]))
         );
 
         addUtilities(iconColorUtilities, variants('treoIconColor'));
@@ -468,7 +488,7 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
                     'display'           : '-webkit-box',
                     '-webkit-line-clamp': value,
                     '-webkit-box-orient': 'vertical',
-                    'overflow'          : 'hidden'
+                    'overflow'          : key === 'none' ? 'visible' : 'hidden'
                 }
             };
         });
@@ -683,82 +703,83 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
                     24 : '6rem'
                 },
                 lineClamp               : {
-                    1: '1',
-                    2: '2',
-                    3: '3'
+                    'none': 'none',
+                    1     : '1',
+                    2     : '2',
+                    3     : '3'
                 },
                 material                : {
                     colors: {
                         background: {
                             light: {
-                                'status-bar'              : colors.coolGray['300'],
+                                'status-bar'              : colors.blueGray['300'],
                                 'app-bar'                 : '#FFFFFF',
-                                'background'              : colors.coolGray['100'],
-                                'hover'                   : `rgba(${colors.coolGray['400']}, 0.12)`,
+                                'background'              : colors.blueGray['100'],
+                                'hover'                   : `rgba(${colors.blueGray['400']}, 0.12)`,
                                 'card'                    : '#FFFFFF',
                                 'dialog'                  : '#FFFFFF',
-                                'disabled-button'         : `rgba(${colors.coolGray['400']}, 0.38)`,
+                                'disabled-button'         : `rgba(${colors.blueGray['400']}, 0.38)`,
                                 'raised-button'           : '#FFFFFF',
-                                'focused-button'          : colors.coolGray['500'],
-                                'selected-button'         : colors.coolGray['200'],
-                                'selected-disabled-button': colors.coolGray['200'],
-                                'disabled-button-toggle'  : colors.coolGray['300'],
-                                'unselected-chip'         : colors.coolGray['200'],
-                                'disabled-list-option'    : colors.coolGray['300'],
-                                'tooltip'                 : colors.coolGray['800']
+                                'focused-button'          : colors.blueGray['500'],
+                                'selected-button'         : colors.blueGray['200'],
+                                'selected-disabled-button': colors.blueGray['200'],
+                                'disabled-button-toggle'  : colors.blueGray['300'],
+                                'unselected-chip'         : colors.blueGray['200'],
+                                'disabled-list-option'    : colors.blueGray['300'],
+                                'tooltip'                 : colors.blueGray['800']
                             },
                             dark : {
-                                'status-bar'              : colors.coolGray['900'],
-                                'app-bar'                 : colors.coolGray['900'],
-                                'background'              : colors.coolGray['900'],
+                                'status-bar'              : colors.blueGray['900'],
+                                'app-bar'                 : colors.blueGray['900'],
+                                'background'              : colors.blueGray['900'],
                                 'hover'                   : 'rgba(255, 255, 255, 0.05)',
-                                'card'                    : colors.coolGray['800'],
-                                'dialog'                  : colors.coolGray['800'],
-                                'disabled-button'         : `rgba(${colors.coolGray['900']}, 0.38)`,
-                                'raised-button'           : colors.coolGray['900'],
-                                'focused-button'          : colors.coolGray['200'],
+                                'card'                    : colors.blueGray['800'],
+                                'dialog'                  : colors.blueGray['800'],
+                                'disabled-button'         : `rgba(${colors.blueGray['900']}, 0.38)`,
+                                'raised-button'           : colors.blueGray['900'],
+                                'focused-button'          : colors.blueGray['200'],
                                 'selected-button'         : 'rgba(255, 255, 255, 0.05)',
-                                'selected-disabled-button': colors.coolGray['800'],
-                                'disabled-button-toggle'  : colors.coolGray['900'],
-                                'unselected-chip'         : colors.coolGray['600'],
-                                'disabled-list-option'    : colors.coolGray['200'],
-                                'tooltip'                 : colors.coolGray['500']
+                                'selected-disabled-button': colors.blueGray['800'],
+                                'disabled-button-toggle'  : colors.blueGray['900'],
+                                'unselected-chip'         : colors.blueGray['600'],
+                                'disabled-list-option'    : colors.blueGray['200'],
+                                'tooltip'                 : colors.blueGray['500']
                             }
                         },
                         foreground: {
                             light: {
                                 'base'             : '#000000',
-                                'divider'          : colors.coolGray['200'],
-                                'dividers'         : colors.coolGray['200'],
-                                'disabled'         : colors.coolGray['400'],
-                                'disabled-button'  : colors.coolGray['400'],
-                                'disabled-text'    : colors.coolGray['400'],
+                                'divider'          : colors.blueGray['200'],
+                                'dividers'         : colors.blueGray['200'],
+                                'disabled'         : colors.blueGray['400'],
+                                'disabled-button'  : colors.blueGray['400'],
+                                'disabled-text'    : colors.blueGray['400'],
                                 'elevation'        : '#000000',
-                                'hint-text'        : colors.coolGray['400'],
-                                'secondary-text'   : colors.coolGray['500'],
-                                'icon'             : colors.coolGray['500'],
-                                'icons'            : colors.coolGray['500'],
-                                'text'             : colors.coolGray['800'],
-                                'slider-min'       : colors.coolGray['800'],
-                                'slider-off'       : colors.coolGray['300'],
-                                'slider-off-active': colors.coolGray['400']
+                                'hint-text'        : colors.blueGray['400'],
+                                'secondary-text'   : colors.blueGray['500'],
+                                'icon'             : colors.blueGray['500'],
+                                'icons'            : colors.blueGray['500'],
+                                'text'             : colors.blueGray['800'],
+                                'slider-min'       : colors.blueGray['800'],
+                                'slider-off'       : colors.blueGray['300'],
+                                'slider-off-active': colors.blueGray['400']
                             },
                             dark : {
                                 'base'             : '#FFFFFF',
-                                'divider'          : `rgba(${colors.coolGray['100']}, 0.12)`,
-                                'dividers'         : `rgba(${colors.coolGray['100']}, 0.12)`,
-                                'disabled'         : colors.coolGray['600'],
-                                'disabled-button'  : colors.coolGray['800'],
-                                'disabled-text'    : colors.coolGray['600'],
+                                'divider'          : `rgba(${colors.blueGray['100']}, 0.12)`,
+                                'dividers'         : `rgba(${colors.blueGray['100']}, 0.12)`,
+                                'disabled'         : colors.blueGray['600'],
+                                'disabled-button'  : colors.blueGray['800'],
+                                'disabled-text'    : colors.blueGray['600'],
                                 'elevation'        : '#000000',
-                                'hint-text'        : colors.coolGray['500'],
-                                'secondary-text'   : colors.coolGray['400'],
-                                'icon'             : colors.coolGray['100'],
-                                'icons'            : colors.coolGray['100'],
+                                'hint-text'        : colors.blueGray['500'],
+                                'secondary-text'   : colors.blueGray['400'],
+                                'icon'             : colors.blueGray['100'],
+                                'icons'            : colors.blueGray['100'],
                                 'text'             : '#FFFFFF',
                                 'slider-min'       : '#FFFFFF',
-                                'slider-off'       : colors.coolGray['500'],
-                                'slider-off-active': colors.coolGray['400']
+                                'slider-off'       : colors.blueGray['500'],
+                                'slider-off-active': colors.blueGray['400']
                             }
                         }
                     }
@@ -775,10 +796,10 @@ module.exports = plugin(({addComponents, addUtilities, addVariant, corePlugins, 
             }
         },
         variants: {
-            treoColorCombinations: ['dark'],
+            treoColorCombinations: [],
             treoIconColor        : [],
             treoIconSize         : ['responsive'],
-            treoLineClamp        : [],
+            treoLineClamp        : ['responsive'],
             treoMirror           : []
         }
     }

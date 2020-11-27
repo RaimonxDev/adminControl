@@ -4,20 +4,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class TreoMessageService
+export class TreoAlertService
 {
     // Private
-    private _onDismiss: BehaviorSubject<any>;
-    private _onShow: BehaviorSubject<any>;
+    private _onDismiss: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+    private _onShow: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the private defaults
-        this._onDismiss = new BehaviorSubject(null);
-        this._onShow = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -45,13 +42,13 @@ export class TreoMessageService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Dismiss the message box
+     * Dismiss the alert
      *
      * @param name
      */
     dismiss(name: string): void
     {
-        // Return, if the name is not provided
+        // Return if the name is not provided
         if ( !name )
         {
             return;
@@ -62,13 +59,13 @@ export class TreoMessageService
     }
 
     /**
-     * Show the dismissed message box
+     * Show the dismissed alert
      *
      * @param name
      */
     show(name: string): void
     {
-        // Return, if the name is not provided
+        // Return if the name is not provided
         if ( !name )
         {
             return;

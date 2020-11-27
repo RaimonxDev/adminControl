@@ -12,7 +12,7 @@
                           'bg-green': user.status === 'online',
                           'bg-amber': user.status === 'away',
                           'bg-red': user.status === 'busy',
-                          'bg-coolGray-400': user.status === 'not-visible'}"
+                          'bg-blueGray-400': user.status === 'not-visible'}"
         ></span>
     </span>
 </button>
@@ -66,7 +66,7 @@
     </button>
     <button mat-menu-item
             (click)="updateUserStatus('not-visible')">
-        <span class="w-4 h-4 mr-3 rounded-full bg-coolGray-400"></span>
+        <span class="w-4 h-4 mr-3 rounded-full bg-blueGray-400"></span>
         <span>Invisible</span>
     </button>
 </mat-menu>

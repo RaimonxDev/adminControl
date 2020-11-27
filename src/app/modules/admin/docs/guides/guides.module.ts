@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTreeModule } from '@angular/material/tree';
 import { TreoHighlightModule } from '@treo/components/highlight';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { TreoNavigationModule } from '@treo/components/navigation';
 import { TreoScrollResetModule } from '@treo/directives/scroll-reset';
 import { SharedModule } from 'app/shared/shared.module';
@@ -53,7 +53,7 @@ import { guidesRoutes } from 'app/modules/admin/docs/guides/guides.routing';
         MatSidenavModule,
         MatTreeModule,
         TreoHighlightModule,
-        TreoMessageModule,
+        TreoAlertModule,
         TreoNavigationModule,
         TreoScrollResetModule,
         SharedModule

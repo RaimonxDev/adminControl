@@ -11,10 +11,10 @@ import { compactNavigation, defaultNavigation, futuristicNavigation, horizontalN
 export class NavigationMockApi implements TreoMockApi
 {
     // Private Readonly
-    private readonly _compactNavigation: TreoNavigationItem[];
-    private readonly _defaultNavigation: TreoNavigationItem[];
-    private readonly _futuristicNavigation: TreoNavigationItem[];
-    private readonly _horizontalNavigation: TreoNavigationItem[];
+    private readonly _compactNavigation: TreoNavigationItem[] = compactNavigation;
+    private readonly _defaultNavigation: TreoNavigationItem[] = defaultNavigation;
+    private readonly _futuristicNavigation: TreoNavigationItem[] = futuristicNavigation;
+    private readonly _horizontalNavigation: TreoNavigationItem[] = horizontalNavigation;
 
     /**
      * Constructor
@@ -25,12 +25,6 @@ export class NavigationMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._compactNavigation = compactNavigation;
-        this._defaultNavigation = defaultNavigation;
-        this._futuristicNavigation = futuristicNavigation;
-        this._horizontalNavigation = horizontalNavigation;
-
         // Register the API endpoints
         this.register();
     }

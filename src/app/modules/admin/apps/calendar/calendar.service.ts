@@ -273,7 +273,7 @@ export class CalendarService
         // Calculate the remaining prefetched days
         const remainingDays = this._loadedEventsRange.end.diff(end, 'days');
 
-        // Return, if remaining days is bigger than the number
+        // Return if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
         // there and fetched the events data so no need for doing
         // it again.
@@ -300,7 +300,7 @@ export class CalendarService
         // Calculate the remaining prefetched days
         const remainingDays = start.diff(this._loadedEventsRange.start, 'days');
 
-        // Return, if remaining days is bigger than the number
+        // Return if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
         // there and fetched the events data so no need for doing
         // it again.

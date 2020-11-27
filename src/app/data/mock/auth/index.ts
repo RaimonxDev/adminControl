@@ -39,7 +39,7 @@ export class AuthMockApi implements TreoMockApi
      * @param source
      * @private
      */
-    private _base64url(source): string
+    private _base64url(source: any): string
     {
         // Encode in classical base64
         let encodedSource = Base64.stringify(source);
@@ -106,7 +106,7 @@ export class AuthMockApi implements TreoMockApi
      * @param token
      * @private
      */
-    private _verifyJWTToken(token): boolean
+    private _verifyJWTToken(token: string): boolean
     {
         // Split the token into parts
         const parts = token.split('.');

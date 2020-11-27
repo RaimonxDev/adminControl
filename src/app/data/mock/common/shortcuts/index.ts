@@ -11,7 +11,7 @@ import { shortcuts as shortcutsData } from 'app/data/mock/common/shortcuts/data'
 export class ShortcutsMockApi implements TreoMockApi
 {
     // Private
-    private _shortcuts: any;
+    private _shortcuts: any = shortcutsData;
 
     /**
      * Constructor
@@ -22,9 +22,6 @@ export class ShortcutsMockApi implements TreoMockApi
         private _treoMockApiService: TreoMockApiService
     )
     {
-        // Set the data
-        this._shortcuts = shortcutsData;
-
         // Register the API endpoints
         this.register();
     }
@@ -87,7 +84,7 @@ export class ShortcutsMockApi implements TreoMockApi
                 let updatedShortcut = null;
 
                 // Find the shortcut and update it
-                this._shortcuts.forEach((item, index, shortcuts) => {
+                this._shortcuts.forEach((item: any, index: number, shortcuts: any[]) => {
 
                     if ( item.id === id )
                     {
@@ -119,7 +116,7 @@ export class ShortcutsMockApi implements TreoMockApi
                 let deletedShortcut = null;
 
                 // Find the shortcut
-                const index = this._shortcuts.findIndex((item) => item.id === id);
+                const index = this._shortcuts.findIndex((item: any) => item.id === id);
 
                 // Store the deleted shortcut
                 deletedShortcut = cloneDeep(this._shortcuts[index]);

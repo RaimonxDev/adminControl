@@ -10,7 +10,9 @@ module.exports = (isProd) => ({
             '**/*.ts'
         ],
         options: {
-            whitelistPatternsChildren: [/^theme/, /^dark/, /^mat/]
+            safelist: {
+                deep: [/^theme/, /^dark/, /^mat/]
+            }
         }
     },
     theme       : {

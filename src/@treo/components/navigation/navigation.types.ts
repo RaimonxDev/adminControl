@@ -3,7 +3,13 @@ export interface TreoNavigationItem
     id?: string;
     title?: string;
     subtitle?: string;
-    type: 'aside' | 'basic' | 'collapsable' | 'divider' | 'group' | 'spacer';
+    type:
+        | 'aside'
+        | 'basic'
+        | 'collapsable'
+        | 'divider'
+        | 'group'
+        | 'spacer';
     hidden?: (item: TreoNavigationItem) => boolean;
     active?: boolean;
     disabled?: boolean;
@@ -16,7 +22,10 @@ export interface TreoNavigationItem
     iconClasses?: string;
     badge?: {
         title?: string;
-        style?: 'rectangle' | 'rounded' | 'simple',
+        style?:
+            | 'rectangle'
+            | 'rounded'
+            | 'simple',
         background?: string;
         color?: string;
     };
@@ -25,5 +34,11 @@ export interface TreoNavigationItem
 }
 
 export type TreoVerticalNavigationAppearance = string;
-export type TreoVerticalNavigationMode = 'over' | 'side';
-export type TreoVerticalNavigationPosition = 'left' | 'right';
+
+export type TreoVerticalNavigationMode =
+    | 'over'
+    | 'side';
+
+export type TreoVerticalNavigationPosition =
+    | 'left'
+    | 'right';

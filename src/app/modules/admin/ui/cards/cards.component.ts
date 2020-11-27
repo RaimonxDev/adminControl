@@ -11,6 +11,8 @@ import { TreoCardComponent } from '@treo/components/card';
 })
 export class CardsComponent implements AfterViewInit
 {
+    expandableCardStatuses: any;
+    flippableCardStatuses: any;
     filters: string[];
     numberOfCards: any;
     selectedFilter: string;
@@ -29,6 +31,13 @@ export class CardsComponent implements AfterViewInit
     )
     {
         // Set the defaults
+        this.expandableCardStatuses = {
+            card01: false,
+            card02: false
+        };
+        this.flippableCardStatuses = {
+            card01: 'front'
+        };
         this.filters = ['all', 'article', 'listing', 'list', 'info', 'shopping', 'pricing', 'testimonial', 'post'];
         this.numberOfCards = {};
         this.selectedFilter = 'all';

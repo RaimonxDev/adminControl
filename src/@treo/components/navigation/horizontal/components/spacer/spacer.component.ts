@@ -13,17 +13,12 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoHorizontalNavigationSpacerItemComponent implements OnInit, OnDestroy
 {
-    // Item
-    @Input()
-    item: TreoNavigationItem;
-
-    // Name
-    @Input()
-    name: string;
+    @Input() item!: TreoNavigationItem;
+    @Input() name!: string;
 
     // Private
-    private _treoHorizontalNavigationComponent: TreoHorizontalNavigationComponent;
-    private _unsubscribeAll: Subject<any>;
+    private _treoHorizontalNavigationComponent!: TreoHorizontalNavigationComponent;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -36,8 +31,6 @@ export class TreoHorizontalNavigationSpacerItemComponent implements OnInit, OnDe
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

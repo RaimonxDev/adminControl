@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TreoCardModule } from '@treo/components/card';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { SignUpComponent } from 'app/modules/admin/pages/authentication/sign-up/sign-up.component';
 import { signupRoutes } from 'app/modules/admin/pages/authentication/sign-up/sign-up.routing';
@@ -25,7 +25,7 @@ import { signupRoutes } from 'app/modules/admin/pages/authentication/sign-up/sig
         MatInputModule,
         MatProgressSpinnerModule,
         TreoCardModule,
-        TreoMessageModule,
+        TreoAlertModule,
         SharedModule
     ]
 })
