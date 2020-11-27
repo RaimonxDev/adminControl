@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
@@ -14,27 +14,20 @@ import { TreoAnimations } from '@treo/animations/public-api';
     exportAs     : 'treoSearch',
     animations   : TreoAnimations
 })
-export class SearchComponent implements OnInit, OnDestroy
+export class SearchComponent implements OnChanges, OnInit, OnDestroy
 {
-    results: any[] | null;
-    searchControl: FormControl;
+    @Input() appearance: 'basic' | 'bar' = 'basic';
+    @Input() debounce = 300;
+    @Input() minLength = 2;
+    @Output() search: EventEmitter<any> = new EventEmitter<any>();
 
-    // Debounce
-    @Input()
-    debounce: number;
-
-    // Min. length
-    @Input()
-    minLength: number;
-
-    // Search
-    @Output()
-    search: EventEmitter<any>;
+    // Public
+    opened = false;
+    results: any[] | null = null;
+    searchControl: FormControl = new FormControl();
 
     // Private
-    private _appearance: 'basic' | 'bar';
-    private _opened: boolean;
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -49,16 +42,6 @@ export class SearchComponent implements OnInit, OnDestroy
         private _renderer2: Renderer2
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.appearance = 'basic';
-        this.debounce = this.debounce || 300;
-        this.minLength = this.minLength || 2;
-        this.opened = false;
-        this.results = null;
-        this.searchControl = new FormControl();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -66,74 +49,14 @@ export class SearchComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter & getter for appearance
-     *
-     * @param value
+     * Host binding for classes
      */
-    @Input()
-    set appearance(value: 'basic' | 'bar')
+    @HostBinding('class') get classList(): any
     {
-        // Return if the value is the same
-        if ( this._appearance === value )
-        {
-            return;
-        }
-
-        // Make sure the search is closed, before
-        // changing the appearance to prevent issues
-        this.close();
-
-        let appearanceClassName;
-
-        // Remove the previous appearance class
-        appearanceClassName = 'search-appearance-' + this.appearance;
-        this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
-
-        // Store the value
-        this._appearance = value;
-
-        // Add the new appearance class
-        appearanceClassName = 'search-appearance-' + this.appearance;
-        this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
-    }
-
-    get appearance(): 'basic' | 'bar'
-    {
-        return this._appearance;
-    }
-
-    /**
-     * Setter & getter for opened
-     *
-     * @param value
-     */
-    set opened(value: boolean)
-    {
-        // Return if the value is the same
-        if ( this._opened === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._opened = value;
-
-        // If opened...
-        if ( value )
-        {
-            // Add opened class
-            this._renderer2.addClass(this._elementRef.nativeElement, 'search-opened');
-        }
-        else
-        {
-            // Remove opened class
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'search-opened');
-        }
-    }
-
-    get opened(): boolean
-    {
-        return this._opened;
+        return {
+            [`search-appearance-${this.appearance}`]: true,
+            'search-opened'                         : this.opened
+        };
     }
 
     /**
@@ -169,6 +92,22 @@ export class SearchComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Appearance
+        if ( 'appearance' in changes )
+        {
+            // To prevent any issues, close the
+            // search after changing the appearance
+            this.close();
+        }
+    }
+
+    /**
      * On init
      */
     ngOnInit(): void
@@ -201,7 +140,12 @@ export class SearchComponent implements OnInit, OnDestroy
             .subscribe((value) => {
                 this._httpClient.post('api/common/search', {query: value})
                     .subscribe((response: any) => {
+
+                        // Store the results
                         this.results = response.results;
+
+                        // Execute the event
+                        this.search.next(this.results);
                     });
             });
     }
@@ -225,14 +169,14 @@ export class SearchComponent implements OnInit, OnDestroy
      *
      * @param event
      */
-    onKeydown(event): void
+    onKeydown(event: KeyboardEvent): void
     {
         // Listen for escape to close the search
         // if the appearance is 'bar'
         if ( this.appearance === 'bar' )
         {
             // Escape
-            if ( event.keyCode === 27 )
+            if ( event.code === 'Escape' )
             {
                 // Close the search
                 this.close();
