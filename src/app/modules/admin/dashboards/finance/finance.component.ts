@@ -15,13 +15,13 @@ import { FinanceService } from 'app/modules/admin/dashboards/finance/finance.ser
 })
 export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
 {
+    // Public
+    @ViewChild('recentTransactionsTable', {read: MatSort}) recentTransactionsTableMatSort!: MatSort;
     data: any;
-    accountBalanceOptions: ApexOptions;
+    accountBalanceOptions!: ApexOptions;
     recentTransactionsDataSource: MatTableDataSource<any>;
     recentTransactionsTableColumns: string[];
 
-    @ViewChild('recentTransactionsTable', {read: MatSort})
-    recentTransactionsTableMatSort: MatSort;
 
     // Private
     private _unsubscribeAll: Subject<any>;

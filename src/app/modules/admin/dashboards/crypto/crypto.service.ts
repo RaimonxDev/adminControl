@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 export class CryptoService
 {
     // Observables
-    private _data: BehaviorSubject<any>;
+    private _data: ReplaySubject<any> = new ReplaySubject<any>(1);
 
     /**
      * Constructor
@@ -20,8 +20,6 @@ export class CryptoService
         private _httpClient: HttpClient
     )
     {
-        // Set the private defaults
-        this._data = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

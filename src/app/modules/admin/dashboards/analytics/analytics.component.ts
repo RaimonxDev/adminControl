@@ -14,23 +14,24 @@ import { AnalyticsService } from 'app/modules/admin/dashboards/analytics/analyti
 })
 export class AnalyticsComponent implements OnInit, OnDestroy
 {
+    // Public
     data: any;
-    ageOptions: ApexOptions;
-    averagePurchaseValueOptions: ApexOptions;
-    browsersOptions: ApexOptions;
-    channelsOptions: ApexOptions;
-    devicesOptions: ApexOptions;
-    genderOptions: ApexOptions;
-    languageOptions: ApexOptions;
-    newVsReturningOptions: ApexOptions;
-    purchasesOptions: ApexOptions;
-    refundsOptions: ApexOptions;
-    totalVisitsOptions: ApexOptions;
-    uniqueVisitorsOptions: ApexOptions;
-    uniquePurchasesOptions: ApexOptions;
+    ageOptions!: ApexOptions;
+    averagePurchaseValueOptions!: ApexOptions;
+    browsersOptions!: ApexOptions;
+    channelsOptions!: ApexOptions;
+    devicesOptions!: ApexOptions;
+    genderOptions!: ApexOptions;
+    languageOptions!: ApexOptions;
+    newVsReturningOptions!: ApexOptions;
+    purchasesOptions!: ApexOptions;
+    refundsOptions!: ApexOptions;
+    totalVisitsOptions!: ApexOptions;
+    uniqueVisitorsOptions!: ApexOptions;
+    uniquePurchasesOptions!: ApexOptions;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -43,8 +44,6 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         private _router: Router
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -69,7 +68,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
             });
 
         // Attach SVG fill fixer to all ApexCharts
-        window['Apex'] = {
+        (window as { [key: string]: any })['Apex'] = {
             chart: {
                 events: {
                     mounted: (chart: any, options?: any) => {
@@ -116,10 +115,13 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         // 2. Filter out the ones that doesn't have cross reference so we only left with the ones that use the 'url(#id)' syntax
         // 3. Insert the 'currentURL' at the front of the 'fill' attribute value
         Array.from(element.querySelectorAll('*[fill]'))
-             .filter((el) => el.getAttribute('fill').indexOf('url(') !== -1)
+             .filter((el) => el.getAttribute('fill')?.indexOf('url(') !== -1)
              .forEach((el) => {
                  const attrVal = el.getAttribute('fill');
-                 el.setAttribute('fill', `url(${currentURL}${attrVal.slice(attrVal.indexOf('#'))}`);
+                 if ( attrVal )
+                 {
+                     el.setAttribute('fill', `url(${currentURL}${attrVal.slice(attrVal.indexOf('#'))}`);
+                 }
              });
     }
 

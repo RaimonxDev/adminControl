@@ -17,18 +17,17 @@ import { CryptoService } from 'app/modules/admin/dashboards/crypto/crypto.servic
 })
 export class CryptoComponent implements OnInit, OnDestroy
 {
+    // Public
+    @ViewChild('btcChartComponent') btcChartComponent!: ChartComponent;
     appConfig: any;
     btcOptions: ApexOptions | any;
     data: any;
-    drawerMode: 'over' | 'side';
-    drawerOpened: boolean;
-    watchlistChartOptions: ApexOptions;
-
-    @ViewChild('btcChartComponent')
-    btcChartComponent: ChartComponent;
+    drawerMode: 'over' | 'side' = 'side';
+    drawerOpened = true;
+    watchlistChartOptions!: ApexOptions;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -45,12 +44,6 @@ export class CryptoComponent implements OnInit, OnDestroy
         private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.drawerMode = 'side';
-        this.drawerOpened = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -206,7 +199,7 @@ export class CryptoComponent implements OnInit, OnDestroy
                 shared: true,
                 theme : 'dark',
                 y     : {
-                    formatter: (value) => {
+                    formatter: (value: number) => {
                         return '$' + value.toFixed(2);
                     }
                 }
@@ -244,7 +237,7 @@ export class CryptoComponent implements OnInit, OnDestroy
                     rotate               : 0,
                     minHeight            : 40,
                     hideOverlappingLabels: true,
-                    formatter            : (value) => {
+                    formatter            : (value: string) => {
                         return moment().subtract(Math.abs(parseInt(value, 10)), 'minutes').format('HH:mm');
                     },
                     style                : {
@@ -263,7 +256,7 @@ export class CryptoComponent implements OnInit, OnDestroy
                 forceNiceScale: true,
                 labels        : {
                     minWidth : 40,
-                    formatter: (value, index) => {
+                    formatter: (value: number) => {
                         return '$' + value.toFixed(0);
                     },
                     style    : {
