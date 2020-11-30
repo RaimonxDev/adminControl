@@ -13,6 +13,7 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoHorizontalNavigationDividerItemComponent implements OnInit, OnDestroy
 {
+    // Public
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
 

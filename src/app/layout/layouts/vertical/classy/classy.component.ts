@@ -13,11 +13,12 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
+    // Public
     data: any;
-    isScreenSmall: boolean;
+    isScreenSmall!: boolean;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -34,8 +35,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -79,12 +78,12 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     /**
      * Toggle navigation
      *
-     * @param key
+     * @param name
      */
-    toggleNavigation(key): void
+    toggleNavigation(name: string): void
     {
         // Get the navigation
-        const navigation = this._treoNavigationService.getComponent(key);
+        const navigation = this._treoNavigationService.getComponent(name);
 
         if ( navigation )
         {

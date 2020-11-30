@@ -1,4 +1,4 @@
-import { ApplicationRef, Component, ElementRef, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatRadioChange } from '@angular/material/radio';
@@ -7,7 +7,6 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { TreoConfigService } from '@treo/services/config';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { tailwindConfig } from '@treo/tailwind/config';
-import { VERSION } from '@treo/version';
 import { Layout } from 'app/layout/layout.types';
 import { AppConfig } from 'app/core/config/app.config';
 
@@ -19,20 +18,20 @@ import { AppConfig } from 'app/core/config/app.config';
 })
 export class LayoutComponent implements OnInit, OnDestroy
 {
-    config: AppConfig;
-    layout: Layout;
-    scheme: 'dark' | 'light';
-    theme: string;
+    // Public
+    config!: AppConfig;
+    layout!: Layout;
+    scheme!: 'dark' | 'light';
+    theme!: string;
     themes: any;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
      *
      * @param {ActivatedRoute} _activatedRoute
-     * @param {ApplicationRef} _applicationRef
      * @param {DOCUMENT} _document
      * @param {Router} _router
      * @param {TreoConfigService} _treoConfigService
@@ -40,15 +39,12 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _applicationRef: ApplicationRef,
         @Inject(DOCUMENT) private _document: any,
         private _router: Router,
         private _treoConfigService: TreoConfigService,
         private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -60,12 +56,6 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Insert id
-        this._insertId();
-
-        // Insert version number
-        this._insertVersion();
-
         // Get the available themes
         this.themes = tailwindConfig.themes;
 
@@ -86,7 +76,7 @@ export class LayoutComponent implements OnInit, OnDestroy
                 if ( config.scheme === 'auto' )
                 {
                     // Decide the scheme using the media query
-                    options.scheme = mql.breakpoints['(prefers-color-scheme: dark)'] === true ? 'dark' : 'light';
+                    options.scheme = mql.breakpoints['(prefers-color-scheme: dark)'] ? 'dark' : 'light';
                 }
 
                 return options;
@@ -138,27 +128,6 @@ export class LayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Insert id
-     *
-     * @private
-     */
-    private _insertId(): void
-    {
-        this._applicationRef.components[0].injector.get(ElementRef).nativeElement.id = 'treo';
-    }
-
-    /**
-     * Insert the version number
-     *
-     * @private
-     */
-    private _insertVersion(): void
-    {
-        const version = VERSION.full;
-        this._applicationRef.components[0].injector.get(ElementRef).nativeElement.setAttribute('treo-version', version);
-    }
 
     /**
      * Update the selected layout
@@ -233,7 +202,7 @@ export class LayoutComponent implements OnInit, OnDestroy
     private _updateTheme(): void
     {
         // Find the class name for the previously selected theme and remove it
-        this._document.body.classList.forEach((className) => {
+        this._document.body.classList.forEach((className: string) => {
             if ( className.startsWith('theme-') )
             {
                 this._document.body.classList.remove(className, className.split('-')[1]);

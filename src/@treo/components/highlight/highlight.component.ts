@@ -12,11 +12,10 @@ import { TreoHighlightService } from '@treo/components/highlight/highlight.servi
 })
 export class TreoHighlightComponent implements OnChanges, AfterViewInit
 {
+    // Public
     @Input() code = '';
     @Input() lang = '';
     @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
-
-    // Public
     highlightedCode: string | null = null;
 
     // Private

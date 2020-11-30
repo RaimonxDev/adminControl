@@ -17,6 +17,7 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 })
 export class TreoAlertComponent implements OnChanges, OnInit, OnDestroy
 {
+    // Public
     @Input() appearance: TreoAlertAppearance = 'soft';
     @Input() dismissible = false;
     @Input() dismissed = false;
@@ -48,7 +49,7 @@ export class TreoAlertComponent implements OnChanges, OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Host binding for classes
+     * Host binding for component classes
      */
     @HostBinding('class') get classList(): any
     {

@@ -14,13 +14,12 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationAsideItemComponent implements OnChanges, OnInit, OnDestroy
 {
+    // Public
     @Input() activeItemId = '';
     @Input() autoCollapse!: boolean;
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
     @Input() skipChildren = false;
-
-    // Public
     active = false;
 
     // Private

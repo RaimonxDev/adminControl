@@ -13,6 +13,8 @@ export class TreoConfigService
 
     /**
      * Constructor
+     *
+     * @param {TREO_APP_CONFIG} config
      */
     constructor(@Inject(TREO_APP_CONFIG) config: any)
     {

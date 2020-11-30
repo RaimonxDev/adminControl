@@ -21,6 +21,7 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 })
 export class TreoVerticalNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy
 {
+    // Public
     @Input() appearance: TreoVerticalNavigationAppearance = 'classic';
     @Input() autoCollapse = true;
     @Input() inner = false;
@@ -35,8 +36,6 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
     @Output() readonly openedChanged: EventEmitter<boolean | ''> = new EventEmitter<boolean | ''>();
     @Output() readonly positionChanged: EventEmitter<TreoVerticalNavigationPosition> = new EventEmitter<TreoVerticalNavigationPosition>();
     @ViewChild('navigationContent') private _navigationContentEl!: ElementRef;
-
-    // Public
     activeAsideItemId: string | undefined = undefined;
     onCollapsableItemCollapsed: ReplaySubject<TreoNavigationItem> = new ReplaySubject<TreoNavigationItem>(1);
     onCollapsableItemExpanded: ReplaySubject<TreoNavigationItem> = new ReplaySubject<TreoNavigationItem>(1);
@@ -92,7 +91,7 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Host binding for classes
+     * Host binding for component classes
      */
     @HostBinding('class') get classList(): any
     {
@@ -108,7 +107,7 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
     }
 
     /**
-     * Host binding for inline styles
+     * Host binding for component inline styles
      */
     @HostBinding('style') get styleList(): any
     {

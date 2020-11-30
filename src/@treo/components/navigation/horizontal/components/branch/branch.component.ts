@@ -14,6 +14,7 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoHorizontalNavigationBranchItemComponent implements OnInit, OnDestroy
 {
+    // Public
     @Input() child = false;
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;

@@ -49,7 +49,7 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Host binding for classes
+     * Host binding for component classes
      */
     @HostBinding('class') get classList(): any
     {

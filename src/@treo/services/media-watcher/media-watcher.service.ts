@@ -6,6 +6,7 @@ import { tailwindConfig } from '@treo/tailwind/config';
 @Injectable()
 export class TreoMediaWatcherService
 {
+    // Private
     private _onMediaChange: ReplaySubject<{ matchingAliases: string[], matchingQueries: any }> = new ReplaySubject<{ matchingAliases: string[], matchingQueries: any }>(1);
 
     /**

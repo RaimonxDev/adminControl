@@ -14,6 +14,7 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 })
 export class TreoVerticalNavigationBasicItemComponent implements OnInit, OnDestroy
 {
+    // Public
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
 

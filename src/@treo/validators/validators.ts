@@ -1,4 +1,4 @@
-import { FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class TreoValidators
 {
@@ -20,7 +20,7 @@ export class TreoValidators
      */
     static mustMatch(controlPath: string, matchingControlPath: string): ValidatorFn
     {
-        return (formGroup: FormGroup): null => {
+        return (formGroup: AbstractControl): ValidationErrors | null => {
 
             // Get the control and matching control
             const control = formGroup.get(controlPath);
@@ -29,13 +29,13 @@ export class TreoValidators
             // Return if control or matching control doesn't exist
             if ( !control || !matchingControl )
             {
-                return;
+                return null;
             }
 
             // Delete the mustMatch error to reset the error on the matching control
             if ( matchingControl.hasError('mustMatch') )
             {
-                delete matchingControl.errors.mustMatch;
+                delete matchingControl?.errors?.mustMatch;
                 matchingControl.updateValueAndValidity();
             }
 
@@ -43,11 +43,17 @@ export class TreoValidators
             // Don't validate if values are matching
             if ( this.isEmptyInputValue(matchingControl.value) || control.value === matchingControl.value )
             {
-                return;
+                return null;
             }
 
+            // Prepare the validation errors
+            const errors = {mustMatch: true};
+
             // Set the validation error on the matching control
-            matchingControl.setErrors({mustMatch: true});
+            matchingControl.setErrors(errors);
+
+            // Return the errors
+            return errors;
         };
     }
 }

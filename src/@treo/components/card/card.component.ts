@@ -12,6 +12,7 @@ import { TreoCardFace } from '@treo/components/card/card.types';
 })
 export class TreoCardComponent implements OnChanges
 {
+    // Public
     @Input() expanded = false;
     @Input() face: TreoCardFace | null = null;
 
@@ -27,7 +28,7 @@ export class TreoCardComponent implements OnChanges
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Host binding for classes
+     * Host binding for component classes
      */
     @HostBinding('class') get classList(): any
     {

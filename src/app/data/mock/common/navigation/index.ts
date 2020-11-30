@@ -10,7 +10,7 @@ import { compactNavigation, defaultNavigation, futuristicNavigation, horizontalN
 })
 export class NavigationMockApi implements TreoMockApi
 {
-    // Private Readonly
+    // Private
     private readonly _compactNavigation: TreoNavigationItem[] = compactNavigation;
     private readonly _defaultNavigation: TreoNavigationItem[] = defaultNavigation;
     private readonly _futuristicNavigation: TreoNavigationItem[] = futuristicNavigation;

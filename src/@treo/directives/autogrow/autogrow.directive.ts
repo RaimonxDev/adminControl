@@ -7,12 +7,13 @@ import { Subject } from 'rxjs';
 })
 export class TreoAutogrowDirective implements OnChanges, OnInit, OnDestroy
 {
+    // Public
     // tslint:disable-next-line:no-input-rename
     @Input('treoAutogrowVerticalPadding') padding = 8;
-    @HostBinding('rows') rows = 1;
 
     // Private
     private _height = 'auto';
+    @HostBinding('rows') private _rows = 1;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -29,7 +30,7 @@ export class TreoAutogrowDirective implements OnChanges, OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Host binding for inline styles
+     * Host binding for component inline styles
      */
     @HostBinding('style') get styleList(): any
     {

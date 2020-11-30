@@ -16,6 +16,7 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, OnDestroy
 {
+    // Public
     @Input() autoCollapse!: boolean;
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
@@ -46,7 +47,7 @@ export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, O
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Host binding for classes
+     * Host binding for component classes
      */
     @HostBinding('class') get classList(): any
     {

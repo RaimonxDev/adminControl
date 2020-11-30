@@ -11,7 +11,7 @@ import { contacts } from 'app/data/mock/apps/contacts/data';
 })
 export class SearchMockApi implements TreoMockApi
 {
-    // Private Readonly
+    // Private
     private readonly _defaultNavigation: TreoNavigationItem[] = defaultNavigation;
     private readonly _contacts: any[] = contacts;
 

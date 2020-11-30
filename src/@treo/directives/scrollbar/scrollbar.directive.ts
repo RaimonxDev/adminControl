@@ -16,6 +16,7 @@ import { ScrollbarGeometry, ScrollbarPosition } from '@treo/directives/scrollbar
 })
 export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
 {
+    // Public
     @Input() treoScrollbar = true;
     @Input() treoScrollbarOptions: any = {};
 

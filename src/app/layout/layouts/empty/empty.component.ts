@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -7,31 +7,21 @@ import { Subject } from 'rxjs';
     styleUrls    : ['./empty.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class EmptyLayoutComponent implements OnInit, OnDestroy
+export class EmptyLayoutComponent implements OnDestroy
 {
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
-
-    }
 
     /**
      * On destroy

@@ -6,6 +6,7 @@ import { TreoMockApiRequestHandler } from '@treo/lib/mock-api/mock-api.request-h
 })
 export class TreoMockApiService
 {
+    // Public
     requestHandlers: any = {
         delete: new Map<string, TreoMockApiRequestHandler>(),
         get   : new Map<string, TreoMockApiRequestHandler>(),

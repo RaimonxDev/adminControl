@@ -10,7 +10,7 @@ import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 })
 export class AuthMockApi implements TreoMockApi
 {
-    // Private Readonly
+    // Private
     private readonly _secret: any;
 
     /**

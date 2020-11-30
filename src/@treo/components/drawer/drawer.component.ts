@@ -13,6 +13,7 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 })
 export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
 {
+    // Public
     @Input() fixed = false;
     @Input() mode: TreoDrawerMode = 'side';
     @Input() name: string = this._treoUtilsService.randomId();
@@ -54,7 +55,7 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Host binding for classes
+     * Host binding for component classes
      */
     @HostBinding('class') get classList(): any
     {
@@ -69,7 +70,7 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
     }
 
     /**
-     * Host binding for inline styles
+     * Host binding for component inline styles
      */
     @HostBinding('style') get styleList(): any
     {

@@ -9,7 +9,7 @@ import { dripicons, feather, heroicons, iconsmind, material } from 'app/data/moc
 })
 export class IconsMockApi implements TreoMockApi
 {
-    // Private Readonly
+    // Private
     private readonly _dripicons: any = dripicons;
     private readonly _feather: any = feather;
     private readonly _heroicons: any = heroicons;

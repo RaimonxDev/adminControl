@@ -13,17 +13,14 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class CompactLayoutComponent implements OnInit, OnDestroy
 {
+    // Public
     data: any;
-    isScreenSmall: boolean;
-
-    @HostBinding('class.fixed-header')
-    fixedHeader: boolean;
-
-    @HostBinding('class.fixed-footer')
-    fixedFooter: boolean;
+    fixedFooter = false;
+    fixedHeader = false;
+    isScreenSmall!: boolean;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -40,17 +37,22 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.fixedHeader = false;
-        this.fixedFooter = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Host binding for component classes
+     */
+    @HostBinding('class') get classList(): any
+    {
+        return {
+            'fixed-footer': this.fixedFooter,
+            'fixed-header': this.fixedHeader
+        };
+    }
 
     /**
      * Getter for current year
@@ -101,12 +103,12 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
     /**
      * Toggle navigation
      *
-     * @param key
+     * @param name
      */
-    toggleNavigation(key): void
+    toggleNavigation(name: string): void
     {
         // Get the navigation
-        const navigation = this._treoNavigationService.getComponent(key);
+        const navigation = this._treoNavigationService.getComponent(name);
 
         if ( navigation )
         {
