@@ -30,7 +30,7 @@ export class TreoMockApiModule
                     deps      : mockDataServices,
                     useFactory: () => () => null,
                     multi     : true
-                },
+                }
             ]
         };
     }

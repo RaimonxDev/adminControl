@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { compact, fromPairs } from 'lodash-es';
 import { TreoMockApiRequestHandler } from '@treo/lib/mock-api/mock-api.request-handler';
 
 @Injectable({
@@ -6,8 +7,8 @@ import { TreoMockApiRequestHandler } from '@treo/lib/mock-api/mock-api.request-h
 })
 export class TreoMockApiService
 {
-    // Public
-    requestHandlers: any = {
+    // Private
+    private _requestHandlers: { [key: string]: Map<string, TreoMockApiRequestHandler> } = {
         delete: new Map<string, TreoMockApiRequestHandler>(),
         get   : new Map<string, TreoMockApiRequestHandler>(),
         patch : new Map<string, TreoMockApiRequestHandler>(),
@@ -20,6 +21,30 @@ export class TreoMockApiService
      */
     constructor()
     {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Register a request handler
+     *
+     * @param requestType
+     * @param url
+     * @param delay
+     * @private
+     */
+    private _registerRequestHandler(requestType: 'get' | 'post' | 'put' | 'patch' | 'delete', url: string, delay: number): TreoMockApiRequestHandler
+    {
+        // Create a new instance of TreoMockApiRequestHandler
+        const treoMockHttp = new TreoMockApiRequestHandler(url, delay);
+
+        // Store the request handler to access them from the interceptor
+        this._requestHandlers[requestType].set(url, treoMockHttp);
+
+        // Return the instance
+        return treoMockHttp;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -81,27 +106,61 @@ export class TreoMockApiService
         return this._registerRequestHandler('delete', url, delay);
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
     /**
-     * Register a request handler
+     * Find the matching request handler from the service
+     * with the given method and url
      *
-     * @param requestType
+     * @param method
      * @param url
-     * @param delay
-     * @private
      */
-    private _registerRequestHandler(requestType: 'get' | 'post' | 'put' | 'patch' | 'delete', url: string, delay: number): TreoMockApiRequestHandler
+    findMatchingRequestHandler(method: string, url: string): { handler: TreoMockApiRequestHandler | undefined, params: { [key: string]: string } }
     {
-        // Create a new instance of TreoMockApiRequestHandler
-        const treoMockHttp = new TreoMockApiRequestHandler(url, delay);
+        // Prepare the return object
+        const matchingHandler: { handler: TreoMockApiRequestHandler | undefined, params: { [key: string]: string } } = {
+            handler: undefined,
+            params : {}
+        };
 
-        // Store the request handler to access them from the interceptor
-        this.requestHandlers[requestType].set(url, treoMockHttp);
+        // Split the url
+        const urlParts = url.split('/');
 
-        // Return the instance
-        return treoMockHttp;
+        // Get all related request handlers
+        const handlers = this._requestHandlers[method.toLowerCase()];
+
+        // Iterate through the handlers
+        handlers.forEach((handler, handlerUrl) => {
+
+            // Skip if there is already a matching handler
+            if ( matchingHandler.handler )
+            {
+                return;
+            }
+
+            // Split the handler url
+            const handlerUrlParts = handlerUrl.split('/');
+
+            // Skip if the lengths of the urls we are comparing are not the same
+            if ( urlParts.length !== handlerUrlParts.length )
+            {
+                return;
+            }
+
+            // Compare
+            const matches = handlerUrlParts.every((handlerUrlPart, index) => handlerUrlPart === urlParts[index] || handlerUrlPart.startsWith(':'));
+
+            // If there is a match...
+            if ( matches )
+            {
+                // Assign the matching handler
+                matchingHandler.handler = handler;
+
+                // Extract and assign the parameters
+                matchingHandler.params = fromPairs(compact(handlerUrlParts.map((handlerUrlPart, index) =>
+                    handlerUrlPart.startsWith(':') ? [handlerUrlPart.substring(1), urlParts[index]] : undefined
+                )));
+            }
+        });
+
+        return matchingHandler;
     }
 }

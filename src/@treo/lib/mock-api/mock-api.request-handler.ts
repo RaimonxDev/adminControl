@@ -7,17 +7,15 @@ import { take } from 'rxjs/operators';
 export class TreoMockApiRequestHandler
 {
     interceptedRequest!: HttpRequest<any>;
+    routeParams!: { [key: string]: string };
 
     // Private
     private _executionCount = 0;
     private _executionLimit = 0;
-    private _replyCallback: ((req: HttpRequest<any>) => ([number, any | string] | Observable<any>)) | undefined = undefined;
+    private _replyCallback: ((request: HttpRequest<any>, params: { [key: string]: string }) => ([number, any | string] | Observable<any>)) | undefined = undefined;
 
     /**
      * Constructor
-     *
-     * @param url
-     * @param delay
      */
     constructor(
         public url: string,
@@ -57,7 +55,7 @@ export class TreoMockApiRequestHandler
         this._executionCount++;
 
         // Execute the reply callback
-        const replyCallbackResult = this._replyCallback(this.interceptedRequest);
+        const replyCallbackResult = this._replyCallback(this.interceptedRequest, this.routeParams);
 
         // If the result of the reply function is an observable...
         if ( replyCallbackResult instanceof Observable )
@@ -79,7 +77,7 @@ export class TreoMockApiRequestHandler
      *
      * @param callback
      */
-    reply(callback: (req: HttpRequest<any>) => ([number, any | string] | Observable<any>)): void
+    reply(callback: (request: HttpRequest<any>, params: { [key: string]: string }) => ([number, any | string] | Observable<any>)): void
     {
         // Store the reply callback
         this._replyCallback = callback;
@@ -90,7 +88,7 @@ export class TreoMockApiRequestHandler
      *
      * @param callback
      */
-    replyOnce(callback: (req: HttpRequest<any>) => ([number, any | string] | Observable<any>)): void
+    replyOnce(callback: (request: HttpRequest<any>, params: { [key: string]: string }) => ([number, any | string] | Observable<any>)): void
     {
         // Set the execute limit to 1
         this._executionLimit = 1;

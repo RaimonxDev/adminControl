@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
-import { TreoMockApiRequestHandler } from '@treo/lib/mock-api/mock-api.request-handler';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 
 @Injectable({
@@ -12,8 +11,6 @@ export class TreoMockApiInterceptor implements HttpInterceptor
 {
     /**
      * Constructor
-     *
-     * @param {TreoMockApiService} _treoMockApiService
      */
     constructor(
         private _treoMockApiService: TreoMockApiService
@@ -30,17 +27,20 @@ export class TreoMockApiInterceptor implements HttpInterceptor
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
     {
         // Try to get the request handler
-        const requestHandler: TreoMockApiRequestHandler = this._treoMockApiService.requestHandlers[request.method.toLowerCase()].get(request.url);
+        const requestHandler = this._treoMockApiService.findMatchingRequestHandler(request.method.toLowerCase(), request.url);
 
         // If the request handler exists..
-        if ( requestHandler )
+        if ( requestHandler.handler )
         {
-            // Set the intercepted request on the requestHandler
-            requestHandler.interceptedRequest = request;
+            // Set the intercepted request on the handler
+            requestHandler.handler.interceptedRequest = request;
+
+            // Set the route params on the handler
+            requestHandler.handler.routeParams = requestHandler.params;
 
             // Subscribe to the reply function observable
-            return requestHandler.replyCallback.pipe(
-                delay(requestHandler.delay),
+            return requestHandler.handler.replyCallback.pipe(
+                delay(requestHandler.handler.delay),
                 switchMap((response) => {
 
                     // Throw a not found response, if there is no response data
@@ -82,7 +82,6 @@ export class TreoMockApiInterceptor implements HttpInterceptor
                     });
 
                     return throwError(response);
-
                 }));
         }
 
