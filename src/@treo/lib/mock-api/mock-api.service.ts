@@ -35,7 +35,7 @@ export class TreoMockApiService
      * @param delay
      * @private
      */
-    private _registerRequestHandler(requestType: 'get' | 'post' | 'put' | 'patch' | 'delete', url: string, delay: number): TreoMockApiRequestHandler
+    private _registerRequestHandler(requestType: 'get' | 'post' | 'put' | 'patch' | 'delete', url: string, delay?: number): TreoMockApiRequestHandler
     {
         // Create a new instance of TreoMockApiRequestHandler
         const treoMockHttp = new TreoMockApiRequestHandler(url, delay);
@@ -52,56 +52,56 @@ export class TreoMockApiService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register 'get' request handler
+     * Register a GET request handler
      *
-     * @param url
-     * @param delay
+     * @param url - URL address of the mocked API endpoint
+     * @param delay - Delay of the response in milliseconds
      */
-    onGet(url: string, delay: number = 0): TreoMockApiRequestHandler
+    onGet(url: string, delay?: number): TreoMockApiRequestHandler
     {
         return this._registerRequestHandler('get', url, delay);
     }
 
     /**
-     * Register 'post' request handler
+     * Register a POST request handler
      *
-     * @param url
-     * @param delay
+     * @param url - URL address of the mocked API endpoint
+     * @param delay - Delay of the response in milliseconds
      */
-    onPost(url: string, delay: number = 0): TreoMockApiRequestHandler
+    onPost(url: string, delay?: number): TreoMockApiRequestHandler
     {
         return this._registerRequestHandler('post', url, delay);
     }
 
     /**
-     * Register 'put' request handler
+     * Register a PUT request handler
      *
-     * @param url
-     * @param delay
+     * @param url - URL address of the mocked API endpoint
+     * @param delay - Delay of the response in milliseconds
      */
-    onPut(url: string, delay: number = 0): TreoMockApiRequestHandler
+    onPut(url: string, delay?: number): TreoMockApiRequestHandler
     {
         return this._registerRequestHandler('put', url, delay);
     }
 
     /**
-     * Register 'patch' request handler
+     * Register a PATCH request handler
      *
-     * @param url
-     * @param delay
+     * @param url - URL address of the mocked API endpoint
+     * @param delay - Delay of the response in milliseconds
      */
-    onPatch(url: string, delay: number = 0): TreoMockApiRequestHandler
+    onPatch(url: string, delay?: number): TreoMockApiRequestHandler
     {
         return this._registerRequestHandler('patch', url, delay);
     }
 
     /**
-     * Register 'delete' request handler
+     * Register a DELETE request handler
      *
-     * @param url
-     * @param delay
+     * @param url - URL address of the mocked API endpoint
+     * @param delay - Delay of the response in milliseconds
      */
-    onDelete(url: string, delay: number = 0): TreoMockApiRequestHandler
+    onDelete(url: string, delay?: number): TreoMockApiRequestHandler
     {
         return this._registerRequestHandler('delete', url, delay);
     }

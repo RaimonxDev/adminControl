@@ -19,7 +19,7 @@ export class TreoMockApiRequestHandler
      */
     constructor(
         public url: string,
-        public delay: number
+        public delay?: number
     )
     {
     }

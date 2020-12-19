@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
+import { MOCK_API_DEFAULT_DELAY } from '@treo/lib/mock-api/mock-api.constants';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 
 @Injectable({
@@ -13,6 +14,7 @@ export class TreoMockApiInterceptor implements HttpInterceptor
      * Constructor
      */
     constructor(
+        @Inject(MOCK_API_DEFAULT_DELAY) private _defaultDelay: number,
         private _treoMockApiService: TreoMockApiService
     )
     {
@@ -40,7 +42,7 @@ export class TreoMockApiInterceptor implements HttpInterceptor
 
             // Subscribe to the reply function observable
             return requestHandler.handler.replyCallback.pipe(
-                delay(requestHandler.handler.delay),
+                delay(requestHandler.handler.delay ?? this._defaultDelay),
                 switchMap((response) => {
 
                     // Throw a not found response, if there is no response data
