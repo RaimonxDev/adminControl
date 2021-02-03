@@ -10,12 +10,8 @@ export class TreoMediaWatcherModule
 {
     /**
      * Constructor
-     *
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
-    constructor(
-        private _treoMediaWatcherService: TreoMediaWatcherService
-    )
+    constructor(private _treoMediaWatcherService: TreoMediaWatcherService)
     {
     }
 }

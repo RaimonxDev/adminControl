@@ -29,10 +29,6 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
-     * @param {MatDialog} _matDialog
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _mailboxService: MailboxService,
@@ -118,7 +114,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
      */
     private _generateFoldersMenuLinks(): void
     {
-        // Reset the folders menu data
+        // Reset the folders menu mock-api
         this._foldersMenuData = [];
 
         // Iterate through the folders
@@ -143,11 +139,11 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
                 };
             }
 
-            // Push the menu item to the folders menu data
+            // Push the menu item to the folders menu mock-api
             this._foldersMenuData.push(menuItem);
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
@@ -174,7 +170,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             });
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
@@ -202,7 +198,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             });
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
@@ -221,12 +217,12 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             link : '/apps/mailbox/settings'
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
     /**
-     * Update the menu data
+     * Update the menu mock-api
      *
      * @private
      */
@@ -273,7 +269,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         // Get the inbox folder
         const inboxFolder = this.folders.find((folder) => folder.slug === 'inbox');
 
-        // Get the component -> navigation data -> item
+        // Get the component -> navigation mock-api -> item
         const mainNavigationComponent = this._treoNavigationService.getComponent('mainNavigation');
 
         // If the main navigation component exists...

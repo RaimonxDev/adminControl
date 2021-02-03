@@ -9,14 +9,10 @@ import { filter, takeUntil } from 'rxjs/operators';
 })
 export class TreoScrollResetDirective implements OnInit, OnDestroy
 {
-    // Private
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
-     * @param {Router} _router
      */
     constructor(
         private _elementRef: ElementRef,

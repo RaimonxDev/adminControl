@@ -33,13 +33,6 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {ElementRef} _elementRef
-     * @param {MailboxService} _mailboxService
-     * @param {Overlay} _overlay
-     * @param {Router} _router
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _activatedRoute: ActivatedRoute,

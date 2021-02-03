@@ -20,12 +20,8 @@ export class RightSidebarFullheightTabsNavigationComponent implements OnInit, On
 
     /**
      * Constructor
-     *
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
-    constructor(
-        private _treoMediaWatcherService: TreoMediaWatcherService
-    )
+    constructor(private _treoMediaWatcherService: TreoMediaWatcherService)
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();

@@ -9,17 +9,12 @@ import { Shortcut } from 'app/layout/common/shortcuts/shortcuts.types';
 })
 export class ShortcutsService
 {
-    // Private
     private _shortcuts: ReplaySubject<Shortcut[]> = new ReplaySubject<Shortcut[]>(1);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
     }
 
@@ -134,5 +129,4 @@ export class ShortcutsService
             ))
         );
     }
-
 }

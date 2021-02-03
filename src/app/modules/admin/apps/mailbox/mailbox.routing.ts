@@ -62,7 +62,6 @@ export function mailboxRunGuardsAndResolvers(from: ActivatedRouteSnapshot, to: A
 
     // Get the current activated route of the 'from'
     let fromCurrentRoute = from;
-
     while ( fromCurrentRoute.firstChild )
     {
         fromCurrentRoute = fromCurrentRoute.firstChild;
@@ -70,7 +69,6 @@ export function mailboxRunGuardsAndResolvers(from: ActivatedRouteSnapshot, to: A
 
     // Get the current activated route of the 'to'
     let toCurrentRoute = to;
-
     while ( toCurrentRoute.firstChild )
     {
         toCurrentRoute = toCurrentRoute.firstChild;

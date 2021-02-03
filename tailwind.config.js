@@ -1,4 +1,64 @@
-module.exports = (isProd) => ({
+const path = require('path');
+const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
+const generatePalette = require(path.resolve(__dirname, ('src/@treo/tailwind/utils/generate-palette')));
+
+/**
+ * Custom colors
+ *
+ * Uses the generatePalette helper method to generate
+ * Tailwind-like color palettes automatically
+ */
+const customColors = {
+    brand: generatePalette('#F50057')
+};
+
+/**
+ * Themes
+ */
+const themes = {
+    'default': {
+        primary: {
+            ...colors.indigo,
+            DEFAULT: colors.indigo[600]
+        },
+        accent : {
+            ...colors.blueGray,
+            DEFAULT: colors.blueGray[800]
+        },
+        warn   : {
+            ...colors.red,
+            DEFAULT: colors.red[700]
+        }
+    },
+    'brand'  : {
+        primary: customColors.brand
+    },
+    'teal'   : {
+        primary: {
+            ...colors.teal,
+            DEFAULT: colors.teal[600]
+        }
+    },
+    'purple' : {
+        primary: {
+            ...colors.purple,
+            DEFAULT: colors.purple[600]
+        }
+    },
+    'amber'  : {
+        primary: colors.amber
+    }
+};
+
+/**
+ * Tailwind configuration
+ *
+ * @param isProd
+ * This will be automatically supplied by the custom Angular builder
+ * based on the current environment of the application (prod, dev etc.)
+ */
+const config = (isProd = false) => ({
     experimental: {},
     future      : {},
     darkMode    : 'class',
@@ -16,6 +76,21 @@ module.exports = (isProd) => ({
         }
     },
     theme       : {
+        colors  : {
+            transparent: 'transparent',
+            current    : 'currentColor',
+            black      : colors.black,
+            white      : colors.white,
+            gray       : colors.blueGray,
+            red        : colors.red,
+            amber      : colors.amber,
+            yellow     : colors.yellow,
+            green      : colors.green,
+            teal       : colors.teal,
+            blue       : colors.blue,
+            indigo     : colors.indigo,
+            purple     : colors.purple
+        },
         fontSize: {
             'xs'  : '0.625rem',
             'sm'  : '0.75rem',
@@ -34,165 +109,23 @@ module.exports = (isProd) => ({
             '10xl': '8rem'
         },
         screens : {
-            sm : '600px',
-            md : '960px',
-            lg : '1280px',
-            xl : '1440px',
-            xxl: '1920px'
+            sm: '600px',
+            md: '960px',
+            lg: '1280px',
+            xl: '1440px'
         },
         extend  : {
-            // Treo Tailwind plugin configuration
-            treo: {
-
-                /**
-                 * Treo color themes with Angular Material Components support
-                 * The 'default' theme is required for Treo to work correctly
-                 */
-                themes: {
-                    'default': {
-                        primary: ['indigo', 600],
-                        accent : ['coolGray', 800],
-                        warn   : ['red', 700]
-                    },
-                    'teal'   : {
-                        primary: ['teal', 600],
-                        accent : ['coolGray', 800],
-                        warn   : ['red', 700]
-                    },
-                    'purple' : {
-                        primary: ['purple', 600],
-                        accent : ['coolGray', 800],
-                        warn   : ['red', 700]
-                    },
-                    'orange' : {
-                        primary: ['orange', 600],
-                        accent : ['coolGray', 800],
-                        warn   : ['red', 700]
-                    }
-                },
-
-                /**
-                 * By default, contrasting colors will be generated automatically by Treo
-                 * Tailwind plugin based on palette colors but for some reason if you don't
-                 * like them, you can use the below config to manually define contrasting
-                 * colors for each palette
-                 */
-                /*
-                contrasts: {
-                    coolGray: {
-                        '50'   : '#000000',
-                        '100'  : '#000000',
-                        '200'  : '#000000',
-                        '300'  : '#000000',
-                        '400'  : '#000000',
-                        '500'  : '#000000',
-                        DEFAULT: '#000000',
-                        '600'  : '#000000',
-                        '700'  : '#000000',
-                        '800'  : '#000000',
-                        '900'  : '#000000'
-                    }
-                },
-                */
-
-                /**
-                 * Icon size object for extending Angular Material mat-icon
-                 * compatible .icon-size-XX utility classes
-                 */
-                /*
-                iconSize: {
-                    8: '0.5rem'
-                    10: '0.625rem',
-                    12: '0.75rem'
-                },
-                */
-
-                /**
-                 * Separate spacing object to use in width/height utilities
-                 * We don't want to add these to the existing 'spacing' config
-                 * as it will result with bigger file as well as bunch of useless
-                 * utilities such as p-1/3 or m-3/4
-                 */
-                spacing: {
-                    // Fractional spacing values
-                    '1/2'  : '50%',
-                    '1/3'  : '33.333333%',
-                    '2/3'  : '66.666667%',
-                    '1/4'  : '25%',
-                    '2/4'  : '50%',
-                    '3/4'  : '75%',
-                    '1/5'  : '20%',
-                    '2/5'  : '40%',
-                    '3/5'  : '60%',
-                    '4/5'  : '80%',
-                    '1/6'  : '16.666667%',
-                    '2/6'  : '33.333333%',
-                    '3/6'  : '50%',
-                    '4/6'  : '66.666667%',
-                    '5/6'  : '83.333333%',
-                    '1/12' : '8.333333%',
-                    '2/12' : '16.666667%',
-                    '3/12' : '25%',
-                    '4/12' : '33.333333%',
-                    '5/12' : '41.666667%',
-                    '6/12' : '50%',
-                    '7/12' : '58.333333%',
-                    '8/12' : '66.666667%',
-                    '9/12' : '75%',
-                    '10/12': '83.333333%',
-                    '11/12': '91.666667%',
-
-                    // Extended spacing values
-                    '100': '25rem',
-                    '120': '30rem',
-                    '128': '32rem',
-                    '140': '35rem',
-                    '160': '40rem',
-                    '180': '45rem',
-                    '192': '48rem',
-                    '200': '50rem',
-                    '240': '60rem',
-                    '256': '64rem',
-                    '280': '70rem',
-                    '320': '80rem',
-                    '360': '90rem',
-                    '400': '100rem',
-                    '480': '120rem'
-                }
-            },
-
-            // Tailwind config extensions
             flex      : {
                 '0': '0 0 auto'
             },
             fontFamily: {
                 sans: [
                     'Inter var',
-                    'ui-sans-serif',
-                    'system-ui',
-                    '-apple-system',
-                    'BlinkMacSystemFont',
-                    '"Segoe UI"',
-                    'Roboto',
-                    '"Helvetica Neue"',
-                    'Arial',
-                    '"Noto Sans"',
-                    'sans-serif',
-                    '"Apple Color Emoji"',
-                    '"Segoe UI Emoji"',
-                    '"Segoe UI Symbol"',
-                    '"Noto Color Emoji"'
+                    ...defaultTheme.fontFamily.sans
                 ],
                 mono: [
                     '"IBM Plex Mono"',
-                    'ui-monospace',
-                    'SFMono-Regular',
-                    'Menlo',
-                    'Monaco',
-                    'Consolas',
-                    '"Liberation Mono"',
-                    '"Courier New"',
-                    'monospace'
+                    ...defaultTheme.fontFamily.mono
                 ]
             },
             opacity   : {
@@ -207,6 +140,20 @@ module.exports = (isProd) => ({
                 '60'  : '60deg',
                 '270' : '270deg'
             },
+            scale     : {
+                '-1': '-1'
+            },
+            zIndex    : {
+                '-1'   : -1,
+                '60'   : 60,
+                '70'   : 70,
+                '80'   : 80,
+                '90'   : 90,
+                '99'   : 99,
+                '999'  : 999,
+                '9999' : 9999,
+                '99999': 99999
+            },
             spacing   : {
                 '2px': '2px',
                 '13' : '3.25rem',
@@ -218,87 +165,196 @@ module.exports = (isProd) => ({
                 '50' : '12.5rem',
                 '90' : '22.5rem'
             },
-            height    : theme => ({
-                ...theme('treo.spacing')
+            /**
+             * Extended spacing values for width and height utilities.
+             * This way, we won't be adding these to other utilities
+             * that use 'spacing' config to keep the file size
+             * smaller by not generating useless utilities such as
+             * p-1/4 or m-480.
+             */
+            extendedSpacing: {
+                // Fractional values
+                '1/2'  : '50%',
+                '1/3'  : '33.333333%',
+                '2/3'  : '66.666667%',
+                '1/4'  : '25%',
+                '2/4'  : '50%',
+                '3/4'  : '75%',
+                '1/5'  : '20%',
+                '2/5'  : '40%',
+                '3/5'  : '60%',
+                '4/5'  : '80%',
+                '1/6'  : '16.666667%',
+                '2/6'  : '33.333333%',
+                '3/6'  : '50%',
+                '4/6'  : '66.666667%',
+                '5/6'  : '83.333333%',
+                '1/12' : '8.333333%',
+                '2/12' : '16.666667%',
+                '3/12' : '25%',
+                '4/12' : '33.333333%',
+                '5/12' : '41.666667%',
+                '6/12' : '50%',
+                '7/12' : '58.333333%',
+                '8/12' : '66.666667%',
+                '9/12' : '75%',
+                '10/12': '83.333333%',
+                '11/12': '91.666667%',
+
+                // Bigger values
+                '100': '25rem',
+                '120': '30rem',
+                '128': '32rem',
+                '140': '35rem',
+                '160': '40rem',
+                '180': '45rem',
+                '192': '48rem',
+                '200': '50rem',
+                '240': '60rem',
+                '256': '64rem',
+                '280': '70rem',
+                '320': '80rem',
+                '360': '90rem',
+                '400': '100rem',
+                '480': '120rem'
+            },
+            height         : theme => ({
+                ...theme('extendedSpacing')
             }),
-            minHeight : theme => ({
+            minHeight      : theme => ({
                 ...theme('spacing'),
-                ...theme('treo.spacing')
+                ...theme('extendedSpacing')
             }),
-            maxHeight : theme => ({
-                ...theme('treo.spacing'),
+            maxHeight      : theme => ({
+                ...theme('extendedSpacing'),
                 none: 'none'
             }),
-            width     : theme => ({
-                ...theme('treo.spacing')
+            width          : theme => ({
+                ...theme('extendedSpacing')
             }),
-            minWidth  : theme => ({
+            minWidth       : theme => ({
                 ...theme('spacing'),
-                ...theme('treo.spacing'),
+                ...theme('extendedSpacing'),
                 screen: '100vw'
             }),
-            maxWidth  : theme => ({
+            maxWidth       : theme => ({
                 ...theme('spacing'),
-                ...theme('treo.spacing'),
+                ...theme('extendedSpacing'),
                 screen: '100vw'
-            }),
-            zIndex    : {
-                '-1'   : -1,
-                '60'   : 60,
-                '70'   : 70,
-                '80'   : 80,
-                '90'   : 90,
-                '99'   : 99,
-                '999'  : 999,
-                '9999' : 9999,
-                '99999': 99999
-            }
+            })
         }
     },
     variants    : {
         accessibility           : [],
+        alignContent            : ['responsive'],
+        alignItems              : ['responsive'],
+        alignSelf               : ['responsive'],
         animation               : [],
         backgroundAttachment    : [],
         backgroundClip          : [],
-        backgroundColor         : ['dark', 'group-hover', 'hover', 'focus'],
+        backgroundColor         : ['dark', 'group-hover', 'hover'],
         backgroundImage         : [],
         backgroundOpacity       : ['dark', 'hover'],
         backgroundPosition      : [],
         backgroundRepeat        : [],
         backgroundSize          : [],
         borderCollapse          : [],
-        borderColor             : ['dark', 'group-hover', 'hover', 'focus'],
-        borderOpacity           : ['group-hover', 'hover', 'focus'],
+        borderColor             : ['dark', 'group-hover', 'hover'],
+        borderOpacity           : ['group-hover', 'hover'],
+        borderRadius            : ['responsive'],
         borderStyle             : [],
         borderWidth             : ['first', 'last', 'odd', 'even'],
-        boxShadow               : ['responsive', 'hover', 'focus'],
+        boxShadow               : ['responsive', 'hover'],
         boxSizing               : [],
         cursor                  : [],
+        display                 : ['responsive'],
         divideColor             : ['dark'],
         divideOpacity           : [],
         divideStyle             : [],
         divideWidth             : [],
         fill                    : [],
+        flex                    : ['responsive'],
+        flexDirection           : ['responsive'],
+        flexGrow                : ['responsive'],
+        flexShrink              : ['responsive'],
+        flexWrap                : ['responsive'],
         fontFamily              : [],
+        fontSize                : ['responsive'],
+        fontSmoothing           : [],
+        fontStyle               : ['responsive'],
+        fontVariantNumeric      : [],
+        fontWeight              : ['responsive'],
+        gap                     : ['responsive'],
+        gridAutoColumns         : ['responsive'],
+        gridAutoFlow            : ['responsive'],
+        gridAutoRows            : ['responsive'],
+        gridColumn              : ['responsive'],
+        gridColumnEnd           : ['responsive'],
+        gridColumnStart         : ['responsive'],
+        gridRow                 : ['responsive'],
+        gridRowEnd              : ['responsive'],
+        gridRowStart            : ['responsive'],
+        gridTemplateColumns     : ['responsive'],
+        gridTemplateRows        : ['responsive'],
+        height                  : ['responsive'],
+        inset                   : ['responsive'],
+        justifyContent          : ['responsive'],
+        justifyItems            : ['responsive'],
+        justifySelf             : ['responsive'],
+        letterSpacing           : ['responsive'],
+        lineHeight              : ['responsive'],
+        listStylePosition       : [],
+        listStyleType           : [],
+        margin                  : ['responsive'],
+        maxHeight               : ['responsive'],
+        maxWidth                : ['responsive'],
+        minHeight               : ['responsive'],
+        minWidth                : ['responsive'],
+        objectFit               : ['responsive'],
+        objectPosition          : ['responsive'],
+        opacity                 : ['responsive', 'group-hover', 'hover'],
+        order                   : ['responsive'],
         outline                 : [],
+        overflow                : ['responsive'],
+        overscrollBehavior      : ['responsive'],
+        padding                 : ['responsive'],
+        placeContent            : ['responsive'],
+        placeItems              : ['responsive'],
+        placeSelf               : ['responsive'],
+        pointerEvents           : ['responsive'],
+        position                : ['responsive'],
         resize                  : [],
-        ringColor               : ['responsive', 'dark'],
-        ringOffsetColor         : ['responsive', 'dark'],
-        ringOffsetWidth         : ['responsive'],
-        ringOpacity             : ['responsive'],
+        ringColor               : ['dark'],
+        ringOffsetColor         : ['dark'],
+        ringOffsetWidth         : [],
+        ringOpacity             : [],
+        ringWidth               : [],
         rotate                  : [],
         scale                   : [],
         skew                    : [],
-        textColor               : ['dark', 'group-hover', 'hover', 'focus'],
-        textOpacity             : ['group-hover', 'hover', 'focus'],
+        space                   : ['responsive'],
+        stroke                  : ['responsive'],
+        strokeWidth             : ['responsive'],
+        tableLayout             : ['responsive'],
+        textAlign               : ['responsive'],
+        textColor               : ['dark', 'group-hover', 'hover'],
+        textDecoration          : ['group-hover', 'hover'],
+        textOpacity             : ['group-hover', 'hover'],
+        textOverflow            : [],
+        textTransform           : [],
         transform               : [],
         transformOrigin         : [],
         transitionDelay         : [],
         transitionDuration      : [],
         transitionProperty      : [],
         transitionTimingFunction: [],
-        translate               : ['hover', 'focus'],
-        zIndex                  : ['responsive', 'focus']
+        translate               : ['hover'],
+        userSelect              : ['responsive'],
+        visibility              : ['responsive'],
+        whitespace              : ['responsive'],
+        width                   : ['responsive'],
+        wordBreak               : ['responsive'],
+        zIndex                  : ['responsive']
     },
     corePlugins : {
         appearance        : false,
@@ -312,10 +368,13 @@ module.exports = (isProd) => ({
     },
     plugins     : [
 
-        // Treo Tailwind plugin
-        require('./src/@treo/tailwind/plugins/treo')
+        // Treo - Tailwind plugins
+        require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/icon-size'))),
+        require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/theming')))({themes}),
 
-        // Other third party and/or custom plugins can be required here
-        // ...
+        // Other third party and/or custom plugins
+        require('@tailwindcss/line-clamp')
     ]
 });
+
+module.exports = config;

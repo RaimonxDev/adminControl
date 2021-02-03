@@ -69,9 +69,9 @@ export class DirectoryStructureComponent implements OnInit
                         ]
                     },
                     {
-                        name    : 'data/',
+                        name    : 'mock-api/',
                         children: [
-                            {name: 'mock/'}
+                            {name: 'calendar/'}
                         ]
                     },
                     {
@@ -128,7 +128,7 @@ export class DirectoryStructureComponent implements OnInit
                             {name: 'tailwind/'},
                             {name: 'validators/'},
                             {name: 'treo.module.ts'},
-                            {name: 'index.ts'}
+                            {name: 'api.ts'}
                         ]
                     },
                     this.appDir[0],
@@ -236,7 +236,7 @@ export class DirectoryStructureComponent implements OnInit
      */
     createTree(data): { dataSource: any, treeControl: any }
     {
-        // Create tree control and data source
+        // Create tree control and mock-api source
         const treeControl = new FlatTreeControl<FlatDirNode>(node => node.level, node => node.expandable);
         const dataSource = new MatTreeFlatDataSource(
             treeControl,
@@ -249,7 +249,7 @@ export class DirectoryStructureComponent implements OnInit
                 node => node.level, node => node.expandable, node => node.children)
         );
 
-        // Set the data
+        // Set the mock-api
         dataSource.data = data;
 
         return {

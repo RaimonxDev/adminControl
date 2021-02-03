@@ -13,19 +13,14 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationDividerItemComponent implements OnInit, OnDestroy
 {
-    // Public
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
 
-    // Private
     private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,

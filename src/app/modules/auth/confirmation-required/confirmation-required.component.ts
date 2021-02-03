@@ -10,7 +10,7 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class AuthConfirmationRequiredComponent implements OnInit
 {
-    email: string;
+    email!: string;
 
     /**
      * Constructor

@@ -31,11 +31,6 @@ export class CryptoComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {CryptoService} _cryptoService
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {TreoConfigService} _treoConfigService
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
         private _cryptoService: CryptoService,
@@ -110,15 +105,15 @@ export class CryptoComponent implements OnInit, OnDestroy
                 }
             });
 
-        // Get the data
+        // Get the mock-api
         this._cryptoService.data$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
 
-                // Store the data
+                // Store the mock-api
                 this.data = data;
 
-                // Prepare the chart data
+                // Prepare the chart mock-api
                 this._prepareChartData();
             });
     }
@@ -143,7 +138,7 @@ export class CryptoComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Prepare the chart data from the data
+     * Prepare the chart mock-api from the mock-api
      *
      * @private
      */

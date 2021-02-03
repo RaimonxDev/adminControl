@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatRadioChange } from '@angular/material/radio';
@@ -7,6 +7,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { TreoConfigService } from '@treo/services/config';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { tailwindConfig } from '@treo/tailwind/config';
+import { VERSION } from '@treo/version';
 import { Layout } from 'app/layout/layout.types';
 import { AppConfig } from 'app/core/config/app.config';
 
@@ -18,28 +19,20 @@ import { AppConfig } from 'app/core/config/app.config';
 })
 export class LayoutComponent implements OnInit, OnDestroy
 {
-    // Public
-    config!: AppConfig;
-    layout!: Layout;
-    scheme!: 'dark' | 'light';
-    theme!: string;
-    themes: any;
-
-    // Private
+    config?: AppConfig;
+    layout?: Layout;
+    scheme?: 'dark' | 'light';
+    theme?: string;
+    themes: any = tailwindConfig.themes;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {DOCUMENT} _document
-     * @param {Router} _router
-     * @param {TreoConfigService} _treoConfigService
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
         @Inject(DOCUMENT) private _document: any,
+        private _renderer2: Renderer2,
         private _router: Router,
         private _treoConfigService: TreoConfigService,
         private _treoMediaWatcherService: TreoMediaWatcherService
@@ -56,9 +49,6 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the available themes
-        this.themes = tailwindConfig.themes;
-
         // Set the theme and scheme based on the configuration
         combineLatest([
             this._treoConfigService.config$,
@@ -113,6 +103,9 @@ export class LayoutComponent implements OnInit, OnDestroy
             // Update the layout
             this._updateLayout();
         });
+
+        // Set the app version
+        this._renderer2.setAttribute(this._document.querySelector('[ng-version]'), 'app-version', VERSION.full);
     }
 
     /**
@@ -142,14 +135,18 @@ export class LayoutComponent implements OnInit, OnDestroy
         }
 
         // 1. Set the layout from the config
-        this.layout = this.config.layout;
+        this.layout = this.config?.layout;
 
         // 2. Get the query parameter from the current route and
         // set the layout and save the layout to the config
         const layoutFromQueryParam = (route.snapshot.queryParamMap.get('layout') as Layout);
         if ( layoutFromQueryParam )
         {
-            this.config.layout = this.layout = layoutFromQueryParam;
+            this.layout = layoutFromQueryParam;
+            if ( this.config )
+            {
+                this.config.layout = layoutFromQueryParam;
+            }
         }
 
         // 3. Iterate through the paths and change the layout as we find
@@ -171,7 +168,7 @@ export class LayoutComponent implements OnInit, OnDestroy
         const paths = route.pathFromRoot;
         paths.forEach((path) => {
 
-            // Check if there is a 'layout' data
+            // Check if there is a 'layout' mock-api
             if ( path.routeConfig && path.routeConfig.data && path.routeConfig.data.layout )
             {
                 // Set the layout

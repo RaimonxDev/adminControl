@@ -3,6 +3,7 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { TreoDrawerMode, TreoDrawerPosition } from '@treo/components/drawer/drawer.types';
 import { TreoDrawerService } from '@treo/components/drawer/drawer.service';
 import { TreoUtilsService } from '@treo/services/utils/utils.service';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector     : 'treo-drawer',
@@ -13,32 +14,24 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 })
 export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
 {
-    // Public
-    @Input() fixed = false;
+    @Input() fixed: boolean = false;
     @Input() mode: TreoDrawerMode = 'side';
     @Input() name: string = this._treoUtilsService.randomId();
-    @Input() opened = false;
+    @Input() opened: boolean = false;
     @Input() position: TreoDrawerPosition = 'left';
-    @Input() transparentOverlay = false;
+    @Input() transparentOverlay: boolean = false;
     @Output() readonly fixedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() readonly modeChanged: EventEmitter<TreoDrawerMode> = new EventEmitter<TreoDrawerMode>();
     @Output() readonly openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() readonly positionChanged: EventEmitter<TreoDrawerPosition> = new EventEmitter<TreoDrawerPosition>();
 
-    // Private
-    private _animationsEnabled = false;
-    private _hovered = false;
-    private _overlay: HTMLElement | undefined = undefined;
-    private _player: AnimationPlayer | undefined = undefined;
+    private _animationsEnabled: boolean = false;
+    private _hovered: boolean = false;
+    private _overlay: HTMLElement | null = null;
+    private _player: AnimationPlayer | null = null;
 
     /**
      * Constructor
-     *
-     * @param {AnimationBuilder} _animationBuilder
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer2
-     * @param {TreoDrawerService} _treoDrawerService
-     * @param {TreoUtilsService} _treoUtilsService
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
@@ -93,8 +86,8 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
         // Fixed
         if ( 'fixed' in changes )
         {
-            // Interpret empty string as 'true'
-            this.fixed = changes.fixed.currentValue === '' ? true : changes.fixed.currentValue;
+            // Coerce the value to a boolean
+            this.fixed = coerceBooleanProperty(changes.fixed.currentValue);
 
             // Execute the observable
             this.fixedChanged.next(this.fixed);
@@ -142,8 +135,8 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
         // Opened
         if ( 'opened' in changes )
         {
-            // Interpret empty string as 'true'
-            const open = changes.opened.currentValue === '' ? true : changes.opened.currentValue;
+            // Coerce the value to a boolean
+            const open = coerceBooleanProperty(changes.opened.currentValue);
 
             // Open/close the drawer
             this._toggleOpened(open);
@@ -159,8 +152,8 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
         // Transparent overlay
         if ( 'transparentOverlay' in changes )
         {
-            // Interpret empty string as 'true'
-            this.transparentOverlay = changes.transparentOverlay.currentValue === '' ? true : changes.transparentOverlay.currentValue;
+            // Coerce the value to a boolean
+            this.transparentOverlay = coerceBooleanProperty(changes.transparentOverlay.currentValue);
         }
     }
 
@@ -180,6 +173,55 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
     {
         // Deregister the drawer from the registry
         this._treoDrawerService.deregisterComponent(this.name);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the drawer
+     */
+    open(): void
+    {
+        // Return if the drawer has already opened
+        if ( this.opened )
+        {
+            return;
+        }
+
+        // Open the drawer
+        this._toggleOpened(true);
+    }
+
+    /**
+     * Close the drawer
+     */
+    close(): void
+    {
+        // Return if the drawer has already closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Close the drawer
+        this._toggleOpened(false);
+    }
+
+    /**
+     * Toggle the drawer
+     */
+    toggle(): void
+    {
+        if ( this.opened )
+        {
+            this.close();
+        }
+        else
+        {
+            this.open();
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -230,19 +272,25 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
         // Create the backdrop element
         this._overlay = this._renderer2.createElement('div');
 
+        // Return if overlay couldn't be create for some reason
+        if ( !this._overlay )
+        {
+            return;
+        }
+
         // Add a class to the backdrop element
-        this._overlay?.classList.add('treo-drawer-overlay');
+        this._overlay.classList.add('treo-drawer-overlay');
 
         // Add a class depending on the fixed option
         if ( this.fixed )
         {
-            this._overlay?.classList.add('treo-drawer-overlay-fixed');
+            this._overlay.classList.add('treo-drawer-overlay-fixed');
         }
 
         // Add a class depending on the transparentOverlay option
         if ( this.transparentOverlay )
         {
-            this._overlay?.classList.add('treo-drawer-overlay-transparent');
+            this._overlay.classList.add('treo-drawer-overlay-transparent');
         }
 
         // Append the backdrop to the parent of the drawer
@@ -257,7 +305,7 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
         this._player.play();
 
         // Add an event listener to the overlay
-        this._overlay?.addEventListener('click', () => {
+        this._overlay.addEventListener('click', () => {
             this.close();
         });
     }
@@ -289,8 +337,8 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
             if ( this._overlay )
             {
                 // Remove the backdrop
-                this._overlay?.parentNode?.removeChild(this._overlay);
-                this._overlay = undefined;
+                this._overlay.parentNode?.removeChild(this._overlay);
+                this._overlay = null;
             }
         });
     }
@@ -356,54 +404,5 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
 
         // Execute the observable
         this.openedChanged.next(open);
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Open the drawer
-     */
-    open(): void
-    {
-        // Return if the drawer has already opened
-        if ( this.opened )
-        {
-            return;
-        }
-
-        // Open the drawer
-        this._toggleOpened(true);
-    }
-
-    /**
-     * Close the drawer
-     */
-    close(): void
-    {
-        // Return if the drawer has already closed
-        if ( !this.opened )
-        {
-            return;
-        }
-
-        // Close the drawer
-        this._toggleOpened(false);
-    }
-
-    /**
-     * Toggle the drawer
-     */
-    toggle(): void
-    {
-        if ( this.opened )
-        {
-            this.close();
-        }
-        else
-        {
-            this.open();
-        }
     }
 }

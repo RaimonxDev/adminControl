@@ -12,24 +12,15 @@ import { TreoHighlightService } from '@treo/components/highlight/highlight.servi
 })
 export class TreoHighlightComponent implements OnChanges, AfterViewInit
 {
-    // Public
-    @Input() code = '';
-    @Input() lang = '';
-    @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
-    highlightedCode: string | null = null;
+    @Input() code?: string;
+    @Input() lang?: string;
+    @ViewChild(TemplateRef) templateRef?: TemplateRef<any>;
 
-    // Private
-    private _viewRef!: EmbeddedViewRef<any>;
+    highlightedCode?: string;
+    private _viewRef?: EmbeddedViewRef<any>;
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {DomSanitizer} _domSanitizer
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer2
-     * @param {TreoHighlightService} _treoHighlightService
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -101,6 +92,12 @@ export class TreoHighlightComponent implements OnChanges, AfterViewInit
      */
     private _highlightAndInsert(): void
     {
+        // Return if the template reference is not available
+        if ( !this.templateRef )
+        {
+            return;
+        }
+
         // Return if the code or language is not defined
         if ( !this.code || !this.lang )
         {
@@ -111,10 +108,11 @@ export class TreoHighlightComponent implements OnChanges, AfterViewInit
         if ( this._viewRef )
         {
             this._viewRef.destroy();
+            this._viewRef = undefined;
         }
 
         // Highlight and sanitize the code just in case
-        this.highlightedCode = this._domSanitizer.sanitize(SecurityContext.HTML, this._treoHighlightService.highlight(this.code, this.lang));
+        this.highlightedCode = this._domSanitizer.sanitize(SecurityContext.HTML, this._treoHighlightService.highlight(this.code, this.lang)) ?? undefined;
 
         // Return if the highlighted code is null
         if ( this.highlightedCode === null )

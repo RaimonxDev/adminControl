@@ -16,22 +16,16 @@ import { ScrollbarGeometry, ScrollbarPosition } from '@treo/directives/scrollbar
 })
 export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
 {
-    // Public
-    @Input() treoScrollbar = true;
+    @Input() treoScrollbar: boolean = true;
     @Input() treoScrollbarOptions: any = {};
 
-    // Private
-    private _animation: number | null = null;
+    private _animation?: number;
     private _options: any = {};
-    private _ps: PerfectScrollbar | undefined = undefined;
+    private _ps?: PerfectScrollbar;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
-     * @param {Platform} _platform
-     * @param {Router} _router
      */
     constructor(
         private _elementRef: ElementRef,
@@ -141,54 +135,6 @@ export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Initialize
-     *
-     * @private
-     */
-    private _init(): void
-    {
-        // Return if already initialized
-        if ( this._ps )
-        {
-            return;
-        }
-
-        // Return if on mobile or not on browser
-        if ( this._platform.ANDROID || this._platform.IOS || !this._platform.isBrowser )
-        {
-            this.treoScrollbar = false;
-            return;
-        }
-
-        // Initialize the PerfectScrollbar
-        this._ps = new PerfectScrollbar(this._elementRef.nativeElement, {...this._options});
-    }
-
-    /**
-     * Destroy
-     *
-     * @private
-     */
-    private _destroy(): void
-    {
-        // Return if not initialized
-        if ( !this._ps )
-        {
-            return;
-        }
-
-        // Destroy the PerfectScrollbar
-        this._ps.destroy();
-
-        // Clean up
-        this._ps = undefined;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -421,7 +367,7 @@ export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
         if ( this._animation )
         {
             window.cancelAnimationFrame(this._animation);
-            this._animation = null;
+            this._animation = undefined;
         }
 
         if ( !speed || typeof window === 'undefined' )
@@ -464,5 +410,53 @@ export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
 
             window.requestAnimationFrame(step);
         }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Initialize
+     *
+     * @private
+     */
+    private _init(): void
+    {
+        // Return if already initialized
+        if ( this._ps )
+        {
+            return;
+        }
+
+        // Return if on mobile or not on browser
+        if ( this._platform.ANDROID || this._platform.IOS || !this._platform.isBrowser )
+        {
+            this.treoScrollbar = false;
+            return;
+        }
+
+        // Initialize the PerfectScrollbar
+        this._ps = new PerfectScrollbar(this._elementRef.nativeElement, {...this._options});
+    }
+
+    /**
+     * Destroy
+     *
+     * @private
+     */
+    private _destroy(): void
+    {
+        // Return if not initialized
+        if ( !this._ps )
+        {
+            return;
+        }
+
+        // Destroy the PerfectScrollbar
+        this._ps.destroy();
+
+        // Clean up
+        this._ps = undefined;
     }
 }

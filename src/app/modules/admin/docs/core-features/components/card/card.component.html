@@ -115,7 +115,7 @@
 
                         <ng-template matTabContent>
 
-                            <div class="bg-blueGray-100 p-4">
+                            <div class="bg-gray-100 p-4">
                                 <div class="mx-auto max-w-80">
                                     <treo-card>
                                         This content is in the card and it doesn't have any style applied to it!
@@ -133,7 +133,7 @@
                                   [lang]="'html'">
 
                             <treo-card>
-                                This content is in the card and it doesn't have any style applied to it!
+                            This content is in the card and it doesn't have any style applied to it!
                             </treo-card>
 
                         </textarea>
@@ -162,7 +162,7 @@
 
                         <ng-template matTabContent>
 
-                            <div class="bg-blueGray-100 p-4">
+                            <div class="bg-gray-100 p-4">
                                 <div class="mx-auto max-w-80">
 
                                     <treo-card class="flex flex-col px-8 py-6 pb-4"
@@ -207,32 +207,32 @@
                                   [lang]="'html'">
 
                             <treo-card class="flex flex-col px-8 py-6 pb-4"
-                                       #treoCard>
-                                <div class="text-lg font-bold">Title of the card</div>
-                                <div class="mt-2">
-                                    A paragraph, an image, a form or simply anything can go here to create the content of the card.
-                                </div>
-                                <div class="mt-3 -mx-3">
-                                    <button class="px-3"
-                                            mat-button
-                                            [color]="'primary'"
-                                            (click)="treoCard.toggleExpanded()">
-                                        <span class="mr-1">Details</span>
-                                        <mat-icon class="icon-size-4"
-                                                  *ngIf="!treoCard.expanded"
-                                                  [svgIcon]="'expand_more'"></mat-icon>
-                                        <mat-icon class="icon-size-4"
-                                                  *ngIf="treoCard.expanded"
-                                                  [svgIcon]="'expand_less'"></mat-icon>
-                                    </button>
-                                </div>
+                            #treoCard>
+                            <div class="text-lg font-bold">Title of the card</div>
+                            <div class="mt-2">
+                            A paragraph, an image, a form or simply anything can go here to create the content of the card.
+                            </div>
+                            <div class="mt-3 -mx-3">
+                            <button class="px-3"
+                            mat-button
+                            [color]="'primary'"
+                            (click)="treoCard.toggleExpanded()">
+                            <span class="mr-1">Details</span>
+                            <mat-icon class="icon-size-4"
+                            *ngIf="!treoCard.expanded"
+                            [svgIcon]="'expand_more'"></mat-icon>
+                            <mat-icon class="icon-size-4"
+                            *ngIf="treoCard.expanded"
+                            [svgIcon]="'expand_less'"></mat-icon>
+                            </button>
+                            </div>
 
-                                <!-- Expansion -->
-                                <ng-container treoCardExpansion>
-                                    <div class="my-2">
-                                        This is the expansion and holds an extra information!
-                                    </div>
-                                </ng-container>
+                            <!-- Expansion -->
+                            <ng-container treoCardExpansion>
+                            <div class="my-2">
+                            This is the expansion and holds an extra information!
+                            </div>
+                            </ng-container>
                             </treo-card>
 
                         </textarea>
@@ -262,7 +262,7 @@
 
                         <ng-template matTabContent>
 
-                            <div class="bg-blueGray-100 p-4">
+                            <div class="bg-gray-100 p-4">
                                 <div class="mx-auto max-w-80">
 
                                     <treo-card class="flex flex-col"
@@ -321,46 +321,46 @@
                                   [lang]="'html'">
 
                             <treo-card class="flex flex-col"
-                                       [_flippable]="true"
-                                       #treoCard>
-                                <!-- Front -->
-                                <ng-container treoCardFront>
-                                    <div class="flex flex-col px-8 py-6 pb-3">
-                                        <div class="text-lg font-bold">Title of the card</div>
-                                        <div class="mt-2">
-                                            A paragraph, an image, a form or simply anything can go here to create the content of the card.
-                                        </div>
-                                        <div class="mt-3 -mx-3 self-end">
-                                            <button mat-icon-button
-                                                    [color]="'primary'"
-                                                    (click)="treoCard.flip()">
-                                                <mat-icon class="icon-size-5"
-                                                          [svgIcon]="'arrow_forward'"></mat-icon>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </ng-container>
+                            [_flippable]="true"
+                            #treoCard>
+                            <!-- Front -->
+                            <ng-container treoCardFront>
+                            <div class="flex flex-col px-8 py-6 pb-3">
+                            <div class="text-lg font-bold">Title of the card</div>
+                            <div class="mt-2">
+                            A paragraph, an image, a form or simply anything can go here to create the content of the card.
+                            </div>
+                            <div class="mt-3 -mx-3 self-end">
+                            <button mat-icon-button
+                            [color]="'primary'"
+                            (click)="treoCard.flip()">
+                            <mat-icon class="icon-size-5"
+                            [svgIcon]="'arrow_forward'"></mat-icon>
+                            </button>
+                            </div>
+                            </div>
+                            </ng-container>
 
-                                <!-- Back -->
-                                <ng-container treoCardBack>
-                                    <div class="flex flex-col flex-auto px-8 py-6 pt-3">
-                                        <div class="mb-2 -mx-3">
-                                            <button mat-icon-button
-                                                    [color]="'primary'"
-                                                    (click)="treoCard.flip()">
-                                                <mat-icon class="icon-size-5"
-                                                          [svgIcon]="'arrow_back'"></mat-icon>
-                                            </button>
-                                        </div>
-                                        <p class="text-secondary">
-                                            This is the back of the card and holds an extra information!
-                                        </p>
-                                        <p class="text-secondary">
-                                            Also, the <em>back</em> side of the card holds more information than the <em>front</em> of the card which causes scrollbars to
-                                            appear.
-                                        </p>
-                                    </div>
-                                </ng-container>
+                            <!-- Back -->
+                            <ng-container treoCardBack>
+                            <div class="flex flex-col flex-auto px-8 py-6 pt-3">
+                            <div class="mb-2 -mx-3">
+                            <button mat-icon-button
+                            [color]="'primary'"
+                            (click)="treoCard.flip()">
+                            <mat-icon class="icon-size-5"
+                            [svgIcon]="'arrow_back'"></mat-icon>
+                            </button>
+                            </div>
+                            <p class="text-secondary">
+                            This is the back of the card and holds an extra information!
+                            </p>
+                            <p class="text-secondary">
+                            Also, the <em>back</em> side of the card holds more information than the <em>front</em> of the card which causes scrollbars to
+                            appear.
+                            </p>
+                            </div>
+                            </ng-container>
                             </treo-card>
 
                         </textarea>

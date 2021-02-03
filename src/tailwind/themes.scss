@@ -4,544 +4,13 @@
 
 @include mat-core();
 
-$treo-material-palettes: (
-  'rose': (
-  50: #fff1f2,
- 100: #ffe4e6,
- 200: #fecdd3,
- 300: #fda4af,
- 400: #fb7185,
- 500: #f43f5e,
- 600: #e11d48,
- 700: #be123c,
- 800: #9f1239,
- 900: #881337,
- contrast: (
-  50: #881337,
- 100: #881337,
- 200: #881337,
- 300: #881337,
- 400: #881337,
- 500: #FFF1F2,
- 600: #FFF1F2,
- 700: #FFF1F2,
- 800: #FFF1F2,
- 900: #FFF1F2,
- )
-),
- 'pink': (
-  50: #fdf2f8,
- 100: #fce7f3,
- 200: #fbcfe8,
- 300: #f9a8d4,
- 400: #f472b6,
- 500: #ec4899,
- 600: #db2777,
- 700: #be185d,
- 800: #9d174d,
- 900: #831843,
- contrast: (
-  50: #831843,
- 100: #831843,
- 200: #831843,
- 300: #831843,
- 400: #831843,
- 500: #FDF2F8,
- 600: #FDF2F8,
- 700: #FDF2F8,
- 800: #FDF2F8,
- 900: #FDF2F8,
- )
-),
- 'fuchsia': (
-  50: #fdf4ff,
- 100: #fae8ff,
- 200: #f5d0fe,
- 300: #f0abfc,
- 400: #e879f9,
- 500: #d946ef,
- 600: #c026d3,
- 700: #a21caf,
- 800: #86198f,
- 900: #701a75,
- contrast: (
-  50: #701A75,
- 100: #701A75,
- 200: #701A75,
- 300: #701A75,
- 400: #701A75,
- 500: #FDF4FF,
- 600: #FDF4FF,
- 700: #FDF4FF,
- 800: #FDF4FF,
- 900: #FDF4FF,
- )
-),
- 'purple': (
-  50: #faf5ff,
- 100: #f3e8ff,
- 200: #e9d5ff,
- 300: #d8b4fe,
- 400: #c084fc,
- 500: #a855f7,
- 600: #9333ea,
- 700: #7e22ce,
- 800: #6b21a8,
- 900: #581c87,
- contrast: (
-  50: #581C87,
- 100: #581C87,
- 200: #581C87,
- 300: #581C87,
- 400: #581C87,
- 500: #FAF5FF,
- 600: #FAF5FF,
- 700: #FAF5FF,
- 800: #FAF5FF,
- 900: #FAF5FF,
- )
-),
- 'violet': (
-  50: #f5f3ff,
- 100: #ede9fe,
- 200: #ddd6fe,
- 300: #c4b5fd,
- 400: #a78bfa,
- 500: #8b5cf6,
- 600: #7c3aed,
- 700: #6d28d9,
- 800: #5b21b6,
- 900: #4c1d95,
- contrast: (
-  50: #4C1D95,
- 100: #4C1D95,
- 200: #4C1D95,
- 300: #4C1D95,
- 400: #4C1D95,
- 500: #F5F3FF,
- 600: #F5F3FF,
- 700: #F5F3FF,
- 800: #F5F3FF,
- 900: #F5F3FF,
- )
-),
- 'indigo': (
-  50: #eef2ff,
- 100: #e0e7ff,
- 200: #c7d2fe,
- 300: #a5b4fc,
- 400: #818cf8,
- 500: #6366f1,
- 600: #4f46e5,
- 700: #4338ca,
- 800: #3730a3,
- 900: #312e81,
- contrast: (
-  50: #312E81,
- 100: #312E81,
- 200: #312E81,
- 300: #312E81,
- 400: #312E81,
- 500: #EEF2FF,
- 600: #EEF2FF,
- 700: #EEF2FF,
- 800: #EEF2FF,
- 900: #EEF2FF,
- )
-),
- 'blue': (
-  50: #eff6ff,
- 100: #dbeafe,
- 200: #bfdbfe,
- 300: #93c5fd,
- 400: #60a5fa,
- 500: #3b82f6,
- 600: #2563eb,
- 700: #1d4ed8,
- 800: #1e40af,
- 900: #1e3a8a,
- contrast: (
-  50: #1E3A8A,
- 100: #1E3A8A,
- 200: #1E3A8A,
- 300: #1E3A8A,
- 400: #1E3A8A,
- 500: #EFF6FF,
- 600: #EFF6FF,
- 700: #EFF6FF,
- 800: #EFF6FF,
- 900: #EFF6FF,
- )
-),
- 'lightBlue': (
-  50: #f0f9ff,
- 100: #e0f2fe,
- 200: #bae6fd,
- 300: #7dd3fc,
- 400: #38bdf8,
- 500: #0ea5e9,
- 600: #0284c7,
- 700: #0369a1,
- 800: #075985,
- 900: #0c4a6e,
- contrast: (
-  50: #0C4A6E,
- 100: #0C4A6E,
- 200: #0C4A6E,
- 300: #0C4A6E,
- 400: #0C4A6E,
- 500: #0C4A6E,
- 600: #F0F9FF,
- 700: #F0F9FF,
- 800: #F0F9FF,
- 900: #F0F9FF,
- )
-),
- 'cyan': (
-  50: #ecfeff,
- 100: #cffafe,
- 200: #a5f3fc,
- 300: #67e8f9,
- 400: #22d3ee,
- 500: #06b6d4,
- 600: #0891b2,
- 700: #0e7490,
- 800: #155e75,
- 900: #164e63,
- contrast: (
-  50: #164E63,
- 100: #164E63,
- 200: #164E63,
- 300: #164E63,
- 400: #164E63,
- 500: #164E63,
- 600: #ECFEFF,
- 700: #ECFEFF,
- 800: #ECFEFF,
- 900: #ECFEFF,
- )
-),
- 'teal': (
-  50: #f0fdfa,
- 100: #ccfbf1,
- 200: #99f6e4,
- 300: #5eead4,
- 400: #2dd4bf,
- 500: #14b8a6,
- 600: #0d9488,
- 700: #0f766e,
- 800: #115e59,
- 900: #134e4a,
- contrast: (
-  50: #134E4A,
- 100: #134E4A,
- 200: #134E4A,
- 300: #134E4A,
- 400: #134E4A,
- 500: #134E4A,
- 600: #F0FDFA,
- 700: #F0FDFA,
- 800: #F0FDFA,
- 900: #F0FDFA,
- )
-),
- 'emerald': (
-  50: #ecfdf5,
- 100: #d1fae5,
- 200: #a7f3d0,
- 300: #6ee7b7,
- 400: #34d399,
- 500: #10b981,
- 600: #059669,
- 700: #047857,
- 800: #065f46,
- 900: #064e3b,
- contrast: (
-  50: #064E3B,
- 100: #064E3B,
- 200: #064E3B,
- 300: #064E3B,
- 400: #064E3B,
- 500: #064E3B,
- 600: #ECFDF5,
- 700: #ECFDF5,
- 800: #ECFDF5,
- 900: #ECFDF5,
- )
-),
- 'green': (
-  50: #f0fdf4,
- 100: #dcfce7,
- 200: #bbf7d0,
- 300: #86efac,
- 400: #4ade80,
- 500: #22c55e,
- 600: #16a34a,
- 700: #15803d,
- 800: #166534,
- 900: #14532d,
- contrast: (
-  50: #14532D,
- 100: #14532D,
- 200: #14532D,
- 300: #14532D,
- 400: #14532D,
- 500: #14532D,
- 600: #F0FDF4,
- 700: #F0FDF4,
- 800: #F0FDF4,
- 900: #F0FDF4,
- )
-),
- 'lime': (
-  50: #f7fee7,
- 100: #ecfccb,
- 200: #d9f99d,
- 300: #bef264,
- 400: #a3e635,
- 500: #84cc16,
- 600: #65a30d,
- 700: #4d7c0f,
- 800: #3f6212,
- 900: #365314,
- contrast: (
-  50: #365314,
- 100: #365314,
- 200: #365314,
- 300: #365314,
- 400: #365314,
- 500: #365314,
- 600: #F7FEE7,
- 700: #F7FEE7,
- 800: #F7FEE7,
- 900: #F7FEE7,
- )
-),
- 'yellow': (
-  50: #fefce8,
- 100: #fef9c3,
- 200: #fef08a,
- 300: #fde047,
- 400: #facc15,
- 500: #eab308,
- 600: #ca8a04,
- 700: #a16207,
- 800: #854d0e,
- 900: #713f12,
- contrast: (
-  50: #713F12,
- 100: #713F12,
- 200: #713F12,
- 300: #713F12,
- 400: #713F12,
- 500: #713F12,
- 600: #713F12,
- 700: #FEFCE8,
- 800: #FEFCE8,
- 900: #FEFCE8,
- )
-),
- 'amber': (
-  50: #fffbeb,
- 100: #fef3c7,
- 200: #fde68a,
- 300: #fcd34d,
- 400: #fbbf24,
- 500: #f59e0b,
- 600: #d97706,
- 700: #b45309,
- 800: #92400e,
- 900: #78350f,
- contrast: (
-  50: #78350F,
- 100: #78350F,
- 200: #78350F,
- 300: #78350F,
- 400: #78350F,
- 500: #78350F,
- 600: #FFFBEB,
- 700: #FFFBEB,
- 800: #FFFBEB,
- 900: #FFFBEB,
- )
-),
- 'orange': (
-  50: #fff7ed,
- 100: #ffedd5,
- 200: #fed7aa,
- 300: #fdba74,
- 400: #fb923c,
- 500: #f97316,
- 600: #ea580c,
- 700: #c2410c,
- 800: #9a3412,
- 900: #7c2d12,
- contrast: (
-  50: #7C2D12,
- 100: #7C2D12,
- 200: #7C2D12,
- 300: #7C2D12,
- 400: #7C2D12,
- 500: #7C2D12,
- 600: #FFF7ED,
- 700: #FFF7ED,
- 800: #FFF7ED,
- 900: #FFF7ED,
- )
-),
- 'red': (
-  50: #fef2f2,
- 100: #fee2e2,
- 200: #fecaca,
- 300: #fca5a5,
- 400: #f87171,
- 500: #ef4444,
- 600: #dc2626,
- 700: #b91c1c,
- 800: #991b1b,
- 900: #7f1d1d,
- contrast: (
-  50: #7F1D1D,
- 100: #7F1D1D,
- 200: #7F1D1D,
- 300: #7F1D1D,
- 400: #7F1D1D,
- 500: #FEF2F2,
- 600: #FEF2F2,
- 700: #FEF2F2,
- 800: #FEF2F2,
- 900: #FEF2F2,
- )
-),
- 'warmGray': (
-  50: #fafaf9,
- 100: #f5f5f4,
- 200: #e7e5e4,
- 300: #d6d3d1,
- 400: #a8a29e,
- 500: #78716c,
- 600: #57534e,
- 700: #44403c,
- 800: #292524,
- 900: #1c1917,
- contrast: (
-  50: #1C1917,
- 100: #1C1917,
- 200: #1C1917,
- 300: #1C1917,
- 400: #1C1917,
- 500: #FAFAF9,
- 600: #FAFAF9,
- 700: #FAFAF9,
- 800: #FAFAF9,
- 900: #FAFAF9,
- )
-),
- 'trueGray': (
-  50: #fafafa,
- 100: #f5f5f5,
- 200: #e5e5e5,
- 300: #d4d4d4,
- 400: #a3a3a3,
- 500: #737373,
- 600: #525252,
- 700: #404040,
- 800: #262626,
- 900: #171717,
- contrast: (
-  50: #171717,
- 100: #171717,
- 200: #171717,
- 300: #171717,
- 400: #171717,
- 500: #FAFAFA,
- 600: #FAFAFA,
- 700: #FAFAFA,
- 800: #FAFAFA,
- 900: #FAFAFA,
- )
-),
- 'gray': (
-  50: #fafafa,
- 100: #f4f4f5,
- 200: #e4e4e7,
- 300: #d4d4d8,
- 400: #a1a1aa,
- 500: #71717a,
- 600: #52525b,
- 700: #3f3f46,
- 800: #27272a,
- 900: #18181b,
- contrast: (
-  50: #18181B,
- 100: #18181B,
- 200: #18181B,
- 300: #18181B,
- 400: #18181B,
- 500: #FAFAFA,
- 600: #FAFAFA,
- 700: #FAFAFA,
- 800: #FAFAFA,
- 900: #FAFAFA,
- )
-),
- 'coolGray': (
-  50: #f9fafb,
- 100: #f3f4f6,
- 200: #e5e7eb,
- 300: #d1d5db,
- 400: #9ca3af,
- 500: #6b7280,
- 600: #4b5563,
- 700: #374151,
- 800: #1f2937,
- 900: #111827,
- contrast: (
-  50: #111827,
- 100: #111827,
- 200: #111827,
- 300: #111827,
- 400: #111827,
- 500: #F9FAFB,
- 600: #F9FAFB,
- 700: #F9FAFB,
- 800: #F9FAFB,
- 900: #F9FAFB,
- )
-),
- 'blueGray': (
-  50: #f8fafc,
- 100: #f1f5f9,
- 200: #e2e8f0,
- 300: #cbd5e1,
- 400: #94a3b8,
- 500: #64748b,
- 600: #475569,
- 700: #334155,
- 800: #1e293b,
- 900: #0f172a,
- contrast: (
-  50: #0F172A,
- 100: #0F172A,
- 200: #0F172A,
- 300: #0F172A,
- 400: #0F172A,
- 500: #F8FAFC,
- 600: #F8FAFC,
- 700: #F8FAFC,
- 800: #F8FAFC,
- 900: #F8FAFC,
- )
-),
- ) !default;
+$background-light: ( status-bar:#cbd5e1,  app-bar:#FFFFFF,  background:#f1f5f9,  hover:rgba(148, 163, 184, 0.12),  card:#FFFFFF,  dialog:#FFFFFF,  disabled-button:rgba(148, 163, 184, 0.38),  raised-button:#FFFFFF,  focused-button:#64748b,  selected-button:#e2e8f0,  selected-disabled-button:#e2e8f0,  disabled-button-toggle:#cbd5e1,  unselected-chip:#e2e8f0,  disabled-list-option:#cbd5e1,  tooltip:#1e293b, );
 
-$background-light: ( status-bar:#cbd5e1,  app-bar:#FFFFFF,  background:#f1f5f9,  hover:rgba(#94a3b8, 0.12),  card:#FFFFFF,  dialog:#FFFFFF,  disabled-button:rgba(#94a3b8, 0.38),  raised-button:#FFFFFF,  focused-button:#64748b,  selected-button:#e2e8f0,  selected-disabled-button:#e2e8f0,  disabled-button-toggle:#cbd5e1,  unselected-chip:#e2e8f0,  disabled-list-option:#cbd5e1,  tooltip:#1e293b, );
+$background-dark: ( status-bar:#0f172a,  app-bar:#0f172a,  background:#0f172a,  hover:rgba(255, 255, 255, 0.05),  card:#1e293b,  dialog:#1e293b,  disabled-button:rgba(15, 23, 42, 0.38),  raised-button:#0f172a,  focused-button:#e2e8f0,  selected-button:rgba(255, 255, 255, 0.05),  selected-disabled-button:#1e293b,  disabled-button-toggle:#0f172a,  unselected-chip:#475569,  disabled-list-option:#e2e8f0,  tooltip:#64748b, );
 
-$background-dark: ( status-bar:#0f172a,  app-bar:#0f172a,  background:#0f172a,  hover:rgba(255, 255, 255, 0.05),  card:#1e293b,  dialog:#1e293b,  disabled-button:rgba(#0f172a, 0.38),  raised-button:#0f172a,  focused-button:#e2e8f0,  selected-button:rgba(255, 255, 255, 0.05),  selected-disabled-button:#1e293b,  disabled-button-toggle:#0f172a,  unselected-chip:#475569,  disabled-list-option:#e2e8f0,  tooltip:#64748b, );
+$foreground-light: ( base:#000000,  divider:#e2e8f0,  dividers:#e2e8f0,  disabled:#94a3b8,  disabled-button:#94a3b8,  disabled-text:#94a3b8,  elevation:#000000,  hint-text:#94a3b8,  secondary-text:#64748b,  icon:#64748b,  icons:#64748b,  mat-icon:#64748b,  text:#1e293b,  slider-min:#1e293b,  slider-off:#cbd5e1,  slider-off-active:#94a3b8, );
 
-$foreground-light: ( base:#000000,  divider:#e2e8f0,  dividers:#e2e8f0,  disabled:#94a3b8,  disabled-button:#94a3b8,  disabled-text:#94a3b8,  elevation:#000000,  hint-text:#94a3b8,  secondary-text:#64748b,  icon:#64748b,  icons:#64748b,  text:#1e293b,  slider-min:#1e293b,  slider-off:#cbd5e1,  slider-off-active:#94a3b8, );
-
-$foreground-dark: ( base:#FFFFFF,  divider:rgba(#f1f5f9, 0.12),  dividers:rgba(#f1f5f9, 0.12),  disabled:#475569,  disabled-button:#1e293b,  disabled-text:#475569,  elevation:#000000,  hint-text:#64748b,  secondary-text:#94a3b8,  icon:#f1f5f9,  icons:#f1f5f9,  text:#FFFFFF,  slider-min:#FFFFFF,  slider-off:#64748b,  slider-off-active:#94a3b8, );
+$foreground-dark: ( base:#FFFFFF,  divider:rgba(241, 245, 249, 0.12),  dividers:rgba(241, 245, 249, 0.12),  disabled:#475569,  disabled-button:#1e293b,  disabled-text:#475569,  elevation:#000000,  hint-text:#64748b,  secondary-text:#94a3b8,  icon:#f1f5f9,  icons:#f1f5f9,  mat-icon:#94a3b8,  text:#FFFFFF,  slider-min:#FFFFFF,  slider-off:#64748b,  slider-off-active:#94a3b8, );
 
 @include angular-material-typography(
                     mat-typography-config(
@@ -553,258 +22,242 @@ $foreground-dark: ( base:#FFFFFF,  divider:rgba(#f1f5f9, 0.12),  dividers:rgba(#
                     )
                 );
 
-.theme-default.light,
-                            .theme-default .light {
-  $base-angular-material-theme-for-default: mat-light-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'indigo'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-default: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-default, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-default, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-default, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-default, color), is-dark),
-                                        foreground: $foreground-light,
-                                        background: $background-light
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-default, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-default, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-default, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-default, color), is-dark),
-                                    foreground: $foreground-light,
-                                    background: $background-light
-                                );
-  @include angular-material-theme($angular-material-theme-for-default);
+body.light,
+                    .body .light {
+  $base-light-theme: mat-light-theme((
+                            color: (
+                                primary: (
+                    50: var(--treo-color-primary-50),
+                    100: var(--treo-color-primary-100),
+                    200: var(--treo-color-primary-200),
+                    300: var(--treo-color-primary-300),
+                    400: var(--treo-color-primary-400),
+                    500: var(--treo-color-primary-500),
+                    600: var(--treo-color-primary-600),
+                    700: var(--treo-color-primary-700),
+                    800: var(--treo-color-primary-800),
+                    900: var(--treo-color-primary-900),
+                    contrast: (
+                        50: var(--treo-color-on-primary-50),
+                        100: var(--treo-color-on-primary-100),
+                        200: var(--treo-color-on-primary-200),
+                        300: var(--treo-color-on-primary-300),
+                        400: var(--treo-color-on-primary-400),
+                        500: var(--treo-color-on-primary-500),
+                        600: var(--treo-color-on-primary-600),
+                        700: var(--treo-color-on-primary-700),
+                        800: var(--treo-color-on-primary-800),
+                        900: var(--treo-color-on-primary-900)
+                    ),
+                    default: var(--treo-color-primary),
+                    lighter: var(--treo-color-primary-100),
+                    darker: var(--treo-color-primary-700),
+                    text: var(--treo-color-primary),
+                    default-contrast: var(--treo-color-on-primary),
+                    lighter-contrast: var(--treo-color-on-primary-100),
+                    darker-contrast: var(--treo-color-on-primary-700),
+                ),
+                                accent: (
+                    50: var(--treo-color-accent-50),
+                    100: var(--treo-color-accent-100),
+                    200: var(--treo-color-accent-200),
+                    300: var(--treo-color-accent-300),
+                    400: var(--treo-color-accent-400),
+                    500: var(--treo-color-accent-500),
+                    600: var(--treo-color-accent-600),
+                    700: var(--treo-color-accent-700),
+                    800: var(--treo-color-accent-800),
+                    900: var(--treo-color-accent-900),
+                    contrast: (
+                        50: var(--treo-color-on-accent-50),
+                        100: var(--treo-color-on-accent-100),
+                        200: var(--treo-color-on-accent-200),
+                        300: var(--treo-color-on-accent-300),
+                        400: var(--treo-color-on-accent-400),
+                        500: var(--treo-color-on-accent-500),
+                        600: var(--treo-color-on-accent-600),
+                        700: var(--treo-color-on-accent-700),
+                        800: var(--treo-color-on-accent-800),
+                        900: var(--treo-color-on-accent-900)
+                    ),
+                    default: var(--treo-color-accent),
+                    lighter: var(--treo-color-accent-100),
+                    darker: var(--treo-color-accent-700),
+                    text: var(--treo-color-accent),
+                    default-contrast: var(--treo-color-on-accent),
+                    lighter-contrast: var(--treo-color-on-accent-100),
+                    darker-contrast: var(--treo-color-on-accent-700),
+                ),
+                                warn: (
+                    50: var(--treo-color-warn-50),
+                    100: var(--treo-color-warn-100),
+                    200: var(--treo-color-warn-200),
+                    300: var(--treo-color-warn-300),
+                    400: var(--treo-color-warn-400),
+                    500: var(--treo-color-warn-500),
+                    600: var(--treo-color-warn-600),
+                    700: var(--treo-color-warn-700),
+                    800: var(--treo-color-warn-800),
+                    900: var(--treo-color-warn-900),
+                    contrast: (
+                        50: var(--treo-color-on-warn-50),
+                        100: var(--treo-color-on-warn-100),
+                        200: var(--treo-color-on-warn-200),
+                        300: var(--treo-color-on-warn-300),
+                        400: var(--treo-color-on-warn-400),
+                        500: var(--treo-color-on-warn-500),
+                        600: var(--treo-color-on-warn-600),
+                        700: var(--treo-color-on-warn-700),
+                        800: var(--treo-color-on-warn-800),
+                        900: var(--treo-color-on-warn-900)
+                    ),
+                    default: var(--treo-color-warn),
+                    lighter: var(--treo-color-warn-100),
+                    darker: var(--treo-color-warn-700),
+                    text: var(--treo-color-warn),
+                    default-contrast: var(--treo-color-on-warn),
+                    lighter-contrast: var(--treo-color-on-warn-100),
+                    darker-contrast: var(--treo-color-on-warn-700),
+                )
+                            )
+                        ));
+  $light-theme: (
+                            color: (
+                                primary: map.get(map.get($base-light-theme, color), primary),
+                                accent: map.get(map.get($base-light-theme, color), accent),
+                                warn: map.get(map.get($base-light-theme, color), warn),
+                                is-dark: map.get(map.get($base-light-theme, color), is-dark),
+                                foreground: $foreground-light,
+                                background: $background-light
+                            ),
+                            typography: null,
+                            density: null,
+                            primary: map.get(map.get($base-light-theme, color), primary),
+                            accent: map.get(map.get($base-light-theme, color), accent),
+                            warn: map.get(map.get($base-light-theme, color), warn),
+                            is-dark: map.get(map.get($base-light-theme, color), is-dark),
+                            foreground: $foreground-light,
+                            background: $background-light
+                        );
+  @include angular-material-theme($light-theme);
 }
 
-.theme-default.dark,
-                            .theme-default .dark {
-  $base-angular-material-theme-for-default: mat-dark-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'indigo'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-default: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-default, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-default, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-default, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-default, color), is-dark),
-                                        foreground: $foreground-dark,
-                                        background: $background-dark
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-default, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-default, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-default, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-default, color), is-dark),
-                                    foreground: $foreground-dark,
-                                    background: $background-dark
-                                );
-  @include angular-material-theme($angular-material-theme-for-default);
-}
-
-.theme-teal.light,
-                            .theme-teal .light {
-  $base-angular-material-theme-for-teal: mat-light-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'teal'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-teal: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-teal, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-teal, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-teal, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-teal, color), is-dark),
-                                        foreground: $foreground-light,
-                                        background: $background-light
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-teal, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-teal, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-teal, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-teal, color), is-dark),
-                                    foreground: $foreground-light,
-                                    background: $background-light
-                                );
-  @include angular-material-theme($angular-material-theme-for-teal);
-}
-
-.theme-teal.dark,
-                            .theme-teal .dark {
-  $base-angular-material-theme-for-teal: mat-dark-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'teal'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-teal: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-teal, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-teal, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-teal, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-teal, color), is-dark),
-                                        foreground: $foreground-dark,
-                                        background: $background-dark
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-teal, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-teal, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-teal, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-teal, color), is-dark),
-                                    foreground: $foreground-dark,
-                                    background: $background-dark
-                                );
-  @include angular-material-theme($angular-material-theme-for-teal);
-}
-
-.theme-purple.light,
-                            .theme-purple .light {
-  $base-angular-material-theme-for-purple: mat-light-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'purple'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-purple: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-purple, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-purple, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-purple, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-purple, color), is-dark),
-                                        foreground: $foreground-light,
-                                        background: $background-light
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-purple, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-purple, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-purple, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-purple, color), is-dark),
-                                    foreground: $foreground-light,
-                                    background: $background-light
-                                );
-  @include angular-material-theme($angular-material-theme-for-purple);
-}
-
-.theme-purple.dark,
-                            .theme-purple .dark {
-  $base-angular-material-theme-for-purple: mat-dark-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'purple'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-purple: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-purple, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-purple, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-purple, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-purple, color), is-dark),
-                                        foreground: $foreground-dark,
-                                        background: $background-dark
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-purple, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-purple, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-purple, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-purple, color), is-dark),
-                                    foreground: $foreground-dark,
-                                    background: $background-dark
-                                );
-  @include angular-material-theme($angular-material-theme-for-purple);
-}
-
-.theme-orange.light,
-                            .theme-orange .light {
-  $base-angular-material-theme-for-orange: mat-light-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'orange'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-orange: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-orange, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-orange, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-orange, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-orange, color), is-dark),
-                                        foreground: $foreground-light,
-                                        background: $background-light
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-orange, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-orange, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-orange, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-orange, color), is-dark),
-                                    foreground: $foreground-light,
-                                    background: $background-light
-                                );
-  @include angular-material-theme($angular-material-theme-for-orange);
-}
-
-.theme-orange.dark,
-                            .theme-orange .dark {
-  $base-angular-material-theme-for-orange: mat-dark-theme(
-                                    (
-                                        color: (
-                                            primary: mat-palette(map.get($treo-material-palettes, 'orange'), 600, 100, 700, 600),
-                                            accent: mat-palette(map.get($treo-material-palettes, 'coolGray'), 800, 100, 700, 800),
-                                            warn: mat-palette(map.get($treo-material-palettes, 'red'), 700, 100, 700, 700)
-                                        )
-                                    )
-                                );
-  $angular-material-theme-for-orange: (
-                                    color: (
-                                        primary: map.get(map.get($base-angular-material-theme-for-orange, color), primary),
-                                        accent: map.get(map.get($base-angular-material-theme-for-orange, color), accent),
-                                        warn: map.get(map.get($base-angular-material-theme-for-orange, color), warn),
-                                        is-dark: map.get(map.get($base-angular-material-theme-for-orange, color), is-dark),
-                                        foreground: $foreground-dark,
-                                        background: $background-dark
-                                    ),
-                                    typography: null,
-                                    density: null,
-                                    primary: map.get(map.get($base-angular-material-theme-for-orange, color), primary),
-                                    accent: map.get(map.get($base-angular-material-theme-for-orange, color), accent),
-                                    warn: map.get(map.get($base-angular-material-theme-for-orange, color), warn),
-                                    is-dark: map.get(map.get($base-angular-material-theme-for-orange, color), is-dark),
-                                    foreground: $foreground-dark,
-                                    background: $background-dark
-                                );
-  @include angular-material-theme($angular-material-theme-for-orange);
+body.dark,
+                    .body .dark {
+  $base-dark-theme: mat-dark-theme((
+                            color: (
+                                primary: (
+                    50: var(--treo-color-primary-50),
+                    100: var(--treo-color-primary-100),
+                    200: var(--treo-color-primary-200),
+                    300: var(--treo-color-primary-300),
+                    400: var(--treo-color-primary-400),
+                    500: var(--treo-color-primary-500),
+                    600: var(--treo-color-primary-600),
+                    700: var(--treo-color-primary-700),
+                    800: var(--treo-color-primary-800),
+                    900: var(--treo-color-primary-900),
+                    contrast: (
+                        50: var(--treo-color-on-primary-50),
+                        100: var(--treo-color-on-primary-100),
+                        200: var(--treo-color-on-primary-200),
+                        300: var(--treo-color-on-primary-300),
+                        400: var(--treo-color-on-primary-400),
+                        500: var(--treo-color-on-primary-500),
+                        600: var(--treo-color-on-primary-600),
+                        700: var(--treo-color-on-primary-700),
+                        800: var(--treo-color-on-primary-800),
+                        900: var(--treo-color-on-primary-900)
+                    ),
+                    default: var(--treo-color-primary),
+                    lighter: var(--treo-color-primary-100),
+                    darker: var(--treo-color-primary-700),
+                    text: var(--treo-color-primary),
+                    default-contrast: var(--treo-color-on-primary),
+                    lighter-contrast: var(--treo-color-on-primary-100),
+                    darker-contrast: var(--treo-color-on-primary-700),
+                ),
+                                accent: (
+                    50: var(--treo-color-accent-50),
+                    100: var(--treo-color-accent-100),
+                    200: var(--treo-color-accent-200),
+                    300: var(--treo-color-accent-300),
+                    400: var(--treo-color-accent-400),
+                    500: var(--treo-color-accent-500),
+                    600: var(--treo-color-accent-600),
+                    700: var(--treo-color-accent-700),
+                    800: var(--treo-color-accent-800),
+                    900: var(--treo-color-accent-900),
+                    contrast: (
+                        50: var(--treo-color-on-accent-50),
+                        100: var(--treo-color-on-accent-100),
+                        200: var(--treo-color-on-accent-200),
+                        300: var(--treo-color-on-accent-300),
+                        400: var(--treo-color-on-accent-400),
+                        500: var(--treo-color-on-accent-500),
+                        600: var(--treo-color-on-accent-600),
+                        700: var(--treo-color-on-accent-700),
+                        800: var(--treo-color-on-accent-800),
+                        900: var(--treo-color-on-accent-900)
+                    ),
+                    default: var(--treo-color-accent),
+                    lighter: var(--treo-color-accent-100),
+                    darker: var(--treo-color-accent-700),
+                    text: var(--treo-color-accent),
+                    default-contrast: var(--treo-color-on-accent),
+                    lighter-contrast: var(--treo-color-on-accent-100),
+                    darker-contrast: var(--treo-color-on-accent-700),
+                ),
+                                warn: (
+                    50: var(--treo-color-warn-50),
+                    100: var(--treo-color-warn-100),
+                    200: var(--treo-color-warn-200),
+                    300: var(--treo-color-warn-300),
+                    400: var(--treo-color-warn-400),
+                    500: var(--treo-color-warn-500),
+                    600: var(--treo-color-warn-600),
+                    700: var(--treo-color-warn-700),
+                    800: var(--treo-color-warn-800),
+                    900: var(--treo-color-warn-900),
+                    contrast: (
+                        50: var(--treo-color-on-warn-50),
+                        100: var(--treo-color-on-warn-100),
+                        200: var(--treo-color-on-warn-200),
+                        300: var(--treo-color-on-warn-300),
+                        400: var(--treo-color-on-warn-400),
+                        500: var(--treo-color-on-warn-500),
+                        600: var(--treo-color-on-warn-600),
+                        700: var(--treo-color-on-warn-700),
+                        800: var(--treo-color-on-warn-800),
+                        900: var(--treo-color-on-warn-900)
+                    ),
+                    default: var(--treo-color-warn),
+                    lighter: var(--treo-color-warn-100),
+                    darker: var(--treo-color-warn-700),
+                    text: var(--treo-color-warn),
+                    default-contrast: var(--treo-color-on-warn),
+                    lighter-contrast: var(--treo-color-on-warn-100),
+                    darker-contrast: var(--treo-color-on-warn-700),
+                )
+                            )
+                        ));
+  $dark-theme: (
+                            color: (
+                                primary: map.get(map.get($base-dark-theme, color), primary),
+                                accent: map.get(map.get($base-dark-theme, color), accent),
+                                warn: map.get(map.get($base-dark-theme, color), warn),
+                                is-dark: map.get(map.get($base-dark-theme, color), is-dark),
+                                foreground: $foreground-dark,
+                                background: $background-dark
+                            ),
+                            typography: null,
+                            density: null,
+                            primary: map.get(map.get($base-dark-theme, color), primary),
+                            accent: map.get(map.get($base-dark-theme, color), accent),
+                            warn: map.get(map.get($base-dark-theme, color), warn),
+                            is-dark: map.get(map.get($base-dark-theme, color), is-dark),
+                            foreground: $foreground-dark,
+                            background: $background-dark
+                        );
+  @include angular-material-theme($dark-theme);
 }

@@ -12,22 +12,14 @@ import { GuideCategory } from 'app/modules/admin/pages/help-center/help-center.t
 })
 export class HelpCenterGuidesGuideComponent implements OnInit, OnDestroy
 {
-    guideCategory: GuideCategory;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    guideCategory!: GuideCategory;
+    private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
      * Constructor
-     *
-     * @param {HelpCenterService} _helpCenterService
      */
-    constructor(
-        private _helpCenterService: HelpCenterService
-    )
+    constructor(private _helpCenterService: HelpCenterService)
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

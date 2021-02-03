@@ -60,12 +60,6 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ElementRef} _elementRef
-     * @param {Overlay} _overlay
-     * @param {Renderer2} _renderer2
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,

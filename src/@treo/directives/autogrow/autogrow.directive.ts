@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, HostBinding, HostListener, Input, NgZone, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Directive({
@@ -7,21 +7,21 @@ import { Subject } from 'rxjs';
 })
 export class TreoAutogrowDirective implements OnChanges, OnInit, OnDestroy
 {
-    // Public
     // tslint:disable-next-line:no-input-rename
-    @Input('treoAutogrowVerticalPadding') padding = 8;
+    @Input('treoAutogrowVerticalPadding') padding: number = 8;
+    @HostBinding('rows') private _rows: number = 1;
 
-    // Private
-    private _height = 'auto';
-    @HostBinding('rows') private _rows = 1;
+    private _height: string = 'auto';
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
      */
-    constructor(private _elementRef: ElementRef)
+    constructor(
+        private _elementRef: ElementRef,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _ngZone: NgZone
+    )
     {
     }
 
@@ -56,9 +56,7 @@ export class TreoAutogrowDirective implements OnChanges, OnInit, OnDestroy
         if ( 'treoAutogrowVerticalPadding' in changes )
         {
             // Resize
-            setTimeout(() => {
-                this._resize();
-            });
+            this._resize();
         }
     }
 
@@ -68,9 +66,7 @@ export class TreoAutogrowDirective implements OnChanges, OnInit, OnDestroy
     ngOnInit(): void
     {
         // Resize for the first time
-        setTimeout(() => {
-            this._resize();
-        });
+        this._resize();
     }
 
     /**
@@ -96,10 +92,23 @@ export class TreoAutogrowDirective implements OnChanges, OnInit, OnDestroy
     @HostListener('ngModelChange')
     private _resize(): void
     {
-        // Set the height to 'auto' so we can correctly read the scrollHeight
-        this._height = 'auto';
+        // This doesn't need to trigger Angular's change detection by itself
+        this._ngZone.runOutsideAngular(() => {
 
-        // Get the scrollHeight and subtract the vertical padding
-        this._height = `${this._elementRef.nativeElement.scrollHeight - this.padding}px`;
+            setTimeout(() => {
+
+                // Set the height to 'auto' so we can correctly read the scrollHeight
+                this._height = 'auto';
+
+                // Detect the changes so the height is applied
+                this._changeDetectorRef.detectChanges();
+
+                // Get the scrollHeight and subtract the vertical padding
+                this._height = `${this._elementRef.nativeElement.scrollHeight - this.padding}px`;
+
+                // Detect the changes one more time to apply the final height
+                this._changeDetectorRef.detectChanges();
+            });
+        });
     }
 }

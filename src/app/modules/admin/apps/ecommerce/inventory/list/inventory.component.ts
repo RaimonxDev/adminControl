@@ -46,10 +46,6 @@ export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FormBuilder} _formBuilder
-     * @param {InventoryService} _inventoryService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -501,7 +497,7 @@ export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Update the selected product using the form data
+     * Update the selected product using the form mock-api
      */
     updateSelectedProduct(): void
     {
@@ -520,7 +516,7 @@ export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Delete the selected product using the form data
+     * Delete the selected product using the form mock-api
      */
     deleteSelectedProduct(): void
     {

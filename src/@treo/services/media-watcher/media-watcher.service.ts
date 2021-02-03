@@ -6,44 +6,12 @@ import { tailwindConfig } from '@treo/tailwind/config';
 @Injectable()
 export class TreoMediaWatcherService
 {
-    // Private
     private _onMediaChange: ReplaySubject<{ matchingAliases: string[], matchingQueries: any }> = new ReplaySubject<{ matchingAliases: string[], matchingQueries: any }>(1);
 
     /**
      * Constructor
-     *
-     * @param {BreakpointObserver} _breakpointObserver
      */
-    constructor(
-        private _breakpointObserver: BreakpointObserver
-    )
-    {
-        // Initialize
-        this._init();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Getter for _onMediaChange
-     */
-    get onMediaChange$(): Observable<{ matchingAliases: string[], matchingQueries: any }>
-    {
-        return this._onMediaChange.asObservable();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Initialize
-     *
-     * @private
-     */
-    private _init(): void
+    constructor(private _breakpointObserver: BreakpointObserver)
     {
         // Get the breakpoints
         const breakpoints: { [alias: string]: string } = tailwindConfig.breakpoints;
@@ -77,6 +45,18 @@ export class TreoMediaWatcherService
                     matchingQueries
                 });
             });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for _onMediaChange
+     */
+    get onMediaChange$(): Observable<{ matchingAliases: string[], matchingQueries: any }>
+    {
+        return this._onMediaChange.asObservable();
     }
 
     // -----------------------------------------------------------------------------------------------------

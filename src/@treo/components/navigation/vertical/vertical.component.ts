@@ -9,6 +9,7 @@ import { TreoNavigationItem, TreoVerticalNavigationAppearance, TreoVerticalNavig
 import { TreoNavigationService } from '@treo/components/navigation/navigation.service';
 import { TreoScrollbarDirective } from '@treo/directives/scrollbar/scrollbar.directive';
 import { TreoUtilsService } from '@treo/services/utils/utils.service';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector       : 'treo-vertical-navigation',
@@ -21,50 +22,39 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 })
 export class TreoVerticalNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy
 {
-    // Public
     @Input() appearance: TreoVerticalNavigationAppearance = 'classic';
-    @Input() autoCollapse = true;
-    @Input() inner = false;
+    @Input() autoCollapse: boolean = true;
+    @Input() inner: boolean = false;
     @Input() mode: TreoVerticalNavigationMode = 'side';
     @Input() name: string = this._treoUtilsService.randomId();
     @Input() navigation: TreoNavigationItem[] = [];
-    @Input() opened = true;
+    @Input() opened: boolean = true;
     @Input() position: TreoVerticalNavigationPosition = 'left';
-    @Input() transparentOverlay = false;
+    @Input() transparentOverlay: boolean = false;
     @Output() readonly appearanceChanged: EventEmitter<TreoVerticalNavigationAppearance> = new EventEmitter<TreoVerticalNavigationAppearance>();
     @Output() readonly modeChanged: EventEmitter<TreoVerticalNavigationMode> = new EventEmitter<TreoVerticalNavigationMode>();
-    @Output() readonly openedChanged: EventEmitter<boolean | ''> = new EventEmitter<boolean | ''>();
+    @Output() readonly openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() readonly positionChanged: EventEmitter<TreoVerticalNavigationPosition> = new EventEmitter<TreoVerticalNavigationPosition>();
-    @ViewChild('navigationContent') private _navigationContentEl!: ElementRef;
-    activeAsideItemId: string | undefined = undefined;
+    @ViewChild('navigationContent') private _navigationContentEl?: ElementRef;
+
+    activeAsideItemId?: string;
     onCollapsableItemCollapsed: ReplaySubject<TreoNavigationItem> = new ReplaySubject<TreoNavigationItem>(1);
     onCollapsableItemExpanded: ReplaySubject<TreoNavigationItem> = new ReplaySubject<TreoNavigationItem>(1);
     onRefreshed: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
-
-    // Private
-    private _animationsEnabled = false;
-    private _asideOverlay: HTMLElement | undefined = undefined;
-    private _handleAsideOverlayClick: any;
-    private _handleOverlayClick: any;
-    private _hovered = false;
-    private _overlay: HTMLElement | undefined = undefined;
-    private _player!: AnimationPlayer;
+    private _animationsEnabled: boolean = false;
+    private _asideOverlay?: HTMLElement;
+    private readonly _handleAsideOverlayClick: any;
+    private readonly _handleOverlayClick: any;
+    private _hovered: boolean = false;
+    private _overlay?: HTMLElement;
+    private _player?: AnimationPlayer;
     private _scrollStrategy: ScrollStrategy = this._scrollStrategyOptions.block();
     private _treoScrollbarDirectives!: QueryList<TreoScrollbarDirective>;
-    private _treoScrollbarDirectivesSubscription!: Subscription;
+    private _treoScrollbarDirectivesSubscription?: Subscription;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {AnimationBuilder} _animationBuilder
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer2
-     * @param {Router} _router
-     * @param {ScrollStrategyOptions} _scrollStrategyOptions
-     * @param {TreoNavigationService} _treoNavigationService
-     * @param {TreoUtilsService} _treoUtilsService
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
@@ -77,7 +67,6 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         private _treoUtilsService: TreoUtilsService
     )
     {
-        // Set the private defaults
         this._handleAsideOverlayClick = () => {
             this.closeAside();
         };
@@ -100,9 +89,11 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
             [`treo-vertical-navigation-appearance-${this.appearance}`]: true,
             'treo-vertical-navigation-hover'                          : this._hovered,
             'treo-vertical-navigation-inner'                          : this.inner,
-            [`treo-vertical-navigation-mode-${this.mode}`]            : true,
+            'treo-vertical-navigation-mode-over'                      : this.mode === 'over',
+            'treo-vertical-navigation-mode-side'                      : this.mode === 'side',
             'treo-vertical-navigation-opened'                         : this.opened,
-            [`treo-vertical-navigation-position-${this.position}`]    : true
+            'treo-vertical-navigation-mode-position-left'             : this.position === 'left',
+            'treo-vertical-navigation-mode-position-right'            : this.position === 'right'
         };
     }
 
@@ -177,8 +168,8 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         // Inner
         if ( 'inner' in changes )
         {
-            // Interpret empty string as 'true'
-            this.inner = changes.inner.currentValue === '' ? true : changes.inner.currentValue;
+            // Coerce the value to a boolean
+            this.inner = coerceBooleanProperty(changes.inner.currentValue);
         }
 
         // Mode
@@ -233,8 +224,8 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         // Opened
         if ( 'opened' in changes )
         {
-            // Interpret empty string as 'true'
-            this.opened = changes.opened.currentValue === '' ? true : changes.opened.currentValue;
+            // Coerce the value to a boolean
+            this.opened = coerceBooleanProperty(changes.opened.currentValue);
 
             // Open/close the navigation
             this._toggleOpened(this.opened);
@@ -250,8 +241,8 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         // Transparent overlay
         if ( 'transparentOverlay' in changes )
         {
-            // Interpret empty string as 'true'
-            this.transparentOverlay = changes.transparentOverlay.currentValue === '' ? true : changes.transparentOverlay.currentValue;
+            // Coerce the value to a boolean
+            this.transparentOverlay = coerceBooleanProperty(changes.transparentOverlay.currentValue);
         }
     }
 
@@ -260,6 +251,12 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
      */
     ngOnInit(): void
     {
+        // Make sure the name input is not an empty string
+        if ( this.name === '' )
+        {
+            this.name = this._treoUtilsService.randomId();
+        }
+
         // Register the navigation component
         this._treoNavigationService.registerComponent(this.name, this);
 
@@ -293,6 +290,12 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
     ngAfterViewInit(): void
     {
         setTimeout(() => {
+
+            // Return if 'navigation content' element does not exist
+            if ( !this._navigationContentEl )
+            {
+                return;
+            }
 
             // If 'navigation content' element doesn't have
             // perfect scrollbar activated on it...
@@ -337,6 +340,138 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Refresh the component to apply the changes
+     */
+    refresh(): void
+    {
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+
+        // Execute the observable
+        this.onRefreshed.next(true);
+    }
+
+    /**
+     * Open the navigation
+     */
+    open(): void
+    {
+        // Return if the navigation is already open
+        if ( this.opened )
+        {
+            return;
+        }
+
+        // Set the opened
+        this._toggleOpened(true);
+    }
+
+    /**
+     * Close the navigation
+     */
+    close(): void
+    {
+        // Return if the navigation is already closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Close the aside
+        this.closeAside();
+
+        // Set the opened
+        this._toggleOpened(false);
+    }
+
+    /**
+     * Toggle the navigation
+     */
+    toggle(): void
+    {
+        // Toggle
+        if ( this.opened )
+        {
+            this.close();
+        }
+        else
+        {
+            this.open();
+        }
+    }
+
+    /**
+     * Open the aside
+     *
+     * @param item
+     */
+    openAside(item: TreoNavigationItem): void
+    {
+        // Return if the item is disabled
+        if ( item.disabled || !item.id )
+        {
+            return;
+        }
+
+        // Open
+        this.activeAsideItemId = item.id;
+
+        // Show the aside overlay
+        this._showAsideOverlay();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Close the aside
+     */
+    closeAside(): void
+    {
+        // Close
+        this.activeAsideItemId = undefined;
+
+        // Hide the aside overlay
+        this._hideAsideOverlay();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Toggle the aside
+     *
+     * @param item
+     */
+    toggleAside(item: TreoNavigationItem): void
+    {
+        // Toggle
+        if ( this.activeAsideItemId === item.id )
+        {
+            this.closeAside();
+        }
+        else
+        {
+            this.openAside(item);
+        }
+    }
+
+    /**
+     * Track by function for ngFor loops
+     *
+     * @param index
+     * @param item
+     */
+    trackByFn(index: number, item: any): any
+    {
+        return item.id || index;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -593,137 +728,5 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
 
         // Execute the observable
         this.openedChanged.next(open);
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Refresh the component to apply the changes
-     */
-    refresh(): void
-    {
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-
-        // Execute the observable
-        this.onRefreshed.next(true);
-    }
-
-    /**
-     * Open the navigation
-     */
-    open(): void
-    {
-        // Return if the navigation is already open
-        if ( this.opened )
-        {
-            return;
-        }
-
-        // Set the opened
-        this._toggleOpened(true);
-    }
-
-    /**
-     * Close the navigation
-     */
-    close(): void
-    {
-        // Return if the navigation is already closed
-        if ( !this.opened )
-        {
-            return;
-        }
-
-        // Close the aside
-        this.closeAside();
-
-        // Set the opened
-        this._toggleOpened(false);
-    }
-
-    /**
-     * Toggle the navigation
-     */
-    toggle(): void
-    {
-        // Toggle
-        if ( this.opened )
-        {
-            this.close();
-        }
-        else
-        {
-            this.open();
-        }
-    }
-
-    /**
-     * Open the aside
-     *
-     * @param item
-     */
-    openAside(item: TreoNavigationItem): void
-    {
-        // Return if the item is disabled
-        if ( item.disabled )
-        {
-            return;
-        }
-
-        // Open
-        this.activeAsideItemId = item.id;
-
-        // Show the aside overlay
-        this._showAsideOverlay();
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Close the aside
-     */
-    closeAside(): void
-    {
-        // Close
-        this.activeAsideItemId = undefined;
-
-        // Hide the aside overlay
-        this._hideAsideOverlay();
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Toggle the aside
-     *
-     * @param item
-     */
-    toggleAside(item: TreoNavigationItem): void
-    {
-        // Toggle
-        if ( this.activeAsideItemId === item.id )
-        {
-            this.closeAside();
-        }
-        else
-        {
-            this.openAside(item);
-        }
-    }
-
-    /**
-     * Track by function for ngFor loops
-     *
-     * @param index
-     * @param item
-     */
-    trackByFn(index: number, item: any): any
-    {
-        return item.id || index;
     }
 }

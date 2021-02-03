@@ -20,12 +20,8 @@ export class InventoryService
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
         // Set the private defaults
         this._brands = new BehaviorSubject(null);

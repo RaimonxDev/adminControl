@@ -5,10 +5,10 @@ basic-layout {
     width: 100%;
 
     > treo-vertical-navigation {
-        @apply bg-card;
+        background: var(--bg-card);
 
         .dark & {
-            @apply bg-blueGray-900;
+            @apply bg-gray-900;
         }
 
         .treo-vertical-navigation-header {
@@ -62,7 +62,7 @@ basic-layout {
             padding: 0 16px;
             z-index: 49;
             box-shadow: 0 1px 0 0 var(--foreground-divider);
-            @apply bg-card;
+            background: var(--bg-card);
 
             @screen md {
                 padding: 0 24px;
@@ -122,8 +122,9 @@ basic-layout {
             min-height: 56px;
             padding: 0 24px;
             z-index: 49;
-            box-shadow: 0 -1px 0 0 var(--foregaround-divider);
-            @apply bg-card text-secondary;
+            box-shadow: 0 -1px 0 0 var(--foreground-divider);
+            background: var(--bg-card);
+            color: var(--text-secondary);
 
             .dark & {
                 background: transparent;

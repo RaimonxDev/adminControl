@@ -16,9 +16,6 @@ export class MailboxComposeComponent implements OnInit
 
     /**
      * Constructor
-     *
-     * @param {MatDialogRef} matDialogRef
-     * @param {FormBuilder} _formBuilder
      */
     constructor(
         public matDialogRef: MatDialogRef<MailboxComposeComponent>,

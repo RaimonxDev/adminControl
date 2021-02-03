@@ -134,11 +134,10 @@ treo-alert {
             overflow: hidden;
             border-left-width: 4px;
             border-radius: 4px;
-            background: var(--bg-card);
-            @apply shadow-xl;
+            @apply shadow-xl bg-card;
 
             .treo-alert-message {
-                color: var(--text-secondary);
+                @apply text-secondary;
             }
         }
 
@@ -146,11 +145,11 @@ treo-alert {
         &.treo-alert-type-primary {
 
             .treo-alert-container {
-                border-color: var(--primary);
+                @apply border-primary;
 
                 .treo-alert-title,
                 .treo-alert-icon {
-                    color: var(--primary);
+                    @apply text-primary;
                 }
             }
         }
@@ -159,11 +158,11 @@ treo-alert {
         &.treo-alert-type-accent {
 
             .treo-alert-container {
-                border-color: var(--accent);
+                @apply border-accent;
 
                 .treo-alert-title,
                 .treo-alert-icon {
-                    color: var(--accent);
+                    @apply text-accent;
                 }
             }
         }
@@ -172,11 +171,11 @@ treo-alert {
         &.treo-alert-type-warn {
 
             .treo-alert-container {
-                border-color: var(--warn);
+                @apply border-warn;
 
                 .treo-alert-title,
                 .treo-alert-icon {
-                    color: var(--warn);
+                    @apply text-warn;
                 }
             }
         }
@@ -185,11 +184,11 @@ treo-alert {
         &.treo-alert-type-basic {
 
             .treo-alert-container {
-                @apply border-blueGray-600;
+                @apply border-gray-600;
 
                 .treo-alert-title,
                 .treo-alert-icon {
-                    @apply text-blueGray-600;
+                    @apply text-gray-600;
                 }
             }
         }
@@ -258,12 +257,10 @@ treo-alert {
         &.treo-alert-type-primary {
 
             .treo-alert-container {
-                background: var(--primary);
-                color: var(--primary-contrast);
+                @apply primary;
 
                 code {
-                    background: var(--primary-600);
-                    color: var(--primary-600-contrast);
+                    @apply primary-600;
                 }
             }
         }
@@ -272,12 +269,10 @@ treo-alert {
         &.treo-alert-type-accent {
 
             .treo-alert-container {
-                background: var(--accent);
-                color: var(--accent-contrast);
+                @apply accent;
 
                 code {
-                    background: var(--accent-600);
-                    color: var(--accent-600-contrast);
+                    @apply accent-600;
                 }
             }
         }
@@ -286,12 +281,10 @@ treo-alert {
         &.treo-alert-type-warn {
 
             .treo-alert-container {
-                background: var(--warn);
-                color: var(--warn-contrast);
+                @apply warn;
 
                 code {
-                    background: var(--warn-800);
-                    color: var(--warn-800-contrast);
+                    @apply warn-800;
                 }
             }
         }
@@ -300,10 +293,10 @@ treo-alert {
         &.treo-alert-type-basic {
 
             .treo-alert-container {
-                @apply bg-blueGray-500 text-blueGray-50;
+                @apply bg-gray-500 text-gray-50;
 
                 code {
-                    @apply bg-blueGray-600 text-blueGray-50;
+                    @apply bg-gray-600 text-gray-50;
                 }
             }
         }
@@ -324,10 +317,10 @@ treo-alert {
         &.treo-alert-type-success {
 
             .treo-alert-container {
-                @apply bg-green-500 text-blueGray-50;
+                @apply bg-green-500 text-gray-50;
 
                 code {
-                    @apply bg-green-600 text-blueGray-50;
+                    @apply bg-green-600 text-gray-50;
                 }
             }
         }
@@ -369,22 +362,20 @@ treo-alert {
 
             .treo-alert-container {
                 box-shadow: inset 0 0 0 1px var(--primary-400);
-                background: var(--primary-50);
-                color: var(--primary-800);
+                @apply text-primary-800 bg-primary-50;
 
                 .treo-alert-icon {
-                    color: var(--primary);
+                    @apply text-primary;
                 }
 
                 code {
-                    background: var(--primary-200);
-                    color: var(--primary-800);
+                    @apply text-primary-800 bg-primary-200;
                 }
 
                 .dark & {
                     box-shadow: inset 0 0 0 1px var(--primary-300);
                     background: transparent;
-                    color: var(--primary-300);
+                    @apply text-primary-300;
 
                     .treo-alert-icon {
                         color: currentColor;
@@ -398,22 +389,20 @@ treo-alert {
 
             .treo-alert-container {
                 box-shadow: inset 0 0 0 1px var(--accent-400);
-                background: var(--accent-50);
-                color: var(--accent-800);
+                @apply text-accent-800 bg-accent-50;
 
                 .treo-alert-icon {
-                    color: var(--accent);
+                    @apply text-accent;
                 }
 
                 code {
-                    background: var(--accent-200);
-                    color: var(--accent-800);
+                    @apply text-accent-800 bg-accent-200;
                 }
 
                 .dark & {
                     box-shadow: inset 0 0 0 1px var(--accent-300);
                     background: transparent;
-                    color: var(--accent-300);
+                    @apply text-accent-300;
 
                     .treo-alert-icon {
                         color: currentColor;
@@ -427,22 +416,20 @@ treo-alert {
 
             .treo-alert-container {
                 box-shadow: inset 0 0 0 1px var(--warn-400);
-                background: var(--warn-50);
-                color: var(--warn-800);
+                @apply text-warn-800 bg-warn-50;
 
                 .treo-alert-icon {
-                    color: var(--warn);
+                    @apply text-warn;
                 }
 
                 code {
-                    background: var(--warn-200);
-                    color: var(--warn-800);
+                    @apply text-warn-800 bg-warn-200;
                 }
 
                 .dark & {
                     box-shadow: inset 0 0 0 1px var(--warn-300);
                     background: transparent;
-                    color: var(--warn-300);
+                    @apply text-warn-300;
 
                     .treo-alert-icon {
                         color: currentColor;
@@ -455,21 +442,21 @@ treo-alert {
         &.treo-alert-type-basic {
 
             .treo-alert-container {
-                box-shadow: inset 0 0 0 1px theme('colors.blueGray.400');
-                @apply bg-blueGray-50 text-blueGray-800;
+                box-shadow: inset 0 0 0 1px theme('colors.gray.400');
+                @apply bg-gray-50 text-gray-800;
 
                 .treo-alert-icon {
-                    @apply text-blueGray-500;
+                    @apply text-gray-500;
                 }
 
                 code {
-                    @apply bg-blueGray-200 text-blueGray-800;
+                    @apply bg-gray-200 text-gray-800;
                 }
 
                 .dark & {
-                    box-shadow: inset 0 0 0 1px theme('colors.blueGray.300');
+                    box-shadow: inset 0 0 0 1px theme('colors.gray.300');
                     background: transparent;
-                    @apply text-blueGray-300;
+                    @apply text-gray-300;
 
                     .treo-alert-icon {
                         color: currentColor;
@@ -598,34 +585,33 @@ treo-alert {
         &.treo-alert-type-primary {
 
             .treo-alert-container {
-                background: var(--primary-50);
+                @apply bg-primary-50;
 
                 .treo-alert-icon {
-                    color: var(--primary-400);
+                    @apply text-primary-400;
                 }
 
                 .treo-alert-title {
-                    color: var(--primary-800);
+                    @apply text-primary-800;
                 }
 
                 .treo-alert-message {
-                    color: var(--primary-700);
+                    @apply text-primary-700;
                 }
 
                 code {
-                    background: var(--primary-200);
-                    color: var(--primary-800);
+                    @apply text-primary-800 bg-primary-200;
                 }
 
                 .dark & {
-                    background: var(--primary-900);
+                    @apply bg-primary-900;
 
                     .treo-alert-title {
-                        color: var(--primary-400);
+                        @apply text-primary-400;
                     }
 
                     .treo-alert-message {
-                        color: var(--primary-400);
+                        @apply text-primary-400;
                     }
                 }
             }
@@ -635,34 +621,33 @@ treo-alert {
         &.treo-alert-type-accent {
 
             .treo-alert-container {
-                background: var(--accent-100);
+                @apply bg-accent-100;
 
                 .treo-alert-icon {
-                    color: var(--accent-400);
+                    @apply text-accent-400;
                 }
 
                 .treo-alert-title {
-                    color: var(--accent-800);
+                    @apply text-accent-800;
                 }
 
                 .treo-alert-message {
-                    color: var(--accent-700);
+                    @apply text-accent-700;
                 }
 
                 code {
-                    background: var(--accent-200);
-                    color: var(--accent-800);
+                    @apply text-accent-800 bg-accent-200;
                 }
 
                 .dark & {
-                    background: var(--accent-900);
+                    @apply bg-accent-900;
 
                     .treo-alert-title {
-                        color: var(--accent-400);
+                        @apply text-accent-400;
                     }
 
                     .treo-alert-message {
-                        color: var(--accent-400);
+                        @apply text-accent-400;
                     }
                 }
             }
@@ -672,34 +657,33 @@ treo-alert {
         &.treo-alert-type-warn {
 
             .treo-alert-container {
-                background: var(--warn-50);
+                @apply bg-warn-50;
 
                 .treo-alert-icon {
-                    color: var(--warn-400);
+                    @apply text-warn-400;
                 }
 
                 .treo-alert-title {
-                    color: var(--warn-800);
+                    @apply text-warn-800;
                 }
 
                 .treo-alert-message {
-                    color: var(--warn-700);
+                    @apply text-warn-700;
                 }
 
                 code {
-                    background: var(--warn-200);
-                    color: var(--warn-800);
+                    @apply text-warn-800 bg-warn-200;
                 }
 
                 .dark & {
-                    background: var(--warn-900);
+                    @apply bg-warn-900;
 
                     .treo-alert-title {
-                        color: var(--warn-400);
+                        @apply text-warn-400;
                     }
 
                     .treo-alert-message {
-                        color: var(--warn-400);
+                        @apply text-warn-400;
                     }
                 }
             }
@@ -709,33 +693,33 @@ treo-alert {
         &.treo-alert-type-basic {
 
             .treo-alert-container {
-                @apply bg-blueGray-100;
+                @apply bg-gray-100;
 
                 .treo-alert-icon {
-                    @apply text-blueGray-400;
+                    @apply text-gray-400;
                 }
 
                 .treo-alert-title {
-                    @apply text-blueGray-800;
+                    @apply text-gray-800;
                 }
 
                 .treo-alert-message {
-                    @apply text-blueGray-700;
+                    @apply text-gray-700;
                 }
 
                 code {
-                    @apply bg-blueGray-200 text-blueGray-800;
+                    @apply bg-gray-200 text-gray-800;
                 }
 
                 .dark & {
-                    @apply bg-blueGray-900;
+                    @apply bg-gray-900;
 
                     .treo-alert-title {
-                        @apply text-blueGray-400;
+                        @apply text-gray-400;
                     }
 
                     .treo-alert-message {
-                        @apply text-blueGray-300;
+                        @apply text-gray-300;
                     }
                 }
             }

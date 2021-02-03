@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { FaqCategory, Guide, GuideCategory } from 'app/modules/admin/pages/help-center/help-center.type';
 
@@ -9,24 +9,15 @@ import { FaqCategory, Guide, GuideCategory } from 'app/modules/admin/pages/help-
 })
 export class HelpCenterService
 {
-    // Private
-    private _faqs: BehaviorSubject<FaqCategory[] | null>;
-    private _guides: BehaviorSubject<GuideCategory[] | null>;
-    private _guide: BehaviorSubject<Guide | null>;
+    private _faqs: ReplaySubject<FaqCategory[]> = new ReplaySubject<FaqCategory[]>(1);
+    private _guides: ReplaySubject<GuideCategory[]> = new ReplaySubject<GuideCategory[]>(1);
+    private _guide: ReplaySubject<Guide> = new ReplaySubject<Guide>(1);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._faqs = new BehaviorSubject(null);
-        this._guides = new BehaviorSubject(null);
-        this._guide = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -78,7 +69,7 @@ export class HelpCenterService
      *
      * @param slug
      */
-    getFaqsByCategory(slug): Observable<FaqCategory[]>
+    getFaqsByCategory(slug: string): Observable<FaqCategory[]>
     {
         return this._httpClient.get<FaqCategory[]>('api/pages/help-center/faqs', {
             params: {slug}
@@ -110,7 +101,7 @@ export class HelpCenterService
      *
      * @param slug
      */
-    getGuidesByCategory(slug): Observable<GuideCategory[]>
+    getGuidesByCategory(slug: string): Observable<GuideCategory[]>
     {
         return this._httpClient.get<GuideCategory[]>('api/pages/help-center/guides', {
             params: {slug}
@@ -127,7 +118,7 @@ export class HelpCenterService
      * @param categorySlug
      * @param guideSlug
      */
-    getGuide(categorySlug, guideSlug): Observable<GuideCategory>
+    getGuide(categorySlug: string, guideSlug: string): Observable<GuideCategory>
     {
         return this._httpClient.get<GuideCategory>('api/pages/help-center/guide', {
             params: {

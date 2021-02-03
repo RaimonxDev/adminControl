@@ -54,7 +54,6 @@
              *ngFor="let label of labelsForm.get('labels')['controls']">
 
             <mat-form-field>
-                <mat-label>Label</mat-label>
                 <input matInput
                        [formControl]="label.get('title')">
                 <mat-select class="label-color-selector"

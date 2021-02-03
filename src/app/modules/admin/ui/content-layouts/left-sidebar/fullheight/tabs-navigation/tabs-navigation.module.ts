@@ -30,7 +30,7 @@ import { leftSidebarFullheightTabsNavigationRoutes } from 'app/modules/admin/ui/
         MatTabsModule,
         SharedModule,
         DemoContentModule,
-        DemoSidebarContentModule,
+        DemoSidebarContentModule
     ]
 })
 export class LeftSidebarFullheightTabsNavigationModule

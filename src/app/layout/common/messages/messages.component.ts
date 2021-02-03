@@ -17,24 +17,16 @@ import { MessagesService } from 'app/layout/common/messages/messages.service';
 })
 export class MessagesComponent implements OnInit, OnChanges, OnDestroy
 {
-    @Input() messages: Message[] = [];
+    @Input() messages?: Message[];
+    @ViewChild('messagesOrigin') private _messagesOrigin?: MatButton;
+    @ViewChild('messagesPanel') private _messagesPanel?: TemplateRef<any>;
 
-    // Public
-    unreadCount = 0;
-
-    // Private
-    private _overlayRef!: OverlayRef;
+    unreadCount: number = 0;
+    private _overlayRef?: OverlayRef;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-    @ViewChild('messagesOrigin') private _messagesOrigin!: MatButton;
-    @ViewChild('messagesPanel') private _messagesPanel!: TemplateRef<any>;
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {MessagesService} _messagesService
-     * @param {Overlay} _overlay
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -102,27 +94,6 @@ export class MessagesComponent implements OnInit, OnChanges, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Calculate the unread count
-     *
-     * @private
-     */
-    private _calculateUnreadCount(): void
-    {
-        let count = 0;
-
-        if ( this.messages && this.messages.length )
-        {
-            count = this.messages.filter(message => !message.read).length;
-        }
-
-        this.unreadCount = count;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -131,6 +102,12 @@ export class MessagesComponent implements OnInit, OnChanges, OnDestroy
      */
     openPanel(): void
     {
+        // Return if the messages panel or its origin is not defined
+        if ( !this._messagesPanel || !this._messagesOrigin )
+        {
+            return;
+        }
+
         // Create the overlay
         this._overlayRef = this._overlay.create({
             hasBackdrop     : true,
@@ -222,5 +199,26 @@ export class MessagesComponent implements OnInit, OnChanges, OnDestroy
     {
         // Delete the message
         this._messagesService.delete(message.id).subscribe();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Calculate the unread count
+     *
+     * @private
+     */
+    private _calculateUnreadCount(): void
+    {
+        let count = 0;
+
+        if ( this.messages && this.messages.length )
+        {
+            count = this.messages.filter(message => !message.read).length;
+        }
+
+        this.unreadCount = count;
     }
 }

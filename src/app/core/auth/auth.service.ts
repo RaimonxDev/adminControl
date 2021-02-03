@@ -3,20 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthUtils } from 'app/core/auth/auth.utils';
+import { UserService } from 'app/core/user/user.service';
 
 @Injectable()
 export class AuthService
 {
-    // Private
-    private _authenticated = false;
+    private _authenticated: boolean = false;
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _userService: UserService
     )
     {
     }
@@ -64,6 +63,9 @@ export class AuthService
                 // Set the authenticated flag to true
                 this._authenticated = true;
 
+                // Store the user on the user service
+                this._userService.user = response.user;
+
                 // Return a new observable with the response
                 return of(response);
             })
@@ -91,6 +93,9 @@ export class AuthService
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
+
+                // Store the user on the user service
+                this._userService.user = response.user;
 
                 // Return true
                 return of(true);

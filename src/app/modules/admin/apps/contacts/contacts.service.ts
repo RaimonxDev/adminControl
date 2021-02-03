@@ -17,12 +17,8 @@ export class ContactsService
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
         // Set the private defaults
         this._contact = new BehaviorSubject(null);

@@ -24,7 +24,7 @@ import { rightSidebarContentTabsRoutes } from 'app/modules/admin/ui/content-layo
         MatTabsModule,
         SharedModule,
         DemoContentModule,
-        DemoSidebarContentModule,
+        DemoSidebarContentModule
     ]
 })
 export class RightSidebarContentTabsModule

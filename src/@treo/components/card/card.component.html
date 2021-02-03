@@ -1,5 +1,5 @@
 <!-- Flippable card -->
-<ng-container *ngIf="face">
+<ng-container *ngIf="flippable">
 
     <!-- Front -->
     <div class="treo-card-front">
@@ -14,7 +14,7 @@
 </ng-container>
 
 <!-- Normal card -->
-<ng-container *ngIf="!face">
+<ng-container *ngIf="!flippable">
 
     <!-- Content -->
     <ng-content></ng-content>

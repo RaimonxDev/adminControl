@@ -15,20 +15,13 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class SignUpComponent implements OnInit, OnDestroy
 {
-    cardStyle: string;
-    message: any;
-    signUpForm: FormGroup;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    cardStyle!: string;
+    message?: any;
+    signUpForm!: FormGroup;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {AuthService} _authService
-     * @param {FormBuilder} _formBuilder
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -37,11 +30,6 @@ export class SignUpComponent implements OnInit, OnDestroy
         private _router: Router
     )
     {
-        // Set the defaults
-        this.message = null;
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -87,29 +75,6 @@ export class SignUpComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Set the card style from the url
-     * Demonstration purposes only!
-     *
-     * @private
-     */
-    private _setCardStyle(): void
-    {
-        // Get the current route
-        let route = this._activatedRoute;
-        while ( route.firstChild )
-        {
-            route = route.firstChild;
-        }
-
-        // Set the card style from the path
-        this.cardStyle = route.snapshot.url[0].path;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -128,7 +93,7 @@ export class SignUpComponent implements OnInit, OnDestroy
         this.signUpForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 
@@ -150,5 +115,28 @@ export class SignUpComponent implements OnInit, OnDestroy
                 type      : 'success'
             };
         }, 1000);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the card style from the url
+     * Demonstration purposes only!
+     *
+     * @private
+     */
+    private _setCardStyle(): void
+    {
+        // Get the current route
+        let route = this._activatedRoute;
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Set the card style from the path
+        this.cardStyle = route.snapshot.url[0].path;
     }
 }

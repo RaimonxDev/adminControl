@@ -35,7 +35,7 @@ import { calendarRoutes } from 'app/modules/admin/apps/calendar/calendar.routing
     entryComponents: [
         CalendarRecurrenceComponent
     ],
-    imports: [
+    imports        : [
         RouterModule.forChild(calendarRoutes),
         ScrollingModule,
         MatButtonModule,

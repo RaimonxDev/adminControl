@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TreoAlertService
 {
-    // Private
-    private _onDismiss: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
-    private _onShow: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+    private readonly _onDismiss: ReplaySubject<string> = new ReplaySubject<string>(1);
+    private readonly _onShow: ReplaySubject<string> = new ReplaySubject<string>(1);
 
     /**
      * Constructor

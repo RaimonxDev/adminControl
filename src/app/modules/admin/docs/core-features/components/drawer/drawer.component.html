@@ -50,11 +50,11 @@
             <textarea treo-highlight
                       lang="html">
                 <treo-drawer [fixed]="true"
-                             [mode]="isScreenSmall ? 'over' : 'side'"
-                             [name]="'rightDrawer'"
-                             [opened]="!isScreenSmall"
-                             [position]="'right'"
-                             [transparentOverlay]="false">
+                [mode]="isScreenSmall ? 'over' : 'side'"
+                [name]="'rightDrawer'"
+                [opened]="!isScreenSmall"
+                [position]="'right'"
+                [transparentOverlay]="false">
                 </treo-drawer>
             </textarea>
 
@@ -234,7 +234,7 @@
                                     </div>
                                 </treo-drawer>
 
-                                <div class="flex-auto bg-blueGray-100 p-4">
+                                <div class="flex-auto bg-gray-100 p-4">
                                     Some content
                                 </div>
 
@@ -250,31 +250,31 @@
                                   [lang]="'html'">
 
                             <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="toggleDrawerMode('leftDrawer');">
-                                Toggle drawer mode
+                            [color]="'primary'"
+                            (click)="toggleDrawerMode('leftDrawer');">
+                            Toggle drawer mode
                             </button>
 
                             <button class="ml-4"
-                                    mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="toggleDrawerOpen('leftDrawer');">
-                                Toggle drawer open
+                            mat-flat-button
+                            [color]="'primary'"
+                            (click)="toggleDrawerOpen('leftDrawer');">
+                            Toggle drawer open
                             </button>
 
                             <div class="relative flex overflow-hidden border mt-8 min-h-80">
 
-                                <treo-drawer [name]="'leftDrawer'"
-                                             [opened]="true"
-                                             [mode]="'side'">
-                                    <div class="p-4">
-                                        Left drawer
-                                    </div>
-                                </treo-drawer>
+                            <treo-drawer [name]="'leftDrawer'"
+                            [opened]="true"
+                            [mode]="'side'">
+                            <div class="p-4">
+                            Left drawer
+                            </div>
+                            </treo-drawer>
 
-                                <div class="flex-auto bg-blueGray-100 p-4">
-                                    Some content
-                                </div>
+                            <div class="flex-auto bg-gray-100 p-4">
+                            Some content
+                            </div>
 
                             </div>
 

@@ -10,12 +10,8 @@ export class AlertComponent
 {
     /**
      * Constructor
-     *
-     * @param {TreoAlertService} _treoAlertService
      */
-    constructor(
-        private _treoAlertService: TreoAlertService
-    )
+    constructor(private _treoAlertService: TreoAlertService)
     {
     }
 

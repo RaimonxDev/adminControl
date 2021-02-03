@@ -11,12 +11,8 @@ export class InitialDataResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
     }
 
@@ -25,7 +21,7 @@ export class InitialDataResolver implements Resolve<any>
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Use this resolver to resolve initial data for the application
+     * Use this resolver to resolve initial mock-api for the application
      *
      * @param route
      * @param state

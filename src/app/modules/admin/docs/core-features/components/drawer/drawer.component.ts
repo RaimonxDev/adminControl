@@ -12,12 +12,8 @@ export class DrawerComponent
 
     /**
      * Constructor
-     *
-     * @param {TreoDrawerService} _treoDrawerService
      */
-    constructor(
-        private _treoDrawerService: TreoDrawerService
-    )
+    constructor(private _treoDrawerService: TreoDrawerService)
     {
         // Set the defaults
         this.drawerMode = 'side';

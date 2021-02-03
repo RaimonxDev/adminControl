@@ -12,13 +12,10 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class ConfirmationRequiredComponent implements OnInit
 {
-    cardStyle: string;
+    cardStyle!: string;
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,

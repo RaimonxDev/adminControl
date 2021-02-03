@@ -20,12 +20,8 @@ export class RightSidebarContentTabsNavigationComponent implements OnInit, OnDes
 
     /**
      * Constructor
-     *
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
-    constructor(
-        private _treoMediaWatcherService: TreoMediaWatcherService
-    )
+    constructor(private _treoMediaWatcherService: TreoMediaWatcherService)
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();

@@ -18,26 +18,17 @@ import { ShortcutsService } from 'app/layout/common/shortcuts/shortcuts.service'
 })
 export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
 {
-    @Input() shortcuts: Shortcut[] = [];
+    @Input() shortcuts?: Shortcut[];
+    @ViewChild('shortcutsOrigin') private _shortcutsOrigin?: MatButton;
+    @ViewChild('shortcutsPanel') private _shortcutsPanel?: TemplateRef<any>;
 
-    // Public
     mode: 'view' | 'modify' | 'add' | 'edit' = 'view';
-    shortcutForm!: FormGroup;
-
-    // Private
-    private _overlayRef!: OverlayRef;
+    shortcutForm: FormGroup;
+    private _overlayRef?: OverlayRef;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-    @ViewChild('shortcutsOrigin') private _shortcutsOrigin!: MatButton;
-    @ViewChild('shortcutsPanel') private _shortcutsPanel!: TemplateRef<any>;
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FormBuilder} _formBuilder
-     * @param {ShortcutsService} _shortcutsService
-     * @param {Overlay} _overlay
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -47,6 +38,15 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
+        // Initialize the form
+        this.shortcutForm = this._formBuilder.group({
+            id         : [null],
+            label      : ['', Validators.required],
+            description: [''],
+            icon       : ['', Validators.required],
+            link       : ['', Validators.required],
+            useRouter  : ['', Validators.required]
+        });
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -73,16 +73,6 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Initialize the form
-        this.shortcutForm = this._formBuilder.group({
-            id         : [null],
-            label      : ['', Validators.required],
-            description: [''],
-            icon       : ['', Validators.required],
-            link       : ['', Validators.required],
-            useRouter  : ['', Validators.required]
-        });
-
         // Get the shortcuts
         this._shortcutsService.shortcuts$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -121,6 +111,12 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
      */
     openPanel(): void
     {
+        // Return if the shortcuts panel or its origin is not defined
+        if ( !this._shortcutsPanel || !this._shortcutsOrigin )
+        {
+            return;
+        }
+
         // Create the overlay
         this._overlayRef = this._overlay.create({
             backdropClass   : '',
@@ -225,7 +221,7 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
      */
     save(): void
     {
-        // Get the data from the form
+        // Get the mock-api from the form
         const shortcut = this.shortcutForm.value;
 
         // If there is an id, update it...
@@ -248,7 +244,7 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
      */
     delete(): void
     {
-        // Get the data from the form
+        // Get the mock-api from the form
         const shortcut = this.shortcutForm.value;
 
         // Delete

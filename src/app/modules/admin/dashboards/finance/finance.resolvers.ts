@@ -10,12 +10,8 @@ export class FinanceResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {FinanceService} _financeService
      */
-    constructor(
-        private _financeService: FinanceService
-    )
+    constructor(private _financeService: FinanceService)
     {
     }
 

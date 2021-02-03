@@ -12,32 +12,21 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class AuthSignOutComponent implements OnInit, OnDestroy
 {
-    countdown: number;
-    countdownMapping: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    countdown = 5;
+    countdownMapping: any = {
+        '=1'   : '# second',
+        'other': '# seconds'
+    };
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {AuthService} _authService
-     * @param {Router} _router
      */
     constructor(
         private _authService: AuthService,
         private _router: Router
     )
     {
-        // Set the private default
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.countdown = 5;
-        this.countdownMapping = {
-            '=1'   : '# second',
-            'other': '# seconds'
-        };
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
-import { MOCK_API_DEFAULT_DELAY } from '@treo/lib/mock-api/mock-api.constants';
+import { TREO_MOCK_API_DEFAULT_DELAY } from '@treo/lib/mock-api/mock-api.constants';
 import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class TreoMockApiInterceptor implements HttpInterceptor
      * Constructor
      */
     constructor(
-        @Inject(MOCK_API_DEFAULT_DELAY) private _defaultDelay: number,
+        @Inject(TREO_MOCK_API_DEFAULT_DELAY) private _defaultDelay: number,
         private _treoMockApiService: TreoMockApiService
     )
     {
@@ -29,65 +29,69 @@ export class TreoMockApiInterceptor implements HttpInterceptor
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
     {
         // Try to get the request handler
-        const requestHandler = this._treoMockApiService.findMatchingRequestHandler(request.method.toLowerCase(), request.url);
+        const {
+                  handler,
+                  urlParams
+              } = this._treoMockApiService.findHandler(request.method.toUpperCase(), request.url);
 
-        // If the request handler exists..
-        if ( requestHandler.handler )
+        // Pass through if the request handler does not exist
+        if ( !handler )
         {
-            // Set the intercepted request on the handler
-            requestHandler.handler.interceptedRequest = request;
+            return next.handle(request);
+        }
 
-            // Set the route params on the handler
-            requestHandler.handler.routeParams = requestHandler.params;
+        // Set the intercepted request on the handler
+        handler.request = request;
 
-            // Subscribe to the reply function observable
-            return requestHandler.handler.replyCallback.pipe(
-                delay(requestHandler.handler.delay ?? this._defaultDelay),
-                switchMap((response) => {
+        // Set the url params on the handler
+        handler.urlParams = urlParams;
 
-                    // Throw a not found response, if there is no response data
-                    if ( !response )
-                    {
-                        response = new HttpErrorResponse({
-                            error     : 'NOT FOUND',
-                            status    : 404,
-                            statusText: 'NOT FOUND'
-                        });
+        // Subscribe to the response function observable
+        return handler.response.pipe(
+            delay(handler.delay ?? this._defaultDelay ?? 0),
+            switchMap((response) => {
 
-                        return throwError(response);
-                    }
-
-                    // Parse the response data
-                    const data = {
-                        status: response[0],
-                        body  : response[1]
-                    };
-
-                    // If the status is in between 200 and 300,
-                    // it's a success response
-                    if ( data.status >= 200 && data.status < 300 )
-                    {
-                        response = new HttpResponse({
-                            body      : data.body,
-                            status    : data.status,
-                            statusText: 'OK'
-                        });
-
-                        return of(response);
-                    }
-
-                    // Error response
+                // If there is no response mock-api,
+                // throw an error response
+                if ( !response )
+                {
                     response = new HttpErrorResponse({
-                        error     : data.body.error,
-                        status    : data.status,
-                        statusText: 'ERROR'
+                        error     : 'NOT FOUND',
+                        status    : 404,
+                        statusText: 'NOT FOUND'
                     });
 
                     return throwError(response);
-                }));
-        }
+                }
 
-        // Pass through if the request handler does not exists
-        return next.handle(request);
+                // Parse the response mock-api
+                const data = {
+                    status: response[0],
+                    body  : response[1]
+                };
+
+                // If the status code is in between 200 and 300,
+                // return a success response
+                if ( data.status >= 200 && data.status < 300 )
+                {
+                    response = new HttpResponse({
+                        body      : data.body,
+                        status    : data.status,
+                        statusText: 'OK'
+                    });
+
+                    return of(response);
+                }
+
+                // For other status codes,
+                // throw an error response
+                response = new HttpErrorResponse({
+                    error     : data.body.error,
+                    status    : data.status,
+                    statusText: 'ERROR'
+                });
+
+                return throwError(response);
+            }));
     }
 }

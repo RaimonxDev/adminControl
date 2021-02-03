@@ -24,10 +24,10 @@ export class CoreFeaturesComponent
                 type    : 'group',
                 children: [
                     {
-                        id   : 'core-features.libraries.mock-api',
+                        id   : 'core-features.libraries.calendar-api',
                         title: 'MockAPI',
                         type : 'basic',
-                        link : '/docs/core-features/libraries/mock-api'
+                        link : '/docs/core-features/libraries/calendar-api'
                     }
                 ]
             },

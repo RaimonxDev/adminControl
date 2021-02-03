@@ -13,16 +13,12 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class ComingSoonComponent implements OnInit
 {
-    cardStyle: string;
-    comingSoonForm: FormGroup;
-    message: any;
+    cardStyle!: string;
+    comingSoonForm!: FormGroup;
+    message?: any;
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {FormBuilder} _formBuilder
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -30,8 +26,6 @@ export class ComingSoonComponent implements OnInit
         private _router: Router
     )
     {
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -62,6 +56,47 @@ export class ComingSoonComponent implements OnInit
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Register
+     */
+    register(): void
+    {
+        // Do nothing if the form is invalid
+        if ( this.comingSoonForm.invalid )
+        {
+            return;
+        }
+
+        // Disable the form
+        this.comingSoonForm.disable();
+
+        // Hide the message
+        this.message = undefined;
+
+        // Do your action here...
+
+        // Emulate server delay
+        setTimeout(() => {
+
+            // Re-enable the form
+            this.comingSoonForm.enable();
+
+            // Reset the form
+            this.comingSoonForm.reset({});
+
+            // Show the message
+            this.message = {
+                type   : 'success',
+                content: 'You have been registered to the list.',
+                shake  : false
+            };
+        }, 1000);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -82,46 +117,5 @@ export class ComingSoonComponent implements OnInit
 
         // Set the card style from the path
         this.cardStyle = route.snapshot.url[0].path;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Register
-     */
-    register(): void
-    {
-        // Do nothing if the form is invalid
-        if ( this.comingSoonForm.invalid )
-        {
-            return;
-        }
-
-        // Disable the form
-        this.comingSoonForm.disable();
-
-        // Hide the message
-        this.message = null;
-
-        // Do your action here...
-
-        // Emulate server delay
-        setTimeout(() => {
-
-            // Re-enable the form
-            this.comingSoonForm.enable();
-
-            // Reset the form
-            this.comingSoonForm.reset({});
-
-            // Show the message
-            this.message = {
-                type   : 'success',
-                content: 'You have been registered to the list.',
-                shake  : false
-            };
-        }, 1000);
     }
 }

@@ -1,11 +1,11 @@
 <!-- Navigation -->
-<treo-vertical-navigation class="dark bg-blueGray-900"
-                         *ngIf="isScreenSmall"
-                         [appearance]="'classic'"
-                         [mode]="'over'"
-                         [name]="'mainNavigation'"
-                         [navigation]="data.navigation.default"
-                         [opened]="false">
+<treo-vertical-navigation class="dark bg-gray-900"
+                          *ngIf="isScreenSmall"
+                          [appearance]="'classic'"
+                          [mode]="'over'"
+                          [name]="'mainNavigation'"
+                          [navigation]="data.navigation.default"
+                          [opened]="false">
 
     <div treoVerticalNavigationContentHeader>
         <div class="logo">
@@ -60,7 +60,7 @@
                 <notifications [notifications]="data.notifications"></notifications>
 
                 <!-- User -->
-                <user [user]="data.user"></user>
+                <user-menu></user-menu>
 
             </div>
 
@@ -68,7 +68,7 @@
             <div class="bottom-bar"
                  *ngIf="!isScreenSmall">
                 <treo-horizontal-navigation [name]="'mainNavigation'"
-                                           [navigation]="data.navigation.horizontal"></treo-horizontal-navigation>
+                                            [navigation]="data.navigation.horizontal"></treo-horizontal-navigation>
             </div>
 
         </div>

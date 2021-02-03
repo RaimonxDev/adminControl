@@ -20,12 +20,8 @@ export class CalendarService
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
         // Set the private defaults
         this._calendars = new BehaviorSubject(null);
@@ -275,7 +271,7 @@ export class CalendarService
 
         // Return if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
-        // there and fetched the events data so no need for doing
+        // there and fetched the events mock-api so no need for doing
         // it again.
         if ( remainingDays >= this._numberOfDaysToPrefetch )
         {
@@ -302,7 +298,7 @@ export class CalendarService
 
         // Return if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
-        // there and fetched the events data so no need for doing
+        // there and fetched the events mock-api so no need for doing
         // it again.
         if ( remainingDays >= this._numberOfDaysToPrefetch )
         {

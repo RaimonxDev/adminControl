@@ -16,23 +16,17 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, OnDestroy
 {
-    // Public
     @Input() autoCollapse!: boolean;
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
-    isCollapsed = true;
-    isExpanded = false;
 
-    // Private
+    isCollapsed: boolean = true;
+    isExpanded: boolean = false;
     private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {Router} _router
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,

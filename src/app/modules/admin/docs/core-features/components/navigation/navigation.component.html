@@ -276,14 +276,14 @@
             <textarea treo-highlight
                       lang="html">
                 <treo-vertical-navigation [appearance]="'classic'"
-                                          [autoCollapse]="true"
-                                          [inner]="false"
-                                          [mode]="isScreenSmall ? 'over' : 'side'"
-                                          [name]="'leftNavigation'"
-                                          [navigation]="navigationData"
-                                          [opened]="!isScreenSmall"
-                                          [position]="'left'"
-                                          [transparentOverlay]="false">
+                [autoCollapse]="true"
+                [inner]="false"
+                [mode]="isScreenSmall ? 'over' : 'side'"
+                [name]="'leftNavigation'"
+                [navigation]="navigationData"
+                [opened]="!isScreenSmall"
+                [position]="'left'"
+                [transparentOverlay]="false">
                 </treo-vertical-navigation>
             </textarea>
 
@@ -515,21 +515,21 @@
                 <!-- Navigation -->
                 <treo-vertical-navigation>
 
-                    <div treoVerticalNavigationHeader>
-                        At the top, fixed into position.
-                    </div>
+                <div treoVerticalNavigationHeader>
+                At the top, fixed into position.
+                </div>
 
-                    <div treoVerticalNavigationContentHeader>
-                        At the top, scrolls with the content.
-                    </div>
+                <div treoVerticalNavigationContentHeader>
+                At the top, scrolls with the content.
+                </div>
 
-                    <div treoVerticalNavigationContentFooter>
-                        At the bottom, scrolls with the content.
-                    </div>
+                <div treoVerticalNavigationContentFooter>
+                At the bottom, scrolls with the content.
+                </div>
 
-                    <div treoVerticalNavigationFooter>
-                        At the bottom, fixed into position.
-                    </div>
+                <div treoVerticalNavigationFooter>
+                At the bottom, fixed into position.
+                </div>
 
                 </treo-vertical-navigation>
             </textarea>
@@ -556,7 +556,7 @@
             <textarea treo-highlight
                       lang="html">
                 <treo-horizontal-navigation [name]="'topNavigation'"
-                                            [navigation]="navigationData">
+                [navigation]="navigationData">
                 </treo-horizontal-navigation>
             </textarea>
 
@@ -633,9 +633,9 @@
                                   [lang]="'html'">
 
                             <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="getNavItem('guides.changelog', 'mainNavigation');">
-                                Get the Changelog item (See browser console)
+                            [color]="'primary'"
+                            (click)="getNavItem('guides.changelog', 'mainNavigation');">
+                            Get the Changelog item (See browser console)
                             </button>
 
                         </textarea>
@@ -714,9 +714,9 @@
                                   [lang]="'html'">
 
                             <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="updateBadgeTitle('guides.changelog', 'mainNavigation', '9.9.99');">
-                                Update the 'Changelog' badge title
+                            [color]="'primary'"
+                            (click)="updateBadgeTitle('guides.changelog', 'mainNavigation', '9.9.99');">
+                            Update the 'Changelog' badge title
                             </button>
 
                         </textarea>
@@ -790,9 +790,9 @@
                                   [lang]="'html'">
 
                             <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="toggleDisabled('guides.changelog', 'mainNavigation');">
-                                Toggle the disabled status of 'Changelog' item
+                            [color]="'primary'"
+                            (click)="toggleDisabled('guides.changelog', 'mainNavigation');">
+                            Toggle the disabled status of 'Changelog' item
                             </button>
 
                         </textarea>
@@ -877,9 +877,9 @@
                                   [lang]="'html'">
 
                             <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="swapNavigationData('mainNavigation');">
-                                Swap the entire navigation data
+                            [color]="'primary'"
+                            (click)="swapNavigationData('mainNavigation');">
+                            Swap the entire navigation data
                             </button>
 
                         </textarea>

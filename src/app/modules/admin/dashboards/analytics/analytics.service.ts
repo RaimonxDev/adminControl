@@ -13,12 +13,8 @@ export class AnalyticsService
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
     }
 
@@ -27,7 +23,7 @@ export class AnalyticsService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for data
+     * Getter for mock-api
      */
     get data$(): Observable<any>
     {
@@ -39,7 +35,7 @@ export class AnalyticsService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Get data
+     * Get mock-api
      */
     getData(): Observable<any>
     {

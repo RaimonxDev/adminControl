@@ -19,9 +19,6 @@ export class MailboxSettingsComponent implements OnInit
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
-     * @param {MailboxService} _mailboxService
      */
     constructor(
         private _formBuilder: FormBuilder,

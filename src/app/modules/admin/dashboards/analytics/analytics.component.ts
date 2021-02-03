@@ -35,9 +35,6 @@ export class AnalyticsComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {AnalyticsService} _analyticsService
-     * @param {Router} _router
      */
     constructor(
         private _analyticsService: AnalyticsService,
@@ -55,15 +52,15 @@ export class AnalyticsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the data
+        // Get the mock-api
         this._analyticsService.data$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
 
-                // Store the data
+                // Store the mock-api
                 this.data = data;
 
-                // Prepare the chart data
+                // Prepare the chart mock-api
                 this._prepareChartData();
             });
 
@@ -126,7 +123,7 @@ export class AnalyticsComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Prepare the chart data from the data
+     * Prepare the chart mock-api from the mock-api
      *
      * @private
      */
@@ -176,7 +173,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
@@ -264,7 +264,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 x     : {
                     show: false
                 },
-                custom: ({seriesIndex, w}) => {
+                custom: ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
@@ -325,7 +328,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 x     : {
                     show: false
                 },
-                custom: ({seriesIndex, w}) => {
+                custom: ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
@@ -386,7 +392,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 x     : {
                     show: false
                 },
-                custom: ({seriesIndex, w}) => {
+                custom: ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
@@ -447,7 +456,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
@@ -501,7 +513,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
@@ -555,7 +570,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>

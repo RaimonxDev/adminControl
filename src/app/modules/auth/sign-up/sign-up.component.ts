@@ -13,28 +13,18 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class AuthSignUpComponent implements OnInit, OnDestroy
 {
-    message: any;
-    signUpForm: FormGroup;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    message?: any;
+    signUpForm!: FormGroup;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {AuthService} _authService
-     * @param {FormBuilder} _formBuilder
      */
     constructor(
         private _authService: AuthService,
         private _formBuilder: FormBuilder
     )
     {
-        // Set the defaults
-        this.message = null;
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -86,7 +76,7 @@ export class AuthSignUpComponent implements OnInit, OnDestroy
         this.signUpForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 

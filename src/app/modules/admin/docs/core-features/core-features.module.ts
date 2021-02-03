@@ -50,7 +50,7 @@ import { coreFeaturesRoutes } from 'app/modules/admin/docs/core-features/core-fe
         FindByKeyComponent,
         MustMatchComponent
     ],
-    imports: [
+    imports     : [
         RouterModule.forChild(coreFeaturesRoutes),
         MatButtonModule,
         MatIconModule,
@@ -64,7 +64,7 @@ import { coreFeaturesRoutes } from 'app/modules/admin/docs/core-features/core-fe
         TreoHighlightModule,
         TreoNavigationModule,
         TreoScrollResetModule,
-        SharedModule,
+        SharedModule
     ]
 })
 export class CoreFeaturesModule

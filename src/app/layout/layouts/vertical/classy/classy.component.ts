@@ -13,20 +13,12 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
-    // Public
     data: any;
     isScreenSmall!: boolean;
-
-    // Private
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {Router} _router
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -46,7 +38,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the resolved route data
+        // Subscribe to the resolved route mock-api
         this._activatedRoute.data.subscribe((data: Data) => {
             this.data = data.initialData;
         });

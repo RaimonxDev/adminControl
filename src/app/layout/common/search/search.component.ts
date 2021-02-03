@@ -17,24 +17,17 @@ import { TreoAnimations } from '@treo/animations/public-api';
 export class SearchComponent implements OnChanges, OnInit, OnDestroy
 {
     @Input() appearance: 'basic' | 'bar' = 'basic';
-    @Input() debounce = 300;
-    @Input() minLength = 2;
+    @Input() debounce: number = 300;
+    @Input() minLength: number = 2;
     @Output() search: EventEmitter<any> = new EventEmitter<any>();
 
-    // Public
-    opened = false;
-    results: any[] | null = null;
+    opened: boolean = false;
+    results?: any[];
     searchControl: FormControl = new FormControl();
-
-    // Private
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
-     * @param {HttpClient} _httpClient
-     * @param {Renderer2} _renderer2
      */
     constructor(
         private _elementRef: ElementRef,
@@ -124,7 +117,7 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy
                     // so the autocomplete panel can be closed
                     if ( !value || value.length < this.minLength )
                     {
-                        this.results = null;
+                        this.results = undefined;
                     }
 
                     // Continue

@@ -24,12 +24,8 @@ export class TreoModule
 {
     /**
      * Constructor
-     *
-     * @param parentModule
      */
-    constructor(
-        @Optional() @SkipSelf() parentModule?: TreoModule
-    )
+    constructor(@Optional() @SkipSelf() parentModule?: TreoModule)
     {
         if ( parentModule )
         {

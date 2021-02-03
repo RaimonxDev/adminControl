@@ -12,12 +12,8 @@ export class InventoryBrandsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {InventoryService} _inventoryService
      */
-    constructor(
-        private _inventoryService: InventoryService
-    )
+    constructor(private _inventoryService: InventoryService)
     {
     }
 
@@ -44,12 +40,8 @@ export class InventoryCategoriesResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {InventoryService} _inventoryService
      */
-    constructor(
-        private _inventoryService: InventoryService
-    )
+    constructor(private _inventoryService: InventoryService)
     {
     }
 
@@ -76,9 +68,6 @@ export class InventoryProductResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {InventoryService} _inventoryService
-     * @param {Router} _router
      */
     constructor(
         private _inventoryService: InventoryService,
@@ -127,12 +116,8 @@ export class InventoryProductsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {InventoryService} _inventoryService
      */
-    constructor(
-        private _inventoryService: InventoryService
-    )
+    constructor(private _inventoryService: InventoryService)
     {
     }
 
@@ -159,12 +144,8 @@ export class InventoryTagsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {InventoryService} _inventoryService
      */
-    constructor(
-        private _inventoryService: InventoryService
-    )
+    constructor(private _inventoryService: InventoryService)
     {
     }
 
@@ -191,12 +172,8 @@ export class InventoryVendorsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {InventoryService} _inventoryService
      */
-    constructor(
-        private _inventoryService: InventoryService
-    )
+    constructor(private _inventoryService: InventoryService)
     {
     }
 

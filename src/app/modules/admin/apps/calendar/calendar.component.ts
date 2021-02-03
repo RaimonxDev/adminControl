@@ -64,15 +64,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {Document} _document
-     * @param {FormBuilder} _formBuilder
-     * @param {MatDialog} _matDialog
-     * @param {Overlay} _overlay
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _calendarService: CalendarService,
@@ -301,7 +292,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.viewTitle = this._fullCalendarApi.view.title;
 
         // Get the view's current start and end dates, add/subtract
-        // 60 days to create a ~150 days period to fetch the data for
+        // 60 days to create a ~150 days period to fetch the mock-api for
         const viewStart = moment(this._fullCalendarApi.view.currentStart).subtract(60, 'days');
         const viewEnd = moment(this._fullCalendarApi.view.currentEnd).add(60, 'days');
 
@@ -924,7 +915,10 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Get the clone of the event form value
         let event = clone(this.eventForm.value);
-        const {range, ...eventWithoutRange} = event;
+        const {
+                  range,
+                  ...eventWithoutRange
+              } = event;
 
         // Get the original event
         const originalEvent = this.events.find(item => item.id === event.id);

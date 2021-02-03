@@ -23,12 +23,8 @@ export class CardsComponent implements AfterViewInit
 
     /**
      * Constructor
-     *
-     * @param {Renderer2} _renderer2
      */
-    constructor(
-        private _renderer2: Renderer2
-    )
+    constructor(private _renderer2: Renderer2)
     {
         // Set the defaults
         this.expandableCardStatuses = {

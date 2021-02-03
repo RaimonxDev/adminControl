@@ -37,7 +37,7 @@
 
         .mat-tab-header {
             border-top: 1px solid var(--foreground-divider);
-            @apply bg-blueGray-50;
+            @apply bg-gray-50;
 
             .dark & {
                 background: var(--bg-card);

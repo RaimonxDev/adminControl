@@ -13,17 +13,13 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class UnlockSessionComponent implements OnInit
 {
-    cardStyle: string;
-    message: any;
-    name: string;
-    unlockSessionForm: FormGroup;
+    cardStyle!: string;
+    message?: any;
+    name!: string;
+    unlockSessionForm!: FormGroup;
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {FormBuilder} _formBuilder
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -31,8 +27,6 @@ export class UnlockSessionComponent implements OnInit
         private _router: Router
     )
     {
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -72,29 +66,6 @@ export class UnlockSessionComponent implements OnInit
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Set the card style from the url
-     * Demonstration purposes only!
-     *
-     * @private
-     */
-    private _setCardStyle(): void
-    {
-        // Get the current route
-        let route = this._activatedRoute;
-        while ( route.firstChild )
-        {
-            route = route.firstChild;
-        }
-
-        // Set the card style from the path
-        this.cardStyle = route.snapshot.url[0].path;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -107,7 +78,7 @@ export class UnlockSessionComponent implements OnInit
         this.unlockSessionForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 
@@ -134,5 +105,28 @@ export class UnlockSessionComponent implements OnInit
                 type      : 'error'
             };
         }, 1000);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the card style from the url
+     * Demonstration purposes only!
+     *
+     * @private
+     */
+    private _setCardStyle(): void
+    {
+        // Get the current route
+        let route = this._activatedRoute;
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Set the card style from the path
+        this.cardStyle = route.snapshot.url[0].path;
     }
 }

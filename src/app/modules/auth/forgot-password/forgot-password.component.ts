@@ -11,20 +11,14 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class AuthForgotPasswordComponent implements OnInit
 {
-    forgotPasswordForm: FormGroup;
-    message: any;
+    message?: any;
+    forgotPasswordForm!: FormGroup;
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
      */
-    constructor(
-        private _formBuilder: FormBuilder
-    )
+    constructor(private _formBuilder: FormBuilder)
     {
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -61,7 +55,7 @@ export class AuthForgotPasswordComponent implements OnInit
         this.forgotPasswordForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 

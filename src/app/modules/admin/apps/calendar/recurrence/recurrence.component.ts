@@ -25,11 +25,6 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {MatDialogRef} matDialogRef
-     * @param {MAT_DIALOG_DATA} data
-     * @param {CalendarService} _calendarService
-     * @param {FormBuilder} _formBuilder
      */
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,

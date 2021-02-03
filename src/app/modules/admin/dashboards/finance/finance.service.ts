@@ -13,12 +13,8 @@ export class FinanceService
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
     }
 
@@ -27,7 +23,7 @@ export class FinanceService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for data
+     * Getter for mock-api
      */
     get data$(): Observable<any>
     {
@@ -39,7 +35,7 @@ export class FinanceService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Get data
+     * Get mock-api
      */
     getData(): Observable<any>
     {

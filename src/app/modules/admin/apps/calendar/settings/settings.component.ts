@@ -20,10 +20,6 @@ export class CalendarSettingsComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FormBuilder} _formBuilder
      */
     constructor(
         private _calendarService: CalendarService,

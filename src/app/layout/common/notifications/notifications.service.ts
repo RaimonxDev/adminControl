@@ -9,17 +9,12 @@ import { map, switchMap, take } from 'rxjs/operators';
 })
 export class NotificationsService
 {
-    // Private
     private _notifications: ReplaySubject<Notification[]> = new ReplaySubject<Notification[]>(1);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
     }
 

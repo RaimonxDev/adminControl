@@ -260,9 +260,9 @@
                                 <div class="field">
 
                                     <treo-date-range [formControlName]="'range'"
-                                                    [dateFormat]="settings.dateFormat"
-                                                    [timeRange]="!eventForm.get('allDay').value"
-                                                    [timeFormat]="settings.timeFormat"></treo-date-range>
+                                                     [dateFormat]="settings.dateFormat"
+                                                     [timeRange]="!eventForm.get('allDay').value"
+                                                     [timeFormat]="settings.timeFormat"></treo-date-range>
 
                                     <mat-checkbox [color]="'primary'"
                                                   [formControlName]="'allDay'">
@@ -277,7 +277,7 @@
                             <div class="row recurrence"
                                  *ngIf="!event.recurrence || eventEditMode !== 'single'">
 
-                                <mat-icon class="mirror"
+                                <mat-icon class="transform -scale-x-1"
                                           [svgIcon]="'cached'"></mat-icon>
 
                                 <div class="field"

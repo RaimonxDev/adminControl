@@ -10,12 +10,8 @@ export class CryptoResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {CryptoService} _cryptoService
      */
-    constructor(
-        private _cryptoService: CryptoService
-    )
+    constructor(private _cryptoService: CryptoService)
     {
     }
 

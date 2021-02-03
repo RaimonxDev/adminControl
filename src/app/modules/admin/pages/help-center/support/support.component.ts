@@ -13,28 +13,20 @@ import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-cent
 })
 export class HelpCenterSupportComponent implements OnInit, OnDestroy
 {
-    message: any | null;
-    supportForm: FormGroup;
+    message?: any;
+    supportForm!: FormGroup;
 
     // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
-     * @param {HelpCenterService} _helpCenterService
      */
     constructor(
         private _formBuilder: FormBuilder,
         private _helpCenterService: HelpCenterService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -94,7 +86,7 @@ export class HelpCenterSupportComponent implements OnInit, OnDestroy
         };
 
         setTimeout(() => {
-            this.message = null;
+            this.message = undefined;
         }, 7000);
 
         // Clear the form

@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { TreoAnimations } from '@treo/animations';
 import { TreoCardFace } from '@treo/components/card/card.types';
 
@@ -12,9 +13,9 @@ import { TreoCardFace } from '@treo/components/card/card.types';
 })
 export class TreoCardComponent implements OnChanges
 {
-    // Public
-    @Input() expanded = false;
-    @Input() face: TreoCardFace | null = null;
+    @Input() expanded: boolean = false;
+    @Input() face: TreoCardFace = 'front';
+    @Input() flippable: boolean = false;
 
     /**
      * Constructor
@@ -33,9 +34,10 @@ export class TreoCardComponent implements OnChanges
     @HostBinding('class') get classList(): any
     {
         return {
-            [`treo-card-expanded`]         : this.expanded,
-            [`treo-card-face-${this.face}`]: this.face !== null,
-            'treo-card-flippable'          : this.face !== null
+            'treo-card-expanded'  : this.expanded,
+            'treo-card-face-back' : this.flippable && this.face === 'back',
+            'treo-card-face-front': this.flippable && this.face === 'front',
+            'treo-card-flippable' : this.flippable
         };
     }
 
@@ -53,8 +55,15 @@ export class TreoCardComponent implements OnChanges
         // Expanded
         if ( 'expanded' in changes )
         {
-            // Interpret empty string as 'true'
-            this.expanded = changes.expanded.currentValue === '' ? true : changes.expanded.currentValue;
+            // Coerce the value to a boolean
+            this.expanded = coerceBooleanProperty(changes.expanded.currentValue);
+        }
+
+        // Flippable
+        if ( 'flippable' in changes )
+        {
+            // Coerce the value to a boolean
+            this.flippable = coerceBooleanProperty(changes.flippable.currentValue);
         }
     }
 }

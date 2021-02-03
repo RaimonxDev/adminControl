@@ -10,12 +10,8 @@ export class NavigationComponent
 {
     /**
      * Constructor
-     *
-     * @param {TreoNavigationService} _treoNavigationService
      */
-    constructor(
-        private _treoNavigationService: TreoNavigationService
-    )
+    constructor(private _treoNavigationService: TreoNavigationService)
     {
 
     }
@@ -32,7 +28,7 @@ export class NavigationComponent
      */
     getNavItem(itemId, navigationName): TreoNavigationItem | null
     {
-        // Get the component -> navigation data -> item
+        // Get the component -> navigation mock-api -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
         // Return if the navigation component does not exist
@@ -57,7 +53,7 @@ export class NavigationComponent
      */
     updateBadgeTitle(itemId, navigationName, title): void
     {
-        // Get the component -> navigation data -> item
+        // Get the component -> navigation mock-api -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
         // Return if the navigation component does not exist
@@ -81,7 +77,7 @@ export class NavigationComponent
      */
     toggleDisabled(itemId, navigationName): void
     {
-        // Get the component -> navigation data -> item
+        // Get the component -> navigation mock-api -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
         // Return if the navigation component does not exist
@@ -98,13 +94,13 @@ export class NavigationComponent
     }
 
     /**
-     * Swap navigation data
+     * Swap navigation mock-api
      *
      * @param navigationName
      */
     swapNavigationData(navigationName): void
     {
-        // Get the component -> navigation data -> item
+        // Get the component -> navigation mock-api -> item
         const navComponent = this._treoNavigationService.getComponent(navigationName);
 
         // Return if the navigation component does not exist
@@ -113,7 +109,7 @@ export class NavigationComponent
             return null;
         }
 
-        // A navigation data to replace with
+        // A navigation mock-api to replace with
         const newNavigation = [
             {
                 id      : 'supported-components',
@@ -168,7 +164,7 @@ export class NavigationComponent
             }
         ];
 
-        // Replace the navigation data
+        // Replace the navigation mock-api
         navComponent.navigation = newNavigation;
         navComponent.refresh();
     }

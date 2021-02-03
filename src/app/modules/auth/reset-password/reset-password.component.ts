@@ -13,26 +13,15 @@ import { TreoValidators } from '@treo/validators';
 })
 export class AuthResetPasswordComponent implements OnInit, OnDestroy
 {
-    message: any;
-    resetPasswordForm: FormGroup;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    message?: any;
+    resetPasswordForm!: FormGroup;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
      */
-    constructor(
-        private _formBuilder: FormBuilder
-    )
+    constructor(private _formBuilder: FormBuilder)
     {
-        // Set the defaults
-        this.message = null;
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -84,7 +73,7 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
         this.resetPasswordForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 

@@ -141,28 +141,13 @@
 .mat-fab,
 .mat-mini-fab {
 
-    /* Apply primary contrast color rather than main foreground color */
-    &.mat-primary:not(.mat-button-disabled) {
-        color: var(--primary-contrast) !important;
-    }
-
-    /* Apply accent contrast color rather than main foreground color */
-    &.mat-accent:not(.mat-button-disabled) {
-        color: var(--accent-contrast) !important;
-    }
-
-    /* Apply warn contrast color rather than main foreground color */
-    &.mat-warn:not(.mat-button-disabled) {
-        color: var(--warn-contrast) !important;
-    }
-
     .mat-icon {
         color: currentColor !important;
     }
 
     /* Add hover and focus style on all buttons */
     .mat-button-focus-overlay {
-        background-color: rgba(theme('colors.blueGray.400'), 0.2) !important;
+        background-color: rgba(theme('colors.gray.400'), 0.2) !important;
 
         .dark & {
             background-color: rgba(0, 0, 0, 0.05) !important;
@@ -211,7 +196,7 @@
 .mat-icon-button,
 .mat-stroked-button {
 
-    /* Apply primary color rather than main foreground color */
+    /* Apply primary color */
     &.mat-primary:not(.mat-button-disabled) {
 
         .mat-icon {
@@ -219,7 +204,7 @@
         }
     }
 
-    /* Apply accent color rather than main foreground color */
+    /* Apply accent color */
     &.mat-accent:not(.mat-button-disabled) {
 
         .mat-icon {
@@ -227,7 +212,7 @@
         }
     }
 
-    /* Apply warn color rather than main foreground color */
+    /* Apply warn color */
     &.mat-warn:not(.mat-button-disabled) {
 
         .mat-icon {
@@ -237,7 +222,7 @@
 
     /* Add hover and focus styles */
     .mat-button-focus-overlay {
-        background-color: rgba(theme('colors.blueGray.400'), 0.2) !important;
+        background-color: rgba(theme('colors.gray.400'), 0.2) !important;
 
         .dark & {
             background-color: rgba(0, 0, 0, 0.05) !important;
@@ -314,18 +299,18 @@
 
     /* Border color */
     &:not(.mat-button-disabled) {
-        @apply border-blueGray-300 !important;
+        @apply border-gray-300 !important;
 
         .dark & {
-            @apply border-blueGray-500 !important;
+            @apply border-gray-500 !important;
         }
     }
 
     &.mat-button-disabled {
-        @apply border-blueGray-200 !important;
+        @apply border-gray-200 !important;
 
         .dark & {
-            @apply border-blueGray-600 !important;
+            @apply border-gray-600 !important;
         }
     }
 }
@@ -495,11 +480,11 @@
             padding: 0 16px;
             border-width: 1px;
             background-color: white;
-            @apply border-blueGray-300 shadow-sm !important;
+            @apply border-gray-300 shadow-sm !important;
 
             .dark & {
                 background-color: rgba(0, 0, 0, 0.05) !important;
-                @apply border-blueGray !important;
+                @apply border-gray-500 !important;
             }
 
             .mat-form-field-prefix {
@@ -963,10 +948,10 @@
                 .mat-form-field-prefix,
                 .mat-form-field-suffix {
                     background: var(--bg-default) !important;
-                    @apply border-blueGray-300 !important;
+                    @apply border-gray-300 !important;
 
                     .dark & {
-                        @apply border-blueGray !important;
+                        @apply border-gray-500 !important;
                     }
                 }
             }
@@ -1211,7 +1196,7 @@ textarea.mat-input-element {
 /* ----------------------------------------------------------------------------------------------------- */
 .mat-toolbar {
 
-    /* Apply primary contrast color rather than main foreground color */
+    /* Apply primary contrast color */
     &.mat-primary {
 
         .mat-icon {
@@ -1239,7 +1224,7 @@ textarea.mat-input-element {
         }
     }
 
-    /* Apply accent contrast color rather than main foreground color */
+    /* Apply accent contrast color */
     &.mat-accent {
 
         .mat-icon {
@@ -1267,7 +1252,7 @@ textarea.mat-input-element {
         }
     }
 
-    /* Apply warn contrast color rather than main foreground color */
+    /* Apply warn contrast color */
     &.mat-warn {
 
         .mat-icon {

@@ -14,6 +14,22 @@ export class TreoHighlightService
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Highlight
+     */
+    highlight(code: string, language: string): string
+    {
+        // Format the code
+        code = this._format(code);
+
+        // Highlight and return the code
+        return hljs.highlight(language, code).value;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -62,21 +78,5 @@ export class TreoHighlightService
         // Iterate through the lines one more time, remove the extra
         // indentation, join them together and return it
         return lines.map((line) => line.substring(indentation)).join('\n');
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Highlight
-     */
-    highlight(code: string, language: string): string
-    {
-        // Format the code
-        code = this._format(code);
-
-        // Highlight and return the code
-        return hljs.highlight(language, code).value;
     }
 }

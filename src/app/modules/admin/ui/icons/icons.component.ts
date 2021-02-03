@@ -22,12 +22,8 @@ export class IconsComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {IconsService} _iconsService
      */
-    constructor(
-        private _iconsService: IconsService
-    )
+    constructor(private _iconsService: IconsService)
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();

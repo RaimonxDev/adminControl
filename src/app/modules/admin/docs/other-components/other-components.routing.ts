@@ -22,7 +22,7 @@ export const otherComponentsRoutes: Route[] = [
                 redirectTo: 'common/overview'
             },
             {
-                path: 'common',
+                path    : 'common',
                 children: [
                     {
                         path      : '',
@@ -56,7 +56,7 @@ export const otherComponentsRoutes: Route[] = [
                 ]
             },
             {
-                path: 'third-party',
+                path    : 'third-party',
                 children: [
                     {
                         path      : '',

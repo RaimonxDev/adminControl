@@ -22,7 +22,7 @@ import { rightSidebarFullheightBasicRoutes } from 'app/modules/admin/ui/content-
         MatSidenavModule,
         SharedModule,
         DemoContentModule,
-        DemoSidebarContentModule,
+        DemoSidebarContentModule
     ]
 })
 export class RightSidebarFullheightBasicModule

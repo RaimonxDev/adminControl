@@ -20,12 +20,8 @@ export class LeftSidebarFullheightTabsNavigationComponent implements OnInit, OnD
 
     /**
      * Constructor
-     *
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
-    constructor(
-        private _treoMediaWatcherService: TreoMediaWatcherService
-    )
+    constructor(private _treoMediaWatcherService: TreoMediaWatcherService)
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();

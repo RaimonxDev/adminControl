@@ -59,10 +59,7 @@
             "trace"
         ],
         "no-empty": false,
-        "no-inferrable-types": [
-            true,
-            "ignore-params"
-        ],
+        "no-inferrable-types": false,
         "no-non-null-assertion": true,
         "no-string-literal": false,
         "no-switch-case-fall-through": true,
@@ -116,8 +113,6 @@
         "variable-name": {
             "options": [
                 "ban-keywords",
-                "check-format",
-                "allow-pascal-case",
                 "allow-leading-underscore"
             ]
         },

@@ -16,20 +16,14 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 })
 export class TreoHorizontalNavigationComponent implements OnChanges, OnInit, OnDestroy
 {
-    // Public
     @Input() name: string = this._treoUtilsService.randomId();
     @Input() navigation: TreoNavigationItem[] = [];
-    onRefreshed: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-    // Private
+    onRefreshed: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {TreoNavigationService} _treoNavigationService
-     * @param {TreoUtilsService} _treoUtilsService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -63,6 +57,12 @@ export class TreoHorizontalNavigationComponent implements OnChanges, OnInit, OnD
      */
     ngOnInit(): void
     {
+        // Make sure the name input is not an empty string
+        if ( this.name === '' )
+        {
+            this.name = this._treoUtilsService.randomId();
+        }
+
         // Register the navigation component
         this._treoNavigationService.registerComponent(this.name, this);
     }

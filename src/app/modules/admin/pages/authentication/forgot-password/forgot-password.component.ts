@@ -13,16 +13,12 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class ForgotPasswordComponent implements OnInit
 {
-    cardStyle: string;
-    forgotPasswordForm: FormGroup;
-    message: any;
+    cardStyle!: string;
+    message?: any;
+    forgotPasswordForm!: FormGroup;
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {FormBuilder} _formBuilder
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -30,8 +26,6 @@ export class ForgotPasswordComponent implements OnInit
         private _router: Router
     )
     {
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -62,29 +56,6 @@ export class ForgotPasswordComponent implements OnInit
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Set the card style from the url
-     * Demonstration purposes only!
-     *
-     * @private
-     */
-    private _setCardStyle(): void
-    {
-        // Get the current route
-        let route = this._activatedRoute;
-        while ( route.firstChild )
-        {
-            route = route.firstChild;
-        }
-
-        // Set the card style from the path
-        this.cardStyle = route.snapshot.url[0].path;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -103,7 +74,7 @@ export class ForgotPasswordComponent implements OnInit
         this.forgotPasswordForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 
@@ -125,5 +96,28 @@ export class ForgotPasswordComponent implements OnInit
                 type      : 'success'
             };
         }, 1000);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the card style from the url
+     * Demonstration purposes only!
+     *
+     * @private
+     */
+    private _setCardStyle(): void
+    {
+        // Get the current route
+        let route = this._activatedRoute;
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Set the card style from the path
+        this.cardStyle = route.snapshot.url[0].path;
     }
 }

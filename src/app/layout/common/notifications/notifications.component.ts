@@ -17,24 +17,16 @@ import { NotificationsService } from 'app/layout/common/notifications/notificati
 })
 export class NotificationsComponent implements OnChanges, OnInit, OnDestroy
 {
-    @Input() notifications: Notification[] = [];
+    @Input() notifications?: Notification[];
+    @ViewChild('notificationsOrigin') private _notificationsOrigin?: MatButton;
+    @ViewChild('notificationsPanel') private _notificationsPanel?: TemplateRef<any>;
 
-    // Public
-    unreadCount = 0;
-
-    // Private
-    private _overlayRef!: OverlayRef;
+    unreadCount: number = 0;
+    private _overlayRef?: OverlayRef;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-    @ViewChild('notificationsOrigin') private _notificationsOrigin!: MatButton;
-    @ViewChild('notificationsPanel') private _notificationsPanel!: TemplateRef<any>;
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {NotificationsService} _notificationsService
-     * @param {Overlay} _overlay
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -102,27 +94,6 @@ export class NotificationsComponent implements OnChanges, OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Calculate the unread count
-     *
-     * @private
-     */
-    private _calculateUnreadCount(): void
-    {
-        let count = 0;
-
-        if ( this.notifications && this.notifications.length )
-        {
-            count = this.notifications.filter(notification => !notification.read).length;
-        }
-
-        this.unreadCount = count;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -131,6 +102,12 @@ export class NotificationsComponent implements OnChanges, OnInit, OnDestroy
      */
     openPanel(): void
     {
+        // Return if the notifications panel or its origin is not defined
+        if ( !this._notificationsPanel || !this._notificationsOrigin )
+        {
+            return;
+        }
+
         // Create the overlay
         this._overlayRef = this._overlay.create({
             hasBackdrop     : true,
@@ -222,5 +199,26 @@ export class NotificationsComponent implements OnChanges, OnInit, OnDestroy
     {
         // Delete the notification
         this._notificationsService.delete(notification.id).subscribe();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Calculate the unread count
+     *
+     * @private
+     */
+    private _calculateUnreadCount(): void
+    {
+        let count = 0;
+
+        if ( this.notifications && this.notifications.length )
+        {
+            count = this.notifications.filter(notification => !notification.read).length;
+        }
+
+        this.unreadCount = count;
     }
 }

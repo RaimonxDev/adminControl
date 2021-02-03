@@ -14,32 +14,22 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoHorizontalNavigationBranchItemComponent implements OnInit, OnDestroy
 {
-    // Public
-    @Input() child = false;
+    @Input() child: boolean = false;
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
-    @ViewChild('matMenu', {static: true}) matMenu!: MatMenu;
+    @ViewChild('matMenu', {static: true}) matMenu?: MatMenu;
 
-    // Private
     private _treoHorizontalNavigationComponent!: TreoHorizontalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.child = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

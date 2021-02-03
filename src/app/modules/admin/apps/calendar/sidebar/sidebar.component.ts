@@ -33,10 +33,6 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
-     * @param {Overlay} _overlay
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _calendarService: CalendarService,

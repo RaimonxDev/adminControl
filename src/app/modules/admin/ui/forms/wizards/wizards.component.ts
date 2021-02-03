@@ -14,12 +14,8 @@ export class FormsWizardsComponent implements OnInit
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
      */
-    constructor(
-        private _formBuilder: FormBuilder
-    )
+    constructor(private _formBuilder: FormBuilder)
     {
     }
 

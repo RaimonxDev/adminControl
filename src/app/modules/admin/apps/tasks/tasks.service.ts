@@ -19,9 +19,7 @@ export class TasksService
      *
      * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
         // Set the private defaults
         this._tags = new BehaviorSubject(null);

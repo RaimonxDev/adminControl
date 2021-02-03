@@ -33,10 +33,10 @@ module.exports = async (config: webpack.Configuration, options: CustomWebpackBro
                 .find((item) => (item as RuleSetLoader).loader?.includes('postcss-loader'));
 
             // Patch the plugins
-            if ( postcssLoader && postcssLoader.options )
+            if ( postcssLoader && postcssLoader.options && (postcssLoader.options as any).postcssOptions.plugins )
             {
-                const currentPluginsFunction = (postcssLoader.options as any).plugins;
-                (postcssLoader.options as any).plugins = (...args: any) => {
+                const currentPluginsFunction = (postcssLoader.options as any).postcssOptions.plugins;
+                (postcssLoader.options as any).postcssOptions.plugins = (...args: any) => {
                     const currentPlugins = currentPluginsFunction.apply(this, args);
                     currentPlugins.splice(-1, 0, ...plugins);
                     return currentPlugins;
@@ -77,14 +77,17 @@ module.exports = async (config: webpack.Configuration, options: CustomWebpackBro
     config.plugins?.push(
         // Ignore watching related files to prevent triggering full re-compile when they modified
         new webpack.WatchIgnorePlugin([
-            path.resolve(__dirname, 'tailwind.config.js'),
-            path.resolve(__dirname, 'src/@treo/tailwind/plugins/treo.js'),
-            path.resolve(__dirname, 'src/@treo/webpack/tailwind-config-extractor.js')
+            // path.resolve(__dirname, 'tailwind.config.js'),
+            path.resolve(__dirname, 'src/@treo/tailwind/plugins/icon-size.js'),
+            path.resolve(__dirname, 'src/@treo/tailwind/plugins/theming.js'),
+            path.resolve(__dirname, 'src/@treo/tailwind/utils/config-extractor.js'),
+            path.resolve(__dirname, 'src/@treo/tailwind/utils/generate-contrasts.js'),
+            path.resolve(__dirname, 'src/@treo/tailwind/utils/generate-palette.js')
         ]),
 
         // Replace __TAILWIND_CONFIG__ from any file with extracted Tailwind configuration
         new webpack.DefinePlugin({
-            __TAILWIND_CONFIG__: require(path.resolve(__dirname, 'src/@treo/tailwind/config-extractor'))({tailwindConfig})
+            __TAILWIND_CONFIG__: require(path.resolve(__dirname, 'src/@treo/tailwind/utils/config-extractor'))({tailwindConfig})
         }),
 
         // Replace __TREO_VERSION__ from any file with version number from package.json

@@ -10,12 +10,8 @@ export class TreoUtilsModule
 {
     /**
      * Constructor
-     *
-     * @param {TreoUtilsService} _treoUtilsService
      */
-    constructor(
-        private _treoUtilsService: TreoUtilsService
-    )
+    constructor(private _treoUtilsService: TreoUtilsService)
     {
     }
 }

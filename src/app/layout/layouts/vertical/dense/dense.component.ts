@@ -13,23 +13,15 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class DenseLayoutComponent implements OnInit, OnDestroy
 {
-    // Public
     data: any;
     fixedFooter = false;
     fixedHeader = false;
     isScreenSmall!: boolean;
     navigationAppearance: 'classic' | 'dense' = 'dense';
-
-    // Private
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {Router} _router
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -72,7 +64,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the resolved route data
+        // Subscribe to the resolved route mock-api
         this._activatedRoute.data.subscribe((data: Data) => {
             this.data = data.initialData;
         });

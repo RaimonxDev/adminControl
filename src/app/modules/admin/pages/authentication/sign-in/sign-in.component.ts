@@ -14,17 +14,12 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class SignInComponent implements OnInit
 {
-    cardStyle: string;
-    signInForm: FormGroup;
-    message: any;
+    cardStyle!: string;
+    message?: any;
+    signInForm!: FormGroup;
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {AuthService} _authService
-     * @param {FormBuilder} _formBuilder
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -33,8 +28,6 @@ export class SignInComponent implements OnInit
         private _router: Router
     )
     {
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -67,29 +60,6 @@ export class SignInComponent implements OnInit
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Set the card style from the url
-     * Demonstration purposes only!
-     *
-     * @private
-     */
-    private _setCardStyle(): void
-    {
-        // Get the current route
-        let route = this._activatedRoute;
-        while ( route.firstChild )
-        {
-            route = route.firstChild;
-        }
-
-        // Set the card style from the path
-        this.cardStyle = route.snapshot.url[0].path;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -102,7 +72,7 @@ export class SignInComponent implements OnInit
         this.signInForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 
@@ -124,5 +94,28 @@ export class SignInComponent implements OnInit
                 type      : 'error'
             };
         }, 1000);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the card style from the url
+     * Demonstration purposes only!
+     *
+     * @private
+     */
+    private _setCardStyle(): void
+    {
+        // Get the current route
+        let route = this._activatedRoute;
+        while ( route.firstChild )
+        {
+            route = route.firstChild;
+        }
+
+        // Set the card style from the path
+        this.cardStyle = route.snapshot.url[0].path;
     }
 }

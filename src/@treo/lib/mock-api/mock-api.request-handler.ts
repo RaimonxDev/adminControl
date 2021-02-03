@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { TreoMockApiReplyCallback } from '@treo/lib/mock-api/mock-api.types';
 
-@Injectable()
-export class TreoMockApiRequestHandler
+export class TreoMockApiHandler
 {
-    interceptedRequest!: HttpRequest<any>;
-    routeParams!: { [key: string]: string };
+    request!: HttpRequest<any>;
+    urlParams!: { [key: string]: string };
 
     // Private
-    private _executionCount = 0;
-    private _executionLimit = 0;
-    private _replyCallback: ((request: HttpRequest<any>, params: { [key: string]: string }) => ([number, any | string] | Observable<any>)) | undefined = undefined;
+    private _reply: TreoMockApiReplyCallback = undefined;
+    private _replyCount = 0;
+    private _replied = 0;
 
     /**
      * Constructor
@@ -29,43 +28,46 @@ export class TreoMockApiRequestHandler
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for reply callback
+     * Getter for response callback
      */
-    get replyCallback(): Observable<any>
+    get response(): Observable<any>
     {
-        // Throw an error, if the execution limit has been reached
-        if ( this._executionLimit > 0 && this._executionCount === this._executionLimit )
+        // If the execution limit has been reached, throw an error
+        if ( this._replyCount > 0 && this._replyCount <= this._replied )
         {
-            return throwError('Execution limit reached');
+            return throwError('Execution limit has been reached!');
         }
 
-        // Throw an error, if the reply callback has not been set
-        if ( !this._replyCallback )
+        // If the response callback has not been set, throw an error
+        if ( !this._reply )
         {
-            return throwError('Reply callback does not exist!');
+            return throwError('Response callback function does not exist!');
         }
 
-        // Throw an error, if the intercepted request has not been set
-        if ( !this.interceptedRequest )
+        // If the request has not been set, throw an error
+        if ( !this.request )
         {
-            return throwError('Intercepted request does not exist!');
+            return throwError('Request does not exist!');
         }
 
-        // Increase the execution count
-        this._executionCount++;
+        // Increase the replied count
+        this._replied++;
 
         // Execute the reply callback
-        const replyCallbackResult = this._replyCallback(this.interceptedRequest, this.routeParams);
+        const replyResult = this._reply({
+            request  : this.request,
+            urlParams: this.urlParams
+        });
 
-        // If the result of the reply function is an observable...
-        if ( replyCallbackResult instanceof Observable )
+        // If the result of the reply callback is an observable...
+        if ( replyResult instanceof Observable )
         {
             // Return the result as it is
-            return replyCallbackResult.pipe(take(1));
+            return replyResult.pipe(take(1));
         }
 
         // Otherwise, return the result as an observable
-        return of(replyCallbackResult).pipe(take(1));
+        return of(replyResult).pipe(take(1));
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -77,24 +79,22 @@ export class TreoMockApiRequestHandler
      *
      * @param callback
      */
-    reply(callback: (request: HttpRequest<any>, params: { [key: string]: string }) => ([number, any | string] | Observable<any>)): void
+    reply(callback: TreoMockApiReplyCallback): void
     {
-        // Store the reply callback
-        this._replyCallback = callback;
+        // Store the reply
+        this._reply = callback;
     }
 
     /**
-     * Reply once
+     * Reply count
      *
-     * @param callback
+     * @param count
      */
-    replyOnce(callback: (request: HttpRequest<any>, params: { [key: string]: string }) => ([number, any | string] | Observable<any>)): void
+    replyCount(count: number): void
     {
-        // Set the execute limit to 1
-        this._executionLimit = 1;
-
-        // Call reply as normal
-        this.reply(callback);
+        // Store the reply count
+        this._replyCount = count;
     }
 }
+
 

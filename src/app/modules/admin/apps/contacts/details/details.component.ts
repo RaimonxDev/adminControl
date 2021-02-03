@@ -47,16 +47,6 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ContactsListComponent} _contactsListComponent
-     * @param {ContactsService} _contactsService
-     * @param {FormBuilder} _formBuilder
-     * @param {Renderer} _renderer2
-     * @param {Router} _router
-     * @param {Overlay} _overlay
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _activatedRoute: ActivatedRoute,

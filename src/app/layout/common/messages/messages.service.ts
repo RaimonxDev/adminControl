@@ -9,17 +9,12 @@ import { map, switchMap, take } from 'rxjs/operators';
 })
 export class MessagesService
 {
-    // Private
     private _messages: ReplaySubject<Message[]> = new ReplaySubject<Message[]>(1);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
     }
 

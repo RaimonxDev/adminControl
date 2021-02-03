@@ -9,14 +9,12 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 })
 export class PricingSimpleComponent
 {
-    annualBilling: boolean;
+    annualBilling: boolean = true;
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the defaults
-        this.annualBilling = true;
     }
 }

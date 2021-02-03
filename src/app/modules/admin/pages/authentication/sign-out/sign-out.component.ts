@@ -11,33 +11,22 @@ import { filter, take, takeUntil } from 'rxjs/operators';
 })
 export class SignOutComponent implements OnInit, OnDestroy
 {
-    cardStyle: string;
-    countdown: number;
-    countdownMapping: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    cardStyle!: string;
+    countdown = 5;
+    countdownMapping: any = {
+        '=1'   : '# second',
+        'other': '# seconds'
+    };
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _router: Router
     )
     {
-        // Set the private default
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.countdown = 5;
-        this.countdownMapping = {
-            '=1'   : '# second',
-            'other': '# seconds'
-        };
     }
 
     // -----------------------------------------------------------------------------------------------------

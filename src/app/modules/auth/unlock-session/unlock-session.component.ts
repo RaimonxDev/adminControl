@@ -11,21 +11,15 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class AuthUnlockSessionComponent implements OnInit
 {
-    message: any;
-    name: string;
-    unlockSessionForm: FormGroup;
+    message?: any;
+    name!: string;
+    unlockSessionForm!: FormGroup;
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
      */
-    constructor(
-        private _formBuilder: FormBuilder
-    )
+    constructor(private _formBuilder: FormBuilder)
     {
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -65,7 +59,7 @@ export class AuthUnlockSessionComponent implements OnInit
         this.unlockSessionForm.disable();
 
         // Hide the message
-        this.message = null;
+        this.message = undefined;
 
         // Do your action here...
 

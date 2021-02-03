@@ -14,24 +14,18 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationAsideItemComponent implements OnChanges, OnInit, OnDestroy
 {
-    // Public
-    @Input() activeItemId = '';
+    @Input() activeItemId!: string;
     @Input() autoCollapse!: boolean;
     @Input() item!: TreoNavigationItem;
     @Input() name!: string;
-    @Input() skipChildren = false;
-    active = false;
+    @Input() skipChildren!: boolean;
 
-    // Private
+    active: boolean = false;
     private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {Router} _router
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -65,9 +59,6 @@ export class TreoVerticalNavigationAsideItemComponent implements OnChanges, OnIn
      */
     ngOnInit(): void
     {
-        // Get the parent navigation component
-        this._treoVerticalNavigationComponent = this._treoNavigationService.getComponent(this.name);
-
         // Mark if active
         this._markIfActive(this._router.url);
 
@@ -82,6 +73,9 @@ export class TreoVerticalNavigationAsideItemComponent implements OnChanges, OnIn
                 // Mark if active
                 this._markIfActive(event.urlAfterRedirects);
             });
+
+        // Get the parent navigation component
+        this._treoVerticalNavigationComponent = this._treoNavigationService.getComponent(this.name);
 
         // Subscribe to onRefreshed on the navigation component
         this._treoVerticalNavigationComponent.onRefreshed.pipe(

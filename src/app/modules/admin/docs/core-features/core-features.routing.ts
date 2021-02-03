@@ -24,13 +24,13 @@ export const coreFeaturesRoutes: Route[] = [
             {
                 path      : '',
                 pathMatch : 'full',
-                redirectTo: 'libraries/mock-api'
+                redirectTo: 'libraries/calendar-api'
             },
             {
                 path    : 'libraries',
                 children: [
                     {
-                        path     : 'mock-api',
+                        path     : 'calendar-api',
                         component: MockApiComponent
                     }
                 ]

@@ -17,23 +17,19 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
 {
     // Public
     @ViewChild('recentTransactionsTable', {read: MatSort}) recentTransactionsTableMatSort!: MatSort;
+
     data: any;
     accountBalanceOptions!: ApexOptions;
     recentTransactionsDataSource: MatTableDataSource<any>;
     recentTransactionsTableColumns: string[];
-
 
     // Private
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
-     *
-     * @param {FinanceService} _financeService
      */
-    constructor(
-        private _financeService: FinanceService
-    )
+    constructor(private _financeService: FinanceService)
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -52,18 +48,18 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the data
+        // Get the mock-api
         this._financeService.data$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
 
-                // Store the data
+                // Store the mock-api
                 this.data = data;
 
-                // Store the table data
+                // Store the table mock-api
                 this.recentTransactionsDataSource.data = data.recentTransactions;
 
-                // Prepare the chart data
+                // Prepare the chart mock-api
                 this._prepareChartData();
             });
     }
@@ -73,7 +69,7 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
      */
     ngAfterViewInit(): void
     {
-        // Make the data source sortable
+        // Make the mock-api source sortable
         this.recentTransactionsDataSource.sort = this.recentTransactionsTableMatSort;
     }
 
@@ -92,7 +88,7 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Prepare the chart data from the data
+     * Prepare the chart mock-api from the mock-api
      *
      * @private
      */

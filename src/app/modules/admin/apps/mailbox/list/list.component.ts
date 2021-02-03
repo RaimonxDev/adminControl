@@ -28,9 +28,6 @@ export class MailboxListComponent implements OnInit, OnDestroy
 
     /**
      * Constructor
-     *
-     * @param {MailboxComponent} mailboxComponent
-     * @param {MailboxService} _mailboxService
      */
     constructor(
         public mailboxComponent: MailboxComponent,

@@ -22,10 +22,6 @@ export class CoreModule
 {
     /**
      * Constructor
-     *
-     * @param {DomSanitizer} _domSanitizer
-     * @param {MatIconRegistry} _matIconRegistry
-     * @param parentModule
      */
     constructor(
         private _domSanitizer: DomSanitizer,

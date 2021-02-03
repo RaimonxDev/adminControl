@@ -22,7 +22,7 @@ import { leftSidebarFullheightStandardRoutes } from 'app/modules/admin/ui/conten
         MatSidenavModule,
         SharedModule,
         DemoContentModule,
-        DemoSidebarContentModule,
+        DemoSidebarContentModule
     ]
 })
 export class LeftSidebarFullheightStandardModule

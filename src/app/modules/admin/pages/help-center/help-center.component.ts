@@ -12,22 +12,14 @@ import { FaqCategory } from 'app/modules/admin/pages/help-center/help-center.typ
 })
 export class HelpCenterComponent implements OnInit, OnDestroy
 {
-    faqCategory: FaqCategory;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    faqCategory!: FaqCategory;
+    private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
      * Constructor
-     *
-     * @param {HelpCenterService} _helpCenterService
      */
-    constructor(
-        private _helpCenterService: HelpCenterService
-    )
+    constructor(private _helpCenterService: HelpCenterService)
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
