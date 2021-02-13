@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { IconsService } from 'app/modules/admin/ui/icons/icons.service';
+import { Icon } from 'app/modules/admin/ui/icons/icons.types';
 
 @Component({
     selector     : 'icons',
@@ -11,27 +12,19 @@ import { IconsService } from 'app/modules/admin/ui/icons/icons.service';
 })
 export class IconsComponent implements OnInit, OnDestroy
 {
-    icons$: Observable<any>;
-    iconSize: number;
-    filteredIcons$: Observable<any>;
-    filterValue$: BehaviorSubject<any>;
-    selectedIcon: string[];
+    icons$: Observable<Icon>;
+    filteredIcons$: Observable<Icon>;
+    filterValue$: BehaviorSubject<string> = new BehaviorSubject('');
 
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    iconSize: number = 24;
+    selectedIcon: string[];
+    private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
      * Constructor
      */
     constructor(private _iconsService: IconsService)
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.filterValue$ = new BehaviorSubject('');
-        this.iconSize = 24;
-        this.selectedIcon = [];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -95,7 +88,7 @@ export class IconsComponent implements OnInit, OnDestroy
      *
      * @param event
      */
-    filterIcons(event): void
+    filterIcons(event: any): void
     {
         // Push the value to the observable
         this.filterValue$.next(event.target.value);
@@ -107,7 +100,7 @@ export class IconsComponent implements OnInit, OnDestroy
      * @param namespace
      * @param icon
      */
-    selectIcon(namespace, icon): void
+    selectIcon(namespace: string, icon: string): void
     {
         this.selectedIcon = [
             namespace,
@@ -121,7 +114,7 @@ export class IconsComponent implements OnInit, OnDestroy
      */
     calcSvgIconAttr(): string
     {
-        if ( !this.selectedIcon.length )
+        if ( !this.selectedIcon )
         {
             return '';
         }

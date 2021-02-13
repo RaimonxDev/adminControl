@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 import { TreoAnimations } from '@treo/animations';
+import { TreoAlertType } from '@treo/components/alert';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'auth-forgot-password',
@@ -11,13 +14,22 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class AuthForgotPasswordComponent implements OnInit
 {
-    message?: any;
-    forgotPasswordForm!: FormGroup;
+    @ViewChild('forgotPasswordNgForm') forgotPasswordNgForm: NgForm;
+
+    alert: { type: TreoAlertType, message: string } = {
+        type   : 'success',
+        message: ''
+    };
+    forgotPasswordForm: FormGroup;
+    showAlert: boolean = false;
 
     /**
      * Constructor
      */
-    constructor(private _formBuilder: FormBuilder)
+    constructor(
+        private _authService: AuthService,
+        private _formBuilder: FormBuilder
+    )
     {
     }
 
@@ -45,7 +57,7 @@ export class AuthForgotPasswordComponent implements OnInit
      */
     sendResetLink(): void
     {
-        // Do nothing if the form is invalid
+        // Return if the form is invalid
         if ( this.forgotPasswordForm.invalid )
         {
             return;
@@ -54,28 +66,41 @@ export class AuthForgotPasswordComponent implements OnInit
         // Disable the form
         this.forgotPasswordForm.disable();
 
-        // Hide the message
-        this.message = undefined;
+        // Hide the alert
+        this.showAlert = false;
 
-        // Do your action here...
+        // Forgot password
+        this._authService.forgotPassword(this.forgotPasswordForm.get('email').value)
+            .pipe(
+                finalize(() => {
 
-        // Emulate server delay
-        setTimeout(() => {
+                    // Re-enable the form
+                    this.forgotPasswordForm.enable();
 
-            // Re-enable the form
-            this.forgotPasswordForm.enable();
+                    // Reset the form
+                    this.forgotPasswordNgForm.resetForm();
 
-            // Reset the form
-            this.forgotPasswordForm.reset({});
+                    // Show the alert
+                    this.showAlert = true;
+                })
+            )
+            .subscribe(
+                (response) => {
 
-            // Show the message
-            this.message = {
-                appearance: 'outline',
-                content   : 'Password reset sent! You\'ll receive an email if you are registered on our system.',
-                shake     : false,
-                showIcon  : false,
-                type      : 'success'
-            };
-        }, 1000);
+                    // Set the alert
+                    this.alert = {
+                        type   : 'success',
+                        message: 'Password reset sent! You\'ll receive an email if you are registered on our system.'
+                    };
+                },
+                (response) => {
+
+                    // Set the alert
+                    this.alert = {
+                        type   : 'error',
+                        message: 'Email does not found! Are you sure you are already a member?'
+                    };
+                }
+            );
     }
 }

@@ -10,27 +10,19 @@ import { InventoryBrand, InventoryCategory, InventoryPagination, InventoryProduc
 export class InventoryService
 {
     // Private
-    private _brands: BehaviorSubject<InventoryBrand[] | null>;
-    private _categories: BehaviorSubject<InventoryCategory[] | null>;
-    private _pagination: BehaviorSubject<InventoryPagination | null>;
-    private _product: BehaviorSubject<InventoryProduct | null>;
-    private _products: BehaviorSubject<InventoryProduct[] | null>;
-    private _tags: BehaviorSubject<InventoryTag[] | null>;
-    private _vendors: BehaviorSubject<InventoryVendor[] | null>;
+    private _brands: BehaviorSubject<InventoryBrand[] | null> = new BehaviorSubject(null);
+    private _categories: BehaviorSubject<InventoryCategory[] | null> = new BehaviorSubject(null);
+    private _pagination: BehaviorSubject<InventoryPagination | null> = new BehaviorSubject(null);
+    private _product: BehaviorSubject<InventoryProduct | null> = new BehaviorSubject(null);
+    private _products: BehaviorSubject<InventoryProduct[] | null> = new BehaviorSubject(null);
+    private _tags: BehaviorSubject<InventoryTag[] | null> = new BehaviorSubject(null);
+    private _vendors: BehaviorSubject<InventoryVendor[] | null> = new BehaviorSubject(null);
 
     /**
      * Constructor
      */
     constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._brands = new BehaviorSubject(null);
-        this._categories = new BehaviorSubject(null);
-        this._pagination = new BehaviorSubject(null);
-        this._product = new BehaviorSubject(null);
-        this._products = new BehaviorSubject(null);
-        this._tags = new BehaviorSubject(null);
-        this._vendors = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

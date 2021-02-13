@@ -16,20 +16,15 @@ import { calendarColors } from 'app/modules/admin/apps/calendar/sidebar/calendar
 })
 export class CalendarSidebarComponent implements OnInit, OnDestroy
 {
+    @ViewChild('editPanel') private _editPanel: TemplateRef<any>;
+    @Output() readonly calendarUpdated: EventEmitter<any> = new EventEmitter<any>();
+
     calendar: Calendar | null;
-    calendarColors: any;
+    calendarColors: any = calendarColors;
     calendars: Calendar[];
-
-    @Output()
-    calendarUpdated: EventEmitter<any>;
-
-    // Private
     private _editPanelOverlayRef: OverlayRef;
     private _editPanelTemplatePortal: TemplatePortal;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('editPanel')
-    private _editPanel: TemplateRef<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -40,12 +35,6 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.calendarColors = calendarColors;
-        this.calendarUpdated = new EventEmitter();
     }
 
     // -----------------------------------------------------------------------------------------------------

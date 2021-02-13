@@ -26,69 +26,6 @@ export class CalendarMockApi
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Generates an RRuleSet from given event
-     *
-     * @param event
-     * @param dtStart
-     * @param until
-     * @private
-     */
-    private _generateRuleset(event: any, dtStart: any, until: any): RRuleSet | RRule
-    {
-        // Parse the recurrence rules
-        const parsedRules: any = {};
-        event.recurrence.split(';').forEach((rule: string) => {
-
-            // Split the rule
-            const parsedRule = rule.split('=');
-
-            // Omit UNTIL or COUNT from the parsed rules since we only
-            // need them for calculating the event's end date. We will
-            // add an UNTIL later based on the above calculations.
-            if ( parsedRule[0] === 'UNTIL' || parsedRule[0] === 'COUNT' )
-            {
-                return;
-            }
-
-            // Add the rule to the parsed rules
-            parsedRules[parsedRule[0]] = parsedRule[1];
-        });
-
-        // Generate the rule array from the parsed rules
-        const rules: string[] = [];
-        Object.keys(parsedRules).forEach((key) => {
-            rules.push(key + '=' + parsedRules[key]);
-        });
-
-        // Prepare the ruleSet
-        const ruleSet = [];
-
-        // Add DTSTART
-        ruleSet.push('DTSTART:' + dtStart.format('YYYYMMDD[T]HHmmss[Z]'));
-
-        // Add RRULE
-        ruleSet.push('RRULE:' + rules.join(';') + ';UNTIL=' + until.format('YYYYMMDD[T]HHmmss[Z]'));
-
-        // Find and add any available exceptions to the rule
-        this._exceptions.forEach((item) => {
-
-            // If the item is an exception to this event...
-            if ( item.eventId === event.id )
-            {
-                // Add it as an EXDATE to the rrule
-                ruleSet.push('EXDATE:' + moment(item.exdate).format('YYYYMMDD[T]HHmmss[Z]'));
-            }
-        });
-
-        // Create an RRuleSet from the ruleSet array
-        return rrulestr(ruleSet.join('\n'), {forceset: true});
-    }
-
-    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -620,5 +557,68 @@ export class CalendarMockApi
                 // Return the response
                 return [200, weekdays];
             });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Generates an RRuleSet from given event
+     *
+     * @param event
+     * @param dtStart
+     * @param until
+     * @private
+     */
+    private _generateRuleset(event: any, dtStart: any, until: any): RRuleSet | RRule
+    {
+        // Parse the recurrence rules
+        const parsedRules: any = {};
+        event.recurrence.split(';').forEach((rule: string) => {
+
+            // Split the rule
+            const parsedRule = rule.split('=');
+
+            // Omit UNTIL or COUNT from the parsed rules since we only
+            // need them for calculating the event's end date. We will
+            // add an UNTIL later based on the above calculations.
+            if ( parsedRule[0] === 'UNTIL' || parsedRule[0] === 'COUNT' )
+            {
+                return;
+            }
+
+            // Add the rule to the parsed rules
+            parsedRules[parsedRule[0]] = parsedRule[1];
+        });
+
+        // Generate the rule array from the parsed rules
+        const rules: string[] = [];
+        Object.keys(parsedRules).forEach((key) => {
+            rules.push(key + '=' + parsedRules[key]);
+        });
+
+        // Prepare the ruleSet
+        const ruleSet = [];
+
+        // Add DTSTART
+        ruleSet.push('DTSTART:' + dtStart.format('YYYYMMDD[T]HHmmss[Z]'));
+
+        // Add RRULE
+        ruleSet.push('RRULE:' + rules.join(';') + ';UNTIL=' + until.format('YYYYMMDD[T]HHmmss[Z]'));
+
+        // Find and add any available exceptions to the rule
+        this._exceptions.forEach((item) => {
+
+            // If the item is an exception to this event...
+            if ( item.eventId === event.id )
+            {
+                // Add it as an EXDATE to the rrule
+                ruleSet.push('EXDATE:' + moment(item.exdate).format('YYYYMMDD[T]HHmmss[Z]'));
+            }
+        });
+
+        // Create an RRuleSet from the ruleSet array
+        return rrulestr(ruleSet.join('\n'), {forceset: true});
     }
 }

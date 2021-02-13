@@ -7,29 +7,26 @@ import { Component } from '@angular/core';
 })
 export class FullwidthTabsNavigationComponent
 {
-    navLinks: any[];
-    scrollMode: string;
+    navLinks: any[] = [
+        {
+            path : 'tab-1',
+            title: 'First Tab'
+        },
+        {
+            path : 'tab-2',
+            title: 'Second Tab'
+        },
+        {
+            path : 'tab-3',
+            title: 'Third Tab'
+        }
+    ];
+    scrollMode: string = 'normal';
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the defaults
-        this.navLinks = [
-            {
-                path : 'tab-1',
-                title: 'First Tab'
-            },
-            {
-                path : 'tab-2',
-                title: 'Second Tab'
-            },
-            {
-                path : 'tab-3',
-                title: 'Third Tab'
-            }
-        ];
-        this.scrollMode = 'normal';
     }
 }

@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoNavigationService } from '@treo/components/navigation';
+import { InitialData } from 'app/app.types';
 
 @Component({
     selector     : 'enterprise-layout',
@@ -13,10 +14,10 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class EnterpriseLayoutComponent implements OnInit, OnDestroy
 {
-    data: any;
-    fixedHeader = false;
-    fixedFooter = false;
-    isScreenSmall!: boolean;
+    data: InitialData;
+    fixedHeader: boolean = false;
+    fixedFooter: boolean = false;
+    isScreenSmall: boolean;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**

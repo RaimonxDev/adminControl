@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TreoAnimations } from '@treo/animations';
@@ -13,9 +13,11 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class ComingSoonComponent implements OnInit
 {
-    cardStyle!: string;
-    comingSoonForm!: FormGroup;
-    message?: any;
+    @ViewChild('comingSoonNgForm') comingSoonNgForm: NgForm;
+
+    cardStyle: string;
+    comingSoonForm: FormGroup;
+    message: string;
 
     /**
      * Constructor
@@ -64,7 +66,7 @@ export class ComingSoonComponent implements OnInit
      */
     register(): void
     {
-        // Do nothing if the form is invalid
+        // Return if the form is invalid
         if ( this.comingSoonForm.invalid )
         {
             return;
@@ -73,11 +75,10 @@ export class ComingSoonComponent implements OnInit
         // Disable the form
         this.comingSoonForm.disable();
 
-        // Hide the message
-        this.message = undefined;
+        // Hide the alert
+        this.message = null;
 
         // Do your action here...
-
         // Emulate server delay
         setTimeout(() => {
 
@@ -85,14 +86,11 @@ export class ComingSoonComponent implements OnInit
             this.comingSoonForm.enable();
 
             // Reset the form
-            this.comingSoonForm.reset({});
+            this.comingSoonNgForm.resetForm();
 
-            // Show the message
-            this.message = {
-                type   : 'success',
-                content: 'You have been registered to the list.',
-                shake  : false
-            };
+            // Show the alert
+            this.message = 'You have been registered to the list.';
+
         }, 1000);
     }
 

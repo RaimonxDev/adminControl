@@ -19,10 +19,10 @@ import { AppConfig } from 'app/core/config/app.config';
 })
 export class LayoutComponent implements OnInit, OnDestroy
 {
-    config?: AppConfig;
-    layout?: Layout;
-    scheme?: 'dark' | 'light';
-    theme?: string;
+    config: AppConfig;
+    layout: Layout;
+    scheme: 'dark' | 'light';
+    theme: string;
     themes: any = tailwindConfig.themes;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -119,6 +119,50 @@ export class LayoutComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the layout on the config
+     *
+     * @param layout
+     */
+    setLayout(layout: string): void
+    {
+        // Clear the 'layout' query param to allow layout changes
+        this._router.navigate([], {
+            queryParams        : {
+                layout: null
+            },
+            queryParamsHandling: 'merge'
+        }).then(() => {
+
+            // Set the config
+            this._treoConfigService.config = {layout};
+        });
+    }
+
+    /**
+     * Set the scheme on the config
+     *
+     * @param change
+     */
+    setScheme(change: MatRadioChange): void
+    {
+        this._treoConfigService.config = {scheme: change.value};
+    }
+
+    /**
+     * Set the theme on the config
+     *
+     * @param change
+     */
+    setTheme(change: MatRadioChange): void
+    {
+        this._treoConfigService.config = {theme: change.value};
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -135,7 +179,7 @@ export class LayoutComponent implements OnInit, OnDestroy
         }
 
         // 1. Set the layout from the config
-        this.layout = this.config?.layout;
+        this.layout = this.config.layout;
 
         // 2. Get the query parameter from the current route and
         // set the layout and save the layout to the config
@@ -208,49 +252,5 @@ export class LayoutComponent implements OnInit, OnDestroy
 
         // Add class name for the currently selected theme
         this._document.body.classList.add(`theme-${this.theme}`);
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Set the layout on the config
-     *
-     * @param layout
-     */
-    setLayout(layout: string): void
-    {
-        // Clear the 'layout' query param to allow layout changes
-        this._router.navigate([], {
-            queryParams        : {
-                layout: null
-            },
-            queryParamsHandling: 'merge'
-        }).then(() => {
-
-            // Set the config
-            this._treoConfigService.config = {layout};
-        });
-    }
-
-    /**
-     * Set the scheme on the config
-     *
-     * @param change
-     */
-    setScheme(change: MatRadioChange): void
-    {
-        this._treoConfigService.config = {scheme: change.value};
-    }
-
-    /**
-     * Set the theme on the config
-     *
-     * @param change
-     */
-    setTheme(change: MatRadioChange): void
-    {
-        this._treoConfigService.config = {theme: change.value};
     }
 }

@@ -17,12 +17,12 @@ import { MessagesService } from 'app/layout/common/messages/messages.service';
 })
 export class MessagesComponent implements OnInit, OnChanges, OnDestroy
 {
-    @Input() messages?: Message[];
-    @ViewChild('messagesOrigin') private _messagesOrigin?: MatButton;
-    @ViewChild('messagesPanel') private _messagesPanel?: TemplateRef<any>;
+    @Input() messages: Message[];
+    @ViewChild('messagesOrigin') private _messagesOrigin: MatButton;
+    @ViewChild('messagesPanel') private _messagesPanel: TemplateRef<any>;
 
     unreadCount: number = 0;
-    private _overlayRef?: OverlayRef;
+    private _overlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**

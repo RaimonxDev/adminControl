@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class LeftSidebarFullheightTabsNavigationTab3Component
 {
-
+    /**
+     * Constructor
+     */
     constructor()
     {
     }
-
 }

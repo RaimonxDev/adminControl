@@ -20,30 +20,21 @@ import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.servic
 })
 export class ContactsDetailsComponent implements OnInit, OnDestroy
 {
-    editMode: boolean;
+    @ViewChild('avatar') private _avatar: ElementRef;
+    @ViewChild('avatarFileInput') private _avatarFileInput: ElementRef;
+    @ViewChild('tagsPanel') private _tagsPanel: TemplateRef<any>;
+    @ViewChild('tagsPanelOrigin') private _tagsPanelOrigin: ElementRef;
+
+    editMode: boolean = false;
     tags: Tag[];
-    tagsEditMode: boolean;
+    tagsEditMode: boolean = false;
     filteredTags: Tag[];
     contact: Contact;
     contactForm: FormGroup;
     contacts: Contact[];
     countries: Country[];
-
-    // Private
     private _tagsPanelOverlayRef: OverlayRef;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('avatar')
-    private _avatar: ElementRef;
-
-    @ViewChild('avatarFileInput')
-    private _avatarFileInput: ElementRef;
-
-    @ViewChild('tagsPanel')
-    private _tagsPanel: TemplateRef<any>;
-
-    @ViewChild('tagsPanelOrigin')
-    private _tagsPanelOrigin: ElementRef;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -60,12 +51,6 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.editMode = false;
-        this.tagsEditMode = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

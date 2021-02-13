@@ -11,8 +11,23 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class MailboxComposeComponent implements OnInit
 {
     composeForm: FormGroup;
-    copyFields: { cc: boolean, bcc: boolean };
-    quillModules: any;
+    copyFields: { cc: boolean, bcc: boolean } = {
+        cc : false,
+        bcc: false
+    };
+    quillModules: any = {
+        toolbar: [
+            [{font: []}],
+            [{size: ['small', false, 'large', 'huge']}],
+            ['bold', 'italic', 'underline'],
+            [{color: []}, {background: []}],
+            [{align: []}],
+            [{list: 'ordered'}, {list: 'bullet'}],
+            [{indent: '-1'}, {indent: '+1'}],
+            ['blockquote', 'code-block', 'strike'],
+            ['clean']
+        ]
+    };
 
     /**
      * Constructor
@@ -22,25 +37,6 @@ export class MailboxComposeComponent implements OnInit
         private _formBuilder: FormBuilder
     )
     {
-        // Set the default
-        this.copyFields = {
-            cc : false,
-            bcc: false
-        };
-
-        this.quillModules = {
-            toolbar: [
-                [{font: []}],
-                [{size: ['small', false, 'large', 'huge']}],
-                ['bold', 'italic', 'underline'],
-                [{color: []}, {background: []}],
-                [{align: []}],
-                [{list: 'ordered'}, {list: 'bullet'}],
-                [{indent: '-1'}, {indent: '+1'}],
-                ['blockquote', 'code-block', 'strike'],
-                ['clean']
-            ]
-        };
     }
 
     // -----------------------------------------------------------------------------------------------------

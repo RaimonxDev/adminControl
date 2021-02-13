@@ -16,17 +16,18 @@
                 <div class="title">Unlock your session</div>
                 <div class="subtitle">Your session is locked due to inactivity</div>
 
-                <!-- Message -->
-                <treo-alert *ngIf="message"
-                            [appearance]="message.appearance"
-                            [showIcon]="message.showIcon"
-                            [type]="message.type"
-                            [@shake]="message.shake">
-                    <div treoMessageContent>{{message.content}}</div>
+                <!-- Alert -->
+                <treo-alert *ngIf="showAlert"
+                            [appearance]="'outline'"
+                            [showIcon]="false"
+                            [type]="alert.type"
+                            [@shake]="alert.type === 'error'">
+                    {{alert.message}}
                 </treo-alert>
 
                 <!-- Unlock form -->
-                <form [formGroup]="unlockSessionForm">
+                <form [formGroup]="unlockSessionForm"
+                      #unlockSessionNgForm="ngForm">
 
                     <!-- Name field -->
                     <mat-form-field>
@@ -53,6 +54,9 @@
                             <mat-icon *ngIf="passwordField.type === 'text'"
                                       [svgIcon]="'visibility_off'"></mat-icon>
                         </button>
+                        <mat-error>
+                            Password is required
+                        </mat-error>
                     </mat-form-field>
 
                     <!-- Submit button -->

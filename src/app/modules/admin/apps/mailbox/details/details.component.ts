@@ -16,20 +16,15 @@ import { Mail, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mail
 })
 export class MailboxDetailsComponent implements OnInit, OnDestroy
 {
+    @ViewChild('infoDetailsPanelOrigin') private _infoDetailsPanelOrigin: MatButton;
+    @ViewChild('infoDetailsPanel') private _infoDetailsPanel: TemplateRef<any>;
+
     folders: MailFolder[];
     labels: MailLabel[];
     mail: Mail;
-    replyFormActive: boolean;
-
-    // Private
+    replyFormActive: boolean = false;
     private _overlayRef: OverlayRef;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('infoDetailsPanelOrigin')
-    private _infoDetailsPanelOrigin: MatButton;
-
-    @ViewChild('infoDetailsPanel')
-    private _infoDetailsPanel: TemplateRef<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -43,11 +38,6 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the default
-        this.replyFormActive = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

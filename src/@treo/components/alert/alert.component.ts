@@ -23,8 +23,8 @@ export class TreoAlertComponent implements OnChanges, OnInit, OnDestroy
     static ngAcceptInputType_showIcon: BooleanInput;
 
     @Input() appearance: TreoAlertAppearance = 'soft';
-    @Input() dismissible: boolean = false;
     @Input() dismissed: boolean = false;
+    @Input() dismissible: boolean = false;
     @Input() name: string = this._treoUtilsService.randomId();
     @Input() showIcon: boolean = true;
     @Input() type: TreoAlertType = 'primary';
@@ -82,13 +82,6 @@ export class TreoAlertComponent implements OnChanges, OnInit, OnDestroy
      */
     ngOnChanges(changes: SimpleChanges): void
     {
-        // Dismissible
-        if ( 'dismissible' in changes )
-        {
-            // Coerce the value to a boolean
-            this.dismissible = coerceBooleanProperty(changes.dismissible.currentValue);
-        }
-
         // Dismissed
         if ( 'dismissed' in changes )
         {
@@ -97,6 +90,13 @@ export class TreoAlertComponent implements OnChanges, OnInit, OnDestroy
 
             // Dismiss/show the alert
             this._toggleDismiss(this.dismissed);
+        }
+
+        // Dismissible
+        if ( 'dismissible' in changes )
+        {
+            // Coerce the value to a boolean
+            this.dismissible = coerceBooleanProperty(changes.dismissible.currentValue);
         }
 
         // Show icon

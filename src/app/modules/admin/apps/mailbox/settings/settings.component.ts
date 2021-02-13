@@ -13,7 +13,7 @@ import { MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 })
 export class MailboxSettingsComponent implements OnInit
 {
-    labelColors: any;
+    labelColors: any = labelColorsData;
     labels: MailLabel[];
     labelsForm: FormGroup;
 
@@ -25,8 +25,6 @@ export class MailboxSettingsComponent implements OnInit
         private _mailboxService: MailboxService
     )
     {
-        // Set the defaults
-        this.labelColors = labelColorsData;
     }
 
     // -----------------------------------------------------------------------------------------------------

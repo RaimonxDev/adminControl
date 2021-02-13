@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -8,8 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class FinanceService
 {
-    // Observables
-    private _data: ReplaySubject<any> = new ReplaySubject<any>(1);
+    private _data: BehaviorSubject<any> = new BehaviorSubject(null);
 
     /**
      * Constructor
@@ -23,7 +22,7 @@ export class FinanceService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Getter for mock-api
+     * Getter for data
      */
     get data$(): Observable<any>
     {
@@ -35,7 +34,7 @@ export class FinanceService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Get mock-api
+     * Get data
      */
     getData(): Observable<any>
     {

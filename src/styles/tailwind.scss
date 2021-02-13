@@ -1,8 +1,14 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Main Tailwind file. Custom components, utilities and etc. can go here.
+/* ----------------------------------------------------------------------------------------------------- */
+
 @tailwind components;
 @tailwind utilities;
 @tailwind screens;
 
 @layer components {
+
+    /* DO NOT MODIFY -- START */
     body {
         color: var(--treo-text-default) !important;
         background-color: var(--treo-bg-default) !important;
@@ -61,4 +67,5 @@
             background-color: var(--treo-bg-hover) !important;
         }
     }
+    /* DO NOT MODIFY -- END */
 }

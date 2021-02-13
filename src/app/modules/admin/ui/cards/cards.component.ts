@@ -11,32 +11,24 @@ import { TreoCardComponent } from '@treo/components/card';
 })
 export class CardsComponent implements AfterViewInit
 {
-    expandableCardStatuses: any;
-    flippableCardStatuses: any;
-    filters: string[];
-    numberOfCards: any;
-    selectedFilter: string;
+    @ViewChildren(TreoCardComponent, {read: ElementRef}) private _treoCards: QueryList<ElementRef>;
 
-    // Private
-    @ViewChildren(TreoCardComponent, {read: ElementRef})
-    private _treoCards: QueryList<ElementRef>;
+    expandableCardStatuses: any = {
+        card01: false,
+        card02: false
+    };
+    flippableCardStatuses: any = {
+        card01: 'front'
+    };
+    filters: string[] = ['all', 'article', 'listing', 'list', 'info', 'shopping', 'pricing', 'testimonial', 'post'];
+    numberOfCards: any = {};
+    selectedFilter: string = 'all';
 
     /**
      * Constructor
      */
     constructor(private _renderer2: Renderer2)
     {
-        // Set the defaults
-        this.expandableCardStatuses = {
-            card01: false,
-            card02: false
-        };
-        this.flippableCardStatuses = {
-            card01: 'front'
-        };
-        this.filters = ['all', 'article', 'listing', 'list', 'info', 'shopping', 'pricing', 'testimonial', 'post'];
-        this.numberOfCards = {};
-        this.selectedFilter = 'all';
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -52,6 +44,24 @@ export class CardsComponent implements AfterViewInit
         this._calcNumberOfCards();
 
         // Filter the cards for the first time
+        this._filterCards();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On filter change
+     *
+     * @param change
+     */
+    onFilterChange(change: MatButtonToggleChange): void
+    {
+        // Set the filter
+        this.selectedFilter = change.value;
+
+        // Filter the cards
         this._filterCards();
     }
 
@@ -119,23 +129,4 @@ export class CardsComponent implements AfterViewInit
             }
         });
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On filter change
-     *
-     * @param change
-     */
-    onFilterChange(change: MatButtonToggleChange): void
-    {
-        // Set the filter
-        this.selectedFilter = change.value;
-
-        // Filter the cards
-        this._filterCards();
-    }
-
 }

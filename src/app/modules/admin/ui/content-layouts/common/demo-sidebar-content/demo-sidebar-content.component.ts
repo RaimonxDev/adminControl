@@ -16,7 +16,6 @@ export class DemoSidebarContentComponent
      */
     constructor()
     {
-        // Set the defaults
         this.menuData = [
             {
                 title   : 'Actions',
@@ -55,7 +54,6 @@ export class DemoSidebarContentComponent
                 title   : 'Tasks',
                 type    : 'group',
                 children: [
-
                     {
                         title: 'All tasks',
                         type : 'basic',
@@ -96,7 +94,6 @@ export class DemoSidebarContentComponent
                 title   : 'Settings',
                 type    : 'group',
                 children: [
-
                     {
                         title   : 'General',
                         type    : 'collapsable',

@@ -11,27 +11,21 @@ import { Calendar, CalendarEvent, CalendarEventEditMode, CalendarSettings, Calen
 export class CalendarService
 {
     // Private
-    private _calendars: BehaviorSubject<Calendar[] | null>;
-    private _events: BehaviorSubject<CalendarEvent[] | null>;
-    private _loadedEventsRange: { start: Moment | null, end: Moment | null };
+    private _calendars: BehaviorSubject<Calendar[] | null> = new BehaviorSubject(null);
+    private _events: BehaviorSubject<CalendarEvent[] | null> = new BehaviorSubject(null);
+    private _loadedEventsRange: { start: Moment | null, end: Moment | null } = {
+        start: null,
+        end  : null
+    };
     private readonly _numberOfDaysToPrefetch = 60;
-    private _settings: BehaviorSubject<CalendarSettings | null>;
-    private _weekdays: BehaviorSubject<CalendarWeekday[] | null>;
+    private _settings: BehaviorSubject<CalendarSettings | null> = new BehaviorSubject(null);
+    private _weekdays: BehaviorSubject<CalendarWeekday[] | null> = new BehaviorSubject(null);
 
     /**
      * Constructor
      */
     constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._calendars = new BehaviorSubject(null);
-        this._events = new BehaviorSubject(null);
-        this._loadedEventsRange = {
-            start: null,
-            end  : null
-        };
-        this._settings = new BehaviorSubject(null);
-        this._weekdays = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

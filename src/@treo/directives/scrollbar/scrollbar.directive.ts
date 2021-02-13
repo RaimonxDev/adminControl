@@ -1,11 +1,12 @@
 import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { BooleanInput } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
 import { merge } from 'lodash-es';
-import { ScrollbarGeometry, ScrollbarPosition } from '@treo/directives/scrollbar/scrollbar.interfaces';
+import { ScrollbarGeometry, ScrollbarPosition } from '@treo/directives/scrollbar/scrollbar.types';
 
 /**
  * Wrapper directive for the Perfect Scrollbar: https://github.com/mdbootstrap/perfect-scrollbar
@@ -16,12 +17,14 @@ import { ScrollbarGeometry, ScrollbarPosition } from '@treo/directives/scrollbar
 })
 export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
 {
-    @Input() treoScrollbar: boolean = true;
-    @Input() treoScrollbarOptions: any = {};
+    static ngAcceptInputType_treoScrollbar: BooleanInput;
 
-    private _animation?: number;
-    private _options: any = {};
-    private _ps?: PerfectScrollbar;
+    @Input() treoScrollbar: boolean = true;
+    @Input() treoScrollbarOptions: PerfectScrollbar.Options;
+
+    private _animation: number;
+    private _options: PerfectScrollbar.Options;
+    private _ps: PerfectScrollbar;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -50,7 +53,7 @@ export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
     /**
      * Getter for _ps
      */
-    get ps(): PerfectScrollbar | undefined
+    get ps(): PerfectScrollbar | null
     {
         return this._ps;
     }
@@ -367,7 +370,7 @@ export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
         if ( this._animation )
         {
             window.cancelAnimationFrame(this._animation);
-            this._animation = undefined;
+            this._animation = null;
         }
 
         if ( !speed || typeof window === 'undefined' )
@@ -457,6 +460,6 @@ export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
         this._ps.destroy();
 
         // Clean up
-        this._ps = undefined;
+        this._ps = null;
     }
 }

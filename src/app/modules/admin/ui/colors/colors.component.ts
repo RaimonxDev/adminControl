@@ -10,36 +10,32 @@ import { TreoAnimations } from '@treo/animations';
 })
 export class ColorsComponent
 {
-    treoPalettes: any[];
-    themePalettes: any[];
-    hues: any[];
+    hues: string[] = ['900', '800', '700', '600', '500', '400', '300', '200', '100', '50'];
+    themePalettes: string[] = [
+        'primary',
+        'accent',
+        'warn',
+        'white',
+        'black'
+    ];
+    treoPalettes: string[] = [
+        'gray',
+        'cool-gray',
+        'red',
+        'orange',
+        'yellow',
+        'green',
+        'teal',
+        'blue',
+        'indigo',
+        'purple',
+        'pink'
+    ];
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the defaults
-        this.themePalettes = [
-            'primary',
-            'accent',
-            'warn',
-            'white',
-            'black'
-        ];
-        this.treoPalettes = [
-            'gray',
-            'cool-gray',
-            'red',
-            'orange',
-            'yellow',
-            'green',
-            'teal',
-            'blue',
-            'indigo',
-            'purple',
-            'pink'
-        ];
-        this.hues = ['900', '800', '700', '600', '500', '400', '300', '200', '100', '50'];
     }
 }

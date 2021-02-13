@@ -14,23 +14,20 @@ import { AnalyticsService } from 'app/modules/admin/dashboards/analytics/analyti
 })
 export class AnalyticsComponent implements OnInit, OnDestroy
 {
-    // Public
     data: any;
-    ageOptions!: ApexOptions;
-    averagePurchaseValueOptions!: ApexOptions;
-    browsersOptions!: ApexOptions;
-    channelsOptions!: ApexOptions;
-    devicesOptions!: ApexOptions;
-    genderOptions!: ApexOptions;
-    languageOptions!: ApexOptions;
-    newVsReturningOptions!: ApexOptions;
-    purchasesOptions!: ApexOptions;
-    refundsOptions!: ApexOptions;
-    totalVisitsOptions!: ApexOptions;
-    uniqueVisitorsOptions!: ApexOptions;
-    uniquePurchasesOptions!: ApexOptions;
-
-    // Private
+    ageOptions: ApexOptions;
+    averagePurchaseValueOptions: ApexOptions;
+    browsersOptions: ApexOptions;
+    channelsOptions: ApexOptions;
+    devicesOptions: ApexOptions;
+    genderOptions: ApexOptions;
+    languageOptions: ApexOptions;
+    newVsReturningOptions: ApexOptions;
+    purchasesOptions: ApexOptions;
+    refundsOptions: ApexOptions;
+    totalVisitsOptions: ApexOptions;
+    uniqueVisitorsOptions: ApexOptions;
+    uniquePurchasesOptions: ApexOptions;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -52,20 +49,20 @@ export class AnalyticsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the mock-api
+        // Get the data
         this._analyticsService.data$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
 
-                // Store the mock-api
+                // Store the data
                 this.data = data;
 
-                // Prepare the chart mock-api
+                // Prepare the chart data
                 this._prepareChartData();
             });
 
         // Attach SVG fill fixer to all ApexCharts
-        (window as { [key: string]: any })['Apex'] = {
+        window['Apex'] = {
             chart: {
                 events: {
                     mounted: (chart: any, options?: any) => {
@@ -112,18 +109,15 @@ export class AnalyticsComponent implements OnInit, OnDestroy
         // 2. Filter out the ones that doesn't have cross reference so we only left with the ones that use the 'url(#id)' syntax
         // 3. Insert the 'currentURL' at the front of the 'fill' attribute value
         Array.from(element.querySelectorAll('*[fill]'))
-             .filter((el) => el.getAttribute('fill')?.indexOf('url(') !== -1)
+             .filter((el) => el.getAttribute('fill').indexOf('url(') !== -1)
              .forEach((el) => {
                  const attrVal = el.getAttribute('fill');
-                 if ( attrVal )
-                 {
-                     el.setAttribute('fill', `url(${currentURL}${attrVal.slice(attrVal.indexOf('#'))}`);
-                 }
+                 el.setAttribute('fill', `url(${currentURL}${attrVal.slice(attrVal.indexOf('#'))}`);
              });
     }
 
     /**
-     * Prepare the chart mock-api from the mock-api
+     * Prepare the chart data from the data
      *
      * @private
      */

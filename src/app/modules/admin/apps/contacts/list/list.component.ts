@@ -18,19 +18,17 @@ import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.servic
 })
 export class ContactsListComponent implements OnInit, OnDestroy
 {
+    @ViewChild('matDrawer', {static: true}) matDrawer: MatDrawer;
+
     contacts$: Observable<Contact[]>;
-    contactsCount: number;
-    contactsTableColumns: string[];
+
+    contactsCount: number = 0;
+    contactsTableColumns: string[] = ['name', 'email', 'phoneNumber', 'job'];
     countries: Country[];
     drawerMode: 'side' | 'over';
-    searchInputControl: FormControl;
+    searchInputControl: FormControl = new FormControl();
     selectedContact: Contact;
-
-    @ViewChild('matDrawer', {static: true})
-    matDrawer: MatDrawer;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -44,13 +42,6 @@ export class ContactsListComponent implements OnInit, OnDestroy
         private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.contactsCount = 0;
-        this.contactsTableColumns = ['name', 'email', 'phoneNumber', 'job'];
-        this.searchInputControl = new FormControl();
     }
 
     // -----------------------------------------------------------------------------------------------------

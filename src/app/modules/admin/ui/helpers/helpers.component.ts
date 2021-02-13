@@ -8,15 +8,13 @@ import { FormBuilder } from '@angular/forms';
 })
 export class HelpersComponent
 {
-    formFieldHelpers: string[];
+    formFieldHelpers: string[] = [''];
 
     /**
      * Constructor
      */
     constructor(private _formBuilder: FormBuilder)
     {
-        // Set the default
-        this.formFieldHelpers = [''];
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -90,9 +90,9 @@ module.exports = async (config: webpack.Configuration, options: CustomWebpackBro
             __TAILWIND_CONFIG__: require(path.resolve(__dirname, 'src/@treo/tailwind/utils/config-extractor'))({tailwindConfig})
         }),
 
-        // Replace __TREO_VERSION__ from any file with version number from package.json
+        // Replace __APP_VERSION__ from any file with version number from package.json
         new webpack.DefinePlugin({
-            __TREO_VERSION__: '"' + require(path.resolve(__dirname, 'package.json')).version + '"'
+            __APP_VERSION__: '"' + require(path.resolve(__dirname, 'package.json')).version + '"'
         })
     );
 

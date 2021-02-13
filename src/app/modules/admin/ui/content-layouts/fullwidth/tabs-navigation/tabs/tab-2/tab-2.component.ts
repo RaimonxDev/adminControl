@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class FullwidthTabsNavigationTab2Component
 {
-
+    /**
+     * Constructor
+     */
     constructor()
     {
     }
-
 }

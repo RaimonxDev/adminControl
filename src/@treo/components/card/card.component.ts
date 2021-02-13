@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { TreoAnimations } from '@treo/animations';
 import { TreoCardFace } from '@treo/components/card/card.types';
 
@@ -13,6 +13,9 @@ import { TreoCardFace } from '@treo/components/card/card.types';
 })
 export class TreoCardComponent implements OnChanges
 {
+    static ngAcceptInputType_expanded: BooleanInput;
+    static ngAcceptInputType_flippable: BooleanInput;
+
     @Input() expanded: boolean = false;
     @Input() face: TreoCardFace = 'front';
     @Input() flippable: boolean = false;

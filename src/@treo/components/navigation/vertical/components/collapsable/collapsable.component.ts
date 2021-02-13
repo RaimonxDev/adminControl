@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { BooleanInput } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { TreoAnimations } from '@treo/animations';
@@ -16,13 +17,15 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationCollapsableItemComponent implements OnInit, OnDestroy
 {
-    @Input() autoCollapse!: boolean;
-    @Input() item!: TreoNavigationItem;
-    @Input() name!: string;
+    static ngAcceptInputType_autoCollapse: BooleanInput;
+
+    @Input() autoCollapse: boolean;
+    @Input() item: TreoNavigationItem;
+    @Input() name: string;
 
     isCollapsed: boolean = true;
     isExpanded: boolean = false;
-    private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
+    private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**

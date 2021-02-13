@@ -18,14 +18,12 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     filters: MailFilter[];
     folders: MailFolder[];
     labels: MailLabel[];
-    menuData: TreoNavigationItem[];
-
-    // Private
-    private _filtersMenuData: TreoNavigationItem[];
-    private _foldersMenuData: TreoNavigationItem[];
-    private _labelsMenuData: TreoNavigationItem[];
-    private _otherMenuData: TreoNavigationItem[];
-    private _unsubscribeAll: Subject<any>;
+    menuData: TreoNavigationItem[] = [];
+    private _filtersMenuData: TreoNavigationItem[] = [];
+    private _foldersMenuData: TreoNavigationItem[] = [];
+    private _labelsMenuData: TreoNavigationItem[] = [];
+    private _otherMenuData: TreoNavigationItem[] = [];
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -36,15 +34,6 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._filtersMenuData = [];
-        this._foldersMenuData = [];
-        this._labelsMenuData = [];
-        this._otherMenuData = [];
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.menuData = [];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -101,6 +90,26 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open compose dialog
+     */
+    openComposeDialog(): void
+    {
+        // Open the dialog
+        const dialogRef = this._matDialog.open(MailboxComposeComponent, {
+            panelClass: 'mailbox-compose-dialog'
+        });
+
+        dialogRef.afterClosed()
+                 .subscribe(result => {
+                     console.log('Compose dialog was closed!');
+                 });
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -284,25 +293,5 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             // Refresh the navigation
             mainNavigationComponent.refresh();
         }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Open compose dialog
-     */
-    openComposeDialog(): void
-    {
-        // Open the dialog
-        const dialogRef = this._matDialog.open(MailboxComposeComponent, {
-            panelClass: 'mailbox-compose-dialog'
-        });
-
-        dialogRef.afterClosed()
-                 .subscribe(result => {
-                     console.log('Compose dialog was closed!');
-                 });
     }
 }

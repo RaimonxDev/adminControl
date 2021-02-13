@@ -21,5 +21,5 @@ export class Version
 }
 
 // Version number from package.json will be extracted here via webpack
-declare const __TREO_VERSION__: string;
-export const VERSION = new Version(__TREO_VERSION__);
+declare const __APP_VERSION__: string;
+export const VERSION = new Version(__APP_VERSION__);

@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TreoAnimations } from '@treo/animations';
+import { TreoAlertType } from '@treo/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -11,18 +12,24 @@ import { AuthService } from 'app/core/auth/auth.service';
     encapsulation: ViewEncapsulation.None,
     animations   : TreoAnimations
 })
-export class AuthSignUpComponent implements OnInit, OnDestroy
+export class AuthSignUpComponent implements OnInit
 {
-    message?: any;
-    signUpForm!: FormGroup;
-    private _unsubscribeAll: Subject<any> = new Subject<any>();
+    @ViewChild('signUpNgForm') signUpNgForm: NgForm;
+
+    alert: { type: TreoAlertType, message: string } = {
+        type   : 'success',
+        message: ''
+    };
+    signUpForm: FormGroup;
+    showAlert: boolean = false;
 
     /**
      * Constructor
      */
     constructor(
         private _authService: AuthService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _router: Router
     )
     {
     }
@@ -47,16 +54,6 @@ export class AuthSignUpComponent implements OnInit, OnDestroy
         );
     }
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -75,28 +72,34 @@ export class AuthSignUpComponent implements OnInit, OnDestroy
         // Disable the form
         this.signUpForm.disable();
 
-        // Hide the message
-        this.message = undefined;
+        // Hide the alert
+        this.showAlert = false;
 
-        // Do your action here...
+        // Sign up
+        this._authService.signUp(this.signUpForm.value)
+            .subscribe(
+                (response) => {
 
-        // Emulate server delay
-        setTimeout(() => {
+                    // Navigate to the confirmation required page
+                    this._router.navigateByUrl('/confirmation-required');
+                },
+                (response) => {
 
-            // Re-enable the form
-            this.signUpForm.enable();
+                    // Re-enable the form
+                    this.signUpForm.enable();
 
-            // Reset the form
-            this.signUpForm.reset({});
+                    // Reset the form
+                    this.signUpNgForm.resetForm();
 
-            // Show the message
-            this.message = {
-                appearance: 'outline',
-                content   : 'Your account has been created and a confirmation mail has been sent to your email address.',
-                shake     : false,
-                showIcon  : false,
-                type      : 'success'
-            };
-        }, 1000);
+                    // Set the alert
+                    this.alert = {
+                        type   : 'error',
+                        message: 'Something went wrong, please try again.'
+                    };
+
+                    // Show the alert
+                    this.showAlert = true;
+                }
+            );
     }
 }

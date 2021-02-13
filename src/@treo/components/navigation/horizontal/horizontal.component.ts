@@ -17,7 +17,7 @@ import { TreoUtilsService } from '@treo/services/utils/utils.service';
 export class TreoHorizontalNavigationComponent implements OnChanges, OnInit, OnDestroy
 {
     @Input() name: string = this._treoUtilsService.randomId();
-    @Input() navigation: TreoNavigationItem[] = [];
+    @Input() navigation: TreoNavigationItem[];
 
     onRefreshed: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
     private _unsubscribeAll: Subject<any> = new Subject<any>();

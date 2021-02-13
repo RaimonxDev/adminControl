@@ -14,17 +14,14 @@ import { Mail, MailCategory } from 'app/modules/admin/apps/mailbox/mailbox.types
 })
 export class MailboxListComponent implements OnInit, OnDestroy
 {
+    @ViewChild('mailList') mailList: ElementRef;
+
     category: MailCategory;
     mails: Mail[];
-    mailsLoading: boolean;
+    mailsLoading: boolean = false;
     pagination: any;
     selectedMail: Mail;
-
-    @ViewChild('mailList')
-    mailList: ElementRef;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -34,11 +31,6 @@ export class MailboxListComponent implements OnInit, OnDestroy
         private _mailboxService: MailboxService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.mailsLoading = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

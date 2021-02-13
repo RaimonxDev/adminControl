@@ -23,41 +23,26 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 })
 export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 {
+    @ViewChild('dueDatePanelOrigin') private _dueDatePanelOrigin: MatButton;
+    @ViewChild('dueDatePanel') private _dueDatePanel: TemplateRef<any>;
+    @ViewChild('priorityPanelOrigin') private _priorityPanelOrigin: MatButton;
+    @ViewChild('priorityPanel') private _priorityPanel: TemplateRef<any>;
+    @ViewChild('tagsPanelOrigin') private _tagsPanelOrigin: MatButton;
+    @ViewChild('tagsPanel') private _tagsPanel: TemplateRef<any>;
+    @ViewChild('titleField') private _titleField: ElementRef;
+
     tags: Tag[];
-    tagsEditMode: boolean;
+    tagsEditMode: boolean = false;
     filteredTags: Tag[];
     task: Task;
     taskForm: FormGroup;
     tasks: Task[];
-
-    // Private
     private _dueDatePanelOverlayRef: OverlayRef;
     private _dueDatePanelTemplatePortal: TemplatePortal;
     private _priorityPanelOverlayRef: OverlayRef;
     private _priorityPanelTemplatePortal: TemplatePortal;
     private _tagsPanelOverlayRef: OverlayRef;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('dueDatePanelOrigin')
-    private _dueDatePanelOrigin: MatButton;
-
-    @ViewChild('dueDatePanel')
-    private _dueDatePanel: TemplateRef<any>;
-
-    @ViewChild('priorityPanelOrigin')
-    private _priorityPanelOrigin: MatButton;
-
-    @ViewChild('priorityPanel')
-    private _priorityPanel: TemplateRef<any>;
-
-    @ViewChild('tagsPanelOrigin')
-    private _tagsPanelOrigin: MatButton;
-
-    @ViewChild('tagsPanel')
-    private _tagsPanel: TemplateRef<any>;
-
-    @ViewChild('titleField')
-    private _titleField: ElementRef;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -84,11 +69,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.tagsEditMode = false;
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -18,13 +18,13 @@ import { ShortcutsService } from 'app/layout/common/shortcuts/shortcuts.service'
 })
 export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
 {
-    @Input() shortcuts?: Shortcut[];
-    @ViewChild('shortcutsOrigin') private _shortcutsOrigin?: MatButton;
-    @ViewChild('shortcutsPanel') private _shortcutsPanel?: TemplateRef<any>;
+    @Input() shortcuts: Shortcut[];
+    @ViewChild('shortcutsOrigin') private _shortcutsOrigin: MatButton;
+    @ViewChild('shortcutsPanel') private _shortcutsPanel: TemplateRef<any>;
 
     mode: 'view' | 'modify' | 'add' | 'edit' = 'view';
     shortcutForm: FormGroup;
-    private _overlayRef?: OverlayRef;
+    private _overlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -38,15 +38,6 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Initialize the form
-        this.shortcutForm = this._formBuilder.group({
-            id         : [null],
-            label      : ['', Validators.required],
-            description: [''],
-            icon       : ['', Validators.required],
-            link       : ['', Validators.required],
-            useRouter  : ['', Validators.required]
-        });
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -73,6 +64,16 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Initialize the form
+        this.shortcutForm = this._formBuilder.group({
+            id         : [null],
+            label      : ['', Validators.required],
+            description: [''],
+            icon       : ['', Validators.required],
+            link       : ['', Validators.required],
+            useRouter  : ['', Validators.required]
+        });
+
         // Get the shortcuts
         this._shortcutsService.shortcuts$
             .pipe(takeUntil(this._unsubscribeAll))

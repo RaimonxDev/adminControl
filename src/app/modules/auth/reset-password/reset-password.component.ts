@@ -1,8 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 import { TreoAnimations } from '@treo/animations';
 import { TreoValidators } from '@treo/validators';
+import { TreoAlertType } from '@treo/components/alert';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector     : 'auth-reset-password',
@@ -11,16 +13,24 @@ import { TreoValidators } from '@treo/validators';
     encapsulation: ViewEncapsulation.None,
     animations   : TreoAnimations
 })
-export class AuthResetPasswordComponent implements OnInit, OnDestroy
+export class AuthResetPasswordComponent implements OnInit
 {
-    message?: any;
-    resetPasswordForm!: FormGroup;
-    private _unsubscribeAll: Subject<any> = new Subject<any>();
+    @ViewChild('resetPasswordNgForm') resetPasswordNgForm: NgForm;
+
+    alert: { type: TreoAlertType, message: string } = {
+        type   : 'success',
+        message: ''
+    };
+    resetPasswordForm: FormGroup;
+    showAlert: boolean = false;
 
     /**
      * Constructor
      */
-    constructor(private _formBuilder: FormBuilder)
+    constructor(
+        private _authService: AuthService,
+        private _formBuilder: FormBuilder
+    )
     {
     }
 
@@ -44,16 +54,6 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
         );
     }
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
      */
     resetPassword(): void
     {
-        // Do nothing if the form is invalid
+        // Return if the form is invalid
         if ( this.resetPasswordForm.invalid )
         {
             return;
@@ -72,28 +72,41 @@ export class AuthResetPasswordComponent implements OnInit, OnDestroy
         // Disable the form
         this.resetPasswordForm.disable();
 
-        // Hide the message
-        this.message = undefined;
+        // Hide the alert
+        this.showAlert = false;
 
-        // Do your action here...
+        // Send the request to the server
+        this._authService.resetPassword(this.resetPasswordForm.get('password').value)
+            .pipe(
+                finalize(() => {
 
-        // Emulate server delay
-        setTimeout(() => {
+                    // Re-enable the form
+                    this.resetPasswordForm.enable();
 
-            // Re-enable the form
-            this.resetPasswordForm.enable();
+                    // Reset the form
+                    this.resetPasswordNgForm.resetForm();
 
-            // Reset the form
-            this.resetPasswordForm.reset({});
+                    // Show the alert
+                    this.showAlert = true;
+                })
+            )
+            .subscribe(
+                (response) => {
 
-            // Show the message
-            this.message = {
-                appearance: 'outline',
-                content   : 'Your password has been reset.',
-                shake     : false,
-                showIcon  : false,
-                type      : 'success'
-            };
-        }, 1000);
+                    // Set the alert
+                    this.alert = {
+                        type   : 'success',
+                        message: 'Your password has been reset.'
+                    };
+                },
+                (response) => {
+
+                    // Set the alert
+                    this.alert = {
+                        type   : 'error',
+                        message: 'Something went wrong, please try again.'
+                    };
+                }
+            );
     }
 }

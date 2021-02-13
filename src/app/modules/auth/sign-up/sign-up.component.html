@@ -20,17 +20,18 @@
                        [routerLink]="['/sign-in']">Sign in</a>
                 </div>
 
-                <!-- Message -->
-                <treo-alert *ngIf="message"
-                            [appearance]="message.appearance"
-                            [showIcon]="message.showIcon"
-                            [type]="message.type"
-                            [@shake]="message.shake">
-                    {{message.content}}
+                <!-- Alert -->
+                <treo-alert *ngIf="showAlert"
+                            [appearance]="'outline'"
+                            [showIcon]="false"
+                            [type]="alert.type"
+                            [@shake]="alert.type === 'error'">
+                    {{alert.message}}
                 </treo-alert>
 
                 <!-- Sign Up form -->
-                <form [formGroup]="signUpForm">
+                <form [formGroup]="signUpForm"
+                      #signUpNgForm="ngForm">
 
                     <!-- Name field -->
                     <mat-form-field>
@@ -98,6 +99,9 @@
                             <a class="link"
                                [routerLink]="['./']">Privacy Policy</a>
                         </mat-checkbox>
+                        <mat-error *ngIf="(signUpForm.get('agreements').dirty || signUpNgForm.submitted) && signUpForm.get('agreements').hasError('required')">
+                            You must agree with the Terms of Service and Privacy Policy
+                        </mat-error>
                     </div>
 
                     <!-- Submit button -->

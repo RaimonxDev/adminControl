@@ -9,36 +9,21 @@ import { Mail, MailCategory, MailFilter, MailFolder, MailLabel } from 'app/modul
 })
 export class MailboxService
 {
-    // Observables
-    private _category: BehaviorSubject<MailCategory>;
-    private _filters: BehaviorSubject<MailFilter[]>;
-    private _folders: BehaviorSubject<MailFolder[]>;
-    private _labels: BehaviorSubject<MailLabel[]>;
-    private _mails: BehaviorSubject<Mail[]>;
-    private _mailsLoading: BehaviorSubject<boolean>;
-    private _mail: BehaviorSubject<Mail>;
-    private _pagination: BehaviorSubject<any>;
-
-    // Observables that can be executable from outside
-    selectedMailChanged: BehaviorSubject<any>;
+    selectedMailChanged: BehaviorSubject<any> = new BehaviorSubject(null);
+    private _category: BehaviorSubject<MailCategory> = new BehaviorSubject(null);
+    private _filters: BehaviorSubject<MailFilter[]> = new BehaviorSubject(null);
+    private _folders: BehaviorSubject<MailFolder[]> = new BehaviorSubject(null);
+    private _labels: BehaviorSubject<MailLabel[]> = new BehaviorSubject(null);
+    private _mails: BehaviorSubject<Mail[]> = new BehaviorSubject(null);
+    private _mailsLoading: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    private _mail: BehaviorSubject<Mail> = new BehaviorSubject(null);
+    private _pagination: BehaviorSubject<any> = new BehaviorSubject(null);
 
     /**
      * Constructor
      */
     constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._category = new BehaviorSubject(null);
-        this._filters = new BehaviorSubject(null);
-        this._folders = new BehaviorSubject(null);
-        this._labels = new BehaviorSubject(null);
-        this._mails = new BehaviorSubject(null);
-        this._mailsLoading = new BehaviorSubject(false);
-        this._mail = new BehaviorSubject(null);
-        this._pagination = new BehaviorSubject(null);
-
-        // Set the defaults
-        this.selectedMailChanged = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

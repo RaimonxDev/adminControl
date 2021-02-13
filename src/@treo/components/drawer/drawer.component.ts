@@ -3,7 +3,7 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { TreoDrawerMode, TreoDrawerPosition } from '@treo/components/drawer/drawer.types';
 import { TreoDrawerService } from '@treo/components/drawer/drawer.service';
 import { TreoUtilsService } from '@treo/services/utils/utils.service';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector     : 'treo-drawer',
@@ -14,6 +14,10 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 })
 export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
 {
+    static ngAcceptInputType_fixed: BooleanInput;
+    static ngAcceptInputType_opened: BooleanInput;
+    static ngAcceptInputType_transparentOverlay: BooleanInput;
+
     @Input() fixed: boolean = false;
     @Input() mode: TreoDrawerMode = 'side';
     @Input() name: string = this._treoUtilsService.randomId();
@@ -27,8 +31,8 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
 
     private _animationsEnabled: boolean = false;
     private _hovered: boolean = false;
-    private _overlay: HTMLElement | null = null;
-    private _player: AnimationPlayer | null = null;
+    private _overlay: HTMLElement;
+    private _player: AnimationPlayer;
 
     /**
      * Constructor
@@ -337,7 +341,7 @@ export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
             if ( this._overlay )
             {
                 // Remove the backdrop
-                this._overlay.parentNode?.removeChild(this._overlay);
+                this._overlay.parentNode.removeChild(this._overlay);
                 this._overlay = null;
             }
         });

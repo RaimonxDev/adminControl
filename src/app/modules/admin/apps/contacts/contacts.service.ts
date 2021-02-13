@@ -10,21 +10,16 @@ import { Contact, Country, Tag } from 'app/modules/admin/apps/contacts/contacts.
 export class ContactsService
 {
     // Private
-    private _contact: BehaviorSubject<Contact | null>;
-    private _contacts: BehaviorSubject<Contact[] | null>;
-    private _countries: BehaviorSubject<Country[] | null>;
-    private _tags: BehaviorSubject<Tag[] | null>;
+    private _contact: BehaviorSubject<Contact | null> = new BehaviorSubject(null);
+    private _contacts: BehaviorSubject<Contact[] | null> = new BehaviorSubject(null);
+    private _countries: BehaviorSubject<Country[] | null> = new BehaviorSubject(null);
+    private _tags: BehaviorSubject<Tag[] | null> = new BehaviorSubject(null);
 
     /**
      * Constructor
      */
     constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._contact = new BehaviorSubject(null);
-        this._contacts = new BehaviorSubject(null);
-        this._countries = new BehaviorSubject(null);
-        this._tags = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -13,10 +13,10 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationSpacerItemComponent implements OnInit, OnDestroy
 {
-    @Input() item!: TreoNavigationItem;
-    @Input() name!: string;
+    @Input() item: TreoNavigationItem;
+    @Input() name: string;
 
-    private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
+    private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**

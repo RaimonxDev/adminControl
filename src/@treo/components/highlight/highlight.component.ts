@@ -12,12 +12,12 @@ import { TreoHighlightService } from '@treo/components/highlight/highlight.servi
 })
 export class TreoHighlightComponent implements OnChanges, AfterViewInit
 {
-    @Input() code?: string;
-    @Input() lang?: string;
-    @ViewChild(TemplateRef) templateRef?: TemplateRef<any>;
+    @Input() code: string;
+    @Input() lang: string;
+    @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
 
-    highlightedCode?: string;
-    private _viewRef?: EmbeddedViewRef<any>;
+    highlightedCode: string;
+    private _viewRef: EmbeddedViewRef<any>;
 
     /**
      * Constructor
@@ -108,11 +108,11 @@ export class TreoHighlightComponent implements OnChanges, AfterViewInit
         if ( this._viewRef )
         {
             this._viewRef.destroy();
-            this._viewRef = undefined;
+            this._viewRef = null;
         }
 
         // Highlight and sanitize the code just in case
-        this.highlightedCode = this._domSanitizer.sanitize(SecurityContext.HTML, this._treoHighlightService.highlight(this.code, this.lang)) ?? undefined;
+        this.highlightedCode = this._domSanitizer.sanitize(SecurityContext.HTML, this._treoHighlightService.highlight(this.code, this.lang));
 
         // Return if the highlighted code is null
         if ( this.highlightedCode === null )

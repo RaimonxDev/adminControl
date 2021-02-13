@@ -9,7 +9,7 @@ import { TreoNavigationItem, TreoVerticalNavigationAppearance, TreoVerticalNavig
 import { TreoNavigationService } from '@treo/components/navigation/navigation.service';
 import { TreoScrollbarDirective } from '@treo/directives/scrollbar/scrollbar.directive';
 import { TreoUtilsService } from '@treo/services/utils/utils.service';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector       : 'treo-vertical-navigation',
@@ -22,12 +22,16 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 })
 export class TreoVerticalNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy
 {
+    static ngAcceptInputType_inner: BooleanInput;
+    static ngAcceptInputType_opened: BooleanInput;
+    static ngAcceptInputType_transparentOverlay: BooleanInput;
+
     @Input() appearance: TreoVerticalNavigationAppearance = 'classic';
     @Input() autoCollapse: boolean = true;
     @Input() inner: boolean = false;
     @Input() mode: TreoVerticalNavigationMode = 'side';
     @Input() name: string = this._treoUtilsService.randomId();
-    @Input() navigation: TreoNavigationItem[] = [];
+    @Input() navigation: TreoNavigationItem[];
     @Input() opened: boolean = true;
     @Input() position: TreoVerticalNavigationPosition = 'left';
     @Input() transparentOverlay: boolean = false;
@@ -35,22 +39,22 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
     @Output() readonly modeChanged: EventEmitter<TreoVerticalNavigationMode> = new EventEmitter<TreoVerticalNavigationMode>();
     @Output() readonly openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() readonly positionChanged: EventEmitter<TreoVerticalNavigationPosition> = new EventEmitter<TreoVerticalNavigationPosition>();
-    @ViewChild('navigationContent') private _navigationContentEl?: ElementRef;
+    @ViewChild('navigationContent') private _navigationContentEl: ElementRef;
 
-    activeAsideItemId?: string;
+    activeAsideItemId: string | null = null;
     onCollapsableItemCollapsed: ReplaySubject<TreoNavigationItem> = new ReplaySubject<TreoNavigationItem>(1);
     onCollapsableItemExpanded: ReplaySubject<TreoNavigationItem> = new ReplaySubject<TreoNavigationItem>(1);
     onRefreshed: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
     private _animationsEnabled: boolean = false;
-    private _asideOverlay?: HTMLElement;
+    private _asideOverlay: HTMLElement;
     private readonly _handleAsideOverlayClick: any;
     private readonly _handleOverlayClick: any;
     private _hovered: boolean = false;
-    private _overlay?: HTMLElement;
-    private _player?: AnimationPlayer;
+    private _overlay: HTMLElement;
+    private _player: AnimationPlayer;
     private _scrollStrategy: ScrollStrategy = this._scrollStrategyOptions.block();
     private _treoScrollbarDirectives!: QueryList<TreoScrollbarDirective>;
-    private _treoScrollbarDirectivesSubscription?: Subscription;
+    private _treoScrollbarDirectivesSubscription: Subscription;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -436,7 +440,7 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
     closeAside(): void
     {
         // Close
-        this.activeAsideItemId = undefined;
+        this.activeAsideItemId = null;
 
         // Hide the aside overlay
         this._hideAsideOverlay();
@@ -529,12 +533,12 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         this._overlay = this._renderer2.createElement('div');
 
         // Add a class to the overlay element
-        this._overlay?.classList.add('treo-vertical-navigation-overlay');
+        this._overlay.classList.add('treo-vertical-navigation-overlay');
 
         // Add a class depending on the transparentOverlay option
         if ( this.transparentOverlay )
         {
-            this._overlay?.classList.add('treo-vertical-navigation-overlay-transparent');
+            this._overlay.classList.add('treo-vertical-navigation-overlay-transparent');
         }
 
         // Append the overlay to the parent of the navigation
@@ -552,7 +556,7 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         this._player.play();
 
         // Add an event listener to the overlay
-        this._overlay?.addEventListener('click', this._handleOverlayClick);
+        this._overlay.addEventListener('click', this._handleOverlayClick);
     }
 
     /**
@@ -585,8 +589,8 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
                 this._overlay.removeEventListener('click', this._handleOverlayClick);
 
                 // Remove the overlay
-                this._overlay?.parentNode?.removeChild(this._overlay);
-                this._overlay = undefined;
+                this._overlay.parentNode.removeChild(this._overlay);
+                this._overlay = null;
             }
 
             // Disable block scroll strategy
@@ -611,7 +615,7 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         this._asideOverlay = this._renderer2.createElement('div');
 
         // Add a class to the aside overlay element
-        this._asideOverlay?.classList.add('treo-vertical-navigation-aside-overlay');
+        this._asideOverlay.classList.add('treo-vertical-navigation-aside-overlay');
 
         // Append the aside overlay to the parent of the navigation
         this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._asideOverlay);
@@ -627,7 +631,7 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
         this._player.play();
 
         // Add an event listener to the aside overlay
-        this._asideOverlay?.addEventListener('click', this._handleAsideOverlayClick);
+        this._asideOverlay.addEventListener('click', this._handleAsideOverlayClick);
     }
 
     /**
@@ -662,8 +666,8 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
                 this._asideOverlay.removeEventListener('click', this._handleAsideOverlayClick);
 
                 // Remove the aside overlay
-                this._asideOverlay?.parentNode?.removeChild(this._asideOverlay);
-                this._asideOverlay = undefined;
+                this._asideOverlay.parentNode.removeChild(this._asideOverlay);
+                this._asideOverlay = null;
             }
         });
     }

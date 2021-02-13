@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoNavigationService } from '@treo/components/navigation';
+import { InitialData } from 'app/app.types';
 
 @Component({
     selector     : 'classy-layout',
@@ -13,8 +14,8 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
-    data: any;
-    isScreenSmall!: boolean;
+    data: InitialData;
+    isScreenSmall: boolean;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**

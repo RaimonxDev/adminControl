@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class RightSidebarContentTabsNavigationTab3Component
 {
-
+    /**
+     * Constructor
+     */
     constructor()
     {
     }
-
 }

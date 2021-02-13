@@ -15,28 +15,19 @@ import { FinanceService } from 'app/modules/admin/dashboards/finance/finance.ser
 })
 export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
 {
-    // Public
-    @ViewChild('recentTransactionsTable', {read: MatSort}) recentTransactionsTableMatSort!: MatSort;
+    @ViewChild('recentTransactionsTable', {read: MatSort}) recentTransactionsTableMatSort: MatSort;
 
     data: any;
-    accountBalanceOptions!: ApexOptions;
-    recentTransactionsDataSource: MatTableDataSource<any>;
-    recentTransactionsTableColumns: string[];
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    accountBalanceOptions: ApexOptions;
+    recentTransactionsDataSource: MatTableDataSource<any> = new MatTableDataSource();
+    recentTransactionsTableColumns: string[] = ['transactionId', 'date', 'name', 'amount', 'status'];
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
      */
     constructor(private _financeService: FinanceService)
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.recentTransactionsDataSource = new MatTableDataSource();
-        this.recentTransactionsTableColumns = ['transactionId', 'date', 'name', 'amount', 'status'];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -48,18 +39,18 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the mock-api
+        // Get the data
         this._financeService.data$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
 
-                // Store the mock-api
+                // Store the data
                 this.data = data;
 
-                // Store the table mock-api
+                // Store the table data
                 this.recentTransactionsDataSource.data = data.recentTransactions;
 
-                // Prepare the chart mock-api
+                // Prepare the chart data
                 this._prepareChartData();
             });
     }
@@ -69,7 +60,7 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
      */
     ngAfterViewInit(): void
     {
-        // Make the mock-api source sortable
+        // Make the data source sortable
         this.recentTransactionsDataSource.sort = this.recentTransactionsTableMatSort;
     }
 
@@ -88,7 +79,7 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Prepare the chart mock-api from the mock-api
+     * Prepare the chart data from the data
      *
      * @private
      */

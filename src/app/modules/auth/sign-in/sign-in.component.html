@@ -20,17 +20,18 @@
                        [routerLink]="['/sign-up']">Sign up</a>
                 </div>
 
-                <!-- Message -->
-                <treo-alert *ngIf="message"
-                            [appearance]="message.appearance"
-                            [showIcon]="message.showIcon"
-                            [type]="message.type"
-                            [@shake]="message.shake">
-                    {{message.content}}
+                <!-- Alert -->
+                <treo-alert *ngIf="showAlert"
+                            [appearance]="'outline'"
+                            [showIcon]="false"
+                            [type]="alert.type"
+                            [@shake]="alert.type === 'error'">
+                    {{alert.message}}
                 </treo-alert>
 
                 <!-- Sign in form -->
-                <form [formGroup]="signInForm">
+                <form [formGroup]="signInForm"
+                      #signInNgForm="ngForm">
 
                     <!-- Email field -->
                     <mat-form-field>
@@ -38,6 +39,12 @@
                         <input id="email"
                                matInput
                                [formControlName]="'email'">
+                        <mat-error *ngIf="signInForm.get('email').hasError('required')">
+                            Email address is required
+                        </mat-error>
+                        <mat-error *ngIf="signInForm.get('email').hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
                     </mat-form-field>
 
                     <!-- Password field -->
@@ -57,6 +64,9 @@
                             <mat-icon *ngIf="passwordField.type === 'text'"
                                       [svgIcon]="'visibility_off'"></mat-icon>
                         </button>
+                        <mat-error>
+                            Password is required
+                        </mat-error>
                     </mat-form-field>
 
                     <!-- Field footer -->

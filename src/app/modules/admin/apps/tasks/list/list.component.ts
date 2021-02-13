@@ -19,17 +19,18 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 })
 export class TasksListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('matDrawer', {static: true})
-    matDrawer: MatDrawer;
+    @ViewChild('matDrawer', {static: true}) matDrawer: MatDrawer;
 
     drawerMode: 'side' | 'over';
     selectedTask: Task;
     tags: Tag[];
     tasks: Task[];
-    tasksCount: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    tasksCount: any = {
+        completed : 0,
+        incomplete: 0,
+        total     : 0
+    };
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -52,15 +53,6 @@ export class TasksListComponent implements OnInit, OnDestroy
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.tasksCount = {
-            completed : 0,
-            incomplete: 0,
-            total     : 0
-        };
     }
 
     // -----------------------------------------------------------------------------------------------------

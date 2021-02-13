@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { BooleanInput } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { TreoVerticalNavigationComponent } from '@treo/components/navigation/vertical/vertical.component';
@@ -14,14 +15,17 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationAsideItemComponent implements OnChanges, OnInit, OnDestroy
 {
-    @Input() activeItemId!: string;
-    @Input() autoCollapse!: boolean;
-    @Input() item!: TreoNavigationItem;
-    @Input() name!: string;
-    @Input() skipChildren!: boolean;
+    static ngAcceptInputType_autoCollapse: BooleanInput;
+    static ngAcceptInputType_skipChildren: BooleanInput;
+
+    @Input() activeItemId: string;
+    @Input() autoCollapse: boolean;
+    @Input() item: TreoNavigationItem;
+    @Input() name: string;
+    @Input() skipChildren: boolean;
 
     active: boolean = false;
-    private _treoVerticalNavigationComponent!: TreoVerticalNavigationComponent;
+    private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**

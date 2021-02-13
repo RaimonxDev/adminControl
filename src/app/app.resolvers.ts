@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { InitialData } from 'app/app.types';
 
 @Injectable({
     providedIn: 'root'
@@ -26,7 +27,7 @@ export class InitialDataResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<InitialData>
     {
         // Fork join multiple API endpoint calls to wait all of them to finish
         return forkJoin([

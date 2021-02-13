@@ -27,6 +27,144 @@ export class AuthMockApi
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Register Mock API handlers
+     */
+    registerHandlers(): void
+    {
+        // -----------------------------------------------------------------------------------------------------
+        // @ Forgot password - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._treoMockApiService
+            .onPost('api/auth/forgot-password', 1000)
+            .reply(() => {
+
+                // Simply return true
+                return [
+                    200,
+                    true
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Reset password - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._treoMockApiService
+            .onPost('api/auth/reset-password', 1000)
+            .reply(() => {
+
+                // Simply return true
+                return [
+                    200,
+                    true
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Sign in - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._treoMockApiService
+            .onPost('api/auth/sign-in', 1500)
+            .reply(({request}) => {
+
+                // Sign in successful
+                if ( request.body.email === 'watkins.andrew@company.com' && request.body.password === 'admin' )
+                {
+                    return [
+                        200,
+                        {
+                            user        : cloneDeep(this._user),
+                            access_token: this._generateJWTToken(),
+                            token_type  : 'bearer'
+                        }
+                    ];
+                }
+
+                // Invalid credentials
+                return [
+                    404,
+                    false
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Verify and refresh the access token - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._treoMockApiService
+            .onPost('api/auth/refresh-access-token')
+            .reply(({request}) => {
+
+                // Get the access token
+                const accessToken = request.body.access_token;
+
+                // Verify the token
+                if ( this._verifyJWTToken(accessToken) )
+                {
+                    return [
+                        200,
+                        {
+                            user        : cloneDeep(this._user),
+                            access_token: this._generateJWTToken(),
+                            token_type  : 'bearer'
+                        }
+                    ];
+                }
+
+                // Invalid token
+                return [
+                    401,
+                    {
+                        error: 'Invalid token'
+                    }
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Sign up - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._treoMockApiService
+            .onPost('api/auth/sign-up', 1500)
+            .reply(() => {
+
+                // Simply return true
+                return [
+                    200,
+                    true
+                ];
+            });
+
+        // -----------------------------------------------------------------------------------------------------
+        // @ Unlock session - POST
+        // -----------------------------------------------------------------------------------------------------
+        this._treoMockApiService
+            .onPost('api/auth/unlock-session', 1500)
+            .reply(({request}) => {
+
+                // Sign in successful
+                if ( request.body.email === 'watkins.andrew@company.com' && request.body.password === 'admin' )
+                {
+                    return [
+                        200,
+                        {
+                            user        : cloneDeep(this._user),
+                            access_token: this._generateJWTToken(),
+                            token_type  : 'bearer'
+                        }
+                    ];
+                }
+
+                // Invalid credentials
+                return [
+                    404,
+                    false
+                ];
+            });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -116,76 +254,5 @@ export class AuthMockApi
 
         // Verify that the resulting signature is valid
         return (signature === signatureCheck);
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Register Mock API handlers
-     */
-    registerHandlers(): void
-    {
-        // -----------------------------------------------------------------------------------------------------
-        // @ Sign in - POST
-        // -----------------------------------------------------------------------------------------------------
-        this._treoMockApiService
-            .onPost('api/auth/sign-in', 1500)
-            .reply(({request}) => {
-
-                // Sign in successful
-                if ( request.body.email === 'watkins.andrew@company.com' && request.body.password === 'admin' )
-                {
-                    return [
-                        200,
-                        {
-                            user: cloneDeep(this._user),
-                            access_token: this._generateJWTToken(),
-                            token_type  : 'bearer'
-                        }
-                    ];
-                }
-
-                // Invalid credentials
-                return [
-                    403,
-                    {
-                        error: 'Wrong email or password'
-                    }
-                ];
-            });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Verify and refresh the access token - POST
-        // -----------------------------------------------------------------------------------------------------
-        this._treoMockApiService
-            .onPost('api/auth/refresh-access-token')
-            .reply(({request}) => {
-
-                // Get the access token
-                const accessToken = request.body.access_token;
-
-                // Verify the token
-                if ( this._verifyJWTToken(accessToken) )
-                {
-                    return [
-                        200,
-                        {
-                            user: cloneDeep(this._user),
-                            access_token: this._generateJWTToken(),
-                            token_type  : 'bearer'
-                        }
-                    ];
-                }
-
-                // Invalid token
-                return [
-                    401,
-                    {
-                        error: 'Invalid token'
-                    }
-                ];
-            });
     }
 }

@@ -13,7 +13,7 @@ import { GuideCategory } from 'app/modules/admin/pages/help-center/help-center.t
 })
 export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
 {
-    guideCategory!: GuideCategory;
+    guideCategory: GuideCategory;
     private _unsubscribeAll: Subject<any> = new Subject();
 
     /**

@@ -17,16 +17,13 @@ import { CryptoService } from 'app/modules/admin/dashboards/crypto/crypto.servic
 })
 export class CryptoComponent implements OnInit, OnDestroy
 {
-    // Public
-    @ViewChild('btcChartComponent') btcChartComponent!: ChartComponent;
+    @ViewChild('btcChartComponent') btcChartComponent: ChartComponent;
     appConfig: any;
     btcOptions: ApexOptions | any;
     data: any;
     drawerMode: 'over' | 'side' = 'side';
-    drawerOpened = true;
-    watchlistChartOptions!: ApexOptions;
-
-    // Private
+    drawerOpened: boolean = true;
+    watchlistChartOptions: ApexOptions;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -105,15 +102,15 @@ export class CryptoComponent implements OnInit, OnDestroy
                 }
             });
 
-        // Get the mock-api
+        // Get the data
         this._cryptoService.data$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
 
-                // Store the mock-api
+                // Store the data
                 this.data = data;
 
-                // Prepare the chart mock-api
+                // Prepare the chart data
                 this._prepareChartData();
             });
     }
@@ -138,7 +135,7 @@ export class CryptoComponent implements OnInit, OnDestroy
     }
 
     /**
-     * Prepare the chart mock-api from the mock-api
+     * Prepare the chart data from the data
      *
      * @private
      */
@@ -232,7 +229,7 @@ export class CryptoComponent implements OnInit, OnDestroy
                     rotate               : 0,
                     minHeight            : 40,
                     hideOverlappingLabels: true,
-                    formatter            : (value: string) => {
+                    formatter            : (value) => {
                         return moment().subtract(Math.abs(parseInt(value, 10)), 'minutes').format('HH:mm');
                     },
                     style                : {

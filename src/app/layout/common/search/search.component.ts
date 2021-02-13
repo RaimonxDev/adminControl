@@ -22,7 +22,7 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy
     @Output() search: EventEmitter<any> = new EventEmitter<any>();
 
     opened: boolean = false;
-    results?: any[];
+    results: any[];
     searchControl: FormControl = new FormControl();
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -47,8 +47,9 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy
     @HostBinding('class') get classList(): any
     {
         return {
-            [`search-appearance-${this.appearance}`]: true,
-            'search-opened'                         : this.opened
+            'search-appearance-bar'  : this.appearance === 'bar',
+            'search-appearance-basic': this.appearance === 'basic',
+            'search-opened'          : this.opened
         };
     }
 
@@ -117,7 +118,7 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy
                     // so the autocomplete panel can be closed
                     if ( !value || value.length < this.minLength )
                     {
-                        this.results = undefined;
+                        this.results = null;
                     }
 
                     // Continue

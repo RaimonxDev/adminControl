@@ -17,12 +17,12 @@ import { NotificationsService } from 'app/layout/common/notifications/notificati
 })
 export class NotificationsComponent implements OnChanges, OnInit, OnDestroy
 {
-    @Input() notifications?: Notification[];
-    @ViewChild('notificationsOrigin') private _notificationsOrigin?: MatButton;
-    @ViewChild('notificationsPanel') private _notificationsPanel?: TemplateRef<any>;
+    @Input() notifications: Notification[];
+    @ViewChild('notificationsOrigin') private _notificationsOrigin: MatButton;
+    @ViewChild('notificationsPanel') private _notificationsPanel: TemplateRef<any>;
 
     unreadCount: number = 0;
-    private _overlayRef?: OverlayRef;
+    private _overlayRef: OverlayRef;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**

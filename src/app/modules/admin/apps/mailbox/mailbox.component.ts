@@ -12,26 +12,17 @@ import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 })
 export class MailboxComponent implements OnInit, OnDestroy
 {
-    @ViewChild('drawer')
-    drawer: MatDrawer;
+    @ViewChild('drawer') drawer: MatDrawer;
 
-    drawerMode: 'over' | 'side';
-    drawerOpened: boolean;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    drawerMode: 'over' | 'side' = 'side';
+    drawerOpened: boolean = true;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
      */
     constructor(private _treoMediaWatcherService: TreoMediaWatcherService)
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.drawerMode = 'side';
-        this.drawerOpened = true;
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -42,6 +42,26 @@ export class AuthService
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Forgot password
+     *
+     * @param email
+     */
+    forgotPassword(email: string): Observable<any>
+    {
+        return this._httpClient.post('api/auth/forgot-password', email);
+    }
+
+    /**
+     * Reset password
+     *
+     * @param password
+     */
+    resetPassword(password: string): Observable<any>
+    {
+        return this._httpClient.post('api/auth/reset-password', password);
+    }
+
+    /**
      * Sign in
      *
      * @param credentials
@@ -116,6 +136,26 @@ export class AuthService
 
         // Return the observable
         return of(true);
+    }
+
+    /**
+     * Sign up
+     *
+     * @param user
+     */
+    signUp(user: { name: string, email: string, password: string, company: string }): Observable<any>
+    {
+        return this._httpClient.post('api/auth/sign-up', user);
+    }
+
+    /**
+     * Unlock session
+     *
+     * @param credentials
+     */
+    unlockSession(credentials: { email: string, password: string }): Observable<any>
+    {
+        return this._httpClient.post('api/auth/unlock-session', credentials);
     }
 
     /**

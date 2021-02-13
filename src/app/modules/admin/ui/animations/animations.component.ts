@@ -114,16 +114,16 @@ export class AnimationsComponent
      * @param secondState
      * @param timeout
      */
-    toggleAnimationState(animation, firstState, secondState, timeout = 500): void
+    toggleAnimationState(animation: string, firstState: string | boolean, secondState: string | boolean, timeout: number = 500): void
     {
         // Split the animation
-        animation = animation.split('.');
+        const animationPath = animation.split('.');
 
         // Toggle the animation state
-        this.animationStates[animation[0]][animation[1]] = firstState;
+        this.animationStates[animationPath[0]][animationPath[1]] = firstState;
 
         setTimeout(() => {
-            this.animationStates[animation[0]][animation[1]] = secondState;
+            this.animationStates[animationPath[0]][animationPath[1]] = secondState;
         }, timeout);
     }
 
@@ -133,18 +133,18 @@ export class AnimationsComponent
      * @param animation
      * @param timeout
      */
-    toggleVisibilityState(animation, timeout = 500): void
+    toggleVisibilityState(animation: string, timeout: number = 500): void
     {
         // Split the animation
-        animation = animation.split('.');
+        const animationPath = animation.split('.');
 
         // Toggle the visibility status
-        this.visibilityStates[animation[0]][animation[1]] = false;
-        this.animationStates[animation[0]][animation[1]] = 'void';
+        this.visibilityStates[animationPath[0]][animationPath[1]] = false;
+        this.animationStates[animationPath[0]][animationPath[1]] = 'void';
 
         setTimeout(() => {
-            this.visibilityStates[animation[0]][animation[1]] = true;
-            this.animationStates[animation[0]][animation[1]] = '*';
+            this.visibilityStates[animationPath[0]][animationPath[1]] = true;
+            this.animationStates[animationPath[0]][animationPath[1]] = '*';
         }, timeout);
     }
 
