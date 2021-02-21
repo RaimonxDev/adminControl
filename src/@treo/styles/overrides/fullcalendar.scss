@@ -16,7 +16,7 @@
                     .fc-row {
 
                         .fc-day-header {
-                            border-color: var(--divider);
+                            border-color: var(--treo-divider);
 
                             span {
                                 display: flex;
@@ -26,7 +26,7 @@
                                 font-size: 12px;
                                 font-weight: 500;
                                 text-transform: uppercase;
-                                color: var(--text-secondary);
+                                @apply text-secondary;
                             }
                         }
                     }
@@ -45,7 +45,7 @@
                             .fc-bg {
 
                                 .fc-day {
-                                    border-color: var(--divider);
+                                    border-color: var(--treo-divider);
 
                                     &.fc-today {
                                         background: none;
@@ -62,15 +62,14 @@
                                         opacity: 1;
 
                                         .fc-day-number {
-                                            color: var(--text-hint);
+                                            @apply text-hint;
                                         }
                                     }
 
                                     &.fc-today {
 
                                         .fc-day-number {
-                                            background: var(--primary);
-                                            color: var(--primary-contrast);
+                                            @apply bg-primary text-on-primary;
                                         }
                                     }
 
@@ -113,7 +112,7 @@
                                     font-size: 12px;
                                     font-weight: 500;
                                     white-space: nowrap;
-                                    color: var(--text-secondary);
+                                    @apply text-secondary;
 
                                     @screen sm {
                                         padding: 0 6px;
@@ -135,7 +134,7 @@
             }
 
             .fc-popover {
-                background: var(--bg-card);
+                @apply bg-card;
 
                 &.fc-more-popover {
                     border: none;
@@ -147,7 +146,7 @@
                         min-height: 32px;
                         max-height: 32px;
                         padding: 0 8px;
-                        background: var(--bg-hover);
+                        @apply bg-hover;
 
                         .fc-title {
                             margin: 0;
@@ -199,11 +198,11 @@
 
                         .fc-axis {
                             width: 48px !important;
-                            border-color: var(--divider);
+                            border-color: var(--treo-divider);
                         }
 
                         .fc-day-header {
-                            border-color: var(--divider);
+                            border-color: var(--treo-divider);
 
                             span {
                                 display: flex;
@@ -211,7 +210,7 @@
                                 align-items: center;
                                 justify-content: center;
                                 width: 100%;
-                                color: var(--text-secondary);
+                                @apply text-secondary;
 
                                 &.fc-weekday {
                                     padding-top: 16px;
@@ -246,11 +245,11 @@
 
                                 .fc-axis {
                                     width: 48px !important;
-                                    border-color: var(--divider);
+                                    border-color: var(--treo-divider);
                                 }
 
                                 .fc-day {
-                                    border-color: var(--divider);
+                                    border-color: var(--treo-divider);
 
                                     &.fc-today {
                                         background: none;
@@ -288,7 +287,7 @@
 
                     .fc-divider {
                         border: none;
-                        background: var(--divider);
+                        background: var(--treo-divider);
                     }
 
                     .fc-time-grid {
@@ -305,7 +304,7 @@
                             }
 
                             .fc-day {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
 
                                 &.fc-today {
                                     background: none;
@@ -328,11 +327,11 @@
                             }
 
                             .fc-time {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
                             }
 
                             .fc-widget-content {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
                             }
                         }
 
@@ -376,11 +375,11 @@
 
                         .fc-axis {
                             width: 48px !important;
-                            border-color: var(--divider);
+                            border-color: var(--treo-divider);
                         }
 
                         .fc-day-header {
-                            border-color: var(--divider);
+                            border-color: var(--treo-divider);
 
                             span {
                                 display: flex;
@@ -388,7 +387,7 @@
                                 align-items: center;
                                 justify-content: center;
                                 width: 100%;
-                                color: var(--text-secondary);
+                                @apply text-secondary;
 
                                 &.fc-weekday {
                                     padding-top: 16px;
@@ -419,11 +418,11 @@
                         .fc-bg {
 
                             .fc-axis {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
                             }
 
                             .fc-day {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
 
                                 &.fc-today {
                                     background: none;
@@ -471,7 +470,7 @@
 
                     .fc-divider {
                         border: none;
-                        border-color: var(--divider);
+                        border-color: var(--treo-divider);
                     }
 
                     .fc-time-grid {
@@ -479,7 +478,7 @@
                         .fc-bg {
 
                             .fc-day {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
 
                                 &.fc-today {
                                     background: none;
@@ -511,11 +510,11 @@
                             }
 
                             .fc-time {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
                             }
 
                             .fc-widget-content {
-                                border-color: var(--divider);
+                                border-color: var(--treo-divider);
                             }
                         }
 
@@ -564,7 +563,7 @@
                     &:hover {
 
                         td {
-                            background-color: var(--bg-hover);
+                            @apply bg-hover;
                         }
                     }
 
@@ -576,7 +575,7 @@
                         min-height: 48px;
                         padding: 0 8px;
                         border-width: 0 0 1px 0;
-                        border-color: var(--divider);
+                        border-color: var(--treo-divider);
 
                         &.fc-list-item-date {
                             order: 1;
@@ -616,7 +615,7 @@
                                             font-weight: 500;
                                             letter-spacing: 0.055em;
                                             text-transform: uppercase;
-                                            color: var(--text-secondary);
+                                            @apply text-secondary;
                                         }
                                     }
                                 }

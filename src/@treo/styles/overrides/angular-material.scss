@@ -63,7 +63,7 @@
 
         .mat-expansion-panel-body {
             line-height: 1.7;
-            color: var(--text-secondary) !important;
+            @apply text-secondary #{'!important'};
         }
     }
 }
@@ -200,7 +200,7 @@
     &.mat-primary:not(.mat-button-disabled) {
 
         .mat-icon {
-            color: var(--primary) !important;
+            @apply text-primary #{'!important'};
         }
     }
 
@@ -208,7 +208,7 @@
     &.mat-accent:not(.mat-button-disabled) {
 
         .mat-icon {
-            color: var(--accent) !important;
+            @apply text-accent #{'!important'};
         }
     }
 
@@ -216,7 +216,7 @@
     &.mat-warn:not(.mat-button-disabled) {
 
         .mat-icon {
-            color: var(--warn) !important;
+            @apply text-warn #{'!important'};
         }
     }
 
@@ -233,7 +233,7 @@
     &.mat-primary:not(.mat-button-disabled) {
 
         .mat-button-focus-overlay {
-            background-color: var(--primary) !important;
+            @apply bg-primary #{'!important'};
         }
     }
 
@@ -241,7 +241,7 @@
     &.mat-accent:not(.mat-button-disabled) {
 
         .mat-button-focus-overlay {
-            background-color: var(--accent) !important;
+            @apply bg-accent #{'!important'};
         }
     }
 
@@ -249,7 +249,7 @@
     &.mat-warn:not(.mat-button-disabled) {
 
         .mat-button-focus-overlay {
-            background-color: var(--warn) !important;
+            @apply bg-warn #{'!important'};
         }
     }
 
@@ -390,7 +390,7 @@
 
             /* Border color */
             .mat-form-field-flex {
-                border-color: var(--warn) !important;
+                @apply border-warn #{'!important'};
             }
         }
     }
@@ -414,7 +414,7 @@
 
             /* Border color */
             .mat-form-field-flex {
-                border-color: var(--primary) !important;
+                @apply border-primary #{'!important'};
             }
         }
     }
@@ -534,7 +534,7 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--text-hint) !important;
+                @apply text-hint #{'!important'};
 
                 .mat-icon-button {
                     width: 40px;
@@ -546,7 +546,7 @@
                 .mat-icon,
                 .mat-icon-button,
                 .mat-select-value {
-                    color: var(--text-hint) !important;
+                    @apply text-hint #{'!important'};
                 }
 
                 /* Remove the margins from the mat-icon if it's inside a button */
@@ -689,7 +689,7 @@
                         backface-visibility: hidden;
                         transition: none;
                         font-weight: 500;
-                        color: var(--text-default) !important;
+                        @apply text-default #{'!important'};
                     }
                 }
             }
@@ -721,7 +721,7 @@
             }
 
             .mat-hint {
-                color: var(--text-hint) !important;
+                @apply text-hint #{'!important'};
             }
         }
     }
@@ -947,8 +947,7 @@
 
                 .mat-form-field-prefix,
                 .mat-form-field-suffix {
-                    background: var(--bg-default) !important;
-                    @apply border-gray-300 #{'!important'};
+                    @apply border-gray-300 bg-default #{'!important'};
 
                     .dark & {
                         @apply border-gray-500 #{'!important'};
@@ -982,22 +981,22 @@
 
     &::placeholder {
         transition: none !important;
-        color: var(--text-hint) !important;
+        @apply text-hint #{'!important'};
     }
 
     &::-moz-placeholder {
         transition: none !important;
-        color: var(--text-hint) !important;
+        @apply text-hint #{'!important'};
     }
 
     &::-webkit-input-placeholder {
         transition: none !important;
-        color: var(--text-hint) !important;
+        @apply text-hint #{'!important'};
     }
 
     &:-ms-input-placeholder {
         transition: none !important;
-        color: var(--text-hint) !important;
+        @apply text-hint #{'!important'};
     }
 }
 
@@ -1008,19 +1007,19 @@
 
         /* Placeholder color */
         &::placeholder {
-            color: var(--warn) !important;
+            @apply text-warn #{'!important'};
         }
 
         &::-moz-placeholder {
-            color: var(--warn) !important;
+            @apply text-warn #{'!important'};
         }
 
         &::-webkit-input-placeholder {
-            color: var(--warn) !important;
+            @apply text-warn #{'!important'};
         }
 
         &:-ms-input-placeholder {
-            color: var(--warn) !important;
+            @apply text-warn #{'!important'};
         }
     }
 }
@@ -1114,7 +1113,7 @@
 
     .mat-select-placeholder {
         transition: none !important;
-        color: var(--text-hint) !important;
+        @apply text-hint #{'!important'};
     }
 
     .mat-select-trigger {
@@ -1156,7 +1155,7 @@
 
         /* Placeholder color */
         .mat-select-placeholder {
-            color: var(--warn) !important;
+            @apply text-warn #{'!important'};
         }
     }
 }
@@ -1200,27 +1199,23 @@ textarea.mat-input-element {
     &.mat-primary {
 
         .mat-icon {
-            color: var(--primary-contrast) !important;
+            @apply text-on-primary #{'!important'};
         }
 
         .text-secondary {
-            color: var(--primary-contrast) !important;
-            opacity: 0.6 !important;
+            @apply text-on-primary text-opacity-60 #{'!important'};
         }
 
         .text-hint {
-            color: var(--primary-contrast) !important;
-            opacity: 0.38 !important;
+            @apply text-on-primary text-opacity-38 #{'!important'};
         }
 
         .text-disabled {
-            color: var(--primary-contrast) !important;
-            opacity: 0.38 !important;
+            @apply text-on-primary text-opacity-38 #{'!important'};
         }
 
         .divider {
-            color: var(--primary-contrast) !important;
-            opacity: 0.12 !important;
+            @apply text-on-primary text-opacity-12 #{'!important'};
         }
     }
 
@@ -1228,27 +1223,23 @@ textarea.mat-input-element {
     &.mat-accent {
 
         .mat-icon {
-            color: var(--accent-contrast) !important;
+            @apply text-on-accent #{'!important'};
         }
 
         .text-secondary {
-            color: var(--accent-contrast) !important;
-            opacity: 0.6 !important;
+            @apply text-on-accent text-opacity-60 #{'!important'};
         }
 
         .text-hint {
-            color: var(--accent-contrast) !important;
-            opacity: 0.38 !important;
+            @apply text-on-accent text-opacity-38 #{'!important'};
         }
 
         .text-disabled {
-            color: var(--accent-contrast) !important;
-            opacity: 0.38 !important;
+            @apply text-on-accent text-opacity-38 #{'!important'};
         }
 
         .divider {
-            color: var(--accent-contrast) !important;
-            opacity: 0.12 !important;
+            @apply text-on-accent text-opacity-12 #{'!important'};
         }
     }
 
@@ -1256,27 +1247,23 @@ textarea.mat-input-element {
     &.mat-warn {
 
         .mat-icon {
-            color: var(--warn-contrast) !important;
+            @apply text-on-warn #{'!important'};
         }
 
         .text-secondary {
-            color: var(--warn-contrast) !important;
-            opacity: 0.6 !important;
+            @apply text-on-warn text-opacity-60 #{'!important'};
         }
 
         .text-hint {
-            color: var(--warn-contrast) !important;
-            opacity: 0.38 !important;
+            @apply text-on-warn text-opacity-38 #{'!important'};
         }
 
         .text-disabled {
-            color: var(--warn-contrast) !important;
-            opacity: 0.38 !important;
+            @apply text-on-warn text-opacity-38 #{'!important'};
         }
 
         .divider {
-            color: var(--warn-contrast) !important;
-            opacity: 0.12 !important;
+            @apply text-on-warn text-opacity-12 #{'!important'};
         }
     }
 }

@@ -3,8 +3,7 @@ treo-card {
     display: flex;
     border-radius: 8px;
     overflow: hidden;
-    background: var(--bg-card);
-    @apply shadow-md;
+    @apply shadow-md bg-card;
 
     /* Flippable */
     &.treo-card-flippable {
@@ -40,8 +39,7 @@ treo-card {
             border-radius: 8px;
             transition: transform 0.5s ease-out 0s, visibility 0s ease-in 0.2s, opacity 0s ease-in 0.2s;
             backface-visibility: hidden;
-            background: var(--bg-card);
-            @apply shadow-md;
+            @apply shadow-md bg-card;
         }
 
         .treo-card-front {

@@ -109,8 +109,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -141,8 +140,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -172,8 +170,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -200,7 +197,7 @@
         > .header {
             @extend %content-layout-header;
             padding-bottom: 24px;
-            background: var(--bg-card);
+            @apply bg-card;
 
             .dark & {
                 background: transparent;
@@ -214,7 +211,7 @@
 
                 .mat-tab-header {
                     padding: 0 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     @screen sm {
                         padding: 0 40px;
@@ -274,7 +271,7 @@
         > .header {
             @extend %content-layout-header;
             padding-bottom: 24px;
-            background: var(--bg-card);
+            @apply bg-card;
 
             .dark & {
                 background: transparent;
@@ -290,7 +287,7 @@
 
                 .mat-tab-header {
                     padding: 0 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     @screen sm {
                         padding: 0 40px;
@@ -349,7 +346,7 @@
         > .header {
             @extend %content-layout-header;
             padding-bottom: 24px;
-            background: var(--bg-card);
+            @apply bg-card;
         }
 
         > .main {
@@ -363,7 +360,7 @@
 
                 .mat-tab-header {
                     padding: 0 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     @screen sm {
                         padding: 0 40px;
@@ -413,7 +410,7 @@
         > .header {
             @extend %content-layout-header;
             padding-bottom: 24px;
-            background: var(--bg-card);
+            @apply bg-card;
 
             .dark & {
                 background: transparent;
@@ -428,7 +425,7 @@
             nav {
                 margin: 0;
                 padding: 0 24px;
-                background: var(--bg-card);
+                @apply bg-card;
 
                 @screen sm {
                     padding: 0 40px;
@@ -473,7 +470,7 @@
         > .header {
             @extend %content-layout-header;
             padding-bottom: 24px;
-            background: var(--bg-card);
+            @apply bg-card;
 
             .dark & {
                 background: transparent;
@@ -488,7 +485,7 @@
             nav {
                 margin: 0;
                 padding: 0 24px;
-                background: var(--bg-card);
+                @apply bg-card;
 
                 @screen sm {
                     padding: 0 40px;
@@ -532,7 +529,7 @@
         > .header {
             @extend %content-layout-header;
             padding-bottom: 24px;
-            background: var(--bg-card);
+            @apply bg-card;
 
             .dark & {
                 background: transparent;
@@ -548,7 +545,7 @@
             nav {
                 margin: 0;
                 padding: 0 24px;
-                background: var(--bg-card);
+                @apply bg-card;
 
                 @screen sm {
                     padding: 0 40px;
@@ -710,8 +707,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -759,8 +755,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -806,8 +801,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -857,8 +851,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -901,7 +894,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -915,7 +908,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -993,7 +986,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -1007,7 +1000,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -1083,7 +1076,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -1097,7 +1090,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -1177,7 +1170,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -1193,7 +1186,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -1264,7 +1257,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -1279,7 +1272,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -1342,7 +1335,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -1357,7 +1350,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -1418,7 +1411,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -1433,7 +1426,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -1498,7 +1491,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -1514,7 +1507,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -1555,8 +1548,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -1603,8 +1595,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -1651,8 +1642,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -1698,8 +1688,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -1728,7 +1717,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -1790,7 +1779,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
+            @apply bg-card;
 
             .dark & {
                 background: transparent;
@@ -1820,7 +1809,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -1881,8 +1870,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -1917,7 +1905,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -1973,8 +1961,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -2004,7 +1991,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -2051,8 +2038,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -2083,7 +2069,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -2129,8 +2115,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -2165,7 +2150,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -2330,8 +2315,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2379,8 +2363,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2426,8 +2409,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2476,8 +2458,7 @@
 
                 > .header {
                     @extend %content-layout-header;
-                    background: var(--bg-card);
-                    @apply border-b;
+                    @apply border-b bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2520,7 +2501,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2534,7 +2515,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -2612,7 +2593,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2626,7 +2607,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -2702,7 +2683,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2716,7 +2697,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -2796,7 +2777,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2812,7 +2793,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -2883,7 +2864,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2898,7 +2879,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -2961,7 +2942,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -2976,7 +2957,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -3037,7 +3018,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -3052,7 +3033,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -3117,7 +3098,7 @@
                 > .header {
                     @extend %content-layout-header;
                     padding-bottom: 24px;
-                    background: var(--bg-card);
+                    @apply bg-card;
 
                     .dark & {
                         background: transparent;
@@ -3133,7 +3114,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -3174,8 +3155,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3222,8 +3202,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3270,8 +3249,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3317,8 +3295,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3347,7 +3324,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -3409,8 +3386,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3440,7 +3416,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -3501,8 +3477,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3537,7 +3512,7 @@
 
                         .mat-tab-header {
                             padding: 0 24px;
-                            background: var(--bg-card);
+                            @apply bg-card;
 
                             @screen sm {
                                 padding: 0 40px;
@@ -3593,8 +3568,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3624,7 +3598,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -3671,8 +3645,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3703,7 +3676,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;
@@ -3749,8 +3722,7 @@
 
         > .header {
             @extend %content-layout-header;
-            background: var(--bg-card);
-            @apply border-b;
+            @apply border-b bg-card;
 
             .dark & {
                 background: transparent;
@@ -3785,7 +3757,7 @@
                     nav {
                         margin: 0;
                         padding: 0 24px;
-                        background: var(--bg-card);
+                        @apply bg-card;
 
                         @screen sm {
                             padding: 0 40px;

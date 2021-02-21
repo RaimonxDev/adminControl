@@ -544,10 +544,10 @@ treo-vertical-navigation {
                     font-weight: 600;
                     letter-spacing: 0.05em;
                     text-transform: uppercase;
-                    color: var(--primary-600);
+                    @apply text-primary-600;
 
                     .dark & {
-                        color: var(--primary-400);
+                        @apply text-primary-400;
                     }
                 }
 
@@ -734,7 +734,7 @@ treo-vertical-navigation {
                     .treo-vertical-navigation-item-title-wrapper {
 
                         .treo-vertical-navigation-item-title {
-                            color: var(--primary-400) !important;
+                            @apply text-primary-400 #{'!important'};
                         }
                     }
                 }

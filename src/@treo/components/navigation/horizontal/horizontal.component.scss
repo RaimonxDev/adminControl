@@ -14,7 +14,7 @@ treo-horizontal-navigation {
                 &:hover {
 
                     .treo-horizontal-navigation-item-wrapper {
-                        background: var(--bg-hover);
+                        @apply bg-hover;
                     }
                 }
             }
@@ -42,19 +42,19 @@ treo-horizontal-navigation {
             .treo-horizontal-navigation-item-active-forced {
 
                 .treo-horizontal-navigation-item-title {
-                    color: var(--primary) !important;
+                    @apply text-primary #{'!important'};
                 }
 
                 .treo-horizontal-navigation-item-subtitle {
-                    color: var(--primary-400) !important;
+                    @apply text-primary-400 #{'!important'};
 
                     .dark & {
-                        color: var(--primary-600) !important;
+                        @apply text-primary-600 #{'!important'};
                     }
                 }
 
                 .treo-horizontal-navigation-item-icon {
-                    color: var(--primary) !important;
+                    @apply text-primary #{'!important'};
                 }
             }
         }
@@ -66,7 +66,7 @@ treo-horizontal-navigation {
             .treo-horizontal-navigation-menu-active-forced {
 
                 .treo-horizontal-navigation-item-wrapper {
-                    background: var(--bg-hover);
+                    @apply bg-hover;
                 }
             }
         }
@@ -117,19 +117,19 @@ treo-horizontal-navigation {
         .treo-horizontal-navigation-item-active-forced {
 
             .treo-horizontal-navigation-item-title {
-                color: var(--primary) !important;
+                @apply text-primary #{'!important'};
             }
 
             .treo-horizontal-navigation-item-subtitle {
-                color: var(--primary-400) !important;
+                @apply text-primary-400 #{'!important'};
 
                 .dark & {
-                    color: var(--primary-600) !important;
+                    @apply text-primary-600 #{'!important'};
                 }
             }
 
             .treo-horizontal-navigation-item-icon {
-                color: var(--primary) !important;
+                @apply text-primary #{'!important'};
             }
         }
     }

@@ -17,8 +17,7 @@ treo-card {
             height: auto;
             margin: 8px;
             border-radius: 8px;
-            background: var(--bg-card);
-            @apply shadow-md;
+            @apply shadow-md bg-card;
         }
 
         /* Classic style */
@@ -195,7 +194,7 @@ treo-card {
                         justify-content: center;
                         flex: 1 1 auto;
                         margin: 32px 0;
-                        color: var(--text-secondary);
+                        @apply text-secondary;
 
                         &:before,
                         &:after {
@@ -203,7 +202,7 @@ treo-card {
                             display: flex;
                             flex: 1 1 auto;
                             height: 1px;
-                            background: var(--divider);
+                            background: var(--treo-divider);
                         }
 
                         &:before {
@@ -241,7 +240,7 @@ treo-card {
                     font-weight: 500;
 
                     span {
-                        color: var(--text-secondary);
+                        @apply text-secondary;
                     }
 
                     .link {
@@ -260,8 +259,8 @@ treo-card {
             justify-content: center;
             order: 2;
             overflow: hidden;
-            background: var(--primary-700);
             color: white;
+            @apply bg-primary-700;
 
             @screen md {
                 display: flex;
@@ -281,7 +280,7 @@ treo-card {
 
                 path {
                     opacity: 0.1;
-                    fill: var(--primary-100);
+                    fill: var(--treo-primary-100);
 
                     .dark & {
                         fill: theme('colors.gray.900');

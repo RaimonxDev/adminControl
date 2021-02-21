@@ -48,8 +48,7 @@
     }
 
     body {
-        color: var(--treo-text-default) !important;
-        background-color: var(--treo-bg-default) !important;
+        @apply text-default bg-default #{'!important'};
     }
 
     *, *::before, *::after {
@@ -57,6 +56,6 @@
     }
 
     [disabled] * {
-        color: var(--treo-text-disabled) !important;
+        @apply text-disabled #{'!important'};
     }
 }

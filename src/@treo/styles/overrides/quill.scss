@@ -29,8 +29,7 @@
 
             .ql-picker-options {
                 z-index: 10 !important;
-                background: var(--bg-card);
-                @apply border-gray-300;
+                @apply border-gray-300 bg-card;
 
                 .dark & {
                     @apply border-gray-500;
@@ -39,24 +38,24 @@
         }
 
         .ql-picker-label {
-            color: var(--text-default);
+            @apply text-default;
         }
 
         .ql-picker-options {
 
             .ql-picker-item {
-                color: var(--text-default);
+                @apply text-default;
             }
         }
     }
 
     .ql-stroke,
     .ql-stroke-mitter {
-        stroke: var(--icon);
+        stroke: var(--treo-icon);
     }
 
     .ql-fill {
-        fill: var(--icon);
+        fill: var(--treo-icon);
     }
 
     button:hover,
@@ -66,15 +65,15 @@
     .ql-picker-label.ql-active,
     .ql-picker-item:hover,
     .ql-picker-item.ql-selected {
-        color: var(--primary) !important;
+        @apply text-primary #{'!important'};
 
         .ql-stroke,
         .ql-stroke-mitter {
-            stroke: var(--primary) !important;
+            stroke: var(--treo-primary) !important;
         }
 
         .ql-fill {
-            fill: var(--primary) !important;
+            fill: var(--treo-primary) !important;
         }
     }
 }
@@ -99,11 +98,11 @@
         }
 
         &:focus {
-            background-color: var(--bg-card);
+            @apply bg-card;
         }
 
         &.ql-blank::before {
-            color: var(--text-hint);
+            @apply text-hint;
         }
     }
 }

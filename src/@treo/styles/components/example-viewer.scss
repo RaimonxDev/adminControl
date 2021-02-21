@@ -7,8 +7,7 @@
     margin: 32px 0;
     border-radius: 4px;
     overflow: hidden;
-    background: var(--bg-card);
-    @apply shadow;
+    @apply shadow bg-card;
 
     .title {
         display: flex;
@@ -36,11 +35,10 @@
     mat-tab-group {
 
         .mat-tab-header {
-            border-top: 1px solid var(--foreground-divider);
-            @apply bg-gray-50;
+            @apply bg-gray-50 border-t;
 
             .dark & {
-                background: var(--bg-card);
+                @apply bg-card;
             }
         }
 

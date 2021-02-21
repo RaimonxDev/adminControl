@@ -62,8 +62,7 @@ a {
 /* Link helper for applying default 'a' style */
 .link {
     cursor: pointer;
-    border-bottom-color: var(--primary);
-    color: var(--primary);
+    @apply text-primary border-primary;
 
     &:focus,
     &:hover {
@@ -82,20 +81,20 @@ a {
 
     .path {
         white-space: nowrap;
-        color: var(--primary);
+        @apply text-primary;
 
         &a {
             color: inherit;
         }
 
         &.current {
-            color: var(--text-secondary);
+            @apply text-secondary;
         }
     }
 
     .separator {
         margin: 0 6px;
-        color: var(--text-secondary);
+        @apply text-secondary;
     }
 }
 
@@ -222,8 +221,7 @@ pre {
     a {
         font-weight: 500;
         text-decoration: underline;
-        border-bottom-color: var(--primary);
-        color: var(--primary);
+        @apply text-primary border-primary;
     }
 
     abbr {
@@ -329,7 +327,7 @@ pre {
         font-size: 12px;
         line-height: 1.5;
         margin-top: 12px;
-        color: var(--text-secondary);
+        @apply text-secondary;
     }
 
     mark {

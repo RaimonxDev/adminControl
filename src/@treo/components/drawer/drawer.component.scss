@@ -11,7 +11,7 @@ treo-drawer {
     max-width: #{$treo-drawer-width}px;
     z-index: 300;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .35);
-    background: var(--bg-card);
+    @apply bg-card;
 
     /* Animations */
     &.treo-drawer-animations-enabled {
@@ -104,7 +104,7 @@ treo-drawer {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background: var(--bg-card);
+        @apply bg-card;
     }
 }
 
