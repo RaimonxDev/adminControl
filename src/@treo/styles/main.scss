@@ -1,15 +1,16 @@
 /* 1. Core */
-@import 'core/typography.scss';
-@import 'core/content-layouts.scss';
+@import 'core/tailwind-config';
+@import 'core/typography';
+@import 'core/content-layouts';
 
 /* 2. Components */
-@import 'components/card.scss';
-@import 'components/example-viewer.scss';
-@import 'components/input.scss';
+@import 'components/card';
+@import 'components/example-viewer';
+@import 'components/input';
 
 /* 3. Overrides */
-@import 'overrides/angular-material.scss';
-@import 'overrides/fullcalendar.scss';
-@import 'overrides/highlightjs.scss';
-@import 'overrides/perfect-scrollbar.scss';
-@import 'overrides/quill.scss';
+@import 'overrides/angular-material';
+@import 'overrides/fullcalendar';
+@import 'overrides/highlightjs';
+@import 'overrides/perfect-scrollbar';
+@import 'overrides/quill';

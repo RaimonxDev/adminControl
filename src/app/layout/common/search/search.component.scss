@@ -127,7 +127,7 @@ search {
                 &.contact-result {
 
                     .badge {
-                        @apply indigo;
+                        @apply bg-indigo-500 text-indigo-50;
                     }
 
                     .image {
@@ -154,7 +154,7 @@ search {
                 &.page-result {
 
                     .badge {
-                        @apply teal-600;
+                        @apply bg-teal-600 text-teal-50;
                     }
 
                     .title {

@@ -46,4 +46,17 @@
         opacity: 1;
         -webkit-text-fill-color: currentColor;
     }
+
+    body {
+        color: var(--treo-text-default) !important;
+        background-color: var(--treo-bg-default) !important;
+    }
+
+    *, *::before, *::after {
+        border-color: var(--treo-border);
+    }
+
+    [disabled] * {
+        color: var(--treo-text-disabled) !important;
+    }
 }

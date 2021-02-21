@@ -11,7 +11,7 @@
         margin-bottom: 24px;
         border-radius: 8px !important;
         transition: box-shadow 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-        @apply shadow !important;
+        @apply shadow #{'!important'};
 
         &:last-child {
             margin-bottom: 0;
@@ -19,7 +19,7 @@
 
         &.mat-expanded,
         &:hover {
-            @apply shadow-lg !important;
+            @apply shadow-lg #{'!important'};
         }
 
         &:not(.mat-expanded) {
@@ -147,7 +147,7 @@
 
     /* Add hover and focus style on all buttons */
     .mat-button-focus-overlay {
-        background-color: rgba(theme('colors.gray.400'), 0.2) !important;
+        @apply bg-gray-400 bg-opacity-20 #{'!important'};
 
         .dark & {
             background-color: rgba(0, 0, 0, 0.05) !important;
@@ -222,7 +222,7 @@
 
     /* Add hover and focus styles */
     .mat-button-focus-overlay {
-        background-color: rgba(theme('colors.gray.400'), 0.2) !important;
+        @apply bg-gray-400 bg-opacity-20 #{'!important'};
 
         .dark & {
             background-color: rgba(0, 0, 0, 0.05) !important;
@@ -299,18 +299,18 @@
 
     /* Border color */
     &:not(.mat-button-disabled) {
-        @apply border-gray-300 !important;
+        @apply border-gray-300 #{'!important'};
 
         .dark & {
-            @apply border-gray-500 !important;
+            @apply border-gray-500 #{'!important'};
         }
     }
 
     &.mat-button-disabled {
-        @apply border-gray-200 !important;
+        @apply border-gray-200 #{'!important'};
 
         .dark & {
-            @apply border-gray-600 !important;
+            @apply border-gray-600 #{'!important'};
         }
     }
 }
@@ -402,7 +402,7 @@
 
             /* Background color */
             .mat-form-field-flex {
-                background-color: var(--bg-card) !important;
+                @apply bg-card #{'!important'};
             }
         }
     }
@@ -480,11 +480,11 @@
             padding: 0 16px;
             border-width: 1px;
             background-color: white;
-            @apply border-gray-300 shadow-sm !important;
+            @apply border-gray-300 shadow-sm #{'!important'};
 
             .dark & {
                 background-color: rgba(0, 0, 0, 0.05) !important;
-                @apply border-gray-500 !important;
+                @apply border-gray-500 #{'!important'};
             }
 
             .mat-form-field-prefix {
@@ -948,10 +948,10 @@
                 .mat-form-field-prefix,
                 .mat-form-field-suffix {
                     background: var(--bg-default) !important;
-                    @apply border-gray-300 !important;
+                    @apply border-gray-300 #{'!important'};
 
                     .dark & {
-                        @apply border-gray-500 !important;
+                        @apply border-gray-500 #{'!important'};
                     }
                 }
             }

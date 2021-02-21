@@ -15,11 +15,8 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-builders/custom-webpack:browser",
+                    "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "customWebpackConfig": {
-                            "path": "./webpack.config.ts"
-                        },
                         "outputPath": "dist/treo",
                         "index": "src/index.html",
                         "main": "src/main.ts",
@@ -45,8 +42,8 @@
                         },
                         "styles": [
                             "src/@treo/styles/base.scss",
-                            "src/styles/vendors.scss",
                             "src/@treo/styles/themes.scss",
+                            "src/styles/vendors.scss",
                             "src/@treo/styles/main.scss",
                             "src/styles/styles.scss",
                             "src/styles/tailwind.scss"
@@ -84,7 +81,7 @@
                     }
                 },
                 "serve": {
-                    "builder": "@angular-builders/custom-webpack:dev-server",
+                    "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
                         "browserTarget": "treo:build"
                     },

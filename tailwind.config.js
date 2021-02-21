@@ -1,4 +1,5 @@
 const path = require('path');
+const process = require('process');
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const generatePalette = require(path.resolve(__dirname, ('src/@treo/tailwind/utils/generate-palette')));
@@ -18,17 +19,20 @@ const customColors = {
  */
 const themes = {
     'default': {
-        primary: {
+        primary  : {
             ...colors.indigo,
             DEFAULT: colors.indigo[600]
         },
-        accent : {
+        accent   : {
             ...colors.blueGray,
             DEFAULT: colors.blueGray[800]
         },
-        warn   : {
+        warn     : {
             ...colors.red,
             DEFAULT: colors.red[700]
+        },
+        'on-warn': {
+            500: colors.red['50']
         }
     },
     'brand'  : {
@@ -58,13 +62,17 @@ const themes = {
  * This will be automatically supplied by the custom Angular builder
  * based on the current environment of the application (prod, dev etc.)
  */
-const config = (isProd = false) => ({
+const config = {
     experimental: {},
     future      : {},
     darkMode    : 'class',
     important   : true,
     purge       : {
-        enabled: isProd,
+        // Until AngularCLI team provides a better way to distinguish between
+        // development and production, we will decide whether to purge or not
+        // by looking at the process arguments. If there is a "build" argument
+        // within the command then we will enable the purge.
+        enabled: process?.argv?.indexOf('ng') !== -1 && process?.argv?.indexOf('build') !== -1,
         content: [
             '**/*.html',
             '**/*.ts'
@@ -119,14 +127,8 @@ const config = (isProd = false) => ({
                 '0': '0 0 auto'
             },
             fontFamily: {
-                sans: [
-                    'Inter var',
-                    ...defaultTheme.fontFamily.sans
-                ],
-                mono: [
-                    '"IBM Plex Mono"',
-                    ...defaultTheme.fontFamily.mono
-                ]
+                sans: `"Inter var", ${defaultTheme.fontFamily.sans.join(',')}`,
+                mono: `"IBM Plex Mono", ${defaultTheme.fontFamily.mono.join(',')}`
             },
             opacity   : {
                 12: '0.12',
@@ -369,12 +371,14 @@ const config = (isProd = false) => ({
     plugins     : [
 
         // Treo - Tailwind plugins
+        require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/extract-config'))),
         require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/icon-size'))),
         require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/theming')))({themes}),
+        require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/utilities'))),
 
         // Other third party and/or custom plugins
         require('@tailwindcss/line-clamp')
     ]
-});
+};
 
 module.exports = config;

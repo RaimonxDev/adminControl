@@ -223,11 +223,11 @@ treo-alert {
         &.treo-alert-type-warning {
 
             .treo-alert-container {
-                @apply border-amber;
+                @apply border-amber-500;
 
                 .treo-alert-title,
                 .treo-alert-icon {
-                    @apply text-amber;
+                    @apply text-amber-500;
                 }
             }
         }
@@ -257,10 +257,10 @@ treo-alert {
         &.treo-alert-type-primary {
 
             .treo-alert-container {
-                @apply primary;
+                @apply bg-primary-500 text-primary-50;
 
                 code {
-                    @apply primary-600;
+                    @apply bg-primary-600 text-primary-50;
                 }
             }
         }
@@ -269,10 +269,10 @@ treo-alert {
         &.treo-alert-type-accent {
 
             .treo-alert-container {
-                @apply accent;
+                @apply bg-accent-500 text-primary-50;
 
                 code {
-                    @apply accent-600;
+                    @apply bg-accent-600 text-accent-50;
                 }
             }
         }
@@ -281,10 +281,10 @@ treo-alert {
         &.treo-alert-type-warn {
 
             .treo-alert-container {
-                @apply warn;
+                @apply bg-warn-500 text-warn-50;
 
                 code {
-                    @apply warn-800;
+                    @apply bg-warn-800 text-warn-50;
                 }
             }
         }
@@ -329,7 +329,7 @@ treo-alert {
         &.treo-alert-type-warning {
 
             .treo-alert-container {
-                @apply bg-amber text-amber-50;
+                @apply bg-amber-500 text-amber-50;
 
                 code {
                     @apply bg-amber-600 text-amber-50;

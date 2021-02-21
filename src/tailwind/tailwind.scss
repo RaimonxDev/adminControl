@@ -1,3 +1,8 @@
+/* ----------------------------------------------------------------------------------------------------- */
+
+/*  @ Main Tailwind file. Custom components, utilities and etc. can go here.
+/* ----------------------------------------------------------------------------------------------------- */
+
 body {
   --treo-color-primary-50: #eef2ff;
   --treo-color-primary-100: #e0e7ff;
@@ -59,7 +64,7 @@ body {
   --treo-color-on-warn-200: #7f1d1d;
   --treo-color-on-warn-300: #7f1d1d;
   --treo-color-on-warn-400: #7f1d1d;
-  --treo-color-on-warn-500: #FFFFFF;
+  --treo-color-on-warn-500: #fef2f2;
   --treo-color-on-warn-600: #FFFFFF;
   --treo-color-on-warn-700: #FFFFFF;
   --treo-color-on-warn-800: #FFFFFF;
@@ -171,144 +176,35 @@ body:not(.dark) {
   --is-dark: false;
   --treo-bg-app-bar: #FFFFFF;
   --treo-bg-card: #FFFFFF;
-  --treo-bg-default: #f1f5f9;
+  --treo-bg-default: #F1F5F9;
   --treo-bg-dialog: #FFFFFF;
-  --treo-bg-hover: rgba(148,163,184,0.12);
-  --treo-bg-status-bar: #cbd5e1;
-  --treo-text-default: #1e293b;
-  --treo-text-secondary: #64748b;
-  --treo-text-hint: #94a3b8;
-  --treo-text-disabled: #94a3b8;
-  --treo-border: #e2e8f0;
-  --treo-divider: #e2e8f0;
-  --treo-icon: #64748b;
-  --treo-mat-icon: #64748b;
+  --treo-bg-hover: rgba(148, 163, 184, 0.12);
+  --treo-bg-status-bar: #CBD5E1;
+  --treo-text-default: #1E293B;
+  --treo-text-secondary: #64748B;
+  --treo-text-hint: #94A3B8;
+  --treo-text-disabled: #94A3B8;
+  --treo-border: #E2E8F0;
+  --treo-divider: #E2E8F0;
+  --treo-icon: #64748B;
+  --treo-mat-icon: #64748B;
 }
 
 body.dark {
-  --treo-bg-app-bar: #0f172a;
-  --treo-bg-card: #1e293b;
-  --treo-bg-default: #0f172a;
-  --treo-bg-dialog: #1e293b;
+  --treo-bg-app-bar: #0F172A;
+  --treo-bg-card: #1E293B;
+  --treo-bg-default: #0F172A;
+  --treo-bg-dialog: #1E293B;
   --treo-bg-hover: rgba(255, 255, 255, 0.05);
-  --treo-bg-status-bar: #0f172a;
+  --treo-bg-status-bar: #0F172A;
   --treo-text-default: #FFFFFF;
-  --treo-text-secondary: #94a3b8;
-  --treo-text-hint: #64748b;
+  --treo-text-secondary: #94A3B8;
+  --treo-text-hint: #64748B;
   --treo-text-disabled: #475569;
-  --treo-border: rgba(241,245,249,0.12);
-  --treo-divider: rgba(241,245,249,0.12);
-  --treo-icon: #f1f5f9;
-  --treo-mat-icon: #94a3b8;
-}
-
-body {
-  color: var(--treo-text-default) !important;
-  background-color: var(--treo-bg-default) !important;
-}
-
-*, *::before, *::after {
-  border-color: var(--treo-border);
-}
-
-[disabled] * {
-  color: var(--treo-text-disabled) !important;
-}
-
-.mat-icon {
-  color: var(--treo-mat-icon) !important;
-}
-
-.text-default {
-  color: var(--treo-text-default) !important;
-}
-
-.text-secondary {
-  color: var(--treo-text-secondary) !important;
-}
-
-.text-hint {
-  color: var(--treo-text-hint) !important;
-}
-
-.text-disabled {
-  color: var(--treo-text-disabled) !important;
-}
-
-.divider {
-  color: var(--treo-divider) !important;
-}
-
-.bg-card {
-  background-color: var(--treo-bg-card) !important;
-}
-
-.bg-default {
-  background-color: var(--treo-bg-default) !important;
-}
-
-.bg-dialog {
-  background-color: var(--treo-bg-dialog) !important;
-}
-
-.dark .dark\:mat-icon {
-  color: var(--treo-mat-icon) !important;
-}
-
-.dark .dark\:text-default {
-  color: var(--treo-text-default) !important;
-}
-
-.dark .dark\:text-secondary {
-  color: var(--treo-text-secondary) !important;
-}
-
-.dark .dark\:text-hint {
-  color: var(--treo-text-hint) !important;
-}
-
-.dark .dark\:text-disabled {
-  color: var(--treo-text-disabled) !important;
-}
-
-.dark .dark\:divider {
-  color: var(--treo-divider) !important;
-}
-
-.dark .dark\:bg-card {
-  background-color: var(--treo-bg-card) !important;
-}
-
-.dark .dark\:bg-default {
-  background-color: var(--treo-bg-default) !important;
-}
-
-.dark .dark\:bg-dialog {
-  background-color: var(--treo-bg-dialog) !important;
-}
-
-.bg-hover {
-  background-color: var(--treo-bg-hover) !important;
-}
-
-.hover\:bg-hover:hover {
-  background-color: var(--treo-bg-hover) !important;
-}
-
-.group:hover .group-hover\:bg-hover {
-  background-color: var(--treo-bg-hover) !important;
-}
-
-.dark .dark\:bg-hover {
-  background-color: var(--treo-bg-hover) !important;
-}
-
-.dark .dark\:hover\:bg-hover:hover {
-  background-color: var(--treo-bg-hover) !important;
-}
-
-.dark .group:hover .dark\:group-hover\:bg-hover {
-  background-color: var(--treo-bg-hover) !important;
+  --treo-border: rgba(241, 245, 249, 0.12);
+  --treo-divider: rgba(241, 245, 249, 0.12);
+  --treo-icon: #F1F5F9;
+  --treo-mat-icon: #F1F5F9;
 }
 
 .space-y-0 > :not([hidden]) ~ :not([hidden]) {
@@ -14291,6 +14187,10 @@ body {
   cursor: move !important;
 }
 
+.cursor-help {
+  cursor: help !important;
+}
+
 .cursor-not-allowed {
   cursor: not-allowed !important;
 }
@@ -14692,7 +14592,7 @@ body {
 }
 
 .font-sans {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  font-family: "Inter var", ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
 }
 
 .font-serif {
@@ -14700,7 +14600,7 @@ body {
 }
 
 .font-mono {
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family: "IBM Plex Mono", ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace !important;
 }
 
 .font-thin {

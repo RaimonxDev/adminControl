@@ -6,8 +6,8 @@ import { combineLatest, Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { TreoConfigService } from '@treo/services/config';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
-import { tailwindConfig } from '@treo/tailwind/config';
-import { VERSION } from '@treo/version';
+import { TreoTailwindService } from '@treo/services/tailwind/tailwind.service';
+import { TREO_VERSION } from '@treo/version';
 import { Layout } from 'app/layout/layout.types';
 import { AppConfig } from 'app/core/config/app.config';
 
@@ -23,7 +23,7 @@ export class LayoutComponent implements OnInit, OnDestroy
     layout: Layout;
     scheme: 'dark' | 'light';
     theme: string;
-    themes: any = tailwindConfig.themes;
+    themes: string[] = [];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -35,7 +35,8 @@ export class LayoutComponent implements OnInit, OnDestroy
         private _renderer2: Renderer2,
         private _router: Router,
         private _treoConfigService: TreoConfigService,
-        private _treoMediaWatcherService: TreoMediaWatcherService
+        private _treoMediaWatcherService: TreoMediaWatcherService,
+        private _treoTailwindConfigService: TreoTailwindService
     )
     {
     }
@@ -49,6 +50,11 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Get the themes
+        this._treoTailwindConfigService.tailwindConfig$.subscribe((config) => {
+            this.themes = Object.values(config.themes);
+        });
+
         // Set the theme and scheme based on the configuration
         combineLatest([
             this._treoConfigService.config$,
@@ -105,7 +111,7 @@ export class LayoutComponent implements OnInit, OnDestroy
         });
 
         // Set the app version
-        this._renderer2.setAttribute(this._document.querySelector('[ng-version]'), 'app-version', VERSION.full);
+        this._renderer2.setAttribute(this._document.querySelector('[ng-version]'), 'treo-version', TREO_VERSION);
     }
 
     /**
