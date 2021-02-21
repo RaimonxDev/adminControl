@@ -44,13 +44,13 @@ const generateVariableColors = (theme) =>
     {
         if ( opacityValue )
         {
-            return `rgba(var(--treo-color-${name}), ${opacityValue})`;
+            return `rgba(var(--treo-${name}-rgb), ${opacityValue})`;
         }
         if ( opacityVariable )
         {
-            return `rgba(var(--treo-color-${name}), var(${opacityVariable}, 1))`;
+            return `rgba(var(--treo-${name}-rgb), var(${opacityVariable}, 1))`;
         }
-        return `rgb(var(--treo-color-${name}))`;
+        return `rgb(var(--treo-${name}-rgb))`;
     };
 
     return _.fromPairs(_.flatten(_.map(_.keys(flattenColorPalette(normalizeTheme(theme))), (name) => [
@@ -74,7 +74,7 @@ const theming = plugin.withOptions((options) => ({
         // -----------------------------------------------------------------------------------------------------
         const mapVariableColors = _.fromPairs(_.map(options.themes, (theme, themeName) => [
             themeName === 'default' ? 'body' : `body.theme-${e(themeName)}`,
-            _.fromPairs(_.map(flattenColorPalette(_.fromPairs(_.flatten(_.map(normalizeTheme(theme), (palette, paletteName) => [
+            _.fromPairs(_.flatten(_.map(flattenColorPalette(_.fromPairs(_.flatten(_.map(normalizeTheme(theme), (palette, paletteName) => [
                     [
                         e(paletteName),
                         palette
@@ -84,7 +84,7 @@ const theming = plugin.withOptions((options) => ({
                         _.fromPairs(_.map(generateContrasts(palette), (color, hue) => [hue, _.get(theme, [`on-${paletteName}`, hue]) || color]))
                     ]
                 ])
-            ))), (value, key) => [`--treo-color-${e(key)}`, chroma(value).rgb().join(',')]))
+            ))), (value, key) => [[`--treo-${e(key)}`, value], [`--treo-${e(key)}-rgb`, chroma(value).rgb().join(',')]])))
         ]));
 
         addComponents(mapVariableColors);
