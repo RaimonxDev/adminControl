@@ -84,7 +84,7 @@ const theming = plugin.withOptions((options) => ({
                         _.fromPairs(_.map(generateContrasts(palette), (color, hue) => [hue, _.get(theme, [`on-${paletteName}`, hue]) || color]))
                     ]
                 ])
-            ))), (value, key) => [`--treo-color-${e(key)}`, value]))
+            ))), (value, key) => [`--treo-color-${e(key)}`, chroma(value).rgb().join(',')]))
         ]));
 
         addComponents(mapVariableColors);

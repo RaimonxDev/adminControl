@@ -71,7 +71,7 @@ const config = {
         // Until AngularCLI team provides a better way to distinguish between
         // development and production, we will decide whether to purge or not
         // by looking at the process arguments. If there is a "build" argument
-        // within the command then we will enable the purge.
+        // with the "ng" command then we will enable the purge.
         enabled: process?.argv?.indexOf('ng') !== -1 && process?.argv?.indexOf('build') !== -1,
         content: [
             '**/*.html',
