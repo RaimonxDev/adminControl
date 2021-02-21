@@ -54,20 +54,13 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy
     }
 
     /**
-     * Setter & getter for search input
+     * Setter for bar search input
      *
      * @param value
      */
-    @ViewChild('searchInput')
-    set searchInput(value: MatFormField)
+    @ViewChild('barSearchInput')
+    set barSearchInput(value: ElementRef)
     {
-        // Return if the appearance is basic, since we don't want
-        // basic search to be focused as soon as the page loads
-        if ( this.appearance === 'basic' )
-        {
-            return;
-        }
-
         // If the value exists, it means that the search input
         // is now in the DOM and we can focus on the input..
         if ( value )
@@ -76,7 +69,7 @@ export class SearchComponent implements OnChanges, OnInit, OnDestroy
             setTimeout(() => {
 
                 // Focus to the input element
-                value._inputContainerRef.nativeElement.children[0].focus();
+                value.nativeElement.focus();
             });
         }
     }

@@ -270,7 +270,7 @@ const config = {
         boxShadow               : ['responsive', 'hover'],
         boxSizing               : [],
         cursor                  : [],
-        display                 : ['responsive'],
+        display                 : ['responsive', 'hover', 'group-hover'],
         divideColor             : ['dark'],
         divideOpacity           : [],
         divideStyle             : [],
