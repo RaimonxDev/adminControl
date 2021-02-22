@@ -33,7 +33,13 @@ export interface TreoNavigationItem
     meta?: any;
 }
 
-export type TreoVerticalNavigationAppearance = string;
+export type TreoVerticalNavigationAppearance =
+    | 'default'
+    | 'compact'
+    | 'dense'
+    | 'futuristic'
+    | 'thin'
+    | string;
 
 export type TreoVerticalNavigationMode =
     | 'over'

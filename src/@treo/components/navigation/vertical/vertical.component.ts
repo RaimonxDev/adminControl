@@ -26,7 +26,7 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
     static ngAcceptInputType_opened: BooleanInput;
     static ngAcceptInputType_transparentOverlay: BooleanInput;
 
-    @Input() appearance: TreoVerticalNavigationAppearance = 'classic';
+    @Input() appearance: TreoVerticalNavigationAppearance = 'default';
     @Input() autoCollapse: boolean = true;
     @Input() inner: boolean = false;
     @Input() mode: TreoVerticalNavigationMode = 'side';
