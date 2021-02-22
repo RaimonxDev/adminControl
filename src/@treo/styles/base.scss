@@ -47,7 +47,7 @@
         -webkit-text-fill-color: currentColor;
     }
 
-    body {
+    body, .dark, .light {
         @apply text-default bg-default #{'!important'};
     }
 

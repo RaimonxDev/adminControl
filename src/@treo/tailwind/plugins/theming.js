@@ -97,11 +97,11 @@ const theming = plugin.withOptions((options) => ({
             const isDark = colorScheme === 'dark';
             const background = theme(`treo.customProps.background.${colorScheme}`);
             const foreground = theme(`treo.customProps.foreground.${colorScheme}`);
-            const lightSchemeSelector = 'body:not(.dark)';
-            const darkSchemeSelector = 'body.dark';
+            const lightSchemeSelectors = 'body.light, .light, .dark .light';
+            const darkSchemeSelectors = 'body.dark, .dark, .light .dark';
 
             return {
-                [(isDark ? darkSchemeSelector : lightSchemeSelector)]: {
+                [(isDark ? darkSchemeSelectors : lightSchemeSelectors)]: {
 
                     /**
                      * If a custom property is not available, browsers will use
@@ -188,8 +188,8 @@ const theming = plugin.withOptions((options) => ({
                                 'text-disabled' : colors.blueGray[600],
                                 'border'        : chroma(colors.blueGray[100]).alpha(0.12).css(),
                                 'divider'       : chroma(colors.blueGray[100]).alpha(0.12).css(),
-                                'icon'          : colors.blueGray[100],
-                                'mat-icon'      : colors.blueGray[100]
+                                'icon'          : colors.blueGray[400],
+                                'mat-icon'      : colors.blueGray[400]
                             }
                         }
                     },
