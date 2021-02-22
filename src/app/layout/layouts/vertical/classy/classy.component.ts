@@ -31,6 +31,18 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for current year
+     */
+    get currentYear(): number
+    {
+        return new Date().getFullYear();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
 
@@ -49,8 +61,8 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
-                // Check if the breakpoint is 'lt-md'
-                this.isScreenSmall = matchingAliases.includes('lt-md');
+                // Check if the screen is small
+                this.isScreenSmall = !matchingAliases.includes('md');
             });
     }
 

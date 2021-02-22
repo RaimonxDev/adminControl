@@ -148,6 +148,7 @@ const config = {
             },
             zIndex    : {
                 '-1'   : -1,
+                '49'   : 49,
                 '60'   : 60,
                 '70'   : 70,
                 '80'   : 80,
@@ -266,11 +267,11 @@ const config = {
         borderOpacity           : ['group-hover', 'hover'],
         borderRadius            : ['responsive'],
         borderStyle             : [],
-        borderWidth             : ['first', 'last', 'odd', 'even'],
-        boxShadow               : ['responsive', 'hover'],
+        borderWidth             : ['dark', 'first', 'last', 'odd', 'even'],
+        boxShadow               : ['dark', 'responsive', 'hover'],
         boxSizing               : [],
         cursor                  : [],
-        display                 : ['responsive', 'hover', 'group-hover'],
+        display                 : ['responsive', 'dark', 'hover', 'group-hover'],
         divideColor             : ['dark'],
         divideOpacity           : [],
         divideStyle             : [],
@@ -373,9 +374,9 @@ const config = {
 
         // Treo - Tailwind plugins
         require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/extract-config'))),
+        require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/utilities'))),
         require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/icon-size'))),
         require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/theming')))({themes}),
-        require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/utilities'))),
 
         // Other third party and/or custom plugins
         require('@tailwindcss/line-clamp')

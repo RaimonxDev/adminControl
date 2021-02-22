@@ -1,82 +1,78 @@
 <!-- Navigation -->
-<treo-vertical-navigation class="dark bg-gray-900"
-                          *ngIf="isScreenSmall"
-                          [appearance]="'classic'"
-                          [mode]="'over'"
-                          [name]="'mainNavigation'"
-                          [navigation]="data.navigation.default"
-                          [opened]="false">
-
-    <div treoVerticalNavigationContentHeader>
-        <div class="logo">
-            <img src="assets/images/logo/logo-text-on-dark.svg">
-        </div>
-    </div>
-
-</treo-vertical-navigation>
+<ng-container *ngIf="isScreenSmall">
+    <treo-vertical-navigation
+        class="dark bg-gray-900"
+        [mode]="'over'"
+        [name]="'mainNavigation'"
+        [navigation]="data.navigation.default"
+        [opened]="false">
+        <!-- Navigation header hook -->
+        <ng-container treoVerticalNavigationContentHeader>
+            <!-- Logo -->
+            <div class="flex items-center h-20 pt-6 px-8">
+                <img
+                    class="w-24"
+                    src="assets/images/logo/logo-text-on-dark.svg"
+                    alt="Logo image">
+            </div>
+        </ng-container>
+    </treo-vertical-navigation>
+</ng-container>
 
 <!-- Wrapper -->
-<div class="wrapper">
+<div class="flex flex-col flex-auto w-full">
 
     <!-- Header -->
-    <div class="header">
-
-        <!-- Logo -->
-        <div class="logo"
-             *ngIf="!isScreenSmall">
-            <img class="logo-text"
-                 src="assets/images/logo/logo-text.svg">
-            <img class="logo-text-on-dark"
-                 src="assets/images/logo/logo-text-on-dark.svg">
-            <img class="logo-base"
-                 src="assets/images/logo/logo.svg">
-        </div>
-
-        <!-- Horizontal navigation -->
-        <treo-horizontal-navigation *ngIf="!isScreenSmall"
-                                    [name]="'mainNavigation'"
-                                    [navigation]="data.navigation.horizontal"></treo-horizontal-navigation>
-
+    <div class="relative flex flex-0 items-center w-full h-16 sm:h-20 px-4 sm:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent">
+        <ng-container *ngIf="!isScreenSmall">
+            <!-- Logo -->
+            <div class="flex items-center mx-2 lg:mr-8">
+                <div class="hidden lg:flex">
+                    <img
+                        class="dark:hidden w-24"
+                        src="assets/images/logo/logo-text.svg">
+                    <img
+                        class="hidden dark:flex w-24"
+                        src="assets/images/logo/logo-text-on-dark.svg">
+                </div>
+                <img
+                    class="flex lg:hidden w-8"
+                    src="assets/images/logo/logo.svg">
+            </div>
+            <!-- Horizontal navigation -->
+            <treo-horizontal-navigation
+                class="mr-2"
+                [name]="'mainNavigation'"
+                [navigation]="data.navigation.horizontal"></treo-horizontal-navigation>
+        </ng-container>
         <!-- Navigation toggle button -->
-        <button class="navigation-toggle-button"
-                *ngIf="isScreenSmall"
+        <ng-container *ngIf="isScreenSmall">
+            <button
                 mat-icon-button
                 (click)="toggleNavigation('mainNavigation')">
-            <mat-icon [svgIcon]="'menu'"></mat-icon>
-        </button>
-
-        <!-- Spacer -->
-        <div class="spacer"></div>
-
-        <!-- Search -->
-        <search [appearance]="'bar'"></search>
-
-        <!-- Shortcuts -->
-        <shortcuts [shortcuts]="data.shortcuts"></shortcuts>
-
-        <!-- Messages -->
-        <messages [messages]="data.messages"></messages>
-
-        <!-- Notifications -->
-        <notifications [notifications]="data.notifications"></notifications>
-
-        <!-- User -->
-        <user-menu></user-menu>
-
+                <mat-icon [svgIcon]="'menu'"></mat-icon>
+            </button>
+        </ng-container>
+        <!-- Components -->
+        <div class="flex items-center pl-2 ml-auto space-x-2">
+            <search [appearance]="'bar'"></search>
+            <shortcuts [shortcuts]="data.shortcuts"></shortcuts>
+            <messages [messages]="data.messages"></messages>
+            <notifications [notifications]="data.notifications"></notifications>
+            <user-menu></user-menu>
+        </div>
     </div>
 
     <!-- Content -->
-    <div class="content">
-
-        <!-- *ngIf="true" hack is required here for router-outlet to work correctly. Otherwise,
-             it won't register the changes on the layout and won't update the view. -->
+    <div class="flex flex-col flex-auto w-full">
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
         <router-outlet *ngIf="true"></router-outlet>
-
     </div>
 
     <!-- Footer -->
-    <div class="footer">
-        Treo &copy; {{currentYear}}
+    <div class="relative flex flex-0 items-center w-full h-14 sm:h-20 px-4 sm:px-6 z-49 border-t bg-card dark:bg-transparent">
+        <span class="font-medium text-secondary">Treo &copy; {{currentYear}}</span>
     </div>
 
 </div>

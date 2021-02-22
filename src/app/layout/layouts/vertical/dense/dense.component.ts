@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -15,10 +15,8 @@ import { InitialData } from 'app/app.types';
 export class DenseLayoutComponent implements OnInit, OnDestroy
 {
     data: InitialData;
-    fixedFooter: boolean = false;
-    fixedHeader: boolean = false;
     isScreenSmall: boolean;
-    navigationAppearance: 'classic' | 'dense' = 'dense';
+    navigationAppearance: 'default' | 'dense' = 'dense';
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -36,17 +34,6 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Host binding for component classes
-     */
-    @HostBinding('class') get classList(): any
-    {
-        return {
-            'fixed-footer': this.fixedFooter,
-            'fixed-header': this.fixedHeader
-        };
-    }
 
     /**
      * Getter for current year
@@ -75,8 +62,8 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
-                // Check if the breakpoint is 'lt-md'
-                this.isScreenSmall = matchingAliases.includes('lt-md');
+                // Check if the screen is small
+                this.isScreenSmall = !matchingAliases.includes('md');
             });
     }
 
@@ -116,6 +103,6 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
      */
     toggleNavigationAppearance(): void
     {
-        this.navigationAppearance = (this.navigationAppearance === 'classic' ? 'dense' : 'classic');
+        this.navigationAppearance = (this.navigationAppearance === 'default' ? 'dense' : 'default');
     }
 }
