@@ -96,8 +96,8 @@ export class TreoVerticalNavigationComponent implements OnChanges, OnInit, After
             'treo-vertical-navigation-mode-over'                      : this.mode === 'over',
             'treo-vertical-navigation-mode-side'                      : this.mode === 'side',
             'treo-vertical-navigation-opened'                         : this.opened,
-            'treo-vertical-navigation-mode-position-left'             : this.position === 'left',
-            'treo-vertical-navigation-mode-position-right'            : this.position === 'right'
+            'treo-vertical-navigation-position-left'                  : this.position === 'left',
+            'treo-vertical-navigation-position-right'                 : this.position === 'right'
         };
     }
 

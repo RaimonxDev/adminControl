@@ -349,34 +349,34 @@ treo-vertical-navigation {
                 &:not(.treo-vertical-navigation-item-active-forced):not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
 
                     &:hover {
-                        @apply bg-gray-200;
+                        @apply bg-gray-200 #{'!important'};
 
                         .dark & {
                             background-color: rgba(255, 255, 255, 0.12) !important;
                         }
 
                         .treo-vertical-navigation-item-icon {
-                            @apply text-gray-500;
+                            @apply text-gray-500 #{'!important'};
 
                             .dark & {
-                                @apply text-gray-100;
+                                @apply text-gray-100 #{'!important'};
                             }
                         }
 
                         .treo-vertical-navigation-item-title,
                         .treo-vertical-navigation-item-arrow {
-                            @apply text-gray-900;
+                            @apply text-gray-900 #{'!important'};
 
                             .dark & {
-                                @apply text-gray-50;
+                                @apply text-gray-50 #{'!important'};
                             }
                         }
 
                         .treo-vertical-navigation-item-subtitle {
-                            @apply text-gray-700;
+                            @apply text-gray-700 #{'!important'};
 
                             .dark & {
-                                @apply text-gray-300;
+                                @apply text-gray-300 #{'!important'};
                             }
                         }
                     }
@@ -430,10 +430,10 @@ treo-vertical-navigation {
                 .treo-vertical-navigation-item {
 
                     .treo-vertical-navigation-item-icon {
-                        @apply text-gray-500;
+                        @apply text-gray-500 #{'!important'};
 
                         .dark & {
-                            @apply text-gray-100;
+                            @apply text-gray-100 #{'!important'};
                         }
                     }
 
@@ -443,18 +443,18 @@ treo-vertical-navigation {
 
                     .treo-vertical-navigation-item-title,
                     .treo-vertical-navigation-item-arrow {
-                        @apply text-gray-900;
+                        @apply text-gray-900 #{'!important'};
 
                         .dark & {
-                            @apply text-gray-50;
+                            @apply text-gray-50 #{'!important'};
                         }
                     }
 
                     .treo-vertical-navigation-item-subtitle {
-                        @apply text-gray-700;
+                        @apply text-gray-700 #{'!important'};
 
                         .dark & {
-                            @apply text-gray-300;
+                            @apply text-gray-300 #{'!important'};
                         }
                     }
                 }
@@ -531,7 +531,7 @@ treo-vertical-navigation {
             .treo-vertical-navigation-item {
 
                 .treo-vertical-navigation-item-icon {
-                    @apply text-gray-400;
+                    @apply text-gray-400 #{'!important'};
                 }
 
                 .treo-vertical-navigation-item-badge,
@@ -544,15 +544,15 @@ treo-vertical-navigation {
                     font-weight: 600;
                     letter-spacing: 0.05em;
                     text-transform: uppercase;
-                    @apply text-primary-600;
+                    @apply text-primary-600 #{'!important'};
 
                     .dark & {
-                        @apply text-primary-400;
+                        @apply text-primary-400 #{'!important'};
                     }
                 }
 
                 .treo-vertical-navigation-item-subtitle {
-                    @apply text-gray-500;
+                    @apply text-gray-500 #{'!important'};
                 }
             }
         }
