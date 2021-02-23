@@ -115,11 +115,12 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
                 width: 2
             },
             tooltip: {
-                theme: 'dark',
-                x    : {
+                followCursor: true,
+                theme       : 'dark',
+                x           : {
                     format: 'MMM dd, yyyy'
                 },
-                y    : {
+                y           : {
                     formatter: (value) => {
                         return value + '%';
                     }

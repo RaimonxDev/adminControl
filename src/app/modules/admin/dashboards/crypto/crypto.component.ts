@@ -52,16 +52,16 @@ export class CryptoComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
-                // Set the drawerMode and drawerOpened if 'lt-lg' breakpoint is active
-                if ( matchingAliases.includes('lt-lg') )
-                {
-                    this.drawerMode = 'over';
-                    this.drawerOpened = false;
-                }
-                else
+                // Set the drawerMode and drawerOpened if 'lg' breakpoint is active
+                if ( matchingAliases.includes('lg') )
                 {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
                 }
 
                 // Mark for check

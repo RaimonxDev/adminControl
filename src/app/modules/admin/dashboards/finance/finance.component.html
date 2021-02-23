@@ -12,26 +12,18 @@
                 <button
                     class="hidden sm:inline-flex"
                     mat-stroked-button>
-                    <mat-icon
-                        class="icon-size-5"
-                        [svgIcon]="'save'"></mat-icon>
-                    <span class="ml-2">Export</span>
+                    Reports
                 </button>
                 <button
                     class="hidden sm:inline-flex ml-2"
                     mat-stroked-button>
-                    <mat-icon
-                        class="icon-size-5"
-                        [svgIcon]="'assessment'"></mat-icon>
-                    <span class="ml-2">Reports</span>
+                    Settings
                 </button>
                 <button
                     class="hidden sm:inline-flex ml-2"
-                    mat-stroked-button>
-                    <mat-icon
-                        class="icon-size-5 rotate-90 transform -scale-x-1"
-                        [svgIcon]="'tune'"></mat-icon>
-                    <span class="ml-2">Settings</span>
+                    mat-flat-button
+                    [color]="'primary'">
+                    Export
                 </button>
 
                 <!-- Actions menu (visible on xs) -->
@@ -39,27 +31,12 @@
                     <button
                         [matMenuTriggerFor]="actionsMenu"
                         mat-icon-button>
-                        <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+                        <mat-icon [svgIcon]="'heroicons_outline:dots-vertical'"></mat-icon>
                     </button>
                     <mat-menu #actionsMenu="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon
-                                class="icon-size-5"
-                                [svgIcon]="'save'"></mat-icon>
-                            <span class="ml-2">Export</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon
-                                class="icon-size-5"
-                                [svgIcon]="'share'"></mat-icon>
-                            <span class="ml-2">Share</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon
-                                class="icon-size-5 rotate-90 transform -scale-x-1"
-                                [svgIcon]="'tune'"></mat-icon>
-                            <span class="ml-2">Settings</span>
-                        </button>
+                        <button mat-menu-item>Export</button>
+                        <button mat-menu-item>Share</button>
+                        <button mat-menu-item>Settings</button>
                     </mat-menu>
                 </div>
             </div>
@@ -78,7 +55,7 @@
                     <div class="flex items-center">
                         <div class="flex flex-col">
                             <div class="font-bold text-md text-secondary uppercase tracking-wider">Previous Statement</div>
-                            <div class="text-green-500 font-medium text-sm">
+                            <div class="text-green-600 font-medium text-sm">
                                 Paid on {{data.previousStatement.date}}
                             </div>
                         </div>
@@ -86,14 +63,14 @@
                             <button
                                 mat-icon-button
                                 [matMenuTriggerFor]="previousStatementMenu">
-                                <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+                                <mat-icon [svgIcon]="'heroicons_outline:dots-vertical'"></mat-icon>
                             </button>
                             <mat-menu #previousStatementMenu="matMenu">
                                 <button mat-menu-item>
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'payment'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:credit-card'"></mat-icon>
                                         <span>View statement</span>
                                     </span>
                                 </button>
@@ -101,7 +78,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'attach_money'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:cash'"></mat-icon>
                                         <span>Spending breakdown</span>
                                     </span>
                                 </button>
@@ -109,7 +86,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'account_balance'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:receipt-tax'"></mat-icon>
                                         <span>Tax breakdown</span>
                                     </span>
                                 </button>
@@ -118,7 +95,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'print'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:printer'"></mat-icon>
                                         <span>Print statement</span>
                                     </span>
                                 </button>
@@ -126,7 +103,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'email'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:mail'"></mat-icon>
                                         <span>Email statement</span>
                                     </span>
                                 </button>
@@ -134,15 +111,15 @@
                         </div>
                     </div>
                     <div class="flex flex-row flex-wrap mt-4 -mx-6">
-                        <div class="flex flex-col mx-6 my-3 xs:w-full">
+                        <div class="flex flex-col mx-6 my-3">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider leading-none">Card Limit</div>
                             <div class="mt-2 font-medium text-3xl leading-none">{{data.previousStatement.limit | currency:'USD'}}</div>
                         </div>
-                        <div class="flex flex-col mx-6 my-3 xs:w-full">
+                        <div class="flex flex-col mx-6 my-3">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider leading-none">Spent</div>
                             <div class="mt-2 font-medium text-3xl leading-none">{{data.previousStatement.spent | currency:'USD'}}</div>
                         </div>
-                        <div class="flex flex-col mx-6 my-3 xs:w-full">
+                        <div class="flex flex-col mx-6 my-3">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider leading-none">Minimum</div>
                             <div class="mt-2 font-medium text-3xl leading-none">{{data.previousStatement.minimum | currency:'USD'}}</div>
                         </div>
@@ -161,7 +138,7 @@
                     <div class="flex items-center">
                         <div class="flex flex-col">
                             <div class="font-bold text-md text-secondary uppercase tracking-wider">Current Statement</div>
-                            <div class="text-red-500 font-medium text-sm">
+                            <div class="text-red-600 font-medium text-sm">
                                 Must be paid before {{data.currentStatement.date}}
                             </div>
                         </div>
@@ -169,14 +146,14 @@
                             <button
                                 mat-icon-button
                                 [matMenuTriggerFor]="currentStatementMenu">
-                                <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+                                <mat-icon [svgIcon]="'heroicons_outline:dots-vertical'"></mat-icon>
                             </button>
                             <mat-menu #currentStatementMenu="matMenu">
                                 <button mat-menu-item>
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'payment'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:credit-card'"></mat-icon>
                                         <span>View statement</span>
                                     </span>
                                 </button>
@@ -184,7 +161,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'attach_money'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:cash'"></mat-icon>
                                         <span>Spending breakdown</span>
                                     </span>
                                 </button>
@@ -192,7 +169,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'account_balance'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:receipt-tax'"></mat-icon>
                                         <span>Tax breakdown</span>
                                     </span>
                                 </button>
@@ -201,7 +178,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'print'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:printer'"></mat-icon>
                                         <span>Print statement</span>
                                     </span>
                                 </button>
@@ -209,7 +186,7 @@
                                     <span class="flex items-center">
                                         <mat-icon
                                             class="icon-size-5 mr-3"
-                                            [svgIcon]="'email'"></mat-icon>
+                                            [svgIcon]="'heroicons_solid:mail'"></mat-icon>
                                         <span>Email statement</span>
                                     </span>
                                 </button>
@@ -217,15 +194,15 @@
                         </div>
                     </div>
                     <div class="flex flex-row flex-wrap mt-4 -mx-6">
-                        <div class="flex flex-col mx-6 my-3 xs:w-full">
+                        <div class="flex flex-col mx-6 my-3">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider leading-none">Card Limit</div>
                             <div class="mt-2 font-medium text-3xl leading-none">{{data.currentStatement.limit | currency:'USD'}}</div>
                         </div>
-                        <div class="flex flex-col mx-6 my-3 xs:w-full">
+                        <div class="flex flex-col mx-6 my-3">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider leading-none">Spent</div>
                             <div class="mt-2 font-medium text-3xl leading-none">{{data.currentStatement.spent | currency:'USD'}}</div>
                         </div>
-                        <div class="flex flex-col mx-6 my-3 xs:w-full">
+                        <div class="flex flex-col mx-6 my-3">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider leading-none">Minimum</div>
                             <div class="mt-2 font-medium text-3xl leading-none">{{data.currentStatement.minimum | currency:'USD'}}</div>
                         </div>
@@ -246,10 +223,10 @@
                         </div>
                         <div>
                             <button
-                                class="h-8 min-h-8 px-2"
+                                class="h-7 min-h-7 px-3 bg-hover"
                                 mat-button
                                 [matMenuTriggerFor]="accountBalanceMenu">
-                                <span class="font-medium text-sm text-hint">12 months</span>
+                                <span class="font-medium text-sm text-secondary">12 months</span>
                             </button>
                             <mat-menu #accountBalanceMenu="matMenu">
                                 <button mat-menu-item>3 months</button>
@@ -261,11 +238,11 @@
                     </div>
                     <div class="flex items-start mt-6 mr-2">
                         <div class="flex flex-col">
-                            <div class="font-semibold text-5xl tracking-tighter lt-md:text-3xl">{{data.accountBalance.growRate}}%</div>
+                            <div class="font-semibold text-3xl md:text-5xl tracking-tighter">{{data.accountBalance.growRate}}%</div>
                             <div class="font-medium text-sm text-secondary leading-none">Average Monthly Growth</div>
                         </div>
-                        <div class="flex flex-col ml-16 lt-md:ml-8">
-                            <div class="font-semibold text-5xl tracking-tighter lt-md:text-3xl">{{data.accountBalance.ami | currency:'USD'}}</div>
+                        <div class="flex flex-col ml-8 md:ml-16">
+                            <div class="font-semibold text-3xl md:text-5xl tracking-tighter">{{data.accountBalance.ami | currency:'USD'}}</div>
                             <div class="font-medium text-sm text-secondary leading-none">Average Monthly Income</div>
                         </div>
                     </div>
@@ -285,7 +262,7 @@
         </div>
 
         <!-- Recent transactions table -->
-        <div class="flex flex-auto w-2/3 p-4 overflow-hidden lt-xl:w-full">
+        <div class="flex flex-auto w-full xl:w-2/3 p-4 overflow-hidden">
             <div class="flex flex-col flex-auto bg-card shadow rounded overflow-hidden">
                 <div class="p-6">
                     <div class="font-bold text-md text-secondary uppercase tracking-wider">Recent transactions</div>
@@ -396,12 +373,12 @@
                                 *matCellDef="let transaction">
                                 <span
                                     class="inline-flex items-center font-bold text-xs px-2 py-2px rounded-full tracking-wide uppercase"
-                                    [ngClass]="{'bg-red-200 text-red-900': transaction.status === 'pending',
-                                                'bg-green-200 text-green-900': transaction.status === 'completed'}">
+                                    [ngClass]="{'bg-red-100 text-red-800': transaction.status === 'pending',
+                                                'bg-green-100 text-green-800': transaction.status === 'completed'}">
                                     <span
                                         class="w-2 h-2 rounded-full mr-2"
-                                        [ngClass]="{'bg-red-500': transaction.status === 'pending',
-                                                    'bg-green-500': transaction.status === 'completed'}"></span>
+                                        [ngClass]="{'bg-red-600': transaction.status === 'pending',
+                                                    'bg-green-600': transaction.status === 'completed'}"></span>
                                     <span class="pr-2px leading-relaxed whitespace-nowrap">{{transaction.status}}</span>
                                 </span>
                             </td>
@@ -439,18 +416,18 @@
         </div>
 
         <!-- Budget -->
-        <div class="flex flex-auto w-1/3 min-w-80 p-4 lt-xl:w-full">
+        <div class="flex flex-auto w-full xl:w-1/3 min-w-80 p-4">
             <div class="flex flex-col flex-auto p-6 bg-card rounded shadow">
                 <div class="flex items-center">
                     <div class="flex flex-col">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Budget</div>
                         <div class="text-hint text-sm font-medium">Monthly budget summary</div>
                     </div>
-                    <div class="ml-auto">
+                    <div class="ml-auto -mr-2">
                         <button
                             mat-icon-button
                             [matMenuTriggerFor]="budgetMenu">
-                            <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+                            <mat-icon [svgIcon]="'heroicons_outline:dots-vertical'"></mat-icon>
                         </button>
                         <mat-menu #budgetMenu="matMenu">
                             <button mat-menu-item>Expenses breakdown</button>
@@ -461,7 +438,7 @@
                                 <span class="flex items-center">
                                     <mat-icon
                                         class="icon-size-5 mr-3"
-                                        [svgIcon]="'print'"></mat-icon>
+                                        [svgIcon]="'heroicons_solid:printer'"></mat-icon>
                                     <span>Print budget summary</span>
                                 </span>
                             </button>
@@ -469,7 +446,7 @@
                                 <span class="flex items-center">
                                     <mat-icon
                                         class="icon-size-5 mr-3"
-                                        [svgIcon]="'email'"></mat-icon>
+                                        [svgIcon]="'heroicons_solid:mail'"></mat-icon>
                                     <span>Email budget summary</span>
                                 </span>
                             </button>
@@ -482,8 +459,10 @@
                         Last month; you had <strong>223</strong> expense transactions, <strong>12</strong> savings entries and <strong>4</strong> bills.
                     </div>
                     <div class="flex items-center my-4">
-                        <div class="flex items-center justify-center w-14 h-14 rounded bg-red-100 text-red-900">
-                            <mat-icon [svgIcon]="'heroicons_outline:credit-card'"></mat-icon>
+                        <div class="flex items-center justify-center w-14 h-14 rounded bg-red-100 text-red-800">
+                            <mat-icon
+                                class="text-current"
+                                [svgIcon]="'heroicons_outline:credit-card'"></mat-icon>
                         </div>
                         <div class="flex-auto ml-4 leading-none">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider">Expenses</div>
@@ -497,13 +476,15 @@
                         <div class="flex items-end justify-end min-w-18 mt-auto ml-6">
                             <div class="text-lg leading-none">2.6%</div>
                             <mat-icon
-                                class="text-blue-500 icon-size-4 ml-1"
-                                [svgIcon]="'arrow_downward'"></mat-icon>
+                                class="text-green-600 icon-size-4 ml-1"
+                                [svgIcon]="'heroicons_solid:arrow-narrow-down'"></mat-icon>
                         </div>
                     </div>
                     <div class="flex items-center my-4">
-                        <div class="flex items-center justify-center w-14 h-14 rounded bg-indigo-100 text-indigo-900">
-                            <mat-icon [svgIcon]="'heroicons_outline:cash'"></mat-icon>
+                        <div class="flex items-center justify-center w-14 h-14 rounded bg-indigo-100 text-indigo-800">
+                            <mat-icon
+                                class="text-current"
+                                [svgIcon]="'heroicons_outline:cash'"></mat-icon>
                         </div>
                         <div class="flex-auto ml-4 leading-none">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider">Savings</div>
@@ -516,13 +497,15 @@
                         <div class="flex items-end justify-end min-w-18 mt-auto ml-6">
                             <div class="text-lg leading-none">12.7%</div>
                             <mat-icon
-                                class="text-blue-500 icon-size-4 ml-1"
-                                [svgIcon]="'arrow_upward'"></mat-icon>
+                                class="text-red-600 icon-size-4 ml-1"
+                                [svgIcon]="'heroicons_solid:arrow-narrow-up'"></mat-icon>
                         </div>
                     </div>
                     <div class="flex items-center my-4">
-                        <div class="flex items-center justify-center w-14 h-14 rounded bg-teal-100 text-teal-900">
-                            <mat-icon [svgIcon]="'heroicons_outline:light-bulb'"></mat-icon>
+                        <div class="flex items-center justify-center w-14 h-14 rounded bg-teal-100 text-teal-800">
+                            <mat-icon
+                                class="text-current"
+                                [svgIcon]="'heroicons_outline:light-bulb'"></mat-icon>
                         </div>
                         <div class="flex-auto ml-4 leading-none">
                             <div class="font-semibold text-xs text-hint uppercase tracking-wider">Bills</div>
@@ -535,8 +518,8 @@
                         <div class="flex items-end justify-end min-w-18 mt-auto ml-6">
                             <div class="text-lg leading-none">105.7%</div>
                             <mat-icon
-                                class="text-blue-500 icon-size-4 ml-1"
-                                [svgIcon]="'arrow_upward'"></mat-icon>
+                                class="text-red-600 icon-size-4 ml-1"
+                                [svgIcon]="'heroicons_solid:arrow-narrow-up'"></mat-icon>
                         </div>
                     </div>
                     <div class="text-sm text-hint">Exceeded your personal limit on <strong>bills</strong>! Be careful next month.</div>
@@ -544,10 +527,8 @@
                 <div class="flex items-center mt-auto">
                     <button
                         class="mt-2"
-                        mat-stroked-button
-                        [color]="'primary'">
-                        <mat-icon [svgIcon]="'cloud_download'"></mat-icon>
-                        <span class="ml-3">Download Summary</span>
+                        mat-stroked-button>
+                        Download Summary
                     </button>
                 </div>
             </div>
