@@ -1,3 +1,4 @@
+import { AnalyticsMockApi } from 'app/mock-api/dashboards/analytics/api';
 import { AuthMockApi } from 'app/mock-api/common/auth/api';
 import { CalendarMockApi } from 'app/mock-api/apps/calendar/api';
 import { ContactsMockApi } from 'app/mock-api/apps/contacts/api';
@@ -16,6 +17,7 @@ import { TasksMockApi } from 'app/mock-api/apps/tasks/api';
 import { UserMockApi } from 'app/mock-api/common/user/api';
 
 export const mockApiServices = [
+    AnalyticsMockApi,
     AuthMockApi,
     CalendarMockApi,
     ContactsMockApi,
