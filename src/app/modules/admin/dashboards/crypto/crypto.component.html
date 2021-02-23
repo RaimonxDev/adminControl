@@ -24,11 +24,11 @@
                                 <div class="min-w-20 font-mono text-2xl tracking-tighter leading-none">
                                     {{item.amount | currency:'USD':'symbol':'1.2-4'}}
                                 </div>
-                                <mat-icon class="text-green icon-size-5"
-                                          [ngClass]="{'text-green': item.trend.dir === 'up', 'text-red': item.trend.dir === 'down'}"
+                                <mat-icon class="text-green-500 icon-size-5"
+                                          [ngClass]="{'text-green-500': item.trend.dir === 'up', 'text-red-500': item.trend.dir === 'down'}"
                                           [svgIcon]="item.trend.dir === 'up' ? 'arrow_drop_up' : 'arrow_drop_down'"></mat-icon>
                                 <div class="font-mono font-medium text-sm leading-none"
-                                     [ngClass]="{'text-green': item.trend.dir === 'up', 'text-red': item.trend.dir === 'down'}">
+                                     [ngClass]="{'text-green-500': item.trend.dir === 'up', 'text-red-500': item.trend.dir === 'down'}">
                                     {{item.trend.amount}}%
                                 </div>
                             </div>
@@ -192,11 +192,11 @@
                         </div>
                         <div class="flex items-center mt-1">
                             <div class="mr-2 font-mono text-3xl leading-none tracking-tight">{{data.btc.amount | currency:'USD':'symbol':'1.2-2'}}</div>
-                            <mat-icon class="text-green"
-                                      [ngClass]="{'text-green': data.btc.trend.dir === 'up', 'text-red': data.btc.trend.dir === 'down'}"
+                            <mat-icon class="text-green-500"
+                                      [ngClass]="{'text-green-500': data.btc.trend.dir === 'up', 'text-red-500': data.btc.trend.dir === 'down'}"
                                       [svgIcon]="data.btc.trend.dir === 'up' ? 'arrow_drop_up' : 'arrow_drop_down'"></mat-icon>
                             <div class="font-mono font-medium text-lg leading-none"
-                                 [ngClass]="{'text-green': data.btc.trend.dir === 'up', 'text-red': data.btc.trend.dir === 'down'}">
+                                 [ngClass]="{'text-green-500': data.btc.trend.dir === 'up', 'text-red-500': data.btc.trend.dir === 'down'}">
                                 {{data.btc.trend.amount}}%
                             </div>
                         </div>

@@ -226,7 +226,7 @@
                                                     <div class="flex flex-col mt-8">
                                                         <span class="font-semibold mb-2">Product status</span>
                                                         <mat-slide-toggle [formControlName]="'active'"
-                                                                          color="primary">
+                                                                          [color]="'primary'">
                                                             {{selectedProductForm.get('active').value === true ? 'Active' : 'Disabled'}}
                                                         </mat-slide-toggle>
                                                     </div>
@@ -410,12 +410,12 @@
                                                     <div class="flex items-center mr-4"
                                                          *ngIf="flashMessage">
                                                         <ng-container *ngIf="flashMessage === 'success'">
-                                                            <mat-icon class="text-green"
+                                                            <mat-icon class="text-green-500"
                                                                       [svgIcon]="'check'"></mat-icon>
                                                             <span class="ml-2">Product updated</span>
                                                         </ng-container>
                                                         <ng-container *ngIf="flashMessage === 'error'">
-                                                            <mat-icon class="text-red"
+                                                            <mat-icon class="text-red-500"
                                                                       [svgIcon]="'remove'"></mat-icon>
                                                             <span class="ml-2">An error occurred, try again!</span>
                                                         </ng-container>
