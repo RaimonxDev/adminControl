@@ -55,7 +55,7 @@ const generateVariableColors = (theme) =>
 
     return _.fromPairs(_.flatten(_.map(_.keys(flattenColorPalette(normalizeTheme(theme))), (name) => [
         [name, customPropertiesWithOpacity(name)],
-        [`on-${name}`, customPropertiesWithOpacity(name)]
+        [`on-${name}`, customPropertiesWithOpacity(`on-${name}`)]
     ])));
 };
 
