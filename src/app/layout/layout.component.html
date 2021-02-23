@@ -62,7 +62,7 @@
              [position]="'right'"
              #settingsDrawer>
 
-    <div class="flex flex-col w-full light:bg-gray-100 overflow-auto">
+    <div class="flex flex-col w-full bg-gray-100 overflow-auto">
 
         <div class="flex flex-row items-center px-6 h-20 min-h-20 border-b">
             <mat-icon class="mr-3 text-secondary"
@@ -112,7 +112,7 @@
                 <div class="flex flex-col items-center mb-6 cursor-pointer"
                      *ngFor="let layoutType of ['empty', 'basic', 'classic', 'classy', 'compact', 'dense', 'futuristic', 'thin', 'centered', 'enterprise', 'material', 'modern']"
                      (click)="setLayout(layoutType)">
-                    <img class="w-full p-1 border-4 rounded-sm text-primary light:border-cool-gray-300 dark:border-cool-gray-900 light:bg-card dark:bg-gray-600"
+                    <img class="w-full p-1 border-4 rounded-sm text-primary border-gray-300 dark:border-gray-900 bg-card dark:bg-gray-600"
                          [ngClass]="{'border-primary ring-2 ring-current': config.layout === layoutType}"
                          [src]="'assets/images/demo/layouts/' + layoutType + '-' + scheme + '.png'">
                     <div class="mt-2 text-md font-medium text-secondary tracking-wide"
