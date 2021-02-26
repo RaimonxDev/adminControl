@@ -17,17 +17,16 @@ export interface TreoNavigationItem
     externalLink?: boolean;
     exactMatch?: boolean;
     function?: (item: TreoNavigationItem) => void;
-    classes?: string;
+    classes?: {
+        title?: string;
+        subtitle?: string;
+        icon?: string;
+        wrapper?: string;
+    };
     icon?: string;
-    iconClasses?: string;
     badge?: {
         title?: string;
-        style?:
-            | 'rectangle'
-            | 'rounded'
-            | 'simple',
-        background?: string;
-        color?: string;
+        classes?: string;
     };
     children?: TreoNavigationItem[];
     meta?: any;

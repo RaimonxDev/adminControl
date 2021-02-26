@@ -1,37 +1,43 @@
 <!-- Item wrapper -->
-<div class="treo-vertical-navigation-item-wrapper"
-     [class.treo-vertical-navigation-item-has-subtitle]="!!item.subtitle"
-     [ngClass]="item.classes">
+<div
+    class="treo-vertical-navigation-item-wrapper"
+    [class.treo-vertical-navigation-item-has-subtitle]="!!item.subtitle"
+    [ngClass]="item.classes?.wrapper">
 
     <div class="treo-vertical-navigation-item">
 
         <!-- Icon -->
-        <mat-icon class="treo-vertical-navigation-item-icon"
-                  [ngClass]="item.iconClasses"
-                  *ngIf="item.icon"
-                  [svgIcon]="item.icon"></mat-icon>
+        <mat-icon
+            class="treo-vertical-navigation-item-icon"
+            [ngClass]="item.classes?.icon"
+            *ngIf="item.icon"
+            [svgIcon]="item.icon"></mat-icon>
 
         <!-- Title & Subtitle -->
         <div class="treo-vertical-navigation-item-title-wrapper">
-            <div class="treo-vertical-navigation-item-title">{{item.title}}</div>
-            <div class="treo-vertical-navigation-item-subtitle"
-                 *ngIf="item.subtitle">
-                {{item.subtitle}}
+            <div class="treo-vertical-navigation-item-title">
+                <span [ngClass]="item.classes?.title">
+                    {{item.title}}
+                </span>
+            </div>
+            <div
+                class="treo-vertical-navigation-item-subtitle"
+                *ngIf="item.subtitle">
+                <span [ngClass]="item.classes?.subtitle">
+                    {{item.subtitle}}
+                </span>
             </div>
         </div>
 
         <!-- Badge -->
-        <div class="treo-vertical-navigation-item-badge"
-             *ngIf="item.badge">
-
-            <div class="treo-vertical-navigation-item-badge-content"
-                 [ngClass]="[(item.badge.style != undefined ? 'treo-vertical-navigation-item-badge-style-' + item.badge.style : ''),
-                             (item.badge.background != undefined && !item.badge.background.startsWith('#') ? item.badge.background : ''),
-                             (item.badge.color != undefined && !item.badge.color.startsWith('#') ? item.badge.color : '')]"
-                 [ngStyle]="{'background-color': item.badge.background, 'color': item.badge.color}">
+        <div
+            class="treo-vertical-navigation-item-badge"
+            *ngIf="item.badge">
+            <div
+                class="treo-vertical-navigation-item-badge-content"
+                [ngClass]="item.badge.classes">
                 {{item.badge.title}}
             </div>
-
         </div>
 
     </div>
@@ -44,30 +50,35 @@
     <ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
         <!-- Basic -->
-        <treo-vertical-navigation-basic-item *ngIf="item.type === 'basic'"
-                                             [item]="item"
-                                             [name]="name"></treo-vertical-navigation-basic-item>
+        <treo-vertical-navigation-basic-item
+            *ngIf="item.type === 'basic'"
+            [item]="item"
+            [name]="name"></treo-vertical-navigation-basic-item>
 
         <!-- Collapsable -->
-        <treo-vertical-navigation-collapsable-item *ngIf="item.type === 'collapsable'"
-                                                   [item]="item"
-                                                   [name]="name"
-                                                   [autoCollapse]="autoCollapse"></treo-vertical-navigation-collapsable-item>
+        <treo-vertical-navigation-collapsable-item
+            *ngIf="item.type === 'collapsable'"
+            [item]="item"
+            [name]="name"
+            [autoCollapse]="autoCollapse"></treo-vertical-navigation-collapsable-item>
 
         <!-- Divider -->
-        <treo-vertical-navigation-divider-item *ngIf="item.type === 'divider'"
-                                               [item]="item"
-                                               [name]="name"></treo-vertical-navigation-divider-item>
+        <treo-vertical-navigation-divider-item
+            *ngIf="item.type === 'divider'"
+            [item]="item"
+            [name]="name"></treo-vertical-navigation-divider-item>
 
         <!-- Group -->
-        <treo-vertical-navigation-group-item *ngIf="item.type === 'group'"
-                                             [item]="item"
-                                             [name]="name"></treo-vertical-navigation-group-item>
+        <treo-vertical-navigation-group-item
+            *ngIf="item.type === 'group'"
+            [item]="item"
+            [name]="name"></treo-vertical-navigation-group-item>
 
         <!-- Spacer -->
-        <treo-vertical-navigation-spacer-item *ngIf="item.type === 'spacer'"
-                                              [item]="item"
-                                              [name]="name"></treo-vertical-navigation-spacer-item>
+        <treo-vertical-navigation-spacer-item
+            *ngIf="item.type === 'spacer'"
+            [item]="item"
+            [name]="name"></treo-vertical-navigation-spacer-item>
 
     </ng-container>
 
