@@ -24,7 +24,7 @@ export interface AppConfig
  * TreoConfigService and its methods.
  */
 export const appConfig: AppConfig = {
-    layout: 'basic',
+    layout: 'classy',
     scheme: 'light',
     theme : 'default'
 };

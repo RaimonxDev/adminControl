@@ -149,54 +149,8 @@ export const appRoutes: Route[] = [
                 // Colors
                 {path: 'colors', loadChildren: () => import('app/modules/admin/ui/colors/colors.module').then(m => m.ColorsModule)},
 
-                // Content layouts
-                {path: 'content-layouts', children: [
-
-                    // Overview
-                    {path: 'overview', loadChildren: () => import('app/modules/admin/ui/content-layouts/overview/overview.module').then(m => m.ContentLayoutsOverviewModule)},
-
-                    // Fullwidth
-                    {path: 'fullwidth', children: [
-                        {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/basic/basic.module').then(m => m.FullwidthBasicModule)},
-                        {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/standard/standard.module').then(m => m.FullwidthStandardModule)},
-                        {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/tabs/tabs.module').then(m => m.FullwidthTabsModule)},
-                        {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/tabs-navigation/tabs-navigation.module').then(m => m.FullwidthTabsNavigationModule)}
-                    ]},
-
-                    // Left sidebar
-                    {path: 'left-sidebar', children: [
-
-                        {path: 'fullheight', children: [
-                            {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/basic/basic.module').then(m => m.LeftSidebarFullheightBasicModule)},
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/standard/standard.module').then(m => m.LeftSidebarFullheightStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/tabs/tabs.module').then(m => m.LeftSidebarFullheightTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/tabs-navigation/tabs-navigation.module').then(m => m.LeftSidebarFullheightTabsNavigationModule)}
-                        ]},
-
-                        {path: 'content', children: [
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/standard/standard.module').then(m => m.LeftSidebarContentStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/tabs/tabs.module').then(m => m.LeftSidebarContentTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/tabs-navigation/tabs-navigation.module').then(m => m.LeftSidebarContentTabsNavigationModule)}
-                        ]}
-                    ]},
-
-                    // Right sidebar
-                    {path: 'right-sidebar', children: [
-
-                        {path: 'fullheight', children: [
-                            {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/basic/basic.module').then(m => m.RightSidebarFullheightBasicModule)},
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/standard/standard.module').then(m => m.RightSidebarFullheightStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs/tabs.module').then(m => m.RightSidebarFullheightTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs-navigation/tabs-navigation.module').then(m => m.RightSidebarFullheightTabsNavigationModule)}
-                        ]},
-
-                        {path: 'content', children: [
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/standard/standard.module').then(m => m.RightSidebarContentStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/tabs/tabs.module').then(m => m.RightSidebarContentTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/tabs-navigation/tabs-navigation.module').then(m => m.RightSidebarContentTabsNavigationModule)}
-                        ]}
-                    ]}
-                ]},
+                // Page layouts
+                {path: 'page-layouts', loadChildren: () => import('app/modules/admin/ui/page-layouts/page-layouts.module').then(m => m.PageLayoutsModule)},
 
                 // Datatable
                 {path: 'datatable', loadChildren: () => import('app/modules/admin/ui/datatable/datatable.module').then(m => m.DatatableModule)},

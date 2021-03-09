@@ -1,54 +1,8 @@
-@import 'treo';
-
 cards {
 
     .main {
 
-        @include treo-breakpoint('xs') {
-            padding: 16px !important;
-        }
-
-        .filters {
-            margin-bottom: 64px;
-
-            @include treo-breakpoint('xs') {
-                margin-bottom: 24px;
-            }
-
-            .mat-button-toggle-group {
-                flex-wrap: wrap;
-                border: none;
-
-                .mat-button-toggle {
-                    border-left: none !important;
-                    margin: 4px;
-                    border-radius: 4px;
-
-                    .mat-button-toggle-label-content {
-                        display: inline-flex;
-                        align-items: center;
-                        padding: 0 16px;
-                        font-size: 13px;
-
-                        .filter-title {
-                            margin-right: 6px;
-                        }
-
-                        .filter-number {
-                            font-weight: 600;
-                            color: var(--text-secondary);
-                        }
-                    }
-                }
-            }
-        }
-
         .content {
-            display: flex;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin: 0 -16px;
-            max-width: 1600px;
 
             treo-card {
                 margin: 16px;

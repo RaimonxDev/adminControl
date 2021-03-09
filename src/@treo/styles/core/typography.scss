@@ -9,7 +9,7 @@ body {
     font-size: 0.875rem;
 }
 
-/* Headings */
+/*!* Headings *!
 h1, h2, h3, h4, h5, h6 {
     margin: 1.25em 0 0.5em 0;
 }
@@ -51,7 +51,7 @@ h6 {
     font-size: 16px;
     font-weight: 500;
     letter-spacing: -0.011em;
-}
+}*/
 
 /* Override links for web apps */
 a {
@@ -71,7 +71,7 @@ a {
 }
 
 /* Breadcrumb */
-.breadcrumb {
+/*.breadcrumb {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -96,7 +96,7 @@ a {
         margin: 0 6px;
         @apply text-secondary;
     }
-}
+}*/
 
 /* ----------------------------------------------------------------------------------------------------- */
 /* @ Code & Pre
@@ -403,10 +403,10 @@ pre {
         height: 5px;
         top: 9px;
         left: 3px;
-        @apply text-gray-400;
+        @apply bg-gray-400;
 
         .dark & {
-            @apply text-gray-500;
+            @apply bg-gray-500;
         }
     }
 

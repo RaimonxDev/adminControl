@@ -71,8 +71,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <div class="bg-primary text-on-primary">
                             Primary background & its contrasting color
@@ -134,8 +135,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <div class="bg-teal-600 text-teal-50">
                             Teal (600) background & contrasting color
@@ -208,8 +210,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <div class="bg-blue-600 text-blue-50">
                             <span>
@@ -257,10 +260,11 @@
 
                     <div class="colors">
 
-                        <div class="color"
-                             *ngFor="let palette of themePalettes"
-                             [ngClass]="palette"
-                             matRipple>
+                        <div
+                            class="color"
+                            *ngFor="let palette of themePalettes"
+                            [ngClass]="palette"
+                            matRipple>
                             <span class="hue">
                                 <span class="hue-value">{{palette}}</span>
                             </span>
@@ -278,8 +282,9 @@
 
             <div class="palettes">
 
-                <div class="palette"
-                     *ngFor="let palette of treoPalettes">
+                <div
+                    class="palette"
+                    *ngFor="let palette of treoPalettes">
 
                     <h2>
                         {{palette | titlecase}}
@@ -287,10 +292,11 @@
 
                     <div class="colors">
 
-                        <div class="color"
-                             *ngFor="let hue of hues"
-                             [ngClass]="palette + '-' + hue"
-                             matRipple>
+                        <div
+                            class="color"
+                            *ngFor="let hue of hues"
+                            [ngClass]="palette + '-' + hue"
+                            matRipple>
                             <span class="hue">
                                 <mat-icon [svgIcon]="'palette'"></mat-icon>
                                 <span class="hue-value">{{hue}}</span>

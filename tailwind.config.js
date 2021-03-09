@@ -73,10 +73,7 @@ const config = {
         // by looking at the process arguments. If there is a "build" argument
         // with the "ng" command then we will enable the purge.
         enabled: process?.argv?.indexOf('ng') !== -1 && process?.argv?.indexOf('build') !== -1,
-        content: [
-            '**/*.html',
-            '**/*.ts'
-        ],
+        content: ['./src/**/*.{html,scss,ts}'],
         options: {
             safelist: {
                 deep: [/^theme/, /^dark/, /^mat/]
@@ -89,6 +86,7 @@ const config = {
             current    : 'currentColor',
             black      : colors.black,
             white      : colors.white,
+            pink       : colors.pink,
             gray       : colors.blueGray,
             red        : colors.red,
             orange     : colors.orange,
@@ -159,15 +157,14 @@ const config = {
                 '99999': 99999
             },
             spacing   : {
-                '2px': '2px',
-                '13' : '3.25rem',
-                '15' : '3.75rem',
-                '18' : '4.5rem',
-                '22' : '5.5rem',
-                '26' : '6.5rem',
-                '30' : '7.5rem',
-                '50' : '12.5rem',
-                '90' : '22.5rem'
+                '13': '3.25rem',
+                '15': '3.75rem',
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '26': '6.5rem',
+                '30': '7.5rem',
+                '50': '12.5rem',
+                '90': '22.5rem'
             },
             /**
              * Extended spacing values for width and height utilities.
@@ -344,7 +341,7 @@ const config = {
         textColor               : ['dark', 'group-hover', 'hover'],
         textDecoration          : ['group-hover', 'hover'],
         textOpacity             : ['group-hover', 'hover'],
-        textOverflow            : [],
+        textOverflow            : ['responsive'],
         textTransform           : [],
         transform               : [],
         transformOrigin         : [],

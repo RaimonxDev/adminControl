@@ -128,8 +128,8 @@ const theming = plugin.withOptions((options) => ({
                     ...(!isDark ? {'--is-dark': 'false'} : {}),
 
                     // Generate custom properties from customProps
-                    ..._.fromPairs(_.map(background, (value, key) => [`--treo-${e(key)}`, value])),
-                    ..._.fromPairs(_.map(foreground, (value, key) => [`--treo-${e(key)}`, value]))
+                    ..._.fromPairs(_.flatten(_.map(background, (value, key) => [[`--treo-${e(key)}`, value], [`--treo-${e(key)}-rgb`, chroma(value).rgb().join(',')]]))),
+                    ..._.fromPairs(_.flatten(_.map(foreground, (value, key) => [[`--treo-${e(key)}`, value], [`--treo-${e(key)}-rgb`, chroma(value).rgb().join(',')]])))
                 }
             };
         });

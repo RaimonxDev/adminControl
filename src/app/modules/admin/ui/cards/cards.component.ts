@@ -13,14 +13,7 @@ export class CardsComponent implements AfterViewInit
 {
     @ViewChildren(TreoCardComponent, {read: ElementRef}) private _treoCards: QueryList<ElementRef>;
 
-    expandableCardStatuses: any = {
-        card01: false,
-        card02: false
-    };
-    flippableCardStatuses: any = {
-        card01: 'front'
-    };
-    filters: string[] = ['all', 'article', 'listing', 'list', 'info', 'shopping', 'pricing', 'testimonial', 'post'];
+    filters: string[] = ['all', 'article', 'listing', 'list', 'info', 'shopping', 'pricing', 'testimonial', 'post', 'interactive'];
     numberOfCards: any = {};
     selectedFilter: string = 'all';
 

@@ -15,58 +15,74 @@ const utilities = plugin(({
     addBase(
         {
             '.mat-icon'                                              : {
-                color: 'var(--treo-mat-icon) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-mat-icon-rgb), var(--tw-text-opacity)) !important'
             },
             '.text-default'                                          : {
-                color: 'var(--treo-text-default) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-default-rgb), var(--tw-text-opacity)) !important'
             },
             '.text-secondary'                                        : {
-                color: 'var(--treo-text-secondary) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-secondary-rgb), var(--tw-text-opacity)) !important'
             },
             '.text-hint'                                             : {
-                color: 'var(--treo-text-hint) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-hint-rgb), var(--tw-text-opacity)) !important'
             },
             '.text-disabled'                                         : {
-                color: 'var(--treo-text-disabled) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-disabled-rgb), var(--tw-text-opacity)) !important'
             },
             '.divider'                                               : {
                 color: 'var(--treo-divider) !important'
             },
             '.bg-card'                                               : {
-                backgroundColor: 'var(--treo-bg-card) !important'
+                '--tw-bg-opacity': '1 !important',
+                backgroundColor  : 'rgba(var(--treo-bg-card-rgb), var(--tw-bg-opacity)) !important'
             },
             '.bg-default'                                            : {
-                backgroundColor: 'var(--treo-bg-default) !important'
+                '--tw-bg-opacity': '1 !important',
+                backgroundColor  : 'rgba(var(--treo-bg-default-rgb), var(--tw-bg-opacity)) !important'
             },
             '.bg-dialog'                                             : {
-                backgroundColor: 'var(--treo-bg-dialog) !important'
+                '--tw-bg-opacity': '1 !important',
+                backgroundColor  : 'rgba(var(--treo-bg-dialog-rgb), var(--tw-bg-opacity)) !important'
             },
             [`.dark .${e(`dark:mat-icon`)}`]                         : {
-                color: 'var(--treo-mat-icon) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-mat-icon-rgb), var(--tw-text-opacity)) !important'
             },
             [`.dark .${e(`dark:text-default`)}`]                     : {
-                color: 'var(--treo-text-default) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-default-rgb), var(--tw-text-opacity)) !important'
             },
             [`.dark .${e(`dark:text-secondary`)}`]                   : {
-                color: 'var(--treo-text-secondary) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-secondary-rgb), var(--tw-text-opacity)) !important'
             },
             [`.dark .${e(`dark:text-hint`)}`]                        : {
-                color: 'var(--treo-text-hint) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-hint-rgb), var(--tw-text-opacity)) !important'
             },
             [`.dark .${e(`dark:text-disabled`)}`]                    : {
-                color: 'var(--treo-text-disabled) !important'
+                '--tw-text-opacity': '1 !important',
+                color              : 'rgba(var(--treo-text-disabled-rgb), var(--tw-text-opacity)) !important'
             },
             [`.dark .${e(`dark:divider`)}`]                          : {
                 color: 'var(--treo-divider) !important'
             },
             [`.dark .${e(`dark:bg-card`)}`]                          : {
-                backgroundColor: 'var(--treo-bg-card) !important'
+                '--tw-bg-opacity': '1 !important',
+                backgroundColor  : 'rgba(var(--treo-bg-card-rgb), var(--tw-bg-opacity)) !important'
             },
             [`.dark .${e(`dark:bg-default`)}`]                       : {
-                backgroundColor: 'var(--treo-bg-default) !important'
+                '--tw-bg-opacity': '1 !important',
+                backgroundColor  : 'rgba(var(--treo-bg-default-rgb), var(--tw-bg-opacity)) !important'
             },
             [`.dark .${e(`dark:bg-dialog`)}`]                        : {
-                backgroundColor: 'var(--treo-bg-dialog) !important'
+                '--tw-bg-opacity': '1 !important',
+                backgroundColor  : 'rgba(var(--treo-bg-dialog-rgb), var(--tw-bg-opacity)) !important'
             },
             '.bg-hover'                                               : {
                 backgroundColor: 'var(--treo-bg-hover) !important'

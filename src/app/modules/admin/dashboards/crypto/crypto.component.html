@@ -27,7 +27,7 @@
                                     {{item.amount | currency:'USD':'symbol':'1.2-4'}}
                                 </div>
                                 <mat-icon
-                                    class="text-green-500 icon-size-3.5 mx-2px mb-px"
+                                    class="text-green-500 icon-size-3.5 mx-0.5 mb-px"
                                     [ngClass]="{'text-green-500': item.trend.dir === 'up', 'text-red-500': item.trend.dir === 'down'}"
                                     [svgIcon]="item.trend.dir === 'up' ? 'heroicons_solid:arrow-narrow-up' : 'heroicons_solid:arrow-narrow-down'"></mat-icon>
                                 <div
@@ -215,7 +215,7 @@
                         <div class="flex items-end mt-1">
                             <div class="mr-2 font-mono text-3xl leading-none tracking-tight">{{data.btc.amount | currency:'USD':'symbol':'1.2-2'}}</div>
                             <mat-icon
-                                class="text-green-500 icon-size-5 mr-2px mb-px"
+                                class="text-green-500 icon-size-5 mr-0.5 mb-px"
                                 [ngClass]="{'text-green-500': data.btc.trend.dir === 'up', 'text-red-500': data.btc.trend.dir === 'down'}"
                                 [svgIcon]="data.btc.trend.dir === 'up' ? 'heroicons_solid:arrow-narrow-up' : 'heroicons_solid:arrow-narrow-down'"></mat-icon>
                             <div

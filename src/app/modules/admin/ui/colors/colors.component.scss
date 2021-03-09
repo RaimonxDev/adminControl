@@ -1,5 +1,3 @@
-@import 'treo';
-
 colors {
 
     .main {
@@ -11,7 +9,7 @@ colors {
             margin: 32px 0;
             border-radius: 4px;
             overflow: hidden;
-            @include treo-elevation();
+            @apply bg-card shadow;
 
             .title {
                 display: flex;
@@ -39,7 +37,7 @@ colors {
             mat-tab-group {
 
                 .mat-tab-header {
-                    border-top: 1px solid;
+                    @apply border-t bg-gray-50 dark:bg-card;
                 }
 
                 .mat-tab-body-content {
@@ -52,6 +50,15 @@ colors {
                             padding: 0;
                             border-radius: 0;
                             box-shadow: none;
+                        }
+
+                        pre[class*='language-'] {
+                            border: none;
+                        }
+
+                        code[class*='language-'],
+                        pre[class*='language-'] {
+                            background: none;
                         }
                     }
                 }
@@ -81,7 +88,7 @@ colors {
                     border-radius: 4px;
                     text-align: center;
                     font-size: 13px;
-                    @include treo-elevation('md');
+                    @apply shadow-md;
                 }
             }
         }
@@ -90,29 +97,30 @@ colors {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
 
-            @include treo-breakpoint('xs') {
-                width: 100%;
+            @screen sm {
+                width: auto;
             }
 
             .palette {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                margin-top: 48px;
+                margin-top: 40px;
 
-                @include treo-breakpoint('xs') {
-                    margin-top: 40px;
+                @screen sm {
+                    margin-top: 48px;
                 }
 
                 .colors {
                     display: flex;
                     flex-wrap: wrap;
-                    margin: 16px -16px 0 -16px;
+                    margin: 16px -12px 0 -12px;
 
-                    @include treo-breakpoint('xs') {
-                        margin-left: -12px;
-                        margin-right: -12px;
+                    @screen sm {
+                        margin-left: -16px;
+                        margin-right: -16px;
                     }
 
                     .color {
@@ -121,12 +129,12 @@ colors {
                         width: 160px;
                         padding: 24px;
                         font-weight: 500;
-                        margin: 16px;
+                        margin: 12px;
                         border-radius: 8px;
                         box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 
-                        @include treo-breakpoint('xs') {
-                            margin: 12px;
+                        @screen sm {
+                            margin: 16px;
                         }
 
                         .hue {
@@ -146,53 +154,6 @@ colors {
                             padding-top: 16px;
                             margin-bottom: 16px;
                             border-bottom: 1px solid;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-/* ----------------------------------------------------------------------------------------------------- */
-/*  @ Theming
-/* ----------------------------------------------------------------------------------------------------- */
-@include treo-theme {
-
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $is-dark: map-get($theme, is-dark);
-
-    colors {
-
-        /* Example viewer */
-        .example-viewer {
-            background: map-get($background, card);
-
-            mat-tab-group {
-
-                .mat-tab-header {
-                    border-color: map-get($foreground, divider);
-
-                    @if ($is-dark) {
-                        background: map-get($background, card);
-                    } @else {
-                        background: treo-color('cool-gray', 50);
-                    }
-                }
-
-                .mat-tab-body-content {
-
-                    .treo-highlight {
-
-                        pre[class*='language-'] {
-                            border: none;
-                        }
-
-                        code[class*='language-'],
-                        pre[class*='language-'] {
-                            background: none;
                         }
                     }
                 }

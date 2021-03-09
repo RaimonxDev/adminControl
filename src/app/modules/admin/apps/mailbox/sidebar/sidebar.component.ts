@@ -143,8 +143,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             {
                 // Add the count as a badge
                 menuItem['badge'] = {
-                    title: folder.count + '',
-                    style: 'simple'
+                    title: folder.count + ''
                 };
             }
 
@@ -198,12 +197,14 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
             // Generate menu item for the label
             this._labelsMenuData.push({
-                id         : label.id,
-                title      : label.title,
-                type       : 'basic',
-                icon       : 'label',
-                iconClasses: 'text-' + label.color,
-                link       : '/apps/mailbox/label/' + label.slug
+                id     : label.id,
+                title  : label.title,
+                type   : 'basic',
+                icon   : 'label',
+                classes: {
+                    icon: 'text-' + label.color
+                },
+                link   : '/apps/mailbox/label/' + label.slug
             });
         });
 

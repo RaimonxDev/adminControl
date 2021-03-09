@@ -1179,8 +1179,22 @@
 /* ----------------------------------------------------------------------------------------------------- */
 /*  @ Tabs
 /* ----------------------------------------------------------------------------------------------------- */
+.mat-tab-group {
+
+    &.treo-mat-no-header {
+
+        .mat-tab-header {
+            height: 0 !important;
+            max-height: 0 !important;
+            border: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+    }
+}
+
 .mat-tab-label {
-    opacity: 0.87 !important;
+    opacity: 1 !important;
 }
 
 /* ----------------------------------------------------------------------------------------------------- */

@@ -1,5 +1,3 @@
-@import 'treo';
-
 core-features {
 
     .content-layout {
@@ -34,19 +32,5 @@ core-features {
                 }
             }
         }
-    }
-}
-
-/* ----------------------------------------------------------------------------------------------------- */
-/*  @ Theming
-/* ----------------------------------------------------------------------------------------------------- */
-@include treo-theme {
-
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
-
-    core-features {
-
     }
 }

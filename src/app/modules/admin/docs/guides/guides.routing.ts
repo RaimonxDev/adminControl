@@ -10,7 +10,7 @@ import { StarterKitComponent } from 'app/modules/admin/docs/guides/development/s
 import { DeploymentComponent } from 'app/modules/admin/docs/guides/development/deployment/deployment';
 import { UpdatingComponent } from 'app/modules/admin/docs/guides/development/updating/updating';
 import { ThemeLayoutsComponent } from 'app/modules/admin/docs/guides/customization/theme-layouts/theme-layouts';
-import { ContentLayoutsComponent } from 'app/modules/admin/docs/guides/customization/content-layouts/content-layouts';
+import { PageLayoutsComponent } from 'app/modules/admin/docs/guides/customization/page-layouts/page-layouts';
 import { TailwindCSSComponent } from 'app/modules/admin/docs/guides/customization/tailwindcss/tailwindcss';
 import { ThemingComponent } from 'app/modules/admin/docs/guides/customization/theming/theming';
 import { SplashScreenCustomizationComponent } from 'app/modules/admin/docs/guides/customization/splash-screen/splash-screen';
@@ -95,8 +95,8 @@ export const guidesRoutes: Route[] = [
                         component: ThemeLayoutsComponent
                     },
                     {
-                        path     : 'content-layouts',
-                        component: ContentLayoutsComponent
+                        path     : 'page-layouts',
+                        component: PageLayoutsComponent
                     },
                     {
                         path     : 'tailwindcss',

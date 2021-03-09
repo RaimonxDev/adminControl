@@ -75,10 +75,8 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:mail',
                 link : '/apps/mailbox',
                 badge: {
-                    title     : '27',
-                    style     : 'rounded',
-                    background: '#E91E63',
-                    color     : '#FFFFFF'
+                    title  : '27',
+                    classes: 'px-2 bg-pink-600 text-white rounded-full'
                 }
             },
             {
@@ -554,169 +552,259 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 link : '/ui/colors'
             },
             {
-                id      : 'user-interface.content-layouts',
-                title   : 'Content layouts',
+                id   : 'user-interface.datatable',
+                title: 'Datatable',
+                type : 'basic',
+                icon : 'heroicons_outline:view-list',
+                link : '/ui/datatable'
+            },
+            {
+                id      : 'user-interface.forms',
+                title   : 'Forms',
+                type    : 'collapsable',
+                icon    : 'heroicons_outline:pencil-alt',
+                children: [
+                    {
+                        id   : 'user-interface.forms.fields',
+                        title: 'Fields',
+                        type : 'basic',
+                        link : '/ui/forms/fields'
+                    },
+                    {
+                        id   : 'user-interface.forms.layouts',
+                        title: 'Layouts',
+                        type : 'basic',
+                        link : '/ui/forms/layouts'
+                    },
+                    {
+                        id   : 'user-interface.forms.wizards',
+                        title: 'Wizards',
+                        type : 'basic',
+                        link : '/ui/forms/wizards'
+                    }
+                ]
+            },
+            {
+                id   : 'user-interface.helpers',
+                title: 'Helpers',
+                type : 'basic',
+                icon : 'heroicons_outline:support',
+                link : '/ui/helpers'
+            },
+            {
+                id      : 'user-interface.icons',
+                title   : 'Icons',
+                type    : 'collapsable',
+                icon    : 'heroicons_outline:lightning-bolt',
+                children: [
+                    {
+                        id   : 'user-interface.icons.dripicons',
+                        title: 'Dripicons',
+                        type : 'basic',
+                        link : '/ui/icons/dripicons'
+                    },
+                    {
+                        id   : 'user-interface.icons.feather',
+                        title: 'Feather',
+                        type : 'basic',
+                        link : '/ui/icons/feather'
+                    },
+                    {
+                        id   : 'user-interface.icons.heroicons-outline',
+                        title: 'Heroicons Outline',
+                        type : 'basic',
+                        link : '/ui/icons/heroicons-outline'
+                    },
+                    {
+                        id   : 'user-interface.icons.heroicons-solid',
+                        title: 'Heroicons Solid',
+                        type : 'basic',
+                        link : '/ui/icons/heroicons-solid'
+                    },
+                    {
+                        id   : 'user-interface.icons.iconsmind',
+                        title: 'Iconsmind',
+                        type : 'basic',
+                        link : '/ui/icons/iconsmind'
+                    },
+                    {
+                        id   : 'user-interface.icons.material-outline',
+                        title: 'Material Outline',
+                        type : 'basic',
+                        link : '/ui/icons/material-outline'
+                    },
+                    {
+                        id   : 'user-interface.icons.material-twotone',
+                        title: 'Material Twotone',
+                        type : 'basic',
+                        link : '/ui/icons/material-twotone'
+                    }
+                ]
+            },
+            {
+                id      : 'user-interface.page-layouts',
+                title   : 'Page layouts',
                 type    : 'collapsable',
                 icon    : 'heroicons_outline:template',
                 children: [
                     {
-                        id   : 'user-interface.content-layouts.overview',
+                        id   : 'user-interface.page-layouts.overview',
                         title: 'Overview',
                         type : 'basic',
-                        link : '/ui/content-layouts/overview'
+                        link : '/ui/page-layouts/overview'
                     },
                     {
-                        id      : 'user-interface.content-layouts.fullwidth',
+                        id      : 'user-interface.page-layouts.fullwidth',
                         title   : 'Fullwidth',
                         type    : 'collapsable',
                         children: [
                             {
-                                id   : 'user-interface.content-layouts.fullwidth.basic',
-                                title: 'Basic',
+                                id   : 'user-interface.page-layouts.fullwidth.empty',
+                                title: 'Empty',
                                 type : 'basic',
-                                link : '/ui/content-layouts/fullwidth/basic'
+                                link : '/ui/page-layouts/fullwidth/empty'
                             },
                             {
-                                id   : 'user-interface.content-layouts.fullwidth.standard',
+                                id   : 'user-interface.page-layouts.fullwidth.standard',
                                 title: 'Standard',
                                 type : 'basic',
-                                link : '/ui/content-layouts/fullwidth/standard'
+                                link : '/ui/page-layouts/fullwidth/standard'
                             },
                             {
-                                id   : 'user-interface.content-layouts.fullwidth.tabs',
+                                id   : 'user-interface.page-layouts.fullwidth.tabs',
                                 title: 'Tabs',
                                 type : 'basic',
-                                link : '/ui/content-layouts/fullwidth/tabs'
+                                link : '/ui/page-layouts/fullwidth/tabs'
                             },
                             {
-                                id   : 'user-interface.content-layouts.fullwidth.tabs-navigation',
-                                title: 'Tabs navigation',
+                                id   : 'user-interface.page-layouts.fullwidth.nav',
+                                title: 'Nav',
                                 type : 'basic',
-                                link : '/ui/content-layouts/fullwidth/tabs-navigation'
+                                link : '/ui/page-layouts/fullwidth/nav'
                             }
                         ]
                     },
                     {
-                        id      : 'user-interface.content-layouts.left-sidebar',
+                        id      : 'user-interface.page-layouts.left-sidebar',
                         title   : 'Left Sidebar',
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'user-interface.content-layouts.left-sidebar.fullheight',
+                                id      : 'user-interface.page-layouts.left-sidebar.fullheight',
                                 title   : 'Fullheight',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.basic',
+                                        id   : 'user-interface.page-layouts.left-sidebar.fullheight.basic',
                                         title: 'Basic',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/left-sidebar/fullheight/basic'
+                                        link : '/ui/page-layouts/left-sidebar/fullheight/basic'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.standard',
+                                        id   : 'user-interface.page-layouts.left-sidebar.fullheight.standard',
                                         title: 'Standard',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/left-sidebar/fullheight/standard'
+                                        link : '/ui/page-layouts/left-sidebar/fullheight/standard'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.tabs',
+                                        id   : 'user-interface.page-layouts.left-sidebar.fullheight.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/left-sidebar/fullheight/tabs'
+                                        link : '/ui/page-layouts/left-sidebar/fullheight/tabs'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.left-sidebar.fullheight.tabs-navigation',
-                                        title: 'Tabs navigation',
+                                        id   : 'user-interface.page-layouts.left-sidebar.fullheight.nav',
+                                        title: 'Nav',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/left-sidebar/fullheight/tabs-navigation'
+                                        link : '/ui/page-layouts/left-sidebar/fullheight/nav'
                                     }
                                 ]
                             },
                             {
-                                id      : 'user-interface.content-layouts.left-sidebar.content',
+                                id      : 'user-interface.page-layouts.left-sidebar.content',
                                 title   : 'Content',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'user-interface.content-layouts.left-sidebar.content.standard',
+                                        id   : 'user-interface.page-layouts.left-sidebar.content.standard',
                                         title: 'Standard',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/left-sidebar/content/standard'
+                                        link : '/ui/page-layouts/left-sidebar/content/standard'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.left-sidebar.content.tabs',
+                                        id   : 'user-interface.page-layouts.left-sidebar.content.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/left-sidebar/content/tabs'
+                                        link : '/ui/page-layouts/left-sidebar/content/tabs'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.left-sidebar.content.tabs-navigation',
-                                        title: 'Tabs navigation',
+                                        id   : 'user-interface.page-layouts.left-sidebar.content.nav',
+                                        title: 'Nav',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/left-sidebar/content/tabs-navigation'
+                                        link : '/ui/page-layouts/left-sidebar/content/nav'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        id      : 'content-layouts.right-sidebar',
+                        id      : 'user-interface.page-layouts.right-sidebar',
                         title   : 'Right Sidebar',
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'user-interface.content-layouts.right-sidebar.fullheight',
+                                id      : 'user-interface.page-layouts.right-sidebar.fullheight',
                                 title   : 'Fullheight',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.basic',
+                                        id   : 'user-interface.page-layouts.right-sidebar.fullheight.basic',
                                         title: 'Basic',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/right-sidebar/fullheight/basic'
+                                        link : '/ui/page-layouts/right-sidebar/fullheight/basic'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.standard',
+                                        id   : 'user-interface.page-layouts.right-sidebar.fullheight.standard',
                                         title: 'Standard',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/right-sidebar/fullheight/standard'
+                                        link : '/ui/page-layouts/right-sidebar/fullheight/standard'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.tabs',
+                                        id   : 'user-interface.page-layouts.right-sidebar.fullheight.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/right-sidebar/fullheight/tabs'
+                                        link : '/ui/page-layouts/right-sidebar/fullheight/tabs'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.right-sidebar.fullheight.tabs-navigation',
-                                        title: 'Tabs navigation',
+                                        id   : 'user-interface.page-layouts.right-sidebar.fullheight.nav',
+                                        title: 'Nav',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/right-sidebar/fullheight/tabs-navigation'
+                                        link : '/ui/page-layouts/right-sidebar/fullheight/nav'
                                     }
                                 ]
                             },
                             {
-                                id      : 'user-interface.content-layouts.right-sidebar.content',
+                                id      : 'user-interface.page-layouts.right-sidebar.content',
                                 title   : 'Content',
                                 type    : 'collapsable',
                                 children: [
                                     {
-                                        id   : 'user-interface.content-layouts.right-sidebar.content.standard',
+                                        id   : 'user-interface.page-layouts.right-sidebar.content.standard',
                                         title: 'Standard',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/right-sidebar/content/standard'
+                                        link : '/ui/page-layouts/right-sidebar/content/standard'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.right-sidebar.content.tabs',
+                                        id   : 'user-interface.page-layouts.right-sidebar.content.tabs',
                                         title: 'Tabs',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/right-sidebar/content/tabs'
+                                        link : '/ui/page-layouts/right-sidebar/content/tabs'
                                     },
                                     {
-                                        id   : 'user-interface.content-layouts.right-sidebar.content.tabs-navigation',
-                                        title: 'Tabs navigation',
+                                        id   : 'user-interface.page-layouts.right-sidebar.content.nav',
+                                        title: 'Nav',
                                         type : 'basic',
-                                        link : '/ui/content-layouts/right-sidebar/content/tabs-navigation'
+                                        link : '/ui/page-layouts/right-sidebar/content/nav'
                                     }
                                 ]
                             }
@@ -841,10 +929,8 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:speakerphone',
                 link : '/docs/changelog',
                 badge: {
-                    title     : '1.0.2',
-                    style     : 'rounded',
-                    background: '#FFEB3B',
-                    color     : '#000000'
+                    title  : '1.0.2',
+                    classes: 'px-2 bg-yellow-300 text-black rounded-full'
                 }
             },
             {
@@ -985,9 +1071,8 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
                 badge: {
-                    title     : '8',
-                    background: '#17FEFF',
-                    color     : '#000000'
+                    title  : '8',
+                    classes: 'w-5 h-5 bg-teal-400 text-black rounded-full'
                 }
             },
             {
@@ -996,10 +1081,8 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
                 badge: {
-                    title     : 'Updated!',
-                    style     : 'rectangle',
-                    background: '#17FEFF',
-                    color     : '#000000'
+                    title  : 'Updated!',
+                    classes: 'px-2 bg-teal-400 text-black rounded'
                 }
             },
             {
@@ -1008,10 +1091,8 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
                 badge: {
-                    title     : 'NEW',
-                    style     : 'rounded',
-                    background: '#17FEFF',
-                    color     : '#000000'
+                    title  : 'NEW',
+                    classes: 'px-2.5 bg-teal-400 text-black rounded-full'
                 }
             },
             {
@@ -1020,9 +1101,8 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:tag',
                 type : 'basic',
                 badge: {
-                    title: '87 Unread',
-                    style: 'simple',
-                    color: '#17FEFF'
+                    title  : '87 Unread',
+                    classes: 'text-teal-500'
                 }
             },
             {
@@ -1133,10 +1213,8 @@ export const futuristicNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:mail',
                 link : '/apps/mailbox',
                 badge: {
-                    title     : '27',
-                    style     : 'rounded',
-                    background: 'rgba(0, 0, 0, 0.24)',
-                    color     : '#FFFFFF'
+                    title  : '27',
+                    classes: 'px-2 bg-black bg-opacity-25 text-white rounded-full'
                 }
             },
             {

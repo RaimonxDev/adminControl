@@ -1,7 +1,7 @@
 treo-card {
     position: relative;
     display: flex;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
     @apply shadow-md bg-card;
 
@@ -36,7 +36,7 @@ treo-card {
             flex-direction: column;
             flex: 1 1 auto;
             z-index: 10;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: transform 0.5s ease-out 0s, visibility 0s ease-in 0.2s, opacity 0s ease-in 0.2s;
             backface-visibility: hidden;
             @apply shadow-md bg-card;
