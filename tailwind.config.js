@@ -242,6 +242,69 @@ const config = {
                 ...theme('spacing'),
                 ...theme('extendedSpacing'),
                 screen: '100vw'
+            }),
+
+            // @tailwindcss/typography
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        color              : 'var(--treo-text-default)',
+                        '[class~="lead"]'  : {
+                            color: 'var(--treo-text-secondary)'
+                        },
+                        a                  : {
+                            color: 'var(--treo-primary)'
+                        },
+                        strong             : {
+                            color: 'var(--treo-text-default)'
+                        },
+                        'ol > li::before'  : {
+                            color: 'var(--treo-text-secondary)'
+                        },
+                        'ul > li::before'  : {
+                            backgroundColor: 'var(--treo-text-hint)'
+                        },
+                        hr                 : {
+                            borderColor: 'var(--treo-border)'
+                        },
+                        blockquote         : {
+                            color          : 'var(--treo-text-default)',
+                            borderLeftColor: 'var(--treo-border)'
+                        },
+                        h1                 : {
+                            color: 'var(--treo-text-default)'
+                        },
+                        h2                 : {
+                            color: 'var(--treo-text-default)'
+                        },
+                        h3                 : {
+                            color: 'var(--treo-text-default)'
+                        },
+                        h4                 : {
+                            color: 'var(--treo-text-default)'
+                        },
+                        'figure figcaption': {
+                            color: 'var(--treo-text-secondary)'
+                        },
+                        code               : {
+                            color: 'var(--treo-text-default)'
+                        },
+                        'a code'           : {
+                            color: 'var(--treo-primary)'
+                        },
+                        pre                : {
+                            color          : theme('colors.white'),
+                            backgroundColor: theme('colors.gray.800')
+                        },
+                        thead              : {
+                            color            : 'var(--treo-text-default)',
+                            borderBottomColor: 'var(--treo-border)'
+                        },
+                        'tbody tr'         : {
+                            borderBottomColor: 'var(--treo-border)'
+                        }
+                    }
+                }
             })
         }
     },
@@ -376,6 +439,7 @@ const config = {
         require(path.resolve(__dirname, ('src/@treo/tailwind/plugins/theming')))({themes}),
 
         // Other third party and/or custom plugins
+        require('@tailwindcss/typography')({modifiers: ['sm', 'lg']}),
         require('@tailwindcss/line-clamp')
     ]
 };
