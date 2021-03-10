@@ -304,6 +304,19 @@ const config = {
                             borderBottomColor: 'var(--treo-border)'
                         }
                     }
+                },
+                sm     : {
+                    css: {
+                        code : {
+                            fontSize: '1em'
+                        },
+                        pre  : {
+                            fontSize: '1em'
+                        },
+                        table: {
+                            fontSize: '1em'
+                        }
+                    }
                 }
             })
         }
