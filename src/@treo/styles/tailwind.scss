@@ -1,5 +1,7 @@
+/* This injects Tailwind's base styles and any base styles registered by plugins. */
 @tailwind base;
 
+/* This injects additional styles into Tailwind's base styles layer. */
 @layer base {
 
     * {
@@ -27,6 +29,15 @@
         min-height: 100%;
         -webkit-font-smoothing: auto;
         -moz-osx-font-smoothing: auto;
+    }
+
+    /* Font size */
+    html {
+        font-size: 16px;
+    }
+
+    body {
+        font-size: 0.875rem;
     }
 
     /* Better spacing and border for horizontal rule */
@@ -59,3 +70,6 @@
         @apply text-disabled #{'!important'};
     }
 }
+
+/* This injects Tailwind's component classes and any component classes registered by plugins. */
+@tailwind components;
