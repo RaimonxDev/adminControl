@@ -92,7 +92,7 @@ import { RightSidebarContentNavPageScrollComponent } from 'app/modules/admin/ui/
 import { RightSidebarContentNavContentScrollComponent } from 'app/modules/admin/ui/page-layouts/right-sidebar/content/nav/content-scroll/nav.component';
 
 export const overviews = {
-    fullwidth  : {
+    fullwidth   : {
         empty   : {
             title           : 'Empty Layout',
             description     : 'Layout that spans the entire width of the content area with 2 different scroll modes.',
@@ -229,7 +229,7 @@ export const overviews = {
             }
         }
     },
-    leftsidebar: {
+    leftsidebar : {
         fullheight: {
             basic   : {
                 title           : 'Basic Layout',
@@ -1693,7 +1693,7 @@ export const routes: Route[] = [
 
         RightSidebarContentNavNormalScrollComponent,
         RightSidebarContentNavPageScrollComponent,
-        RightSidebarContentNavContentScrollComponent,
+        RightSidebarContentNavContentScrollComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
