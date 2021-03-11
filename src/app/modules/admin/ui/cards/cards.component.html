@@ -1,19 +1,25 @@
-<div class="content-layout fullwidth-standard-normal-scroll">
+<div class="flex flex-col flex-auto min-w-0">
 
-    <div class="header">
-
-        <div class="container">
-
-            <div class="breadcrumb">
-                <span class="path">UI ELEMENTS</span>
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary">User Interface</a>
+                </div>
             </div>
-
-            <h1>Cards</h1>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Cards
+                </h2>
+            </div>
         </div>
-
     </div>
 
-    <div class="main p-4 sm:p-10">
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
 
         <div class="mb-6 sm:mb-12">
             <mat-button-toggle-group
@@ -30,7 +36,7 @@
             </mat-button-toggle-group>
         </div>
 
-        <div class="content flex items-start flex-wrap -mx-4 max-w-360">
+        <div class="flex flex-wrap items-start w-full max-w-400 -m-4">
 
             <!-- Card #1 -->
             <treo-card class="flex flex-col max-w-80 w-full filter-article">
@@ -1484,9 +1490,9 @@
 
             <!-- Card #35 -->
             <treo-card class="flex flex-col items-center max-w-80 w-full p-8 filter-info">
-                <div class="flex items-center justify-center p-5 bg-indigo-100 rounded-full">
+                <div class="flex items-center justify-center p-5 rounded-full bg-primary-100 dark:bg-gray-600">
                     <mat-icon
-                        class="icon-size-10 text-indigo-500"
+                        class="icon-size-10 text-primary-500 dark:text-primary-300"
                         [svgIcon]="'heroicons_outline:support'"></mat-icon>
                 </div>
                 <div class="text-2xl font-semibold leading-tight text-center mt-6">Support</div>
@@ -1510,23 +1516,23 @@
                 <div class="text-center text-secondary mt-1 mb-8">Brand strategy, purpose, and product positioning</div>
                 <div class="flex items-center">
                     <img
-                        class="w-8 h-8 rounded-full text-card ring-2 ring-white"
+                        class="w-8 h-8 rounded-full text-card ring-2 ring-bg-card"
                         src="assets/images/avatars/female-02.jpg"
                         alt="Card cover image">
                     <img
-                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-white"
+                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-bg-card"
                         src="assets/images/avatars/female-04.jpg"
                         alt="Card cover image">
                     <img
-                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-white"
+                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-bg-card"
                         src="assets/images/avatars/male-09.jpg"
                         alt="Card cover image">
                     <img
-                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-white"
+                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-bg-card"
                         src="assets/images/avatars/male-07.jpg"
                         alt="Card cover image">
                     <img
-                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-white"
+                        class="w-8 h-8 rounded-full -ml-2 text-card ring-2 ring-bg-card"
                         src="assets/images/avatars/female-12.jpg"
                         alt="Card cover image">
                 </div>
@@ -1650,19 +1656,19 @@
                         <div class="text-md font-medium text-secondary mr-3">4 mutual friends</div>
                         <div class="flex items-center">
                             <img
-                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                                 src="assets/images/avatars/female-02.jpg"
                                 alt="Card cover image">
                             <img
-                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                                 src="assets/images/avatars/female-04.jpg"
                                 alt="Card cover image">
                             <img
-                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                                 src="assets/images/avatars/male-09.jpg"
                                 alt="Card cover image">
                             <img
-                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                                class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                                 src="assets/images/avatars/male-07.jpg"
                                 alt="Card cover image">
                         </div>
@@ -2368,19 +2374,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -2785,19 +2791,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -2948,19 +2954,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -3119,19 +3125,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -3296,19 +3302,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -3477,19 +3483,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -3626,19 +3632,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -3784,19 +3790,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
@@ -3942,19 +3948,19 @@
                 <div class="flex flex-col sm:flex-row sm:items-center mx-6 sm:mx-8 mb-4 sm:mb-6">
                     <div class="flex items-center">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-02.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/female-04.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-09.jpg"
                             alt="Card cover image">
                         <img
-                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
+                            class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-bg-card"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
                         <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>

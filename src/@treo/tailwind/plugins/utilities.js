@@ -49,6 +49,14 @@ const utilities = plugin(({
                 '--tw-bg-opacity': '1 !important',
                 backgroundColor  : 'rgba(var(--treo-bg-dialog-rgb), var(--tw-bg-opacity)) !important'
             },
+            '.ring-bg-default'                                               : {
+                '--tw-ring-opacity': '1 !important',
+                '--tw-ring-color'  : 'rgba(var(--treo-bg-default-rgb), var(--tw-ring-opacity)) !important'
+            },
+            '.ring-bg-card'                                               : {
+                '--tw-ring-opacity': '1 !important',
+                '--tw-ring-color'  : 'rgba(var(--treo-bg-card-rgb), var(--tw-ring-opacity)) !important'
+            },
             [`.dark .${e(`dark:mat-icon`)}`]                         : {
                 '--tw-text-opacity': '1 !important',
                 color              : 'rgba(var(--treo-mat-icon-rgb), var(--tw-text-opacity)) !important'
@@ -83,6 +91,14 @@ const utilities = plugin(({
             [`.dark .${e(`dark:bg-dialog`)}`]                        : {
                 '--tw-bg-opacity': '1 !important',
                 backgroundColor  : 'rgba(var(--treo-bg-dialog-rgb), var(--tw-bg-opacity)) !important'
+            },
+            [`.dark .${e(`dark:ring-bg-card`)}`]                          : {
+                '--tw-ring-opacity': '1 !important',
+                '--tw-ring-color'  : 'rgba(var(--treo-bg-card-rgb), var(--tw-ring-opacity)) !important'
+            },
+            [`.dark .${e(`dark:ring-bg-default`)}`]                       : {
+                '--tw-ring-opacity': '1 !important',
+                '--tw-ring-color'  : 'rgba(var(--treo-bg-default-rgb), var(--tw-ring-opacity)) !important'
             },
             '.bg-hover'                                               : {
                 backgroundColor: 'var(--treo-bg-hover) !important'

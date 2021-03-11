@@ -63,7 +63,8 @@
     }
 
     *, *::before, *::after {
-        border-color: var(--treo-border);
+        --tw-border-opacity: 1 !important;
+        border-color: rgba(var(--treo-border-rgb), var(--tw-border-opacity));
     }
 
     [disabled] * {

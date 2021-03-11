@@ -26,7 +26,7 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
                     <mat-icon
                         class="mr-2 icon-size-5"
                         [svgIcon]="'heroicons_solid:database'"></mat-icon>
-                    <h6 class="m-0">Storage</h6>
+                    <div class="text-lg font-semibold">Storage</div>
                 </div>
                 <div class="flex flex-col flex-auto mt-4">
                     <span class="text-sm leading-none mb-3">19.9 GB of 100 GB used</span>
@@ -43,7 +43,7 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
                     <mat-icon
                         class="mr-2 icon-size-5"
                         [svgIcon]="'heroicons_solid:users'"></mat-icon>
-                    <h6 class="m-0">Users</h6>
+                    <div class="text-lg font-semibold">Users</div>
                 </div>
                 <div class="flex flex-col flex-auto mt-4">
                     <span class="text-sm leading-none mb-3">8 of 20 users used</span>

@@ -252,7 +252,7 @@ export class CryptoComponent implements OnInit, OnDestroy
                         return '$' + value.toFixed(0);
                     },
                     style    : {
-                        color: 'currentColor'
+                        colors: 'currentColor'
                     }
                 }
             }

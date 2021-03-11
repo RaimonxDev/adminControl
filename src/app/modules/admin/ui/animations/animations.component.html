@@ -1,22 +1,27 @@
-<div class="content-layout fullwidth-standard-normal-scroll">
+<div class="flex flex-col flex-auto min-w-0">
 
     <!-- Header -->
-    <div class="header">
-
-        <div class="container">
-
-            <div class="breadcrumb">
-                <span class="path">TREO</span>
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary">User Interface</a>
+                </div>
             </div>
-
-            <h1>Animations</h1>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Animations
+                </h2>
+            </div>
         </div>
-
     </div>
 
-    <div class="main">
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
 
-        <div class="rich-text max-w-3xl">
+        <div class="max-w-3xl prose prose-sm">
 
             <p>
                 Treo provides set of ready-to-use animations for convenience. You can access them by importing the <code>TreoAnimations</code> and set it as the
@@ -32,17 +37,17 @@
 
             <h2>Usage</h2>
             <!-- @formatter:off -->
-                <textarea treo-highlight
-                          lang="typescript">
-                    @Component({
-                        selector   : 'my-component',
-                        templateUrl: './my-component.component.html',
-                        styleUrls  : ['./my-component.component.scss'],
-                        animations : TreoAnimations
-                    })
-                    export class MyComponent { }
-                </textarea>
-                <!-- @formatter:on -->
+            <textarea treo-highlight
+                      lang="typescript">
+                @Component({
+                    selector   : 'my-component',
+                    templateUrl: './my-component.component.html',
+                    styleUrls  : ['./my-component.component.scss'],
+                    animations : TreoAnimations
+                })
+                export class MyComponent { }
+            </textarea>
+            <!-- @formatter:on -->
 
             <h2>Animations</h2>
 
@@ -84,7 +89,7 @@
                             mat-button
                             [color]="'primary'"
                             (click)="visibilityStates.expandCollapse = !visibilityStates.expandCollapse;
-                                             animationStates.expandCollapse === 'expanded' ? animationStates.expandCollapse = 'collapsed' : animationStates.expandCollapse = 'expanded'">
+                                     animationStates.expandCollapse === 'expanded' ? animationStates.expandCollapse = 'collapsed' : animationStates.expandCollapse = 'expanded'">
                             Toggle *ngIf
                         </button>
                     </div>
@@ -111,28 +116,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@expandCollapse]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@expandCollapse]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @expandCollapse>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @expandCollapse>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -143,7 +150,7 @@
             <!-- ----------------------------------------------------------------------------------------------- -->
             <!-- @ Shake -->
             <!-- ----------------------------------------------------------------------------------------------- -->
-            <h3>Shake</h3>
+            <h3 class="mt-16">Shake</h3>
             <p>
                 This animation can be triggered in two ways;
             </p>
@@ -207,28 +214,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@shake]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@shake]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @shake>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @shake>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -239,7 +248,7 @@
             <!-- ----------------------------------------------------------------------------------------------- -->
             <!-- @ Fade In -->
             <!-- ----------------------------------------------------------------------------------------------- -->
-            <h2>Fade In</h2>
+            <h3 class="mt-16">Fade In</h3>
             <p>
                 <b>Fade In</b> animation can be triggered in two ways;
             </p>
@@ -318,28 +327,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeIn]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeIn]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeIn>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeIn>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -396,28 +407,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeInTop]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeInTop]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeInTop>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeInTop>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -474,28 +487,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeInBottom]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeInBottom]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeInBottom>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeInBottom>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -552,28 +567,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeInLeft]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeInLeft]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeInLeft>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeInLeft>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -630,28 +647,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeInRight]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeInRight]="state">
+                                <div class="animated-box-content">
+                                Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeInRight>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeInRight>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -662,7 +681,7 @@
             <!-- ----------------------------------------------------------------------------------------------- -->
             <!-- @ Fade Out -->
             <!-- ----------------------------------------------------------------------------------------------- -->
-            <h3>Fade Out</h3>
+            <h3 class="mt-16">Fade Out</h3>
             <p>
                 <b>Fade Out</b> animation can be triggered in two ways;
             </p>
@@ -741,28 +760,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeOut]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeOut]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeOut>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeOut>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -819,28 +840,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeOutTop]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeOutTop]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeOutTop>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeOutTop>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -897,28 +920,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeOutBottom]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeOutBottom]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeOutBottom>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeOutBottom>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -975,28 +1000,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeOutLeft]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeOutLeft]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeOutLeft>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeOutLeft>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1053,28 +1080,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@fadeOutRight]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@fadeOutRight]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @fadeOutRight>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @fadeOutRight>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1085,7 +1114,7 @@
             <!-- ----------------------------------------------------------------------------------------------- -->
             <!-- @ Slide In -->
             <!-- ----------------------------------------------------------------------------------------------- -->
-            <h3>Slide In</h3>
+            <h3 class="mt-16">Slide In</h3>
             <p>
                 <b>Slide In</b> animation can be triggered in two ways;
             </p>
@@ -1163,28 +1192,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideInTop]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideInTop]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideInTop>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideInTop>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1241,28 +1272,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideInBottom]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideInBottom]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideInBottom>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideInBottom>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1319,28 +1352,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideInLeft]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideInLeft]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideInLeft>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideInLeft>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1397,28 +1432,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideInRight]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideInRight]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideInRight>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideInRight>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1429,7 +1466,7 @@
             <!-- ----------------------------------------------------------------------------------------------- -->
             <!-- @ Slide Out -->
             <!-- ----------------------------------------------------------------------------------------------- -->
-            <h3>Slide Out</h3>
+            <h3 class="mt-16">Slide Out</h3>
             <p>
                 <b>Slide Out</b> animation can be triggered in two ways;
             </p>
@@ -1507,28 +1544,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideOutTop]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideOutTop]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideOutTop>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideOutTop>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1585,28 +1624,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideOutBottom]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideOutBottom]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideOutBottom>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideOutBottom>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1663,28 +1704,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideOutLeft]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideOutLeft]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideOutLeft>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideOutLeft>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1741,28 +1784,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@slideOutRight]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@slideOutRight]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @slideOutRight>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @slideOutRight>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1773,7 +1818,7 @@
             <!-- ----------------------------------------------------------------------------------------------- -->
             <!-- @ Zoom In -->
             <!-- ----------------------------------------------------------------------------------------------- -->
-            <h3>Zoom In</h3>
+            <h3 class="mt-16">Zoom In</h3>
             <p>
                 <b>Zoom In</b> animation can be triggered in two ways;
             </p>
@@ -1837,28 +1882,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@zoomIn]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@zoomIn]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @zoomIn>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @zoomIn>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 
@@ -1869,7 +1916,7 @@
             <!-- ----------------------------------------------------------------------------------------------- -->
             <!-- @ Zoom Out -->
             <!-- ----------------------------------------------------------------------------------------------- -->
-            <h3>Zoom Out</h3>
+            <h3 class="mt-16">Zoom Out</h3>
             <p>
                 <b>Zoom Out</b> animation can be triggered in two ways;
             </p>
@@ -1933,28 +1980,30 @@
 
                     <mat-tab label="HTML">
 
+                        <!-- @formatter:off -->
                         <textarea
                             treo-highlight
                             [lang]="'html'">
-
                             <!-- Using state -->
-                            <div class="animated-box"
-                            [@zoomOut]="state">
-                            <div class="animated-box-content">
-                            Animated box
-                            </div>
+                            <div
+                                class="animated-box"
+                                [@zoomOut]="state">
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
 
                             <!-- Using *ngIf -->
-                            <div class="animated-box"
-                            *ngIf="visible"
-                            @zoomOut>
-                            <div class="animated-box-content">
-                            Animated box
+                            <div
+                                class="animated-box"
+                                *ngIf="visible"
+                                @zoomOut>
+                                <div class="animated-box-content">
+                                    Animated box
+                                </div>
                             </div>
-                            </div>
-
                         </textarea>
+                        <!-- @formatter:on -->
 
                     </mat-tab>
 

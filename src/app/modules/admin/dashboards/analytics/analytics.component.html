@@ -1,11 +1,11 @@
 <div class="flex flex-col flex-auto w-full p-2 sm:p-8">
 
-    <div class="flex flex-wrap w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto">
 
         <div class="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
             <div class="mr-6">
-                <h2 class="m-0">Analytics dashboard</h2>
-                <div class="text-secondary tracking-tight">Monitor key metrics, check reporting and review insights</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">Analytics dashboard</h2>
+                <div class="font-medium tracking-tight text-secondary">Monitor key metrics, check reporting and review insights</div>
             </div>
             <!-- Action buttons -->
             <div class="flex items-center">
@@ -15,7 +15,7 @@
                     Settings
                 </button>
                 <button
-                    class="hidden sm:inline-flex ml-2"
+                    class="hidden sm:inline-flex ml-3"
                     mat-flat-button
                     [color]="'primary'">
                     Export
@@ -44,7 +44,7 @@
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Purchases</div>
                         <div class="text-sm text-hint font-medium">Number of purchases</div>
                     </div>
-                    <div>
+                    <div class="ml-2">
                         <button
                             class="h-6 min-h-6 px-2 bg-hover"
                             mat-button
@@ -94,7 +94,7 @@
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Unique Visitors</div>
                         <div class="text-sm text-hint font-medium">Number of unique visitors</div>
                     </div>
-                    <div>
+                    <div class="ml-2">
                         <button
                             class="h-6 min-h-6 px-2 bg-hover"
                             mat-button
@@ -144,7 +144,7 @@
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Total Visits</div>
                         <div class="text-sm text-hint font-medium">Number of total visits from all visitors</div>
                     </div>
-                    <div>
+                    <div class="ml-2">
                         <button
                             class="h-6 min-h-6 px-2 bg-hover"
                             mat-button
@@ -194,7 +194,7 @@
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Avg. purchase value</div>
                         <div class="text-sm text-hint font-medium">Avg. amount spent by each customer</div>
                     </div>
-                    <div>
+                    <div class="ml-2">
                         <button
                             class="h-6 min-h-6 px-2 bg-hover"
                             mat-button
@@ -231,7 +231,7 @@
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Unique purchases</div>
                         <div class="text-sm text-hint font-medium">Number of different items sold</div>
                     </div>
-                    <div>
+                    <div class="ml-2">
                         <button
                             class="h-6 min-h-6 px-2 bg-hover"
                             mat-button
@@ -268,7 +268,7 @@
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Refunds</div>
                         <div class="text-sm text-hint font-medium">Value of refunded orders</div>
                     </div>
-                    <div>
+                    <div class="ml-2">
                         <button
                             class="h-6 min-h-6 px-2 bg-hover"
                             mat-button
@@ -299,8 +299,8 @@
 
         <!-- Audience & Behaviors -->
         <div class="flex flex-col w-full mt-10 mb-3 px-4">
-            <h3 class="m-0">Audience & Behavior</h3>
-            <div class="text-secondary tracking-tight">Demographic properties and general behaviors of the users</div>
+            <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">Audience & Behavior</h3>
+            <div class="font-medium tracking-tight text-secondary">Demographic properties and general behaviors of the users</div>
         </div>
 
         <!-- New vs. returning -->
@@ -309,7 +309,7 @@
                 <div class="flex flex-col p-4 pl-5">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">New vs. Returning</div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-6 min-h-6 px-2 bg-hover"
                                 mat-button
@@ -358,7 +358,7 @@
                 <div class="flex flex-col p-4 pl-5">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Gender</div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-6 min-h-6 px-2 bg-hover"
                                 mat-button
@@ -407,7 +407,7 @@
                 <div class="flex flex-col p-4 pl-5">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Age</div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-6 min-h-6 px-2 bg-hover"
                                 mat-button
@@ -456,7 +456,7 @@
                 <div class="flex flex-col p-4 pl-5">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Language</div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-6 min-h-6 px-2 bg-hover"
                                 mat-button
@@ -505,7 +505,7 @@
                 <div class="flex flex-col p-4 pl-6">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Channels</div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-6 min-h-6 px-2 bg-hover"
                                 mat-button
@@ -560,7 +560,7 @@
                 <div class="flex flex-col p-4 pl-6">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Devices</div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-6 min-h-6 px-2 bg-hover"
                                 mat-button
@@ -615,7 +615,7 @@
                 <div class="flex flex-col p-4 pl-6">
                     <div class="flex items-center justify-between">
                         <div class="font-bold text-md text-secondary uppercase tracking-wider">Browsers</div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-6 min-h-6 px-2 bg-hover"
                                 mat-button

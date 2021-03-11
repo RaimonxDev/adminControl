@@ -1,11 +1,11 @@
 <div class="flex flex-col flex-auto w-full p-2 sm:p-8">
 
-    <div class="flex flex-wrap w-full">
+    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto">
 
         <div class="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
             <div class="mr-6">
-                <h2 class="m-0">Finance dashboard</h2>
-                <div class="text-secondary tracking-tight">Keep track of your financial status</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">Finance dashboard</h2>
+                <div class="font-medium tracking-tight text-secondary">Keep track of your financial status</div>
             </div>
             <!-- Action buttons -->
             <div class="flex items-center">
@@ -15,12 +15,12 @@
                     Reports
                 </button>
                 <button
-                    class="hidden sm:inline-flex ml-2"
+                    class="hidden sm:inline-flex ml-3"
                     mat-stroked-button>
                     Settings
                 </button>
                 <button
-                    class="hidden sm:inline-flex ml-2"
+                    class="hidden sm:inline-flex ml-3"
                     mat-flat-button
                     [color]="'primary'">
                     Export
@@ -35,7 +35,7 @@
                     </button>
                     <mat-menu #actionsMenu="matMenu">
                         <button mat-menu-item>Export</button>
-                        <button mat-menu-item>Share</button>
+                        <button mat-menu-item>Reports</button>
                         <button mat-menu-item>Settings</button>
                     </mat-menu>
                 </div>
@@ -221,7 +221,7 @@
                             <div class="font-bold text-md text-secondary uppercase tracking-wider mr-4">Account Balance</div>
                             <div class="text-sm text-hint font-medium">Monthly balance growth and avg. monthly income</div>
                         </div>
-                        <div>
+                        <div class="ml-2">
                             <button
                                 class="h-7 min-h-7 px-3 bg-hover"
                                 mat-button
@@ -280,7 +280,7 @@
                         <!-- Transaction ID -->
                         <ng-container matColumnDef="transactionId">
                             <th
-                                class="bg-gray-50 dark:bg-gray-700 border-t"
+                                class="bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50 border-t"
                                 mat-header-cell
                                 mat-sort-header
                                 *matHeaderCellDef>
@@ -300,7 +300,7 @@
                         <!-- Date -->
                         <ng-container matColumnDef="date">
                             <th
-                                class="bg-gray-50 dark:bg-gray-700 border-t"
+                                class="bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50 border-t"
                                 mat-header-cell
                                 mat-sort-header
                                 *matHeaderCellDef>
@@ -320,7 +320,7 @@
                         <!-- Name -->
                         <ng-container matColumnDef="name">
                             <th
-                                class="bg-gray-50 dark:bg-gray-700 border-t"
+                                class="bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50 border-t"
                                 mat-header-cell
                                 mat-sort-header
                                 *matHeaderCellDef>
@@ -340,7 +340,7 @@
                         <!-- Amount -->
                         <ng-container matColumnDef="amount">
                             <th
-                                class="bg-gray-50 dark:bg-gray-700 border-t"
+                                class="bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50 border-t"
                                 mat-header-cell
                                 mat-sort-header
                                 *matHeaderCellDef>
@@ -360,7 +360,7 @@
                         <!-- Status -->
                         <ng-container matColumnDef="status">
                             <th
-                                class="bg-gray-50 dark:bg-gray-700 border-t"
+                                class="bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50 border-t"
                                 mat-header-cell
                                 mat-sort-header
                                 *matHeaderCellDef>
