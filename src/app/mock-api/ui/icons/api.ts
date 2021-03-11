@@ -42,7 +42,7 @@ export class IconsMockApi
                 {
                     namespace: 'dripicons',
                     name     : 'Dripicons',
-                    grid     : 24,
+                    grid     : 6,
                     list     : cloneDeep(this._dripicons)
                 }
             ]);
@@ -57,7 +57,7 @@ export class IconsMockApi
                 {
                     namespace: 'feather',
                     name     : 'Feather',
-                    grid     : 24,
+                    grid     : 6,
                     list     : cloneDeep(this._feather)
                 }
             ]);
@@ -72,7 +72,7 @@ export class IconsMockApi
                 {
                     namespace: 'heroicons_outline',
                     name     : 'Heroicons Outline',
-                    grid     : 24,
+                    grid     : 6,
                     list     : cloneDeep(this._heroicons)
                 }
             ]);
@@ -87,7 +87,7 @@ export class IconsMockApi
                 {
                     namespace: 'heroicons_solid',
                     name     : 'Heroicons Solid',
-                    grid     : 20,
+                    grid     : 5,
                     list     : cloneDeep(this._heroicons)
                 }
             ]);
@@ -102,7 +102,7 @@ export class IconsMockApi
                 {
                     namespace: 'iconsmind',
                     name     : 'Iconsmind',
-                    grid     : 40,
+                    grid     : 10,
                     list     : cloneDeep(this._iconsmind)
                 }
             ]);
@@ -117,7 +117,7 @@ export class IconsMockApi
                 {
                     namespace: 'mat_outline',
                     name     : 'Material Outline',
-                    grid     : 24,
+                    grid     : 6,
                     list     : cloneDeep(this._material)
                 }
             ]);
@@ -132,7 +132,7 @@ export class IconsMockApi
                 {
                     namespace: '',
                     name     : 'Material Twotone',
-                    grid     : 24,
+                    grid     : 6,
                     list     : cloneDeep(this._material)
                 }
             ]);

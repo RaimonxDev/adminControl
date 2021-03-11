@@ -15,6 +15,9 @@
         )
 );
 
+/** Configure the Angular Material density **/
+@include angular-material-density(0);
+
 /** Prepare the Background and Foreground maps */
 $background-light: (
     status-bar: #CBD5E1, /* blueGray.300 */

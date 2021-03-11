@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -13,14 +13,20 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TreoCardModule } from '@treo/components/card';
 import { SharedModule } from 'app/shared/shared.module';
 import { CardsComponent } from 'app/modules/admin/ui/cards/cards.component';
-import { cardsRoutes } from 'app/modules/admin/ui/cards/cards.routing';
+
+export const routes: Route[] = [
+    {
+        path     : '',
+        component: CardsComponent
+    }
+];
 
 @NgModule({
     declarations: [
         CardsComponent
     ],
     imports     : [
-        RouterModule.forChild(cardsRoutes),
+        RouterModule.forChild(routes),
         MatButtonModule,
         MatButtonToggleModule,
         MatCheckboxModule,

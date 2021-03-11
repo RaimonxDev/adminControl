@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatChipsModule } from '@angular/material/chips';
@@ -15,14 +15,20 @@ import { TreoHighlightModule } from '@treo/components/highlight';
 import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { HelpersComponent } from 'app/modules/admin/ui/helpers/helpers.component';
-import { helpersRoutes } from 'app/modules/admin/ui/helpers/helpers.routing';
+
+export const routes: Route[] = [
+    {
+        path     : '',
+        component: HelpersComponent
+    }
+];
 
 @NgModule({
     declarations: [
         HelpersComponent
     ],
     imports     : [
-        RouterModule.forChild(helpersRoutes),
+        RouterModule.forChild(routes),
         MatButtonModule,
         MatButtonToggleModule,
         MatChipsModule,

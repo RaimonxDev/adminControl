@@ -3,8 +3,7 @@ import { FormBuilder } from '@angular/forms';
 
 @Component({
     selector   : 'helpers',
-    templateUrl: './helpers.component.html',
-    styles     : ['']
+    templateUrl: './helpers.component.html'
 })
 export class HelpersComponent
 {

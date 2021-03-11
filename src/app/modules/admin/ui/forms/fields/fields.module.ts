@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -13,14 +13,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { TreoAutogrowModule } from '@treo/directives/autogrow';
 import { SharedModule } from 'app/shared/shared.module';
 import { FormsFieldsComponent } from 'app/modules/admin/ui/forms/fields/fields.component';
-import { formsFieldsRoutes } from 'app/modules/admin/ui/forms/fields/fields.routing';
+
+export const routes: Route[] = [
+    {
+        path     : '',
+        component: FormsFieldsComponent
+    }
+];
 
 @NgModule({
     declarations: [
         FormsFieldsComponent
     ],
     imports     : [
-        RouterModule.forChild(formsFieldsRoutes),
+        RouterModule.forChild(routes),
         MatButtonModule,
         MatChipsModule,
         MatDatepickerModule,

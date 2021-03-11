@@ -7,7 +7,6 @@ import { Icon } from 'app/modules/admin/ui/icons/icons.types';
 @Component({
     selector     : 'icons',
     templateUrl  : './icons.component.html',
-    styleUrls    : ['./icons.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class IconsComponent implements OnInit, OnDestroy

@@ -5,7 +5,13 @@ import { TreoCardComponent } from '@treo/components/card';
 @Component({
     selector       : 'cards',
     templateUrl    : './cards.component.html',
-    styleUrls      : ['./cards.component.scss'],
+    styles         : [
+        `
+            cards treo-card {
+                margin: 16px;
+            }
+        `
+    ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
