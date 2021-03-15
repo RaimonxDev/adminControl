@@ -1,14 +1,20 @@
-<div class="content-layout fullwidth-basic-content-scroll">
+<div
+    class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto"
+    cdkScrollable>
 
-    <img class="image"
-         src="assets/images/pages/errors/500.svg">
-
-    <h1>Something went wrong!</h1>
-    <h6>Server Error 500. Our staff has been notified, thank you for your understanding.</h6>
-
-    <a class="link"
-       [routerLink]="['/']">
-        Back to Dashboard
-    </a>
+    <!-- Main -->
+    <div class="flex flex-col flex-auto items-center justify-center p-6 sm:p-10">
+        <img
+            class="max-h-120"
+            src="assets/images/pages/errors/500.svg"
+            alt="404 illustration">
+        <div class="mt-12 sm:mt-24 text-4xl md:text-7xl font-extrabold tracking-tight leading-tight md:leading-none text-center">Something went wrong!</div>
+        <div class="mt-2 text-lg md:text-xl font-medium tracking-tight text-center text-secondary">Server Error 500. Our staff has been notified, thank you for your understanding.</div>
+        <a
+            class="mt-12 text-primary underline"
+            [routerLink]="['/']">
+            Back to Dashboard
+        </a>
+    </div>
 
 </div>
