@@ -24,35 +24,38 @@
 
         <!-- Header -->
         <div class="flex flex-col items-center mt-8 sm:mt-20 mx-4 sm:mx-16">
-            <h1 class="max-w-2xl text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
+            <h2 class="text-xl font-semibold tracking-wider">PRICING</h2>
+            <p class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
                 Simple pricing that scales with your business
-            </h1>
-            <h5 class="max-w-100 mt-4 sm:text-xl font-medium text-center tracking-tight text-secondary">
+            </p>
+            <p class="mt-3 sm:text-2xl text-center tracking-tight text-secondary">
                 Whether you are an individual or a Fortune 500 enterprise, there is a plan that's right for you
-            </h5>
+            </p>
             <!-- Recurring selector -->
-            <div
-                class="flex items-center justify-center mt-12 sm:mt-16"
-                [ngClass]="{'annual-billing' : annualBilling}">
-                <span
-                    class="font-semibold cursor-pointer select-none"
-                    [ngClass]="{'opacity-50': annualBilling}"
-                    (click)="annualBilling = false">Monthly
-                </span>
-                <mat-slide-toggle
-                    class="mx-4"
-                    [(ngModel)]="annualBilling"
-                    [color]="'primary'"></mat-slide-toggle>
-                <span
-                    class="font-semibold cursor-pointer select-none"
-                    [ngClass]="{'opacity-50': !annualBilling}"
-                    (click)="annualBilling = true">Annual
-                </span>
+            <div class="flex items-center mt-12 sm:mt-16 p-0.5 rounded-lg overflow-hidden bg-gray-200">
+                <button
+                    class="px-6 rounded-md"
+                    [ngClass]="{'bg-card pointer-events-none shadow': yearlyBilling,
+                                'bg-transparent': !yearlyBilling}"
+                    mat-flat-button
+                    (click)="yearlyBilling = true"
+                    disableRipple>
+                    Yearly billing
+                </button>
+                <button
+                    class="px-6 rounded-md"
+                    [ngClass]="{'bg-card pointer-events-none shadow': !yearlyBilling,
+                                'bg-transparent': yearlyBilling}"
+                    mat-flat-button
+                    (click)="yearlyBilling = false"
+                    disableRipple>
+                    Monthly billing
+                </button>
             </div>
         </div>
 
         <!-- Cards -->
-        <div class="flex justify-center mt-8 sm:mt-20 mx-4 sm:mx-16">
+        <div class="flex justify-center mt-8 sm:mt-22 mx-4 sm:mx-16">
             <div class="grid grid-cols-1 gap-y-8 lg:gap-y-0 lg:grid-cols-3 lg:gap-x-8 w-full max-w-sm lg:max-w-7xl">
                 <!-- Card 1 -->
                 <treo-card class="flex-col p-6 sm:py-16 sm:px-12">
@@ -63,19 +66,19 @@
                     <div class="flex items-baseline whitespace-nowrap">
                         <div class="mr-2 text-2xl">USD</div>
                         <div class="text-6xl font-semibold leading-tight tracking-tight">
-                            <ng-container *ngIf="annualBilling">$6.00</ng-container>
-                            <ng-container *ngIf="!annualBilling">$9.00</ng-container>
+                            <ng-container *ngIf="yearlyBilling">$6.00</ng-container>
+                            <ng-container *ngIf="!yearlyBilling">$9.00</ng-container>
                         </div>
                     </div>
                     <!-- Price details -->
                     <div class="flex flex-col mt-2 text-secondary">
-                        <ng-container *ngIf="annualBilling">
-                            <div>billed annually</div>
+                        <ng-container *ngIf="yearlyBilling">
+                            <div>billed yearly</div>
                             <div><b>$9.00</b> billed monthly</div>
                         </ng-container>
-                        <ng-container *ngIf="!annualBilling">
+                        <ng-container *ngIf="!yearlyBilling">
                             <div>billed monthly</div>
-                            <div><b>$6.00</b> billed annually</div>
+                            <div><b>$6.00</b> billed yearly</div>
                         </ng-container>
                     </div>
                     <!-- CTA -->
@@ -135,19 +138,19 @@
                     <div class="flex items-baseline whitespace-nowrap">
                         <div class="mr-2 text-2xl">USD</div>
                         <div class="text-6xl font-semibold leading-tight tracking-tight">
-                            <ng-container *ngIf="annualBilling">$12.00</ng-container>
-                            <ng-container *ngIf="!annualBilling">$15.00</ng-container>
+                            <ng-container *ngIf="yearlyBilling">$12.00</ng-container>
+                            <ng-container *ngIf="!yearlyBilling">$15.00</ng-container>
                         </div>
                     </div>
                     <!-- Price details -->
                     <div class="flex flex-col mt-2 text-secondary">
-                        <ng-container *ngIf="annualBilling">
-                            <div>billed annually</div>
+                        <ng-container *ngIf="yearlyBilling">
+                            <div>billed yearly</div>
                             <div><b>$15.00</b> billed monthly</div>
                         </ng-container>
-                        <ng-container *ngIf="!annualBilling">
+                        <ng-container *ngIf="!yearlyBilling">
                             <div>billed monthly</div>
-                            <div><b>$12.00</b> billed annually</div>
+                            <div><b>$12.00</b> billed yearly</div>
                         </ng-container>
                     </div>
                     <!-- CTA -->
@@ -204,19 +207,19 @@
                     <div class="flex items-baseline whitespace-nowrap">
                         <div class="mr-2 text-2xl">USD</div>
                         <div class="text-6xl font-semibold leading-tight tracking-tight">
-                            <ng-container *ngIf="annualBilling">$49.00</ng-container>
-                            <ng-container *ngIf="!annualBilling">$69.00</ng-container>
+                            <ng-container *ngIf="yearlyBilling">$49.00</ng-container>
+                            <ng-container *ngIf="!yearlyBilling">$69.00</ng-container>
                         </div>
                     </div>
                     <!-- Price details -->
                     <div class="flex flex-col mt-2 text-secondary">
-                        <ng-container *ngIf="annualBilling">
-                            <div>billed annually</div>
+                        <ng-container *ngIf="yearlyBilling">
+                            <div>billed yearly</div>
                             <div><b>$69.00</b> billed monthly</div>
                         </ng-container>
-                        <ng-container *ngIf="!annualBilling">
+                        <ng-container *ngIf="!yearlyBilling">
                             <div>billed monthly</div>
-                            <div><b>$49.00</b> billed annually</div>
+                            <div><b>$49.00</b> billed yearly</div>
                         </ng-container>
                     </div>
                     <!-- CTA -->

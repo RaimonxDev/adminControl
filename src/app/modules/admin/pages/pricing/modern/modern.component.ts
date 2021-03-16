@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 })
 export class PricingModernComponent
 {
-    annualBilling: boolean = true;
+    yearlyBilling: boolean = true;
 
     /**
      * Constructor
