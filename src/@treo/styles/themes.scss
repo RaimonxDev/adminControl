@@ -4,7 +4,7 @@
 /** Include the core Angular Material styles */
 @include mat-core();
 
-/** Configure the Angular Material typography settings */
+/** Configure the Angular Material typography */
 @include angular-material-typography(
         mat-typography-config(
             $font-family: theme('fontFamily.sans'),
@@ -16,7 +16,7 @@
 );
 
 /** Configure the Angular Material density **/
-@include angular-material-density(0);
+@include angular-material-density(-2);
 
 /** Prepare the Background and Foreground maps */
 $background-light: (
