@@ -1,88 +1,126 @@
-<div class="content-layout fullwidth-basic-normal-scroll">
+<div class="flex flex-col flex-auto min-w-0">
 
-    <!-- Background - Inline SVG for easy customizations -->
-    <svg class="background"
-         viewBox="0 0 1531 891"
-         preserveAspectRatio="xMidYMax slice"
-         xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 182c144.327 47.973 534.462 219.712 440.509 369.87C346.555 702.028 79.877 662.846 0 638V182z"></path>
-        <path d="M1405 848c-424.366 158.009-437-164-437-272s102-425 563-576v769c-21.333 29.333-63.333 55.667-126 79z"></path>
-        <path d="M1531 162c-122.914-17.284-377.96 33.191-543.433 206.414C822.095 541.636 797.342 648.75 835.842 731.622c38.5 82.871 198.243 134.841 400.555 92.053C1438.71 780.886 1492.752 775.894 1531 768V162z"></path>
-    </svg>
-
-    <!-- Main -->
-    <div class="main">
-
-        <!-- Header -->
-        <div class="header">
-
-            <h1>Welcome! How can we help you today?</h1>
-
-            <div class="search">
-                <mat-form-field class="treo-mat-no-subscript treo-mat-rounded">
-                    <input matInput
-                           [placeholder]="'Enter a question, topic or keyword'">
-                    <mat-icon matPrefix
-                              [svgIcon]="'search'"></mat-icon>
-                </mat-form-field>
-            </div>
-
-            <h5>... or choose a category to quickly find the help you need</h5>
-
-            <div class="categories">
-
-                <a class="category"
-                   [routerLink]="['faqs']">
-                    <mat-icon [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
-                    <div>
-                        <div class="title">FAQs</div>
-                        <div class="subtitle">Frequently asked questions and answers</div>
-                    </div>
-                </a>
-
-                <a class="category"
-                   [routerLink]="['guides']">
-                    <mat-icon [svgIcon]="'heroicons_outline:book-open'"></mat-icon>
-                    <div>
-                        <div class="title">Guides</div>
-                        <div class="subtitle">Articles and resources to guide you</div>
-                    </div>
-                </a>
-
-                <a class="category"
-                   [routerLink]="['support']">
-                    <mat-icon [svgIcon]="'heroicons_outline:support'"></mat-icon>
-                    <div>
-                        <div class="title">Support</div>
-                        <div class="subtitle">Contact us for more detailed support</div>
-                    </div>
-                </a>
-
-            </div>
-
+    <!-- Header -->
+    <div class="relative flex flex-col items-center pt-8 pb-36 px-4 sm:pt-20 sm:pb-52 sm:px-16 overflow-hidden dark bg-transparent">
+        <!-- Background -->
+        <svg
+            class="absolute -top-40 left-0 w-full h-240 text-primary-300 -z-1 pointer-events-none bg-gray-800"
+            viewBox="0 0 1531 891"
+            preserveAspectRatio="xMidYMax slice"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                class="opacity-10 fill-current"
+                d="M0 182c144.327 47.973 534.462 219.712 440.509 369.87C346.555 702.028 79.877 662.846 0 638V182z"></path>
+            <path
+                class="opacity-10 fill-current"
+                d="M1405 848c-424.366 158.009-437-164-437-272s102-425 563-576v769c-21.333 29.333-63.333 55.667-126 79z"></path>
+            <path
+                class="opacity-10 fill-current"
+                d="M1531 162c-122.914-17.284-377.96 33.191-543.433 206.414C822.095 541.636 797.342 648.75 835.842 731.622c38.5 82.871 198.243 134.841 400.555 92.053C1438.71 780.886 1492.752 775.894 1531 768V162z"></path>
+        </svg>
+        <h2 class="text-xl font-semibold tracking-wider">HELP CENTER</h2>
+        <div class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
+            How can we help you today?
         </div>
-
-        <div class="faqs">
-
-            <h2>Most frequently asked questions</h2>
-            <h6>Here are the most frequently asked questions you may check before getting started</h6>
-
-            <mat-accordion>
-
-                <mat-expansion-panel *ngFor="let faq of faqCategory.faqs; trackBy: trackByFn">
-
-                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                        <mat-panel-title>{{faq.question}}</mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    {{faq.answer}}
-
-                </mat-expansion-panel>
-
-            </mat-accordion>
-
+        <div class="mt-3 sm:text-2xl text-center tracking-tight text-secondary">
+            Search for a topic or question, check out our FAQs and guides, contact us for detailed support
         </div>
-
+        <mat-form-field class="treo-mat-no-subscript treo-mat-rounded treo-mat-bold w-full max-w-140 mt-10 sm:mt-20">
+            <input
+                matInput
+                [placeholder]="'Enter a question, topic or keyword'">
+            <mat-icon
+                matPrefix
+                [svgIcon]="'heroicons_outline:search'"></mat-icon>
+        </mat-form-field>
     </div>
 
+    <div class="flex flex-col items-center pb-6 px-6 sm:pb-10 sm:px-10">
+        <!-- Cards -->
+        <div class="-mt-24">
+            <div class="flex flex-wrap items-center justify-center -m-2">
+                <!-- FAQs card -->
+                <div class="relative flex flex-col flex-0 w-60 m-2 rounded-lg shadow hover:shadow-lg bg-card overflow-hidden transform transition-shadow ease-in-out duration-150">
+                    <div class="flex flex-col items-center pt-6 pb-5 px-8 text-center">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary-50 dark:bg-primary-600">
+                            <mat-icon
+                                class="text-primary-700 dark:text-primary-50"
+                                [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                        </div>
+                        <div class="mt-4 text-xl font-semibold">FAQs</div>
+                        <div class="mt-1 text-secondary">Frequently asked questions and answers</div>
+                    </div>
+                    <div class="flex items-center justify-center py-4 px-8 text-primary bg-gray-50 dark:bg-transparent dark:border-t">
+                        <a
+                            class="flex items-center"
+                            [routerLink]="['faqs']">
+                            <span class="absolute inset-0"></span>
+                            <span class="font-medium">Go to FAQs</span>
+                            <mat-icon
+                                class="ml-2 icon-size-5 text-current"
+                                [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Guides card -->
+                <div class="relative flex flex-col flex-0 w-60 m-2 rounded-lg shadow hover:shadow-lg bg-card overflow-hidden transform transition-shadow ease-in-out duration-150">
+                    <div class="flex flex-col items-center pt-6 pb-5 px-8 text-center">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary-50 dark:bg-primary-600">
+                            <mat-icon
+                                class="text-primary-700 dark:text-primary-50"
+                                [svgIcon]="'heroicons_outline:book-open'"></mat-icon>
+                        </div>
+                        <div class="mt-4 text-xl font-semibold">Guides</div>
+                        <div class="mt-1 text-secondary">Articles and resources to guide you</div>
+                    </div>
+                    <div class="flex items-center justify-center py-4 px-8 text-primary bg-gray-50 dark:bg-transparent dark:border-t">
+                        <a
+                            class="flex items-center"
+                            [routerLink]="['guides']">
+                            <span class="absolute inset-0"></span>
+                            <span class="font-medium">Check guides</span>
+                            <mat-icon
+                                class="ml-2 icon-size-5 text-current"
+                                [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Support card -->
+                <div class="relative flex flex-col flex-0 w-60 m-2 rounded-lg shadow hover:shadow-lg bg-card overflow-hidden transform transition-shadow ease-in-out duration-150">
+                    <div class="flex flex-col items-center pt-6 pb-5 px-8 text-center">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary-50 dark:bg-primary-600">
+                            <mat-icon
+                                class="text-primary-700 dark:text-primary-50"
+                                [svgIcon]="'heroicons_outline:support'"></mat-icon>
+                        </div>
+                        <div class="mt-4 text-xl font-semibold">Support</div>
+                        <div class="mt-1 text-secondary">Contact us for more detailed support</div>
+                    </div>
+                    <div class="flex items-center justify-center py-4 px-8 text-primary bg-gray-50 dark:bg-transparent dark:border-t">
+                        <a
+                            class="flex items-center"
+                            [routerLink]="['support']">
+                            <span class="absolute inset-0"></span>
+                            <span class="font-medium">Contact support</span>
+                            <mat-icon
+                                class="ml-2 icon-size-5 text-current"
+                                [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQs -->
+        <div class="mt-16 sm:mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Most frequently asked questions</div>
+        <div class="mt-2 text-xl text-center text-secondary">Here are the most frequently asked questions you may check before getting started</div>
+        <mat-accordion class="max-w-4xl mt-12">
+            <mat-expansion-panel *ngFor="let faq of faqCategory.faqs; trackBy: trackByFn">
+                <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                    <mat-panel-title>{{faq.question}}</mat-panel-title>
+                </mat-expansion-panel-header>
+                {{faq.answer}}
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
 </div>

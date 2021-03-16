@@ -956,6 +956,17 @@
             }
         }
     }
+
+    /* Bolder border width */
+    &.treo-mat-bold {
+
+        .mat-form-field-wrapper {
+
+            .mat-form-field-flex {
+                border-width: 2px !important;
+            }
+        }
+    }
 }
 
 /* ----------------------------------------------------------------------------------------------------- */
