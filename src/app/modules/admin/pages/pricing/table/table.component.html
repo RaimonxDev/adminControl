@@ -25,14 +25,14 @@
         <!-- Header -->
         <div class="flex flex-col items-center mt-8 sm:mt-20 mx-4 sm:mx-16">
             <h2 class="text-xl font-semibold tracking-wider">PRICING</h2>
-            <p class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
+            <div class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
                 Simple pricing that scales with your business
-            </p>
-            <p class="mt-3 sm:text-2xl text-center tracking-tight text-secondary">
+            </div>
+            <div class="mt-3 sm:text-2xl text-center tracking-tight text-secondary">
                 Whether you are an individual or a Fortune 500 enterprise, there is a plan that's right for you
-            </p>
+            </div>
             <!-- Recurring selector -->
-            <div class="flex items-center mt-12 sm:mt-16 p-0.5 rounded-lg overflow-hidden bg-gray-200">
+            <div class="flex items-center mt-8 sm:mt-16 p-0.5 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
                 <button
                     class="px-6 rounded-md"
                     [ngClass]="{'bg-card pointer-events-none shadow': yearlyBilling,
@@ -55,7 +55,7 @@
         </div>
 
         <!-- Card -->
-        <div class="flex flex-col items-center mt-8 sm:mt-20 mx-4 sm:mx-16">
+        <div class="flex flex-col items-center mt-10 sm:mt-20 mx-4 sm:mx-16">
             <treo-card class="flex-col lg:flex-row w-full lg:max-w-7xl overflow-x-auto overflow-y-hidden">
                 <div class="grid grid-flow-col lg:grid-flow-row min-w-max lg:min-w-0 divide-x lg:divide-x-0 lg:divide-y">
                     <!-- TIERS -->
@@ -157,7 +157,7 @@
                     </div>
 
                     <!-- FEATURES -->
-                    <div class="hidden lg:block p-4 col-span-full bg-gray-100">
+                    <div class="hidden lg:block p-4 col-span-full bg-gray-100 dark:bg-transparent">
                         <div class="text-md font-semibold">FEATURES</div>
                     </div>
 
@@ -250,7 +250,7 @@
                     </div>
 
                     <!-- PAYMENTS -->
-                    <div class="hidden lg:block p-4 col-span-full bg-gray-100">
+                    <div class="hidden lg:block p-4 col-span-full bg-gray-100 dark:bg-transparent">
                         <div class="text-md font-semibold">PAYMENTS</div>
                     </div>
 
