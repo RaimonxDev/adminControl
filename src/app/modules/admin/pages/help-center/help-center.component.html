@@ -1,7 +1,7 @@
 <div class="flex flex-col flex-auto min-w-0">
 
     <!-- Header -->
-    <div class="relative flex flex-col items-center pt-8 pb-40 px-4 sm:pt-20 sm:pb-64 sm:px-16 overflow-hidden dark bg-transparent">
+    <div class="relative flex flex-col items-center pt-8 pb-40 px-4 sm:pt-20 sm:pb-60 sm:px-16 overflow-hidden dark bg-transparent">
         <!-- Background -->
         <svg
             class="absolute -top-40 left-0 w-full h-240 text-primary-300 -z-1 pointer-events-none bg-gray-800"
@@ -40,14 +40,14 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-y-0 md:gap-x-4 w-full max-w-sm md:max-w-4xl -mt-16 sm:-mt-24">
             <!-- FAQs card -->
             <div class="relative flex flex-col rounded-lg shadow-md hover:shadow-lg bg-card transform transition-shadow ease-in-out duration-150">
-                <div class="flex flex-col flex-auto items-center p-8 text-center">
-                    <div class="absolute top-0 flex items-center justify-center w-16 h-16 -mt-8 rounded-xl shadow-lg bg-primary">
+                <div class="flex flex-col flex-auto items-center p-8 pb-6 text-center">
+                    <div class="absolute top-0 flex items-center justify-center w-14 h-14 -mt-7 rounded-xl shadow-lg bg-primary">
                         <mat-icon
-                            class="icon-size-8 text-primary-50"
-                            [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                            class="text-primary-50"
+                            [svgIcon]="'heroicons_outline:bookmark-alt'"></mat-icon>
                     </div>
-                    <div class="mt-6 text-3xl font-semibold">FAQs</div>
-                    <div class="mt-1 text-secondary">Frequently asked questions and answers</div>
+                    <div class="mt-5 text-2xl font-medium">FAQs</div>
+                    <div class="md:max-w-40 mt-1 text-secondary">Frequently asked questions and answers</div>
                 </div>
                 <div class="flex items-center justify-center py-4 px-8 rounded-b-lg text-primary bg-gray-50 dark:bg-transparent dark:border-t">
                     <a
@@ -63,14 +63,14 @@
             </div>
             <!-- Guides card -->
             <div class="relative flex flex-col rounded-lg shadow-md hover:shadow-lg bg-card transform transition-shadow ease-in-out duration-150">
-                <div class="flex flex-col flex-auto items-center p-8 text-center">
-                    <div class="absolute top-0 flex items-center justify-center w-16 h-16 -mt-8 rounded-xl shadow-lg bg-primary">
+                <div class="flex flex-col flex-auto items-center p-8 pb-6 text-center">
+                    <div class="absolute top-0 flex items-center justify-center w-14 h-14 -mt-7 rounded-xl shadow-lg bg-primary">
                         <mat-icon
-                            class="icon-size-8 text-primary-50"
+                            class="text-primary-50"
                             [svgIcon]="'heroicons_outline:book-open'"></mat-icon>
                     </div>
-                    <div class="mt-6 text-3xl font-semibold">Guides</div>
-                    <div class="mt-1 text-secondary">Articles and resources to guide you</div>
+                    <div class="mt-5 text-2xl font-medium">Guides</div>
+                    <div class="md:max-w-40 mt-1 text-secondary">Articles and resources to guide you</div>
                 </div>
                 <div class="flex items-center justify-center py-4 px-8 rounded-b-lg text-primary bg-gray-50 dark:bg-transparent dark:border-t">
                     <a
@@ -86,21 +86,21 @@
             </div>
             <!-- Support card -->
             <div class="relative flex flex-col rounded-lg shadow-md hover:shadow-lg bg-card transform transition-shadow ease-in-out duration-150">
-                <div class="flex flex-col flex-auto items-center p-8 text-center">
-                    <div class="absolute top-0 flex items-center justify-center w-16 h-16 -mt-8 rounded-xl shadow-lg bg-primary">
+                <div class="flex flex-col flex-auto items-center p-8 pb-6 text-center">
+                    <div class="absolute top-0 flex items-center justify-center w-14 h-14 -mt-7 rounded-xl shadow-lg bg-primary">
                         <mat-icon
-                            class="icon-size-8 text-primary-50"
+                            class="text-primary-50"
                             [svgIcon]="'heroicons_outline:support'"></mat-icon>
                     </div>
-                    <div class="mt-6 text-3xl font-semibold">Support</div>
-                    <div class="mt-1 text-secondary">Contact us for more detailed support</div>
+                    <div class="mt-5 text-2xl font-medium">Support</div>
+                    <div class="md:max-w-40 mt-1 text-secondary">Contact us for more detailed support</div>
                 </div>
                 <div class="flex items-center justify-center py-4 px-8 rounded-b-lg text-primary bg-gray-50 dark:bg-transparent dark:border-t">
                     <a
                         class="flex items-center"
                         [routerLink]="['support']">
                         <span class="absolute inset-0"></span>
-                        <span class="font-medium">Contact support</span>
+                        <span class="font-medium">Contact us</span>
                         <mat-icon
                             class="ml-2 icon-size-5 text-current"
                             [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
