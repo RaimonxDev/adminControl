@@ -96,7 +96,7 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
 
-        // Dispose the overlay if it's still on the DOM
+        // Dispose the overlay
         if ( this._overlayRef )
         {
             this._overlayRef.dispose();
@@ -118,70 +118,25 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
             return;
         }
 
-        // Create the overlay
-        this._overlayRef = this._overlay.create({
-            backdropClass   : '',
-            hasBackdrop     : true,
-            scrollStrategy  : this._overlay.scrollStrategies.block(),
-            positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._shortcutsOrigin._elementRef.nativeElement)
-                                  .withFlexibleDimensions()
-                                  .withViewportMargin(16)
-                                  .withLockedPosition()
-                                  .withPositions([
-                                      {
-                                          originX : 'start',
-                                          originY : 'bottom',
-                                          overlayX: 'start',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'bottom'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'bottom'
-                                      }
-                                  ])
-        });
+        // Make sure to start in 'view' mode
+        this.mode = 'view';
 
-        // Create a portal from the template
-        const templatePortal = new TemplatePortal(this._shortcutsPanel, this._viewContainerRef);
+        // Create the overlay if it doesn't exist
+        if ( !this._overlayRef )
+        {
+            this._createOverlay();
+        }
 
         // Attach the portal to the overlay
-        this._overlayRef.attach(templatePortal);
+        this._overlayRef.attach(new TemplatePortal(this._shortcutsPanel, this._viewContainerRef));
+    }
 
-        // Subscribe to the backdrop click
-        this._overlayRef.backdropClick().subscribe(() => {
-
-            // If overlay exists and attached...
-            if ( this._overlayRef && this._overlayRef.hasAttached() )
-            {
-                // Detach it
-                this._overlayRef.detach();
-            }
-
-            // If template portal exists and attached...
-            if ( templatePortal && templatePortal.isAttached )
-            {
-                // Detach it
-                templatePortal.detach();
-            }
-
-            // Make sure to start in 'view' mode
-            this.mode = 'view';
-        });
+    /**
+     * Close the messages panel
+     */
+    closePanel(): void
+    {
+        this._overlayRef.detach();
     }
 
     /**
@@ -253,5 +208,57 @@ export class ShortcutsComponent implements OnChanges, OnInit, OnDestroy
 
         // Go back the modify mode
         this.mode = 'modify';
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create the overlay
+     */
+    private _createOverlay(): void
+    {
+        // Create the overlay
+        this._overlayRef = this._overlay.create({
+            hasBackdrop     : true,
+            backdropClass   : 'treo-backdrop-on-mobile',
+            scrollStrategy  : this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay.position()
+                                  .flexibleConnectedTo(this._shortcutsOrigin._elementRef.nativeElement)
+                                  .withLockedPosition()
+                                  .withPush(true)
+                                  .withPositions([
+                                      {
+                                          originX : 'start',
+                                          originY : 'bottom',
+                                          overlayX: 'start',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'start',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'bottom'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
+                                          overlayX: 'end',
+                                          overlayY: 'bottom'
+                                      }
+                                  ])
+        });
+
+        // Detach the overlay from the portal on backdrop click
+        this._overlayRef.backdropClick().subscribe(() => {
+            this._overlayRef.detach();
+        });
     }
 }

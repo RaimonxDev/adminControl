@@ -86,7 +86,7 @@ export class MessagesComponent implements OnInit, OnChanges, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
 
-        // Dispose the overlay if it's still on the DOM
+        // Dispose the overlay
         if ( this._overlayRef )
         {
             this._overlayRef.dispose();
@@ -108,67 +108,22 @@ export class MessagesComponent implements OnInit, OnChanges, OnDestroy
             return;
         }
 
-        // Create the overlay
-        this._overlayRef = this._overlay.create({
-            hasBackdrop     : true,
-            backdropClass   : '',
-            scrollStrategy  : this._overlay.scrollStrategies.block(),
-            positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._messagesOrigin._elementRef.nativeElement)
-                                  .withFlexibleDimensions()
-                                  .withLockedPosition()
-                                  .withPush(false)
-                                  .withPositions([
-                                      {
-                                          originX : 'start',
-                                          originY : 'bottom',
-                                          overlayX: 'start',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'bottom'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'bottom'
-                                      }
-                                  ])
-        });
-
-        // Create a portal from the template
-        const templatePortal = new TemplatePortal(this._messagesPanel, this._viewContainerRef);
+        // Create the overlay if it doesn't exist
+        if ( !this._overlayRef )
+        {
+            this._createOverlay();
+        }
 
         // Attach the portal to the overlay
-        this._overlayRef.attach(templatePortal);
+        this._overlayRef.attach(new TemplatePortal(this._messagesPanel, this._viewContainerRef));
+    }
 
-        // Subscribe to the backdrop click
-        this._overlayRef.backdropClick().subscribe(() => {
-
-            // If overlay exists and attached...
-            if ( this._overlayRef && this._overlayRef.hasAttached() )
-            {
-                // Detach it
-                this._overlayRef.detach();
-            }
-
-            // If template portal exists and attached...
-            if ( templatePortal && templatePortal.isAttached )
-            {
-                // Detach it
-                templatePortal.detach();
-            }
-        });
+    /**
+     * Close the messages panel
+     */
+    closePanel(): void
+    {
+        this._overlayRef.detach();
     }
 
     /**
@@ -204,6 +159,54 @@ export class MessagesComponent implements OnInit, OnChanges, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create the overlay
+     */
+    private _createOverlay(): void
+    {
+        // Create the overlay
+        this._overlayRef = this._overlay.create({
+            hasBackdrop     : true,
+            backdropClass   : 'treo-backdrop-on-mobile',
+            scrollStrategy  : this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay.position()
+                                  .flexibleConnectedTo(this._messagesOrigin._elementRef.nativeElement)
+                                  .withLockedPosition()
+                                  .withPush(true)
+                                  .withPositions([
+                                      {
+                                          originX : 'start',
+                                          originY : 'bottom',
+                                          overlayX: 'start',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'start',
+                                          originY : 'top',
+                                          overlayX: 'start',
+                                          overlayY: 'bottom'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'bottom',
+                                          overlayX: 'end',
+                                          overlayY: 'top'
+                                      },
+                                      {
+                                          originX : 'end',
+                                          originY : 'top',
+                                          overlayX: 'end',
+                                          overlayY: 'bottom'
+                                      }
+                                  ])
+        });
+
+        // Detach the overlay from the portal on backdrop click
+        this._overlayRef.backdropClick().subscribe(() => {
+            this._overlayRef.detach();
+        });
+    }
 
     /**
      * Calculate the unread count
