@@ -329,7 +329,7 @@ const config = {
         animation               : [],
         backgroundAttachment    : [],
         backgroundClip          : [],
-        backgroundColor         : ['dark', 'group-hover', 'hover'],
+        backgroundColor         : ['dark', 'responsive', 'group-hover', 'hover'],
         backgroundImage         : [],
         backgroundOpacity       : ['dark', 'hover'],
         backgroundPosition      : [],
