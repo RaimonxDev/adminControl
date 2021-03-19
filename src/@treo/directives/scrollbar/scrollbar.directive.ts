@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { BooleanInput } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
@@ -73,7 +73,7 @@ export class TreoScrollbarDirective implements OnChanges, OnInit, OnDestroy
         if ( 'treoScrollbar' in changes )
         {
             // Interpret empty string as 'true'
-            this.treoScrollbar = changes.treoScrollbar.currentValue === '' ? true : changes.treoScrollbar.currentValue;
+            this.treoScrollbar = coerceBooleanProperty(changes.treoScrollbar.currentValue);
 
             // If enabled, init the directive
             if ( this.treoScrollbar )

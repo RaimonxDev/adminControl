@@ -121,6 +121,7 @@ treo-vertical-navigation {
             flex: 1 1 auto;
             overflow-x: hidden;
             overflow-y: auto;
+            overscroll-behavior: contain;
 
             /* Divider */
             > treo-vertical-navigation-divider-item {
