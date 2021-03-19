@@ -56,216 +56,216 @@
 
         <!-- Cards -->
         <div class="flex justify-center mt-10 sm:mt-22 mx-4 sm:mx-16">
-            <div class="grid grid-cols-1 gap-y-8 lg:gap-y-0 lg:grid-cols-3 lg:gap-x-8 w-full max-w-sm lg:max-w-7xl">
-                <!-- Card 1 -->
-                <treo-card class="flex-col p-6 sm:py-16 sm:px-12">
-                    <div class="text-4xl font-bold tracking-tight leading-tight">Personal</div>
-                    <div class="mt-2 text-lg font-medium tracking-tight text-secondary">Perfect for an individual or a small team starting to get bigger</div>
-                    <div class="w-8 h-1 my-10 rounded bg-accent"></div>
-                    <!-- Price -->
-                    <div class="flex items-baseline whitespace-nowrap">
-                        <div class="mr-2 text-2xl">USD</div>
-                        <div class="text-6xl font-semibold leading-tight tracking-tight">
-                            <ng-container *ngIf="yearlyBilling">$6.00</ng-container>
-                            <ng-container *ngIf="!yearlyBilling">$9.00</ng-container>
-                        </div>
-                    </div>
-                    <!-- Price details -->
-                    <div class="flex flex-col mt-2 text-secondary">
-                        <ng-container *ngIf="yearlyBilling">
-                            <div>billed yearly</div>
-                            <div><b>$9.00</b> billed monthly</div>
-                        </ng-container>
-                        <ng-container *ngIf="!yearlyBilling">
-                            <div>billed monthly</div>
-                            <div><b>$6.00</b> billed yearly</div>
-                        </ng-container>
-                    </div>
-                    <!-- CTA -->
-                    <button
-                        class="treo-mat-button-large mt-10"
-                        mat-stroked-button
-                        [color]="'primary'">
-                        Get Started
-                    </button>
-                    <!-- Features -->
-                    <div class="flex flex-col mt-12">
-                        <div class="font-semibold">All core features, including:</div>
-                        <div class="mt-4 space-y-2">
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2"><b>10</b> projects</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2"><b>5GB</b> storage</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">Analytics</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">Free mobile app</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">Access to support forums</div>
+            <div class="w-full max-w-sm md:max-w-7xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 lg:gap-y-0 md:gap-x-6">
+                    <!-- Card 1 -->
+                    <treo-card class="flex-col max-w-sm md:max-w-none p-6 sm:py-12 sm:px-10">
+                        <div class="text-4xl font-bold tracking-tight leading-tight">Personal</div>
+                        <div class="mt-2 text-lg font-medium tracking-tight text-secondary">Perfect for an individual or a small team starting to get bigger</div>
+                        <div class="w-8 h-1 my-10 rounded bg-accent"></div>
+                        <!-- Price -->
+                        <div class="flex items-baseline whitespace-nowrap">
+                            <div class="mr-2 text-2xl">USD</div>
+                            <div class="text-6xl font-semibold leading-tight tracking-tight">
+                                <ng-container *ngIf="yearlyBilling">$6.00</ng-container>
+                                <ng-container *ngIf="!yearlyBilling">$9.00</ng-container>
                             </div>
                         </div>
-                    </div>
-                </treo-card>
-
-                <!-- Card 2 -->
-                <treo-card class="flex-col p-6 sm:py-16 sm:px-12 ring-2 ring-primary overflow-visible">
-                    <div class="absolute inset-x-0 -top-4 flex items-center justify-center">
-                        <div class="flex items-center h-8 px-8 rounded-full font-medium text-center leading-none bg-primary text-on-primary">POPULAR</div>
-                    </div>
-                    <div class="text-4xl font-bold tracking-tight leading-tight">Premium</div>
-                    <div class="mt-2 text-lg font-medium tracking-tight text-secondary">Perfect for growing teams wanting to be in more control</div>
-                    <div class="w-8 h-1 my-10 rounded bg-accent"></div>
-                    <!-- Price -->
-                    <div class="flex items-baseline whitespace-nowrap">
-                        <div class="mr-2 text-2xl">USD</div>
-                        <div class="text-6xl font-semibold leading-tight tracking-tight">
-                            <ng-container *ngIf="yearlyBilling">$12.00</ng-container>
-                            <ng-container *ngIf="!yearlyBilling">$15.00</ng-container>
+                        <!-- Price details -->
+                        <div class="flex flex-col mt-2 text-secondary">
+                            <ng-container *ngIf="yearlyBilling">
+                                <div>billed yearly</div>
+                                <div><b>$9.00</b> billed monthly</div>
+                            </ng-container>
+                            <ng-container *ngIf="!yearlyBilling">
+                                <div>billed monthly</div>
+                                <div><b>$6.00</b> billed yearly</div>
+                            </ng-container>
                         </div>
-                    </div>
-                    <!-- Price details -->
-                    <div class="flex flex-col mt-2 text-secondary">
-                        <ng-container *ngIf="yearlyBilling">
-                            <div>billed yearly</div>
-                            <div><b>$15.00</b> billed monthly</div>
-                        </ng-container>
-                        <ng-container *ngIf="!yearlyBilling">
-                            <div>billed monthly</div>
-                            <div><b>$12.00</b> billed yearly</div>
-                        </ng-container>
-                    </div>
-                    <!-- CTA -->
-                    <button
-                        class="treo-mat-button-large mt-10"
-                        mat-flat-button
-                        [color]="'primary'">
-                        Start a free 14-day trial
-                    </button>
-                    <!-- Features -->
-                    <div class="flex flex-col mt-12">
-                        <div class="font-semibold">Everything in Free, plus:</div>
-                        <div class="mt-4 space-y-2">
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2"><b>Unlimited</b> projects</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2"><b>Unlimited</b> storage</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">Custom domain support</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">Bulk editing</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">12 / 5 support</div>
+                        <!-- CTA -->
+                        <button
+                            class="treo-mat-button-large mt-10"
+                            mat-stroked-button
+                            [color]="'primary'">
+                            Get Started
+                        </button>
+                        <!-- Features -->
+                        <div class="flex flex-col mt-12">
+                            <div class="font-semibold">Core features, including:</div>
+                            <div class="mt-4 space-y-2">
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5"><b>10</b> projects</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5"><b>5GB</b> storage</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">Analytics</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">Free mobile app</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">Access to forums</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </treo-card>
-
-                <!-- Card 3 -->
-                <treo-card class="flex-col p-6 sm:py-16 sm:px-12">
-                    <div class="text-4xl font-bold tracking-tight leading-tight">Enterprise</div>
-                    <div class="mt-2 text-lg font-medium tracking-tight text-secondary">Perfect for companies wanting advanced tools and support</div>
-                    <div class="w-8 h-1 my-10 rounded bg-accent"></div>
-                    <!-- Price -->
-                    <div class="flex items-baseline whitespace-nowrap">
-                        <div class="mr-2 text-2xl">USD</div>
-                        <div class="text-6xl font-semibold leading-tight tracking-tight">
-                            <ng-container *ngIf="yearlyBilling">$49.00</ng-container>
-                            <ng-container *ngIf="!yearlyBilling">$69.00</ng-container>
+                    </treo-card>
+                    <!-- Card 2 -->
+                    <treo-card class="flex-col max-w-sm md:max-w-none p-6 sm:py-12 sm:px-10 ring-2 ring-primary overflow-visible">
+                        <div class="absolute inset-x-0 -top-4 flex items-center justify-center">
+                            <div class="flex items-center h-8 px-8 rounded-full font-medium text-center leading-none bg-primary text-on-primary">POPULAR</div>
                         </div>
-                    </div>
-                    <!-- Price details -->
-                    <div class="flex flex-col mt-2 text-secondary">
-                        <ng-container *ngIf="yearlyBilling">
-                            <div>billed yearly</div>
-                            <div><b>$69.00</b> billed monthly</div>
-                        </ng-container>
-                        <ng-container *ngIf="!yearlyBilling">
-                            <div>billed monthly</div>
-                            <div><b>$49.00</b> billed yearly</div>
-                        </ng-container>
-                    </div>
-                    <!-- CTA -->
-                    <button
-                        class="treo-mat-button-large mt-10"
-                        mat-stroked-button
-                        [color]="'primary'">
-                        Start a free 7-day trial
-                    </button>
-                    <!-- Features -->
-                    <div class="flex flex-col mt-12">
-                        <div class="font-semibold">Everything in Premium, plus:</div>
-                        <div class="mt-4 space-y-2">
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2"><b>Dedicated</b> hardware</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2"><b>%99.9 uptime</b> guarantee</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">Advanced analytics</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">3rd party integrations</div>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="icon-size-5 text-green-600"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <div class="ml-2">24 / 7 support</div>
+                        <div class="text-4xl font-bold tracking-tight leading-tight">Premium</div>
+                        <div class="mt-2 text-lg font-medium tracking-tight text-secondary">Perfect for growing teams wanting to be in more control</div>
+                        <div class="w-8 h-1 my-10 rounded bg-accent"></div>
+                        <!-- Price -->
+                        <div class="flex items-baseline whitespace-nowrap">
+                            <div class="mr-2 text-2xl">USD</div>
+                            <div class="text-6xl font-semibold leading-tight tracking-tight">
+                                <ng-container *ngIf="yearlyBilling">$12.00</ng-container>
+                                <ng-container *ngIf="!yearlyBilling">$15.00</ng-container>
                             </div>
                         </div>
-                    </div>
-                </treo-card>
+                        <!-- Price details -->
+                        <div class="flex flex-col mt-2 text-secondary">
+                            <ng-container *ngIf="yearlyBilling">
+                                <div>billed yearly</div>
+                                <div><b>$15.00</b> billed monthly</div>
+                            </ng-container>
+                            <ng-container *ngIf="!yearlyBilling">
+                                <div>billed monthly</div>
+                                <div><b>$12.00</b> billed yearly</div>
+                            </ng-container>
+                        </div>
+                        <!-- CTA -->
+                        <button
+                            class="treo-mat-button-large mt-10"
+                            mat-flat-button
+                            [color]="'primary'">
+                            Start a free 14-day trial
+                        </button>
+                        <!-- Features -->
+                        <div class="flex flex-col mt-12">
+                            <div class="font-semibold">Personal features, plus:</div>
+                            <div class="mt-4 space-y-2">
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5"><b>Unlimited</b> projects</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5"><b>Unlimited</b> storage</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">Custom domains</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">Bulk editing</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">12 / 5 support</div>
+                                </div>
+                            </div>
+                        </div>
+                    </treo-card>
+                    <!-- Card 3 -->
+                    <treo-card class="flex-col max-w-sm md:max-w-none p-6 sm:py-12 sm:px-10">
+                        <div class="text-4xl font-bold tracking-tight leading-tight">Enterprise</div>
+                        <div class="mt-2 text-lg font-medium tracking-tight text-secondary">Perfect for companies wanting advanced tools and support</div>
+                        <div class="w-8 h-1 my-10 rounded bg-accent"></div>
+                        <!-- Price -->
+                        <div class="flex items-baseline whitespace-nowrap">
+                            <div class="mr-2 text-2xl">USD</div>
+                            <div class="text-6xl font-semibold leading-tight tracking-tight">
+                                <ng-container *ngIf="yearlyBilling">$49.00</ng-container>
+                                <ng-container *ngIf="!yearlyBilling">$69.00</ng-container>
+                            </div>
+                        </div>
+                        <!-- Price details -->
+                        <div class="flex flex-col mt-2 text-secondary">
+                            <ng-container *ngIf="yearlyBilling">
+                                <div>billed yearly</div>
+                                <div><b>$69.00</b> billed monthly</div>
+                            </ng-container>
+                            <ng-container *ngIf="!yearlyBilling">
+                                <div>billed monthly</div>
+                                <div><b>$49.00</b> billed yearly</div>
+                            </ng-container>
+                        </div>
+                        <!-- CTA -->
+                        <button
+                            class="treo-mat-button-large mt-10"
+                            mat-stroked-button
+                            [color]="'primary'">
+                            Start a free 7-day trial
+                        </button>
+                        <!-- Features -->
+                        <div class="flex flex-col mt-12">
+                            <div class="font-semibold">Premium features, plus:</div>
+                            <div class="mt-4 space-y-2">
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5"><b>Dedicated</b> hardware</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5"><b>%99.9</b> uptime</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">Advanced analytics</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">3rd party integrations</div>
+                                </div>
+                                <div class="flex">
+                                    <mat-icon
+                                        class="icon-size-5 text-green-600"
+                                        [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                    <div class="ml-2 leading-5">24 / 7 support</div>
+                                </div>
+                            </div>
+                        </div>
+                    </treo-card>
+                </div>
             </div>
         </div>
 
