@@ -94,15 +94,7 @@ export const appRoutes: Route[] = [
             {path: 'pages', children: [
 
                 // Authentication
-                {path: 'authentication', children: [
-                    {path: 'confirmation-required', loadChildren: () => import('app/modules/admin/pages/authentication/confirmation-required/confirmation-required.module').then(m => m.ConfirmationRequiredModule)},
-                    {path: 'forgot-password', loadChildren: () => import('app/modules/admin/pages/authentication/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)},
-                    {path: 'reset-password', loadChildren: () => import('app/modules/admin/pages/authentication/reset-password/reset-password.module').then(m => m.ResetPasswordModule)},
-                    {path: 'sign-in', loadChildren: () => import('app/modules/admin/pages/authentication/sign-in/sign-in.module').then(m => m.SignInModule)},
-                    {path: 'sign-up', loadChildren: () => import('app/modules/admin/pages/authentication/sign-up/sign-up.module').then(m => m.SignUpModule)},
-                    {path: 'sign-out', loadChildren: () => import('app/modules/admin/pages/authentication/sign-out/sign-out.module').then(m => m.SignOutModule)},
-                    {path: 'unlock-session', loadChildren: () => import('app/modules/admin/pages/authentication/unlock-session/unlock-session.module').then(m => m.UnlockSessionModule)}
-                ]},
+                {path: 'authentication', loadChildren: () => import('app/modules/admin/pages/authentication/authentication.module').then(m => m.AuthenticationModule)},
 
                 // Coming soon
                 {path: 'coming-soon', loadChildren: () => import('app/modules/admin/pages/coming-soon/coming-soon.module').then(m => m.ComingSoonModule)},
@@ -149,9 +141,6 @@ export const appRoutes: Route[] = [
                 // Colors
                 {path: 'colors', loadChildren: () => import('app/modules/admin/ui/colors/colors.module').then(m => m.ColorsModule)},
 
-                // Page layouts
-                {path: 'page-layouts', loadChildren: () => import('app/modules/admin/ui/page-layouts/page-layouts.module').then(m => m.PageLayoutsModule)},
-
                 // Datatable
                 {path: 'datatable', loadChildren: () => import('app/modules/admin/ui/datatable/datatable.module').then(m => m.DatatableModule)},
 
@@ -167,6 +156,9 @@ export const appRoutes: Route[] = [
 
                 // Icons
                 {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.module').then(m => m.IconsModule)},
+
+                // Page layouts
+                {path: 'page-layouts', loadChildren: () => import('app/modules/admin/ui/page-layouts/page-layouts.module').then(m => m.PageLayoutsModule)},
 
                 // Typography
                 {path: 'typography', loadChildren: () => import('app/modules/admin/ui/typography/typography.module').then(m => m.TypographyModule)}

@@ -119,10 +119,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/sign-in/modern'
                             },
                             {
-                                id   : 'pages.authentication.sign-in.modern-alt',
-                                title: 'Modern Alt.',
+                                id   : 'pages.authentication.sign-in.modern-reversed',
+                                title: 'Modern Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/sign-in/modern-alt'
+                                link : '/pages/authentication/sign-in/modern-reversed'
+                            },
+                            {
+                                id   : 'pages.authentication.sign-in.split-screen',
+                                title: 'Split Screen',
+                                type : 'basic',
+                                link : '/pages/authentication/sign-in/split-screen'
+                            },
+                            {
+                                id   : 'pages.authentication.sign-in.split-screen-reversed',
+                                title: 'Split Screen Reversed',
+                                type : 'basic',
+                                link : '/pages/authentication/sign-in/split-screen-reversed'
                             },
                             {
                                 id   : 'pages.authentication.sign-in.fullscreen',
@@ -131,10 +143,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/sign-in/fullscreen'
                             },
                             {
-                                id   : 'pages.authentication.sign-in.fullscreen-alt',
-                                title: 'Fullscreen Alt.',
+                                id   : 'pages.authentication.sign-in.fullscreen-reversed',
+                                title: 'Fullscreen Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/sign-in/fullscreen-alt'
+                                link : '/pages/authentication/sign-in/fullscreen-reversed'
                             }
                         ]
                     },
@@ -157,10 +169,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/sign-up/modern'
                             },
                             {
-                                id   : 'pages.authentication.sign-up.modern-alt',
-                                title: 'Modern Alt.',
+                                id   : 'pages.authentication.sign-up.modern-reversed',
+                                title: 'Modern Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/sign-up/modern-alt'
+                                link : '/pages/authentication/sign-up/modern-reversed'
+                            },
+                            {
+                                id   : 'pages.authentication.sign-up.split-screen',
+                                title: 'Split Screen',
+                                type : 'basic',
+                                link : '/pages/authentication/sign-up/split-screen'
+                            },
+                            {
+                                id   : 'pages.authentication.sign-up.split-screen-reversed',
+                                title: 'Split Screen Reversed',
+                                type : 'basic',
+                                link : '/pages/authentication/sign-up/split-screen-reversed'
                             },
                             {
                                 id   : 'pages.authentication.sign-up.fullscreen',
@@ -169,10 +193,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/sign-up/fullscreen'
                             },
                             {
-                                id   : 'pages.authentication.sign-up.fullscreen-alt',
-                                title: 'Fullscreen Alt.',
+                                id   : 'pages.authentication.sign-up.fullscreen-reversed',
+                                title: 'Fullscreen Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/sign-up/fullscreen-alt'
+                                link : '/pages/authentication/sign-up/fullscreen-reversed'
                             }
                         ]
                     },
@@ -195,10 +219,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/sign-out/modern'
                             },
                             {
-                                id   : 'pages.authentication.sign-out.modern-alt',
-                                title: 'Modern Alt.',
+                                id   : 'pages.authentication.sign-out.modern-reversed',
+                                title: 'Modern Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/sign-out/modern-alt'
+                                link : '/pages/authentication/sign-out/modern-reversed'
+                            },
+                            {
+                                id   : 'pages.authentication.sign-out.split-screen',
+                                title: 'Split Screen',
+                                type : 'basic',
+                                link : '/pages/authentication/sign-out/split-screen'
+                            },
+                            {
+                                id   : 'pages.authentication.sign-out.split-screen-reversed',
+                                title: 'Split Screen Reversed',
+                                type : 'basic',
+                                link : '/pages/authentication/sign-out/split-screen-reversed'
                             },
                             {
                                 id   : 'pages.authentication.sign-out.fullscreen',
@@ -207,10 +243,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/sign-out/fullscreen'
                             },
                             {
-                                id   : 'pages.authentication.sign-out.fullscreen-alt',
-                                title: 'Fullscreen Alt.',
+                                id   : 'pages.authentication.sign-out.fullscreen-reversed',
+                                title: 'Fullscreen Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/sign-out/fullscreen-alt'
+                                link : '/pages/authentication/sign-out/fullscreen-reversed'
                             }
                         ]
                     },
@@ -233,10 +269,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/forgot-password/modern'
                             },
                             {
-                                id   : 'pages.authentication.forgot-password.modern-alt',
-                                title: 'Modern Alt.',
+                                id   : 'pages.authentication.forgot-password.modern-reversed',
+                                title: 'Modern Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/forgot-password/modern-alt'
+                                link : '/pages/authentication/forgot-password/modern-reversed'
+                            },
+                            {
+                                id   : 'pages.authentication.forgot-password.split-screen',
+                                title: 'Split Screen',
+                                type : 'basic',
+                                link : '/pages/authentication/forgot-password/split-screen'
+                            },
+                            {
+                                id   : 'pages.authentication.forgot-password.split-screen-reversed',
+                                title: 'Split Screen Reversed',
+                                type : 'basic',
+                                link : '/pages/authentication/forgot-password/split-screen-reversed'
                             },
                             {
                                 id   : 'pages.authentication.forgot-password.fullscreen',
@@ -245,10 +293,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/forgot-password/fullscreen'
                             },
                             {
-                                id   : 'pages.authentication.forgot-password.fullscreen-alt',
-                                title: 'Fullscreen Alt.',
+                                id   : 'pages.authentication.forgot-password.fullscreen-reversed',
+                                title: 'Fullscreen Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/forgot-password/fullscreen-alt'
+                                link : '/pages/authentication/forgot-password/fullscreen-reversed'
                             }
                         ]
                     },
@@ -271,10 +319,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/reset-password/modern'
                             },
                             {
-                                id   : 'pages.authentication.reset-password.modern-alt',
-                                title: 'Modern Alt.',
+                                id   : 'pages.authentication.reset-password.modern-reversed',
+                                title: 'Modern Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/reset-password/modern-alt'
+                                link : '/pages/authentication/reset-password/modern-reversed'
+                            },
+                            {
+                                id   : 'pages.authentication.reset-password.split-screen',
+                                title: 'Split Screen',
+                                type : 'basic',
+                                link : '/pages/authentication/reset-password/split-screen'
+                            },
+                            {
+                                id   : 'pages.authentication.reset-password.split-screen-reversed',
+                                title: 'Split Screen Reversed',
+                                type : 'basic',
+                                link : '/pages/authentication/reset-password/split-screen-reversed'
                             },
                             {
                                 id   : 'pages.authentication.reset-password.fullscreen',
@@ -283,10 +343,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/reset-password/fullscreen'
                             },
                             {
-                                id   : 'pages.authentication.reset-password.fullscreen-alt',
-                                title: 'Fullscreen Alt.',
+                                id   : 'pages.authentication.reset-password.fullscreen-reversed',
+                                title: 'Fullscreen Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/reset-password/fullscreen-alt'
+                                link : '/pages/authentication/reset-password/fullscreen-reversed'
                             }
                         ]
                     },
@@ -309,10 +369,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/unlock-session/modern'
                             },
                             {
-                                id   : 'pages.authentication.unlock-session.modern-alt',
-                                title: 'Modern Alt.',
+                                id   : 'pages.authentication.unlock-session.modern-reversed',
+                                title: 'Modern Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/unlock-session/modern-alt'
+                                link : '/pages/authentication/unlock-session/modern-reversed'
+                            },
+                            {
+                                id   : 'pages.authentication.unlock-session.split-screen',
+                                title: 'Split Screen',
+                                type : 'basic',
+                                link : '/pages/authentication/unlock-session/split-screen'
+                            },
+                            {
+                                id   : 'pages.authentication.unlock-session.split-screen-reversed',
+                                title: 'Split Screen Reversed',
+                                type : 'basic',
+                                link : '/pages/authentication/unlock-session/split-screen-reversed'
                             },
                             {
                                 id   : 'pages.authentication.unlock-session.fullscreen',
@@ -321,10 +393,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/unlock-session/fullscreen'
                             },
                             {
-                                id   : 'pages.authentication.unlock-session.fullscreen-alt',
-                                title: 'Fullscreen Alt.',
+                                id   : 'pages.authentication.unlock-session.fullscreen-reversed',
+                                title: 'Fullscreen Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/unlock-session/fullscreen-alt'
+                                link : '/pages/authentication/unlock-session/fullscreen-reversed'
                             }
                         ]
                     },
@@ -347,10 +419,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/confirmation-required/modern'
                             },
                             {
-                                id   : 'pages.authentication.confirmation-required.modern-alt',
-                                title: 'Modern Alt.',
+                                id   : 'pages.authentication.confirmation-required.modern-reversed',
+                                title: 'Modern Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/confirmation-required/modern-alt'
+                                link : '/pages/authentication/confirmation-required/modern-reversed'
+                            },
+                            {
+                                id   : 'pages.authentication.confirmation-required.split-screen',
+                                title: 'Split Screen',
+                                type : 'basic',
+                                link : '/pages/authentication/confirmation-required/split-screen'
+                            },
+                            {
+                                id   : 'pages.authentication.confirmation-required.split-screen-reversed',
+                                title: 'Split Screen Reversed',
+                                type : 'basic',
+                                link : '/pages/authentication/confirmation-required/split-screen-reversed'
                             },
                             {
                                 id   : 'pages.authentication.confirmation-required.fullscreen',
@@ -359,10 +443,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                                 link : '/pages/authentication/confirmation-required/fullscreen'
                             },
                             {
-                                id   : 'pages.authentication.confirmation-required.fullscreen-alt',
-                                title: 'Fullscreen Alt.',
+                                id   : 'pages.authentication.confirmation-required.fullscreen-reversed',
+                                title: 'Fullscreen Reversed',
                                 type : 'basic',
-                                link : '/pages/authentication/confirmation-required/fullscreen-alt'
+                                link : '/pages/authentication/confirmation-required/fullscreen-reversed'
                             }
                         ]
                     }
@@ -388,10 +472,22 @@ export const defaultNavigation: TreoNavigationItem[] = [
                         link : '/pages/coming-soon/modern'
                     },
                     {
-                        id   : 'pages.coming-soon.modern-alt',
-                        title: 'Modern Alt.',
+                        id   : 'pages.coming-soon.modern-reversed',
+                        title: 'Modern Reversed',
                         type : 'basic',
-                        link : '/pages/coming-soon/modern-alt'
+                        link : '/pages/coming-soon/modern-reversed'
+                    },
+                    {
+                        id   : 'pages.coming-soon.split-screen',
+                        title: 'Split Screen',
+                        type : 'basic',
+                        link : '/pages/coming-soon/split-screen'
+                    },
+                    {
+                        id   : 'pages.coming-soon.split-screen-reversed',
+                        title: 'Split Screen Reversed',
+                        type : 'basic',
+                        link : '/pages/coming-soon/split-screen-reversed'
                     },
                     {
                         id   : 'pages.coming-soon.fullscreen',
@@ -400,10 +496,10 @@ export const defaultNavigation: TreoNavigationItem[] = [
                         link : '/pages/coming-soon/fullscreen'
                     },
                     {
-                        id   : 'pages.coming-soon.fullscreen-alt',
-                        title: 'Fullscreen Alt.',
+                        id   : 'pages.coming-soon.fullscreen-reversed',
+                        title: 'Fullscreen Reversed',
                         type : 'basic',
-                        link : '/pages/coming-soon/fullscreen-alt'
+                        link : '/pages/coming-soon/fullscreen-reversed'
                     }
                 ]
             },
