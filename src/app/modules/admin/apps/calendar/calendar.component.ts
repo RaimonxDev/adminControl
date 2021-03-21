@@ -51,7 +51,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     views: any;
     viewTitle: string;
     private _eventPanelOverlayRef: OverlayRef;
-    private _eventPanelTemplatePortal: TemplatePortal;
     private _fullCalendarApi: FullCalendar;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -215,15 +214,15 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             .subscribe(({matchingAliases}) => {
 
                 // Set the drawerMode and drawerOpened if the given breakpoint is active
-                if ( matchingAliases.includes('lt-md') )
-                {
-                    this.drawerMode = 'over';
-                    this.drawerOpened = false;
-                }
-                else
+                if ( matchingAliases.includes('md') )
                 {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
                 }
 
                 // Mark for check
@@ -290,6 +289,12 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+
+        // Dispose the overlay
+        if ( this._eventPanelOverlayRef )
+        {
+            this._eventPanelOverlayRef.dispose();
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -362,25 +367,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Set the event edit mode
         this.eventEditMode = eventEditMode;
-
-        // Update the panel class
-        if ( panelMode === 'view' )
-        {
-            this._eventPanelOverlayRef.removePanelClass(['panel-mode-add', 'panel-mode-edit']);
-            this._eventPanelOverlayRef.addPanelClass('panel-mode-view');
-        }
-
-        if ( panelMode === 'add' )
-        {
-            this._eventPanelOverlayRef.removePanelClass(['panel-mode-edit', 'panel-mode-view']);
-            this._eventPanelOverlayRef.addPanelClass('panel-mode-add');
-        }
-
-        if ( panelMode === 'edit' )
-        {
-            this._eventPanelOverlayRef.removePanelClass(['panel-mode-add', 'panel-mode-view']);
-            this._eventPanelOverlayRef.addPanelClass('panel-mode-edit');
-        }
 
         // Update the panel position
         setTimeout(() => {
@@ -792,65 +778,77 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Create the event panel overlay
+     * @private
+     */
+    private _createEventPanelOverlay(positionStrategy): void
+    {
+        // Create the overlay
+        this._eventPanelOverlayRef = this._overlay.create({
+            panelClass    : ['calendar-event-panel'],
+            backdropClass : '',
+            hasBackdrop   : true,
+            scrollStrategy: this._overlay.scrollStrategies.reposition(),
+            positionStrategy
+        });
+
+        // Detach the overlay from the portal on backdrop click
+        this._eventPanelOverlayRef.backdropClick().subscribe(() => {
+            this._closeEventPanel();
+        });
+    }
+
+    /**
      * Open the event panel
      *
      * @private
      */
     private _openEventPanel(calendarEvent): void
     {
-        // Create the overlay
-        this._eventPanelOverlayRef = this._overlay.create({
-            panelClass      : ['calendar-event-panel', 'panel-mode-view'],
-            backdropClass   : '',
-            hasBackdrop     : true,
-            scrollStrategy  : this._overlay.scrollStrategies.reposition(),
-            positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(calendarEvent.el)
-                                  .withFlexibleDimensions(false)
-                                  .withPositions([
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'top',
-                                          offsetX : 8
-                                      },
-                                      {
-                                          originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'top',
-                                          offsetX : -8
-                                      },
-                                      {
-                                          originX : 'start',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'bottom',
-                                          offsetX : -8
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'start',
-                                          overlayY: 'bottom',
-                                          offsetX : 8
-                                      }
-                                  ])
-        });
+        const positionStrategy = this._overlay.position().flexibleConnectedTo(calendarEvent.el).withFlexibleDimensions(false).withPositions([
+            {
+                originX : 'end',
+                originY : 'top',
+                overlayX: 'start',
+                overlayY: 'top',
+                offsetX : 8
+            },
+            {
+                originX : 'start',
+                originY : 'top',
+                overlayX: 'end',
+                overlayY: 'top',
+                offsetX : -8
+            },
+            {
+                originX : 'start',
+                originY : 'bottom',
+                overlayX: 'end',
+                overlayY: 'bottom',
+                offsetX : -8
+            },
+            {
+                originX : 'end',
+                originY : 'bottom',
+                overlayX: 'start',
+                overlayY: 'bottom',
+                offsetX : 8
+            }
+        ]);
 
-        // Create a portal from the template
-        this._eventPanelTemplatePortal = new TemplatePortal(this._eventPanel, this._viewContainerRef);
-
-        // On backdrop click...
-        this._eventPanelOverlayRef.backdropClick().subscribe(() => {
-
-            // Close the event panel
-            this._closeEventPanel();
-        });
+        // Create the overlay if it doesn't exist
+        if ( !this._eventPanelOverlayRef )
+        {
+            this._createEventPanelOverlay(positionStrategy);
+        }
+        // Otherwise, just update the position
+        else
+        {
+            this._eventPanelOverlayRef.updatePositionStrategy(positionStrategy);
+        }
 
         // Attach the portal to the overlay
-        this._eventPanelOverlayRef.attach(this._eventPanelTemplatePortal);
+        this._eventPanelOverlayRef.attach(new TemplatePortal(this._eventPanel, this._viewContainerRef));
 
         // Mark for check
         this._changeDetectorRef.markForCheck();
@@ -863,20 +861,8 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      */
     private _closeEventPanel(): void
     {
-        // If template portal exists and attached...
-        if ( this._eventPanelTemplatePortal && this._eventPanelTemplatePortal.isAttached )
-        {
-            // Detach it
-            this._eventPanelTemplatePortal.detach();
-        }
-
-        // If overlay exists and attached...
-        if ( this._eventPanelOverlayRef && this._eventPanelOverlayRef.hasAttached() )
-        {
-            // Detach it
-            this._eventPanelOverlayRef.detach();
-            this._eventPanelOverlayRef.dispose();
-        }
+        // Detach the overlay from the portal
+        this._eventPanelOverlayRef.detach();
 
         // Reset the panel and event edit modes
         this.panelMode = 'view';

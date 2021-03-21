@@ -23,7 +23,6 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
     calendarColors: any = calendarColors;
     calendars: Calendar[];
     private _editPanelOverlayRef: OverlayRef;
-    private _editPanelTemplatePortal: TemplatePortal;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -64,6 +63,12 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+
+        // Dispose the overlay
+        if ( this._editPanelOverlayRef )
+        {
+            this._editPanelOverlayRef.dispose();
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -78,32 +83,14 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
         // Set the calendar
         this.calendar = cloneDeep(calendar);
 
-        // Create the overlay
-        this._editPanelOverlayRef = this._overlay.create({
-            panelClass      : 'calendar-sidebar-calendar-edit-panel',
-            hasBackdrop     : true,
-            scrollStrategy  : this._overlay.scrollStrategies.reposition(),
-            positionStrategy: this._overlay.position()
-                                  .global()
-                                  .centerHorizontally()
-                                  .centerVertically()
-        });
-
-        // Create a portal from the template
-        this._editPanelTemplatePortal = new TemplatePortal(this._editPanel, this._viewContainerRef);
-
-        // On backdrop click...
-        this._editPanelOverlayRef.backdropClick().subscribe(() => {
-
-            // Close the edit panel
-            this.closeEditPanel();
-
-            // Set the calendar as null
-            this.calendar = null;
-        });
+        // Create the overlay if it doesn't exist
+        if ( !this._editPanelOverlayRef )
+        {
+            this._createEditPanelOverlay();
+        }
 
         // Attach the portal to the overlay
-        this._editPanelOverlayRef.attach(this._editPanelTemplatePortal);
+        this._editPanelOverlayRef.attach(new TemplatePortal(this._editPanel, this._viewContainerRef));
     }
 
     /**
@@ -111,20 +98,8 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
      */
     closeEditPanel(): void
     {
-        // If template portal exists and attached...
-        if ( this._editPanelTemplatePortal && this._editPanelTemplatePortal.isAttached )
-        {
-            // Detach it
-            this._editPanelTemplatePortal.detach();
-        }
-
-        // If overlay exists and attached...
-        if ( this._editPanelOverlayRef && this._editPanelOverlayRef.hasAttached() )
-        {
-            // Detach it
-            this._editPanelOverlayRef.detach();
-            this._editPanelOverlayRef.dispose();
-        }
+        // Detach the overlay from the portal
+        this._editPanelOverlayRef.detach();
     }
 
     /**
@@ -150,7 +125,7 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
         const calendar = {
             id     : null,
             title  : '',
-            color  : 'blue',
+            color  : 'bg-blue-500',
             visible: true
         };
 
@@ -208,6 +183,33 @@ export class CalendarSidebarComponent implements OnInit, OnDestroy
 
             // Emit the calendarUpdated event
             this.calendarUpdated.emit();
+        });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create the edit panel overlay
+     * @private
+     */
+    private _createEditPanelOverlay(): void
+    {
+        // Create the overlay
+        this._editPanelOverlayRef = this._overlay.create({
+            hasBackdrop     : true,
+            scrollStrategy  : this._overlay.scrollStrategies.reposition(),
+            positionStrategy: this._overlay.position()
+                                  .global()
+                                  .centerHorizontally()
+                                  .centerVertically()
+        });
+
+        // Detach the overlay from the portal on backdrop click
+        this._editPanelOverlayRef.backdropClick().subscribe(() => {
+            this.closeEditPanel();
+            this.calendar = null;
         });
     }
 }
