@@ -116,14 +116,6 @@ calendar {
 
 /* Event panel */
 .calendar-event-panel {
-    width: 100%;
-    min-width: 80vw;
-    max-width: 100%;
     border-radius: 8px;
     @apply shadow-2xl bg-card;
-
-    @responsive 'sm' {
-        min-width: 480px;
-        max-width: 480px;
-    }
 }

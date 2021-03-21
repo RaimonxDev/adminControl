@@ -11,12 +11,6 @@ treo-date-range {
         min-height: 48px;
         max-height: 48px;
         cursor: pointer;
-        @apply bg-gray-50 border-gray-300;
-
-        .dark & {
-            background-color: rgba(0, 0, 0, 0.05);
-            @apply border-gray-500;
-        }
 
         .start,
         .end {
@@ -24,9 +18,10 @@ treo-date-range {
             align-items: center;
             height: 100%;
             padding: 0 16px;
-            border-radius: 5px;
+            border-radius: 6px;
             border-width: 1px;
             line-height: 1;
+            @apply shadow-sm border-gray-300 dark:bg-black dark:bg-opacity-5 dark:border-gray-500;
 
             .date {
                 white-space: nowrap;
@@ -54,8 +49,7 @@ treo-date-range {
 .treo-date-range-panel {
     border-radius: 4px;
     padding: 24px;
-    background: var(--bg-card);
-    @apply shadow-2xl;
+    @apply shadow-2xl bg-card;
 
     .start,
     .end {
@@ -99,7 +93,7 @@ treo-date-range {
 
                 .month-label {
                     font-weight: 500;
-                    color: var(--text-secondary);
+                    @apply text-secondary;
                 }
             }
 
@@ -137,7 +131,7 @@ treo-date-range {
                                 &.treo-date-range {
 
                                     &:before {
-                                        background: var(--primary-200);
+                                        @apply bg-primary-200;
                                     }
 
                                     .mat-calendar-body-cell-content {
@@ -149,8 +143,7 @@ treo-date-range {
                                 &.treo-date-range-end {
 
                                     .mat-calendar-body-cell-content {
-                                        background: var(--primary);
-                                        color: var(--primary-contrast);
+                                        @apply bg-primary text-on-primary;
                                     }
                                 }
 
