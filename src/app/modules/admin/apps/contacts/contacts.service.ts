@@ -64,18 +64,10 @@ export class ContactsService
 
     /**
      * Get contacts
-     *
-     * @param sortField
-     * @param sortDirection
      */
-    getContacts(sortField: string = 'name', sortDirection: 'asc' | 'desc' | '' = 'asc'): Observable<Contact[]>
+    getContacts(): Observable<Contact[]>
     {
-        return this._httpClient.get<Contact[]>('api/apps/contacts/all', {
-            params: {
-                sortField,
-                sortDirection
-            }
-        }).pipe(
+        return this._httpClient.get<Contact[]>('api/apps/contacts/all').pipe(
             tap((contacts) => {
                 this._contacts.next(contacts);
             })
@@ -87,9 +79,9 @@ export class ContactsService
      *
      * @param query
      */
-    searchContacts(query: string): Observable<Contact[] | null>
+    searchContacts(query: string): Observable<Contact[]>
     {
-        return this._httpClient.get<Contact[] | null>('api/apps/contacts/search', {
+        return this._httpClient.get<Contact[]>('api/apps/contacts/search', {
             params: {query}
         }).pipe(
             tap((contacts) => {

@@ -102,13 +102,32 @@ export class ContactsListComponent implements OnInit, OnDestroy
             )
             .subscribe();
 
-        // Subscribe to media query change
-        this._treoMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((state) => {
+        // Subscribe to MatDrawer opened change
+        this.matDrawer.openedChange.subscribe((opened) => {
+            if ( !opened )
+            {
+                // Remove the selected contact when drawer closed
+                this.selectedContact = null;
 
-                // Calculate the drawer mode
-                this.drawerMode = state.matches ? 'side' : 'over';
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            }
+        });
+
+        // Subscribe to media changes
+        this._treoMediaWatcherService.onMediaChange$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(({matchingAliases}) => {
+
+                // Set the drawerMode if the given breakpoint is active
+                if ( matchingAliases.includes('lg') )
+                {
+                    this.drawerMode = 'side';
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                }
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();

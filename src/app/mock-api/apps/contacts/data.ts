@@ -3,6 +3,7 @@ export const contacts = [
     {
         id          : 'cd5fa417-b667-482d-b208-798d9da3213c',
         avatar      : 'assets/images/avatars/male-01.jpg',
+        background  : 'assets/images/cards/14-640x480.jpg',
         name        : 'Dejesus Michael',
         emails      : [
             {
@@ -26,13 +27,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Track Service Worker',
-            company: 'Vitricomp'
-        },
+        title       : 'Track Service Worker',
+        company     : 'Vitricomp',
         birthday    : '1975-01-10T12:00:00.000Z',
         address     : '279 Independence Avenue, Calvary, Guam, PO4127',
-        notes       : 'Do incididunt cillum duis eu pariatur enim proident minim officia amet proident consequat consequat qui consequat magna magna occaecat aliquip culpa pariatur velit nisi nostrud irure eu ullamco exercitation sint.\n\nCillum deserunt laborum laborum quis nisi enim et aliquip labore excepteur in excepteur labore amet in ipsum ipsum nostrud deserunt lorem nisi voluptate dolor minim enim ut eu cupidatat enim.',
+        notes       : '<p>Do incididunt cillum duis eu pariatur enim proident minim officia amet proident consequat consequat qui consequat magna magna occaecat aliquip culpa pariatur velit nisi nostrud irure eu ullamco exercitation sint.</p><p>Cillum deserunt laborum laborum quis nisi enim et aliquip labore excepteur in excepteur labore amet in ipsum ipsum nostrud deserunt lorem nisi voluptate dolor minim enim ut eu cupidatat enim.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -40,6 +39,7 @@ export const contacts = [
     {
         id          : 'beec5287-ed50-4504-858a-5dc3f8ce6935',
         avatar      : null,
+        background  : null,
         name        : 'Dena Molina',
         emails      : [
             {
@@ -58,13 +58,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Weather Analyst',
-            company: 'Envire'
-        },
+        title       : 'Weather Analyst',
+        company     : 'Envire',
         birthday    : '1994-12-05T12:00:00.000Z',
         address     : '856 Woodside Avenue, Alfarata, Iowa, PO4992',
-        notes       : 'Consequat duis ullamco sint elit pariatur esse dolore nostrud consequat lorem duis sunt veniam ipsum exercitation eiusmod consequat nisi quis voluptate quis officia irure fugiat ex duis eu amet ex.\n\nIrure est nisi dolor culpa sunt nulla irure lorem adipisicing non do consequat deserunt et ea eu non reprehenderit fugiat ex elit nulla sunt quis voluptate enim nulla aliquip veniam.',
+        notes       : '<p>Consequat duis ullamco sint elit pariatur esse dolore nostrud consequat lorem duis sunt veniam ipsum exercitation eiusmod consequat nisi quis voluptate quis officia irure fugiat ex duis eu amet ex.</p><p>Irure est nisi dolor culpa sunt nulla irure lorem adipisicing non do consequat deserunt et ea eu non reprehenderit fugiat ex elit nulla sunt quis voluptate enim nulla aliquip veniam.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -72,6 +70,7 @@ export const contacts = [
     {
         id          : '9d3f0e7f-dcbd-4e56-a5e8-87b8154e9edf',
         avatar      : 'assets/images/avatars/male-02.jpg',
+        background  : 'assets/images/cards/15-640x480.jpg',
         name        : 'Bernard Langley',
         emails      : [
             {
@@ -90,13 +89,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Electromedical Equipment Technician',
-            company: 'Boilcat'
-        },
+        title       : 'Electromedical Equipment Technician',
+        company     : 'Boilcat',
         birthday    : '1988-05-26T12:00:00.000Z',
         address     : '943 Adler Place, Hamilton, South Dakota, PO5592',
-        notes       : 'Est amet in adipisicing ex excepteur ullamco est lorem adipisicing veniam reprehenderit elit commodo cillum commodo eu officia fugiat id reprehenderit sunt mollit eiusmod dolor fugiat ad do esse aliquip.\n\nMollit amet adipisicing enim est est commodo sint et eu nulla in laboris ipsum aliqua elit aliqua adipisicing ea nulla nulla consectetur velit laborum labore ullamco eu sit consectetur velit.',
+        notes       : '<p>Est amet in adipisicing ex excepteur ullamco est lorem adipisicing veniam reprehenderit elit commodo cillum commodo eu officia fugiat id reprehenderit sunt mollit eiusmod dolor fugiat ad do esse aliquip.</p><p>Mollit amet adipisicing enim est est commodo sint et eu nulla in laboris ipsum aliqua elit aliqua adipisicing ea nulla nulla consectetur velit laborum labore ullamco eu sit consectetur velit.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -104,6 +101,7 @@ export const contacts = [
     {
         id          : '42a5da95-5e6d-42fd-a09d-de755d123a47',
         avatar      : 'assets/images/avatars/male-03.jpg',
+        background  : 'assets/images/cards/16-640x480.jpg',
         name        : 'Mclaughlin Steele',
         emails      : [
             {
@@ -132,12 +130,10 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            company: 'Accel'
-        },
+        company     : 'Accel',
         birthday    : '1968-08-13T12:00:00.000Z',
         address     : '334 Sandford Street, Savage, Virgin Islands, PO1858',
-        notes       : 'Consequat eu aliquip dolor non consequat laborum ad non labore cillum consectetur quis dolore do ea nulla incididunt proident ea eiusmod in do qui eiusmod et irure dolor ea adipisicing.\n\nReprehenderit occaecat nostrud ad aliquip commodo amet velit id ut minim dolor mollit mollit in eiusmod voluptate lorem nisi labore culpa elit proident laborum ipsum occaecat esse sint nostrud esse.',
+        notes       : '<p>Consequat eu aliquip dolor non consequat laborum ad non labore cillum consectetur quis dolore do ea nulla incididunt proident ea eiusmod in do qui eiusmod et irure dolor ea adipisicing.</p><p>Reprehenderit occaecat nostrud ad aliquip commodo amet velit id ut minim dolor mollit mollit in eiusmod voluptate lorem nisi labore culpa elit proident laborum ipsum occaecat esse sint nostrud esse.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -145,6 +141,7 @@ export const contacts = [
     {
         id          : 'a7806ced-03f1-4197-8b30-00bdd463366b',
         avatar      : 'assets/images/avatars/male-04.jpg',
+        background  : 'assets/images/cards/17-640x480.jpg',
         name        : 'Marsh Cochran',
         emails      : [
             {
@@ -164,13 +161,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Xsports'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Xsports',
         birthday    : '1983-12-22T12:00:00.000Z',
         address     : '487 Hamilton Walk, Bergoo, American Samoa, PO5616',
-        notes       : 'Id eiusmod deserunt amet lorem commodo consequat nostrud magna aliquip ex et pariatur labore non elit ad ad nulla culpa reprehenderit enim magna aliqua enim pariatur occaecat sint do lorem.\n\nAdipisicing ut est nulla nisi cupidatat consequat aliqua et esse in voluptate amet eiusmod ut esse ea do irure commodo aute culpa amet consequat id adipisicing et incididunt ut duis.',
+        notes       : '<p>Id eiusmod deserunt amet lorem commodo consequat nostrud magna aliquip ex et pariatur labore non elit ad ad nulla culpa reprehenderit enim magna aliqua enim pariatur occaecat sint do lorem.</p><p>Adipisicing ut est nulla nisi cupidatat consequat aliqua et esse in voluptate amet eiusmod ut esse ea do irure commodo aute culpa amet consequat id adipisicing et incididunt ut duis.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -178,6 +173,7 @@ export const contacts = [
     {
         id          : 'f4ad15d9-5a24-463a-88ea-6189d6bb3a53',
         avatar      : 'assets/images/avatars/male-05.jpg',
+        background  : 'assets/images/cards/18-640x480.jpg',
         name        : 'Parrish Austin',
         emails      : [
             {
@@ -206,13 +202,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Motor Winder',
-            company: 'Insource'
-        },
+        title       : 'Motor Winder',
+        company     : 'Insource',
         birthday    : '1963-08-24T12:00:00.000Z',
         address     : '610 Harbor Lane, Cascades, Minnesota, PO8639',
-        notes       : 'Cillum enim eiusmod dolor aliqua ipsum exercitation sint aliqua lorem dolore id velit sint velit labore cupidatat minim cupidatat elit est magna eu proident eiusmod non pariatur est esse pariatur.\n\nSint do enim officia velit pariatur excepteur commodo adipisicing labore elit velit velit id exercitation excepteur veniam reprehenderit sint nulla duis ad incididunt cillum in in labore laboris magna esse.',
+        notes       : '<p>Cillum enim eiusmod dolor aliqua ipsum exercitation sint aliqua lorem dolore id velit sint velit labore cupidatat minim cupidatat elit est magna eu proident eiusmod non pariatur est esse pariatur.</p><p>Sint do enim officia velit pariatur excepteur commodo adipisicing labore elit velit velit id exercitation excepteur veniam reprehenderit sint nulla duis ad incididunt cillum in in labore laboris magna esse.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -220,6 +214,7 @@ export const contacts = [
     {
         id          : '780d0111-5e5c-4694-8d1d-0ea421971fbf',
         avatar      : 'assets/images/avatars/female-02.jpg',
+        background  : 'assets/images/cards/19-640x480.jpg',
         name        : 'Laverne Dodson',
         emails      : [
             {
@@ -239,13 +234,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Television News Producer',
-            company: 'Lovepad'
-        },
+        title       : 'Television News Producer',
+        company     : 'Lovepad',
         birthday    : '1973-09-25T12:00:00.000Z',
         address     : '428 Newport Street, Neahkahnie, Arkansas, PO8324',
-        notes       : 'Incididunt lorem proident est anim amet nulla do nulla ea anim ullamco ea amet voluptate laboris do elit elit consequat in esse in dolor enim irure ut irure ad commodo.\n\nAliqua dolore nulla sunt ad nostrud aute labore occaecat non amet nulla adipisicing sint eu lorem velit sint do sint adipisicing esse adipisicing anim culpa quis dolor non magna ea.',
+        notes       : '<p>Incididunt lorem proident est anim amet nulla do nulla ea anim ullamco ea amet voluptate laboris do elit elit consequat in esse in dolor enim irure ut irure ad commodo.</p><p>Aliqua dolore nulla sunt ad nostrud aute labore occaecat non amet nulla adipisicing sint eu lorem velit sint do sint adipisicing esse adipisicing anim culpa quis dolor non magna ea.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -253,6 +246,7 @@ export const contacts = [
     {
         id          : 'bf172879-423a-4fd6-8df3-6d1938bbfe1f',
         avatar      : 'assets/images/avatars/male-06.jpg',
+        background  : 'assets/images/cards/20-640x480.jpg',
         name        : 'Edwards Mckenzie',
         emails      : [
             {
@@ -281,13 +275,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Legal Assistant',
-            company: 'Bugsall'
-        },
+        title       : 'Legal Assistant',
+        company     : 'Bugsall',
         birthday    : '1988-07-27T12:00:00.000Z',
         address     : '384 Polhemus Place, Dalton, Palau, PO6038',
-        notes       : 'Eu veniam consectetur eiusmod anim sint anim consectetur do consectetur aliqua cillum proident fugiat do in aliqua ipsum id consequat commodo qui officia adipisicing ullamco occaecat laboris proident incididunt exercitation.\n\nVelit ullamco magna aute proident irure ut magna ullamco labore dolor deserunt deserunt tempor fugiat ex ullamco do sunt veniam reprehenderit officia elit duis sint ut proident pariatur est reprehenderit.',
+        notes       : '<p>Eu veniam consectetur eiusmod anim sint anim consectetur do consectetur aliqua cillum proident fugiat do in aliqua ipsum id consequat commodo qui officia adipisicing ullamco occaecat laboris proident incididunt exercitation.</p><p>Velit ullamco magna aute proident irure ut magna ullamco labore dolor deserunt deserunt tempor fugiat ex ullamco do sunt veniam reprehenderit officia elit duis sint ut proident pariatur est reprehenderit.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -295,6 +287,7 @@ export const contacts = [
     {
         id          : '1eaa3213-ece2-4ba6-8e15-eb36ca388f50',
         avatar      : 'assets/images/avatars/female-03.jpg',
+        background  : 'assets/images/cards/21-640x480.jpg',
         name        : 'Trudy Berg',
         emails      : [
             {
@@ -313,13 +306,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Meteorologist',
-            company: 'Satiance'
-        },
+        title       : 'Meteorologist',
+        company     : 'Satiance',
         birthday    : '1989-12-15T12:00:00.000Z',
         address     : '945 Jerome Avenue, Riceville, North Carolina, PO1625',
-        notes       : 'Excepteur ullamco aute aliqua reprehenderit ullamco do anim ut ut veniam et ut et ut commodo aliqua consequat occaecat fugiat dolor labore proident ipsum ad culpa est cillum aliqua reprehenderit.\n\nAmet aliqua sint laboris in aute nostrud voluptate tempor ea tempor laborum tempor culpa dolore aliqua nulla dolore ad enim id cupidatat nostrud nostrud amet non velit id fugiat lorem.',
+        notes       : '<p>Excepteur ullamco aute aliqua reprehenderit ullamco do anim ut ut veniam et ut et ut commodo aliqua consequat occaecat fugiat dolor labore proident ipsum ad culpa est cillum aliqua reprehenderit.</p><p>Amet aliqua sint laboris in aute nostrud voluptate tempor ea tempor laborum tempor culpa dolore aliqua nulla dolore ad enim id cupidatat nostrud nostrud amet non velit id fugiat lorem.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -327,6 +318,7 @@ export const contacts = [
     {
         id          : 'abd9e78b-9e96-428f-b3ff-4d934c401bee',
         avatar      : 'assets/images/avatars/female-04.jpg',
+        background  : 'assets/images/cards/22-640x480.jpg',
         name        : 'Elsie Melendez',
         emails      : [
             {
@@ -350,13 +342,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Chillium'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Chillium',
         birthday    : '1980-06-28T12:00:00.000Z',
         address     : '428 Varanda Place, Veyo, Oklahoma, PO6188',
-        notes       : 'Laboris commodo consequat duis dolor ullamco nisi sunt ipsum nisi elit dolore aute sint tempor qui ad sit aliqua laboris consequat dolore aliqua est deserunt irure cillum tempor ut veniam.\n\nEiusmod nulla ex esse in deserunt consectetur non qui cillum reprehenderit magna sit ipsum lorem aute consequat sint magna id laboris velit adipisicing non ipsum ipsum sint velit ex non.',
+        notes       : '<p>Laboris commodo consequat duis dolor ullamco nisi sunt ipsum nisi elit dolore aute sint tempor qui ad sit aliqua laboris consequat dolore aliqua est deserunt irure cillum tempor ut veniam.</p><p>Eiusmod nulla ex esse in deserunt consectetur non qui cillum reprehenderit magna sit ipsum lorem aute consequat sint magna id laboris velit adipisicing non ipsum ipsum sint velit ex non.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -364,6 +354,7 @@ export const contacts = [
     {
         id          : 'efae92cc-3bd1-4c6a-a395-b6760c69bd55',
         avatar      : 'assets/images/avatars/male-07.jpg',
+        background  : 'assets/images/cards/23-640x480.jpg',
         name        : 'Lamb Underwood',
         emails      : [
             {
@@ -388,13 +379,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Legal Assistant',
-            company: 'Exotechno'
-        },
+        title       : 'Legal Assistant',
+        company     : 'Exotechno',
         birthday    : '1990-07-26T12:00:00.000Z',
         address     : '609 Greenpoint Avenue, Beason, Vermont, PO5229',
-        notes       : 'Exercitation tempor laboris dolor deserunt nulla et nisi ullamco minim duis sint nulla sint deserunt irure excepteur nostrud ipsum duis enim sit exercitation eiusmod tempor commodo excepteur mollit cupidatat fugiat.\n\nDeserunt est dolore nulla laborum consequat veniam elit lorem do exercitation incididunt ea ad laboris lorem ipsum ex incididunt nostrud ipsum laborum et nostrud minim aute velit incididunt quis quis.',
+        notes       : '<p>Exercitation tempor laboris dolor deserunt nulla et nisi ullamco minim duis sint nulla sint deserunt irure excepteur nostrud ipsum duis enim sit exercitation eiusmod tempor commodo excepteur mollit cupidatat fugiat.</p><p>Deserunt est dolore nulla laborum consequat veniam elit lorem do exercitation incididunt ea ad laboris lorem ipsum ex incididunt nostrud ipsum laborum et nostrud minim aute velit incididunt quis quis.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -402,6 +391,7 @@ export const contacts = [
     {
         id          : 'bde636a7-c3d2-4bff-939a-aab11df1516b',
         avatar      : null,
+        background  : null,
         name        : 'Tessa Valdez',
         emails      : [
             {
@@ -426,13 +416,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Banker Mason',
-            company: 'Securia'
-        },
+        title       : 'Banker Mason',
+        company     : 'Securia',
         birthday    : '1994-01-10T12:00:00.000Z',
         address     : '183 Crosby Avenue, Blanco, Mississippi, PO3463',
-        notes       : 'Mollit qui amet in esse ipsum nostrud cupidatat occaecat proident aliquip non mollit commodo ex labore enim culpa dolor aute occaecat cillum sit excepteur tempor culpa nostrud nulla qui commodo.\n\nLabore nulla id excepteur non velit adipisicing tempor reprehenderit cillum sint do consectetur laboris ut proident pariatur quis aute ad dolor quis labore labore nostrud sunt elit proident enim aliqua.',
+        notes       : '<p>Mollit qui amet in esse ipsum nostrud cupidatat occaecat proident aliquip non mollit commodo ex labore enim culpa dolor aute occaecat cillum sit excepteur tempor culpa nostrud nulla qui commodo.</p><p>Labore nulla id excepteur non velit adipisicing tempor reprehenderit cillum sint do consectetur laboris ut proident pariatur quis aute ad dolor quis labore labore nostrud sunt elit proident enim aliqua.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -440,6 +428,7 @@ export const contacts = [
     {
         id          : '6519600a-5eaa-45f8-8bed-c46fddb3b26a',
         avatar      : 'assets/images/avatars/male-08.jpg',
+        background  : 'assets/images/cards/24-640x480.jpg',
         name        : 'Mcleod Wagner',
         emails      : [
             {
@@ -464,12 +453,10 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            company: 'Inrt'
-        },
+        company     : 'Inrt',
         birthday    : '1980-12-03T12:00:00.000Z',
         address     : '736 Glen Street, Kaka, West Virginia, PO9350',
-        notes       : 'Laboris consequat est anim quis quis eiusmod ipsum non quis fugiat anim culpa non elit mollit pariatur veniam nisi irure velit dolore dolor proident nisi deserunt culpa nisi et laborum.\n\nEiusmod eu esse ipsum voluptate excepteur ipsum et proident cupidatat sint sunt aliquip lorem culpa esse et dolor fugiat sit est id consectetur sint et ea pariatur occaecat nulla irure.',
+        notes       : '<p>Laboris consequat est anim quis quis eiusmod ipsum non quis fugiat anim culpa non elit mollit pariatur veniam nisi irure velit dolore dolor proident nisi deserunt culpa nisi et laborum.</p><p>Eiusmod eu esse ipsum voluptate excepteur ipsum et proident cupidatat sint sunt aliquip lorem culpa esse et dolor fugiat sit est id consectetur sint et ea pariatur occaecat nulla irure.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -477,6 +464,7 @@ export const contacts = [
     {
         id          : '6d80a6f6-2884-4ac4-9c73-06b82c220017',
         avatar      : 'assets/images/avatars/female-06.jpg',
+        background  : 'assets/images/cards/25-640x480.jpg',
         name        : 'Kristie Hall',
         emails      : [
             {
@@ -505,13 +493,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Electromedical Equipment Technician',
-            company: 'Austech'
-        },
+        title       : 'Electromedical Equipment Technician',
+        company     : 'Austech',
         birthday    : '1975-08-31T12:00:00.000Z',
         address     : '547 Revere Place, Hoehne, New Hampshire, PO2125',
-        notes       : 'Duis incididunt minim nisi sit qui dolor aliquip quis ipsum id amet occaecat sit ullamco minim velit est eiusmod anim proident consectetur non reprehenderit ea reprehenderit dolore in nisi eiusmod.\n\nUt commodo aliqua non ut proident velit et commodo voluptate eu mollit dolor veniam ipsum velit aute esse est adipisicing id aliqua nostrud nostrud nisi enim officia eiusmod in enim.',
+        notes       : '<p>Duis incididunt minim nisi sit qui dolor aliquip quis ipsum id amet occaecat sit ullamco minim velit est eiusmod anim proident consectetur non reprehenderit ea reprehenderit dolore in nisi eiusmod.</p><p>Ut commodo aliqua non ut proident velit et commodo voluptate eu mollit dolor veniam ipsum velit aute esse est adipisicing id aliqua nostrud nostrud nisi enim officia eiusmod in enim.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -519,6 +505,7 @@ export const contacts = [
     {
         id          : '35190d23-036e-44ef-b545-cc744c626edd',
         avatar      : 'assets/images/avatars/female-07.jpg',
+        background  : 'assets/images/cards/26-640x480.jpg',
         name        : 'Shannon Kennedy',
         emails      : [
             {
@@ -543,13 +530,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Gas Meter Mechanic',
-            company: 'Eventix'
-        },
+        title       : 'Gas Meter Mechanic',
+        company     : 'Eventix',
         birthday    : '1994-09-07T12:00:00.000Z',
         address     : '480 Chase Court, Edinburg, Kansas, PO5357',
-        notes       : 'Lorem ex amet anim anim qui consequat ullamco consectetur et voluptate in velit dolore culpa pariatur amet enim ut non magna duis qui excepteur esse ullamco velit fugiat aute dolor.\n\nReprehenderit ullamco veniam sit laborum nulla sunt excepteur eiusmod anim eu ullamco tempor est qui adipisicing sit fugiat voluptate minim non incididunt quis ipsum et exercitation officia laborum incididunt nostrud.',
+        notes       : '<p>Lorem ex amet anim anim qui consequat ullamco consectetur et voluptate in velit dolore culpa pariatur amet enim ut non magna duis qui excepteur esse ullamco velit fugiat aute dolor.</p><p>Reprehenderit ullamco veniam sit laborum nulla sunt excepteur eiusmod anim eu ullamco tempor est qui adipisicing sit fugiat voluptate minim non incididunt quis ipsum et exercitation officia laborum incididunt nostrud.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -557,6 +542,7 @@ export const contacts = [
     {
         id          : 'b018c194-68ec-4915-ab56-e9f3bd2d98db',
         avatar      : 'assets/images/avatars/female-08.jpg',
+        background  : 'assets/images/cards/27-640x480.jpg',
         name        : 'Martha Swanson',
         emails      : [
             {
@@ -585,13 +571,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Short Story Writer',
-            company: 'Sequitur'
-        },
+        title       : 'Short Story Writer',
+        company     : 'Sequitur',
         birthday    : '1993-12-31T12:00:00.000Z',
         address     : '595 Howard Place, Convent, Rhode Island, PO6993',
-        notes       : 'Lorem nostrud cillum non cillum nisi eu labore anim ipsum consequat consectetur sunt ipsum ipsum ad culpa laborum in ea exercitation quis voluptate velit id elit labore cillum cillum consectetur.\n\nUllamco ullamco nostrud aute pariatur nulla officia proident magna laborum dolor reprehenderit ullamco in reprehenderit veniam aliqua elit magna voluptate amet ut minim in labore irure culpa consequat sit pariatur.',
+        notes       : '<p>Lorem nostrud cillum non cillum nisi eu labore anim ipsum consequat consectetur sunt ipsum ipsum ad culpa laborum in ea exercitation quis voluptate velit id elit labore cillum cillum consectetur.</p><p>Ullamco ullamco nostrud aute pariatur nulla officia proident magna laborum dolor reprehenderit ullamco in reprehenderit veniam aliqua elit magna voluptate amet ut minim in labore irure culpa consequat sit pariatur.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -599,6 +583,7 @@ export const contacts = [
     {
         id          : 'b7c355e9-e003-467e-82d2-4f6978c1a696',
         avatar      : 'assets/images/avatars/female-09.jpg',
+        background  : 'assets/images/cards/28-640x480.jpg',
         name        : 'Jacklyn Morgan',
         emails      : [
             {
@@ -617,13 +602,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Animal Sitter',
-            company: 'Shopabout'
-        },
+        title       : 'Animal Sitter',
+        company     : 'Shopabout',
         birthday    : '1976-09-30T12:00:00.000Z',
         address     : '971 Conover Street, Statenville, Louisiana, PO6622',
-        notes       : 'Pariatur fugiat labore aliquip aute in adipisicing veniam et consequat magna nulla laboris eiusmod eu esse cupidatat ipsum amet sint est anim lorem consequat eiusmod sit aliquip consequat nisi duis.\n\nEst esse excepteur non amet reprehenderit cillum ullamco ex excepteur laboris excepteur dolor magna enim consequat lorem commodo ipsum elit ea veniam non quis id nisi esse tempor enim ut.',
+        notes       : '<p>Pariatur fugiat labore aliquip aute in adipisicing veniam et consequat magna nulla laboris eiusmod eu esse cupidatat ipsum amet sint est anim lorem consequat eiusmod sit aliquip consequat nisi duis.</p><p>Est esse excepteur non amet reprehenderit cillum ullamco ex excepteur laboris excepteur dolor magna enim consequat lorem commodo ipsum elit ea veniam non quis id nisi esse tempor enim ut.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -631,6 +614,7 @@ export const contacts = [
     {
         id          : 'cfa07b7c-93d1-42e7-9592-493d9efc78ae',
         avatar      : 'assets/images/avatars/female-10.jpg',
+        background  : 'assets/images/cards/29-640x480.jpg',
         name        : 'Tonya Bowers',
         emails      : [
             {
@@ -654,13 +638,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Track Service Worker',
-            company: 'Tourmania'
-        },
+        title       : 'Track Service Worker',
+        company     : 'Tourmania',
         birthday    : '1976-06-14T12:00:00.000Z',
         address     : '197 Marconi Place, Welda, Delaware, PO6061',
-        notes       : 'Aliqua ea dolor est enim ipsum esse pariatur tempor nulla excepteur aliquip irure fugiat reprehenderit adipisicing ex tempor proident voluptate dolore ea dolore nostrud id incididunt culpa in do occaecat.\n\nAute fugiat magna velit enim in duis duis elit ipsum excepteur reprehenderit do ipsum qui cillum aliquip ut occaecat do ea et adipisicing cupidatat voluptate non elit ad aliqua ad.',
+        notes       : '<p>Aliqua ea dolor est enim ipsum esse pariatur tempor nulla excepteur aliquip irure fugiat reprehenderit adipisicing ex tempor proident voluptate dolore ea dolore nostrud id incididunt culpa in do occaecat.</p><p>Aute fugiat magna velit enim in duis duis elit ipsum excepteur reprehenderit do ipsum qui cillum aliquip ut occaecat do ea et adipisicing cupidatat voluptate non elit ad aliqua ad.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -668,6 +650,7 @@ export const contacts = [
     {
         id          : '00feeb63-c83a-4655-a37e-a07da10cfa1c',
         avatar      : 'assets/images/avatars/female-11.jpg',
+        background  : 'assets/images/cards/30-640x480.jpg',
         name        : 'Latonya Cruz',
         emails      : [
             {
@@ -692,13 +675,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Motor Winder',
-            company: 'Zilch'
-        },
+        title       : 'Motor Winder',
+        company     : 'Zilch',
         birthday    : '1967-11-28T12:00:00.000Z',
         address     : '775 Dahill Road, Iberia, California, PO2169',
-        notes       : 'Ut occaecat tempor deserunt proident enim ex ullamco ex aliquip mollit aute reprehenderit in occaecat anim aliquip ea laboris anim laboris do non aute aute ea laboris magna sunt sit.\n\nUllamco in in minim culpa eiusmod amet consequat consequat magna nisi cillum occaecat irure officia voluptate et eu duis officia nostrud culpa non eiusmod anim sint et anim enim voluptate.',
+        notes       : '<p>Ut occaecat tempor deserunt proident enim ex ullamco ex aliquip mollit aute reprehenderit in occaecat anim aliquip ea laboris anim laboris do non aute aute ea laboris magna sunt sit.</p><p>Ullamco in in minim culpa eiusmod amet consequat consequat magna nisi cillum occaecat irure officia voluptate et eu duis officia nostrud culpa non eiusmod anim sint et anim enim voluptate.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -706,6 +687,7 @@ export const contacts = [
     {
         id          : '142abf21-e635-4a7d-9330-e57f66adcdbe',
         avatar      : 'assets/images/avatars/female-12.jpg',
+        background  : 'assets/images/cards/31-640x480.jpg',
         name        : 'Evangelina Mcclain',
         emails      : [
             {
@@ -730,13 +712,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Congressional Representative',
-            company: 'Straloy'
-        },
+        title       : 'Congressional Representative',
+        company     : 'Straloy',
         birthday    : '1976-02-15T12:00:00.000Z',
         address     : '305 Columbia Street, Dupuyer, Puerto Rico, PO8744',
-        notes       : 'Proident nulla culpa magna nostrud do aliqua ullamco sit culpa ullamco eu amet culpa laborum enim fugiat non ad quis esse pariatur exercitation lorem incididunt exercitation aliquip labore minim adipisicing.\n\nSint ea voluptate tempor irure consequat aute laboris exercitation id minim voluptate aliquip tempor occaecat elit incididunt laboris enim labore sit aute sunt cillum ipsum ad laboris nostrud dolor excepteur.',
+        notes       : '<p>Proident nulla culpa magna nostrud do aliqua ullamco sit culpa ullamco eu amet culpa laborum enim fugiat non ad quis esse pariatur exercitation lorem incididunt exercitation aliquip labore minim adipisicing.</p><p>Sint ea voluptate tempor irure consequat aute laboris exercitation id minim voluptate aliquip tempor occaecat elit incididunt laboris enim labore sit aute sunt cillum ipsum ad laboris nostrud dolor excepteur.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -744,6 +724,7 @@ export const contacts = [
     {
         id          : 'e4f255a3-b5dd-45a7-975f-c399604a399a',
         avatar      : 'assets/images/avatars/male-09.jpg',
+        background  : 'assets/images/cards/32-640x480.jpg',
         name        : 'Herring Gonzales',
         emails      : [
             {
@@ -763,13 +744,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Gas Meter Mechanic',
-            company: 'Cubix'
-        },
+        title       : 'Gas Meter Mechanic',
+        company     : 'Cubix',
         birthday    : '1995-02-16T12:00:00.000Z',
         address     : '195 Brooklyn Road, Jeff, Marshall Islands, PO2943',
-        notes       : 'Ex nulla nisi do cillum consequat amet incididunt eu minim eu ut excepteur ad anim minim aliquip ullamco fugiat labore esse aliquip ea incididunt incididunt nisi officia consectetur dolore minim.\n\nEt dolor consectetur anim deserunt laborum eu lorem et in nisi et officia nostrud fugiat deserunt aute irure ullamco officia fugiat voluptate exercitation ut deserunt officia nostrud tempor velit pariatur.',
+        notes       : '<p>Ex nulla nisi do cillum consequat amet incididunt eu minim eu ut excepteur ad anim minim aliquip ullamco fugiat labore esse aliquip ea incididunt incididunt nisi officia consectetur dolore minim.</p><p>Et dolor consectetur anim deserunt laborum eu lorem et in nisi et officia nostrud fugiat deserunt aute irure ullamco officia fugiat voluptate exercitation ut deserunt officia nostrud tempor velit pariatur.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -777,6 +756,7 @@ export const contacts = [
     {
         id          : 'ab4f712d-d712-41a8-b567-be4c66c349a3',
         avatar      : 'assets/images/avatars/female-13.jpg',
+        background  : 'assets/images/cards/33-640x480.jpg',
         name        : 'Alyce Cash',
         emails      : [
             {
@@ -796,13 +776,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Weather Analyst',
-            company: 'Qnekt'
-        },
+        title       : 'Weather Analyst',
+        company     : 'Qnekt',
         birthday    : '1973-12-19T12:00:00.000Z',
         address     : '964 Henry Street, Eureka, Indiana, PO1035',
-        notes       : 'Non proident pariatur nostrud dolor incididunt occaecat amet officia sunt magna anim dolor labore culpa ut laborum id incididunt officia amet mollit anim ea proident laboris non incididunt incididunt sint.\n\nNulla minim consectetur nostrud magna anim irure consectetur labore cupidatat laborum reprehenderit et et adipisicing in qui elit ipsum reprehenderit esse nisi non ipsum exercitation sunt eu elit velit fugiat.',
+        notes       : '<p>Non proident pariatur nostrud dolor incididunt occaecat amet officia sunt magna anim dolor labore culpa ut laborum id incididunt officia amet mollit anim ea proident laboris non incididunt incididunt sint.</p><p>Nulla minim consectetur nostrud magna anim irure consectetur labore cupidatat laborum reprehenderit et et adipisicing in qui elit ipsum reprehenderit esse nisi non ipsum exercitation sunt eu elit velit fugiat.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -810,6 +788,7 @@ export const contacts = [
     {
         id          : '5d067800-c301-46c6-a7f7-28dc89d9a554',
         avatar      : null,
+        background  : null,
         name        : 'Kristine Pacheco',
         emails      : [
             {
@@ -828,13 +807,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Short Story Writer',
-            company: 'Vurbo'
-        },
+        title       : 'Short Story Writer',
+        company     : 'Vurbo',
         birthday    : '1985-10-22T12:00:00.000Z',
         address     : '622 Dodworth Street, Rose, Arizona, PO9530',
-        notes       : 'Lorem laboris excepteur magna pariatur occaecat voluptate pariatur cillum exercitation anim enim elit laborum reprehenderit laboris ad velit ut ipsum irure id ullamco minim sint ipsum occaecat esse tempor ea.\n\nPariatur non labore cillum consectetur aute voluptate sint adipisicing nisi laborum culpa nisi elit et amet dolor incididunt velit ex laboris ea reprehenderit eiusmod qui esse veniam labore ea sit.',
+        notes       : '<p>Lorem laboris excepteur magna pariatur occaecat voluptate pariatur cillum exercitation anim enim elit laborum reprehenderit laboris ad velit ut ipsum irure id ullamco minim sint ipsum occaecat esse tempor ea.</p><p>Pariatur non labore cillum consectetur aute voluptate sint adipisicing nisi laborum culpa nisi elit et amet dolor incididunt velit ex laboris ea reprehenderit eiusmod qui esse veniam labore ea sit.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -842,6 +819,7 @@ export const contacts = [
     {
         id          : 'c500255a-1173-47d0-a0e4-4944d48fc12a',
         avatar      : 'assets/images/avatars/male-10.jpg',
+        background  : 'assets/images/cards/34-640x480.jpg',
         name        : 'English Haney',
         emails      : [
             {
@@ -856,13 +834,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Meteorologist',
-            company: 'Photobin'
-        },
+        title       : 'Meteorologist',
+        company     : 'Photobin',
         birthday    : '1969-09-05T12:00:00.000Z',
         address     : '579 Pooles Lane, Belleview, Montana, PO4106',
-        notes       : 'Incididunt labore sunt ullamco in deserunt dolore labore voluptate adipisicing eu id duis eiusmod elit ea ad cillum culpa excepteur labore fugiat excepteur ea culpa labore sit id dolor ullamco.\n\nEu eu ex dolore proident nostrud et minim lorem nulla lorem nulla duis velit voluptate nisi cillum anim minim amet dolore officia id cillum in cupidatat ipsum veniam velit dolor.',
+        notes       : '<p>Incididunt labore sunt ullamco in deserunt dolore labore voluptate adipisicing eu id duis eiusmod elit ea ad cillum culpa excepteur labore fugiat excepteur ea culpa labore sit id dolor ullamco.</p><p>Eu eu ex dolore proident nostrud et minim lorem nulla lorem nulla duis velit voluptate nisi cillum anim minim amet dolore officia id cillum in cupidatat ipsum veniam velit dolor.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -870,6 +846,7 @@ export const contacts = [
     {
         id          : 'b62359fd-f2a8-46e6-904e-31052d1cd675',
         avatar      : 'assets/images/avatars/male-11.jpg',
+        background  : 'assets/images/cards/35-640x480.jpg',
         name        : 'Joseph Strickland',
         emails      : [
             {
@@ -888,13 +865,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Hotel Manager',
-            company: 'Bytrex'
-        },
+        title       : 'Hotel Manager',
+        company     : 'Bytrex',
         birthday    : '1991-09-08T12:00:00.000Z',
         address     : '844 Ellery Street, Hondah, Texas, PO1272',
-        notes       : 'Excepteur consequat magna laborum dolore ut laborum ea excepteur ad officia mollit exercitation sunt tempor amet ex ipsum aliquip cillum mollit amet laborum voluptate ipsum sit esse duis eiusmod adipisicing.\n\nNon tempor ad pariatur adipisicing excepteur est pariatur aute et velit lorem ut est eu voluptate pariatur ea consectetur excepteur sunt reprehenderit id irure aliqua tempor anim id voluptate culpa.',
+        notes       : '<p>Excepteur consequat magna laborum dolore ut laborum ea excepteur ad officia mollit exercitation sunt tempor amet ex ipsum aliquip cillum mollit amet laborum voluptate ipsum sit esse duis eiusmod adipisicing.</p><p>Non tempor ad pariatur adipisicing excepteur est pariatur aute et velit lorem ut est eu voluptate pariatur ea consectetur excepteur sunt reprehenderit id irure aliqua tempor anim id voluptate culpa.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -902,6 +877,7 @@ export const contacts = [
     {
         id          : '16b9e696-ea95-4dd8-86c4-3caf705a1dc6',
         avatar      : 'assets/images/avatars/male-12.jpg',
+        background  : 'assets/images/cards/36-640x480.jpg',
         name        : 'Nunez Faulkner',
         emails      : [
             {
@@ -916,13 +892,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Hotel Manager',
-            company: 'Buzzopia'
-        },
+        title       : 'Hotel Manager',
+        company     : 'Buzzopia',
         birthday    : '1982-01-23T12:00:00.000Z',
         address     : '614 Herkimer Court, Darrtown, Nebraska, PO9308',
-        notes       : 'Culpa labore ullamco veniam est ullamco ipsum culpa excepteur esse esse aliqua nulla ullamco nulla amet consequat tempor aute exercitation do eu do ullamco elit excepteur est anim nisi excepteur.\n\nCillum eiusmod cupidatat officia ipsum ullamco adipisicing cillum adipisicing sint exercitation non enim consectetur est esse tempor fugiat sit eiusmod in exercitation enim quis duis dolor amet consequat pariatur dolor.',
+        notes       : '<p>Culpa labore ullamco veniam est ullamco ipsum culpa excepteur esse esse aliqua nulla ullamco nulla amet consequat tempor aute exercitation do eu do ullamco elit excepteur est anim nisi excepteur.</p><p>Cillum eiusmod cupidatat officia ipsum ullamco adipisicing cillum adipisicing sint exercitation non enim consectetur est esse tempor fugiat sit eiusmod in exercitation enim quis duis dolor amet consequat pariatur dolor.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -930,6 +904,7 @@ export const contacts = [
     {
         id          : '19662ecf-0686-4aad-a46c-24b552eb2ff5',
         avatar      : 'assets/images/avatars/female-15.jpg',
+        background  : 'assets/images/cards/14-640x480.jpg',
         name        : 'Juana Morrow',
         emails      : [
             {
@@ -944,13 +919,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Meteorologist',
-            company: 'Lyria'
-        },
+        title       : 'Meteorologist',
+        company     : 'Lyria',
         birthday    : '1992-03-29T12:00:00.000Z',
         address     : '663 Drew Street, Juntura, Georgia, PO9857',
-        notes       : 'Mollit et amet qui incididunt officia anim est in consectetur qui anim qui labore ea mollit veniam adipisicing ex magna commodo mollit adipisicing sunt commodo laboris labore aliquip deserunt est.\n\nCupidatat ut cillum anim reprehenderit ea magna enim fugiat proident anim esse lorem lorem commodo cupidatat pariatur qui commodo nulla aliqua nisi labore in adipisicing minim excepteur do eu amet.',
+        notes       : '<p>Mollit et amet qui incididunt officia anim est in consectetur qui anim qui labore ea mollit veniam adipisicing ex magna commodo mollit adipisicing sunt commodo laboris labore aliquip deserunt est.</p><p>Cupidatat ut cillum anim reprehenderit ea magna enim fugiat proident anim esse lorem lorem commodo cupidatat pariatur qui commodo nulla aliqua nisi labore in adipisicing minim excepteur do eu amet.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -958,6 +931,7 @@ export const contacts = [
     {
         id          : '26dfe954-8bf3-45ee-b285-1d0a88c8d3ea',
         avatar      : 'assets/images/avatars/male-13.jpg',
+        background  : 'assets/images/cards/15-640x480.jpg',
         name        : 'Lara Gaines',
         emails      : [
             {
@@ -972,13 +946,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Electromedical Equipment Technician',
-            company: 'Acruex'
-        },
+        title       : 'Electromedical Equipment Technician',
+        company     : 'Acruex',
         birthday    : '1961-06-07T12:00:00.000Z',
         address     : '762 Troutman Street, Drummond, Oregon, PO6973',
-        notes       : 'Laboris dolor incididunt eiusmod deserunt officia labore eu est nulla velit id ex veniam qui fugiat velit irure reprehenderit dolor proident aliquip culpa nisi magna occaecat do nostrud cillum lorem.\n\nSit consequat laboris culpa quis laborum lorem ullamco occaecat labore duis ea et consequat pariatur reprehenderit excepteur excepteur exercitation sunt enim amet adipisicing laborum incididunt dolor aliquip culpa ea laboris.',
+        notes       : '<p>Laboris dolor incididunt eiusmod deserunt officia labore eu est nulla velit id ex veniam qui fugiat velit irure reprehenderit dolor proident aliquip culpa nisi magna occaecat do nostrud cillum lorem.</p><p>Sit consequat laboris culpa quis laborum lorem ullamco occaecat labore duis ea et consequat pariatur reprehenderit excepteur excepteur exercitation sunt enim amet adipisicing laborum incididunt dolor aliquip culpa ea laboris.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -986,6 +958,7 @@ export const contacts = [
     {
         id          : 'd6462af2-c488-4de7-9b26-3845bd2983f9',
         avatar      : 'assets/images/avatars/male-14.jpg',
+        background  : 'assets/images/cards/16-640x480.jpg',
         name        : 'Johnston Riddle',
         emails      : [
             {
@@ -1010,13 +983,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Hotel Manager',
-            company: 'Xleen'
-        },
+        title       : 'Hotel Manager',
+        company     : 'Xleen',
         birthday    : '1972-09-13T12:00:00.000Z',
         address     : '674 Bryant Street, Grahamtown, Federated States Of Micronesia, PO2757',
-        notes       : 'Velit consequat elit anim qui eu elit aliquip consectetur aliqua cupidatat lorem laboris dolor qui ad laborum adipisicing adipisicing consequat et nostrud ullamco consequat dolore deserunt irure do aliquip non.\n\nIpsum commodo voluptate qui ex ullamco amet do ex dolore quis cupidatat ut anim sunt dolore excepteur anim do dolor aliqua ex aute esse eiusmod sint laborum consequat laboris cillum.',
+        notes       : '<p>Velit consequat elit anim qui eu elit aliquip consectetur aliqua cupidatat lorem laboris dolor qui ad laborum adipisicing adipisicing consequat et nostrud ullamco consequat dolore deserunt irure do aliquip non.</p><p>Ipsum commodo voluptate qui ex ullamco amet do ex dolore quis cupidatat ut anim sunt dolore excepteur anim do dolor aliqua ex aute esse eiusmod sint laborum consequat laboris cillum.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -1024,6 +995,7 @@ export const contacts = [
     {
         id          : 'a1723c04-69fe-4573-a135-6645658afe76',
         avatar      : null,
+        background  : null,
         name        : 'Vargas Gardner',
         emails      : [
             {
@@ -1042,13 +1014,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Bindery Machine Operator',
-            company: 'Cosmosis'
-        },
+        title       : 'Bindery Machine Operator',
+        company     : 'Cosmosis',
         birthday    : '1979-10-21T12:00:00.000Z',
         address     : '869 Seton Place, Chemung, Maine, PO8109',
-        notes       : 'Amet non anim ex ullamco pariatur ullamco laboris eiusmod ut magna nisi amet incididunt sunt anim nisi qui ut ex sunt adipisicing consequat deserunt qui mollit duis anim quis veniam.\n\nMagna ut id duis qui ea proident quis officia lorem commodo et et proident dolore qui quis incididunt nulla incididunt ut aliqua veniam est adipisicing adipisicing reprehenderit ad velit incididunt.',
+        notes       : '<p>Amet non anim ex ullamco pariatur ullamco laboris eiusmod ut magna nisi amet incididunt sunt anim nisi qui ut ex sunt adipisicing consequat deserunt qui mollit duis anim quis veniam.</p><p>Magna ut id duis qui ea proident quis officia lorem commodo et et proident dolore qui quis incididunt nulla incididunt ut aliqua veniam est adipisicing adipisicing reprehenderit ad velit incididunt.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1056,6 +1026,7 @@ export const contacts = [
     {
         id          : '823e6166-c0c8-4373-9270-8a0d17489a08',
         avatar      : 'assets/images/avatars/male-16.jpg',
+        background  : 'assets/images/cards/17-640x480.jpg',
         name        : 'Mccall Day',
         emails      : [
             {
@@ -1080,13 +1051,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Historiographer',
-            company: 'Nipaz'
-        },
+        title       : 'Historiographer',
+        company     : 'Nipaz',
         birthday    : '1964-03-05T12:00:00.000Z',
         address     : '854 Hanover Place, Harleigh, New Jersey, PO9459',
-        notes       : 'Ea occaecat nisi cillum officia in velit ipsum reprehenderit ex fugiat fugiat ad velit pariatur ullamco sint in elit quis aute id cupidatat nostrud quis culpa aliquip id officia excepteur.\n\nEa ut consequat sit ullamco do pariatur quis officia ad ipsum quis nisi in nulla incididunt esse pariatur amet qui ullamco consectetur dolor voluptate sit qui mollit reprehenderit reprehenderit amet.',
+        notes       : '<p>Ea occaecat nisi cillum officia in velit ipsum reprehenderit ex fugiat fugiat ad velit pariatur ullamco sint in elit quis aute id cupidatat nostrud quis culpa aliquip id officia excepteur.</p><p>Ea ut consequat sit ullamco do pariatur quis officia ad ipsum quis nisi in nulla incididunt esse pariatur amet qui ullamco consectetur dolor voluptate sit qui mollit reprehenderit reprehenderit amet.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -1094,6 +1063,7 @@ export const contacts = [
     {
         id          : '2c37ed00-427a-46d7-8f8f-d711c768d1ee',
         avatar      : 'assets/images/avatars/male-17.jpg',
+        background  : 'assets/images/cards/18-640x480.jpg',
         name        : 'Silva Foster',
         emails      : [
             {
@@ -1113,13 +1083,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Insurance Analyst',
-            company: 'Extrawear'
-        },
+        title       : 'Insurance Analyst',
+        company     : 'Extrawear',
         birthday    : '1980-04-29T12:00:00.000Z',
         address     : '137 Bridge Street, Sisquoc, District Of Columbia, PO4105',
-        notes       : 'Ipsum velit est do velit do deserunt cupidatat officia duis laborum veniam sunt in ex reprehenderit esse ex ad aute anim duis ut sunt reprehenderit occaecat ut nostrud eu minim.\n\nAliqua consequat adipisicing adipisicing aliquip voluptate fugiat eu amet nostrud id proident non nisi fugiat velit nostrud ea officia non laboris magna cillum exercitation culpa eiusmod mollit fugiat et lorem.',
+        notes       : '<p>Ipsum velit est do velit do deserunt cupidatat officia duis laborum veniam sunt in ex reprehenderit esse ex ad aute anim duis ut sunt reprehenderit occaecat ut nostrud eu minim.</p><p>Aliqua consequat adipisicing adipisicing aliquip voluptate fugiat eu amet nostrud id proident non nisi fugiat velit nostrud ea officia non laboris magna cillum exercitation culpa eiusmod mollit fugiat et lorem.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1127,6 +1095,7 @@ export const contacts = [
     {
         id          : '944764c0-b261-4428-9188-bbd3022d66a8',
         avatar      : 'assets/images/avatars/female-16.jpg',
+        background  : 'assets/images/cards/19-640x480.jpg',
         name        : 'Cathryn Snider',
         emails      : [
             {
@@ -1155,13 +1124,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Short Story Writer',
-            company: 'Phormula'
-        },
+        title       : 'Short Story Writer',
+        company     : 'Phormula',
         birthday    : '1981-06-09T12:00:00.000Z',
         address     : '528 Glenmore Avenue, Elrama, Illinois, PO2952',
-        notes       : 'Ea enim exercitation lorem excepteur officia nulla culpa culpa nisi veniam quis non duis exercitation labore commodo et occaecat reprehenderit ex velit exercitation commodo cupidatat amet veniam mollit magna consectetur.\n\nVoluptate consectetur eu id eiusmod anim reprehenderit incididunt duis veniam tempor cillum ea esse tempor do laborum dolore sint ea duis incididunt in do aliqua voluptate incididunt officia excepteur do.',
+        notes       : '<p>Ea enim exercitation lorem excepteur officia nulla culpa culpa nisi veniam quis non duis exercitation labore commodo et occaecat reprehenderit ex velit exercitation commodo cupidatat amet veniam mollit magna consectetur.</p><p>Voluptate consectetur eu id eiusmod anim reprehenderit incididunt duis veniam tempor cillum ea esse tempor do laborum dolore sint ea duis incididunt in do aliqua voluptate incididunt officia excepteur do.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -1169,6 +1136,7 @@ export const contacts = [
     {
         id          : 'f2b3c756-5ad2-4d4b-aee5-b32c91457128',
         avatar      : null,
+        background  : null,
         name        : 'Mooney Cantrell',
         emails      : [
             {
@@ -1188,13 +1156,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Crustatia'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Crustatia',
         birthday    : '1968-12-07T12:00:00.000Z',
         address     : '277 Coventry Road, Fairforest, Nevada, PO6031',
-        notes       : 'Lorem mollit dolore nostrud sunt id anim veniam labore duis eiusmod duis fugiat aliqua occaecat do labore culpa consectetur consectetur sunt amet tempor incididunt tempor esse sunt id elit non.\n\nLaborum mollit ullamco quis ad culpa nisi sit nisi veniam minim adipisicing sint eiusmod velit amet minim aliquip nulla eiusmod nulla laboris quis proident in adipisicing aute et ea anim.',
+        notes       : '<p>Lorem mollit dolore nostrud sunt id anim veniam labore duis eiusmod duis fugiat aliqua occaecat do labore culpa consectetur consectetur sunt amet tempor incididunt tempor esse sunt id elit non.</p><p>Laborum mollit ullamco quis ad culpa nisi sit nisi veniam minim adipisicing sint eiusmod velit amet minim aliquip nulla eiusmod nulla laboris quis proident in adipisicing aute et ea anim.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -1202,6 +1168,7 @@ export const contacts = [
     {
         id          : '54b1c201-4b2b-4be0-ad70-a6413e9628cd',
         avatar      : 'assets/images/avatars/female-17.jpg',
+        background  : 'assets/images/cards/20-640x480.jpg',
         name        : 'Saundra Murphy',
         emails      : [
             {
@@ -1216,13 +1183,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Dental Laboratory Worker',
-            company: 'Zilencio'
-        },
+        title       : 'Dental Laboratory Worker',
+        company     : 'Zilencio',
         birthday    : '1983-11-07T12:00:00.000Z',
         address     : '557 Monroe Street, Mayfair, Maryland, PO7200',
-        notes       : 'Fugiat mollit sunt aliquip consectetur ipsum ut aliqua id ex laboris labore id elit nulla irure id aute pariatur do officia proident eiusmod proident reprehenderit dolor non dolor laborum nulla.\n\nPariatur reprehenderit incididunt voluptate enim aliqua laborum anim veniam pariatur irure exercitation non dolore velit et ex culpa lorem ipsum mollit eu sint duis aliquip elit amet consectetur velit minim.',
+        notes       : '<p>Fugiat mollit sunt aliquip consectetur ipsum ut aliqua id ex laboris labore id elit nulla irure id aute pariatur do officia proident eiusmod proident reprehenderit dolor non dolor laborum nulla.</p><p>Pariatur reprehenderit incididunt voluptate enim aliqua laborum anim veniam pariatur irure exercitation non dolore velit et ex culpa lorem ipsum mollit eu sint duis aliquip elit amet consectetur velit minim.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -1230,6 +1195,7 @@ export const contacts = [
     {
         id          : 'faf979c7-a13b-445a-b30a-08845f5fa90e',
         avatar      : 'assets/images/avatars/female-18.jpg',
+        background  : 'assets/images/cards/21-640x480.jpg',
         name        : 'Enid Sparks',
         emails      : [
             {
@@ -1249,13 +1215,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Historiographer',
-            company: 'Skybold'
-        },
+        title       : 'Historiographer',
+        company     : 'Skybold',
         birthday    : '1984-05-04T12:00:00.000Z',
         address     : '219 Village Court, Keyport, Alabama, PO7776',
-        notes       : 'Velit enim anim est aliqua consequat exercitation velit quis magna est incididunt ipsum minim minim nulla adipisicing ad eiusmod id veniam eiusmod sit elit est pariatur velit ea laborum anim.\n\nAd lorem ea nisi irure id consequat ullamco nisi nostrud dolore officia ipsum veniam velit minim pariatur culpa culpa esse minim adipisicing sit labore commodo aute excepteur non do in.',
+        notes       : '<p>Velit enim anim est aliqua consequat exercitation velit quis magna est incididunt ipsum minim minim nulla adipisicing ad eiusmod id veniam eiusmod sit elit est pariatur velit ea laborum anim.</p><p>Ad lorem ea nisi irure id consequat ullamco nisi nostrud dolore officia ipsum veniam velit minim pariatur culpa culpa esse minim adipisicing sit labore commodo aute excepteur non do in.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1263,6 +1227,7 @@ export const contacts = [
     {
         id          : '2bfa2be5-7688-48d5-b5ac-dc0d9ac97f14',
         avatar      : null,
+        background  : null,
         name        : 'Nadia Mcknight',
         emails      : [
             {
@@ -1282,13 +1247,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Legal Assistant',
-            company: 'Pearlesex'
-        },
+        title       : 'Legal Assistant',
+        company     : 'Pearlesex',
         birthday    : '1973-10-06T12:00:00.000Z',
         address     : '448 Berriman Street, Reinerton, Washington, PO6704',
-        notes       : 'Esse sint lorem exercitation velit tempor tempor voluptate nulla proident excepteur magna tempor consectetur aliquip qui nisi mollit cupidatat est adipisicing ipsum sint et excepteur sit labore velit dolore labore.\n\nDuis nisi adipisicing lorem do excepteur magna consequat labore magna ut consectetur eu enim occaecat id nulla laboris minim officia est id nisi mollit ullamco irure ut dolore esse aliqua.',
+        notes       : '<p>Esse sint lorem exercitation velit tempor tempor voluptate nulla proident excepteur magna tempor consectetur aliquip qui nisi mollit cupidatat est adipisicing ipsum sint et excepteur sit labore velit dolore labore.</p><p>Duis nisi adipisicing lorem do excepteur magna consequat labore magna ut consectetur eu enim occaecat id nulla laboris minim officia est id nisi mollit ullamco irure ut dolore esse aliqua.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1296,6 +1259,7 @@ export const contacts = [
     {
         id          : '77a4383b-b5a5-4943-bc46-04c3431d1566',
         avatar      : 'assets/images/avatars/male-19.jpg',
+        background  : 'assets/images/cards/22-640x480.jpg',
         name        : 'Best Blackburn',
         emails      : [
             {
@@ -1314,13 +1278,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Hotel Manager',
-            company: 'Beadzza'
-        },
+        title       : 'Hotel Manager',
+        company     : 'Beadzza',
         birthday    : '1987-06-07T12:00:00.000Z',
         address     : '578 Tampa Court, Wescosville, Ohio, PO4108',
-        notes       : 'Lorem do deserunt nulla nostrud incididunt et laboris labore eu nisi ut ullamco veniam deserunt do non labore commodo amet aliquip exercitation ea occaecat amet non eiusmod ut minim fugiat.\n\nEsse eu ex irure pariatur qui cillum labore nulla quis officia consequat commodo consequat fugiat culpa nostrud labore eu adipisicing magna irure aliquip est amet irure eiusmod esse reprehenderit mollit.',
+        notes       : '<p>Lorem do deserunt nulla nostrud incididunt et laboris labore eu nisi ut ullamco veniam deserunt do non labore commodo amet aliquip exercitation ea occaecat amet non eiusmod ut minim fugiat.</p><p>Esse eu ex irure pariatur qui cillum labore nulla quis officia consequat commodo consequat fugiat culpa nostrud labore eu adipisicing magna irure aliquip est amet irure eiusmod esse reprehenderit mollit.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -1328,6 +1290,7 @@ export const contacts = [
     {
         id          : '8bb0f597-673a-47ca-8c77-2f83219cb9af',
         avatar      : null,
+        background  : null,
         name        : 'Duncan Carver',
         emails      : [
             {
@@ -1352,13 +1315,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Historiographer',
-            company: 'Hotcakes'
-        },
+        title       : 'Historiographer',
+        company     : 'Hotcakes',
         birthday    : '1980-09-15T12:00:00.000Z',
         address     : '931 Bristol Street, Why, South Carolina, PO9700',
-        notes       : 'Dolore laboris aute officia reprehenderit cupidatat aliquip duis labore aliquip officia est nostrud nisi voluptate eiusmod ad aute et ea cillum aliqua elit ipsum officia cillum laborum minim labore sit.\n\nExercitation labore ut pariatur occaecat ullamco non occaecat aliqua amet nostrud aliquip ipsum ad do ullamco enim laborum commodo minim elit ut quis laboris elit laborum proident sunt ullamco sit.',
+        notes       : '<p>Dolore laboris aute officia reprehenderit cupidatat aliquip duis labore aliquip officia est nostrud nisi voluptate eiusmod ad aute et ea cillum aliqua elit ipsum officia cillum laborum minim labore sit.</p><p>Exercitation labore ut pariatur occaecat ullamco non occaecat aliqua amet nostrud aliquip ipsum ad do ullamco enim laborum commodo minim elit ut quis laboris elit laborum proident sunt ullamco sit.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -1366,6 +1327,7 @@ export const contacts = [
     {
         id          : 'c318e31f-1d74-49c5-8dae-2bc5805e2fdb',
         avatar      : 'assets/images/avatars/male-01.jpg',
+        background  : 'assets/images/cards/23-640x480.jpg',
         name        : 'Martin Richards',
         emails      : [
             {
@@ -1390,13 +1352,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Dental Laboratory Worker',
-            company: 'Overfork'
-        },
+        title       : 'Dental Laboratory Worker',
+        company     : 'Overfork',
         birthday    : '1977-04-12T12:00:00.000Z',
         address     : '268 Hutchinson Court, Drytown, Florida, PO3041',
-        notes       : 'Eu ipsum nisi eu lorem cupidatat mollit exercitation elit ea culpa enim qui culpa ad aliqua exercitation tempor nulla excepteur fugiat ipsum quis amet occaecat adipisicing ullamco duis dolore occaecat.\n\nNon eu et elit ea labore lorem adipisicing voluptate incididunt ut officia aute minim incididunt lorem qui adipisicing mollit magna nisi consectetur cillum sit exercitation eiusmod qui eu nisi sunt.',
+        notes       : '<p>Eu ipsum nisi eu lorem cupidatat mollit exercitation elit ea culpa enim qui culpa ad aliqua exercitation tempor nulla excepteur fugiat ipsum quis amet occaecat adipisicing ullamco duis dolore occaecat.</p><p>Non eu et elit ea labore lorem adipisicing voluptate incididunt ut officia aute minim incididunt lorem qui adipisicing mollit magna nisi consectetur cillum sit exercitation eiusmod qui eu nisi sunt.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -1404,6 +1364,7 @@ export const contacts = [
     {
         id          : '0a8bc517-631a-4a93-aacc-000fa2e8294c',
         avatar      : 'assets/images/avatars/female-20.jpg',
+        background  : 'assets/images/cards/24-640x480.jpg',
         name        : 'Candice Munoz',
         emails      : [
             {
@@ -1418,13 +1379,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Legal Assistant',
-            company: 'Eclipto'
-        },
+        title       : 'Legal Assistant',
+        company     : 'Eclipto',
         birthday    : '1976-09-09T12:00:00.000Z',
         address     : '946 Remsen Street, Caroline, New Mexico, PO3247',
-        notes       : 'Amet dolore elit irure in commodo in et eu eu nulla labore elit sunt et nisi quis officia nostrud et mollit dolor aute fugiat sunt reprehenderit quis sint minim ipsum.\n\nLaboris ut sunt nisi aute incididunt reprehenderit mollit culpa velit exercitation reprehenderit irure id sunt officia magna est ea labore consectetur incididunt cillum qui tempor ea ullamco quis pariatur aliquip.',
+        notes       : '<p>Amet dolore elit irure in commodo in et eu eu nulla labore elit sunt et nisi quis officia nostrud et mollit dolor aute fugiat sunt reprehenderit quis sint minim ipsum.</p><p>Laboris ut sunt nisi aute incididunt reprehenderit mollit culpa velit exercitation reprehenderit irure id sunt officia magna est ea labore consectetur incididunt cillum qui tempor ea ullamco quis pariatur aliquip.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -1432,6 +1391,7 @@ export const contacts = [
     {
         id          : 'a4c9945a-757b-40b0-8942-d20e0543cabd',
         avatar      : 'assets/images/avatars/female-01.jpg',
+        background  : 'assets/images/cards/25-640x480.jpg',
         name        : 'Vickie Mosley',
         emails      : [
             {
@@ -1451,13 +1411,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Bindery Machine Operator',
-            company: 'Strozen'
-        },
+        title       : 'Bindery Machine Operator',
+        company     : 'Strozen',
         birthday    : '1989-06-21T12:00:00.000Z',
         address     : '397 Vandalia Avenue, Rockingham, Michigan, PO8089',
-        notes       : 'Velit sunt sunt commodo ex amet laboris voluptate eu lorem aliqua minim occaecat cupidatat aliqua ipsum nisi velit id reprehenderit exercitation velit fugiat minim nisi deserunt voluptate anim cillum commodo.\n\nCillum velit nostrud cupidatat ex sit culpa deserunt cillum cupidatat cillum aute cupidatat exercitation ullamco sunt incididunt non magna sint lorem et incididunt laborum culpa qui sint sunt duis fugiat.',
+        notes       : '<p>Velit sunt sunt commodo ex amet laboris voluptate eu lorem aliqua minim occaecat cupidatat aliqua ipsum nisi velit id reprehenderit exercitation velit fugiat minim nisi deserunt voluptate anim cillum commodo.</p><p>Cillum velit nostrud cupidatat ex sit culpa deserunt cillum cupidatat cillum aute cupidatat exercitation ullamco sunt incididunt non magna sint lorem et incididunt laborum culpa qui sint sunt duis fugiat.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1465,6 +1423,7 @@ export const contacts = [
     {
         id          : 'b8258ccf-48b5-46a2-9c95-e0bd7580c645',
         avatar      : 'assets/images/avatars/female-02.jpg',
+        background  : 'assets/images/cards/26-640x480.jpg',
         name        : 'Tina Harris',
         emails      : [
             {
@@ -1484,13 +1443,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Short Story Writer',
-            company: 'Gallaxia'
-        },
+        title       : 'Short Story Writer',
+        company     : 'Gallaxia',
         birthday    : '1976-09-10T12:00:00.000Z',
         address     : '821 Beverly Road, Tyro, Colorado, PO4248',
-        notes       : 'Incididunt non est consequat qui sit sunt aliquip sit quis minim laboris ullamco est culpa velit culpa cupidatat veniam incididunt non quis elit reprehenderit et officia cillum magna aliqua occaecat.\n\nCupidatat amet incididunt id pariatur minim veniam id dolor nisi labore cillum ea officia cupidatat do culpa aliqua consequat deserunt aliquip sit ea excepteur eiusmod labore tempor reprehenderit commodo exercitation.',
+        notes       : '<p>Incididunt non est consequat qui sit sunt aliquip sit quis minim laboris ullamco est culpa velit culpa cupidatat veniam incididunt non quis elit reprehenderit et officia cillum magna aliqua occaecat.</p><p>Cupidatat amet incididunt id pariatur minim veniam id dolor nisi labore cillum ea officia cupidatat do culpa aliqua consequat deserunt aliquip sit ea excepteur eiusmod labore tempor reprehenderit commodo exercitation.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -1498,6 +1455,7 @@ export const contacts = [
     {
         id          : 'f004ea79-98fc-436c-9ba5-6cfe32fe583d',
         avatar      : 'assets/images/avatars/male-02.jpg',
+        background  : 'assets/images/cards/27-640x480.jpg',
         name        : 'Holt Manning',
         emails      : [
             {
@@ -1521,13 +1479,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Idetica'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Idetica',
         birthday    : '1973-11-08T12:00:00.000Z',
         address     : '364 Porter Avenue, Delshire, Missouri, PO8911',
-        notes       : 'Velit fugiat minim sit nisi esse laboris ad velit proident non et cillum labore sint excepteur nisi eu amet voluptate duis duis id enim ea anim adipisicing consectetur id consectetur.\n\nEx eiusmod id magna in non lorem sunt sunt officia do adipisicing officia mollit occaecat sunt laborum aliquip adipisicing ullamco in sit proident et quis incididunt pariatur fugiat mollit anim.',
+        notes       : '<p>Velit fugiat minim sit nisi esse laboris ad velit proident non et cillum labore sint excepteur nisi eu amet voluptate duis duis id enim ea anim adipisicing consectetur id consectetur.</p><p>Ex eiusmod id magna in non lorem sunt sunt officia do adipisicing officia mollit occaecat sunt laborum aliquip adipisicing ullamco in sit proident et quis incididunt pariatur fugiat mollit anim.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -1535,6 +1491,7 @@ export const contacts = [
     {
         id          : '8b69fe2d-d7cc-4a3d-983d-559173e37d37',
         avatar      : 'assets/images/avatars/female-03.jpg',
+        background  : 'assets/images/cards/28-640x480.jpg',
         name        : 'Misty Ramsey',
         emails      : [
             {
@@ -1554,12 +1511,10 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            company: 'Grupoli'
-        },
+        company     : 'Grupoli',
         birthday    : '1969-08-10T12:00:00.000Z',
         address     : '101 Sackett Street, Naomi, Tennessee, PO6335',
-        notes       : 'Ut cupidatat sint minim consectetur cupidatat aute ut anim consequat fugiat laboris quis sint sit nulla irure nulla officia eiusmod consequat ex quis ad ex ullamco et ut labore tempor.\n\nDeserunt minim dolore voluptate aute aliqua est elit mollit ut ut consequat in esse est do ex officia nostrud aute id fugiat reprehenderit quis cillum fugiat id fugiat minim tempor.',
+        notes       : '<p>Ut cupidatat sint minim consectetur cupidatat aute ut anim consequat fugiat laboris quis sint sit nulla irure nulla officia eiusmod consequat ex quis ad ex ullamco et ut labore tempor.</p><p>Deserunt minim dolore voluptate aute aliqua est elit mollit ut ut consequat in esse est do ex officia nostrud aute id fugiat reprehenderit quis cillum fugiat id fugiat minim tempor.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1567,6 +1522,7 @@ export const contacts = [
     {
         id          : 'cdcc62e4-1520-4ccc-803d-52868c7e01ba',
         avatar      : 'assets/images/avatars/female-04.jpg',
+        background  : 'assets/images/cards/29-640x480.jpg',
         name        : 'Dee Alvarado',
         emails      : [
             {
@@ -1591,13 +1547,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Dental Laboratory Worker',
-            company: 'Tsunamia'
-        },
+        title       : 'Dental Laboratory Worker',
+        company     : 'Tsunamia',
         birthday    : '1996-06-17T12:00:00.000Z',
         address     : '956 Pierrepont Street, Crumpler, Hawaii, PO3299',
-        notes       : 'Esse excepteur ad aliquip amet elit reprehenderit ut nostrud magna ex esse dolore magna excepteur irure esse incididunt sunt enim laborum ex mollit magna elit quis ullamco aute minim veniam.\n\nDuis id ullamco laboris elit ea ea dolore tempor est eu esse aliqua quis quis ut laborum mollit cillum proident deserunt fugiat ipsum elit exercitation quis mollit eiusmod officia non.',
+        notes       : '<p>Esse excepteur ad aliquip amet elit reprehenderit ut nostrud magna ex esse dolore magna excepteur irure esse incididunt sunt enim laborum ex mollit magna elit quis ullamco aute minim veniam.</p><p>Duis id ullamco laboris elit ea ea dolore tempor est eu esse aliqua quis quis ut laborum mollit cillum proident deserunt fugiat ipsum elit exercitation quis mollit eiusmod officia non.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -1605,6 +1559,7 @@ export const contacts = [
     {
         id          : 'e2946946-b4b5-4fd7-bab4-62c38cdff2f1',
         avatar      : 'assets/images/avatars/female-05.jpg',
+        background  : 'assets/images/cards/30-640x480.jpg',
         name        : 'Samantha Jacobson',
         emails      : [
             {
@@ -1619,13 +1574,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Dental Laboratory Worker',
-            company: 'Emoltra'
-        },
+        title       : 'Dental Laboratory Worker',
+        company     : 'Emoltra',
         birthday    : '1972-02-04T12:00:00.000Z',
         address     : '384 Love Lane, Dyckesville, New York, PO4115',
-        notes       : 'Consectetur eu et ea anim magna occaecat anim labore velit nulla non magna laboris duis sit adipisicing commodo laboris consequat id quis aliqua est culpa quis in ex est culpa.\n\nSunt qui excepteur reprehenderit nostrud voluptate eu laborum laborum id esse occaecat irure esse elit magna tempor ad est elit non labore tempor laborum deserunt voluptate cupidatat excepteur sunt sint.',
+        notes       : '<p>Consectetur eu et ea anim magna occaecat anim labore velit nulla non magna laboris duis sit adipisicing commodo laboris consequat id quis aliqua est culpa quis in ex est culpa.</p><p>Sunt qui excepteur reprehenderit nostrud voluptate eu laborum laborum id esse occaecat irure esse elit magna tempor ad est elit non labore tempor laborum deserunt voluptate cupidatat excepteur sunt sint.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -1633,6 +1586,7 @@ export const contacts = [
     {
         id          : 'fdc77706-6ba2-4397-b2f8-a9a0b6495153',
         avatar      : 'assets/images/avatars/female-06.jpg',
+        background  : 'assets/images/cards/31-640x480.jpg',
         name        : 'Rhea Landry',
         emails      : [
             {
@@ -1652,13 +1606,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Electromedical Equipment Technician',
-            company: 'Comtent'
-        },
+        title       : 'Electromedical Equipment Technician',
+        company     : 'Comtent',
         birthday    : '1988-05-22T12:00:00.000Z',
         address     : '725 Arlington Avenue, Mathews, Wyoming, PO4562',
-        notes       : 'Eiusmod ullamco laboris tempor reprehenderit culpa non sunt ea consequat velit id ipsum commodo eiusmod exercitation laboris aliqua magna reprehenderit culpa tempor mollit pariatur consectetur amet aliqua cillum voluptate exercitation.\n\nQui cillum consectetur qui proident adipisicing id qui esse aute velit excepteur pariatur ea excepteur sunt velit nostrud esse mollit sint ex irure sunt aliquip velit consequat minim do officia.',
+        notes       : '<p>Eiusmod ullamco laboris tempor reprehenderit culpa non sunt ea consequat velit id ipsum commodo eiusmod exercitation laboris aliqua magna reprehenderit culpa tempor mollit pariatur consectetur amet aliqua cillum voluptate exercitation.</p><p>Qui cillum consectetur qui proident adipisicing id qui esse aute velit excepteur pariatur ea excepteur sunt velit nostrud esse mollit sint ex irure sunt aliquip velit consequat minim do officia.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -1666,6 +1618,7 @@ export const contacts = [
     {
         id          : '12148fa2-e0a4-49fb-b3c5-daeecdb5180a',
         avatar      : 'assets/images/avatars/female-07.jpg',
+        background  : 'assets/images/cards/32-640x480.jpg',
         name        : 'Olga Rhodes',
         emails      : [
             {
@@ -1694,13 +1647,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Pastry Baker',
-            company: 'Moreganic'
-        },
+        title       : 'Pastry Baker',
+        company     : 'Moreganic',
         birthday    : '1971-08-13T12:00:00.000Z',
         address     : '253 Beard Street, Staples, Massachusetts, PO8089',
-        notes       : 'Proident est est et in commodo incididunt anim fugiat laboris pariatur eu enim dolor eiusmod dolor voluptate officia eiusmod excepteur culpa aute do do anim pariatur irure incididunt incididunt est.\n\nSint duis mollit dolor laborum ex non esse consequat anim et qui est nostrud incididunt fugiat anim veniam sunt cupidatat ut voluptate commodo non ex tempor ullamco magna culpa culpa.',
+        notes       : '<p>Proident est est et in commodo incididunt anim fugiat laboris pariatur eu enim dolor eiusmod dolor voluptate officia eiusmod excepteur culpa aute do do anim pariatur irure incididunt incididunt est.</p><p>Sint duis mollit dolor laborum ex non esse consequat anim et qui est nostrud incididunt fugiat anim veniam sunt cupidatat ut voluptate commodo non ex tempor ullamco magna culpa culpa.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -1708,6 +1659,7 @@ export const contacts = [
     {
         id          : '07dd64eb-8b8f-4765-a16c-8db083c45096',
         avatar      : 'assets/images/avatars/female-08.jpg',
+        background  : 'assets/images/cards/33-640x480.jpg',
         name        : 'Lorraine Pennington',
         emails      : [
             {
@@ -1732,13 +1684,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Electromedical Equipment Technician',
-            company: 'Marvane'
-        },
+        title       : 'Electromedical Equipment Technician',
+        company     : 'Marvane',
         birthday    : '1967-06-10T12:00:00.000Z',
         address     : '962 Whitney Avenue, Sussex, North Dakota, PO5796',
-        notes       : 'Nulla nisi officia quis aliquip voluptate mollit ut anim eu et quis tempor incididunt consectetur exercitation cupidatat in nisi exercitation est culpa nostrud sit elit sit sunt do ipsum eu.\n\nEnim voluptate ad ullamco tempor voluptate culpa et ut ullamco eu consequat est esse excepteur est nostrud velit enim culpa dolore non quis occaecat eiusmod velit ex mollit tempor labore.',
+        notes       : '<p>Nulla nisi officia quis aliquip voluptate mollit ut anim eu et quis tempor incididunt consectetur exercitation cupidatat in nisi exercitation est culpa nostrud sit elit sit sunt do ipsum eu.</p><p>Enim voluptate ad ullamco tempor voluptate culpa et ut ullamco eu consequat est esse excepteur est nostrud velit enim culpa dolore non quis occaecat eiusmod velit ex mollit tempor labore.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -1746,6 +1696,7 @@ export const contacts = [
     {
         id          : '81fdc48c-5572-4123-8a73-71b7892120de',
         avatar      : 'assets/images/avatars/female-09.jpg',
+        background  : 'assets/images/cards/34-640x480.jpg',
         name        : 'Earlene Rosales',
         emails      : [
             {
@@ -1764,13 +1715,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Historiographer',
-            company: 'Softmicro'
-        },
+        title       : 'Historiographer',
+        company     : 'Softmicro',
         birthday    : '1960-11-13T12:00:00.000Z',
         address     : '981 Kingston Avenue, Topaz, Connecticut, PO6866',
-        notes       : 'Adipisicing fugiat magna eiusmod consectetur id commodo incididunt ullamco ut sint minim nulla in do aute in sit pariatur irure dolor magna pariatur ad officia excepteur duis ullamco dolor sunt.\n\nDolor laborum proident voluptate eu esse lorem adipisicing enim consectetur veniam nisi pariatur aliquip sit laborum sunt adipisicing anim labore eiusmod nostrud irure irure nisi ipsum dolor aliquip ex exercitation.',
+        notes       : '<p>Adipisicing fugiat magna eiusmod consectetur id commodo incididunt ullamco ut sint minim nulla in do aute in sit pariatur irure dolor magna pariatur ad officia excepteur duis ullamco dolor sunt.</p><p>Dolor laborum proident voluptate eu esse lorem adipisicing enim consectetur veniam nisi pariatur aliquip sit laborum sunt adipisicing anim labore eiusmod nostrud irure irure nisi ipsum dolor aliquip ex exercitation.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -1778,6 +1727,7 @@ export const contacts = [
     {
         id          : 'f8bbf6be-d49a-41a3-bb80-3d51df84c12b',
         avatar      : 'assets/images/avatars/female-10.jpg',
+        background  : 'assets/images/cards/35-640x480.jpg',
         name        : 'Marcia Hatfield',
         emails      : [
             {
@@ -1806,13 +1756,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Track Service Worker',
-            company: 'Datagen'
-        },
+        title       : 'Track Service Worker',
+        company     : 'Datagen',
         birthday    : '1980-02-26T12:00:00.000Z',
         address     : '802 Preston Court, Waikele, Pennsylvania, PO7421',
-        notes       : 'Aliqua sint aute in cillum deserunt enim fugiat tempor est pariatur irure commodo commodo deserunt eu nulla laboris enim occaecat incididunt voluptate enim est reprehenderit qui anim veniam sint adipisicing.\n\nCommodo veniam occaecat ex et laborum minim fugiat sunt commodo velit dolor labore excepteur fugiat ipsum eiusmod in esse ex nulla deserunt minim consectetur in est sunt eu commodo fugiat.',
+        notes       : '<p>Aliqua sint aute in cillum deserunt enim fugiat tempor est pariatur irure commodo commodo deserunt eu nulla laboris enim occaecat incididunt voluptate enim est reprehenderit qui anim veniam sint adipisicing.</p><p>Commodo veniam occaecat ex et laborum minim fugiat sunt commodo velit dolor labore excepteur fugiat ipsum eiusmod in esse ex nulla deserunt minim consectetur in est sunt eu commodo fugiat.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -1820,6 +1768,7 @@ export const contacts = [
     {
         id          : 'cd482941-3eaf-4560-ac37-56a9296025df',
         avatar      : 'assets/images/avatars/female-11.jpg',
+        background  : 'assets/images/cards/36-640x480.jpg',
         name        : 'Liliana Ayala',
         emails      : [
             {
@@ -1834,13 +1783,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Insurance Analyst',
-            company: 'Pharmex'
-        },
+        title       : 'Insurance Analyst',
+        company     : 'Pharmex',
         birthday    : '1988-04-27T12:00:00.000Z',
         address     : '935 Guider Avenue, Kipp, Wisconsin, PO5282',
-        notes       : 'Magna et culpa cillum sint labore consequat aute aliqua amet ea consequat ut ullamco nisi commodo lorem enim amet dolor sit nisi dolor do sit lorem cillum esse reprehenderit ut.\n\nQuis veniam anim nulla adipisicing veniam fugiat elit duis pariatur anim irure adipisicing elit labore eu aute exercitation qui exercitation commodo exercitation ipsum tempor non et ex eu aute proident.',
+        notes       : '<p>Magna et culpa cillum sint labore consequat aute aliqua amet ea consequat ut ullamco nisi commodo lorem enim amet dolor sit nisi dolor do sit lorem cillum esse reprehenderit ut.</p><p>Quis veniam anim nulla adipisicing veniam fugiat elit duis pariatur anim irure adipisicing elit labore eu aute exercitation qui exercitation commodo exercitation ipsum tempor non et ex eu aute proident.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -1848,10 +1795,11 @@ export const contacts = [
     {
         id          : '22f18d47-ff8d-440e-888d-a1747c093052',
         avatar      : 'assets/images/avatars/female-12.jpg',
-        name        : 'Aimee Harding',
+        background  : 'assets/images/cards/14-640x480.jpg',
+        name        : 'Alice Harding',
         emails      : [
             {
-                email: 'aimeeharding@mail.us',
+                email: 'aliceharding@mail.us',
                 label: 'Personal'
             }
         ],
@@ -1872,13 +1820,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Track Service Worker',
-            company: 'Futurity'
-        },
+        title       : 'Track Service Worker',
+        company     : 'Futurity',
         birthday    : '1985-09-17T12:00:00.000Z',
         address     : '387 Holt Court, Thomasville, Alaska, PO2867',
-        notes       : 'Adipisicing exercitation dolor nisi ipsum nostrud anim dolore sint veniam consequat lorem sit ex commodo nostrud occaecat elit magna magna commodo incididunt laborum ad irure pariatur et sit ullamco adipisicing.\n\nUllamco in dolore amet est quis consectetur fugiat non nisi incididunt id laborum adipisicing dolor proident velit ut quis aliquip dolore id anim sit adipisicing nisi incididunt enim amet pariatur.',
+        notes       : '<p>Adipisicing exercitation dolor nisi ipsum nostrud anim dolore sint veniam consequat lorem sit ex commodo nostrud occaecat elit magna magna commodo incididunt laborum ad irure pariatur et sit ullamco adipisicing.</p><p>Ullamco in dolore amet est quis consectetur fugiat non nisi incididunt id laborum adipisicing dolor proident velit ut quis aliquip dolore id anim sit adipisicing nisi incididunt enim amet pariatur.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1886,6 +1832,7 @@ export const contacts = [
     {
         id          : 'a9a9f382-e4c3-42fb-9fe9-65aa534732b5',
         avatar      : 'assets/images/avatars/female-13.jpg',
+        background  : 'assets/images/cards/15-640x480.jpg',
         name        : 'Francisca Perkins',
         emails      : [
             {
@@ -1909,13 +1856,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Dental Laboratory Worker',
-            company: 'Overplex'
-        },
+        title       : 'Dental Laboratory Worker',
+        company     : 'Overplex',
         birthday    : '1966-08-14T12:00:00.000Z',
         address     : '733 Delmonico Place, Belvoir, Virginia, PO7102',
-        notes       : 'Voluptate nisi adipisicing ex magna mollit non cillum dolor in magna duis exercitation irure elit duis eiusmod deserunt lorem nulla sunt laboris quis voluptate ullamco labore adipisicing quis minim ipsum.\n\nId ut esse elit proident mollit nulla exercitation magna voluptate sit eiusmod labore velit commodo exercitation dolore anim est eiusmod occaecat et consequat eiusmod culpa ipsum deserunt lorem non incididunt.',
+        notes       : '<p>Voluptate nisi adipisicing ex magna mollit non cillum dolor in magna duis exercitation irure elit duis eiusmod deserunt lorem nulla sunt laboris quis voluptate ullamco labore adipisicing quis minim ipsum.</p><p>Id ut esse elit proident mollit nulla exercitation magna voluptate sit eiusmod labore velit commodo exercitation dolore anim est eiusmod occaecat et consequat eiusmod culpa ipsum deserunt lorem non incididunt.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -1923,6 +1868,7 @@ export const contacts = [
     {
         id          : '0222b24b-c288-48d1-b356-0f087fa172f8',
         avatar      : null,
+        background  : null,
         name        : 'Warren Gates',
         emails      : [
             {
@@ -1951,13 +1897,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Banker Mason',
-            company: 'Qualitex'
-        },
+        title       : 'Banker Mason',
+        company     : 'Qualitex',
         birthday    : '1977-02-23T12:00:00.000Z',
         address     : '713 Fane Court, Lemoyne, Kentucky, PO3601',
-        notes       : 'Sint tempor consectetur ullamco ullamco consequat exercitation ea occaecat eiusmod cupidatat anim pariatur nisi pariatur excepteur ut labore anim excepteur sit eu consequat do enim pariatur et dolore in irure.\n\nCommodo ut non minim sunt nisi tempor culpa duis anim ipsum qui irure lorem est voluptate voluptate officia occaecat lorem labore elit officia laboris mollit et eiusmod esse laborum nisi.',
+        notes       : '<p>Sint tempor consectetur ullamco ullamco consequat exercitation ea occaecat eiusmod cupidatat anim pariatur nisi pariatur excepteur ut labore anim excepteur sit eu consequat do enim pariatur et dolore in irure.</p><p>Commodo ut non minim sunt nisi tempor culpa duis anim ipsum qui irure lorem est voluptate voluptate officia occaecat lorem labore elit officia laboris mollit et eiusmod esse laborum nisi.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -1965,6 +1909,7 @@ export const contacts = [
     {
         id          : '0630f1ca-cdb9-405d-b134-68f733334089',
         avatar      : 'assets/images/avatars/female-14.jpg',
+        background  : 'assets/images/cards/16-640x480.jpg',
         name        : 'Maryann Mcintyre',
         emails      : [
             {
@@ -1988,13 +1933,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Aquafire'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Aquafire',
         birthday    : '1963-04-07T12:00:00.000Z',
         address     : '698 Brooklyn Avenue, Dixonville, Utah, PO2712',
-        notes       : 'Pariatur velit ea ad quis elit pariatur consectetur eiusmod veniam non incididunt ex ex et nulla voluptate fugiat esse sit dolore voluptate in dolor nulla laborum irure consequat sit pariatur.\n\nDolore ex officia incididunt pariatur ea amet sunt enim aute labore cupidatat laboris eiusmod enim lorem labore nostrud ea consectetur et eu sunt exercitation dolore consequat fugiat anim in exercitation.',
+        notes       : '<p>Pariatur velit ea ad quis elit pariatur consectetur eiusmod veniam non incididunt ex ex et nulla voluptate fugiat esse sit dolore voluptate in dolor nulla laborum irure consequat sit pariatur.</p><p>Dolore ex officia incididunt pariatur ea amet sunt enim aute labore cupidatat laboris eiusmod enim lorem labore nostrud ea consectetur et eu sunt exercitation dolore consequat fugiat anim in exercitation.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -2002,6 +1945,7 @@ export const contacts = [
     {
         id          : '999c24f3-7bb8-4a01-85ca-2fca7863c57e',
         avatar      : 'assets/images/avatars/female-15.jpg',
+        background  : 'assets/images/cards/17-640x480.jpg',
         name        : 'Sharon Marshall',
         emails      : [
             {
@@ -2030,13 +1974,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Legal Assistant',
-            company: 'Utara'
-        },
+        title       : 'Legal Assistant',
+        company     : 'Utara',
         birthday    : '1960-01-26T12:00:00.000Z',
         address     : '923 Ivan Court, Hatteras, Idaho, PO7573',
-        notes       : 'Est duis sint ullamco nulla do tempor do dolore laboris in sint ad duis est eu consequat nisi esse irure tempor sunt pariatur qui mollit ipsum quis esse ex ipsum.\n\nDolore anim irure quis ipsum adipisicing sint et incididunt aute nisi minim aliquip consectetur duis tempor laborum nostrud exercitation do mollit irure anim lorem non excepteur commodo laborum dolore dolor.',
+        notes       : '<p>Est duis sint ullamco nulla do tempor do dolore laboris in sint ad duis est eu consequat nisi esse irure tempor sunt pariatur qui mollit ipsum quis esse ex ipsum.</p><p>Dolore anim irure quis ipsum adipisicing sint et incididunt aute nisi minim aliquip consectetur duis tempor laborum nostrud exercitation do mollit irure anim lorem non excepteur commodo laborum dolore dolor.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -2044,6 +1986,7 @@ export const contacts = [
     {
         id          : '7e8e1f1e-d19f-45c7-86bd-6fef599dae71',
         avatar      : 'assets/images/avatars/female-16.jpg',
+        background  : 'assets/images/cards/18-640x480.jpg',
         name        : 'Margo Witt',
         emails      : [
             {
@@ -2072,13 +2015,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Television News Producer',
-            company: 'Norsul'
-        },
+        title       : 'Television News Producer',
+        company     : 'Norsul',
         birthday    : '1975-08-31T12:00:00.000Z',
         address     : '539 Rockaway Avenue, Whitmer, Guam, PO4871',
-        notes       : 'Sunt quis officia elit laborum excepteur consequat amet cillum labore deserunt cillum cillum labore exercitation minim laboris anim incididunt voluptate minim duis enim eu duis veniam labore nisi culpa duis.\n\nPariatur irure sunt et commodo reprehenderit consectetur duis et ullamco fugiat occaecat culpa enim incididunt officia minim aliqua sit amet do dolore pariatur fugiat et adipisicing labore dolor id dolore.',
+        notes       : '<p>Sunt quis officia elit laborum excepteur consequat amet cillum labore deserunt cillum cillum labore exercitation minim laboris anim incididunt voluptate minim duis enim eu duis veniam labore nisi culpa duis.</p><p>Pariatur irure sunt et commodo reprehenderit consectetur duis et ullamco fugiat occaecat culpa enim incididunt officia minim aliqua sit amet do dolore pariatur fugiat et adipisicing labore dolor id dolore.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -2086,6 +2027,7 @@ export const contacts = [
     {
         id          : 'bedcb6a2-da83-4631-866a-77d10d239477',
         avatar      : 'assets/images/avatars/male-04.jpg',
+        background  : 'assets/images/cards/19-640x480.jpg',
         name        : 'Alvarado Turner',
         emails      : [
             {
@@ -2100,13 +2042,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Geologix'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Geologix',
         birthday    : '1985-12-08T12:00:00.000Z',
         address     : '233 Willmohr Street, Cressey, Iowa, PO1962',
-        notes       : 'In amet voluptate ad eiusmod cupidatat nulla sunt eu amet occaecat qui cillum occaecat tempor minim nostrud ullamco amet elit aliquip est nisi officia lorem occaecat ea lorem officia veniam.\n\nNulla tempor id excepteur irure do do veniam eiusmod esse ipsum sint dolore commodo enim officia nulla nulla proident in dolor et aliquip sit nulla sit proident duis aute deserunt.',
+        notes       : '<p>In amet voluptate ad eiusmod cupidatat nulla sunt eu amet occaecat qui cillum occaecat tempor minim nostrud ullamco amet elit aliquip est nisi officia lorem occaecat ea lorem officia veniam.</p><p>Nulla tempor id excepteur irure do do veniam eiusmod esse ipsum sint dolore commodo enim officia nulla nulla proident in dolor et aliquip sit nulla sit proident duis aute deserunt.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -2114,6 +2054,7 @@ export const contacts = [
     {
         id          : '66f9de1b-f842-4d4c-bb59-f97e91db0462',
         avatar      : 'assets/images/avatars/male-05.jpg',
+        background  : 'assets/images/cards/20-640x480.jpg',
         name        : 'Maldonado Rodriquez',
         emails      : [
             {
@@ -2142,13 +2083,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Dental Laboratory Worker',
-            company: 'Zentility'
-        },
+        title       : 'Dental Laboratory Worker',
+        company     : 'Zentility',
         birthday    : '1993-06-01T12:00:00.000Z',
         address     : '916 Cobek Court, Morningside, South Dakota, PO2019',
-        notes       : 'Laboris consequat labore nisi aute voluptate minim amet nulla elit tempor dolor nulla do et consequat esse dolore fugiat laboris deserunt velit minim laboris voluptate enim ut non laboris nisi.\n\nMagna pariatur voluptate veniam nostrud irure magna pariatur ut quis reprehenderit voluptate aute duis sunt laboris consequat lorem eu pariatur nulla incididunt quis lorem consectetur ex lorem commodo magna dolore.',
+        notes       : '<p>Laboris consequat labore nisi aute voluptate minim amet nulla elit tempor dolor nulla do et consequat esse dolore fugiat laboris deserunt velit minim laboris voluptate enim ut non laboris nisi.</p><p>Magna pariatur voluptate veniam nostrud irure magna pariatur ut quis reprehenderit voluptate aute duis sunt laboris consequat lorem eu pariatur nulla incididunt quis lorem consectetur ex lorem commodo magna dolore.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -2156,6 +2095,7 @@ export const contacts = [
     {
         id          : '9cb0ea57-3461-4182-979b-593b0c1ec6c3',
         avatar      : 'assets/images/avatars/male-06.jpg',
+        background  : 'assets/images/cards/21-640x480.jpg',
         name        : 'Tran Duke',
         emails      : [
             {
@@ -2184,13 +2124,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Legal Assistant',
-            company: 'Splinx'
-        },
+        title       : 'Legal Assistant',
+        company     : 'Splinx',
         birthday    : '1976-04-27T12:00:00.000Z',
         address     : '405 Canarsie Road, Richville, Virgin Islands, PO2744',
-        notes       : 'Occaecat do excepteur non ipsum labore consequat id eu sunt minim aliquip elit occaecat velit ut aute cupidatat irure ex eiusmod fugiat ea ea cupidatat nulla dolor labore consectetur amet.\n\nMollit enim dolore deserunt tempor aliqua velit nostrud nostrud id consectetur lorem in enim excepteur nisi laborum ex commodo sint ea et culpa lorem esse culpa ad officia do amet.',
+        notes       : '<p>Occaecat do excepteur non ipsum labore consequat id eu sunt minim aliquip elit occaecat velit ut aute cupidatat irure ex eiusmod fugiat ea ea cupidatat nulla dolor labore consectetur amet.</p><p>Mollit enim dolore deserunt tempor aliqua velit nostrud nostrud id consectetur lorem in enim excepteur nisi laborum ex commodo sint ea et culpa lorem esse culpa ad officia do amet.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -2198,6 +2136,7 @@ export const contacts = [
     {
         id          : '2fb89a90-5622-4b5b-8df3-d49b85905392',
         avatar      : null,
+        background  : null,
         name        : 'Estela Lyons',
         emails      : [
             {
@@ -2222,13 +2161,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Animal Sitter',
-            company: 'Gonkle'
-        },
+        title       : 'Animal Sitter',
+        company     : 'Gonkle',
         birthday    : '1968-03-11T12:00:00.000Z',
         address     : '540 Metrotech Courtr, Garfield, American Samoa, PO2290',
-        notes       : 'Ullamco dolore ipsum exercitation officia dolore sit consequat nisi consequat occaecat et ipsum veniam anim tempor pariatur sunt in adipisicing aliqua non dolor laborum veniam nisi dolore quis sunt incididunt.\n\nIncididunt ullamco sunt magna reprehenderit velit dolor qui anim eiusmod nostrud commodo exercitation velit incididunt exercitation nulla ad aute eiusmod est amet exercitation est nostrud sit esse esse ad irure.',
+        notes       : '<p>Ullamco dolore ipsum exercitation officia dolore sit consequat nisi consequat occaecat et ipsum veniam anim tempor pariatur sunt in adipisicing aliqua non dolor laborum veniam nisi dolore quis sunt incididunt.</p><p>Incididunt ullamco sunt magna reprehenderit velit dolor qui anim eiusmod nostrud commodo exercitation velit incididunt exercitation nulla ad aute eiusmod est amet exercitation est nostrud sit esse esse ad irure.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -2236,6 +2173,7 @@ export const contacts = [
     {
         id          : '8141dd08-3a6e-4770-912c-59d0ed06dde6',
         avatar      : null,
+        background  : null,
         name        : 'Madeleine Fletcher',
         emails      : [
             {
@@ -2254,13 +2192,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Genmom'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Genmom',
         birthday    : '1970-07-15T12:00:00.000Z',
         address     : '825 Cherry Street, Foscoe, Minnesota, PO7290',
-        notes       : 'Fugiat in exercitation nostrud labore labore irure ex magna ex aliquip veniam sit irure irure deserunt occaecat tempor cillum aliqua dolore ea tempor dolore laboris est amet quis consequat quis.\n\nEsse officia velit consectetur ullamco ea pariatur mollit sit consectetur sint mollit commodo anim anim ea amet consectetur eiusmod aliqua excepteur elit laborum magna non fugiat nisi pariatur ut velit.',
+        notes       : '<p>Fugiat in exercitation nostrud labore labore irure ex magna ex aliquip veniam sit irure irure deserunt occaecat tempor cillum aliqua dolore ea tempor dolore laboris est amet quis consequat quis.</p><p>Esse officia velit consectetur ullamco ea pariatur mollit sit consectetur sint mollit commodo anim anim ea amet consectetur eiusmod aliqua excepteur elit laborum magna non fugiat nisi pariatur ut velit.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -2268,6 +2204,7 @@ export const contacts = [
     {
         id          : '7585015c-ada2-4f88-998d-9646865d1ad2',
         avatar      : 'assets/images/avatars/male-07.jpg',
+        background  : 'assets/images/cards/22-640x480.jpg',
         name        : 'Meyer Roach',
         emails      : [
             {
@@ -2292,13 +2229,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Electromedical Equipment Technician',
-            company: 'Zentime'
-        },
+        title       : 'Electromedical Equipment Technician',
+        company     : 'Zentime',
         birthday    : '1968-10-16T12:00:00.000Z',
         address     : '315 Albemarle Road, Allison, Arkansas, PO6008',
-        notes       : 'Eiusmod deserunt aliqua dolore ipsum cillum veniam minim dolore nulla aute aliqua voluptate labore sint cillum excepteur nulla nostrud do cupidatat eu adipisicing reprehenderit deserunt elit qui mollit adipisicing eu.\n\nProident commodo magna eu voluptate eiusmod aliqua laborum eu ea elit quis ullamco ullamco magna minim enim amet dolore sit lorem aliqua officia amet officia non magna enim cillum sit.',
+        notes       : '<p>Eiusmod deserunt aliqua dolore ipsum cillum veniam minim dolore nulla aute aliqua voluptate labore sint cillum excepteur nulla nostrud do cupidatat eu adipisicing reprehenderit deserunt elit qui mollit adipisicing eu.</p><p>Proident commodo magna eu voluptate eiusmod aliqua laborum eu ea elit quis ullamco ullamco magna minim enim amet dolore sit lorem aliqua officia amet officia non magna enim cillum sit.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -2306,6 +2241,7 @@ export const contacts = [
     {
         id          : '32c73a6a-67f2-48a9-b2a1-b23da83187bb',
         avatar      : null,
+        background  : null,
         name        : 'Bolton Obrien',
         emails      : [
             {
@@ -2329,13 +2265,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Banker Mason',
-            company: 'Enersol'
-        },
+        title       : 'Banker Mason',
+        company     : 'Enersol',
         birthday    : '1968-09-08T12:00:00.000Z',
         address     : '818 Aviation Road, Geyserville, Palau, PO9655',
-        notes       : 'Cupidatat lorem tempor commodo do eu ea dolor eiusmod do nisi occaecat fugiat labore non esse aliquip ullamco laboris adipisicing pariatur nostrud enim minim do fugiat culpa exercitation lorem duis.\n\nPariatur cupidatat tempor est et nostrud in amet aliquip sint nulla amet ea lorem irure sint sit ea aliquip voluptate id laboris fugiat cillum cillum dolore deserunt fugiat ad tempor.',
+        notes       : '<p>Cupidatat lorem tempor commodo do eu ea dolor eiusmod do nisi occaecat fugiat labore non esse aliquip ullamco laboris adipisicing pariatur nostrud enim minim do fugiat culpa exercitation lorem duis.</p><p>Pariatur cupidatat tempor est et nostrud in amet aliquip sint nulla amet ea lorem irure sint sit ea aliquip voluptate id laboris fugiat cillum cillum dolore deserunt fugiat ad tempor.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -2343,6 +2277,7 @@ export const contacts = [
     {
         id          : '114642a2-ccb7-4cb1-ad2b-5e9b6a0c1d2e',
         avatar      : 'assets/images/avatars/male-09.jpg',
+        background  : 'assets/images/cards/23-640x480.jpg',
         name        : 'Barber Johnson',
         emails      : [
             {
@@ -2367,13 +2302,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Talent Manager',
-            company: 'Zounds'
-        },
+        title       : 'Talent Manager',
+        company     : 'Zounds',
         birthday    : '1967-03-02T12:00:00.000Z',
         address     : '386 Vernon Avenue, Dragoon, North Carolina, PO4559',
-        notes       : 'Esse amet ex duis esse aliqua non tempor ullamco dolore et aliquip nisi pariatur qui laborum id consequat tempor sint eiusmod exercitation velit aliquip occaecat tempor nisi aute magna sint.\n\nDeserunt veniam voluptate dolore eiusmod eu consequat dolor sit pariatur laboris anim excepteur consequat nulla officia exercitation magna sint ea excepteur qui eu officia pariatur culpa sint elit nulla officia.',
+        notes       : '<p>Esse amet ex duis esse aliqua non tempor ullamco dolore et aliquip nisi pariatur qui laborum id consequat tempor sint eiusmod exercitation velit aliquip occaecat tempor nisi aute magna sint.</p><p>Deserunt veniam voluptate dolore eiusmod eu consequat dolor sit pariatur laboris anim excepteur consequat nulla officia exercitation magna sint ea excepteur qui eu officia pariatur culpa sint elit nulla officia.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -2381,6 +2314,7 @@ export const contacts = [
     {
         id          : '310ece7d-dbb0-45d6-9e69-14c24e50fe3d',
         avatar      : 'assets/images/avatars/male-10.jpg',
+        background  : 'assets/images/cards/24-640x480.jpg',
         name        : 'Cervantes Kramer',
         emails      : [
             {
@@ -2400,13 +2334,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Motor Winder',
-            company: 'Xeronk'
-        },
+        title       : 'Motor Winder',
+        company     : 'Xeronk',
         birthday    : '1992-09-04T12:00:00.000Z',
         address     : '238 Rochester Avenue, Lydia, Oklahoma, PO3914',
-        notes       : 'Excepteur do ullamco voluptate deserunt tempor ullamco enim non incididunt adipisicing sunt sint sit qui occaecat occaecat id laboris et duis amet reprehenderit cupidatat aliquip dolore ea eu ea nulla.\n\nCillum nulla deserunt laboris eu sint dolor non laboris cupidatat aute nisi amet mollit ipsum cillum excepteur consequat tempor exercitation consequat nostrud ipsum qui excepteur eiusmod nostrud laboris pariatur sint.',
+        notes       : '<p>Excepteur do ullamco voluptate deserunt tempor ullamco enim non incididunt adipisicing sunt sint sit qui occaecat occaecat id laboris et duis amet reprehenderit cupidatat aliquip dolore ea eu ea nulla.</p><p>Cillum nulla deserunt laboris eu sint dolor non laboris cupidatat aute nisi amet mollit ipsum cillum excepteur consequat tempor exercitation consequat nostrud ipsum qui excepteur eiusmod nostrud laboris pariatur sint.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -2414,6 +2346,7 @@ export const contacts = [
     {
         id          : 'dcc673f6-de59-4715-94ed-8f64663d449b',
         avatar      : 'assets/images/avatars/female-19.jpg',
+        background  : 'assets/images/cards/25-640x480.jpg',
         name        : 'Megan Suarez',
         emails      : [
             {
@@ -2438,13 +2371,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Bindery Machine Operator',
-            company: 'Cemention'
-        },
+        title       : 'Bindery Machine Operator',
+        company     : 'Cemention',
         birthday    : '1984-09-08T12:00:00.000Z',
         address     : '112 Tillary Street, Camptown, Vermont, PO8827',
-        notes       : 'Pariatur tempor laborum deserunt commodo eiusmod adipisicing amet anim irure fugiat laboris velit do velit elit aute deserunt officia fugiat nulla ullamco est elit veniam officia sit veniam velit commodo.\n\nLaboris duis eu adipisicing esse fugiat voluptate enim sint in voluptate lorem laboris eiusmod commodo nostrud dolor qui incididunt non fugiat culpa aliquip minim voluptate lorem sint sunt velit eiusmod.',
+        notes       : '<p>Pariatur tempor laborum deserunt commodo eiusmod adipisicing amet anim irure fugiat laboris velit do velit elit aute deserunt officia fugiat nulla ullamco est elit veniam officia sit veniam velit commodo.</p><p>Laboris duis eu adipisicing esse fugiat voluptate enim sint in voluptate lorem laboris eiusmod commodo nostrud dolor qui incididunt non fugiat culpa aliquip minim voluptate lorem sint sunt velit eiusmod.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -2452,6 +2383,7 @@ export const contacts = [
     {
         id          : '3e4ca731-d39b-4ad9-b6e0-f84e67f4b74a',
         avatar      : 'assets/images/avatars/female-20.jpg',
+        background  : 'assets/images/cards/26-640x480.jpg',
         name        : 'Ofelia Ratliff',
         emails      : [
             {
@@ -2476,12 +2408,10 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            company: 'Buzzmaker'
-        },
+        company     : 'Buzzmaker',
         birthday    : '1988-11-11T12:00:00.000Z',
         address     : '951 Hampton Avenue, Bartonsville, Mississippi, PO4232',
-        notes       : 'Ad lorem id irure aute ipsum ex occaecat commodo dolore eu dolor exercitation anim quis officia deserunt lorem sunt officia eu sit aliquip laborum id duis aliqua quis aute magna.\n\nDo do lorem est amet aliqua ex excepteur nisi cupidatat esse consequat ipsum in ad eiusmod proident cupidatat dolore anim ut pariatur sint do elit incididunt officia adipisicing amet eu.',
+        notes       : '<p>Ad lorem id irure aute ipsum ex occaecat commodo dolore eu dolor exercitation anim quis officia deserunt lorem sunt officia eu sit aliquip laborum id duis aliqua quis aute magna.</p><p>Do do lorem est amet aliqua ex excepteur nisi cupidatat esse consequat ipsum in ad eiusmod proident cupidatat dolore anim ut pariatur sint do elit incididunt officia adipisicing amet eu.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]
@@ -2489,6 +2419,7 @@ export const contacts = [
     {
         id          : '2012d4a5-19e4-444d-aaff-1d8b1d853650',
         avatar      : 'assets/images/avatars/female-01.jpg',
+        background  : 'assets/images/cards/27-640x480.jpg',
         name        : 'Laurel Parker',
         emails      : [
             {
@@ -2513,13 +2444,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Omnigog'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Omnigog',
         birthday    : '1987-05-17T12:00:00.000Z',
         address     : '157 Woodhull Street, Rutherford, West Virginia, PO6646',
-        notes       : 'Duis laboris consectetur et anim eiusmod laborum aute mollit ut officia ipsum dolore eiusmod ex eu elit officia est amet aliquip ullamco veniam proident id aliquip duis qui voluptate fugiat.\n\nSunt aliquip nulla amet sint culpa laboris quis proident qui veniam excepteur ullamco irure non eu occaecat est enim ut velit dolore sit tempor cillum reprehenderit proident velit lorem ad.',
+        notes       : '<p>Duis laboris consectetur et anim eiusmod laborum aute mollit ut officia ipsum dolore eiusmod ex eu elit officia est amet aliquip ullamco veniam proident id aliquip duis qui voluptate fugiat.</p><p>Sunt aliquip nulla amet sint culpa laboris quis proident qui veniam excepteur ullamco irure non eu occaecat est enim ut velit dolore sit tempor cillum reprehenderit proident velit lorem ad.</p>',
         tags        : [
             '2026ce08-d08f-4b4f-9506-b10cdb5b104f'
         ]
@@ -2527,6 +2456,7 @@ export const contacts = [
     {
         id          : '012b8219-74bf-447c-af2c-66904d90a956',
         avatar      : 'assets/images/avatars/female-02.jpg',
+        background  : 'assets/images/cards/28-640x480.jpg',
         name        : 'Tracy Delacruz',
         emails      : [
             {
@@ -2545,13 +2475,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Bindery Machine Operator',
-            company: 'Shepard'
-        },
+        title       : 'Bindery Machine Operator',
+        company     : 'Shepard',
         birthday    : '1963-08-10T12:00:00.000Z',
         address     : '604 Merit Court, Wyano, New Hampshire, PO1641',
-        notes       : 'Dolor anim fugiat aliquip eiusmod lorem nisi adipisicing ea deserunt est quis non sit nulla voluptate deserunt magna eiusmod irure labore fugiat consectetur laboris velit voluptate exercitation aute magna sit.\n\nSunt ullamco quis qui ea ullamco quis sit ex nisi deserunt fugiat qui culpa minim proident dolor veniam lorem nulla amet do dolor proident sunt ex incididunt ipsum cillum non.',
+        notes       : '<p>Dolor anim fugiat aliquip eiusmod lorem nisi adipisicing ea deserunt est quis non sit nulla voluptate deserunt magna eiusmod irure labore fugiat consectetur laboris velit voluptate exercitation aute magna sit.</p><p>Sunt ullamco quis qui ea ullamco quis sit ex nisi deserunt fugiat qui culpa minim proident dolor veniam lorem nulla amet do dolor proident sunt ex incididunt ipsum cillum non.</p>',
         tags        : [
             'c31e9e5d-e0cb-4574-a13f-8a6ee5ff8309'
         ]
@@ -2559,6 +2487,7 @@ export const contacts = [
     {
         id          : '8b1befd2-66a7-4981-ae52-77f01b382d18',
         avatar      : 'assets/images/avatars/female-03.jpg',
+        background  : 'assets/images/cards/29-640x480.jpg',
         name        : 'Jeannette Stanton',
         emails      : [
             {
@@ -2587,13 +2516,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Hotel Manager',
-            company: 'Zentury'
-        },
+        title       : 'Hotel Manager',
+        company     : 'Zentury',
         birthday    : '1975-09-02T12:00:00.000Z',
         address     : '100 Menahan Street, Snyderville, Kansas, PO1006',
-        notes       : 'Sint anim sint tempor proident irure proident exercitation dolor enim in sint non occaecat tempor mollit dolore ea labore ipsum sunt in incididunt proident excepteur id in velit et quis.\n\nAmet mollit ut nostrud cupidatat ut culpa irure in ex occaecat aute aliqua tempor incididunt elit nulla irure aliqua ea do amet ex elit incididunt minim eu fugiat elit pariatur.',
+        notes       : '<p>Sint anim sint tempor proident irure proident exercitation dolor enim in sint non occaecat tempor mollit dolore ea labore ipsum sunt in incididunt proident excepteur id in velit et quis.</p><p>Amet mollit ut nostrud cupidatat ut culpa irure in ex occaecat aute aliqua tempor incididunt elit nulla irure aliqua ea do amet ex elit incididunt minim eu fugiat elit pariatur.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -2601,6 +2528,7 @@ export const contacts = [
     {
         id          : '844668c3-5e20-4fed-9e3a-7d274f696e61',
         avatar      : 'assets/images/avatars/female-04.jpg',
+        background  : 'assets/images/cards/30-640x480.jpg',
         name        : 'Johnnie Cleveland',
         emails      : [
             {
@@ -2619,13 +2547,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Fundraising Director',
-            company: 'Viasia'
-        },
+        title       : 'Fundraising Director',
+        company     : 'Viasia',
         birthday    : '1986-03-15T12:00:00.000Z',
         address     : '283 Albany Avenue, Jennings, Rhode Island, PO1646',
-        notes       : 'Id est dolore nostrud consectetur ullamco aliquip dolore nisi consectetur cupidatat consectetur ut lorem exercitation laborum est culpa qui aliquip fugiat fugiat laborum minim sint sit laborum elit consectetur occaecat.\n\nCillum eu aliquip ex enim dolore enim ea pariatur elit voluptate in eu magna eu voluptate est cupidatat aliqua cupidatat ex eu dolor voluptate velit fugiat ipsum labore labore aliqua.',
+        notes       : '<p>Id est dolore nostrud consectetur ullamco aliquip dolore nisi consectetur cupidatat consectetur ut lorem exercitation laborum est culpa qui aliquip fugiat fugiat laborum minim sint sit laborum elit consectetur occaecat.</p><p>Cillum eu aliquip ex enim dolore enim ea pariatur elit voluptate in eu magna eu voluptate est cupidatat aliqua cupidatat ex eu dolor voluptate velit fugiat ipsum labore labore aliqua.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -2633,6 +2559,7 @@ export const contacts = [
     {
         id          : '5a01e870-8be1-45a5-b58a-ec09c06e8f28',
         avatar      : 'assets/images/avatars/female-05.jpg',
+        background  : 'assets/images/cards/31-640x480.jpg',
         name        : 'Staci Hyde',
         emails      : [
             {
@@ -2652,13 +2579,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Banker Mason',
-            company: 'Zilla'
-        },
+        title       : 'Banker Mason',
+        company     : 'Zilla',
         birthday    : '1975-04-22T12:00:00.000Z',
         address     : '560 Dooley Street, Ellerslie, Louisiana, PO1005',
-        notes       : 'Pariatur esse ex laborum ex dolor laborum proident enim consectetur occaecat magna adipisicing magna dolore officia aute et dolor aliquip enim adipisicing culpa reprehenderit aliqua officia qui pariatur aliquip occaecat.\n\nExcepteur est nisi officia eiusmod et duis mollit labore minim duis officia lorem ipsum duis deserunt cupidatat excepteur nostrud incididunt non cillum fugiat adipisicing anim consectetur nostrud aliquip labore cupidatat.',
+        notes       : '<p>Pariatur esse ex laborum ex dolor laborum proident enim consectetur occaecat magna adipisicing magna dolore officia aute et dolor aliquip enim adipisicing culpa reprehenderit aliqua officia qui pariatur aliquip occaecat.</p><p>Excepteur est nisi officia eiusmod et duis mollit labore minim duis officia lorem ipsum duis deserunt cupidatat excepteur nostrud incididunt non cillum fugiat adipisicing anim consectetur nostrud aliquip labore cupidatat.</p>',
         tags        : [
             '56ddbd47-4078-4ddd-8448-73c5e88d5f59'
         ]
@@ -2666,6 +2591,7 @@ export const contacts = [
     {
         id          : '5ac1f193-f150-45f9-bfe4-b7b4e1a83ff9',
         avatar      : 'assets/images/avatars/female-06.jpg',
+        background  : 'assets/images/cards/32-640x480.jpg',
         name        : 'Angela Gallagher',
         emails      : [
             {
@@ -2690,13 +2616,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Electromedical Equipment Technician',
-            company: 'Zenolux'
-        },
+        title       : 'Electromedical Equipment Technician',
+        company     : 'Zenolux',
         birthday    : '1965-08-02T12:00:00.000Z',
         address     : '445 Remsen Avenue, Ruckersville, Delaware, PO2712',
-        notes       : 'Pariatur do nisi labore culpa minim aliquip excepteur voluptate id id aute eu aliquip adipisicing nulla laboris consectetur dolore ullamco ut exercitation fugiat excepteur veniam ex cillum cupidatat ad adipisicing.\n\nDolor culpa dolor magna incididunt voluptate sunt amet dolor cillum ut nostrud nisi quis ex pariatur enim dolore sunt sunt cupidatat id non lorem magna esse amet commodo minim id.',
+        notes       : '<p>Pariatur do nisi labore culpa minim aliquip excepteur voluptate id id aute eu aliquip adipisicing nulla laboris consectetur dolore ullamco ut exercitation fugiat excepteur veniam ex cillum cupidatat ad adipisicing.</p><p>Dolor culpa dolor magna incididunt voluptate sunt amet dolor cillum ut nostrud nisi quis ex pariatur enim dolore sunt sunt cupidatat id non lorem magna esse amet commodo minim id.</p>',
         tags        : [
             'cbde2486-5033-4e09-838e-e901b108cd41'
         ]
@@ -2704,6 +2628,7 @@ export const contacts = [
     {
         id          : '995df091-d78a-4bb7-840c-ba6a7d14a1bd',
         avatar      : 'assets/images/avatars/male-11.jpg',
+        background  : 'assets/images/cards/33-640x480.jpg',
         name        : 'Hutchinson Levy',
         emails      : [
             {
@@ -2723,13 +2648,11 @@ export const contacts = [
                 label  : 'Work'
             }
         ],
-        job         : {
-            title  : 'Congressional Representative',
-            company: 'Zytrek'
-        },
+        title       : 'Congressional Representative',
+        company     : 'Zytrek',
         birthday    : '1978-03-22T12:00:00.000Z',
         address     : '911 Lois Avenue, Epworth, California, PO6557',
-        notes       : 'Veniam deserunt aliquip culpa commodo et est ea cillum ea pariatur reprehenderit dolore adipisicing voluptate dolor eiusmod tempor exercitation reprehenderit nostrud labore nostrud do nulla commodo officia qui culpa ea.\n\nVelit deserunt do ut esse tempor minim cupidatat amet qui consequat enim duis elit veniam sunt sit aliquip irure cillum irure sunt officia incididunt cupidatat commodo amet non qui anim.',
+        notes       : '<p>Veniam deserunt aliquip culpa commodo et est ea cillum ea pariatur reprehenderit dolore adipisicing voluptate dolor eiusmod tempor exercitation reprehenderit nostrud labore nostrud do nulla commodo officia qui culpa ea.</p><p>Velit deserunt do ut esse tempor minim cupidatat amet qui consequat enim duis elit veniam sunt sit aliquip irure cillum irure sunt officia incididunt cupidatat commodo amet non qui anim.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -2737,6 +2660,7 @@ export const contacts = [
     {
         id          : '7184be71-a28f-4f2b-8c45-15f78cf2f825',
         avatar      : 'assets/images/avatars/female-05.jpg',
+        background  : 'assets/images/cards/34-640x480.jpg',
         name        : 'Alissa Nelson',
         emails      : [
             {
@@ -2751,13 +2675,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Bindery Machine Operator',
-            company: 'Emtrak'
-        },
+        title       : 'Bindery Machine Operator',
+        company     : 'Emtrak',
         birthday    : '1993-10-19T12:00:00.000Z',
         address     : '514 Sutter Avenue, Shindler, Puerto Rico, PO3862',
-        notes       : 'Ullamco ut aute reprehenderit velit incididunt veniam consequat ut ipsum sint laborum duis officia pariatur mollit enim nulla reprehenderit dolor aliquip labore ex aute in sunt dolor nulla reprehenderit dolor.\n\nAd enim ex non minim commodo culpa culpa ex est anim aute adipisicing proident ut ex et aliquip amet exercitation lorem tempor laborum quis reprehenderit veniam proident ullamco id eiusmod.',
+        notes       : '<p>Ullamco ut aute reprehenderit velit incididunt veniam consequat ut ipsum sint laborum duis officia pariatur mollit enim nulla reprehenderit dolor aliquip labore ex aute in sunt dolor nulla reprehenderit dolor.</p><p>Ad enim ex non minim commodo culpa culpa ex est anim aute adipisicing proident ut ex et aliquip amet exercitation lorem tempor laborum quis reprehenderit veniam proident ullamco id eiusmod.</p>',
         tags        : [
             '3eaab175-ec0d-4db7-bc3b-efc633c769be'
         ]
@@ -2765,6 +2687,7 @@ export const contacts = [
     {
         id          : '325d508c-ca49-42bf-b0d5-c4a6b8da3d5c',
         avatar      : null,
+        background  : null,
         name        : 'Oliver Head',
         emails      : [
             {
@@ -2779,13 +2702,11 @@ export const contacts = [
                 label  : 'Mobile'
             }
         ],
-        job         : {
-            title  : 'Meteorologist',
-            company: 'Rameon'
-        },
+        title       : 'Meteorologist',
+        company     : 'Rameon',
         birthday    : '1967-01-05T12:00:00.000Z',
         address     : '569 Clermont Avenue, Movico, Marshall Islands, PO7293',
-        notes       : 'Duis laborum magna ipsum officia cillum ea ut commodo anim exercitation incididunt id ipsum nisi consectetur aute officia culpa anim in veniam ad officia consequat qui ullamco ea laboris ad.\n\nAd ea excepteur ea veniam nostrud est labore ea consectetur laboris cupidatat aute pariatur aute mollit dolor do deserunt nisi mollit fugiat qui officia ullamco est officia est ullamco consequat.',
+        notes       : '<p>Duis laborum magna ipsum officia cillum ea ut commodo anim exercitation incididunt id ipsum nisi consectetur aute officia culpa anim in veniam ad officia consequat qui ullamco ea laboris ad.</p><p>Ad ea excepteur ea veniam nostrud est labore ea consectetur laboris cupidatat aute pariatur aute mollit dolor do deserunt nisi mollit fugiat qui officia ullamco est officia est ullamco consequat.</p>',
         tags        : [
             '65930b5a-5d2a-4303-b11f-865d69e6fdb5'
         ]
@@ -2793,6 +2714,7 @@ export const contacts = [
     {
         id          : 'c674b6e1-b846-4bba-824b-0b4df0cdec48',
         avatar      : 'assets/images/avatars/male-13.jpg',
+        background  : 'assets/images/cards/35-640x480.jpg',
         name        : 'Duran Barr',
         emails      : [
             {
@@ -2821,13 +2743,11 @@ export const contacts = [
                 label  : 'Home'
             }
         ],
-        job         : {
-            title  : 'Insurance Analyst',
-            company: 'Hinway'
-        },
+        title       : 'Insurance Analyst',
+        company     : 'Hinway',
         birthday    : '1977-11-06T12:00:00.000Z',
         address     : '103 Chestnut Avenue, Glenbrook, Indiana, PO2578',
-        notes       : 'Ad ipsum occaecat dolore ullamco labore ex sint est pariatur aliquip ea do esse do est dolore duis excepteur esse irure eiusmod pariatur elit nostrud laboris ad ex nostrud nostrud.\n\nOccaecat proident magna elit ullamco ea incididunt fugiat est nulla reprehenderit in veniam esse qui minim aliqua tempor excepteur dolor et tempor occaecat in veniam esse qui exercitation laborum esse.',
+        notes       : '<p>Ad ipsum occaecat dolore ullamco labore ex sint est pariatur aliquip ea do esse do est dolore duis excepteur esse irure eiusmod pariatur elit nostrud laboris ad ex nostrud nostrud.</p><p>Occaecat proident magna elit ullamco ea incididunt fugiat est nulla reprehenderit in veniam esse qui minim aliqua tempor excepteur dolor et tempor occaecat in veniam esse qui exercitation laborum esse.</p>',
         tags        : [
             'a8991c76-2fda-4bbd-a718-df13d6478847'
         ]

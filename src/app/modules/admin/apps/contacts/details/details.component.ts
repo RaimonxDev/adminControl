@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
@@ -20,7 +19,6 @@ import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.servic
 })
 export class ContactsDetailsComponent implements OnInit, OnDestroy
 {
-    @ViewChild('avatar') private _avatar: ElementRef;
     @ViewChild('avatarFileInput') private _avatarFileInput: ElementRef;
     @ViewChild('tagsPanel') private _tagsPanel: TemplateRef<any>;
     @ViewChild('tagsPanelOrigin') private _tagsPanelOrigin: ElementRef;
@@ -72,10 +70,8 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
             name        : ['', [Validators.required]],
             emails      : this._formBuilder.array([]),
             phoneNumbers: this._formBuilder.array([]),
-            job         : this._formBuilder.group({
-                title  : [''],
-                company: ['']
-            }),
+            title       : [''],
+            company     : [''],
             birthday    : [null],
             address     : [null],
             notes       : [null],
@@ -599,17 +595,16 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
      * Toggle contact tag
      *
      * @param tag
-     * @param change
      */
-    toggleContactTag(tag: Tag, change: MatCheckboxChange): void
+    toggleContactTag(tag: Tag): void
     {
-        if ( change.checked )
+        if ( this.contact.tags.includes(tag.id) )
         {
-            this.addTagToContact(tag);
+            this.removeTagFromContact(tag);
         }
         else
         {
-            this.removeTagFromContact(tag);
+            this.addTagToContact(tag);
         }
     }
 
