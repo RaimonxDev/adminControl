@@ -263,33 +263,33 @@
                     </div>
 
                     <!-- Tags -->
-                    <div class="flex flex-wrap items-center mt-6">
+                    <div class="flex flex-wrap items-center -m-1.5 mt-6">
                         <!-- Tags -->
                         <ng-container *ngIf="contact.tags.length">
                             <ng-container *ngFor="let tag of (contact.tags | treoFindByKey:'id':tags); trackBy: trackByFn">
-                                <div class="flex items-center justify-center py-1 px-3 mr-3 mb-3 rounded leading-normal text-gray-500 bg-gray-100 dark:text-gray-300 dark:bg-gray-700">
-                                    <span class="text-sm font-medium whitespace-nowrap uppercase">{{tag.title}}</span>
+                                <div class="flex items-center justify-center px-3 m-1.5 rounded leading-8 text-gray-500 bg-gray-100 dark:text-gray-300 dark:bg-gray-700">
+                                    <span class="text-md font-medium whitespace-nowrap">{{tag.title}}</span>
                                 </div>
                             </ng-container>
                         </ng-container>
                         <!-- Tags panel and its button -->
                         <div
-                            class="flex items-center justify-center py-1 pr-3 pl-2 mr-3 mb-3 rounded cursor-pointer text-gray-500 bg-gray-100 dark:text-gray-300 dark:bg-gray-700"
+                            class="flex items-center justify-center px-3 m-1.5 rounded leading-8 cursor-pointer text-gray-500 bg-gray-100 dark:text-gray-300 dark:bg-gray-700"
                             (click)="openTagsPanel()"
                             #tagsPanelOrigin>
 
                             <ng-container *ngIf="contact.tags.length">
                                 <mat-icon
-                                    class="icon-size-4"
+                                    class="icon-size-5"
                                     [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
-                                <span class="ml-2 text-sm font-medium whitespace-nowrap">Edit Tags</span>
+                                <span class="ml-1.5 text-md font-medium whitespace-nowrap">Edit</span>
                             </ng-container>
 
                             <ng-container *ngIf="!contact.tags.length">
                                 <mat-icon
-                                    class="icon-size-4"
+                                    class="icon-size-5"
                                     [svgIcon]="'heroicons_solid:plus-circle'"></mat-icon>
-                                <span class="ml-2 text-sm font-medium whitespace-nowrap">Add Tag</span>
+                                <span class="ml-1.5 text-md font-medium whitespace-nowrap">Add</span>
                             </ng-container>
 
                             <!-- Tags panel -->
@@ -384,7 +384,7 @@
                     </div>
 
                     <!-- Title -->
-                    <div class="mt-4">
+                    <div class="mt-8">
                         <mat-form-field class="treo-mat-no-subscript w-full">
                             <mat-label>Title</mat-label>
                             <mat-icon
