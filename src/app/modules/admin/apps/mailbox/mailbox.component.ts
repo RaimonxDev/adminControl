@@ -40,15 +40,15 @@ export class MailboxComponent implements OnInit, OnDestroy
             .subscribe(({matchingAliases}) => {
 
                 // Set the drawerMode and drawerOpened if the given breakpoint is active
-                if ( matchingAliases.includes('xs') )
-                {
-                    this.drawerMode = 'over';
-                    this.drawerOpened = false;
-                }
-                else
+                if ( matchingAliases.includes('md') )
                 {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
                 }
             });
     }

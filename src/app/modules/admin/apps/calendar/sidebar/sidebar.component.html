@@ -54,15 +54,11 @@
                         [placeholder]="'Title'"
                         required>
                     <mat-select
-                        class="calendar-color-selector"
                         [(value)]="calendar.color"
-                        [panelClass]="'calendar-sidebar-calendar-edit-panel-color-select-panel'"
                         [disableOptionCentering]="true"
                         matPrefix>
                         <mat-select-trigger class="h-6">
-                            <mat-icon
-                                [ngClass]="'text-' + calendar.color"
-                                [svgIcon]="'heroicons_outline:color-swatch'"></mat-icon>
+                            <mat-icon [svgIcon]="'heroicons_outline:color-swatch'"></mat-icon>
                         </mat-select-trigger>
                         <div class="px-4 pt-5 text-xl font-semibold">Calendar color</div>
                         <div class="flex flex-wrap w-48 my-4 mx-3 -mr-5">

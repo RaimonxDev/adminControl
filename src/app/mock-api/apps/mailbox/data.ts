@@ -6,31 +6,31 @@ export const folders = [
         id   : '7c004a19-4506-48ef-93ab-f16381302e3b',
         title: 'Inbox',
         slug : 'inbox',
-        icon : 'inbox'
+        icon : 'heroicons_outline:inbox'
     },
     {
         id   : '1ee2ea29-9a1f-4c27-b4d2-5e465703b6a0',
         title: 'Sent',
         slug : 'sent',
-        icon : 'send'
+        icon : 'heroicons_outline:paper-airplane'
     },
     {
         id   : 'fbdc8e79-a0c4-4a27-bc98-9c81ee7a86e5',
         title: 'Drafts',
         slug : 'drafts',
-        icon : 'drafts'
+        icon : 'heroicons_outline:document'
     },
     {
         id   : '0197c436-2ef3-424d-b546-8b7f49186e15',
         title: 'Spam',
         slug : 'spam',
-        icon : 'error'
+        icon : 'heroicons_outline:exclamation'
     },
     {
         id   : '2fa74637-d362-4fd2-9a88-f7195a88bdde',
         title: 'Trash',
         slug : 'trash',
-        icon : 'delete'
+        icon : 'heroicons_outline:trash'
     }
 ];
 export const filters = [
@@ -38,13 +38,13 @@ export const filters = [
         id   : 'de1b41f6-6839-4f1b-9d2c-07e55f6f8f82',
         title: 'Starred',
         slug : 'starred',
-        icon : 'star'
+        icon : 'heroicons_outline:star'
     },
     {
         id   : '71bba1ec-a90e-4a71-9932-4bab0a99aa1c',
         title: 'Important',
         slug : 'important',
-        icon : 'label_important'
+        icon : 'heroicons_outline:exclamation-circle'
     }
 ];
 export const labels = [

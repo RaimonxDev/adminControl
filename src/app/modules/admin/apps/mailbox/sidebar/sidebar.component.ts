@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { TreoNavigationItem, TreoNavigationService } from '@treo/components/navigation';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
+import { labelColorDefs } from 'app/modules/admin/apps/mailbox/mailbox.constants';
 import { MailFilter, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Component({
@@ -102,9 +103,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     openComposeDialog(): void
     {
         // Open the dialog
-        const dialogRef = this._matDialog.open(MailboxComposeComponent, {
-            panelClass: 'mailbox-compose-dialog'
-        });
+        const dialogRef = this._matDialog.open(MailboxComposeComponent);
 
         dialogRef.afterClosed()
                  .subscribe(result => {
@@ -200,9 +199,9 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
                 id     : label.id,
                 title  : label.title,
                 type   : 'basic',
-                icon   : 'label',
+                icon   : 'heroicons_outline:tag',
                 classes: {
-                    icon: 'text-' + label.color
+                    icon: labelColorDefs[label.color].text
                 },
                 link   : '/apps/mailbox/label/' + label.slug
             });
@@ -223,7 +222,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         this._otherMenuData.push({
             title: 'Settings',
             type : 'basic',
-            icon : 'settings',
+            icon : 'heroicons_outline:cog',
             link : '/apps/mailbox/settings'
         });
 
