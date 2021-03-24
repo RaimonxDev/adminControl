@@ -12,8 +12,8 @@ const utilities = plugin(({
     addComponents(
         {
             '.mat-icon'       : {
-                '--tw-text-opacity': '1 !important',
-                color              : 'rgba(var(--treo-mat-icon-rgb), var(--tw-text-opacity)) !important'
+                '--tw-text-opacity': '1',
+                color              : 'rgba(var(--treo-mat-icon-rgb), var(--tw-text-opacity))'
             },
             '.text-default'   : {
                 '--tw-text-opacity': '1 !important',

@@ -216,14 +216,14 @@ treo-vertical-navigation {
                         @apply bg-gray-200;
 
                         .dark & {
-                            background-color: rgba(255, 255, 255, 0.12) !important;
+                            background-color: rgba(255, 255, 255, 0.12);
                         }
 
                         .treo-vertical-navigation-item-icon {
-                            @apply text-gray-500 #{'!important'};
+                            @apply text-gray-500;
 
                             .dark & {
-                                @apply text-gray-100 #{'!important'};
+                                @apply text-gray-100;
                             }
                         }
 
@@ -253,17 +253,17 @@ treo-vertical-navigation {
                     .treo-vertical-navigation-item-title,
                     .treo-vertical-navigation-item-subtitle,
                     .treo-vertical-navigation-item-arrow {
-                        @apply text-gray-300 #{'!important'};
+                        @apply text-gray-300;
 
                         .dark & {
-                            @apply text-gray-600 #{'!important'};
+                            @apply text-gray-600;
                         }
                     }
                 }
 
                 .treo-vertical-navigation-item-icon {
                     margin-right: 16px;
-                    @apply text-gray-400 #{'!important'};
+                    @apply text-gray-400;
                 }
 
                 .treo-vertical-navigation-item-title-wrapper {
@@ -317,34 +317,34 @@ treo-vertical-navigation {
                 &:not(.treo-vertical-navigation-item-active-forced):not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
 
                     &:hover {
-                        @apply bg-gray-100 #{'!important'};
+                        @apply bg-gray-100;
 
                         .dark & {
-                            background-color: rgba(255, 255, 255, 0.12) !important;
+                            background-color: rgba(255, 255, 255, 0.12);
                         }
 
                         .treo-vertical-navigation-item-icon {
-                            @apply text-gray-500 #{'!important'};
+                            @apply text-gray-500;
 
                             .dark & {
-                                @apply text-gray-100 #{'!important'};
+                                @apply text-gray-100;
                             }
                         }
 
                         .treo-vertical-navigation-item-title,
                         .treo-vertical-navigation-item-arrow {
-                            @apply text-gray-900 #{'!important'};
+                            @apply text-gray-900;
 
                             .dark & {
-                                @apply text-gray-50 #{'!important'};
+                                @apply text-gray-50;
                             }
                         }
 
                         .treo-vertical-navigation-item-subtitle {
-                            @apply text-gray-700 #{'!important'};
+                            @apply text-gray-700;
 
                             .dark & {
-                                @apply text-gray-300 #{'!important'};
+                                @apply text-gray-300;
                             }
                         }
                     }
@@ -398,10 +398,10 @@ treo-vertical-navigation {
                 .treo-vertical-navigation-item {
 
                     .treo-vertical-navigation-item-icon {
-                        @apply text-gray-500 #{'!important'};
+                        @apply text-gray-500;
 
                         .dark & {
-                            @apply text-gray-100 #{'!important'};
+                            @apply text-gray-100;
                         }
                     }
 
@@ -411,18 +411,18 @@ treo-vertical-navigation {
 
                     .treo-vertical-navigation-item-title,
                     .treo-vertical-navigation-item-arrow {
-                        @apply text-gray-900 #{'!important'};
+                        @apply text-gray-900;
 
                         .dark & {
-                            @apply text-gray-50 #{'!important'};
+                            @apply text-gray-50;
                         }
                     }
 
                     .treo-vertical-navigation-item-subtitle {
-                        @apply text-gray-700 #{'!important'};
+                        @apply text-gray-700;
 
                         .dark & {
-                            @apply text-gray-300 #{'!important'};
+                            @apply text-gray-300;
                         }
                     }
                 }
@@ -499,7 +499,7 @@ treo-vertical-navigation {
             .treo-vertical-navigation-item {
 
                 .treo-vertical-navigation-item-icon {
-                    @apply text-gray-400 #{'!important'};
+                    @apply text-gray-400;
                 }
 
                 .treo-vertical-navigation-item-badge,
@@ -507,20 +507,23 @@ treo-vertical-navigation {
                     display: none !important;
                 }
 
-                .treo-vertical-navigation-item-title {
-                    font-size: 12px;
-                    font-weight: 600;
-                    letter-spacing: 0.05em;
-                    text-transform: uppercase;
-                    @apply text-primary-600 #{'!important'};
+                .treo-vertical-navigation-item-title-wrapper {
 
-                    .dark & {
-                        @apply text-primary-400 #{'!important'};
+                    .treo-vertical-navigation-item-title {
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.05em;
+                        text-transform: uppercase;
+                        @apply text-primary-600;
+
+                        .dark & {
+                            @apply text-primary-400;
+                        }
                     }
-                }
 
-                .treo-vertical-navigation-item-subtitle {
-                    @apply text-gray-500 #{'!important'};
+                    .treo-vertical-navigation-item-subtitle {
+                        @apply text-gray-500;
+                    }
                 }
             }
         }
@@ -575,11 +578,11 @@ treo-vertical-navigation {
                     .treo-vertical-navigation-item-title-wrapper {
 
                         .treo-vertical-navigation-item-title {
-                            @apply text-gray-300 #{'!important'};
+                            @apply text-gray-300;
                         }
 
                         .treo-vertical-navigation-item-subtitle {
-                            @apply text-gray-400 #{'!important'};
+                            @apply text-gray-400;
                         }
                     }
 
@@ -588,20 +591,20 @@ treo-vertical-navigation {
 
                         &.treo-vertical-navigation-item-active,
                         &.treo-vertical-navigation-item-active-forced {
-                            background-color: rgba(255, 255, 255, 0.12) !important;
+                            background-color: rgba(255, 255, 255, 0.12);
 
                             .treo-vertical-navigation-item-icon {
-                                @apply text-gray-100 #{'!important'};
+                                @apply text-gray-100;
                             }
 
                             .treo-vertical-navigation-item-title-wrapper {
 
                                 .treo-vertical-navigation-item-title {
-                                    @apply text-gray-50 #{'!important'};
+                                    @apply text-gray-50;
                                 }
 
                                 .treo-vertical-navigation-item-subtitle {
-                                    @apply text-gray-300 #{'!important'};
+                                    @apply text-gray-300;
                                 }
                             }
                         }
@@ -614,7 +617,7 @@ treo-vertical-navigation {
                         .treo-vertical-navigation-item-title,
                         .treo-vertical-navigation-item-subtitle,
                         .treo-vertical-navigation-item-arrow {
-                            @apply text-gray-600 #{'!important'};
+                            @apply text-gray-600;
                         }
                     }
                 }
@@ -634,25 +637,25 @@ treo-vertical-navigation {
                     &:not(.treo-vertical-navigation-item-active-forced):not(.treo-vertical-navigation-item-active):not(.treo-vertical-navigation-item-disabled) {
 
                         &:hover {
-                            background-color: rgba(255, 255, 255, 0.06) !important;
+                            background-color: rgba(255, 255, 255, 0.06);
 
                             .treo-vertical-navigation-item-icon {
-                                @apply text-gray-100 #{'!important'};
+                                @apply text-gray-100;
                             }
 
                             .treo-vertical-navigation-item-title-wrapper {
 
                                 .treo-vertical-navigation-item-title {
-                                    @apply text-gray-50 #{'!important'};
+                                    @apply text-gray-50;
                                 }
 
                                 .treo-vertical-navigation-item-subtitle {
-                                    @apply text-gray-300 #{'!important'};
+                                    @apply text-gray-300;
                                 }
                             }
 
                             .treo-vertical-navigation-item-arrow {
-                                @apply text-gray-50 #{'!important'};
+                                @apply text-gray-50;
                             }
                         }
                     }
@@ -670,22 +673,22 @@ treo-vertical-navigation {
                     .treo-vertical-navigation-item {
 
                         .treo-vertical-navigation-item-icon {
-                            @apply text-gray-100 #{'!important'};
+                            @apply text-gray-100;
                         }
 
                         .treo-vertical-navigation-item-title-wrapper {
 
                             .treo-vertical-navigation-item-title {
-                                @apply text-gray-50 #{'!important'};
+                                @apply text-gray-50;
                             }
 
                             .treo-vertical-navigation-item-subtitle {
-                                @apply text-gray-300 #{'!important'};
+                                @apply text-gray-300;
                             }
                         }
 
                         .treo-vertical-navigation-item-arrow {
-                            @apply text-gray-50 #{'!important'};
+                            @apply text-gray-50;
                         }
                     }
                 }
@@ -702,7 +705,7 @@ treo-vertical-navigation {
                     .treo-vertical-navigation-item-title-wrapper {
 
                         .treo-vertical-navigation-item-title {
-                            @apply text-primary-400 #{'!important'};
+                            @apply text-primary-400;
                         }
                     }
                 }
