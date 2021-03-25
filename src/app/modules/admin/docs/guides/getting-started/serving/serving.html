@@ -26,8 +26,9 @@
             <p>
                 After the installation process finishes, run the following command while still in your workspace directory:
             </p>
-            <textarea treo-highlight
-                      lang="bash">
+            <textarea
+                treo-highlight
+                lang="bash">
                 ng serve --open
             </textarea>
             <p>
@@ -38,16 +39,18 @@
             </p>
 
             <h2>Alternate commands</h2>
-            <textarea treo-highlight
-                      lang="bash">
+            <textarea
+                treo-highlight
+                lang="bash">
                 npm start
             </textarea>
             <p class="mb-12">
                 Alias for <code>ng serve --open</code>.
             </p>
 
-            <textarea treo-highlight
-                      lang="bash">
+            <textarea
+                treo-highlight
+                lang="bash">
                 npm run start:mem
             </textarea>
             <p>
@@ -58,8 +61,9 @@
                 If you are getting error messages that includes keywords like <strong>HEAP</strong>, <strong>JS stack tree</strong>, <strong>out of memory</strong> while trying to
                 run <code>ng serve --open</code> or <code>npm start</code> commands, try this one.
             </p>
-            <treo-alert appearance="outline"
-                        type="warning">
+            <treo-alert
+                appearance="outline"
+                type="warning">
                 <span treoMessageTitle>
                     This solution is just a temporary workaround!
                 </span>
@@ -70,9 +74,10 @@
             <div class="flex items-center xs:flex-col xs:items-stretch w-full mt-16">
 
                 <!-- Prev -->
-                <a class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
-                   [routerLink]="['../installation']">
-                    <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+                <a
+                    class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
+                    [routerLink]="['../installation']">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon>
                     <div>
                         <div class="text-md text-secondary text-right">Previous</div>
                         <div class="mt-1 text-lg font-medium">Installation</div>
@@ -80,13 +85,14 @@
                 </a>
 
                 <!-- Next -->
-                <a class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
-                   [routerLink]="['../../development/directory-structure']">
+                <a
+                    class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
+                    [routerLink]="['../../development/directory-structure']">
                     <div>
                         <div class="text-md text-secondary">Next</div>
                         <div class="mt-1 text-lg font-medium">Directory Structure</div>
                     </div>
-                    <mat-icon [svgIcon]="'arrow_forward'"></mat-icon>
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-right'"></mat-icon>
                 </a>
 
             </div>

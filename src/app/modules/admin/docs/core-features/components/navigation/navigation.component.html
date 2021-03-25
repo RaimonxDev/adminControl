@@ -39,15 +39,17 @@
                 <strong>Exported as: </strong><code>treoVerticalNavigation</code> and <code>treoHorizontalNavigation</code>
             </p>
 
-            <treo-alert appearance="outline"
-                        type="info">
+            <treo-alert
+                appearance="outline"
+                type="info">
                 <strong>treo-navigation</strong> designed to work with data and it must be supplied in certain format. If you want to create a navigation from an HTML structure,
                 this component is not for you.
             </treo-alert>
 
             <h2>Module</h2>
-            <textarea treo-highlight
-                      lang="typescript">
+            <textarea
+                treo-highlight
+                lang="typescript">
                 import { TreoVerticalNavigationModule } from '@treo/components/navigation';
                 import { TreoHorizontalNavigationModule } from '@treo/components/navigation';
             </textarea>
@@ -273,8 +275,9 @@
             <p>
                 Here's the basic usage of the <code>treo-vertical-navigation</code>:
             </p>
-            <textarea treo-highlight
-                      lang="html">
+            <textarea
+                treo-highlight
+                lang="html">
                 <treo-vertical-navigation [appearance]="'classic'"
                 [autoCollapse]="true"
                 [inner]="false"
@@ -510,8 +513,9 @@
                     </tbody>
                 </table>
             </div>
-            <textarea treo-highlight
-                      lang="html">
+            <textarea
+                treo-highlight
+                lang="html">
                 <!-- Navigation -->
                 <treo-vertical-navigation>
 
@@ -535,16 +539,19 @@
             </textarea>
 
             <h3>Type aliases</h3>
-            <textarea treo-highlight
-                      lang="typescript">
+            <textarea
+                treo-highlight
+                lang="typescript">
                 export type TreoVerticalNavigationAppearance = string;
             </textarea>
-            <textarea treo-highlight
-                      lang="typescript">
+            <textarea
+                treo-highlight
+                lang="typescript">
                 export type TreoVerticalNavigationMode = 'over' | 'side';
             </textarea>
-            <textarea treo-highlight
-                      lang="typescript">
+            <textarea
+                treo-highlight
+                lang="typescript">
                 export type TreoVerticalNavigationPosition = 'left' | 'right';
             </textarea>
 
@@ -553,8 +560,9 @@
             <p>
                 Here's the basic usage of the <code>treo-horizontal-navigation</code>:
             </p>
-            <textarea treo-highlight
-                      lang="html">
+            <textarea
+                treo-highlight
+                lang="html">
                 <treo-horizontal-navigation [name]="'topNavigation'"
                 [navigation]="navigationData">
                 </treo-horizontal-navigation>
@@ -617,9 +625,10 @@
 
                         <ng-template matTabContent>
 
-                            <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="getNavItem('guides.changelog', 'mainNavigation');">
+                            <button
+                                mat-flat-button
+                                [color]="'primary'"
+                                (click)="getNavItem('guides.changelog', 'mainNavigation');">
                                 Get the Changelog item (See browser console)
                             </button>
 
@@ -629,8 +638,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <button mat-flat-button
                             [color]="'primary'"
@@ -698,9 +708,10 @@
 
                         <ng-template matTabContent>
 
-                            <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="updateBadgeTitle('guides.changelog', 'mainNavigation', '9.9.99');">
+                            <button
+                                mat-flat-button
+                                [color]="'primary'"
+                                (click)="updateBadgeTitle('guides.changelog', 'mainNavigation', '9.9.99');">
                                 Update the 'Changelog' badge title
                             </button>
 
@@ -710,8 +721,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <button mat-flat-button
                             [color]="'primary'"
@@ -774,9 +786,10 @@
 
                         <ng-template matTabContent>
 
-                            <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="toggleDisabled('guides.changelog', 'mainNavigation');">
+                            <button
+                                mat-flat-button
+                                [color]="'primary'"
+                                (click)="toggleDisabled('guides.changelog', 'mainNavigation');">
                                 Toggle the disabled status of 'Changelog' item
                             </button>
 
@@ -786,8 +799,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <button mat-flat-button
                             [color]="'primary'"
@@ -856,14 +870,16 @@
 
                         <ng-template matTabContent>
 
-                            <treo-alert appearance="outline"
-                                        type="info">
+                            <treo-alert
+                                appearance="outline"
+                                type="info">
                                 Reload the page to load the default navigation!
                             </treo-alert>
-                            <button class="mt-4"
-                                    mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="swapNavigationData('mainNavigation');">
+                            <button
+                                class="mt-4"
+                                mat-flat-button
+                                [color]="'primary'"
+                                (click)="swapNavigationData('mainNavigation');">
                                 Swap the entire navigation data
                             </button>
 
@@ -873,8 +889,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <button mat-flat-button
                             [color]="'primary'"

@@ -50,8 +50,9 @@
                 You can change the inline styles to modify the look of the splash screen and put anything you want into the <code>treo-splash-screen</code> element to show on the
                 page.
             </p>
-            <treo-alert appearance="outline"
-                        type="info">
+            <treo-alert
+                appearance="outline"
+                type="info">
                 Please note, you cannot run Angular components in here. Basically, by the time you can run Angular components, you won't be needing the
                 <strong>splash screen</strong> because everything would already be loaded!
             </treo-alert>
@@ -64,9 +65,10 @@
             <div class="flex items-center xs:flex-col xs:items-stretch w-full mt-16">
 
                 <!-- Prev -->
-                <a class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
-                   [routerLink]="['../theming']">
-                    <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+                <a
+                    class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
+                    [routerLink]="['../theming']">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon>
                     <div>
                         <div class="text-md text-secondary text-right">Previous</div>
                         <div class="mt-1 text-lg font-medium">Theming</div>
@@ -74,13 +76,14 @@
                 </a>
 
                 <!-- Next -->
-                <a class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
-                   [routerLink]="['../../authentication/jwt']">
+                <a
+                    class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
+                    [routerLink]="['../../authentication/jwt']">
                     <div>
                         <div class="text-md text-secondary">Next</div>
                         <div class="mt-1 text-lg font-medium">JWT</div>
                     </div>
-                    <mat-icon [svgIcon]="'arrow_forward'"></mat-icon>
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-right'"></mat-icon>
                 </a>
 
             </div>

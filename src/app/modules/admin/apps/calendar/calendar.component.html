@@ -23,7 +23,7 @@
                     <button
                         mat-icon-button
                         (click)="toggleDrawer()">
-                        <mat-icon [svgIcon]="'menu'"></mat-icon>
+                        <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
                     </button>
 
                     <div class="ml-4 text-2xl font-semibold tracking-tight whitespace-nowrap">
@@ -34,20 +34,24 @@
                         class="ml-5"
                         mat-icon-button
                         (click)="previous()">
-                        <mat-icon [svgIcon]="'chevron_left'"></mat-icon>
+                        <mat-icon
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:chevron-left'"></mat-icon>
                     </button>
 
                     <button
                         mat-icon-button
                         (click)="next()">
-                        <mat-icon [svgIcon]="'chevron_right'"></mat-icon>
+                        <mat-icon
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
                     </button>
 
                     <button
                         class="hidden md:inline-flex"
                         mat-icon-button
                         (click)="today()">
-                        <mat-icon [svgIcon]="'today'"></mat-icon>
+                        <mat-icon [svgIcon]="'heroicons_outline:calendar'"></mat-icon>
                     </button>
 
                     <div class="hidden md:block ml-auto">
@@ -70,19 +74,19 @@
                             class=""
                             [matMenuTriggerFor]="actionsMenu"
                             mat-icon-button>
-                            <mat-icon [svgIcon]="'more_vert'"></mat-icon>
+                            <mat-icon [svgIcon]="'heroicons_outline:dots-vertical'"></mat-icon>
 
                             <mat-menu #actionsMenu="matMenu">
                                 <button
                                     mat-menu-item
                                     (click)="today()">
-                                    <mat-icon [svgIcon]="'today'"></mat-icon>
+                                    <mat-icon [svgIcon]="'heroicons_outline:calendar'"></mat-icon>
                                     <span>Go to today</span>
                                 </button>
                                 <button
                                     [matMenuTriggerFor]="actionsViewsMenu"
                                     mat-menu-item>
-                                    <mat-icon [svgIcon]="'tune'"></mat-icon>
+                                    <mat-icon [svgIcon]="'heroicons_outline:view-grid'"></mat-icon>
                                     <span>View</span>
                                 </button>
                             </mat-menu>
@@ -92,28 +96,24 @@
                                     mat-menu-item
                                     [disabled]="view === 'dayGridMonth'"
                                     (click)="changeView('dayGridMonth')">
-                                    <mat-icon [svgIcon]="'view_comfy'"></mat-icon>
                                     <span>Month</span>
                                 </button>
                                 <button
                                     mat-menu-item
                                     [disabled]="view === 'timeGridWeek'"
                                     (click)="changeView('timeGridWeek')">
-                                    <mat-icon [svgIcon]="'view_week'"></mat-icon>
                                     <span>Week</span>
                                 </button>
                                 <button
                                     mat-menu-item
                                     [disabled]="view === 'timeGridDay'"
                                     (click)="changeView('timeGridDay')">
-                                    <mat-icon [svgIcon]="'view_day'"></mat-icon>
                                     <span>Day</span>
                                 </button>
                                 <button
                                     mat-menu-item
                                     [disabled]="view === 'listYear'"
                                     (click)="changeView('listYear')">
-                                    <mat-icon [svgIcon]="'view_agenda'"></mat-icon>
                                     <span>Schedule</span>
                                 </button>
                             </mat-menu>
@@ -337,7 +337,7 @@
                             <div class="flex items-start mt-6">
                                 <mat-icon
                                     class="hidden sm:inline-flex mr-6 mt-3"
-                                    [svgIcon]="'notes'"></mat-icon>
+                                    [svgIcon]="'heroicons_outline:menu-alt-2'"></mat-icon>
                                 <mat-form-field class="treo-mat-textarea treo-mat-no-subscript flex-auto">
                                     <textarea
                                         matInput

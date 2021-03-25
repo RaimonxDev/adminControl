@@ -24,9 +24,13 @@
         <div class="rich-text max-w-3xl">
 
             <p>
-                Since Treo uses <em>Angular Material</em> as its primary UI library, it also uses the <a href="https://material.angular.io/guide/theming-your-components"
-                                                                                                         rel="noreferrer"
-                                                                                                         target="_blank">Angular Material Theming</a> with some modifications
+                Since Treo uses <em>Angular Material</em> as its primary UI library, it also uses the
+                <a
+                    href="https://material.angular.io/guide/theming-your-components"
+                    rel="noreferrer"
+                    target="_blank">Angular Material Theming
+                </a>
+                with some modifications
                 on top of it. There are two color themes for Treo; <b>dark</b> and <b>light</b>. These themes can be found within the <code>src/styles/themes.scss</code> file:
             </p>
             <!-- @formatter:off -->
@@ -63,8 +67,9 @@
                 The <code>treo-theme-dark</code> and <code>treo-theme-light</code> values are going to be converted into class names and added to the <strong>body</strong> element
                 depending on the selected theme which will apply the theme to the entire app:
             </p>
-            <textarea treo-highlight
-                      lang="html">
+            <textarea
+                treo-highlight
+                lang="html">
                 <body class="treo-theme-light ...">
             </textarea>
             <p>
@@ -127,9 +132,10 @@
             <div class="flex items-center xs:flex-col xs:items-stretch w-full mt-16">
 
                 <!-- Prev -->
-                <a class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
-                   [routerLink]="['../tailwindcss']">
-                    <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+                <a
+                    class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
+                    [routerLink]="['../tailwindcss']">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon>
                     <div>
                         <div class="text-md text-secondary text-right">Previous</div>
                         <div class="mt-1 text-lg font-medium">TailwindCSS</div>
@@ -137,13 +143,14 @@
                 </a>
 
                 <!-- Next -->
-                <a class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
-                   [routerLink]="['../splash-screen']">
+                <a
+                    class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
+                    [routerLink]="['../splash-screen']">
                     <div>
                         <div class="text-md text-secondary">Next</div>
                         <div class="mt-1 text-lg font-medium">Splash Screen</div>
                     </div>
-                    <mat-icon [svgIcon]="'arrow_forward'"></mat-icon>
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-right'"></mat-icon>
                 </a>
 
             </div>

@@ -56,9 +56,10 @@
             <div class="flex items-center xs:flex-col xs:items-stretch w-full mt-16">
 
                 <!-- Prev -->
-                <a class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
-                   [routerLink]="['../theme-layouts']">
-                    <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+                <a
+                    class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
+                    [routerLink]="['../theme-layouts']">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon>
                     <div>
                         <div class="text-md text-secondary text-right">Previous</div>
                         <div class="mt-1 text-lg font-medium">Theme Layouts</div>
@@ -66,13 +67,14 @@
                 </a>
 
                 <!-- Next -->
-                <a class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
-                   [routerLink]="['../tailwindcss']">
+                <a
+                    class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
+                    [routerLink]="['../tailwindcss']">
                     <div>
                         <div class="text-md text-secondary">Next</div>
                         <div class="mt-1 text-lg font-medium">TailwindCSS</div>
                     </div>
-                    <mat-icon [svgIcon]="'arrow_forward'"></mat-icon>
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-right'"></mat-icon>
                 </a>
 
             </div>

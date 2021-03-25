@@ -70,8 +70,9 @@
             <p>
                 If you modify the Tailwind configuration file, you have to run the
             </p>
-            <textarea treo-highlight
-                      lang="bash">
+            <textarea
+                treo-highlight
+                lang="bash">
                 npm run tw
             </textarea>
             <p>
@@ -82,19 +83,22 @@
             <h2>Official docs</h2>
             <p>
                 Official Tailwind CSS documentation:
-                <a class="link"
-                   href="https://tailwindcss.com/"
-                   rel="noreferrer"
-                   target="_blank">https://tailwindcss.com/</a>
+                <a
+                    class="link"
+                    href="https://tailwindcss.com/"
+                    rel="noreferrer"
+                    target="_blank">https://tailwindcss.com/
+                </a>
             </p>
 
             <!-- Nav -->
             <div class="flex items-center xs:flex-col xs:items-stretch w-full mt-16">
 
                 <!-- Prev -->
-                <a class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
-                   [routerLink]="['../page-layouts']">
-                    <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+                <a
+                    class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
+                    [routerLink]="['../page-layouts']">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon>
                     <div>
                         <div class="text-md text-secondary text-right">Previous</div>
                         <div class="mt-1 text-lg font-medium">Page Layouts</div>
@@ -102,13 +106,14 @@
                 </a>
 
                 <!-- Next -->
-                <a class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
-                   [routerLink]="['../theming']">
+                <a
+                    class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
+                    [routerLink]="['../theming']">
                     <div>
                         <div class="text-md text-secondary">Next</div>
                         <div class="mt-1 text-lg font-medium">Theming</div>
                     </div>
-                    <mat-icon [svgIcon]="'arrow_forward'"></mat-icon>
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-right'"></mat-icon>
                 </a>
 
             </div>

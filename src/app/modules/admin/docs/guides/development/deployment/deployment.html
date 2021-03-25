@@ -30,22 +30,25 @@
             <p>
                 To build your application for production, run the following command:
             </p>
-            <textarea treo-highlight
-                      lang="bash">
+            <textarea
+                treo-highlight
+                lang="bash">
                 ng build --prod
             </textarea>
 
             <h2>Alternate commands</h2>
-            <textarea treo-highlight
-                      lang="bash">
+            <textarea
+                treo-highlight
+                lang="bash">
                 npm run build:prod
             </textarea>
             <p class="mb-12">
                 Alias for <code>ng build --prod</code>.
             </p>
 
-            <textarea treo-highlight
-                      lang="bash">
+            <textarea
+                treo-highlight
+                lang="bash">
                 npm run build:prod:mem
             </textarea>
             <p>
@@ -56,8 +59,9 @@
                 If you are getting error messages that includes keywords like <strong>HEAP</strong>, <strong>JS stack tree</strong>, <strong>out of memory</strong> while trying to
                 run <code>ng build --prod</code> or <code>npm run build:prod</code> commands, try this one.
             </p>
-            <treo-alert appearance="outline"
-                        type="warning">
+            <treo-alert
+                appearance="outline"
+                type="warning">
                 <span treoMessageTitle>
                     This solution is just a temporary workaround!
                 </span>
@@ -68,9 +72,10 @@
             <div class="flex items-center xs:flex-col xs:items-stretch w-full mt-16">
 
                 <!-- Prev -->
-                <a class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
-                   [routerLink]="['../starter-kit']">
-                    <mat-icon [svgIcon]="'arrow_back'"></mat-icon>
+                <a
+                    class="bg-card flex items-center justify-between flex-1 mr-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:mr-0 xs:mt-4 xs:order-2"
+                    [routerLink]="['../starter-kit']">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon>
                     <div>
                         <div class="text-md text-secondary text-right">Previous</div>
                         <div class="mt-1 text-lg font-medium">Starter Kit</div>
@@ -78,13 +83,14 @@
                 </a>
 
                 <!-- Next -->
-                <a class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
-                   [routerLink]="['../updating']">
+                <a
+                    class="bg-card flex items-center justify-between flex-1 ml-4 px-6 py-4 rounded no-underline transition-shadow ease-in-out duration-150 shadow gt-xs:hover:shadow-lg xs:ml-0 xs:order-1"
+                    [routerLink]="['../updating']">
                     <div>
                         <div class="text-md text-secondary">Next</div>
                         <div class="mt-1 text-lg font-medium">Updating</div>
                     </div>
-                    <mat-icon [svgIcon]="'arrow_forward'"></mat-icon>
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-right'"></mat-icon>
                 </a>
 
             </div>

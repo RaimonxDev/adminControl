@@ -28,8 +28,9 @@
                 <strong>mat-drawer</strong> component is that the <strong>treo-drawer</strong> can be placed anywhere on the DOM and it doesn't have to wrap the content like
                 <strong>mat-drawer</strong>.
             </p>
-            <treo-alert appearance="outline"
-                        type="info">
+            <treo-alert
+                appearance="outline"
+                type="info">
                 Since <strong>treo-drawer</strong> works with <em>absolute</em> positioning by default, the parent of the drawer must have <br>
                 <code>position: relative</code> and <code>overflow-x: hidden</code> properties otherwise the drawer won't be able to work correctly.
             </treo-alert>
@@ -38,8 +39,9 @@
             </p>
 
             <h2>Module</h2>
-            <textarea treo-highlight
-                      lang="typescript">
+            <textarea
+                treo-highlight
+                lang="typescript">
                 import { TreoDrawerModule } from '@treo/components/drawer';
             </textarea>
 
@@ -47,8 +49,9 @@
             <p>
                 Here's the basic usage of the <code>treo-drawer</code>:
             </p>
-            <textarea treo-highlight
-                      lang="html">
+            <textarea
+                treo-highlight
+                lang="html">
                 <treo-drawer [fixed]="true"
                 [mode]="isScreenSmall ? 'over' : 'side'"
                 [name]="'rightDrawer'"
@@ -184,12 +187,14 @@
             </div>
 
             <h2>Type aliases</h2>
-            <textarea treo-highlight
-                      lang="typescript">
+            <textarea
+                treo-highlight
+                lang="typescript">
                 export type TreoDrawerMode = 'over' | 'side';
             </textarea>
-            <textarea treo-highlight
-                      lang="typescript">
+            <textarea
+                treo-highlight
+                lang="typescript">
                 export type TreoDrawerPosition = 'left' | 'right';
             </textarea>
 
@@ -209,25 +214,28 @@
 
                         <ng-template matTabContent>
 
-                            <button mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="toggleDrawerMode('leftDrawer');">
+                            <button
+                                mat-flat-button
+                                [color]="'primary'"
+                                (click)="toggleDrawerMode('leftDrawer');">
                                 Toggle drawer mode
                             </button>
 
-                            <button class="ml-4"
-                                    mat-flat-button
-                                    [color]="'primary'"
-                                    (click)="toggleDrawerOpen('leftDrawer');">
+                            <button
+                                class="ml-4"
+                                mat-flat-button
+                                [color]="'primary'"
+                                (click)="toggleDrawerOpen('leftDrawer');">
                                 Toggle drawer open
                             </button>
 
                             <div class="relative flex overflow-hidden border mt-8 min-h-80">
 
-                                <treo-drawer [name]="'leftDrawer'"
-                                             [opened]="true"
-                                             [mode]="'side'"
-                                             #drawer>
+                                <treo-drawer
+                                    [name]="'leftDrawer'"
+                                    [opened]="true"
+                                    [mode]="'side'"
+                                    #drawer>
                                     <div class="p-4">
                                         Left drawer
                                         <div>Current mode: {{drawer.mode}}</div>
@@ -246,8 +254,9 @@
 
                     <mat-tab label="HTML">
 
-                        <textarea treo-highlight
-                                  [lang]="'html'">
+                        <textarea
+                            treo-highlight
+                            [lang]="'html'">
 
                             <button mat-flat-button
                             [color]="'primary'"

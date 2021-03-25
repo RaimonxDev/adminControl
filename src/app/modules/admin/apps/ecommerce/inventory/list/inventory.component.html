@@ -16,7 +16,7 @@
             <mat-form-field class="treo-mat-dense treo-mat-no-subscript min-w-50">
                 <mat-icon
                     matPrefix
-                    [svgIcon]="'search'"></mat-icon>
+                    [svgIcon]="'heroicons_outline:search'"></mat-icon>
                 <input
                     matInput
                     [formControl]="searchInputControl"
@@ -183,11 +183,11 @@
                                 <mat-icon
                                     class="text-green-400 icon-size-5"
                                     *ngIf="product.active"
-                                    [svgIcon]="'check'"></mat-icon>
+                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
                                 <mat-icon
                                     class="text-gray-400 icon-size-5"
                                     *ngIf="!product.active"
-                                    [svgIcon]="'close'"></mat-icon>
+                                    [svgIcon]="'heroicons_solid:x'"></mat-icon>
                             </td>
                         </ng-container>
 
@@ -252,8 +252,8 @@
                                                                 mat-icon-button
                                                                 (click)="cycleImages(false)">
                                                                 <mat-icon
-                                                                    class="icon-size-4"
-                                                                    [svgIcon]="'arrow_back'"></mat-icon>
+                                                                    class="icon-size-5"
+                                                                    [svgIcon]="'heroicons_solid:arrow-narrow-left'"></mat-icon>
                                                             </button>
                                                             <span class="font-sm mx-2">
                                                                 {{selectedProductForm.get('currentImageIndex').value + 1}} of {{selectedProductForm.get('images').value.length}}
@@ -262,8 +262,8 @@
                                                                 mat-icon-button
                                                                 (click)="cycleImages(true)">
                                                                 <mat-icon
-                                                                    class="icon-size-4"
-                                                                    [svgIcon]="'arrow_forward'"></mat-icon>
+                                                                    class="icon-size-5"
+                                                                    [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -503,13 +503,13 @@
                                                         <ng-container *ngIf="flashMessage === 'success'">
                                                             <mat-icon
                                                                 class="text-green-500"
-                                                                [svgIcon]="'check'"></mat-icon>
+                                                                [svgIcon]="'heroicons_outline:check'"></mat-icon>
                                                             <span class="ml-2">Product updated</span>
                                                         </ng-container>
                                                         <ng-container *ngIf="flashMessage === 'error'">
                                                             <mat-icon
                                                                 class="text-red-500"
-                                                                [svgIcon]="'remove'"></mat-icon>
+                                                                [svgIcon]="'heroicons_outline:x'"></mat-icon>
                                                             <span class="ml-2">An error occurred, try again!</span>
                                                         </ng-container>
                                                     </div>

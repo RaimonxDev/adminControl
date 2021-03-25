@@ -41,8 +41,9 @@
                 <li>If you want to create a small side project for yourself or for your colleagues/company</li>
                 <li>If you need to present your idea to your client or to your boss without spending many hours and resources</li>
             </ul>
-            <treo-alert appearance="outline"
-                        type="warning">
+            <treo-alert
+                appearance="outline"
+                type="warning">
                 MockAPI is <strong>NOT</strong> a database or a backend replacement! It works on memory. As soon as you reload your app, all the changes you have made using mock
                 API endpoints will go away and replaced with defaults.
             </treo-alert>
@@ -128,9 +129,12 @@
                     <p>
                         The callbacks must return either an array <code>[number, any | string]</code> or an observable that returns the said array. The <code>number</code>
                         represents the
-                        <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes"
-                           rel="noreferrer"
-                           target="_blank">HTTP status code</a> of the response while the <code>any | string</code> represents the actual response.
+                        <a
+                            href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes"
+                            rel="noreferrer"
+                            target="_blank">HTTP status code
+                        </a>
+                        of the response while the <code>any | string</code> represents the actual response.
                     </p>
                 </div>
             </div>
@@ -175,8 +179,9 @@
                 It's pretty easy and straightforward to setup the <strong>MockAPI</strong> module for mocking API endpoints and their responses. Once you understand the underlying
                 mechanic, you will be able to mock API endpoints in no time.
             </p>
-            <treo-alert appearance="outline"
-                        type="info">
+            <treo-alert
+                appearance="outline"
+                type="info">
                 Please keep in mind that the following step-by-step guide assumes you are doing everything from scratch for the <em>MockAPI</em> like creating directories, adding
                 files, exporting via barrels etc. Majority of these already setup in both Demo and Starter apps for you so it's a bit easier to start working with the
                 <em>MockAPI</em>.
@@ -187,8 +192,9 @@
                 Choose a location to store your mocks. By default the Demo app uses <code>src/app/data/mock/</code> directory. You can use the same directory or choose another one.
                 For this guide, we will assume you are going to use the default directory.
             </p>
-            <treo-alert appearance="outline"
-                        type="info">
+            <treo-alert
+                appearance="outline"
+                type="info">
                 It's important to keep all mock related files in the same directory because we will create a barrel file that exports all the mock classes and provide that to the
                 <code>TreoMockApiModule</code> so it can register and use them.
             </treo-alert>
