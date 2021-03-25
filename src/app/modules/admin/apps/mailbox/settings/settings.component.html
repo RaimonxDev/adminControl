@@ -1,8 +1,20 @@
 <div class="flex flex-col flex-auto overflow-y-auto p-8">
 
-    <!-- Title -->
-    <div class="text-3xl font-extrabold tracking-tight">Manage Labels</div>
-    <div class="text-secondary">Create, update and delete labels</div>
+    <div class="flex items-center">
+        <!-- Sidebar toggle button -->
+        <div class="md:hidden -ml-2 mr-3">
+            <button
+                mat-icon-button
+                (click)="mailboxComponent.drawer.toggle()">
+                <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+            </button>
+        </div>
+        <!-- Title -->
+        <div>
+            <div class="text-3xl font-extrabold tracking-tight">Manage Labels</div>
+            <div class="text-secondary">Create, update and delete labels</div>
+        </div>
+    </div>
 
     <!-- Labels form -->
     <form

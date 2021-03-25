@@ -48,7 +48,7 @@
 <!-- Settings drawer - Remove this to remove the drawer and its button -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
 <div
-    class="fixed flex items-center justify-center right-0 w-12 h-12 shadow-lg rounded-l z-99 cursor-pointer bg-red-600"
+    class="fixed flex items-center justify-center right-0 w-12 h-12 shadow-lg rounded-l z-999 cursor-pointer bg-red-600"
     style="top: 225px"
     (click)="settingsDrawer.toggle()">
     <mat-icon
@@ -66,7 +66,6 @@
     #settingsDrawer>
 
     <div class="flex flex-col w-full overflow-auto bg-gray-100 dark:bg-card">
-
         <div class="flex flex-row items-center px-6 h-20 min-h-20 border-b">
             <mat-icon
                 class="mr-3 text-secondary"

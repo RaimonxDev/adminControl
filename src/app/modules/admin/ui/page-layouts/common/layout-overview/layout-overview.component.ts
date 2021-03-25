@@ -30,12 +30,12 @@ export interface PageLayoutsOverviewData
                     <div class="text-lg md:text-xl text-secondary">{{overview.description}}</div>
                     <div class="mt-6 md:mt-8">
                         <mat-button-toggle-group
-                            class="flex items-center space-x-2 border-0"
+                            class="flex flex-wrap items-center -m-2 border-0"
                             name="options"
                             [(ngModel)]="overview.selectedOption">
                             <mat-button-toggle
                                 *ngFor="let option of overview.availableOptions"
-                                class="px-2 font-medium border-0 rounded-md bg-transparent"
+                                class="m-2 px-2 font-medium border-0 rounded-md bg-transparent"
                                 [ngClass]="{'bg-primary-100 text-primary-700': option.value === overview.selectedOption}"
                                 [value]="option.value"
                                 disableRipple>

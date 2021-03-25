@@ -291,7 +291,7 @@
                         <ng-container *ngIf="task.dueDate">{{task.dueDate | date:'longDate'}}</ng-container>
                         <ng-container *ngIf="!task.dueDate">Not set</ng-container>
                     </span>
-                    <mat-form-field class="invisible absolute inset-0 opacity-0 pointer-events-none">
+                    <mat-form-field class="treo-mat-no-subscript treo-mat-dense invisible absolute inset-0 -mt-2.5 opacity-0 pointer-events-none">
                         <input
                             matInput
                             [formControlName]="'dueDate'"

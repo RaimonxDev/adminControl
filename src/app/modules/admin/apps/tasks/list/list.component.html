@@ -1,7 +1,7 @@
 <div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
 
     <mat-drawer-container
-        class="flex-auto bg-card dark:bg-transparent"
+        class="flex-auto h-full bg-card dark:bg-transparent"
         (backdropClick)="onBackdropClicked()">
 
         <!-- Drawer -->
@@ -21,7 +21,7 @@
             <div class="flex flex-col flex-auto">
 
                 <!-- Header -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between py-8 px-6 sm:px-8 border-b">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b">
                     <!-- Title -->
                     <div>
                         <div class="text-4xl font-extrabold tracking-tight leading-none">Tasks</div>
@@ -65,19 +65,25 @@
                         <!-- Task -->
                         <div
                             [id]="'task-' + task.id"
-                            class="group relative w-full h-16 select-none hover:bg-hover"
+                            class="group w-full h-16 select-none hover:bg-hover"
                             *ngFor="let task of tasks; trackBy: trackByFn"
                             [ngClass]="{'text-lg font-semibold': task.type === 'section',
                                         'text-hint': task.completed}"
-                            cdkDrag>
+                            cdkDrag
+                            [cdkDragLockAxis]="'y'">
 
-                            <!-- Selected indicator -->
-                            <ng-container *ngIf="selectedTask && selectedTask.id === task.id">
-                                <div class="z-10 absolute right-0 flex flex-0 w-1 h-full bg-primary"></div>
-                            </ng-container>
+                            <!-- Drag preview -->
+                            <div
+                                class="flex flex-0 w-0 h-0"
+                                *cdkDragPreview></div>
 
                             <!-- Task content -->
-                            <div class="flex items-center h-full ml-10">
+                            <div class="relative flex items-center h-full pl-10">
+
+                                <!-- Selected indicator -->
+                                <ng-container *ngIf="selectedTask && selectedTask.id === task.id">
+                                    <div class="z-10 absolute right-0 flex flex-0 w-1 h-full bg-primary"></div>
+                                </ng-container>
 
                                 <!-- Drag handle -->
                                 <div

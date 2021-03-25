@@ -377,10 +377,12 @@
 
             <!-- Card #17 -->
             <treo-card class="flex flex-col md:flex-row max-w-80 md:max-w-160 w-full filter-article">
-                <img
-                    class="w-80 md:w-64 object-cover"
-                    src="assets/images/cards/11-512x512.jpg"
-                    alt="Card cover image">
+                <div class="flex-0 w-80 md:w-64">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/11-512x512.jpg"
+                        alt="Card cover image">
+                </div>
                 <div class="flex flex-col flex-auto m-8 mb-4">
                     <div class="text-2xl font-semibold leading-tight">Mountain tops and clear lakes</div>
                     <div class="text-secondary font-medium text-md mt-1">Updated with 20 new locations</div>
@@ -420,10 +422,12 @@
                         </button>
                     </div>
                 </div>
-                <img
-                    class="w-80 md:w-64 order-1 md:order-2 object-cover"
-                    src="assets/images/cards/12-512x512.jpg"
-                    alt="Card cover image">
+                <div class="flex-0 w-80 md:w-64">
+                    <img
+                        class="order-1 md:order-2 w-full h-full object-cover"
+                        src="assets/images/cards/12-512x512.jpg"
+                        alt="Card cover image">
+                </div>
             </treo-card>
 
 
@@ -530,10 +534,12 @@
 
             <!-- Card #21 -->
             <treo-card class="flex flex-col md:flex-row max-w-80 md:max-w-160 w-full filter-listing">
-                <img
-                    class="w-80 md:w-64 object-cover"
-                    src="assets/images/cards/coffee-shop-02-512x512.jpg"
-                    alt="Card cover image">
+                <div class="flex-0 w-80 md:w-64">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/coffee-shop-02-512x512.jpg"
+                        alt="Card cover image">
+                </div>
                 <div class="flex flex-col flex-auto m-8 mb-4">
                     <div class="text-2xl font-semibold leading-tight">Puzzles Coffee Shop</div>
                     <div class="flex items-center leading-none mt-2 -ml-1">
@@ -642,10 +648,12 @@
                         </button>
                     </div>
                 </div>
-                <img
-                    class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg object-cover"
-                    src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                    alt="Card cover image">
+                <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/coffee-shop-03-320x320.jpg"
+                        alt="Card cover image">
+                </div>
             </treo-card>
 
 
@@ -1784,146 +1792,149 @@
 
 
             <!-- Card #48 -->
-            <treo-card class="flex flex-col max-w-100 w-full p-8 filter-pricing">
-                <div class="text-4xl font-bold leading-tight">Personal</div>
-                <div class="text-lg text-secondary mt-2">Perfect for an individual or a small team starting to get bigger</div>
-                <div class="w-8 h-1 my-10 bg-indigo-500 rounded-full"></div>
-                <div class="flex items-baseline leading-tight">
-                    <span class="text-2xl mr-2">USD</span>
-                    <span class="text-6xl font-semibold">$6.00</span>
+            <treo-card class="flex-col w-full max-w-100 p-6 sm:py-12 sm:px-10 filter-pricing">
+                <div class="text-4xl font-bold tracking-tight leading-tight">Personal</div>
+                <div class="mt-2 text-lg font-medium tracking-tight text-secondary">Perfect for an individual or a small team starting to get bigger</div>
+                <div class="w-8 h-1 my-10 rounded bg-accent"></div>
+                <!-- Price -->
+                <div class="flex items-baseline whitespace-nowrap">
+                    <div class="mr-2 text-2xl">USD</div>
+                    <div class="text-6xl font-semibold leading-tight tracking-tight">$6.00</div>
                 </div>
-                <div class="flex flex-col text-secondary mt-2">
-                    <span>billed annually</span>
-                    <span>or <b>$9.00</b> billed monthly</span>
+                <!-- Price details -->
+                <div class="flex flex-col mt-2 text-secondary">
+                    <div>billed monthly</div>
+                    <div><b>$6.00</b> billed yearly</div>
                 </div>
+                <!-- CTA -->
                 <button
-                    class="w-full mt-10 mb-12"
+                    class="treo-mat-button-large mt-10"
                     mat-stroked-button
-                    [color]="'primary'"
-                    [routerLink]="['./']">
+                    [color]="'primary'">
                     Get Started
                 </button>
-                <div class="flex flex-col">
-                    <span class="font-semibold">All core features, including</span>
-                    <div class="flex items-center mt-4">
-                        <mat-icon
-                            class="text-green-600 icon-size-5 mr-2"
-                            [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                        <span><b>10</b> projects</span>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <mat-icon
-                            class="text-green-600 icon-size-5 mr-2"
-                            [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                        <span><b>5GB</b> storage</span>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <mat-icon
-                            class="text-green-600 icon-size-5 mr-2"
-                            [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                        <span>Analytics</span>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <mat-icon
-                            class="text-green-600 icon-size-5 mr-2"
-                            [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                        <span>Free mobile app</span>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <mat-icon
-                            class="text-green-600 icon-size-5 mr-2"
-                            [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                        <span>Access to support forums</span>
+                <!-- Features -->
+                <div class="flex flex-col mt-12">
+                    <div class="font-semibold">Core features, including:</div>
+                    <div class="mt-4 space-y-2">
+                        <div class="flex">
+                            <mat-icon
+                                class="icon-size-5 text-green-600"
+                                [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                            <div class="ml-2 leading-5"><b>10</b> projects</div>
+                        </div>
+                        <div class="flex">
+                            <mat-icon
+                                class="icon-size-5 text-green-600"
+                                [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                            <div class="ml-2 leading-5"><b>5GB</b> storage</div>
+                        </div>
+                        <div class="flex">
+                            <mat-icon
+                                class="icon-size-5 text-green-600"
+                                [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                            <div class="ml-2 leading-5">Analytics</div>
+                        </div>
+                        <div class="flex">
+                            <mat-icon
+                                class="icon-size-5 text-green-600"
+                                [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                            <div class="ml-2 leading-5">Free mobile app</div>
+                        </div>
+                        <div class="flex">
+                            <mat-icon
+                                class="icon-size-5 text-green-600"
+                                [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                            <div class="ml-2 leading-5">Access to forums</div>
+                        </div>
                     </div>
                 </div>
             </treo-card>
 
 
             <!-- Card #49 -->
-            <treo-card class="flex flex-col items-center max-w-80 w-full p-8 filter-pricing">
-                <div class="text-2xl font-bold leading-tight mb-3">PERSONAL</div>
-                <div class="flex items-baseline mb-1">
-                    <span class="text-6xl font-semibold">$6</span>
-                    <span class="text-3xl text-secondary ml-1">/ month</span>
+            <treo-card class="flex-col items-center w-full max-w-80 p-8 sm:py-12 sm:px-10 lg:rounded-none lg:rounded-l text-center filter-pricing">
+                <div class="text-4xl font-bold tracking-tight leading-tight">Personal</div>
+                <!-- Price -->
+                <div class="flex items-baseline mt-8 whitespace-nowrap">
+                    <div class="text-6xl font-semibold leading-tight tracking-tight">$6</div>
+                    <div class="ml-2 text-2xl text-secondary">/ month</div>
                 </div>
-                <div class="flex flex-col items-center text-secondary">
-                    <span>billed annually</span>
-                    <span>or <b>$9.00</b> billed monthly</span>
+                <!-- Price details -->
+                <div class="flex flex-col mt-2 text-secondary">
+                    <div>billed monthly</div>
+                    <div><b>$6.00</b> billed yearly</div>
                 </div>
-                <div class="flex flex-col items-center my-10">
-                    <span class="mt-2"><b>10</b> projects</span>
-                    <span class="mt-2"><b>5GB</b> storage</span>
-                    <span class="mt-2">Analytics</span>
-                    <span class="mt-2">Free mobile app</span>
-                    <span class="mt-2">Access to support forums</span>
+                <!-- Features -->
+                <div class="mt-8 space-y-2">
+                    <div><b>10</b> projects</div>
+                    <div><b>5GB</b> storage</div>
+                    <div>Analytics</div>
+                    <div>Free mobile app</div>
+                    <div>Access to forums</div>
                 </div>
+                <!-- CTA -->
                 <button
-                    class="w-full"
+                    class="treo-mat-button-large w-full mt-10"
                     mat-stroked-button
-                    [color]="'primary'"
-                    [routerLink]="['./']">
-                    Select this plan
+                    [color]="'primary'">
+                    Start your trial
                 </button>
             </treo-card>
 
-
             <!-- Card #50 -->
-            <treo-card class="flex flex-col lg:flex-row max-w-80 lg:max-w-200 w-full filter-pricing">
-                <div class="flex flex-col p-8">
-                    <div class="text-2xl font-bold leading-tight mb-4">Lifetime Membership</div>
-                    <div class="text-secondary">
+            <treo-card class="flex flex-col lg:flex-row max-w-sm lg:max-w-240 filter-pricing">
+                <div class="p-6 sm:p-8 lg:p-10">
+                    <div class="text-3xl font-bold">Lifetime Membership</div>
+                    <div class="mt-2 leading-relaxed text-secondary">
                         Learn from like-minded individuals which are eager to make a living building stuff on the web. Pay once and get lifetime access to the community.
                     </div>
-                    <div class="flex items-center mt-10 mb-6">
+                    <div class="flex items-center mt-10">
                         <div class="font-medium text-secondary">INCLUDED FEATURES</div>
-                        <div class="flex flex-auto border-b-2 ml-2"></div>
+                        <div class="flex-auto ml-2 border-b-2"></div>
                     </div>
-                    <div class="flex flex-col lg:flex-row justify-between">
-                        <div class="flex flex-col mb-4 lg:mb-0">
-                            <div class="flex items-center mb-4">
-                                <mat-icon
-                                    class="w-4 h-4 icon-size-4 rounded-full bg-primary text-on-primary mr-2"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <span class="whitespace-nowrap">Forum access</span>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="w-4 h-4 icon-size-4 rounded-full bg-primary text-on-primary mr-2"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <span class="whitespace-nowrap">Member resources</span>
-                            </div>
+                    <!-- Features -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-4 mt-6">
+                        <div class="flex items-center">
+                            <mat-icon
+                                class="icon-size-5 text-primary"
+                                [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                            <div class="ml-2">Private forum access</div>
                         </div>
-                        <div class="flex flex-col">
-                            <div class="flex items-center mb-4">
-                                <mat-icon
-                                    class="w-4 h-4 icon-size-4 rounded-full bg-primary text-on-primary mr-2"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <span class="whitespace-nowrap">Access to conference</span>
-                            </div>
-                            <div class="flex items-center">
-                                <mat-icon
-                                    class="w-4 h-4 icon-size-4 rounded-full bg-primary text-on-primary mr-2"
-                                    [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                <span class="whitespace-nowrap">Official member shirt</span>
-                            </div>
+                        <div class="flex items-center">
+                            <mat-icon
+                                class="icon-size-5 text-primary"
+                                [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                            <div class="ml-2">Access to annual online conference</div>
+                        </div>
+                        <div class="flex items-center">
+                            <mat-icon
+                                class="icon-size-5 text-primary"
+                                [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                            <div class="ml-2">Member resources</div>
+                        </div>
+                        <div class="flex items-center">
+                            <mat-icon
+                                class="icon-size-5 text-primary"
+                                [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                            <div class="ml-2">Official member T-Shirt</div>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col items-center justify-center px-10 lg:px-16 py-10 bg-hover">
-                    <div class="flex items-baseline">
-                        <span class="text-4xl">$</span>
-                        <span class="text-8xl font-semibold tracking-tight mx-2">599</span>
-                        <span class="text-lg font-semibold">USD</span>
+                <!-- Price -->
+                <div class="flex flex-col items-center p-8 lg:px-10 lg:py-12 lg:min-w-80 bg-gray-100 dark:bg-black dark:bg-opacity-10">
+                    <div class="flex items-center whitespace-nowrap">
+                        <div class="text-8xl font-extrabold tracking-tight">$599</div>
+                        <div class="ml-2 text-2xl font-semibold text-secondary">USD</div>
                     </div>
-                    <div class="flex flex-col font-medium text-center leading-tight">
-                        <span>No monthly subscription,</span>
-                        <span>you only pay once.</span>
+                    <div class="font-medium text-center text-secondary">
+                        <div>No monthly subscription,</div>
+                        <div>you only pay once.</div>
                     </div>
                     <button
                         class="w-full mt-8 lg:mt-auto"
                         mat-flat-button
-                        [color]="'primary'"
-                        [routerLink]="['./']">
+                        [color]="'primary'">
                         Get Started
                     </button>
                 </div>
@@ -1979,10 +1990,12 @@
 
             <!-- Card #52 -->
             <treo-card class="flex flex-col md:flex-row max-w-80 md:max-w-160 w-full filter-shopping">
-                <img
-                    class="w-80 md:w-60 object-cover"
-                    src="assets/images/cards/sneakers-02-448x560.jpg"
-                    alt="Card cover image">
+                <div class="flex-0 w-80 md:w-60 ">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/sneakers-02-448x560.jpg"
+                        alt="Card cover image">
+                </div>
                 <div class="flex flex-col flex-auto m-8 mb-4">
                     <div class="text-2xl leading-tight">Gray sneakers with white stripes</div>
                     <div class="text-md font-medium text-secondary mt-1">ALIDAS</div>
@@ -2026,10 +2039,12 @@
 
             <!-- Card #53 -->
             <treo-card class="flex flex-col md:flex-row max-w-80 md:max-w-160 w-full filter-shopping">
-                <img
-                    class="w-80 md:w-60 object-cover"
-                    src="assets/images/cards/sneakers-03-448x560.jpg"
-                    alt="Card cover image">
+                <div class="flex-0 w-80 md:w-60">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/sneakers-03-448x560.jpg"
+                        alt="Card cover image">
+                </div>
                 <div class="flex flex-col flex-auto m-8 mb-4">
                     <div class="flex flex-col md:flex-row items-baseline justify-between">
                         <div class="text-2xl leading-tight">White sneakers with red stripes</div>
@@ -2110,10 +2125,12 @@
 
             <!-- Card #56 -->
             <treo-card class="flex flex-col md:flex-row max-w-80 md:max-w-160 w-full filter-testimonial">
-                <img
-                    class="w-80 md:w-32 object-cover"
-                    src="assets/images/cards/avatar-400x400.jpg"
-                    alt="Card cover image">
+                <div class="flex-0 w-80 md:w-32">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/avatar-400x400.jpg"
+                        alt="Card cover image">
+                </div>
                 <div class="flex flex-col flex-auto m-8">
                     <div class="text-lg italic leading-relaxed">
                         Puzzles coffee shop is one of the finest coffee shops in central downtown in New York.
@@ -3742,9 +3759,9 @@
                 </div>
                 <div class="mx-6 sm:mx-8 mb-4">
                     <div class="flex rounded overflow-hidden border">
-                        <div class="flex w-40 min-w-40">
+                        <div class="flex-0 w-40">
                             <img
-                                class="object-cover"
+                                class="w-full h-full object-cover"
                                 src="assets/images/cards/35-640x480.jpg"
                                 alt="Card cover image">
                         </div>

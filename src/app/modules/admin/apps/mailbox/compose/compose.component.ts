@@ -17,14 +17,8 @@ export class MailboxComposeComponent implements OnInit
     };
     quillModules: any = {
         toolbar: [
-            [{font: []}],
-            [{size: ['small', false, 'large', 'huge']}],
             ['bold', 'italic', 'underline'],
-            [{color: []}, {background: []}],
-            [{align: []}],
-            [{list: 'ordered'}, {list: 'bullet'}],
-            [{indent: '-1'}, {indent: '+1'}],
-            ['blockquote', 'code-block', 'strike'],
+            [{align: []}, {list: 'ordered'}, {list: 'bullet'}],
             ['clean']
         ]
     };
