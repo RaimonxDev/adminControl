@@ -694,18 +694,6 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon    : 'heroicons_outline:lightning-bolt',
                 children: [
                     {
-                        id   : 'user-interface.icons.dripicons',
-                        title: 'Dripicons',
-                        type : 'basic',
-                        link : '/ui/icons/dripicons'
-                    },
-                    {
-                        id   : 'user-interface.icons.feather',
-                        title: 'Feather',
-                        type : 'basic',
-                        link : '/ui/icons/feather'
-                    },
-                    {
                         id   : 'user-interface.icons.heroicons-outline',
                         title: 'Heroicons Outline',
                         type : 'basic',
@@ -718,12 +706,6 @@ export const defaultNavigation: TreoNavigationItem[] = [
                         link : '/ui/icons/heroicons-solid'
                     },
                     {
-                        id   : 'user-interface.icons.iconsmind',
-                        title: 'Iconsmind',
-                        type : 'basic',
-                        link : '/ui/icons/iconsmind'
-                    },
-                    {
                         id   : 'user-interface.icons.material-outline',
                         title: 'Material Outline',
                         type : 'basic',
@@ -734,6 +716,18 @@ export const defaultNavigation: TreoNavigationItem[] = [
                         title: 'Material Twotone',
                         type : 'basic',
                         link : '/ui/icons/material-twotone'
+                    },
+                    {
+                        id   : 'user-interface.icons.iconsmind',
+                        title: 'Iconsmind',
+                        type : 'basic',
+                        link : '/ui/icons/iconsmind'
+                    },
+                    {
+                        id   : 'user-interface.icons.feather',
+                        title: 'Feather',
+                        type : 'basic',
+                        link : '/ui/icons/feather'
                     }
                 ]
             },

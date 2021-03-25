@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { cloneDeep } from 'lodash-es';
 import { TreoMockApiService } from '@treo/lib/mock-api';
-import { dripicons, feather, heroicons, iconsmind, material } from 'app/mock-api/ui/icons/data';
+import { feather, heroicons, iconsmind, material } from 'app/mock-api/ui/icons/data';
 
 @Injectable({
     providedIn: 'root'
 })
 export class IconsMockApi
 {
-    private readonly _dripicons: any = dripicons;
     private readonly _feather: any = feather;
     private readonly _heroicons: any = heroicons;
     private readonly _iconsmind: any = iconsmind;
@@ -32,21 +31,6 @@ export class IconsMockApi
      */
     registerHandlers(): void
     {
-        // -----------------------------------------------------------------------------------------------------
-        // @ Dripicons icons - GET
-        // -----------------------------------------------------------------------------------------------------
-        this._treoMockApiService
-            .onGet('api/ui/icons/dripicons')
-            .reply(() => [
-                200,
-                {
-                    namespace: 'dripicons',
-                    name     : 'Dripicons',
-                    grid     : 6,
-                    list     : cloneDeep(this._dripicons)
-                }
-            ]);
-
         // -----------------------------------------------------------------------------------------------------
         // @ Feather icons - GET
         // -----------------------------------------------------------------------------------------------------
