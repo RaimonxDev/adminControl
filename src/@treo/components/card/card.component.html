@@ -20,9 +20,10 @@
     <ng-content></ng-content>
 
     <!-- Expansion -->
-    <div class="treo-card-expansion"
-         *ngIf="expanded"
-         [@expandCollapse]>
+    <div
+        class="treo-card-expansion"
+        *ngIf="expanded"
+        [@expandCollapse]>
         <ng-content select="[treoCardExpansion]"></ng-content>
     </div>
 

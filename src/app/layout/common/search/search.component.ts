@@ -1,7 +1,6 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { MatFormField } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { TreoAnimations } from '@treo/animations/public-api';
@@ -14,34 +13,20 @@ import { TreoAnimations } from '@treo/animations/public-api';
     exportAs     : 'treoSearch',
     animations   : TreoAnimations
 })
-export class SearchComponent implements OnInit, OnDestroy
+export class SearchComponent implements OnChanges, OnInit, OnDestroy
 {
-    results: any[] | null;
-    searchControl: FormControl;
+    @Input() appearance: 'basic' | 'bar' = 'basic';
+    @Input() debounce: number = 300;
+    @Input() minLength: number = 2;
+    @Output() search: EventEmitter<any> = new EventEmitter<any>();
 
-    // Debounce
-    @Input()
-    debounce: number;
-
-    // Min. length
-    @Input()
-    minLength: number;
-
-    // Search
-    @Output()
-    search: EventEmitter<any>;
-
-    // Private
-    private _appearance: 'basic' | 'bar';
-    private _opened: boolean;
-    private _unsubscribeAll: Subject<any>;
+    opened: boolean = false;
+    results: any[];
+    searchControl: FormControl = new FormControl();
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
-     * @param {HttpClient} _httpClient
-     * @param {Renderer2} _renderer2
      */
     constructor(
         private _elementRef: ElementRef,
@@ -49,16 +34,6 @@ export class SearchComponent implements OnInit, OnDestroy
         private _renderer2: Renderer2
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.appearance = 'basic';
-        this.debounce = this.debounce || 300;
-        this.minLength = this.minLength || 2;
-        this.opened = false;
-        this.results = null;
-        this.searchControl = new FormControl();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -66,91 +41,25 @@ export class SearchComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter & getter for appearance
-     *
-     * @param value
+     * Host binding for component classes
      */
-    @Input()
-    set appearance(value: 'basic' | 'bar')
+    @HostBinding('class') get classList(): any
     {
-        // If the value is the same, return...
-        if ( this._appearance === value )
-        {
-            return;
-        }
-
-        // Make sure the search is closed, before
-        // changing the appearance to prevent issues
-        this.close();
-
-        let appearanceClassName;
-
-        // Remove the previous appearance class
-        appearanceClassName = 'search-appearance-' + this.appearance;
-        this._renderer2.removeClass(this._elementRef.nativeElement, appearanceClassName);
-
-        // Store the value
-        this._appearance = value;
-
-        // Add the new appearance class
-        appearanceClassName = 'search-appearance-' + this.appearance;
-        this._renderer2.addClass(this._elementRef.nativeElement, appearanceClassName);
-    }
-
-    get appearance(): 'basic' | 'bar'
-    {
-        return this._appearance;
+        return {
+            'search-appearance-bar'  : this.appearance === 'bar',
+            'search-appearance-basic': this.appearance === 'basic',
+            'search-opened'          : this.opened
+        };
     }
 
     /**
-     * Setter & getter for opened
+     * Setter for bar search input
      *
      * @param value
      */
-    set opened(value: boolean)
+    @ViewChild('barSearchInput')
+    set barSearchInput(value: ElementRef)
     {
-        // If the value is the same, return...
-        if ( this._opened === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._opened = value;
-
-        // If opened...
-        if ( value )
-        {
-            // Add opened class
-            this._renderer2.addClass(this._elementRef.nativeElement, 'search-opened');
-        }
-        else
-        {
-            // Remove opened class
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'search-opened');
-        }
-    }
-
-    get opened(): boolean
-    {
-        return this._opened;
-    }
-
-    /**
-     * Setter & getter for search input
-     *
-     * @param value
-     */
-    @ViewChild('searchInput')
-    set searchInput(value: MatFormField)
-    {
-        // Return if the appearance is basic, since we don't want
-        // basic search to be focused as soon as the page loads
-        if ( this.appearance === 'basic' )
-        {
-            return;
-        }
-
         // If the value exists, it means that the search input
         // is now in the DOM and we can focus on the input..
         if ( value )
@@ -159,7 +68,7 @@ export class SearchComponent implements OnInit, OnDestroy
             setTimeout(() => {
 
                 // Focus to the input element
-                value._inputContainerRef.nativeElement.children[0].focus();
+                value.nativeElement.focus();
             });
         }
     }
@@ -167,6 +76,22 @@ export class SearchComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Appearance
+        if ( 'appearance' in changes )
+        {
+            // To prevent any issues, close the
+            // search after changing the appearance
+            this.close();
+        }
+    }
 
     /**
      * On init
@@ -201,7 +126,12 @@ export class SearchComponent implements OnInit, OnDestroy
             .subscribe((value) => {
                 this._httpClient.post('api/common/search', {query: value})
                     .subscribe((response: any) => {
+
+                        // Store the results
                         this.results = response.results;
+
+                        // Execute the event
+                        this.search.next(this.results);
                     });
             });
     }
@@ -225,14 +155,14 @@ export class SearchComponent implements OnInit, OnDestroy
      *
      * @param event
      */
-    onKeydown(event): void
+    onKeydown(event: KeyboardEvent): void
     {
         // Listen for escape to close the search
         // if the appearance is 'bar'
         if ( this.appearance === 'bar' )
         {
             // Escape
-            if ( event.keyCode === 27 )
+            if ( event.code === 'Escape' )
             {
                 // Close the search
                 this.close();
@@ -246,7 +176,7 @@ export class SearchComponent implements OnInit, OnDestroy
      */
     open(): void
     {
-        // Return, if it's already opened
+        // Return if it's already opened
         if ( this.opened )
         {
             return;
@@ -262,7 +192,7 @@ export class SearchComponent implements OnInit, OnDestroy
      */
     close(): void
     {
-        // Return, if it's already closed
+        // Return if it's already closed
         if ( !this.opened )
         {
             return;

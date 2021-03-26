@@ -7,12 +7,8 @@ export class TreoConfigModule
 {
     /**
      * Constructor
-     *
-     * @param {TreoConfigService} _treoConfigService
      */
-    constructor(
-        private _treoConfigService: TreoConfigService
-    )
+    constructor(private _treoConfigService: TreoConfigService)
     {
     }
 

@@ -1,4 +1,9 @@
 import { NgModule } from '@angular/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TreoDrawerModule } from '@treo/components/drawer';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { EmptyLayoutModule } from 'app/layout/layouts/empty/empty.module';
@@ -14,8 +19,9 @@ import { DenseLayoutModule } from 'app/layout/layouts/vertical/dense/dense.modul
 import { FuturisticLayoutModule } from 'app/layout/layouts/vertical/futuristic/futuristic.module';
 import { ThinLayoutModule } from 'app/layout/layouts/vertical/thin/thin.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
-const modules = [
+const layoutModules = [
     // Empty
     EmptyLayoutModule,
 
@@ -40,11 +46,19 @@ const modules = [
         LayoutComponent
     ],
     imports     : [
+        MatButtonModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatRadioModule,
+        MatSlideToggleModule,
+        MatTooltipModule,
+        TreoDrawerModule,
         SharedModule,
-        ...modules
+        ...layoutModules
     ],
     exports     : [
-        ...modules
+        LayoutComponent,
+        ...layoutModules
     ]
 })
 export class LayoutModule

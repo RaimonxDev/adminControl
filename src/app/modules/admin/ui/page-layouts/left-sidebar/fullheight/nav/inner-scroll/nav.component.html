@@ -1,0 +1,124 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container class="flex-auto h-full">
+
+        <!-- Drawer -->
+        <mat-drawer
+            class="w-72 dark:bg-gray-900"
+            [autoFocus]="false"
+            [mode]="drawerMode"
+            [opened]="drawerOpened"
+            #matDrawer>
+            <!-- Demo sidebar -->
+            <demo-sidebar></demo-sidebar>
+        </mat-drawer>
+
+        <!-- Drawer content -->
+        <mat-drawer-content class="flex flex-col overflow-hidden">
+
+            <!-- Header -->
+            <div class="p-6 pb-0 sm:pt-8 sm:px-10 border-b bg-card dark:bg-transparent">
+                <!-- Breadcrumbs -->
+                <div>
+                    <div class="hidden sm:flex flex-wrap items-center font-medium">
+                        <div>
+                            <a class="whitespace-nowrap text-primary">Projects</a>
+                        </div>
+                        <div class="flex items-center ml-1 whitespace-nowrap">
+                            <mat-icon
+                                class="icon-size-5 text-secondary"
+                                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                            <a class="ml-1 text-primary">Weekend Project</a>
+                        </div>
+                        <div class="flex items-center ml-1 whitespace-nowrap">
+                            <mat-icon
+                                class="icon-size-5 text-secondary"
+                                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                            <span class="ml-1 text-secondary">Overview</span>
+                        </div>
+                    </div>
+                    <div class="flex sm:hidden">
+                        <a
+                            class="inline-flex items-center -ml-1.5 text-secondary font-medium"
+                            [routerLink]="'./..'">
+                            <mat-icon
+                                class="icon-size-5 text-secondary"
+                                [svgIcon]="'heroicons_solid:chevron-left'"></mat-icon>
+                            <span class="ml-1">Back</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Title & Actions -->
+                <div class="flex items-center justify-between mt-2">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">Page heading</h2>
+                    <div class="flex flex-shrink-0 items-center ml-2 sm:ml-4">
+                        <button
+                            mat-icon-button
+                            (click)="matDrawer.toggle()">
+                            <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <!-- Navigation -->
+                <nav
+                    class="mt-4 border-b-0"
+                    mat-tab-nav-bar
+                    disableRipple
+                    disablePagination>
+                    <a
+                        class="min-w-0 px-3 sm:px-1 leading-5 opacity-100 text-secondary"
+                        [ngClass]="{'text-primary': rl1.isActive}"
+                        mat-tab-link
+                        [routerLink]="'section-1'"
+                        routerLinkActive
+                        [active]="rl1.isActive"
+                        #rl1="routerLinkActive">
+                        <mat-icon
+                            class="icon-size-5 text-current"
+                            [svgIcon]="'heroicons_solid:cog'"></mat-icon>
+                        <span class="hidden sm:inline-block ml-2">Settings</span>
+                    </a>
+                    <a
+                        class="min-w-0 px-3 sm:px-1 ml-8 leading-5 opacity-100 text-secondary"
+                        [ngClass]="{'text-primary': rl2.isActive}"
+                        mat-tab-link
+                        [routerLink]="'section-2'"
+                        routerLinkActive
+                        [active]="rl2.isActive"
+                        #rl2="routerLinkActive">
+                        <mat-icon
+                            class="icon-size-5 text-current"
+                            [svgIcon]="'heroicons_solid:user'"></mat-icon>
+                        <span class="hidden sm:inline-block ml-2">My Account</span>
+                    </a>
+                    <a
+                        class="min-w-0 px-3 sm:px-1 ml-8 leading-5 opacity-100 text-secondary"
+                        [ngClass]="{'text-primary': rl3.isActive}"
+                        mat-tab-link
+                        [routerLink]="'section-3'"
+                        routerLinkActive
+                        [active]="rl3.isActive"
+                        #rl3="routerLinkActive">
+                        <mat-icon
+                            class="icon-size-5 text-current"
+                            [svgIcon]="'heroicons_solid:credit-card'"></mat-icon>
+                        <span class="hidden sm:inline-block ml-2">Billing</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Main -->
+            <div
+                class="flex-auto p-6 sm:p-10 overflow-y-auto"
+                cdkScrollable>
+
+                <!-- SUB-PAGES WILL LOAD HERE -->
+                <router-outlet></router-outlet>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

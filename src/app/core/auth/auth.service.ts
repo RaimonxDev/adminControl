@@ -3,24 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthUtils } from 'app/core/auth/auth.utils';
+import { UserService } from 'app/core/user/user.service';
 
 @Injectable()
 export class AuthService
 {
-    // Private
-    private _authenticated: boolean;
+    private _authenticated: boolean = false;
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _userService: UserService
     )
     {
-        // Set the defaults
-        this._authenticated = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -37,12 +34,32 @@ export class AuthService
 
     get accessToken(): string
     {
-        return localStorage.getItem('access_token');
+        return localStorage.getItem('access_token') ?? '';
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Forgot password
+     *
+     * @param email
+     */
+    forgotPassword(email: string): Observable<any>
+    {
+        return this._httpClient.post('api/auth/forgot-password', email);
+    }
+
+    /**
+     * Reset password
+     *
+     * @param password
+     */
+    resetPassword(password: string): Observable<any>
+    {
+        return this._httpClient.post('api/auth/reset-password', password);
+    }
 
     /**
      * Sign in
@@ -65,6 +82,9 @@ export class AuthService
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
+
+                // Store the user on the user service
+                this._userService.user = response.user;
 
                 // Return a new observable with the response
                 return of(response);
@@ -94,6 +114,9 @@ export class AuthService
                 // Set the authenticated flag to true
                 this._authenticated = true;
 
+                // Store the user on the user service
+                this._userService.user = response.user;
+
                 // Return true
                 return of(true);
             })
@@ -113,6 +136,26 @@ export class AuthService
 
         // Return the observable
         return of(true);
+    }
+
+    /**
+     * Sign up
+     *
+     * @param user
+     */
+    signUp(user: { name: string, email: string, password: string, company: string }): Observable<any>
+    {
+        return this._httpClient.post('api/auth/sign-up', user);
+    }
+
+    /**
+     * Unlock session
+     *
+     * @param credentials
+     */
+    unlockSession(credentials: { email: string, password: string }): Observable<any>
+    {
+        return this._httpClient.post('api/auth/unlock-session', credentials);
     }
 
     /**

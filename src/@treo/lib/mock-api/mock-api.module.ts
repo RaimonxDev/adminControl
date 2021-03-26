@@ -1,11 +1,10 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TREO_MOCK_API_DEFAULT_DELAY } from '@treo/lib/mock-api/mock-api.constants';
 import { TreoMockApiInterceptor } from '@treo/lib/mock-api/mock-api.interceptor';
-import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 
 @NgModule({
     providers: [
-        TreoMockApiService,
         {
             provide : HTTP_INTERCEPTORS,
             useClass: TreoMockApiInterceptor,
@@ -16,21 +15,27 @@ import { TreoMockApiService } from '@treo/lib/mock-api/mock-api.service';
 export class TreoMockApiModule
 {
     /**
-     * forRoot method for setting user configuration
+     * TreoMockApi module default configuration.
      *
-     * @param mockDataServices
+     * @param mockApiServices - Array of services that register mock API handlers
+     * @param config - Configuration options
+     * @param config.delay - Default delay value in milliseconds to apply all responses
      */
-    static forRoot(mockDataServices: any[]): ModuleWithProviders<TreoMockApiModule>
+    static forRoot(mockApiServices: any[], config?: { delay?: number }): ModuleWithProviders<TreoMockApiModule>
     {
         return {
             ngModule : TreoMockApiModule,
             providers: [
                 {
                     provide   : APP_INITIALIZER,
-                    deps      : mockDataServices,
+                    deps      : [...mockApiServices],
                     useFactory: () => () => null,
                     multi     : true
                 },
+                {
+                    provide : TREO_MOCK_API_DEFAULT_DELAY,
+                    useValue: config?.delay ?? 0
+                }
             ]
         };
     }

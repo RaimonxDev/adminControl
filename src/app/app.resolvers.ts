@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { InitialData } from 'app/app.types';
 
 @Injectable({
     providedIn: 'root'
@@ -11,67 +12,9 @@ export class InitialDataResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Load messages
-     *
-     * @private
-     */
-    private _loadMessages(): Observable<any>
-    {
-        return this._httpClient.get('api/common/messages');
-    }
-
-    /**
-     * Load navigation data
-     *
-     * @private
-     */
-    private _loadNavigation(): Observable<any>
-    {
-        return this._httpClient.get('api/common/navigation');
-    }
-
-    /**
-     * Load notifications
-     *
-     * @private
-     */
-    private _loadNotifications(): Observable<any>
-    {
-        return this._httpClient.get('api/common/notifications');
-    }
-
-    /**
-     * Load shortcuts
-     *
-     * @private
-     */
-    private _loadShortcuts(): Observable<any>
-    {
-        return this._httpClient.get('api/common/shortcuts');
-    }
-
-    /**
-     * Load user
-     *
-     * @private
-     */
-    private _loadUser(): Observable<any>
-    {
-        return this._httpClient.get('api/common/user');
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -79,45 +22,34 @@ export class InitialDataResolver implements Resolve<any>
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Resolver
+     * Use this resolver to resolve initial mock-api for the application
      *
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<InitialData>
     {
+        // Fork join multiple API endpoint calls to wait all of them to finish
         return forkJoin([
-
-            // Messages
-            this._loadMessages(),
-
-            // Navigation data
-            this._loadNavigation(),
-
-            // Notifications
-            this._loadNotifications(),
-
-            // Shortcuts
-            this._loadShortcuts(),
-
-            // User
-            this._loadUser()
+            this._httpClient.get<any>('api/common/messages'),
+            this._httpClient.get<any>('api/common/navigation'),
+            this._httpClient.get<any>('api/common/notifications'),
+            this._httpClient.get<any>('api/common/shortcuts'),
+            this._httpClient.get<any>('api/common/user')
         ]).pipe(
-            map((data) => {
-
-                return {
-                    messages     : data[0].messages,
-                    navigation   : {
-                        compact   : data[1].compact,
-                        default   : data[1].default,
-                        futuristic: data[1].futuristic,
-                        horizontal: data[1].horizontal
+            map(([messages, navigation, notifications, shortcuts, user]) => ({
+                    messages,
+                    navigation: {
+                        compact   : navigation.compact,
+                        default   : navigation.default,
+                        futuristic: navigation.futuristic,
+                        horizontal: navigation.horizontal
                     },
-                    notifications: data[2].notifications,
-                    shortcuts    : data[3].shortcuts,
-                    user         : data[4].user
-                };
-            })
+                    notifications,
+                    shortcuts,
+                    user
+                })
+            )
         );
     }
 }

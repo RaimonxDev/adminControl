@@ -1,9 +1,10 @@
-import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoNavigationService } from '@treo/components/navigation';
+import { InitialData } from 'app/app.types';
 
 @Component({
     selector     : 'classic-layout',
@@ -13,25 +14,12 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class ClassicLayoutComponent implements OnInit, OnDestroy
 {
-    data: any;
+    data: InitialData;
     isScreenSmall: boolean;
-
-    @HostBinding('class.fixed-header')
-    fixedHeader: boolean;
-
-    @HostBinding('class.fixed-footer')
-    fixedFooter: boolean;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {Router} _router
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -40,12 +28,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.fixedHeader = false;
-        this.fixedFooter = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -69,7 +51,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the resolved route data
+        // Subscribe to the resolved route mock-api
         this._activatedRoute.data.subscribe((data: Data) => {
             this.data = data.initialData;
         });
@@ -79,8 +61,8 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
-                // Check if the breakpoint is 'lt-md'
-                this.isScreenSmall = matchingAliases.includes('lt-md');
+                // Check if the screen is small
+                this.isScreenSmall = !matchingAliases.includes('md');
             });
     }
 
@@ -101,12 +83,12 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
     /**
      * Toggle navigation
      *
-     * @param key
+     * @param name
      */
-    toggleNavigation(key): void
+    toggleNavigation(name: string): void
     {
         // Get the navigation
-        const navigation = this._treoNavigationService.getComponent(key);
+        const navigation = this._treoNavigationService.getComponent(name);
 
         if ( navigation )
         {

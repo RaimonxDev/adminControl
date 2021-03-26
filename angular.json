@@ -41,6 +41,8 @@
                             ]
                         },
                         "styles": [
+                            "src/@treo/styles/tailwind.scss",
+                            "src/@treo/styles/themes.scss",
                             "src/styles/vendors.scss",
                             "src/@treo/styles/main.scss",
                             "src/styles/styles.scss",

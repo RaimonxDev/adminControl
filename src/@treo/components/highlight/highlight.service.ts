@@ -14,6 +14,22 @@ export class TreoHighlightService
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Highlight
+     */
+    highlight(code: string, language: string): string
+    {
+        // Format the code
+        code = this._format(code);
+
+        // Highlight and return the code
+        return hljs.highlight(language, code).value;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -27,7 +43,7 @@ export class TreoHighlightService
      */
     private _format(code: string): string
     {
-        let firstCharIndentation: number | null = null;
+        let indentation = 0;
 
         // Split the code into lines and store the lines
         const lines = code.split('\n');
@@ -43,45 +59,24 @@ export class TreoHighlightService
             lines.pop();
         }
 
-        // Iterate through the lines to figure out the first
-        // non-whitespace character indentation
-        lines.forEach((line) => {
+        // Iterate through the lines
+        lines.filter((line) => line.length)
+             .forEach((line, index) => {
 
-            // Skip the line if its length is zero
-            if ( line.length === 0 )
-            {
-                return;
-            }
+                 // Always get the indentation of the first line so we can
+                 // have something to compare with
+                 if ( index === 0 )
+                 {
+                     indentation = line.search(/\S|$/);
+                     return;
+                 }
 
-            // We look at all the lines to find the smallest indentation
-            // of the first non-whitespace char since the first ever line
-            // is not necessarily has to be the line with the smallest
-            // non-whitespace char indentation
-            firstCharIndentation = firstCharIndentation === null ?
-                line.search(/\S|$/) :
-                Math.min(line.search(/\S|$/), firstCharIndentation);
-        });
+                 // Look at all the remaining lines to figure out the smallest indentation.
+                 indentation = Math.min(line.search(/\S|$/), indentation);
+             });
 
         // Iterate through the lines one more time, remove the extra
         // indentation, join them together and return it
-        return lines.map((line) => {
-            return line.substring(firstCharIndentation);
-        }).join('\n');
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Highlight
-     */
-    highlight(code: string, language: string): string
-    {
-        // Format the code
-        code = this._format(code);
-
-        // Highlight and return the code
-        return hljs.highlight(language, code).value;
+        return lines.map((line) => line.substring(indentation)).join('\n');
     }
 }

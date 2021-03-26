@@ -23,49 +23,35 @@ import { Moment } from 'moment';
 })
 export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnDestroy
 {
-    // Range changed
-    @Output()
-    readonly rangeChanged: EventEmitter<{ start: string, end: string }>;
+    @Output() readonly rangeChanged: EventEmitter<{ start: string, end: string }> = new EventEmitter<{ start: string; end: string }>();
+    @ViewChild('matMonthView1') private _matMonthView1: MatMonthView<any>;
+    @ViewChild('matMonthView2') private _matMonthView2: MatMonthView<any>;
+    @ViewChild('pickerPanelOrigin', {read: ElementRef}) private _pickerPanelOrigin: ElementRef;
+    @ViewChild('pickerPanel') private _pickerPanel: TemplateRef<any>;
+    @HostBinding('class.treo-date-range') private _defaultClassNames = true;
 
-    activeDates: { month1: Moment, month2: Moment };
-    setWhichDate: 'start' | 'end';
+    activeDates: { month1: Moment | null, month2: Moment | null } = {
+        month1: null,
+        month2: null
+    };
+    setWhichDate: 'start' | 'end' = 'start';
     startTimeFormControl: FormControl;
     endTimeFormControl: FormControl;
-
-    // Private
-    @HostBinding('class.treo-date-range')
-    private _defaultClassNames;
-
-    @ViewChild('matMonthView1')
-    private _matMonthView1: MatMonthView<any>;
-
-    @ViewChild('matMonthView2')
-    private _matMonthView2: MatMonthView<any>;
-
-    @ViewChild('pickerPanelOrigin', {read: ElementRef})
-    private _pickerPanelOrigin: ElementRef;
-
-    @ViewChild('pickerPanel')
-    private _pickerPanel: TemplateRef<any>;
-
     private _dateFormat: string;
     private _onChange: (value: any) => void;
     private _onTouched: (value: any) => void;
-    private _programmaticChange: boolean;
-    private _range: { start: Moment, end: Moment };
+    private _programmaticChange!: boolean;
+    private _range: { start: Moment | null, end: Moment | null } = {
+        start: null,
+        end  : null
+    };
     private _timeFormat: string;
     private _timeRange: boolean;
-    private readonly _timeRegExp: RegExp;
-    private _unsubscribeAll: Subject<any>;
+    private readonly _timeRegExp: RegExp = new RegExp('^(0[0-9]|1[0-9]|2[0-4]|[0-9]):([0-5][0-9])(A|(?:AM)|P|(?:PM))?$', 'i');
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ElementRef} _elementRef
-     * @param {Overlay} _overlay
-     * @param {Renderer2} _renderer2
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -75,27 +61,11 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._defaultClassNames = true;
         this._onChange = () => {
         };
         this._onTouched = () => {
         };
-        this._range = {
-            start: null,
-            end  : null
-        };
-        this._timeRegExp = new RegExp('^(0[0-9]|1[0-9]|2[0-4]|[0-9]):([0-5][0-9])(A|(?:AM)|P|(?:PM))?$', 'i');
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.activeDates = {
-            month1: null,
-            month2: null
-        };
         this.dateFormat = 'DD/MM/YYYY';
-        this.rangeChanged = new EventEmitter();
-        this.setWhichDate = 'start';
         this.timeFormat = '12';
 
         // Initialize the component
@@ -114,7 +84,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     @Input()
     set dateFormat(value: string)
     {
-        // Return, if the values are the same
+        // Return if the values are the same
         if ( this._dateFormat === value )
         {
             return;
@@ -137,7 +107,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     @Input()
     set timeFormat(value: string)
     {
-        // Return, if the values are the same
+        // Return if the values are the same
         if ( this._timeFormat === value )
         {
             return;
@@ -160,7 +130,7 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
     @Input()
     set timeRange(value: boolean)
     {
-        // Return, if the values are the same
+        // Return if the values are the same
         if ( this._timeRange === value )
         {
             return;
@@ -393,58 +363,6 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
         // @ TODO: Workaround until "angular/issues/20007" resolved
         this.writeValue = () => {
         };
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Initialize
-     *
-     * @private
-     */
-    private _init(): void
-    {
-        // Start and end time form controls
-        this.startTimeFormControl = new FormControl('', [Validators.pattern(this._timeRegExp)]);
-        this.endTimeFormControl = new FormControl('', [Validators.pattern(this._timeRegExp)]);
-
-        // Set the default range
-        this._programmaticChange = true;
-        this.range = {
-            start: moment().startOf('day').toISOString(),
-            end  : moment().add(1, 'day').endOf('day').toISOString()
-        };
-
-        // Set the default time range
-        this._programmaticChange = true;
-        this.timeRange = true;
-    }
-
-    /**
-     * Parse the time from the inputs
-     *
-     * @param value
-     * @private
-     */
-    private _parseTime(value: string): Moment
-    {
-        // Parse the time using the time regexp
-        const timeArr = value.split(this._timeRegExp).filter((part) => part !== '');
-
-        // Get the meridiem
-        const meridiem = timeArr[2] || null;
-
-        // If meridiem exists...
-        if ( meridiem )
-        {
-            // Create a moment using 12-hours format and return it
-            return moment(value, 'hh:mmA').seconds(0);
-        }
-
-        // If meridiem doesn't exist, create a moment using 24-hours format and return in
-        return moment(value, 'HH:mm').seconds(0);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -711,5 +629,57 @@ export class TreoDateRangeComponent implements ControlValueAccessor, OnInit, OnD
             end      : endDate.toISOString(),
             whichDate: 'end'
         };
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Initialize
+     *
+     * @private
+     */
+    private _init(): void
+    {
+        // Start and end time form controls
+        this.startTimeFormControl = new FormControl('', [Validators.pattern(this._timeRegExp)]);
+        this.endTimeFormControl = new FormControl('', [Validators.pattern(this._timeRegExp)]);
+
+        // Set the default range
+        this._programmaticChange = true;
+        this.range = {
+            start: moment().startOf('day').toISOString(),
+            end  : moment().add(1, 'day').endOf('day').toISOString()
+        };
+
+        // Set the default time range
+        this._programmaticChange = true;
+        this.timeRange = true;
+    }
+
+    /**
+     * Parse the time from the inputs
+     *
+     * @param value
+     * @private
+     */
+    private _parseTime(value: string): Moment
+    {
+        // Parse the time using the time regexp
+        const timeArr = value.split(this._timeRegExp).filter((part) => part !== '');
+
+        // Get the meridiem
+        const meridiem = timeArr[2] || null;
+
+        // If meridiem exists...
+        if ( meridiem )
+        {
+            // Create a moment using 12-hours format and return it
+            return moment(value, 'hh:mmA').seconds(0);
+        }
+
+        // If meridiem doesn't exist, create a moment using 24-hours format and return in
+        return moment(value, 'HH:mm').seconds(0);
     }
 }
