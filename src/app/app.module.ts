@@ -31,7 +31,7 @@ const routerConfig: ExtraOptions = {
         // Treo & Treo Mock API
         TreoModule,
         TreoConfigModule.forRoot(appConfig),
-        TreoMockApiModule.forRoot(mockApiServices, {delay: 2500}),
+        TreoMockApiModule.forRoot(mockApiServices),
 
         // Core
         CoreModule,
