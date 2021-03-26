@@ -125,6 +125,9 @@ const config = {
             xl: '1440px'
         },
         extend  : {
+            animation : {
+                'spin-slow': 'spin 3s linear infinite'
+            },
             flex      : {
                 '0': '0 0 auto'
             },

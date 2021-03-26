@@ -929,7 +929,7 @@ export const defaultNavigation: TreoNavigationItem[] = [
                 icon : 'heroicons_outline:speakerphone',
                 link : '/docs/changelog',
                 badge: {
-                    title  : '1.0.2',
+                    title  : '2.0.0',
                     classes: 'px-2 bg-yellow-300 text-black rounded-full'
                 }
             },
