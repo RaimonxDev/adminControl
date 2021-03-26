@@ -1,47 +1,54 @@
-<div class="content-layout fullwidth-standard-normal-scroll">
+<div class="flex flex-col flex-auto min-w-0">
 
     <!-- Header -->
-    <div class="header">
-
-        <div class="container">
-
-            <div class="breadcrumb">
-                <span class="path">DOCUMENTATION</span>
-                <span class="separator">/</span>
-                <span class="path">OTHER COMPONENTS</span>
-                <span class="separator">/</span>
-                <span class="path">THIRD PARTY</span>
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary">Documentation</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon
+                        class="icon-size-5 text-secondary"
+                        [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary">Other Components</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon
+                        class="icon-size-5 text-secondary"
+                        [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <span class="ml-1 text-secondary">Third Party</span>
+                </div>
             </div>
-
-            <h1>ApexCharts</h1>
-
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Apex Charts
+                </h2>
+            </div>
         </div>
-
     </div>
 
-    <div class="main">
+    <div class="flex-auto max-w-3xl p-6 sm:p-10 prose prose-sm">
 
-        <div class="rich-text max-w-3xl">
-
-            <p>
-                <a
-                    href="https://apexcharts.com/"
-                    rel="noreferrer"
-                    target="_blank">ApexCharts
-                </a>
-                is a modern and interactive open-source charts library. Treo supports ApexCharts through official
-                <a
-                    href="https://github.com/apexcharts/ng-apexcharts"
-                    rel="noreferrer"
-                    target="_blank">ng-apexcharts
-                </a>
-                component.
-            </p>
-            <p>
-                All charts in the Demo app built using <em>ApexCharts</em>.
-            </p>
-
-        </div>
+        <p>
+            <a
+                href="https://apexcharts.com/"
+                rel="noreferrer"
+                target="_blank">ApexCharts
+            </a>
+            is a modern and interactive open-source charts library. Treo supports ApexCharts through official
+            <a
+                href="https://github.com/apexcharts/ng-apexcharts"
+                rel="noreferrer"
+                target="_blank">ng-apexcharts
+            </a>
+            component.
+        </p>
+        <p>
+            All charts in the Demo app built using <em>ApexCharts</em>.
+        </p>
 
     </div>
 

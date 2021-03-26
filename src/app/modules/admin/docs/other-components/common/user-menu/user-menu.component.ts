@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'user',
-    templateUrl: './user.component.html',
+    selector   : 'user-menu',
+    templateUrl: './user-menu.component.html',
     styles     : ['']
 })
-export class UserComponent
+export class UserMenuComponent
 {
     /**
      * Constructor

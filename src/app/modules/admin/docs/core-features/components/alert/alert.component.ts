@@ -4,7 +4,11 @@ import { TreoAlertService } from '@treo/components/alert';
 @Component({
     selector   : 'alert',
     templateUrl: './alert.component.html',
-    styles     : ['']
+    styles     : [`
+        treo-alert {
+            margin: 16px 0;
+        }
+    `]
 })
 export class AlertComponent
 {

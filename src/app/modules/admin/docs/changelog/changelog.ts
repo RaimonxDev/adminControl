@@ -10,8 +10,38 @@ export class ChangelogComponent
 {
     changelog: any[] = [
 
-        // v1.1.0
+        // v2.0.0
         {
+            version    : 'v2.0.0',
+            releaseDate: 'WIP/TBA',
+            changes    : [
+                {
+                    type: 'Breaking Changes',
+                    list: [
+                        'This is the new major version of the Treo and it\'s completely different from 1.x versions with no upgrade path'
+                    ]
+                },
+                {
+                    type: 'Features',
+                    list: [
+                        'Re-wrote the entire template from scratch using Tailwind',
+                        'Removed 99% of the SCSS styles in favor of Tailwind',
+                        'Integrated Angular Material theming with Tailwind'
+                    ]
+                },
+                {
+                    type: 'Improvements',
+                    list: [
+                        '(Dependencies) Updated Angular & Angular Material',
+                        '(Dependencies) Updated Tailwind',
+                        '(Dependencies) Updated various other packages'
+                    ]
+                }
+            ]
+        },
+
+        // v1.1.0
+        /*{
             version    : 'v1.1.0',
             releaseDate: 'WIP/TBA',
             changes    : [
@@ -48,12 +78,12 @@ export class ChangelogComponent
                         '(@treo/TreoMessage) Better icon/text alignment for different sized icons',
                         '(pages/help-center) Better styling on home page grid items & better overall spacing',
                         '(ui/forms) Updated form examples to showcase all available form field types',
-                        '(ui/helpers) Improved the \'.rich-text\' utility class to align it better with Tailwind\'s \'.prose\' utility',
+                        '(ui/helpers) Improved the \'.rich-text\' utility class to align it better with Tailwind\'s \'.prose prose-sm\' utility',
                         '(ui/icons) Updated Material and Heroicons icon packs'
                     ]
                 }
             ]
-        },
+        },*/
 
         // v1.0.2
         {

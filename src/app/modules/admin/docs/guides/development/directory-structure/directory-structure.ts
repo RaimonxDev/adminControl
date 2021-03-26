@@ -65,13 +65,8 @@ export class DirectoryStructureComponent implements OnInit
                         children: [
                             {name: 'auth/'},
                             {name: 'config/'},
+                            {name: 'user/'},
                             {name: 'core.module.ts'}
-                        ]
-                    },
-                    {
-                        name    : 'mock-api/',
-                        children: [
-                            {name: 'calendar/'}
                         ]
                     },
                     {
@@ -84,6 +79,17 @@ export class DirectoryStructureComponent implements OnInit
                             {name: 'layout.component.ts'},
                             {name: 'layout.module.ts'},
                             {name: 'layout.types.ts'}
+                        ]
+                    },
+                    {
+                        name    : 'mock-api/',
+                        children: [
+                            {name: 'apps/'},
+                            {name: 'common/'},
+                            {name: 'dashboards/'},
+                            {name: 'pages/'},
+                            {name: 'ui/'},
+                            {name: 'index.ts'}
                         ]
                     },
                     {
@@ -105,7 +111,8 @@ export class DirectoryStructureComponent implements OnInit
                     {name: 'app.component.ts'},
                     {name: 'app.module.ts'},
                     {name: 'app.resolvers.ts'},
-                    {name: 'app.routing.ts'}
+                    {name: 'app.routing.ts'},
+                    {name: 'app.types.ts'}
                 ]
             }
         ];
@@ -127,8 +134,9 @@ export class DirectoryStructureComponent implements OnInit
                             {name: 'styles/'},
                             {name: 'tailwind/'},
                             {name: 'validators/'},
-                            {name: 'treo.module.ts'},
-                            {name: 'api.ts'}
+                            {name: 'version/'},
+                            {name: 'index.ts'},
+                            {name: 'treo.module.ts'}
                         ]
                     },
                     this.appDir[0],
@@ -137,7 +145,8 @@ export class DirectoryStructureComponent implements OnInit
                         children: [
                             {name: 'fonts/'},
                             {name: 'icons/'},
-                            {name: 'images/'}
+                            {name: 'images/'},
+                            {name: 'styles/'}
                         ]
                     },
                     {
@@ -148,23 +157,16 @@ export class DirectoryStructureComponent implements OnInit
                         ]
                     },
                     {
-                        name    : 'tailwind/',
-                        children: [
-                            {name: 'config.js'},
-                            {name: 'main.css'}
-                        ]
-                    },
-                    {
                         name    : 'styles/',
                         children: [
                             {name: 'styles.scss'},
                             {name: 'tailwind.scss'},
-                            {name: 'theme.scss'},
                             {name: 'vendors.scss'}
                         ]
                     },
                     {name: 'favicon-16x16.png'},
                     {name: 'favicon-32x32.png'},
+                    {name: 'global.d.ts'},
                     {name: 'index.html'},
                     {name: 'main.ts'},
                     {name: 'polyfills.ts'},

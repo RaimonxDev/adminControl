@@ -23,6 +23,7 @@ import { ThemeLayoutsComponent } from 'app/modules/admin/docs/guides/customizati
 import { PageLayoutsComponent } from 'app/modules/admin/docs/guides/customization/page-layouts/page-layouts';
 import { TailwindCSSComponent } from 'app/modules/admin/docs/guides/customization/tailwindcss/tailwindcss';
 import { ThemingComponent } from 'app/modules/admin/docs/guides/customization/theming/theming';
+import { ComponentThemingComponent } from 'app/modules/admin/docs/guides/customization/component-theming/component-theming';
 import { SplashScreenCustomizationComponent } from 'app/modules/admin/docs/guides/customization/splash-screen/splash-screen';
 import { JwtComponent } from 'app/modules/admin/docs/guides/authentication/jwt/jwt';
 import { guidesRoutes } from 'app/modules/admin/docs/guides/guides.routing';
@@ -43,6 +44,7 @@ import { guidesRoutes } from 'app/modules/admin/docs/guides/guides.routing';
         PageLayoutsComponent,
         TailwindCSSComponent,
         ThemingComponent,
+        ComponentThemingComponent,
         SplashScreenCustomizationComponent,
         JwtComponent
     ],

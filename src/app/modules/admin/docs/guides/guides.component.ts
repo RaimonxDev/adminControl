@@ -116,6 +116,12 @@ export class GuidesComponent
                         link : '/docs/guides/customization/theming'
                     },
                     {
+                        id   : 'customization.component-theming',
+                        title: 'Component theming',
+                        type : 'basic',
+                        link : '/docs/guides/customization/component-theming'
+                    },
+                    {
                         id   : 'customization.splash-screen',
                         title: 'Splash screen',
                         type : 'basic',
