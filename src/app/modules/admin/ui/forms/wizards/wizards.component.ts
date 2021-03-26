@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
     selector     : 'forms-wizards',
     templateUrl  : './wizards.component.html',
-    styleUrls    : ['./wizards.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class FormsWizardsComponent implements OnInit
@@ -14,12 +13,8 @@ export class FormsWizardsComponent implements OnInit
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
      */
-    constructor(
-        private _formBuilder: FormBuilder
-    )
+    constructor(private _formBuilder: FormBuilder)
     {
     }
 

@@ -1,11 +1,11 @@
 import { Route } from '@angular/router';
 import { CoreFeaturesComponent } from 'app/modules/admin/docs/core-features/core-features.component';
 import { MockApiComponent } from 'app/modules/admin/docs/core-features/libraries/mock-api/mock-api.component';
+import { AlertComponent } from 'app/modules/admin/docs/core-features/components/alert/alert.component';
 import { CardComponent } from 'app/modules/admin/docs/core-features/components/card/card.component';
 import { DateRangeComponent } from 'app/modules/admin/docs/core-features/components/date-range/date-range.component';
 import { DrawerComponent } from 'app/modules/admin/docs/core-features/components/drawer/drawer.component';
 import { HighlightComponent } from 'app/modules/admin/docs/core-features/components/highlight/highlight.component';
-import { MessageComponent } from 'app/modules/admin/docs/core-features/components/message/message.component';
 import { NavigationComponent } from 'app/modules/admin/docs/core-features/components/navigation/navigation.component';
 import { AutogrowComponent } from 'app/modules/admin/docs/core-features/directives/autogrow/autogrow.component';
 import { ScrollbarComponent } from 'app/modules/admin/docs/core-features/directives/scrollbar/scrollbar.component';
@@ -41,7 +41,11 @@ export const coreFeaturesRoutes: Route[] = [
                     {
                         path      : '',
                         pathMatch : 'full',
-                        redirectTo: 'card'
+                        redirectTo: 'alert'
+                    },
+                    {
+                        path     : 'alert',
+                        component: AlertComponent
                     },
                     {
                         path     : 'card',
@@ -58,10 +62,6 @@ export const coreFeaturesRoutes: Route[] = [
                     {
                         path     : 'highlight',
                         component: HighlightComponent
-                    },
-                    {
-                        path     : 'message',
-                        component: MessageComponent
                     },
                     {
                         path     : 'navigation',

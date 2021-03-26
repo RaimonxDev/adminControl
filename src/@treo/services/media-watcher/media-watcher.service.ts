@@ -1,27 +1,53 @@
 import { Injectable } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { treoBreakpoints } from '@treo/tailwind/exported/variables';
+import { Observable, ReplaySubject } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { TreoTailwindService } from '@treo/services/tailwind/tailwind.service';
 
 @Injectable()
 export class TreoMediaWatcherService
 {
-    private _onMediaChange: BehaviorSubject<{ matchingAliases: string[], matchingRules: any }>;
+    private _onMediaChange: ReplaySubject<{ matchingAliases: string[], matchingQueries: any }> = new ReplaySubject<{ matchingAliases: string[], matchingQueries: any }>(1);
 
     /**
      * Constructor
-     *
-     * @param {BreakpointObserver} _breakpointObserver
      */
     constructor(
-        private _breakpointObserver: BreakpointObserver
+        private _breakpointObserver: BreakpointObserver,
+        private _treoTailwindConfigService: TreoTailwindService
     )
     {
-        // Set the defaults
-        this._onMediaChange = new BehaviorSubject(null);
+        this._treoTailwindConfigService.tailwindConfig$.pipe(
+            switchMap((config) => this._breakpointObserver.observe(Object.values(config.breakpoints)).pipe(
+                map((state) => {
 
-        // Initialize
-        this._init();
+                    // Prepare the observable values and set their defaults
+                    const matchingAliases: string[] = [];
+                    const matchingQueries: any = {};
+
+                    // Get the matching breakpoints and use them to fill the subject
+                    const matchingBreakpoints = Object.entries(state.breakpoints).filter(([query, matches]) => matches) ?? [];
+                    for ( const [query] of matchingBreakpoints )
+                    {
+                        // Find the alias of the matching query
+                        const matchingAlias = Object.entries(config.breakpoints).find(([alias, q]) => q === query)[0];
+
+                        // Add the matching query to the observable values
+                        if ( matchingAlias )
+                        {
+                            matchingAliases.push(matchingAlias);
+                            matchingQueries[matchingAlias] = query;
+                        }
+                    }
+
+                    // Execute the observable
+                    this._onMediaChange.next({
+                        matchingAliases,
+                        matchingQueries
+                    });
+                })
+            ))
+        ).subscribe();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -31,62 +57,9 @@ export class TreoMediaWatcherService
     /**
      * Getter for _onMediaChange
      */
-    get onMediaChange$(): Observable<{ matchingAliases: string[], matchingRules: any }>
+    get onMediaChange$(): Observable<{ matchingAliases: string[], matchingQueries: any }>
     {
         return this._onMediaChange.asObservable();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Initialize
-     *
-     * @private
-     */
-    private _init(): void
-    {
-        // Subscribe to the breakpoint observer
-        this._breakpointObserver.observe(Object.values(treoBreakpoints))
-            .subscribe((state) => {
-
-                const matchingAliases = [];
-                const matchingRules = {};
-
-                // If there are no matching rules, execute the observable and bail
-                if ( !state.matches )
-                {
-                    this._onMediaChange.next({
-                        matchingAliases,
-                        matchingRules
-                    });
-
-                    return;
-                }
-
-                // Go through the breakpoints and find the ones that match
-                for ( const [query, matches] of Object.entries(state.breakpoints) )
-                {
-                    if ( !matches )
-                    {
-                        continue;
-                    }
-
-                    // Get the alias of the matching query
-                    const alias = Object.keys(treoBreakpoints).find(key => treoBreakpoints[key] === query);
-
-                    // Prepare the observable values
-                    matchingAliases.push(alias);
-                    matchingRules[alias] = query;
-                }
-
-                // Execute the observable
-                this._onMediaChange.next({
-                    matchingAliases,
-                    matchingRules
-                });
-            });
     }
 
     // -----------------------------------------------------------------------------------------------------

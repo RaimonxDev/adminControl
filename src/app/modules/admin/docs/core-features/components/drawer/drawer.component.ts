@@ -12,12 +12,8 @@ export class DrawerComponent
 
     /**
      * Constructor
-     *
-     * @param {TreoDrawerService} _treoDrawerService
      */
-    constructor(
-        private _treoDrawerService: TreoDrawerService
-    )
+    constructor(private _treoDrawerService: TreoDrawerService)
     {
         // Set the defaults
         this.drawerMode = 'side';
@@ -30,22 +26,30 @@ export class DrawerComponent
     /**
      * Toggle the drawer mode
      *
-     * @param drawerName
+     * @param name
      */
-    toggleDrawerMode(drawerName): void
+    toggleDrawerMode(name: string): void
     {
-        const drawer = this._treoDrawerService.getComponent(drawerName);
-        drawer.mode = drawer.mode === 'side' ? 'over' : 'side';
+        const drawer = this._treoDrawerService.getComponent(name);
+
+        if ( drawer )
+        {
+            drawer.mode = drawer.mode === 'side' ? 'over' : 'side';
+        }
     }
 
     /**
      * Toggle the drawer open
      *
-     * @param drawerName
+     * @param name
      */
-    toggleDrawerOpen(drawerName): void
+    toggleDrawerOpen(name: string): void
     {
-        const drawer = this._treoDrawerService.getComponent(drawerName);
-        drawer.toggle();
+        const drawer = this._treoDrawerService.getComponent(name);
+
+        if ( drawer )
+        {
+            drawer.toggle();
+        }
     }
 }

@@ -10,12 +10,8 @@ export class AnalyticsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {AnalyticsService} _analyticsService
      */
-    constructor(
-        private _analyticsService: AnalyticsService
-    )
+    constructor(private _analyticsService: AnalyticsService)
     {
     }
 

@@ -18,29 +18,20 @@ import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.servic
 })
 export class ContactsListComponent implements OnInit, OnDestroy
 {
+    @ViewChild('matDrawer', {static: true}) matDrawer: MatDrawer;
+
     contacts$: Observable<Contact[]>;
-    contactsCount: number;
-    contactsTableColumns: string[];
+
+    contactsCount: number = 0;
+    contactsTableColumns: string[] = ['name', 'email', 'phoneNumber', 'job'];
     countries: Country[];
     drawerMode: 'side' | 'over';
-    searchInputControl: FormControl;
+    searchInputControl: FormControl = new FormControl();
     selectedContact: Contact;
-
-    @ViewChild('matDrawer', {static: true})
-    matDrawer: MatDrawer;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ContactsService} _contactsService
-     * @param {DOCUMENT} _document
-     * @param {Router} _router
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -51,13 +42,6 @@ export class ContactsListComponent implements OnInit, OnDestroy
         private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.contactsCount = 0;
-        this.contactsTableColumns = ['name', 'email', 'phoneNumber', 'job'];
-        this.searchInputControl = new FormControl();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -118,13 +102,32 @@ export class ContactsListComponent implements OnInit, OnDestroy
             )
             .subscribe();
 
-        // Subscribe to media query change
-        this._treoMediaWatcherService.onMediaQueryChange$('(min-width: 1440px)')
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((state) => {
+        // Subscribe to MatDrawer opened change
+        this.matDrawer.openedChange.subscribe((opened) => {
+            if ( !opened )
+            {
+                // Remove the selected contact when drawer closed
+                this.selectedContact = null;
 
-                // Calculate the drawer mode
-                this.drawerMode = state.matches ? 'side' : 'over';
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            }
+        });
+
+        // Subscribe to media changes
+        this._treoMediaWatcherService.onMediaChange$
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(({matchingAliases}) => {
+
+                // Set the drawerMode if the given breakpoint is active
+                if ( matchingAliases.includes('lg') )
+                {
+                    this.drawerMode = 'side';
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                }
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();

@@ -12,9 +12,13 @@ export const appRoutes: Route[] = [
     {path: '', pathMatch : 'full', redirectTo: 'dashboards/finance'},
 
     // Redirect signed in user to the '/dashboards/finance'
+    //
+    // After the user signs in, the sign in page will redirect the user to the 'signed-in-redirect'
+    // path. Below is another redirection for that path to redirect the user to the desired
+    // location. This is a small convenience to keep all main routes together here on this file.
     {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'dashboards/finance'},
 
-    // Auth routes (guest)
+    // Auth routes for guests
     {
         path: '',
         canActivate: [NoAuthGuard],
@@ -32,7 +36,7 @@ export const appRoutes: Route[] = [
         ]
     },
 
-    // Auth routes (logged in)
+    // Auth routes for authenticated users
     {
         path: '',
         canActivate: [AuthGuard],
@@ -90,15 +94,7 @@ export const appRoutes: Route[] = [
             {path: 'pages', children: [
 
                 // Authentication
-                {path: 'authentication', children: [
-                    {path: 'confirmation-required', loadChildren: () => import('app/modules/admin/pages/authentication/confirmation-required/confirmation-required.module').then(m => m.ConfirmationRequiredModule)},
-                    {path: 'forgot-password', loadChildren: () => import('app/modules/admin/pages/authentication/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)},
-                    {path: 'reset-password', loadChildren: () => import('app/modules/admin/pages/authentication/reset-password/reset-password.module').then(m => m.ResetPasswordModule)},
-                    {path: 'sign-in', loadChildren: () => import('app/modules/admin/pages/authentication/sign-in/sign-in.module').then(m => m.SignInModule)},
-                    {path: 'sign-up', loadChildren: () => import('app/modules/admin/pages/authentication/sign-up/sign-up.module').then(m => m.SignUpModule)},
-                    {path: 'sign-out', loadChildren: () => import('app/modules/admin/pages/authentication/sign-out/sign-out.module').then(m => m.SignOutModule)},
-                    {path: 'unlock-session', loadChildren: () => import('app/modules/admin/pages/authentication/unlock-session/unlock-session.module').then(m => m.UnlockSessionModule)}
-                ]},
+                {path: 'authentication', loadChildren: () => import('app/modules/admin/pages/authentication/authentication.module').then(m => m.AuthenticationModule)},
 
                 // Coming soon
                 {path: 'coming-soon', loadChildren: () => import('app/modules/admin/pages/coming-soon/coming-soon.module').then(m => m.ComingSoonModule)},
@@ -145,55 +141,6 @@ export const appRoutes: Route[] = [
                 // Colors
                 {path: 'colors', loadChildren: () => import('app/modules/admin/ui/colors/colors.module').then(m => m.ColorsModule)},
 
-                // Content layouts
-                {path: 'content-layouts', children: [
-
-                    // Overview
-                    {path: 'overview', loadChildren: () => import('app/modules/admin/ui/content-layouts/overview/overview.module').then(m => m.ContentLayoutsOverviewModule)},
-
-                    // Fullwidth
-                    {path: 'fullwidth', children: [
-                        {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/basic/basic.module').then(m => m.FullwidthBasicModule)},
-                        {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/standard/standard.module').then(m => m.FullwidthStandardModule)},
-                        {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/tabs/tabs.module').then(m => m.FullwidthTabsModule)},
-                        {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/fullwidth/tabs-navigation/tabs-navigation.module').then(m => m.FullwidthTabsNavigationModule)}
-                    ]},
-
-                    // Left sidebar
-                    {path: 'left-sidebar', children: [
-
-                        {path: 'fullheight', children: [
-                            {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/basic/basic.module').then(m => m.LeftSidebarFullheightBasicModule)},
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/standard/standard.module').then(m => m.LeftSidebarFullheightStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/tabs/tabs.module').then(m => m.LeftSidebarFullheightTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/fullheight/tabs-navigation/tabs-navigation.module').then(m => m.LeftSidebarFullheightTabsNavigationModule)}
-                        ]},
-
-                        {path: 'content', children: [
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/standard/standard.module').then(m => m.LeftSidebarContentStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/tabs/tabs.module').then(m => m.LeftSidebarContentTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/left-sidebar/content/tabs-navigation/tabs-navigation.module').then(m => m.LeftSidebarContentTabsNavigationModule)}
-                        ]}
-                    ]},
-
-                    // Right sidebar
-                    {path: 'right-sidebar', children: [
-
-                        {path: 'fullheight', children: [
-                            {path: 'basic', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/basic/basic.module').then(m => m.RightSidebarFullheightBasicModule)},
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/standard/standard.module').then(m => m.RightSidebarFullheightStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs/tabs.module').then(m => m.RightSidebarFullheightTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/fullheight/tabs-navigation/tabs-navigation.module').then(m => m.RightSidebarFullheightTabsNavigationModule)}
-                        ]},
-
-                        {path: 'content', children: [
-                            {path: 'standard', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/standard/standard.module').then(m => m.RightSidebarContentStandardModule)},
-                            {path: 'tabs', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/tabs/tabs.module').then(m => m.RightSidebarContentTabsModule)},
-                            {path: 'tabs-navigation', loadChildren: () => import('app/modules/admin/ui/content-layouts/right-sidebar/content/tabs-navigation/tabs-navigation.module').then(m => m.RightSidebarContentTabsNavigationModule)}
-                        ]}
-                    ]}
-                ]},
-
                 // Datatable
                 {path: 'datatable', loadChildren: () => import('app/modules/admin/ui/datatable/datatable.module').then(m => m.DatatableModule)},
 
@@ -209,6 +156,9 @@ export const appRoutes: Route[] = [
 
                 // Icons
                 {path: 'icons', loadChildren: () => import('app/modules/admin/ui/icons/icons.module').then(m => m.IconsModule)},
+
+                // Page layouts
+                {path: 'page-layouts', loadChildren: () => import('app/modules/admin/ui/page-layouts/page-layouts.module').then(m => m.PageLayoutsModule)},
 
                 // Typography
                 {path: 'typography', loadChildren: () => import('app/modules/admin/ui/typography/typography.module').then(m => m.TypographyModule)}

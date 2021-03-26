@@ -10,23 +10,15 @@ import { Tag, Task } from 'app/modules/admin/apps/tasks/tasks.types';
 export class TasksService
 {
     // Private
-    private _tags: BehaviorSubject<Tag[] | null>;
-    private _task: BehaviorSubject<Task | null>;
-    private _tasks: BehaviorSubject<Task[] | null>;
+    private _tags: BehaviorSubject<Tag[] | null> = new BehaviorSubject(null);
+    private _task: BehaviorSubject<Task | null> = new BehaviorSubject(null);
+    private _tasks: BehaviorSubject<Task[] | null> = new BehaviorSubject(null);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._tags = new BehaviorSubject(null);
-        this._task = new BehaviorSubject(null);
-        this._tasks = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

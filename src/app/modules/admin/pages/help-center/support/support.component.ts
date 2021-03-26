@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { TreoAnimations } from '@treo/animations';
 import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-center.service';
 
@@ -11,30 +10,21 @@ import { HelpCenterService } from 'app/modules/admin/pages/help-center/help-cent
     encapsulation: ViewEncapsulation.None,
     animations   : TreoAnimations
 })
-export class HelpCenterSupportComponent implements OnInit, OnDestroy
+export class HelpCenterSupportComponent implements OnInit
 {
-    message: any | null;
-    supportForm: FormGroup;
+    @ViewChild('supportNgForm') supportNgForm: NgForm;
 
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    alert: any;
+    supportForm: FormGroup;
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
-     * @param {HelpCenterService} _helpCenterService
      */
     constructor(
         private _formBuilder: FormBuilder,
         private _helpCenterService: HelpCenterService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.message = null;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -55,16 +45,6 @@ export class HelpCenterSupportComponent implements OnInit, OnDestroy
         });
     }
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -75,7 +55,7 @@ export class HelpCenterSupportComponent implements OnInit, OnDestroy
     clearForm(): void
     {
         // Reset the form
-        this.supportForm.reset();
+        this.supportNgForm.resetForm();
     }
 
     /**
@@ -88,13 +68,13 @@ export class HelpCenterSupportComponent implements OnInit, OnDestroy
 
         // Show a success message (it can also be an error message)
         // and remove it after 5 seconds
-        this.message = {
+        this.alert = {
             type   : 'success',
-            content: 'Your request has been delivered! A member of our support staff will respond as soon as possible.'
+            message: 'Your request has been delivered! A member of our support staff will respond as soon as possible.'
         };
 
         setTimeout(() => {
-            this.message = null;
+            this.alert = null;
         }, 7000);
 
         // Clear the form

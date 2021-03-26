@@ -1,310 +1,139 @@
-<div class="content-layout fullwidth-standard-normal-scroll">
+<div class="flex flex-col flex-auto min-w-0">
 
-    <div class="header">
-
-        <div class="container">
-
-            <div class="breadcrumb">
-                <span class="path">UI ELEMENTS</span>
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary">User Interface</a>
+                </div>
             </div>
-            <h1>Colors</h1>
-
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Colors
+                </h2>
+            </div>
         </div>
-
     </div>
 
-    <div class="main">
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
 
-        <div class="rich-text max-w-3xl">
+        <div class="max-w-3xl prose prose-sm">
 
             <p>
-                Treo provides set of ready to use colors for convenience. These colors based on Google's Material Design specs. and each color comes with a set of class names
-                that can be added to an element to change its <b>text</b> and <b>background</b> colors separately as well as both of them at the same time.
+                Since Treo uses Tailwind, all color related utilities such as <code>text-red-50</code> or <code>bg-indigo-900</code>
+                are available by default and they can be configured using Tailwind's configuration.
             </p>
 
-            <h2>Usage</h2>
-
-            <h4>Base classes</h4>
-            <p>Each color class has 3 different variants;</p>
-            <ul>
-                <li>
-                    <p><code>.COLORNAME</code></p>
-                    <p>Adds the specified color as the background and its contrasting color as the text color.</p>
-                </li>
-                <li>
-                    <p><code>.bg-COLORNAME</code></p>
-                    <p>Adds the specified color as the background color.</p>
-                </li>
-                <li>
-                    <p><code>.text-COLORNAME</code></p>
-                    <p>Adds the specified color as the text color.</p>
-                </li>
-            </ul>
-
-            <div class="example-viewer">
-
-                <div class="title">
-                    <h6>Example</h6>
-                </div>
-
-                <mat-tab-group [animationDuration]="'0ms'">
-
-                    <mat-tab label="Preview">
-
-                        <div class="colors">
-
-                            <div class="primary">
-                                Primary background & contrasting color
-                            </div>
-
-                            <div class="bg-primary">
-                                Primary background
-                            </div>
-
-                            <div class="text-primary">
-                                Primary color
-                            </div>
-
-                        </div>
-
-                    </mat-tab>
-
-                    <mat-tab label="HTML">
-
-                        <textarea treo-highlight
-                                  [lang]="'html'">
-
-                            <div class="primary">
-                                Primary background & its contrasting color
-                            </div>
-
-                            <div class="bg-primary">
-                                Primary background
-                            </div>
-
-                            <div class="text-primary">
-                                Primary color
-                            </div>
-
-                        </textarea>
-
-                    </mat-tab>
-
-                </mat-tab-group>
-
-            </div>
-
-            <h4>Hue levels</h4>
             <p>
-                There are different <b>hue</b> values available for all colors except the <code>White</code> and <code>Black</code> palettes which have same color for all hue
-                values. To access the certain hue value of the color, simply add the value at the end of the class name:
+                In addition to default Tailwind colors, Treo also provides utilities that changes depending on the selected theme.
+                These utilities are meant to be used in places where you want to have a theme dependent colors such as buttons,
+                backgrounds or texts.
             </p>
-            <ul>
-                <li><code>.COLORNAME-HUE</code></li>
-                <li><code>.bg-COLORNAME-HUE</code></li>
-                <li><code>.text-COLORNAME-HUE</code></li>
-            </ul>
-            <div class="example-viewer">
 
-                <div class="title">
-                    <h6>Example</h6>
-                </div>
-
-                <mat-tab-group [animationDuration]="'0ms'">
-
-                    <mat-tab label="Preview">
-
-                        <div class="colors">
-
-                            <div class="teal-600">
-                                Teal (600) background & contrasting color
-                            </div>
-
-                            <div class="bg-teal-400">
-                                Teal (400) background
-                            </div>
-
-                            <div class="text-teal-300">
-                                Teal (300) color
-                            </div>
-
-                        </div>
-
-                    </mat-tab>
-
-                    <mat-tab label="HTML">
-
-                        <textarea treo-highlight
-                                  [lang]="'html'">
-
-                            <div class="teal-600">
-                                Teal (600) background & contrasting color
-                            </div>
-
-                            <div class="bg-teal-400">
-                                Teal (400) background
-                            </div>
-
-                            <div class="text-teal-300">
-                                Teal (300) color
-                            </div>
-
-                        </textarea>
-
-                    </mat-tab>
-
-                </mat-tab-group>
-
-            </div>
-
-            <h4>Emphasize helpers</h4>
+            <h2>Primary, Accent & Warn</h2>
             <p>
-                Following class names also available to have different emphasize levels on the texts:
-            </p>
-            <ul>
-                <li><code>.text-secondary</code></li>
-                <li><code>.text-hint</code> or <code>.text-disabled</code></li>
-                <li><code>.text-fade</code> or <code>.divider</code></li>
-            </ul>
-            <div class="example-viewer">
-
-                <div class="title">
-                    <h6>Example</h6>
-                </div>
-
-                <mat-tab-group [animationDuration]="'0ms'">
-
-                    <mat-tab label="Preview">
-
-                        <div class="colors">
-
-                            <div class="blue-600">
-                                <span>
-                                    Primary text color
-                                </span>
-                            </div>
-
-                            <div class="blue-600">
-                                <span class="text-secondary">
-                                    Secondary text color
-                                </span>
-                            </div>
-
-                            <div class="blue-600">
-                                <span class="text-hint text-disabled">
-                                    Hint / Disabled text color
-                                </span>
-                            </div>
-
-                            <div class="blue-600">
-                                <span class="divider">
-                                    Divider color
-                                </span>
-                            </div>
-
-                        </div>
-
-                    </mat-tab>
-
-                    <mat-tab label="HTML">
-
-                        <textarea treo-highlight
-                                  [lang]="'html'">
-
-                            <div class="blue-600">
-                                <span>
-                                    Primary text color
-                                </span>
-                            </div>
-
-                            <div class="blue-600">
-                                <span class="text-secondary">
-                                    Secondary text color
-                                </span>
-                            </div>
-
-                            <div class="blue-600">
-                                <span class="text-hint text-disabled">
-                                    Hint / Disabled text color
-                                </span>
-                            </div>
-
-                            <div class="blue-600">
-                                <span class="divider">
-                                    Divider color
-                                </span>
-                            </div>
-
-                        </textarea>
-
-                    </mat-tab>
-
-                </mat-tab-group>
-
-            </div>
-
-            <h2>Primary, Accent, Warn, White & Black</h2>
-            <p>
-                <code>Primary</code>, <code>Accent</code> and <code>Warn</code> palettes will use the colors from the chosen color palette making it easier to access theme colors
-                and to have better consistency throughout the application. They will change depending on the color theme of your app.
+                Treo provides <strong>Primary</strong>, <strong>Accent</strong> and <strong>Warn</strong> utilities to go with
+                Angular Material theming. These utilities hold variable colors and they change depending on the selected theme color.
             </p>
             <p>
-                <code>White</code> and <code>Black</code> palettes are fixed and cannot be modified.
+                Having these utilities allow you to have dynamic theming throughout your application without hard coding any colors.
+                Each of these utilities also have a complementary <code>.text-on-XXX</code> utility to provide a contrasting text color.
             </p>
-            <div class="palettes">
-
-                <div class="palette">
-
-                    <div class="colors">
-
-                        <div class="color"
-                             *ngFor="let palette of themePalettes"
-                             [ngClass]="palette"
-                             matRipple>
-                            <span class="hue">
-                                <span class="hue-value">{{palette}}</span>
-                            </span>
-                            <span class="divider"></span>
-                            <span>Primary</span>
-                            <span class="text-secondary">Secondary</span>
-                            <span class="text-hint text-disabled">Hint / Disabled</span>
-                        </div>
-
+            <div class="my-8 space-y-8">
+                <div class="grid grid-cols-3 gap-4">
+                    <div
+                        class="flex flex-col flex-auto items-start justify-center p-6 rounded text-on-primary bg-primary"
+                        matRipple>
+                        <div class="font-medium">Primary</div>
+                        <div class="w-full my-4 border-b border-on-primary border-opacity-50"></div>
+                        <code class="text-on-primary">bg-primary</code>
+                        <code class="text-on-primary">text-on-primary</code>
                     </div>
-
-                </div>
-
-            </div>
-
-            <div class="palettes">
-
-                <div class="palette"
-                     *ngFor="let palette of treoPalettes">
-
-                    <h2>
-                        {{palette | titlecase}}
-                    </h2>
-
-                    <div class="colors">
-
-                        <div class="color"
-                             *ngFor="let hue of hues"
-                             [ngClass]="palette + '-' + hue"
-                             matRipple>
-                            <span class="hue">
-                                <mat-icon [svgIcon]="'palette'"></mat-icon>
-                                <span class="hue-value">{{hue}}</span>
-                            </span>
-                            <span class="divider"></span>
-                            <span>Primary</span>
-                            <span class="text-secondary">Secondary</span>
-                            <span class="text-hint text-disabled">Hint / Disabled</span>
-                        </div>
-
+                    <div
+                        class="flex flex-col flex-auto items-start justify-center p-6 rounded text-on-accent bg-accent"
+                        matRipple>
+                        <div class="font-medium">Accent</div>
+                        <div class="w-full my-4 border-b border-on-accent border-opacity-50"></div>
+                        <code class="text-on-accent">bg-accent</code>
+                        <code class="text-on-accent">text-on-accent</code>
                     </div>
-
+                    <div
+                        class="flex flex-col flex-auto items-start justify-center p-6 rounded text-on-warn bg-warn"
+                        matRipple>
+                        <div class="font-medium">Warn</div>
+                        <div class="w-full my-4 border-b border-on-warn border-opacity-50"></div>
+                        <code class="text-on-warn">bg-warn</code>
+                        <code class="text-on-warn">text-on-warn</code>
+                    </div>
+                    <div
+                        class="flex flex-col flex-auto items-start justify-center p-6 rounded text-on-primary-200 bg-primary-200"
+                        matRipple>
+                        <div class="font-medium">Primary 200</div>
+                        <div class="w-full my-4 border-b border-on-primary-200 border-opacity-50"></div>
+                        <code class="text-on-primary-200">bg-primary-200</code>
+                        <code class="text-on-primary-200">text-on-primary-200</code>
+                    </div>
+                    <div
+                        class="flex flex-col flex-auto items-start justify-center p-6 rounded text-on-accent-300 bg-accent-300"
+                        matRipple>
+                        <div class="font-medium">Accent 300</div>
+                        <div class="w-full my-4 border-b border-on-accent-300 border-opacity-50"></div>
+                        <code class="text-on-accent-300">bg-accent-300</code>
+                        <code class="text-on-accent-300">text-on-accent-300</code>
+                    </div>
+                    <div
+                        class="flex flex-col flex-auto items-start justify-center p-6 rounded text-on-warn-400 bg-warn-400"
+                        matRipple>
+                        <div class="font-medium">Warn 400</div>
+                        <div class="w-full my-4 border-b border-on-warn-400 border-opacity-50"></div>
+                        <code class="text-on-warn-400">bg-warn-400</code>
+                        <code class="text-on-warn-400">text-on-warn-400</code>
+                    </div>
                 </div>
+            </div>
+            <p>
+                You can change the theme from the <i>Settings</i> panel to observe the primary color changing.
+            </p>
+            <p>
+                These variable colors have different hue values just like a default Tailwind color palette and
+                they are also available for other Tailwind color utilities such as <strong>border</strong>, <strong>ring</strong> and etc:
+            </p>
+            <p>
+                <code>bg-primary-50</code>, <code>text-accent-900</code>, <code>text-on-warn-500</code>, <code>border-primary</code>,
+                <code>ring-warn-600</code> ...
+            </p>
 
+
+            <h2>Text and Background colors</h2>
+            <p>
+                Treo also provides set of utilities to have consistent text and background colors throughout your application without
+                hard coding any colors. They also allow working with dark variant of the selected theme.
+            </p>
+            <p>
+                For example, a text node with a <code>.text-secondary</code> class will have a proper lighter color compared to main text color
+                depending on the selected scheme.
+            </p>
+            <p>
+                Here's the complete list of the available text and background utilities:
+            </p>
+            <div class="flex my-8 space-x-16">
+                <div class="flex flex-col space-y-4">
+                    <div><code class="text-default">.text-default</code></div>
+                    <div><code class="text-secondary">.text-secondary</code></div>
+                    <div><code class="text-hint">.text-hint</code></div>
+                    <div><code class="text-disabled">.text-disabled</code></div>
+                    <div><code class="divider">.divider</code></div>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <div class="py-1 px-2 rounded bg-card"><code>.bg-card</code></div>
+                    <div class="py-1 px-2 rounded bg-default"><code>.bg-default</code></div>
+                    <div class="py-1 px-2 rounded bg-dialog"><code>.bg-dialog</code></div>
+                    <div class="py-1 px-2 rounded bg-hover"><code>.bg-hover</code></div>
+                </div>
             </div>
 
         </div>

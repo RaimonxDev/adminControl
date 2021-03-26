@@ -14,16 +14,10 @@ import { GuideCategory } from 'app/modules/admin/pages/help-center/help-center.t
 export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
 {
     guideCategory: GuideCategory;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {HelpCenterService} _helpCenterService
-     * @param {Router} _router
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -31,8 +25,6 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
         private _router: Router
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

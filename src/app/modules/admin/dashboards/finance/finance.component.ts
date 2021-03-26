@@ -15,32 +15,19 @@ import { FinanceService } from 'app/modules/admin/dashboards/finance/finance.ser
 })
 export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
 {
+    @ViewChild('recentTransactionsTable', {read: MatSort}) recentTransactionsTableMatSort: MatSort;
+
     data: any;
     accountBalanceOptions: ApexOptions;
-    recentTransactionsDataSource: MatTableDataSource<any>;
-    recentTransactionsTableColumns: string[];
-
-    @ViewChild('recentTransactionsTable', {read: MatSort})
-    recentTransactionsTableMatSort: MatSort;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    recentTransactionsDataSource: MatTableDataSource<any> = new MatTableDataSource();
+    recentTransactionsTableColumns: string[] = ['transactionId', 'date', 'name', 'amount', 'status'];
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {FinanceService} _financeService
      */
-    constructor(
-        private _financeService: FinanceService
-    )
+    constructor(private _financeService: FinanceService)
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.recentTransactionsDataSource = new MatTableDataSource();
-        this.recentTransactionsTableColumns = ['transactionId', 'date', 'name', 'amount', 'status'];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -128,11 +115,12 @@ export class FinanceComponent implements OnInit, AfterViewInit, OnDestroy
                 width: 2
             },
             tooltip: {
-                theme: 'dark',
-                x    : {
+                followCursor: true,
+                theme       : 'dark',
+                x           : {
                     format: 'MMM dd, yyyy'
                 },
-                y    : {
+                y           : {
                     formatter: (value) => {
                         return value + '%';
                     }

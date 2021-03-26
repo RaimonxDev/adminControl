@@ -37,6 +37,12 @@ export class CoreFeaturesComponent
                 type    : 'group',
                 children: [
                     {
+                        id   : 'core-features.components.alert',
+                        title: 'Alert',
+                        type : 'basic',
+                        link : '/docs/core-features/components/alert'
+                    },
+                    {
                         id   : 'core-features.components.card',
                         title: 'Card',
                         type : 'basic',
@@ -59,12 +65,6 @@ export class CoreFeaturesComponent
                         title: 'Highlight',
                         type : 'basic',
                         link : '/docs/core-features/components/highlight'
-                    },
-                    {
-                        id   : 'core-features.components.message',
-                        title: 'Message',
-                        type : 'basic',
-                        link : '/docs/core-features/components/message'
                     },
                     {
                         id   : 'core-features.components.navigation',

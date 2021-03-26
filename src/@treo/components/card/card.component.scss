@@ -1,21 +1,21 @@
-@import 'treo';
-
 treo-card {
     position: relative;
     display: flex;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
-    @include treo-elevation('md');
+    @apply shadow-md bg-card;
 
-    // Flippable
+    /* Flippable */
     &.treo-card-flippable {
         border-radius: 0;
         overflow: visible;
         transform-style: preserve-3d;
         transition: transform 1s;
-        @include treo-elevation('none');
+        perspective: 600px;
+        background: transparent;
+        @apply shadow-none;
 
-        &.treo-card-flipped {
+        &.treo-card-face-back {
 
             .treo-card-front {
                 visibility: hidden;
@@ -36,10 +36,10 @@ treo-card {
             flex-direction: column;
             flex: 1 1 auto;
             z-index: 10;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: transform 0.5s ease-out 0s, visibility 0s ease-in 0.2s, opacity 0s ease-in 0.2s;
             backface-visibility: hidden;
-            @include treo-elevation('md');
+            @apply shadow-md bg-card;
         }
 
         .treo-card-front {
@@ -60,26 +60,6 @@ treo-card {
             visibility: hidden;
             transform: rotateY(180deg);
             overflow: hidden auto;
-        }
-    }
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
-@include treo-theme {
-    $background: map-get($theme, background);
-
-    treo-card {
-        background: map-get($background, card);
-
-        &.treo-card-flippable {
-            background: transparent;
-
-            .treo-card-front,
-            .treo-card-back {
-                background: map-get($background, card);
-            }
         }
     }
 }

@@ -17,26 +17,17 @@ import { CryptoService } from 'app/modules/admin/dashboards/crypto/crypto.servic
 })
 export class CryptoComponent implements OnInit, OnDestroy
 {
+    @ViewChild('btcChartComponent') btcChartComponent: ChartComponent;
     appConfig: any;
     btcOptions: ApexOptions | any;
     data: any;
-    drawerMode: 'over' | 'side';
-    drawerOpened: boolean;
+    drawerMode: 'over' | 'side' = 'side';
+    drawerOpened: boolean = true;
     watchlistChartOptions: ApexOptions;
-
-    @ViewChild('btcChartComponent')
-    btcChartComponent: ChartComponent;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {CryptoService} _cryptoService
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {TreoConfigService} _treoConfigService
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
     constructor(
         private _cryptoService: CryptoService,
@@ -45,12 +36,6 @@ export class CryptoComponent implements OnInit, OnDestroy
         private _treoMediaWatcherService: TreoMediaWatcherService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.drawerMode = 'side';
-        this.drawerOpened = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -67,16 +52,16 @@ export class CryptoComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
-                // Set the drawerMode and drawerOpened if 'lt-lg' breakpoint is active
-                if ( matchingAliases.includes('lt-lg') )
-                {
-                    this.drawerMode = 'over';
-                    this.drawerOpened = false;
-                }
-                else
+                // Set the drawerMode and drawerOpened if 'lg' breakpoint is active
+                if ( matchingAliases.includes('lg') )
                 {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
                 }
 
                 // Mark for check
@@ -206,7 +191,7 @@ export class CryptoComponent implements OnInit, OnDestroy
                 shared: true,
                 theme : 'dark',
                 y     : {
-                    formatter: (value) => {
+                    formatter: (value: number) => {
                         return '$' + value.toFixed(2);
                     }
                 }
@@ -263,11 +248,11 @@ export class CryptoComponent implements OnInit, OnDestroy
                 forceNiceScale: true,
                 labels        : {
                     minWidth : 40,
-                    formatter: (value, index) => {
+                    formatter: (value: number) => {
                         return '$' + value.toFixed(0);
                     },
                     style    : {
-                        color: 'currentColor'
+                        colors: 'currentColor'
                     }
                 }
             }

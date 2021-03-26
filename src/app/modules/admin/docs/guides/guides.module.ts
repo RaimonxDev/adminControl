@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTreeModule } from '@angular/material/tree';
 import { TreoHighlightModule } from '@treo/components/highlight';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { TreoNavigationModule } from '@treo/components/navigation';
 import { TreoScrollResetModule } from '@treo/directives/scroll-reset';
 import { SharedModule } from 'app/shared/shared.module';
@@ -20,9 +20,10 @@ import { StarterKitComponent } from 'app/modules/admin/docs/guides/development/s
 import { DeploymentComponent } from 'app/modules/admin/docs/guides/development/deployment/deployment';
 import { UpdatingComponent } from 'app/modules/admin/docs/guides/development/updating/updating';
 import { ThemeLayoutsComponent } from 'app/modules/admin/docs/guides/customization/theme-layouts/theme-layouts';
-import { ContentLayoutsComponent } from 'app/modules/admin/docs/guides/customization/content-layouts/content-layouts';
+import { PageLayoutsComponent } from 'app/modules/admin/docs/guides/customization/page-layouts/page-layouts';
 import { TailwindCSSComponent } from 'app/modules/admin/docs/guides/customization/tailwindcss/tailwindcss';
 import { ThemingComponent } from 'app/modules/admin/docs/guides/customization/theming/theming';
+import { ComponentThemingComponent } from 'app/modules/admin/docs/guides/customization/component-theming/component-theming';
 import { SplashScreenCustomizationComponent } from 'app/modules/admin/docs/guides/customization/splash-screen/splash-screen';
 import { JwtComponent } from 'app/modules/admin/docs/guides/authentication/jwt/jwt';
 import { guidesRoutes } from 'app/modules/admin/docs/guides/guides.routing';
@@ -40,9 +41,10 @@ import { guidesRoutes } from 'app/modules/admin/docs/guides/guides.routing';
         DeploymentComponent,
         UpdatingComponent,
         ThemeLayoutsComponent,
-        ContentLayoutsComponent,
+        PageLayoutsComponent,
         TailwindCSSComponent,
         ThemingComponent,
+        ComponentThemingComponent,
         SplashScreenCustomizationComponent,
         JwtComponent
     ],
@@ -53,7 +55,7 @@ import { guidesRoutes } from 'app/modules/admin/docs/guides/guides.routing';
         MatSidenavModule,
         MatTreeModule,
         TreoHighlightModule,
-        TreoMessageModule,
+        TreoAlertModule,
         TreoNavigationModule,
         TreoScrollResetModule,
         SharedModule

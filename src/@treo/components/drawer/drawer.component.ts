@@ -1,7 +1,9 @@
-import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { TreoDrawerMode, TreoDrawerPosition } from '@treo/components/drawer/drawer.types';
 import { TreoDrawerService } from '@treo/components/drawer/drawer.service';
+import { TreoUtilsService } from '@treo/services/utils/utils.service';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector     : 'treo-drawer',
@@ -10,70 +12,39 @@ import { TreoDrawerService } from '@treo/components/drawer/drawer.service';
     encapsulation: ViewEncapsulation.None,
     exportAs     : 'treoDrawer'
 })
-export class TreoDrawerComponent implements OnInit, OnDestroy
+export class TreoDrawerComponent implements OnChanges, OnInit, OnDestroy
 {
-    // Name
-    @Input()
-    name: string;
+    static ngAcceptInputType_fixed: BooleanInput;
+    static ngAcceptInputType_opened: BooleanInput;
+    static ngAcceptInputType_transparentOverlay: BooleanInput;
 
-    // Private
-    private _fixed: boolean;
-    private _mode: TreoDrawerMode;
-    private _opened: boolean | '';
-    private _overlay: HTMLElement | null;
+    @Input() fixed: boolean = false;
+    @Input() mode: TreoDrawerMode = 'side';
+    @Input() name: string = this._treoUtilsService.randomId();
+    @Input() opened: boolean = false;
+    @Input() position: TreoDrawerPosition = 'left';
+    @Input() transparentOverlay: boolean = false;
+    @Output() readonly fixedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() readonly modeChanged: EventEmitter<TreoDrawerMode> = new EventEmitter<TreoDrawerMode>();
+    @Output() readonly openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() readonly positionChanged: EventEmitter<TreoDrawerPosition> = new EventEmitter<TreoDrawerPosition>();
+
+    private _animationsEnabled: boolean = false;
+    private _hovered: boolean = false;
+    private _overlay: HTMLElement;
     private _player: AnimationPlayer;
-    private _position: TreoDrawerPosition;
-    private _transparentOverlay: boolean | '';
-
-    // On fixed changed
-    @Output()
-    readonly fixedChanged: EventEmitter<boolean>;
-
-    // On mode changed
-    @Output()
-    readonly modeChanged: EventEmitter<TreoDrawerMode>;
-
-    // On opened changed
-    @Output()
-    readonly openedChanged: EventEmitter<boolean | ''>;
-
-    // On position changed
-    @Output()
-    readonly positionChanged: EventEmitter<TreoDrawerPosition>;
-
-    @HostBinding('class.treo-drawer-animations-enabled')
-    private _animationsEnabled: boolean;
 
     /**
      * Constructor
-     *
-     * @param {AnimationBuilder} _animationBuilder
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer2
-     * @param {TreoDrawerService} _treoDrawerService
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
         private _elementRef: ElementRef,
         private _renderer2: Renderer2,
-        private _treoDrawerService: TreoDrawerService
+        private _treoDrawerService: TreoDrawerService,
+        private _treoUtilsService: TreoUtilsService
     )
     {
-        // Set the private defaults
-        this._animationsEnabled = false;
-        this._overlay = null;
-
-        // Set the defaults
-        this.fixedChanged = new EventEmitter<boolean>();
-        this.modeChanged = new EventEmitter<TreoDrawerMode>();
-        this.openedChanged = new EventEmitter<boolean | ''>();
-        this.positionChanged = new EventEmitter<TreoDrawerPosition>();
-
-        this.fixed = false;
-        this.mode = 'side';
-        this.opened = false;
-        this.position = 'left';
-        this.transparentOverlay = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -81,236 +52,114 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter & getter for fixed
-     *
-     * @param value
+     * Host binding for component classes
      */
-    @Input()
-    set fixed(value: boolean)
+    @HostBinding('class') get classList(): any
     {
-        // If the value is the same, return...
-        if ( this._fixed === value )
-        {
-            return;
-        }
-
-        // Store the value
-        this._fixed = value;
-
-        // Update the class
-        if ( this.fixed )
-        {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'treo-drawer-fixed');
-        }
-        else
-        {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'treo-drawer-fixed');
-        }
-
-        // Execute the observable
-        this.fixedChanged.next(this.fixed);
-    }
-
-    get fixed(): boolean
-    {
-        return this._fixed;
+        return {
+            'treo-drawer-animations-enabled'         : this._animationsEnabled,
+            'treo-drawer-fixed'                      : this.fixed,
+            'treo-drawer-hover'                      : this._hovered,
+            [`treo-drawer-mode-${this.mode}`]        : true,
+            'treo-drawer-opened'                     : this.opened,
+            [`treo-drawer-position-${this.position}`]: true
+        };
     }
 
     /**
-     * Setter & getter for mode
-     *
-     * @param value
+     * Host binding for component inline styles
      */
-    @Input()
-    set mode(value: TreoDrawerMode)
+    @HostBinding('style') get styleList(): any
     {
-        // If the value is the same, return...
-        if ( this._mode === value )
-        {
-            return;
-        }
-
-        // Disable the animations
-        this._disableAnimations();
-
-        // If the mode changes: 'over -> side'
-        if ( this.mode === 'over' && value === 'side' )
-        {
-            // Hide the overlay
-            this._hideOverlay();
-        }
-
-        // If the mode changes: 'side -> over'
-        if ( this.mode === 'side' && value === 'over' )
-        {
-            // If the drawer is opened
-            if ( this.opened )
-            {
-                // Show the overlay
-                this._showOverlay();
-            }
-        }
-
-        let modeClassName;
-
-        // Remove the previous mode class
-        modeClassName = 'treo-drawer-mode-' + this.mode;
-        this._renderer2.removeClass(this._elementRef.nativeElement, modeClassName);
-
-        // Store the value
-        this._mode = value;
-
-        // Add the new mode class
-        modeClassName = 'treo-drawer-mode-' + this.mode;
-        this._renderer2.addClass(this._elementRef.nativeElement, modeClassName);
-
-        // Execute the observable
-        this.modeChanged.next(this.mode);
-
-        // Enable the animations after a delay
-        // The delay must be bigger than the current transition-duration
-        // to make sure nothing will be animated while the mode changing
-        setTimeout(() => {
-            this._enableAnimations();
-        }, 500);
-    }
-
-    get mode(): TreoDrawerMode
-    {
-        return this._mode;
-    }
-
-    /**
-     * Setter & getter for opened
-     *
-     * @param value
-     */
-    @Input()
-    set opened(value: boolean | '')
-    {
-        // If the value is the same, return...
-        if ( this._opened === value )
-        {
-            return;
-        }
-
-        // If the provided value is an empty string,
-        // take that as a 'true'
-        if ( value === '' )
-        {
-            value = true;
-        }
-
-        // Store the value
-        this._opened = value;
-
-        // If the drawer opened, and the mode
-        // is 'over', show the overlay
-        if ( this.mode === 'over' )
-        {
-            if ( this._opened )
-            {
-                this._showOverlay();
-            }
-            else
-            {
-                this._hideOverlay();
-            }
-        }
-
-        // Update opened classes
-        if ( this.opened )
-        {
-            this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'visible');
-            this._renderer2.addClass(this._elementRef.nativeElement, 'treo-drawer-opened');
-        }
-        else
-        {
-            this._renderer2.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'treo-drawer-opened');
-        }
-
-        // Execute the observable
-        this.openedChanged.next(this.opened);
-    }
-
-    get opened(): boolean | ''
-    {
-        return this._opened;
-    }
-
-    /**
-     * Setter & getter for position
-     *
-     * @param value
-     */
-    @Input()
-    set position(value: TreoDrawerPosition)
-    {
-        // If the value is the same, return...
-        if ( this._position === value )
-        {
-            return;
-        }
-
-        let positionClassName;
-
-        // Remove the previous position class
-        positionClassName = 'treo-drawer-position-' + this.position;
-        this._renderer2.removeClass(this._elementRef.nativeElement, positionClassName);
-
-        // Store the value
-        this._position = value;
-
-        // Add the new position class
-        positionClassName = 'treo-drawer-position-' + this.position;
-        this._renderer2.addClass(this._elementRef.nativeElement, positionClassName);
-
-        // Execute the observable
-        this.positionChanged.next(this.position);
-    }
-
-    get position(): TreoDrawerPosition
-    {
-        return this._position;
-    }
-
-    /**
-     * Setter & getter for transparent overlay
-     *
-     * @param value
-     */
-    @Input()
-    set transparentOverlay(value: boolean | '')
-    {
-        // If the value is the same, return...
-        if ( this._opened === value )
-        {
-            return;
-        }
-
-        // If the provided value is an empty string,
-        // take that as a 'true' and set the opened value
-        if ( value === '' )
-        {
-            // Set the opened value
-            this._transparentOverlay = true;
-        }
-        else
-        {
-            // Set the transparent overlay value
-            this._transparentOverlay = value;
-        }
-    }
-
-    get transparentOverlay(): boolean | ''
-    {
-        return this._transparentOverlay;
+        return {
+            'visibility': this.opened ? 'visible' : 'hidden'
+        };
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Fixed
+        if ( 'fixed' in changes )
+        {
+            // Coerce the value to a boolean
+            this.fixed = coerceBooleanProperty(changes.fixed.currentValue);
+
+            // Execute the observable
+            this.fixedChanged.next(this.fixed);
+        }
+
+        // Mode
+        if ( 'mode' in changes )
+        {
+            // Get the previous and current values
+            const previousMode = changes.mode.previousValue;
+            const currentMode = changes.mode.currentValue;
+
+            // Disable the animations
+            this._disableAnimations();
+
+            // If the mode changes: 'over -> side'
+            if ( previousMode === 'over' && currentMode === 'side' )
+            {
+                // Hide the overlay
+                this._hideOverlay();
+            }
+
+            // If the mode changes: 'side -> over'
+            if ( previousMode === 'side' && currentMode === 'over' )
+            {
+                // If the drawer is opened
+                if ( this.opened )
+                {
+                    // Show the overlay
+                    this._showOverlay();
+                }
+            }
+
+            // Execute the observable
+            this.modeChanged.next(currentMode);
+
+            // Enable the animations after a delay
+            // The delay must be bigger than the current transition-duration
+            // to make sure nothing will be animated while the mode is changing
+            setTimeout(() => {
+                this._enableAnimations();
+            }, 500);
+        }
+
+        // Opened
+        if ( 'opened' in changes )
+        {
+            // Coerce the value to a boolean
+            const open = coerceBooleanProperty(changes.opened.currentValue);
+
+            // Open/close the drawer
+            this._toggleOpened(open);
+        }
+
+        // Position
+        if ( 'position' in changes )
+        {
+            // Execute the observable
+            this.positionChanged.next(this.position);
+        }
+
+        // Transparent overlay
+        if ( 'transparentOverlay' in changes )
+        {
+            // Coerce the value to a boolean
+            this.transparentOverlay = coerceBooleanProperty(changes.transparentOverlay.currentValue);
+        }
+    }
 
     /**
      * On init
@@ -331,6 +180,55 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the drawer
+     */
+    open(): void
+    {
+        // Return if the drawer has already opened
+        if ( this.opened )
+        {
+            return;
+        }
+
+        // Open the drawer
+        this._toggleOpened(true);
+    }
+
+    /**
+     * Close the drawer
+     */
+    close(): void
+    {
+        // Return if the drawer has already closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Close the drawer
+        this._toggleOpened(false);
+    }
+
+    /**
+     * Toggle the drawer
+     */
+    toggle(): void
+    {
+        if ( this.opened )
+        {
+            this.close();
+        }
+        else
+        {
+            this.open();
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -341,7 +239,7 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
      */
     private _enableAnimations(): void
     {
-        // If the animations are already enabled, return...
+        // Return if the animations are already enabled
         if ( this._animationsEnabled )
         {
             return;
@@ -358,7 +256,7 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
      */
     private _disableAnimations(): void
     {
-        // If the animations are already disabled, return...
+        // Return if the animations are already disabled
         if ( !this._animationsEnabled )
         {
             return;
@@ -377,6 +275,12 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
     {
         // Create the backdrop element
         this._overlay = this._renderer2.createElement('div');
+
+        // Return if overlay couldn't be create for some reason
+        if ( !this._overlay )
+        {
+            return;
+        }
 
         // Add a class to the backdrop element
         this._overlay.classList.add('treo-drawer-overlay');
@@ -397,11 +301,9 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
         this._renderer2.appendChild(this._elementRef.nativeElement.parentElement, this._overlay);
 
         // Create the enter animation and attach it to the player
-        this._player =
-            this._animationBuilder
-                .build([
-                    animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 1}))
-                ]).create(this._overlay);
+        this._player = this._animationBuilder.build([
+            animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 1}))
+        ]).create(this._overlay);
 
         // Play the animation
         this._player.play();
@@ -425,11 +327,9 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
         }
 
         // Create the leave animation and attach it to the player
-        this._player =
-            this._animationBuilder
-                .build([
-                    animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 0}))
-                ]).create(this._overlay);
+        this._player = this._animationBuilder.build([
+            animate('300ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({opacity: 0}))
+        ]).create(this._overlay);
 
         // Play the animation
         this._player.play();
@@ -458,8 +358,8 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
         // Enable the animations
         this._enableAnimations();
 
-        // Add a class
-        this._renderer2.addClass(this._elementRef.nativeElement, 'treo-drawer-hover');
+        // Set the hovered
+        this._hovered = true;
     }
 
     /**
@@ -473,51 +373,40 @@ export class TreoDrawerComponent implements OnInit, OnDestroy
         // Enable the animations
         this._enableAnimations();
 
-        // Remove the class
-        this._renderer2.removeClass(this._elementRef.nativeElement, 'treo-drawer-hover');
+        // Set the hovered
+        this._hovered = false;
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
     /**
-     * Open the drawer
+     * Open/close the drawer
+     *
+     * @param open
+     * @private
      */
-    open(): void
+    private _toggleOpened(open: boolean): void
     {
+        // Set the opened
+        this.opened = open;
+
         // Enable the animations
         this._enableAnimations();
 
-        // Open
-        this.opened = true;
-    }
-
-    /**
-     * Close the drawer
-     */
-    close(): void
-    {
-        // Enable the animations
-        this._enableAnimations();
-
-        // Close
-        this.opened = false;
-    }
-
-    /**
-     * Toggle the opened status
-     */
-    toggle(): void
-    {
-        // Toggle
-        if ( this.opened )
+        // If the mode is 'over'
+        if ( this.mode === 'over' )
         {
-            this.close();
+            // If the drawer opens, show the overlay
+            if ( open )
+            {
+                this._showOverlay();
+            }
+            // Otherwise, close the overlay
+            else
+            {
+                this._hideOverlay();
+            }
         }
-        else
-        {
-            this.open();
-        }
+
+        // Execute the observable
+        this.openedChanged.next(open);
     }
 }

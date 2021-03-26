@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { ReplaySubject, Subject } from 'rxjs';
 import { TreoAnimations } from '@treo/animations';
 import { TreoNavigationItem } from '@treo/components/navigation/navigation.types';
 import { TreoNavigationService } from '@treo/components/navigation/navigation.service';
+import { TreoUtilsService } from '@treo/services/utils/utils.service';
 
 @Component({
     selector       : 'treo-horizontal-navigation',
@@ -13,56 +14,23 @@ import { TreoNavigationService } from '@treo/components/navigation/navigation.se
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs       : 'treoHorizontalNavigation'
 })
-export class TreoHorizontalNavigationComponent implements OnInit, OnDestroy
+export class TreoHorizontalNavigationComponent implements OnChanges, OnInit, OnDestroy
 {
-    onRefreshed: BehaviorSubject<boolean | null>;
+    @Input() name: string = this._treoUtilsService.randomId();
+    @Input() navigation: TreoNavigationItem[];
 
-    // Name
-    @Input()
-    name: string;
-
-    // Private
-    private _navigation: TreoNavigationItem[];
-    private _unsubscribeAll: Subject<any>;
+    onRefreshed: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
-        private _treoNavigationService: TreoNavigationService
+        private _treoNavigationService: TreoNavigationService,
+        private _treoUtilsService: TreoUtilsService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.onRefreshed = new BehaviorSubject(null);
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Setter & getter for data
-     */
-    @Input()
-    set navigation(value: TreoNavigationItem[])
-    {
-        // Store the value
-        this._navigation = value;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    get navigation(): TreoNavigationItem[]
-    {
-        return this._navigation;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -70,10 +38,31 @@ export class TreoHorizontalNavigationComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Navigation
+        if ( 'navigation' in changes )
+        {
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+
+    /**
      * On init
      */
     ngOnInit(): void
     {
+        // Make sure the name input is not an empty string
+        if ( this.name === '' )
+        {
+            this.name = this._treoUtilsService.randomId();
+        }
+
         // Register the navigation component
         this._treoNavigationService.registerComponent(this.name, this);
     }

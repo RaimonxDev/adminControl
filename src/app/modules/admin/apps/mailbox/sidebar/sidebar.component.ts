@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { TreoNavigationItem, TreoNavigationService } from '@treo/components/navigation';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { MailboxComposeComponent } from 'app/modules/admin/apps/mailbox/compose/compose.component';
+import { labelColorDefs } from 'app/modules/admin/apps/mailbox/mailbox.constants';
 import { MailFilter, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 
 @Component({
@@ -18,21 +19,15 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     filters: MailFilter[];
     folders: MailFolder[];
     labels: MailLabel[];
-    menuData: TreoNavigationItem[];
-
-    // Private
-    private _filtersMenuData: TreoNavigationItem[];
-    private _foldersMenuData: TreoNavigationItem[];
-    private _labelsMenuData: TreoNavigationItem[];
-    private _otherMenuData: TreoNavigationItem[];
-    private _unsubscribeAll: Subject<any>;
+    menuData: TreoNavigationItem[] = [];
+    private _filtersMenuData: TreoNavigationItem[] = [];
+    private _foldersMenuData: TreoNavigationItem[] = [];
+    private _labelsMenuData: TreoNavigationItem[] = [];
+    private _otherMenuData: TreoNavigationItem[] = [];
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
-     * @param {MatDialog} _matDialog
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _mailboxService: MailboxService,
@@ -40,15 +35,6 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._filtersMenuData = [];
-        this._foldersMenuData = [];
-        this._labelsMenuData = [];
-        this._otherMenuData = [];
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.menuData = [];
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -108,6 +94,24 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open compose dialog
+     */
+    openComposeDialog(): void
+    {
+        // Open the dialog
+        const dialogRef = this._matDialog.open(MailboxComposeComponent);
+
+        dialogRef.afterClosed()
+                 .subscribe(result => {
+                     console.log('Compose dialog was closed!');
+                 });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
@@ -118,7 +122,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
      */
     private _generateFoldersMenuLinks(): void
     {
-        // Reset the folders menu data
+        // Reset the folders menu mock-api
         this._foldersMenuData = [];
 
         // Iterate through the folders
@@ -138,16 +142,15 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             {
                 // Add the count as a badge
                 menuItem['badge'] = {
-                    title: folder.count + '',
-                    style: 'simple'
+                    title: folder.count + ''
                 };
             }
 
-            // Push the menu item to the folders menu data
+            // Push the menu item to the folders menu mock-api
             this._foldersMenuData.push(menuItem);
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
@@ -174,7 +177,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             });
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
@@ -193,16 +196,18 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
 
             // Generate menu item for the label
             this._labelsMenuData.push({
-                id         : label.id,
-                title      : label.title,
-                type       : 'basic',
-                icon       : 'label',
-                iconClasses: 'text-' + label.color,
-                link       : '/apps/mailbox/label/' + label.slug
+                id     : label.id,
+                title  : label.title,
+                type   : 'basic',
+                icon   : 'heroicons_outline:tag',
+                classes: {
+                    icon: labelColorDefs[label.color].text
+                },
+                link   : '/apps/mailbox/label/' + label.slug
             });
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
@@ -217,16 +222,16 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         this._otherMenuData.push({
             title: 'Settings',
             type : 'basic',
-            icon : 'settings',
+            icon : 'heroicons_outline:cog',
             link : '/apps/mailbox/settings'
         });
 
-        // Update the menu data
+        // Update the menu mock-api
         this._updateMenuData();
     }
 
     /**
-     * Update the menu data
+     * Update the menu mock-api
      *
      * @private
      */
@@ -273,7 +278,7 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
         // Get the inbox folder
         const inboxFolder = this.folders.find((folder) => folder.slug === 'inbox');
 
-        // Get the component -> navigation data -> item
+        // Get the component -> navigation mock-api -> item
         const mainNavigationComponent = this._treoNavigationService.getComponent('mainNavigation');
 
         // If the main navigation component exists...
@@ -288,25 +293,5 @@ export class MailboxSidebarComponent implements OnInit, OnDestroy
             // Refresh the navigation
             mainNavigationComponent.refresh();
         }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Open compose dialog
-     */
-    openComposeDialog(): void
-    {
-        // Open the dialog
-        const dialogRef = this._matDialog.open(MailboxComposeComponent, {
-            panelClass: 'mailbox-compose-dialog'
-        });
-
-        dialogRef.afterClosed()
-                 .subscribe(result => {
-                     console.log('Compose dialog was closed!');
-                 });
     }
 }

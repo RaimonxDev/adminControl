@@ -11,12 +11,8 @@ export class CalendarCalendarsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
      */
-    constructor(
-        private _calendarService: CalendarService
-    )
+    constructor(private _calendarService: CalendarService)
     {
     }
 
@@ -43,12 +39,8 @@ export class CalendarSettingsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
      */
-    constructor(
-        private _calendarService: CalendarService
-    )
+    constructor(private _calendarService: CalendarService)
     {
     }
 
@@ -75,12 +67,8 @@ export class CalendarWeekdaysResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
      */
-    constructor(
-        private _calendarService: CalendarService
-    )
+    constructor(private _calendarService: CalendarService)
     {
     }
 

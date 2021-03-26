@@ -1,5 +1,7 @@
-import { Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { TreoAnimations } from '@treo/animations';
+import { TreoCardFace } from '@treo/components/card/card.types';
 
 @Component({
     selector     : 'treo-card',
@@ -9,29 +11,20 @@ import { TreoAnimations } from '@treo/animations';
     animations   : TreoAnimations,
     exportAs     : 'treoCard'
 })
-export class TreoCardComponent
+export class TreoCardComponent implements OnChanges
 {
-    expanded: boolean;
-    flipped: boolean;
+    static ngAcceptInputType_expanded: BooleanInput;
+    static ngAcceptInputType_flippable: BooleanInput;
 
-    // Private
-    private _flippable: boolean;
+    @Input() expanded: boolean = false;
+    @Input() face: TreoCardFace = 'front';
+    @Input() flippable: boolean = false;
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer2
      */
-    constructor(
-        private _elementRef: ElementRef,
-        private _renderer2: Renderer2
-    )
+    constructor()
     {
-        // Set the defaults
-        this.expanded = false;
-        this.flippable = false;
-        this.flipped = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -39,87 +32,41 @@ export class TreoCardComponent
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter & getter for flippable
+     * Host binding for component classes
+     */
+    @HostBinding('class') get classList(): any
+    {
+        return {
+            'treo-card-expanded'  : this.expanded,
+            'treo-card-face-back' : this.flippable && this.face === 'back',
+            'treo-card-face-front': this.flippable && this.face === 'front',
+            'treo-card-flippable' : this.flippable
+        };
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
      *
-     * @param value
+     * @param changes
      */
-    @Input()
-    set flippable(value: boolean)
+    ngOnChanges(changes: SimpleChanges): void
     {
-        // If the value is the same, return...
-        if ( this._flippable === value )
+        // Expanded
+        if ( 'expanded' in changes )
         {
-            return;
+            // Coerce the value to a boolean
+            this.expanded = coerceBooleanProperty(changes.expanded.currentValue);
         }
 
-        // Update the class name
-        if ( value )
+        // Flippable
+        if ( 'flippable' in changes )
         {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'treo-card-flippable');
-        }
-        else
-        {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'treo-card-flippable');
-        }
-
-        // Store the value
-        this._flippable = value;
-    }
-
-    get flippable(): boolean
-    {
-        return this._flippable;
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Expand the details
-     */
-    expand(): void
-    {
-        this.expanded = true;
-    }
-
-    /**
-     * Collapse the details
-     */
-    collapse(): void
-    {
-        this.expanded = false;
-    }
-
-    /**
-     * Toggle the expand/collapse status
-     */
-    toggleExpanded(): void
-    {
-        this.expanded = !this.expanded;
-    }
-
-    /**
-     * Flip the card
-     */
-    flip(): void
-    {
-        // Return if not flippable
-        if ( !this.flippable )
-        {
-            return;
-        }
-
-        this.flipped = !this.flipped;
-
-        // Update the class name
-        if ( this.flipped )
-        {
-            this._renderer2.addClass(this._elementRef.nativeElement, 'treo-card-flipped');
-        }
-        else
-        {
-            this._renderer2.removeClass(this._elementRef.nativeElement, 'treo-card-flipped');
+            // Coerce the value to a boolean
+            this.flippable = coerceBooleanProperty(changes.flippable.currentValue);
         }
     }
 }

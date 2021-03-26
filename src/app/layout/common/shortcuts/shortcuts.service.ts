@@ -1,29 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { Shortcut } from 'app/layout/common/shortcuts/shortcuts.types';
-import { Notification } from 'app/layout/common/notifications/notifications.types';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ShortcutsService
 {
-    // Private
-    private _shortcuts: BehaviorSubject<Shortcut[] | null>;
+    private _shortcuts: ReplaySubject<Shortcut[]> = new ReplaySubject<Shortcut[]>(1);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._shortcuts = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -137,5 +129,4 @@ export class ShortcutsService
             ))
         );
     }
-
 }

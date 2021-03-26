@@ -11,12 +11,8 @@ export class HelpCenterMostAskedFaqsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {HelpCenterService} _helpCenterService
      */
-    constructor(
-        private _helpCenterService: HelpCenterService
-    )
+    constructor(private _helpCenterService: HelpCenterService)
     {
     }
 
@@ -43,12 +39,8 @@ export class HelpCenterFaqsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {HelpCenterService} _helpCenterService
      */
-    constructor(
-        private _helpCenterService: HelpCenterService
-    )
+    constructor(private _helpCenterService: HelpCenterService)
     {
     }
 
@@ -75,12 +67,8 @@ export class HelpCenterGuidesResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {HelpCenterService} _helpCenterService
      */
-    constructor(
-        private _helpCenterService: HelpCenterService
-    )
+    constructor(private _helpCenterService: HelpCenterService)
     {
     }
 
@@ -107,12 +95,8 @@ export class HelpCenterGuidesCategoryResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {HelpCenterService} _helpCenterService
      */
-    constructor(
-        private _helpCenterService: HelpCenterService
-    )
+    constructor(private _helpCenterService: HelpCenterService)
     {
     }
 
@@ -139,12 +123,8 @@ export class HelpCenterGuidesGuideResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {HelpCenterService} _helpCenterService
      */
-    constructor(
-        private _helpCenterService: HelpCenterService
-    )
+    constructor(private _helpCenterService: HelpCenterService)
     {
     }
 

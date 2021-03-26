@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoNavigationService } from '@treo/components/navigation';
+import { InitialData } from 'app/app.types';
 
 @Component({
     selector     : 'classy-layout',
@@ -13,19 +14,12 @@ import { TreoNavigationService } from '@treo/components/navigation';
 })
 export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
-    data: any;
+    data: InitialData;
     isScreenSmall: boolean;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {Router} _router
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -34,8 +28,18 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for current year
+     */
+    get currentYear(): number
+    {
+        return new Date().getFullYear();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -47,7 +51,7 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the resolved route data
+        // Subscribe to the resolved route mock-api
         this._activatedRoute.data.subscribe((data: Data) => {
             this.data = data.initialData;
         });
@@ -57,8 +61,8 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) => {
 
-                // Check if the breakpoint is 'lt-md'
-                this.isScreenSmall = matchingAliases.includes('lt-md');
+                // Check if the screen is small
+                this.isScreenSmall = !matchingAliases.includes('md');
             });
     }
 
@@ -79,12 +83,12 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     /**
      * Toggle navigation
      *
-     * @param key
+     * @param name
      */
-    toggleNavigation(key): void
+    toggleNavigation(name: string): void
     {
         // Get the navigation
-        const navigation = this._treoNavigationService.getComponent(key);
+        const navigation = this._treoNavigationService.getComponent(name);
 
         if ( navigation )
         {

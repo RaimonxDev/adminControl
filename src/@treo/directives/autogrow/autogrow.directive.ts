@@ -1,36 +1,28 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, HostBinding, HostListener, Input, NgZone, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Directive({
     selector: 'textarea[treoAutogrow]',
     exportAs: 'treoAutogrow'
 })
-export class TreoAutogrowDirective implements OnInit, OnDestroy
+export class TreoAutogrowDirective implements OnChanges, OnInit, OnDestroy
 {
-    @HostBinding('rows')
-    rows: number;
+    // tslint:disable-next-line:no-input-rename
+    @Input('treoAutogrowVerticalPadding') padding: number = 8;
+    @HostBinding('rows') private _rows: number = 1;
 
-    // Private
-    private _padding: number;
-    private _unsubscribeAll: Subject<any>;
+    private _height: string = 'auto';
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ElementRef} _elementRef
-     * @param {Renderer2} _renderer2
      */
     constructor(
         private _elementRef: ElementRef,
-        private _renderer2: Renderer2
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _ngZone: NgZone
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.padding = 8;
-        this.rows = 1;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -38,20 +30,15 @@ export class TreoAutogrowDirective implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Setter & getter for padding
-     *
-     * @param value
+     * Host binding for component inline styles
      */
-    @Input('treoAutogrowVerticalPadding')
-    set padding(value)
+    @HostBinding('style') get styleList(): any
     {
-        // Store the value
-        this._padding = value;
-    }
-
-    get padding(): number
-    {
-        return this._padding;
+        return {
+            'height'  : this._height,
+            'overflow': 'hidden',
+            'resize'  : 'none'
+        };
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -59,18 +46,27 @@ export class TreoAutogrowDirective implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * On changes
+     *
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        // Padding
+        if ( 'treoAutogrowVerticalPadding' in changes )
+        {
+            // Resize
+            this._resize();
+        }
+    }
+
+    /**
      * On init
      */
     ngOnInit(): void
     {
-        // Set base styles
-        this._renderer2.setStyle(this._elementRef.nativeElement, 'resize', 'none');
-        this._renderer2.setStyle(this._elementRef.nativeElement, 'overflow', 'hidden');
-
-        // Set the height for the first time
-        setTimeout(() => {
-            this._resize();
-        });
+        // Resize for the first time
+        this._resize();
     }
 
     /**
@@ -96,11 +92,23 @@ export class TreoAutogrowDirective implements OnInit, OnDestroy
     @HostListener('ngModelChange')
     private _resize(): void
     {
-        // Set the height to 'auto' so we can correctly read the scrollHeight
-        this._renderer2.setStyle(this._elementRef.nativeElement, 'height', 'auto');
+        // This doesn't need to trigger Angular's change detection by itself
+        this._ngZone.runOutsideAngular(() => {
 
-        // Get the scrollHeight and subtract the vertical padding
-        const height = this._elementRef.nativeElement.scrollHeight - this.padding + 'px';
-        this._renderer2.setStyle(this._elementRef.nativeElement, 'height', height);
+            setTimeout(() => {
+
+                // Set the height to 'auto' so we can correctly read the scrollHeight
+                this._height = 'auto';
+
+                // Detect the changes so the height is applied
+                this._changeDetectorRef.detectChanges();
+
+                // Get the scrollHeight and subtract the vertical padding
+                this._height = `${this._elementRef.nativeElement.scrollHeight - this.padding}px`;
+
+                // Detect the changes one more time to apply the final height
+                this._changeDetectorRef.detectChanges();
+            });
+        });
     }
 }

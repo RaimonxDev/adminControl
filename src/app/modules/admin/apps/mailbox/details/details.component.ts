@@ -1,12 +1,13 @@
 import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { MatButton } from '@angular/material/button';
 import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
 import { Mail, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
+import { labelColorDefs } from 'app/modules/admin/apps/mailbox/mailbox.constants';
 
 @Component({
     selector     : 'mailbox-details',
@@ -16,30 +17,19 @@ import { Mail, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mail
 })
 export class MailboxDetailsComponent implements OnInit, OnDestroy
 {
+    @ViewChild('infoDetailsPanelOrigin') private _infoDetailsPanelOrigin: MatButton;
+    @ViewChild('infoDetailsPanel') private _infoDetailsPanel: TemplateRef<any>;
+
     folders: MailFolder[];
+    labelColors: any;
     labels: MailLabel[];
     mail: Mail;
-    replyFormActive: boolean;
-
-    // Private
+    replyFormActive: boolean = false;
     private _overlayRef: OverlayRef;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('infoDetailsPanelOrigin')
-    private _infoDetailsPanelOrigin: MatButton;
-
-    @ViewChild('infoDetailsPanel')
-    private _infoDetailsPanel: TemplateRef<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {ElementRef} _elementRef
-     * @param {MailboxService} _mailboxService
-     * @param {Overlay} _overlay
-     * @param {Router} _router
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -50,11 +40,6 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the default
-        this.replyFormActive = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -66,6 +51,9 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Get the label colors
+        this.labelColors = labelColorDefs;
+
         // Folders
         this._mailboxService.folders$
             .pipe(takeUntil(this._unsubscribeAll))

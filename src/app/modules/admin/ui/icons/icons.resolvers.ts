@@ -10,12 +10,8 @@ export class IconsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {IconsService} _iconsService
      */
-    constructor(
-        private _iconsService: IconsService
-    )
+    constructor(private _iconsService: IconsService)
     {
     }
 

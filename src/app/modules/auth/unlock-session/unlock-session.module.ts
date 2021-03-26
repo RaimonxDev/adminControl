@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TreoCardModule } from '@treo/components/card';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthUnlockSessionComponent } from 'app/modules/auth/unlock-session/unlock-session.component';
 import { authUnlockSessionRoutes } from 'app/modules/auth/unlock-session/unlock-session.routing';
@@ -23,7 +23,7 @@ import { authUnlockSessionRoutes } from 'app/modules/auth/unlock-session/unlock-
         MatInputModule,
         MatProgressSpinnerModule,
         TreoCardModule,
-        TreoMessageModule,
+        TreoAlertModule,
         SharedModule
     ]
 })

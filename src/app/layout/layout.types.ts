@@ -1,3 +1,15 @@
-export type Layout = 'empty' |
-    'centered' | 'enterprise' | 'material' | 'modern' |
-    'basic' | 'classic' | 'classy' | 'compact' | 'dense' | 'futuristic' | 'thin';
+export type Layout =
+    | 'empty'
+    // Horizontal
+    | 'centered'
+    | 'enterprise'
+    | 'material'
+    | 'modern'
+    // Vertical
+    | 'basic'
+    | 'classic'
+    | 'classy'
+    | 'compact'
+    | 'dense'
+    | 'futuristic'
+    | 'thin';

@@ -11,31 +11,21 @@ import { Calendar, CalendarEvent, CalendarEventEditMode, CalendarSettings, Calen
 export class CalendarService
 {
     // Private
-    private _calendars: BehaviorSubject<Calendar[] | null>;
-    private _events: BehaviorSubject<CalendarEvent[] | null>;
-    private _loadedEventsRange: { start: Moment | null, end: Moment | null };
+    private _calendars: BehaviorSubject<Calendar[] | null> = new BehaviorSubject(null);
+    private _events: BehaviorSubject<CalendarEvent[] | null> = new BehaviorSubject(null);
+    private _loadedEventsRange: { start: Moment | null, end: Moment | null } = {
+        start: null,
+        end  : null
+    };
     private readonly _numberOfDaysToPrefetch = 60;
-    private _settings: BehaviorSubject<CalendarSettings | null>;
-    private _weekdays: BehaviorSubject<CalendarWeekday[] | null>;
+    private _settings: BehaviorSubject<CalendarSettings | null> = new BehaviorSubject(null);
+    private _weekdays: BehaviorSubject<CalendarWeekday[] | null> = new BehaviorSubject(null);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._calendars = new BehaviorSubject(null);
-        this._events = new BehaviorSubject(null);
-        this._loadedEventsRange = {
-            start: null,
-            end  : null
-        };
-        this._settings = new BehaviorSubject(null);
-        this._weekdays = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -273,9 +263,9 @@ export class CalendarService
         // Calculate the remaining prefetched days
         const remainingDays = this._loadedEventsRange.end.diff(end, 'days');
 
-        // Return, if remaining days is bigger than the number
+        // Return if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
-        // there and fetched the events data so no need for doing
+        // there and fetched the events mock-api so no need for doing
         // it again.
         if ( remainingDays >= this._numberOfDaysToPrefetch )
         {
@@ -300,9 +290,9 @@ export class CalendarService
         // Calculate the remaining prefetched days
         const remainingDays = start.diff(this._loadedEventsRange.start, 'days');
 
-        // Return, if remaining days is bigger than the number
+        // Return if remaining days is bigger than the number
         // of days to prefetch. This means we were already been
-        // there and fetched the events data so no need for doing
+        // there and fetched the events mock-api so no need for doing
         // it again.
         if ( remainingDays >= this._numberOfDaysToPrefetch )
         {

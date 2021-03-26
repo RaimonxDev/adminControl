@@ -10,25 +10,16 @@ import { Contact, Country, Tag } from 'app/modules/admin/apps/contacts/contacts.
 export class ContactsService
 {
     // Private
-    private _contact: BehaviorSubject<Contact | null>;
-    private _contacts: BehaviorSubject<Contact[] | null>;
-    private _countries: BehaviorSubject<Country[] | null>;
-    private _tags: BehaviorSubject<Tag[] | null>;
+    private _contact: BehaviorSubject<Contact | null> = new BehaviorSubject(null);
+    private _contacts: BehaviorSubject<Contact[] | null> = new BehaviorSubject(null);
+    private _countries: BehaviorSubject<Country[] | null> = new BehaviorSubject(null);
+    private _tags: BehaviorSubject<Tag[] | null> = new BehaviorSubject(null);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._contact = new BehaviorSubject(null);
-        this._contacts = new BehaviorSubject(null);
-        this._countries = new BehaviorSubject(null);
-        this._tags = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -73,18 +64,10 @@ export class ContactsService
 
     /**
      * Get contacts
-     *
-     * @param sortField
-     * @param sortDirection
      */
-    getContacts(sortField: string = 'name', sortDirection: 'asc' | 'desc' | '' = 'asc'): Observable<Contact[]>
+    getContacts(): Observable<Contact[]>
     {
-        return this._httpClient.get<Contact[]>('api/apps/contacts/all', {
-            params: {
-                sortField,
-                sortDirection
-            }
-        }).pipe(
+        return this._httpClient.get<Contact[]>('api/apps/contacts/all').pipe(
             tap((contacts) => {
                 this._contacts.next(contacts);
             })
@@ -96,9 +79,9 @@ export class ContactsService
      *
      * @param query
      */
-    searchContacts(query: string): Observable<Contact[] | null>
+    searchContacts(query: string): Observable<Contact[]>
     {
-        return this._httpClient.get<Contact[] | null>('api/apps/contacts/search', {
+        return this._httpClient.get<Contact[]>('api/apps/contacts/search', {
             params: {query}
         }).pipe(
             tap((contacts) => {

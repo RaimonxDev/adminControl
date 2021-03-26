@@ -9,16 +9,12 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 })
 export class PricingTableComponent
 {
-    annualBilling: boolean;
-    selectedTier: string;
+    yearlyBilling: boolean = true;
 
     /**
      * Constructor
      */
     constructor()
     {
-        // Set the defaults
-        this.annualBilling = true;
-        this.selectedTier = 'personal';
     }
 }

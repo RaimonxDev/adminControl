@@ -11,39 +11,26 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class MailboxComposeComponent implements OnInit
 {
     composeForm: FormGroup;
-    copyFields: { cc: boolean, bcc: boolean };
-    quillModules: any;
+    copyFields: { cc: boolean, bcc: boolean } = {
+        cc : false,
+        bcc: false
+    };
+    quillModules: any = {
+        toolbar: [
+            ['bold', 'italic', 'underline'],
+            [{align: []}, {list: 'ordered'}, {list: 'bullet'}],
+            ['clean']
+        ]
+    };
 
     /**
      * Constructor
-     *
-     * @param {MatDialogRef} matDialogRef
-     * @param {FormBuilder} _formBuilder
      */
     constructor(
         public matDialogRef: MatDialogRef<MailboxComposeComponent>,
         private _formBuilder: FormBuilder
     )
     {
-        // Set the default
-        this.copyFields = {
-            cc : false,
-            bcc: false
-        };
-
-        this.quillModules = {
-            toolbar: [
-                [{font: []}],
-                [{size: ['small', false, 'large', 'huge']}],
-                ['bold', 'italic', 'underline'],
-                [{color: []}, {background: []}],
-                [{align: []}],
-                [{list: 'ordered'}, {list: 'bullet'}],
-                [{indent: '-1'}, {indent: '+1'}],
-                ['blockquote', 'code-block', 'strike'],
-                ['clean']
-            ]
-        };
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -76,7 +63,7 @@ export class MailboxComposeComponent implements OnInit
      */
     showCopyField(name: string): void
     {
-        // Return, if the name is not one of the available names
+        // Return if the name is not one of the available names
         if ( name !== 'cc' && name !== 'bcc' )
         {
             return;

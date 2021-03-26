@@ -98,10 +98,10 @@ export class GuidesComponent
                         link : '/docs/guides/customization/theme-layouts'
                     },
                     {
-                        id   : 'customization.content-layouts',
-                        title: 'Content layouts',
+                        id   : 'customization.page-layouts',
+                        title: 'Page layouts',
                         type : 'basic',
-                        link : '/docs/guides/customization/content-layouts'
+                        link : '/docs/guides/customization/page-layouts'
                     },
                     {
                         id   : 'customization.tailwindcss',
@@ -114,6 +114,12 @@ export class GuidesComponent
                         title: 'Theming',
                         type : 'basic',
                         link : '/docs/guides/customization/theming'
+                    },
+                    {
+                        id   : 'customization.component-theming',
+                        title: 'Component theming',
+                        type : 'basic',
+                        link : '/docs/guides/customization/component-theming'
                     },
                     {
                         id   : 'customization.splash-screen',

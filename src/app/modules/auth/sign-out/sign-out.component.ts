@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { interval, Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { Subject, timer } from 'rxjs';
+import { finalize, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
@@ -12,32 +12,21 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class AuthSignOutComponent implements OnInit, OnDestroy
 {
-    countdown: number;
-    countdownMapping: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    countdown: number = 5;
+    countdownMapping: any = {
+        '=1'   : '# second',
+        'other': '# seconds'
+    };
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {AuthService} _authService
-     * @param {Router} _router
      */
     constructor(
         private _authService: AuthService,
         private _router: Router
     )
     {
-        // Set the private default
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.countdown = 5;
-        this.countdownMapping = {
-            '=1'   : '# second',
-            'other': '# seconds'
-        };
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -52,24 +41,17 @@ export class AuthSignOutComponent implements OnInit, OnDestroy
         // Sign out
         this._authService.signOut();
 
-        // Get the duration
-        const duration = this.countdown;
-
         // Redirect after the countdown
-        interval(1000)
+        timer(1000, 1000)
             .pipe(
-                take(duration),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe(() => {
-                    this.countdown--;
-                },
-                () => {
-                },
-                () => {
+                finalize(() => {
                     this._router.navigate(['sign-in']);
-                }
-            );
+                }),
+                takeWhile(() => this.countdown > 0),
+                takeUntil(this._unsubscribeAll),
+                tap(() => this.countdown--)
+            )
+            .subscribe();
     }
 
     /**

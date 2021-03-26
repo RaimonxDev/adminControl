@@ -2,6 +2,7 @@ export interface Contact
 {
     id: string;
     avatar?: string | null;
+    background?: string | null;
     name: string;
     emails?: {
         email: string,
@@ -12,10 +13,8 @@ export interface Contact
         number: string;
         label: string
     }[];
-    job?: {
-        title: string;
-        company: string
-    } | null;
+    title?: string;
+    company?: string;
     birthday?: string | null;
     address?: string | null;
     notes?: string | null;

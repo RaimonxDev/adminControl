@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { BooleanInput } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TreoVerticalNavigationComponent } from '@treo/components/navigation/vertical/vertical.component';
@@ -13,35 +14,23 @@ import { TreoNavigationItem } from '@treo/components/navigation/navigation.types
 })
 export class TreoVerticalNavigationGroupItemComponent implements OnInit, OnDestroy
 {
-    // Auto collapse
-    @Input()
-    autoCollapse: boolean;
+    static ngAcceptInputType_autoCollapse: BooleanInput;
 
-    // Item
-    @Input()
-    item: TreoNavigationItem;
+    @Input() autoCollapse: boolean;
+    @Input() item: TreoNavigationItem;
+    @Input() name: string;
 
-    // Name
-    @Input()
-    name: string;
-
-    // Private
     private _treoVerticalNavigationComponent: TreoVerticalNavigationComponent;
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {TreoNavigationService} _treoNavigationService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
         private _treoNavigationService: TreoNavigationService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

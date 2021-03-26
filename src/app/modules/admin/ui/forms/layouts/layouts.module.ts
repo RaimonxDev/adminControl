@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
@@ -11,14 +11,20 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from 'app/shared/shared.module';
 import { FormsLayoutsComponent } from 'app/modules/admin/ui/forms/layouts/layouts.component';
-import { formsLayoutsRoutes } from 'app/modules/admin/ui/forms/layouts/layouts.routing';
+
+export const routes: Route[] = [
+    {
+        path     : '',
+        component: FormsLayoutsComponent
+    }
+];
 
 @NgModule({
     declarations: [
         FormsLayoutsComponent
     ],
     imports     : [
-        RouterModule.forChild(formsLayoutsRoutes),
+        RouterModule.forChild(routes),
         MatButtonModule,
         MatCheckboxModule,
         MatDividerModule,

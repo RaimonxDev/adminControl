@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, take } from 'rxjs/operators';
+import { MailboxComponent } from 'app/modules/admin/apps/mailbox/mailbox.component';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
-import { labelColors as labelColorsData } from 'app/modules/admin/apps/mailbox/settings/label-colors';
 import { MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
+import { labelColors, labelColorDefs } from 'app/modules/admin/apps/mailbox/mailbox.constants';
 
 @Component({
     selector     : 'mailbox-settings',
@@ -13,23 +14,20 @@ import { MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
 })
 export class MailboxSettingsComponent implements OnInit
 {
-    labelColors: any;
+    labelColors: any = labelColors;
+    labelColorDefs: any = labelColorDefs;
     labels: MailLabel[];
     labelsForm: FormGroup;
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
-     * @param {MailboxService} _mailboxService
      */
     constructor(
+        public mailboxComponent: MailboxComponent,
         private _formBuilder: FormBuilder,
         private _mailboxService: MailboxService
     )
     {
-        // Set the defaults
-        this.labelColors = labelColorsData;
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -28,23 +28,16 @@ export class AnalyticsComponent implements OnInit, OnDestroy
     totalVisitsOptions: ApexOptions;
     uniqueVisitorsOptions: ApexOptions;
     uniquePurchasesOptions: ApexOptions;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {AnalyticsService} _analyticsService
-     * @param {Router} _router
      */
     constructor(
         private _analyticsService: AnalyticsService,
         private _router: Router
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -174,7 +167,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
@@ -262,7 +258,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 x     : {
                     show: false
                 },
-                custom: ({seriesIndex, w}) => {
+                custom: ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
@@ -323,7 +322,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 x     : {
                     show: false
                 },
-                custom: ({seriesIndex, w}) => {
+                custom: ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
@@ -384,7 +386,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 x     : {
                     show: false
                 },
-                custom: ({seriesIndex, w}) => {
+                custom: ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.series[seriesIndex].name}:</div>
@@ -445,7 +450,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
@@ -499,7 +507,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>
@@ -553,7 +564,10 @@ export class AnalyticsComponent implements OnInit, OnDestroy
                 enabled        : true,
                 fillSeriesColor: false,
                 theme          : 'dark',
-                custom         : ({seriesIndex, w}) => {
+                custom         : ({
+                    seriesIndex,
+                    w
+                }) => {
                     return `<div class="flex items-center h-8 min-h-8 max-h-8 px-3">
                                 <div class="w-3 h-3 rounded-full" style="background-color: ${w.config.colors[seriesIndex]};"></div>
                                 <div class="ml-2 text-md leading-none">${w.config.labels[seriesIndex]}:</div>

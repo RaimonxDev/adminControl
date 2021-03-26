@@ -8,20 +8,13 @@ import { tap } from 'rxjs/operators';
 })
 export class CryptoService
 {
-    // Observables
-    private _data: BehaviorSubject<any>;
+    private _data: BehaviorSubject<any> = new BehaviorSubject(null);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._data = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------

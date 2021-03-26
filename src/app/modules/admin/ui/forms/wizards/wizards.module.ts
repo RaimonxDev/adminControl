@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,14 +10,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { SharedModule } from 'app/shared/shared.module';
 import { FormsWizardsComponent } from 'app/modules/admin/ui/forms/wizards/wizards.component';
-import { formsWizardsRoutes } from 'app/modules/admin/ui/forms/wizards/wizards.routing';
+
+export const routes: Route[] = [
+    {
+        path     : '',
+        component: FormsWizardsComponent
+    }
+];
 
 @NgModule({
     declarations: [
         FormsWizardsComponent
     ],
     imports     : [
-        RouterModule.forChild(formsWizardsRoutes),
+        RouterModule.forChild(routes),
         MatButtonModule,
         MatCheckboxModule,
         MatFormFieldModule,

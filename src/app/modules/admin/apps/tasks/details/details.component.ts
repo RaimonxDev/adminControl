@@ -3,8 +3,6 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { MatButton } from '@angular/material/button';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil, tap } from 'rxjs/operators';
@@ -23,41 +21,18 @@ import { TasksService } from 'app/modules/admin/apps/tasks/tasks.service';
 })
 export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
 {
+    @ViewChild('tagsPanelOrigin') private _tagsPanelOrigin: ElementRef;
+    @ViewChild('tagsPanel') private _tagsPanel: TemplateRef<any>;
+    @ViewChild('titleField') private _titleField: ElementRef;
+
     tags: Tag[];
-    tagsEditMode: boolean;
+    tagsEditMode: boolean = false;
     filteredTags: Tag[];
     task: Task;
     taskForm: FormGroup;
     tasks: Task[];
-
-    // Private
-    private _dueDatePanelOverlayRef: OverlayRef;
-    private _dueDatePanelTemplatePortal: TemplatePortal;
-    private _priorityPanelOverlayRef: OverlayRef;
-    private _priorityPanelTemplatePortal: TemplatePortal;
     private _tagsPanelOverlayRef: OverlayRef;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('dueDatePanelOrigin')
-    private _dueDatePanelOrigin: MatButton;
-
-    @ViewChild('dueDatePanel')
-    private _dueDatePanel: TemplateRef<any>;
-
-    @ViewChild('priorityPanelOrigin')
-    private _priorityPanelOrigin: MatButton;
-
-    @ViewChild('priorityPanel')
-    private _priorityPanel: TemplateRef<any>;
-
-    @ViewChild('tagsPanelOrigin')
-    private _tagsPanelOrigin: MatButton;
-
-    @ViewChild('tagsPanel')
-    private _tagsPanel: TemplateRef<any>;
-
-    @ViewChild('titleField')
-    private _titleField: ElementRef;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
@@ -84,11 +59,6 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.tagsEditMode = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -215,17 +185,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
 
-        // Dispose the overlays if they are still on the DOM
-        if ( this._dueDatePanelOverlayRef )
-        {
-            this._dueDatePanelOverlayRef.dispose();
-        }
-
-        if ( this._priorityPanelOverlayRef )
-        {
-            this._priorityPanelOverlayRef.dispose();
-        }
-
+        // Dispose the overlay
         if ( this._tagsPanelOverlayRef )
         {
             this._tagsPanelOverlayRef.dispose();
@@ -267,7 +227,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
             hasBackdrop     : true,
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._tagsPanelOrigin._elementRef.nativeElement)
+                                  .flexibleConnectedTo(this._tagsPanelOrigin.nativeElement)
                                   .withFlexibleDimensions()
                                   .withViewportMargin(64)
                                   .withLockedPosition()
@@ -348,7 +308,7 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      */
     filterTagsInputKeyDown(event): void
     {
-        // Return, if the pressed key is not 'Enter'
+        // Return if the pressed key is not 'Enter'
         if ( event.key !== 'Enter' )
         {
             return;
@@ -476,17 +436,16 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
      * Toggle task tag
      *
      * @param tag
-     * @param change
      */
-    toggleTaskTag(tag: Tag, change: MatCheckboxChange): void
+    toggleTaskTag(tag: Tag): void
     {
-        if ( change.checked )
+        if ( this.task.tags.includes(tag.id) )
         {
-            this.addTagToTask(tag);
+            this.deleteTagFromTask(tag);
         }
         else
         {
-            this.deleteTagFromTask(tag);
+            this.addTagToTask(tag);
         }
     }
 
@@ -501,165 +460,14 @@ export class TasksDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Open priority panel
-     */
-    openPriorityPanel(): void
-    {
-        // Create the overlay
-        this._priorityPanelOverlayRef = this._overlay.create({
-            backdropClass   : '',
-            hasBackdrop     : true,
-            scrollStrategy  : this._overlay.scrollStrategies.block(),
-            positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._priorityPanelOrigin._elementRef.nativeElement)
-                                  .withFlexibleDimensions()
-                                  .withViewportMargin(64)
-                                  .withLockedPosition()
-                                  .withPositions([
-                                      {
-                                          originX : 'start',
-                                          originY : 'bottom',
-                                          overlayX: 'start',
-                                          overlayY: 'top'
-                                      }
-                                  ])
-        });
-
-        // Create a portal from the template
-        this._priorityPanelTemplatePortal = new TemplatePortal(this._priorityPanel, this._viewContainerRef);
-
-        // Attach the portal to the overlay
-        this._priorityPanelOverlayRef.attach(this._priorityPanelTemplatePortal);
-
-        // Subscribe to the backdrop click
-        this._priorityPanelOverlayRef.backdropClick().subscribe(() => {
-
-            // Close the panel
-            this.closePriorityPanel();
-        });
-    }
-
-    /**
-     * Close the priority panel if it's open
-     */
-    closePriorityPanel(): void
-    {
-        // If overlay exists and attached...
-        if ( this._priorityPanelOverlayRef && this._priorityPanelOverlayRef.hasAttached() )
-        {
-            // Detach it
-            this._priorityPanelOverlayRef.detach();
-        }
-
-        // If template portal exists and attached...
-        if ( this._priorityPanelTemplatePortal && this._priorityPanelTemplatePortal.isAttached )
-        {
-            // Detach it
-            this._priorityPanelTemplatePortal.detach();
-        }
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Open due date panel
-     */
-    openDueDatePanel(): void
-    {
-        // Create the overlay
-        this._dueDatePanelOverlayRef = this._overlay.create({
-            backdropClass   : '',
-            hasBackdrop     : true,
-            scrollStrategy  : this._overlay.scrollStrategies.block(),
-            positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(this._dueDatePanelOrigin._elementRef.nativeElement)
-                                  .withFlexibleDimensions()
-                                  .withViewportMargin(64)
-                                  .withLockedPosition()
-                                  .withPositions([
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'top'
-                                      },
-                                      {
-                                          originX : 'start',
-                                          originY : 'bottom',
-                                          overlayX: 'start',
-                                          overlayY: 'top'
-                                      }
-                                  ])
-        });
-
-        // Create a portal from the template
-        this._dueDatePanelTemplatePortal = new TemplatePortal(this._dueDatePanel, this._viewContainerRef);
-
-        // Attach the portal to the overlay
-        this._dueDatePanelOverlayRef.attach(this._dueDatePanelTemplatePortal);
-
-        // Subscribe to the backdrop click
-        this._dueDatePanelOverlayRef.backdropClick().subscribe(() => {
-
-            // Close the panel
-            this.closeDueDatePanel();
-        });
-    }
-
-    /**
-     * Close the due date panel
-     */
-    closeDueDatePanel(): void
-    {
-        // If overlay exists and attached...
-        if ( this._dueDatePanelOverlayRef && this._dueDatePanelOverlayRef.hasAttached() )
-        {
-            // Detach it
-            this._dueDatePanelOverlayRef.detach();
-        }
-
-        // If template portal exists and attached...
-        if ( this._dueDatePanelTemplatePortal && this._dueDatePanelTemplatePortal.isAttached )
-        {
-            // Detach it
-            this._dueDatePanelTemplatePortal.detach();
-        }
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Update the due date
+     * Set the task priority
      *
-     * @param event
+     * @param priority
      */
-    updateDueDate(event: moment.Moment): void
+    setTaskPriority(priority): void
     {
-        // Get the form control for 'dueDate'
-        const dueDateFormControl = this.taskForm.get('dueDate');
-
-        // Update it
-        dueDateFormControl.setValue(event.toISOString());
-
-        // Close the due date panel...
-        this.closeDueDatePanel();
-    }
-
-    /**
-     * Remove the due date
-     */
-    removeDueDate(): void
-    {
-        // Get the form control for 'dueDate'
-        const dueDateFormControl = this.taskForm.get('dueDate');
-
-        // Clear the due date
-        dueDateFormControl.setValue(null);
-
-        // Close the due date panel...
-        this.closeDueDatePanel();
+        // Set the value
+        this.taskForm.get('priority').setValue(priority);
     }
 
     /**

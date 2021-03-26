@@ -8,29 +8,11 @@ export class TreoSplashScreenService
 {
     /**
      * Constructor
-     *
-     * @param {DOCUMENT} _document
-     * @param {Router} _router
      */
     constructor(
         @Inject(DOCUMENT) private _document: any,
         private _router: Router
     )
-    {
-        // Initialize
-        this._init();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Initialize
-     *
-     * @private
-     */
-    private _init(): void
     {
         // Hide it on the first NavigationEnd event
         this._router.events
@@ -39,8 +21,6 @@ export class TreoSplashScreenService
                 take(1)
             )
             .subscribe(() => {
-
-                // Hide the splash screen
                 this.hide();
             });
     }

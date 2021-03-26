@@ -12,12 +12,8 @@ export class TasksTagsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {TasksService} _tasksService
      */
-    constructor(
-        private _tasksService: TasksService
-    )
+    constructor(private _tasksService: TasksService)
     {
     }
 
@@ -44,12 +40,8 @@ export class TasksResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {TasksService} _tasksService
      */
-    constructor(
-        private _tasksService: TasksService
-    )
+    constructor(private _tasksService: TasksService)
     {
     }
 

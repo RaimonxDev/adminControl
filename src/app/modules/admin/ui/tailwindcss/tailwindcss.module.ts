@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
 import { TailwindCSSComponent } from 'app/modules/admin/ui/tailwindcss/tailwindcss.component';
-import { tailwindCSSRoutes } from 'app/modules/admin/ui/tailwindcss/tailwindcss.routing';
+
+export const routes: Route[] = [
+    {
+        path     : '',
+        component: TailwindCSSComponent
+    }
+];
 
 @NgModule({
     declarations: [
         TailwindCSSComponent
     ],
     imports     : [
-        RouterModule.forChild(tailwindCSSRoutes),
+        RouterModule.forChild(routes),
         SharedModule
     ]
 })

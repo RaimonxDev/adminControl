@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
@@ -20,43 +19,23 @@ import { ContactsService } from 'app/modules/admin/apps/contacts/contacts.servic
 })
 export class ContactsDetailsComponent implements OnInit, OnDestroy
 {
-    editMode: boolean;
+    @ViewChild('avatarFileInput') private _avatarFileInput: ElementRef;
+    @ViewChild('tagsPanel') private _tagsPanel: TemplateRef<any>;
+    @ViewChild('tagsPanelOrigin') private _tagsPanelOrigin: ElementRef;
+
+    editMode: boolean = false;
     tags: Tag[];
-    tagsEditMode: boolean;
+    tagsEditMode: boolean = false;
     filteredTags: Tag[];
     contact: Contact;
     contactForm: FormGroup;
     contacts: Contact[];
     countries: Country[];
-
-    // Private
     private _tagsPanelOverlayRef: OverlayRef;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('avatar')
-    private _avatar: ElementRef;
-
-    @ViewChild('avatarFileInput')
-    private _avatarFileInput: ElementRef;
-
-    @ViewChild('tagsPanel')
-    private _tagsPanel: TemplateRef<any>;
-
-    @ViewChild('tagsPanelOrigin')
-    private _tagsPanelOrigin: ElementRef;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {ContactsListComponent} _contactsListComponent
-     * @param {ContactsService} _contactsService
-     * @param {FormBuilder} _formBuilder
-     * @param {Renderer} _renderer2
-     * @param {Router} _router
-     * @param {Overlay} _overlay
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
@@ -70,12 +49,6 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.editMode = false;
-        this.tagsEditMode = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -97,10 +70,8 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
             name        : ['', [Validators.required]],
             emails      : this._formBuilder.array([]),
             phoneNumbers: this._formBuilder.array([]),
-            job         : this._formBuilder.group({
-                title  : [''],
-                company: ['']
-            }),
+            title       : [''],
+            company     : [''],
             birthday    : [null],
             address     : [null],
             notes       : [null],
@@ -496,7 +467,7 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
      */
     filterTagsInputKeyDown(event): void
     {
-        // Return, if the pressed key is not 'Enter'
+        // Return if the pressed key is not 'Enter'
         if ( event.key !== 'Enter' )
         {
             return;
@@ -624,17 +595,16 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy
      * Toggle contact tag
      *
      * @param tag
-     * @param change
      */
-    toggleContactTag(tag: Tag, change: MatCheckboxChange): void
+    toggleContactTag(tag: Tag): void
     {
-        if ( change.checked )
+        if ( this.contact.tags.includes(tag.id) )
         {
-            this.addTagToContact(tag);
+            this.removeTagFromContact(tag);
         }
         else
         {
-            this.removeTagFromContact(tag);
+            this.addTagToContact(tag);
         }
     }
 

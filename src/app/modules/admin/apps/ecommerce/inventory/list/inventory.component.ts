@@ -19,37 +19,29 @@ import { InventoryService } from 'app/modules/admin/apps/ecommerce/inventory/inv
 })
 export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
 {
+    @ViewChild(MatPaginator) private _paginator: MatPaginator;
+    @ViewChild(MatSort) private _sort: MatSort;
+
+    products$: Observable<InventoryProduct[]>;
+
     brands: InventoryBrand[];
     categories: InventoryCategory[];
     filteredTags: InventoryTag[];
-    flashMessage: 'success' | 'error' | null;
-    isLoading: boolean;
+    flashMessage: 'success' | 'error' | null = null;
+    isLoading: boolean = false;
     pagination: InventoryPagination;
-    products$: Observable<InventoryProduct[]>;
-    productsCount: number;
-    productsTableColumns: string[];
-    searchInputControl: FormControl;
-    selectedProduct: InventoryProduct | null;
+    productsCount: number = 0;
+    productsTableColumns: string[] = ['sku', 'name', 'price', 'stock', 'active', 'details'];
+    searchInputControl: FormControl = new FormControl();
+    selectedProduct: InventoryProduct | null = null;
     selectedProductForm: FormGroup;
     tags: InventoryTag[];
-    tagsEditMode: boolean;
+    tagsEditMode: boolean = false;
     vendors: InventoryVendor[];
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild(MatPaginator)
-    private _paginator: MatPaginator;
-
-    @ViewChild(MatSort)
-    private _sort: MatSort;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FormBuilder} _formBuilder
-     * @param {InventoryService} _inventoryService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -57,17 +49,6 @@ export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
         private _inventoryService: InventoryService
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.flashMessage = null;
-        this.isLoading = false;
-        this.productsCount = 0;
-        this.productsTableColumns = ['sku', 'name', 'price', 'stock', 'active', 'details'];
-        this.searchInputControl = new FormControl();
-        this.selectedProduct = null;
-        this.tagsEditMode = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -329,7 +310,7 @@ export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
      */
     filterTagsInputKeyDown(event): void
     {
-        // Return, if the pressed key is not 'Enter'
+        // Return if the pressed key is not 'Enter'
         if ( event.key !== 'Enter' )
         {
             return;
@@ -501,7 +482,7 @@ export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Update the selected product using the form data
+     * Update the selected product using the form mock-api
      */
     updateSelectedProduct(): void
     {
@@ -520,7 +501,7 @@ export class InventoryListComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Delete the selected product using the form data
+     * Delete the selected product using the form mock-api
      */
     deleteSelectedProduct(): void
     {

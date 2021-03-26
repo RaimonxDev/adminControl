@@ -19,17 +19,10 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
     recurrenceForm: FormGroup;
     recurrenceFormValues: any;
     weekdays: CalendarWeekday[];
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {MatDialogRef} matDialogRef
-     * @param {MAT_DIALOG_DATA} data
-     * @param {CalendarService} _calendarService
-     * @param {FormBuilder} _formBuilder
      */
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -38,8 +31,6 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
         private _formBuilder: FormBuilder
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -123,6 +114,69 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Clear
+     */
+    clear(): void
+    {
+        // Close the dialog
+        this.matDialogRef.close({recurrence: 'cleared'});
+    }
+
+    /**
+     * Done
+     */
+    done(): void
+    {
+        // Get the recurrence form values
+        const recurrenceForm = this.recurrenceForm.value;
+
+        // Prepare the rule array and add the base rules
+        const ruleArr = ['FREQ=' + recurrenceForm.freq, 'INTERVAL=' + recurrenceForm.interval];
+
+        // If monthly on certain days...
+        if ( recurrenceForm.freq === 'MONTHLY' && recurrenceForm.monthly.repeatOn === 'nthWeekday' )
+        {
+            ruleArr.push('BYDAY=' + recurrenceForm.monthly.nthWeekday);
+        }
+
+        // If weekly...
+        if ( recurrenceForm.freq === 'WEEKLY' )
+        {
+            // If byDay is an array...
+            if ( Array.isArray(recurrenceForm.weekly.byDay) )
+            {
+                ruleArr.push('BYDAY=' + recurrenceForm.weekly.byDay.join(','));
+            }
+            // Otherwise
+            else
+            {
+                ruleArr.push('BYDAY=' + recurrenceForm.weekly.byDay);
+            }
+        }
+
+        // If one of the end options is selected...
+        if ( recurrenceForm.end.type === 'until' )
+        {
+            ruleArr.push('UNTIL=' + moment(recurrenceForm.end.until).endOf('day').utc().format('YYYYMMDD[T]HHmmss[Z]'));
+        }
+
+        if ( recurrenceForm.end.type === 'count' )
+        {
+            ruleArr.push('COUNT=' + recurrenceForm.end.count);
+        }
+
+        // Generate rule text
+        const ruleText = ruleArr.join(';');
+
+        // Close the dialog
+        this.matDialogRef.close({recurrence: ruleText});
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -284,68 +338,5 @@ export class CalendarRecurrenceComponent implements OnInit, OnDestroy
             // Set the count
             this.recurrenceForm.get('end.count').setValue(count);
         }
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Clear
-     */
-    clear(): void
-    {
-        // Close the dialog
-        this.matDialogRef.close({recurrence: 'cleared'});
-    }
-
-    /**
-     * Done
-     */
-    done(): void
-    {
-        // Get the recurrence form values
-        const recurrenceForm = this.recurrenceForm.value;
-
-        // Prepare the rule array and add the base rules
-        const ruleArr = ['FREQ=' + recurrenceForm.freq, 'INTERVAL=' + recurrenceForm.interval];
-
-        // If monthly on certain days...
-        if ( recurrenceForm.freq === 'MONTHLY' && recurrenceForm.monthly.repeatOn === 'nthWeekday' )
-        {
-            ruleArr.push('BYDAY=' + recurrenceForm.monthly.nthWeekday);
-        }
-
-        // If weekly...
-        if ( recurrenceForm.freq === 'WEEKLY' )
-        {
-            // If byDay is an array...
-            if ( Array.isArray(recurrenceForm.weekly.byDay) )
-            {
-                ruleArr.push('BYDAY=' + recurrenceForm.weekly.byDay.join(','));
-            }
-            // Otherwise
-            else
-            {
-                ruleArr.push('BYDAY=' + recurrenceForm.weekly.byDay);
-            }
-        }
-
-        // If one of the end options is selected...
-        if ( recurrenceForm.end.type === 'until' )
-        {
-            ruleArr.push('UNTIL=' + moment(recurrenceForm.end.until).endOf('day').utc().format('YYYYMMDD[T]HHmmss[Z]'));
-        }
-
-        if ( recurrenceForm.end.type === 'count' )
-        {
-            ruleArr.push('COUNT=' + recurrenceForm.end.count);
-        }
-
-        // Generate rule text
-        const ruleText = ruleArr.join(';');
-
-        // Close the dialog
-        this.matDialogRef.close({recurrence: ruleText});
     }
 }

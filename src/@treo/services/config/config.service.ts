@@ -8,7 +8,6 @@ import { TREO_APP_CONFIG } from '@treo/services/config/config.constants';
 })
 export class TreoConfigService
 {
-    // Private
     private _config: BehaviorSubject<any>;
 
     /**
@@ -16,7 +15,7 @@ export class TreoConfigService
      */
     constructor(@Inject(TREO_APP_CONFIG) config: any)
     {
-        // Set the private defaults
+        // Private
         this._config = new BehaviorSubject(config);
     }
 

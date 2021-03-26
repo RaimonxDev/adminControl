@@ -14,16 +14,10 @@ import { CalendarService } from 'app/modules/admin/apps/calendar/calendar.servic
 export class CalendarSettingsComponent implements OnInit, OnDestroy
 {
     settingsForm: FormGroup;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FormBuilder} _formBuilder
      */
     constructor(
         private _calendarService: CalendarService,
@@ -31,10 +25,6 @@ export class CalendarSettingsComponent implements OnInit, OnDestroy
         private _formBuilder: FormBuilder
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
     }
 
     // -----------------------------------------------------------------------------------------------------

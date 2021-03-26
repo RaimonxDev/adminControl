@@ -12,12 +12,8 @@ export class MailboxFoldersResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
      */
-    constructor(
-        private _mailboxService: MailboxService
-    )
+    constructor(private _mailboxService: MailboxService)
     {
     }
 
@@ -44,12 +40,8 @@ export class MailboxFiltersResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
      */
-    constructor(
-        private _mailboxService: MailboxService
-    )
+    constructor(private _mailboxService: MailboxService)
     {
     }
 
@@ -76,12 +68,8 @@ export class MailboxLabelsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
      */
-    constructor(
-        private _mailboxService: MailboxService
-    )
+    constructor(private _mailboxService: MailboxService)
     {
     }
 
@@ -108,9 +96,6 @@ export class MailboxMailsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
-     * @param {Router} _router
      */
     constructor(
         private _mailboxService: MailboxService,
@@ -217,9 +202,6 @@ export class MailboxMailResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {MailboxService} _mailboxService
-     * @param {Router} _router
      */
     constructor(
         private _mailboxService: MailboxService,

@@ -12,12 +12,8 @@ export class ContactsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {ContactsService} _contactsService
      */
-    constructor(
-        private _contactsService: ContactsService
-    )
+    constructor(private _contactsService: ContactsService)
     {
     }
 
@@ -44,9 +40,6 @@ export class ContactsContactResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {ContactsService} _contactsService
-     * @param {Router} _router
      */
     constructor(
         private _contactsService: ContactsService,
@@ -95,12 +88,8 @@ export class ContactsCountriesResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {ContactsService} _contactsService
      */
-    constructor(
-        private _contactsService: ContactsService
-    )
+    constructor(private _contactsService: ContactsService)
     {
     }
 
@@ -127,12 +116,8 @@ export class ContactsTagsResolver implements Resolve<any>
 {
     /**
      * Constructor
-     *
-     * @param {ContactsService} _contactsService
      */
-    constructor(
-        private _contactsService: ContactsService
-    )
+    constructor(private _contactsService: ContactsService)
     {
     }
 

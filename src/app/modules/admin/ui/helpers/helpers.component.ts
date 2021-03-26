@@ -3,24 +3,17 @@ import { FormBuilder } from '@angular/forms';
 
 @Component({
     selector   : 'helpers',
-    templateUrl: './helpers.component.html',
-    styles     : ['']
+    templateUrl: './helpers.component.html'
 })
 export class HelpersComponent
 {
-    formFieldHelpers: string[];
+    formFieldHelpers: string[] = [''];
 
     /**
      * Constructor
-     *
-     * @param {FormBuilder} _formBuilder
      */
-    constructor(
-        private _formBuilder: FormBuilder
-    )
+    constructor(private _formBuilder: FormBuilder)
     {
-        // Set the default
-        this.formFieldHelpers = [''];
     }
 
     // -----------------------------------------------------------------------------------------------------

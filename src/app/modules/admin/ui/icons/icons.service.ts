@@ -9,19 +9,13 @@ import { tap } from 'rxjs/operators';
 export class IconsService
 {
     // Private
-    private _icons: BehaviorSubject<any>;
+    private _icons: BehaviorSubject<any> = new BehaviorSubject(null);
 
     /**
      * Constructor
-     *
-     * @param {HttpClient} _httpClient
      */
-    constructor(
-        private _httpClient: HttpClient
-    )
+    constructor(private _httpClient: HttpClient)
     {
-        // Set the private defaults
-        this._icons = new BehaviorSubject(null);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -45,14 +39,15 @@ export class IconsService
      *
      * @param url
      */
-    getIcons(url): Observable<any>
+    getIcons(url: string): Observable<any>
     {
         // Prepend the url with 'api'
         url = 'api' + url;
 
-        return this._httpClient.get(url)
-                   .pipe(tap((response: any) => {
-                       this._icons.next(response);
-                   }));
+        return this._httpClient.get(url).pipe(
+            tap((response: any) => {
+                this._icons.next(response);
+            })
+        );
     }
 }

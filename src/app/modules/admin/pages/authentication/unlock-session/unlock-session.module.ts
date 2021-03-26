@@ -1,29 +1,74 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TreoCardModule } from '@treo/components/card';
-import { TreoMessageModule } from '@treo/components/message';
+import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
-import { UnlockSessionComponent } from 'app/modules/admin/pages/authentication/unlock-session/unlock-session.component';
-import { unlockSessionRoutes } from 'app/modules/admin/pages/authentication/unlock-session/unlock-session.routing';
+import { UnlockSessionClassicComponent } from 'app/modules/admin/pages/authentication/unlock-session/classic/unlock-session.component';
+import { UnlockSessionModernComponent } from 'app/modules/admin/pages/authentication/unlock-session/modern/unlock-session.component';
+import { UnlockSessionModernReversedComponent } from 'app/modules/admin/pages/authentication/unlock-session/modern-reversed/unlock-session.component';
+import { UnlockSessionFullscreenComponent } from 'app/modules/admin/pages/authentication/unlock-session/fullscreen/unlock-session.component';
+import { UnlockSessionFullscreenReversedComponent } from 'app/modules/admin/pages/authentication/unlock-session/fullscreen-reversed/unlock-session.component';
+import { UnlockSessionSplitScreenComponent } from 'app/modules/admin/pages/authentication/unlock-session/split-screen/unlock-session.component';
+import { UnlockSessionSplitScreenReversedComponent } from 'app/modules/admin/pages/authentication/unlock-session/split-screen-reversed/unlock-session.component';
+
+const routes: Routes = [
+    {
+        path    : 'unlock-session',
+        children: [
+            {
+                path     : 'classic',
+                component: UnlockSessionClassicComponent
+            },
+            {
+                path     : 'modern',
+                component: UnlockSessionModernComponent
+            },
+            {
+                path     : 'modern-reversed',
+                component: UnlockSessionModernReversedComponent
+            },
+            {
+                path     : 'split-screen',
+                component: UnlockSessionSplitScreenComponent
+            },
+            {
+                path     : 'split-screen-reversed',
+                component: UnlockSessionSplitScreenReversedComponent
+            },
+            {
+                path     : 'fullscreen',
+                component: UnlockSessionFullscreenComponent
+            },
+            {
+                path     : 'fullscreen-reversed',
+                component: UnlockSessionFullscreenReversedComponent
+            }
+        ]
+    }
+];
 
 @NgModule({
     declarations: [
-        UnlockSessionComponent
+        UnlockSessionClassicComponent,
+        UnlockSessionModernComponent,
+        UnlockSessionModernReversedComponent,
+        UnlockSessionFullscreenComponent,
+        UnlockSessionFullscreenReversedComponent,
+        UnlockSessionSplitScreenComponent,
+        UnlockSessionSplitScreenReversedComponent
     ],
     imports     : [
-        RouterModule.forChild(unlockSessionRoutes),
+        RouterModule.forChild(routes),
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
         MatProgressSpinnerModule,
-        TreoCardModule,
-        TreoMessageModule,
+        TreoAlertModule,
         SharedModule
     ]
 })

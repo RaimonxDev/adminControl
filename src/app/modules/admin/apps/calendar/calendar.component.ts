@@ -13,7 +13,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import momentPlugin from '@fullcalendar/moment';
 import rrulePlugin from '@fullcalendar/rrule';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { cloneDeep, omit, clone, isEqual } from 'lodash-es';
+import { clone, cloneDeep, isEqual, omit } from 'lodash-es';
 import * as moment from 'moment';
 import { RRule } from 'rrule';
 import { Subject } from 'rxjs';
@@ -32,47 +32,30 @@ import { Calendar, CalendarDrawerMode, CalendarEvent, CalendarEventEditMode, Cal
 })
 export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 {
+    @ViewChild('eventPanel') private _eventPanel: TemplateRef<any>;
+    @ViewChild('fullCalendar') private _fullCalendar: FullCalendarComponent;
+    @ViewChild('drawer') private _drawer: MatDrawer;
+
     calendars: Calendar[];
-    calendarPlugins: any;
-    drawerMode: CalendarDrawerMode;
-    drawerOpened: boolean;
+    calendarPlugins: any[] = [dayGridPlugin, interactionPlugin, listPlugin, momentPlugin, rrulePlugin, timeGridPlugin];
+    drawerMode: CalendarDrawerMode = 'side';
+    drawerOpened: boolean = true;
     event: CalendarEvent;
-    eventEditMode: CalendarEventEditMode;
+    eventEditMode: CalendarEventEditMode = 'single';
     eventForm: FormGroup;
     eventTimeFormat: any;
-    events: CalendarEvent[];
-    panelMode: CalendarEventPanelMode;
+    events: CalendarEvent[] = [];
+    panelMode: CalendarEventPanelMode = 'view';
     settings: CalendarSettings;
-    view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listYear';
+    view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay' | 'listYear' = 'dayGridMonth';
     views: any;
     viewTitle: string;
-
-    // Private
     private _eventPanelOverlayRef: OverlayRef;
-    private _eventPanelTemplatePortal: TemplatePortal;
     private _fullCalendarApi: FullCalendar;
-    private _unsubscribeAll: Subject<any>;
-
-    @ViewChild('eventPanel')
-    private _eventPanel: TemplateRef<any>;
-
-    @ViewChild('fullCalendar')
-    private _fullCalendar: FullCalendarComponent;
-
-    @ViewChild('drawer')
-    private _drawer: MatDrawer;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {CalendarService} _calendarService
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {Document} _document
-     * @param {FormBuilder} _formBuilder
-     * @param {MatDialog} _matDialog
-     * @param {Overlay} _overlay
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
-     * @param {ViewContainerRef} _viewContainerRef
      */
     constructor(
         private _calendarService: CalendarService,
@@ -85,17 +68,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.calendarPlugins = [dayGridPlugin, interactionPlugin, listPlugin, momentPlugin, rrulePlugin, timeGridPlugin];
-        this.drawerMode = 'side';
-        this.drawerOpened = true;
-        this.eventEditMode = 'single';
-        this.events = [];
-        this.panelMode = 'view';
-        this.view = 'dayGridMonth';
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -242,15 +214,15 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
             .subscribe(({matchingAliases}) => {
 
                 // Set the drawerMode and drawerOpened if the given breakpoint is active
-                if ( matchingAliases.includes('lt-md') )
-                {
-                    this.drawerMode = 'over';
-                    this.drawerOpened = false;
-                }
-                else
+                if ( matchingAliases.includes('md') )
                 {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
                 }
 
                 // Mark for check
@@ -301,7 +273,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         this.viewTitle = this._fullCalendarApi.view.title;
 
         // Get the view's current start and end dates, add/subtract
-        // 60 days to create a ~150 days period to fetch the data for
+        // 60 days to create a ~150 days period to fetch the mock-api for
         const viewStart = moment(this._fullCalendarApi.view.currentStart).subtract(60, 'days');
         const viewEnd = moment(this._fullCalendarApi.view.currentEnd).add(60, 'days');
 
@@ -317,242 +289,12 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
-    }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Open the event panel
-     *
-     * @private
-     */
-    private _openEventPanel(calendarEvent): void
-    {
-        // Create the overlay
-        this._eventPanelOverlayRef = this._overlay.create({
-            panelClass      : ['calendar-event-panel', 'panel-mode-view'],
-            backdropClass   : '',
-            hasBackdrop     : true,
-            scrollStrategy  : this._overlay.scrollStrategies.reposition(),
-            positionStrategy: this._overlay.position()
-                                  .flexibleConnectedTo(calendarEvent.el)
-                                  .withFlexibleDimensions(false)
-                                  .withPositions([
-                                      {
-                                          originX : 'end',
-                                          originY : 'top',
-                                          overlayX: 'start',
-                                          overlayY: 'top',
-                                          offsetX : 8
-                                      },
-                                      {
-                                          originX : 'start',
-                                          originY : 'top',
-                                          overlayX: 'end',
-                                          overlayY: 'top',
-                                          offsetX : -8
-                                      },
-                                      {
-                                          originX : 'start',
-                                          originY : 'bottom',
-                                          overlayX: 'end',
-                                          overlayY: 'bottom',
-                                          offsetX : -8
-                                      },
-                                      {
-                                          originX : 'end',
-                                          originY : 'bottom',
-                                          overlayX: 'start',
-                                          overlayY: 'bottom',
-                                          offsetX : 8
-                                      }
-                                  ])
-        });
-
-        // Create a portal from the template
-        this._eventPanelTemplatePortal = new TemplatePortal(this._eventPanel, this._viewContainerRef);
-
-        // On backdrop click...
-        this._eventPanelOverlayRef.backdropClick().subscribe(() => {
-
-            // Close the event panel
-            this._closeEventPanel();
-        });
-
-        // Attach the portal to the overlay
-        this._eventPanelOverlayRef.attach(this._eventPanelTemplatePortal);
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Close the event panel
-     *
-     * @private
-     */
-    private _closeEventPanel(): void
-    {
-        // If template portal exists and attached...
-        if ( this._eventPanelTemplatePortal && this._eventPanelTemplatePortal.isAttached )
+        // Dispose the overlay
+        if ( this._eventPanelOverlayRef )
         {
-            // Detach it
-            this._eventPanelTemplatePortal.detach();
-        }
-
-        // If overlay exists and attached...
-        if ( this._eventPanelOverlayRef && this._eventPanelOverlayRef.hasAttached() )
-        {
-            // Detach it
-            this._eventPanelOverlayRef.detach();
             this._eventPanelOverlayRef.dispose();
         }
-
-        // Reset the panel and event edit modes
-        this.panelMode = 'view';
-        this.eventEditMode = 'single';
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-    }
-
-    /**
-     * Update the recurrence rule based on the event if needed
-     *
-     * @private
-     */
-    private _updateRecurrenceRule(): void
-    {
-        // Get the event
-        const event = this.eventForm.value;
-
-        // Return, if this is a non-recurring event
-        if ( !event.recurrence )
-        {
-            return;
-        }
-
-        // Parse the recurrence rule
-        const parsedRules = {};
-        event.recurrence.split(';').forEach((rule) => {
-
-            // Split the rule
-            const parsedRule = rule.split('=');
-
-            // Add the rule to the parsed rules
-            parsedRules[parsedRule[0]] = parsedRule[1];
-        });
-
-        // If there is a BYDAY rule, split that as well
-        if ( parsedRules['BYDAY'] )
-        {
-            parsedRules['BYDAY'] = parsedRules['BYDAY'].split(',');
-        }
-
-        // Do not update the recurrence rule if ...
-        // ... the frequency is DAILY,
-        // ... the frequency is WEEKLY and BYDAY has multiple values,
-        // ... the frequency is MONTHLY and there isn't a BYDAY rule,
-        // ... the frequency is YEARLY,
-        if ( parsedRules['FREQ'] === 'DAILY' ||
-            (parsedRules['FREQ'] === 'WEEKLY' && parsedRules['BYDAY'].length > 1) ||
-            (parsedRules['FREQ'] === 'MONTHLY' && !parsedRules['BYDAY']) ||
-            parsedRules['FREQ'] === 'YEARLY' )
-        {
-            return;
-        }
-
-        // If the frequency is WEEKLY, update the BYDAY value with the new one
-        if ( parsedRules['FREQ'] === 'WEEKLY' )
-        {
-            parsedRules['BYDAY'] = [moment(event.start).format('dd').toUpperCase()];
-        }
-
-        // If the frequency is MONTHLY, update the BYDAY value with the new one
-        if ( parsedRules['FREQ'] === 'MONTHLY' )
-        {
-            // Calculate the weekday
-            const weekday = moment(event.start).format('dd').toUpperCase();
-
-            // Calculate the nthWeekday
-            let nthWeekdayNo = 1;
-            while ( moment(event.start).isSame(moment(event.start).subtract(nthWeekdayNo, 'week'), 'month') )
-            {
-                nthWeekdayNo++;
-            }
-
-            // Set the BYDAY
-            parsedRules['BYDAY'] = [nthWeekdayNo + weekday];
-        }
-
-        // Generate the rule string from the parsed rules
-        const rules = [];
-        Object.keys(parsedRules).forEach((key) => {
-            rules.push(key + '=' + (Array.isArray(parsedRules[key]) ? parsedRules[key].join(',') : parsedRules[key]));
-        });
-        const rrule = rules.join(';');
-
-        // Update the recurrence rule
-        this.eventForm.get('recurrence').setValue(rrule);
-    }
-
-    /**
-     * Update the end value based on the recurrence and duration
-     *
-     * @private
-     */
-    private _updateEndValue(): void
-    {
-        // Get the event recurrence
-        const recurrence = this.eventForm.get('recurrence').value;
-
-        // Return, if this is a non-recurring event
-        if ( !recurrence )
-        {
-            return;
-        }
-
-        // Parse the recurrence rule
-        const parsedRules = {};
-        recurrence.split(';').forEach((rule) => {
-
-            // Split the rule
-            const parsedRule = rule.split('=');
-
-            // Add the rule to the parsed rules
-            parsedRules[parsedRule[0]] = parsedRule[1];
-        });
-
-        // If there is an UNTIL rule...
-        if ( parsedRules['UNTIL'] )
-        {
-            // Use that to set the end date
-            this.eventForm.get('end').setValue(parsedRules['UNTIL']);
-
-            // Return
-            return;
-        }
-
-        // If there is a COUNT rule...
-        if ( parsedRules['COUNT'] )
-        {
-            // Generate the RRule string
-            const rrule = 'DTSTART=' + moment(this.eventForm.get('start').value).utc().format('YYYYMMDD[T]HHmmss[Z]') + '\nRRULE:' + recurrence;
-
-            // Use RRule string to generate dates
-            const dates = RRule.fromString(rrule).all();
-
-            // Get the last date from dates array and set that as the end date
-            this.eventForm.get('end').setValue(moment(dates[dates.length - 1]).toISOString());
-
-            // Return
-            return;
-        }
-
-        // If there are no UNTIL or COUNT, set the end date to a fixed value
-        this.eventForm.get('end').setValue(moment().year(9999).endOf('year').toISOString());
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -584,7 +326,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // After dialog closed
         dialogRef.afterClosed().subscribe((result) => {
 
-            // Return, if canceled
+            // Return if canceled
             if ( !result || !result.recurrence )
             {
                 return;
@@ -625,25 +367,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Set the event edit mode
         this.eventEditMode = eventEditMode;
-
-        // Update the panel class
-        if ( panelMode === 'view' )
-        {
-            this._eventPanelOverlayRef.removePanelClass(['panel-mode-add', 'panel-mode-edit']);
-            this._eventPanelOverlayRef.addPanelClass('panel-mode-view');
-        }
-
-        if ( panelMode === 'add' )
-        {
-            this._eventPanelOverlayRef.removePanelClass(['panel-mode-edit', 'panel-mode-view']);
-            this._eventPanelOverlayRef.addPanelClass('panel-mode-add');
-        }
-
-        if ( panelMode === 'edit' )
-        {
-            this._eventPanelOverlayRef.removePanelClass(['panel-mode-add', 'panel-mode-view']);
-            this._eventPanelOverlayRef.addPanelClass('panel-mode-edit');
-        }
 
         // Update the panel position
         setTimeout(() => {
@@ -831,7 +554,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         // Get event's calendar
         const calendar = this.calendars.find((item) => item.id === calendarEvent.event.extendedProps.calendarId);
 
-        // Return, if the calendar doesn't exist...
+        // Return if the calendar doesn't exist...
         if ( !calendar )
         {
             return;
@@ -924,12 +647,15 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     {
         // Get the clone of the event form value
         let event = clone(this.eventForm.value);
-        const {range, ...eventWithoutRange} = event;
+        const {
+                  range,
+                  ...eventWithoutRange
+              } = event;
 
         // Get the original event
         const originalEvent = this.events.find(item => item.id === event.id);
 
-        // Return, if there are no changes made to the event
+        // Return if there are no changes made to the event
         if ( isEqual(eventWithoutRange, originalEvent) )
         {
             // Close the event panel
@@ -1045,5 +771,241 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
                 this._closeEventPanel();
             });
         }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create the event panel overlay
+     * @private
+     */
+    private _createEventPanelOverlay(positionStrategy): void
+    {
+        // Create the overlay
+        this._eventPanelOverlayRef = this._overlay.create({
+            panelClass    : ['calendar-event-panel'],
+            backdropClass : '',
+            hasBackdrop   : true,
+            scrollStrategy: this._overlay.scrollStrategies.reposition(),
+            positionStrategy
+        });
+
+        // Detach the overlay from the portal on backdrop click
+        this._eventPanelOverlayRef.backdropClick().subscribe(() => {
+            this._closeEventPanel();
+        });
+    }
+
+    /**
+     * Open the event panel
+     *
+     * @private
+     */
+    private _openEventPanel(calendarEvent): void
+    {
+        const positionStrategy = this._overlay.position().flexibleConnectedTo(calendarEvent.el).withFlexibleDimensions(false).withPositions([
+            {
+                originX : 'end',
+                originY : 'top',
+                overlayX: 'start',
+                overlayY: 'top',
+                offsetX : 8
+            },
+            {
+                originX : 'start',
+                originY : 'top',
+                overlayX: 'end',
+                overlayY: 'top',
+                offsetX : -8
+            },
+            {
+                originX : 'start',
+                originY : 'bottom',
+                overlayX: 'end',
+                overlayY: 'bottom',
+                offsetX : -8
+            },
+            {
+                originX : 'end',
+                originY : 'bottom',
+                overlayX: 'start',
+                overlayY: 'bottom',
+                offsetX : 8
+            }
+        ]);
+
+        // Create the overlay if it doesn't exist
+        if ( !this._eventPanelOverlayRef )
+        {
+            this._createEventPanelOverlay(positionStrategy);
+        }
+        // Otherwise, just update the position
+        else
+        {
+            this._eventPanelOverlayRef.updatePositionStrategy(positionStrategy);
+        }
+
+        // Attach the portal to the overlay
+        this._eventPanelOverlayRef.attach(new TemplatePortal(this._eventPanel, this._viewContainerRef));
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Close the event panel
+     *
+     * @private
+     */
+    private _closeEventPanel(): void
+    {
+        // Detach the overlay from the portal
+        this._eventPanelOverlayRef.detach();
+
+        // Reset the panel and event edit modes
+        this.panelMode = 'view';
+        this.eventEditMode = 'single';
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Update the recurrence rule based on the event if needed
+     *
+     * @private
+     */
+    private _updateRecurrenceRule(): void
+    {
+        // Get the event
+        const event = this.eventForm.value;
+
+        // Return if this is a non-recurring event
+        if ( !event.recurrence )
+        {
+            return;
+        }
+
+        // Parse the recurrence rule
+        const parsedRules = {};
+        event.recurrence.split(';').forEach((rule) => {
+
+            // Split the rule
+            const parsedRule = rule.split('=');
+
+            // Add the rule to the parsed rules
+            parsedRules[parsedRule[0]] = parsedRule[1];
+        });
+
+        // If there is a BYDAY rule, split that as well
+        if ( parsedRules['BYDAY'] )
+        {
+            parsedRules['BYDAY'] = parsedRules['BYDAY'].split(',');
+        }
+
+        // Do not update the recurrence rule if ...
+        // ... the frequency is DAILY,
+        // ... the frequency is WEEKLY and BYDAY has multiple values,
+        // ... the frequency is MONTHLY and there isn't a BYDAY rule,
+        // ... the frequency is YEARLY,
+        if ( parsedRules['FREQ'] === 'DAILY' ||
+            (parsedRules['FREQ'] === 'WEEKLY' && parsedRules['BYDAY'].length > 1) ||
+            (parsedRules['FREQ'] === 'MONTHLY' && !parsedRules['BYDAY']) ||
+            parsedRules['FREQ'] === 'YEARLY' )
+        {
+            return;
+        }
+
+        // If the frequency is WEEKLY, update the BYDAY value with the new one
+        if ( parsedRules['FREQ'] === 'WEEKLY' )
+        {
+            parsedRules['BYDAY'] = [moment(event.start).format('dd').toUpperCase()];
+        }
+
+        // If the frequency is MONTHLY, update the BYDAY value with the new one
+        if ( parsedRules['FREQ'] === 'MONTHLY' )
+        {
+            // Calculate the weekday
+            const weekday = moment(event.start).format('dd').toUpperCase();
+
+            // Calculate the nthWeekday
+            let nthWeekdayNo = 1;
+            while ( moment(event.start).isSame(moment(event.start).subtract(nthWeekdayNo, 'week'), 'month') )
+            {
+                nthWeekdayNo++;
+            }
+
+            // Set the BYDAY
+            parsedRules['BYDAY'] = [nthWeekdayNo + weekday];
+        }
+
+        // Generate the rule string from the parsed rules
+        const rules = [];
+        Object.keys(parsedRules).forEach((key) => {
+            rules.push(key + '=' + (Array.isArray(parsedRules[key]) ? parsedRules[key].join(',') : parsedRules[key]));
+        });
+        const rrule = rules.join(';');
+
+        // Update the recurrence rule
+        this.eventForm.get('recurrence').setValue(rrule);
+    }
+
+    /**
+     * Update the end value based on the recurrence and duration
+     *
+     * @private
+     */
+    private _updateEndValue(): void
+    {
+        // Get the event recurrence
+        const recurrence = this.eventForm.get('recurrence').value;
+
+        // Return if this is a non-recurring event
+        if ( !recurrence )
+        {
+            return;
+        }
+
+        // Parse the recurrence rule
+        const parsedRules = {};
+        recurrence.split(';').forEach((rule) => {
+
+            // Split the rule
+            const parsedRule = rule.split('=');
+
+            // Add the rule to the parsed rules
+            parsedRules[parsedRule[0]] = parsedRule[1];
+        });
+
+        // If there is an UNTIL rule...
+        if ( parsedRules['UNTIL'] )
+        {
+            // Use that to set the end date
+            this.eventForm.get('end').setValue(parsedRules['UNTIL']);
+
+            // Return
+            return;
+        }
+
+        // If there is a COUNT rule...
+        if ( parsedRules['COUNT'] )
+        {
+            // Generate the RRule string
+            const rrule = 'DTSTART=' + moment(this.eventForm.get('start').value).utc().format('YYYYMMDD[T]HHmmss[Z]') + '\nRRULE:' + recurrence;
+
+            // Use RRule string to generate dates
+            const dates = RRule.fromString(rrule).all();
+
+            // Get the last date from dates array and set that as the end date
+            this.eventForm.get('end').setValue(moment(dates[dates.length - 1]).toISOString());
+
+            // Return
+            return;
+        }
+
+        // If there are no UNTIL or COUNT, set the end date to a fixed value
+        this.eventForm.get('end').setValue(moment().year(9999).endOf('year').toISOString());
     }
 }

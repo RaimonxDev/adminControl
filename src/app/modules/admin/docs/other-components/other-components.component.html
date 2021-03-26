@@ -1,27 +1,31 @@
-<div class="content-layout left-sidebar-fullheight-basic-inner-scroll">
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
 
-    <mat-drawer-container>
+    <mat-drawer-container class="flex-auto h-full">
 
         <!-- Drawer -->
-        <mat-drawer [autoFocus]="false"
-                    [mode]="'side'"
-                    [opened]="true">
+        <mat-drawer
+            class="w-72 dark:bg-gray-900"
+            [autoFocus]="false"
+            [mode]="'side'"
+            [opened]="true">
 
-            <treo-vertical-navigation [navigation]="menuData"
-                                      [inner]="true"
-                                      [mode]="'side'"
-                                      [name]="'docs-common-components-navigation'"
-                                      [opened]="true"></treo-vertical-navigation>
+            <treo-vertical-navigation
+                [navigation]="menuData"
+                [inner]="true"
+                [mode]="'side'"
+                [name]="'docs-common-components-navigation'"
+                [opened]="true"></treo-vertical-navigation>
 
         </mat-drawer>
 
-        <mat-drawer-content treoScrollReset>
+        <!-- Drawer content -->
+        <mat-drawer-content
+            class="flex flex-col"
+            treoScrollReset>
 
             <!-- Main -->
-            <div class="main">
-
+            <div class="flex-auto">
                 <router-outlet></router-outlet>
-
             </div>
 
         </mat-drawer-content>

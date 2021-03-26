@@ -19,8 +19,9 @@ import { DenseLayoutModule } from 'app/layout/layouts/vertical/dense/dense.modul
 import { FuturisticLayoutModule } from 'app/layout/layouts/vertical/futuristic/futuristic.module';
 import { ThinLayoutModule } from 'app/layout/layouts/vertical/thin/thin.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
-const modules = [
+const layoutModules = [
     // Empty
     EmptyLayoutModule,
 
@@ -45,6 +46,7 @@ const modules = [
         LayoutComponent
     ],
     imports     : [
+        MatButtonModule,
         MatCheckboxModule,
         MatIconModule,
         MatRadioModule,
@@ -52,10 +54,11 @@ const modules = [
         MatTooltipModule,
         TreoDrawerModule,
         SharedModule,
-        ...modules
+        ...layoutModules
     ],
     exports     : [
-        ...modules
+        LayoutComponent,
+        ...layoutModules
     ]
 })
 export class LayoutModule

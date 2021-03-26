@@ -12,30 +12,17 @@ import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 })
 export class MailboxComponent implements OnInit, OnDestroy
 {
-    @ViewChild('drawer')
-    drawer: MatDrawer;
+    @ViewChild('drawer') drawer: MatDrawer;
 
-    drawerMode: 'over' | 'side';
-    drawerOpened: boolean;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
+    drawerMode: 'over' | 'side' = 'side';
+    drawerOpened: boolean = true;
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
-     *
-     * @param {TreoMediaWatcherService} _treoMediaWatcherService
      */
-    constructor(
-        private _treoMediaWatcherService: TreoMediaWatcherService
-    )
+    constructor(private _treoMediaWatcherService: TreoMediaWatcherService)
     {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-
-        // Set the defaults
-        this.drawerMode = 'side';
-        this.drawerOpened = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -53,15 +40,15 @@ export class MailboxComponent implements OnInit, OnDestroy
             .subscribe(({matchingAliases}) => {
 
                 // Set the drawerMode and drawerOpened if the given breakpoint is active
-                if ( matchingAliases.includes('xs') )
-                {
-                    this.drawerMode = 'over';
-                    this.drawerOpened = false;
-                }
-                else
+                if ( matchingAliases.includes('md') )
                 {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
+                }
+                else
+                {
+                    this.drawerMode = 'over';
+                    this.drawerOpened = false;
                 }
             });
     }
