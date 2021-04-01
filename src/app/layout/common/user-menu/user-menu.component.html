@@ -12,11 +12,11 @@
             [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
         <span
             class="absolute right-0 bottom-0 w-2 h-2 rounded-full"
-            [ngClass]="{'mr-px mb-px': !showAvatar || !user.avatar,
-                          'bg-green-500': user.status === 'online',
-                          'bg-amber-500': user.status === 'away',
-                          'bg-red-500': user.status === 'busy',
-                          'bg-gray-400': user.status === 'not-visible'}"
+            [ngClass]="{'mr-px mb-px': !showAvatar,
+                          'bg-green-500': user.statusOnline === 'online',
+                          'bg-amber-500': user.statusOnline === 'ausente',
+                          'bg-red-500': user.statusOnline === 'ocupado',
+                          'bg-gray-400': user.statusOnline === 'desconectado'}"
         ></span>
     </span>
 </button>
@@ -65,19 +65,19 @@
     </button>
     <button
         mat-menu-item
-        (click)="updateUserStatus('away')">
+        (click)="updateUserStatus('ausente')">
         <span class="w-4 h-4 mr-3 rounded-full bg-amber-500"></span>
-        <span>Away</span>
+        <span>Ausente</span>
     </button>
     <button
         mat-menu-item
-        (click)="updateUserStatus('busy')">
+        (click)="updateUserStatus('ocupado')">
         <span class="w-4 h-4 mr-3 rounded-full bg-red-500"></span>
-        <span>Busy</span>
+        <span>Ocupado</span>
     </button>
     <button
         mat-menu-item
-        (click)="updateUserStatus('not-visible')">
+        (click)="updateUserStatus('desconectado')">
         <span class="w-4 h-4 mr-3 rounded-full bg-gray-400"></span>
         <span>Invisible</span>
     </button>

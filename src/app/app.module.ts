@@ -12,11 +12,13 @@ import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptorService } from './shared/services/loader-interceptor.service';
 
 const routerConfig: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
     preloadingStrategy       : PreloadAllModules,
-    relativeLinkResolution   : 'legacy'
+    relativeLinkResolution   : 'legacy',
 };
 
 @NgModule({
@@ -41,6 +43,9 @@ const routerConfig: ExtraOptions = {
 
         // 3rd party modules
         MarkdownModule.forRoot({})
+    ],
+    providers:[
+       {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true} 
     ],
     bootstrap   : [
         AppComponent

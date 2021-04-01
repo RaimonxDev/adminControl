@@ -10,6 +10,7 @@ import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthForgotPasswordComponent } from 'app/modules/auth/forgot-password/forgot-password.component';
 import { authForgotPasswordRoutes } from 'app/modules/auth/forgot-password/forgot-password.routing';
+import { FormularioModulesModule } from '../../../shared/formulario-modules.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { authForgotPasswordRoutes } from 'app/modules/auth/forgot-password/forgo
         MatProgressSpinnerModule,
         TreoCardModule,
         TreoAlertModule,
-        SharedModule
+        SharedModule,
+        FormularioModulesModule
     ]
 })
 export class AuthForgotPasswordModule

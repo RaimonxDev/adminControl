@@ -2,3 +2,11 @@
 /*  @ Import/write your custom styles here.
 /*  @ Styles from this file will override 'vendors.scss' and Treo's base styles.
 /* ----------------------------------------------------------------------------------------------------- */
+li {
+  list-style: none;
+}
+body.light .mat-snack-bar-container,
+body .light .mat-snack-bar-container {
+  background-color: transparent;
+  box-shadow: none;
+}

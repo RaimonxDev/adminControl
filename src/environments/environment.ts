@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false
+    production: false,
+    endPointCustomers: 'http://localhost:1337/customers',
+    endPointRegions: 'http://localhost:1337/regions',
+    endPointSingIn : 'http://localhost:1337/auth/local',
+    endPointValidateUser : 'http://localhost:1337/users/me',
+    endPointUpdateUser : 'http://localhost:1337/customers'
 };
 
 /*

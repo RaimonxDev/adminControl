@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
+import { environment } from '../../../environments/environment';
+import { UserIsAuth } from './Models/authModels';
+import { User, UserSingIn } from '../user/user.model';
 
 @Injectable()
 export class AuthService
 {
     private _authenticated: boolean = false;
+    private endPointSingIn = environment.endPointSingIn
+    private endPointValidateUser = environment.endPointValidateUser
 
     /**
      * Constructor
@@ -66,7 +71,7 @@ export class AuthService
      *
      * @param credentials
      */
-    signIn(credentials: { email: string, password: string }): Observable<any>
+    signIn(credentials: { identifier: string, password: string }): Observable<any>
     {
         // Throw error, if the user is already logged in
         if ( this._authenticated )
@@ -74,11 +79,11 @@ export class AuthService
             return throwError('User is already logged in.');
         }
 
-        return this._httpClient.post('api/auth/sign-in', credentials).pipe(
-            switchMap((response: any) => {
+        return this._httpClient.post<UserSingIn>(this.endPointSingIn, credentials).pipe(
+            switchMap((response: UserSingIn) => {
 
                 // Store the access token in the local storage
-                this.accessToken = response.access_token;
+                this.accessToken = response.jwt;
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
@@ -95,27 +100,29 @@ export class AuthService
     /**
      * Sign in using the access token
      */
-    signInUsingToken(): Observable<any>
-    {
+    signInUsingToken(): Observable<boolean>
+    {   
+        const headers = new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.accessToken}`
+        })
         // Renew token
-        return this._httpClient.post('api/auth/refresh-access-token', {
-            access_token: this.accessToken
-        }).pipe(
+        return this._httpClient.get<UserIsAuth>('http://localhost:1337/users/me',{ headers }).pipe(
             catchError(() => {
 
                 // Return false
                 return of(false);
             }),
-            switchMap((response: any) => {
+            switchMap((response: User) => {
 
                 // Store the access token in the local storage
-                this.accessToken = response.access_token;
+                // this.accessToken = response.access_token;
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
 
                 // Store the user on the user service
-                this._userService.user = response.user;
+                this._userService.user = response;
 
                 // Return true
                 return of(true);
@@ -126,7 +133,7 @@ export class AuthService
     /**
      * Sign out
      */
-    signOut(): Observable<any>
+    signOut(): Observable<boolean>
     {
         // Remove the access token from the local storage
         localStorage.removeItem('access_token');

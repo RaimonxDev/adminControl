@@ -39,8 +39,8 @@
         <div class="flex items-center w-full px-6 py-8 border-t">
             <user-menu></user-menu>
             <div class="flex flex-col w-full ml-4 overflow-hidden">
-                <div class="w-full whitespace-nowrap overflow-ellipsis overflow-hidden leading-normal text-indigo-50">{{data.user.name}}</div>
-                <div class="w-full mt-0.5 whitespace-nowrap overflow-ellipsis overflow-hidden leading-normal text-indigo-300 text-sm">andrew.watkins@company.com</div>
+                <div class="w-full whitespace-nowrap overflow-ellipsis overflow-hidden leading-normal text-indigo-50">{{data.user.username}}</div>
+                <div class="w-full mt-0.5 whitespace-nowrap overflow-ellipsis overflow-hidden leading-normal text-indigo-300 text-sm">{{data.user.email}}</div>
             </div>
         </div>
     </ng-container>
@@ -69,6 +69,7 @@
 
     <!-- Content -->
     <div class="flex flex-col flex-auto">
+        <mat-progress-bar *ngIf="_loaderServices.isLoading | async" mode="indeterminate"></mat-progress-bar>
         <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
              Otherwise, layout changes won't be registered and the view won't be updated! -->
         <router-outlet *ngIf="true"></router-outlet>

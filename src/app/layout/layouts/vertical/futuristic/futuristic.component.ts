@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoNavigationService } from '@treo/components/navigation';
 import { InitialData } from 'app/app.types';
+import { LoaderService } from 'app/shared/services/Loader.service';
 
 @Component({
     selector     : 'futuristic-layout',
@@ -25,7 +26,8 @@ export class FuturisticLayoutComponent implements OnInit, OnDestroy
         private _activatedRoute: ActivatedRoute,
         private _router: Router,
         private _treoMediaWatcherService: TreoMediaWatcherService,
-        private _treoNavigationService: TreoNavigationService
+        private _treoNavigationService: TreoNavigationService,
+        public _loaderServices: LoaderService
     )
     {
     }

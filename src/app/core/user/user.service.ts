@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from 'app/core/user/user.model';
+
+import { User } from '../user/user.model'
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService
-{
-    private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
+{   
 
+    private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
+    private _endPointUpdateUser = environment.endPointUpdateUser
     /**
      * Constructor
      */
@@ -35,8 +38,13 @@ export class UserService
 
     get user$(): Observable<User>
     {
-        return this._user.asObservable();
+        return this._user.asObservable()
     }
+
+    get SellerID$(): Observable<any>{
+        return this._user.asObservable().pipe(map( ({_id}) => _id))
+    }
+
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -47,9 +55,9 @@ export class UserService
      *
      * @param user
      */
-    update(user: User): Observable<any>
+    update(body: User, id:string): Observable<any>
     {
-        return this._httpClient.patch<User>('api/common/user', {user}).pipe(
+        return this._httpClient.put<User>(`${this._endPointUpdateUser}/${id}`, {body}).pipe(
             map((response) => {
                 // Execute the observable
                 this._user.next(response);

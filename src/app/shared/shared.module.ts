@@ -1,17 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { TreoAlertModule } from '@treo/components/alert';
+import { AlertComponent } from './alert/alert.component';
+
 
 @NgModule({
+    declarations:[
+        AlertComponent
+    ],
     imports: [
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule
+        TreoAlertModule,
+        MatSnackBarModule,
+        MatProgressBarModule
     ],
     exports: [
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule
+        TreoAlertModule,
+        MatSnackBarModule,
+        MatProgressBarModule
     ]
 })
 export class SharedModule

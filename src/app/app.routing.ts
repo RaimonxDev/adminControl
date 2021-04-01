@@ -42,8 +42,8 @@ export const appRoutes: Route[] = [
             layout: 'empty'
         },
         children: [
-            {path: 'sign-out', loadChildren: () => import('app/modules/auth/sign-out/sign-out.module').then(m => m.AuthSignOutModule)},
-            {path: 'unlock-session', loadChildren: () => import('app/modules/auth/unlock-session/unlock-session.module').then(m => m.AuthUnlockSessionModule)}
+            { path: 'sign-out', loadChildren: () => import('app/modules/auth/sign-out/sign-out.module').then(m => m.AuthSignOutModule)},
+            { path: 'unlock-session', loadChildren: () => import('app/modules/auth/unlock-session/unlock-session.module').then(m => m.AuthUnlockSessionModule)}
         ]
     },
 
@@ -68,11 +68,15 @@ export const appRoutes: Route[] = [
         resolve: {
             initialData: InitialDataResolver,
         },
+        data:{
+            layout: 'futuristic'
+        },
         children: [
 
             // Example
-            {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)}
-
+            {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
+            {path: 'pedidos', loadChildren: () => import('app/modules/admin/pedidos/pedidos.module').then(m => m.PedidosModule)},
+            {path: 'customers', loadChildren: () => import('app/modules/admin/customers/customers.module').then(m => m.CustomersModule)},
             // 404 & Catch all
             // {path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/modules/admin/pages/errors/error-404/error-404.module').then(m => m.Error404Module)},
             // {path: '**', redirectTo: '404-not-found'}

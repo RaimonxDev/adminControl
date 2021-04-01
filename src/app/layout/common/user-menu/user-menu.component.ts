@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { User } from 'app/core/user/user.model';
+
 import { UserService } from 'app/core/user/user.service';
+import { User } from 'app/core/user/user.model';
 
 @Component({
     selector       : 'user-menu',
@@ -18,7 +19,7 @@ export class UserMenuComponent implements OnInit, OnDestroy
 {
     static ngAcceptInputType_showAvatar: BooleanInput;
 
-    @Input() showAvatar: boolean = true;
+    @Input() showAvatar: boolean = false;
     user: User;
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -48,7 +49,6 @@ export class UserMenuComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((user: User) => {
                 this.user = user;
-
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
             });
@@ -73,7 +73,7 @@ export class UserMenuComponent implements OnInit, OnDestroy
      *
      * @param status
      */
-    updateUserStatus(status: string): void
+    updateUserStatus(statusOnline: string): void
     {
         // Return if user is not available
         if ( !this.user )
@@ -84,8 +84,8 @@ export class UserMenuComponent implements OnInit, OnDestroy
         // Update the user
         this._userService.update({
             ...this.user,
-            status
-        }).subscribe();
+            statusOnline
+        },this.user.id).subscribe();
     }
 
     /**

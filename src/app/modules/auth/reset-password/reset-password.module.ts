@@ -10,6 +10,7 @@ import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthResetPasswordComponent } from 'app/modules/auth/reset-password/reset-password.component';
 import { authResetPasswordRoutes } from 'app/modules/auth/reset-password/reset-password.routing';
+import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { authResetPasswordRoutes } from 'app/modules/auth/reset-password/reset-p
         MatProgressSpinnerModule,
         TreoCardModule,
         TreoAlertModule,
-        SharedModule
+        SharedModule,
+        FormularioModulesModule
     ]
 })
 export class AuthResetPasswordModule

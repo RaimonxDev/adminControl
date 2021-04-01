@@ -39,23 +39,18 @@ export const compactNavigation: TreoNavigationItem[] = [
 ];
 export const futuristicNavigation: TreoNavigationItem[] = [
     {
-        id   : 'starter.example',
-        title: 'Example component',
+        id   : 'pedidos',
+        title: 'Pedidos',
         type : 'basic',
-        icon : 'heroicons:chart-pie',
-        link : '/example'
+        icon : 'heroicons_outline:view-list',
+        link :  '/pedidos'  
     },
-    {
-        id   : 'starter.dummy.1',
-        title: 'Dummy menu item #1',
-        icon : 'heroicons:calendar',
-        type : 'basic'
-    },
-    {
-        id   : 'starter.dummy.2',
-        title: 'Dummy menu item #1',
-        icon : 'heroicons:user-group',
-        type : 'basic'
+   {
+        id   : 'clientes',
+        title: 'Clientes',
+        type : 'basic',
+        icon : 'heroicons_outline:users',
+        link : '/customers'
     }
 ];
 export const horizontalNavigation: TreoNavigationItem[] = [

@@ -11,6 +11,7 @@ import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthSignUpComponent } from 'app/modules/auth/sign-up/sign-up.component';
 import { authSignupRoutes } from 'app/modules/auth/sign-up/sign-up.routing';
+import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { authSignupRoutes } from 'app/modules/auth/sign-up/sign-up.routing';
         MatProgressSpinnerModule,
         TreoCardModule,
         TreoAlertModule,
-        SharedModule
+        SharedModule,
+        FormularioModulesModule
     ]
 })
 export class AuthSignUpModule
