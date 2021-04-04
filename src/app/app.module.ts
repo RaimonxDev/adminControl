@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExtraOptions, PreloadAllModules, RouterModule } from '@angular/router';
@@ -14,6 +14,9 @@ import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptorService } from './shared/services/loader-interceptor.service';
+import localeEs from "@angular/common/locales/es";
+import { registerLocaleData } from "@angular/common";
+registerLocaleData(localeEs, "es");
 
 const routerConfig: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -23,7 +26,7 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports     : [
         BrowserModule,
@@ -45,7 +48,8 @@ const routerConfig: ExtraOptions = {
         MarkdownModule.forRoot({})
     ],
     providers:[
-       {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true} 
+       {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
+       {provide: LOCALE_ID, useValue:'es'}
     ],
     bootstrap   : [
         AppComponent
