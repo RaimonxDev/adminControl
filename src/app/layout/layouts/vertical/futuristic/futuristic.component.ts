@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
+import { takeUntil, startWith, delay } from 'rxjs/operators';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoNavigationService } from '@treo/components/navigation';
 import { InitialData } from 'app/app.types';
@@ -13,10 +13,12 @@ import { LoaderService } from 'app/shared/services/Loader.service';
     styleUrls    : ['./futuristic.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuturisticLayoutComponent implements OnInit, OnDestroy
+export class FuturisticLayoutComponent implements OnInit, AfterViewInit ,OnDestroy
 {
     data: InitialData;
     isScreenSmall: boolean;
+
+    loader: Observable<boolean>
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -27,7 +29,7 @@ export class FuturisticLayoutComponent implements OnInit, OnDestroy
         private _router: Router,
         private _treoMediaWatcherService: TreoMediaWatcherService,
         private _treoNavigationService: TreoNavigationService,
-        public _loaderServices: LoaderService
+        private _loaderServices: LoaderService
     )
     {
     }
@@ -66,7 +68,13 @@ export class FuturisticLayoutComponent implements OnInit, OnDestroy
                 // Check if the screen is small
                 this.isScreenSmall = !matchingAliases.includes('md');
             });
+
     }
+
+  ngAfterViewInit() {
+     this.loader = this._loaderServices.isLoading$.pipe(delay(0))
+  }
+
 
     /**
      * On destroy

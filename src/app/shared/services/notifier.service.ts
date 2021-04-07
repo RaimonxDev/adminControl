@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlertComponent } from '../alert/alert.component';
-import { TreoMessageType } from '../../modules/admin/pedidos/models/alertMessage';
+import { TreoAlertType } from '../../../@treo/components/alert/alert.types';
+
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class NotifierService {
   constructor(private snackBar:MatSnackBar) {
 
   }
-  showNotification (titleMessage: string, displayMessage: string , typeAlert: TreoMessageType, buttonText: string | null, ) {
+  showNotification (titleMessage: string, displayMessage: string , typeAlert: TreoAlertType, buttonText: string | null, ) {
 
     this.snackBar.openFromComponent(AlertComponent, {
       data: {
@@ -27,6 +28,6 @@ export class NotifierService {
       panelClass:'transparent'
     })
 
-    
+
   }
 }

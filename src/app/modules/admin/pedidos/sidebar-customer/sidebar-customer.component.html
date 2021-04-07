@@ -1,0 +1,82 @@
+<div class="container px-4">
+  <form class="mt-6" [formGroup]="customerForm" (ngSubmit)="selectedCustomer()" >
+    <mat-form-field  class="w-full">
+      <mat-label class="text-xl font-bold" >Seleccione un cliente</mat-label>
+      <mat-select formControlName="customer" name="customer">
+        <mat-option *ngFor="let customer of customers$ " [value]="customer">
+          {{customer.nombre_comercial}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <mat-label>Transporte</mat-label>
+    <textarea class="treo-mat-textarea" formControlName="transporte" name="transporte" matInput placeholder="transporte"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <mat-label>Mensaje adicional</mat-label>
+    <textarea class="treo-mat-textarea" formControlName="mensaje_adicional" name="mensaje_adicional" matInput placeholder="Transporte, Informacion extra"></textarea>
+  </mat-form-field>
+    <!-- Informacion Cliente Seleccionado -->
+  <div *ngIf="customerSelected"  class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+          Cliente
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{customerSelected.nombre_comercial}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Rut
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customerSelected.rut_empresa}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Email
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{customerSelected.email}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            telefono
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{customerSelected.telefono}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Direccion
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <span>
+              Region:
+              {{customerSelected.Region}}
+              </span>
+              Comuna:
+              {{customerSelected.Comuna}}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  <div class="flex mt-6">
+    <button [disabled]="customerForm.invalid" mat-raised-button color="primary" class="w-full">Seleccionar Cliente</button>
+  </div>
+</form>
+
+
+
+
+
+</div>

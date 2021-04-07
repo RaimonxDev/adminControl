@@ -39,13 +39,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
                 private _formBuilder: FormBuilder,
                 private _router: Router,
                 private _userService: UserService,
-                private _notifier: NotifierService) { 
-  
+                private _notifier: NotifierService) {
+
     this._unsubscribeAll = new Subject()
     this._activatedRoute.paramMap.subscribe(params => this.isNewCustomer = params.get('id'))
     this.getCurrentSellerID()
   }
-  
+
   ngOnInit(): void {
 
     this.customerForm = this._formBuilder.group({
@@ -57,11 +57,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
       Comuna           : [null,[Validators.required]],
       Region           : [null,[Validators.required]],
       nombre_representante: [null],
-      Seller: this._formBuilder.group({
+      seller: this._formBuilder.group({
         _id: [this.sellerID]
       })
     });
-
     // Mantienen en sidenav abierto
     this._ListComponent.matDrawer.open();
 
@@ -73,23 +72,23 @@ export class DetailsComponent implements OnInit, OnDestroy {
         takeUntil(this._unsubscribeAll)
       ).subscribe((customer: Customer) => {
         // Open the drawer in case it is closed
-        // Get the contact  
+        // Get the contact
         this.customer = customer;
-        this.customerForm.patchValue(customer)   
+        this.customerForm.patchValue(customer)
       })
-    }  
+    }
 
     this._customersService.regions$.pipe(takeUntil(this._unsubscribeAll))
         .subscribe(regions => {
           this.regions = regions
           const selectedRegion = this.customerForm.get('Region').value
           this.comunes =  this._customersService.getComunes(selectedRegion)[0]?.communes
-        })  
+        })
 
-    this.customerForm.get('Region')?.valueChanges.subscribe(selectRegion => {      
+    this.customerForm.get('Region')?.valueChanges.subscribe(selectRegion => {
         let comunes = this._customersService.getComunes(selectRegion)
         this.comunes = comunes[0]?.communes
-      } )  
+      } )
   }
 
 
@@ -97,7 +96,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this._changeDetectorRef.markForCheck();
     return this._ListComponent.matDrawer.close();
   }
-  
+
   toggleEditMode(): void {
     this.editMode = !this.editMode
   }
@@ -105,7 +104,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   processData(){
     if(this.isNewCustomer === 'create'){
       this.createNewCustomer()
-    } 
+    }
     else this.updateCustomer();
   }
 
@@ -120,10 +119,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
       }
       )
   }
-    
+
   updateCustomer () {
      return this._customersService.updateData(this.customerForm.value, this.customer.id)
-     .pipe(takeUntil(this._unsubscribeAll)) 
+     .pipe(takeUntil(this._unsubscribeAll))
      .subscribe( _ => {
         this._notifier.showNotification('Actualizada','Informacion de Cliente','success',null)
       })
@@ -139,7 +138,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   fieldValidator(input: string){
     return this.customerForm.controls[input].errors?.required
-    && 
+    &&
     this.customerForm.controls[input].touched
   }
 

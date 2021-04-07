@@ -18,18 +18,18 @@ export interface Customer {
 }
 
 export interface CustomersOrder {
-    _id:          string;
-    order:        OrderOrder[];
-    titulo:       string;
-    published_at: Date;
-    createdAt:    Date;
-    updatedAt:    Date;
-    __v:          number;
-    customer:     string;
-    id:           string;
+    _id:                string;
+    order:              Order[];
+    mensaje_adicional:  string;
+    published_at:       Date;
+    createdAt:          Date;
+    updatedAt:          Date;
+    __v:                number;
+    customer:           string;
+    id:                 string;
 }
 
-export interface OrderOrder {
+export interface Order {
     id:       string;
     cantidad: number;
 }

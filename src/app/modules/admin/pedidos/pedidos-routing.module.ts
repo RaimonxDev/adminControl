@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PedidosComponent } from './pedidos.component';
+import { CustomerResolver } from '../customers/resolvers/customer.resolver';
 
 const routes: Routes = [
-  {path:'', component: PedidosComponent}
+  { path:'', component: PedidosComponent,
+    resolve:{
+      customer: CustomerResolver
+    }
+  }
 ];
 
 @NgModule({

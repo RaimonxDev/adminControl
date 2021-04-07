@@ -1,6 +1,6 @@
 <!-- back customer -->
 <div class="flex flex-col w-full p-6">
-        
+
   <div class="flex mb-4">
     <button *ngIf="!editMode || isNewCustomer === 'create' " mat-stroked-button [matTooltip]="'Close'" [routerLink]="['../']" (click)="closeDrawer()">
       <mat-icon [svgIcon]="'heroicons_outline:backspace'"></mat-icon>
@@ -23,7 +23,7 @@
             <mat-icon class="icon-size-5 text-white" [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
             <span class="ml-2">Editar</span>
           </button>
-        </div> 
+        </div>
         <p *ngIf="isNewCustomer !== 'create'" class="mt-1 max-w-2xl text-2xl text-gray-900">
             Informacion sobre el Cliente
         </p>
@@ -34,7 +34,7 @@
       </div>
 
   </div>
-  <form [formGroup]="customerForm" (ngSubmit)="processData()" autocomplete="off" >
+  <form [formGroup]="customerForm" class="treo-mat-dense" (ngSubmit)="processData()" autocomplete="off" >
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
       <dl class="sm:divide-y sm:divide-gray-200">
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -53,7 +53,7 @@
             <p class="text-sm text-red-500" *ngIf="fieldValidator('nombre_comercial')">Campo Obligatorio</p>
           </dd>
         </div>
-        
+
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-base font-medium text-gray-500">
             Rut Empresa
@@ -85,9 +85,9 @@
               <input matInput formControlName="email" type="email" [placeholder]="'correo@correo.com'" [spellcheck]="false">
             </mat-form-field>
             <p class="text-sm text-red-500" *ngIf="fieldValidator('email')">Campo Obligatorio </p>
-            <p 
-            *ngIf="customerForm.controls.email.errors?.email === true 
-            && 
+            <p
+            *ngIf="customerForm.controls.email.errors?.email === true
+            &&
             customerForm.controls.email.touched">Ingrese correo valido</p>
           </dd>
 
@@ -123,7 +123,7 @@
             <p class="text-sm text-red-500" *ngIf="fieldValidator('Direccion')">Campo Obligatorio</p>
           </dd>
         </div>
-        
+
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt  class="text-base font-medium text-gray-500">
             Region
@@ -145,7 +145,7 @@
 
           </dd>
         </div>
-        
+
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-base font-medium text-gray-500">
             Comuna
@@ -164,7 +164,7 @@
             </mat-form-field>
             <p class="text-sm text-red-500" *ngIf="fieldValidator('Comuna')">Campo Obligatorio</p>
 
-          </dd>         
+          </dd>
         </div>
       </dl>
     </div>

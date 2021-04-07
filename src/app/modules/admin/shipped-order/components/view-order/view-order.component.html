@@ -1,0 +1,11 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<ul class="divide-y divide-gray-200 m-6">
+  <li>
+    <h2 class="text-2xl font-bold text-primary">Pedido</h2>
+  </li>
+  <li class="capitalize text-xl p-2"  *ngFor="let item of order$ | async">
+    {{item.producto}}: <span class="text-primary lowercase">{{item.cantidad}} unidades</span>
+  </li>
+
+</ul>
+

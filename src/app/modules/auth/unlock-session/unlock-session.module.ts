@@ -10,7 +10,7 @@ import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthUnlockSessionComponent } from 'app/modules/auth/unlock-session/unlock-session.component';
 import { authUnlockSessionRoutes } from 'app/modules/auth/unlock-session/unlock-session.routing';
-import { FormularioModulesModule } from '../../../shared/formulario-modules.module';
+import { EssentialFormsModule } from '../../../shared/EssentialForm.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +26,7 @@ import { FormularioModulesModule } from '../../../shared/formulario-modules.modu
         TreoCardModule,
         TreoAlertModule,
         SharedModule,
-        FormularioModulesModule
+        EssentialFormsModule
     ]
 })
 export class AuthUnlockSessionModule

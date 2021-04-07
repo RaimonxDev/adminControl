@@ -5,7 +5,7 @@ import { TreoCardModule } from '@treo/components/card';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthSignOutComponent } from 'app/modules/auth/sign-out/sign-out.component';
 import { authSignOutRoutes } from 'app/modules/auth/sign-out/sign-out.routing';
-import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
+import { EssentialFormsModule } from 'app/shared/EssentialForm.module';
 
 @NgModule({
     declarations: [
@@ -16,7 +16,7 @@ import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
         MatButtonModule,
         TreoCardModule,
         SharedModule,
-        FormularioModulesModule
+        EssentialFormsModule
     ]
 })
 export class AuthSignOutModule

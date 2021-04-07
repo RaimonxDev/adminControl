@@ -4,6 +4,7 @@ import { environment } from '../../../../../environments/environment';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { Customer, Regions, Region } from '../types';
 import { map, switchMap, take, tap } from 'rxjs/operators';
+import { UserService } from '../../../../core/user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,26 @@ export class CustomerService {
   endPointCustomers = environment.endPointCustomers;
   endPointRegions = environment.endPointRegions;
 
-  // Source 
+  // Source
 
+  protected _currentSellerId : string
   private _customers: BehaviorSubject<Customer[]>
   private _customer : BehaviorSubject<Customer | null >
   private _region   : BehaviorSubject<Region[]>
+  // Indicador si el usuario ha sido creado
   public _wasCustomerCreated: BehaviorSubject<boolean>
-  
-  constructor(private _http: HttpClient) { 
+
+  constructor(
+    private _http: HttpClient,
+    private _user: UserService
+    ) {
   // set Behavior
     this._customers = new BehaviorSubject([])
     this._customer = new BehaviorSubject(null)
     this._region =  new BehaviorSubject(null)
     this._wasCustomerCreated = new BehaviorSubject(false);
+
+    this._user.SellerID$.subscribe(user => this._currentSellerId = user)
   }
 
 
@@ -38,7 +46,7 @@ export class CustomerService {
   get customer$(): Observable<Customer>{
     return this._customer.asObservable()
   }
-  
+
   get regions$(): Observable<Region[]> {
     return this._region.asObservable()
   }
@@ -48,10 +56,14 @@ export class CustomerService {
   }
 
   // Public Methods
-
+// 'http://localhost:1337/customers?seller._id=604387701df6a20ef4a53bda
   // PETICIONES GET
   getCustomers(): Observable<Customer[]>{
-    return this._http.get<Customer[]>(this.endPointCustomers)
+    return this._http.get<Customer[]>(this.endPointCustomers,{
+      params:{
+        'seller._id':`${this._currentSellerId}`
+      }
+    })
     .pipe(
       tap((customers: Customer[]) => this._customers.next(customers))
       )
@@ -72,7 +84,7 @@ export class CustomerService {
         return of(customer)
       })
     )
-  
+
   }
   // UPDATE AND CREATE CUSTOMER (POST AND PUT)
   updateData(body: Region, id:string){

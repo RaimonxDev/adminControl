@@ -4,11 +4,12 @@
 
 export const environment = {
     production: false,
-    endPointCustomers: 'http://localhost:1337/customers',
-    endPointRegions: 'http://localhost:1337/regions',
-    endPointSingIn : 'http://localhost:1337/auth/local',
+    endPointCustomers: 'http://localhost:1337/customers',//GET
+    endPointRegions: 'http://localhost:1337/regions',// GET
+    endPointSingIn : 'http://localhost:1337/auth/local',// GET
     endPointValidateUser : 'http://localhost:1337/users/me',
-    endPointUpdateUser : 'http://localhost:1337/customers'
+    endPointUpdateUser : 'http://localhost:1337/customers',
+    endPointCreateOrder : 'http://localhost:1337/orders' // POST
 };
 
 /*

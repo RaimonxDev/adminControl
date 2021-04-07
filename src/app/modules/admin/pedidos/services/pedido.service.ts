@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, switchMap} from 'rxjs/operators';
-import { of, Observable, BehaviorSubject } from 'rxjs';
+import { catchError, switchMap, tap} from 'rxjs/operators';
+import { of, Observable, BehaviorSubject, throwError } from 'rxjs';
 import { filter, findIndex, remove } from 'lodash-es';
 import { Productos } from '../models/productoResponse';
 import { ListadoDeProductos } from '../models/listadoProductos';
 import { ProductsAdded } from '../models/addedProducts';
 import { NotifierService } from 'app/shared/services/notifier.service';
+import { CreateOrder } from '../models/POST_order.model';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,10 @@ export class PedidoService {
 
   private _pedidoActual: BehaviorSubject<ProductsAdded[]> = new BehaviorSubject<ProductsAdded[]>(null)
 
-  
+  // environment
+  endPointCreateOrder: string = environment.endPointCreateOrder
+
+  // Getter and Setter
   get pedidoActual$ (){
    return  this._pedidoActual.asObservable();
   }
@@ -27,12 +32,16 @@ export class PedidoService {
   private set updatePedido(producto: ProductsAdded[]){
     this._pedidoActual.next(producto)
   }
-  
-  constructor(private _http : HttpClient, private alert : NotifierService) { 
-    // Verifica si hay algo en el local storage para actualizar 
+
+  // constructor
+  constructor(
+    private _http : HttpClient,
+    private alert : NotifierService ) {
+    // Verifica si hay algo en el local storage para actualizar
     this.getLocalOrder();
    }
-  
+
+  // Methods Private
   private getLocalOrder() {
 
     if(localStorage.getItem('order')){
@@ -40,16 +49,17 @@ export class PedidoService {
       this.updatePedido = pedido
     } else this.updatePedido = []
   }
+
   private saveLocalStorage ( orderList: ProductsAdded[] ) {
     localStorage.setItem('order', JSON.stringify(orderList));
   }
-  
+
   private getMarcas( productos:Productos[] ): Observable<ListadoDeProductos[]> {
     let arr = [];
       // recorrer todo el array y extraer todas las marcas existentes
       productos.forEach(element => {
-        arr.push(element.marca)  
-      });  
+        arr.push(element.marca)
+      });
     let withoutDuplicate = new Set(arr)
     return this.getProductoByMarcaRxjs([...withoutDuplicate]  ,productos)
   }
@@ -77,9 +87,14 @@ export class PedidoService {
 
       return of(ordenados)
   }
-  
+
   private getProductos() {
-    return this._http.get<Productos[]>('http://localhost:1337/products?_limit=-1').pipe(
+    return this._http.get<Productos[]>('http://localhost:1337/products',
+    {
+      params:{
+        '_limit':'-1'
+      }
+    }).pipe(
       catchError(error => of('No se pudo obtener los productos ', error)),
     )
   }
@@ -87,7 +102,7 @@ export class PedidoService {
     return this.getProductos().pipe(
       switchMap(data => this.getMarcas(data)),
     )
-  } 
+  }
 
   isEmpty( pedido: ProductsAdded[] ): Promise<boolean> {
     return new Promise ((resolve, reject) => {
@@ -96,26 +111,44 @@ export class PedidoService {
       }
       return reject(false)
     })
-    
-    
-    
-    // if(pedido.length === 0){
-    //    return of (true)
-    //   } 
-    // return of(false)
+
+  }
+  // Methods Public
+
+  // Peticiones HTTP
+  createOrder(_idCustomer: string, mensajeAdicional: string, transporte:string): Observable<CreateOrder> {
+
+    const body = {
+      'order': this._pedidoActual.getValue(),
+      'customer': {
+        '_id': _idCustomer
+      },
+      'mensaje_adicional': mensajeAdicional,
+      'transporte': transporte
+    }
+    return this._http.post<CreateOrder>(`${this.endPointCreateOrder}`,body )
+    .pipe(
+      tap( _ => {
+        this._pedidoActual.next([])
+        localStorage.removeItem('order')
+        this.alert.showNotification('Enviado', 'Se envio correctamente','success', null)
+      }),
+      catchError( error => throwError(this.alert.showNotification('Error','No se pudo enviar el pedido','error', null)))
+    )
   }
 
-  async addProductToCurrentOrder ( currentProducto: ProductsAdded ) {
+  // funcions Internal
+  public async addProductToCurrentOrder ( currentProducto: ProductsAdded ) {
 
     let currentOrder: ProductsAdded[] = this.currentOrderValue
 
     try {
-      await this.isEmpty(this.currentOrderValue) 
+      await this.isEmpty(this.currentOrderValue)
       currentOrder.push(currentProducto)
 
       this.updatePedido = currentOrder
       this.saveLocalStorage(currentOrder)
-    
+
     } catch (error) {
       let buscarProductoById = findIndex(currentOrder, {'code': currentProducto.code})
 
@@ -131,12 +164,14 @@ export class PedidoService {
     }
   }
 
-  eliminarProducto(item: Productos){
+  public eliminarProducto(item: Productos){
     let arr = this._pedidoActual.getValue()
-    remove(arr, ['id',item.id]) 
+    remove(arr, ['id',item.id])
     this.updatePedido = arr
     this.saveLocalStorage(arr)
        this.alert.showNotification('Se ha eliminado', '','error', null)
-   
+
   }
+
+
 }

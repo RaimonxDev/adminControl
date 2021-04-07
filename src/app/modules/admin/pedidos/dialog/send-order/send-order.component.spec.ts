@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListPetsComponent } from './list-pets.component';
+import { SendOrderComponent } from './send-order.component';
 
-describe('ListPetsComponent', () => {
-  let component: ListPetsComponent;
-  let fixture: ComponentFixture<ListPetsComponent>;
+describe('SendOrderComponent', () => {
+  let component: SendOrderComponent;
+  let fixture: ComponentFixture<SendOrderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListPetsComponent ]
+      declarations: [ SendOrderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListPetsComponent);
+    fixture = TestBed.createComponent(SendOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

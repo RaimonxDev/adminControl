@@ -5,7 +5,7 @@ import { TreoCardModule } from '@treo/components/card';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthConfirmationRequiredComponent } from 'app/modules/auth/confirmation-required/confirmation-required.component';
 import { authConfirmationRequiredRoutes } from 'app/modules/auth/confirmation-required/confirmation-required.routing';
-import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
+import { EssentialFormsModule } from 'app/shared/EssentialForm.module';
 
 @NgModule({
     declarations: [
@@ -16,7 +16,7 @@ import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
         MatButtonModule,
         TreoCardModule,
         SharedModule,
-        FormularioModulesModule
+        EssentialFormsModule
     ]
 })
 export class AuthConfirmationRequiredModule

@@ -11,7 +11,7 @@ import { TreoAlertModule } from '@treo/components/alert';
 import { SharedModule } from 'app/shared/shared.module';
 import { AuthSignInComponent } from 'app/modules/auth/sign-in/sign-in.component';
 import { authSignInRoutes } from 'app/modules/auth/sign-in/sign-in.routing';
-import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
+import { EssentialFormsModule } from 'app/shared/EssentialForm.module';
 
 @NgModule({
     declarations: [
@@ -28,7 +28,7 @@ import { FormularioModulesModule } from 'app/shared/formulario-modules.module';
         TreoCardModule,
         TreoAlertModule,
         SharedModule,
-        FormularioModulesModule
+        EssentialFormsModule
     ]
 })
 export class AuthSignInModule

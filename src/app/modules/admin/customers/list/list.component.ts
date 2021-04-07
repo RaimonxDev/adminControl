@@ -14,7 +14,7 @@ import { takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit, OnDestroy {
-  
+
   customers$: Observable<Customer[]>
   customersCount: number
   customersTableColumns: string[];
@@ -28,8 +28,8 @@ export class ListComponent implements OnInit, OnDestroy {
   constructor(private _customerServices: CustomerService,
               private _router: Router,
               private _activatedRoute: ActivatedRoute,
-              private _changeDetectorRef: ChangeDetectorRef ) { 
-    
+              private _changeDetectorRef: ChangeDetectorRef ) {
+
     this.customersCount = 0;
     this.customersTableColumns = ['comercio', 'rut', 'email','telefono', 'direccion'];
     this._unsubscribeAll = new Subject()
@@ -37,12 +37,12 @@ export class ListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.customers$ = this._customerServices.customers$;
-  
+
     this._customerServices.customers$.pipe(takeUntil(this._unsubscribeAll)).subscribe((customers: Customer[]) => {
 
       this.customersCount = customers.length
       this._changeDetectorRef.markForCheck()
-    
+
     })
 
     this._customerServices.customer$
@@ -65,7 +65,7 @@ export class ListComponent implements OnInit, OnDestroy {
         return item.id || index;
     }
   onBackdropClicked(): void
-    
+
   {
         // Get the current activated route
         let route = this._activatedRoute;
@@ -107,6 +107,6 @@ export class ListComponent implements OnInit, OnDestroy {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
-    }  
+    }
 
 }

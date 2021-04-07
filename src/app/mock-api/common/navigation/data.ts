@@ -41,15 +41,30 @@ export const futuristicNavigation: TreoNavigationItem[] = [
     {
         id   : 'pedidos',
         title: 'Pedidos',
-        type : 'basic',
-        icon : 'heroicons_outline:view-list',
-        link :  '/pedidos'  
+        type : 'collapsable',
+        icon : 'heroicons_outline:document-text',
+        children: [
+        {
+            id   : 'crear-pedido',
+            title: 'Crear Nuevo Pedido',
+            type : 'basic',
+            icon : 'heroicons_outline:document-add',
+            link : 'orders/create'
+        },
+        {
+            id   : 'ver-pedidos',
+            title: 'Pedidos Enviados',
+            type : 'basic',
+            icon : 'mat_outline:local_shipping',
+            link : 'orders/shipped'
+        }
+        ]
     },
    {
         id   : 'clientes',
         title: 'Clientes',
         type : 'basic',
-        icon : 'heroicons_outline:users',
+        icon : 'heroicons_outline:user-group',
         link : '/customers'
     }
 ];
