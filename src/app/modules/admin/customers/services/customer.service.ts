@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { Customer, Regions, Region } from '../types';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, throwError, concat } from 'rxjs';
+import { Customer, Regions, Region, RegisterCustomer, UpdateAccountCustomer } from '../types';
+import { map, switchMap, take, tap, catchError } from 'rxjs/operators';
 import { UserService } from '../../../../core/user/user.service';
+import { UserSingIn } from '../../../../core/user/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,6 @@ export class CustomerService {
   }
 
   // Public Methods
-// 'http://localhost:1337/customers?seller._id=604387701df6a20ef4a53bda
   // PETICIONES GET
   getCustomers(): Observable<Customer[]>{
     return this._http.get<Customer[]>(this.endPointCustomers,{
@@ -96,13 +96,44 @@ export class CustomerService {
       }))
   }
   createCustomer( newCustomer: Customer ) {
-    return this._http.post(`http://localhost:1337/customers`, newCustomer)
+    return this._http.post<Customer>(`http://localhost:1337/customers`, newCustomer)
     .pipe(
-      switchMap( _ => {
+      tap( _ => {
         return this.getCustomers()
       })
     )
   }
+
+  private joinCustomerAndAccount ( idCustomer: string, idNewAccountCustomer: string){
+    const body =
+    {
+      "customer":{
+      "_id":`${idNewAccountCustomer}`
+      }
+    }
+    return this._http.put<UpdateAccountCustomer>(`http://localhost:1337/customers/${idCustomer}`,body).pipe(take(1))
+  }
+
+  public registerNewCustomer(email: string, username:string, password:string, currentIdCustomer:string): Observable<any> {
+
+    const body: RegisterCustomer = {
+      email,
+      username,
+      password
+    }
+
+    return this._http.post<UserSingIn>(`http://localhost:1337/auth/local/register`, body  )
+    .pipe(
+      switchMap( ({user}) => {
+        return this.joinCustomerAndAccount( currentIdCustomer , user._id)
+      }),
+      catchError(error => of ('')))
+  }
+
+  // params: ID del cliente que vamos a unir la cuenta creada anteriormente , 2 params: ID de la cuenta creada
+
+
+
   //----------------------- UTILS----------------------------------------------
   getRegions (){
     return this._http.get<Regions[]>(this.endPointRegions)

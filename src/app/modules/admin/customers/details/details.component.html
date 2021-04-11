@@ -1,36 +1,47 @@
 <!-- back customer -->
 <div class="flex flex-col w-full p-6">
 
-  <div class="flex mb-4">
-    <button *ngIf="!editMode || isNewCustomer === 'create' " mat-stroked-button [matTooltip]="'Close'" [routerLink]="['../']" (click)="closeDrawer()">
-      <mat-icon [svgIcon]="'heroicons_outline:backspace'"></mat-icon>
-      <span class="ml-2">Cerrar</span>
-    </button>
-  </div>
 <div class="bg-white shadow overflow-hidden sm:rounded-base">
   <div class="px-4 py-5 sm:px-6">
-      <div class="flex space-x-4 mb-4">
-          <!-- cancel edit mode -->
-        <div class="flex items-center mb-1">
-          <button mat-stroked-button *ngIf="editMode && isNewCustomer !== 'create'" class="bg-red-500 text-white" [matTooltip]="'Cerrar edicion'" (click)="toggleEditMode()">
-            <mat-icon class="icon-size-5 text-white" [svgIcon]="'heroicons_outline:arrow-left'"></mat-icon>
-            <span class="ml-2">Cancelar Edicion</span>
+      <div class="flex space-x-4 mb-4 ">
+        <div class="flex-1 flex space-x-4">
+          <p *ngIf="isNewCustomer !== 'create'" class="mt-1 max-w-2xl text-2xl font-semibold text-primary">
+              Informacion sobre el Cliente
+          </p>
+          <p *ngIf="isNewCustomer === 'create'" class="mt-1 max-w-2xl text-2xl font-semibold text-primary">
+              Informacion Nuevo Cliente
+          </p>
+                  <!-- edit button -->
+          <button *ngIf="isNewCustomer !== 'create' " color="primary" mat-icon-button [matMenuTriggerFor]="menu" aria-label="acciones">
+            <mat-icon svgIcon="heroicons_outline:dots-horizontal"></mat-icon>
           </button>
-        </div>
-        <!-- edit button -->
-        <div *ngIf="!editMode" class="flex items-center mb-1">
-          <button mat-stroked-button class="bg-yellow-500 text-white" (click)="toggleEditMode()">
-            <mat-icon class="icon-size-5 text-white" [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
-            <span class="ml-2">Editar</span>
-          </button>
-        </div>
-        <p *ngIf="isNewCustomer !== 'create'" class="mt-1 max-w-2xl text-2xl text-gray-900">
-            Informacion sobre el Cliente
-        </p>
-        <p *ngIf="isNewCustomer === 'create'" class="mt-1 max-w-2xl text-2xl text-gray-900">
-            Informacion Nuevo Cliente
-        </p>
+          <mat-menu #menu="matMenu">
+            <!-- editar | cancelar -->
+            <button *ngIf="!editMode" mat-menu-item (click)="toggleEditMode(true)">
+              <mat-icon  svgIcon="heroicons_solid:pencil-alt"></mat-icon>
+              <span>Editar</span>
+            </button>
 
+            <button *ngIf="editMode" mat-menu-item (click)="toggleEditMode(false)" >
+            <mat-icon svgIcon="heroicons_solid:x"></mat-icon>
+              <span >Cancelar</span>
+            </button>
+
+            <button [disabled]="editMode" mat-menu-item (click)="openDialogEnableAccount()">
+              <mat-icon svgIcon="heroicons_outline:badge-check"></mat-icon>
+              <span >Activar Cuenta</span>
+            </button>
+
+          </mat-menu>
+        </div>
+        <!-- Back menu -->
+        <div class="ml-auto flex-0">
+          <button *ngIf="!editMode || isNewCustomer === 'create' " color="warn"
+            mat-icon-button [matTooltip]="'Close'" [routerLink]="['../']"
+            (click)="closeDrawer()">
+            <mat-icon [svgIcon]="'heroicons_outline:reply'"></mat-icon>
+          </button>
+        </div>
       </div>
 
   </div>
@@ -68,6 +79,7 @@
               <input pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" matInput formControlName="rut_empresa" [placeholder]="'76.585.325-7'" [spellcheck]="false">
             </mat-form-field>
             <p class="text-sm text-red-500" *ngIf="fieldValidator('rut_empresa')">Ingregre en el siguiente formato XX.XX.XXX-X</p>
+            <mat-error *ngIf="customerForm.get('rut_empresa').hasError('rut_existe') && customerForm.get('rut_empresa').touched ">Ya existe este Rut</mat-error>
           </dd>
         </div>
 
@@ -89,6 +101,7 @@
             *ngIf="customerForm.controls.email.errors?.email === true
             &&
             customerForm.controls.email.touched">Ingrese correo valido</p>
+            <mat-error *ngIf="customerForm.get('email').hasError('email_existe') && customerForm.get('email').touched ">Ya existe este Email</mat-error>
           </dd>
 
         </div>
@@ -168,9 +181,26 @@
         </div>
       </dl>
     </div>
-      <div *ngIf="editMode " class="flex justify-items-end m-6">
-        <button [disabled]="customerForm.invalid" mat-raised-button color="primary">Actualizar</button>
-      </div>
-  </form>
+
+    <div *ngIf="editMode" class="flex justify-items-end m-6">
+
+      <button *ngIf="isNewCustomer === 'create'" [disabled]="customerForm.invalid" mat-raised-button color="primary">Crear Cliente</button>
+
+      <button *ngIf="isNewCustomer !== 'create'"  [disabled]=" !customerForm.dirty || customerForm.invalid" mat-raised-button color="primary">Actualizar</button>
+
+    </div>
+
+
+
+      <pre>
+       {{'invalid'}} {{customerForm.invalid}}
+       {{'dirty'}} {{customerForm.dirty}}
+       {{'untouched'}} {{customerForm.untouched}}
+       {{'prestine'}} {{customerForm.pristine}}
+       {{'status'}} {{customerForm.status}}
+       {{ customerForm.controls['Comuna'].value }}
+
+      </pre>
+    </form>
 </div>
 </div>

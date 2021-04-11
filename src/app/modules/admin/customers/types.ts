@@ -11,7 +11,7 @@ export interface Customer {
     createdAt:            Date;
     updatedAt:            Date;
     __v:                  number;
-    seller:               Seller;
+    seller:               Account;
     nombre_representante: string;
     orders:               CustomersOrder[];
     id:                   string;
@@ -34,7 +34,7 @@ export interface Order {
     cantidad: number;
 }
 
-export interface Seller {
+export interface Account {
     confirmed: boolean;
     blocked:   boolean;
     _id:       string;
@@ -46,7 +46,10 @@ export interface Seller {
     __v:       number;
     role:      string;
     id:        string;
+    statusOnline?: null | string;
 }
+
+
 
 export interface Regions {
     _id:          string;
@@ -72,4 +75,28 @@ export interface Region {
 export interface Commune {
     name: string;
 }
+export interface RegisterCustomer{
+  email:string,
+  password: string,
+  username: string
+}
 
+export interface UpdateAccountCustomer {
+    _id:                  string;
+    nombre_comercial:     string;
+    email:                string;
+    telefono:             number;
+    rut_empresa:          string;
+    Direccion:            string;
+    Comuna:               string;
+    Region:               string;
+    nombre_representante: null;
+    published_at:         Date;
+    createdAt:            Date;
+    updatedAt:            Date;
+    __v:                  number;
+    seller:               Account;
+    customer:             Account;
+    orders:               any[];
+    id:                   string;
+}

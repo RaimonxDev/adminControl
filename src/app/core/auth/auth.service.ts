@@ -66,12 +66,19 @@ export class AuthService
         return this._httpClient.post('api/auth/reset-password', password);
     }
 
+    // Verificar en la base de datos
+    checkAvailableFieldEmail(value: string) {
+      return this._httpClient.get(`http://localhost:1337/customers?email=${value}`)
+    }
+    checkAvailableFieldRutEmpresa(value: string) {
+      return this._httpClient.get(`http://localhost:1337/customers?rut_empresa=${value}`)
+    }
     /**
      * Sign in
      *
      * @param credentials
      */
-    signIn(credentials: { identifier: string, password: string }): Observable<any>
+    signIn(credentials: { identifier: string, password: string }): Observable<UserSingIn>
     {
         // Throw error, if the user is already logged in
         if ( this._authenticated )
@@ -101,7 +108,7 @@ export class AuthService
      * Sign in using the access token
      */
     signInUsingToken(): Observable<boolean>
-    {   
+    {
         const headers = new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${this.accessToken}`
@@ -191,4 +198,6 @@ export class AuthService
         // If the access token exists and it didn't expire, sign in using it
         return this.signInUsingToken();
     }
+
+
 }

@@ -60,27 +60,27 @@
                     <mat-tab-group animationDuration="0ms">
                             <!-- Perros -->
                     <mat-tab label="Perro">
-                          <li *ngFor="let perro of item.productos.perro">
-                              <div class="flex flex-1 space-x-2 items-center">
-                                  <div class="flex-grow max-w-60">
-                                          <p>{{perro.producto}}</p>
-                                  </div>
-                                      <div class="flex-shrink">
-                                          <div class="flex flex-col pt-4 w-40">
-                                              <mat-form-field class="select-none">
-                                                      <input (keyup.enter)="saveProduct(cantidad.value, perro)"
-                                                              (keyup.enter)="cantidad.value=''" class="w-full" type="number" matInput
-                                                              placeholder="Cantidad" #cantidad autocomplete="off">
+                      <li *ngFor="let perro of item.productos.perro">
+                        <div class="flex flex-1 space-x-2 items-center">
+                          <div class="flex-grow max-w-60">
+                                  <p>{{perro.producto}}</p>
+                          </div>
+                          <div class="flex-shrink">
+                            <div class="flex flex-col pt-4 w-40">
+                              <mat-form-field class="select-none">
+                                <input (keyup.enter)="saveProduct(cantidad.value, perro)"
+                                        (keyup.enter)="cantidad.value=''" class="w-full" type="number" matInput
+                                        placeholder="Cantidad" #cantidad autocomplete="off">
 
-                                                      <button (click)="saveProduct(cantidad.value, perro)" (click)="cantidad.value=''"
-                                                              mat-icon-button class="green-300">
-                                                              <mat-icon svgIcon="heroicons_outline:plus-sm"></mat-icon>
-                                                      </button>
-                                              </mat-form-field>
-                                          </div>
-                                      </div>
-                              </div>
-                          </li>
+                                <button (click)="saveProduct(cantidad.value, perro)" (click)="cantidad.value=''"
+                                        mat-icon-button class="green-300">
+                                        <mat-icon svgIcon="heroicons_outline:plus-sm"></mat-icon>
+                                </button>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
 
                       </mat-tab>
                               <!-- Gatos -->

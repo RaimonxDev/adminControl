@@ -31,7 +31,7 @@ export class ListComponent implements OnInit, OnDestroy {
               private _changeDetectorRef: ChangeDetectorRef ) {
 
     this.customersCount = 0;
-    this.customersTableColumns = ['comercio', 'rut', 'email','telefono', 'direccion'];
+    this.customersTableColumns = ['comercio', 'rut', 'email','telefono', 'direccion','actions'];
     this._unsubscribeAll = new Subject()
   }
 

@@ -9,11 +9,14 @@ import { TreoDrawerModule } from '@treo/components/drawer';
 
 // Material
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Components
 import { CustomersComponent } from './customers.component';
 import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
+import {EnableAccountDialogComponent} from './components/enable-account-dialog/enable-account-dialog-component';
+
 
 
 
@@ -22,6 +25,7 @@ import { DetailsComponent } from './details/details.component';
     ListComponent,
     CustomersComponent,
     DetailsComponent,
+    EnableAccountDialogComponent
     ],
   imports: [
     CommonModule,
@@ -31,6 +35,7 @@ import { DetailsComponent } from './details/details.component';
     HttpClientModule,
     TreoDrawerModule,
     MatTableModule,
+    MatDialogModule
   ]
 })
 export class CustomersModule { }
