@@ -6,7 +6,7 @@ import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
 import { environment } from '../../../environments/environment';
 import { UserIsAuth } from './Models/authModels';
-import { User, UserSingIn } from '../user/user.model';
+import { User, UserSignIn } from '../user/user.model';
 
 @Injectable()
 export class AuthService
@@ -14,7 +14,7 @@ export class AuthService
     private _authenticated: boolean = false;
     private endPointSingIn = environment.endPointSingIn
     private endPointValidateUser = environment.endPointValidateUser
-
+    url = environment.url
     /**
      * Constructor
      */
@@ -68,17 +68,17 @@ export class AuthService
 
     // Verificar en la base de datos
     checkAvailableFieldEmail(value: string) {
-      return this._httpClient.get(`http://localhost:1337/customers?email=${value}`)
+      return this._httpClient.get(`${this.url}/users?email=${value}`)
     }
     checkAvailableFieldRutEmpresa(value: string) {
-      return this._httpClient.get(`http://localhost:1337/customers?rut_empresa=${value}`)
+      return this._httpClient.get(`${this.url}/users?rut_empresa=${value}`)
     }
     /**
      * Sign in
      *
      * @param credentials
      */
-    signIn(credentials: { identifier: string, password: string }): Observable<UserSingIn>
+    signIn(credentials: { identifier: string, password: string }): Observable<UserSignIn>
     {
         // Throw error, if the user is already logged in
         if ( this._authenticated )
@@ -86,8 +86,8 @@ export class AuthService
             return throwError('User is already logged in.');
         }
 
-        return this._httpClient.post<UserSingIn>(this.endPointSingIn, credentials).pipe(
-            switchMap((response: UserSingIn) => {
+        return this._httpClient.post<UserSignIn>(this.endPointSingIn, credentials).pipe(
+            switchMap((response: UserSignIn) => {
 
                 // Store the access token in the local storage
                 this.accessToken = response.jwt;
@@ -114,7 +114,7 @@ export class AuthService
                 'Authorization': `Bearer ${this.accessToken}`
         })
         // Renew token
-        return this._httpClient.get<UserIsAuth>('http://localhost:1337/users/me',{ headers }).pipe(
+        return this._httpClient.get<UserIsAuth>(`${this.url}/users/me`,{ headers }).pipe(
             catchError(() => {
 
                 // Return false

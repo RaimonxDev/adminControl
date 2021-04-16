@@ -4,26 +4,27 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
+import { User } from 'app/core/user/user.model';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { CustomerService } from '../services/customer.service';
-import { Customer } from '../types';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerByIdResolver implements Resolve<Customer | null> {
+export class CustomerByIdResolver implements Resolve< User | null> {
 
   constructor(  private _customerService: CustomerService,
                 private _router: Router){}
 
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Customer | null > {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User | null > {
 
     if(route.paramMap.get('id') === 'create') {
       return of(null)
     }
-     else return this._customerService.getCustomerById(route.paramMap.get('id'))
+     else return this._customerService.getUsersById(route.paramMap.get('id'))
                    .pipe(
                        // Error here means the requested contact is not available
                        catchError((error) => {
@@ -40,7 +41,7 @@ export class CustomerByIdResolver implements Resolve<Customer | null> {
                            // Throw an error
                            return throwError(error);
                        }),
-                       
+
                    );
   }
 }

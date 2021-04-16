@@ -2,9 +2,9 @@
   <form class="mt-6" [formGroup]="customerForm" (ngSubmit)="selectedCustomer()" >
     <mat-form-field  class="w-full">
       <mat-label class="text-xl font-bold" >Seleccione un cliente</mat-label>
-      <mat-select formControlName="customer" name="customer">
+      <mat-select formControlName="user" name="customer">
         <mat-option *ngFor="let customer of customers$ " [value]="customer">
-          {{customer.nombre_comercial}}
+          {{customer.username}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -27,7 +27,7 @@
           Cliente
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customerSelected.nombre_comercial}}
+            {{customerSelected.username}}
           </dd>
         </div>
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -61,10 +61,10 @@
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             <span>
               Region:
-              {{customerSelected.Region}}
+              {{customerSelected.region}}
               </span>
               Comuna:
-              {{customerSelected.Comuna}}
+              {{customerSelected.comuna}}
           </dd>
         </div>
       </dl>

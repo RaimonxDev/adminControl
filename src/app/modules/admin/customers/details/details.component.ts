@@ -7,9 +7,9 @@ import { concat, Subject, Subscription, BehaviorSubject, Observable } from 'rxjs
 import { ListComponent } from '../list/list.component';
 import { CustomerService } from '../services/customer.service';
 import { Customer, Region, Commune} from '../types';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { UserService } from 'app/core/user/user.service';
-import { User } from '../../../../core/user/user.model';
+import { User, UserSignIn } from '../../../../core/user/user.model';
 import { NotifierService } from '../../../../shared/services/notifier.service';
 import { EnableAccountDialogComponent } from '../components/enable-account-dialog/enable-account-dialog-component';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
   editMode: boolean;
-  customer: Customer;
+  customer: User;
   customerForm: FormGroup;
   regions: Region[];
   comunes: Commune[];
@@ -58,18 +58,29 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.getCurrentSellerID()
   }
 
+  get usernameField(){
+    return this.customerForm.controls['username'].value
+  }
+  get emailField(){
+    return this.customerForm.controls['email'].value
+  }
+  get rut_empresaField(){
+    return this.customerForm.controls['rut_empresa'].value
+  }
+
+
   ngOnInit(): void {
 
     this.customerForm = this._formBuilder.group({
-      nombre_comercial : [null,[Validators.required]],
+      username         : [null,[Validators.required]],
       email            : [null, [Validators.required, Validators.email],
                           CustomValidatorReactiveForm.checkFieldEmailExist(this._authServices)],
       telefono         : [null,[Validators.required]],
       rut_empresa      : [null,[Validators.required],
                           CustomValidatorReactiveForm.checkFieldRutExist(this._authServices)],
-      Direccion        : [null,[Validators.required ]],
-      Comuna           : [null,[Validators.required]],
-      Region           : [null,[Validators.required]],
+      direccion       : [null,[Validators.required ]],
+      comuna           : [null,[Validators.required]],
+      region           : [null,[Validators.required]],
       nombre_representante: [null],
       seller: this._formBuilder.group({
         _id: [this.sellerID]
@@ -85,7 +96,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
     else {
       this._customersService.customer$.pipe(
         takeUntil(this._unsubscribeAll)
-      ).subscribe((customer: Customer) => {
+      ).subscribe((customer: User) => {
+        console.log(customer);
         // Open the drawer in case it is closed
         // Get the contact
         this.customer = customer;
@@ -93,17 +105,18 @@ export class DetailsComponent implements OnInit, OnDestroy {
       })
     }
 
+    // Obtener regiones y comunas SELECT ANIDADO
     this._customersService.regions$.pipe(takeUntil(this._unsubscribeAll))
         .subscribe(regions => {
           this.regions = regions
-          const selectedRegion = this.customerForm.get('Region').value
+          const selectedRegion = this.customerForm.get('region').value
           this.comunes =  this._customersService.getComunes(selectedRegion)[0]?.communes
         })
 
-    this.customerForm.get('Region')?.valueChanges.subscribe(selectRegion => {
+    this.customerForm.get('region')?.valueChanges.subscribe(selectRegion => {
         // cada vez que cambia la region hacemos el reset de Comuna para mantener la validacion
-        if(selectRegion !== this.customer.Region){
-          this.customerForm.controls['Comuna'].reset()
+        if(selectRegion !== this.customer?.region ){
+          this.customerForm.controls['comuna'].reset()
         }
         let comunes = this._customersService.getComunes(selectRegion)
         this.comunes = comunes[0]?.communes
@@ -128,14 +141,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   processData(){
     if(this.isNewCustomer === 'create'){
-      this.createNewCustomer()
+      this.createNewCustomerAccount()
     }
     else this.updateCustomer();
   }
 
-  createNewCustomer(): Subscription {
-    return this._customersService.createCustomer(this.customerForm.value)
-    .pipe(takeUntil(this._unsubscribeAll))
+  createNewCustomerAccount(): any {
+    return this._customersService.registerNewCustomerAccount(this.customerForm.value)
       .subscribe( _ => {
         this._notifier.showNotification('Nuevo Cliente','Creado','success',null)
         this.customerForm.reset()
@@ -146,12 +158,20 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   updateCustomer () {
-     return this._customersService.updateData(this.customerForm.value, this.customer.id)
+    return this._customersService.updateData(this.customerForm.value, this.customer.id)
      .subscribe( _ => {
        this.editMode = false
        this._router.navigate(['../'], {relativeTo: this._activatedRoute} )
        this.closeDrawer()
-        this._notifier.showNotification('Actualizada','Informacion de Cliente','success',null)
+       this._notifier.showNotification('Actualizada','Informacion de Cliente','success',null)
+      },
+      err => this._notifier.showNotification('Error',err,'warn',null) )
+  }
+
+  enableOrDisableUser (value:boolean){
+    return this._customersService.enableOrDisableCustomer( value , this.customer.id)
+     .subscribe( _ => {
+       this._notifier.showNotification('Cuenta Habilitada','El cliente ya puede Iniciar Session','success',null)
       })
   }
 
@@ -160,7 +180,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   fieldValidator(input: string){
-    return this.customerForm.controls[input].errors?.required
+    return this.customerForm.controls[input]?.errors?.required
     &&
     this.customerForm.controls[input].touched
   }
@@ -174,10 +194,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
         this.menuTrigger.focus()
       }
       if( result ) {
-        console.log(this.customer);
-        // this._customersService.registerNewCustomer()
-
-        // concat()
+        result
       }
     });
   }

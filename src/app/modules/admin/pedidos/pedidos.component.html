@@ -18,7 +18,7 @@
             <!-- Title -->
       <div class="mt-2">
         <h2 *ngIf="selectedCustomer" class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-          Pedido para: <span color="primary" class="capitalize" >{{selectedCustomer.customer.nombre_comercial}}</span>
+          Pedido para: <span color="primary" class="capitalize" >{{selectedCustomer.user.username}}</span>
         </h2>
         <h2 *ngIf="!selectedCustomer" class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
           No ha seleccionado un cliente
@@ -156,7 +156,7 @@
       </div>
     </div>
     <!-- end Grid -->
-    </div>
+  </div>
   <!-- END CONTENT -->
 
   </div>

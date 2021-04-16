@@ -1,16 +1,9 @@
+import { User, UserOrder } from '../../../../core/user/user.model';
+
 export interface CreateOrder {
-    order:             Order[];
-    customer:          Customer;
+    order:             UserOrder[];
+    user:              User;
     mensaje_adicional: string;
-    transporte: string
+    transporte:        string
 }
 
-export interface Customer {
-    _id: string;
-    nombre_comercial: string
-}
-
-export interface Order {
-    id:       string;
-    cantidad: number;
-}

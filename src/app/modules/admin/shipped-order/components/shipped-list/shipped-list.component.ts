@@ -8,6 +8,7 @@ import { ShippedService } from '../../services/shipped.service';
 import { startWith, switchMap, catchError, tap} from 'rxjs/operators';
 import { Order, OrderResponse } from '../../models/order.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { UserOrder } from '../../../../../core/user/user.model';
 
 @Component({
   selector: 'app-shipped-list',
@@ -17,10 +18,10 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ShippedListComponent implements OnInit, AfterViewInit {
   ordersTableColumns: string[] = ['fecha', 'cliente', 'rut', 'monto','factura','pedido'];
 
-  shippedDataBase: MatTableDataSource<OrderResponse> | null;
+  shippedDataBase: MatTableDataSource<UserOrder> | null;
 
   drawerMode: 'side' | 'over';
-  isRateLimitReached;
+  // isRateLimitReached;
   filteredOrders: Observable<any>;
   resultsCount: number
 
@@ -44,7 +45,7 @@ export class ShippedListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     // Paginacion http
-    this.shippedDataBase = new MatTableDataSource<OrderResponse>();
+    this.shippedDataBase = new MatTableDataSource<UserOrder>();
 
     this.filteredOrders = merge(this.sort.sortChange, this.paginator.page)
       .pipe(
@@ -83,11 +84,9 @@ export class ShippedListComponent implements OnInit, AfterViewInit {
         // Mark for check
     }
 
-  seeOrder(value:OrderResponse){
+  viewOrder(value: UserOrder[] ){
     console.log(value)
-    this._shippedServices.viewOrderSelected( value.order )
-    this._router.navigate(['./', value.id ],{ relativeTo: this._activatedRoute})
-
-
+    this._shippedServices.viewOrderSelected( value )
+    this._router.navigate(['./', value['id'] ],{ relativeTo: this._activatedRoute})
   }
 }

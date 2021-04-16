@@ -3,6 +3,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CustomerService } from '../../customers/services/customer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../../customers/types';
+import { UserSignIn} from 'app/core/user/user.model';
+import { User } from '../../../../core/user/user.model';
+import { take, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'sidebar-customer',
@@ -11,12 +15,12 @@ import { Customer } from '../../customers/types';
 })
 export class SidebarCustomerComponent implements OnInit {
   // Inputs Outputs
+  private _unsubscribeAll: Subject<any>;
   @Output() sendCustomerSelected = new EventEmitter<Customer>();
-
   // data
-  customers$ :Customer[];
-  customerSelected : Customer
-  customer: Customer[]
+  customers$: User[];
+  customerSelected : User
+  customer: User[]
 
   customerForm: FormGroup
   constructor(
@@ -26,19 +30,19 @@ export class SidebarCustomerComponent implements OnInit {
   ngOnInit(): void {
     // this.customers$ = this._customerServices.customers$
 
-    this._customerServices.customers$.subscribe(data => {
+    this._customerServices.customers$.pipe(take(1)).subscribe(data => {
       this.customers$ = data
     })
 
 
     this.initForm()
-    this.customerForm.get('customer').valueChanges.subscribe((customer:Customer) => {
+    this.customerForm.get('user').valueChanges.subscribe((customer: User) => {
       this.customerSelected = customer
     })
   }
   initForm (){
     this.customerForm = this._formBuilder.group({
-      customer : ['', [Validators.required]],
+      user : ['', [Validators.required]],
       transporte: ['', [Validators.required]],
       mensaje_adicional: ['']
     })

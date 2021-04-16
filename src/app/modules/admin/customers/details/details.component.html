@@ -45,154 +45,161 @@
       </div>
 
   </div>
-  <form [formGroup]="customerForm" class="treo-mat-dense" (ngSubmit)="processData()" autocomplete="off" >
-    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-      <dl class="sm:divide-y sm:divide-gray-200">
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Comercio
-          </dt>
-          <!-- view -->
-          <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customer.nombre_comercial}}
-          </dd>
-          <!-- edit -->
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2 ">
-            <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
-              <input matInput formControlName="nombre_comercial" [placeholder]="'Comercio'" [spellcheck]="false">
-            </mat-form-field>
-            <p class="text-sm text-red-500" *ngIf="fieldValidator('nombre_comercial')">Campo Obligatorio</p>
-          </dd>
-        </div>
+<form [formGroup]="customerForm" class="treo-mat-dense" (ngSubmit)="processData()" autocomplete="off">
+  <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+    <dl class="sm:divide-y sm:divide-gray-200">
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Comercio
+        </dt>
+        <!-- view -->
+        <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.username}}
+        </dd>
+        <!-- edit -->
+        <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2 ">
+          <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
+            <input matInput formControlName="username" [placeholder]="'Comercio'" [spellcheck]="false">
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('username')">Campo Obligatorio</p>
+        </dd>
+      </div>
 
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Rut Empresa
-          </dt>
-          <!-- view -->
-          <dd *ngIf=" !editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customer.rut_empresa}}
-          </dd>
-          <!-- edit -->
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2" >
-            <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
-              <input pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" matInput formControlName="rut_empresa" [placeholder]="'76.585.325-7'" [spellcheck]="false">
-            </mat-form-field>
-            <p class="text-sm text-red-500" *ngIf="fieldValidator('rut_empresa')">Ingregre en el siguiente formato XX.XX.XXX-X</p>
-            <mat-error *ngIf="customerForm.get('rut_empresa').hasError('rut_existe') && customerForm.get('rut_empresa').touched ">Ya existe este Rut</mat-error>
-          </dd>
-        </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Rut Empresa
+        </dt>
+        <!-- view -->
+        <dd *ngIf=" !editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.rut_empresa}}
+        </dd>
+        <!-- edit -->
+        <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
+            <input pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" matInput formControlName="rut_empresa"
+              [placeholder]="'76.585.325-7'" [spellcheck]="false">
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('rut_empresa')">Ingregre en el siguiente formato
+            XX.XX.XXX-X</p>
+          <mat-error
+            *ngIf="customerForm.get('rut_empresa').hasError('rut_existe') && customerForm.get('rut_empresa').touched ">
+            Ya existe este Rut</mat-error>
+        </dd>
+      </div>
 
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Email
-          </dt>
-          <!-- view -->
-          <dd *ngIf=" !editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customer.email}}
-          </dd>
-          <!-- edit -->
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2" >
-            <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
-              <input matInput formControlName="email" type="email" [placeholder]="'correo@correo.com'" [spellcheck]="false">
-            </mat-form-field>
-            <p class="text-sm text-red-500" *ngIf="fieldValidator('email')">Campo Obligatorio </p>
-            <p
-            *ngIf="customerForm.controls.email.errors?.email === true
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Email
+        </dt>
+        <!-- view -->
+        <dd *ngIf=" !editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.email}}
+        </dd>
+        <!-- edit -->
+        <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
+            <input matInput formControlName="email" type="email" [placeholder]="'correo@correo.com'"
+              [spellcheck]="false">
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('email')">Campo Obligatorio </p>
+          <p *ngIf="customerForm.controls.email.errors?.email === true
             &&
             customerForm.controls.email.touched">Ingrese correo valido</p>
-            <mat-error *ngIf="customerForm.get('email').hasError('email_existe') && customerForm.get('email').touched ">Ya existe este Email</mat-error>
-          </dd>
+          <mat-error *ngIf="customerForm.get('email').hasError('email_existe') && customerForm.get('email').touched ">Ya
+            existe este Email</mat-error>
+        </dd>
 
-        </div>
+      </div>
 
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Telefono
-          </dt>
-          <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customer.telefono}}
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Telefono
+        </dt>
+        <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.telefono}}
           <!-- edit -->
-          </dd>
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
-              <input matInput type="number" formControlName="telefono" [placeholder]="'Telefono'" [spellcheck]="false">
-            </mat-form-field>
-            <p class="text-sm text-red-500" *ngIf="fieldValidator('telefono')">Campo Obligatorio</p>
-          </dd>
-        </div>
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Direccion
-          </dt>
-          <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customer.Direccion}}
-            <!-- edit -->
-          </dd>
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
-              <input matInput type="text" formControlName="Direccion" [placeholder]="'Direccion'" [spellcheck]="false">
-            </mat-form-field>
-            <p class="text-sm text-red-500" *ngIf="fieldValidator('Direccion')">Campo Obligatorio</p>
-          </dd>
-        </div>
-
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt  class="text-base font-medium text-gray-500">
-            Region
-          </dt>
-          <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customer.Region}}
-          </dd>
+        </dd>
+        <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
+            <input matInput type="number" formControlName="telefono" [placeholder]="'Telefono'" [spellcheck]="false">
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('telefono')">Campo Obligatorio</p>
+        </dd>
+      </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Direccion
+        </dt>
+        <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.direccion}}
           <!-- edit -->
-          <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            <mat-form-field *ngIf="editMode" class="w-1/2">
-              <mat-label>Seleccione una Region</mat-label>
-              <mat-select formControlName="Region" name="region">
-                <mat-option *ngFor="let region of regions" [value]="region.name">
-                  {{region.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <p class="text-sm text-red-500" *ngIf="fieldValidator('Region')">Campo Obligatorio</p>
+        </dd>
+        <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
+            <input matInput type="text" formControlName="direccion" [placeholder]="'Direccion'" [spellcheck]="false">
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('direccion')">Campo Obligatorio</p>
+        </dd>
+      </div>
 
-          </dd>
-        </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Region
+        </dt>
+        <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.region}}
+        </dd>
+        <!-- edit -->
+        <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          <mat-form-field *ngIf="editMode" class="w-1/2">
+            <mat-label>Seleccione una Region</mat-label>
+            <mat-select formControlName="region" name="region">
+              <mat-option *ngFor="let region of regions" [value]="region.name">
+                {{region.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('region')">Campo Obligatorio</p>
 
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-base font-medium text-gray-500">
-            Comuna
-          </dt>
-          <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {{customer.Comuna}}
-          </dd>
-          <dd *ngIf="editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            <mat-form-field  class="w-1/2">
-              <mat-label>Seleccione una Comuna</mat-label>
-              <mat-select formControlName="Comuna" name="comuna">
-                <mat-option *ngFor="let comune of comunes" [value]="comune.name">
-                  {{comune.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <p class="text-sm text-red-500" *ngIf="fieldValidator('Comuna')">Campo Obligatorio</p>
+        </dd>
+      </div>
 
-          </dd>
-        </div>
-      </dl>
-    </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Comuna
+        </dt>
+        <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.comuna}}
+        </dd>
+        <dd *ngIf="editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          <mat-form-field class="w-1/2">
+            <mat-label>Seleccione una Comuna</mat-label>
+            <mat-select formControlName="comuna" name="comuna">
+              <mat-option *ngFor="let comune of comunes" [value]="comune.name">
+                {{comune.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('comuna')">Campo Obligatorio</p>
 
-    <div *ngIf="editMode" class="flex justify-items-end m-6">
+        </dd>
+      </div>
+    </dl>
+  </div>
 
-      <button *ngIf="isNewCustomer === 'create'" [disabled]="customerForm.invalid" mat-raised-button color="primary">Crear Cliente</button>
+  <div *ngIf="editMode" class="flex justify-items-end m-6">
 
-      <button *ngIf="isNewCustomer !== 'create'"  [disabled]=" !customerForm.dirty || customerForm.invalid" mat-raised-button color="primary">Actualizar</button>
+    <button *ngIf="isNewCustomer === 'create'" [disabled]="customerForm.invalid" mat-raised-button color="primary">Crear
+      Cliente</button>
 
-    </div>
+    <button *ngIf="isNewCustomer !== 'create'" [disabled]=" !customerForm.dirty || customerForm.invalid "
+      mat-raised-button color="primary">Actualizar</button>
+
+  </div>
 
 
-
-      <pre>
+<!--
+  <pre>
        {{'invalid'}} {{customerForm.invalid}}
        {{'dirty'}} {{customerForm.dirty}}
        {{'untouched'}} {{customerForm.untouched}}
@@ -200,7 +207,7 @@
        {{'status'}} {{customerForm.status}}
        {{ customerForm.controls['Comuna'].value }}
 
-      </pre>
-    </form>
+  </pre> -->
+</form>
 </div>
 </div>

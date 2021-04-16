@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ShippedService } from '../../services/shipped.service';
 import { ShippedListComponent } from '../shipped-list/shipped-list.component';
-import { Order } from '../../models/order.model';
 import { Observable } from 'rxjs';
+import { UserOrder } from '../../../../../core/user/user.model';
 
 @Component({
   selector: 'app-view-order',
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class ViewOrderComponent implements OnInit {
 
   id:string
-  order$: Observable<Order[]>
+  order$: Observable<UserOrder[]>
   constructor ( private _shippeServices: ShippedService, private _shippedComponent: ShippedListComponent ) { }
 
   ngOnInit(): void {

@@ -19,6 +19,7 @@ export class PedidoService {
 
   // environment
   endPointCreateOrder: string = environment.endPointCreateOrder
+  urlBackend = environment.url
 
   // Getter and Setter
   get pedidoActual$ (){
@@ -89,7 +90,7 @@ export class PedidoService {
   }
 
   private getProductos() {
-    return this._http.get<Productos[]>('http://localhost:1337/products',
+    return this._http.get<Productos[]>(`${this.urlBackend}/products`,
     {
       params:{
         '_limit':'-1'
@@ -116,12 +117,12 @@ export class PedidoService {
   // Methods Public
 
   // Peticiones HTTP
-  createOrder(_idCustomer: string, mensajeAdicional: string, transporte:string): Observable<CreateOrder> {
+  createOrder(_idUser: string, mensajeAdicional: string, transporte:string): Observable<CreateOrder> {
 
     const body = {
       'order': this._pedidoActual.getValue(),
-      'customer': {
-        '_id': _idCustomer
+      'user': {
+        '_id': _idUser
       },
       'mensaje_adicional': mensajeAdicional,
       'transporte': transporte

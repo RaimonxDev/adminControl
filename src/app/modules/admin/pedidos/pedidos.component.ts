@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild} from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-
 // Services
 import { PedidoService } from './services/pedido.service';
 
@@ -9,7 +8,6 @@ import { PedidoService } from './services/pedido.service';
 import { ListadoDeProductos } from './models/listadoProductos';
 import { Productos } from './models/productoResponse';
 import { ProductsAdded } from './models/addedProducts';
-import { Customer, CustomersOrder } from '../customers/types';
 
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -20,6 +18,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { SendOrderComponent } from './dialog/send-order/send-order.component';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
+import { UserOrder } from 'app/core/user/user.model';
 
 
 
@@ -40,7 +39,7 @@ export class PedidosComponent implements OnInit {
   // Observables
   productos$:Observable<ListadoDeProductos[]>
   currentOrder = new MatTableDataSource<ProductsAdded>();
-  customerOrder : CustomersOrder
+  customerOrder : UserOrder
 
   // UTILS
   drawerMode: 'over' | 'side' = 'side';
@@ -68,6 +67,7 @@ export class PedidosComponent implements OnInit {
     .subscribe( pedido => {
       this.currentOrder.data = pedido })
   }
+
   saveProduct (cantidad: number | string ,producto : Productos){
 
     let addProducto: ProductsAdded = {
@@ -86,15 +86,15 @@ export class PedidosComponent implements OnInit {
     this._pedidoServices.addProductToCurrentOrder(addProducto)
 
   }
-  selectCustomer( customer: CreateOrder ) {
-    this.matDrawer.toggle()
-    this.selectedCustomer = customer
-    this.hasSelectedCustomer = customer.customer.nombre_comercial
-  }
+
   eliminarProducto(prod: Productos){
    this._pedidoServices.eliminarProducto(prod)
   }
 
+  selectCustomer( user: CreateOrder ) {
+    this.matDrawer.toggle()
+    this.selectedCustomer = user
+  }
   openDialog(){
      const dialogRef = this.dialog.open(SendOrderComponent, {restoreFocus: false});
 
@@ -105,13 +105,13 @@ export class PedidosComponent implements OnInit {
         this.menuTrigger.focus()
       }
       if( result ) {
-        this.postPedido()
+        this.sendNewOrder()
       }
     });
 
   }
-  postPedido() {
 
+  sendNewOrder() {
     if(this.selectedCustomer === undefined){
       this.alert.showNotification('Sin cliente','Seleccion un cliente','warning',null)
       return
@@ -121,9 +121,8 @@ export class PedidosComponent implements OnInit {
     }
 
     if( this.selectedCustomer ) {
-      // console.log(this.selectedCustomer);
       this._pedidoServices.createOrder(
-        this.selectedCustomer.customer._id ,
+        this.selectedCustomer.user._id ,
         this.selectedCustomer.mensaje_adicional,
         this.selectedCustomer.transporte
       )

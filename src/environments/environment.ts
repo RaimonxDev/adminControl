@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    endPointCustomers: 'http://localhost:1337/customers',//GET
+    url:'http://localhost:1337',
+    endPointCustomers: 'http://localhost:1337/users',//GET
     endPointRegions: 'http://localhost:1337/regions',// GET
     endPointSingIn : 'http://localhost:1337/auth/local',// GET
     endPointValidateUser : 'http://localhost:1337/users/me',

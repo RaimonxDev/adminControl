@@ -3,8 +3,8 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, Router, Route } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { Observable, Subject } from 'rxjs';
-import { Customer } from '../types';
 import { takeUntil } from 'rxjs/operators';
+import { User } from '../../../../core/user/user.model';
 
 
 @Component({
@@ -15,11 +15,11 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ListComponent implements OnInit, OnDestroy {
 
-  customers$: Observable<Customer[]>
+  customers$: Observable<User[]>
   customersCount: number
   customersTableColumns: string[];
   drawerMode: 'side' | 'over';
-  selectedCustomer: Customer;
+  selectedCustomer: User;
   private _unsubscribeAll: Subject<any>;
 
   @ViewChild('matDrawer', { static: true })
@@ -38,8 +38,9 @@ export class ListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.customers$ = this._customerServices.customers$;
 
-    this._customerServices.customers$.pipe(takeUntil(this._unsubscribeAll)).subscribe((customers: Customer[]) => {
+    this._customerServices.customers$.pipe(takeUntil(this._unsubscribeAll)).subscribe((customers: User[]) => {
 
+      console.log(customers);
       this.customersCount = customers.length
       this._changeDetectorRef.markForCheck()
 
@@ -47,7 +48,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
     this._customerServices.customer$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((customer: Customer) => {
+            .subscribe((customer: User) => {
 
                 // Update the selected contact
                 this.selectedCustomer = customer;

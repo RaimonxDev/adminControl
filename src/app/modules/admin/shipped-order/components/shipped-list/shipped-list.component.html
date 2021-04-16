@@ -28,13 +28,13 @@
               <!-- cliente Column -->
               <ng-container matColumnDef="cliente">
                 <th mat-header-cell *matHeaderCellDef>Cliente</th>
-                <td mat-cell *matCellDef="let row">{{row.customer.nombre_comercial}}</td>
+                <td mat-cell *matCellDef="let row">{{row.user.username}}</td>
               </ng-container>
 
               <!-- rut Column -->
               <ng-container matColumnDef="rut">
                 <th mat-header-cell *matHeaderCellDef>Rut</th>
-                <td mat-cell *matCellDef="let row">{{row.customer.rut_empresa}}</td>
+                <td mat-cell *matCellDef="let row">{{row.user.rut_empresa}}</td>
               </ng-container>
               <!-- monto Column -->
               <ng-container matColumnDef="monto">
@@ -55,11 +55,17 @@
                 <th mat-header-cell *matHeaderCellDef disableClear>
                   Ver pedido
                 </th>
-                <td mat-cell *matCellDef="let row">{{row.pedido}}</td>
+                <td mat-cell *matCellDef="let row">
+                  <button (click)="viewOrder(row)">
+                    <mat-icon svgIcon="heroicons_outline:document-search"></mat-icon>
+                  </button>
+                </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="ordersTableColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: ordersTableColumns;" (click)="seeOrder(row)"></tr>
+              <tr mat-row *matRowDef="let row; columns: ordersTableColumns;">
+
+              </tr>
             </table>
             </ng-container>
 

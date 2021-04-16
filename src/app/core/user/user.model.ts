@@ -1,41 +1,56 @@
-export interface UserSingIn {
+export interface UserSignIn {
     jwt:  string;
     user: User;
 }
 
 export interface User {
-    confirmed: boolean;
-    blocked:   boolean;
-    _id:       string;
-    username:  string;
-    email:     string;
-    provider:  string;
-    createdAt: Date;
-    updatedAt: Date;
-    statusOnline: string;
-    __v:       number;
-    role:      Role;
-    customers: Customer[];
-    id:        string;
-    avatar?:   string
-}
-
-export interface Customer {
+    confirmed:            boolean;
+    blocked:              boolean;
+    statusOnline:         string;
     _id:                  string;
-    nombre_comercial:     string;
+    username:             string;
     email:                string;
     telefono:             number;
-    rut_empresa:          string;
-    Direccion:            string;
-    Comuna:               string;
-    Region:               string;
-    published_at:         Date;
+    provider:             string;
     createdAt:            Date;
     updatedAt:            Date;
     __v:                  number;
-    seller:               string;
+    role:                 Role;
+    comuna:               string;
+    direccion:            string;
     nombre_representante: string;
+    region:               string;
+    rut_empresa:          string;
+    customers:            any[];
+    orders:               UserOrder[];
     id:                   string;
+    avatar?:              string;
+    password?:            string;
+}
+
+export interface UserOrder {
+    procesada:         boolean;
+    pagada:            boolean;
+    _id:               string;
+    published_at:      Date;
+    transporte:        string;
+    mensaje_adicional: string;
+    order:             OrderList[];
+    factura:           any[];
+    createdAt:         Date;
+    updatedAt:         Date;
+    __v:               number;
+    customer:          string;
+    user:              string;
+    id:                string;
+}
+
+export interface OrderList {
+    code:      string;
+    id:        string;
+    cantidad:  string;
+    producto:  string;
+    valorNeto: number;
 }
 
 export interface Role {
@@ -46,3 +61,10 @@ export interface Role {
     __v:         number;
     id:          string;
 }
+
+export interface RegisterNewUser {
+    email:    string;
+    username: string;
+    password: string;
+}
+
