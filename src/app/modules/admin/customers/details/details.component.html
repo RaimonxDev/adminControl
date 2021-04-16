@@ -27,9 +27,10 @@
               <span >Cancelar</span>
             </button>
 
-            <button [disabled]="editMode" mat-menu-item (click)="openDialogEnableAccount()">
+            <button [disabled]="editMode || customer.confirmed" mat-menu-item (click)="openDialogEnableAccount()">
               <mat-icon svgIcon="heroicons_outline:badge-check"></mat-icon>
-              <span >Activar Cuenta</span>
+              <span *ngIf="customer.confirmed">Cuenta Activada</span>
+              <span *ngIf="!customer.confirmed" >Activar Cuenta</span>
             </button>
 
           </mat-menu>
@@ -196,18 +197,6 @@
       mat-raised-button color="primary">Actualizar</button>
 
   </div>
-
-
-<!--
-  <pre>
-       {{'invalid'}} {{customerForm.invalid}}
-       {{'dirty'}} {{customerForm.dirty}}
-       {{'untouched'}} {{customerForm.untouched}}
-       {{'prestine'}} {{customerForm.pristine}}
-       {{'status'}} {{customerForm.status}}
-       {{ customerForm.controls['Comuna'].value }}
-
-  </pre> -->
 </form>
 </div>
 </div>

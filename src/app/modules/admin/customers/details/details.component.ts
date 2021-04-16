@@ -25,7 +25,8 @@ import { AuthService } from '../../../../core/auth/auth.service';
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 
-  @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
+  @ViewChild('menuTrigger')
+  menuTrigger: MatMenuTrigger;
 
   editMode: boolean;
   customer: User;
@@ -97,7 +98,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this._customersService.customer$.pipe(
         takeUntil(this._unsubscribeAll)
       ).subscribe((customer: User) => {
-        console.log(customer);
         // Open the drawer in case it is closed
         // Get the contact
         this.customer = customer;
@@ -168,13 +168,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
       err => this._notifier.showNotification('Error',err,'warn',null) )
   }
 
-  enableOrDisableUser (value:boolean){
-    return this._customersService.enableOrDisableCustomer( value , this.customer.id)
-     .subscribe( _ => {
-       this._notifier.showNotification('Cuenta Habilitada','El cliente ya puede Iniciar Session','success',null)
-      })
-  }
-
   getCurrentSellerID (){
     this._userService.SellerID$.subscribe(sellerID => this.sellerID = sellerID)
   }
@@ -189,12 +182,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open( EnableAccountDialogComponent, {restoreFocus: false});
     // Manually restore focus to the menu trigger since the element that
     // opens the dialog won't be in the DOM any more when the dialog closes.
-    dialogRef.afterClosed().subscribe((result) => {
-      if(result === false || undefined){
-        this.menuTrigger.focus()
+    dialogRef.afterClosed().subscribe((result: boolean | undefined ) => {
+      if(!result || undefined){
+       this._notifier.showNotification('Operacioin Cancelada','','info',null)
       }
       if( result ) {
-        result
+        return this._customersService.enableOrDisableCustomer( result, this.customer.id)
+        .subscribe( _ => {
+          this._notifier.showNotification('Cuenta Habilitada','El cliente ya puede Iniciar Session','success',null)
+        })
       }
     });
   }
