@@ -77,11 +77,11 @@
         <!-- edit -->
         <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
           <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
-            <input pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" matInput formControlName="rut_empresa"
-              [placeholder]="'76.585.325-7'" [spellcheck]="false">
+            <input pattern="^\d{1,2}\d{3}\d{3}[-][0-9kK]{1}$" matInput formControlName="rut_empresa"
+              [placeholder]="'76585325-7'" [spellcheck]="false">
           </mat-form-field>
           <p class="text-sm text-red-500" *ngIf="fieldValidator('rut_empresa')">Ingregre en el siguiente formato
-            XX.XX.XXX-X</p>
+            12345658-4</p>
           <mat-error
             *ngIf="customerForm.get('rut_empresa').hasError('rut_existe') && customerForm.get('rut_empresa').touched ">
             Ya existe este Rut</mat-error>
