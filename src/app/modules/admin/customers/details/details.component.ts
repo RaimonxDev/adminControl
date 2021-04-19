@@ -3,13 +3,13 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDrawerToggleResult } from '@angular/material/sidenav';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concat, Subject, Subscription, BehaviorSubject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ListComponent } from '../list/list.component';
 import { CustomerService } from '../services/customer.service';
-import { Customer, Region, Commune} from '../types';
-import { takeUntil, tap } from 'rxjs/operators';
+import { Region, Commune} from '../types';
+import { takeUntil } from 'rxjs/operators';
 import { UserService } from 'app/core/user/user.service';
-import { User, UserSignIn } from '../../../../core/user/user.model';
+import { User } from '../../../../core/user/user.model';
 import { NotifierService } from '../../../../shared/services/notifier.service';
 import { EnableAccountDialogComponent } from '../components/enable-account-dialog/enable-account-dialog-component';
 import { MatDialog } from '@angular/material/dialog';
