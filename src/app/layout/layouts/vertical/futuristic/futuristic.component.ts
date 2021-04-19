@@ -6,6 +6,8 @@ import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoNavigationService } from '@treo/components/navigation';
 import { InitialData } from 'app/app.types';
 import { LoaderService } from 'app/shared/services/Loader.service';
+import { User } from '../../../../core/user/user.model';
+import { UserService } from '../../../../core/user/user.service';
 
 @Component({
     selector     : 'futuristic-layout',
@@ -16,6 +18,7 @@ import { LoaderService } from 'app/shared/services/Loader.service';
 export class FuturisticLayoutComponent implements OnInit, AfterViewInit ,OnDestroy
 {
     data: InitialData;
+    user: User
     isScreenSmall: boolean;
 
     loader: Observable<boolean>
@@ -29,7 +32,8 @@ export class FuturisticLayoutComponent implements OnInit, AfterViewInit ,OnDestr
         private _router: Router,
         private _treoMediaWatcherService: TreoMediaWatcherService,
         private _treoNavigationService: TreoNavigationService,
-        private _loaderServices: LoaderService
+        private _loaderServices: LoaderService,
+        private _userServides: UserService
     )
     {
     }
@@ -59,6 +63,7 @@ export class FuturisticLayoutComponent implements OnInit, AfterViewInit ,OnDestr
         this._activatedRoute.data.subscribe((data: Data) => {
             this.data = data.initialData;
         });
+        this._userServides.user$.subscribe(user => this.user = user )
 
         // Subscribe to media changes
         this._treoMediaWatcherService.onMediaChange$

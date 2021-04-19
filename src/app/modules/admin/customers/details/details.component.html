@@ -27,7 +27,7 @@
               <span >Cancelar</span>
             </button>
 
-            <button [disabled]="editMode || customer.confirmed" mat-menu-item (click)="openDialogEnableAccount()">
+            <button *ngIf="customer" [disabled]="editMode || customer.confirmed" mat-menu-item (click)="openDialogEnableAccount()">
               <mat-icon svgIcon="heroicons_outline:badge-check"></mat-icon>
               <span *ngIf="customer.confirmed">Cuenta Activada</span>
               <span *ngIf="!customer.confirmed" >Activar Cuenta</span>
@@ -65,6 +65,22 @@
           <p class="text-sm text-red-500" *ngIf="fieldValidator('username')">Campo Obligatorio</p>
         </dd>
       </div>
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-base font-medium text-gray-500">
+          Representante
+        </dt>
+        <!-- view -->
+        <dd *ngIf="!editMode" class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
+          {{customer.nombre_representante}}
+        </dd>
+        <!-- edit -->
+        <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2 ">
+          <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
+            <input matInput formControlName="nombre_representante" [placeholder]="'Nombre'" [spellcheck]="false">
+          </mat-form-field>
+          <p class="text-sm text-red-500" *ngIf="fieldValidator('nombre_representante')">Campo Obligatorio</p>
+        </dd>
+      </div>
 
       <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-base font-medium text-gray-500">
@@ -84,7 +100,8 @@
             12345658-4</p>
           <mat-error
             *ngIf="customerForm.get('rut_empresa').hasError('rut_existe') && customerForm.get('rut_empresa').touched ">
-            Ya existe este Rut</mat-error>
+            Ya existe este Rut
+          </mat-error>
         </dd>
       </div>
 
@@ -122,9 +139,14 @@
         </dd>
         <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
           <mat-form-field *ngIf="editMode" class="name edit treo-mat-no-subscript w-1/2">
-            <input matInput type="number" formControlName="telefono" [placeholder]="'Telefono'" [spellcheck]="false">
+            <input pattern="^(9)(\s?)[9876543]\d{7}$" matInput type="number" formControlName="telefono" [placeholder]="'Telefono'" [spellcheck]="false">
           </mat-form-field>
-          <p class="text-sm text-red-500" *ngIf="fieldValidator('telefono')">Campo Obligatorio</p>
+          <mat-error *ngIf="customerForm.get('telefono').hasError('required') && customerForm.get('telefono').touched ">
+              Campo requerido
+          </mat-error>
+          <mat-error *ngIf="customerForm.get('telefono').hasError('pattern') && customerForm.get('telefono').touched ">
+              Ingrese un numero valido
+          </mat-error>
         </dd>
       </div>
       <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -197,6 +219,9 @@
       mat-raised-button color="primary">Actualizar</button>
 
   </div>
+  <pre>
+    {{customerForm.errors}}
+  </pre>
 </form>
 </div>
 </div>
