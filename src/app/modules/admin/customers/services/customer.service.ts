@@ -73,7 +73,11 @@ export class CustomerService {
       }
     })
     .pipe(
-      tap((customers: User[]) => this._users.next(customers))
+      tap((customers: User[]) => this._users.next(customers)),
+      catchError( error => {
+        this._notifier.showNotification('Sin Conexcion', 'Error', 'warning',null)
+        return HandleHttpResponseError(error,'Sin Conexcion a la base de datos')
+      })
       )
   }
 

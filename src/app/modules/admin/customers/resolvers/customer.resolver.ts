@@ -4,18 +4,19 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CustomerService } from '../services/customer.service';
-import { Customer } from '../types';
 import { User } from '../../../../core/user/user.model';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerResolver implements Resolve<User[]> {
+export class CustomerResolver implements Resolve<User[] | null > {
   constructor(private _customerServices: CustomerService){
   }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> {
-    return this._customerServices.getUsers();
+    return this._customerServices.getUsers()
   }
 }

@@ -3,6 +3,7 @@ import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
+import { InitialDataProductos } from './app.resolvers';
 
 // @formatter:off
 // tslint:disable:max-line-length
@@ -67,6 +68,7 @@ export const appRoutes: Route[] = [
         component: LayoutComponent,
         resolve: {
             initialData: InitialDataResolver,
+            initialProducts: InitialDataProductos
         },
         data:{
             layout: 'futuristic'
@@ -74,13 +76,14 @@ export const appRoutes: Route[] = [
         children: [
 
             // Example
-            {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
+            { path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule) },
             { path: 'orders', children: [
-              { path:'create',loadChildren: () => import('app/modules/admin/pedidos/pedidos.module').then(m => m.PedidosModule)},
-              { path:'shipped',loadChildren: () => import('app/modules/admin/shipped-order/shipped-order.module').then(m => m.ShippedOrderModule)},
+              { path:'create', loadChildren: () => import('app/modules/admin/pedidos/pedidos.module').then(m => m.PedidosModule) },
+              { path:'shipped',loadChildren: () => import('app/modules/admin/shipped-order/shipped-order.module').then(m => m.ShippedOrderModule) },
               ]
             },
-            {path: 'customers', loadChildren: () => import('app/modules/admin/customers/customers.module').then(m => m.CustomersModule)},
+            { path: 'customers', loadChildren: () => import('app/modules/admin/customers/customers.module').then(m => m.CustomersModule) },
+            { path: 'inventory', loadChildren: () => import('app/modules/admin/inventory/inventory.module').then(m => m.InventoryModule) },
             // 404 & Catch all
             // {path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/modules/admin/pages/errors/error-404/error-404.module').then(m => m.Error404Module)},
             // {path: '**', redirectTo: '404-not-found'}

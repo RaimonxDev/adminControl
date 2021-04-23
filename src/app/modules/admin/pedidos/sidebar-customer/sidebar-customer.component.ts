@@ -1,22 +1,24 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { CustomerService } from '../../customers/services/customer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../../customers/types';
-import { UserSignIn} from 'app/core/user/user.model';
+
 import { User } from '../../../../core/user/user.model';
-import { take, takeUntil } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'sidebar-customer',
   templateUrl: './sidebar-customer.component.html',
-  styleUrls: ['./sidebar-customer.component.scss']
+  styleUrls: ['./sidebar-customer.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SidebarCustomerComponent implements OnInit {
   // Inputs Outputs
-  private _unsubscribeAll: Subject<any>;
+
   @Output() sendCustomerSelected = new EventEmitter<Customer>();
+
   // data
   customers$: User[];
   customerSelected : User
@@ -25,10 +27,12 @@ export class SidebarCustomerComponent implements OnInit {
   customerForm: FormGroup
   constructor(
     private _customerServices : CustomerService,
-    private _formBuilder: FormBuilder,) { }
+    private _formBuilder: FormBuilder,
+  ) {
+
+  }
 
   ngOnInit(): void {
-    // this.customers$ = this._customerServices.customers$
 
     this._customerServices.customers$.pipe(take(1)).subscribe(data => {
       this.customers$ = data
@@ -40,6 +44,7 @@ export class SidebarCustomerComponent implements OnInit {
       this.customerSelected = customer
     })
   }
+
   initForm (){
     this.customerForm = this._formBuilder.group({
       user : ['', [Validators.required]],
@@ -58,6 +63,7 @@ export class SidebarCustomerComponent implements OnInit {
 
 
   }
+
 
 
 }

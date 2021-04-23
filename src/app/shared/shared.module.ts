@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort'
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations:[
@@ -26,7 +27,8 @@ import { MatMenuModule } from '@angular/material/menu';
         MatTableModule,
         MatSortModule,
         MatDialogModule,
-        MatMenuModule
+        MatMenuModule,
+        MatIconModule
     ],
     exports: [
         CommonModule,
@@ -38,7 +40,8 @@ import { MatMenuModule } from '@angular/material/menu';
         MatTableModule,
         MatSortModule,
         MatDialogModule,
-        MatMenuModule
+        MatMenuModule,
+        MatIconModule
     ]
 })
 export class SharedModule

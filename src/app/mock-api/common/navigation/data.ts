@@ -68,26 +68,11 @@ export const futuristicNavigation: TreoNavigationItem[] = [
         link : '/customers'
     },
    {
-        id   : 'productos',
-        title: 'Productos',
-        type : 'collapsable',
-        icon : 'heroicons_outline:collection',
-        children: [
-        {
-            id   : 'crear-producto',
-            title: 'Crear Nuevo Producto',
-            type : 'basic',
-            icon : 'heroicons_outline:document-add',
-            link : 'productos/create'
-        },
-        {
-            id   : 'ver-productos',
-            title: 'Todos los productos',
-            type : 'basic',
-            icon : 'heroicons_outline:clipboard-list',
-            link : 'orders/shipped'
-        }
-        ]
+       id   : 'productos',
+       title: 'Productos',
+       type : 'basic',
+       icon : 'heroicons_outline:document-add',
+       link : '/inventory'
     }
 ];
 export const horizontalNavigation: TreoNavigationItem[] = [

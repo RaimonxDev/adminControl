@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Route } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { InitialData } from 'app/app.types';
+import { ProductsService } from './core/services/products/products.service';
+import { ListadoDeProductos } from './modules/admin/pedidos/models/listadoProductos';
+
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +16,7 @@ export class InitialDataResolver implements Resolve<any>
     /**
      * Constructor
      */
-    constructor(private _httpClient: HttpClient)
+    constructor(private _httpClient: HttpClient, )
     {
     }
 
@@ -52,4 +55,17 @@ export class InitialDataResolver implements Resolve<any>
             )
         );
     }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class InitialDataProductos implements Resolve <ListadoDeProductos[] > {
+  constructor( private _productos: ProductsService){
+
+  }
+    resolve ( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): Observable<ListadoDeProductos[]> {
+      return this._productos.getProductos()
+    }
+
 }

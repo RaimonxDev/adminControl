@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, Observable, merge, of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ShippedService } from '../../services/shipped.service';
-import { startWith, switchMap, catchError, tap} from 'rxjs/operators';
-import { Order, OrderResponse } from '../../models/order.model';
+import { startWith, switchMap, catchError, tap, takeUntil } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserOrder } from '../../../../../core/user/user.model';
 
@@ -15,7 +14,7 @@ import { UserOrder } from '../../../../../core/user/user.model';
   templateUrl: './shipped-list.component.html',
   styleUrls: ['./shipped-list.component.scss']
 })
-export class ShippedListComponent implements OnInit, AfterViewInit {
+export class ShippedListComponent implements OnInit, AfterViewInit, OnDestroy {
   ordersTableColumns: string[] = ['fecha', 'cliente', 'rut', 'monto','factura','pedido'];
 
   shippedDataBase: MatTableDataSource<UserOrder> | null;
@@ -30,7 +29,7 @@ export class ShippedListComponent implements OnInit, AfterViewInit {
   @ViewChild('matDrawer', { static: true })
   matDrawer: MatDrawer;
 
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
     private _router : Router,
@@ -40,7 +39,7 @@ export class ShippedListComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this._shippedServices.countOrder$.subscribe(count => this.resultsCount = count)
+    this._shippedServices.countOrder$.pipe(takeUntil(this._unsubscribeAll)).subscribe(count => this.resultsCount = count)
   }
 
   ngAfterViewInit(): void {
@@ -59,7 +58,6 @@ export class ShippedListComponent implements OnInit, AfterViewInit {
             console.log('error');
             return of([])
           })
-
           )
 
   }
@@ -88,5 +86,11 @@ export class ShippedListComponent implements OnInit, AfterViewInit {
     console.log(value)
     this._shippedServices.viewOrderSelected( value )
     this._router.navigate(['./', value['id'] ],{ relativeTo: this._activatedRoute})
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe from all subscriptions
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 }

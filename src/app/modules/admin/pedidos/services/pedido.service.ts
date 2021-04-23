@@ -9,6 +9,7 @@ import { ProductsAdded } from '../models/addedProducts';
 import { NotifierService } from 'app/shared/services/notifier.service';
 import { CreateOrder } from '../models/POST_order.model';
 import { environment } from '../../../../../environments/environment';
+import { HandleHttpResponseError } from '../../../../shared/utils/Validators/httpErrorHandler';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class PedidoService {
   // constructor
   constructor(
     private _http : HttpClient,
-    private alert : NotifierService ) {
+    private _notify : NotifierService ) {
     // Verifica si hay algo en el local storage para actualizar
     this.getLocalOrder();
    }
@@ -96,12 +97,13 @@ export class PedidoService {
         '_limit':'-1'
       }
     }).pipe(
-      catchError(error => of('No se pudo obtener los productos ', error)),
+      catchError(error => throwError('No se pudo obtener los productos ')),
     )
   }
   public getListadoDeProductos () {
     return this.getProductos().pipe(
       switchMap(data => this.getMarcas(data)),
+      catchError(error => HandleHttpResponseError(error,'Error Interno'))
     )
   }
 
@@ -132,9 +134,9 @@ export class PedidoService {
       tap( _ => {
         this._pedidoActual.next([])
         localStorage.removeItem('order')
-        this.alert.showNotification('Enviado', 'Se envio correctamente','success', null)
+        this._notify.showNotification('Enviado', 'Se envio correctamente','success', null)
       }),
-      catchError( error => throwError(this.alert.showNotification('Error','No se pudo enviar el pedido','error', null)))
+      catchError( error => throwError(this._notify.showNotification('Error','No se pudo enviar el pedido','error', null)))
     )
   }
 
@@ -158,10 +160,10 @@ export class PedidoService {
         currentOrder.push(currentProducto)
         this.updatePedido = currentOrder
         this.saveLocalStorage(currentOrder)
-            this.alert.showNotification('Añadido', '','success', null)
+            this._notify.showNotification('Añadido', '','success', null)
        }
          // si ya se encuentra emitimos una alerta
-        else this.alert.showNotification('Este producto esta agregado', 'Elimenelo para volver agregar', 'warning', null)
+        else this._notify.showNotification('Este producto esta agregado', 'Elimenelo para volver agregar', 'warning', null)
     }
   }
 
@@ -170,7 +172,7 @@ export class PedidoService {
     remove(arr, ['id',item.id])
     this.updatePedido = arr
     this.saveLocalStorage(arr)
-       this.alert.showNotification('Se ha eliminado', '','error', null)
+       this._notify.showNotification('Se ha eliminado', '','error', null)
 
   }
 

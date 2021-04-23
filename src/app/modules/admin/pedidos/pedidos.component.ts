@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 // Services
@@ -19,6 +19,8 @@ import { SendOrderComponent } from './dialog/send-order/send-order.component';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { UserOrder } from 'app/core/user/user.model';
+import { TreoMediaWatcherService } from '@treo/services/media-watcher';
+import { takeUntil } from 'rxjs/operators';
 
 
 
@@ -27,11 +29,12 @@ import { UserOrder } from 'app/core/user/user.model';
   templateUrl: './pedidos.component.html',
   styleUrls: ['./pedidos.component.scss'],
   // animations: TreoAnimations,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
-export class PedidosComponent implements OnInit {
+export class PedidosComponent implements OnInit, OnDestroy {
 
-  private _unsubscribeAll: Subject<any>;
+   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   // Data
   pedidoActual$: ProductsAdded[]
@@ -43,25 +46,25 @@ export class PedidosComponent implements OnInit {
 
   // UTILS
   drawerMode: 'over' | 'side' = 'side';
+  drawerOpened: boolean = true;
   selectedCustomer: CreateOrder;
   // Helper para usar con i18nPlural
   hasSelectedCustomer:string = ''
-  drawerOpened: boolean = false;
-  openAlert = false
   displayedColumns = ['cantidad', 'producto', '_'];
 
-  @ViewChild('matDrawer', { static: true })
-  matDrawer: MatDrawer;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
 
   constructor(
     private _pedidoServices: PedidoService,
     private alert : NotifierService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private _treoMediaWatcherService: TreoMediaWatcherService) { }
 
   ngOnInit(): void {
     this.productos$ = this._pedidoServices.getListadoDeProductos()
+
+    this.SideNavResponsive()
 
     this._pedidoServices.pedidoActual$
     .subscribe( pedido => {
@@ -92,7 +95,7 @@ export class PedidosComponent implements OnInit {
   }
 
   selectCustomer( user: CreateOrder ) {
-    this.matDrawer.toggle()
+    this.drawerOpened = false;
     this.selectedCustomer = user
   }
   openDialog(){
@@ -131,11 +134,41 @@ export class PedidosComponent implements OnInit {
 
   }
 
+  SideNavResponsive():void  {
+    this._treoMediaWatcherService.onMediaChange$
+        .pipe(
+          takeUntil(this._unsubscribeAll))
+        .subscribe(({matchingAliases}) => {
+
+            // Set the drawerMode and drawerOpened
+            if ( matchingAliases.includes('lg') )
+            {
+                this.drawerMode = 'side';
+                this.drawerOpened = true;
+            }
+            else
+            {
+                this.drawerMode = 'over';
+                this.drawerOpened = false;
+            }
+        });
+
+  }
+
   // pipes i18nPlural
 
   customerMaps = {
     '=0': 'Seleccione un Cliente',
     'other': 'Cambiar Cliente',
+  }
+
+      /**
+     * On destroy
+     */
+  ngOnDestroy(): void {
+        // Unsubscribe from all subscriptions
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
 
