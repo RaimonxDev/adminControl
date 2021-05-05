@@ -36,8 +36,6 @@ export class ShippedListComponent implements OnInit, AfterViewInit, OnDestroy {
     'pedido',
   ];
 
-  shippedDataBase: MatTableDataSource<UserOrder> | null;
-
   drawerMode: 'side' | 'over';
   // isRateLimitReached;
   filteredOrders: Observable<any>;
@@ -64,8 +62,6 @@ export class ShippedListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     // Paginacion http
-    this.shippedDataBase = new MatTableDataSource<UserOrder>();
-
     this.filteredOrders = merge(this.sort.sortChange, this.paginator.page).pipe(
       startWith({}),
       switchMap(() => {

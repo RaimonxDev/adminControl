@@ -11,17 +11,27 @@ import { SidebarInventoryComponent } from './components/sidebar-inventory/sideba
 import { TreoNavigationModule } from '../../../../@treo/components/navigation/navigation.module';
 import { ListadoProductosModule } from '../../../shared/modules/listado-productos/listado-productos.module';
 
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [ProductsComponent, CreateProductComponent, InventoryComponent, SidebarInventoryComponent],
+  declarations: [
+    ProductsComponent,
+    CreateProductComponent,
+    InventoryComponent,
+    SidebarInventoryComponent,
+  ],
   imports: [
     InventoryRoutingModule,
     SharedModule,
     TreoCardModule,
     EssentialFormsModule,
     TreoNavigationModule,
-    ListadoProductosModule
-  ]
+    ListadoProductosModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
+    MatSortModule,
+  ],
 })
-export class InventoryModule { }
+export class InventoryModule {}
