@@ -4,8 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../../customers/types';
 
 import { User } from '../../../../core/user/user.model';
-import { take } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { CreateOrder } from '../models/POST_order.model';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { Subject } from 'rxjs';
 export class SidebarCustomerComponent implements OnInit {
   // Inputs Outputs
 
-  @Output() sendCustomerSelected = new EventEmitter<Customer>();
+  @Output() sendCustomerSelected = new EventEmitter<CreateOrder>();
 
   // data
   customers$: User[];
@@ -25,6 +26,8 @@ export class SidebarCustomerComponent implements OnInit {
   customer: User[]
 
   customerForm: FormGroup
+
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
   constructor(
     private _customerServices : CustomerService,
     private _formBuilder: FormBuilder,
@@ -33,8 +36,7 @@ export class SidebarCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this._customerServices.customers$.pipe(take(1)).subscribe(data => {
+    this._customerServices.customers$.pipe(takeUntil(this._unsubscribeAll)).subscribe(data => {
       this.customers$ = data
     })
 

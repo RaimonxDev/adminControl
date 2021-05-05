@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, switchMap, tap} from 'rxjs/operators';
-import { of, Observable, BehaviorSubject, throwError } from 'rxjs';
-import { filter, findIndex, remove } from 'lodash-es';
+import { catchError, tap} from 'rxjs/operators';
+import {  Observable, BehaviorSubject, throwError } from 'rxjs';
+import { findIndex, remove } from 'lodash-es';
 import { Productos } from '../models/productoResponse';
-import { ListadoDeProductos } from '../models/listadoProductos';
+
 import { ProductsAdded } from '../models/addedProducts';
 import { NotifierService } from 'app/shared/services/notifier.service';
 import { CreateOrder } from '../models/POST_order.model';
 import { environment } from '../../../../../environments/environment';
-import { HandleHttpResponseError } from '../../../../shared/utils/Validators/httpErrorHandler';
+
 
 @Injectable({
   providedIn: 'root'
@@ -56,57 +56,6 @@ export class PedidoService {
     localStorage.setItem('order', JSON.stringify(orderList));
   }
 
-  private getMarcas( productos:Productos[] ): Observable<ListadoDeProductos[]> {
-    let arr = [];
-      // recorrer todo el array y extraer todas las marcas existentes
-      productos.forEach(element => {
-        arr.push(element.marca)
-      });
-    let withoutDuplicate = new Set(arr)
-    return this.getProductoByMarcaRxjs([...withoutDuplicate]  ,productos)
-  }
-
-
-  private getProductoByMarcaRxjs (marcas:string[], productos: Productos[] ): Observable<ListadoDeProductos[]> {
-
-    let ordenados: ListadoDeProductos[] = []
-
-    marcas.forEach((marca: string ) => {
-    // filtramos los productos por la marca que estamos iterando
-      let items = filter( productos,{'marca': marca})
-    // dividimos los productos segun mascotas
-      let productsForCats: Productos[] = filter(items,{'mascota':'gato'}),
-          productsForDogs: Productos[] = filter(items,{'mascota':'perro'})
-
-      //  devolvemos un array con la marca y sus items
-       ordenados.push( {
-        "marca": marca,
-        "productos": {
-          'perro': productsForDogs,
-          'gato': productsForCats}
-        })
-      })
-
-      return of(ordenados)
-  }
-
-  private getProductos() {
-    return this._http.get<Productos[]>(`${this.urlBackend}/products`,
-    {
-      params:{
-        '_limit':'-1'
-      }
-    }).pipe(
-      catchError(error => throwError('No se pudo obtener los productos ')),
-    )
-  }
-  public getListadoDeProductos () {
-    return this.getProductos().pipe(
-      switchMap(data => this.getMarcas(data)),
-      catchError(error => HandleHttpResponseError(error,'Error Interno'))
-    )
-  }
-
   isEmpty( pedido: ProductsAdded[] ): Promise<boolean> {
     return new Promise ((resolve, reject) => {
       if(pedido.length === 0) {
@@ -136,7 +85,7 @@ export class PedidoService {
         localStorage.removeItem('order')
         this._notify.showNotification('Enviado', 'Se envio correctamente','success', null)
       }),
-      catchError( error => throwError(this._notify.showNotification('Error','No se pudo enviar el pedido','error', null)))
+      catchError( _ => throwError(this._notify.showNotification('Error','No se pudo enviar el pedido','error', null)))
     )
   }
 
@@ -151,6 +100,7 @@ export class PedidoService {
 
       this.updatePedido = currentOrder
       this.saveLocalStorage(currentOrder)
+      this._notify.showNotification('Añadido', '','success', null)
 
     } catch (error) {
       let buscarProductoById = findIndex(currentOrder, {'code': currentProducto.code})

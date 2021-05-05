@@ -17,7 +17,7 @@
             [svgIcon]="'heroicons_outline:search'"></mat-icon>
         <input
             class="w-full h-full px-16 sm:px-18"
-            [formControl]="searchControl"
+            formControl="searchControl"
             [matAutocomplete]="matAutocomplete"
             [placeholder]="'Search for a page or a contact'"
             (keydown)="onKeydown($event)"
@@ -58,7 +58,7 @@
                 [svgIcon]="'heroicons_outline:search'"></mat-icon>
             <input
                 matInput
-                [formControl]="searchControl"
+                formControl="searchControl"
                 [matAutocomplete]="matAutocomplete"
                 [placeholder]="'Search for a page or a contact'"
                 (keydown)="onKeydown($event)">

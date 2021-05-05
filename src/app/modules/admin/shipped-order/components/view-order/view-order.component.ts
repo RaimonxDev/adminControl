@@ -7,18 +7,18 @@ import { UserOrder } from '../../../../../core/user/user.model';
 @Component({
   selector: 'app-view-order',
   templateUrl: './view-order.component.html',
-  styleUrls: ['./view-order.component.scss']
+  styleUrls: ['./view-order.component.scss'],
 })
 export class ViewOrderComponent implements OnInit {
-
-  id:string
-  order$: Observable<UserOrder[]>
-  constructor ( private _shippeServices: ShippedService, private _shippedComponent: ShippedListComponent ) { }
+  id: string;
+  order$: Observable<UserOrder>;
+  constructor(
+    private _shippeServices: ShippedService,
+    private _shippedComponent: ShippedListComponent
+  ) {}
 
   ngOnInit(): void {
-    this._shippedComponent.matDrawer.open()
-    this.order$ = this._shippeServices.selectedOrder$
+    this._shippedComponent.matDrawer.open();
+    this.order$ = this._shippeServices.selectedOrder$;
   }
-
-
 }

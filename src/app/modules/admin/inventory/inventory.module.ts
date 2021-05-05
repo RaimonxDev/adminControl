@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { InventoryRoutingModule } from './inventory-routing.module';
 import { ProductsComponent } from './components/products/products.component';
@@ -10,6 +9,7 @@ import { TreoCardModule } from '../../../../@treo/components/card/card.module';
 import { EssentialFormsModule } from '../../../shared/EssentialForm.module';
 import { SidebarInventoryComponent } from './components/sidebar-inventory/sidebar-inventory.component';
 import { TreoNavigationModule } from '../../../../@treo/components/navigation/navigation.module';
+import { ListadoProductosModule } from '../../../shared/modules/listado-productos/listado-productos.module';
 
 
 
@@ -20,7 +20,8 @@ import { TreoNavigationModule } from '../../../../@treo/components/navigation/na
     SharedModule,
     TreoCardModule,
     EssentialFormsModule,
-    TreoNavigationModule
+    TreoNavigationModule,
+    ListadoProductosModule
   ]
 })
 export class InventoryModule { }

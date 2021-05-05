@@ -50,74 +50,7 @@
     <div class="flex lg:flex-row flex-col ">
       <div class="px-4 flex-auto">
           <h3 class="text-xl font-bold p-4">Productos</h3>
-          <mat-accordion *ngIf="productos$ | async as productos; else loading">
-            <mat-expansion-panel *ngFor="let item of productos">
-              <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                <mat-panel-title>{{item.marca}}</mat-panel-title>
-
-              </mat-expansion-panel-header>
-
-                    <mat-tab-group animationDuration="0ms">
-                            <!-- Perros -->
-                    <mat-tab label="Perro">
-                      <li *ngFor="let perro of item.productos.perro">
-                        <div class="flex flex-1 space-x-2 items-center">
-                          <div class="flex-grow max-w-60">
-                                  <p>{{perro.producto}}</p>
-                          </div>
-                          <div class="flex-shrink">
-                            <div class="flex flex-col pt-4 w-40">
-                              <mat-form-field class="select-none">
-                                <input (keyup.enter)="saveProduct(cantidad.value, perro)"
-                                        (keyup.enter)="cantidad.value=''" class="w-full" type="number" matInput
-                                        placeholder="Cantidad" #cantidad autocomplete="off">
-
-                                <button (click)="saveProduct(cantidad.value, perro)" (click)="cantidad.value=''"
-                                        mat-icon-button class="green-300">
-                                        <mat-icon svgIcon="heroicons_outline:plus-sm"></mat-icon>
-                                </button>
-                              </mat-form-field>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-
-                      </mat-tab>
-                              <!-- Gatos -->
-                      <mat-tab *ngIf="item.productos.gato.length != 0" label="Gato">
-                        <li *ngFor="let gato of item.productos.gato">
-
-                          <div class="flex flex-1 space-x-2 items-center">
-                            <div class="flex-grow max-w-60">
-                                <p>{{gato.producto}}</p>
-                            </div>
-                            <div class="flex-shrink">
-                              <div class="flex flex-col pt-4 w-40">
-                                <mat-form-field class="select-none">
-                                  <input (keyup.enter)="saveProduct(cantidad.value, gato)"
-                                          (keyup.enter)="cantidad.value=''" class="w-full" type="number" matInput
-                                          placeholder="Cantidad" #cantidad autocomplete="off">
-
-                                  <button (click)="saveProduct(cantidad.value, gato)" (click)="cantidad.value=''"
-                                          mat-icon-button class="green-300">
-                                          <mat-icon svgIcon="heroicons_outline:plus-sm"></mat-icon>
-                                  </button>
-                                </mat-form-field>
-                                  </div>
-                              </div>
-                              </div>
-                        </li>
-                      </mat-tab>
-                      </mat-tab-group>
-
-              </mat-expansion-panel>
-
-          </mat-accordion>
-
-          <ng-template #loading>
-                  <!-- <mat-progress-bar color="primary" mode="query"></mat-progress-bar> -->
-            <p class="text-center text-lg text-indigo-500 bg-indigo-100 p-1 ">Cargando los Productos Por Favor Espere</p>
-          </ng-template>
+            <app-listado-productos [listaDeproductos]="productos$" (saveItem)="saveProduct($event)" ></app-listado-productos>
       </div>
 
       <div class="px-4 flex-auto items-center ">
@@ -144,13 +77,13 @@
                   <!-- Weight Column -->
           <ng-container matColumnDef="_">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element">
-              <button (click)="eliminarProducto(element)" color="warn" mat-icon-button [iconSize]=16 class="red-300">
+            <td   mat-cell *matCellDef="let element">
+              <button (click)="eliminarProducto(element)" color="warn" mat-icon-button class="red-300">
                 <mat-icon svgIcon="heroicons_outline:trash"></mat-icon>
               </button> </td>
           </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr [@fadeIn] mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
         </div>
       </div>

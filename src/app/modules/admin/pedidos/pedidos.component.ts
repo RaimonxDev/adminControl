@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 // Services
 import { PedidoService } from './services/pedido.service';
+import { ProductsService } from '../../../core/services/products/products.service';
 
 // Inteface
 import { ListadoDeProductos } from './models/listadoProductos';
@@ -14,13 +16,13 @@ import { MatTableDataSource } from '@angular/material/table';
 // UI
 import { NotifierService } from '../../../shared/services/notifier.service';
 import { CreateOrder } from './models/POST_order.model';
-import { MatDrawer } from '@angular/material/sidenav';
 import { SendOrderComponent } from './dialog/send-order/send-order.component';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { UserOrder } from 'app/core/user/user.model';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
-import { takeUntil } from 'rxjs/operators';
+import { TreoAnimations } from '@treo/animations';
+import { MatDrawer } from '@angular/material/sidenav';
 
 
 
@@ -28,8 +30,8 @@ import { takeUntil } from 'rxjs/operators';
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
   styleUrls: ['./pedidos.component.scss'],
-  // animations: TreoAnimations,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: TreoAnimations,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 export class PedidosComponent implements OnInit, OnDestroy {
@@ -46,7 +48,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
   // UTILS
   drawerMode: 'over' | 'side' = 'side';
-  drawerOpened: boolean = true;
+  drawerOpened: boolean = false;
   selectedCustomer: CreateOrder;
   // Helper para usar con i18nPlural
   hasSelectedCustomer:string = ''
@@ -54,50 +56,41 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
+  @ViewChild('matDrawer') matDrawer: MatDrawer
+
+
 
   constructor(
     private _pedidoServices: PedidoService,
+    private _productosServices: ProductsService,
     private alert : NotifierService,
     public dialog: MatDialog,
     private _treoMediaWatcherService: TreoMediaWatcherService) { }
 
   ngOnInit(): void {
-    this.productos$ = this._pedidoServices.getListadoDeProductos()
-
-    this.SideNavResponsive()
+    this.productos$ = this._productosServices.ListadoProductos$
 
     this._pedidoServices.pedidoActual$
+    .pipe(takeUntil(this._unsubscribeAll))
     .subscribe( pedido => {
       this.currentOrder.data = pedido })
-  }
 
-  saveProduct (cantidad: number | string ,producto : Productos){
-
-    let addProducto: ProductsAdded = {
-       'code': producto.code,
-       'id':producto.id ,
-       'cantidad':cantidad,
-       'producto': producto.producto,
-       'valorNeto': producto.valorNeto,
+    this.SideNavResponsive()
     }
 
-    if(Number(cantidad) ===  0 || cantidad === ''){
-      this.alert.showNotification('Campo Vacio', 'Por favor añadir una cantidad','warning', null)
-      return
-    }
-
-    this._pedidoServices.addProductToCurrentOrder(addProducto)
-
+  saveProduct( item: ProductsAdded ){
+      this._pedidoServices.addProductToCurrentOrder(item)
   }
-
-  eliminarProducto(prod: Productos){
+  eliminarProducto( prod: Productos ){
    this._pedidoServices.eliminarProducto(prod)
   }
 
   selectCustomer( user: CreateOrder ) {
-    this.drawerOpened = false;
     this.selectedCustomer = user
+    this.matDrawer.close()
+    this.hasSelectedCustomer = user.user.username
   }
+
   openDialog(){
      const dialogRef = this.dialog.open(SendOrderComponent, {restoreFocus: false});
 
@@ -144,7 +137,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
             if ( matchingAliases.includes('lg') )
             {
                 this.drawerMode = 'side';
-                this.drawerOpened = true;
+                this.drawerOpened = false;
             }
             else
             {
@@ -162,9 +155,6 @@ export class PedidosComponent implements OnInit, OnDestroy {
     'other': 'Cambiar Cliente',
   }
 
-      /**
-     * On destroy
-     */
   ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
     this._unsubscribeAll.next();

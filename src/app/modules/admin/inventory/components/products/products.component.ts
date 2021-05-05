@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from 'app/core/services/products/products.service';
+import { ProductsAdded } from 'app/modules/admin/pedidos/models/addedProducts';
+import { Observable } from 'rxjs';
+import { ListadoDeProductos } from '../../../pedidos/models/listadoProductos';
 
 @Component({
   selector: 'app-products',
@@ -8,10 +12,13 @@ import { ProductsService } from 'app/core/services/products/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private _productos: ProductsService) { }
+  productos$: Observable<ListadoDeProductos[]>
+  displayedColumns = ['cantidad', 'producto', '_'];
+  currentOrder = new MatTableDataSource<ProductsAdded>();
+  constructor(private _productosServices: ProductsService) { }
 
   ngOnInit(): void {
-    this._productos.ListadoProductos$.subscribe(console.log)
+    this.productos$ = this._productosServices.ListadoProductos$
   }
 
 }
