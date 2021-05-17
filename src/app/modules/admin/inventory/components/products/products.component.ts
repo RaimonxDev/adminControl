@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {
   FormControl,
@@ -12,12 +19,23 @@ import { Productos } from 'app/core/models/products.model';
 import { ProductsService } from 'app/core/services/products/products.service';
 import { ProductsAdded } from 'app/modules/admin/pedidos/models/addedProducts';
 import { merge, Observable, of, Subject } from 'rxjs';
-import { catchError, startWith, switchMap } from 'rxjs/operators';
+import { catchError, startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { InventoryService } from '../../services/inventory.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
   productos$: Productos[];
@@ -27,18 +45,14 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  // products$: Productos[];
   products: MatTableDataSource<Productos> | null;
   filteredProductos: Observable<any[]>;
-  resultsCount: number;
-
-  flashMessage: 'success' | 'error' | null = null;
 
   productsCount: number = 0;
 
   productsTableColumns: string[] = [
     'marca',
-    'nombre',
+    'producto',
     'price',
     'stock',
     'active',
@@ -46,26 +60,19 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   ];
   searchInputControl: FormControl = new FormControl();
   selectedProduct: Productos | null = null;
-  selectedProductForm: FormGroup;
+  detailOpenState = false;
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
     private _productosServices: ProductsService,
-    private _formBuilder: FormBuilder
+    private _InventoryServices: InventoryService
   ) {}
 
   ngOnInit(): void {
-    // init Formulario
-    this.initForm();
-    this._productosServices.countProducts$.subscribe((value) => {
-      (this.resultsCount = value), console.log(value);
-    });
-    this._productosServices
-      .getPaginationProducts('DIAMOND', 'ASC', 0, 2)
-      .subscribe((productos) => {
-        this.productos$ = productos;
-      });
+    this._productosServices.countProducts$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((value) => (this.productsCount = value));
   }
 
   ngAfterViewInit(): void {
@@ -78,7 +85,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
       startWith({}),
       switchMap(() => {
         return this._productosServices.getPaginationProducts(
-          this.sort.active,
+          // this.sort.active,
           this.sort.direction,
           this.paginator.pageIndex,
           this.paginator.pageSize
@@ -91,35 +98,26 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     );
   }
 
-  initForm() {
-    this.selectedProductForm = this._formBuilder.group({
-      _id: ['', [Validators.required]],
-      published_at: ['', [Validators.required]],
-      isNewProduct: ['', [Validators.required]],
-      disponible: ['', [Validators.required]],
-      precioSugerido: ['', [Validators.required]],
-      valorNeto: ['', [Validators.required]],
-      mascota: ['', [Validators.required]],
-      peso: ['', [Validators.required]],
-      marca: ['', [Validators.required]],
-      producto: ['', [Validators.required]],
-      code_uid: ['', [Validators.required]],
-      code: ['', [Validators.required]],
-      createdAt: ['', [Validators.required]],
-      updatedAt: ['', [Validators.required]],
-    });
+  detailsProduct(product: Productos) {
+    // If the product is already selected...
+    if (this.selectedProduct && this.selectedProduct.id === product.id) {
+      // Close the details
+      this.closeDetails();
+      return;
+    }
+    console.log('producto', product);
+    // this._InventoryServices.selectProduct(product);
+    this.selectedProduct = product;
+    this._InventoryServices.selectProduct(this.selectedProduct);
   }
 
+  closeDetails(): void {
+    this.selectedProduct = null;
+  }
   resetPaging() {
     this.paginator.pageIndex = 0;
   }
 
-  deleteSelectedProduct() {
-    return false;
-  }
-  updateSelectedProduct() {
-    return false;
-  }
   trackByFn(index: number, item: any): any {
     return item.id || index;
   }

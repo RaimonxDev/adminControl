@@ -1,0 +1,117 @@
+<form class="flex flex-col w-full" [formGroup]="selectedProductForm">
+  <div class="flex p-8">
+    <!-- Product images and status -->
+    <div class="flex flex-col">
+      <div class="flex flex-col mt-8">
+        <span class="font-semibold mb-2">Producto Disponible</span>
+        <mat-slide-toggle [formControlName]="'disponible'" [color]="'primary'">
+          {{
+            selectedProductForm.get("disponible").value === true
+              ? "Active"
+              : "Disabled"
+          }}
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+    <div class="flex flex-auto">
+      <div class="flex flex-col w-2/4 pl-8">
+        <!-- Name -->
+        <mat-form-field class="w-full">
+          <mat-label>Producto</mat-label>
+          <input matInput [formControlName]="'producto'" />
+        </mat-form-field>
+
+        <!-- SKU and Barcode -->
+        <div class="flex">
+          <mat-form-field class="w-1/3 pr-2">
+            <mat-label>CODE</mat-label>
+            <input matInput [formControlName]="'code_uid'" />
+          </mat-form-field>
+          <mat-form-field class="w-2/3 pl-2">
+            <mat-label>Codigo de Barra</mat-label>
+            <input matInput [formControlName]="'codigoBarra'" />
+          </mat-form-field>
+        </div>
+
+        <div class="flex">
+          <mat-form-field class="w-1/3 pr-2">
+            <mat-label>Marca</mat-label>
+            <mat-select [formControlName]="'marca'">
+              <mat-option *ngFor="let category of marcas" [value]="category">
+                {{ category }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="w-1/3 pr-2">
+            <mat-label>Mascota</mat-label>
+            <mat-select [formControlName]="'mascota'">
+              <mat-option *ngFor="let category of mascotas" [value]="category">
+                {{ category }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Stock and Reserved -->
+        <div class="flex">
+          <mat-form-field class="w-1/3 pr-2">
+            <mat-label>Stock</mat-label>
+            <input type="number" matInput [formControlName]="'stock'" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Cost, Base price, Tax & Price -->
+      <div class="flex flex-col w-1/4 pl-8">
+        <mat-form-field class="w-full">
+          <mat-label>Precio Neto</mat-label>
+          <span matPrefix>$</span>
+          <input matInput [formControlName]="'valorNeto'" />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Precio Sugerido</mat-label>
+          <span matPrefix>$</span>
+          <input matInput [formControlName]="'precioSugerido'" />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>IVA</mat-label>
+          <span matSuffix>%</span>
+          <input type="number" matInput [disabled] [formControlName]="'IVA'" />
+        </mat-form-field>
+      </div>
+
+      <!-- Weight & Tags -->
+      <div class="flex flex-col w-1/4 pl-8">
+        <mat-form-field class="w-full">
+          <mat-label>Peso</mat-label>
+          <span matSuffix>KGS.</span>
+          <input matInput [formControlName]="'peso'" />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between w-full border-t px-8 py-4">
+    <button
+      class="-ml-4"
+      mat-button
+      [color]="'warn'"
+      (click)="deleteSelectedProduct()"
+    >
+      Delete
+    </button>
+    <div class="flex items-center">
+      <button
+        mat-flat-button
+        [color]="'primary'"
+        (click)="updateSelectedProduct()"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+</form>

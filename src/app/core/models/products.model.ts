@@ -15,4 +15,6 @@ export interface Productos {
   updatedAt: Date;
   __v: number;
   id: string;
+  stock?: number;
+  codigoBarra?: string;
 }

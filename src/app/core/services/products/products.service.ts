@@ -98,8 +98,8 @@ export class ProductsService {
   }
 
   getPaginationProducts(
-    marca: string,
-    sort: string = 'ASC',
+    // marca: string,
+    sort: string,
     page: number,
     pageSize: number
   ): Observable<Productos[]> {
@@ -108,7 +108,6 @@ export class ProductsService {
         _start: `${page * pageSize}`,
         _limit: `${pageSize}`,
         _sort: `marca:${sort}`,
-        marca: marca,
       },
     });
   }

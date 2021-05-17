@@ -14,6 +14,7 @@ import { ListadoProductosModule } from '../../../shared/modules/listado-producto
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSortModule } from '@angular/material/sort';
+import { DetailsProductsComponent } from './components/details-products/details-products.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatSortModule } from '@angular/material/sort';
     CreateProductComponent,
     InventoryComponent,
     SidebarInventoryComponent,
+    DetailsProductsComponent,
   ],
   imports: [
     InventoryRoutingModule,
