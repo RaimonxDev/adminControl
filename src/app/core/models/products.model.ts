@@ -16,5 +16,5 @@ export interface Productos {
   __v: number;
   id: string;
   stock?: number;
-  codigoBarra?: string;
+  barcode?: string;
 }
