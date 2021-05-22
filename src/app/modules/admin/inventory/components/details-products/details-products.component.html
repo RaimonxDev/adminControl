@@ -30,7 +30,7 @@
           </mat-form-field>
           <mat-form-field class="w-2/3 pl-2">
             <mat-label>Codigo de Barra</mat-label>
-            <input matInput [formControlName]="'codigoBarra'" />
+            <input matInput [formControlName]="'barcode'" />
           </mat-form-field>
         </div>
 
@@ -108,6 +108,7 @@
       <button
         mat-flat-button
         [color]="'primary'"
+        [disabled]="!selectedProductForm.dirty || selectedProductForm.invalid"
         (click)="updateSelectedProduct()"
       >
         Update

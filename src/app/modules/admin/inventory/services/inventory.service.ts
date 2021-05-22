@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
-import { of, Observable, BehaviorSubject } from 'rxjs';
-import { distinct } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Productos } from '../../../../core/models/products.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'environments/environment';
+import { ErrorResponseHttp } from '../../../../shared/utils/Validators/httpErrorHandler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InventoryService {
-  private _selectedProducts: BehaviorSubject<Productos> =
-    new BehaviorSubject<Productos>(null);
+  backendUrl = environment.url;
 
-  private set selectProduct$(producto: Productos) {
-    this._selectedProducts.next(producto);
-  }
+  constructor(
+    private _http: HttpClient,
+    private handleErrorHttp: ErrorResponseHttp
+  ) {}
 
-  get selectedProduct$(): Observable<Productos> {
-    return this._selectedProducts.asObservable();
-  }
-
-  constructor() {}
-
-  selectProduct(producto: Productos) {
-    this.selectProduct$ = producto;
+  updateProduct(idProduct: string, fields: Productos) {
+    return this._http
+      .put(`${this.backendUrl}/products/${idProduct}`, fields)
+      .pipe(
+        catchError((error) =>
+          this.handleErrorHttp.handleError(error, null, 2500)
+        )
+      );
   }
 }

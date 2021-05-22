@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { distinct, startWith, take } from 'rxjs/operators';
 import { InventoryService } from '../../services/inventory.service';
+import { Productos } from '../../../../../core/models/products.model';
 
 @Component({
   selector: 'app-details-products',
@@ -9,6 +10,7 @@ import { InventoryService } from '../../services/inventory.service';
   styleUrls: ['./details-products.component.scss'],
 })
 export class DetailsProductsComponent implements OnInit {
+  @Input() producto: Productos;
   selectedProductForm: FormGroup;
   mascotas: string[] = ['perro', 'gato'];
   marcas: string[] = ['bravo', 'diamond'];
@@ -19,14 +21,18 @@ export class DetailsProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.inventoryServices.selectedProduct$
-      .pipe(distinct())
-      .subscribe((value) => console.log('details', value));
+    console.log('input producto:', this.producto);
+
+    this.selectedProductForm.patchValue(this.producto);
+
+    // this.inventoryServices.selectedProduct$
+    //   .pipe(distinct())
+    //   .subscribe((value) => console.log('details', value));
   }
 
   initForm(): void {
     this.selectedProductForm = this._formBuilder.group({
-      _id: ['', [Validators.required]],
+      id: ['', [Validators.required]],
       published_at: ['', [Validators.required]],
       isNewProduct: ['', [Validators.required]],
       disponible: ['', [Validators.required]],
@@ -41,7 +47,7 @@ export class DetailsProductsComponent implements OnInit {
       createdAt: ['', [Validators.required]],
       updatedAt: ['', [Validators.required]],
       stock: ['', [Validators.required]],
-      codigoBarra: [''],
+      barcode: [''],
       IVA: ['', [Validators.required]],
     });
   }
@@ -49,6 +55,12 @@ export class DetailsProductsComponent implements OnInit {
     console.log('delete');
   }
   updateSelectedProduct() {
-    console.log('update');
+    const currentProduct: Productos = this.selectedProductForm.value;
+    this.inventoryServices
+      .updateProduct(currentProduct.id, currentProduct)
+      .subscribe((resp) => {
+        console.log(resp);
+        this.selectedProductForm.patchValue(resp);
+      });
   }
 }

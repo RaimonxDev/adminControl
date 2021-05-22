@@ -100,15 +100,13 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   detailsProduct(product: Productos) {
     // If the product is already selected...
+    this.selectedProduct = product;
+
     if (this.selectedProduct && this.selectedProduct.id === product.id) {
       // Close the details
       this.closeDetails();
       return;
     }
-    console.log('producto', product);
-    // this._InventoryServices.selectProduct(product);
-    this.selectedProduct = product;
-    this._InventoryServices.selectProduct(this.selectedProduct);
   }
 
   closeDetails(): void {
