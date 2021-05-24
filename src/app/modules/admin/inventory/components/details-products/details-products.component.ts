@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { distinct, startWith, take } from 'rxjs/operators';
 import { InventoryService } from '../../services/inventory.service';
@@ -11,6 +11,8 @@ import { Productos } from '../../../../../core/models/products.model';
 })
 export class DetailsProductsComponent implements OnInit {
   @Input() producto: Productos;
+  @Output() updatedProduct: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   selectedProductForm: FormGroup;
   mascotas: string[] = ['perro', 'gato'];
   marcas: string[] = ['bravo', 'diamond'];
@@ -54,13 +56,15 @@ export class DetailsProductsComponent implements OnInit {
   deleteSelectedProduct() {
     console.log('delete');
   }
+
   updateSelectedProduct() {
-    const currentProduct: Productos = this.selectedProductForm.value;
+    const currentProduct: Productos = this.selectedProductForm.getRawValue();
+
     this.inventoryServices
       .updateProduct(currentProduct.id, currentProduct)
       .subscribe((resp) => {
-        console.log(resp);
         this.selectedProductForm.patchValue(resp);
+        this.updatedProduct.emit(true);
       });
   }
 }

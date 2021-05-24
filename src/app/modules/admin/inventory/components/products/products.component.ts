@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  products: MatTableDataSource<Productos> | null;
+  products: MatTableDataSource<Productos> | Productos[] | null;
   filteredProductos: Observable<any[]>;
 
   productsCount: number = 0;
@@ -77,35 +77,44 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.products = new MatTableDataSource<Productos>();
+    // If the user changes the sort order, reset back to the first page.
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    this.filteredProductos = merge(
-      this.sort.sortChange,
-      this.paginator.page
-    ).pipe(
-      startWith({}),
-      switchMap(() => {
-        return this._productosServices.getPaginationProducts(
-          // this.sort.active,
-          this.sort.direction,
-          this.paginator.pageIndex,
-          this.paginator.pageSize
-        );
-      }),
-      catchError(() => {
-        console.log('error');
-        return of([]);
-      })
-    );
+    merge(this.sort.sortChange, this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          return this._productosServices.getPaginationProducts(
+            // this.sort.active,
+            this.sort.direction,
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+          );
+        }),
+        catchError(() => {
+          console.log('error');
+          return of([]);
+        })
+      )
+      .subscribe((data) => {
+        this.products = data;
+        localStorage.setItem('productos', JSON.stringify(data));
+      });
   }
 
   detailsProduct(product: Productos) {
     // If the product is already selected...
-    this.selectedProduct = product;
 
     if (this.selectedProduct && this.selectedProduct.id === product.id) {
       // Close the details
       this.closeDetails();
       return;
+    }
+    this.selectedProduct = product;
+  }
+
+  updatedProduct(event: boolean) {
+    if (event) {
     }
   }
 

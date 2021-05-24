@@ -9,7 +9,7 @@
       mat-table
       [matSortActive]="'marca'"
       [multiTemplateDataRows]="true"
-      [dataSource]="filteredProductos | async"
+      [dataSource]="products"
       class="w-full"
       matSort
       matSortDirection="asc"
@@ -140,6 +140,7 @@
               <app-details-products
                 class="w-full"
                 [producto]="product"
+                (updatedProduct)="updatedProduct($event)"
               ></app-details-products>
             </div>
           </div>
