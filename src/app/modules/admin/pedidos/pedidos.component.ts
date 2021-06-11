@@ -11,11 +11,11 @@ import { takeUntil } from 'rxjs/operators';
 
 // Services
 import { PedidoService } from './services/pedido.service';
-import { ProductsService } from '../../../core/services/products/products.service';
+import { ProductsService } from '../../../core/products/products.service';
 
 // Inteface
 import { ListadoDeProductos } from './models/listadoProductos';
-import { Productos } from './models/productoResponse';
+// import { Productos } from './models/productoResponse';
 import { ProductsAdded } from './models/addedProducts';
 
 import { MatTableDataSource } from '@angular/material/table';
@@ -30,6 +30,7 @@ import { UserOrder } from 'app/core/user/user.model';
 import { TreoMediaWatcherService } from '@treo/services/media-watcher';
 import { TreoAnimations } from '@treo/animations';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Productos } from 'app/core/products/models/productos.model';
 
 @Component({
   selector: 'app-pedidos',
@@ -97,7 +98,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
   openDialog() {
     const dialogRef = this.dialog.open(SendOrderComponent, {
-      restoreFocus: false,
+      restoreFocus: true,
     });
 
     // Manually restore focus to the menu trigger since the element that

@@ -1,10 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListadoDeProductos } from 'app/modules/admin/pedidos/models/listadoProductos';
-import { Productos } from 'app/modules/admin/pedidos/models/productoResponse';
 import { ProductsAdded } from 'app/modules/admin/pedidos/models/addedProducts';
 import { NotifierService } from '../../services/notifier.service';
-import { PedidoService } from 'app/modules/admin/pedidos/services/pedido.service';
+import { Productos } from 'app/core/products/models/productos.model';
 
 @Component({
   selector: 'app-listado-productos',

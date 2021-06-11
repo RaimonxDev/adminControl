@@ -1,9 +1,9 @@
-import { Productos } from './productoResponse';
+import { Productos } from 'app/core/products/models/productos.model';
 
 export interface ListadoDeProductos {
-  marca:string,
+  marca: string;
   productos: {
-    perro: Productos[],
-    gato: Productos[]
-  }
+    perro: Productos[];
+    gato: Productos[];
+  };
 }
