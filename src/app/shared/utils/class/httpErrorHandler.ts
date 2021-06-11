@@ -9,6 +9,8 @@ export function HandleHttpResponseError(
   message?: string
 ) {
   switch (error.status) {
+    case 400:
+      return throwError(`Error en el formato intente nuevamente${error}`);
     case 401:
       return throwError(
         `Usted No tiene persimos para hacer esta operacion ${error.status}`
