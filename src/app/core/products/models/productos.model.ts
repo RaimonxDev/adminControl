@@ -1,3 +1,4 @@
+import { Marcas } from './marcas.model';
 export interface Productos {
   _id: string;
   published_at: Date;
@@ -17,4 +18,5 @@ export interface Productos {
   id: string;
   stock?: number;
   barcode?: string;
+  brand: Marcas;
 }
