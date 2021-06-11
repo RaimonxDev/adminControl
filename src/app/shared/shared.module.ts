@@ -8,42 +8,41 @@ import { AlertComponent } from './alert/alert.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort'
+import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-    declarations:[
-        AlertComponent
-    ],
-    imports: [
-        CommonModule,
-        TreoAlertModule,
-        MatSnackBarModule,
-        MatProgressBarModule,
-        MatSidenavModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatSortModule,
-        MatDialogModule,
-        MatMenuModule,
-        MatIconModule
-    ],
-    exports: [
-        CommonModule,
-        TreoAlertModule,
-        MatSnackBarModule,
-        MatProgressBarModule,
-        MatSidenavModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatSortModule,
-        MatDialogModule,
-        MatMenuModule,
-        MatIconModule
-    ]
+  declarations: [AlertComponent],
+  imports: [
+    CommonModule,
+    TreoAlertModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatDialogModule,
+    MatMenuModule,
+    MatIconModule,
+  ],
+  exports: [
+    CommonModule,
+    TreoAlertModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatDialogModule,
+    MatMenuModule,
+    MatIconModule,
+  ],
 })
-export class SharedModule
-{
-}
+export class SharedModule {}
