@@ -3,6 +3,16 @@
     <!-- Product images and status -->
     <div class="flex flex-col">
       <div class="flex flex-col mt-8">
+        <span class="font-semibold mb-2">Marcar como nuevo Producto</span>
+        <mat-slide-toggle [formControlName]="'isNewProduct'" [color]="'warn'">
+          {{
+            selectedProductForm.get("isNewProduct").value === true
+              ? "Active"
+              : "Disabled"
+          }}
+        </mat-slide-toggle>
+      </div>
+      <div class="flex flex-col mt-8">
         <span class="font-semibold mb-2">Producto Disponible</span>
         <mat-slide-toggle [formControlName]="'disponible'" [color]="'primary'">
           {{
@@ -26,8 +36,16 @@
         <div class="flex">
           <mat-form-field class="w-1/3 pr-2">
             <mat-label>CODE</mat-label>
-            <input matInput [formControlName]="'code_uid'" />
+            <input #fieldCode matInput [formControlName]="'code_uid'" />
+            <mat-error
+              *ngIf="
+                selectedProductForm.get('code_uid').hasError('code_exist') &&
+                selectedProductForm.get('code_uid').touched
+              "
+              >Ya existe este codigo</mat-error
+            >
           </mat-form-field>
+
           <mat-form-field class="w-2/3 pl-2">
             <mat-label>Codigo de Barra</mat-label>
             <input matInput [formControlName]="'barcode'" />
@@ -35,18 +53,22 @@
         </div>
 
         <div class="flex">
-          <mat-form-field class="w-1/3 pr-2">
+          <mat-form-field class="w-full pr-2">
             <mat-label>Marca</mat-label>
-            <mat-select [formControlName]="'marca'">
-              <mat-option *ngFor="let category of marcas" [value]="category">
-                {{ category }}
+            <mat-select class="capitalize" [formControlName]="'brand'">
+              <mat-option
+                class="capitalize"
+                *ngFor="let marca of marcas"
+                [value]="marca.id"
+              >
+                {{ marca.nombre }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field class="w-1/3 pr-2">
             <mat-label>Mascota</mat-label>
-            <mat-select [formControlName]="'mascota'">
+            <mat-select class="capitalize" [formControlName]="'mascota'">
               <mat-option *ngFor="let category of mascotas" [value]="category">
                 {{ category }}
               </mat-option>
@@ -68,13 +90,13 @@
         <mat-form-field class="w-full">
           <mat-label>Precio Neto</mat-label>
           <span matPrefix>$</span>
-          <input matInput [formControlName]="'valorNeto'" />
+          <input matInput type="number" [formControlName]="'valorNeto'" />
         </mat-form-field>
 
         <mat-form-field class="w-full">
           <mat-label>Precio Sugerido</mat-label>
           <span matPrefix>$</span>
-          <input matInput [formControlName]="'precioSugerido'" />
+          <input matInput type="number" [formControlName]="'precioSugerido'" />
         </mat-form-field>
 
         <mat-form-field class="w-full">
@@ -89,30 +111,48 @@
         <mat-form-field class="w-full">
           <mat-label>Peso</mat-label>
           <span matSuffix>KGS.</span>
-          <input matInput [formControlName]="'peso'" />
+          <input matInput type="number" [formControlName]="'peso'" />
         </mat-form-field>
       </div>
     </div>
   </div>
 
+  <p *ngIf="modeForm === 'edit'" class="ml-8 capitalize text-sm text-primary">
+    ultima actualización {{ producto.updatedAt | date: "fullDate" }}
+  </p>
+
   <div class="flex items-center justify-between w-full border-t px-8 py-4">
     <button
+      *ngIf="modeForm === 'edit'"
       class="-ml-4"
       mat-button
       [color]="'warn'"
-      (click)="deleteSelectedProduct()"
+      (click)="opendDialog()"
     >
-      Delete
+      Eliminar
     </button>
-    <div class="flex items-center">
-      <button
-        mat-flat-button
-        [color]="'primary'"
-        [disabled]="!selectedProductForm.dirty || selectedProductForm.invalid"
-        (click)="updateSelectedProduct()"
-      >
-        Update
-      </button>
+    <div class="flex items-center flex-col">
+      <ng-container *ngIf="modeForm === 'edit'; else createMode">
+        <button
+          mat-flat-button
+          [color]="'primary'"
+          [disabled]="!selectedProductForm.dirty || selectedProductForm.invalid"
+          (click)="updateSelectedProduct()"
+        >
+          Actualizar
+        </button>
+      </ng-container>
+
+      <ng-template #createMode>
+        <button
+          mat-flat-button
+          [color]="'primary'"
+          [disabled]="!selectedProductForm.dirty || selectedProductForm.invalid"
+          (click)="createProduct()"
+        >
+          Crear
+        </button>
+      </ng-template>
     </div>
   </div>
 </form>

@@ -15,6 +15,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSortModule } from '@angular/material/sort';
 import { DetailsProductsComponent } from './components/details-products/details-products.component';
+import { DialogComponentModule } from '../../../shared/modules/dialog/dialog.module';
+import { CreateBrandComponent } from './components/create-brand/create-brand.component';
+import { ListBrandsComponent } from './components/list-brands/list-brands.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { DetailsProductsComponent } from './components/details-products/details-
     InventoryComponent,
     SidebarInventoryComponent,
     DetailsProductsComponent,
+    CreateBrandComponent,
+    ListBrandsComponent,
   ],
   imports: [
     InventoryRoutingModule,
@@ -34,6 +39,7 @@ import { DetailsProductsComponent } from './components/details-products/details-
     MatSlideToggleModule,
     MatExpansionModule,
     MatSortModule,
+    DialogComponentModule,
   ],
 })
 export class InventoryModule {}

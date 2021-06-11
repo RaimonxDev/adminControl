@@ -4,6 +4,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { InventoryComponent } from './inventory.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { CountProductsResolver } from './resolver/count-products.resolver';
+import { MarcasResolver } from './resolver/marcas.resolver';
+import { CreateBrandComponent } from './components/create-brand/create-brand.component';
 
 const routes: Routes = [
   {
@@ -11,11 +13,22 @@ const routes: Routes = [
     component: InventoryComponent,
     resolve: {
       countProducts: CountProductsResolver,
+      brandProducts: MarcasResolver,
     },
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'products' },
       { path: 'products', component: ProductsComponent },
-      { path: 'create', component: CreateProductComponent },
+      {
+        path: 'new-product',
+        component: CreateProductComponent,
+        resolve: {
+          brandProducts: MarcasResolver,
+        },
+      },
+      {
+        path: 'new-brand',
+        component: CreateBrandComponent,
+      },
     ],
   },
 ];

@@ -1,0 +1,135 @@
+<div class="container grid grid-cols-2 gap-4">
+  <div class="w-3/4">
+    <h1 class="text-bold text-2xl">Ingrese nombre de la nueva marca</h1>
+
+    <form class="mt-6" [formGroup]="createNewProductForm">
+      <!-- Name -->
+      <mat-form-field class="w-full">
+        <input class="w-full" matInput [formControlName]="'nombre'" />
+        <mat-error
+          *ngIf="
+            createNewProductForm.get('nombre').hasError('brand_exist') &&
+            createNewProductForm.get('nombre').touched
+          "
+          >Marca ya creada</mat-error
+        >
+        <mat-error
+          *ngIf="
+            createNewProductForm.get('nombre').hasError('empty_value') &&
+            createNewProductForm.get('nombre').touched
+          "
+          >Campo vacio</mat-error
+        >
+        <mat-error
+          *ngIf="
+            createNewProductForm.get('nombre').hasError('required') &&
+            createNewProductForm.get('nombre').touched
+          "
+          >Campo requerido</mat-error
+        >
+      </mat-form-field>
+
+      <!-- Submit button -->
+      <div class="flex flex-row space-x-2">
+        <!-- Button Crear -->
+        <button
+          *ngIf="!editBrand"
+          class="w-1/2 mt-6 text-sm"
+          mat-flat-button
+          [color]="'primary'"
+          [disabled]="
+            createNewProductForm.disabled ||
+            createNewProductForm.invalid ||
+            createNewProductForm.pending
+          "
+          (click)="createBrand()"
+        >
+          <ng-container>
+            <span *ngIf="!createNewProductForm.disabled && !editBrand">
+              Crear marca
+            </span>
+            <span *ngIf="editBrand"> Actualizar </span>
+          </ng-container>
+          <mat-progress-spinner
+            *ngIf="createNewProductForm.disabled"
+            [diameter]="24"
+            [mode]="'indeterminate'"
+          ></mat-progress-spinner>
+        </button>
+
+        <!-- Button Actualizar -->
+        <button
+          *ngIf="editBrand"
+          class="w-1/2 mt-6 text-sm"
+          mat-flat-button
+          [color]="'primary'"
+          [disabled]="
+            createNewProductForm.pristine || createNewProductForm.disabled
+          "
+          (click)="updateBrand()"
+        >
+          <span *ngIf="editBrand"> Actualizar </span>
+          <mat-progress-spinner
+            *ngIf="createNewProductForm.disabled"
+            [diameter]="24"
+            [mode]="'indeterminate'"
+          ></mat-progress-spinner>
+        </button>
+
+        <!-- Button Cancelar -->
+        <button
+          *ngIf="editBrand"
+          class="w-1/2 mt-6 text-sm"
+          mat-button
+          [color]="'warn'"
+          (click)="cancelEdition()"
+        >
+          <span>Cancelar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <h1 class="text-bold text-2xl text-center">Marcas</h1>
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div>
+      <div class="flow-root mt-6">
+        <ul class="-my-5 divide-y divide-gray-200">
+          <li *ngFor="let marca of marcas$ | async" class="py-4">
+            <div class="flex items-center space-x-4">
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-gray-900 truncate"></p>
+                <p class="text-sm text-gray-500 truncate">{{ marca.nombre }}</p>
+              </div>
+              <div>
+                <a
+                  (click)="editarMarca(marca)"
+                  class="
+                    inline-flex
+                    cursor-pointer
+                    items-center
+                    shadow-sm
+                    px-2.5
+                    py-0.5
+                    border border-gray-300
+                    text-sm
+                    leading-5
+                    font-medium
+                    rounded-full
+                    text-gray-700
+                    bg-white
+                    hover:bg-gray-50
+                  "
+                >
+                  Editar
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <pre>{{ createNewProductForm.status }}</pre> -->

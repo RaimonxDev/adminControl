@@ -6,21 +6,16 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Productos } from 'app/core/models/products.model';
-import { ProductsService } from 'app/core/services/products/products.service';
+import { Productos } from 'app/core/products/models/productos.model';
+import { ProductsService } from 'app/core/products/products.service';
 import { ProductsAdded } from 'app/modules/admin/pedidos/models/addedProducts';
 import { merge, Observable, of, Subject } from 'rxjs';
 import { catchError, startWith, switchMap, takeUntil } from 'rxjs/operators';
-import { InventoryService } from '../../services/inventory.service';
+import { updateMatriz } from '../../../../../shared/utils/functions/updateObjInArray';
 
 @Component({
   selector: 'app-products',
@@ -45,7 +40,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  products: MatTableDataSource<Productos> | Productos[] | null;
+  sourceProducts: MatTableDataSource<Productos> | Productos[] | null;
   filteredProductos: Observable<any[]>;
 
   productsCount: number = 0;
@@ -64,10 +59,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-  constructor(
-    private _productosServices: ProductsService,
-    private _InventoryServices: InventoryService
-  ) {}
+  constructor(private _productosServices: ProductsService) {}
 
   ngOnInit(): void {
     this._productosServices.countProducts$
@@ -76,7 +68,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.products = new MatTableDataSource<Productos>();
+    this.sourceProducts = new MatTableDataSource<Productos>();
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
@@ -97,8 +89,8 @@ export class ProductsComponent implements OnInit, AfterViewInit {
         })
       )
       .subscribe((data) => {
-        this.products = data;
-        localStorage.setItem('productos', JSON.stringify(data));
+        console.log('data', data);
+        this.sourceProducts = data as Productos[];
       });
   }
 
@@ -113,9 +105,13 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     this.selectedProduct = product;
   }
 
-  updatedProduct(event: boolean) {
-    if (event) {
-    }
+  updatedProduct(updatedProduct: Productos) {
+    const updateList = updateMatriz(
+      this.sourceProducts as Productos[],
+      updatedProduct
+    );
+
+    this.sourceProducts = updateList;
   }
 
   closeDetails(): void {
