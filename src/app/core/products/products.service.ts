@@ -135,7 +135,7 @@ export class ProductsService {
         params: {
           _start: `${page * pageSize}`,
           _limit: `${pageSize}`,
-          _sort: `marca:${sort}`,
+          _sort: `brand.nombre:${sort}`,
         },
       })
       .pipe(
