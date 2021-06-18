@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { catchError, retry, switchMap, tap } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
@@ -12,6 +12,7 @@ import {
 } from '../../shared/utils/class/httpErrorHandler';
 import { Productos } from 'app/core/products/models/productos.model';
 import { Marcas } from './models/marcas.model';
+import { FormArray, ValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -124,16 +125,42 @@ export class ProductsService {
     return this.getAllMarcas();
   }
 
+  public filterByBrandWithPagination(
+    marcas: string[],
+    sort: string,
+    pageIndex: number,
+    pageSize: number
+  ) {
+    let httpParams = new HttpParams();
+    marcas.forEach((nombre) => {
+      httpParams = httpParams.append('brand.nombre_in', nombre);
+    });
+    httpParams = httpParams.append('_sort', `${sort}`);
+    // httpParams = httpParams.append('_start', `${pageIndex * pageSize}`);
+
+    return this._http
+      .get<Productos[]>(`${this.urlBackend}/products`, {
+        params: httpParams,
+      })
+      .pipe(
+        tap((resp) => this._countProducts.next(resp.length)),
+        catchError((err) => HandleHttpResponseError(err))
+      );
+    // resultado esperado:
+    // http://localhost:1337/products?brand.nombre_in=bravo&brand.nombre_in=wits
+  }
+
+  // obtiene los productos paginados
   getPaginationProducts(
     // marca: string,
     sort: string,
-    page: number,
+    pageIndex: number,
     pageSize: number
   ): Observable<Productos[]> {
     return this._http
       .get<Productos[]>(`${this.urlBackend}/products`, {
         params: {
-          _start: `${page * pageSize}`,
+          _start: `${pageIndex * pageSize}`,
           _limit: `${pageSize}`,
           _sort: `brand.nombre:${sort}`,
         },
@@ -144,7 +171,7 @@ export class ProductsService {
         )
       );
   }
-
+  // obtiene la cantidad de productos
   getCountProducts(): Observable<number> {
     return this._http
       .get<number>(`${this.urlBackend}/products/count`)

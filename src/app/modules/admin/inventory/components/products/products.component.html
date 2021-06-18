@@ -2,12 +2,52 @@
 
 <!-- Products list -->
 <div class="flex flex-col w-full">
+  <form
+    [formGroup]="formFilterBrands"
+    class="w-full flex flex-col pb-4 bg-blue-50"
+  >
+    <div class="w-full mb-4">
+      <h3 class="block text-base font-bold text-primary">Filtrar por marca</h3>
+      <small class="block text-sm text-gray-500"
+        >Seleccione las marcas para mostrar</small
+      >
+      <small
+        *ngIf="!formFilterBrands.valid && formFilterBrands.dirty"
+        class="block text-sm text-red-500"
+        >Seleccione al menos una marca</small
+      >
+    </div>
+
+    <div class="grid grid-flow-row grid-cols-6 gap-2">
+      <ng-container
+        formArrayName="marcas"
+        *ngFor="
+          let brand of formFilterBrands.get('marcas')['controls'];
+          let i = index
+        "
+      >
+        <mat-checkbox class="capitalize" color="primary" [formControlName]="i"
+          >{{ brandsFilter[i] }}
+        </mat-checkbox>
+      </ng-container>
+    </div>
+    <div class="border border-gray-300 mt-2"></div>
+    <button
+      class="w-8 mx-auto mt-2"
+      mat-button
+      [color]="'primary'"
+      (click)="filteringData()"
+      [disabled]="!formFilterBrands.valid"
+    >
+      Filtrar
+    </button>
+  </form>
   <!-- Table -->
   <ng-container *ngIf="productsCount > 0; else noProducts">
     <table
       class="w-full min-w-320 table-fixed bg-transparent"
       mat-table
-      [matSortActive]="'marca'"
+      [matSortActive]="'brand.nombre'"
       [multiTemplateDataRows]="true"
       [dataSource]="sourceProducts"
       class="w-full"
@@ -40,14 +80,7 @@
       </ng-container>
       <!-- Stock -->
       <ng-container matColumnDef="stock">
-        <th
-          class="w-24 bg-gray-50 dark:bg-black dark:bg-opacity-5"
-          mat-header-cell
-          *matHeaderCellDef
-          disableClear
-        >
-          Stock
-        </th>
+        <th class="w-24" mat-header-cell *matHeaderCellDef>Stock</th>
         <td class="pr-4" mat-cell *matCellDef="let product">
           <span class="flex items-center">
             <span class="min-w-4">{{ product.stock }}</span>
@@ -140,6 +173,7 @@
                 class="w-full"
                 [modeForm]="'edit'"
                 [producto]="product"
+                (deletedProduct)="deletedProduct($event)"
                 (updatedProduct)="updatedProduct($event)"
               ></app-details-products>
             </div>
@@ -173,9 +207,19 @@
     </h2>
   </ng-template>
 
-  <mat-paginator
-    [length]="productsCount"
-    [pageSize]="20"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-  ></mat-paginator>
+  <ng-container>
+    <mat-paginator
+      [length]="productsCount"
+      [pageSize]="20"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+  </ng-container>
+  <!--
+  <ng-template #customPaginator>
+    <mat-paginator
+      [length]="productsCount"
+      [pageSize]="1"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+  </ng-template> -->
 </div>

@@ -6,15 +6,27 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatPaginator } from '@angular/material/paginator';
+import {
+  FormControl,
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  FormArray,
+} from '@angular/forms';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+
 import { Productos } from 'app/core/products/models/productos.model';
 import { ProductsService } from 'app/core/products/products.service';
-import { ProductsAdded } from 'app/modules/admin/pedidos/models/addedProducts';
-import { merge, Observable, of, Subject } from 'rxjs';
-import { catchError, startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { merge, of, Subject, BehaviorSubject } from 'rxjs';
+import {
+  catchError,
+  startWith,
+  switchMap,
+  takeUntil,
+  delay,
+  map,
+} from 'rxjs/operators';
 import { updateMatriz } from '../../../../../shared/utils/functions/updateObjInArray';
 
 @Component({
@@ -33,18 +45,20 @@ import { updateMatriz } from '../../../../../shared/utils/functions/updateObjInA
   ],
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
-  productos$: Productos[];
-  displayedColumns = ['cantidad', 'producto', '_'];
-  currentOrder = new MatTableDataSource<ProductsAdded>();
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  sourceProducts: MatTableDataSource<Productos> | Productos[] | null;
-  filteredProductos: Observable<any[]>;
+  _hasFilter: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  _filterByTheseBrands: BehaviorSubject<string[]> = new BehaviorSubject<
+    string[]
+  >([]);
 
-  productsCount: number = 0;
+  productos$: Productos[];
 
+  formFilterBrands: FormGroup;
+  brandsFilter: string[] = [];
+
+  sourceProducts: Productos[] | null;
   productsTableColumns: string[] = [
     'marca',
     'producto',
@@ -53,50 +67,126 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     'active',
     'details',
   ];
+  // Paginacion manual cuando se realiza un filtro
+  productsCount: number = 0;
+
   searchInputControl: FormControl = new FormControl();
   selectedProduct: Productos | null = null;
   detailOpenState = false;
 
+  // getters and setters
+  get hasFilter() {
+    return this._hasFilter.getValue();
+  }
+  get filterByTheseBrands() {
+    return this._filterByTheseBrands.getValue();
+  }
+
+  get marcasControl() {
+    return this.formFilterBrands.controls.marcas as FormArray;
+  }
+
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-  constructor(private _productosServices: ProductsService) {}
+  constructor(
+    private _productosServices: ProductsService,
+    private _fb: FormBuilder
+  ) {
+    this.initForm();
+  }
 
   ngOnInit(): void {
     this._productosServices.countProducts$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((value) => (this.productsCount = value));
+
+    // obtiene las marcas
+    this._productosServices.allBrands$
+      .pipe(
+        map((marcas) => {
+          return marcas.map((value) => value.nombre);
+        })
+      )
+      .subscribe((brand) => {
+        this.brandsFilter = brand;
+        this.buildArrayBrands(brand);
+      });
   }
 
-  ngAfterViewInit(): void {
-    this.sourceProducts = new MatTableDataSource<Productos>();
+  ngAfterViewInit() {
+    // this.sourceProducts = new MatTableDataSource<Productos>();
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page)
+    merge(this.sort.sortChange, this.paginator.page, this._hasFilter)
       .pipe(
-        startWith({}),
+        startWith([]),
         switchMap(() => {
-          return this._productosServices.getPaginationProducts(
-            // this.sort.active,
-            this.sort.direction,
-            this.paginator.pageIndex,
-            this.paginator.pageSize
-          );
+          if (this.hasFilter) {
+            return this._productosServices.filterByBrandWithPagination(
+              this.filterByTheseBrands,
+              this.sort.direction,
+              this.paginator.pageIndex,
+              this.paginator.pageSize
+            );
+          }
+          if (!this.hasFilter) {
+            return this._productosServices.getPaginationProducts(
+              this.sort.direction,
+              this.paginator.pageIndex,
+              this.paginator.pageSize
+            );
+          }
         }),
+        takeUntil(this._unsubscribeAll),
         catchError(() => {
-          console.log('error');
           return of([]);
         })
       )
       .subscribe((data) => {
-        console.log('data', data);
         this.sourceProducts = data as Productos[];
       });
   }
 
+  initForm() {
+    this.formFilterBrands = this._fb.group({
+      marcas: new FormArray([], this.minSelectedCheckboxes(1)),
+    });
+  }
+
+  buildArrayBrands(marcas: string[]) {
+    marcas.forEach(() => this.marcasControl.push(new FormControl(false)));
+  }
+
+  filteringData() {
+    let valuesSubmit = Object.assign({}, this.formFilterBrands.value);
+    valuesSubmit = Object.assign(
+      {},
+      {
+        brands: valuesSubmit.marcas
+          .map((v: boolean, i: number) => (v ? this.brandsFilter[i] : null))
+          .filter((value: boolean) => value !== null),
+      }
+    );
+    this._filterByTheseBrands.next(valuesSubmit.brands as string[]);
+    this._hasFilter.next(true);
+  }
+
+  // utils  funcion para solicitar un minimo de checbox
+  minSelectedCheckboxes(min = 1) {
+    const validator: ValidatorFn = (formArray: FormArray) => {
+      const totalSelected = formArray.controls
+        .map((control) => control.value)
+        .reduce((prev, next) => (next ? prev + next : prev), 0);
+
+      return totalSelected >= min ? null : { required: true };
+    };
+
+    return validator;
+  }
+
   detailsProduct(product: Productos) {
     // If the product is already selected...
-
     if (this.selectedProduct && this.selectedProduct.id === product.id) {
       // Close the details
       this.closeDetails();
@@ -106,12 +196,20 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   }
 
   updatedProduct(updatedProduct: Productos) {
+    // actualizar lista cuando se crea un nuevo producto
     const updateList = updateMatriz(
       this.sourceProducts as Productos[],
       updatedProduct
     );
 
     this.sourceProducts = updateList;
+  }
+
+  deletedProduct(producto: Productos) {
+    const listProductos = this.sourceProducts as Productos[];
+    this.sourceProducts = listProductos.filter(
+      (product) => product.id !== producto.id
+    );
   }
 
   closeDetails(): void {
@@ -124,4 +222,8 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   trackByFn(index: number, item: any): any {
     return item.id || index;
   }
+  // handlePaginator(event: PageEvent) {
+  //   this.pageSize = event.pageSize;
+  //   this.pageNumber = event.pageIndex + 1;
+  // }
 }
