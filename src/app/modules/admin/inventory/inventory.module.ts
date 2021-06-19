@@ -19,7 +19,6 @@ import { DialogComponentModule } from '../../../shared/modules/dialog/dialog.mod
 import { CreateBrandComponent } from './components/create-brand/create-brand.component';
 import { ListBrandsComponent } from './components/list-brands/list-brands.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PaginatorPipeModule } from '../../../shared/pipes/paginator/paginator.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { PaginatorPipeModule } from '../../../shared/pipes/paginator/paginator.m
     MatSortModule,
     DialogComponentModule,
     MatCheckboxModule,
-    PaginatorPipeModule,
   ],
 })
 export class InventoryModule {}
