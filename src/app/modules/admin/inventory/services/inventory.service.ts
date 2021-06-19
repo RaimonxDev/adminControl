@@ -4,7 +4,7 @@ import { Productos } from '../../../../core/products/models/productos.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { ErrorResponseHttp } from '../../../../shared/utils/class/httpErrorHandler';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Marcas } from '../../../../core/products/models/marcas.model';
 
 @Injectable({
@@ -37,9 +37,9 @@ export class InventoryService {
         )
       );
   }
-  deleteProducto(idProducto: Productos): Observable<Productos> {
+  deleteProducto(producto: Productos): Observable<Productos> {
     return this._http
-      .delete<Productos>(`${this.backendUrl}/products/${idProducto.id}`)
+      .delete<Productos>(`${this.backendUrl}/products/${producto.id}`)
       .pipe(
         catchError((error) =>
           this.handleErrorHttp.handleError(error, null, 2500)
@@ -54,6 +54,15 @@ export class InventoryService {
   updateBrand(idBrand: string, body: Marcas) {
     return this._http
       .put(`${this.backendUrl}/marcas/${idBrand}`, body)
+      .pipe(
+        catchError((error) =>
+          this.handleErrorHttp.handleError(error, null, 2500)
+        )
+      );
+  }
+  deleteBrand(producto: Marcas) {
+    return this._http
+      .delete(`${this.backendUrl}/marcas/${producto.id}`)
       .pipe(
         catchError((error) =>
           this.handleErrorHttp.handleError(error, null, 2500)

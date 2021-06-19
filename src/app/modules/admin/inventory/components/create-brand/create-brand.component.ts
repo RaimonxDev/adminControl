@@ -6,6 +6,8 @@ import { CustomValidatorReactiveForm } from '../../../../../shared/utils/Validat
 import { ProductsService } from '../../../../../core/products/products.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Marcas } from 'app/core/products/models/marcas.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../../../../shared/modules/dialog/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-create-brand',
@@ -19,15 +21,18 @@ export class CreateBrandComponent implements OnInit {
 
   editBrand = false;
 
+  get currentSelectedBrand() {
+    return this._selectedMarca.getValue();
+  }
   constructor(
     private _formBuilder: FormBuilder,
     private _inventoryServices: InventoryService,
     private _notify: NotifierService,
-    private _productServices: ProductsService
+    private _productServices: ProductsService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    console.log(this.editBrand);
     this.createNewProductForm = this._formBuilder.group({
       nombre: [
         '',
@@ -129,5 +134,37 @@ export class CreateBrandComponent implements OnInit {
         this.createNewProductForm.enable();
         this.marcas$ = this._productServices.refreshBrands();
       });
+  }
+
+  deleteBrand(brand: Marcas) {
+    this._inventoryServices.deleteBrand(brand).subscribe(() => {
+      this._notify.showNotification('Eliminado', '', 'info', null, 3000);
+      this.editBrand = false;
+      this.createNewProductForm.reset();
+      this.marcas$ = this._productServices.refreshBrands();
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        title: 'Seguro que desea eliminar esta marca',
+        message: 'Tenga en cuenta que esta accion es irreversible',
+        buttonAccept: 'Eliminar Marca',
+        buttonDecline: 'Cancelar operacion',
+      },
+      restoreFocus: true,
+    });
+
+    // Manually restore focus to the menu trigger since the element that
+    // opens the dialog won't be in the DOM any more when the dialog closes.
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === false || undefined) {
+        return;
+      }
+      if (result) {
+        this.deleteBrand(this.currentSelectedBrand);
+      }
+    });
   }
 }

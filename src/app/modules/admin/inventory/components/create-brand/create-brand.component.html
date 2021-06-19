@@ -79,12 +79,30 @@
         <!-- Button Cancelar -->
         <button
           *ngIf="editBrand"
-          class="w-1/2 mt-6 text-sm"
-          mat-button
-          [color]="'warn'"
+          class="
+            w-1/2
+            mt-6
+            text-sm text-yellow-500
+            hover:bg-yellow-400
+            hover:text-white
+            transition
+            ease-out
+            duration-75
+            rounded-md
+          "
           (click)="cancelEdition()"
         >
           <span>Cancelar</span>
+        </button>
+      </div>
+      <div *ngIf="editBrand" class="w-full mt-3 flex items-center">
+        <button
+          class="mx-auto text-center"
+          mat-button
+          color="warn"
+          (click)="openDialog()"
+        >
+          Eliminar
         </button>
       </div>
     </form>

@@ -10,7 +10,7 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'custom-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
 })

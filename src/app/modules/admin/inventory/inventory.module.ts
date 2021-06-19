@@ -42,6 +42,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSortModule,
     DialogComponentModule,
     MatCheckboxModule,
+    DialogComponentModule,
   ],
 })
 export class InventoryModule {}
