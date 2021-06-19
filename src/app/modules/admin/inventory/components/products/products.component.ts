@@ -28,6 +28,7 @@ import {
   map,
 } from 'rxjs/operators';
 import { updateMatriz } from '../../../../../shared/utils/functions/updateObjInArray';
+import { Marcas } from '../../../../../core/products/models/marcas.model';
 
 @Component({
   selector: 'app-products',
@@ -49,15 +50,15 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   _hasFilter: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  _filterByTheseBrands: BehaviorSubject<string[]> = new BehaviorSubject<
-    string[]
-  >([]);
+  // _filterByTheseBrand: BehaviorSubject<string[]> = new BehaviorSubject<
+  //   string[]
+  // >([]);
 
   productos$: Productos[];
+  marcas: Marcas[];
+  noFoundProducts: boolean = false;
 
   formFilterBrands: FormGroup;
-  brandsFilter: string[] = [];
-
   sourceProducts: Productos[] | null;
   productsTableColumns: string[] = [
     'marca',
@@ -78,12 +79,9 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   get hasFilter() {
     return this._hasFilter.getValue();
   }
-  get filterByTheseBrands() {
-    return this._filterByTheseBrands.getValue();
-  }
 
-  get marcasControl() {
-    return this.formFilterBrands.controls.marcas as FormArray;
+  get brandControl() {
+    return this.formFilterBrands.controls['brand'].value;
   }
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -101,16 +99,9 @@ export class ProductsComponent implements OnInit, AfterViewInit {
       .subscribe((value) => (this.productsCount = value));
 
     // obtiene las marcas
-    this._productosServices.allBrands$
-      .pipe(
-        map((marcas) => {
-          return marcas.map((value) => value.nombre);
-        })
-      )
-      .subscribe((brand) => {
-        this.brandsFilter = brand;
-        this.buildArrayBrands(brand);
-      });
+    this._productosServices.allBrands$.subscribe((brand) => {
+      this.marcas = brand;
+    });
   }
 
   ngAfterViewInit() {
@@ -124,10 +115,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
         switchMap(() => {
           if (this.hasFilter) {
             return this._productosServices.filterByBrandWithPagination(
-              this.filterByTheseBrands,
-              this.sort.direction,
-              this.paginator.pageIndex,
-              this.paginator.pageSize
+              this.brandControl
             );
           }
           if (!this.hasFilter) {
@@ -139,50 +127,33 @@ export class ProductsComponent implements OnInit, AfterViewInit {
           }
         }),
         takeUntil(this._unsubscribeAll),
-        catchError(() => {
-          return of([]);
-        })
+        catchError((err) => of([]))
       )
       .subscribe((data) => {
-        this.sourceProducts = data as Productos[];
+        console.log(data);
+        if (data.length === 0) {
+          this.noFoundProducts = true;
+          this.sourceProducts = [];
+        }
+        if (data.length !== 0) {
+          this.noFoundProducts = false;
+          return (this.sourceProducts = data as Productos[]);
+        }
       });
   }
 
   initForm() {
     this.formFilterBrands = this._fb.group({
-      marcas: new FormArray([], this.minSelectedCheckboxes(1)),
+      brand: ['Todas'],
     });
   }
-
-  buildArrayBrands(marcas: string[]) {
-    marcas.forEach(() => this.marcasControl.push(new FormControl(false)));
-  }
-
-  filteringData() {
-    let valuesSubmit = Object.assign({}, this.formFilterBrands.value);
-    valuesSubmit = Object.assign(
-      {},
-      {
-        brands: valuesSubmit.marcas
-          .map((v: boolean, i: number) => (v ? this.brandsFilter[i] : null))
-          .filter((value: boolean) => value !== null),
-      }
-    );
-    this._filterByTheseBrands.next(valuesSubmit.brands as string[]);
+  filterForBrand() {
     this._hasFilter.next(true);
+    this.brandControl;
   }
-
-  // utils  funcion para solicitar un minimo de checbox
-  minSelectedCheckboxes(min = 1) {
-    const validator: ValidatorFn = (formArray: FormArray) => {
-      const totalSelected = formArray.controls
-        .map((control) => control.value)
-        .reduce((prev, next) => (next ? prev + next : prev), 0);
-
-      return totalSelected >= min ? null : { required: true };
-    };
-
-    return validator;
+  clearFilter() {
+    this._hasFilter.next(false);
+    this.formFilterBrands.reset();
   }
 
   detailsProduct(product: Productos) {

@@ -12,12 +12,17 @@ const routes: Routes = [
     path: '',
     component: InventoryComponent,
     resolve: {
-      countProducts: CountProductsResolver,
       brandProducts: MarcasResolver,
     },
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'products' },
-      { path: 'products', component: ProductsComponent },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        resolve: {
+          countProducts: CountProductsResolver,
+        },
+      },
       {
         path: 'new-product',
         component: CreateProductComponent,

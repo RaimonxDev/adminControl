@@ -58,16 +58,3 @@ export class InitialDataResolver implements Resolve<any> {
     );
   }
 }
-
-@Injectable({
-  providedIn: 'root',
-})
-export class InitialDataProductos implements Resolve<ListadoDeProductos[]> {
-  constructor(private _productos: ProductsService) {}
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<ListadoDeProductos[]> {
-    return this._productos.getProductos();
-  }
-}

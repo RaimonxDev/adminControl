@@ -125,29 +125,17 @@ export class ProductsService {
     return this.getAllMarcas();
   }
 
-  public filterByBrandWithPagination(
-    marcas: string[],
-    sort: string,
-    pageIndex: number,
-    pageSize: number
-  ) {
-    let httpParams = new HttpParams();
-    marcas.forEach((nombre) => {
-      httpParams = httpParams.append('brand.nombre_in', nombre);
-    });
-    httpParams = httpParams.append('_sort', `${sort}`);
-    // httpParams = httpParams.append('_start', `${pageIndex * pageSize}`);
-
+  public filterByBrandWithPagination(marca: string) {
     return this._http
       .get<Productos[]>(`${this.urlBackend}/products`, {
-        params: httpParams,
+        params: {
+          'brand.nombre_in': marca,
+        },
       })
       .pipe(
         tap((resp) => this._countProducts.next(resp.length)),
         catchError((err) => HandleHttpResponseError(err))
       );
-    // resultado esperado:
-    // http://localhost:1337/products?brand.nombre_in=bravo&brand.nombre_in=wits
   }
 
   // obtiene los productos paginados

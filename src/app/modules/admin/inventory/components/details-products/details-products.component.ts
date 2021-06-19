@@ -15,10 +15,7 @@ import { CustomValidatorReactiveForm } from '../../../../../shared/utils/Validat
 import { ProductsService } from '../../../../../core/products/products.service';
 import { Marcas } from '../../../../../core/products/models/marcas.model';
 import { take } from 'rxjs/operators';
-import {
-  DialogComponent,
-  DialogData,
-} from '../../../../../shared/modules/dialog/components/dialog/dialog.component';
+import { DialogComponent } from '../../../../../shared/modules/dialog/components/dialog/dialog.component';
 
 export type modeFormDetailsProducts = 'create' | 'edit';
 
@@ -32,12 +29,13 @@ export class DetailsProductsComponent implements OnInit {
   @Input() modeForm: modeFormDetailsProducts;
   @Output() updatedProduct: EventEmitter<Productos> =
     new EventEmitter<Productos>();
+  @Output() deletedProduct: EventEmitter<Productos> =
+    new EventEmitter<Productos>();
   @ViewChild('fieldCode') fieldCode;
 
   get codeUidField() {
     return this.selectedProductForm.controls['code_uid'].value;
   }
-
   selectedProductForm: FormGroup;
   mascotas: string[] = ['perro', 'gato'];
   marcas: Marcas[] = [];
@@ -55,7 +53,6 @@ export class DetailsProductsComponent implements OnInit {
     this._productServices.allBrands$.pipe(take(1)).subscribe((marcas) => {
       this.marcas = marcas;
     });
-
     // Rellenar formulario con la data del producto seleccionado
 
     if (this.modeForm === 'edit') {
@@ -90,8 +87,6 @@ export class DetailsProductsComponent implements OnInit {
 
   initForm(): void {
     this.selectedProductForm = this._formBuilder.group({
-      id: [''],
-      published_at: [''],
       isNewProduct: [false],
       disponible: [false],
       precioSugerido: ['', [Validators.required]],
@@ -105,8 +100,6 @@ export class DetailsProductsComponent implements OnInit {
         [Validators.required],
         CustomValidatorReactiveForm.checkUniqueCode(this._productServices),
       ],
-      createdAt: [''],
-      updatedAt: [''],
       stock: ['', [Validators.required]],
       barcode: [''],
       IVA: [19, [Validators.required]],
@@ -122,7 +115,7 @@ export class DetailsProductsComponent implements OnInit {
         null,
         3000
       );
-      this._productServices.refreshProducts().subscribe();
+      this.deletedProduct.emit(resp);
     });
   }
 
@@ -158,18 +151,15 @@ export class DetailsProductsComponent implements OnInit {
           null,
           2500
         );
-        console.log(resp);
         this.selectedProductForm.reset();
-        this.selectedProductForm.clearValidators();
+        this.selectedProductForm.clearAsyncValidators();
         this.selectedProductForm.enable();
       });
   }
 
   updateSelectedProduct() {
-    const currentProduct: Productos = this.selectedProductForm.value;
-
     this._inventoryServices
-      .updateProduct(currentProduct.id, currentProduct)
+      .updateProduct(this.producto.id, this.selectedProductForm.value)
       .subscribe((resp: Productos) => {
         this.selectedProductForm.patchValue(resp);
         this.updatedProduct.emit(resp);
