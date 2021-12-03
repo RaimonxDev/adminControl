@@ -54,7 +54,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this._customerServices.customers$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((customers: User[]) => {
-        console.log(customers);
+        // console.log(customers);
         this.customersCount = customers.length;
         this._changeDetectorRef.markForCheck();
       });
